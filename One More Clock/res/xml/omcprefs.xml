@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:title="One More Clock - Preferences">
+	<PreferenceCategory android:title="Look and Feel" android:key="LAF">
+	
+		<ListPreference 
+			android:entries="@array/theme_options" 
+			android:entryValues="@array/theme_values" 
+			android:title="Widget Theme" 
+			android:dialogTitle="Please Choose a theme" 
+			android:defaultValue="@array/CultureClash" 
+			android:enabled="true" 
+			android:summary="Change the way OMC looks" 
+			android:key="widgetTheme" android:selectable="true">
+		</ListPreference>
+		<CheckBoxPreference 
+			android:key="widget24HrClock" 
+			android:title="Use 24 Hour Clock" 
+			android:summary="23:59 instead of 11:59pm" 
+			android:enabled="true" android:defaultValue="true" android:selectable="true">
+		</CheckBoxPreference>
+	<CheckBoxPreference android:key="widgetLeadingZero" android:summary="04:23 instead of 4:23" android:enabled="true" android:selectable="true" android:title="Leading Zero in Hours"></CheckBoxPreference>
+</PreferenceCategory>
+	<PreferenceCategory android:title="Persistence" android:key="Persistence">
+		<CheckBoxPreference 
+			android:summary="Shows process in the notification bar.  Enable if the clock keeps losing sync." 
+			android:key="widgetPersistence" 
+			android:title="Keep in Memory" 
+			android:enabled="true" android:selectable="true">
+		</CheckBoxPreference>
+		
+	</PreferenceCategory>
+	<PreferenceCategory 
+		android:title="Credits" 
+		android:key="Credits">
+		<Preference 
+			android:selectable="true" 
+			android:title="View Credits" 
+			android:key="widgetCredits" android:enabled="true">
+		</Preference>
+	</PreferenceCategory>
+</PreferenceScreen>

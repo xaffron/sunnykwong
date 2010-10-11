@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="theme_options">
+	<item>Bokeh Beauty</item>
+	<item>Culture Clash</item>
+	<item>Digital Digits</item>
+	<item>Lockscreen Look</item>
+	<item>Wham! Bam! Widget!</item>
+</string-array>
+
+<string-array name="theme_values">
+	<item>BokehBeauty</item>
+	<item>CultureClash</item>
+	<item>DigitalDigits</item>
+	<item>LockscreenLook</item>
+	<item>WhamBamWidget</item>
+</string-array>
+
+<array name="BokehBeauty">
+	<item name="00 font_source_type">asset</item>
+	<item name="01 font_source">Puritan2.otf</item>
+	<item name="02 font_size">120</item>
+	<item name="03 lens_flare_color">0</item>
+	<item name="04 background_char_color">#00000000</item>
+	<item name="05 bg_color1">#00ab0000</item>
+	<item name="06 bg_color2">#88ab0000</item>
+	<item name="07 fg_color1">#ff000000</item>
+	<item name="08 fg_color2">#a0364E56</item>
+	<item name="09 render_style">shadow</item>
+	<item name="10 intro_x">#00ab0000</item>
+	<item name="11 intro_y">#00ab0000</item>
+	<item name="12 intro_align">#00ab0000</item>
+	<item name="13 clock_x">#00ab0000</item>
+	<item name="14 clock_y">#00ab0000</item>
+	<item name="15 clock_align">#00ab0000</item>
+	<item name="16 byline_x">#00ab0000</item>
+	<item name="17 byline_y">#00ab0000</item>
+	<item name="18 byline_align">#00ab0000</item>
+</array>
+<array name="CultureClash">
+	<item name="00 font_source_type">asset</item>
+	<item name="font_source">OFLGoudyStMTT.ttf</item>
+	<item name="font_size">120</item>
+	<item name="lens_flare_color">0</item>
+	<item name="background_char_color">#40000000</item>
+	<item name="bg_color1">#00ab0000</item>
+	<item name="bg_color2">#00ab0000</item>
+	<item name="fg_color1">#ff000000</item>
+	<item name="fg_color2">#a0ffffff</item>
+	<item name="render_style">emboss</item>
+	<item name="10 intro_x">#00ab0000</item>
+	<item name="intro_y">#00ab0000</item>
+	<item name="intro_align">#00ab0000</item>
+	<item name="clock_x">#00ab0000</item>
+	<item name="clock_y">#00ab0000</item>
+	<item name="clock_align">#00ab0000</item>
+	<item name="byline_x">#00ab0000</item>
+	<item name="byline_y">#00ab0000</item>
+	<item name="byline_align">#00ab0000</item>
+</array>
+<array name="DigitalDigits">
+	<item name="00 font_source_type">asset</item>
+	<item name="font_source">Digital7Mono.ttf</item>
+	<item name="font_size">130</item>
+	<item name="lens_flare_color">0</item>
+	<item name="background_char_color">#00000000</item>
+	<item name="bg_color1">#a0068AB6</item>
+	<item name="bg_color2">#88000000</item>
+	<item name="fg_color1">#ff111111</item>
+	<item name="fg_color2">#a0333333</item>
+	<item name="render_style">shadow</item>
+	<item name="10 intro_x">#00ab0000</item>
+	<item name="intro_y">#00ab0000</item>
+	<item name="intro_align">#00ab0000</item>
+	<item name="clock_x">#00ab0000</item>
+	<item name="clock_y">#00ab0000</item>
+	<item name="clock_align">#00ab0000</item>
+	<item name="byline_x">#00ab0000</item>
+	<item name="byline_y">#00ab0000</item>
+	<item name="byline_align">#00ab0000</item>
+</array>
+<array name="LockscreenLook">
+	<item name="00 font_source_type">fs</item>
+	<item name="font_source">/system/fonts/Clockopia.ttf</item>
+	<item name="font_size">100</item>
+	<item name="lens_flare_color">0</item>
+	<item name="background_char_color">#00000000</item>
+	<item name="bg_color1">#00ab0000</item>
+	<item name="bg_color2">#00ab0000</item>
+	<item name="fg_color1">#ffffffff</item>
+	<item name="fg_color2">#a0000000</item>
+	<item name="render_style">shadow</item>
+	<item name="10 intro_x">#00ab0000</item>
+	<item name="intro_y">#00ab0000</item>
+	<item name="intro_align">#00ab0000</item>
+	<item name="clock_x">#00ab0000</item>
+	<item name="clock_y">#00ab0000</item>
+	<item name="clock_align">#00ab0000</item>
+	<item name="byline_x">#00ab0000</item>
+	<item name="byline_y">#00ab0000</item>
+	<item name="byline_align">#00ab0000</item>
+</array>
+<array name="WhamBamWidget">	
+	<item name="00 font_source_type">asset</item>
+	<item name="font_source">evilgeniusbb_bld.ttf</item>
+	<item name="font_size">80</item>
+	<item name="lens_flare_color">0</item>
+	<item name="background_char_color">#00000000</item>
+	<item name="bg_color1">#00ab0000</item>
+	<item name="bg_color2">#00ab0000</item>
+	<item name="fg_color1">#ffaaccaa</item>
+	<item name="fg_color2">#a0440000</item>
+	<item name="render_style">shadow</item>
+	<item name="10 intro_x">#00ab0000</item>
+	<item name="intro_y">#00ab0000</item>
+	<item name="intro_align">#00ab0000</item>
+	<item name="clock_x">#00ab0000</item>
+	<item name="clock_y">#00ab0000</item>
+	<item name="clock_align">#00ab0000</item>
+	<item name="byline_x">#00ab0000</item>
+	<item name="byline_y">#00ab0000</item>
+	<item name="byline_align">#00ab0000</item>
+</array>
+
+</resources>
