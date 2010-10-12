@@ -21,7 +21,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.text.format.Time;
-import android.util.Log;
 
 /**
  * @author skwong01
