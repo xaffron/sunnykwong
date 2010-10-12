@@ -51,6 +51,16 @@ public class OMC extends Application {
 	static final String CHINESETIME = "子丑寅卯辰巳午未申酉戌亥子";
 	static final Time TIME = new Time();
 	static final Time OTIME = new Time();
+
+	// Sections of the prefs that govern each layer
+	static final int WIDBACKDROP = 0;
+	static final int WIDINTRO = 13;
+	static final int WIDCLOCK = 26;
+	static final int WIDBYLINE = 39;
+	static final int WIDPANEL = 52;
+	static final int WIDLENSFLARE = 62;
+	
+	static String TXTBUF;
 	
 	static final int SVCNOTIFICATIONID = 1; // Notification ID for the one and only message window we'll show
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
@@ -63,10 +73,8 @@ public class OMC extends Application {
 
 	static Bitmap BUFFER;
 	static Canvas CANVAS;
-	static Paint BGPT1;
-	static Paint BGPT2;
-	static Paint FGPT1;
-	static Paint FGPT2;
+	static Paint PT1;
+	static Paint PT2;
 
 
 	@Override
@@ -75,10 +83,8 @@ public class OMC extends Application {
 
 		OMC.BUFFER= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
 		OMC.CANVAS = new Canvas(OMC.BUFFER);
-		OMC.BGPT1 = new Paint();
-		OMC.BGPT2 = new Paint();
-		OMC.FGPT1 = new Paint();
-		OMC.FGPT2 = new Paint();
+		OMC.PT1 = new Paint();
+		OMC.PT2 = new Paint();
 		
 		OMC.aRC = new OMCAlarmReceiver();
 		OMC.FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
@@ -123,21 +129,18 @@ public class OMC extends Application {
     }
 
 	public static void initPrefs(int aWI) {
-		Log.i("OMCmodel","initPrefs " + aWI);
 		OMC.PREFS.edit().putString("widgetTheme"+aWI, "CultureClash")
 		.putBoolean("widget24HrClock"+aWI, true)
 		.commit();
 	}
 
 	public static void setPrefs(int aWI) {
-		Log.i("OMCmodel","setPrefs " + aWI);
 		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", "notfound"))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
 		.commit();
 	}
 
 	public static void getPrefs(int aWI) {
-		Log.i("OMCmodel","getPrefs " + aWI);
     	OMC.PREFS.edit().putString("widgetTheme", OMC.PREFS.getString("widgetTheme"+aWI, "notfound"))
 		.putBoolean("widget24HrClock", OMC.PREFS.getBoolean("widget24HrClock"+aWI, true))
 		.commit();
@@ -151,12 +154,11 @@ public class OMC extends Application {
 	}
 	
 	public static Typeface getTypeface(String type, String src) {
-		
 		if (OMC.TYPEFACEMAP.get(src)==null) {
 			if (type.equals("fs")) 
-				OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(OMC.CACHEDATTRIBS.getString(1)));
+				OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(src));
 			else
-				OMC.TYPEFACEMAP.put(src, Typeface.createFromAsset(OMC.AM, OMC.CACHEDATTRIBS.getString(1)));
+				OMC.TYPEFACEMAP.put(src, Typeface.createFromAsset(OMC.AM, src));
 		}
 		return OMC.TYPEFACEMAP.get(src);
 	}
