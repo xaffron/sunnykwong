@@ -42,7 +42,7 @@ public class OMC extends Application {
     static boolean SCREENON = true; 	// Is the screen on?
     static boolean FG = true;
     
-	static TypedArray CACHEDATTRIBS;
+	static TypedArray CACHEDATTRIBS; 
 
 	static final ComponentName WIDGETCNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget");
 	static final int WIDGETWIDTH=320;
