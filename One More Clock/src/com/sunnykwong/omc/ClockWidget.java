@@ -29,7 +29,12 @@ public class ClockWidget extends AppWidgetProvider {
 			OMC.TXTBUF = ClockWidget.sCHINESETIME;
 			break;
 		case OMC.WIDINTRO:
-			break;
+	    	if (sTheme.equals("DigitalDigits")) {
+				OMC.TXTBUF = OMC.TIME.format("%p").substring(0, 1);
+	    	} else if (sTheme.equals("WhamBamWidget")) {
+	    		OMC.TXTBUF = "omg, it's";
+	    	}
+    		break;
 		case OMC.WIDCLOCK:
 	    	// 12 or 24 hours? Leading 0 or no leading 0?
     		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
@@ -41,6 +46,9 @@ public class ClockWidget extends AppWidgetProvider {
 			break;	
 		case OMC.WIDBYLINE:
 			OMC.TXTBUF = OMC.TIME.format("%p");    		
+	    	if (sTheme.equals("DigitalDigits")) {
+				OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
+	    	}
 	    	if (sTheme.equals("WhamBamWidget")) {
 				switch (OMC.RND.nextInt(9)) {
 				case 0:
@@ -114,6 +122,42 @@ public class ClockWidget extends AppWidgetProvider {
 //    		OMC.PT2.setTextSkewX((float)0.);
     		
     	}
+	}
+
+	static void drawPanelLayer(final Context context, final int idx, final String sTheme, final int aWI) {
+		OMC.FGRECT.left = OMC.CACHEDATTRIBS.getFloat(idx+1, 0);
+		OMC.FGRECT.top = OMC.CACHEDATTRIBS.getFloat(idx+2, 0);
+		OMC.FGRECT.right = OMC.CACHEDATTRIBS.getFloat(idx+3, 0);
+		OMC.FGRECT.bottom = OMC.CACHEDATTRIBS.getFloat(idx+4, 0);
+		OMC.PT1.reset();
+		OMC.PT1.setAntiAlias(true);
+		OMC.PT1.setColor(OMC.CACHEDATTRIBS.getColor(idx+7, 0));
+		OMC.PT2.reset();
+		OMC.PT2.setAntiAlias(true);
+		OMC.PT2.setColor(OMC.CACHEDATTRIBS.getColor(idx+8, 0));
+
+		//Draw the SFX
+		if (OMC.CACHEDATTRIBS.getString(idx+9).equals("emboss")) {
+			OMC.BGRECT.left = OMC.FGRECT.left-1;
+			OMC.BGRECT.top = OMC.FGRECT.top-1;
+			OMC.BGRECT.right = OMC.FGRECT.right-1;
+			OMC.BGRECT.bottom = OMC.FGRECT.bottom-1;
+			OMC.CANVAS.drawRoundRect(OMC.BGRECT, OMC.CACHEDATTRIBS.getFloat(idx+5, 0), OMC.CACHEDATTRIBS.getFloat(idx+6, 0), OMC.PT2);
+			OMC.BGRECT.left+=2;
+			OMC.BGRECT.top+=2;
+			OMC.BGRECT.right+=2;
+			OMC.BGRECT.bottom+=2;
+			OMC.CANVAS.drawRoundRect(OMC.BGRECT, OMC.CACHEDATTRIBS.getFloat(idx+5, 0), OMC.CACHEDATTRIBS.getFloat(idx+6, 0), OMC.PT2);
+		} else if (OMC.CACHEDATTRIBS.getString(idx+9).equals("shadow")) {
+			OMC.BGRECT.left = OMC.FGRECT.left+3;
+			OMC.BGRECT.top = OMC.FGRECT.top+3;
+			OMC.BGRECT.right = OMC.FGRECT.right+3;
+			OMC.BGRECT.bottom = OMC.FGRECT.bottom+3;
+			OMC.CANVAS.drawRoundRect(OMC.BGRECT, OMC.CACHEDATTRIBS.getFloat(idx+5, 0), OMC.CACHEDATTRIBS.getFloat(idx+6, 0), OMC.PT2);
+		}
+		//Either way, draw the proper panel
+		OMC.CANVAS.drawRoundRect(OMC.FGRECT, OMC.CACHEDATTRIBS.getFloat(idx+5, 0), OMC.CACHEDATTRIBS.getFloat(idx+6, 0), OMC.PT1);
+
 	}
 	
 	static void drawTextLayer(final Context context, final int idx, final String sTheme, final int aWI) {
@@ -226,7 +270,7 @@ public class ClockWidget extends AppWidgetProvider {
 		}
 
 		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDBACKDROP, false)) ClockWidget.drawTextLayer(context, OMC.WIDBACKDROP, sTheme, aWI);
-//		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDPANEL, false)) ClockWidget.drawTextLayer(context, OMC.WIDPANEL, sTheme, aWI);
+		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDPANEL, false)) ClockWidget.drawPanelLayer(context, OMC.WIDPANEL, sTheme, aWI);
 		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDINTRO, false)) ClockWidget.drawTextLayer(context, OMC.WIDINTRO, sTheme, aWI);
 		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDCLOCK, false)) ClockWidget.drawTextLayer(context, OMC.WIDCLOCK, sTheme, aWI);
 		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDBYLINE, false)) ClockWidget.drawTextLayer(context, OMC.WIDBYLINE, sTheme, aWI);
