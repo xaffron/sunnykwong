@@ -28,8 +28,18 @@ public class ClockWidget extends AppWidgetProvider {
 		case OMC.WIDBACKDROP:
 			OMC.TXTBUF = ClockWidget.sCHINESETIME;
 			break;
+		case OMC.WIDPANEL:
+    		if (sTheme.equals("WhamBamWidget")) {
+        		OMC.CANVAS.drawCircle(15f+3, 140f+3, 10, OMC.PT2);
+        		OMC.CANVAS.drawCircle(15f, 140f, 10, OMC.PT1);
+        		OMC.CANVAS.drawCircle(24f+3, 125f+3, 15, OMC.PT2);
+        		OMC.CANVAS.drawCircle(24f, 125f, 15, OMC.PT1);
+    		}
+			break;
 		case OMC.WIDINTRO:
-	    	if (sTheme.equals("DigitalDigits")) {
+			if (sTheme.equals("CultureClash")) {
+				OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
+			} else if (sTheme.equals("DigitalDigits")) {
 				OMC.TXTBUF = OMC.TIME.format("%p").substring(0, 1);
 	    	} else if (sTheme.equals("WhamBamWidget")) {
 	    		OMC.TXTBUF = "omg, it's";
@@ -42,14 +52,26 @@ public class ClockWidget extends AppWidgetProvider {
     		} else {
     			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I:%M") : OMC.TIME.format("%l:%M");
     		}
+//			OMC.TXTBUF = "00:00";
     		if (sTheme.equals("WhamBamWidget")) OMC.TXTBUF = OMC.TXTBUF + "!";
 			break;	
 		case OMC.WIDBYLINE:
 			OMC.TXTBUF = OMC.TIME.format("%p");    		
-	    	if (sTheme.equals("DigitalDigits")) {
+			if (sTheme.equals("BokehBeauty")) {
 				OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
-	    	}
-	    	if (sTheme.equals("WhamBamWidget")) {
+			} else if (sTheme.equals("CultureClash")) {
+				if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
+					OMC.TXTBUF = "";
+				} else if (OMC.TIME.hour < 12) {
+    				OMC.TXTBUF = "ante  meridiem";
+    			} else {
+    				OMC.TXTBUF = "post  meridiem";
+    			}
+			} else if (sTheme.equals("DigitalDigits")) {
+				OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
+			} else if (sTheme.equals("LockscreenLook")) {
+				OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
+			} else if (sTheme.equals("WhamBamWidget")) {
 				switch (OMC.RND.nextInt(9)) {
 				case 0:
 					OMC.TXTBUF = "what will this Android do?";
@@ -64,10 +86,10 @@ public class ClockWidget extends AppWidgetProvider {
 					OMC.TXTBUF = "but it's five o'clock for me.";
 					break;
 				case 4:
-					OMC.TXTBUF = "i will serve you to the death!";
+					OMC.TXTBUF = "don't worry, be happy!";
 					break;
 				case 5:
-					OMC.TXTBUF = "don't trade me in yet!";
+					OMC.TXTBUF = "don't trade me in yet...";
 					break;
 				case 6:
 					OMC.TXTBUF = "you look fabulous today!";
@@ -86,42 +108,34 @@ public class ClockWidget extends AppWidgetProvider {
 			
 		}
 		
-		//Finally, theme-specific tweaks.
-    	if (sTheme.equals("BokehBeauty")) {
-//    		OMC.PT1.setTextAlign(Paint.Align.CENTER);
-//    		OMC.PT2.setTextSize(14);
-//    		OMC.PT2.setTextAlign(Paint.Align.LEFT);
-//    		OMC.PT2.setTextSkewX((float)-0.25);
+	}
 
-//    		OMC.PT1.setColor(OMC.CACHEDATTRIBS.getColor(6, 0xffffffff));
-//    		OMC.PT1.setStyle(Style.FILL_AND_STROKE);
-//    		OMC.CANVAS.drawCircle((float)50, (float)50, 20, OMC.PT1);
-//    		OMC.CANVAS.drawCircle((float)60, (float)70, 10, OMC.PT1);
-    		
-    	} else if (sTheme.equals("CultureClash")) {
-    		if (idx == OMC.WIDBYLINE) OMC.TXTBUF = ClockWidget.sCHINESETIME + "時";
-//    		OMC.PT1.setTextAlign(Paint.Align.CENTER);
-//    		OMC.PT2.setTextSize(14);
-//    		OMC.PT2.setTextAlign(Paint.Align.LEFT);
-//    		OMC.PT2.setTextSkewX((float)-0.25);
-			
-    	} else if (sTheme.equals("DigitalDigits")) {
-//    		OMC.PT1.setTextAlign(Paint.Align.CENTER);
-//    		OMC.PT1.setTextSkewX((float)-0.25);
-//    		OMC.PT1.setTextScaleX((float)0.70);
-//    		OMC.PT2.setTextSize(14);
-//    		OMC.PT2.setTextAlign(Paint.Align.LEFT);
-    		if (idx == OMC.WIDBYLINE) OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
-    	} else if (sTheme.equals("LockscreenLook")) {
-
-    		if (idx == OMC.WIDBYLINE) OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
-        	
-//    		OMC.PT1.setTextAlign(Paint.Align.CENTER);
-//    		OMC.PT2.setTextSize(16);
-//    		OMC.PT2.setTextAlign(Paint.Align.LEFT);
-//    		OMC.PT2.setTextSkewX((float)0.);
-    		
-    	}
+	static void drawFlareLayer(final Context context, final int idx, final String sTheme, final int aWI) {
+		OMC.PT1.reset();
+		OMC.PT1.setAntiAlias(true);
+		OMC.PT1.setStyle(Paint.Style.FILL_AND_STROKE);
+		OMC.PT2.reset();
+		OMC.PT2.setAntiAlias(true);
+		OMC.PT2.setARGB(32, 255, 255, 255);
+		OMC.PT2.setStyle(Paint.Style.STROKE);
+		//Depending on time of day, determine angle.
+		double angle = (OMC.TIME.hour*60 + OMC.TIME.minute) *Math.PI / (24.*60.);
+		double y1 = OMC.WIDGETHEIGHT;
+		double x1 = OMC.WIDGETWIDTH/2. - y1/2./Math.tan(angle);
+		double y2 = 0.;
+		double x2 = OMC.WIDGETWIDTH/2. + y1/2./Math.tan(angle);
+		float dist = -0.45f;
+		for (int i = 0; i < OMC.CACHEDATTRIBS.getInt(idx+1, 5); i++) {
+			OMC.PT1.setColor(OMC.FLARECOLORS[i]);
+			dist += (float)(1.f/OMC.CACHEDATTRIBS.getInt(idx+1, 5)); 
+			double x = (x2-x1) * dist + OMC.WIDGETWIDTH/2.;
+			double y = (y2-y1) * dist + OMC.WIDGETHEIGHT/2.;
+			OMC.CANVAS.drawCircle((float)x, (float)y, OMC.FLARERADII[i], OMC.PT1);
+			OMC.CANVAS.drawCircle((float)x, (float)y, OMC.FLARERADII[i]+1, OMC.PT2);
+		}
+		
+    	// theme-specific tweaks.
+    	ClockWidget.layerThemeTweaks(context, idx, sTheme, aWI);
 	}
 
 	static void drawPanelLayer(final Context context, final int idx, final String sTheme, final int aWI) {
@@ -136,6 +150,9 @@ public class ClockWidget extends AppWidgetProvider {
 		OMC.PT2.setAntiAlias(true);
 		OMC.PT2.setColor(OMC.CACHEDATTRIBS.getColor(idx+8, 0));
 
+    	// theme-specific tweaks.
+    	ClockWidget.layerThemeTweaks(context, idx, sTheme, aWI);
+    	
 		//Draw the SFX
 		if (OMC.CACHEDATTRIBS.getString(idx+9).equals("emboss")) {
 			OMC.BGRECT.left = OMC.FGRECT.left-1;
@@ -168,9 +185,9 @@ public class ClockWidget extends AppWidgetProvider {
 				OMC.CACHEDATTRIBS.getString(idx+1),
 				OMC.CACHEDATTRIBS.getString(idx+2)));
 		OMC.PT1.setTextSize(OMC.CACHEDATTRIBS.getInt(idx+3, 100));
-		OMC.PT1.setTextSkewX(OMC.CACHEDATTRIBS.getFloat(idx+4, (float)0.));
-		OMC.PT1.setTextScaleX(OMC.CACHEDATTRIBS.getFloat(idx+5, (float)1.));
-//		OMC.PT1.setFakeBoldText(OMC.CACHEDATTRIBS.getBoolean(idx+5, false));
+		OMC.PT1.setTextSkewX(OMC.CACHEDATTRIBS.getFloat(idx+4, 0.f));
+		OMC.PT1.setTextScaleX(OMC.CACHEDATTRIBS.getFloat(idx+5, 1.f));
+		OMC.PT1.setFakeBoldText(OMC.CACHEDATTRIBS.getBoolean(idx+6, false));
 		
 		if (OMC.CACHEDATTRIBS.getString(idx+12).equals("center")) {
 			OMC.PT1.setTextAlign(Paint.Align.CENTER);
@@ -201,37 +218,6 @@ public class ClockWidget extends AppWidgetProvider {
     			OMC.CACHEDATTRIBS.getColor(idx+8, 0), 
     			OMC.CACHEDATTRIBS.getColor(idx+9, 0));
 
-//    	OMC.PT2.setColor(OMC.CACHEDATTRIBS.getColor(4, 0xffffffff));
-//   	OMC.CANVAS.drawText(ClockWidget.sCHINESETIME, 225, 145, OMC.BGPT1);
-//    	OMC.PT1.setColor(OMC.CACHEDATTRIBS.getColor(4, 0xffffffff));
-
-		// Draw the background panel.
-//		OMC.BGPT1.setColor(OMC.CACHEDATTRIBS.getColor(6, 0xffffffff));
-//		OMC.CANVAS.drawRoundRect(OMC.BGRECT, (float)5, (float)5, OMC.BGPT1);
-//		OMC.BGPT1.setColor(OMC.CACHEDATTRIBS.getColor(5, 0xffffffff));
-//		OMC.CANVAS.drawRoundRect(OMC.FGRECT, (float)5, (float)5, OMC.BGPT1);
-//		
-//		// Draw the Clock digits.
-//		ClockWidget.fancyDrawText(OMC.CACHEDATTRIBS.getString(9), OMC.CANVAS, sTime, OMC.WIDGETWIDTH/2, OMC.WIDGETHEIGHT*4/5-20, OMC.FGPT1, OMC.CACHEDATTRIBS.getColor(7, 0x00000000),OMC.CACHEDATTRIBS.getColor(8, 0xffffffff));
-//    	
-//		// Draw the byline.
-//		ClockWidget.fancyDrawText(OMC.CACHEDATTRIBS.getString(9), OMC.CANVAS, sByLineText, 45, 145-20, OMC.FGPT2, OMC.CACHEDATTRIBS.getColor(7, 0x00000000),OMC.CACHEDATTRIBS.getColor(8, 0xffffffff));
-
-//        pt.setARGB(64,0,0,0);
-//pt.setColor(Color.DKGRAY);
-//        pt.setARGB(164,255,255,255);
-//		bufferCanvas.drawText(t.format("%R"), ClockWidget.WIDTH/2+1, ClockWidget.HEIGHT*4/5+1-20, pt);  	// Shadow in 24-hr HH:MM format CLOCKOPIA
-//		bufferCanvas.drawText(t.format("%R"), ClockWidget.WIDTH/2-1, ClockWidget.HEIGHT*4/5-1-20, pt);  	// Shadow in 24-hr HH:MM format CLOCKOPIA
-//        pt.setARGB(164,0,0,0);
-//		bufferCanvas.drawText(t.format("%R"), ClockWidget.WIDTH/2, ClockWidget.HEIGHT*4/5-20, pt);  	// Shadow in 24-hr HH:MM format CLOCKOPIA
-//		bufferCanvas.drawText(t.format("%R"), 05, 120, pt);  	// Shadow in 24-hr HH:MM format CLOCKOPIA
-//		bufferCanvas.drawText(t.format("%R"), 40, 130, pt);  	// Shadow in 24-hr HH:MM format GOLONG
-//		pt.setARGB(192,0,0,0);
-//		pt.setARGB(216,255,255,255);
-//		bufferCanvas.drawText(t.format("%R"), ClockWidget.WIDTH/2, ClockWidget.HEIGHT*4/5-20, pt);  	// Text in 24-hr HH:MM format CLOCKOPIA
-//		bufferCanvas.drawText(t.format("%R"), 00, 115, pt);  	// Text in 24-hr HH:MM format CLOCKOPIA
-//		bufferCanvas.drawText(t.format("%R"), 35, 125, pt);  	// Text in 24-hr format GOLONG
-
 		//WIFI Piece
 
 //        if (ClockWidget.WFM==null) ClockWidget.WFM = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
@@ -246,10 +232,6 @@ public class ClockWidget extends AppWidgetProvider {
 //	    	tmpStr = "WiFi UNK";
 //        }
         //tmpStr = String.valueOf(wfm.getWifiState());
-
-//        Get Map of prefs
-//        java.util.Map<String,?> prefs = ClockModel.getPrefMap(context, aWI);
-        
 	}
 	
 	static void drawBitmapForWidget(final Context context, final int aWI) {
@@ -274,7 +256,7 @@ public class ClockWidget extends AppWidgetProvider {
 		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDINTRO, false)) ClockWidget.drawTextLayer(context, OMC.WIDINTRO, sTheme, aWI);
 		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDCLOCK, false)) ClockWidget.drawTextLayer(context, OMC.WIDCLOCK, sTheme, aWI);
 		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDBYLINE, false)) ClockWidget.drawTextLayer(context, OMC.WIDBYLINE, sTheme, aWI);
-//		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDLENSFLARE, false)) ClockWidget.drawTextLayer(context, OMC.WIDLENSFLARE, sTheme, aWI);
+		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDLENSFLARE, false)) ClockWidget.drawFlareLayer(context, OMC.WIDLENSFLARE, sTheme, aWI);
 		
 	}
 	

@@ -4,7 +4,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceScreen;
 import android.util.Log;
 
 public class OMCPrefActivity extends PreferenceActivity { 
@@ -45,6 +47,15 @@ public class OMCPrefActivity extends PreferenceActivity {
 
     }
 
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
+    		Preference preference) {
+    	if (preference == getPreferenceScreen().findPreference("widgetCredits")) {
+    		startActivity(OMC.CREDITSINTENT);
+    	}
+    	return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+    
     public void dialogCancelled() {
    	if (OMCPrefActivity.mAD!=null) { // && mAD.isShowing()
    		OMCPrefActivity.mAD.dismiss();

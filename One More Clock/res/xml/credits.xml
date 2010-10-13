@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" android:title="Credits">
+evilgeniusbb_reg.ttf<PreferenceCategory android:title="Team">
+<Preference android:title="Programmer" android:enabled="true" android:selectable="false" android:summary="Sunny Kwong" android:key="1"></Preference><Preference android:enabled="true" android:selectable="false" android:key="2" android:title="Testers" android:summary="Timothy Lai, Jenny Kwong"></Preference></PreferenceCategory><PreferenceCategory android:title="Copyrights and Licenses"><Preference android:enabled="true" android:selectable="false" android:key="3" android:title="Font: Puritan" android:summary="Puritan2.otf\n(c) Ben Weiner.  Open Font License."></Preference><Preference android:enabled="true" android:selectable="false" android:key="4" android:title="Font: OFL Sorts Mill Goudy" android:summary="OFLGoudyStMTT.ttf \n(c) Barry Schwartz.  Open Font License."></Preference><Preference android:enabled="true" android:selectable="false" android:key="5" android:title="Font: Digital-7" android:summary="digital-7 (mono).ttf\n(c) Sizenko Alexander.  Free for home use."></Preference><Preference android:enabled="true" android:selectable="false" android:key="6" android:title="Font: Evil Genius BB" android:summary="evilgeniusbb_reg.ttf\n(c) Nate Piekos.  Free for non-profit use."></Preference>
+</PreferenceCategory><PreferenceCategory android:title="Open Source"><Preference android:summary="http://code.google.com/p/sunnykwong/" android:key="7" android:title="Source Code Available at " android:enabled="true" android:selectable="false"></Preference>
+</PreferenceCategory>evilgeniusbb_reg.ttf
+
+
+</PreferenceScreen>

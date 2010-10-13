@@ -54,25 +54,25 @@
 	<item name="05 font_stretch">0</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
-	<item name="08 fgcolor">#ff000000</item>
-	<item name="09 bgcolor">#a0364E56</item>
+	<item name="08 fgcolor">#ff445544</item>
+	<item name="09 bgcolor">#a0ffffff</item>
 	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">108</item>
+	<item name="11 ycoord">95</item>
 	<item name="12 textalign">center</item>
 <!-- 39:BYLINE -->
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">OFLGoudyStMTT.ttf</item>
-	<item name="03 font_size">14</item>
+	<item name="02 font_source">Puritan2.otf</item>
+	<item name="03 font_size">21</item>
 	<item name="04 font_skew">-0.25</item>
-	<item name="05 font_stretch">0</item>
+	<item name="05 font_stretch">1</item>
 	<item name="06 font_bold">false</item>
-	<item name="07 render_style">shadow</item>
-	<item name="08 fgcolor">#ff000000</item>
-	<item name="09 bgcolor">#a0ffffff</item>
-	<item name="10 xcoord">45</item>
-	<item name="11 ycoord">125</item>
-	<item name="12 textalign">left</item>
+	<item name="07 render_style">emboss</item>
+	<item name="08 fgcolor">#a0aaaaaa</item>
+	<item name="09 bgcolor">#ff445544</item>
+	<item name="10 xcoord">160</item>
+	<item name="11 ycoord">135</item>
+	<item name="12 textalign">center</item>
 <!-- 52:PANEL -->
 	<item name="00 layer_enabled">false</item>
 	<item name="53 left">25</item>
@@ -87,7 +87,7 @@
 <!-- 62:LENS FLARE -->
 	<item name="62 layer_enabled">true</item>
 	<item name="63 noCircles">7</item>
-	<item name="64 Tint">#a0ff0000</item>
+	<item name="64 Tint">#44ffffff</item>
 </array>
 <array name="CultureClash">
 <!-- 00:BACKDROP -->
@@ -105,18 +105,18 @@
 	<item name="11 ycoord">145</item>
 	<item name="12 textalign">center</item>
 <!-- 13:INTRO -->
-	<item name="00 layer_enabled">false</item>
+	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">OFLGoudyStMTT.ttf</item>
-	<item name="03 font_size">14</item>
+	<item name="03 font_size">18</item>
 	<item name="04 font_skew">-0.25</item>
-	<item name="05 font_stretch">0</item>
+	<item name="05 font_stretch">1</item>
 	<item name="06 font_bold">false</item>
-	<item name="07 render_style">emboss</item>
-	<item name="08 fgcolor">#ff000000</item>
-	<item name="09 bgcolor">#a0ffffff</item>
+	<item name="07 render_style">normal</item>
+	<item name="08 fgcolor">#40000000</item>
+	<item name="09 bgcolor">#a0000000</item>
 	<item name="10 xcoord">45</item>
-	<item name="11 ycoord">125</item>
+	<item name="11 ycoord">48</item>
 	<item name="12 textalign">left</item>
 <!-- 26:CLOCK -->
 	<item name="00 layer_enabled">true</item>
@@ -136,15 +136,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">OFLGoudyStMTT.ttf</item>
-	<item name="03 font_size">14</item>
-	<item name="04 font_skew">-0.25</item>
-	<item name="05 font_stretch">0</item>
+	<item name="03 font_size">36</item>
+	<item name="04 font_skew">0.</item>
+	<item name="05 font_stretch">1</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
-	<item name="08 fgcolor">#ff000000</item>
-	<item name="09 bgcolor">#a0ffffff</item>
-	<item name="10 xcoord">45</item>
-	<item name="11 ycoord">125</item>
+	<item name="08 fgcolor">#ffcccccc</item>
+	<item name="09 bgcolor">#88ffffff</item>
+	<item name="10 xcoord">25</item>
+	<item name="11 ycoord">135</item>
 	<item name="12 textalign">left</item>
 <!-- 52:PANEL -->
 	<item name="00 layer_enabled">false</item>
@@ -335,7 +335,7 @@
 	<item name="08 fgcolor">#ff000000</item>
 	<item name="09 bgcolor">#a0440000</item>
 	<item name="10 xcoord">30</item>
-	<item name="11 ycoord">30</item>
+	<item name="11 ycoord">27</item>
 	<item name="12 textalign">left</item>
 <!-- 26:CLOCK -->
 	<item name="00 layer_enabled">true</item>
@@ -343,13 +343,13 @@
 	<item name="02 font_source">evilgeniusbb_bld.ttf</item>
 	<item name="03 font_size">70</item>
 	<item name="04 font_skew">-0.25</item>
-	<item name="05 font_stretch">1</item>
+	<item name="05 font_stretch">0.90</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ffaa0000</item>
 	<item name="09 bgcolor">#a0440000</item>
 	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">100</item>
+	<item name="11 ycoord">90</item>
 	<item name="12 textalign">center</item>
 <!-- 39:BYLINE -->
 	<item name="00 layer_enabled">true</item>
@@ -363,23 +363,23 @@
 	<item name="08 fgcolor">#ff000000</item>
 	<item name="09 bgcolor">#a0440000</item>
 	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">135</item>
+	<item name="11 ycoord">120</item>
 	<item name="12 textalign">center</item>
 <!-- 52:PANEL -->
 	<item name="00 layer_enabled">true</item>
-	<item name="53 left">20</item>
+	<item name="53 left">15</item>
 	<item name="54 top">5</item>
-	<item name="55 right">300</item>
-	<item name="56 bottom">145</item>
+	<item name="55 right">310</item>
+	<item name="56 bottom">130</item>
 	<item name="57 xcorner">15</item>
 	<item name="58 ycorner">15</item>
 	<item name="59 fgcolor">#FFEFDFAD</item>
 	<item name="60 bgcolor">#ff000000</item>
 	<item name="61 render_style">shadow</item>
 <!-- 62:LENS FLARE -->
-	<item name="62 layer_enabled">false</item>
-	<item name="63 noCircles">7</item>
-	<item name="64 Tint">#a0ff0000</item>
+	<item name="00 layer_enabled">false</item>
+	<item name="01 noCircles">7</item>
+	<item name="02 Tint">#a0ff0000</item>
 </array>
 
 </resources>

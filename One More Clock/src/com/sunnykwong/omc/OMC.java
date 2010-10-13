@@ -59,12 +59,15 @@ public class OMC extends Application {
 	static final int WIDPANEL = 52;
 	static final int WIDLENSFLARE = 62;
 	
+	static final float[] FLARERADII = new float[] {32.f,20.f,21.6f,31.2f,18.4f,19.1f,10.8f,25.f,28.f};
+	static final int[] FLARECOLORS = new int[] {855046894,1140258554,938340342,1005583601,855439588,
+		669384692,905573859,1105458423,921566437};
 	static String TXTBUF;
 	
 	static final int SVCNOTIFICATIONID = 1; // Notification ID for the one and only message window we'll show
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
-    static Intent FGINTENT, BGINTENT, SVCSTARTINTENT, WIDGETREFRESHINTENT;
+    static Intent FGINTENT, BGINTENT, SVCSTARTINTENT, WIDGETREFRESHINTENT, CREDITSINTENT;
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
     static Notification FGNOTIFICIATION;
     
@@ -92,6 +95,7 @@ public class OMC extends Application {
 		OMC.BGPENDING = PendingIntent.getBroadcast(this, 0, OMC.BGINTENT, 0);
 		OMC.SVCSTARTINTENT = new Intent(this, OMCService.class);
 		OMC.WIDGETREFRESHINTENT = new Intent("com.sunnykwong.omc.WIDGET_REFRESH");
+		OMC.CREDITSINTENT = new Intent(this, OMCCreditsActivity.class);
 		OMC.PREFSPENDING = PendingIntent.getActivity(this, 0, new Intent(this, OMCPrefActivity.class), 0);
 
 		OMC.BGRECT = new RectF(30,10,295,150);
