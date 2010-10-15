@@ -103,9 +103,8 @@ public class OMC extends Application {
 		OMC.CREDITSINTENT = new Intent(this, OMCCreditsActivity.class);
 		OMC.PREFSINTENT = new Intent(this, OMCPrefActivity.class);
 		OMC.PREFSPENDING = PendingIntent.getActivity(this, 0, new Intent(this, OMCPrefActivity.class), 0);
-		try {OMC.PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG","com.sunnykwong.omc/omc");}
-		catch (MalformedMimeTypeException e) {e.printStackTrace();}
-
+		OMC.PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
+		OMC.PREFSINTENTFILT.addDataScheme("omc");
 
 		OMC.BGRECT = new RectF(30,10,295,150);
 		OMC.FGRECT = new RectF(25,5,290,145);

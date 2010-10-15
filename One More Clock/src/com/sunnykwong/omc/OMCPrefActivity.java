@@ -58,10 +58,11 @@ public class OMCPrefActivity extends PreferenceActivity {
     		} catch (Exception e) {
 
     			if (OMC.DEBUG)Log.i("OMCPref","OMPC not installed, register self to handle widget clicks");
-    			e.printStackTrace();
+    			//e.printStackTrace();
 				try {
 					getApplicationContext().registerReceiver(OMC.cRC,OMC.PREFSINTENTFILT);
 				} catch (Exception ee) {
+	    			if (OMC.DEBUG)Log.i("OMCPref","Failed to register self");
 					ee.printStackTrace();
 				}
     		}
