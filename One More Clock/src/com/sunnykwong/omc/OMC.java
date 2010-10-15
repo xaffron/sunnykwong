@@ -13,7 +13,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.content.IntentFilter.MalformedMimeTypeException;
 import android.content.res.AssetManager;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
