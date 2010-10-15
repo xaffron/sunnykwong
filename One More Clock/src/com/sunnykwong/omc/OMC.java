@@ -22,6 +22,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.text.format.Time;
+import android.util.Log;
 
 /**
  * @author skwong01
@@ -94,6 +95,28 @@ public class OMC extends Application {
 		
 		OMC.aRC = new OMCAlarmReceiver();
 		OMC.cRC = new OMCConfigReceiver();
+
+		try {
+			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
+			if (OMC.DEBUG)Log.i("OMCPref","OMPC installed, let OMPC handle onclick");
+			try {
+				unregisterReceiver(OMC.cRC);
+			} catch (java.lang.IllegalArgumentException e) {
+    			if (OMC.DEBUG)Log.i("OMCPref","OMC's receiver already unregistered - doing nothing");
+				//no need to do anything if receiver not registered
+			}
+		} catch (Exception e) {
+
+			if (OMC.DEBUG)Log.i("OMCPref","OMPC not installed, register self to handle widget clicks");
+			//e.printStackTrace();
+			try {
+				getApplicationContext().registerReceiver(OMC.cRC,OMC.PREFSINTENTFILT);
+			} catch (Exception ee) {
+    			if (OMC.DEBUG)Log.i("OMCPref","Failed to register self");
+				ee.printStackTrace();
+			}
+		}
+		
 		OMC.FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
 		OMC.FGPENDING = PendingIntent.getBroadcast(this, 0, OMC.FGINTENT, 0);
 		OMC.BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
