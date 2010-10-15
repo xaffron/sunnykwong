@@ -95,6 +95,18 @@ public class OMC extends Application {
 		OMC.aRC = new OMCAlarmReceiver();
 		OMC.cRC = new OMCConfigReceiver();
 
+		OMC.FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
+		OMC.FGPENDING = PendingIntent.getBroadcast(this, 0, OMC.FGINTENT, 0);
+		OMC.BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
+		OMC.BGPENDING = PendingIntent.getBroadcast(this, 0, OMC.BGINTENT, 0);
+		OMC.SVCSTARTINTENT = new Intent(this, OMCService.class);
+		OMC.WIDGETREFRESHINTENT = new Intent("com.sunnykwong.omc.WIDGET_REFRESH");
+		OMC.CREDITSINTENT = new Intent(this, OMCCreditsActivity.class);
+		OMC.PREFSINTENT = new Intent(this, OMCPrefActivity.class);
+		OMC.PREFSPENDING = PendingIntent.getActivity(this, 0, new Intent(this, OMCPrefActivity.class), 0);
+		OMC.PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
+		OMC.PREFSINTENTFILT.addDataScheme("omc");
+
 		try {
 			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
 			if (OMC.DEBUG)Log.i("OMCPref","OMPC installed, let OMPC handle onclick");
@@ -116,18 +128,6 @@ public class OMC extends Application {
 			}
 		}
 		
-		OMC.FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
-		OMC.FGPENDING = PendingIntent.getBroadcast(this, 0, OMC.FGINTENT, 0);
-		OMC.BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
-		OMC.BGPENDING = PendingIntent.getBroadcast(this, 0, OMC.BGINTENT, 0);
-		OMC.SVCSTARTINTENT = new Intent(this, OMCService.class);
-		OMC.WIDGETREFRESHINTENT = new Intent("com.sunnykwong.omc.WIDGET_REFRESH");
-		OMC.CREDITSINTENT = new Intent(this, OMCCreditsActivity.class);
-		OMC.PREFSINTENT = new Intent(this, OMCPrefActivity.class);
-		OMC.PREFSPENDING = PendingIntent.getActivity(this, 0, new Intent(this, OMCPrefActivity.class), 0);
-		OMC.PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
-		OMC.PREFSINTENTFILT.addDataScheme("omc");
-
 		OMC.BGRECT = new RectF(30,10,295,150);
 		OMC.FGRECT = new RectF(25,5,290,145);
 		
