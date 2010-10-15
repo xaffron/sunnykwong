@@ -382,4 +382,17 @@
 	<item name="02 Tint">#a0ff0000</item>
 </array>
 
+<string-array name="whambamtalkbacks">
+	<item>what will this Android do?</item>
+	<item>my middle name is awesome.</item>
+	<item>never a dull moment with me.</item>
+	<item>but it\'s five o\'clock for me.</item>
+	<item>don\'t worry, be happy!</item>
+	<item>don\'t trade me in yet...</item>
+	<item>you look fabulous today!</item>
+	<item>no, i swear i didn\'t miss that call.</item>
+	<item>stop staring at me.</item>
+	<item>ready to work.</item>
+</string-array>
+
 </resources>

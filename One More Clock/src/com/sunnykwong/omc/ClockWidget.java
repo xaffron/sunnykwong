@@ -21,6 +21,8 @@ public class ClockWidget extends AppWidgetProvider {
 		super();
 	}
 
+	// This is where the theme-specific tweaks (regardless of layer) are processed.
+	// Tweaks = hacks, but at least all the hacks are in one block of code.
 	static void layerThemeTweaks(final Context context, final int idx, final String sTheme, final int aWI) {
 		
 		OMC.TXTBUF="";
@@ -30,7 +32,8 @@ public class ClockWidget extends AppWidgetProvider {
 			break;
 		case OMC.WIDPANEL:
     		if (sTheme.equals("WhamBamWidget")) {
-        		OMC.CANVAS.drawCircle(15f+3, 140f+3, 10, OMC.PT2);
+    			// The thought bubbles, shadowed
+    			OMC.CANVAS.drawCircle(15f+3, 140f+3, 10, OMC.PT2);
         		OMC.CANVAS.drawCircle(15f, 140f, 10, OMC.PT1);
         		OMC.CANVAS.drawCircle(24f+3, 125f+3, 15, OMC.PT2);
         		OMC.CANVAS.drawCircle(24f, 125f, 15, OMC.PT1);
@@ -52,7 +55,9 @@ public class ClockWidget extends AppWidgetProvider {
     		} else {
     			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I:%M") : OMC.TIME.format("%l:%M");
     		}
-//			OMC.TXTBUF = "00:00";
+    		// uncomment this to check for variable font width sizing
+    		//			OMC.TXTBUF = "00:00";
+    		// WhamBam has to be different, so we tack on the !
     		if (sTheme.equals("WhamBamWidget")) OMC.TXTBUF = OMC.TXTBUF + "!";
 			break;	
 		case OMC.WIDBYLINE:
@@ -60,6 +65,7 @@ public class ClockWidget extends AppWidgetProvider {
 			if (sTheme.equals("BokehBeauty")) {
 				OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
 			} else if (sTheme.equals("CultureClash")) {
+				// Nice easter egg for those who prefer am/pm
 				if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
 					OMC.TXTBUF = "";
 				} else if (OMC.TIME.hour < 12) {
@@ -72,36 +78,8 @@ public class ClockWidget extends AppWidgetProvider {
 			} else if (sTheme.equals("LockscreenLook")) {
 				OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
 			} else if (sTheme.equals("WhamBamWidget")) {
-				switch (OMC.RND.nextInt(9)) {
-				case 0:
-					OMC.TXTBUF = "what will this Android do?";
-					break;
-				case 1:
-					OMC.TXTBUF = "my middle name is awesome.";
-					break;
-				case 2:
-					OMC.TXTBUF = "never a dull moment with me.";
-					break;
-				case 3:
-					OMC.TXTBUF = "but it's five o'clock for me.";
-					break;
-				case 4:
-					OMC.TXTBUF = "don't worry, be happy!";
-					break;
-				case 5:
-					OMC.TXTBUF = "don't trade me in yet...";
-					break;
-				case 6:
-					OMC.TXTBUF = "you look fabulous today!";
-					break;
-				case 7:
-					OMC.TXTBUF = "no, i swear i didn't miss that call.";
-					break;
-				case 8:
-					OMC.TXTBUF = "stop staring at me.";
-					break;
-				default:
-				}
+				// The talkbacks are in the arrays.xml file, feel free to add/change
+				OMC.TXTBUF = OMC.TALKBACKS.getString(OMC.RND.nextInt(OMC.TALKBACKS.length()));
 	    	}
 			break;
 		default:
@@ -110,6 +88,8 @@ public class ClockWidget extends AppWidgetProvider {
 		
 	}
 
+	// This layer is pretty much dedicated to lens flare (bokeh beauty), 
+	// but will need more tweaking for realism 
 	static void drawFlareLayer(final Context context, final int idx, final String sTheme, final int aWI) {
 		OMC.PT1.reset();
 		OMC.PT1.setAntiAlias(true);
@@ -118,6 +98,7 @@ public class ClockWidget extends AppWidgetProvider {
 		OMC.PT2.setAntiAlias(true);
 		OMC.PT2.setARGB(32, 255, 255, 255);
 		OMC.PT2.setStyle(Paint.Style.STROKE);
+
 		//Depending on time of day, determine angle.
 		double angle = (OMC.TIME.hour*60 + OMC.TIME.minute) *Math.PI / (24.*60.);
 		double y1 = OMC.WIDGETHEIGHT;
@@ -138,6 +119,7 @@ public class ClockWidget extends AppWidgetProvider {
     	ClockWidget.layerThemeTweaks(context, idx, sTheme, aWI);
 	}
 
+	// Static rectangular panel.
 	static void drawPanelLayer(final Context context, final int idx, final String sTheme, final int aWI) {
 		OMC.FGRECT.left = OMC.CACHEDATTRIBS.getFloat(idx+1, 0);
 		OMC.FGRECT.top = OMC.CACHEDATTRIBS.getFloat(idx+2, 0);
@@ -176,7 +158,8 @@ public class ClockWidget extends AppWidgetProvider {
 		OMC.CANVAS.drawRoundRect(OMC.FGRECT, OMC.CACHEDATTRIBS.getFloat(idx+5, 0), OMC.CACHEDATTRIBS.getFloat(idx+6, 0), OMC.PT1);
 
 	}
-	
+
+	// Text layer.  Written this way so we can have as many as we want with minimal effort.
 	static void drawTextLayer(final Context context, final int idx, final String sTheme, final int aWI) {
 		// The huge Chinese Text in the back.
 		OMC.PT1.reset();
@@ -218,20 +201,6 @@ public class ClockWidget extends AppWidgetProvider {
     			OMC.CACHEDATTRIBS.getColor(idx+8, 0), 
     			OMC.CACHEDATTRIBS.getColor(idx+9, 0));
 
-		//WIFI Piece
-
-//        if (ClockWidget.WFM==null) ClockWidget.WFM = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-//        switch (ClockWidget.WFM.getWifiState()){
-//        case WifiManager.WIFI_STATE_ENABLED: case WifiManager.WIFI_STATE_ENABLING: case WifiManager.WIFI_STATE_DISABLING:
-//        	tmpStr = "WiFi ON";
-//        	break;
-//        case WifiManager.WIFI_STATE_DISABLED:
-//        	tmpStr = "WiFi OFF";
-//        	break;
-//	    default:
-//	    	tmpStr = "WiFi UNK";
-//        }
-        //tmpStr = String.valueOf(wfm.getWifiState());
 	}
 	
 	static void drawBitmapForWidget(final Context context, final int aWI) {
@@ -367,10 +336,30 @@ public class ClockWidget extends AppWidgetProvider {
 
         // Set oTime
         OMC.OTIME.set(OMC.TIME);
-        Intent intent = new Intent(Intent.ACTION_EDIT,Uri.parse("timer:"+appWidgetId),context,OMCPrefActivity.class);
-        PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
-		rv.setOnClickPendingIntent(R.id.omcIV, pi);
+        Intent intent = new Intent("com.sunnykwong.omc.WIDGET_CONFIG");
+        intent.setData(Uri.parse("omc:"+appWidgetId));
+        PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        
+//        Intent intent = new Intent(Intent.ACTION_EDIT,Uri.parse("timer:"+appWidgetId),context,OMCPrefActivity.class);
+//        PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
+
+        rv.setOnClickPendingIntent(R.id.omcIV, pi);
 
         appWidgetManager.updateAppWidget(appWidgetId, rv);
 	}
 }
+
+//NOT USED: WIFI Piece
+
+//if (ClockWidget.WFM==null) ClockWidget.WFM = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+//switch (ClockWidget.WFM.getWifiState()){
+//case WifiManager.WIFI_STATE_ENABLED: case WifiManager.WIFI_STATE_ENABLING: case WifiManager.WIFI_STATE_DISABLING:
+//	tmpStr = "WiFi ON";
+//	break;
+//case WifiManager.WIFI_STATE_DISABLED:
+//	tmpStr = "WiFi OFF";
+//	break;
+//default:
+//	tmpStr = "WiFi UNK";
+//}
+//tmpStr = String.valueOf(wfm.getWifiState());

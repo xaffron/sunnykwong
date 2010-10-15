@@ -1,6 +1,7 @@
 package com.sunnykwong.omc;
 
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.os.Bundle;
@@ -43,6 +44,13 @@ public class OMCPrefActivity extends PreferenceActivity {
         	    	};
         	    }).create();
         	OMCPrefActivity.mAD.show();
+    		try {
+    			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
+    			System.out.println("OMPC INSTALLED");
+    		} catch (Exception e) {
+    			System.out.println("OMPC NOT INSTALLED");
+    			e.printStackTrace();
+    		}
         }
 
     }

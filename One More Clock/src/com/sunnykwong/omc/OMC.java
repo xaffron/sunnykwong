@@ -38,11 +38,12 @@ public class OMC extends Application {
     
     static HashMap<String, Typeface> TYPEFACEMAP;
 	
+    static OMCConfigReceiver cRC;
 	static OMCAlarmReceiver aRC;
     static boolean SCREENON = true; 	// Is the screen on?
     static boolean FG = true;
     
-	static TypedArray CACHEDATTRIBS; 
+	static TypedArray CACHEDATTRIBS, TALKBACKS; 
 
 	static final ComponentName WIDGETCNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget");
 	static final int WIDGETWIDTH=320;
@@ -67,7 +68,7 @@ public class OMC extends Application {
 	static final int SVCNOTIFICATIONID = 1; // Notification ID for the one and only message window we'll show
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
-    static Intent FGINTENT, BGINTENT, SVCSTARTINTENT, WIDGETREFRESHINTENT, CREDITSINTENT;
+    static Intent FGINTENT, BGINTENT, SVCSTARTINTENT, WIDGETREFRESHINTENT, CREDITSINTENT, PREFSINTENT;
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
     static Notification FGNOTIFICIATION;
     
@@ -77,7 +78,6 @@ public class OMC extends Application {
 	static Canvas CANVAS;
 	static Paint PT1;
 	static Paint PT2;
-
 
 	@Override
 	public void onCreate() {
@@ -89,6 +89,7 @@ public class OMC extends Application {
 		OMC.PT2 = new Paint();
 		
 		OMC.aRC = new OMCAlarmReceiver();
+		OMC.cRC = new OMCConfigReceiver();
 		OMC.FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
 		OMC.FGPENDING = PendingIntent.getBroadcast(this, 0, OMC.FGINTENT, 0);
 		OMC.BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
@@ -96,6 +97,7 @@ public class OMC extends Application {
 		OMC.SVCSTARTINTENT = new Intent(this, OMCService.class);
 		OMC.WIDGETREFRESHINTENT = new Intent("com.sunnykwong.omc.WIDGET_REFRESH");
 		OMC.CREDITSINTENT = new Intent(this, OMCCreditsActivity.class);
+		OMC.PREFSINTENT = new Intent(this, OMCPrefActivity.class);
 		OMC.PREFSPENDING = PendingIntent.getActivity(this, 0, new Intent(this, OMCPrefActivity.class), 0);
 
 		OMC.BGRECT = new RectF(30,10,295,150);
@@ -118,6 +120,22 @@ public class OMC extends Application {
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(6);
 		
 		OMC.CACHEDATTRIBS = null;
+		OMC.TALKBACKS = this.getResources().obtainTypedArray(R.array.whambamtalkbacks);
+
+		try {
+			this.getPackageManager().getActivityInfo(new ComponentName("com.sunnykwong.ompc",".OMPCActivity"),0);
+			System.out.println("OMPC INSTALLED");
+	        unregisterReceiver(cRC);
+		} catch (Exception e) {
+			System.out.println("OMPC NOT INSTALLED");
+
+				try {
+					IntentFilter tempFilt = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG","com.sunnykwong.omc/omc");
+					registerReceiver(OMC.cRC,tempFilt);
+				} catch (Exception ee) {
+					ee.printStackTrace();
+				}
+		}
 		
 	}
 

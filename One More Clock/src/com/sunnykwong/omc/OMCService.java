@@ -76,7 +76,7 @@ public class OMCService extends Service {
 		}
 
 		// We want intents redelivered and onStartCommand re-executed if the service is killed.
-		return 1;  // Service.START_STICKY
+		return 1;  // Service.START_STICKY ; have to use literal because Donut is unaware of the constant
 	}
 	
 	void handleCommand (Intent intent) {
@@ -112,9 +112,9 @@ public class OMCService extends Service {
 			OMCService.RUNNING=false;
 		} else {
 			//  Refresh at the next minute mark
-			final long timeToRefresh = (System.currentTimeMillis()/60000 + 1) * 60000;
+			//final long timeToRefresh = (System.currentTimeMillis()/60000 + 1) * 60000;
 			//  Or, refresh at debug intervals (7 secs)
-//			final long timeToRefresh = (System.currentTimeMillis() + 7000);
+			final long timeToRefresh = (System.currentTimeMillis() + 7000);
 			
 			OMC.setServiceAlarm(timeToRefresh);
 			

@@ -32,6 +32,10 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		if (action.equals(OMC.FGINTENT)) OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.FGSERVICE");
 		else OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.BGSERVICE");
 		
+		// Do nothing if the screen turns off, but
+		// Start working again if the screen turns on.
+		// This obviously saves CPU cycles (and battery).
+		// Thanks to ralfoide's code at http://code.google.com/p/24clock/ for the idea
 		if (action.equals(Intent.ACTION_SCREEN_ON)) {
 			OMC.SCREENON=true;
 			if (OMC.DEBUG) Log.i("OMCAlarm","Scrn on - Refreshing");
