@@ -340,9 +340,6 @@ public class ClockWidget extends AppWidgetProvider {
         intent.setData(Uri.parse("omc:"+appWidgetId));
         PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         
-//        Intent intent = new Intent(Intent.ACTION_EDIT,Uri.parse("timer:"+appWidgetId),context,OMCPrefActivity.class);
-//        PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
-
         rv.setOnClickPendingIntent(R.id.omcIV, pi);
 
         appWidgetManager.updateAppWidget(appWidgetId, rv);
