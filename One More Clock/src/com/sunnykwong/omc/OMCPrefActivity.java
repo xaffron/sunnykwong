@@ -49,7 +49,7 @@ public class OMCPrefActivity extends PreferenceActivity {
     			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
     			if (OMC.DEBUG)Log.i("OMCPref","OMPC installed, let OMPC handle onclick");
     			try {
-    				unregisterReceiver(OMC.cRC);
+    				getApplicationContext().unregisterReceiver(OMC.cRC);
     			} catch (java.lang.IllegalArgumentException e) {
         			if (OMC.DEBUG)Log.i("OMCPref","OMC's receiver already unregistered - doing nothing");
     				//no need to do anything if receiver not registered

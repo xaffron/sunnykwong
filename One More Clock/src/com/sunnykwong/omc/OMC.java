@@ -107,27 +107,6 @@ public class OMC extends Application {
 		OMC.PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
 		OMC.PREFSINTENTFILT.addDataScheme("omc");
 
-		try {
-			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
-			if (OMC.DEBUG)Log.i("OMCPref","OMPC installed, let OMPC handle onclick");
-			try {
-				unregisterReceiver(OMC.cRC);
-			} catch (java.lang.IllegalArgumentException e) {
-    			if (OMC.DEBUG)Log.i("OMCPref","OMC's receiver already unregistered - doing nothing");
-				//no need to do anything if receiver not registered
-			}
-		} catch (Exception e) {
-
-			if (OMC.DEBUG)Log.i("OMCPref","OMPC not installed, register self to handle widget clicks");
-			//e.printStackTrace();
-			try {
-				getApplicationContext().registerReceiver(OMC.cRC,OMC.PREFSINTENTFILT);
-			} catch (Exception ee) {
-    			if (OMC.DEBUG)Log.i("OMCPref","Failed to register self");
-				ee.printStackTrace();
-			}
-		}
-		
 		OMC.BGRECT = new RectF(30,10,295,150);
 		OMC.FGRECT = new RectF(25,5,290,145);
 		
@@ -150,6 +129,27 @@ public class OMC extends Application {
 		OMC.CACHEDATTRIBS = null;
 		OMC.TALKBACKS = this.getResources().obtainTypedArray(R.array.whambamtalkbacks);
 
+		try {
+			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
+			if (OMC.DEBUG)Log.i("OMCPref","OMPC installed, let OMPC handle onclick");
+			try {
+				unregisterReceiver(OMC.cRC);
+			} catch (java.lang.IllegalArgumentException e) {
+    			if (OMC.DEBUG)Log.i("OMCPref","OMC's receiver already unregistered - doing nothing");
+				//no need to do anything if receiver not registered
+			}
+		} catch (Exception e) {
+
+			if (OMC.DEBUG)Log.i("OMCPref","OMPC not installed, register self to handle widget clicks");
+			//e.printStackTrace();
+			try {
+				this.registerReceiver(OMC.cRC,OMC.PREFSINTENTFILT);
+			} catch (Exception ee) {
+    			if (OMC.DEBUG)Log.i("OMCPref","Failed to register self");
+				ee.printStackTrace();
+			}
+		}
+		
 	}
 
 	static void setServiceAlarm (long lTimeToRefresh) {
