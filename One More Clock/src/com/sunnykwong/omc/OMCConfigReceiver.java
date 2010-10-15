@@ -11,7 +11,7 @@ public class OMCConfigReceiver extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		if (OMC.DEBUG) Log.i("OMCConfig","Rcvd " + intent.getAction());
 		String action = intent.getAction();
-		if (action.equals("com.sunnykwong.omc.WIDGET_CONFIG")) {
+		if (action.equals("com.sunnykwong.omc.WIDGET_CONFIG") || action.equals("com.sunnykwong.omc.WIDGET_INDIRECT") ) {
 			Intent intent2 = new Intent(Intent.ACTION_EDIT,intent.getData(),context,OMCPrefActivity.class);
 	        PendingIntent pi = PendingIntent.getActivity(context, 0, intent2, 0);
 	        try {

@@ -348,18 +348,3 @@ public class ClockWidget extends AppWidgetProvider {
         appWidgetManager.updateAppWidget(appWidgetId, rv);
 	}
 }
-
-//NOT USED: WIFI Piece
-
-//if (ClockWidget.WFM==null) ClockWidget.WFM = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-//switch (ClockWidget.WFM.getWifiState()){
-//case WifiManager.WIFI_STATE_ENABLED: case WifiManager.WIFI_STATE_ENABLING: case WifiManager.WIFI_STATE_DISABLING:
-//	tmpStr = "WiFi ON";
-//	break;
-//case WifiManager.WIFI_STATE_DISABLED:
-//	tmpStr = "WiFi OFF";
-//	break;
-//default:
-//	tmpStr = "WiFi UNK";
-//}
-//tmpStr = String.valueOf(wfm.getWifiState());

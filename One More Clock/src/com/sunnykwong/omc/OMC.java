@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.IntentFilter.MalformedMimeTypeException;
 import android.content.res.AssetManager;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -46,6 +47,8 @@ public class OMC extends Application {
 	static TypedArray CACHEDATTRIBS, TALKBACKS; 
 
 	static final ComponentName WIDGETCNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget");
+//	static final int WIDGETWIDTH=640;
+//	static final int WIDGETHEIGHT=320;
 	static final int WIDGETWIDTH=320;
 	static final int WIDGETHEIGHT=160;
 	static final String CHINESETIME = "子丑寅卯辰巳午未申酉戌亥子";
@@ -70,6 +73,7 @@ public class OMC extends Application {
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
     static Intent FGINTENT, BGINTENT, SVCSTARTINTENT, WIDGETREFRESHINTENT, CREDITSINTENT, PREFSINTENT;
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
+    static IntentFilter PREFSINTENTFILT;
     static Notification FGNOTIFICIATION;
     
 	static RectF BGRECT, FGRECT;
@@ -99,6 +103,9 @@ public class OMC extends Application {
 		OMC.CREDITSINTENT = new Intent(this, OMCCreditsActivity.class);
 		OMC.PREFSINTENT = new Intent(this, OMCPrefActivity.class);
 		OMC.PREFSPENDING = PendingIntent.getActivity(this, 0, new Intent(this, OMCPrefActivity.class), 0);
+		try {OMC.PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG","com.sunnykwong.omc/omc");}
+		catch (MalformedMimeTypeException e) {e.printStackTrace();}
+
 
 		OMC.BGRECT = new RectF(30,10,295,150);
 		OMC.FGRECT = new RectF(25,5,290,145);
@@ -122,21 +129,6 @@ public class OMC extends Application {
 		OMC.CACHEDATTRIBS = null;
 		OMC.TALKBACKS = this.getResources().obtainTypedArray(R.array.whambamtalkbacks);
 
-		try {
-			this.getPackageManager().getActivityInfo(new ComponentName("com.sunnykwong.ompc",".OMPCActivity"),0);
-			System.out.println("OMPC INSTALLED");
-	        unregisterReceiver(cRC);
-		} catch (Exception e) {
-			System.out.println("OMPC NOT INSTALLED");
-
-				try {
-					IntentFilter tempFilt = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG","com.sunnykwong.omc/omc");
-					registerReceiver(OMC.cRC,tempFilt);
-				} catch (Exception ee) {
-					ee.printStackTrace();
-				}
-		}
-		
 	}
 
 	static void setServiceAlarm (long lTimeToRefresh) {

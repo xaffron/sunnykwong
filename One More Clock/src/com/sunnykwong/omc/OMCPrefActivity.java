@@ -9,6 +9,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.util.Log;
+import android.widget.Toast;
 
 public class OMCPrefActivity extends PreferenceActivity { 
     /** Called when the activity is first created. */
@@ -44,12 +45,25 @@ public class OMCPrefActivity extends PreferenceActivity {
         	    	};
         	    }).create();
         	OMCPrefActivity.mAD.show();
+
     		try {
     			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
-    			System.out.println("OMPC INSTALLED");
+    			if (OMC.DEBUG)Log.i("OMCPref","OMPC installed, let OMPC handle onclick");
+    			try {
+    				unregisterReceiver(OMC.cRC);
+    			} catch (java.lang.IllegalArgumentException e) {
+        			if (OMC.DEBUG)Log.i("OMCPref","OMC's receiver already unregistered - doing nothing");
+    				//no need to do anything if receiver not registered
+    			}
     		} catch (Exception e) {
-    			System.out.println("OMPC NOT INSTALLED");
+
+    			if (OMC.DEBUG)Log.i("OMCPref","OMPC not installed, register self to handle widget clicks");
     			e.printStackTrace();
+				try {
+					getApplicationContext().registerReceiver(OMC.cRC,OMC.PREFSINTENTFILT);
+				} catch (Exception ee) {
+					ee.printStackTrace();
+				}
     		}
         }
 
@@ -60,6 +74,10 @@ public class OMCPrefActivity extends PreferenceActivity {
     		Preference preference) {
     	if (preference == getPreferenceScreen().findPreference("widgetCredits")) {
     		startActivity(OMC.CREDITSINTENT);
+    	}
+    	if (preference == getPreferenceScreen().findPreference("clearFontCache")) {
+    		OMC.TYPEFACEMAP.clear();
+    		Toast.makeText(this, "Font Cache Cleared", Toast.LENGTH_SHORT).show();
     	}
     	return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
