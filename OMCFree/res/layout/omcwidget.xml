@@ -1,0 +1,14 @@
+<LinearLayout 
+	android:id="@+id/LinearLayout01"
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:gravity="fill_horizontal|fill_vertical" 
+	android:orientation="vertical"
+	android:background="#00ffffff" xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView
+	    android:id="@+id/omcIV" 
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent" 
+	    android:gravity="fill_horizontal|fill_vertical"
+    ></ImageView> 
+</LinearLayout>
