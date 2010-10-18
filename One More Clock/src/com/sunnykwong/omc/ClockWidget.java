@@ -29,6 +29,7 @@ public class ClockWidget extends AppWidgetProvider {
 		switch (idx) {
 		case OMC.WIDBACKDROP:
 			OMC.TXTBUF = ClockWidget.sCHINESETIME;
+    		if (sTheme.equals("MorbidMoments")) OMC.TXTBUF = "abi";
 			break;
 		case OMC.WIDPANEL:
     		if (sTheme.equals("WhamBamWidget")) {
@@ -56,7 +57,7 @@ public class ClockWidget extends AppWidgetProvider {
     			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I:%M") : OMC.TIME.format("%l:%M");
     		}
     		// uncomment this to check for variable font width sizing
-    		//			OMC.TXTBUF = "00:00";
+			// OMC.TXTBUF = "00:00";
     		// WhamBam has to be different, so we tack on the !
     		if (sTheme.equals("WhamBamWidget")) OMC.TXTBUF = OMC.TXTBUF + "!";
 			break;	
@@ -80,7 +81,12 @@ public class ClockWidget extends AppWidgetProvider {
 			} else if (sTheme.equals("WhamBamWidget")) {
 				// The talkbacks are in the arrays.xml file, feel free to add/change
 				OMC.TXTBUF = OMC.TALKBACKS.getString(OMC.RND.nextInt(OMC.TALKBACKS.length()));
-	    	}
+			} else if (sTheme.equals("MorbidMoments")) {
+				OMC.TXTBUF = OMC.TIME.format("%A.");
+			} else if (sTheme.equals("BeaksAndBills")) {
+				OMC.TXTBUF = OMC.TIME.format("Uj");
+				
+			}
 			break;
 		default:
 			
@@ -218,7 +224,12 @@ public class ClockWidget extends AppWidgetProvider {
 			OMC.CACHEDATTRIBS = context.getResources().obtainTypedArray(R.array.WhamBamWidget);
 		} else if (sTheme.equals("BokehBeauty")) {
 			OMC.CACHEDATTRIBS = context.getResources().obtainTypedArray(R.array.BokehBeauty);
+		} else if (sTheme.equals("MorbidMoments")) {
+			OMC.CACHEDATTRIBS = context.getResources().obtainTypedArray(R.array.MorbidMoments);
+		} else if (sTheme.equals("BeaksAndBills")) {
+			OMC.CACHEDATTRIBS = context.getResources().obtainTypedArray(R.array.BeaksAndBills);
 		}
+		
 
 		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDBACKDROP, false)) ClockWidget.drawTextLayer(context, OMC.WIDBACKDROP, sTheme, aWI);
 		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDPANEL, false)) ClockWidget.drawPanelLayer(context, OMC.WIDPANEL, sTheme, aWI);
@@ -226,6 +237,7 @@ public class ClockWidget extends AppWidgetProvider {
 		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDCLOCK, false)) ClockWidget.drawTextLayer(context, OMC.WIDCLOCK, sTheme, aWI);
 		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDBYLINE, false)) ClockWidget.drawTextLayer(context, OMC.WIDBYLINE, sTheme, aWI);
 		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDLENSFLARE, false)) ClockWidget.drawFlareLayer(context, OMC.WIDLENSFLARE, sTheme, aWI);
+
 		
 	}
 	

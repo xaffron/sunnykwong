@@ -34,7 +34,7 @@ public class OMCPrefActivity extends PreferenceActivity {
         	if (OMC.DEBUG) Log.i("OMCPref","Called by Launcher - do nothing");
         	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
         		.setTitle("Just One More Clock!")
-        		.setMessage("Thanks for downloading!\nTo begin, hit the back button to \ngo back to the home screen, then \npush the menu button, select 'Add', then 'Widgets' to see 'One More Clock' listed.  Have fun!")
+        		.setMessage("Thanks for downloading!\nTo begin, hit the back button to go back to the home screen, then push the menu button, select 'Add', then 'Widgets' to see 'One More Clock' listed.  Have fun!")
         	    .setCancelable(true)
         	    .setIcon(R.drawable.fredicon_mdpi)
         	    .setOnKeyListener(new OnKeyListener() {
