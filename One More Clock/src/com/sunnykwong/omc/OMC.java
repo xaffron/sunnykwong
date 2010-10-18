@@ -44,14 +44,16 @@ public class OMC extends Application {
     static boolean SCREENON = true; 	// Is the screen on?
     static boolean FG = true;
     
-	static TypedArray CACHEDATTRIBS, TALKBACKS; 
+	static TypedArray LAYERATTRIBS;
+	static String[] LAYERLIST, TALKBACKS; 
 
 	static final ComponentName WIDGETCNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget");
 //	static final int WIDGETWIDTH=640;
 //	static final int WIDGETHEIGHT=320;
 	static final int WIDGETWIDTH=320;
-	static final int WIDGETHEIGHT=160;
+	static final int WIDGETHEIGHT=200;
 	static final String CHINESETIME = "子丑寅卯辰巳午未申酉戌亥子";
+	static final String DEFAULTTHEME = "CultureClash";
 	static final Time TIME = new Time();
 	static final Time OTIME = new Time();
 
@@ -63,7 +65,7 @@ public class OMC extends Application {
 	static final int WIDPANEL = 52;
 	static final int WIDLENSFLARE = 62;
 	
-	static final float[] FLARERADII = new float[] {32.f,20.f,21.6f,31.2f,18.4f,19.1f,10.8f,25.f,28.f};
+	static final float[] FLARERADII = new float[] {32.f,20.f,21.6f,40.2f,18.4f,19.1f,10.8f,25.f,28.f};
 	static final int[] FLARECOLORS = new int[] {855046894,1140258554,938340342,1005583601,855439588,
 		669384692,905573859,1105458423,921566437};
 	static String TXTBUF;
@@ -126,8 +128,10 @@ public class OMC extends Application {
 		
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(6);
 		
-		OMC.CACHEDATTRIBS = null;
-		OMC.TALKBACKS = this.getResources().obtainTypedArray(R.array.whambamtalkbacks);
+		OMC.LAYERLIST = null;
+		OMC.LAYERATTRIBS = null;
+
+		OMC.TALKBACKS = this.getResources().getStringArray(R.array.whambamtalkbacks);
 
 		try {
 			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
@@ -163,7 +167,7 @@ public class OMC extends Application {
     }
 
 	public static void initPrefs(int aWI) {
-		OMC.PREFS.edit().putString("widgetTheme"+aWI, "CultureClash")
+		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.DEFAULTTHEME)
 		.putBoolean("widget24HrClock"+aWI, true)
 		.commit();
 	}

@@ -23,71 +23,116 @@ public class ClockWidget extends AppWidgetProvider {
 
 	// This is where the theme-specific tweaks (regardless of layer) are processed.
 	// Tweaks = hacks, but at least all the hacks are in one block of code.
-	static void layerThemeTweaks(final Context context, final int idx, final String sTheme, final int aWI) {
+	static void layerThemeTweaks(final Context context, final int iLayerID, final String sTheme, final int aWI) {
 		
 		OMC.TXTBUF="";
-		switch (idx) {
-		case OMC.WIDBACKDROP:
-			OMC.TXTBUF = ClockWidget.sCHINESETIME;
-    		if (sTheme.equals("MorbidMoments")) OMC.TXTBUF = "abi";
-			break;
-		case OMC.WIDPANEL:
-    		if (sTheme.equals("WhamBamWidget")) {
-    			// The thought bubbles, shadowed
-    			OMC.CANVAS.drawCircle(15f+3, 140f+3, 10, OMC.PT2);
-        		OMC.CANVAS.drawCircle(15f, 140f, 10, OMC.PT1);
-        		OMC.CANVAS.drawCircle(24f+3, 125f+3, 15, OMC.PT2);
-        		OMC.CANVAS.drawCircle(24f, 125f, 15, OMC.PT1);
-    		}
-			break;
-		case OMC.WIDINTRO:
-			if (sTheme.equals("CultureClash")) {
-				OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
-			} else if (sTheme.equals("DigitalDigits")) {
-				OMC.TXTBUF = OMC.TIME.format("%p").substring(0, 1);
-	    	} else if (sTheme.equals("WhamBamWidget")) {
-	    		OMC.TXTBUF = "omg, it's";
-	    	}
-    		break;
-		case OMC.WIDCLOCK:
-	    	// 12 or 24 hours? Leading 0 or no leading 0?
+		switch (iLayerID) {
+		case R.array.BBClock:
     		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
     			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%H:%M") : OMC.TIME.format("%k:%M");
     		} else {
     			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I:%M") : OMC.TIME.format("%l:%M");
     		}
-    		// uncomment this to check for variable font width sizing
-			// OMC.TXTBUF = "00:00";
-    		// WhamBam has to be different, so we tack on the !
-    		if (sTheme.equals("WhamBamWidget")) OMC.TXTBUF = OMC.TXTBUF + "!";
-			break;	
-		case OMC.WIDBYLINE:
-			OMC.TXTBUF = OMC.TIME.format("%p");    		
-			if (sTheme.equals("BokehBeauty")) {
-				OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
-			} else if (sTheme.equals("CultureClash")) {
-				// Nice easter egg for those who prefer am/pm
-				if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
-					OMC.TXTBUF = "";
-				} else if (OMC.TIME.hour < 12) {
-    				OMC.TXTBUF = "ante  meridiem";
-    			} else {
-    				OMC.TXTBUF = "post  meridiem";
-    			}
-			} else if (sTheme.equals("DigitalDigits")) {
-				OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
-			} else if (sTheme.equals("LockscreenLook")) {
-				OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
-			} else if (sTheme.equals("WhamBamWidget")) {
-				// The talkbacks are in the arrays.xml file, feel free to add/change
-				OMC.TXTBUF = OMC.TALKBACKS.getString(OMC.RND.nextInt(OMC.TALKBACKS.length()));
-			} else if (sTheme.equals("MorbidMoments")) {
-				OMC.TXTBUF = OMC.TIME.format("%A.");
-			} else if (sTheme.equals("BeaksAndBills")) {
-				OMC.TXTBUF = OMC.TIME.format("Uj");
-				
+    		int iShade = 255 - Math.abs((OMC.TIME.hour*60 + OMC.TIME.minute) - (12*60))/720 * 255;
+    		OMC.PT2.setARGB(255, iShade, iShade, iShade);
+    		break;
+		case R.array.BaBClock:
+		case R.array.CCClock:
+		case R.array.DDClock:
+		case R.array.LLClock:
+		case R.array.MMClock:
+    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
+    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%H:%M") : OMC.TIME.format("%k:%M");
+    		} else {
+    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I:%M") : OMC.TIME.format("%l:%M");
+    		}
+    		break;
+		case R.array.BBDate:
+			OMC.TXTBUF = OMC.TIME.format("%a %e %b");
+    		iShade = 255 - Math.abs((OMC.TIME.hour*60 + OMC.TIME.minute) - (12*60))/720 * 255;
+    		OMC.PT2.setARGB(255, iShade, iShade, iShade);
+    		break;
+		case R.array.CCDate:
+		case R.array.DDDate:
+		case R.array.LLDate:
+			OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
+    		break;
+		case R.array.BBFlare:
+    		break;
+		case R.array.CCChinese:
+			OMC.TXTBUF = ClockWidget.sCHINESETIME;
+			break;
+		case R.array.CCMeridiem:
+			// Nice easter egg for those who prefer am/pm
+			if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
+				OMC.TXTBUF = "";
+			} else if (OMC.TIME.hour < 12) {
+				OMC.TXTBUF = "ante  meridiem";
+			} else {
+				OMC.TXTBUF = "post  meridiem";
 			}
 			break;
+		case R.array.DDAPM:
+			OMC.TXTBUF = OMC.TIME.format("%p").substring(0, 1);
+			break;
+		case R.array.WWBubble:
+			// The thought bubbles, shadowed
+			OMC.CANVAS.drawCircle(15f+3, 140f+3, 10, OMC.PT2);
+    		OMC.CANVAS.drawCircle(15f, 140f, 10, OMC.PT1);
+    		OMC.CANVAS.drawCircle(24f+3, 125f+3, 15, OMC.PT2);
+    		OMC.CANVAS.drawCircle(24f, 125f, 15, OMC.PT1);
+    		break;
+		case R.array.WWOMG:
+			OMC.TXTBUF = "omg, it's";
+			break;
+		case R.array.WWClock:
+	    	// 12 or 24 hours? Leading 0 or no leading 0?
+    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
+    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%H:%M!") : OMC.TIME.format("%k:%M!");
+    		} else {
+    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I:%M!") : OMC.TIME.format("%l:%M!");
+    		}
+			break;
+		case R.array.WWTalkback:
+			// The talkbacks are in the arrays.xml file, feel free to add/change
+			OMC.TXTBUF = OMC.TALKBACKS[OMC.RND.nextInt(OMC.TALKBACKS.length)];
+			break;
+		case R.array.MMSplatter:
+			OMC.TXTBUF = "abi";
+			break;
+		case R.array.MMDate:
+			OMC.TXTBUF = OMC.TIME.format("%A.");
+			break;
+		case R.array.BaBSun:
+			OMC.TXTBUF = OMC.TIME.hour >= 6 || OMC.TIME.hour < 18 ? "M":"E";
+    		iShade = (int)(70 + ((OMC.TIME.hour*60 + OMC.TIME.minute) % (12*60))/(12*60f) * 250);
+    		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
+    		OMC.TXTBUF = "";
+			break;
+		case R.array.BaBCloud1:
+			OMC.TXTBUF = "m";
+    		iShade = (int)(70 + ((OMC.TIME.hour*60 + OMC.TIME.minute) % (3*60))/(3*60f) * 250);
+    		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
+    		OMC.TXTBUF = "";
+    		break;
+		case R.array.BaBCloud2:
+			OMC.TXTBUF = "m";
+    		iShade = (int)(70 + ((OMC.TIME.hour*60 + OMC.TIME.minute) % (4*60))/(4*60f) * 250);
+    		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
+    		OMC.TXTBUF = "";
+			break;
+		case R.array.BaBDuck:
+			OMC.TXTBUF = OMC.TIME.format("U");
+    		iShade = (int)(70 + 200 - ((OMC.TIME.hour*60 + OMC.TIME.minute) % (6*60))/(6*60f) * 200) ;
+    		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
+    		OMC.TXTBUF = "";
+    		break;
+		case R.array.BaBDucklings:
+			OMC.TXTBUF = OMC.TIME.format("j");
+    		iShade = (int)(45 + 230 - OMC.TIME.minute%60 / 60f * 230) ;
+    		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
+    		OMC.TXTBUF = "";
+    		break;
 		default:
 			
 		}
@@ -96,7 +141,7 @@ public class ClockWidget extends AppWidgetProvider {
 
 	// This layer is pretty much dedicated to lens flare (bokeh beauty), 
 	// but will need more tweaking for realism 
-	static void drawFlareLayer(final Context context, final int idx, final String sTheme, final int aWI) {
+	static void drawFlareLayer(final Context context, final int iLayerID, final String sTheme, final int aWI) {
 		OMC.PT1.reset();
 		OMC.PT1.setAntiAlias(true);
 		OMC.PT1.setStyle(Paint.Style.FILL_AND_STROKE);
@@ -112,9 +157,9 @@ public class ClockWidget extends AppWidgetProvider {
 		double y2 = 0.;
 		double x2 = OMC.WIDGETWIDTH/2. + y1/2./Math.tan(angle);
 		float dist = -0.45f;
-		for (int i = 0; i < OMC.CACHEDATTRIBS.getInt(idx+1, 5); i++) {
+		for (int i = 0; i < OMC.LAYERATTRIBS.getInt(1, 5); i++) {
 			OMC.PT1.setColor(OMC.FLARECOLORS[i]);
-			dist += (float)(1.f/OMC.CACHEDATTRIBS.getInt(idx+1, 5)); 
+			dist += (float)(1.f/OMC.LAYERATTRIBS.getInt(1, 5)); 
 			double x = (x2-x1) * dist + OMC.WIDGETWIDTH/2.;
 			double y = (y2-y1) * dist + OMC.WIDGETHEIGHT/2.;
 			OMC.CANVAS.drawCircle((float)x, (float)y, OMC.FLARERADII[i], OMC.PT1);
@@ -122,141 +167,136 @@ public class ClockWidget extends AppWidgetProvider {
 		}
 		
     	// theme-specific tweaks.
-    	ClockWidget.layerThemeTweaks(context, idx, sTheme, aWI);
+    	ClockWidget.layerThemeTweaks(context, iLayerID, sTheme, aWI);
 	}
 
 	// Static rectangular panel.
-	static void drawPanelLayer(final Context context, final int idx, final String sTheme, final int aWI) {
-		OMC.FGRECT.left = OMC.CACHEDATTRIBS.getFloat(idx+1, 0);
-		OMC.FGRECT.top = OMC.CACHEDATTRIBS.getFloat(idx+2, 0);
-		OMC.FGRECT.right = OMC.CACHEDATTRIBS.getFloat(idx+3, 0);
-		OMC.FGRECT.bottom = OMC.CACHEDATTRIBS.getFloat(idx+4, 0);
+	static void drawPanelLayer(final Context context, final int iLayerID, final String sTheme, final int aWI) {
+		OMC.FGRECT.left = OMC.LAYERATTRIBS.getFloat(1, 0);
+		OMC.FGRECT.top = OMC.LAYERATTRIBS.getFloat(2, 0);
+		OMC.FGRECT.right = OMC.LAYERATTRIBS.getFloat(3, 0);
+		OMC.FGRECT.bottom = OMC.LAYERATTRIBS.getFloat(4, 0);
 		OMC.PT1.reset();
 		OMC.PT1.setAntiAlias(true);
-		OMC.PT1.setColor(OMC.CACHEDATTRIBS.getColor(idx+7, 0));
+		OMC.PT1.setColor(OMC.LAYERATTRIBS.getColor(7, 0));
 		OMC.PT2.reset();
 		OMC.PT2.setAntiAlias(true);
-		OMC.PT2.setColor(OMC.CACHEDATTRIBS.getColor(idx+8, 0));
+		OMC.PT2.setColor(OMC.LAYERATTRIBS.getColor(8, 0));
 
     	// theme-specific tweaks.
-    	ClockWidget.layerThemeTweaks(context, idx, sTheme, aWI);
+    	ClockWidget.layerThemeTweaks(context, iLayerID, sTheme, aWI);
     	
 		//Draw the SFX
-		if (OMC.CACHEDATTRIBS.getString(idx+9).equals("emboss")) {
+		if (OMC.LAYERATTRIBS.getString(9).equals("emboss")) {
 			OMC.BGRECT.left = OMC.FGRECT.left-1;
 			OMC.BGRECT.top = OMC.FGRECT.top-1;
 			OMC.BGRECT.right = OMC.FGRECT.right-1;
 			OMC.BGRECT.bottom = OMC.FGRECT.bottom-1;
-			OMC.CANVAS.drawRoundRect(OMC.BGRECT, OMC.CACHEDATTRIBS.getFloat(idx+5, 0), OMC.CACHEDATTRIBS.getFloat(idx+6, 0), OMC.PT2);
+			OMC.CANVAS.drawRoundRect(OMC.BGRECT, OMC.LAYERATTRIBS.getFloat(5, 0), OMC.LAYERATTRIBS.getFloat(6, 0), OMC.PT2);
 			OMC.BGRECT.left+=2;
 			OMC.BGRECT.top+=2;
 			OMC.BGRECT.right+=2;
 			OMC.BGRECT.bottom+=2;
-			OMC.CANVAS.drawRoundRect(OMC.BGRECT, OMC.CACHEDATTRIBS.getFloat(idx+5, 0), OMC.CACHEDATTRIBS.getFloat(idx+6, 0), OMC.PT2);
-		} else if (OMC.CACHEDATTRIBS.getString(idx+9).equals("shadow")) {
+			OMC.CANVAS.drawRoundRect(OMC.BGRECT, OMC.LAYERATTRIBS.getFloat(5, 0), OMC.LAYERATTRIBS.getFloat(6, 0), OMC.PT2);
+		} else if (OMC.LAYERATTRIBS.getString(9).equals("shadow")) {
 			OMC.BGRECT.left = OMC.FGRECT.left+3;
 			OMC.BGRECT.top = OMC.FGRECT.top+3;
 			OMC.BGRECT.right = OMC.FGRECT.right+3;
 			OMC.BGRECT.bottom = OMC.FGRECT.bottom+3;
-			OMC.CANVAS.drawRoundRect(OMC.BGRECT, OMC.CACHEDATTRIBS.getFloat(idx+5, 0), OMC.CACHEDATTRIBS.getFloat(idx+6, 0), OMC.PT2);
+			OMC.CANVAS.drawRoundRect(OMC.BGRECT, OMC.LAYERATTRIBS.getFloat(5, 0), OMC.LAYERATTRIBS.getFloat(6, 0), OMC.PT2);
 		}
 		//Either way, draw the proper panel
-		OMC.CANVAS.drawRoundRect(OMC.FGRECT, OMC.CACHEDATTRIBS.getFloat(idx+5, 0), OMC.CACHEDATTRIBS.getFloat(idx+6, 0), OMC.PT1);
+		OMC.CANVAS.drawRoundRect(OMC.FGRECT, OMC.LAYERATTRIBS.getFloat(5, 0), OMC.LAYERATTRIBS.getFloat(6, 0), OMC.PT1);
 
 	}
 
 	// Text layer.  Written this way so we can have as many as we want with minimal effort.
-	static void drawTextLayer(final Context context, final int idx, final String sTheme, final int aWI) {
-		// The huge Chinese Text in the back.
+	static void drawTextLayer(final Context context, final int iLayerID, final String sTheme, final int aWI) {
+
 		OMC.PT1.reset();
 		OMC.PT1.setAntiAlias(true);
 		OMC.PT1.setTypeface(OMC.getTypeface(
-				OMC.CACHEDATTRIBS.getString(idx+1),
-				OMC.CACHEDATTRIBS.getString(idx+2)));
-		OMC.PT1.setTextSize(OMC.CACHEDATTRIBS.getInt(idx+3, 100));
-		OMC.PT1.setTextSkewX(OMC.CACHEDATTRIBS.getFloat(idx+4, 0.f));
-		OMC.PT1.setTextScaleX(OMC.CACHEDATTRIBS.getFloat(idx+5, 1.f));
-		OMC.PT1.setFakeBoldText(OMC.CACHEDATTRIBS.getBoolean(idx+6, false));
+				OMC.LAYERATTRIBS.getString(1),
+				OMC.LAYERATTRIBS.getString(2)));
+		OMC.PT1.setTextSize(OMC.LAYERATTRIBS.getInt(3, 100));
+		OMC.PT1.setTextSkewX(OMC.LAYERATTRIBS.getFloat(4, 0.f));
+		OMC.PT1.setTextScaleX(OMC.LAYERATTRIBS.getFloat(5, 1.f));
+		OMC.PT1.setFakeBoldText(OMC.LAYERATTRIBS.getBoolean(6, false));
+		OMC.PT1.setColor(OMC.LAYERATTRIBS.getColor(8, 0));
 		
-		if (OMC.CACHEDATTRIBS.getString(idx+12).equals("center")) {
+		if (OMC.LAYERATTRIBS.getString(12).equals("center")) {
 			OMC.PT1.setTextAlign(Paint.Align.CENTER);
-		} else if (OMC.CACHEDATTRIBS.getString(idx+12).equals("left")) {
+		} else if (OMC.LAYERATTRIBS.getString(12).equals("left")) {
 			OMC.PT1.setTextAlign(Paint.Align.LEFT);
-		} else if (OMC.CACHEDATTRIBS.getString(idx+12).equals("right")) {
+		} else if (OMC.LAYERATTRIBS.getString(12).equals("right")) {
 			OMC.PT1.setTextAlign(Paint.Align.RIGHT);
 		};
 
 		OMC.PT2.reset();
 		OMC.PT2.setAntiAlias(true);
 		OMC.PT2.setTypeface(OMC.getTypeface(
-				OMC.CACHEDATTRIBS.getString(idx+1),
-				OMC.CACHEDATTRIBS.getString(idx+2)));
-		OMC.PT2.setTextSize(OMC.CACHEDATTRIBS.getInt(idx+3, 100));
+				OMC.LAYERATTRIBS.getString(1),
+				OMC.LAYERATTRIBS.getString(2)));
+		OMC.PT2.setTextSize(OMC.LAYERATTRIBS.getInt(3, 100));
+		OMC.PT2.setTextSkewX(OMC.LAYERATTRIBS.getFloat(4, 0.f));
+		OMC.PT2.setTextScaleX(OMC.LAYERATTRIBS.getFloat(5, 1.f));
+		OMC.PT2.setFakeBoldText(OMC.LAYERATTRIBS.getBoolean(6, false));
+		OMC.PT2.setColor(OMC.LAYERATTRIBS.getColor(9, 0));
+		
+		if (OMC.LAYERATTRIBS.getString(12).equals("center")) {
+			OMC.PT2.setTextAlign(Paint.Align.CENTER);
+		} else if (OMC.LAYERATTRIBS.getString(12).equals("left")) {
+			OMC.PT2.setTextAlign(Paint.Align.LEFT);
+		} else if (OMC.LAYERATTRIBS.getString(12).equals("right")) {
+			OMC.PT2.setTextAlign(Paint.Align.RIGHT);
+		};
 
     	// theme-specific tweaks.
-    	ClockWidget.layerThemeTweaks(context, idx, sTheme, aWI);
+    	ClockWidget.layerThemeTweaks(context, iLayerID, sTheme, aWI);
     	
     	// Draw the layer.
     	ClockWidget.fancyDrawText(
-    			OMC.CACHEDATTRIBS.getString(idx+7),
+    			OMC.LAYERATTRIBS.getString(7),
     			OMC.CANVAS,
     			OMC.TXTBUF,
-    			OMC.CACHEDATTRIBS.getInt(idx+10, 0),
-    			OMC.CACHEDATTRIBS.getInt(idx+11, 0),
+    			OMC.LAYERATTRIBS.getInt(10, 0),
+    			OMC.LAYERATTRIBS.getInt(11, 0),
     			OMC.PT1,
-    			OMC.CACHEDATTRIBS.getColor(idx+8, 0), 
-    			OMC.CACHEDATTRIBS.getColor(idx+9, 0));
+    			OMC.PT2);
 
 	}
 	
 	static void drawBitmapForWidget(final Context context, final int aWI) {
 		OMC.BUFFER.eraseColor(Color.TRANSPARENT);
 
-		String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,"CultureClash");
+		String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME);
+
 		//		Set LAF based on prefs
-		if (sTheme.equals("CultureClash")) {
-			OMC.CACHEDATTRIBS = context.getResources().obtainTypedArray(R.array.CultureClash);
-		} else if (sTheme.equals("LockscreenLook")) {
-			OMC.CACHEDATTRIBS = context.getResources().obtainTypedArray(R.array.LockscreenLook);
-		} else if (sTheme.equals("DigitalDigits")) {
-			OMC.CACHEDATTRIBS = context.getResources().obtainTypedArray(R.array.DigitalDigits);
-		} else if (sTheme.equals("WhamBamWidget")) {
-			OMC.CACHEDATTRIBS = context.getResources().obtainTypedArray(R.array.WhamBamWidget);
-		} else if (sTheme.equals("BokehBeauty")) {
-			OMC.CACHEDATTRIBS = context.getResources().obtainTypedArray(R.array.BokehBeauty);
-		} else if (sTheme.equals("MorbidMoments")) {
-			OMC.CACHEDATTRIBS = context.getResources().obtainTypedArray(R.array.MorbidMoments);
-		} else if (sTheme.equals("BeaksAndBills")) {
-			OMC.CACHEDATTRIBS = context.getResources().obtainTypedArray(R.array.BeaksAndBills);
+		OMC.LAYERLIST = context.getResources().getStringArray(context.getResources().getIdentifier(sTheme, "array", "com.sunnykwong.omc"));
+		for (String layer:OMC.LAYERLIST) {
+			String sType = layer.substring(0,5);
+			int iLayerID = context.getResources().getIdentifier(layer.substring(6), "array", "com.sunnykwong.omc");
+
+			OMC.LAYERATTRIBS = context.getResources().obtainTypedArray(iLayerID);
+
+			if (sType.equals("text ")) ClockWidget.drawTextLayer(context, iLayerID, sTheme, aWI);
+			else if (sType.equals("panel"))ClockWidget.drawPanelLayer(context, iLayerID, sTheme, aWI);
+			else if (sType.equals("flare"))ClockWidget.drawFlareLayer(context, iLayerID, sTheme, aWI);
+			else if (sType.equals("image"));
 		}
-		
-
-		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDBACKDROP, false)) ClockWidget.drawTextLayer(context, OMC.WIDBACKDROP, sTheme, aWI);
-		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDPANEL, false)) ClockWidget.drawPanelLayer(context, OMC.WIDPANEL, sTheme, aWI);
-		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDINTRO, false)) ClockWidget.drawTextLayer(context, OMC.WIDINTRO, sTheme, aWI);
-		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDCLOCK, false)) ClockWidget.drawTextLayer(context, OMC.WIDCLOCK, sTheme, aWI);
-		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDBYLINE, false)) ClockWidget.drawTextLayer(context, OMC.WIDBYLINE, sTheme, aWI);
-		if (OMC.CACHEDATTRIBS.getBoolean(OMC.WIDLENSFLARE, false)) ClockWidget.drawFlareLayer(context, OMC.WIDLENSFLARE, sTheme, aWI);
-
-		
 	}
 	
 
-	static void fancyDrawText(final String style, final Canvas cvas, final String text, final int x, final int y, final Paint pt, int color1, int color2)  {
+	static void fancyDrawText(final String style, final Canvas cvas, final String text, final int x, final int y, final Paint pt1, final Paint pt2)  {
 		//Draw the SFX
 		if (style.equals("emboss")) {
-			pt.setColor(color2);
-			cvas.drawText(text, x-1, y-1, pt);
-			cvas.drawText(text, x+1, y+1, pt);
-			pt.setColor(color1);
-			cvas.drawText(text, x, y, pt);
+			cvas.drawText(text, x-1, y-1, pt2);
+			cvas.drawText(text, x+1, y+1, pt2);
 		} else if (style.equals("shadow")) {
-			pt.setColor(color2);
-			cvas.drawText(text, x+3, y+3, pt);
+			cvas.drawText(text, x+3, y+3, pt2);
 		}
 		//Either way, draw the proper text
-		pt.setColor(color1);
-		cvas.drawText(text, x, y, pt);
+		cvas.drawText(text, x, y, pt1);
 	}
 
 	

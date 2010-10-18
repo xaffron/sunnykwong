@@ -31,10 +31,6 @@
 			</intent-filter>
 		</receiver>
         <receiver android:name=".OMCConfigReceiver">
-<!--    		<intent-filter>-->
-<!--        		<action android:name="com.sunnykwong.omc.WIDGET_CONFIG" />-->
-<!--                <data android:scheme="omc" />-->
-<!--    		</intent-filter>-->
     		<intent-filter>
         		<action android:name="com.sunnykwong.omc.WIDGET_INDIRECT" />
                 <data android:scheme="omc" />
