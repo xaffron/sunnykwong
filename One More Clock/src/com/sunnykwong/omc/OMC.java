@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -30,6 +31,7 @@ import android.util.Log;
  * 
  */
 public class OMC extends Application {
+	static final String DEFAULTTHEME = "DearDiary";
 	static final boolean DEBUG = true;
 	static final Random RND = new Random();
 	static SharedPreferences PREFS;
@@ -47,24 +49,16 @@ public class OMC extends Application {
 	static TypedArray LAYERATTRIBS;
 	static String[] LAYERLIST, TALKBACKS; 
 
-	static final ComponentName WIDGETCNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget");
+	static final ComponentName WIDGET4x2CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget4x2");
+	static final ComponentName WIDGET3x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget3x1");
+	static final ComponentName WIDGET2x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget2x1");
 //	static final int WIDGETWIDTH=640;
 //	static final int WIDGETHEIGHT=320;
 	static final int WIDGETWIDTH=320;
 	static final int WIDGETHEIGHT=200;
 	static final String CHINESETIME = "子丑寅卯辰巳午未申酉戌亥子";
-	static final String DEFAULTTHEME = "CultureClash";
 	static final Time TIME = new Time();
-	static final Time OTIME = new Time();
 
-	// Sections of the prefs that govern each layer
-	static final int WIDBACKDROP = 0;
-	static final int WIDINTRO = 13;
-	static final int WIDCLOCK = 26;
-	static final int WIDBYLINE = 39;
-	static final int WIDPANEL = 52;
-	static final int WIDLENSFLARE = 62;
-	
 	static final float[] FLARERADII = new float[] {32.f,20.f,21.6f,40.2f,18.4f,19.1f,10.8f,25.f,28.f};
 	static final int[] FLARECOLORS = new int[] {855046894,1140258554,938340342,1005583601,855439588,
 		669384692,905573859,1105458423,921566437};
@@ -84,6 +78,8 @@ public class OMC extends Application {
 	static Canvas CANVAS;
 	static Paint PT1;
 	static Paint PT2;
+	
+	static float fSCALEX, fSCALEY;
 
 	@Override
 	public void onCreate() {
@@ -131,7 +127,7 @@ public class OMC extends Application {
 		OMC.LAYERLIST = null;
 		OMC.LAYERATTRIBS = null;
 
-		OMC.TALKBACKS = this.getResources().getStringArray(R.array.whambamtalkbacks);
+		OMC.TALKBACKS = null;
 
 		try {
 			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
@@ -152,6 +148,26 @@ public class OMC extends Application {
     			if (OMC.DEBUG)Log.i("OMCPref","Failed to register self");
 				ee.printStackTrace();
 			}
+		}
+		
+		// Enable/Disable the various size widgets
+		if (!OMC.PREFS.getBoolean("bFourByTwo", true)) {
+			getPackageManager().setComponentEnabledSetting(	
+					new ComponentName("com.sunnykwong.omc",".ClockWidget4x2"),
+					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+		}
+		if (!OMC.PREFS.getBoolean("bThreeByOne", true)) {
+			getPackageManager().setComponentEnabledSetting(	
+					new ComponentName("com.sunnykwong.omc",".ClockWidget3x1"),
+					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+		}
+		if (!OMC.PREFS.getBoolean("bTwoByOne", true)) {
+			getPackageManager().setComponentEnabledSetting(	
+					new ComponentName("com.sunnykwong.omc",".ClockWidget2x1"),
+					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
 		}
 		
 	}

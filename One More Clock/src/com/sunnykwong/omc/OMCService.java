@@ -11,7 +11,9 @@ import android.util.Log;
 public class OMCService extends Service {
 	// First, a few flags for the service.
 	static boolean RUNNING=false;	// Am I (already) running?
-	static boolean STOPNOW=false;		// Should I stop now?
+	static boolean STOPNOW4x2=false;		// Should I stop now? from 4x2 widgets
+	static boolean STOPNOW3x1=false;		// Should I stop now? from 3x1 widgets
+	static boolean STOPNOW2x1=false;		// Should I stop now? from 2x1 widgets
     static Method mStartForeground;
     static Method mStopForeground;
     static Object[] mStartForegroundArgs = new Object[2];
@@ -103,7 +105,7 @@ public class OMCService extends Service {
 		}
 		
 		// Either way...
-		if (OMCService.STOPNOW) {
+		if (OMCService.STOPNOW4x2 && OMCService.STOPNOW3x1 && OMCService.STOPNOW2x1) {
 			// If the widget tells me to stop, then stop setting the alarm and bail.
 			// Do not refresh the widget
 			// Do not fire off the Alarm

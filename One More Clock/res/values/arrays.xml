@@ -8,6 +8,7 @@
 	<item>Wham! Bam! Widget!</item>
 	<item>Morbid Moments</item>
 	<item>Beaks and Bills</item>
+	<item>Typewriter Ticks</item>
 </string-array>
 
 <string-array name="theme_values">
@@ -18,6 +19,7 @@
 	<item>WhamBamWidget</item>
 	<item>MorbidMoments</item>
 	<item>BeaksAndBills</item>
+	<item>TypewriterTicks</item>
 </string-array>
 
 <!--*************-->
@@ -274,15 +276,15 @@
 	<item>panel:WWBubble</item>
 	<item>text :WWOMG</item>
 	<item>text :WWClock</item>
-	<item>text :WWTalkback</item>
+	<item>quote:WWTalkback</item>
 </string-array>
 
 <array name="WWBubble">
 	<item name="00 layer_enabled">true</item>
 	<item name="53 left">15</item>
-	<item name="54 top">5</item>
+	<item name="54 top">15</item>
 	<item name="55 right">310</item>
-	<item name="56 bottom">130</item>
+	<item name="56 bottom">140</item>
 	<item name="57 xcorner">15</item>
 	<item name="58 ycorner">15</item>
 	<item name="59 fgcolor">#FFEFDFAD</item>
@@ -302,7 +304,7 @@
 	<item name="08 fgcolor">#ff000000</item>
 	<item name="09 bgcolor">#a0440000</item>
 	<item name="10 xcoord">30</item>
-	<item name="11 ycoord">27</item>
+	<item name="11 ycoord">37</item>
 	<item name="12 textalign">left</item>
 </array>
 
@@ -318,7 +320,7 @@
 	<item name="08 fgcolor">#ffaa0000</item>
 	<item name="09 bgcolor">#a0440000</item>
 	<item name="10 xcoord">150</item>
-	<item name="11 ycoord">100</item>
+	<item name="11 ycoord">110</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -334,8 +336,9 @@
 	<item name="08 fgcolor">#ff000000</item>
 	<item name="09 bgcolor">#a0440000</item>
 	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">123</item>
+	<item name="11 ycoord">133</item>
 	<item name="12 textalign">center</item>
+	<item name="13 talkbacks">whambamtalkbacks</item>
 </array>
 
 <string-array name="whambamtalkbacks">
@@ -431,6 +434,7 @@
 	<item>text :BaBDuck</item>
 	<item>text :BaBDucklings</item>
 	<item>panel:BaBWater</item>
+	<item>text :BaBDate</item>
 </string-array>
 
 <array name="BaBCanvas">
@@ -441,8 +445,8 @@
 	<item name="56 bottom">195</item>
 	<item name="57 xcorner">0</item>
 	<item name="58 ycorner">0</item>
-	<item name="59 fgcolor">#eeA2CEF2</item>
-	<item name="60 bgcolor">#88000000</item>
+	<item name="59 fgcolor">#ffA2CEF2</item>
+	<item name="60 bgcolor">#ff000000</item>
 	<item name="61 render_style">shadow</item>
 </array>
 
@@ -452,7 +456,7 @@
 	<item name="02 font_source">EFON.ttf</item>
 	<item name="03 font_size">100</item>
 	<item name="04 font_skew">0.0</item>
-	<item name="05 font_stretch">1</item>
+	<item name="05 font_stretch">1.</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#FFFF8F1F</item>
@@ -472,7 +476,7 @@
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#FFFFFFFF</item>
-	<item name="09 bgcolor">#a0ffffff</item>
+	<item name="09 bgcolor">#FF888888</item>
 	<item name="10 xcoord">200</item>
 	<item name="11 ycoord">100</item>
 	<item name="12 textalign">center</item>
@@ -488,7 +492,7 @@
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#FFFFFFFF</item>
-	<item name="09 bgcolor">#a0ffffff</item>
+	<item name="09 bgcolor">#FF888888</item>
 	<item name="10 xcoord">45</item>
 	<item name="11 ycoord">60</item>
 	<item name="12 textalign">center</item>
@@ -504,7 +508,7 @@
 	<item name="06 font_bold">true</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ff445544</item>
-	<item name="09 bgcolor">#a0ffffff</item>
+	<item name="09 bgcolor">#ffffffff</item>
 	<item name="10 xcoord">160</item>
 	<item name="11 ycoord">145</item>
 	<item name="12 textalign">center</item>
@@ -553,6 +557,155 @@
 	<item name="59 fgcolor">#ee193EB5</item>
 	<item name="60 bgcolor">#88000000</item>
 	<item name="61 render_style">normal</item>
+</array>
+
+<array name="BaBDate">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">Amadeus.ttf</item>
+	<item name="03 font_size">24</item>
+	<item name="04 font_skew">0</item>
+	<item name="05 font_stretch">1.1</item>
+	<item name="06 font_bold">true</item>
+	<item name="07 render_style">emboss</item>
+	<item name="08 fgcolor">#ff445544</item>
+	<item name="09 bgcolor">#ffa0a0a0</item>
+	<item name="10 xcoord">160</item>
+	<item name="11 ycoord">188</item>
+	<item name="12 textalign">center</item>
+</array>
+
+<!--*************-->
+<!--TypewriterTicks-->
+<!--(10/19)      -->
+<!-- Sunny Kwong -->
+<!--*************-->
+
+<string-array name="TypewriterTicks">
+	<item>panel:TTPanel</item>
+	<item>text :TTClock</item>
+	<item>text :TTDate</item>
+</string-array>
+
+<array name="TTPanel">
+	<item name="00 layer_enabled">true</item>
+	<item name="53 left">15</item>
+	<item name="54 top">15</item>
+	<item name="55 right">305</item>
+	<item name="56 bottom">160</item>
+	<item name="57 xcorner">0</item>
+	<item name="58 ycorner">0</item>
+	<item name="59 fgcolor">#FF183078</item>
+	<item name="60 bgcolor">#a0000000</item>
+	<item name="61 render_style">normal</item>
+</array>
+
+<array name="TTClock">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">1942.ttf</item>
+	<item name="03 font_size">90</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">0.95</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">emboss</item>
+	<item name="08 fgcolor">#ffDBDBDB</item>
+	<item name="09 bgcolor">#ff0095C2</item>
+	<item name="10 xcoord">160</item>
+	<item name="11 ycoord">110</item>
+	<item name="12 textalign">center</item>
+</array>
+
+<array name="TTDate">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">1942.ttf</item>
+	<item name="03 font_size">20</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">1.0</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">emboss</item>
+	<item name="08 fgcolor">#ffDBDBDB</item>
+	<item name="09 bgcolor">#ff0095C2</item>
+	<item name="10 xcoord">160</item>
+	<item name="11 ycoord">150</item>
+	<item name="12 textalign">center</item>
+</array>
+
+<!--*************-->
+<!--Dear Diary-->
+<!--(10/19)      -->
+<!-- Sunny Kwong -->
+<!--*************-->
+
+<string-array name="DearDiary">
+	<item>text :DiaryClock1</item>
+	<item>text :DiaryClock2</item>
+</string-array>
+
+<array name="DiaryClock1">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">Aquiline.ttf</item>
+	<item name="03 font_size">60</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">1.0</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">emboss</item>
+	<item name="08 fgcolor">#ff111111</item>
+	<item name="09 bgcolor">#4405015C</item>
+	<item name="10 xcoord">40</item>
+	<item name="11 ycoord">85</item>
+	<item name="12 textalign">left</item>
+</array>
+
+<array name="DiaryClock2">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">Aquiline.ttf</item>
+	<item name="03 font_size">60</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">1.0</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">emboss</item>
+	<item name="08 fgcolor">#ff111111</item>
+	<item name="09 bgcolor">#4405015C</item>
+	<item name="10 xcoord">280</item>
+	<item name="11 ycoord">150</item>
+	<item name="12 textalign">right</item>
+</array>
+
+<array name="WordNumbers">
+<item>o\'clock</item>
+<item>one</item>
+<item>Two</item>
+<item>Three</item>
+<item>four</item>
+<item>five</item>
+<item>six</item>
+<item>seven</item>
+<item>Eight</item>
+<item>nine</item>
+<item>Ten</item>
+<item>Eleven</item>
+<item>Twelve</item>
+<item>Thirteen</item>
+<item>fourteen</item>
+<item>fifteen</item>
+<item>Sixteen</item>
+<item>Seventeen</item>
+<item>Eighteen</item>
+<item>nineteen</item>
+<item>Twenty</item>
+<item>Twenty one</item>
+<item>Twenty Two</item>
+<item>Twenty Three</item>
+<item>Twenty four</item>
+<item>Twenty five</item>
+<item>Twenty Six</item>
+<item>Twenty Seven</item>
+<item>Twenty Eight</item>
+<item>Twenty nine</item>
 </array>
 
 </resources>

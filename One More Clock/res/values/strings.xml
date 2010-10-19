@@ -2,5 +2,5 @@
 <resources>
 <string name="app_name">One More Clock</string>
 
-<string name="widget_name">One More Clock</string>
+<string name="widget_name">One More Clock</string><string name="widget_name31">One More C(3x1)</string><string name="widget_name21">One More C(2x1)</string>
 </resources>

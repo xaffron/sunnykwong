@@ -1,8 +1,10 @@
 package com.sunnykwong.omc;
 
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -29,6 +31,8 @@ public class OMCPrefActivity extends PreferenceActivity {
 			if (OMC.DEBUG) Log.i("OMCPref","Called by Widget " + appWidgetID);
         	OMC.getPrefs(appWidgetID);
         	addPreferencesFromResource(R.xml.omcprefs);
+
+    		findPreference("bFourByTwo").setEnabled(false);
         } else {
             // If they gave us an intent without the widget id, just bail.
         	if (OMC.DEBUG) Log.i("OMCPref","Called by Launcher - do nothing");
@@ -102,6 +106,27 @@ public class OMCPrefActivity extends PreferenceActivity {
 	    	if (OMC.DEBUG) Log.i("OMCPref","Saving Prefs for Widget " + OMCPrefActivity.appWidgetID);
 			OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", true)? true : false;
 	    	OMC.setPrefs(OMCPrefActivity.appWidgetID);
+
+	    	// Enable/Disable the various size widgets
+	    	getApplicationContext().getPackageManager()
+					.setComponentEnabledSetting(
+							OMC.WIDGET4x2CNAME,
+							OMC.PREFS.getBoolean("bFourByTwo", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+									: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+							PackageManager.DONT_KILL_APP);
+	    	getApplicationContext().getPackageManager()
+					.setComponentEnabledSetting(
+							OMC.WIDGET3x1CNAME,
+							OMC.PREFS.getBoolean("bThreeByOne", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+									: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+							PackageManager.DONT_KILL_APP);
+	    	getApplicationContext().getPackageManager()
+					.setComponentEnabledSetting(
+							OMC.WIDGET2x1CNAME,
+							OMC.PREFS.getBoolean("bTwoByOne", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+									: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+							PackageManager.DONT_KILL_APP);
+
 			sendBroadcast(OMC.WIDGETREFRESHINTENT);
 		}
         super.onDestroy();

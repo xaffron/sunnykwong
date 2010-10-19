@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.sunnykwong.omc" 
-      android:versionCode="1"
-      android:versionName="1.0">
+      android:versionName="1.0.1" android:versionCode="2">
     <uses-sdk android:minSdkVersion="4" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
@@ -36,9 +35,37 @@
                 <data android:scheme="omc" />
     		</intent-filter>
 		</receiver>
-	    <receiver android:name=".ClockWidget" >
+	    <receiver android:name=".ClockWidget4x2" android:label="One More Clock(4x2)">
      		<meta-data android:name="android.appwidget.provider"
-               android:resource="@xml/clockinfo"/>
+               android:resource="@xml/clockinfo4x2"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<category android:name="android.intent.category.DEFAULT" />  
+    		</intent-filter>  
+    		<intent-filter>
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+    		</intent-filter>
+    		<intent-filter>
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+    		</intent-filter>
+		</receiver>
+	    <receiver android:name=".ClockWidget3x1" android:label="One More Clock(3x1)">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo3x1"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<category android:name="android.intent.category.DEFAULT" />  
+    		</intent-filter>  
+    		<intent-filter>
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+    		</intent-filter>
+    		<intent-filter>
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+    		</intent-filter>
+		</receiver>
+	    <receiver android:name=".ClockWidget2x1" android:label="One More Clock(2x1)">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo2x1"/>
 			<intent-filter>  
         		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<category android:name="android.intent.category.DEFAULT" />  
