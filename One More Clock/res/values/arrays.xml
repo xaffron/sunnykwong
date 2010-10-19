@@ -459,7 +459,7 @@
 	<item name="09 bgcolor">#a0ffffff</item>
 	<item name="10 xcoord">80</item>
 	<item name="11 ycoord">96</item>
-	<item name="12 textalign">left</item>
+	<item name="12 textalign">center</item>
 </array>
 
 <array name="BaBCloud1">
@@ -475,7 +475,7 @@
 	<item name="09 bgcolor">#a0ffffff</item>
 	<item name="10 xcoord">200</item>
 	<item name="11 ycoord">100</item>
-	<item name="12 textalign">left</item>
+	<item name="12 textalign">center</item>
 </array>
 
 <array name="BaBCloud2">
@@ -491,7 +491,7 @@
 	<item name="09 bgcolor">#a0ffffff</item>
 	<item name="10 xcoord">45</item>
 	<item name="11 ycoord">60</item>
-	<item name="12 textalign">left</item>
+	<item name="12 textalign">center</item>
 </array>
 
 <array name="BaBClock">
@@ -500,7 +500,7 @@
 	<item name="02 font_source">Amadeus.ttf</item>
 	<item name="03 font_size">120</item>
 	<item name="04 font_skew">0</item>
-	<item name="05 font_stretch">0.95</item>
+	<item name="05 font_stretch">0.8</item>
 	<item name="06 font_bold">true</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ff445544</item>
@@ -530,7 +530,7 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">EFON.ttf</item>
-	<item name="03 font_size">100</item>
+	<item name="03 font_size">30</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">1.0</item>
 	<item name="06 font_bold">false</item>

@@ -103,33 +103,42 @@ public class ClockWidget extends AppWidgetProvider {
 		case R.array.MMDate:
 			OMC.TXTBUF = OMC.TIME.format("%A.");
 			break;
+		case R.array.BaBCanvas:
+    		float ratio = 1f - Math.abs((OMC.TIME.hour*60 + OMC.TIME.minute) - (12*60) )/(12*60f);
+			OMC.PT1.setARGB(255, (int)(200*ratio), (int)(230*ratio), (int)(255*ratio));
+			break;
 		case R.array.BaBSun:
-			OMC.TXTBUF = OMC.TIME.hour >= 6 || OMC.TIME.hour < 18 ? "M":"E";
-    		iShade = (int)(70 + ((OMC.TIME.hour*60 + OMC.TIME.minute) % (12*60))/(12*60f) * 250);
+			if (OMC.TIME.hour >= 6 || OMC.TIME.hour < 18) {
+				OMC.TXTBUF="E";
+				OMC.PT1.setARGB(255, 255, 255, 0);
+			} else {
+				OMC.TXTBUF="M";
+			}
+    		iShade = (int)(70 + (((OMC.TIME.hour+6)*60 + OMC.TIME.minute) % (12*60))/(12*60f) * 180);
     		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
     		OMC.TXTBUF = "";
 			break;
 		case R.array.BaBCloud1:
 			OMC.TXTBUF = "m";
-    		iShade = (int)(70 + ((OMC.TIME.hour*60 + OMC.TIME.minute) % (3*60))/(3*60f) * 250);
+    		iShade = (int)(70 + ((OMC.TIME.hour*60 + OMC.TIME.minute) % (3*60))/(3*60f) * 180);
     		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
     		OMC.TXTBUF = "";
     		break;
 		case R.array.BaBCloud2:
 			OMC.TXTBUF = "m";
-    		iShade = (int)(70 + ((OMC.TIME.hour*60 + OMC.TIME.minute) % (4*60))/(4*60f) * 250);
+    		iShade = (int)(40 + ((OMC.TIME.hour*60 + OMC.TIME.minute) % (4*60))/(4*60f) * 240);
     		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
     		OMC.TXTBUF = "";
 			break;
 		case R.array.BaBDuck:
 			OMC.TXTBUF = OMC.TIME.format("U");
-    		iShade = (int)(70 + 200 - ((OMC.TIME.hour*60 + OMC.TIME.minute) % (6*60))/(6*60f) * 200) ;
+    		iShade = (int)(70 + 180 - ((OMC.TIME.hour*60 + OMC.TIME.minute) % (6*60))/(6*60f) * 180) ;
     		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
     		OMC.TXTBUF = "";
     		break;
 		case R.array.BaBDucklings:
-			OMC.TXTBUF = OMC.TIME.format("j");
-    		iShade = (int)(45 + 230 - OMC.TIME.minute%60 / 60f * 230) ;
+			OMC.TXTBUF = OMC.TIME.format("U U");
+    		iShade = (int)(50 + 220 - OMC.TIME.minute%60 / 60f * 220) ;
     		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
     		OMC.TXTBUF = "";
     		break;
