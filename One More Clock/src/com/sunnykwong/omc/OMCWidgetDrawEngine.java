@@ -41,81 +41,32 @@ public class OMCWidgetDrawEngine {
     			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I:%M") : OMC.TIME.format("%l:%M");
     		}
     		break;
-		case R.array.DiaryClock1:
+		case R.array.DiaryClock:
 			OMC.TALKBACKS = context.getResources().getStringArray(R.array.WordNumbers);
 			if (OMC.TIME.minute == 0) {
-			OMC.TXTBUF = OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + " o'clock.";
-		} else if (OMC.TIME.minute == 30) {
-			OMC.TXTBUF = "half past " + OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + "."; 
-		} else if (OMC.TIME.minute == 15) {
-			OMC.TXTBUF = "A quarter"; 
-		} else if (OMC.TIME.minute == 45) {
-			if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
-				OMC.TXTBUF = "A quarter";
+				OMC.TXTBUF = OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + " o'Clock.";
+			} else if (OMC.TIME.minute == 30) {
+				OMC.TXTBUF = "** half past " + OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + "."; 
+			} else if (OMC.TIME.minute == 15) {
+				OMC.TXTBUF = "A Quarter past " + OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + "."; 
+			} else if (OMC.TIME.minute == 45) {
+				if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
+					OMC.TXTBUF = "A Quarter to Twelve.";
+				} else {
+					OMC.TXTBUF = "A Quarter to " 
+					+ OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))+1] + ".";
+				}
+			} else if (OMC.TIME.minute > 30) {
+				if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
+					OMC.TXTBUF = OMC.TALKBACKS[60-Integer.parseInt(OMC.TIME.format("%M"))] + " to Twelve.";
+				} else {
+					OMC.TXTBUF = OMC.TALKBACKS[60-Integer.parseInt(OMC.TIME.format("%M"))] + " to " 
+					+ OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))+1] + ".";
+				}
 			} else {
-				OMC.TXTBUF = "A quarter" 
-				+ OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))+1];
+				OMC.TXTBUF = OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%M"))] + " past " 
+				+ OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + ".";
 			}
-		} else if (OMC.TIME.minute > 30) {
-			if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
-				OMC.TXTBUF = OMC.TALKBACKS[60-Integer.parseInt(OMC.TIME.format("%M"))];
-			} else {
-				OMC.TXTBUF = OMC.TALKBACKS[60-Integer.parseInt(OMC.TIME.format("%M"))];
-			}
-		} else {
-			OMC.TXTBUF = OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%M"))];
-		}
-//			if (OMC.TIME.minute == 0) {
-//				OMC.TXTBUF = OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + " o'Clock.";
-//			} else if (OMC.TIME.minute == 30) {
-//				OMC.TXTBUF = "Half past " + OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + "."; 
-//			} else if (OMC.TIME.minute == 15) {
-//				OMC.TXTBUF = "A Quarter past " + OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + "."; 
-//			} else if (OMC.TIME.minute == 45) {
-//				if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
-//					OMC.TXTBUF = "A Quarter to Twelve.";
-//				} else {
-//					OMC.TXTBUF = "A Quarter to " 
-//					+ OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))+1];
-//				}
-//			} else if (OMC.TIME.minute > 30) {
-//				if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
-//					OMC.TXTBUF = OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%M"))] + " to Twelve.";
-//				} else {
-//					OMC.TXTBUF = OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%M"))] + " to " 
-//					+ OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))+1];
-//				}
-//			} else {
-//				OMC.TXTBUF = OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%M"))] + " past " 
-//				+ OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))];
-//			}
-    		break;
-		case R.array.DiaryClock2:
-			OMC.TALKBACKS = context.getResources().getStringArray(R.array.WordNumbers);
-			if (OMC.TIME.minute == 0) {
-			OMC.TXTBUF = "";
-		} else if (OMC.TIME.minute == 30) {
-			OMC.TXTBUF = ""; 
-		} else if (OMC.TIME.minute == 15) {
-			OMC.TXTBUF = "past " + OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + "."; 
-		} else if (OMC.TIME.minute == 45) {
-			if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
-				OMC.TXTBUF = "to Twelve.";
-			} else {
-				OMC.TXTBUF = "to " 
-				+ OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))+1];
-			}
-		} else if (OMC.TIME.minute > 30) {
-			if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
-				OMC.TXTBUF = "to Twelve.";
-			} else {
-				OMC.TXTBUF = "to " 
-				+ OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))+1];
-			}
-		} else {
-			OMC.TXTBUF = "past " 
-			+ OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))];
-		}
     		break;
 		case R.array.BBDate:
 			OMC.TXTBUF = OMC.TIME.format("%a %e %b");
@@ -128,6 +79,10 @@ public class OMCWidgetDrawEngine {
 		case R.array.LLDate:
 		case R.array.TTDate:
 			OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
+    		break;
+		case R.array.DiaryDate:
+			OMC.TALKBACKS = context.getResources().getStringArray(R.array.WordNumbers);
+			OMC.TXTBUF = OMC.TIME.format("*%e %B, %G. *");
     		break;
 		case R.array.BBFlare:
     		break;

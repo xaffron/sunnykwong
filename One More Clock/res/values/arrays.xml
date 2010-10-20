@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string-array name="theme_options">
+	<item>Beaks and Bills</item>
 	<item>Bokeh Beauty</item>
 	<item>Culture Clash</item>
+	<item>Dear Diary</item>
 	<item>Digital Digits</item>
 	<item>Lockscreen Look</item>
-	<item>Wham! Bam! Widget!</item>
 	<item>Morbid Moments</item>
-	<item>Beaks and Bills</item>
 	<item>Typewriter Ticks</item>
+	<item>Wham! Bam! Widget!</item>
 </string-array>
 
 <string-array name="theme_values">
+	<item>BeaksAndBills</item>
 	<item>BokehBeauty</item>
 	<item>CultureClash</item>
+	<item>DearDiary</item>
 	<item>DigitalDigits</item>
 	<item>LockscreenLook</item>
-	<item>WhamBamWidget</item>
 	<item>MorbidMoments</item>
-	<item>BeaksAndBills</item>
 	<item>TypewriterTicks</item>
+	<item>WhamBamWidget</item>
 </string-array>
 
 <!--*************-->
@@ -88,7 +90,7 @@
 <array name="CCChinese">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">OFLGoudyStMTT.ttf</item>
+	<item name="02 font_source">OFLGoudyStMTT_TRUNC.ttf</item>
 	<item name="03 font_size">200</item>
 	<item name="04 font_skew">-0.25</item>
 	<item name="05 font_stretch">1.3</item>
@@ -104,7 +106,7 @@
 <array name="CCDate">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">OFLGoudyStMTT.ttf</item>
+	<item name="02 font_source">OFLGoudyStMTT_TRUNC.ttf</item>
 	<item name="03 font_size">21</item>
 	<item name="04 font_skew">-0.25</item>
 	<item name="05 font_stretch">1</item>
@@ -120,7 +122,7 @@
 <array name="CCClock">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">OFLGoudyStMTT.ttf</item>
+	<item name="02 font_source">OFLGoudyStMTT_TRUNC.ttf</item>
 	<item name="03 font_size">140</item>
 	<item name="04 font_skew">0</item>
 	<item name="05 font_stretch">0.95</item>
@@ -136,7 +138,7 @@
 <array name="CCMeridiem">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">OFLGoudyStMTT.ttf</item>
+	<item name="02 font_source">OFLGoudyStMTT_TRUNC.ttf</item>
 	<item name="03 font_size">40</item>
 	<item name="04 font_skew">0.</item>
 	<item name="05 font_stretch">1</item>
@@ -639,59 +641,60 @@
 <!--*************-->
 
 <string-array name="DearDiary">
-	<item>text :DiaryClock1</item>
-	<item>text :DiaryClock2</item>
+	<item>text :DiaryDate</item>
+	<item>text :DiaryClock</item>
 </string-array>
 
-<array name="DiaryClock1">
+<array name="DiaryDate">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">Aquiline.ttf</item>
-	<item name="03 font_size">60</item>
+	<item name="02 font_source">Aquiline_TRUNC.ttf</item>
+	<item name="03 font_size">36</item>
 	<item name="04 font_skew">0.00</item>
-	<item name="05 font_stretch">1.0</item>
+	<item name="05 font_stretch">0.88</item>
 	<item name="06 font_bold">false</item>
-	<item name="07 render_style">emboss</item>
+	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ff111111</item>
 	<item name="09 bgcolor">#4405015C</item>
-	<item name="10 xcoord">40</item>
+	<item name="10 xcoord">200</item>
 	<item name="11 ycoord">85</item>
+	<item name="12 textalign">center</item>
+</array>
+
+<array name="DiaryClock">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">Aquiline_TRUNC.ttf</item>
+	<item name="03 font_size">36</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">0.88</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">shadow</item>
+	<item name="08 fgcolor">#ff111111</item>
+	<item name="09 bgcolor">#4405015C</item>
+	<item name="10 xcoord">10</item>
+	<item name="11 ycoord">150</item>
 	<item name="12 textalign">left</item>
 </array>
 
-<array name="DiaryClock2">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">Aquiline.ttf</item>
-	<item name="03 font_size">60</item>
-	<item name="04 font_skew">0.00</item>
-	<item name="05 font_stretch">1.0</item>
-	<item name="06 font_bold">false</item>
-	<item name="07 render_style">emboss</item>
-	<item name="08 fgcolor">#ff111111</item>
-	<item name="09 bgcolor">#4405015C</item>
-	<item name="10 xcoord">280</item>
-	<item name="11 ycoord">150</item>
-	<item name="12 textalign">right</item>
-</array>
 
 <array name="WordNumbers">
-<item>o\'clock</item>
+<item>o\'Clock</item>
 <item>one</item>
 <item>Two</item>
 <item>Three</item>
-<item>four</item>
-<item>five</item>
-<item>six</item>
-<item>seven</item>
+<item>Four</item>
+<item>Five</item>
+<item>Six</item>
+<item>Seven</item>
 <item>Eight</item>
-<item>nine</item>
+<item>Nine</item>
 <item>Ten</item>
 <item>Eleven</item>
 <item>Twelve</item>
 <item>Thirteen</item>
-<item>fourteen</item>
-<item>fifteen</item>
+<item>Fourteen</item>
+<item>Fifteen</item>
 <item>Sixteen</item>
 <item>Seventeen</item>
 <item>Eighteen</item>
@@ -700,12 +703,12 @@
 <item>Twenty one</item>
 <item>Twenty Two</item>
 <item>Twenty Three</item>
-<item>Twenty four</item>
-<item>Twenty five</item>
+<item>Twenty Four</item>
+<item>Twenty Five</item>
 <item>Twenty Six</item>
 <item>Twenty Seven</item>
 <item>Twenty Eight</item>
-<item>Twenty nine</item>
+<item>Twenty Nine</item>
 </array>
 
 </resources>

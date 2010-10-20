@@ -1,7 +1,6 @@
 package com.sunnykwong.omc;
 
 import android.app.AlertDialog;
-import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.content.pm.PackageManager;
