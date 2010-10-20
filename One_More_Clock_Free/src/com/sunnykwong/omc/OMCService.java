@@ -114,9 +114,9 @@ public class OMCService extends Service {
 			OMCService.RUNNING=false;
 		} else {
 			//  Refresh at the next minute mark
-			//final long timeToRefresh = (System.currentTimeMillis()/60000 + 1) * 60000;
+			final long timeToRefresh = (System.currentTimeMillis()/60000 + 1) * 60000;
 			//  Or, refresh at debug intervals (7 secs)
-			final long timeToRefresh = (System.currentTimeMillis() + 7000);
+			//final long timeToRefresh = (System.currentTimeMillis() + 7000);
 			
 			OMC.setServiceAlarm(timeToRefresh);
 			
