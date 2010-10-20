@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="theme_options">
+	<item>Morbid Moments</item>
+</string-array>
+
+<string-array name="theme_values">
+	<item>MorbidMoments</item>
+</string-array>
+
+<!--*************-->
+<!--MorbidMoments-->
+<!--(10/18)      -->
+<!-- Sunny Kwong -->
+<!--*************-->
+
+<string-array name="MorbidMoments">
+	<item>text :MMSplatter</item>
+	<item>text :MMClock</item>
+	<item>text :MMDate</item>
+</string-array>
+
+<array name="MMSplatter">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">WC_Rhesus_B_Bta_TRUNC.otf</item>
+	<item name="03 font_size">135</item>
+	<item name="04 font_skew">0.0</item>
+	<item name="05 font_stretch">1.0</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">shadow</item>
+	<item name="08 fgcolor">#ffA10619</item>
+	<item name="09 bgcolor">#88000000</item>
+	<item name="10 xcoord">0</item>
+	<item name="11 ycoord">180</item>
+	<item name="12 textalign">left</item>
+</array>
+
+<array name="MMClock">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">MISPROJE_TRUNC.TTF</item>
+	<item name="03 font_size">170</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">1.0</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">emboss</item>
+	<item name="08 fgcolor">#ff000000</item>
+	<item name="09 bgcolor">#ffD4D4D4</item>
+	<item name="10 xcoord">160</item>
+	<item name="11 ycoord">145</item>
+	<item name="12 textalign">center</item>
+</array>
+
+<array name="MMDate">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">BlackCasper.ttf</item>
+	<item name="03 font_size">42</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">1.2</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">emboss</item>
+	<item name="08 fgcolor">#ff000000</item>
+	<item name="09 bgcolor">#a0ffffff</item>
+	<item name="10 xcoord">300</item>
+	<item name="11 ycoord">185</item>
+	<item name="12 textalign">right</item>
+</array>
+
+</resources>
+
