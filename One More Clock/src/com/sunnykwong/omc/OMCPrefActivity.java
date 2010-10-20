@@ -126,6 +126,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 									: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 							PackageManager.DONT_KILL_APP);
 
+			OMC.setServiceAlarm(System.currentTimeMillis() + 3000);
 			sendBroadcast(OMC.WIDGETREFRESHINTENT);
 		}
         super.onDestroy();
