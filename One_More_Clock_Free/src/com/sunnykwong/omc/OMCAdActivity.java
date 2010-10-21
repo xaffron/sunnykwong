@@ -33,6 +33,7 @@ public class OMCAdActivity extends Activity {
             	Intent myIntent = new Intent(Intent.ACTION_DEFAULT,
             			Uri.parse("http://xaffron.blogspot.com"));
             			startActivity(myIntent);             
+            			OMCAdActivity.this.finish();
 			}
 		});
 
@@ -43,7 +44,9 @@ public class OMCAdActivity extends Activity {
             public void onItemClick(AdapterView parent, View v, int position, long id) {
             	Intent myIntent = new Intent(Intent.ACTION_DEFAULT,
             			Uri.parse("market://search?q=pname:com.sunnykwong.omc"));
-            			startActivity(myIntent);             }
+            			startActivity(myIntent);
+            			OMCAdActivity.this.finish();
+            }
         });
     }
     
