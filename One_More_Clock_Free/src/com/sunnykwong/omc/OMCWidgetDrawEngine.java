@@ -234,7 +234,7 @@ public class OMCWidgetDrawEngine {
 			final AppWidgetManager appWidgetManager,
 			final int appWidgetId, float fScaleX, float fScaleY, int iCutTop, int iCutBottom) {
 		if (OMC.DEBUG)Log.i("OMCWidget", "Redrawing widget" + appWidgetId + " @ " + OMC.TIME.format("%T"));
-		Log.i("OMCWidget",appWidgetManager.getAppWidgetInfo(appWidgetId).provider.flattenToString());
+		//Log.i("OMCWidget",appWidgetManager.getAppWidgetInfo(appWidgetId).provider.flattenToString());
 
 		drawBitmapForWidget(context,appWidgetId);
 

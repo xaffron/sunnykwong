@@ -9,7 +9,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		if (OMC.DEBUG) Log.i("OMCAlarm","Rcvd " + intent.getAction());
+		//if (OMC.DEBUG) Log.i("OMCAlarm","Rcvd " + intent.getAction());
 		
 		// If we come back from a low memory state, all sorts of screwy stuff might happen.
 		// If the Intent itself is null, let's create one.
