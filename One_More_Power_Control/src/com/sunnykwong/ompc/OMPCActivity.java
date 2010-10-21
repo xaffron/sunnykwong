@@ -14,6 +14,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.MotionEvent;
+import android.widget.AbsoluteLayout;
+
 
 public class OMPCActivity extends Activity implements View.OnClickListener, View.OnTouchListener {
 
@@ -21,6 +23,7 @@ public class OMPCActivity extends Activity implements View.OnClickListener, View
 	BluetoothAdapter mBTA = BluetoothAdapter.getDefaultAdapter();
 	WifiManager mWFA; 
 	int appWidgetId;
+	static int X, Y;
 //	Intent mBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 
 	
@@ -30,6 +33,9 @@ public class OMPCActivity extends Activity implements View.OnClickListener, View
     	super.onCreate(savedInstanceState);
     	getWindow().setWindowAnimations(android.R.style.Animation_Dialog);
 
+    	X= getPreferences(MODE_PRIVATE).getInt("X", 200);
+    	Y= getPreferences(MODE_PRIVATE).getInt("Y", 200);
+    	
     	if (getIntent().getData() == null)
 			appWidgetId=-999;
 		else
@@ -38,6 +44,9 @@ public class OMPCActivity extends Activity implements View.OnClickListener, View
         mWFA = (WifiManager)getSystemService(Context.WIFI_SERVICE);
         
         setContentView(R.layout.main);
+    	(this.findViewById(R.id.LinearLayout01)).setLayoutParams(new AbsoluteLayout.LayoutParams(AbsoluteLayout.LayoutParams.WRAP_CONTENT,AbsoluteLayout.LayoutParams.WRAP_CONTENT,X, Y ));
+        (this.findViewById(R.id.toplevel)).requestLayout();        
+
         mBTButton = (ImageButton)this.findViewById(R.id.Button01);    
         if (mBTA!=null) {
         	mBTButton.setOnClickListener(this);
@@ -94,29 +103,35 @@ public class OMPCActivity extends Activity implements View.OnClickListener, View
     @Override
     public boolean onTouch(View v, MotionEvent event) {
          int eventaction = event.getAction();
-         int X = (int)event.getX();
-         int Y = (int)event.getY();
+         int X = (int)event.getRawX()-30;
+         int Y = (int)event.getRawY()-30;
  
-//         switch (eventaction ) {
+         switch (eventaction) {
 //         case MotionEvent.ACTION_DOWN: // touch down so check if the finger is on a ball
 //              break;
- //        case MotionEvent.ACTION_MOVE:   // touch drag with the ball
+        case MotionEvent.ACTION_MOVE:   // touch drag with the ball
+        	System.out.println("action move x " + X + " y " + Y);
+  
+        	(this.findViewById(R.id.LinearLayout01)).setLayoutParams(new AbsoluteLayout.LayoutParams(AbsoluteLayout.LayoutParams.WRAP_CONTENT,AbsoluteLayout.LayoutParams.WRAP_CONTENT,X, Y ));
+        	// move the balls the same as the finger
  
   
- 
-                 // move the balls the same as the finger
- 
-  
- 
+        	
 //             colorballs[balID-1].setX(X-25);
 //             colorballs[balID-1].setY(Y-25);
-//             break;
-//        case MotionEvent.ACTION_UP:
-//                // touch drop - just do things here after dropping
-//              break;
-//         }
-//         // redraw the canvas
-//         invalidate();
+             break;
+        case MotionEvent.ACTION_UP:
+                // touch drop - just do things here after dropping
+        	(this.findViewById(R.id.LinearLayout01)).setLayoutParams(new AbsoluteLayout.LayoutParams(AbsoluteLayout.LayoutParams.WRAP_CONTENT,AbsoluteLayout.LayoutParams.WRAP_CONTENT,X, Y ));
+        	getPreferences(MODE_PRIVATE).edit()
+        		.putInt("X", X)
+        		.putInt("Y", Y)
+        		.commit();
+
+            break;
+         }
+         // redraw the canvas
+         (this.findViewById(R.id.toplevel)).requestLayout();        
          return true;
      }
     
