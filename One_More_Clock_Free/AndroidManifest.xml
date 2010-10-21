@@ -68,7 +68,7 @@
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
     		</intent-filter>
     		<intent-filter>
-        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<action android:name="com.sunnykwong.freeomc1/com.sunnykwong.omc.WIDGET_REFRESH" />
     		</intent-filter>
 		</receiver>
 	    <receiver android:name="com.sunnykwong.omc.ClockWidget2x1" android:label="One More Clock(2x1)">
@@ -82,7 +82,7 @@
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
     		</intent-filter>
     		<intent-filter>
-        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<action android:name="com.sunnykwong.freeomc1/com.sunnykwong.omc.WIDGET_REFRESH" />
     		</intent-filter>
 		</receiver>
      </application>
