@@ -107,8 +107,8 @@ public class OMCWidgetDrawEngine {
 			// The thought bubbles, shadowed
 			OMC.CANVAS.drawCircle(15f+3, 140f+3, 10, OMC.PT2);
     		OMC.CANVAS.drawCircle(15f, 140f, 10, OMC.PT1);
-    		OMC.CANVAS.drawCircle(24f+3, 125f+3, 15, OMC.PT2);
-    		OMC.CANVAS.drawCircle(24f, 125f, 15, OMC.PT1);
+    		OMC.CANVAS.drawCircle(24f+3, 130f+3, 15, OMC.PT2);
+    		OMC.CANVAS.drawCircle(24f, 130f, 15, OMC.PT1);
     		break;
 		case R.array.WWOMG:
 			OMC.TXTBUF = "omg, it's";
@@ -376,11 +376,21 @@ public class OMCWidgetDrawEngine {
 		final RemoteViews rv = new RemoteViews(context.getPackageName(),R.layout.omcwidget);
         rv.setImageViewBitmap(R.id.omcIV, Bitmap.createBitmap(OMC.BUFFER, 0, iCutTop, OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT-iCutTop - iCutBottom, matrix, false));
 
-        Intent intent = new Intent("com.sunnykwong.omc.WIDGET_CONFIG");
-        intent.setData(Uri.parse("omc:"+appWidgetId));
-        PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) { 
+        	Intent intent = new Intent("com.sunnykwong.omc.WIDGET_CONFIG");
+        	intent.setData(Uri.parse("omc:"+appWidgetId));
+        	PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            rv.setOnClickPendingIntent(R.id.omcIV, pi);
+        } else {
+        	try {
+        	Intent intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
+        	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
+            rv.setOnClickPendingIntent(R.id.omcIV, pi);
+        	} catch (Exception e) {
+        		e.printStackTrace();
+        	}
+        }
         
-        rv.setOnClickPendingIntent(R.id.omcIV, pi);
 
         appWidgetManager.updateAppWidget(appWidgetId, rv);
 	}

@@ -1,8 +1,12 @@
 package com.sunnykwong.omc;
 
+import java.net.URISyntaxException;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnKeyListener;
+import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -29,6 +33,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 		if (appWidgetID >= 0) {
 			if (OMC.DEBUG) Log.i("OMCPref","Called by Widget " + appWidgetID);
         	OMC.getPrefs(appWidgetID);
+        	OMC.PREFS.edit().putBoolean("widgetPersistence", OMC.FG);
         	addPreferencesFromResource(R.xml.omcprefs);
 
     		findPreference("bFourByTwo").setEnabled(false);
@@ -78,12 +83,35 @@ public class OMCPrefActivity extends PreferenceActivity {
     	if (preference == getPreferenceScreen().findPreference("widgetCredits")) {
     		startActivity(OMC.CREDITSINTENT);
     	}
+    	if (preference == getPreferenceScreen().findPreference("oTTL")) {
+    		OMCPrefActivity.this.getPreferenceScreen().setEnabled(false);
+    		Intent mainIntent = new Intent(Intent.ACTION_MAIN,
+        			null);
+			mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+
+			Intent pickIntent = new
+			Intent(Intent.ACTION_PICK_ACTIVITY);
+			pickIntent.putExtra(Intent.EXTRA_INTENT, mainIntent);
+			startActivityForResult(pickIntent, OMCPrefActivity.appWidgetID);
+			mainIntent=null;
+			pickIntent=null;
+    	}
     	if (preference == getPreferenceScreen().findPreference("clearFontCache")) {
     		OMC.TYPEFACEMAP.clear();
     		Toast.makeText(this, "Font Cache Cleared", Toast.LENGTH_SHORT).show();
     	}
     	return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
+
+    // The result is obtained in onActivityResult:
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		getPreferenceScreen().setEnabled(true);
+		if (data != null) {
+			String s = data.toUri(MODE_PRIVATE).toString();
+			OMC.PREFS.edit().putString("URI", s).commit();
+		}
+	}
+
     
     public void dialogCancelled() {
    	if (OMCPrefActivity.mAD!=null) { // && mAD.isShowing()
@@ -95,15 +123,17 @@ public class OMCPrefActivity extends PreferenceActivity {
 
     @Override
     public void onPause() {
-    	if (OMCPrefActivity.mAD != null) finish();
-        super.onPause();
+	    if (OMCPrefActivity.mAD != null) finish();
+    	super.onPause();
     }
 
     @Override
     public void onDestroy() {
 		if (appWidgetID >= 0) {
-	    	if (OMC.DEBUG) Log.i("OMCPref","Saving Prefs for Widget " + OMCPrefActivity.appWidgetID);
+
+			if (OMC.DEBUG) Log.i("OMCPref","Saving Prefs for Widget " + OMCPrefActivity.appWidgetID);
 			OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", true)? true : false;
+			OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
 	    	OMC.setPrefs(OMCPrefActivity.appWidgetID);
 
 	    	// Enable/Disable the various size widgets

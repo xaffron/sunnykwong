@@ -31,7 +31,8 @@ import android.util.Log;
  * 
  */
 public class OMC extends Application {
-	static final String DEFAULTTHEME = "DearDiary";
+	static int UPDATEFREQ = 30000;
+	static final String DEFAULTTHEME = "WhamBamWidget";
 	static final boolean DEBUG = true;
 	static final Random RND = new Random();
 	static SharedPreferences PREFS;
@@ -44,7 +45,7 @@ public class OMC extends Application {
     static OMCConfigReceiver cRC;
 	static OMCAlarmReceiver aRC;
     static boolean SCREENON = true; 	// Is the screen on?
-    static boolean FG = true;
+    static boolean FG = false;
     
 	static TypedArray LAYERATTRIBS;
 	static String[] LAYERLIST, TALKBACKS; 
@@ -117,7 +118,8 @@ public class OMC extends Application {
     	OMC.AM = getAssets();
     	OMC.NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		OMC.PREFS = getSharedPreferences("com.sunnykwong.omc_preferences", Context.MODE_PRIVATE);
-		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", true)? true : false;
+		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
+		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
 		
 		registerReceiver(aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
 		registerReceiver(aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
@@ -185,18 +187,21 @@ public class OMC extends Application {
 	public static void initPrefs(int aWI) {
 		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.DEFAULTTHEME)
 		.putBoolean("widget24HrClock"+aWI, true)
+		.putString("URI"+aWI, "")
 		.commit();
 	}
 
 	public static void setPrefs(int aWI) {
 		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", "notfound"))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
+		.putString("URI"+aWI, OMC.PREFS.getString("URI", ""))
 		.commit();
 	}
 
 	public static void getPrefs(int aWI) {
     	OMC.PREFS.edit().putString("widgetTheme", OMC.PREFS.getString("widgetTheme"+aWI, "notfound"))
 		.putBoolean("widget24HrClock", OMC.PREFS.getBoolean("widget24HrClock"+aWI, true))
+		.putString("URI", OMC.PREFS.getString("URI"+aWI, ""))
 		.commit();
 	}
 	
