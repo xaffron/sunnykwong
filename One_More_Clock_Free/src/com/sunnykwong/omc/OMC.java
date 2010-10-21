@@ -32,6 +32,9 @@ import android.util.Log;
  * 
  */
 public class OMC extends Application {
+	//Widget Update Freq in milliseconds; don't go below ~5000 or app will choke
+	//Also needs to be divisible by 60000 so the clock will update when the minute actually changes
+	static int UPDATEFREQ = 30000; 
 	static final String DEFAULTTHEME = "MorbidMoments";
 	static final boolean DEBUG = true;
 	static final Random RND = new Random();
@@ -50,9 +53,9 @@ public class OMC extends Application {
 	static TypedArray LAYERATTRIBS;
 	static String[] LAYERLIST, TALKBACKS; 
 
-	static final ComponentName WIDGET4x2CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget4x2");
-	static final ComponentName WIDGET3x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget3x1");
-	static final ComponentName WIDGET2x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget2x1");
+	static final ComponentName WIDGET4x2CNAME = new ComponentName("com.sunnykwong.freeomc1","com.sunnykwong.omc.ClockWidget4x2");
+	static final ComponentName WIDGET3x1CNAME = new ComponentName("com.sunnykwong.freeomc1","com.sunnykwong.omc.ClockWidget3x1");
+	static final ComponentName WIDGET2x1CNAME = new ComponentName("com.sunnykwong.freeomc1","com.sunnykwong.omc.ClockWidget2x1");
 //	static final int WIDGETWIDTH=640;
 //	static final int WIDGETHEIGHT=320;
 	static final int WIDGETWIDTH=320;
@@ -99,7 +102,7 @@ public class OMC extends Application {
 		OMC.BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
 		OMC.BGPENDING = PendingIntent.getBroadcast(this, 0, OMC.BGINTENT, 0);
 		OMC.SVCSTARTINTENT = new Intent(this, OMCService.class);
-		OMC.WIDGETREFRESHINTENT = new Intent("com.sunnykwong.omc.WIDGET_REFRESH");
+		OMC.WIDGETREFRESHINTENT = new Intent("com.sunnykwong.freeomc1/com.sunnykwong.omc.WIDGET_REFRESH");
 		OMC.CREDITSINTENT = new Intent(this, OMCCreditsActivity.class);
 		OMC.PREFSINTENT = new Intent(this, OMCPrefActivity.class);
 		OMC.PREFSPENDING = PendingIntent.getActivity(this, 0, new Intent(this, OMCPrefActivity.class), 0);

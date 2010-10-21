@@ -4,7 +4,6 @@ import com.sunnykwong.freeomc1.R;
 import android.content.Intent;
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.Toast;
 import android.widget.Gallery;
 import android.widget.ImageView;
 import android.view.View;

@@ -25,6 +25,10 @@
         <service android:enabled="true" android:name="com.sunnykwong.omc.OMCService"/>
         <receiver android:name="com.sunnykwong.omc.OMCAlarmReceiver">
 			<intent-filter>
+				<action android:name="com.sunnykwong.freeomc1/com.sunnykwong.omc.FGSERVICE"/>
+        		<category android:name="android.intent.category.DEFAULT" />  
+			</intent-filter>
+			<intent-filter>
 				<action android:name="com.sunnykwong.omc.FGSERVICE"/>
         		<category android:name="android.intent.category.DEFAULT" />  
 			</intent-filter>
@@ -50,7 +54,7 @@
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
     		</intent-filter>
     		<intent-filter>
-        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<action android:name="com.sunnykwong.freeomc1/com.sunnykwong.omc.WIDGET_REFRESH" />
     		</intent-filter>
 		</receiver>
 	    <receiver android:name="com.sunnykwong.omc.ClockWidget3x1" android:label="One More Clock(3x1)">

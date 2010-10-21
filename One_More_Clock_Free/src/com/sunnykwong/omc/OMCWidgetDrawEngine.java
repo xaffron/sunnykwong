@@ -218,7 +218,7 @@ public class OMCWidgetDrawEngine {
 	// calling this same method creating a potential race condition
 	static synchronized void updateAppWidget(Context context, float fScaleX, float fScaleY, ComponentName cName, int iCutTop, int iCutBottom) {
 		if (!OMCService.RUNNING) {
-			OMC.setServiceAlarm(System.currentTimeMillis() + 10000);
+			OMC.setServiceAlarm(System.currentTimeMillis() + 3000);
 		}
 		AppWidgetManager aWM = AppWidgetManager.getInstance(context);
 
@@ -234,6 +234,7 @@ public class OMCWidgetDrawEngine {
 			final AppWidgetManager appWidgetManager,
 			final int appWidgetId, float fScaleX, float fScaleY, int iCutTop, int iCutBottom) {
 		if (OMC.DEBUG)Log.i("OMCWidget", "Redrawing widget" + appWidgetId + " @ " + OMC.TIME.format("%T"));
+		Log.i("OMCWidget",appWidgetManager.getAppWidgetInfo(appWidgetId).provider.flattenToString());
 
 		drawBitmapForWidget(context,appWidgetId);
 
