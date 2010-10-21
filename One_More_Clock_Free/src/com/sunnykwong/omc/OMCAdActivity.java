@@ -1,6 +1,6 @@
 package com.sunnykwong.omc;
 
-import com.sunnykwong.omcfree.R;
+import com.sunnykwong.freeomc1.R;
 import android.content.Intent;
 import android.app.Activity;
 import android.os.Bundle;
@@ -52,14 +52,14 @@ public class OMCAdActivity extends Activity {
         private Context mContext;
 
         private Integer[] mImageIds = {
-                R.drawable.bbills,
-                R.drawable.bbeauty,
+                R.drawable.wbwidget,
+                R.drawable.llook,
                 R.drawable.cclash,
                 R.drawable.ddiary,
                 R.drawable.ddigits,
-                R.drawable.llook,
+                R.drawable.bbeauty,
                 R.drawable.tticks,
-                R.drawable.wbwidget
+                R.drawable.bbills
         };
 
         public ImageAdapter(Context c) {

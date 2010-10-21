@@ -13,7 +13,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 import android.graphics.Matrix;
 import android.content.ComponentName;
-import com.sunnykwong.omcfree.R;
+import com.sunnykwong.freeomc1.R;
 
 public class OMCWidgetDrawEngine {
 	// This is where the theme-specific tweaks (regardless of layer) are processed.
@@ -115,7 +115,7 @@ public class OMCWidgetDrawEngine {
 	// Quote layer.  Set the Text to be shown before passing to drawTextLayer.
 	static void drawQuoteLayer(final Context context, final int iLayerID, final String sTheme, final int aWI) {
 
-		OMC.TALKBACKS = context.getResources().getStringArray(context.getResources().getIdentifier(OMC.LAYERATTRIBS.getString(13), "array", "com.sunnykwong.omcfree"));
+		OMC.TALKBACKS = context.getResources().getStringArray(context.getResources().getIdentifier(OMC.LAYERATTRIBS.getString(13), "array", "com.sunnykwong.freeomc1"));
 		OMC.TXTBUF = OMC.TALKBACKS[OMC.RND.nextInt(OMC.TALKBACKS.length)];
 		OMCWidgetDrawEngine.drawTextLayer(context, iLayerID, sTheme, aWI);
 		OMC.TALKBACKS=null;
@@ -183,13 +183,13 @@ public class OMCWidgetDrawEngine {
 		String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME);
 
 		//		Set LAF based on prefs
-		OMC.LAYERLIST = context.getResources().getStringArray(context.getResources().getIdentifier(sTheme, "array", "com.sunnykwong.omcfree"));
+		OMC.LAYERLIST = context.getResources().getStringArray(context.getResources().getIdentifier(sTheme, "array", "com.sunnykwong.freeomc1"));
 		for (String layer:OMC.LAYERLIST) {
 			// Clear the text buffer first.
 			OMC.TXTBUF="";
 
 			String sType = layer.substring(0,5);
-			int iLayerID = context.getResources().getIdentifier(layer.substring(6), "array", "com.sunnykwong.omcfree");
+			int iLayerID = context.getResources().getIdentifier(layer.substring(6), "array", "com.sunnykwong.freeomc1");
 
 			OMC.LAYERATTRIBS = context.getResources().obtainTypedArray(iLayerID);
 			if (OMC.LAYERATTRIBS.getBoolean(0, true)){

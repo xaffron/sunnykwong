@@ -1,6 +1,6 @@
 package com.sunnykwong.omc;
 
-import com.sunnykwong.omcfree.R;
+import com.sunnykwong.freeomc1.R;
 
 import java.util.HashMap;
 import java.util.Random;

@@ -9,7 +9,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.widget.Toast;
-import com.sunnykwong.omcfree.R;
+import com.sunnykwong.freeomc1.R;
 
 public class OMCPrefActivity extends PreferenceActivity { 
     /** Called when the activity is first created. */

@@ -1,6 +1,6 @@
 package com.sunnykwong.omc;
 
-import com.sunnykwong.omcfree.R;
+import com.sunnykwong.freeomc1.R;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
