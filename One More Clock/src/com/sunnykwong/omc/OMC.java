@@ -185,21 +185,22 @@ public class OMC extends Application {
     }
 
 	public static void initPrefs(int aWI) {
-		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.DEFAULTTHEME)
-		.putBoolean("widget24HrClock"+aWI, true)
-		.putString("URI"+aWI, "")
+		
+		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)))
+		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true)))
+		.putString("URI"+aWI, OMC.PREFS.getString("URI"+aWI, ""))
 		.commit();
 	}
-
+ 
 	public static void setPrefs(int aWI) {
-		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", "notfound"))
+		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
 		.putString("URI"+aWI, OMC.PREFS.getString("URI", ""))
 		.commit();
 	}
-
+ 
 	public static void getPrefs(int aWI) {
-    	OMC.PREFS.edit().putString("widgetTheme", OMC.PREFS.getString("widgetTheme"+aWI, "notfound"))
+    	OMC.PREFS.edit().putString("widgetTheme", OMC.PREFS.getString("widgetTheme"+aWI, OMC.DEFAULTTHEME))
 		.putBoolean("widget24HrClock", OMC.PREFS.getBoolean("widget24HrClock"+aWI, true))
 		.putString("URI", OMC.PREFS.getString("URI"+aWI, ""))
 		.commit();
@@ -209,6 +210,7 @@ public class OMC extends Application {
 		OMC.PREFS.edit()
 			.remove("widgetTheme"+aWI)
 			.remove("widget24HrClock"+aWI)
+			.remove("URI"+aWI)
 			.commit();
 	}
 	
