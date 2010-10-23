@@ -1,12 +1,9 @@
 package com.sunnykwong.omc;
 
-import java.net.URISyntaxException;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnKeyListener;
-import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -96,9 +93,11 @@ public class OMCPrefActivity extends PreferenceActivity {
 			mainIntent=null;
 			pickIntent=null;
     	}
-    	if (preference == getPreferenceScreen().findPreference("clearFontCache")) {
-    		OMC.TYPEFACEMAP.clear();
+    	if (preference == getPreferenceScreen().findPreference("clearCache")) {
+    		OMC.purgeTypefaceCache();
     		Toast.makeText(this, "Font Cache Cleared", Toast.LENGTH_SHORT).show();
+    		OMC.purgeBitmapCache();
+    		Toast.makeText(this, "Bitmap Cache Cleared", Toast.LENGTH_SHORT).show();
     	}
     	return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

@@ -41,6 +41,26 @@ public class OMCWidgetDrawEngine {
     			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I:%M") : OMC.TIME.format("%l:%M");
     		}
     		break;
+		case R.array.NNClock1:
+    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
+    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%H").substring(0,1) : OMC.TIME.format("%k").substring(0,1);
+    		} else {
+    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I").substring(0,1) : OMC.TIME.format("%l").substring(0,1);
+    		}
+    		break;
+		case R.array.NNClock2:
+    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
+    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%H").substring(1,2) : OMC.TIME.format("%k").substring(1,2);
+    		} else {
+    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I").substring(1,2) : OMC.TIME.format("%l").substring(1,2);
+    		}
+    		break;
+		case R.array.NNClock3:
+			OMC.TXTBUF = OMC.TIME.format("%M").substring(0,1);
+    		break;
+		case R.array.NNClock4:
+			OMC.TXTBUF = OMC.TIME.format("%M").substring(1,2);
+    		break;
 		case R.array.DiaryClock:
 			OMC.TALKBACKS = context.getResources().getStringArray(R.array.WordNumbers);
 			if (OMC.TIME.minute == 0) {
@@ -80,6 +100,7 @@ public class OMCWidgetDrawEngine {
 		case R.array.TTDate:
 			OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
     		break;
+		case R.array.NNDate:
 		case R.array.DiaryDate:
 			OMC.TALKBACKS = context.getResources().getStringArray(R.array.WordNumbers);
 			OMC.TXTBUF = OMC.TIME.format("*%e %B, %G. *");
@@ -244,6 +265,24 @@ public class OMCWidgetDrawEngine {
 
 	}
 
+	//Bitmap layer.  This is really only for emergencies (and for skinning).
+	static void drawBitmapLayer(final Context context, final int iLayerID, final String sTheme, final int aWI) {
+		OMC.PT1.reset();
+		OMC.PT1.setAntiAlias(true);
+		OMC.PT1.setColor(Color.BLACK);
+		System.out.println(OMC.getBitmap(OMC.LAYERATTRIBS.getString(1), OMC.LAYERATTRIBS.getString(2)).getHeight());
+
+    	// theme-specific tweaks.
+		OMCWidgetDrawEngine.layerThemeTweaks(context, iLayerID, sTheme, aWI);
+		
+		// Blit the buffer over
+		final Matrix matrix = new Matrix();
+		matrix.reset();
+		if (OMC.LAYERATTRIBS.getBoolean(3, true)) matrix.postScale(OMC.LAYERATTRIBS.getFloat(4, 1f), OMC.LAYERATTRIBS.getFloat(5, 1f));
+		matrix.postTranslate(OMC.LAYERATTRIBS.getFloat(6, 0f), OMC.LAYERATTRIBS.getFloat(7, 0f));
+		OMC.CANVAS.drawBitmap(OMC.getBitmap(OMC.LAYERATTRIBS.getString(1), OMC.LAYERATTRIBS.getString(2)),matrix,OMC.PT1);
+	}
+
 	// Quote layer.  Set the Text to be shown before passing to drawTextLayer.
 	static void drawQuoteLayer(final Context context, final int iLayerID, final String sTheme, final int aWI) {
 
@@ -328,8 +367,8 @@ public class OMCWidgetDrawEngine {
 				if (sType.equals("text ")) OMCWidgetDrawEngine.drawTextLayer(context, iLayerID, sTheme, aWI);
 				else if (sType.equals("panel"))OMCWidgetDrawEngine.drawPanelLayer(context, iLayerID, sTheme, aWI);
 				else if (sType.equals("flare"))OMCWidgetDrawEngine.drawFlareLayer(context, iLayerID, sTheme, aWI);
-				else if (sType.equals("quote")) OMCWidgetDrawEngine.drawQuoteLayer(context, iLayerID, sTheme, aWI);
-				else if (sType.equals("image"));
+				else if (sType.equals("quote"))OMCWidgetDrawEngine.drawQuoteLayer(context, iLayerID, sTheme, aWI);
+				else if (sType.equals("image"))OMCWidgetDrawEngine.drawBitmapLayer(context, iLayerID, sTheme, aWI);
 			}
 		}
 	}

@@ -1,7 +1,9 @@
 package com.sunnykwong.omc;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Random;
+import java.util.Map.Entry;
 
 import android.app.AlarmManager;
 import android.app.Application;
@@ -23,6 +25,8 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.text.format.Time;
 import android.util.Log;
+import android.graphics.BitmapFactory;
+import android.content.res.Resources;
 
 /**
  * @author skwong01
@@ -31,16 +35,18 @@ import android.util.Log;
  * 
  */
 public class OMC extends Application {
-	static int UPDATEFREQ = 30000;
-	static final String DEFAULTTHEME = "WhamBamWidget";
+	static int UPDATEFREQ = 15000;
+	static final String DEFAULTTHEME = "NixieNotions";
 	static final boolean DEBUG = true;
 	static final Random RND = new Random();
 	static SharedPreferences PREFS;
 	static AlarmManager ALARMS;	// I only need one alarmmanager.
 	static AssetManager AM;
     static NotificationManager NM;
+    static Resources RES;
     
     static HashMap<String, Typeface> TYPEFACEMAP;
+    static HashMap<String, Bitmap> BMPMAP;
 	
     static OMCConfigReceiver cRC;
 	static OMCAlarmReceiver aRC;
@@ -116,6 +122,7 @@ public class OMC extends Application {
 		
     	OMC.ALARMS = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
     	OMC.AM = getAssets();
+    	OMC.RES = getResources();
     	OMC.NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		OMC.PREFS = getSharedPreferences("com.sunnykwong.omc_preferences", Context.MODE_PRIVATE);
 		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
@@ -125,6 +132,7 @@ public class OMC extends Application {
 		registerReceiver(aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
 		
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(6);
+		OMC.BMPMAP = new HashMap<String, Bitmap>(3);
 		
 		OMC.LAYERLIST = null;
 		OMC.LAYERATTRIBS = null;
@@ -222,6 +230,37 @@ public class OMC extends Application {
 				OMC.TYPEFACEMAP.put(src, Typeface.createFromAsset(OMC.AM, src));
 		}
 		return OMC.TYPEFACEMAP.get(src);
+	}
+
+	public static Bitmap getBitmap(String type, String src) {
+		if (OMC.BMPMAP.get(src)==null) {
+			if (type.equals("fs")) 
+				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(src));
+			else
+				OMC.BMPMAP.put(src, BitmapFactory.decodeResource(OMC.RES, OMC.RES.getIdentifier(src, "drawable", "com.sunnykwong.omc")));
+		}
+		return OMC.BMPMAP.get(src);
+	}
+
+	public static void purgeTypefaceCache(){
+		Iterator<Entry<String,Typeface>> i = OMC.TYPEFACEMAP.entrySet().iterator();
+		while (i.hasNext()) {
+			Entry<String,Typeface> entry = i.next();
+			entry.setValue(null);
+			OMC.TYPEFACEMAP.remove(entry.getKey());
+		}
+		OMC.TYPEFACEMAP.clear();
+	}
+	
+	public static void purgeBitmapCache(){
+		Iterator<Entry<String,Bitmap>> i = OMC.BMPMAP.entrySet().iterator();
+		while (i.hasNext()) {
+			Entry<String,Bitmap> entry = i.next();
+			entry.getValue().recycle();
+			entry.setValue(null);
+			OMC.BMPMAP.remove(entry.getKey());
+		}
+		OMC.BMPMAP.clear();
 	}
 	
     @Override
