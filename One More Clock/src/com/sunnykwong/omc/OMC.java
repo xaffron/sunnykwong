@@ -247,7 +247,6 @@ public class OMC extends Application {
 		while (i.hasNext()) {
 			Entry<String,Typeface> entry = i.next();
 			entry.setValue(null);
-			OMC.TYPEFACEMAP.remove(entry.getKey());
 		}
 		OMC.TYPEFACEMAP.clear();
 	}
@@ -258,7 +257,6 @@ public class OMC extends Application {
 			Entry<String,Bitmap> entry = i.next();
 			entry.getValue().recycle();
 			entry.setValue(null);
-			OMC.BMPMAP.remove(entry.getKey());
 		}
 		OMC.BMPMAP.clear();
 	}

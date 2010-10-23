@@ -270,7 +270,6 @@ public class OMCWidgetDrawEngine {
 		OMC.PT1.reset();
 		OMC.PT1.setAntiAlias(true);
 		OMC.PT1.setColor(Color.BLACK);
-		System.out.println(OMC.getBitmap(OMC.LAYERATTRIBS.getString(1), OMC.LAYERATTRIBS.getString(2)).getHeight());
 
     	// theme-specific tweaks.
 		OMCWidgetDrawEngine.layerThemeTweaks(context, iLayerID, sTheme, aWI);
