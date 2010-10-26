@@ -420,6 +420,7 @@ public class OMCWidgetDrawEngine {
         	PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
             rv.setOnClickPendingIntent(R.id.omcIV, pi);
         } else {
+        	if (OMC.DEBUG) Log.i("OMCWidget","INTENT " + OMC.PREFS.getString("URI"+appWidgetId, "")) ;
         	try {
         	Intent intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
         	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
