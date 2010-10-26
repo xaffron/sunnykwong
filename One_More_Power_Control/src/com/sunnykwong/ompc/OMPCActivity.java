@@ -1,5 +1,6 @@
 package com.sunnykwong.ompc;
 
+
 import android.app.Activity;
 import android.view.WindowManager.LayoutParams;
 import android.app.PendingIntent;
@@ -15,65 +16,112 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.view.MotionEvent;
 import android.widget.AbsoluteLayout;
+import android.content.ComponentName;
 
+public class OMPCActivity extends Activity implements View.OnClickListener, View.OnTouchListener, View.OnLongClickListener {
 
-public class OMPCActivity extends Activity implements View.OnClickListener, View.OnTouchListener {
-
-	ImageButton mBTButton, mWIFIButton, mConfButton;
-	BluetoothAdapter mBTA = BluetoothAdapter.getDefaultAdapter();
-	WifiManager mWFA; 
+	ImageButton mBTButton, mWIFIButton, mAlarmButton, mConfButton;
+	View mWholePanel;
+	static BluetoothAdapter BTA = BluetoothAdapter.getDefaultAdapter();;
+	static WifiManager WFA; 
 	int appWidgetId;
 	static int X, Y;
+	static boolean bHELD;
 //	Intent mBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-
 	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
-    	getWindow().setWindowAnimations(android.R.style.Animation_Dialog);
+    	getWindow().setWindowAnimations(android.R.style.Animation_Toast);
 
-    	X= getPreferences(MODE_PRIVATE).getInt("X", 200);
-    	Y= getPreferences(MODE_PRIVATE).getInt("Y", 200);
+    	OMPCActivity.bHELD = false;
+    	
+    	OMPCActivity.X= getPreferences(MODE_PRIVATE).getInt("X", 1);
+    	OMPCActivity.Y= getPreferences(MODE_PRIVATE).getInt("Y", 200);
+    	
     	
     	if (getIntent().getData() == null)
 			appWidgetId=-999;
 		else
 			appWidgetId = Integer.parseInt(getIntent().getData().getSchemeSpecificPart());
 
-        mWFA = (WifiManager)getSystemService(Context.WIFI_SERVICE);
-        
-        setContentView(R.layout.main);
-    	(this.findViewById(R.id.LinearLayout01)).setLayoutParams(new AbsoluteLayout.LayoutParams(AbsoluteLayout.LayoutParams.WRAP_CONTENT,AbsoluteLayout.LayoutParams.WRAP_CONTENT,X, Y ));
+    	setContentView(R.layout.main);
+    	(this.findViewById(R.id.OMPCPanel)).setLayoutParams(new AbsoluteLayout.LayoutParams(AbsoluteLayout.LayoutParams.WRAP_CONTENT,AbsoluteLayout.LayoutParams.WRAP_CONTENT,OMPCActivity.X, OMPCActivity.Y ));
         (this.findViewById(R.id.toplevel)).requestLayout();        
+        
+        mBTButton = (ImageButton)OMPCActivity.this.findViewById(R.id.Button01);    
+    	mBTButton.setOnClickListener(OMPCActivity.this);
 
-        mBTButton = (ImageButton)this.findViewById(R.id.Button01);    
-        if (mBTA!=null) {
-        	mBTButton.setOnClickListener(this);
-        	mBTButton.setOnTouchListener(this);
-        	mBTButton.setBackgroundColor(mBTA.isEnabled()? Color.GREEN:Color.RED); 
-        } else mBTButton.setEnabled(false);
+    	mWIFIButton = (ImageButton)OMPCActivity.this.findViewById(R.id.Button02);    
+        mWIFIButton.setOnClickListener(OMPCActivity.this);
 
-        mWIFIButton = (ImageButton)this.findViewById(R.id.Button02);    
-        mWIFIButton.setOnClickListener(this);
-        mWIFIButton.setBackgroundColor(mWFA.isWifiEnabled()? Color.GREEN:Color.RED);
+    	mAlarmButton = (ImageButton)OMPCActivity.this.findViewById(R.id.Button02a);    
+        mAlarmButton.setOnClickListener(OMPCActivity.this);
 
-        mConfButton = (ImageButton)this.findViewById(R.id.Button03);    
-        mConfButton.setOnClickListener(this);
-        (this.findViewById(R.id.toplevel)).setOnClickListener(this);
+        mConfButton = (ImageButton)OMPCActivity.this.findViewById(R.id.Button03);    
+        mConfButton.setOnClickListener(OMPCActivity.this);
+
+        
+        mWholePanel = (View)OMPCActivity.this.findViewById(R.id.OMPCPanel);
+        mWholePanel.setOnLongClickListener(OMPCActivity.this);
+        mWholePanel.setOnTouchListener(OMPCActivity.this);
+        ((View)OMPCActivity.this.findViewById(R.id.toplevel)).setOnClickListener(this);
+
+    	Thread t = new Thread () {
+    		public void run() {
+    			if (OMPCActivity.WFA == null) OMPCActivity.WFA = (WifiManager)getSystemService(Context.WIFI_SERVICE);
+    	        
+    	        mBTButton = (ImageButton)OMPCActivity.this.findViewById(R.id.Button01);    
+    	        if (OMPCActivity.BTA!=null) {
+    	        	mBTButton.setBackgroundResource(OMPCActivity.BTA.isEnabled()? R.drawable.icon_on:R.drawable.icon_off); 
+    	        } else mBTButton.setEnabled(false);
+    	        mWIFIButton.setBackgroundResource(OMPCActivity.WFA.isWifiEnabled()? R.drawable.icon_on:R.drawable.icon_off); 
+
+    		}
+      	   
+    	};
+		t.start();
+
     }
     @Override
     public void onClick(View v) {
     	// TODO Auto-generated method stub
     	if (v == mBTButton) {
     		System.out.println("BT clicked");
-    		if (mBTA.isEnabled()) mBTA.disable();
-    		else mBTA.enable();
+        	Thread t = new Thread () {
+        		public void run() {
+            		if (OMPCActivity.BTA.isEnabled()) OMPCActivity.BTA.disable();
+            		else OMPCActivity.BTA.enable();
+        		}
+          	   
+        	};
+    		t.start();
+
     	}
     	if (v == mWIFIButton) {
     		System.out.println("WIFI clicked");
-    		if (mWFA.isWifiEnabled()) mWFA.setWifiEnabled(false);
-    		else mWFA.setWifiEnabled(true);
+        	Thread t = new Thread () {
+        		public void run() {
+            		if (OMPCActivity.WFA.isWifiEnabled()) OMPCActivity.WFA.setWifiEnabled(false);
+            		else OMPCActivity.WFA.setWifiEnabled(true);
+        		}
+          	   
+        	};
+    		t.start();
+
+    	}
+    	if (v == mAlarmButton) {
+    		System.out.println("Alarm clicked");
+        	try {
+        		Intent intent = Intent.parseUri("#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;component=com.android.deskclock/.DeskClock;end", 0);
+            	PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
+            	pi.send();
+            } catch (Exception e) {
+                	System.out.println("Error firing alarm activity");
+            		e.printStackTrace();
+            }
+
     	}
     	if (v == mConfButton) {
     		System.out.println("Config clicked");
@@ -95,39 +143,39 @@ public class OMPCActivity extends Activity implements View.OnClickListener, View
     	finish();
 
     }
-
     
+    @Override
+    public boolean onLongClick(View arg0) {
+		System.out.println("longclicked");
+    	OMPCActivity.bHELD = true;
+    	return true;
+    }
+   
     // events when touching the screen
  
   
     @Override
     public boolean onTouch(View v, MotionEvent event) {
          int eventaction = event.getAction();
-         int X = (int)event.getRawX()-30;
-         int Y = (int)event.getRawY()-30;
- 
+         OMPCActivity.X = 0;//(int)event.getRawX()-30;
+         OMPCActivity.Y = (int)event.getRawY()-30;
+ 		System.out.println("ontouch");
+         if (!OMPCActivity.bHELD) return false;
          switch (eventaction) {
-//         case MotionEvent.ACTION_DOWN: // touch down so check if the finger is on a ball
-//              break;
-        case MotionEvent.ACTION_MOVE:   // touch drag with the ball
-        	System.out.println("action move x " + X + " y " + Y);
+         case MotionEvent.ACTION_MOVE:   // touch drag with the ball
+        	System.out.println("action move x " + OMPCActivity.X + " y " + OMPCActivity.Y);
   
-        	(this.findViewById(R.id.LinearLayout01)).setLayoutParams(new AbsoluteLayout.LayoutParams(AbsoluteLayout.LayoutParams.WRAP_CONTENT,AbsoluteLayout.LayoutParams.WRAP_CONTENT,X, Y ));
-        	// move the balls the same as the finger
- 
-  
-        	
-//             colorballs[balID-1].setX(X-25);
-//             colorballs[balID-1].setY(Y-25);
+        	(this.findViewById(R.id.OMPCPanel)).setLayoutParams(new AbsoluteLayout.LayoutParams(AbsoluteLayout.LayoutParams.WRAP_CONTENT,AbsoluteLayout.LayoutParams.WRAP_CONTENT,OMPCActivity.X, OMPCActivity.Y ));
+
              break;
         case MotionEvent.ACTION_UP:
                 // touch drop - just do things here after dropping
-        	(this.findViewById(R.id.LinearLayout01)).setLayoutParams(new AbsoluteLayout.LayoutParams(AbsoluteLayout.LayoutParams.WRAP_CONTENT,AbsoluteLayout.LayoutParams.WRAP_CONTENT,X, Y ));
+        	(this.findViewById(R.id.OMPCPanel)).setLayoutParams(new AbsoluteLayout.LayoutParams(AbsoluteLayout.LayoutParams.WRAP_CONTENT,AbsoluteLayout.LayoutParams.WRAP_CONTENT,OMPCActivity.X, OMPCActivity.Y ));
         	getPreferences(MODE_PRIVATE).edit()
-        		.putInt("X", X)
-        		.putInt("Y", Y)
+        		.putInt("X", OMPCActivity.X)
+        		.putInt("Y", OMPCActivity.Y)
         		.commit();
-
+        	OMPCActivity.bHELD =false;
             break;
          }
          // redraw the canvas
@@ -138,8 +186,8 @@ public class OMPCActivity extends Activity implements View.OnClickListener, View
     @Override
     protected void onDestroy() {
     	// TODO Auto-generated method stub
-    	if (mWFA!=null) {
-    		mWFA = null;
+    	if (OMPCActivity.WFA!=null) {
+    		OMPCActivity.WFA = null;
     	}
     	super.onDestroy();
     }
