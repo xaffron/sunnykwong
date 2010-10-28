@@ -45,6 +45,8 @@ public class OMC extends Application {
     static NotificationManager NM;
     static Resources RES;
     
+    static OMCImportedTheme IMPORTEDTHEME;
+    
     static HashMap<String, Typeface> TYPEFACEMAP;
     static HashMap<String, Bitmap> BMPMAP;
 	
@@ -52,8 +54,7 @@ public class OMC extends Application {
 	static OMCAlarmReceiver aRC;
     static boolean SCREENON = true; 	// Is the screen on?
     static boolean FG = false;
-    
-	static TypedArray LAYERATTRIBS;
+    static OMCTypedArray LAYERATTRIBS;
 	static String[] LAYERLIST, TALKBACKS; 
 
 	static final ComponentName WIDGET4x2CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget4x2");
@@ -74,7 +75,7 @@ public class OMC extends Application {
 	static final int SVCNOTIFICATIONID = 1; // Notification ID for the one and only message window we'll show
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
-    static Intent FGINTENT, BGINTENT, SVCSTARTINTENT, WIDGETREFRESHINTENT, CREDITSINTENT, PREFSINTENT;
+    static Intent FGINTENT, BGINTENT, SVCSTARTINTENT, WIDGETREFRESHINTENT, CREDITSINTENT, PREFSINTENT, IMPORTTHEMEINTENT;
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
     static IntentFilter PREFSINTENTFILT;
     static Notification FGNOTIFICIATION;
@@ -92,6 +93,8 @@ public class OMC extends Application {
 	public void onCreate() {
 		super.onCreate();
 
+		OMC.IMPORTEDTHEME=null;
+		
 		OMC.BUFFER= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
 		OMC.CANVAS = new Canvas(OMC.BUFFER);
 		OMC.PT1 = new Paint();
@@ -108,6 +111,7 @@ public class OMC extends Application {
 		OMC.WIDGETREFRESHINTENT = new Intent("com.sunnykwong.omc.WIDGET_REFRESH");
 		OMC.CREDITSINTENT = new Intent(this, OMCCreditsActivity.class);
 		OMC.PREFSINTENT = new Intent(this, OMCPrefActivity.class);
+		OMC.IMPORTTHEMEINTENT = new Intent(this, OMCThemeImportActivity.class);
 		OMC.PREFSPENDING = PendingIntent.getActivity(this, 0, new Intent(this, OMCPrefActivity.class), 0);
 		OMC.PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
 		OMC.PREFSINTENTFILT.addDataScheme("omc");
@@ -267,6 +271,5 @@ public class OMC extends Application {
         OMC.PREFS.edit().commit();
         super.onTerminate();
     }
-
 
 }

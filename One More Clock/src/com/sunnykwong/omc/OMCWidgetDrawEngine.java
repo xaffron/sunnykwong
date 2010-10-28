@@ -285,7 +285,12 @@ public class OMCWidgetDrawEngine {
 	// Quote layer.  Set the Text to be shown before passing to drawTextLayer.
 	static void drawQuoteLayer(final Context context, final int iLayerID, final String sTheme, final int aWI) {
 
-		OMC.TALKBACKS = context.getResources().getStringArray(context.getResources().getIdentifier(OMC.LAYERATTRIBS.getString(13), "array", "com.sunnykwong.omc"));
+		if (sTheme.startsWith("EXTERNAL")) {
+			OMC.TALKBACKS = new String[50];
+			OMC.IMPORTEDTHEME.arrays.get(OMC.LAYERATTRIBS.getString(13)).toArray(OMC.TALKBACKS);
+		} else {
+			OMC.TALKBACKS = context.getResources().getStringArray(context.getResources().getIdentifier(OMC.LAYERATTRIBS.getString(13), "array", "com.sunnykwong.omc"));
+		}
 		OMC.TXTBUF = OMC.TALKBACKS[OMC.RND.nextInt(OMC.TALKBACKS.length)];
 		OMCWidgetDrawEngine.drawTextLayer(context, iLayerID, sTheme, aWI);
 		OMC.TALKBACKS=null;
@@ -352,23 +357,40 @@ public class OMCWidgetDrawEngine {
 
 		String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME);
 
-		//		Set LAF based on prefs
-		OMC.LAYERLIST = context.getResources().getStringArray(context.getResources().getIdentifier(sTheme, "array", "com.sunnykwong.omc"));
+		if (sTheme.startsWith("EXTERNAL") && OMC.IMPORTEDTHEME != null) {
+  			 OMC.LAYERLIST = new String[50];
+			 OMC.IMPORTEDTHEME.arrays.get(OMCImportedTheme.name).toArray(OMC.LAYERLIST);
+		} else if (sTheme.startsWith("EXTERNAL")) {
+			sTheme=OMC.DEFAULTTHEME;
+			OMC.LAYERLIST = context.getResources().getStringArray(context.getResources().getIdentifier(sTheme, "array", "com.sunnykwong.omc"));
+		} else {
+			//		Set LAF based on prefs
+			OMC.LAYERLIST = context.getResources().getStringArray(context.getResources().getIdentifier(sTheme, "array", "com.sunnykwong.omc"));
+		}
 		for (String layer:OMC.LAYERLIST) {
 			// Clear the text buffer first.
 			OMC.TXTBUF="";
 
 			String sType = layer.substring(0,5);
-			int iLayerID = context.getResources().getIdentifier(layer.substring(6), "array", "com.sunnykwong.omc");
 
-			OMC.LAYERATTRIBS = context.getResources().obtainTypedArray(iLayerID);
+			int iLayerID=0;
+			
+			if (sTheme.startsWith("EXTERNAL")) {
+				OMC.LAYERATTRIBS = new OMCTypedArray(OMC.IMPORTEDTHEME.arrays.get(layer.substring(6)));
+			} else {
+				//		Set LAF based on prefs
+				iLayerID = context.getResources().getIdentifier(layer.substring(6), "array", "com.sunnykwong.omc");
+				OMC.LAYERATTRIBS = new OMCTypedArray(context.getResources().obtainTypedArray(iLayerID));
+			}
+
 			if (OMC.LAYERATTRIBS.getBoolean(0, true)){
 				if (sType.equals("text ")) OMCWidgetDrawEngine.drawTextLayer(context, iLayerID, sTheme, aWI);
 				else if (sType.equals("panel"))OMCWidgetDrawEngine.drawPanelLayer(context, iLayerID, sTheme, aWI);
 				else if (sType.equals("flare"))OMCWidgetDrawEngine.drawFlareLayer(context, iLayerID, sTheme, aWI);
-				else if (sType.equals("quote"))OMCWidgetDrawEngine.drawQuoteLayer(context, iLayerID, sTheme, aWI);
+				//else if (sType.equals("quote"))OMCWidgetDrawEngine.drawQuoteLayer(context, iLayerID, sTheme, aWI);
 				else if (sType.equals("image"))OMCWidgetDrawEngine.drawBitmapLayer(context, iLayerID, sTheme, aWI);
 			}
+			OMC.LAYERATTRIBS.recycle();
 		}
 	}
 	

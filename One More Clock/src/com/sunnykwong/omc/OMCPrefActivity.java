@@ -32,7 +32,7 @@ public class OMCPrefActivity extends PreferenceActivity {
         	OMC.getPrefs(appWidgetID);
         	OMC.PREFS.edit().putBoolean("widgetPersistence", OMC.FG);
         	addPreferencesFromResource(R.xml.omcprefs);
-
+        	
     		findPreference("bFourByTwo").setEnabled(false);
         } else {
             // If they gave us an intent without the widget id, just bail.
@@ -79,6 +79,9 @@ public class OMCPrefActivity extends PreferenceActivity {
     		Preference preference) {
     	if (preference == getPreferenceScreen().findPreference("widgetCredits")) {
     		startActivity(OMC.CREDITSINTENT);
+    	}
+    	if (preference == getPreferenceScreen().findPreference("loadThemeFile")) {
+    		startActivity(OMC.IMPORTTHEMEINTENT);
     	}
     	if (preference == getPreferenceScreen().findPreference("oTTL")) {
     		OMCPrefActivity.this.getPreferenceScreen().setEnabled(false);

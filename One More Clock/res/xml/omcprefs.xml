@@ -7,12 +7,11 @@
 			android:entries="@array/theme_options" 
 			android:entryValues="@array/theme_values" 
 			android:title="Widget Theme" 
-			android:dialogTitle="Please Choose a theme" 
 			android:enabled="true" 
 			android:summary="Change the way OMC looks" 
-			android:key="widgetTheme" android:selectable="true" android:defaultValue="@array/BokehBeauty">
+			android:key="widgetTheme" android:selectable="true" android:defaultValue="@array/BokehBeauty" android:dialogTitle="Choose a Preloaded Clock">
 		</ListPreference>
-		<CheckBoxPreference 
+		<Preference android:selectable="true" android:title="Import a Custom Theme" android:key="loadThemeFile" android:enabled="true"></Preference><CheckBoxPreference 
 			android:key="widget24HrClock" 
 			android:title="Use 24 Hour Clock" 
 			android:summary="23:59 instead of 11:59pm" 
@@ -20,6 +19,8 @@
 		</CheckBoxPreference>
 	<CheckBoxPreference android:key="widgetLeadingZero" android:summary="04:23 instead of 4:23" android:enabled="true" android:selectable="true" android:title="Leading Zero in Hours"></CheckBoxPreference>
 <Preference android:key="oTTL" android:title="Tap Me to Launch..." android:summary="WARNING:  Setting this option will lock this clock\n(you cannot customize it again unless you create another clock)"></Preference>
+
+
 </PreferenceCategory>
 	<PreferenceCategory android:key="Persistence" android:title="For all clocks:">
 		<CheckBoxPreference 
