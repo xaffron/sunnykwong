@@ -11,8 +11,9 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.widget.Toast;
+import android.preference.Preference.OnPreferenceChangeListener;	
 
-public class OMCPrefActivity extends PreferenceActivity { 
+public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceChangeListener{ 
     /** Called when the activity is first created. */
     static int appWidgetID;
     static AlertDialog mAD;
@@ -30,9 +31,9 @@ public class OMCPrefActivity extends PreferenceActivity {
 		if (appWidgetID >= 0) {
 			if (OMC.DEBUG) Log.i("OMCPref","Called by Widget " + appWidgetID);
         	OMC.getPrefs(appWidgetID);
-        	OMC.PREFS.edit().putBoolean("widgetPersistence", OMC.FG);
+        	OMC.PREFS.edit().putBoolean("widgetPersistence", OMC.FG).commit();
         	addPreferencesFromResource(R.xml.omcprefs);
-        	
+        	findPreference("widgetTheme").setOnPreferenceChangeListener(this);
     		findPreference("bFourByTwo").setEnabled(false);
         } else {
             // If they gave us an intent without the widget id, just bail.
@@ -129,6 +130,14 @@ public class OMCPrefActivity extends PreferenceActivity {
     	super.onPause();
     }
 
+    // If user sets a seeded theme, set external to false
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+    	if (OMC.DEBUG) Log.i("OMCPref","Setting External to false");
+		OMC.PREFS.edit().putBoolean("external", false).commit();
+    	return true;
+    }
+    
     @Override
     public void onDestroy() {
 		if (appWidgetID >= 0) {

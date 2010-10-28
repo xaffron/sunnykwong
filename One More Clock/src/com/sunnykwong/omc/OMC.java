@@ -4,6 +4,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Map.Entry;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.File;
 
 import android.app.AlarmManager;
 import android.app.Application;
@@ -45,10 +52,9 @@ public class OMC extends Application {
     static NotificationManager NM;
     static Resources RES;
     
-    static OMCImportedTheme IMPORTEDTHEME;
-    
     static HashMap<String, Typeface> TYPEFACEMAP;
     static HashMap<String, Bitmap> BMPMAP;
+    static HashMap<String, OMCImportedTheme> IMPORTEDTHEMEMAP;
 	
     static OMCConfigReceiver cRC;
 	static OMCAlarmReceiver aRC;
@@ -93,8 +99,6 @@ public class OMC extends Application {
 	public void onCreate() {
 		super.onCreate();
 
-		OMC.IMPORTEDTHEME=null;
-		
 		OMC.BUFFER= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
 		OMC.CANVAS = new Canvas(OMC.BUFFER);
 		OMC.PT1 = new Paint();
@@ -137,6 +141,7 @@ public class OMC extends Application {
 		
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(6);
 		OMC.BMPMAP = new HashMap<String, Bitmap>(3);
+		OMC.IMPORTEDTHEMEMAP=new HashMap<String, OMCImportedTheme>(3);
 		
 		OMC.LAYERLIST = null;
 		OMC.LAYERATTRIBS = null;
@@ -196,17 +201,10 @@ public class OMC extends Application {
 		}
     }
 
-	public static void initPrefs(int aWI) {
-		
-		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)))
-		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true)))
-		.putString("URI"+aWI, OMC.PREFS.getString("URI"+aWI, ""))
-		.commit();
-	}
- 
 	public static void setPrefs(int aWI) {
 		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
+		.putBoolean("external"+aWI, OMC.PREFS.getBoolean("external", false))
 		.putString("URI"+aWI, OMC.PREFS.getString("URI", ""))
 		.commit();
 	}
@@ -214,6 +212,7 @@ public class OMC extends Application {
 	public static void getPrefs(int aWI) {
     	OMC.PREFS.edit().putString("widgetTheme", OMC.PREFS.getString("widgetTheme"+aWI, OMC.DEFAULTTHEME))
 		.putBoolean("widget24HrClock", OMC.PREFS.getBoolean("widget24HrClock"+aWI, true))
+		.putBoolean("external", OMC.PREFS.getBoolean("external"+aWI, false))
 		.putString("URI", OMC.PREFS.getString("URI"+aWI, ""))
 		.commit();
 	}
@@ -263,6 +262,40 @@ public class OMC extends Application {
 			entry.setValue(null);
 		}
 		OMC.BMPMAP.clear();
+	}
+	
+	public static OMCImportedTheme getImportedTheme(Context context, String nm){
+		System.out.println("list of private files");
+		for (String s:context.fileList()) {
+			System.out.println(s);
+		}
+		if (OMC.IMPORTEDTHEMEMAP.containsKey(nm)){ 
+			System.out.println(nm + " retrieved from memory.");
+			return OMC.IMPORTEDTHEMEMAP.get(nm);
+		}
+		try {
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(context.getCacheDir().getAbsolutePath() + nm + ".omc"));
+			OMCImportedTheme oResult = (OMCImportedTheme)in.readObject();
+			OMC.IMPORTEDTHEMEMAP.put(nm, oResult);
+			System.out.println(nm + " reloaded from cache.");
+			return oResult;
+		} catch (Exception e) {
+			System.out.println("error reloading from cache.");
+		
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static void saveImportedThemeToCache(Context context, String nm) {
+		try {
+			System.out.println(nm + " saving to cache.");
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(context.getCacheDir().getAbsolutePath() + nm + ".omc"));
+			out.writeObject(OMC.IMPORTEDTHEMEMAP.get(nm));
+		} catch (Exception e) {
+			System.out.println("error saving to cache.");
+			e.printStackTrace();
+		}
 	}
 	
     @Override

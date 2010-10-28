@@ -1,6 +1,7 @@
 package com.sunnykwong.omc;
 
 import android.util.Log;
+import android.widget.Toast;
 import android.text.format.Time;
 import android.graphics.Bitmap;
 
@@ -17,23 +18,18 @@ import java.util.ArrayList;
 import java.lang.StringBuilder;
 
 public class OMCXMLThemeParser extends DefaultHandler {
-    static public final long serialVersionUID = 0l;
 	public Stack<String[]> tree;
-	public HashMap<String,ArrayList<String>> arrays;
-	public HashMap<String,Bitmap> bitmaps;
 	public StringBuilder  sb;
-	public static final String DELIMITERS = " .,;-";
-	public static String name;
+	public OMCImportedTheme newTheme;
+	static public boolean valid;
+	static public String latestThemeName;
 	
-	public OMCXMLThemeParser () {
-		super();	
-		OMCXMLThemeParser.name = OMCThemeImportActivity.CURRSELECTEDTHEME;
+	public OMCXMLThemeParser (String nm) {
+		super();
+		OMCXMLThemeParser.valid=false;
+		newTheme = new OMCImportedTheme();
 		if (tree == null) tree = new Stack<String[]>();
 		tree.clear();
-		if (arrays == null) arrays = new HashMap<String,ArrayList<String>>();
-		arrays.clear();
-		if (bitmaps == null) bitmaps = new HashMap<String,Bitmap>();
-		bitmaps.clear();
 		if (sb == null) sb = new StringBuilder();
 		sb.setLength(0);
 	}
@@ -55,12 +51,11 @@ public class OMCXMLThemeParser extends DefaultHandler {
 	@Override
 	public void startElement(String namespaceURI, String localName,
 			String qName, Attributes atts) {
-		System.out.println(localName);
 		tree.push(new String[] {localName, atts.getValue("name")});
 		
 //		If this is an array element, then start building the hashmap
 		if (localName.equals("array") || localName.equals("string-array")) {
-			arrays.put(atts.getValue("name"), new ArrayList<String>(3));
+			newTheme.arrays.put(atts.getValue("name"), new ArrayList<String>(3));
 		}
 
 	}
@@ -72,14 +67,14 @@ public class OMCXMLThemeParser extends DefaultHandler {
 		if (tree.peek()[0].equals("item")) {
 			//	Pop the stack.
 			tree.pop();
-			arrays.get(tree.peek()[1]).add(sb.toString());
+			newTheme.arrays.get(tree.peek()[1]).add(sb.toString());
 			sb.setLength(0);
 		}
 //		If it's a results tag, post-process the data.
 		if (tree.peek()[0].equals("resources")) {
 			if (OMC.DEBUG) {
 				Log.i("ELEMENT", "---BEGINELEMENT---");
-				Iterator<Map.Entry<String, ArrayList<String>>> i = arrays.entrySet().iterator();
+				Iterator<Map.Entry<String, ArrayList<String>>> i = newTheme.arrays.entrySet().iterator();
 				while (i.hasNext()) {
 					Map.Entry<String,ArrayList<String>> e = (Map.Entry<String, ArrayList<String>>) i.next();
 					Log.i("ELEMENT", e.getKey() + "-->");
@@ -112,27 +107,63 @@ public class OMCXMLThemeParser extends DefaultHandler {
     public void endDocument ()
     {
 		System.out.println("Doc done.");
-		if (OMC.DEBUG) {
-			Log.i("ELEMENT", "---BEGINELEMENT---");
-			Iterator<Map.Entry<String, ArrayList<String>>> i = arrays.entrySet().iterator();
-			while (i.hasNext()) {
-				Map.Entry<String,ArrayList<String>> e = (Map.Entry<String, ArrayList<String>>) i.next();
-				Log.i("ELEMENT", e.getKey() + "-->");
-				Iterator<String> j = e.getValue().iterator();
-				while (j.hasNext()) {
-					Log.i("ELEMENT","   - " + j.next());
+		newTheme.name = null;
+		
+		//Assume valid until proven otherwise.
+		newTheme.valid = true;
+		
+		// First, if theme does not have a name or desc, not valid
+		if (!newTheme.arrays.containsKey("theme_options")) newTheme.valid=false;
+		if (!newTheme.arrays.containsKey("theme_values")) {
+			newTheme.valid=false;
+		} else {
+			newTheme.name = newTheme.arrays.get("theme_values").get(0);
+		}
+		
+		// If the theme does not have layer specification, not valid
+		if (!newTheme.arrays.containsKey(newTheme.arrays.get("theme_values").get(0))) newTheme.valid=false;
+		
+		// Check layer/talk references
+		Iterator<String> k = newTheme.arrays.keySet().iterator();
+		while (k.hasNext()){
+			String sKey = k.next();
+			//If any of the layers do not exist in the same control file, not valid
+			if (sKey.equals(newTheme.name)){
+				for (Object oTemp:newTheme.arrays.get(sKey).toArray()) {
+					String sTemp = (String)oTemp;
+					System.out.println(sTemp.substring(6));
+					if (!newTheme.arrays.containsKey(sTemp.substring(6))) {
+						if (OMC.DEBUG) Log.i("OMCXML","layer invalid");
+						newTheme.valid=false;
+						break;
+					}
+					if (sTemp.startsWith("quote:")) {
+						if (!newTheme.arrays.containsKey(newTheme.arrays.get(sTemp.substring(6)).get(13))) {
+							if (OMC.DEBUG) Log.i("OMCXML","talkback invalid");
+							newTheme.valid=false;
+							break;
+						}
+					}
 				}
-				Log.i("ELEMENT", "<-- DONE -->");
-				//	Pop the stack.
-				tree.pop();
 			}
 		}
-    	//OK we're done parsing the whole document.
+		
+		if (newTheme.valid) {
+			OMC.IMPORTEDTHEMEMAP.put(newTheme.name, newTheme);
+			OMCXMLThemeParser.latestThemeName = newTheme.name;
+		}
+
+		OMCXMLThemeParser.valid = newTheme.valid;
+		
+		
+		//OK we're done parsing the whole document.
     	//Since the parse() method is synchronous, we don't need to do anything - just basic cleanup.
     	tree.clear();
     	tree = null;
     	sb.setLength(0);
     	sb = null;
+		newTheme=null;
+		
     }
 	
 }

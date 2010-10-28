@@ -68,7 +68,7 @@ public class ClockWidget3x1 extends AppWidgetProvider {
 
 		final int N = appWidgetIds.length;
 		for (int i=0; i<N; i++) {
-		  	OMC.initPrefs(appWidgetIds[i]);
+		  	OMC.setPrefs(appWidgetIds[i]);
 		  	OMCWidgetDrawEngine.updateAppWidget(context, aWM, appWidgetIds[i], 0.75f, 0.7f, 15,15);
 		}
 

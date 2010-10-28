@@ -1,5 +1,7 @@
 package com.sunnykwong.omc;
 
+import java.util.ArrayList;
+
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
@@ -11,6 +13,7 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 import android.graphics.Matrix;
 import android.content.ComponentName;
 
@@ -18,7 +21,6 @@ public class OMCWidgetDrawEngine {
 	// This is where the theme-specific tweaks (regardless of layer) are processed.
 	// Tweaks = hacks, but at least all the hacks are in one block of code.
 	static void layerThemeTweaks(final Context context, final int iLayerID, final String sTheme, final int aWI) {
-		
 		switch (iLayerID) {
 		case R.array.BBClock:
     		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
@@ -284,10 +286,11 @@ public class OMCWidgetDrawEngine {
 
 	// Quote layer.  Set the Text to be shown before passing to drawTextLayer.
 	static void drawQuoteLayer(final Context context, final int iLayerID, final String sTheme, final int aWI) {
-
-		if (sTheme.startsWith("EXTERNAL")) {
-			OMC.TALKBACKS = new String[50];
-			OMC.IMPORTEDTHEME.arrays.get(OMC.LAYERATTRIBS.getString(13)).toArray(OMC.TALKBACKS);
+		boolean bExternal = OMC.PREFS.getBoolean("external"+aWI,false);
+		if (bExternal) {
+			OMCImportedTheme oTheme = OMC.IMPORTEDTHEMEMAP.get(sTheme);
+			ArrayList<String> tempAL = oTheme.arrays.get(OMC.LAYERATTRIBS.getString(13));
+			OMC.TALKBACKS = tempAL.toArray(new String[tempAL.size()]);
 		} else {
 			OMC.TALKBACKS = context.getResources().getStringArray(context.getResources().getIdentifier(OMC.LAYERATTRIBS.getString(13), "array", "com.sunnykwong.omc"));
 		}
@@ -356,13 +359,20 @@ public class OMCWidgetDrawEngine {
 		OMC.BUFFER.eraseColor(Color.TRANSPARENT);
 
 		String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME);
+		boolean bExternal = OMC.PREFS.getBoolean("external"+aWI,false);
 
-		if (sTheme.startsWith("EXTERNAL") && OMC.IMPORTEDTHEME != null) {
-  			 OMC.LAYERLIST = new String[50];
-			 OMC.IMPORTEDTHEME.arrays.get(OMCImportedTheme.name).toArray(OMC.LAYERLIST);
-		} else if (sTheme.startsWith("EXTERNAL")) {
-			sTheme=OMC.DEFAULTTHEME;
-			OMC.LAYERLIST = context.getResources().getStringArray(context.getResources().getIdentifier(sTheme, "array", "com.sunnykwong.omc"));
+		if (bExternal) {
+			OMCImportedTheme oTheme = OMC.getImportedTheme(context, sTheme);
+			if (oTheme==null) {
+				Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
+				OMC.PREFS.edit()
+						.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
+						.putBoolean("external"+aWI,false)
+						.commit();
+				return;
+			}
+  			ArrayList<String> tempAL = oTheme.arrays.get(oTheme.name);
+  			OMC.LAYERLIST = tempAL.toArray(new String[tempAL.size()]);
 		} else {
 			//		Set LAF based on prefs
 			OMC.LAYERLIST = context.getResources().getStringArray(context.getResources().getIdentifier(sTheme, "array", "com.sunnykwong.omc"));
@@ -370,13 +380,24 @@ public class OMCWidgetDrawEngine {
 		for (String layer:OMC.LAYERLIST) {
 			// Clear the text buffer first.
 			OMC.TXTBUF="";
-
+			
 			String sType = layer.substring(0,5);
 
 			int iLayerID=0;
 			
-			if (sTheme.startsWith("EXTERNAL")) {
-				OMC.LAYERATTRIBS = new OMCTypedArray(OMC.IMPORTEDTHEME.arrays.get(layer.substring(6)));
+			if (bExternal) {
+				OMC.LAYERATTRIBS = new OMCTypedArray(OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(layer.substring(6)));
+				String sNowTime;
+				if (sType.equals("text ")){
+		    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
+		    			sNowTime = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%H:%M") : OMC.TIME.format("%k:%M");
+		    		} else {
+		    			sNowTime = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I:%M") : OMC.TIME.format("%l:%M");
+		    		}
+					OMC.TXTBUF = OMC.LAYERATTRIBS.getString(13).replaceAll("%TIME%", sNowTime);
+					OMC.TXTBUF = OMC.TXTBUF.replaceAll("%DATE%", OMC.TIME.format("%a %e %b"));
+
+				}
 			} else {
 				//		Set LAF based on prefs
 				iLayerID = context.getResources().getIdentifier(layer.substring(6), "array", "com.sunnykwong.omc");
@@ -387,7 +408,7 @@ public class OMCWidgetDrawEngine {
 				if (sType.equals("text ")) OMCWidgetDrawEngine.drawTextLayer(context, iLayerID, sTheme, aWI);
 				else if (sType.equals("panel"))OMCWidgetDrawEngine.drawPanelLayer(context, iLayerID, sTheme, aWI);
 				else if (sType.equals("flare"))OMCWidgetDrawEngine.drawFlareLayer(context, iLayerID, sTheme, aWI);
-				//else if (sType.equals("quote"))OMCWidgetDrawEngine.drawQuoteLayer(context, iLayerID, sTheme, aWI);
+				else if (sType.equals("quote"))OMCWidgetDrawEngine.drawQuoteLayer(context, iLayerID, sTheme, aWI);
 				else if (sType.equals("image"))OMCWidgetDrawEngine.drawBitmapLayer(context, iLayerID, sTheme, aWI);
 			}
 			OMC.LAYERATTRIBS.recycle();

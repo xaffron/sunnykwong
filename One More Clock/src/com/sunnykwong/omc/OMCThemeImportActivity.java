@@ -1,25 +1,9 @@
 package com.sunnykwong.omc;
 
-import java.io.BufferedReader;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
 import java.io.FileReader;
 import java.io.File;
-import java.io.FileFilter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Locale;
-import java.lang.StringBuilder;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
@@ -34,26 +18,18 @@ import android.os.Bundle;
 import android.widget.Toast;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Handler;
-import android.speech.tts.TextToSpeech;
-import android.speech.tts.TextToSpeech.OnInitListener;
-import android.text.format.Time;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.os.Environment;
-import android.graphics.drawable.BitmapDrawable;
 
 public class OMCThemeImportActivity extends Activity {
 
@@ -77,9 +53,20 @@ public class OMCThemeImportActivity extends Activity {
 	final Runnable mResult = new Runnable() {
 		public void run() {
 		// Back from XML importing...
-        	Toast.makeText(OMCThemeImportActivity.this, OMC.IMPORTEDTHEME.arrays.get("theme_options").get(0) + " theme applied.", Toast.LENGTH_LONG).show();
-        	OMC.PREFS.edit().putString("widgetTheme", "EXTERNAL: " + OMCThemeImportActivity.CURRSELECTEDTHEME)
-    		.commit();
+			if (OMCXMLThemeParser.valid) {
+	        	Toast.makeText(OMCThemeImportActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCXMLThemeParser.latestThemeName).arrays.get("theme_options").get(0) + " theme imported.", Toast.LENGTH_SHORT).show();
+	        	OMC.PREFS.edit()
+			        	.putString("widgetTheme", OMCXMLThemeParser.latestThemeName)
+			        	.putBoolean("external", true)
+			    		.commit();
+	        	OMC.saveImportedThemeToCache(OMCThemeImportActivity.this,OMCXMLThemeParser.latestThemeName);
+	        	Toast.makeText(OMCThemeImportActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCXMLThemeParser.latestThemeName).arrays.get("theme_options").get(0) + " theme cached and applied.", Toast.LENGTH_SHORT).show();
+			} else {
+	        	Toast.makeText(OMCThemeImportActivity.this, OMCThemeImportActivity.CURRSELECTEDTHEME + " theme did not pass validity checks!\nPlease check with the author of your theme.\nImport cancelled.", Toast.LENGTH_SHORT).show();
+			}
+
+			
+        	finish();
 		}
 	};
 	
@@ -170,130 +157,29 @@ public class OMCThemeImportActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if (OMCThemeImportActivity.CURRSELECTEDTHEME!=null) importTheme();
+				if (OMCThemeImportActivity.CURRSELECTEDTHEME!=null) {
+					if (!OMC.IMPORTEDTHEMEMAP.containsKey(OMCThemeImportActivity.CURRSELECTEDTHEME)) importTheme();
+					else {
+						
+						Toast.makeText(OMCThemeImportActivity.this, 
+								"Theme already imported and cached.\n" + 
+								OMC.IMPORTEDTHEMEMAP.get(
+										OMCThemeImportActivity.CURRSELECTEDTHEME).arrays
+										.get("theme_options").get(0) + " theme applied."
+										, Toast.LENGTH_SHORT).show();
+						
+			        	OMC.PREFS.edit()
+			        	.putString("widgetTheme", OMCXMLThemeParser.latestThemeName)
+			        	.putBoolean("external", true)
+			    		.commit();
+						
+						finish();
+					}
+
+				}
 			}
 		});
 
-//	public void processXMLResults() {
-//
-//		Comparator<HashMap<String,String>> c = new Comparator<HashMap<String,String>>() {
-//    		Location tmpLocn1 = new Location("");
-//    		Location tmpLocn2 = new Location("");
-//    		@Override
-//
-//    		public int compare(HashMap<String,String> hm1, HashMap<String,String> hm2) {
-//    			tmpLocn1.setLatitude(Double.parseDouble(hm1.get("Latitude")));
-//    			tmpLocn1.setLongitude(Double.parseDouble(hm1.get("Longitude")));
-//    			tmpLocn2.setLatitude(Double.parseDouble(hm2.get("Latitude")));
-//    			tmpLocn2.setLongitude(Double.parseDouble(hm1.get("Longitude")));
-//
-////    			//Simple logic - if there's an accident, always report first
-////    			if (hm1.get("Title").contains("cident") || hm1.get("Title").contains("isabled vehicle")) {
-////    				return -1;
-////    			} else if (hm2.get("Title").contains("cident") || hm2.get("Title").contains("isabled vehicle")){
-////    				return 1;
-////    			}
-////    			//Otherwise, report by severity and distance to phone
-////    			else {
-////    				return Math.round(Integer.parseInt(hm1.get("Severity"))*-100000 + TMActivity.CURRLOCN.distanceTo(tmpLocn1)
-////    					- (Integer.parseInt(hm2.get("Severity"))*-100000 + TMActivity.CURRLOCN.distanceTo(tmpLocn2)));
-////    			}
-//
-//    			// Simplest logic - only sort by geographical distance
-//    			return Math.round(Integer.parseInt(hm1.get("Severity"))*-100000 + TMActivity.CURRLOCN.distanceTo(tmpLocn1)
-//    					- (Integer.parseInt(hm2.get("Severity"))*-100000 + TMActivity.CURRLOCN.distanceTo(tmpLocn2)));
-//    		}
-//    	};
-//    	
-//    	Collections.sort(TMActivity.ELEMENTS,c);
-// 
-//    	// Initialize TTS Engine, pass 
-//    	Intent checkIntent = new Intent();
-//    	checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-//    	startActivityForResult(checkIntent, 0);
-//	}
-//
-//	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//	    if (requestCode == 0) {
-//	        if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
-//
-//	            // Create the TTS instance; once TTS inits, control returns to the onInit method below
-//	            if (TMActivity.TTSENGINE==null) {
-//	            	TMActivity.TTSENGINE = new TextToSpeech(this, this);
-//	            }
-//	            
-//	        } else {
-//	            // missing data, install it
-//
-//	        	Intent installIntent = new Intent();
-//	            installIntent.setAction(
-//	                TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
-//	            startActivity(installIntent);
-//	        }
-//	        
-//	    }
-//	}
-//	
-//    @Override
-//    public void onInit(int status) {       
-//    	// OK, TTS Engine initialized successfully.
-//		// Set to a male voice (TODO:  customizable)
-//    	TMActivity.TTSENGINE.setLanguage(Locale.US);
-//		TMActivity.TTSENGINE.setSpeechRate((float)1.1);
-//		TMActivity.TTSENGINE.setPitch((float)0.95);
-//
-//		
-//		// Start yammering!
-//    	if (status == TextToSpeech.SUCCESS) {
-//        	Thread t = new Thread () {
-//        		public void run() {
-//                	try {
-//                        HashMap<String, String> hashText = new HashMap<String, String>();
-//                        Iterator<HashMap<String,String>> i = TMActivity.ELEMENTS.iterator();
-//                    	while (i.hasNext()) {
-//                    		HashMap<String,String> element = i.next();
-//
-//                    		//If data is stale, skip to the next element
-//                    		Time t = new Time();
-//                    		t.setToNow();
-//                    		if (t.toMillis(false)/60000 - Long.parseLong(element.get("UpdateDate"))/60 > TMActivity.STALEMINUTES) continue; 
-//                    		
-//                    		String s = element.get("Spoken");
-//                    		hashText.clear();
-//                            hashText.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,s);
-//                            TMActivity.tempText= element.get("Title") + "\n\n" + element.get("Description");
-//                            TMActivity.RUNSTAGE = RS.TEXT;
-//                            mHandler.post(mTrafficResult);
-//                            if (DEBUG) {
-//                            	Log.i("TMouth",s);
-//                            } else {
-//                            	TMActivity.TTSENGINE.speak(s, TextToSpeech.QUEUE_ADD, hashText);
-//                            	while (TMActivity.TTSENGINE.isSpeaking()) Thread.sleep(2000);
-//                            }
-//                    	}
-//
-//                	} catch (Exception e) {
-//                		
-//                    	e.printStackTrace();
-//                	}
-//
-//                	// This call will end up passing control to onPause
-//                    TMActivity.RUNSTAGE = RS.DONE;
-//        			mHandler.post(mTrafficResult);
-//        		}
-//          	   
-//        	};
-//    		t.start();
-//
-//	    } else if (status == TextToSpeech.ERROR) {
-//	    	Log.e("TMouth","Error initializing TTS Engine.");
-//	    }
-//	}
-//
-//    @Override
-//    public void onDestroy() {
-//    	if (TMActivity.TTSENGINE!=null) TMActivity.TTSENGINE.shutdown();
-//    	super.onDestroy();
     }
 	public void setThemePreview(String sThemeName) {
 		OMCThemeImportActivity.CURRSELECTEDTHEME = sThemeName;
@@ -326,13 +212,20 @@ public class OMCThemeImportActivity extends Activity {
     	Thread t = new Thread () {
     		public void run() {
             	try {
+            		// Set SD OMC Root
             		File root = OMCThemeImportActivity.THEMES.get(OMCThemeImportActivity.CURRSELECTEDTHEME);
+            		// Setup XML Parsing...
             		XMLReader xr = XMLReaderFactory.createXMLReader();
-            		OMC.IMPORTEDTHEME = new OMCImportedTheme();
-            		xr.setContentHandler(OMC.IMPORTEDTHEME);
+            		OMCXMLThemeParser parser = new OMCXMLThemeParser(OMCThemeImportActivity.CURRSELECTEDTHEME);
+            		xr.setContentHandler(parser);
+            		// Feed data from control file to XML Parser.
+            		// XML Parser will populate OMC.IMPORTEDTHEME.
             		FileReader fr = new FileReader(root.getAbsolutePath() + "/00control.txt");
-            		xr.setErrorHandler(OMC.IMPORTEDTHEME);
+            		xr.setErrorHandler(parser);
             		xr.parse(new InputSource(fr));
+            		// When we're done, remove all references to parser.
+                	parser = null;
+
             	} catch (Exception e) {
             		
                 	e.printStackTrace();
