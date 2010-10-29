@@ -4,6 +4,7 @@ import android.util.Log;
 import android.widget.Toast;
 import android.text.format.Time;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.*;
@@ -144,9 +145,34 @@ public class OMCXMLThemeParser extends DefaultHandler {
 							break;
 						}
 					}
+
+					// cache the bitmaps/fonts mentioned in the control file.  If any of these fail, 
+					// Mark theme as invalid.
+					if (sTemp.startsWith("text :")) {
+						Typeface tf = OMC.getTypeface(newTheme.arrays.get(sTemp.substring(6)).get(2), newTheme.arrays.get(sTemp.substring(6)).get(3));
+						if (tf==null) {
+							if (OMC.DEBUG) Log.i("OMCXML","typeface "+ newTheme.arrays.get(sTemp.substring(6)).get(3) +" not found");
+							newTheme.valid=false;
+							break;
+						} else {
+							newTheme.typefaces.put(newTheme.arrays.get(sTemp.substring(6)).get(3), tf);
+						}
+					}
+					if (sTemp.startsWith("image:")) {
+						Bitmap bmp = OMC.getBitmap(newTheme.arrays.get(sTemp.substring(6)).get(2), newTheme.arrays.get(sTemp.substring(6)).get(3));
+						if (bmp==null) {
+							if (OMC.DEBUG) Log.i("OMCXML","image "+ newTheme.arrays.get(sTemp.substring(6)).get(3) +" not found");
+							newTheme.valid=false;
+							break;
+						} else {
+							newTheme.bitmaps.put(newTheme.arrays.get(sTemp.substring(6)).get(3), bmp);
+						}
+					}
 				}
 			}
 		}
+
+		
 		
 		if (newTheme.valid) {
 			OMC.IMPORTEDTHEMEMAP.put(newTheme.name, newTheme);

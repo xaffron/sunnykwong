@@ -5,12 +5,12 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Map.Entry;
 import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.File;
 
 import android.app.AlarmManager;
 import android.app.Application;
@@ -227,9 +227,10 @@ public class OMC extends Application {
 	
 	public static Typeface getTypeface(String type, String src) {
 		if (OMC.TYPEFACEMAP.get(src)==null) {
-			if (type.equals("fs")) 
+			if (type.equals("fs")) {
+				if (!new File(src).exists()) return null;
 				OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(src));
-			else
+			} else
 				OMC.TYPEFACEMAP.put(src, Typeface.createFromAsset(OMC.AM, src));
 		}
 		return OMC.TYPEFACEMAP.get(src);
@@ -237,9 +238,10 @@ public class OMC extends Application {
 
 	public static Bitmap getBitmap(String type, String src) {
 		if (OMC.BMPMAP.get(src)==null) {
-			if (type.equals("fs")) 
+			if (type.equals("fs")) {
+				if (!new File(src).exists()) return null;
 				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(src));
-			else
+			} else
 				OMC.BMPMAP.put(src, BitmapFactory.decodeResource(OMC.RES, OMC.RES.getIdentifier(src, "drawable", "com.sunnykwong.omc")));
 		}
 		return OMC.BMPMAP.get(src);
@@ -290,7 +292,7 @@ public class OMC extends Application {
 	public static void saveImportedThemeToCache(Context context, String nm) {
 		try {
 			System.out.println(nm + " saving to cache.");
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(context.getCacheDir().getAbsolutePath() + nm + ".omc"));
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(context.getCacheDir().getAbsolutePath() + "/" + nm + ".omc"));
 			out.writeObject(OMC.IMPORTEDTHEMEMAP.get(nm));
 		} catch (Exception e) {
 			System.out.println("error saving to cache.");
