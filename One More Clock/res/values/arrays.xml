@@ -11,7 +11,6 @@
 	<item>Nixie Notions</item>
 	<item>Typewriter Ticks</item>
 	<item>Wham! Bam! Widget!</item>
-	<item>Vegas Vagrant</item>
 </string-array>
 
 <string-array name="theme_values">
@@ -25,7 +24,6 @@
 	<item>NixieNotions</item>
 	<item>TypewriterTicks</item>
 	<item>WhamBamWidget</item>
-	<item>VegasVagrant</item>
 </string-array>
 
 <!--*************-->
@@ -855,27 +853,6 @@
 	<item name="10 xcoord">160</item>
 	<item name="11 ycoord">180</item>
 	<item name="12 textalign">center</item>
-</array>
-
-<!--*************-->
-<!--Vegas Vagrant-->
-<!--(10/25)      -->
-<!-- Sunny Kwong -->
-<!--*************-->
-
-<string-array name="VegasVagrant">
-	<item>image:VVCards</item>
-</string-array>
-
-<array name="VVCards">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 bmp_source_type">asset</item>
-	<item name="02 file_source">vegas_cards</item>
-	<item name="03 stretch?">true</item>
-	<item name="04 stretchwidthfactor">0.66</item>
-	<item name="05 stretchheightfactor">0.66</item>
-	<item name="06 xcoord">10</item>
-	<item name="07 ycoord">10</item>
 </array>
 
 </resources>
