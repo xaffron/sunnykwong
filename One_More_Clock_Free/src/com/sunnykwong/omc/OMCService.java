@@ -7,6 +7,9 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.RemoteViews;
+
+import com.sunnykwong.freeomc1.R;
 
 public class OMCService extends Service {
 	// First, a few flags for the service.
@@ -98,9 +101,14 @@ public class OMCService extends Service {
 		if (OMC.FG) {
 
             // Set the info for the views that show in the notification panel.
-	        OMC.FGNOTIFICIATION.setLatestEventInfo(this, "One More Clock in Foreground",
-	        		"Keeping the clock running when memory low.", OMC.PREFSPENDING);
-			startForegroundCompat(OMC.SVCNOTIFICATIONID, OMC.FGNOTIFICIATION);
+			OMC.FGNOTIFICIATION.icon = R.drawable.transparent;
+			
+	        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.omc_notification);
+	        contentView.setTextViewText(R.id.notf_text, "- One More Clock! in Foreground Mode -");
+	        OMC.FGNOTIFICIATION.contentView = contentView;
+			OMC.FGNOTIFICIATION.contentIntent = OMC.PREFSPENDING;
+	        
+	        startForegroundCompat(OMC.SVCNOTIFICATIONID, OMC.FGNOTIFICIATION);
 
 		}
 		

@@ -7,7 +7,7 @@
 		android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/AdPitchHdr" android:typeface="serif" android:textSize="36dip" android:textColor="#FFffffff">
 	</TextView>
 	<TextView android:id="@+id/TextView02"
-		android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/AdPitch" android:password="false" android:textSize="16dip" android:clickable="true">
+		android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/AdPitch" android:password="false" android:textSize="16dip" android:clickable="true" android:autoLink="web">
 	</TextView>
 	<Gallery xmlns:android="http://schemas.android.com/apk/res/android"
 		android:id="@+id/gallery" android:layout_width="fill_parent"

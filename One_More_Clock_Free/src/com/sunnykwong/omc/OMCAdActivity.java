@@ -61,7 +61,8 @@ public class OMCAdActivity extends Activity {
                 R.drawable.ddigits,
                 R.drawable.bbeauty,
                 R.drawable.tticks,
-                R.drawable.bbills
+                R.drawable.bbills,
+                R.drawable.nnotions
         };
 
         public ImageAdapter(Context c) {

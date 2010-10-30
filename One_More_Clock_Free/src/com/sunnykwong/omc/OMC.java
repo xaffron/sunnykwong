@@ -112,8 +112,8 @@ public class OMC extends Application {
 		OMC.BGRECT = new RectF(30,10,295,150);
 		OMC.FGRECT = new RectF(25,5,290,145);
 		
-		OMC.FGNOTIFICIATION = new Notification(R.drawable.fredicon_mdpi, 
-				"Keeping the clock running when memory low.",
+		OMC.FGNOTIFICIATION = new Notification(R.drawable.transparent, 
+				"",
         		System.currentTimeMillis());
         OMC.FGNOTIFICIATION.flags = OMC.FGNOTIFICIATION.flags|Notification.FLAG_ONGOING_EVENT|Notification.FLAG_NO_CLEAR;
 		
