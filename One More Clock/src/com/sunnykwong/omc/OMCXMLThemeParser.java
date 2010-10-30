@@ -5,6 +5,7 @@ import android.widget.Toast;
 import android.text.format.Time;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.os.Environment;
 
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.*;
@@ -24,9 +25,11 @@ public class OMCXMLThemeParser extends DefaultHandler {
 	public OMCImportedTheme newTheme;
 	static public boolean valid;
 	static public String latestThemeName;
+	static public String sdRootPath;
 	
 	public OMCXMLThemeParser (String nm) {
 		super();
+		OMCXMLThemeParser.sdRootPath=nm;
 		OMCXMLThemeParser.valid=false;
 		newTheme = new OMCImportedTheme();
 		if (tree == null) tree = new Stack<String[]>();
@@ -124,54 +127,55 @@ public class OMCXMLThemeParser extends DefaultHandler {
 		// If the theme does not have layer specification, not valid
 		if (!newTheme.arrays.containsKey(newTheme.arrays.get("theme_values").get(0))) newTheme.valid=false;
 		
-		// Check layer/talk references
-		Iterator<String> k = newTheme.arrays.keySet().iterator();
-		while (k.hasNext()){
-			String sKey = k.next();
-			//If any of the layers do not exist in the same control file, not valid
-			if (sKey.equals(newTheme.name)){
-				for (Object oTemp:newTheme.arrays.get(sKey).toArray()) {
-					String sTemp = (String)oTemp;
-					System.out.println(sTemp.substring(6));
-					if (!newTheme.arrays.containsKey(sTemp.substring(6))) {
-						if (OMC.DEBUG) Log.i("OMCXML","layer invalid");
-						newTheme.valid=false;
-						break;
-					}
-					if (sTemp.startsWith("quote:")) {
-						if (!newTheme.arrays.containsKey(newTheme.arrays.get(sTemp.substring(6)).get(13))) {
-							if (OMC.DEBUG) Log.i("OMCXML","talkback invalid");
+		// If theme valid so far, Check layer/talk references
+		if (newTheme.valid) {
+			Iterator<String> k = newTheme.arrays.keySet().iterator();
+			while (k.hasNext()){
+				String sKey = k.next();
+				//If any of the layers do not exist in the same control file, not valid
+				if (sKey.equals(newTheme.name)){
+					for (Object oTemp:newTheme.arrays.get(sKey).toArray()) {
+						String sTemp = (String)oTemp;
+						System.out.println(sTemp.substring(6));
+						if (!newTheme.arrays.containsKey(sTemp.substring(6))) {
+							if (OMC.DEBUG) Log.i("OMCXML","layer invalid");
 							newTheme.valid=false;
 							break;
 						}
-					}
-
-					// cache the bitmaps/fonts mentioned in the control file.  If any of these fail, 
-					// Mark theme as invalid.
-					if (sTemp.startsWith("text :")) {
-						Typeface tf = OMC.getTypeface(newTheme.arrays.get(sTemp.substring(6)).get(2), newTheme.arrays.get(sTemp.substring(6)).get(3));
-						if (tf==null) {
-							if (OMC.DEBUG) Log.i("OMCXML","typeface "+ newTheme.arrays.get(sTemp.substring(6)).get(3) +" not found");
-							newTheme.valid=false;
-							break;
-						} else {
-							newTheme.typefaces.put(newTheme.arrays.get(sTemp.substring(6)).get(3), tf);
+						if (sTemp.startsWith("quote:")) {
+							if (!newTheme.arrays.containsKey(newTheme.arrays.get(sTemp.substring(6)).get(13))) {
+								if (OMC.DEBUG) Log.i("OMCXML","talkback invalid");
+								newTheme.valid=false;
+								break;
+							}
 						}
-					}
-					if (sTemp.startsWith("image:")) {
-						Bitmap bmp = OMC.getBitmap(newTheme.arrays.get(sTemp.substring(6)).get(2), newTheme.arrays.get(sTemp.substring(6)).get(3));
-						if (bmp==null) {
-							if (OMC.DEBUG) Log.i("OMCXML","image "+ newTheme.arrays.get(sTemp.substring(6)).get(3) +" not found");
-							newTheme.valid=false;
-							break;
-						} else {
-							newTheme.bitmaps.put(newTheme.arrays.get(sTemp.substring(6)).get(3), bmp);
+	
+						// cache the bitmaps/fonts mentioned in the control file.  If any of these fail, 
+						// Mark theme as invalid.
+						if (sTemp.startsWith("text :")) {
+							Typeface tf = OMC.getTypeface(newTheme.arrays.get(sTemp.substring(6)).get(1), OMCXMLThemeParser.sdRootPath + "/" + newTheme.arrays.get(sTemp.substring(6)).get(2));
+							if (tf==null) {
+								if (OMC.DEBUG) Log.i("OMCXML","typeface "+ newTheme.arrays.get(sTemp.substring(6)).get(2) +" not found");
+								newTheme.valid=false;
+								break;
+							} else {
+								OMC.copyFile(OMCXMLThemeParser.sdRootPath + "/" + newTheme.arrays.get(sTemp.substring(6)).get(2), OMC.CACHEPATH + newTheme.name + newTheme.arrays.get(sTemp.substring(6)).get(2));
+							}
+						}
+						if (sTemp.startsWith("image:")) {
+							Bitmap bmp = OMC.getBitmap(newTheme.arrays.get(sTemp.substring(6)).get(1), OMCXMLThemeParser.sdRootPath + "/" + newTheme.arrays.get(sTemp.substring(6)).get(2));
+							if (bmp==null) {
+								if (OMC.DEBUG) Log.i("OMCXML","image "+ newTheme.arrays.get(sTemp.substring(6)).get(2) +" not found");
+								newTheme.valid=false;
+								break;
+							} else {
+								OMC.copyFile(OMCXMLThemeParser.sdRootPath + "/" + newTheme.arrays.get(sTemp.substring(6)).get(2), OMC.CACHEPATH + newTheme.name + newTheme.arrays.get(sTemp.substring(6)).get(2));
+							}
 						}
 					}
 				}
 			}
 		}
-
 		
 		
 		if (newTheme.valid) {

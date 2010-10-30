@@ -72,7 +72,8 @@ public class OMC extends Application {
 	static final int WIDGETHEIGHT=200;
 	static final String CHINESETIME = "子丑寅卯辰巳午未申酉戌亥子";
 	static final Time TIME = new Time();
-
+	static String CACHEPATH;
+	
 	static final float[] FLARERADII = new float[] {32.f,20.f,21.6f,40.2f,18.4f,19.1f,10.8f,25.f,28.f};
 	static final int[] FLARECOLORS = new int[] {855046894,1140258554,938340342,1005583601,855439588,
 		669384692,905573859,1105458423,921566437};
@@ -120,6 +121,8 @@ public class OMC extends Application {
 		OMC.PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
 		OMC.PREFSINTENTFILT.addDataScheme("omc");
 
+		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/";
+		
 		OMC.BGRECT = new RectF(30,10,295,150);
 		OMC.FGRECT = new RectF(25,5,290,145);
 		
@@ -239,7 +242,9 @@ public class OMC extends Application {
 	public static Bitmap getBitmap(String type, String src) {
 		if (OMC.BMPMAP.get(src)==null) {
 			if (type.equals("fs")) {
-				if (!new File(src).exists()) return null;
+				if (!new File(src).exists()) {
+					return null;
+				}
 				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(src));
 			} else
 				OMC.BMPMAP.put(src, BitmapFactory.decodeResource(OMC.RES, OMC.RES.getIdentifier(src, "drawable", "com.sunnykwong.omc")));
@@ -267,36 +272,55 @@ public class OMC extends Application {
 	}
 	
 	public static OMCImportedTheme getImportedTheme(Context context, String nm){
-		System.out.println("list of private files");
-		for (String s:context.fileList()) {
-			System.out.println(s);
-		}
 		if (OMC.IMPORTEDTHEMEMAP.containsKey(nm)){ 
 			System.out.println(nm + " retrieved from memory.");
 			return OMC.IMPORTEDTHEMEMAP.get(nm);
 		}
 		try {
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(context.getCacheDir().getAbsolutePath() + nm + ".omc"));
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(OMC.CACHEPATH + nm + ".omc"));
 			OMCImportedTheme oResult = (OMCImportedTheme)in.readObject();
 			OMC.IMPORTEDTHEMEMAP.put(nm, oResult);
 			System.out.println(nm + " reloaded from cache.");
 			return oResult;
 		} catch (Exception e) {
-			System.out.println("error reloading from cache.");
+			System.out.println("error reloading " + nm + " from cache.");
 		
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return null;
+	}
+
+	public static void clearImportCache() {
+		for (File f:(new File(OMC.CACHEPATH).listFiles())) {
+			f.delete();
+		}
+		OMC.IMPORTEDTHEMEMAP.clear();
+	}
+	
+	public static boolean copyFile(String src, String tgt) {
+		try {
+			FileOutputStream oTGT = new FileOutputStream(tgt);
+			FileInputStream oSRC = new FileInputStream(src);
+		    byte[] buffer = new byte[16384];
+		    while (oSRC.read(buffer)!= -1){
+		    	oTGT.write(buffer);
+		    }
+		    oTGT.close();
+		    oSRC.close();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	public static void saveImportedThemeToCache(Context context, String nm) {
 		try {
 			System.out.println(nm + " saving to cache.");
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(context.getCacheDir().getAbsolutePath() + "/" + nm + ".omc"));
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(OMC.CACHEPATH + nm + ".omc"));
 			out.writeObject(OMC.IMPORTEDTHEMEMAP.get(nm));
 		} catch (Exception e) {
-			System.out.println("error saving to cache.");
-			e.printStackTrace();
+			System.out.println("error saving " + nm + " to cache.");
+			//e.printStackTrace();
 		}
 	}
 	

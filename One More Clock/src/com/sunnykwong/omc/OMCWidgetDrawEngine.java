@@ -16,6 +16,7 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 import android.graphics.Matrix;
 import android.content.ComponentName;
+import android.graphics.Typeface;
 
 public class OMCWidgetDrawEngine {
 	// This is where the theme-specific tweaks (regardless of layer) are processed.
@@ -281,7 +282,23 @@ public class OMCWidgetDrawEngine {
 		matrix.reset();
 		if (OMC.LAYERATTRIBS.getBoolean(3, true)) matrix.postScale(OMC.LAYERATTRIBS.getFloat(4, 1f), OMC.LAYERATTRIBS.getFloat(5, 1f));
 		matrix.postTranslate(OMC.LAYERATTRIBS.getFloat(6, 0f), OMC.LAYERATTRIBS.getFloat(7, 0f));
-		OMC.CANVAS.drawBitmap(OMC.getBitmap(OMC.LAYERATTRIBS.getString(1), OMC.LAYERATTRIBS.getString(2)),matrix,OMC.PT1);
+
+		Bitmap tempBitmap = OMC.getBitmap(
+				OMC.LAYERATTRIBS.getString(1),
+				OMC.LAYERATTRIBS.getString(2));
+		if (tempBitmap==null) tempBitmap = OMC.getBitmap(
+				OMC.LAYERATTRIBS.getString(1),
+				OMC.CACHEPATH + sTheme + OMC.LAYERATTRIBS.getString(2));
+		if (tempBitmap==null) {
+			Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
+			OMC.PREFS.edit()
+					.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
+					.putBoolean("external"+aWI,false)
+					.commit();
+			return;
+		}
+
+		OMC.CANVAS.drawBitmap(tempBitmap,matrix,OMC.PT1);
 	}
 
 	// Quote layer.  Set the Text to be shown before passing to drawTextLayer.
@@ -304,9 +321,21 @@ public class OMCWidgetDrawEngine {
 
 		OMC.PT1.reset();
 		OMC.PT1.setAntiAlias(true);
-		OMC.PT1.setTypeface(OMC.getTypeface(
+		Typeface tempTypeface = OMC.getTypeface(
 				OMC.LAYERATTRIBS.getString(1),
-				OMC.LAYERATTRIBS.getString(2)));
+				OMC.LAYERATTRIBS.getString(2));
+		if (tempTypeface==null) tempTypeface = OMC.getTypeface(
+				OMC.LAYERATTRIBS.getString(1),
+				OMC.CACHEPATH + sTheme + OMC.LAYERATTRIBS.getString(2));
+		if (tempTypeface==null) {
+			Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
+			OMC.PREFS.edit()
+					.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
+					.putBoolean("external"+aWI,false)
+					.commit();
+			return;
+		}
+		OMC.PT1.setTypeface(tempTypeface);
 		OMC.PT1.setTextSize(OMC.LAYERATTRIBS.getInt(3, 100));
 		OMC.PT1.setTextSkewX(OMC.LAYERATTRIBS.getFloat(4, 0.f));
 		OMC.PT1.setTextScaleX(OMC.LAYERATTRIBS.getFloat(5, 1.f));
@@ -323,9 +352,7 @@ public class OMCWidgetDrawEngine {
 
 		OMC.PT2.reset();
 		OMC.PT2.setAntiAlias(true);
-		OMC.PT2.setTypeface(OMC.getTypeface(
-				OMC.LAYERATTRIBS.getString(1),
-				OMC.LAYERATTRIBS.getString(2)));
+		OMC.PT2.setTypeface(tempTypeface);
 		OMC.PT2.setTextSize(OMC.LAYERATTRIBS.getInt(3, 100));
 		OMC.PT2.setTextSkewX(OMC.LAYERATTRIBS.getFloat(4, 0.f));
 		OMC.PT2.setTextScaleX(OMC.LAYERATTRIBS.getFloat(5, 1.f));

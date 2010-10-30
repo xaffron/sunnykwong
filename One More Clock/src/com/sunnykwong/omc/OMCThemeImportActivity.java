@@ -216,7 +216,7 @@ public class OMCThemeImportActivity extends Activity {
             		File root = OMCThemeImportActivity.THEMES.get(OMCThemeImportActivity.CURRSELECTEDTHEME);
             		// Setup XML Parsing...
             		XMLReader xr = XMLReaderFactory.createXMLReader();
-            		OMCXMLThemeParser parser = new OMCXMLThemeParser(OMCThemeImportActivity.CURRSELECTEDTHEME);
+            		OMCXMLThemeParser parser = new OMCXMLThemeParser(root.getAbsolutePath());
             		xr.setContentHandler(parser);
             		// Feed data from control file to XML Parser.
             		// XML Parser will populate OMC.IMPORTEDTHEME.
@@ -225,6 +225,7 @@ public class OMCThemeImportActivity extends Activity {
             		xr.parse(new InputSource(fr));
             		// When we're done, remove all references to parser.
                 	parser = null;
+                	fr.close();
 
             	} catch (Exception e) {
             		

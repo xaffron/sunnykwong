@@ -34,6 +34,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	OMC.PREFS.edit().putBoolean("widgetPersistence", OMC.FG).commit();
         	addPreferencesFromResource(R.xml.omcprefs);
         	findPreference("widgetTheme").setOnPreferenceChangeListener(this);
+        	findPreference("clearImports").setOnPreferenceChangeListener(this);
     		findPreference("bFourByTwo").setEnabled(false);
         } else {
             // If they gave us an intent without the widget id, just bail.
@@ -75,6 +76,20 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     }
 
+    // If user sets a seeded theme, set external to false
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+
+    	if (preference == findPreference("widgetTheme")) {
+	    	if (OMC.DEBUG) Log.i("OMCPref","Setting External to false");
+			OMC.PREFS.edit().putBoolean("external", false).commit();
+	    	return true;
+    	}
+    	
+    	return false;
+    }
+    
+    // If user clicks on a preference...
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
@@ -103,6 +118,34 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		OMC.purgeBitmapCache();
     		Toast.makeText(this, "Bitmap Cache Cleared", Toast.LENGTH_SHORT).show();
     	}
+    	if (preference == findPreference("clearImports")) {
+        	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
+    		.setTitle("Warning!")
+    		.setMessage("Clearing the Import cache will revert all your custom clocks to stock look.  Are you sure?")
+    	    .setCancelable(true)
+    	    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					OMC.clearImportCache();
+				}
+			})
+			.setNegativeButton("No", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					OMCPrefActivity.mAD.dismiss();
+				}
+			})
+    	    .setIcon(R.drawable.fredicon_mdpi)
+    	    .setOnKeyListener(new OnKeyListener() {
+    	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+					OMCPrefActivity.mAD.dismiss();
+    	    		return true;
+    	    	};
+    	    }).create();
+        	OMCPrefActivity.mAD.show();
+    	}
     	return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
@@ -130,14 +173,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     	super.onPause();
     }
 
-    // If user sets a seeded theme, set external to false
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-    	if (OMC.DEBUG) Log.i("OMCPref","Setting External to false");
-		OMC.PREFS.edit().putBoolean("external", false).commit();
-    	return true;
-    }
-    
     @Override
     public void onDestroy() {
 		if (appWidgetID >= 0) {
