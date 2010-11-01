@@ -14,7 +14,6 @@ import android.net.Uri;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
-import android.graphics.Matrix;
 import android.content.ComponentName;
 import android.graphics.Typeface;
 
@@ -34,6 +33,7 @@ public class OMCWidgetDrawEngine {
     		break;
 		case R.array.BaBClock:
 		case R.array.CCClock:
+		case R.array.CEClock:
 		case R.array.DDClock:
 		case R.array.LLClock:
 		case R.array.MMClock:
@@ -108,6 +108,16 @@ public class OMCWidgetDrawEngine {
 			OMC.TALKBACKS = context.getResources().getStringArray(R.array.WordNumbers);
 			OMC.TXTBUF = OMC.TIME.format("*%e %B, %G. *");
     		break;
+		case R.array.CEDate:
+			OMC.TXTBUF = OMC.TIME.format("%Y . %m . %d");
+			break;
+		case R.array.CEEclipse:
+    		iShade = (int)(10f + (((OMC.TIME.hour+6)*60f + OMC.TIME.minute) % (12*60f))/(12*60f) * 150f);
+    		OMC.TEMPMATRIX.reset();
+    		if (OMC.LAYERATTRIBS.getBoolean(3, true)) OMC.TEMPMATRIX.postScale(OMC.LAYERATTRIBS.getFloat(4, 1f), OMC.LAYERATTRIBS.getFloat(5, 1f));
+    		OMC.TEMPMATRIX.postTranslate(iShade, OMC.LAYERATTRIBS.getFloat(7, 0f));
+    		OMC.TXTBUF = "";
+			break;
 		case R.array.BBFlare:
     		break;
 		case R.array.CCChinese:
@@ -274,15 +284,16 @@ public class OMCWidgetDrawEngine {
 		OMC.PT1.setAntiAlias(true);
 		OMC.PT1.setColor(Color.BLACK);
 
+		// Prepare the transformation matrix.
+		
+		OMC.TEMPMATRIX.reset();
+		if (OMC.LAYERATTRIBS.getBoolean(3, true)) OMC.TEMPMATRIX.postScale(OMC.LAYERATTRIBS.getFloat(4, 1f), OMC.LAYERATTRIBS.getFloat(5, 1f));
+		OMC.TEMPMATRIX.postTranslate(OMC.LAYERATTRIBS.getFloat(6, 0f), OMC.LAYERATTRIBS.getFloat(7, 0f));
+
     	// theme-specific tweaks.
 		OMCWidgetDrawEngine.layerThemeTweaks(context, iLayerID, sTheme, aWI);
 		
 		// Blit the buffer over
-		final Matrix matrix = new Matrix();
-		matrix.reset();
-		if (OMC.LAYERATTRIBS.getBoolean(3, true)) matrix.postScale(OMC.LAYERATTRIBS.getFloat(4, 1f), OMC.LAYERATTRIBS.getFloat(5, 1f));
-		matrix.postTranslate(OMC.LAYERATTRIBS.getFloat(6, 0f), OMC.LAYERATTRIBS.getFloat(7, 0f));
-
 		Bitmap tempBitmap = OMC.getBitmap(
 				OMC.LAYERATTRIBS.getString(1),
 				OMC.LAYERATTRIBS.getString(2));
@@ -298,7 +309,7 @@ public class OMCWidgetDrawEngine {
 			return;
 		}
 
-		OMC.CANVAS.drawBitmap(tempBitmap,matrix,OMC.PT1);
+		OMC.CANVAS.drawBitmap(tempBitmap,OMC.TEMPMATRIX,OMC.PT1);
 	}
 
 	// Quote layer.  Set the Text to be shown before passing to drawTextLayer.
@@ -478,11 +489,10 @@ public class OMCWidgetDrawEngine {
 		drawBitmapForWidget(context,appWidgetId);
 
 		// Blit the buffer over
-		final Matrix matrix = new Matrix();
-		matrix.reset();
-		matrix.postScale(fScaleX, fScaleY);
+		OMC.TEMPMATRIX.reset();
+		OMC.TEMPMATRIX.postScale(fScaleX, fScaleY);
 		final RemoteViews rv = new RemoteViews(context.getPackageName(),R.layout.omcwidget);
-        rv.setImageViewBitmap(R.id.omcIV, Bitmap.createBitmap(OMC.BUFFER, 0, iCutTop, OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT-iCutTop - iCutBottom, matrix, false));
+        rv.setImageViewBitmap(R.id.omcIV, Bitmap.createBitmap(OMC.BUFFER, 0, iCutTop, OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT-iCutTop - iCutBottom, OMC.TEMPMATRIX, false));
 
         if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) { 
         	Intent intent = new Intent("com.sunnykwong.omc.WIDGET_CONFIG");

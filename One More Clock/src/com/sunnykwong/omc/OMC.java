@@ -34,6 +34,7 @@ import android.text.format.Time;
 import android.util.Log;
 import android.graphics.BitmapFactory;
 import android.content.res.Resources;
+import android.graphics.Matrix;
 
 /**
  * @author skwong01
@@ -43,7 +44,7 @@ import android.content.res.Resources;
  */
 public class OMC extends Application {
 	static int UPDATEFREQ = 15000;
-	static final String DEFAULTTHEME = "NixieNotions";
+	static final String DEFAULTTHEME = "CrimsonEclipse";
 	static final boolean DEBUG = true;
 	static final Random RND = new Random();
 	static SharedPreferences PREFS;
@@ -62,6 +63,7 @@ public class OMC extends Application {
     static boolean FG = false;
     static OMCTypedArray LAYERATTRIBS;
 	static String[] LAYERLIST, TALKBACKS; 
+	static Matrix TEMPMATRIX;
 
 	static final ComponentName WIDGET4x2CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget4x2");
 	static final ComponentName WIDGET3x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget3x1");
@@ -107,7 +109,9 @@ public class OMC extends Application {
 		
 		OMC.aRC = new OMCAlarmReceiver();
 		OMC.cRC = new OMCConfigReceiver();
-
+		
+		OMC.TEMPMATRIX = new Matrix();
+		
 		OMC.FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
 		OMC.FGPENDING = PendingIntent.getBroadcast(this, 0, OMC.FGINTENT, 0);
 		OMC.BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");

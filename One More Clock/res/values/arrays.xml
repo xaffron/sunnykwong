@@ -3,6 +3,7 @@
 <string-array name="theme_options">
 	<item>Beaks and Bills</item>
 	<item>Bokeh Beauty</item>
+	<item>Crimson Eclipse</item>
 	<item>Culture Clash</item>
 	<item>Dear Diary</item>
 	<item>Digital Digits</item>
@@ -16,6 +17,7 @@
 <string-array name="theme_values">
 	<item>BeaksAndBills</item>
 	<item>BokehBeauty</item>
+	<item>CrimsonEclipse</item>
 	<item>CultureClash</item>
 	<item>DearDiary</item>
 	<item>DigitalDigits</item>
@@ -850,6 +852,73 @@
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ffffb064</item>
 	<item name="09 bgcolor">#44eeeeee</item>
+	<item name="10 xcoord">160</item>
+	<item name="11 ycoord">180</item>
+	<item name="12 textalign">center</item>
+</array>
+
+<!--*************-->
+<!--Crimson Eclipse-->
+<!--(11/01)      -->
+<!-- Sunny Kwong -->
+<!--*************-->
+
+<string-array name="CrimsonEclipse">
+	<item>image:CESun</item>
+	<item>image:CEEclipse</item>
+	<item>text :CEClock</item>
+	<item>text :CEDate</item>
+</string-array>
+
+<array name="CESun">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 bmp_source_type">asset</item>
+	<item name="02 file_source">crimson_sun</item>
+	<item name="03 stretch?">true</item>
+	<item name="04 stretchwidthfactor">0.67</item>
+	<item name="05 stretchheightfactor">0.67</item>
+	<item name="06 xcoord">5</item>
+	<item name="07 ycoord">5</item>
+</array>
+
+<array name="CEEclipse">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 bmp_source_type">asset</item>
+	<item name="02 file_source">eclipse_black</item>
+	<item name="03 stretch?">true</item>
+	<item name="04 stretchwidthfactor">0.67</item>
+	<item name="05 stretchheightfactor">0.67</item>
+	<item name="06 xcoord">5</item>
+	<item name="07 ycoord">23</item>
+</array>
+
+<array name="CEClock">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">CODELight.otf</item>
+	<item name="03 font_size">84</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">1</item>
+	<item name="06 font_bold">true</item>
+	<item name="07 render_style">emboss</item>
+	<item name="08 fgcolor">#ffffffff</item>
+	<item name="09 bgcolor">#44000000</item>
+	<item name="10 xcoord">160</item>
+	<item name="11 ycoord">140</item>
+	<item name="12 textalign">center</item>
+</array>
+
+<array name="CEDate">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">CODELight.otf</item>
+	<item name="03 font_size">48</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">1</item>
+	<item name="06 font_bold">true</item>
+	<item name="07 render_style">normal</item>
+	<item name="08 fgcolor">#ffffffff</item>
+	<item name="09 bgcolor">#44000000</item>
 	<item name="10 xcoord">160</item>
 	<item name="11 ycoord">180</item>
 	<item name="12 textalign">center</item>
