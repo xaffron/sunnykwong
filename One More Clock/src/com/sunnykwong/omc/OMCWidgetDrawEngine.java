@@ -112,7 +112,7 @@ public class OMCWidgetDrawEngine {
 			OMC.TXTBUF = OMC.TIME.format("%Y . %m . %d");
 			break;
 		case R.array.CEEclipse:
-    		iShade = (int)(10f + (((OMC.TIME.hour+6)*60f + OMC.TIME.minute) % (12*60f))/(12*60f) * 150f);
+    		iShade = (int)(14f + (((OMC.TIME.hour+6)*60f + OMC.TIME.minute) % (12*60f))/(12*60f) * 150f);
     		OMC.TEMPMATRIX.reset();
     		if (OMC.LAYERATTRIBS.getBoolean(3, true)) OMC.TEMPMATRIX.postScale(OMC.LAYERATTRIBS.getFloat(4, 1f), OMC.LAYERATTRIBS.getFloat(5, 1f));
     		OMC.TEMPMATRIX.postTranslate(iShade, OMC.LAYERATTRIBS.getFloat(7, 0f));

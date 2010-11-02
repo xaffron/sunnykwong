@@ -875,8 +875,8 @@
 	<item name="01 bmp_source_type">asset</item>
 	<item name="02 file_source">crimson_sun</item>
 	<item name="03 stretch?">true</item>
-	<item name="04 stretchwidthfactor">0.67</item>
-	<item name="05 stretchheightfactor">0.67</item>
+	<item name="04 stretchwidthfactor">0.65</item>
+	<item name="05 stretchheightfactor">0.65</item>
 	<item name="06 xcoord">5</item>
 	<item name="07 ycoord">5</item>
 </array>
@@ -886,10 +886,10 @@
 	<item name="01 bmp_source_type">asset</item>
 	<item name="02 file_source">eclipse_black</item>
 	<item name="03 stretch?">true</item>
-	<item name="04 stretchwidthfactor">0.67</item>
-	<item name="05 stretchheightfactor">0.67</item>
+	<item name="04 stretchwidthfactor">0.65</item>
+	<item name="05 stretchheightfactor">0.65</item>
 	<item name="06 xcoord">5</item>
-	<item name="07 ycoord">23</item>
+	<item name="07 ycoord">34</item>
 </array>
 
 <array name="CEClock">
