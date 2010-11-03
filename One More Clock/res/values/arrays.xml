@@ -267,9 +267,9 @@
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ffffffff</item>
 	<item name="09 bgcolor">#a0000000</item>
-	<item name="10 xcoord">45</item>
+	<item name="10 xcoord">160</item>
 	<item name="11 ycoord">155</item>
-	<item name="12 textalign">left</item>
+	<item name="12 textalign">center</item>
 </array>
 
 <!--*************-->

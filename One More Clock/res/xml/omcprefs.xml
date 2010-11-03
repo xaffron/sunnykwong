@@ -9,7 +9,7 @@
 			android:title="Widget Theme" 
 			android:enabled="true" 
 			android:summary="Change the way OMC looks" 
-			android:key="widgetTheme" android:selectable="true" android:defaultValue="@array/BokehBeauty" android:dialogTitle="Choose a Preloaded Clock">
+			android:key="widgetTheme" android:selectable="true" android:defaultValue="@array/BokehBeauty" android:dialogTitle="Swipe up and down to see the entire list of clocks!">
 		</ListPreference>
 		<Preference android:selectable="true" android:title="Import a Custom Theme" android:key="loadThemeFile" android:enabled="true"></Preference><CheckBoxPreference 
 			android:key="widget24HrClock" 
