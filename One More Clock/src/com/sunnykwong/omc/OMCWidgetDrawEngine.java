@@ -11,6 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.net.Uri;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
@@ -308,7 +309,7 @@ public class OMCWidgetDrawEngine {
 					.commit();
 			return;
 		}
-
+		tempBitmap.setDensity(DisplayMetrics.DENSITY_HIGH);
 		OMC.CANVAS.drawBitmap(tempBitmap,OMC.TEMPMATRIX,OMC.PT1);
 	}
 
@@ -476,23 +477,21 @@ public class OMCWidgetDrawEngine {
 		final int N = aWM.getAppWidgetIds(cName).length;
 
 		for (int i=0; i<N; i++) {
-			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i], fScaleX, fScaleY, iCutTop, iCutBottom);
+			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i],Bitmap.createBitmap(OMC.BUFFER));
 		}
 		System.gc();
 	}
 	
 	static synchronized void updateAppWidget(final Context context,
 			final AppWidgetManager appWidgetManager,
-			final int appWidgetId, float fScaleX, float fScaleY, int iCutTop, int iCutBottom) {
+			final int appWidgetId, final Bitmap bmp) {
 		if (OMC.DEBUG)Log.i("OMCWidget", "Redrawing widget" + appWidgetId + " @ " + OMC.TIME.format("%T"));
 
 		drawBitmapForWidget(context,appWidgetId);
 
 		// Blit the buffer over
-		OMC.TEMPMATRIX.reset();
-		OMC.TEMPMATRIX.postScale(fScaleX, fScaleY);
 		final RemoteViews rv = new RemoteViews(context.getPackageName(),R.layout.omcwidget);
-        rv.setImageViewBitmap(R.id.omcIV, Bitmap.createBitmap(OMC.BUFFER, 0, iCutTop, OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT-iCutTop - iCutBottom, OMC.TEMPMATRIX, false));
+        rv.setImageViewBitmap(R.id.omcIV,bmp);
 
         if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) { 
         	Intent intent = new Intent("com.sunnykwong.omc.WIDGET_CONFIG");

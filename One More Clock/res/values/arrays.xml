@@ -3,7 +3,6 @@
 <string-array name="theme_options">
 	<item>Beaks and Bills</item>
 	<item>Bokeh Beauty</item>
-	<item>Crimson Eclipse</item>
 	<item>Culture Clash</item>
 	<item>Dear Diary</item>
 	<item>Digital Digits</item>
@@ -17,7 +16,6 @@
 <string-array name="theme_values">
 	<item>BeaksAndBills</item>
 	<item>BokehBeauty</item>
-	<item>CrimsonEclipse</item>
 	<item>CultureClash</item>
 	<item>DearDiary</item>
 	<item>DigitalDigits</item>
@@ -738,8 +736,8 @@
 	<item name="01 bmp_source_type">asset</item>
 	<item name="02 file_source">nixie3</item>
 	<item name="03 stretch?">true</item>
-	<item name="04 stretchwidthfactor">0.5</item>
-	<item name="05 stretchheightfactor">0.5</item>
+	<item name="04 stretchwidthfactor">0.75</item>
+	<item name="05 stretchheightfactor">0.75</item>
 	<item name="06 xcoord">0</item>
 	<item name="07 ycoord">0</item>
 </array>
@@ -749,9 +747,9 @@
 	<item name="01 bmp_source_type">asset</item>
 	<item name="02 file_source">nixie3</item>
 	<item name="03 stretch?">true</item>
-	<item name="04 stretchwidthfactor">0.5</item>
-	<item name="05 stretchheightfactor">0.5</item>
-	<item name="06 xcoord">78</item>
+	<item name="04 stretchwidthfactor">0.75</item>
+	<item name="05 stretchheightfactor">0.75</item>
+	<item name="06 xcoord">117</item>
 	<item name="07 ycoord">0</item>
 </array>
 
@@ -760,9 +758,9 @@
 	<item name="01 bmp_source_type">asset</item>
 	<item name="02 file_source">nixie3</item>
 	<item name="03 stretch?">true</item>
-	<item name="04 stretchwidthfactor">0.5</item>
-	<item name="05 stretchheightfactor">0.5</item>
-	<item name="06 xcoord">157</item>
+	<item name="04 stretchwidthfactor">0.75</item>
+	<item name="05 stretchheightfactor">0.75</item>
+	<item name="06 xcoord">235</item>
 	<item name="07 ycoord">0</item>
 </array>
 
@@ -771,9 +769,9 @@
 	<item name="01 bmp_source_type">asset</item>
 	<item name="02 file_source">nixie3</item>
 	<item name="03 stretch?">true</item>
-	<item name="04 stretchwidthfactor">0.5</item>
-	<item name="05 stretchheightfactor">0.5</item>
-	<item name="06 xcoord">236</item>
+	<item name="04 stretchwidthfactor">0.75</item>
+	<item name="05 stretchheightfactor">0.75</item>
+	<item name="06 xcoord">354</item>
 	<item name="07 ycoord">0</item>
 </array>
 
@@ -781,15 +779,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">SALARYMA.ttf</item>
-	<item name="03 font_size">87</item>
+	<item name="03 font_size">130</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">0.62</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#a0ffb064</item>
 	<item name="09 bgcolor">#44cb761b</item>
-	<item name="10 xcoord">41</item>
-	<item name="11 ycoord">143</item>
+	<item name="10 xcoord">61</item>
+	<item name="11 ycoord">214</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -845,15 +843,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Aquiline_TRUNC.ttf</item>
-	<item name="03 font_size">48</item>
+	<item name="03 font_size">72</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">0.88</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ffffb064</item>
 	<item name="09 bgcolor">#44eeeeee</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">180</item>
+	<item name="10 xcoord">248</item>
+	<item name="11 ycoord">270</item>
 	<item name="12 textalign">center</item>
 </array>
 

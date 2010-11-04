@@ -31,6 +31,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.text.format.Time;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.graphics.BitmapFactory;
 import android.content.res.Resources;
@@ -68,10 +69,8 @@ public class OMC extends Application {
 	static final ComponentName WIDGET4x2CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget4x2");
 	static final ComponentName WIDGET3x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget3x1");
 	static final ComponentName WIDGET2x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget2x1");
-//	static final int WIDGETWIDTH=640;
-//	static final int WIDGETHEIGHT=320;
-	static final int WIDGETWIDTH=320;
-	static final int WIDGETHEIGHT=200;
+	static final int WIDGETWIDTH=480;
+	static final int WIDGETHEIGHT=300;
 	static final String CHINESETIME = "子丑寅卯辰巳午未申酉戌亥子";
 	static final Time TIME = new Time();
 	static String CACHEPATH;
@@ -104,6 +103,7 @@ public class OMC extends Application {
 
 		OMC.BUFFER= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
 		OMC.CANVAS = new Canvas(OMC.BUFFER);
+		OMC.CANVAS.setDensity(DisplayMetrics.DENSITY_HIGH);
 		OMC.PT1 = new Paint();
 		OMC.PT2 = new Paint();
 		
