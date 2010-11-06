@@ -45,7 +45,7 @@ import android.graphics.Matrix;
  */
 public class OMC extends Application {
 	static int UPDATEFREQ = 15000;
-	static final String DEFAULTTHEME = "CrimsonEclipse";
+	static final String DEFAULTTHEME = "WhamBamWidget";
 	static final boolean DEBUG = true;
 	static final Random RND = new Random();
 	static SharedPreferences PREFS;

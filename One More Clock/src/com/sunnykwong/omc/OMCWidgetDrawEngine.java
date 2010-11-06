@@ -34,7 +34,6 @@ public class OMCWidgetDrawEngine {
     		break;
 		case R.array.BaBClock:
 		case R.array.CCClock:
-		case R.array.CEClock:
 		case R.array.DDClock:
 		case R.array.LLClock:
 		case R.array.MMClock:
@@ -109,15 +108,13 @@ public class OMCWidgetDrawEngine {
 			OMC.TALKBACKS = context.getResources().getStringArray(R.array.WordNumbers);
 			OMC.TXTBUF = OMC.TIME.format("*%e %B, %G. *");
     		break;
-		case R.array.CEDate:
-			break;
-		case R.array.CEEclipse:
-    		iShade = (int)(14f + (((OMC.TIME.hour+6)*60f + OMC.TIME.minute) % (12*60f))/(12*60f) * 150f);
-    		OMC.TEMPMATRIX.reset();
-    		if (OMC.LAYERATTRIBS.getBoolean(3, true)) OMC.TEMPMATRIX.postScale(OMC.LAYERATTRIBS.getFloat(4, 1f), OMC.LAYERATTRIBS.getFloat(5, 1f));
-    		OMC.TEMPMATRIX.postTranslate(iShade, OMC.LAYERATTRIBS.getFloat(7, 0f));
-    		OMC.TXTBUF = "";
-			break;
+//		case R.array.CEEclipse:
+//    		iShade = (int)(14f + (((OMC.TIME.hour+6)*60f + OMC.TIME.minute) % (12*60f))/(12*60f) * 150f);
+//    		OMC.TEMPMATRIX.reset();
+//    		if (OMC.LAYERATTRIBS.getBoolean(3, true)) OMC.TEMPMATRIX.postScale(OMC.LAYERATTRIBS.getFloat(4, 1f), OMC.LAYERATTRIBS.getFloat(5, 1f));
+//    		OMC.TEMPMATRIX.postTranslate(iShade, OMC.LAYERATTRIBS.getFloat(7, 0f));
+//    		OMC.TXTBUF = "";
+//			break;
 		case R.array.BBFlare:
     		break;
 		case R.array.CCChinese:
