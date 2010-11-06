@@ -42,15 +42,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">SALARYMA.ttf</item>
-	<item name="03 font_size">110</item>
+	<item name="03 font_size">160</item>
 	<item name="04 font_skew">0</item>
 	<item name="05 font_stretch">0.95</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ff918F56</item>
 	<item name="09 bgcolor">#ffffffff</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">135</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">202</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -58,15 +58,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">SALARYMA.ttf</item>
-	<item name="03 font_size">36</item>
+	<item name="03 font_size">60</item>
 	<item name="04 font_skew">0</item>
 	<item name="05 font_stretch">1</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ff918F56</item>
 	<item name="09 bgcolor">#ff000000</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">160</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">240</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -93,15 +93,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">OFLGoudyStMTT_TRUNC.ttf</item>
-	<item name="03 font_size">200</item>
+	<item name="03 font_size">300</item>
 	<item name="04 font_skew">-0.25</item>
 	<item name="05 font_stretch">1.3</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">normal</item>
 	<item name="08 fgcolor">#40000000</item>
 	<item name="09 bgcolor">#40000000</item>
-	<item name="10 xcoord">225</item>
-	<item name="11 ycoord">175</item>
+	<item name="10 xcoord">337</item>
+	<item name="11 ycoord">262</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -109,15 +109,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">OFLGoudyStMTT_TRUNC.ttf</item>
-	<item name="03 font_size">21</item>
+	<item name="03 font_size">31</item>
 	<item name="04 font_skew">-0.25</item>
 	<item name="05 font_stretch">1</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">normal</item>
 	<item name="08 fgcolor">#40000000</item>
 	<item name="09 bgcolor">#a0000000</item>
-	<item name="10 xcoord">28</item>
-	<item name="11 ycoord">78</item>
+	<item name="10 xcoord">42</item>
+	<item name="11 ycoord">117</item>
 	<item name="12 textalign">left</item>
 </array>
 
@@ -125,15 +125,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">OFLGoudyStMTT_TRUNC.ttf</item>
-	<item name="03 font_size">140</item>
+	<item name="03 font_size">210</item>
 	<item name="04 font_skew">0</item>
 	<item name="05 font_stretch">0.95</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ff000000</item>
 	<item name="09 bgcolor">#a0ffffff</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">145</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">217</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -141,15 +141,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">OFLGoudyStMTT_TRUNC.ttf</item>
-	<item name="03 font_size">40</item>
+	<item name="03 font_size">60</item>
 	<item name="04 font_skew">0.</item>
 	<item name="05 font_stretch">1</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ffcccccc</item>
 	<item name="09 bgcolor">#88ffffff</item>
-	<item name="10 xcoord">15</item>
-	<item name="11 ycoord">170</item>
+	<item name="10 xcoord">22</item>
+	<item name="11 ycoord">255</item>
 	<item name="12 textalign">left</item>
 </array>
 
@@ -168,12 +168,12 @@
 
 <array name="DDPanel">
 	<item name="00 layer_enabled">true</item>
-	<item name="53 left">15</item>
-	<item name="54 top">15</item>
-	<item name="55 right">305</item>
-	<item name="56 bottom">185</item>
-	<item name="57 xcorner">5</item>
-	<item name="58 ycorner">5</item>
+	<item name="53 left">22</item>
+	<item name="54 top">22</item>
+	<item name="55 right">457</item>
+	<item name="56 bottom">277</item>
+	<item name="57 xcorner">7</item>
+	<item name="58 ycorner">7</item>
 	<item name="59 fgcolor">#a0068AB6</item>
 	<item name="60 bgcolor">#88000000</item>
 	<item name="61 render_style">shadow</item>
@@ -183,15 +183,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">DIGITALDREAMFATSKEWNARROW.ttf</item>
-	<item name="03 font_size">24</item>
+	<item name="03 font_size">36</item>
 	<item name="04 font_skew">-0.15</item>
 	<item name="05 font_stretch">0.70</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ff111111</item>
 	<item name="09 bgcolor">#20333333</item>
-	<item name="10 xcoord">30</item>
-	<item name="11 ycoord">60</item>
+	<item name="10 xcoord">45</item>
+	<item name="11 ycoord">90</item>
 	<item name="12 textalign">left</item>
 </array>
 
@@ -199,15 +199,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">DIGITALDREAMFATSKEWNARROW.ttf</item>
-	<item name="03 font_size">100</item>
+	<item name="03 font_size">150</item>
 	<item name="04 font_skew">-0.15</item>
 	<item name="05 font_stretch">0.70</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ff111111</item>
 	<item name="09 bgcolor">#a0333333</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">123</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">184</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -215,15 +215,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">DIGITALDREAMFATSKEWNARROW.ttf</item>
-	<item name="03 font_size">24</item>
+	<item name="03 font_size">36</item>
 	<item name="04 font_skew">-0.15</item>
 	<item name="05 font_stretch">0.75</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ff111111</item>
 	<item name="09 bgcolor">#20333333</item>
-	<item name="10 xcoord">55</item>
-	<item name="11 ycoord">172</item>
+	<item name="10 xcoord">82</item>
+	<item name="11 ycoord">258</item>
 	<item name="12 textalign">left</item>
 </array>
 
@@ -242,15 +242,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">fs</item>
 	<item name="02 font_source">/system/fonts/Clockopia.ttf</item>
-	<item name="03 font_size">120</item>
+	<item name="03 font_size">180</item>
 	<item name="04 font_skew">0</item>
 	<item name="05 font_stretch">1</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ffffffff</item>
 	<item name="09 bgcolor">#a0000000</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">128</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">192</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -258,15 +258,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">fs</item>
 	<item name="02 font_source">/system/fonts/DroidSans.ttf</item>
-	<item name="03 font_size">24</item>
+	<item name="03 font_size">36</item>
 	<item name="04 font_skew">0</item>
 	<item name="05 font_stretch">1</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ffffffff</item>
 	<item name="09 bgcolor">#a0000000</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">155</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">232</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -277,20 +277,32 @@
 <!--*************-->
 
 <string-array name="WhamBamWidget">
+	<item>image:WWThought</item>
 	<item>panel:WWBubble</item>
 	<item>text :WWOMG</item>
 	<item>text :WWClock</item>
 	<item>quote:WWTalkback</item>
 </string-array>
 
+<array name="WWThought">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 bmp_source_type">asset</item>
+	<item name="02 file_source">bubbles</item>
+	<item name="03 stretch?">false</item>
+	<item name="04 stretchwidthfactor">1</item>
+	<item name="05 stretchheightfactor">1</item>
+	<item name="06 xcoord">5</item>
+	<item name="07 ycoord">180</item>
+</array>
+
 <array name="WWBubble">
 	<item name="00 layer_enabled">true</item>
-	<item name="53 left">15</item>
-	<item name="54 top">15</item>
-	<item name="55 right">310</item>
-	<item name="56 bottom">140</item>
-	<item name="57 xcorner">15</item>
-	<item name="58 ycorner">15</item>
+	<item name="53 left">22</item>
+	<item name="54 top">22</item>
+	<item name="55 right">465</item>
+	<item name="56 bottom">210</item>
+	<item name="57 xcorner">22</item>
+	<item name="58 ycorner">22</item>
 	<item name="59 fgcolor">#FFEFDFAD</item>
 	<item name="60 bgcolor">#ff000000</item>
 	<item name="61 render_style">shadow</item>
@@ -300,15 +312,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Laffayette_Comic_Pro.ttf</item>
-	<item name="03 font_size">18</item>
+	<item name="03 font_size">24</item>
 	<item name="04 font_skew">-0.35</item>
 	<item name="05 font_stretch">1.0</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">normal</item>
 	<item name="08 fgcolor">#ff000000</item>
 	<item name="09 bgcolor">#a0440000</item>
-	<item name="10 xcoord">30</item>
-	<item name="11 ycoord">37</item>
+	<item name="10 xcoord">45</item>
+	<item name="11 ycoord">55</item>
 	<item name="12 textalign">left</item>
 </array>
 
@@ -316,15 +328,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Laffayette_Comic_Pro.ttf</item>
-	<item name="03 font_size">75</item>
+	<item name="03 font_size">112</item>
 	<item name="04 font_skew">-0.35</item>
 	<item name="05 font_stretch">1.2</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ffaa0000</item>
 	<item name="09 bgcolor">#a0440000</item>
-	<item name="10 xcoord">150</item>
-	<item name="11 ycoord">110</item>
+	<item name="10 xcoord">225</item>
+	<item name="11 ycoord">165</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -332,15 +344,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Laffayette_Comic_Pro.ttf</item>
-	<item name="03 font_size">18</item>
+	<item name="03 font_size">24</item>
 	<item name="04 font_skew">-0.35</item>
 	<item name="05 font_stretch">0.9</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">normal</item>
 	<item name="08 fgcolor">#ff000000</item>
 	<item name="09 bgcolor">#a0440000</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">133</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">199</item>
 	<item name="12 textalign">center</item>
 	<item name="13 talkbacks">whambamtalkbacks</item>
 </array>
@@ -379,7 +391,7 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">WC_Rhesus_B_Bta_TRUNC.otf</item>
-	<item name="03 font_size">135</item>
+	<item name="03 font_size">202</item>
 	<item name="04 font_skew">0.0</item>
 	<item name="05 font_stretch">1.0</item>
 	<item name="06 font_bold">false</item>
@@ -387,7 +399,7 @@
 	<item name="08 fgcolor">#ffA10619</item>
 	<item name="09 bgcolor">#88000000</item>
 	<item name="10 xcoord">0</item>
-	<item name="11 ycoord">180</item>
+	<item name="11 ycoord">240</item>
 	<item name="12 textalign">left</item>
 </array>
 
@@ -395,15 +407,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">MISPROJE_TRUNC.TTF</item>
-	<item name="03 font_size">170</item>
+	<item name="03 font_size">255</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">1.0</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ff000000</item>
 	<item name="09 bgcolor">#ffD4D4D4</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">145</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">217</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -411,15 +423,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">BlackCasper.ttf</item>
-	<item name="03 font_size">42</item>
+	<item name="03 font_size">63</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">1.2</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ff000000</item>
 	<item name="09 bgcolor">#a0ffffff</item>
-	<item name="10 xcoord">300</item>
-	<item name="11 ycoord">185</item>
+	<item name="10 xcoord">450</item>
+	<item name="11 ycoord">277</item>
 	<item name="12 textalign">right</item>
 </array>
 
@@ -443,10 +455,10 @@
 
 <array name="BaBCanvas">
 	<item name="00 layer_enabled">true</item>
-	<item name="53 left">15</item>
-	<item name="54 top">15</item>
-	<item name="55 right">305</item>
-	<item name="56 bottom">195</item>
+	<item name="53 left">22</item>
+	<item name="54 top">22</item>
+	<item name="55 right">457</item>
+	<item name="56 bottom">292</item>
 	<item name="57 xcorner">0</item>
 	<item name="58 ycorner">0</item>
 	<item name="59 fgcolor">#ffA2CEF2</item>
@@ -458,15 +470,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">EFON.ttf</item>
-	<item name="03 font_size">100</item>
+	<item name="03 font_size">150</item>
 	<item name="04 font_skew">0.0</item>
 	<item name="05 font_stretch">1.</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#FFFF8F1F</item>
 	<item name="09 bgcolor">#a0ffffff</item>
-	<item name="10 xcoord">80</item>
-	<item name="11 ycoord">96</item>
+	<item name="10 xcoord">120</item>
+	<item name="11 ycoord">144</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -474,15 +486,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">EFON.ttf</item>
-	<item name="03 font_size">75</item>
+	<item name="03 font_size">112</item>
 	<item name="04 font_skew">0.0</item>
 	<item name="05 font_stretch">1</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#FFFFFFFF</item>
 	<item name="09 bgcolor">#FF888888</item>
-	<item name="10 xcoord">200</item>
-	<item name="11 ycoord">100</item>
+	<item name="10 xcoord">300</item>
+	<item name="11 ycoord">150</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -490,15 +502,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">EFON.ttf</item>
-	<item name="03 font_size">36</item>
+	<item name="03 font_size">54</item>
 	<item name="04 font_skew">0.0</item>
 	<item name="05 font_stretch">1</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#FFFFFFFF</item>
 	<item name="09 bgcolor">#FF888888</item>
-	<item name="10 xcoord">45</item>
-	<item name="11 ycoord">60</item>
+	<item name="10 xcoord">67</item>
+	<item name="11 ycoord">90</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -506,15 +518,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Amadeus.ttf</item>
-	<item name="03 font_size">120</item>
+	<item name="03 font_size">180</item>
 	<item name="04 font_skew">0</item>
 	<item name="05 font_stretch">0.8</item>
 	<item name="06 font_bold">true</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ff445544</item>
 	<item name="09 bgcolor">#ffffffff</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">145</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">217</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -522,15 +534,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">EFON.ttf</item>
-	<item name="03 font_size">100</item>
+	<item name="03 font_size">150</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">1.0</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#FFFCC84E</item>
 	<item name="09 bgcolor">#88FF8F1F</item>
-	<item name="10 xcoord">100</item>
-	<item name="11 ycoord">190</item>
+	<item name="10 xcoord">150</item>
+	<item name="11 ycoord">285</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -538,24 +550,24 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">EFON.ttf</item>
-	<item name="03 font_size">30</item>
+	<item name="03 font_size">45</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">1.0</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#FFFFF896</item>
 	<item name="09 bgcolor">#FF444444</item>
-	<item name="10 xcoord">180</item>
-	<item name="11 ycoord">171</item>
+	<item name="10 xcoord">270</item>
+	<item name="11 ycoord">256</item>
 	<item name="12 textalign">center</item>
 </array>
 
 <array name="BaBWater">
 	<item name="00 layer_enabled">true</item>
-	<item name="53 left">15</item>
-	<item name="54 top">165</item>
-	<item name="55 right">305</item>
-	<item name="56 bottom">195</item>
+	<item name="53 left">22</item>
+	<item name="54 top">247</item>
+	<item name="55 right">457</item>
+	<item name="56 bottom">292</item>
 	<item name="57 xcorner">0</item>
 	<item name="58 ycorner">0</item>
 	<item name="59 fgcolor">#ee193EB5</item>
@@ -567,15 +579,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Amadeus.ttf</item>
-	<item name="03 font_size">24</item>
+	<item name="03 font_size">36</item>
 	<item name="04 font_skew">0</item>
 	<item name="05 font_stretch">1.1</item>
 	<item name="06 font_bold">true</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ff445544</item>
 	<item name="09 bgcolor">#ffa0a0a0</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">188</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">282</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -593,10 +605,10 @@
 
 <array name="TTPanel">
 	<item name="00 layer_enabled">true</item>
-	<item name="53 left">15</item>
-	<item name="54 top">15</item>
-	<item name="55 right">305</item>
-	<item name="56 bottom">160</item>
+	<item name="53 left">22</item>
+	<item name="54 top">22</item>
+	<item name="55 right">457</item>
+	<item name="56 bottom">240</item>
 	<item name="57 xcorner">0</item>
 	<item name="58 ycorner">0</item>
 	<item name="59 fgcolor">#FF183078</item>
@@ -608,15 +620,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">1942.ttf</item>
-	<item name="03 font_size">90</item>
+	<item name="03 font_size">135</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">0.95</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ffDBDBDB</item>
 	<item name="09 bgcolor">#ff0095C2</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">110</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">165</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -624,15 +636,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">1942.ttf</item>
-	<item name="03 font_size">20</item>
+	<item name="03 font_size">30</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">1.0</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ffDBDBDB</item>
 	<item name="09 bgcolor">#ff0095C2</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">150</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">225</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -651,15 +663,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Aquiline_TRUNC.ttf</item>
-	<item name="03 font_size">36</item>
+	<item name="03 font_size">54</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">0.88</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ff111111</item>
 	<item name="09 bgcolor">#4405015C</item>
-	<item name="10 xcoord">200</item>
-	<item name="11 ycoord">85</item>
+	<item name="10 xcoord">300</item>
+	<item name="11 ycoord">127</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -667,15 +679,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Aquiline_TRUNC.ttf</item>
-	<item name="03 font_size">36</item>
+	<item name="03 font_size">54</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">0.88</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ff111111</item>
 	<item name="09 bgcolor">#4405015C</item>
-	<item name="10 xcoord">10</item>
-	<item name="11 ycoord">150</item>
+	<item name="10 xcoord">15</item>
+	<item name="11 ycoord">225</item>
 	<item name="12 textalign">left</item>
 </array>
 
@@ -795,15 +807,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">SALARYMA.ttf</item>
-	<item name="03 font_size">87</item>
+	<item name="03 font_size">130</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">0.62</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#a0ffb064</item>
 	<item name="09 bgcolor">#44cb761b</item>
-	<item name="10 xcoord">119</item>
-	<item name="11 ycoord">143</item>
+	<item name="10 xcoord">178</item>
+	<item name="11 ycoord">214</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -811,15 +823,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">SALARYMA.ttf</item>
-	<item name="03 font_size">87</item>
+	<item name="03 font_size">130</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">0.62</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#a0ffb064</item>
 	<item name="09 bgcolor">#44cb761b</item>
-	<item name="10 xcoord">198</item>
-	<item name="11 ycoord">143</item>
+	<item name="10 xcoord">297</item>
+	<item name="11 ycoord">214</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -827,15 +839,15 @@
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">SALARYMA.ttf</item>
-	<item name="03 font_size">87</item>
+	<item name="03 font_size">130</item>
 	<item name="04 font_skew">0.00</item>
 	<item name="05 font_stretch">0.62</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#a0ffb064</item>
 	<item name="09 bgcolor">#44cb761b</item>
-	<item name="10 xcoord">277</item>
-	<item name="11 ycoord">143</item>
+	<item name="10 xcoord">415</item>
+	<item name="11 ycoord">214</item>
 	<item name="12 textalign">center</item>
 </array>
 
@@ -852,73 +864,6 @@
 	<item name="09 bgcolor">#44eeeeee</item>
 	<item name="10 xcoord">248</item>
 	<item name="11 ycoord">270</item>
-	<item name="12 textalign">center</item>
-</array>
-
-<!--*************-->
-<!--Crimson Eclipse-->
-<!--(11/01)      -->
-<!-- Sunny Kwong -->
-<!--*************-->
-
-<string-array name="CrimsonEclipse">
-	<item>image:CESun</item>
-	<item>image:CEEclipse</item>
-	<item>text :CEClock</item>
-	<item>text :CEDate</item>
-</string-array>
-
-<array name="CESun">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 bmp_source_type">asset</item>
-	<item name="02 file_source">crimson_sun</item>
-	<item name="03 stretch?">true</item>
-	<item name="04 stretchwidthfactor">0.65</item>
-	<item name="05 stretchheightfactor">0.65</item>
-	<item name="06 xcoord">5</item>
-	<item name="07 ycoord">5</item>
-</array>
-
-<array name="CEEclipse">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 bmp_source_type">asset</item>
-	<item name="02 file_source">eclipse_black</item>
-	<item name="03 stretch?">true</item>
-	<item name="04 stretchwidthfactor">0.65</item>
-	<item name="05 stretchheightfactor">0.65</item>
-	<item name="06 xcoord">5</item>
-	<item name="07 ycoord">34</item>
-</array>
-
-<array name="CEClock">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">CODELight.otf</item>
-	<item name="03 font_size">84</item>
-	<item name="04 font_skew">0.00</item>
-	<item name="05 font_stretch">1</item>
-	<item name="06 font_bold">true</item>
-	<item name="07 render_style">emboss</item>
-	<item name="08 fgcolor">#ffffffff</item>
-	<item name="09 bgcolor">#44000000</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">140</item>
-	<item name="12 textalign">center</item>
-</array>
-
-<array name="CEDate">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">CODELight.otf</item>
-	<item name="03 font_size">48</item>
-	<item name="04 font_skew">0.00</item>
-	<item name="05 font_stretch">1</item>
-	<item name="06 font_bold">true</item>
-	<item name="07 render_style">normal</item>
-	<item name="08 fgcolor">#ffffffff</item>
-	<item name="09 bgcolor">#44000000</item>
-	<item name="10 xcoord">160</item>
-	<item name="11 ycoord">180</item>
 	<item name="12 textalign">center</item>
 </array>
 
