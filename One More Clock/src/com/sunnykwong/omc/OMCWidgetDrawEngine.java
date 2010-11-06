@@ -110,7 +110,6 @@ public class OMCWidgetDrawEngine {
 			OMC.TXTBUF = OMC.TIME.format("*%e %B, %G. *");
     		break;
 		case R.array.CEDate:
-			OMC.TXTBUF = OMC.TIME.format("%Y . %m . %d");
 			break;
 		case R.array.CEEclipse:
     		iShade = (int)(14f + (((OMC.TIME.hour+6)*60f + OMC.TIME.minute) % (12*60f))/(12*60f) * 150f);
@@ -274,7 +273,7 @@ public class OMCWidgetDrawEngine {
 
 	}
 
-	//Bitmap layer.  This is really only for emergencies (and for skinning).
+	//Bitmap layer.  This is really only for skinning.
 	static void drawBitmapLayer(final Context context, final int iLayerID, final String sTheme, final int aWI) {
 		OMC.PT1.reset();
 		OMC.PT1.setAntiAlias(true);
@@ -422,14 +421,14 @@ public class OMCWidgetDrawEngine {
 			if (bExternal) {
 				OMC.LAYERATTRIBS = new OMCTypedArray(OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(layer.substring(6)));
 				String sNowTime;
+				// This is where the parsing happens.
 				if (sType.equals("text ")){
 		    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
-		    			sNowTime = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%H:%M") : OMC.TIME.format("%k:%M");
+		    			sNowTime = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.LAYERATTRIBS.getString(13) : OMC.LAYERATTRIBS.getString(13).replaceAll("%H", "%k");
 		    		} else {
-		    			sNowTime = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I:%M") : OMC.TIME.format("%l:%M");
+		    			sNowTime = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.LAYERATTRIBS.getString(13).replaceAll("%I", "%k") : OMC.LAYERATTRIBS.getString(13).replaceAll("%H", "%l");
 		    		}
-					OMC.TXTBUF = OMC.LAYERATTRIBS.getString(13).replaceAll("%TIME%", sNowTime);
-					OMC.TXTBUF = OMC.TXTBUF.replaceAll("%DATE%", OMC.TIME.format("%a %e %b"));
+					OMC.TXTBUF = OMC.TIME.format(sNowTime);
 
 				}
 			} else {
