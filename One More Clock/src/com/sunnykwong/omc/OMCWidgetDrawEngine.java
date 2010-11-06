@@ -139,11 +139,6 @@ public class OMCWidgetDrawEngine {
 			OMC.TXTBUF = OMC.TIME.format("%p").substring(0, 1);
 			break;
 		case R.array.WWBubble:
-			// The thought bubbles, shadowed
-			OMC.CANVAS.drawCircle(15f+3, 140f+3, 10, OMC.PT2);
-    		OMC.CANVAS.drawCircle(15f, 140f, 10, OMC.PT1);
-    		OMC.CANVAS.drawCircle(24f+3, 130f+3, 15, OMC.PT2);
-    		OMC.CANVAS.drawCircle(24f, 130f, 15, OMC.PT1);
     		break;
 		case R.array.WWOMG:
 			OMC.TXTBUF = "omg, it's";
@@ -218,7 +213,7 @@ public class OMCWidgetDrawEngine {
 		OMC.PT2.setARGB(32, 255, 255, 255);
 		OMC.PT2.setStyle(Paint.Style.STROKE);
 
-		//Depending on time of day, enpoints.
+		//Depending on time of day, endpoints.
 		final float ratio = (((OMC.TIME.hour+6)*60 + OMC.TIME.minute) % (12*60)) / (12f*60);
 		final float x1 = OMC.WIDGETWIDTH * ratio;  
 		final float y1 = OMC.WIDGETHEIGHT;
@@ -477,21 +472,22 @@ public class OMCWidgetDrawEngine {
 		final int N = aWM.getAppWidgetIds(cName).length;
 
 		for (int i=0; i<N; i++) {
-			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i],Bitmap.createBitmap(OMC.BUFFER));
+			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i],fScaleX, fScaleY, cName, iCutTop, iCutBottom);
 		}
 		System.gc();
 	}
 	
 	static synchronized void updateAppWidget(final Context context,
 			final AppWidgetManager appWidgetManager,
-			final int appWidgetId, final Bitmap bmp) {
+			final int appWidgetId, float fScaleX, float fScaleY, ComponentName cName, int iCutTop, int iCutBottom) {
+
 		if (OMC.DEBUG)Log.i("OMCWidget", "Redrawing widget" + appWidgetId + " @ " + OMC.TIME.format("%T"));
 
 		drawBitmapForWidget(context,appWidgetId);
 
 		// Blit the buffer over
 		final RemoteViews rv = new RemoteViews(context.getPackageName(),R.layout.omcwidget);
-        rv.setImageViewBitmap(R.id.omcIV,bmp);
+        rv.setImageViewBitmap(R.id.omcIV,OMC.BUFFER);
 
         if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) { 
         	Intent intent = new Intent("com.sunnykwong.omc.WIDGET_CONFIG");
