@@ -186,7 +186,7 @@ public class OMCThemeImportActivity extends Activity {
 		if (sThemeName == null || sThemeName.equals("")) return;
 		File root = OMCThemeImportActivity.THEMES.get(sThemeName);
 		System.out.println(root.getAbsolutePath() + "/preview.png");
-		Bitmap bmpPreview = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(root.getAbsolutePath() + "/preview.png"),320,200,false);
+		Bitmap bmpPreview = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(root.getAbsolutePath() + "/preview.jpg"),320,200,false);
 		((ImageView)this.findViewById(R.id.ImagePreview)).setImageBitmap(bmpPreview);
 		OMCThemeImportActivity.THEMECREDITS = new char[3000];
 		try {

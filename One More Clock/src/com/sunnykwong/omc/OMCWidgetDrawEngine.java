@@ -483,8 +483,15 @@ public class OMCWidgetDrawEngine {
 
 		// Blit the buffer over
 		final RemoteViews rv = new RemoteViews(context.getPackageName(),R.layout.omcwidget);
-        rv.setImageViewBitmap(R.id.omcIV,OMC.BUFFER);
 
+		if (fScaleX==1f && fScaleY==1f) rv.setImageViewBitmap(R.id.omcIV, OMC.BUFFER);
+		else {
+			OMC.TEMPMATRIX.reset();
+			OMC.TEMPMATRIX.preScale(fScaleX, fScaleY);
+			OMC.TEMPMATRIX.preTranslate(0, 0-iCutTop);
+			rv.setImageViewBitmap(R.id.omcIV,Bitmap.createBitmap(OMC.BUFFER, 0, 0, OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight(), OMC.TEMPMATRIX, true));
+		}
+		
         if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) { 
         	Intent intent = new Intent("com.sunnykwong.omc.WIDGET_CONFIG");
         	intent.setData(Uri.parse("omc:"+appWidgetId));
