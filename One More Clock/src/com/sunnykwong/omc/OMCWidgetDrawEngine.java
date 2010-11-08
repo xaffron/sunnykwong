@@ -431,7 +431,7 @@ public class OMCWidgetDrawEngine {
 			} else {
 				//		Set LAF based on prefs
 				iLayerID = context.getResources().getIdentifier(layer.substring(6), "array", "com.sunnykwong.omc");
-				OMC.LAYERATTRIBS = new OMCTypedArray(context.getResources().obtainTypedArray(iLayerID));
+				OMC.LAYERATTRIBS = new OMCTypedArray(context.getResources().getStringArray(iLayerID));
 			}
 
 			if (OMC.LAYERATTRIBS.getBoolean(0, true)){
