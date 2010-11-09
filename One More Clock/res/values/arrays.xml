@@ -26,6 +26,110 @@
 	<item>WhamBamWidget</item>
 </string-array>
 
+<string-array name="WordNumbers">
+<item>o\'Clock</item>
+<item>one</item>
+<item>Two</item>
+<item>Three</item>
+<item>Four</item>
+<item>Five</item>
+<item>Six</item>
+<item>Seven</item>
+<item>Eight</item>
+<item>Nine</item>
+<item>Ten</item>
+<item>Eleven</item>
+<item>Twelve</item>
+<item>Thirteen</item>
+<item>Fourteen</item>
+<item>Fifteen</item>
+<item>Sixteen</item>
+<item>Seventeen</item>
+<item>Eighteen</item>
+<item>nineteen</item>
+<item>Twenty</item>
+<item>Twenty one</item>
+<item>Twenty Two</item>
+<item>Twenty Three</item>
+<item>Twenty Four</item>
+<item>Twenty Five</item>
+<item>Twenty Six</item>
+<item>Twenty Seven</item>
+<item>Twenty Eight</item>
+<item>Twenty Nine</item>
+<item>Thirty</item>
+<item>Thirty One</item>
+<item>Thirty Two</item>
+<item>Thirty Three</item>
+<item>Thirty Four</item>
+<item>Thirty Five</item>
+<item>Thirty Six</item>
+<item>Thirty Seven</item>
+<item>Thirty Eight</item>
+<item>Thirty Nine</item>
+<item>Forty</item>
+<item>Forty One</item>
+<item>Forty Two</item>
+<item>Forty Three</item>
+<item>Forty Four</item>
+<item>Forty Five</item>
+<item>Forty Six</item>
+<item>Forty Seven</item>
+<item>Forty Eight</item>
+<item>Forty Nine</item>
+<item>Fifty</item>
+<item>Fifty One</item>
+<item>Fifty Two</item>
+<item>Fifty Three</item>
+<item>Fifty Four</item>
+<item>Fifty Five</item>
+<item>Fifty Six</item>
+<item>Fifty Seven</item>
+<item>Fifty Eight</item>
+<item>Fifty Nine</item>
+<item>Sixty</item>
+<item>Sixty One</item>
+<item>Sixty Two</item>
+<item>Sixty Three</item>
+<item>Sixty Four</item>
+<item>Sixty Five</item>
+<item>Sixty Six</item>
+<item>Sixty Seven</item>
+<item>Sixty Eight</item>
+<item>Sixty Nine</item>
+<item>Seventy</item>
+<item>Seventy One</item>
+<item>Seventy Two</item>
+<item>Seventy Three</item>
+<item>Seventy Four</item>
+<item>Seventy Five</item>
+<item>Seventy Six</item>
+<item>Seventy Seven</item>
+<item>Seventy Eight</item>
+<item>Seventy Nine</item>
+<item>Eighty</item>
+<item>Eighty One</item>
+<item>Eighty Two</item>
+<item>Eighty Three</item>
+<item>Eighty Four</item>
+<item>Eighty Five</item>
+<item>Eighty Six</item>
+<item>Eighty Seven</item>
+<item>Eighty Eight</item>
+<item>Eighty Nine</item>
+<item>Ninety</item>
+<item>Ninety One</item>
+<item>Ninety Two</item>
+<item>Ninety Three</item>
+<item>Ninety Four</item>
+<item>Ninety Five</item>
+<item>Ninety Six</item>
+<item>Ninety Seven</item>
+<item>Ninety Eight</item>
+<item>Ninety Nine</item>
+</string-array>
+
+
 <!--*************-->
 <!--BOKEH BEAUTY -->
 <!--(10/18)      -->
@@ -38,7 +142,7 @@
 	<item>flare:BBFlare</item>
 </string-array>
 
-<array name="BBClock">
+<string-array name="BBClock">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">SALARYMA.ttf</item>
@@ -48,13 +152,14 @@
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ff918F56</item>
-	<item name="09 bgcolor">#ffffffff</item>
+	<item name="09 bgcolor">[%shift12_color_86400_#ff000000_#ffffffff_#ff000000%]</item>
 	<item name="10 xcoord">240</item>
 	<item name="11 ycoord">202</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">%H:%M</item>
+</string-array>
 
-<array name="BBDate">
+<string-array name="BBDate">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">SALARYMA.ttf</item>
@@ -64,17 +169,18 @@
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ff918F56</item>
-	<item name="09 bgcolor">#ff000000</item>
+	<item name="09 bgcolor">[%shift12_color_86400_#ff000000_#ffffffff_#ff000000%]</item>
 	<item name="10 xcoord">240</item>
 	<item name="11 ycoord">240</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">%a %e %b</item>
+</string-array>
 
-<array name="BBFlare">
+<string-array name="BBFlare">
 	<item name="62 layer_enabled">true</item>
 	<item name="63 noCircles">7</item>
 	<item name="64 Tint">#44ffffff</item>
-</array>
+</string-array>
 
 <!--*************-->
 <!--Culture Clash-->
@@ -89,7 +195,7 @@
 	<item>text :CCMeridiem</item>
 </string-array>
 
-<array name="CCChinese">
+<string-array name="CCChinese">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">OFLGoudyStMTT_TRUNC.ttf</item>
@@ -103,9 +209,10 @@
 	<item name="10 xcoord">337</item>
 	<item name="11 ycoord">262</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">PLACEHOLDER</item>
+</string-array>
 
-<array name="CCDate">
+<string-array name="CCDate">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">OFLGoudyStMTT_TRUNC.ttf</item>
@@ -119,9 +226,10 @@
 	<item name="10 xcoord">42</item>
 	<item name="11 ycoord">117</item>
 	<item name="12 textalign">left</item>
-</array>
+	<item name="13 words">%A, %B %e</item>
+</string-array>
 
-<array name="CCClock">
+<string-array name="CCClock">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">OFLGoudyStMTT_TRUNC.ttf</item>
@@ -135,9 +243,10 @@
 	<item name="10 xcoord">240</item>
 	<item name="11 ycoord">217</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">%H:%M</item>
+</string-array>
 
-<array name="CCMeridiem">
+<string-array name="CCMeridiem">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">OFLGoudyStMTT_TRUNC.ttf</item>
@@ -151,7 +260,9 @@
 	<item name="10 xcoord">22</item>
 	<item name="11 ycoord">255</item>
 	<item name="12 textalign">left</item>
-</array>
+	<item name="13 words">[%ap24_ante  meridiem_post  meridiem_ %]
+</item>
+</string-array>
 
 <!--*************-->
 <!--DigitalDigits-->
@@ -166,7 +277,7 @@
 	<item>text :DDDate</item>
 </string-array>
 
-<array name="DDPanel">
+<string-array name="DDPanel">
 	<item name="00 layer_enabled">true</item>
 	<item name="53 left">22</item>
 	<item name="54 top">22</item>
@@ -177,9 +288,9 @@
 	<item name="59 fgcolor">#a0068AB6</item>
 	<item name="60 bgcolor">#88000000</item>
 	<item name="61 render_style">shadow</item>
-</array>
+</string-array>
 
-<array name="DDAPM">
+<string-array name="DDAPM">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">DIGITALDREAMFATSKEWNARROW.ttf</item>
@@ -193,9 +304,11 @@
 	<item name="10 xcoord">45</item>
 	<item name="11 ycoord">90</item>
 	<item name="12 textalign">left</item>
-</array>
+	<item name="13 words">[%ap24_a_p_ %]
+</item>
+</string-array>
 
-<array name="DDClock">
+<string-array name="DDClock">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">DIGITALDREAMFATSKEWNARROW.ttf</item>
@@ -209,9 +322,10 @@
 	<item name="10 xcoord">240</item>
 	<item name="11 ycoord">184</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">%H:%M</item>
+</string-array>
 
-<array name="DDDate">
+<string-array name="DDDate">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">DIGITALDREAMFATSKEWNARROW.ttf</item>
@@ -225,7 +339,8 @@
 	<item name="10 xcoord">82</item>
 	<item name="11 ycoord">258</item>
 	<item name="12 textalign">left</item>
-</array>
+	<item name="13 words">%A, %B %e</item>
+</string-array>
 
 <!--*************-->
 <!--LockscreenLook-->
@@ -238,7 +353,7 @@
 	<item>text :LLDate</item>
 </string-array>
 
-<array name="LLClock">
+<string-array name="LLClock">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">fs</item>
 	<item name="02 font_source">/system/fonts/Clockopia.ttf</item>
@@ -252,9 +367,10 @@
 	<item name="10 xcoord">240</item>
 	<item name="11 ycoord">192</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">%H:%M</item>
+</string-array>
 
-<array name="LLDate">
+<string-array name="LLDate">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">fs</item>
 	<item name="02 font_source">/system/fonts/DroidSans.ttf</item>
@@ -268,7 +384,8 @@
 	<item name="10 xcoord">240</item>
 	<item name="11 ycoord">232</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">%A, %B %e</item>
+</string-array>
 
 <!--*************-->
 <!--Wham!Bam!Widget-->
@@ -284,7 +401,7 @@
 	<item>quote:WWTalkback</item>
 </string-array>
 
-<array name="WWThought">
+<string-array name="WWThought">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 bmp_source_type">asset</item>
 	<item name="02 file_source">bubbles</item>
@@ -293,9 +410,9 @@
 	<item name="05 stretchheightfactor">1</item>
 	<item name="06 xcoord">5</item>
 	<item name="07 ycoord">180</item>
-</array>
+</string-array>
 
-<array name="WWBubble">
+<string-array name="WWBubble">
 	<item name="00 layer_enabled">true</item>
 	<item name="53 left">22</item>
 	<item name="54 top">22</item>
@@ -306,9 +423,9 @@
 	<item name="59 fgcolor">#FFEFDFAD</item>
 	<item name="60 bgcolor">#ff000000</item>
 	<item name="61 render_style">shadow</item>
-</array>
+</string-array>
 
-<array name="WWOMG">
+<string-array name="WWOMG">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Laffayette_Comic_Pro.ttf</item>
@@ -322,9 +439,10 @@
 	<item name="10 xcoord">45</item>
 	<item name="11 ycoord">55</item>
 	<item name="12 textalign">left</item>
-</array>
+	<item name="13 words">omg, it\'s</item>
+</string-array>
 
-<array name="WWClock">
+<string-array name="WWClock">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Laffayette_Comic_Pro.ttf</item>
@@ -338,9 +456,10 @@
 	<item name="10 xcoord">225</item>
 	<item name="11 ycoord">165</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">%H:%M!</item>
+</string-array>
 
-<array name="WWTalkback">
+<string-array name="WWTalkback">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Laffayette_Comic_Pro.ttf</item>
@@ -355,7 +474,7 @@
 	<item name="11 ycoord">199</item>
 	<item name="12 textalign">center</item>
 	<item name="13 talkbacks">whambamtalkbacks</item>
-</array>
+</string-array>
 
 <string-array name="whambamtalkbacks">
 	<item>what will this Android do?</item>
@@ -387,7 +506,7 @@
 	<item>text :MMDate</item>
 </string-array>
 
-<array name="MMSplatter">
+<string-array name="MMSplatter">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">WC_Rhesus_B_Bta_TRUNC.otf</item>
@@ -401,9 +520,10 @@
 	<item name="10 xcoord">0</item>
 	<item name="11 ycoord">240</item>
 	<item name="12 textalign">left</item>
-</array>
+	<item name="13 words">abi</item>
+</string-array>
 
-<array name="MMClock">
+<string-array name="MMClock">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">MISPROJE_TRUNC.TTF</item>
@@ -417,9 +537,10 @@
 	<item name="10 xcoord">240</item>
 	<item name="11 ycoord">217</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">%H:%M</item>
+</string-array>
 
-<array name="MMDate">
+<string-array name="MMDate">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">BlackCasper.ttf</item>
@@ -433,7 +554,8 @@
 	<item name="10 xcoord">450</item>
 	<item name="11 ycoord">277</item>
 	<item name="12 textalign">right</item>
-</array>
+	<item name="13 words">%A.</item>
+</string-array>
 
 <!--*************-->
 <!--BeaksAndBills-->
@@ -453,7 +575,7 @@
 	<item>text :BaBDate</item>
 </string-array>
 
-<array name="BaBCanvas">
+<string-array name="BaBCanvas">
 	<item name="00 layer_enabled">true</item>
 	<item name="53 left">22</item>
 	<item name="54 top">22</item>
@@ -461,12 +583,12 @@
 	<item name="56 bottom">292</item>
 	<item name="57 xcorner">0</item>
 	<item name="58 ycorner">0</item>
-	<item name="59 fgcolor">#ffA2CEF2</item>
+	<item name="59 fgcolor">[%shift12_color_86400_#ff000000_#ffC8E6FF_#ff000000%]</item>
 	<item name="60 bgcolor">#ff000000</item>
 	<item name="61 render_style">shadow</item>
-</array>
+</string-array>
 
-<array name="BaBSun">
+<string-array name="BaBSun">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">EFON.ttf</item>
@@ -477,12 +599,13 @@
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#FFFF8F1F</item>
 	<item name="09 bgcolor">#a0ffffff</item>
-	<item name="10 xcoord">120</item>
+	<item name="10 xcoord">[%shift6_number_43200_105_240_375%]</item>
 	<item name="11 ycoord">144</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">[%day_M_night_E%]</item>
+</string-array>
 
-<array name="BaBCloud1">
+<string-array name="BaBCloud1">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">EFON.ttf</item>
@@ -493,12 +616,13 @@
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#FFFFFFFF</item>
 	<item name="09 bgcolor">#FF888888</item>
-	<item name="10 xcoord">300</item>
+	<item name="10 xcoord">[%shift6_number_10800_105_240_375%]</item>
 	<item name="11 ycoord">150</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">m</item>
+</string-array>
 
-<array name="BaBCloud2">
+<string-array name="BaBCloud2">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">EFON.ttf</item>
@@ -509,12 +633,13 @@
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#FFFFFFFF</item>
 	<item name="09 bgcolor">#FF888888</item>
-	<item name="10 xcoord">67</item>
+	<item name="10 xcoord">[%shift6_number_14400_60_240_420%]</item>
 	<item name="11 ycoord">90</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">m</item>
+</string-array>
 
-<array name="BaBClock">
+<string-array name="BaBClock">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Amadeus.ttf</item>
@@ -528,9 +653,10 @@
 	<item name="10 xcoord">240</item>
 	<item name="11 ycoord">217</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">%H:%M</item>
+</string-array>
 
-<array name="BaBDuck">
+<string-array name="BaBDuck">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">EFON.ttf</item>
@@ -541,12 +667,13 @@
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#FFFCC84E</item>
 	<item name="09 bgcolor">#88FF8F1F</item>
-	<item name="10 xcoord">150</item>
+	<item name="10 xcoord">[%shift6_number_21600_375_240_105%]</item>
 	<item name="11 ycoord">285</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">U</item>
+</string-array>
 
-<array name="BaBDucklings">
+<string-array name="BaBDucklings">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">EFON.ttf</item>
@@ -557,12 +684,13 @@
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#FFFFF896</item>
 	<item name="09 bgcolor">#FF444444</item>
-	<item name="10 xcoord">270</item>
+	<item name="10 xcoord">[%shift6_number_3600_405_240_75%]</item>
 	<item name="11 ycoord">256</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">U U</item>
+</string-array>
 
-<array name="BaBWater">
+<string-array name="BaBWater">
 	<item name="00 layer_enabled">true</item>
 	<item name="53 left">22</item>
 	<item name="54 top">247</item>
@@ -573,9 +701,9 @@
 	<item name="59 fgcolor">#ee193EB5</item>
 	<item name="60 bgcolor">#88000000</item>
 	<item name="61 render_style">normal</item>
-</array>
+</string-array>
 
-<array name="BaBDate">
+<string-array name="BaBDate">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Amadeus.ttf</item>
@@ -589,7 +717,8 @@
 	<item name="10 xcoord">240</item>
 	<item name="11 ycoord">282</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">%A, %B %e</item>
+</string-array>
 
 <!--*************-->
 <!--TypewriterTicks-->
@@ -603,7 +732,7 @@
 	<item>text :TTDate</item>
 </string-array>
 
-<array name="TTPanel">
+<string-array name="TTPanel">
 	<item name="00 layer_enabled">true</item>
 	<item name="53 left">22</item>
 	<item name="54 top">22</item>
@@ -614,9 +743,9 @@
 	<item name="59 fgcolor">#FF183078</item>
 	<item name="60 bgcolor">#a0000000</item>
 	<item name="61 render_style">normal</item>
-</array>
+</string-array>
 
-<array name="TTClock">
+<string-array name="TTClock">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">1942.ttf</item>
@@ -630,9 +759,10 @@
 	<item name="10 xcoord">240</item>
 	<item name="11 ycoord">165</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">%H:%M</item>
+</string-array>
 
-<array name="TTDate">
+<string-array name="TTDate">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">1942.ttf</item>
@@ -646,7 +776,8 @@
 	<item name="10 xcoord">240</item>
 	<item name="11 ycoord">225</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">%A, %B %e</item>
+</string-array>
 
 <!--*************-->
 <!--Dear Diary-->
@@ -659,7 +790,7 @@
 	<item>text :DiaryClock</item>
 </string-array>
 
-<array name="DiaryDate">
+<string-array name="DiaryDate">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Aquiline_TRUNC.ttf</item>
@@ -673,9 +804,10 @@
 	<item name="10 xcoord">300</item>
 	<item name="11 ycoord">127</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">*%e %B, %G. *</item>
+</string-array>
 
-<array name="DiaryClock">
+<string-array name="DiaryClock">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Aquiline_TRUNC.ttf</item>
@@ -689,41 +821,8 @@
 	<item name="10 xcoord">15</item>
 	<item name="11 ycoord">225</item>
 	<item name="12 textalign">left</item>
-</array>
-
-
-<array name="WordNumbers">
-<item>o\'Clock</item>
-<item>one</item>
-<item>Two</item>
-<item>Three</item>
-<item>Four</item>
-<item>Five</item>
-<item>Six</item>
-<item>Seven</item>
-<item>Eight</item>
-<item>Nine</item>
-<item>Ten</item>
-<item>Eleven</item>
-<item>Twelve</item>
-<item>Thirteen</item>
-<item>Fourteen</item>
-<item>Fifteen</item>
-<item>Sixteen</item>
-<item>Seventeen</item>
-<item>Eighteen</item>
-<item>nineteen</item>
-<item>Twenty</item>
-<item>Twenty one</item>
-<item>Twenty Two</item>
-<item>Twenty Three</item>
-<item>Twenty Four</item>
-<item>Twenty Five</item>
-<item>Twenty Six</item>
-<item>Twenty Seven</item>
-<item>Twenty Eight</item>
-<item>Twenty Nine</item>
-</array>
+	<item name="13 words">[%fullenglishtime_diary%]</item>
+</string-array>
 
 <!--*************-->
 <!--Nixie Notions-->
@@ -743,7 +842,7 @@
 	<item>text :NNDate</item>
 </string-array>
 
-<array name="NNNixie1">
+<string-array name="NNNixie1">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 bmp_source_type">asset</item>
 	<item name="02 file_source">nixie3</item>
@@ -752,9 +851,9 @@
 	<item name="05 stretchheightfactor">0.75</item>
 	<item name="06 xcoord">0</item>
 	<item name="07 ycoord">0</item>
-</array>
+</string-array>
 
-<array name="NNNixie2">
+<string-array name="NNNixie2">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 bmp_source_type">asset</item>
 	<item name="02 file_source">nixie3</item>
@@ -763,9 +862,9 @@
 	<item name="05 stretchheightfactor">0.75</item>
 	<item name="06 xcoord">117</item>
 	<item name="07 ycoord">0</item>
-</array>
+</string-array>
 
-<array name="NNNixie3">
+<string-array name="NNNixie3">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 bmp_source_type">asset</item>
 	<item name="02 file_source">nixie3</item>
@@ -774,9 +873,9 @@
 	<item name="05 stretchheightfactor">0.75</item>
 	<item name="06 xcoord">235</item>
 	<item name="07 ycoord">0</item>
-</array>
+</string-array>
 
-<array name="NNNixie4">
+<string-array name="NNNixie4">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 bmp_source_type">asset</item>
 	<item name="02 file_source">nixie3</item>
@@ -785,9 +884,9 @@
 	<item name="05 stretchheightfactor">0.75</item>
 	<item name="06 xcoord">354</item>
 	<item name="07 ycoord">0</item>
-</array>
+</string-array>
 
-<array name="NNClock1">
+<string-array name="NNClock1">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">SALARYMA.ttf</item>
@@ -801,9 +900,10 @@
 	<item name="10 xcoord">61</item>
 	<item name="11 ycoord">214</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">[%digit_%H_1%]</item>
+</string-array>
 
-<array name="NNClock2">
+<string-array name="NNClock2">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">SALARYMA.ttf</item>
@@ -817,9 +917,10 @@
 	<item name="10 xcoord">178</item>
 	<item name="11 ycoord">214</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">[%digit_%H_2%]</item>
+</string-array>
 
-<array name="NNClock3">
+<string-array name="NNClock3">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">SALARYMA.ttf</item>
@@ -833,9 +934,10 @@
 	<item name="10 xcoord">297</item>
 	<item name="11 ycoord">214</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">[%digit_%M_1%]</item>
+</string-array>
 
-<array name="NNClock4">
+<string-array name="NNClock4">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">SALARYMA.ttf</item>
@@ -849,9 +951,10 @@
 	<item name="10 xcoord">415</item>
 	<item name="11 ycoord">214</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">[%digit_%M_2%]</item>
+</string-array>
 
-<array name="NNDate">
+<string-array name="NNDate">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
 	<item name="02 font_source">Aquiline_TRUNC.ttf</item>
@@ -865,7 +968,10 @@
 	<item name="10 xcoord">248</item>
 	<item name="11 ycoord">270</item>
 	<item name="12 textalign">center</item>
-</array>
+	<item name="13 words">*%e %B, %G. *</item>
+</string-array>
+
+<!-- TEMP -->
 
 </resources>
 

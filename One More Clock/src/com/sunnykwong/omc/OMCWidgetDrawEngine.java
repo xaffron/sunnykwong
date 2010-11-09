@@ -23,179 +23,13 @@ public class OMCWidgetDrawEngine {
 	// Tweaks = hacks, but at least all the hacks are in one block of code.
 	static void layerThemeTweaks(final Context context, final int iLayerID, final String sTheme, final int aWI) {
 		switch (iLayerID) {
-		case R.array.BBClock:
-    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
-    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%H:%M") : OMC.TIME.format("%k:%M");
-    		} else {
-    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I:%M") : OMC.TIME.format("%l:%M");
-    		}
-    		int iShade = (int)(255 - Math.abs((OMC.TIME.hour*60 + OMC.TIME.minute) - (12*60))/720f * 255);
-    		OMC.PT2.setARGB(255, iShade, iShade, iShade);
-    		break;
-		case R.array.BaBClock:
-		case R.array.CCClock:
-		case R.array.DDClock:
-		case R.array.LLClock:
-		case R.array.MMClock:
-		case R.array.TTClock:
-    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
-    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%H:%M") : OMC.TIME.format("%k:%M");
-    		} else {
-    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I:%M") : OMC.TIME.format("%l:%M");
-    		}
-    		break;
-		case R.array.NNClock1:
-    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
-    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%H").substring(0,1) : OMC.TIME.format("%k").substring(0,1);
-    		} else {
-    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I").substring(0,1) : OMC.TIME.format("%l").substring(0,1);
-    		}
-    		break;
-		case R.array.NNClock2:
-    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
-    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%H").substring(1,2) : OMC.TIME.format("%k").substring(1,2);
-    		} else {
-    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I").substring(1,2) : OMC.TIME.format("%l").substring(1,2);
-    		}
-    		break;
-		case R.array.NNClock3:
-			OMC.TXTBUF = OMC.TIME.format("%M").substring(0,1);
-    		break;
-		case R.array.NNClock4:
-			OMC.TXTBUF = OMC.TIME.format("%M").substring(1,2);
-    		break;
-		case R.array.DiaryClock:
-			OMC.TALKBACKS = context.getResources().getStringArray(R.array.WordNumbers);
-			if (OMC.TIME.minute == 0) {
-				OMC.TXTBUF = OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + " o'Clock.";
-			} else if (OMC.TIME.minute == 30) {
-				OMC.TXTBUF = "** half past " + OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + "."; 
-			} else if (OMC.TIME.minute == 15) {
-				OMC.TXTBUF = "A Quarter past " + OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + "."; 
-			} else if (OMC.TIME.minute == 45) {
-				if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
-					OMC.TXTBUF = "A Quarter to Twelve.";
-				} else {
-					OMC.TXTBUF = "A Quarter to " 
-					+ OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))+1] + ".";
-				}
-			} else if (OMC.TIME.minute > 30) {
-				if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
-					OMC.TXTBUF = OMC.TALKBACKS[60-Integer.parseInt(OMC.TIME.format("%M"))] + " to Twelve.";
-				} else {
-					OMC.TXTBUF = OMC.TALKBACKS[60-Integer.parseInt(OMC.TIME.format("%M"))] + " to " 
-					+ OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))+1] + ".";
-				}
-			} else {
-				OMC.TXTBUF = OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%M"))] + " past " 
-				+ OMC.TALKBACKS[Integer.parseInt(OMC.TIME.format("%I"))] + ".";
-			}
-    		break;
-		case R.array.BBDate:
-			OMC.TXTBUF = OMC.TIME.format("%a %e %b");
-    		iShade = (int)(255 - Math.abs((OMC.TIME.hour*60 + OMC.TIME.minute) - (12*60))/720f * 255);
-    		OMC.PT2.setARGB(255, iShade, iShade, iShade);
-    		break;
-		case R.array.BaBDate:
-		case R.array.CCDate:
-		case R.array.DDDate:
-		case R.array.LLDate:
-		case R.array.TTDate:
-			OMC.TXTBUF = OMC.TIME.format("%A, %B %e");
-    		break;
-		case R.array.NNDate:
-		case R.array.DiaryDate:
-			OMC.TALKBACKS = context.getResources().getStringArray(R.array.WordNumbers);
-			OMC.TXTBUF = OMC.TIME.format("*%e %B, %G. *");
-    		break;
-//		case R.array.CEEclipse:
-//    		iShade = (int)(14f + (((OMC.TIME.hour+6)*60f + OMC.TIME.minute) % (12*60f))/(12*60f) * 150f);
-//    		OMC.TEMPMATRIX.reset();
-//    		if (OMC.LAYERATTRIBS.getBoolean(3, true)) OMC.TEMPMATRIX.postScale(OMC.LAYERATTRIBS.getFloat(4, 1f), OMC.LAYERATTRIBS.getFloat(5, 1f));
-//    		OMC.TEMPMATRIX.postTranslate(iShade, OMC.LAYERATTRIBS.getFloat(7, 0f));
-//    		OMC.TXTBUF = "";
-//			break;
-		case R.array.BBFlare:
-    		break;
 		case R.array.CCChinese:
 			OMC.TXTBUF = String.valueOf(OMC.CHINESETIME.charAt((OMC.TIME.hour + 1)/2));
 
 			break;
-		case R.array.CCMeridiem:
-			// Nice easter egg for those who prefer am/pm
-			if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
-				OMC.TXTBUF = "";
-			} else if (OMC.TIME.hour < 12) {
-				OMC.TXTBUF = "ante  meridiem";
-			} else {
-				OMC.TXTBUF = "post  meridiem";
-			}
-			break;
-		case R.array.DDAPM:
-			OMC.TXTBUF = OMC.TIME.format("%p").substring(0, 1);
-			break;
-		case R.array.WWBubble:
-    		break;
-		case R.array.WWOMG:
-			OMC.TXTBUF = "omg, it's";
-			break;
-		case R.array.WWClock:
-	    	// 12 or 24 hours? Leading 0 or no leading 0?
-    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
-    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%H:%M!") : OMC.TIME.format("%k:%M!");
-    		} else {
-    			OMC.TXTBUF = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.TIME.format("%I:%M!") : OMC.TIME.format("%l:%M!");
-    		}
-			break;
-		case R.array.MMSplatter:
-			OMC.TXTBUF = "abi";
-			break;
-		case R.array.MMDate:
-			OMC.TXTBUF = OMC.TIME.format("%A.");
-			break;
-		case R.array.BaBCanvas:
-    		float ratio = 1f - Math.abs((OMC.TIME.hour*60 + OMC.TIME.minute) - (12*60) )/(12*60f);
-			OMC.PT1.setARGB(255, (int)(200*ratio), (int)(230*ratio), (int)(255*ratio));
-			break;
-		case R.array.BaBSun:
-			if (OMC.TIME.hour >= 6 && OMC.TIME.hour < 18) {
-				OMC.TXTBUF="M";
-			} else {
-				OMC.TXTBUF="E";
-				OMC.PT1.setARGB(255, 255, 255, 0);
-			}
-    		iShade = (int)(70 + (((OMC.TIME.hour+6)*60 + OMC.TIME.minute) % (12*60))/(12*60f) * 180);
-    		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
-    		OMC.TXTBUF = "";
-			break;
-		case R.array.BaBCloud1:
-			OMC.TXTBUF = "m";
-    		iShade = (int)(70 + ((OMC.TIME.hour*60 + OMC.TIME.minute) % (3*60))/(3*60f) * 180);
-    		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
-    		OMC.TXTBUF = "";
-    		break;
-		case R.array.BaBCloud2:
-			OMC.TXTBUF = "m";
-    		iShade = (int)(40 + ((OMC.TIME.hour*60 + OMC.TIME.minute) % (4*60))/(4*60f) * 240);
-    		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
-    		OMC.TXTBUF = "";
-			break;
-		case R.array.BaBDuck:
-			OMC.TXTBUF = OMC.TIME.format("U");
-    		iShade = (int)(70 + 180 - ((OMC.TIME.hour*60 + OMC.TIME.minute) % (6*60))/(6*60f) * 180) ;
-    		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
-    		OMC.TXTBUF = "";
-    		break;
-		case R.array.BaBDucklings:
-			OMC.TXTBUF = OMC.TIME.format("U U");
-    		iShade = (int)(50 + 220 - OMC.TIME.minute%60 / 60f * 220) ;
-    		fancyDrawText(OMC.LAYERATTRIBS.getString(7), OMC.CANVAS, OMC.TXTBUF, iShade, OMC.LAYERATTRIBS.getInt(11, 1), OMC.PT1, OMC.PT2);
-    		OMC.TXTBUF = "";
-    		break;
 		default:
-			
+			// do nothing
 		}
-		
 	}
 
 	// This layer is pretty much dedicated to lens flare (bokeh beauty), 
@@ -416,22 +250,23 @@ public class OMCWidgetDrawEngine {
 			int iLayerID=0;
 			
 			if (bExternal) {
-				OMC.LAYERATTRIBS = new OMCTypedArray(OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(layer.substring(6)));
-				String sNowTime;
-				// This is where the parsing happens.
-				if (sType.equals("text ")){
-		    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
-		    			sNowTime = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.LAYERATTRIBS.getString(13) : OMC.LAYERATTRIBS.getString(13).replaceAll("%H", "%k");
-		    		} else {
-		    			sNowTime = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.LAYERATTRIBS.getString(13).replaceAll("%I", "%k") : OMC.LAYERATTRIBS.getString(13).replaceAll("%H", "%l");
-		    		}
-					OMC.TXTBUF = OMC.TIME.format(sNowTime);
-
-				}
+				OMC.LAYERATTRIBS = new OMCTypedArray(OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(layer.substring(6)),aWI);
 			} else {
 				//		Set LAF based on prefs
 				iLayerID = context.getResources().getIdentifier(layer.substring(6), "array", "com.sunnykwong.omc");
-				OMC.LAYERATTRIBS = new OMCTypedArray(context.getResources().getStringArray(iLayerID));
+				OMC.LAYERATTRIBS = new OMCTypedArray(context.getResources().getStringArray(iLayerID), aWI);
+			}
+
+			String sNowTime;
+			// This is where the token parsing happens.
+			if (sType.equals("text ")){
+	    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
+	    			sNowTime = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.LAYERATTRIBS.getString(13) : OMC.LAYERATTRIBS.getString(13).replaceAll("%H", "%k");
+	    		} else {
+	    			sNowTime = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.LAYERATTRIBS.getString(13).replaceAll("%I", "%k") : OMC.LAYERATTRIBS.getString(13).replaceAll("%H", "%l");
+	    		}
+				OMC.TXTBUF = OMC.TIME.format(sNowTime);
+
 			}
 
 			if (OMC.LAYERATTRIBS.getBoolean(0, true)){

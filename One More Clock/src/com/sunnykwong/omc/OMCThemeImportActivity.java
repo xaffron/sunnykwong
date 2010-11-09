@@ -89,7 +89,12 @@ public class OMCThemeImportActivity extends Activity {
         OMCThemeImportActivity.SDROOT = Environment.getExternalStorageDirectory();
         OMCThemeImportActivity.THEMEROOT = new File(OMCThemeImportActivity.SDROOT.getAbsolutePath()+"/OMC");
         if (!OMCThemeImportActivity.THEMEROOT.exists()) {
-        	Toast.makeText(this, "OMC folder not found in your SD Card.\nCannot import!", Toast.LENGTH_LONG).show();
+        	Toast.makeText(this, "OMC folder not found in your SD Card.\nCreating folder...", Toast.LENGTH_LONG).show();
+        	OMCThemeImportActivity.THEMEROOT.mkdir();
+        }
+        if (OMCThemeImportActivity.THEMEROOT.listFiles().length == 0) {
+        	//No themes downloaded
+        	Toast.makeText(this, "No themes downloaded.\nCannot import...", Toast.LENGTH_LONG).show();
         	finish();
         	return;
         }

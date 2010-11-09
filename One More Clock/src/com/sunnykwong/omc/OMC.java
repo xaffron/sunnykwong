@@ -74,6 +74,7 @@ public class OMC extends Application {
 	static final String CHINESETIME = "子丑寅卯辰巳午未申酉戌亥子";
 	static final Time TIME = new Time();
 	static String CACHEPATH;
+	static String[] WORDNUMBERS;
 	
 	static final float[] FLARERADII = new float[] {32.f,20.f,21.6f,40.2f,18.4f,19.1f,10.8f,25.f,28.f};
 	static final int[] FLARECOLORS = new int[] {855046894,1140258554,938340342,1005583601,855439588,
@@ -155,6 +156,8 @@ public class OMC extends Application {
 
 		OMC.TALKBACKS = null;
 
+		OMC.WORDNUMBERS = this.getResources().getStringArray(R.array.WordNumbers);
+		
 		try {
 			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
 			if (OMC.DEBUG)Log.i("OMCPref","OMPC installed, let OMPC handle onclick");
