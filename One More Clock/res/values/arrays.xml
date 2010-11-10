@@ -11,6 +11,8 @@
 	<item>Nixie Notions</item>
 	<item>Typewriter Ticks</item>
 	<item>Wham! Bam! Widget!</item>
+	<item>Pseudo Clockr</item>
+	<item>He Said She Said</item>
 </string-array>
 
 <string-array name="theme_values">
@@ -24,6 +26,8 @@
 	<item>NixieNotions</item>
 	<item>TypewriterTicks</item>
 	<item>WhamBamWidget</item>
+	<item>PseudoClockr</item>
+	<item>HeSaidSheSaid</item>
 </string-array>
 
 <string-array name="WordNumbers">
@@ -142,6 +146,19 @@
 	<item>flare:BBFlare</item>
 </string-array>
 
+<string-array name="BokehBeauty_3x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">1</item>
+	<item name="TopCropPixels">58</item>
+	<item name="BottomCropPixels">60</item>
+</string-array>
+<string-array name="BokehBeauty_4x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1.0</item>
+	<item name="VerticalStretchFactor">0.9</item>
+	<item name="TopCropPixels">58</item>
+	<item name="BottomCropPixels">60</item>
+</string-array>
+
 <string-array name="BBClock">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
@@ -193,6 +210,19 @@
 	<item>text :CCDate</item>
 	<item>text :CCClock</item>
 	<item>text :CCMeridiem</item>
+</string-array>
+
+<string-array name="CultureClash_3x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">0.9</item>
+	<item name="TopCropPixels">80</item>
+	<item name="BottomCropPixels">30</item>
+</string-array>
+<string-array name="CultureClash_4x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1.0</item>
+	<item name="VerticalStretchFactor">0.85</item>
+	<item name="TopCropPixels">80</item>
+	<item name="BottomCropPixels">30</item>
 </string-array>
 
 <string-array name="CCChinese">
@@ -277,6 +307,19 @@
 	<item>text :DDDate</item>
 </string-array>
 
+<string-array name="DigitalDigits_3x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">0.7</item>
+	<item name="TopCropPixels">20</item>
+	<item name="BottomCropPixels">20</item>
+</string-array>
+<string-array name="DigitalDigits_4x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1.0</item>
+	<item name="VerticalStretchFactor">0.6</item>
+	<item name="TopCropPixels">25</item>
+	<item name="BottomCropPixels">22</item>
+</string-array>
+
 <string-array name="DDPanel">
 	<item name="00 layer_enabled">true</item>
 	<item name="53 left">22</item>
@@ -336,7 +379,7 @@
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ff111111</item>
 	<item name="09 bgcolor">#20333333</item>
-	<item name="10 xcoord">82</item>
+	<item name="10 xcoord">70</item>
 	<item name="11 ycoord">258</item>
 	<item name="12 textalign">left</item>
 	<item name="13 words">%A, %B %e</item>
@@ -351,6 +394,19 @@
 <string-array name="LockscreenLook">
 	<item>text :LLClock</item>
 	<item>text :LLDate</item>
+</string-array>
+
+<string-array name="LockscreenLook_3x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">1</item>
+	<item name="TopCropPixels">58</item>
+	<item name="BottomCropPixels">60</item>
+</string-array>
+<string-array name="LockscreenLook_4x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1.0</item>
+	<item name="VerticalStretchFactor">0.9</item>
+	<item name="TopCropPixels">58</item>
+	<item name="BottomCropPixels">60</item>
 </string-array>
 
 <string-array name="LLClock">
@@ -399,6 +455,19 @@
 	<item>text :WWOMG</item>
 	<item>text :WWClock</item>
 	<item>quote:WWTalkback</item>
+</string-array>
+
+<string-array name="WhamBamWidget_3x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">1</item>
+	<item name="TopCropPixels">20</item>
+	<item name="BottomCropPixels">80</item>
+</string-array>
+<string-array name="WhamBamWidget_4x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">0.8</item>
+	<item name="TopCropPixels">20</item>
+	<item name="BottomCropPixels">80</item>
 </string-array>
 
 <string-array name="WWThought">
@@ -506,6 +575,19 @@
 	<item>text :MMDate</item>
 </string-array>
 
+<string-array name="MorbidMoments_3x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">0.9</item>
+	<item name="TopCropPixels">48</item>
+	<item name="BottomCropPixels">15</item>
+</string-array>
+<string-array name="MorbidMoments_4x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">0.7</item>
+	<item name="TopCropPixels">48</item>
+	<item name="BottomCropPixels">15</item>
+</string-array>
+
 <string-array name="MMSplatter">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>
@@ -575,6 +657,19 @@
 	<item>text :BaBDate</item>
 </string-array>
 
+<string-array name="BeaksAndBills_3x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">0.75</item>
+	<item name="TopCropPixels">35</item>
+	<item name="BottomCropPixels">5</item>
+</string-array>
+<string-array name="BeaksAndBills_4x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">0.65</item>
+	<item name="TopCropPixels">45</item>
+	<item name="BottomCropPixels">5</item>
+</string-array>
+
 <string-array name="BaBCanvas">
 	<item name="00 layer_enabled">true</item>
 	<item name="53 left">22</item>
@@ -597,7 +692,7 @@
 	<item name="05 font_stretch">1.</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
-	<item name="08 fgcolor">#FFFF8F1F</item>
+	<item name="08 fgcolor">[%day_#FFFF8F1F_night_#FFFFFFFF%]</item>
 	<item name="09 bgcolor">#a0ffffff</item>
 	<item name="10 xcoord">[%shift6_number_43200_105_240_375%]</item>
 	<item name="11 ycoord">144</item>
@@ -732,6 +827,19 @@
 	<item>text :TTDate</item>
 </string-array>
 
+<string-array name="TypewriterTicks_3x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">1</item>
+	<item name="TopCropPixels">35</item>
+	<item name="BottomCropPixels">70</item>
+</string-array>
+<string-array name="TypewriterTicks_4x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">0.8</item>
+	<item name="TopCropPixels">45</item>
+	<item name="BottomCropPixels">70</item>
+</string-array>
+
 <string-array name="TTPanel">
 	<item name="00 layer_enabled">true</item>
 	<item name="53 left">22</item>
@@ -768,7 +876,7 @@
 	<item name="02 font_source">1942.ttf</item>
 	<item name="03 font_size">30</item>
 	<item name="04 font_skew">0.00</item>
-	<item name="05 font_stretch">1.0</item>
+	<item name="05 font_stretch">0.95</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">emboss</item>
 	<item name="08 fgcolor">#ffDBDBDB</item>
@@ -788,6 +896,19 @@
 <string-array name="DearDiary">
 	<item>text :DiaryDate</item>
 	<item>text :DiaryClock</item>
+</string-array>
+
+<string-array name="DearDiary_3x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">1</item>
+	<item name="TopCropPixels">50</item>
+	<item name="BottomCropPixels">65</item>
+</string-array>
+<string-array name="DearDiary_4x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">0.8</item>
+	<item name="TopCropPixels">60</item>
+	<item name="BottomCropPixels">65</item>
 </string-array>
 
 <string-array name="DiaryDate">
@@ -840,6 +961,19 @@
 	<item>text :NNClock3</item>
 	<item>text :NNClock4</item>
 	<item>text :NNDate</item>
+</string-array>
+
+<string-array name="NixieNotions_3x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">0.8</item>
+	<item name="TopCropPixels">25</item>
+	<item name="BottomCropPixels">10</item>
+</string-array>
+<string-array name="NixieNotions_4x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">0.8</item>
+	<item name="TopCropPixels">85</item>
+	<item name="BottomCropPixels">10</item>
 </string-array>
 
 <string-array name="NNNixie1">
@@ -972,6 +1106,165 @@
 </string-array>
 
 <!-- TEMP -->
+<!--*************-->
+<!--Pseudo Clockr-->
+<!--(11/09)      -->
+<!-- Sunny Kwong -->
+<!--*************-->
+
+<string-array name="PseudoClockr">
+	<item>panel:PCBkgd</item>
+	<item>text :PCClock</item>
+	<item>text :PCPitch1</item>
+	<item>text :PCPitch2</item>
+</string-array>
+
+<string-array name="PseudoClockr_3x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">1</item>
+	<item name="TopCropPixels">50</item>
+	<item name="BottomCropPixels">50</item>
+</string-array>
+<string-array name="PseudoClockr_4x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">0.95</item>
+	<item name="TopCropPixels">90</item>
+	<item name="BottomCropPixels">55</item>
+</string-array>
+<string-array name="PseudoClockr_Link">
+	<item>market://search?q=pub:zehro</item>
+</string-array>
+
+<string-array name="PCBkgd">
+	<item name="00 layer_enabled">true</item>
+	<item name="53 left">0</item>
+	<item name="54 top">50</item>
+	<item name="55 right">480</item>
+	<item name="56 bottom">250</item>
+	<item name="57 xcorner">0</item>
+	<item name="58 ycorner">0</item>
+	<item name="59 fgcolor">#88000000</item>
+	<item name="60 bgcolor">#88000000</item>
+	<item name="61 render_style">normal</item>
+</string-array>
+
+<string-array name="PCClock">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">DeckerB.ttf</item>
+	<item name="03 font_size">48</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">1.1</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">emboss</item>
+	<item name="08 fgcolor">#ffffffff</item>
+	<item name="09 bgcolor">#44eeee33</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">150</item>
+	<item name="12 textalign">center</item>
+	<item name="13 words">eight&lt;B&gt;THIRTY&lt;/B&gt;</item>
+</string-array>
+
+<string-array name="PCPitch1">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">DeckerB.ttf</item>
+	<item name="03 font_size">18</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">1.1</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">normal</item>
+	<item name="08 fgcolor">[%random_color_#ffffb064_#ff222222%]</item>
+	<item name="09 bgcolor">#44eeeeee</item>
+	<item name="10 xcoord">460</item>
+	<item name="11 ycoord">220</item>
+	<item name="12 textalign">right</item>
+	<item name="13 words">check&lt;B&gt;OUT&lt;/B&gt;</item>
+</string-array>
+
+<string-array name="PCPitch2">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">DeckerB.ttf</item>
+	<item name="03 font_size">18</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">1.1</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">normal</item>
+	<item name="08 fgcolor">[%random_color_#ffffb064_#ff222222%]</item>
+	<item name="09 bgcolor">#44eeeeee</item>
+	<item name="10 xcoord">460</item>
+	<item name="11 ycoord">240</item>
+	<item name="12 textalign">right</item>
+	<item name="13 words">&lt;B&gt;Clockr&lt;/B&gt;Evolution</item>
+</string-array>
+
+<!--*************-->
+<!--HeSaidSheSaid-->
+<!--(11/09)      -->
+<!-- Sunny Kwong -->
+<!--*************-->
+
+<string-array name="HeSaidSheSaid">
+	<item>image:HSSSBubble</item>
+	<item>quote:HSSSTalk</item>
+</string-array>
+
+<string-array name="HeSaidSheSaid_3x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">1</item>
+	<item name="TopCropPixels">50</item>
+	<item name="BottomCropPixels">50</item>
+</string-array>
+<string-array name="HeSaidSheSaid_4x1SqueezeInfo">
+	<item name="HorizontalStretchFactor">1</item>
+	<item name="VerticalStretchFactor">0.95</item>
+	<item name="TopCropPixels">90</item>
+	<item name="BottomCropPixels">55</item>
+</string-array>
+
+<string-array name="HSSSBubble">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 bmp_source_type">asset</item>
+	<item name="02 file_source">speech_balloon</item>
+	<item name="03 stretch?">true</item>
+	<item name="04 stretchwidthfactor">1</item>
+	<item name="05 stretchheightfactor">1</item>
+	<item name="06 xcoord">0</item>
+	<item name="07 ycoord">0</item>
+</string-array>
+
+<string-array name="HSSSTalk">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">Laffayette_Comic_Pro.ttf</item>
+	<item name="03 font_size">36</item>
+	<item name="04 font_skew">-0.35</item>
+	<item name="05 font_stretch">0.8</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">normal</item>
+	<item name="08 fgcolor">#ff000000</item>
+	<item name="09 bgcolor">#a0440000</item>
+	<item name="10 xcoord">240</item>
+	<item name="11 ycoord">150</item>
+	<item name="12 textalign">center</item>
+	<item name="13 talkbacks">HSSStalkbacks</item>
+</string-array>
+
+<string-array name="HSSStalkbacks">
+	<item>...and &lt;B&gt;he&lt;/B&gt; said...</item>
+	<item>...then &lt;B&gt;she&lt;/B&gt; said...</item>
+	<item>...blah blah blah...</item>
+	<item>...oh what &lt;B&gt;nerve!&lt;/B&gt; ...</item>
+	<item>...but then, &lt;B&gt;he&lt;/B&gt; said...</item>
+	<item>...where\'s that &lt;B&gt;lagomorph&lt;/B&gt;?</item>
+	<item>...you &lt;B&gt;go&lt;/B&gt;, girl! ...</item>
+	<item>...&lt;B&gt;Talk to the Hand&lt;/B&gt;, baby!</item>
+	<item>...so &lt;B&gt;I&lt;/B&gt; said...</item>
+	<item>...and then &lt;B&gt;they&lt;/B&gt; said...</item>
+	<item>...so &lt;B&gt;we&lt;/B&gt; said...</item>
+	<item>... &lt;B&gt;uh uh!&lt;/B&gt; ...</item>
+</string-array>
 
 </resources>
 

@@ -17,19 +17,19 @@ public class OMCTypedArray  {
     	mImportedArray = OMCTypedArray.findTokens(tempArray, aWI);
 	}
 	public boolean getBoolean(int index, boolean defValue) {
-		return Boolean.parseBoolean(mImportedArray[index]);
+		return Boolean.parseBoolean(mImportedArray[index].toString());
 	}
 	public int getColor(int index, int defValue) {
-		return Color.parseColor(mImportedArray[index]);
+		return Color.parseColor(mImportedArray[index].toString());
 	}
 	public String getString(int index) {
-		return mImportedArray[index];
+		return mImportedArray[index].toString();
 	}
 	public int getInt(int index, int defValue) {
-		return Integer.parseInt(mImportedArray[index]);
+		return Integer.parseInt(mImportedArray[index].toString());
 	}
 	public float getFloat(int index, float defValue) {
-		return Float.parseFloat(mImportedArray[index]);
+		return Float.parseFloat(mImportedArray[index].toString());
 	}
 	public void recycle() {
 		mImportedArray = null;
@@ -85,10 +85,6 @@ public class OMCTypedArray  {
 			} 
 
 			float gradient = (iGradientSeconds % iIntervalSeconds)/(float)iIntervalSeconds;
-			System.out.println("iGradSec: " + iGradientSeconds);
-			System.out.println("iIntvSec: " + iIntervalSeconds);
-			System.out.println("GRADIENT: " + gradient);
-
 			
 			if (sType.equals("number")) {
 				result.append(OMCTypedArray.numberInterpolate(

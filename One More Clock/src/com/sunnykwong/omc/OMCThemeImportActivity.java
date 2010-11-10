@@ -174,7 +174,7 @@ public class OMCThemeImportActivity extends Activity {
 										, Toast.LENGTH_SHORT).show();
 						
 			        	OMC.PREFS.edit()
-			        	.putString("widgetTheme", OMCXMLThemeParser.latestThemeName)
+			        	.putString("widgetTheme", OMCThemeImportActivity.CURRSELECTEDTHEME)
 			        	.putBoolean("external", true)
 			    		.commit();
 						

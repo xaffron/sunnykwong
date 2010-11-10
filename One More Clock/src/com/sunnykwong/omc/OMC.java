@@ -37,6 +37,10 @@ import android.graphics.BitmapFactory;
 import android.content.res.Resources;
 import android.graphics.Matrix;
 
+
+import android.text.Html;
+import android.text.SpannedString;
+
 /**
  * @author skwong01
  * Thanks to ralfoide's 24clock code; taught me quite a bit about broadcastreceivers
@@ -67,6 +71,7 @@ public class OMC extends Application {
 	static Matrix TEMPMATRIX;
 
 	static final ComponentName WIDGET4x2CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget4x2");
+	static final ComponentName WIDGET4x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget4x1");
 	static final ComponentName WIDGET3x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget3x1");
 	static final ComponentName WIDGET2x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget2x1");
 	static final int WIDGETWIDTH=480;
@@ -75,11 +80,13 @@ public class OMC extends Application {
 	static final Time TIME = new Time();
 	static String CACHEPATH;
 	static String[] WORDNUMBERS;
+	static String[] STRETCHINFO;
 	
 	static final float[] FLARERADII = new float[] {32.f,20.f,21.6f,40.2f,18.4f,19.1f,10.8f,25.f,28.f};
 	static final int[] FLARECOLORS = new int[] {855046894,1140258554,938340342,1005583601,855439588,
 		669384692,905573859,1105458423,921566437};
 	static String TXTBUF;
+	static String OVERLAYURL;
 	
 	static final int SVCNOTIFICATIONID = 1; // Notification ID for the one and only message window we'll show
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
@@ -155,6 +162,10 @@ public class OMC extends Application {
 		OMC.LAYERATTRIBS = null;
 
 		OMC.TALKBACKS = null;
+		OMC.STRETCHINFO = null;
+		
+		OMC.OVERLAYURL = null;
+
 
 		OMC.WORDNUMBERS = this.getResources().getStringArray(R.array.WordNumbers);
 		
@@ -216,6 +227,14 @@ public class OMC extends Application {
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
 		.putBoolean("external"+aWI, OMC.PREFS.getBoolean("external", false))
 		.putString("URI"+aWI, OMC.PREFS.getString("URI", ""))
+		.commit();
+	}
+ 
+	public static void initPrefs(int aWI) {
+		// For new clocks... just like setPrefs but leaves the URI empty.
+		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME))
+		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
+		.putBoolean("external"+aWI, OMC.PREFS.getBoolean("external", false))
 		.commit();
 	}
  

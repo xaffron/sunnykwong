@@ -2,7 +2,8 @@
 <PreferenceScreen
   xmlns:android="http://schemas.android.com/apk/res/android" android:title="Credits">
 evilgeniusbb_reg.ttf<PreferenceCategory android:title="Team">
-<Preference android:title="Programmer" android:enabled="true" android:selectable="false" android:summary="Sunny Kwong" android:key="1"></Preference><Preference android:enabled="true" android:selectable="false" android:key="2" android:title="Testers" android:summary="Timothy Lai, Jenny Kwong, spambayes"></Preference></PreferenceCategory><PreferenceCategory android:title="Copyrights and Licenses"><Preference android:summary="http://android.hlidskialf.com/blog/code/android-seekbar-preference\n(c) Matthew Wiggins.  APACHE 2.0 License." android:title="Code: SeekBarPreference" android:key="SeekBarPreference"></Preference><Preference android:enabled="true" android:selectable="false" android:key="3" android:title="Font: Salaryman" android:summary="SALARYMA.ttf\n(c) Patrick Broderick @ 
+<Preference android:title="Programmer" android:enabled="true" android:selectable="false" android:summary="Sunny Kwong" android:key="1"></Preference><Preference android:enabled="true" android:selectable="false" android:key="2" android:title="Testers" android:summary="Timothy Lai, Jenny Kwong, Hollywooder,zHk3R, spambayes"></Preference><Preference android:key="2a" android:title="Special Thanks" android:summary="Zehro (Clockr)"></Preference>
+</PreferenceCategory><PreferenceCategory android:title="Copyrights and Licenses"><Preference android:summary="http://android.hlidskialf.com/blog/code/android-seekbar-preference\n(c) Matthew Wiggins.  APACHE 2.0 License." android:title="Code: SeekBarPreference" android:key="SeekBarPreference"></Preference><Preference android:enabled="true" android:selectable="false" android:key="3" android:title="Font: Salaryman" android:summary="SALARYMA.ttf\n(c) Patrick Broderick @ 
 Rotodesign
 
 .\nhttp://www.rotodesign.com

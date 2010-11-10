@@ -1,9 +1,8 @@
-<LinearLayout 
+<FrameLayout 
 	android:id="@+id/LinearLayout01"
 	android:layout_width="fill_parent" 
 	android:layout_height="fill_parent"
 	android:gravity="fill_horizontal|fill_vertical" 
-	android:orientation="vertical"
 	android:background="#00ffffff" xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView
 	    android:id="@+id/omcIV" 
@@ -11,4 +10,7 @@
 	    android:layout_height="fill_parent" 
 	    android:gravity="fill_horizontal|fill_vertical"
     ></ImageView> 
-</LinearLayout>
+    <ImageView
+	    android:id="@+id/omcLink"
+	    android:maxHeight="100dp" android:maxWidth="100dp" android:minHeight="100dp" android:minWidth="100dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_gravity="bottom|right"></ImageView> 
+</FrameLayout>

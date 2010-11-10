@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-public class ClockWidget4x2 extends AppWidgetProvider {
+public class ClockWidget4x1 extends AppWidgetProvider {
 	
-	public ClockWidget4x2() {
+	public ClockWidget4x1() {
 		super();
 	}
 
@@ -28,14 +28,14 @@ public class ClockWidget4x2 extends AppWidgetProvider {
 	public void onDisabled(Context context) {
 
 		//Flag OMCService to stop.
-		OMCService.STOPNOW4x2=true;
+		OMCService.STOPNOW4x1=true;
 	}
 		
 //	This gets called when the very first widget is instantiated.
 	public void onEnabled(Context context) {
 
 		//Unflag the STOP FLAG for OMCService.
-		OMCService.STOPNOW4x2=false;
+		OMCService.STOPNOW4x1=false;
 	}
 	
 	@Override
@@ -53,7 +53,7 @@ public class ClockWidget4x2 extends AppWidgetProvider {
 			// Set time for output
 	        OMC.TIME.setToNow();				        					
 
-	        OMCWidgetDrawEngine.updateAppWidget(context, 1f, 1f, OMC.WIDGET4x2CNAME, 0,0);
+	        OMCWidgetDrawEngine.updateAppWidget(context, 0.8f, 0.7f, OMC.WIDGET4x1CNAME, 15, 15);
 
 			super.onReceive(context, intent);
 		}
@@ -65,10 +65,11 @@ public class ClockWidget4x2 extends AppWidgetProvider {
 		if (!OMCService.RUNNING) {
 			OMC.setServiceAlarm(System.currentTimeMillis() + 3000);
 		}
+
 		final int N = appWidgetIds.length;
 		for (int i=0; i<N; i++) {
 		  	OMC.initPrefs(appWidgetIds[i]);
-		  	OMCWidgetDrawEngine.updateAppWidget(context, aWM, appWidgetIds[i], 1f, 1f,  OMC.WIDGET4x2CNAME, 0,0);
+		  	OMCWidgetDrawEngine.updateAppWidget(context, aWM, appWidgetIds[i], 0.8f, 0.7f, OMC.WIDGET4x1CNAME, 15,15);
 		}
 
 	}

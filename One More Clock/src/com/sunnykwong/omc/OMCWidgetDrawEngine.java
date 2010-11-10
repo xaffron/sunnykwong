@@ -1,6 +1,8 @@
 package com.sunnykwong.omc;
 
 import java.util.ArrayList;
+import android.text.Html;
+import android.text.SpannableStringBuilder;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -16,7 +18,11 @@ import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 import android.content.ComponentName;
+
 import android.graphics.Typeface;
+import android.graphics.Paint.Align;
+import android.text.SpannedString;
+import android.text.style.StyleSpan;
 
 public class OMCWidgetDrawEngine {
 	// This is where the theme-specific tweaks (regardless of layer) are processed.
@@ -279,17 +285,101 @@ public class OMCWidgetDrawEngine {
 			OMC.LAYERATTRIBS.recycle();
 		}
 	}
+
+	static int getSpannedStringWidth(SpannedString ss, final Paint pt) {
+		int result = 0;
+		int iStart=0;
+		Paint ptTemp = new Paint(pt);
+		ptTemp.setTextAlign(Paint.Align.LEFT);
+		while (iStart < ss.length()){
+			int iEnd = ss.nextSpanTransition(iStart, ss.length(), StyleSpan.class);
+			if (iEnd == -1) return 0;
+			ptTemp.setFakeBoldText(false);
+			ptTemp.setTextSkewX(0f);
+			for (Object o:ss.getSpans(iStart, iEnd, StyleSpan.class)) {
+				StyleSpan style = (StyleSpan)o;
+				switch (style.getStyle()) {
+					case Typeface.BOLD:
+						ptTemp.setFakeBoldText(true);
+						break;
+					case Typeface.BOLD_ITALIC:
+						ptTemp.setFakeBoldText(true);
+						ptTemp.setTextSkewX(-0.25f);
+						break;
+					case Typeface.ITALIC:
+						ptTemp.setTextSkewX(-0.25f);
+						break;
+					default:
+				}
+			}
+			result+=ptTemp.measureText(ss.toString().substring(iStart, iEnd));
+			iStart = iEnd;
+		}
+		return result;
+	}
+	
+	static void fancyDrawSpanned(final Canvas cvas, final String str, final int x, final int y, final Paint pt) {
+		final SpannedString ss = new SpannedString(Html.fromHtml(str));
+		Paint ptTemp = new Paint(pt);
+		ptTemp.setTextAlign(Paint.Align.LEFT);
+		int iCursor = 0;
+
+		if (pt.getTextAlign() == Paint.Align.LEFT) {
+			iCursor = x;
+		} else if (pt.getTextAlign() == Paint.Align.CENTER) {
+			iCursor = x - OMCWidgetDrawEngine.getSpannedStringWidth(ss, pt)/2;
+		} else if (pt.getTextAlign() == Paint.Align.RIGHT) {
+			iCursor = x - OMCWidgetDrawEngine.getSpannedStringWidth(ss, pt);
+		} else {
+			// Huh? do nothing
+		}
+
+		int iStart=0;
+		while (iStart < ss.length()){
+			int iEnd = ss.nextSpanTransition(iStart, ss.length(), StyleSpan.class);
+			if (iEnd == -1) return;
+			ptTemp.set(pt);
+			ptTemp.setTextAlign(Paint.Align.LEFT);
+			for (Object o:ss.getSpans(iStart, iEnd, StyleSpan.class)) {
+				StyleSpan style = (StyleSpan)o;
+				switch (style.getStyle()) {
+					case Typeface.BOLD:
+						ptTemp.setFakeBoldText(true);
+						break;
+					case Typeface.BOLD_ITALIC:
+						ptTemp.setFakeBoldText(true);
+						ptTemp.setTextSkewX(-0.25f);
+						break;
+					case Typeface.ITALIC:
+						ptTemp.setTextSkewX(-0.25f);
+						break;
+					default:
+				}
+
+			}
+			cvas.drawText(ss.subSequence(iStart, iEnd).toString(), iCursor, y, ptTemp);
+			iCursor+=ptTemp.measureText(ss.toString().substring(iStart, iEnd));
+			iStart = iEnd;
+		}
+		
+	}
 	
 	static void fancyDrawText(final String style, final Canvas cvas, final String text, final int x, final int y, final Paint pt1, final Paint pt2)  {
 		//Draw the SFX
 		if (style.equals("emboss")) {
-			cvas.drawText(text, x-1, y-1, pt2);
-			cvas.drawText(text, x+1, y+1, pt2);
+			
+			//SpannableStringBuilder ssb = new SpannableStringBuilder(Html.fromHtml(text));
+			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x-1, y-1, pt2);
+			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x+1, y+1, pt2);
+//			cvas.drawText(text, x-1, y-1, pt2);
+//			cvas.drawText(text, x+1, y+1, pt2);
 		} else if (style.equals("shadow")) {
-			cvas.drawText(text, x+3, y+3, pt2);
+			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x+3, y+3, pt2);
+//			cvas.drawText(text, x+3, y+3, pt2);
 		}
 		//Either way, draw the proper text
-		cvas.drawText(text, x, y, pt1);
+		OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1);
+//		cvas.drawText(text, x, y, pt1);
 	}
 
 	// Needs to be synchronized now that we have three different widget types 
@@ -314,16 +404,69 @@ public class OMCWidgetDrawEngine {
 
 		if (OMC.DEBUG)Log.i("OMCWidget", "Redrawing widget" + appWidgetId + " @ " + OMC.TIME.format("%T"));
 
+		String sTheme = OMC.PREFS.getString("widgetTheme"+appWidgetId,OMC.DEFAULTTHEME);
+		boolean bExternal = OMC.PREFS.getBoolean("external"+appWidgetId,false);
+		if (cName.equals(OMC.WIDGET4x2CNAME) || cName.equals(OMC.WIDGET2x1CNAME)) {
+			//Correct aspect ratio already; do nothing
+		} else {
+			String sStretch="";
+			if (cName.equals(OMC.WIDGET4x1CNAME)) {
+				sStretch = sTheme + "_4x1SqueezeInfo";
+			} else if (cName.equals(OMC.WIDGET3x1CNAME)) {
+				sStretch = sTheme + "_3x1SqueezeInfo";
+			}
+			OMC.STRETCHINFO = null;
+			try {
+				if (bExternal) {
+					OMC.STRETCHINFO = new String[4]; 
+					OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sStretch).toArray(OMC.STRETCHINFO);
+				} else {
+					int iLayerID = context.getResources().getIdentifier(sStretch, "array", "com.sunnykwong.omc");
+					OMC.STRETCHINFO = context.getResources().getStringArray(iLayerID);
+				}
+			} catch (android.content.res.Resources.NotFoundException e) {
+				// OMC.STRETCHINFO stays null; do nothing
+				if (OMC.DEBUG) Log.i("OMCEngine","No stretch info found for seeded clock. Using default.");
+			} catch (java.lang.NullPointerException e) {
+				// OMC.STRETCHINFO stays null; do nothing
+				if (OMC.DEBUG) Log.i("OMCEngine","No stretch info found for imported clock. Using default.");
+				OMC.STRETCHINFO = null;
+			}
+		}
+		OMC.OVERLAYURL = null;
+		try {
+			if (bExternal) {
+				OMC.OVERLAYURL = (String)(OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sTheme+"_Link").toArray()[0]);
+			} else {
+				int iLayerID = context.getResources().getIdentifier(sTheme+"_Link", "array", "com.sunnykwong.omc");
+				OMC.OVERLAYURL = context.getResources().getStringArray(iLayerID)[0];
+			}
+		} catch (android.content.res.Resources.NotFoundException e) {
+			// OMC.STRETCHINFO stays null; do nothing
+			if (OMC.DEBUG) Log.i("OMCEngine","No link URL info found for seeded clock.");
+		} catch (java.lang.NullPointerException e) {
+			// OMC.STRETCHINFO stays null; do nothing
+			if (OMC.DEBUG) Log.i("OMCEngine","No link URL info found for imported clock.");
+			OMC.OVERLAYURL = null;
+		}
+
 		drawBitmapForWidget(context,appWidgetId);
 
 		// Blit the buffer over
 		final RemoteViews rv = new RemoteViews(context.getPackageName(),R.layout.omcwidget);
 
 		if (fScaleX==1f && fScaleY==1f) rv.setImageViewBitmap(R.id.omcIV, OMC.BUFFER);
-		else {
+		else if (OMC.STRETCHINFO != null){
+			//Custom scaling
 			OMC.TEMPMATRIX.reset();
-			OMC.TEMPMATRIX.preScale(fScaleX, fScaleY);
+			OMC.TEMPMATRIX.preScale(Float.parseFloat(OMC.STRETCHINFO[0]), 
+					Float.parseFloat(OMC.STRETCHINFO[1]));
+			rv.setImageViewBitmap(R.id.omcIV,Bitmap.createBitmap(OMC.BUFFER, 0, Integer.parseInt(OMC.STRETCHINFO[2]), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(OMC.STRETCHINFO[2]) - Integer.parseInt(OMC.STRETCHINFO[3]), OMC.TEMPMATRIX, true));
+		} else {
+			//Default scaling
+			OMC.TEMPMATRIX.reset();
 			OMC.TEMPMATRIX.preTranslate(0, 0-iCutTop);
+			OMC.TEMPMATRIX.preScale(fScaleX, fScaleY);
 			rv.setImageViewBitmap(R.id.omcIV,Bitmap.createBitmap(OMC.BUFFER, 0, 0, OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight(), OMC.TEMPMATRIX, true));
 		}
 		
@@ -343,7 +486,10 @@ public class OMCWidgetDrawEngine {
         	}
         }
         
-
+        if (OMC.OVERLAYURL!=null) {
+        	rv.setOnClickPendingIntent(R.id.omcLink, PendingIntent.getActivity(context, 0, new Intent(Intent.ACTION_DEFAULT,Uri.parse(OMC.OVERLAYURL)), 0));
+        }
+        
         appWidgetManager.updateAppWidget(appWidgetId, rv);
 	}
 
