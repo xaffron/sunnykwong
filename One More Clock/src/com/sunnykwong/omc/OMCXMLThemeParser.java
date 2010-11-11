@@ -1,20 +1,15 @@
 package com.sunnykwong.omc;
 
 import android.util.Log;
-import android.widget.Toast;
-import android.text.format.Time;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
-import android.os.Environment;
 
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.*;
 
 import java.util.Map;
 import java.util.Stack;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.StringTokenizer;
 import java.util.ArrayList;
 
 import java.lang.StringBuilder;

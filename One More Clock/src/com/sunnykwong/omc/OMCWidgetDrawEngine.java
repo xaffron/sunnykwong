@@ -1,28 +1,25 @@
 package com.sunnykwong.omc;
 
 import java.util.ArrayList;
-import android.text.Html;
-import android.text.SpannableStringBuilder;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.net.Uri;
+import android.text.Html;
+import android.text.SpannedString;
+import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
-import android.content.ComponentName;
-
-import android.graphics.Typeface;
-import android.graphics.Paint.Align;
-import android.text.SpannedString;
-import android.text.style.StyleSpan;
 
 public class OMCWidgetDrawEngine {
 	// This is where the theme-specific tweaks (regardless of layer) are processed.
@@ -146,14 +143,7 @@ public class OMCWidgetDrawEngine {
 
 	// Quote layer.  Set the Text to be shown before passing to drawTextLayer.
 	static void drawQuoteLayer(final Context context, final int iLayerID, final String sTheme, final int aWI) {
-		boolean bExternal = OMC.PREFS.getBoolean("external"+aWI,false);
-		if (bExternal) {
-			OMCImportedTheme oTheme = OMC.IMPORTEDTHEMEMAP.get(sTheme);
-			ArrayList<String> tempAL = oTheme.arrays.get(OMC.LAYERATTRIBS.getString(13));
-			OMC.TALKBACKS = tempAL.toArray(new String[tempAL.size()]);
-		} else {
-			OMC.TALKBACKS = context.getResources().getStringArray(context.getResources().getIdentifier(OMC.LAYERATTRIBS.getString(13), "array", "com.sunnykwong.omc"));
-		}
+		OMC.TALKBACKS = OMC.loadStringArray(sTheme, aWI, OMC.LAYERATTRIBS.getString(13));
 		OMC.TXTBUF = OMC.TALKBACKS[OMC.RND.nextInt(OMC.TALKBACKS.length)];
 		OMCWidgetDrawEngine.drawTextLayer(context, iLayerID, sTheme, aWI);
 		OMC.TALKBACKS=null;
@@ -263,16 +253,8 @@ public class OMCWidgetDrawEngine {
 				OMC.LAYERATTRIBS = new OMCTypedArray(context.getResources().getStringArray(iLayerID), aWI);
 			}
 
-			String sNowTime;
-			// This is where the token parsing happens.
 			if (sType.equals("text ")){
-	    		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
-	    			sNowTime = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.LAYERATTRIBS.getString(13) : OMC.LAYERATTRIBS.getString(13).replaceAll("%H", "%k");
-	    		} else {
-	    			sNowTime = OMC.PREFS.getBoolean("widgetLeadingZero", true)? OMC.LAYERATTRIBS.getString(13).replaceAll("%I", "%k") : OMC.LAYERATTRIBS.getString(13).replaceAll("%H", "%l");
-	    		}
-				OMC.TXTBUF = OMC.TIME.format(sNowTime);
-
+				OMC.TXTBUF = OMC.LAYERATTRIBS.getString(13);
 			}
 
 			if (OMC.LAYERATTRIBS.getBoolean(0, true)){
@@ -450,7 +432,7 @@ public class OMCWidgetDrawEngine {
 			OMC.OVERLAYURL = null;
 		}
 
-		drawBitmapForWidget(context,appWidgetId);
+		OMCWidgetDrawEngine.drawBitmapForWidget(context,appWidgetId);
 
 		// Blit the buffer over
 		final RemoteViews rv = new RemoteViews(context.getPackageName(),R.layout.omcwidget);
@@ -475,19 +457,28 @@ public class OMCWidgetDrawEngine {
         	intent.setData(Uri.parse("omc:"+appWidgetId));
         	PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
             rv.setOnClickPendingIntent(R.id.omcIV, pi);
+            rv.setOnClickPendingIntent(R.id.omcLink, pi);
         } else {
         	if (OMC.DEBUG) Log.i("OMCWidget","INTENT " + OMC.PREFS.getString("URI"+appWidgetId, "")) ;
         	try {
         	Intent intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
         	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
             rv.setOnClickPendingIntent(R.id.omcIV, pi);
+            rv.setOnClickPendingIntent(R.id.omcLink, pi);
         	} catch (Exception e) {
         		e.printStackTrace();
         	}
         }
         
+        // Set overlay URL if present, else set to dummy class.
         if (OMC.OVERLAYURL!=null) {
         	rv.setOnClickPendingIntent(R.id.omcLink, PendingIntent.getActivity(context, 0, new Intent(Intent.ACTION_DEFAULT,Uri.parse(OMC.OVERLAYURL)), 0));
+        } else {
+            // Kudos to Eric for solution to dummy out "unsetonlickpendingintent":
+            // http://groups.google.com/group/android-developers/browse_thread/thread/f9e80e5ce55bb1e0/78153eb730326488
+        	// I'm not using it right now, but it's a useful hint nonetheless. Thanks!
+//        	rv.setOnClickPendingIntent(R.id.omcLink, PendingIntent.getBroadcast(context, 0, OMC.DUMMYINTENT,
+//        		    PendingIntent.FLAG_UPDATE_CURRENT));
         }
         
         appWidgetManager.updateAppWidget(appWidgetId, rv);

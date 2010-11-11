@@ -9,9 +9,9 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.util.Log;
 import android.widget.Toast;
-import android.preference.Preference.OnPreferenceChangeListener;	
 
 public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceChangeListener{ 
     /** Called when the activity is first created. */
@@ -94,10 +94,10 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
     	if (preference == getPreferenceScreen().findPreference("widgetCredits")) {
-    		startActivity(OMC.CREDITSINTENT);
+    		startActivityForResult(OMC.CREDITSINTENT,0);
     	}
     	if (preference == getPreferenceScreen().findPreference("loadThemeFile")) {
-    		startActivity(OMC.IMPORTTHEMEINTENT);
+    		startActivityForResult(OMC.IMPORTTHEMEINTENT,0);
     	}
     	if (preference == getPreferenceScreen().findPreference("oTTL")) {
     		OMCPrefActivity.this.getPreferenceScreen().setEnabled(false);
@@ -152,6 +152,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     // The result is obtained in onActivityResult:
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		getPreferenceScreen().setEnabled(true);
+		// If it's an independent child activity, do nothing
+		if (requestCode == 0) return;
 		if (data != null) {
 			String s = data.toUri(MODE_PRIVATE).toString();
 			OMC.PREFS.edit().putString("URI", s).commit();
@@ -169,7 +171,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     @Override
     public void onPause() {
-	    if (OMCPrefActivity.mAD != null) finish();
+//	    if (OMCPrefActivity.mAD != null) finish();
     	super.onPause();
     }
 

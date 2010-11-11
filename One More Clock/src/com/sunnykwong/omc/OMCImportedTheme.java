@@ -1,7 +1,5 @@
 package com.sunnykwong.omc;
 
-import android.graphics.Bitmap;
-
 import java.util.HashMap;
 import java.util.ArrayList;
 

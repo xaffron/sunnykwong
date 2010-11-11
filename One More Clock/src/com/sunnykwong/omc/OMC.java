@@ -1,12 +1,11 @@
 package com.sunnykwong.omc;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Map.Entry;
-import java.io.FileNotFoundException;
 import java.io.File;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
@@ -24,7 +23,6 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -36,10 +34,6 @@ import android.util.Log;
 import android.graphics.BitmapFactory;
 import android.content.res.Resources;
 import android.graphics.Matrix;
-
-
-import android.text.Html;
-import android.text.SpannedString;
 
 /**
  * @author skwong01
@@ -91,7 +85,7 @@ public class OMC extends Application {
 	static final int SVCNOTIFICATIONID = 1; // Notification ID for the one and only message window we'll show
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
-    static Intent FGINTENT, BGINTENT, SVCSTARTINTENT, WIDGETREFRESHINTENT, CREDITSINTENT, PREFSINTENT, IMPORTTHEMEINTENT;
+    static Intent FGINTENT, BGINTENT, SVCSTARTINTENT, WIDGETREFRESHINTENT, CREDITSINTENT, PREFSINTENT, IMPORTTHEMEINTENT, DUMMYINTENT;
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
     static IntentFilter PREFSINTENTFILT;
     static Notification FGNOTIFICIATION;
@@ -132,6 +126,7 @@ public class OMC extends Application {
 		OMC.PREFSPENDING = PendingIntent.getActivity(this, 0, new Intent(this, OMCPrefActivity.class), 0);
 		OMC.PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
 		OMC.PREFSINTENTFILT.addDataScheme("omc");
+		OMC.DUMMYINTENT = new Intent(this, DUMMY.class);
 
 		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/";
 		
@@ -347,6 +342,17 @@ public class OMC extends Application {
 		} catch (Exception e) {
 			System.out.println("error saving " + nm + " to cache.");
 			//e.printStackTrace();
+		}
+	}
+	
+	public static String[] loadStringArray(String sTheme, int aWI, String sKey) {	
+		boolean bExternal = OMC.PREFS.getBoolean("external"+aWI,false);
+		if (bExternal) {
+			OMCImportedTheme oTheme = OMC.IMPORTEDTHEMEMAP.get(sTheme);
+			ArrayList<String> tempAL = oTheme.arrays.get(sKey);
+			return tempAL.toArray(new String[tempAL.size()]);
+		} else {
+			return OMC.RES.getStringArray(OMC.RES.getIdentifier(sKey, "array", "com.sunnykwong.omc"));
 		}
 	}
 	
