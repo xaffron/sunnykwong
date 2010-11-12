@@ -186,11 +186,17 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
 	    	// Enable/Disable the various size widgets
 	    	getApplicationContext().getPackageManager()
-					.setComponentEnabledSetting(
-							OMC.WIDGET4x2CNAME,
-							OMC.PREFS.getBoolean("bFourByTwo", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-									: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-							PackageManager.DONT_KILL_APP);
+			.setComponentEnabledSetting(
+					OMC.WIDGET4x2CNAME,
+					OMC.PREFS.getBoolean("bFourByTwo", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+	    	getApplicationContext().getPackageManager()
+			.setComponentEnabledSetting(
+					OMC.WIDGET4x1CNAME,
+					OMC.PREFS.getBoolean("bFourByOne", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
 	    	getApplicationContext().getPackageManager()
 					.setComponentEnabledSetting(
 							OMC.WIDGET3x1CNAME,

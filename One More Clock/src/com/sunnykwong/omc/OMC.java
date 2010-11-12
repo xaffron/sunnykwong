@@ -188,23 +188,28 @@ public class OMC extends Application {
 		// Enable/Disable the various size widgets
 		if (!OMC.PREFS.getBoolean("bFourByTwo", true)) {
 			getPackageManager().setComponentEnabledSetting(	
-					new ComponentName("com.sunnykwong.omc",".ClockWidget4x2"),
+					OMC.WIDGET4x2CNAME,
 					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
 		}
+		if (!OMC.PREFS.getBoolean("bFourByOne", true)) {
+    		getPackageManager().setComponentEnabledSetting(
+				OMC.WIDGET4x1CNAME,
+				PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+				PackageManager.DONT_KILL_APP);
+		}
 		if (!OMC.PREFS.getBoolean("bThreeByOne", true)) {
 			getPackageManager().setComponentEnabledSetting(	
-					new ComponentName("com.sunnykwong.omc",".ClockWidget3x1"),
+					OMC.WIDGET3x1CNAME,
 					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
 		}
 		if (!OMC.PREFS.getBoolean("bTwoByOne", true)) {
 			getPackageManager().setComponentEnabledSetting(	
-					new ComponentName("com.sunnykwong.omc",".ClockWidget2x1"),
+					OMC.WIDGET2x1CNAME,
 					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
-		}
-		
+		}		
 	}
 
 	static void setServiceAlarm (long lTimeToRefresh) {

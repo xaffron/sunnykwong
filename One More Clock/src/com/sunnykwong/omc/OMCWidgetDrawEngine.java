@@ -365,18 +365,14 @@ public class OMCWidgetDrawEngine {
 			//SpannableStringBuilder ssb = new SpannableStringBuilder(Html.fromHtml(text));
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x-1, y-1, pt2);
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x+1, y+1, pt2);
-//			cvas.drawText(text, x-1, y-1, pt2);
-//			cvas.drawText(text, x+1, y+1, pt2);
 		} else if (style.equals("shadow")) {
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x+3, y+3, pt2);
-//			cvas.drawText(text, x+3, y+3, pt2);
 		}
 		//Either way, draw the proper text
 		OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1);
-//		cvas.drawText(text, x, y, pt1);
 	}
 
-	// Needs to be synchronized now that we have three different widget types 
+	// Needs to be synchronized now that we have four different widget types 
 	// calling this same method creating a potential race condition
 	static synchronized void updateAppWidget(Context context, float fScaleX, float fScaleY, ComponentName cName, int iCutTop, int iCutBottom) {
 		if (!OMCService.RUNNING) {

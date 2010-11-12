@@ -27,10 +27,10 @@ public class OMCTypedArray  {
 		return mImportedArray[index].toString();
 	}
 	public int getInt(int index, int defValue) {
-		return Integer.parseInt(mImportedArray[index].toString());
+		return Integer.parseInt(mImportedArray[index].toString().replace(" ", ""));
 	}
 	public float getFloat(int index, float defValue) {
-		return Float.parseFloat(mImportedArray[index].toString());
+		return Float.parseFloat(mImportedArray[index].toString().replace(" ", ""));
 	}
 	public void recycle() {
 		mImportedArray = null;
