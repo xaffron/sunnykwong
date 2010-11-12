@@ -1,36 +1,36 @@
 package com.sunnykwong.omc;
 
-import java.io.FileReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.HashMap;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.Button;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.os.Bundle;
-import android.widget.Toast;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
 import android.content.DialogInterface.OnClickListener;
-import android.graphics.BitmapFactory;
+import android.content.DialogInterface.OnKeyListener;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Bundle;
 import android.os.Environment;
-
+import android.os.Handler;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 public class OMCThemeImportActivity extends Activity {
 
 	public Handler mHandler;
@@ -194,7 +194,7 @@ public class OMCThemeImportActivity extends Activity {
 		OMCThemeImportActivity.CURRSELECTEDTHEME = sThemeName;
 		if (sThemeName == null || sThemeName.equals("")) return;
 		File root = OMCThemeImportActivity.THEMES.get(sThemeName);
-		System.out.println(root.getAbsolutePath() + "/preview.png");
+		if (OMC.DEBUG) Log.i("OMCTheme",root.getAbsolutePath() + "/preview.png");
 		Bitmap bmpPreview = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(root.getAbsolutePath() + "/preview.jpg"),320,200,false);
 		((ImageView)this.findViewById(R.id.ImagePreview)).setImageBitmap(bmpPreview);
 		OMCThemeImportActivity.THEMECREDITS = new char[3000];

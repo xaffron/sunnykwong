@@ -8,6 +8,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -194,7 +195,7 @@ public class OMCSkinnerActivity extends Activity {
 		OMCSkinnerActivity.CURRSELECTEDTHEME = sThemeName;
 		if (sThemeName == null || sThemeName.equals("")) return;
 		File root = OMCSkinnerActivity.THEMES.get(sThemeName);
-		System.out.println(root.getAbsolutePath() + "/preview.png");
+		if (OMC.DEBUG) Log.i("OMCSkinner",root.getAbsolutePath() + "/preview.png");
 		Bitmap bmpPreview = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(root.getAbsolutePath() + "/preview.jpg"),320,200,false);
 		((ImageView)this.findViewById(R.id.ImagePreview)).setImageBitmap(bmpPreview);
 		OMCSkinnerActivity.THEMECREDITS = new char[3000];

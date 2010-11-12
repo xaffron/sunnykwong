@@ -294,17 +294,17 @@ public class OMC extends Application {
 	
 	public static OMCImportedTheme getImportedTheme(Context context, String nm){
 		if (OMC.IMPORTEDTHEMEMAP.containsKey(nm)){ 
-			System.out.println(nm + " retrieved from memory.");
+			if (OMC.DEBUG) Log.i("OMCApp",nm + " retrieved from memory.");
 			return OMC.IMPORTEDTHEMEMAP.get(nm);
 		}
 		try {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(OMC.CACHEPATH + nm + ".omc"));
 			OMCImportedTheme oResult = (OMCImportedTheme)in.readObject();
 			OMC.IMPORTEDTHEMEMAP.put(nm, oResult);
-			System.out.println(nm + " reloaded from cache.");
+			if (OMC.DEBUG) Log.i("OMCApp",nm + " reloaded from cache.");
 			return oResult;
 		} catch (Exception e) {
-			System.out.println("error reloading " + nm + " from cache.");
+			if (OMC.DEBUG) Log.i("OMCApp","error reloading " + nm + " from cache.");
 		
 			//e.printStackTrace();
 		}
@@ -336,11 +336,11 @@ public class OMC extends Application {
 	
 	public static void saveImportedThemeToCache(Context context, String nm) {
 		try {
-			System.out.println(nm + " saving to cache.");
+			if (OMC.DEBUG) Log.i("OMCApp",nm + " saving to cache.");
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(OMC.CACHEPATH + nm + ".omc"));
 			out.writeObject(OMC.IMPORTEDTHEMEMAP.get(nm));
 		} catch (Exception e) {
-			System.out.println("error saving " + nm + " to cache.");
+			if (OMC.DEBUG) Log.i("OMCApp","error saving " + nm + " to cache.");
 			//e.printStackTrace();
 		}
 	}
@@ -348,11 +348,30 @@ public class OMC extends Application {
 	public static String[] loadStringArray(String sTheme, int aWI, String sKey) {	
 		boolean bExternal = OMC.PREFS.getBoolean("external"+aWI,false);
 		if (bExternal) {
-			OMCImportedTheme oTheme = OMC.IMPORTEDTHEMEMAP.get(sTheme);
-			ArrayList<String> tempAL = oTheme.arrays.get(sKey);
-			return tempAL.toArray(new String[tempAL.size()]);
+			try {
+				OMCImportedTheme oTheme = OMC.IMPORTEDTHEMEMAP.get(sTheme);
+				ArrayList<String> tempAL = oTheme.arrays.get(sKey);
+				return tempAL.toArray(new String[tempAL.size()]);
+			} catch (Exception e) {
+				// Can't find in external stuff... see if it's a seeded array.
+				if (OMC.DEBUG) Log.i ("OMCApp","Can't find array " + sKey + " in " + sTheme);
+				try {
+					return OMC.RES.getStringArray(OMC.RES.getIdentifier(sKey, "array", "com.sunnykwong.omc"));
+				} catch (Exception ee) {
+					if (OMC.DEBUG) Log.i ("OMCApp","Can't find array " + sKey + " in resources!");
+					ee.printStackTrace();
+					return null;
+				}
+				
+			}
 		} else {
-			return OMC.RES.getStringArray(OMC.RES.getIdentifier(sKey, "array", "com.sunnykwong.omc"));
+			try {
+				return OMC.RES.getStringArray(OMC.RES.getIdentifier(sKey, "array", "com.sunnykwong.omc"));
+			} catch (Exception e) {
+				if (OMC.DEBUG) Log.i ("OMCApp","Can't find array " + sKey + " in resources!");
+				e.printStackTrace();
+				return null;
+			}
 		}
 	}
 	

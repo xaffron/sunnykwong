@@ -28,7 +28,7 @@ public class OMCService extends Service {
 	//	When service is created,
 	@Override
 	public void onCreate() {
-		Log.i("OMCSvc","---ONCREATE---");
+		if (OMC.DEBUG) Log.i("OMCSvc","---ONCREATE---");
 		
 		// If we're hogging the foreground, check APIs
 		// Grab the notification Service -

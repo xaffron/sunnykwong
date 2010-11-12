@@ -105,7 +105,7 @@ public class OMCXMLThemeParser extends DefaultHandler {
 	@Override
     public void endDocument ()
     {
-		System.out.println("Doc done.");
+		if (OMC.DEBUG) Log.i("OMCTParser","Doc done.");
 		newTheme.name = null;
 		
 		//Assume valid until proven otherwise.
@@ -131,7 +131,7 @@ public class OMCXMLThemeParser extends DefaultHandler {
 				if (sKey.equals(newTheme.name)){
 					for (Object oTemp:newTheme.arrays.get(sKey).toArray()) {
 						String sTemp = (String)oTemp;
-						System.out.println(sTemp.substring(6));
+						if (OMC.DEBUG) Log.i("OMCTParser",sTemp.substring(6));
 						if (!newTheme.arrays.containsKey(sTemp.substring(6))) {
 							if (OMC.DEBUG) Log.i("OMCXML","layer invalid");
 							newTheme.valid=false;

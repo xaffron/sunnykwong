@@ -45,25 +45,31 @@ public class OMCTypedArray  {
 	}
 	
 	static public String resolveOneToken(String sRawString, int aWI) {
-		String sBuffer;
+		boolean isDynamic = false;
+		if (sRawString.contains("[%")) isDynamic = true;
+		// Strip brackets.
+		String sBuffer = sRawString.replace("[%", "").replace("%]", "");
 		//by default, return strftime'd string.
 		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
 			sBuffer = (OMC.TIME.format(
 				OMC.PREFS.getBoolean("widgetLeadingZero", true)? 
-					sRawString : sRawString.replaceAll("%H", "%k")
+						sBuffer : sBuffer.replaceAll("%H", "%k")
 				)
 			);
 		} else {
 			sBuffer = (OMC.TIME.format(
 				OMC.PREFS.getBoolean("widgetLeadingZero", true)? 
-					sRawString.replaceAll("%I", "%k") : sRawString.replaceAll("%H", "%l")
+						sBuffer.replaceAll("%H", "%I") : sBuffer.replaceAll("%H", "%l")
 				)
 			);
 		}
-		
-		String result = sBuffer;
+
+		// If it's unbracketed text, we're done
+		if (!isDynamic) return sBuffer;
 		
 		// If it is actually a dynamic element, resolve it
+		// By default, 
+		String result = "";
 
 		StringTokenizer st = new StringTokenizer(sBuffer, "_");
 
@@ -108,7 +114,7 @@ public class OMCTypedArray  {
 				//Unknown - do nothing
 			}
 
-		} else if (sToken.equals("ap24")) { // must be color
+		} else if (sToken.equals("ap24")) {
 			if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
 				st.nextToken();
 				st.nextToken();
@@ -119,6 +125,47 @@ public class OMCTypedArray  {
 				st.nextToken();
 				result = (st.nextToken());
 			}
+		} else if (sToken.equals("array")) {
+
+			result = OMC.loadStringArray(OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME), aWI, st.nextToken())[Integer.parseInt(st.nextToken().replace(" ",""))];
+			String sTemp = st.nextToken();
+			if (result == null) result = "ERROR";
+			if (sTemp.equals("lower")) result = result.toLowerCase();
+			else if (sTemp.equals("upper")) result = result.toUpperCase();
+
+		} else if (sToken.equals("flipformat")) {
+			int iApply = Integer.parseInt(st.nextToken());
+			String sType = st.nextToken("_ ");
+			if (sType.equals("bold")) {
+				StringBuilder sb = new StringBuilder();
+				while (st.hasMoreTokens()) {
+					if (iApply==1) sb.append("<B>"+st.nextToken()+"</B> ");
+					else sb.append(st.nextToken()+" ");
+					iApply*=-1;
+				}
+				result = sb.toString();
+			} else if (sType.equals("case")) {
+				StringBuilder sb = new StringBuilder();
+				while (st.hasMoreTokens()) {
+					if (iApply==1) sb.append(st.nextToken().toUpperCase()+" ");
+					else sb.append(st.nextToken().toLowerCase()+" ");
+					iApply*=-1;
+				}
+				result = sb.toString();
+			} else if (sType.equals("italics")) {
+				StringBuilder sb = new StringBuilder();
+				while (st.hasMoreTokens()) {
+					if (iApply==1) sb.append("<I>"+st.nextToken()+"</I> ");
+					else sb.append(st.nextToken()+" ");
+					iApply*=-1;
+				}
+				result = sb.toString();
+			}
+		} else if (sToken.equals("stripspaces")){
+			result = st.nextToken().replace(" ", "");
+		} else if (sToken.equals("fit")){
+			result = "f"+st.nextToken();
+			System.out.println("FIT "+result);
 		} else if (sToken.equals("fullenglishtime")){
 			// full english time
 			String sType = st.nextToken();
@@ -204,14 +251,12 @@ public class OMCTypedArray  {
 	}
 
 	static public String resolveTokens(String sRawString, int aWI) {
-		System.out.println("Parsing " + sRawString);
-
+		if (OMC.DEBUG) Log.i("OMCArray","Parsing "+sRawString);
 		StringBuilder result = new StringBuilder();
 
 		// If token contains dynamic elements, recursively resolve them
 		
 		if (sRawString.contains("[%")) {
-			System.out.println("Found [% ");
 			int iCursor = 0;
 			while (iCursor <= sRawString.length()) {
 				//Cruise through the text before the first [% marker
@@ -223,43 +268,44 @@ public class OMCTypedArray  {
 					)
 				);
 				
-				System.out.println("Appended. Now at " + result.toString());
-
 				iCursor = sRawString.indexOf("[%",iCursor);
 
 				int iMarker1, iMarker2;
 				do {
 				// Mark where the next [% and %] are.  Which is closer?
-				iMarker1 = sRawString.indexOf("[%",iCursor+2);
-				iMarker2 = sRawString.indexOf("%]",iCursor+2);
+				iMarker1 = sRawString.indexOf("[%",iCursor+1);
+				iMarker2 = sRawString.indexOf("%]",iCursor);
 
-				System.out.println("Markers: " +iCursor+" " + iMarker1+ " " + iMarker2);
+				if (OMC.DEBUG) Log.i("OMCArray","Markers: " +iCursor+" " + iMarker1+ " " + iMarker2);
 				// No markers found? bad parsing occurred.
 				// exit gracefully (try to)
 				if (iMarker1 == -1 && iMarker2 == -1) {
-					Log.i("OMCArray","Improper markup. Bailing...");
+					if (OMC.DEBUG) Log.i("OMCArray","Improper markup. Bailing...");
 					break;
 					
 				} else if (iMarker1 == -1) {
 					// No more start markers found, but we have an end marker.
 					// Dive into this substring.
-					Log.i("OMCArray","Detected directive: " + sRawString.substring(iCursor+2, iMarker2));
-					result.append(OMCTypedArray.resolveOneToken(sRawString.substring(iCursor+2, iMarker2), aWI));
+					if (OMC.DEBUG) Log.i("OMCArray","Sending down(-1): " + sRawString.substring(iCursor, iMarker2+2));
+					result.append(OMCTypedArray.resolveOneToken(sRawString.substring(iCursor, iMarker2+2), aWI));
+					result.append(sRawString.substring(iMarker2+2));
+					if (OMC.DEBUG) Log.i("OMCArray","Now at: " + result.toString());
 				} else if (iMarker1 < iMarker2) {
 					//if [% is closer, keep going until we find the innermost [%
-					Log.i("OMCArray","Found nested. ");
+					if (OMC.DEBUG) Log.i("OMCArray","Found nested. (1<2)");
 					result.append(sRawString.substring(iCursor,iMarker1));
-					Log.i("OMCArray","Now at: " + result.toString());
+					if (OMC.DEBUG) Log.i("OMCArray","Now at: " + result.toString());
 					iCursor = iMarker1;
 				} else if (iMarker2 < iMarker1) {
 					//if %] is closer, we have an end marker.
 					//Dive into this substring.
-					Log.i("OMCArray","Detected directive: " + sRawString.substring(iCursor+2, iMarker2));
-					result.append(OMCTypedArray.resolveOneToken(sRawString.substring(iCursor+2, iMarker2), aWI));
-					Log.i("OMCArray","Sending down: " + sRawString.substring(iCursor+2, iMarker2));
-					Log.i("OMCArray","Now at: " + result.toString());
+					if (OMC.DEBUG) Log.i("OMCArray","Sending down(2<1): " + sRawString.substring(iCursor, iMarker2+2));
+					result.append(OMCTypedArray.resolveOneToken(sRawString.substring(iCursor, iMarker2+2), aWI));
+					if (OMC.DEBUG) Log.i("OMCArray","Now at: " + result.toString());
+					//Move all markers to the next [% (we only deal with one layer here).
 					//Start looking for the next directive.
-					iCursor = iMarker2+2;
+					result.append(sRawString.substring(iMarker2+2, iMarker1));
+					iCursor = iMarker1;
 				}
 				} while (iMarker1 != -1);
 				
@@ -267,8 +313,8 @@ public class OMCTypedArray  {
 				return OMCTypedArray.resolveTokens(result.toString(), aWI);
 			}
 		}
-		// If no tags found, then just return the raw string; we're done! 
-		return sRawString;
+		// If no tags found, then just run strftime; we're done! 
+		return OMCTypedArray.resolveOneToken(sRawString, aWI);
 
 	}
 	

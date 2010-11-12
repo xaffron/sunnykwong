@@ -144,7 +144,8 @@ public class OMCWidgetDrawEngine {
 	// Quote layer.  Set the Text to be shown before passing to drawTextLayer.
 	static void drawQuoteLayer(final Context context, final int iLayerID, final String sTheme, final int aWI) {
 		OMC.TALKBACKS = OMC.loadStringArray(sTheme, aWI, OMC.LAYERATTRIBS.getString(13));
-		OMC.TXTBUF = OMC.TALKBACKS[OMC.RND.nextInt(OMC.TALKBACKS.length)];
+		if (OMC.TALKBACKS == null) OMC.TXTBUF="ERROR";
+		else OMC.TXTBUF = OMC.TALKBACKS[OMC.RND.nextInt(OMC.TALKBACKS.length)];
 		OMCWidgetDrawEngine.drawTextLayer(context, iLayerID, sTheme, aWI);
 		OMC.TALKBACKS=null;
 	}
@@ -171,7 +172,18 @@ public class OMCWidgetDrawEngine {
 		OMC.PT1.setTypeface(tempTypeface);
 		OMC.PT1.setTextSize(OMC.LAYERATTRIBS.getInt(3, 100));
 		OMC.PT1.setTextSkewX(OMC.LAYERATTRIBS.getFloat(4, 0.f));
-		OMC.PT1.setTextScaleX(OMC.LAYERATTRIBS.getFloat(5, 1.f));
+//SUNNY
+		System.out.println("4="+OMC.LAYERATTRIBS.getString(4)+"==");
+		System.out.println("5="+OMC.LAYERATTRIBS.getString(5)+"==");
+		
+		if (OMC.LAYERATTRIBS.getString(5).startsWith("f")) {
+			OMC.PT1.setTextScaleX(1f);
+			System.out.println(OMC.LAYERATTRIBS.getString(5).substring(1));
+			float fFactor = Float.parseFloat(OMC.LAYERATTRIBS.getString(5).substring(1))/OMCWidgetDrawEngine.getSpannedStringWidth(new SpannedString(Html.fromHtml(OMC.TXTBUF)),OMC.PT1);
+			OMC.PT1.setTextScaleX(fFactor);
+		} else {
+			OMC.PT1.setTextScaleX(OMC.LAYERATTRIBS.getFloat(5, 1.f));
+    	}
 		OMC.PT1.setFakeBoldText(OMC.LAYERATTRIBS.getBoolean(6, false));
 		OMC.PT1.setColor(OMC.LAYERATTRIBS.getColor(8, 0));
 		
@@ -186,9 +198,9 @@ public class OMCWidgetDrawEngine {
 		OMC.PT2.reset();
 		OMC.PT2.setAntiAlias(true);
 		OMC.PT2.setTypeface(tempTypeface);
-		OMC.PT2.setTextSize(OMC.LAYERATTRIBS.getInt(3, 100));
-		OMC.PT2.setTextSkewX(OMC.LAYERATTRIBS.getFloat(4, 0.f));
-		OMC.PT2.setTextScaleX(OMC.LAYERATTRIBS.getFloat(5, 1.f));
+		OMC.PT2.setTextSize(OMC.PT1.getTextSize());
+		OMC.PT2.setTextSkewX(OMC.PT1.getTextSkewX());
+		OMC.PT2.setTextScaleX(OMC.PT1.getTextScaleX());
 		OMC.PT2.setFakeBoldText(OMC.LAYERATTRIBS.getBoolean(6, false));
 		OMC.PT2.setColor(OMC.LAYERATTRIBS.getColor(9, 0));
 		
@@ -418,9 +430,9 @@ public class OMCWidgetDrawEngine {
 		OMC.OVERLAYURL = null;
 		try {
 			if (bExternal) {
-				OMC.OVERLAYURL = (String)(OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sTheme+"_Link").toArray()[0]);
+				OMC.OVERLAYURL = (String)(OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sTheme+"_Links").toArray()[0]);
 			} else {
-				int iLayerID = context.getResources().getIdentifier(sTheme+"_Link", "array", "com.sunnykwong.omc");
+				int iLayerID = context.getResources().getIdentifier(sTheme+"_Links", "array", "com.sunnykwong.omc");
 				OMC.OVERLAYURL = context.getResources().getStringArray(iLayerID)[0];
 			}
 		} catch (android.content.res.Resources.NotFoundException e) {

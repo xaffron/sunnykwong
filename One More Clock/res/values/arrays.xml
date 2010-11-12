@@ -31,6 +31,7 @@
 </string-array>
 
 <string-array name="WordTens">
+<item></item>
 <item>Ten</item>
 <item>Twenty</item>
 <item>Thirty</item>
@@ -1124,14 +1125,11 @@
 <!-- Sunny Kwong -->
 <!--*************-->
 
-<!--<string-array name="PseudoClockr">-->
-<!--	<item>panel:PCBkgd</item>-->
-<!--	<item>text :PCClock</item>-->
-<!--	<item>text :PCPitch1</item>-->
-<!--	<item>text :PCPitch2</item>-->
-<!--</string-array>-->
 <string-array name="PseudoClockr">
+	<item>panel:PCBkgd</item>
 	<item>text :PCClock</item>
+	<item>text :PCPitch1</item>
+	<item>text :PCPitch2</item>
 </string-array>
 
 <string-array name="PseudoClockr_3x1SqueezeInfo">
@@ -1158,18 +1156,18 @@
 	<item name="CENTER">default</item>
 </string-array>
 
-<!--<string-array name="PCBkgd">-->
-<!--	<item name="00 layer_enabled">false</item>-->
-<!--	<item name="53 left">0</item>-->
-<!--	<item name="54 top">50</item>-->
-<!--	<item name="55 right">480</item>-->
-<!--	<item name="56 bottom">250</item>-->
-<!--	<item name="57 xcorner">0</item>-->
-<!--	<item name="58 ycorner">0</item>-->
-<!--	<item name="59 fgcolor">#88000000</item>-->
-<!--	<item name="60 bgcolor">#88000000</item>-->
-<!--	<item name="61 render_style">normal</item>-->
-<!--</string-array>-->
+<string-array name="PCBkgd">
+	<item name="00 layer_enabled">true</item>
+	<item name="53 left">0</item>
+	<item name="54 top">50</item>
+	<item name="55 right">480</item>
+	<item name="56 bottom">250</item>
+	<item name="57 xcorner">0</item>
+	<item name="58 ycorner">0</item>
+	<item name="59 fgcolor">#88000000</item>
+	<item name="60 bgcolor">#88000000</item>
+	<item name="61 render_style">normal</item>
+</string-array>
 
 <string-array name="PCClock">
 	<item name="00 layer_enabled">true</item>
@@ -1185,42 +1183,42 @@
 	<item name="10 xcoord">240</item>
 	<item name="11 ycoord">150</item>
 	<item name="12 textalign">center</item>
-	<item name="13 words">[%array_WordNumbers_%H_lower%]&lt;B&gt;[%array_WordTens_[%digit_%M_1%]_upper%]&lt;/B&gt;[%array_WordNumbers_[%digit_%M_2%]_lower%]</item>
+	<item name="13 words">[%stripspaces_[%flipformat_-1_case_[%flipformat_-1_bold_[%array_WordNumbers_%H_normal%] [%array_WordNumbers_%M_normal%]%]%]%]</item>
 </string-array>
 
-<!--<string-array name="PCPitch1">-->
-<!--	<item name="00 layer_enabled">false</item>-->
-<!--	<item name="01 font_source_type">asset</item>-->
-<!--	<item name="02 font_source">DeckerB.ttf</item>-->
-<!--	<item name="03 font_size">18</item>-->
-<!--	<item name="04 font_skew">0.00</item>-->
-<!--	<item name="05 font_stretch">1.1</item>-->
-<!--	<item name="06 font_bold">false</item>-->
-<!--	<item name="07 render_style">normal</item>-->
-<!--	<item name="08 fgcolor">[%random_color_#ffffb064_#ff222222%]</item>-->
-<!--	<item name="09 bgcolor">#44eeeeee</item>-->
-<!--	<item name="10 xcoord">460</item>-->
-<!--	<item name="11 ycoord">220</item>-->
-<!--	<item name="12 textalign">right</item>-->
-<!--	<item name="13 words">check&lt;B&gt;OUT&lt;/B&gt;</item>-->
-<!--</string-array>-->
-<!---->
-<!--<string-array name="PCPitch2">-->
-<!--	<item name="00 layer_enabled">false</item>-->
-<!--	<item name="01 font_source_type">asset</item>-->
-<!--	<item name="02 font_source">DeckerB.ttf</item>-->
-<!--	<item name="03 font_size">18</item>-->
-<!--	<item name="04 font_skew">0.00</item>-->
-<!--	<item name="05 font_stretch">1.1</item>-->
-<!--	<item name="06 font_bold">false</item>-->
-<!--	<item name="07 render_style">normal</item>-->
-<!--	<item name="08 fgcolor">[%random_color_#ffffb064_#ff222222%]</item>-->
-<!--	<item name="09 bgcolor">#44eeeeee</item>-->
-<!--	<item name="10 xcoord">460</item>-->
-<!--	<item name="11 ycoord">240</item>-->
-<!--	<item name="12 textalign">right</item>-->
-<!--	<item name="13 words">&lt;B&gt;Clockr&lt;/B&gt;Evolution</item>-->
-<!--</string-array>-->
+<string-array name="PCPitch1">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">DeckerB.ttf</item>
+	<item name="03 font_size">18</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">1.1</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">normal</item>
+	<item name="08 fgcolor">[%random_color_#ffffb064_#ff222222%]</item>
+	<item name="09 bgcolor">#44eeeeee</item>
+	<item name="10 xcoord">460</item>
+	<item name="11 ycoord">220</item>
+	<item name="12 textalign">right</item>
+	<item name="13 words">check&lt;B&gt;OUT&lt;/B&gt;</item>
+</string-array>
+
+<string-array name="PCPitch2">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">DeckerB.ttf</item>
+	<item name="03 font_size">18</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">1.1</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">normal</item>
+	<item name="08 fgcolor">[%random_color_#ffffb064_#ff222222%]</item>
+	<item name="09 bgcolor">#44eeeeee</item>
+	<item name="10 xcoord">460</item>
+	<item name="11 ycoord">240</item>
+	<item name="12 textalign">right</item>
+	<item name="13 words">&lt;B&gt;Clockr&lt;/B&gt;Evolution</item>
+</string-array>
 
 <!--*************-->
 <!--HeSaidSheSaid-->
