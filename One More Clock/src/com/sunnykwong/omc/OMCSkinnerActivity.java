@@ -75,7 +75,7 @@ public class OMCSkinnerActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.importlayout);
+        setContentView(R.layout.skinnerlayout);
 
         mHandler = new Handler();
 

@@ -172,15 +172,20 @@ public class OMCWidgetDrawEngine {
 		OMC.PT1.setTypeface(tempTypeface);
 		OMC.PT1.setTextSize(OMC.LAYERATTRIBS.getInt(3, 100));
 		OMC.PT1.setTextSkewX(OMC.LAYERATTRIBS.getFloat(4, 0.f));
-//SUNNY
-		System.out.println("4="+OMC.LAYERATTRIBS.getString(4)+"==");
-		System.out.println("5="+OMC.LAYERATTRIBS.getString(5)+"==");
-		
+		int iTemp;
 		if (OMC.LAYERATTRIBS.getString(5).startsWith("f")) {
 			OMC.PT1.setTextScaleX(1f);
-			System.out.println(OMC.LAYERATTRIBS.getString(5).substring(1));
 			float fFactor = Float.parseFloat(OMC.LAYERATTRIBS.getString(5).substring(1))/OMCWidgetDrawEngine.getSpannedStringWidth(new SpannedString(Html.fromHtml(OMC.TXTBUF)),OMC.PT1);
 			OMC.PT1.setTextScaleX(fFactor);
+		} else if ((iTemp = OMC.LAYERATTRIBS.getString(5).indexOf("m"))!= -1) {
+			OMC.PT1.setTextScaleX(Float.parseFloat(OMC.LAYERATTRIBS.getString(5).substring(0,iTemp)));
+			int iMax = Integer.parseInt(OMC.LAYERATTRIBS.getString(5).substring(iTemp+1));
+			int iLength = OMCWidgetDrawEngine.getSpannedStringWidth(new SpannedString(Html.fromHtml(OMC.TXTBUF)),OMC.PT1); 
+			if (iLength <= iMax){
+				//do nothing, PT1 properly set
+			} else {
+				OMC.PT1.setTextScaleX(((float)iMax)/iLength);
+			}
 		} else {
 			OMC.PT1.setTextScaleX(OMC.LAYERATTRIBS.getFloat(5, 1.f));
     	}
@@ -396,6 +401,9 @@ public class OMCWidgetDrawEngine {
 
 		String sTheme = OMC.PREFS.getString("widgetTheme"+appWidgetId,OMC.DEFAULTTHEME);
 		boolean bExternal = OMC.PREFS.getBoolean("external"+appWidgetId,false);
+
+		OMC.STRETCHINFO = null;
+
 		if (cName.equals(OMC.WIDGET4x2CNAME) || cName.equals(OMC.WIDGET2x1CNAME)) {
 			//Correct aspect ratio already; do nothing
 		} else {
@@ -405,7 +413,7 @@ public class OMCWidgetDrawEngine {
 			} else if (cName.equals(OMC.WIDGET3x1CNAME)) {
 				sStretch = sTheme + "_3x1SqueezeInfo";
 			}
-			OMC.STRETCHINFO = null;
+
 			try {
 				if (bExternal) {
 					OMC.STRETCHINFO = new String[4]; 
