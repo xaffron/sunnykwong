@@ -126,7 +126,7 @@ public class OMCThemeImportActivity extends Activity {
         OMCThemeImportActivity.THEMES =  new HashMap<String, File>();
         for (File f:OMCThemeImportActivity.THEMEROOT.listFiles()) {
         	if (!f.isDirectory()) continue;
-        	File ff = new File(f.getAbsolutePath()+"/00control.txt");
+        	File ff = new File(f.getAbsolutePath()+"/00control.xml");
         	if (ff.exists()) {
         		OMCThemeImportActivity.THEMEARRAY.add(f.getName());
         		OMCThemeImportActivity.THEMES.put(f.getName(), f);
@@ -229,7 +229,7 @@ public class OMCThemeImportActivity extends Activity {
             		xr.setContentHandler(parser);
             		// Feed data from control file to XML Parser.
             		// XML Parser will populate OMC.IMPORTEDTHEME.
-            		FileReader fr = new FileReader(root.getAbsolutePath() + "/00control.txt");
+            		FileReader fr = new FileReader(root.getAbsolutePath() + "/00control.xml");
             		xr.setErrorHandler(parser);
             		xr.parse(new InputSource(fr));
             		// When we're done, remove all references to parser.

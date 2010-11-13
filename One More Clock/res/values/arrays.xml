@@ -11,8 +11,6 @@
 	<item>Nixie Notions</item>
 	<item>Typewriter Ticks</item>
 	<item>Wham! Bam! Widget!</item>
-	<item>Pseudo Clockr</item>
-	<item>He Said She Said</item>
 </string-array>
 
 <string-array name="theme_values">
@@ -26,21 +24,6 @@
 	<item>NixieNotions</item>
 	<item>TypewriterTicks</item>
 	<item>WhamBamWidget</item>
-	<item>PseudoClockr</item>
-	<item>HeSaidSheSaid</item>
-</string-array>
-
-<string-array name="WordTens">
-<item></item>
-<item>Ten</item>
-<item>Twenty</item>
-<item>Thirty</item>
-<item>Forty</item>
-<item>Fifty</item>
-<item>Sixty</item>
-<item>Seventy</item>
-<item>Eighty</item>
-<item>Ninety</item>
 </string-array>
 
 <string-array name="WordNumbers">
@@ -145,7 +128,6 @@
 <item>Ninety Eight</item>
 <item>Ninety Nine</item>
 </string-array>
-
 
 <!--*************-->
 <!--BOKEH BEAUTY -->
@@ -1119,173 +1101,6 @@
 </string-array>
 
 <!-- TEMP -->
-<!--*************-->
-<!--Pseudo Clockr-->
-<!--(11/09)      -->
-<!-- Sunny Kwong -->
-<!--*************-->
-
-<string-array name="PseudoClockr">
-	<item>panel:PCBkgd</item>
-	<item>text :PCClock</item>
-	<item>text :PCPitch1</item>
-	<item>text :PCPitch2</item>
-</string-array>
-
-<string-array name="PseudoClockr_3x1SqueezeInfo">
-	<item name="HorizontalStretchFactor">1</item>
-	<item name="VerticalStretchFactor">1</item>
-	<item name="TopCropPixels">50</item>
-	<item name="BottomCropPixels">50</item>
-</string-array>
-<string-array name="PseudoClockr_4x1SqueezeInfo">
-	<item name="HorizontalStretchFactor">1</item>
-	<item name="VerticalStretchFactor">0.95</item>
-	<item name="TopCropPixels">90</item>
-	<item name="BottomCropPixels">55</item>
-</string-array>
-<string-array name="PseudoClockr_Links">
-	<item name="N">market://search?q=pub:zehro</item>
-	<item name="NE">default</item>
-	<item name="E">default</item>
-	<item name="SE">default</item>
-	<item name="S">default</item>
-	<item name="SW">default</item>
-	<item name="W">default</item>
-	<item name="NW">default</item>
-	<item name="CENTER">default</item>
-</string-array>
-
-<string-array name="PCBkgd">
-	<item name="00 layer_enabled">true</item>
-	<item name="53 left">0</item>
-	<item name="54 top">50</item>
-	<item name="55 right">480</item>
-	<item name="56 bottom">250</item>
-	<item name="57 xcorner">0</item>
-	<item name="58 ycorner">0</item>
-	<item name="59 fgcolor">#88000000</item>
-	<item name="60 bgcolor">#88000000</item>
-	<item name="61 render_style">normal</item>
-</string-array>
-
-<string-array name="PCClock">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">DeckerB.ttf</item>
-	<item name="03 font_size">48</item>
-	<item name="04 font_skew">0.00</item>
-	<item name="05 font_stretch">1.1</item>
-	<item name="06 font_bold">false</item>
-	<item name="07 render_style">emboss</item>
-	<item name="08 fgcolor">#ffffffff</item>
-	<item name="09 bgcolor">#44eeee33</item>
-	<item name="10 xcoord">240</item>
-	<item name="11 ycoord">150</item>
-	<item name="12 textalign">center</item>
-	<item name="13 words">[%stripspaces_[%flipformat_-1_case_[%flipformat_-1_bold_[%array_WordNumbers_%H_normal%] [%array_WordNumbers_%M_normal%]%]%]%]</item>
-</string-array>
-
-<string-array name="PCPitch1">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">DeckerB.ttf</item>
-	<item name="03 font_size">18</item>
-	<item name="04 font_skew">0.00</item>
-	<item name="05 font_stretch">1.1</item>
-	<item name="06 font_bold">false</item>
-	<item name="07 render_style">normal</item>
-	<item name="08 fgcolor">[%random_color_#ffffb064_#ff222222%]</item>
-	<item name="09 bgcolor">#44eeeeee</item>
-	<item name="10 xcoord">460</item>
-	<item name="11 ycoord">220</item>
-	<item name="12 textalign">right</item>
-	<item name="13 words">check&lt;B&gt;OUT&lt;/B&gt;</item>
-</string-array>
-
-<string-array name="PCPitch2">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">DeckerB.ttf</item>
-	<item name="03 font_size">18</item>
-	<item name="04 font_skew">0.00</item>
-	<item name="05 font_stretch">1.1</item>
-	<item name="06 font_bold">false</item>
-	<item name="07 render_style">normal</item>
-	<item name="08 fgcolor">[%random_color_#ffffb064_#ff222222%]</item>
-	<item name="09 bgcolor">#44eeeeee</item>
-	<item name="10 xcoord">460</item>
-	<item name="11 ycoord">240</item>
-	<item name="12 textalign">right</item>
-	<item name="13 words">&lt;B&gt;Clockr&lt;/B&gt;Evolution</item>
-</string-array>
-
-<!--*************-->
-<!--HeSaidSheSaid-->
-<!--(11/09)      -->
-<!-- Sunny Kwong -->
-<!--*************-->
-
-<string-array name="HeSaidSheSaid">
-	<item>image:HSSSBubble</item>
-	<item>quote:HSSSTalk</item>
-</string-array>
-
-<string-array name="HeSaidSheSaid_3x1SqueezeInfo">
-	<item name="HorizontalStretchFactor">1</item>
-	<item name="VerticalStretchFactor">1</item>
-	<item name="TopCropPixels">50</item>
-	<item name="BottomCropPixels">50</item>
-</string-array>
-<string-array name="HeSaidSheSaid_4x1SqueezeInfo">
-	<item name="HorizontalStretchFactor">1</item>
-	<item name="VerticalStretchFactor">0.95</item>
-	<item name="TopCropPixels">90</item>
-	<item name="BottomCropPixels">55</item>
-</string-array>
-
-<string-array name="HSSSBubble">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 bmp_source_type">asset</item>
-	<item name="02 file_source">speech_balloon</item>
-	<item name="03 stretch?">true</item>
-	<item name="04 stretchwidthfactor">1</item>
-	<item name="05 stretchheightfactor">1</item>
-	<item name="06 xcoord">0</item>
-	<item name="07 ycoord">0</item>
-</string-array>
-
-<string-array name="HSSSTalk">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">Laffayette_Comic_Pro.ttf</item>
-	<item name="03 font_size">36</item>
-	<item name="04 font_skew">-0.35</item>
-	<item name="05 font_stretch">0.8</item>
-	<item name="06 font_bold">false</item>
-	<item name="07 render_style">normal</item>
-	<item name="08 fgcolor">#ff000000</item>
-	<item name="09 bgcolor">#a0440000</item>
-	<item name="10 xcoord">240</item>
-	<item name="11 ycoord">150</item>
-	<item name="12 textalign">center</item>
-	<item name="13 talkbacks">HSSStalkbacks</item>
-</string-array>
-
-<string-array name="HSSStalkbacks">
-	<item>...and &lt;B&gt;he&lt;/B&gt; said...</item>
-	<item>...then &lt;B&gt;she&lt;/B&gt; said...</item>
-	<item>...blah blah blah...</item>
-	<item>...oh what &lt;B&gt;nerve!&lt;/B&gt; ...</item>
-	<item>...but then, &lt;B&gt;he&lt;/B&gt; said...</item>
-	<item>...where\'s that &lt;B&gt;lagomorph&lt;/B&gt;?</item>
-	<item>...you &lt;B&gt;go&lt;/B&gt;, girl! ...</item>
-	<item>...&lt;B&gt;Talk to the Hand&lt;/B&gt;, baby!</item>
-	<item>...so &lt;B&gt;I&lt;/B&gt; said...</item>
-	<item>...and then &lt;B&gt;they&lt;/B&gt; said...</item>
-	<item>...so &lt;B&gt;we&lt;/B&gt; said...</item>
-	<item>... &lt;B&gt;uh uh!&lt;/B&gt; ...</item>
-</string-array>
 
 </resources>
 

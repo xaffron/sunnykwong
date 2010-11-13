@@ -127,7 +127,7 @@ public class OMCSkinnerActivity extends Activity {
         OMCSkinnerActivity.THEMES =  new HashMap<String, File>();
         for (File f:OMCSkinnerActivity.THEMEROOT.listFiles()) {
         	if (!f.isDirectory()) continue;
-        	File ff = new File(f.getAbsolutePath()+"/00control.txt");
+        	File ff = new File(f.getAbsolutePath()+"/00control.xml");
         	if (ff.exists()) {
         		OMCSkinnerActivity.THEMEARRAY.add(f.getName());
         		OMCSkinnerActivity.THEMES.put(f.getName(), f);
@@ -230,7 +230,7 @@ public class OMCSkinnerActivity extends Activity {
             		xr.setContentHandler(parser);
             		// Feed data from control file to XML Parser.
             		// XML Parser will populate OMC.IMPORTEDTHEME.
-            		FileReader fr = new FileReader(root.getAbsolutePath() + "/00control.txt");
+            		FileReader fr = new FileReader(root.getAbsolutePath() + "/00control.xml");
             		xr.setErrorHandler(parser);
             		xr.parse(new InputSource(fr));
             		// When we're done, remove all references to parser.
