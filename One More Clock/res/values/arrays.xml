@@ -687,7 +687,7 @@
 	<item name="05 font_stretch">1.</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
-	<item name="08 fgcolor">[%day_#FFFF8F1F_night_#FFFFFFFF%]</item>
+	<item name="08 fgcolor">[%day_#FFFF8F1F_night_#FFFFFF00%]</item>
 	<item name="09 bgcolor">#a0ffffff</item>
 	<item name="10 xcoord">[%shift6_number_43200_105_240_375%]</item>
 	<item name="11 ycoord">144</item>
