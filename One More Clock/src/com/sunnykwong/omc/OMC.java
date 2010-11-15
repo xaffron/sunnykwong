@@ -70,7 +70,6 @@ public class OMC extends Application {
 	static final ComponentName WIDGET2x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget2x1");
 	static final int WIDGETWIDTH=480;
 	static final int WIDGETHEIGHT=300;
-	static final String CHINESETIME = "子丑寅卯辰巳午未申酉戌亥子";
 	static final Time TIME = new Time();
 	static String CACHEPATH;
 	static String[] WORDNUMBERS;

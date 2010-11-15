@@ -5,14 +5,11 @@
         android:fadingEdge="horizontal" android:orientation="vertical">
         <Gallery xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/gallery" android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content" android:spacing="5dp">
         </Gallery>
-<!--        <TextView android:id="@+id/SkinnerThemeCredits"-->
-<!--                android:layout_width="wrap_content" android:layout_height="150dp" android:text="" android:password="false" android:textSize="14dip" android:autoLink="web" android:paddingLeft="30dp" android:paddingRight="30dp" android:clickable="false">-->
-<!--        </TextView>-->
 <LinearLayout android:id="@+id/LinearLayout02" android:layout_height="wrap_content" android:layout_width="fill_parent">
 <Button android:id="@+id/btnReload" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reload Theme Catalog"></Button>
-<Button android:id="@+id/btnWork" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Work on this Theme"></Button>
+<Button android:id="@+id/btnMore" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="More Clocks..."></Button>
 </LinearLayout>
 
 

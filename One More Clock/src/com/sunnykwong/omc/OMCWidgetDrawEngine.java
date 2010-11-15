@@ -8,6 +8,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -26,10 +27,6 @@ public class OMCWidgetDrawEngine {
 	// Tweaks = hacks, but at least all the hacks are in one block of code.
 	static void layerThemeTweaks(final Context context, final int iLayerID, final String sTheme, final int aWI) {
 		switch (iLayerID) {
-		case R.array.CCChinese:
-			OMC.TXTBUF = String.valueOf(OMC.CHINESETIME.charAt((OMC.TIME.hour + 1)/2));
-
-			break;
 		default:
 			// do nothing
 		}
@@ -232,7 +229,7 @@ public class OMCWidgetDrawEngine {
 
 	}
 	
-	static void drawBitmapForWidget(final Context context, final int aWI) {
+	static synchronized Bitmap drawBitmapForWidget(final Context context, final int aWI) {
 		OMC.BUFFER.eraseColor(Color.TRANSPARENT);
 
 		String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME);
@@ -246,7 +243,7 @@ public class OMCWidgetDrawEngine {
 						.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
 						.putBoolean("external"+aWI,false)
 						.commit();
-				return;
+				return null;
 			}
   			ArrayList<String> tempAL = oTheme.arrays.get(oTheme.name);
   			OMC.LAYERLIST = tempAL.toArray(new String[tempAL.size()]);
@@ -283,6 +280,9 @@ public class OMCWidgetDrawEngine {
 			}
 			OMC.LAYERATTRIBS.recycle();
 		}
+		
+		return Bitmap.createBitmap(OMC.BUFFER);
+		
 	}
 
 	static int getSpannedStringWidth(SpannedString ss, final Paint pt) {
