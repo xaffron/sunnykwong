@@ -171,7 +171,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     @Override
     public void onPause() {
-//	    if (OMCPrefActivity.mAD != null) finish();
     	super.onPause();
     }
 
@@ -210,7 +209,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 									: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 							PackageManager.DONT_KILL_APP);
 
-			OMC.setServiceAlarm(System.currentTimeMillis() + 3000);
+			OMC.setServiceAlarm(System.currentTimeMillis()+500);
 			sendBroadcast(OMC.WIDGETREFRESHINTENT);
 		}
         super.onDestroy();

@@ -104,12 +104,7 @@ public class OMCTypedArray  {
 						st.nextToken(), 
 						st.nextToken(), 
 						gradient);
-				result = String.valueOf("#" + 								
-						Integer.toHexString(Color.alpha(color)) +
-						Integer.toHexString(Color.red(color)) +
-						Integer.toHexString(Color.green(color)) +
-						Integer.toHexString(Color.blue(color))
-						);
+				result = String.valueOf("#" + Integer.toHexString(color));
 			} else {
 				//Unknown - do nothing
 			}
@@ -232,12 +227,7 @@ public class OMCTypedArray  {
 						st.nextToken(), 
 						st.nextToken(), 
 						gradient);
-				result = ("#" + 								
-						Integer.toHexString(Color.alpha(color)) +
-						Integer.toHexString(Color.red(color)) +
-						Integer.toHexString(Color.green(color)) +
-						Integer.toHexString(Color.blue(color))
-						);
+				result = String.valueOf("#" + Integer.toHexString(color));
 			} else {
 				//Unknown - do nothing
 			}

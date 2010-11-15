@@ -1,46 +1,41 @@
 package com.sunnykwong.omc;
 
-import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import java.util.ArrayList;
-import java.io.FileReader;
 import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashMap;
-import android.graphics.Paint;
+
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
-import android.view.View.OnClickListener;
 
-import android.text.Html;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.Button;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.os.Bundle;
-import android.widget.Toast;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.graphics.BitmapFactory;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Bundle;
 import android.os.Environment;
-import android.widget.BaseAdapter;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView;
+import android.os.Handler;
+import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.net.Uri;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class OMCSkinnerActivity extends Activity implements OnClickListener {
 
@@ -98,14 +93,14 @@ public class OMCSkinnerActivity extends Activity implements OnClickListener {
         btnReload = (Button)findViewById(R.id.btnReload);
         btnReload.setOnClickListener(this);
 
-        tvCredits = (TextView)findViewById(R.id.SkinnerThemeCredits);
+//        tvCredits = (TextView)findViewById(R.id.SkinnerThemeCredits);
         
         gallery = (Gallery)this.findViewById(R.id.gallery);
         gallery.setSpacing(10);
         refreshThemeList();
 
         gallery.setAdapter(OMCSkinnerActivity.THEMEARRAY);
-
+        gallery.setSelection(3, true);
         gallery.setOnItemSelectedListener(new OnItemSelectedListener() {
         	@Override
         	public void onItemSelected(AdapterView<?> arg0, View arg1,
@@ -113,8 +108,8 @@ public class OMCSkinnerActivity extends Activity implements OnClickListener {
         		// TODO Auto-generated method stub
         		//setThemePreview(OMCSkinnerActivity.THEMEARRAY.getItem(position));
         		System.out.println("Gallry onitemselected");
-        		tvCredits.setText(OMCSkinnerActivity.THEMEARRAY.mCreds.get(position));
-        		tvCredits.invalidate();
+        		//tvCredits.setText(OMCSkinnerActivity.THEMEARRAY.mCreds.get(position));
+        		//tvCredits.invalidate();
         	}
         	@Override
         	public void onNothingSelected(AdapterView<?> arg0) {
@@ -332,11 +327,18 @@ public class OMCSkinnerActivity extends Activity implements OnClickListener {
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
+        	LinearLayout ll = new LinearLayout(OMCSkinnerActivity.this);
+        	ll.setOrientation(LinearLayout.VERTICAL);
+        	TextView tv = new TextView(OMCSkinnerActivity.this,
+//        	ll.addView(
             ImageView i = new ImageView(OMCSkinnerActivity.this);
             i.setImageBitmap(mBitmaps.get(position));
             i.setLayoutParams(new Gallery.LayoutParams(240, 180));
             i.setScaleType(ImageView.ScaleType.FIT_XY);
-            return i;
+            
+            ll.addView(i);
+
+            return ll;
         }
 
         public void dispose() {
