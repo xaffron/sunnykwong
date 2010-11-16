@@ -5,19 +5,12 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
-
 import android.content.Intent;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -38,7 +31,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class OMCThemePickerActivity extends Activity implements OnClickListener, OnItemClickListener {
@@ -53,41 +45,25 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 	public static HashMap<String,File> THEMES;
 	public static String tempText = "";
 	public static File SDROOT, THEMEROOT;
-	public static ImageAdapter THEMEARRAY;
+	public static ThemePickerAdapter THEMEARRAY;
 	public static Spinner THEMESPINNER;
 	public static char[] THEMECREDITS;
 	public static String CURRSELECTEDTHEME, RAWCONTROLFILE;
 	
-	public Button btnReload;
+	public Button btnReload,btnGetMore;
 	public Gallery gallery;
 	public TextView tvCredits;
 	
     static AlertDialog mAD;	
 
-	final Runnable mResult = new Runnable() {
-		public void run() {
-		// Back from XML importing...
-			if (OMCXMLThemeParser.valid) {
-	        	Toast.makeText(OMCThemePickerActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCXMLThemeParser.latestThemeName).arrays.get("theme_options").get(0) + " theme imported.", Toast.LENGTH_SHORT).show();
-	        	OMC.PREFS.edit()
-			        	.putString("widgetTheme", OMCXMLThemeParser.latestThemeName)
-			        	.putBoolean("external", true)
-			    		.commit();
-	        	OMC.saveImportedThemeToCache(OMCThemePickerActivity.this,OMCXMLThemeParser.latestThemeName);
-	        	Toast.makeText(OMCThemePickerActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCXMLThemeParser.latestThemeName).arrays.get("theme_options").get(0) + " theme cached and applied.", Toast.LENGTH_SHORT).show();
-			} else {
-	        	Toast.makeText(OMCThemePickerActivity.this, OMCThemePickerActivity.CURRSELECTEDTHEME + " theme did not pass validity checks!\nPlease check with the author of your theme.\nImport cancelled.", Toast.LENGTH_SHORT).show();
-			}
-
-			setResult(Activity.RESULT_OK);
-        	finish();
-		}
-	};
-	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+		setResult(Activity.RESULT_CANCELED);
+		System.out.println(Activity.RESULT_CANCELED);
+
         setContentView(R.layout.themepickerlayout);
 
         setTitle("Swipe Left and Right to Select a Theme");
@@ -99,6 +75,9 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         btnReload = (Button)findViewById(R.id.btnReload);
         btnReload.setOnClickListener(this);
 
+        btnGetMore = (Button)findViewById(R.id.btnMore);
+        btnGetMore.setOnClickListener(this);
+        
         gallery = (Gallery)this.findViewById(R.id.gallery);
         refreshThemeList();
 
@@ -106,45 +85,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         gallery.setSelection(3, true);
         gallery.setOnItemClickListener(this);
         
-//        ((Button)this.findViewById(R.id.buttonCancel)).setOnClickListener(new View.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				OMCThemePickerActivity.this.setResult(Activity.RESULT_OK);
-//				OMCThemePickerActivity.this.finish();
-//			}
-//		});
-//        
-//        ((Button)this.findViewById(R.id.buttonOK)).setOnClickListener(new View.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				if (OMCThemePickerActivity.CURRSELECTEDTHEME!=null) {
-//					if (!OMC.IMPORTEDTHEMEMAP.containsKey(OMCThemePickerActivity.CURRSELECTEDTHEME)) importTheme();
-//					else {
-//						
-//						Toast.makeText(OMCThemePickerActivity.this, 
-//								"Theme already imported and cached.\n" + 
-//								OMC.IMPORTEDTHEMEMAP.get(
-//										OMCThemePickerActivity.CURRSELECTEDTHEME).arrays
-//										.get("theme_options").get(0) + " theme applied."
-//										, Toast.LENGTH_SHORT).show();
-//						
-//			        	OMC.PREFS.edit()
-//			        	.putString("widgetTheme", OMCThemePickerActivity.CURRSELECTEDTHEME)
-//			        	.putBoolean("external", true)
-//			    		.commit();
-//
-//			        	setResult(Activity.RESULT_OK);
-//						finish();
-//					}
-//
-//				}
-//			}
-//		});
-
     }
     
     @Override
@@ -160,83 +100,26 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
     	// TODO Auto-generated method stub
     	if (arg0==gallery) {
-    		if (OMC.DEBUG) Log.i("OMCSkin","Selected Theme " + OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()));
+
+        	gallery.setVisibility(View.INVISIBLE);
+    		btnReload.setVisibility(View.INVISIBLE);
+    		btnGetMore.setVisibility(View.INVISIBLE);
+    		
     		Intent it = new Intent();
     		setResult(Activity.RESULT_OK, it);
     		it.putExtra("theme", OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()));
     		it.putExtra("external", true);
-    		
     		
     		OMCThemePickerActivity.THEMEARRAY.dispose();
     		finish();
     	}
     }
 
-    public void setThemePreview(String sThemeName) {
-		OMCThemePickerActivity.CURRSELECTEDTHEME = sThemeName;
-		if (sThemeName == null || sThemeName.equals("")) return;
-		File root = OMCThemePickerActivity.THEMES.get(sThemeName);
-		if (OMC.DEBUG) Log.i("OMCSkinner",root.getAbsolutePath() + "/preview.png");
-		Bitmap bmpPreview = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(root.getAbsolutePath() + "/preview.jpg"),320,200,false);
-		((ImageView)this.findViewById(R.id.ImagePreview)).setImageBitmap(bmpPreview);
-		OMCThemePickerActivity.THEMECREDITS = new char[3000];
-		try {
-			FileReader fr = new FileReader(root.getAbsolutePath() + "/00credits.txt");
-			fr.read(OMCThemePickerActivity.THEMECREDITS);
-			((TextView)this.findViewById(R.id.TextPreview)).setText(String.valueOf(OMCThemePickerActivity.THEMECREDITS).trim());
-			this.findViewById(R.id.toplevel).invalidate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
- 
-	public void importTheme() {
-		if (OMCThemePickerActivity.CURRSELECTEDTHEME == null) {
-        	Toast.makeText(this, "Please select a theme first.", Toast.LENGTH_SHORT).show();
-			return;
-		}
-		
-        System.setProperty("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver"); 
-
-		
-		
-    	Thread t = new Thread () {
-    		public void run() {
-            	try {
-            		// Set SD OMC Root
-            		File root = OMCThemePickerActivity.THEMES.get(OMCThemePickerActivity.CURRSELECTEDTHEME);
-            		// Setup XML Parsing...
-            		XMLReader xr = XMLReaderFactory.createXMLReader();
-            		OMCXMLThemeParser parser = new OMCXMLThemeParser(root.getAbsolutePath());
-            		xr.setContentHandler(parser);
-            		// Feed data from control file to XML Parser.
-            		// XML Parser will populate OMC.IMPORTEDTHEME.
-            		FileReader fr = new FileReader(root.getAbsolutePath() + "/00control.xml");
-            		xr.setErrorHandler(parser);
-            		xr.parse(new InputSource(fr));
-            		// When we're done, remove all references to parser.
-                	parser = null;
-                	fr.close();
-
-            	} catch (Exception e) {
-            		
-                	e.printStackTrace();
-            	}
-
-            	// This call will end up passing control to processXMLResults
-    			mHandler.post(mResult);
-    		}
-      	   
-    	};
-		t.start();
-
-    } 
-
 	public void refreshThemeList() {
 
 		gallery.setVisibility(View.INVISIBLE);
 		btnReload.setClickable(false);
-		
+
 		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
         	Toast.makeText(this, "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
 			setResult(Activity.RESULT_OK);
@@ -250,19 +133,9 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	Toast.makeText(this, "OMC folder not found in your SD Card.\nCreating folder...", Toast.LENGTH_LONG).show();
         	OMCThemePickerActivity.THEMEROOT.mkdir();
         }
-//        OMC.RES.getStringArray(R.array.theme_values);
-
-        
-        //        if (OMCThemePickerActivity.THEMEROOT.listFiles().length == 0) {
-//        	//No themes downloaded
-//        	Toast.makeText(this, "No themes downloaded. Exiting!", Toast.LENGTH_LONG).show();
-//			setResult(Activity.RESULT_OK);
-//			finish();
-//        	return;
-//        }
         
         if (OMCThemePickerActivity.THEMEARRAY == null) {
-        	OMCThemePickerActivity.THEMEARRAY = new ImageAdapter();
+        	OMCThemePickerActivity.THEMEARRAY = new ThemePickerAdapter();
         } else {
         	OMCThemePickerActivity.THEMEARRAY.dispose();
             gallery.requestLayout();
@@ -282,15 +155,22 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 		btnReload.setClickable(true);
 	}
 	
-    public class ImageAdapter extends BaseAdapter {
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		OMCThemePickerActivity.THEMEARRAY.dispose();
+		OMCThemePickerActivity.THEMEARRAY=null;
+	}
+	
+    public class ThemePickerAdapter extends BaseAdapter {
 
     	public ArrayList<String> mThemes = new ArrayList<String>();
     	public ArrayList<Boolean> mExternal = new ArrayList<Boolean>();
     	public HashMap<String,Bitmap> mBitmaps = new HashMap<String,Bitmap>();
     	public HashMap<String, String> mCreds = new HashMap<String, String>();
-    	
 
-        public ImageAdapter() {
+        public ThemePickerAdapter() {
         }
 
         public void addItem(String sTheme, boolean bExternal){

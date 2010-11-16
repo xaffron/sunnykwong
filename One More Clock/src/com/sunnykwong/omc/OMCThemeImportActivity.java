@@ -11,26 +11,20 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnKeyListener;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
+
 public class OMCThemeImportActivity extends Activity {
 
 	public Handler mHandler;
@@ -39,8 +33,8 @@ public class OMCThemeImportActivity extends Activity {
 	public static Location CURRLOCN;
 	public static LocationListener LL;
 	public static String TRAFFICRESULTS;
-	public static HashMap<String,String[]> ELEMENTS;
-	public static HashMap<String,File> THEMES;
+	//public static HashMap<String,String[]> ELEMENTS;
+	//public static HashMap<String,File> THEMES;
 	public static String tempText = "";
 	public static File SDROOT, THEMEROOT;
 	public static ArrayAdapter<String> THEMEARRAY;
@@ -53,20 +47,20 @@ public class OMCThemeImportActivity extends Activity {
 	final Runnable mResult = new Runnable() {
 		public void run() {
 		// Back from XML importing...
-			if (OMCXMLThemeParser.valid) {
-	        	Toast.makeText(OMCThemeImportActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCXMLThemeParser.latestThemeName).arrays.get("theme_options").get(0) + " theme imported.", Toast.LENGTH_SHORT).show();
-	        	OMC.PREFS.edit()
-			        	.putString("widgetTheme", OMCXMLThemeParser.latestThemeName)
-			        	.putBoolean("external", true)
-			    		.commit();
-	        	OMC.saveImportedThemeToCache(OMCThemeImportActivity.this,OMCXMLThemeParser.latestThemeName);
-	        	Toast.makeText(OMCThemeImportActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCXMLThemeParser.latestThemeName).arrays.get("theme_options").get(0) + " theme cached and applied.", Toast.LENGTH_SHORT).show();
-			} else {
-	        	Toast.makeText(OMCThemeImportActivity.this, OMCThemeImportActivity.CURRSELECTEDTHEME + " theme did not pass validity checks!\nPlease check with the author of your theme.\nImport cancelled.", Toast.LENGTH_SHORT).show();
-			}
-
-			setResult(Activity.RESULT_OK);
-        	finish();
+//			if (OMCXMLThemeParser.valid) {
+//	        	Toast.makeText(OMCThemeImportActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCXMLThemeParser.latestThemeName).arrays.get("theme_options").get(0) + " theme imported.", Toast.LENGTH_SHORT).show();
+//	        	OMC.PREFS.edit()
+//			        	.putString("widgetTheme", OMCXMLThemeParser.latestThemeName)
+//			        	.putBoolean("external", true)
+//			    		.commit();
+//	        	OMC.saveImportedThemeToCache(OMCThemeImportActivity.this,OMCXMLThemeParser.latestThemeName);
+//	        	Toast.makeText(OMCThemeImportActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCXMLThemeParser.latestThemeName).arrays.get("theme_options").get(0) + " theme cached and applied.", Toast.LENGTH_SHORT).show();
+//			} else {
+//	        	Toast.makeText(OMCThemeImportActivity.this, OMCThemeImportActivity.CURRSELECTEDTHEME + " theme did not pass validity checks!\nPlease check with the author of your theme.\nImport cancelled.", Toast.LENGTH_SHORT).show();
+//			}
+//
+//			setResult(Activity.RESULT_OK);
+//        	finish();
 		}
 	};
 	
@@ -74,32 +68,10 @@ public class OMCThemeImportActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.importlayout);
 
         mHandler = new Handler();
 
         OMCThemeImportActivity.CURRSELECTEDTHEME = null;
-        
-        if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-        	Toast.makeText(this, "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
-			setResult(Activity.RESULT_OK);
-			finish();
-        	return;
-        }
-
-        OMCThemeImportActivity.SDROOT = Environment.getExternalStorageDirectory();
-        OMCThemeImportActivity.THEMEROOT = new File(OMCThemeImportActivity.SDROOT.getAbsolutePath()+"/OMC");
-        if (!OMCThemeImportActivity.THEMEROOT.exists()) {
-        	Toast.makeText(this, "OMC folder not found in your SD Card.\nCreating folder...", Toast.LENGTH_LONG).show();
-        	OMCThemeImportActivity.THEMEROOT.mkdir();
-        }
-        if (OMCThemeImportActivity.THEMEROOT.listFiles().length == 0) {
-        	//No themes downloaded
-        	Toast.makeText(this, "No themes downloaded.\nCannot import...", Toast.LENGTH_LONG).show();
-			setResult(Activity.RESULT_OK);
-			finish();
-        	return;
-        }
         
         OMCThemeImportActivity.mAD = new AlertDialog.Builder(this)
 		.setTitle("OMC - Theme Import")
@@ -107,148 +79,136 @@ public class OMCThemeImportActivity extends Activity {
 	    .setCancelable(true)
 	    .setIcon(R.drawable.fredicon_mdpi)
 	    .setPositiveButton("Okay", new OnClickListener() {
-			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 	       		OMCThemeImportActivity.mAD.dismiss();
+	       		chooseTheme();
 			}
 		})
 	    .setOnKeyListener(new OnKeyListener() {
 	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
 	       		OMCThemeImportActivity.mAD.dismiss();
+	       		chooseTheme();
 	    		return true;
 	    	};
 	    }).create();
 
         OMCThemeImportActivity.mAD.show();
 
-        OMCThemeImportActivity.THEMEARRAY =  new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line);
-        OMCThemeImportActivity.THEMES =  new HashMap<String, File>();
-        for (File f:OMCThemeImportActivity.THEMEROOT.listFiles()) {
-        	if (!f.isDirectory()) continue;
-        	File ff = new File(f.getAbsolutePath()+"/00control.xml");
-        	if (ff.exists()) {
-        		OMCThemeImportActivity.THEMEARRAY.add(f.getName());
-        		OMCThemeImportActivity.THEMES.put(f.getName(), f);
-        	}
-        }
-        OMCThemeImportActivity.THEMESPINNER = (Spinner)this.findViewById(R.id.spinner);
-        OMCThemeImportActivity.THEMESPINNER.setAdapter(OMCThemeImportActivity.THEMEARRAY);
-        OMCThemeImportActivity.THEMESPINNER.setOnItemSelectedListener(new OnItemSelectedListener() {
-        	@Override
-        	public void onItemSelected(AdapterView<?> arg0, View arg1,
-        			int position, long id) {
-        		// TODO Auto-generated method stub
-        		setThemePreview(OMCThemeImportActivity.THEMEARRAY.getItem(position));
-        		
-        	}
-        	@Override
-        	public void onNothingSelected(AdapterView<?> arg0) {
-        		// do nothing
-       		
-        	}
-		});
-        OMCThemeImportActivity.THEMESPINNER.invalidate();
-
-        ((Button)this.findViewById(R.id.buttonCancel)).setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				OMCThemeImportActivity.this.setResult(Activity.RESULT_OK);
-				OMCThemeImportActivity.this.finish();
-			}
-		});
-        
-        ((Button)this.findViewById(R.id.buttonOK)).setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				if (OMCThemeImportActivity.CURRSELECTEDTHEME!=null) {
-					if (!OMC.IMPORTEDTHEMEMAP.containsKey(OMCThemeImportActivity.CURRSELECTEDTHEME)) importTheme();
-					else {
-						
-						Toast.makeText(OMCThemeImportActivity.this, 
-								"Theme already imported and cached.\n" + 
-								OMC.IMPORTEDTHEMEMAP.get(
-										OMCThemeImportActivity.CURRSELECTEDTHEME).arrays
-										.get("theme_options").get(0) + " theme applied."
-										, Toast.LENGTH_SHORT).show();
-						
-			        	OMC.PREFS.edit()
-			        	.putString("widgetTheme", OMCThemeImportActivity.CURRSELECTEDTHEME)
-			        	.putBoolean("external", true)
-			    		.commit();
-
-			        	setResult(Activity.RESULT_OK);
-						finish();
-					}
-
-				}
-			}
-		});
-
     }
-	public void setThemePreview(String sThemeName) {
-		OMCThemeImportActivity.CURRSELECTEDTHEME = sThemeName;
-		if (sThemeName == null || sThemeName.equals("")) return;
-		File root = OMCThemeImportActivity.THEMES.get(sThemeName);
-		if (OMC.DEBUG) Log.i("OMCTheme",root.getAbsolutePath() + "/preview.png");
-		Bitmap bmpPreview = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(root.getAbsolutePath() + "/preview.jpg"),320,200,false);
-		((ImageView)this.findViewById(R.id.ImagePreview)).setImageBitmap(bmpPreview);
-		OMCThemeImportActivity.THEMECREDITS = new char[3000];
-		try {
-			FileReader fr = new FileReader(root.getAbsolutePath() + "/00credits.txt");
-			fr.read(OMCThemeImportActivity.THEMECREDITS);
-			((TextView)this.findViewById(R.id.TextPreview)).setText(String.valueOf(OMCThemeImportActivity.THEMECREDITS).trim());
-			this.findViewById(R.id.toplevel).invalidate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
- 
-	public void importTheme() {
-		if (OMCThemeImportActivity.CURRSELECTEDTHEME == null) {
-        	Toast.makeText(this, "Please select a theme first.", Toast.LENGTH_SHORT).show();
+
+    public void chooseTheme() {
+        Intent itThemePicker = new Intent(this,OMCThemePickerActivity.class);
+        itThemePicker.putExtra("externalonly", true);
+
+        startActivityForResult(itThemePicker, 0);
+    }
+    
+    
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	
+    	if (resultCode == Activity.RESULT_CANCELED) {
+    		finish();
+    		return;
+    	}
+    	
+    	OMCThemeImportActivity.CURRSELECTEDTHEME = data.getExtras().getString("theme");
+		if (OMCThemeImportActivity.CURRSELECTEDTHEME!=null) {
+			if (!OMC.IMPORTEDTHEMEMAP.containsKey(OMCThemeImportActivity.CURRSELECTEDTHEME)) {
+				OMCXMLThemeParser parser = new OMCXMLThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
+						+"/OMC/" + OMCThemeImportActivity.CURRSELECTEDTHEME);
+				System.out.println("about to parse " + Environment.getExternalStorageDirectory().getAbsolutePath()
+						+"/OMC/" + OMCThemeImportActivity.CURRSELECTEDTHEME);
+				parser.importTheme();
+
+				while (!parser.doneParsing){
+					try {
+						Thread.sleep(500);
+					} catch (Exception e) {
+						// Do nothing
+					}
+				}
+				
+				if (parser.valid) {
+		        	Toast.makeText(this, OMCThemeImportActivity.CURRSELECTEDTHEME + " theme imported.", Toast.LENGTH_SHORT).show();
+		        	OMC.PREFS.edit()
+				        	.putString("widgetTheme", OMCThemeImportActivity.CURRSELECTEDTHEME)
+				        	.putBoolean("external", true)
+				    		.commit();
+		        	OMC.saveImportedThemeToCache(OMCThemeImportActivity.this,OMCThemeImportActivity.CURRSELECTEDTHEME);
+		        	Toast.makeText(OMCThemeImportActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCThemeImportActivity.CURRSELECTEDTHEME).arrays.get("theme_options").get(0) + " theme cached and applied.", Toast.LENGTH_SHORT).show();
+				} else {
+		        	Toast.makeText(OMCThemeImportActivity.this, OMCThemeImportActivity.CURRSELECTEDTHEME + " theme did not pass validity checks!\nPlease check with the author of your theme.\nImport cancelled.", Toast.LENGTH_SHORT).show();
+				}
+
+				setResult(Activity.RESULT_OK);
+	        	finish();
+			} else {
+				
+				Toast.makeText(OMCThemeImportActivity.this, 
+						"Theme already imported and cached.\n" + 
+						OMC.IMPORTEDTHEMEMAP.get(
+								OMCThemeImportActivity.CURRSELECTEDTHEME).arrays
+								.get("theme_options").get(0) + " theme applied."
+								, Toast.LENGTH_SHORT).show();
+				
+	        	OMC.PREFS.edit()
+	        	.putString("widgetTheme", OMCThemeImportActivity.CURRSELECTEDTHEME)
+	        	.putBoolean("external", true)
+	    		.commit();
+
+	        	setResult(Activity.RESULT_OK);
+				finish();
+			}
+
+		} else {
+			//For some reason, no theme selected
+			finish();
 			return;
 		}
-		
-        System.setProperty("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver"); 
+	}
 
-		
-		
-    	Thread t = new Thread () {
-    		public void run() {
-            	try {
-            		// Set SD OMC Root
-            		File root = OMCThemeImportActivity.THEMES.get(OMCThemeImportActivity.CURRSELECTEDTHEME);
-            		// Setup XML Parsing...
-            		XMLReader xr = XMLReaderFactory.createXMLReader();
-            		OMCXMLThemeParser parser = new OMCXMLThemeParser(root.getAbsolutePath());
-            		xr.setContentHandler(parser);
-            		// Feed data from control file to XML Parser.
-            		// XML Parser will populate OMC.IMPORTEDTHEME.
-            		FileReader fr = new FileReader(root.getAbsolutePath() + "/00control.xml");
-            		xr.setErrorHandler(parser);
-            		xr.parse(new InputSource(fr));
-            		// When we're done, remove all references to parser.
-                	parser = null;
-                	fr.close();
-
-            	} catch (Exception e) {
-            		
-                	e.printStackTrace();
-            	}
-
-            	// This call will end up passing control to processXMLResults
-    			mHandler.post(mResult);
-    		}
-      	   
-    	};
-		t.start();
-
-    } 
+//	public void importTheme() {
+//		if (OMCThemeImportActivity.CURRSELECTEDTHEME == null) {
+//        	Toast.makeText(this, "Please select a theme first.", Toast.LENGTH_SHORT).show();
+//			return;
+//		}
+//		
+//        System.setProperty("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver"); 
+//
+//		
+//		
+//    	Thread t = new Thread () {
+//    		public void run() {
+//            	try {
+//            		// Set SD OMC Root
+//            		File root = OMCThemeImportActivity.THEMES.get(OMCThemeImportActivity.CURRSELECTEDTHEME);
+//            		// Setup XML Parsing...
+//            		XMLReader xr = XMLReaderFactory.createXMLReader();
+//            		OMCXMLThemeParser parser = new OMCXMLThemeParser(root.getAbsolutePath());
+//            		xr.setContentHandler(parser);
+//            		// Feed data from control file to XML Parser.
+//            		// XML Parser will populate OMC.IMPORTEDTHEME.
+//            		FileReader fr = new FileReader(root.getAbsolutePath() + "/00control.xml");
+//            		xr.setErrorHandler(parser);
+//            		xr.parse(new InputSource(fr));
+//            		// When we're done, remove all references to parser.
+//                	parser = null;
+//                	fr.close();
+//
+//            	} catch (Exception e) {
+//            		
+//                	e.printStackTrace();
+//            	}
+//
+//            	// This call will end up passing control to processXMLResults
+//    			mHandler.post(mResult);
+//    		}
+//      	   
+//    	};
+//		t.start();
+//
+//    } 
 
 	
 }

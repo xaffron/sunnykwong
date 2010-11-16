@@ -1,10 +1,12 @@
 package com.sunnykwong.omc;
 
 import android.util.Log;
+import android.widget.Toast;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 
 import org.xml.sax.helpers.DefaultHandler;
+import org.xml.sax.helpers.XMLReaderFactory;
 import org.xml.sax.*;
 
 import java.util.Map;
@@ -12,20 +14,24 @@ import java.util.Stack;
 import java.util.Iterator;
 import java.util.ArrayList;
 
+import java.io.File;
+import java.io.FileReader;
 import java.lang.StringBuilder;
 
 public class OMCXMLThemeParser extends DefaultHandler {
 	public Stack<String[]> tree;
 	public StringBuilder  sb;
 	public OMCImportedTheme newTheme;
-	static public boolean valid;
-	static public String latestThemeName;
+	public boolean doneParsing;
+	public boolean valid;
 	static public String sdRootPath;
 	
 	public OMCXMLThemeParser (String nm) {
 		super();
-		OMCXMLThemeParser.sdRootPath=nm;
-		OMCXMLThemeParser.valid=false;
+        System.setProperty("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver"); 
+
+        OMCXMLThemeParser.sdRootPath=nm;
+		valid=false;
 		newTheme = new OMCImportedTheme();
 		if (tree == null) tree = new Stack<String[]>();
 		tree.clear();
@@ -33,6 +39,35 @@ public class OMCXMLThemeParser extends DefaultHandler {
 		sb.setLength(0);
 	}
 
+	public void importTheme() {
+        
+    	Thread t = new Thread () {
+    		public void run() {
+            	try {
+            		doneParsing=false;
+            		// Setup XML Parsing...
+            		XMLReader xr = XMLReaderFactory.createXMLReader();
+            		xr.setContentHandler(OMCXMLThemeParser.this);
+            		// Feed data from control file to XML Parser.
+            		FileReader fr = new FileReader(OMCXMLThemeParser.sdRootPath + "/00control.xml");
+            		xr.setErrorHandler(OMCXMLThemeParser.this);
+            		xr.parse(new InputSource(fr));
+
+                	fr.close();
+
+            	} catch (Exception e) {
+            		
+                	e.printStackTrace();
+            	}
+
+            	// This call will end up passing control to processXMLResults
+        		doneParsing=true;
+    		}      	   
+    	};
+		t.start();
+
+    } 
+	
 	@Override
     public void startDocument () {
     	if (OMC.DEBUG) Log.i("OMCTheme","start document");
@@ -170,16 +205,13 @@ public class OMCXMLThemeParser extends DefaultHandler {
 					}
 				}
 			}
-		}
-		
+		}		
 		
 		if (newTheme.valid) {
 			OMC.IMPORTEDTHEMEMAP.put(newTheme.name, newTheme);
-			OMCXMLThemeParser.latestThemeName = newTheme.name;
 		}
 
-		OMCXMLThemeParser.valid = newTheme.valid;
-		
+		valid = newTheme.valid;
 		
 		//OK we're done parsing the whole document.
     	//Since the parse() method is synchronous, we don't need to do anything - just basic cleanup.

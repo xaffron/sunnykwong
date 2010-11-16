@@ -51,35 +51,21 @@ public class OMCSkinnerActivity extends Activity {
 	public static Spinner THEMESPINNER;
 	public static char[] THEMECREDITS;
 	public static String CURRSELECTEDTHEME, RAWCONTROLFILE;
+
+	public Thread refreshThread;
+
+	public static int REFRESHINTERVAL;
 	
     static AlertDialog mAD;	
 
-	final Runnable mResult = new Runnable() {
-		public void run() {
-		// Back from XML importing...
-			if (OMCXMLThemeParser.valid) {
-	        	Toast.makeText(OMCSkinnerActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCXMLThemeParser.latestThemeName).arrays.get("theme_options").get(0) + " theme imported.", Toast.LENGTH_SHORT).show();
-	        	OMC.PREFS.edit()
-			        	.putString("widgetTheme", OMCXMLThemeParser.latestThemeName)
-			        	.putBoolean("external", true)
-			    		.commit();
-	        	OMC.saveImportedThemeToCache(OMCSkinnerActivity.this,OMCXMLThemeParser.latestThemeName);
-	        	Toast.makeText(OMCSkinnerActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCXMLThemeParser.latestThemeName).arrays.get("theme_options").get(0) + " theme cached and applied.", Toast.LENGTH_SHORT).show();
-			} else {
-	        	Toast.makeText(OMCSkinnerActivity.this, OMCSkinnerActivity.CURRSELECTEDTHEME + " theme did not pass validity checks!\nPlease check with the author of your theme.\nImport cancelled.", Toast.LENGTH_SHORT).show();
-			}
-
-			setResult(Activity.RESULT_OK);
-        	finish();
-		}
-	};
-	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.skinnertool);
 
+        OMCSkinnerActivity.REFRESHINTERVAL = 10000;
+        
         mHandler = new Handler();
 
         Intent it = new Intent(this,OMCThemePickerActivity.class);
@@ -91,16 +77,43 @@ public class OMCSkinnerActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     	// TODO Auto-generated method stub
     	super.onActivityResult(requestCode, resultCode, data);
+
+    	if (resultCode == Activity.RESULT_CANCELED) {
+    		finish();
+    		return;
+    	}
     	
-    	String sTheme = (String)(data.getExtras().get("theme"));
+    	final String sTheme = (String)(data.getExtras().get("theme"));
     	boolean bExternal = (Boolean)(data.getExtras().get("external"));
     	boolean bCustomStretch = true;
+    	
+    	OMCXMLThemeParser parser = new OMCXMLThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
+				+"/OMC/" + sTheme);
+    	
+		System.out.println("about to parse " + Environment.getExternalStorageDirectory().getAbsolutePath()
+				+"/OMC/" + OMCThemeImportActivity.CURRSELECTEDTHEME);
+		parser.importTheme();
+
+		while (!parser.doneParsing){
+			try {
+				Thread.sleep(500);
+			} catch (Exception e) {
+				// Do nothing
+			}
+		}
+		
+		if (!parser.valid) {
+        	Toast.makeText(this, sTheme + " is an invalid theme.  See logcat for errors.", Toast.LENGTH_LONG).show();
+        	return;
+		}
 
     	OMC.PREFS.edit().putString("widgetTheme-1", (String)(data.getExtras().get("theme")))
 		.putBoolean("widget24HrClock-1", OMC.PREFS.getBoolean("widget24HrClock", true))
 		.putBoolean("external-1", (Boolean)(data.getExtras().get("external")))
 		.putString("URI-1", OMC.PREFS.getString("URI", ""))
 		.commit();
+    	
+    	Toast.makeText(this, "Refreshing from SD card every " + OMCSkinnerActivity.REFRESHINTERVAL/1000 + " seconds.", Toast.LENGTH_SHORT).show();
     	
     	ImageView FourByTwo = (ImageView)this.findViewById(R.id.FourByTwo);
     	Bitmap bmpRender = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1);
@@ -156,68 +169,41 @@ public class OMCSkinnerActivity extends Activity {
     	this.findViewById(R.id.FourByOne).invalidate();
     	this.findViewById(R.id.ThreeByOne).invalidate();
 	    	
+    	refreshThread = new Thread() {
+
+    		public void run() {
+    			while (true) {
+	    	    	OMCXMLThemeParser parser = new OMCXMLThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
+	    					+"/OMC/" + sTheme);
+	    	    	
+	    			System.out.println("about to parse " + Environment.getExternalStorageDirectory().getAbsolutePath()
+	    					+"/OMC/" + sTheme);
+	    			parser.importTheme();
+	
+	    			while (!parser.doneParsing){
+	    				try {
+	    					Thread.sleep(500);
+	    				} catch (Exception e) {
+	    					// Do nothing
+	    				}
+	    			}
+	    			try {
+	    				Thread.sleep(OMCSkinnerActivity.REFRESHINTERVAL);
+					} catch (Exception e) {
+						// Do nothing
+					}
+    			}
+    		};
+		};
+		refreshThread.start();
 	//    	finish();
     }
     
-	public void setThemePreview(String sThemeName) {
-		OMCSkinnerActivity.CURRSELECTEDTHEME = sThemeName;
-		if (sThemeName == null || sThemeName.equals("")) return;
-		File root = OMCSkinnerActivity.THEMES.get(sThemeName);
-		if (OMC.DEBUG) Log.i("OMCTheme",root.getAbsolutePath() + "/preview.png");
-		Bitmap bmpPreview = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(root.getAbsolutePath() + "/preview.jpg"),320,200,false);
-		((ImageView)this.findViewById(R.id.ImagePreview)).setImageBitmap(bmpPreview);
-		OMCSkinnerActivity.THEMECREDITS = new char[3000];
-		try {
-			FileReader fr = new FileReader(root.getAbsolutePath() + "/00credits.txt");
-			fr.read(OMCSkinnerActivity.THEMECREDITS);
-			((TextView)this.findViewById(R.id.TextPreview)).setText(String.valueOf(OMCSkinnerActivity.THEMECREDITS).trim());
-			this.findViewById(R.id.toplevel).invalidate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
- 
-	public void importTheme() {
-		if (OMCSkinnerActivity.CURRSELECTEDTHEME == null) {
-        	Toast.makeText(this, "Please select a theme first.", Toast.LENGTH_SHORT).show();
-			return;
-		}
-		
-        System.setProperty("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver"); 
-
-		
-		
-    	Thread t = new Thread () {
-    		public void run() {
-            	try {
-            		// Set SD OMC Root
-            		File root = OMCSkinnerActivity.THEMES.get(OMCSkinnerActivity.CURRSELECTEDTHEME);
-            		// Setup XML Parsing...
-            		XMLReader xr = XMLReaderFactory.createXMLReader();
-            		OMCXMLThemeParser parser = new OMCXMLThemeParser(root.getAbsolutePath());
-            		xr.setContentHandler(parser);
-            		// Feed data from control file to XML Parser.
-            		// XML Parser will populate OMC.IMPORTEDTHEME.
-            		FileReader fr = new FileReader(root.getAbsolutePath() + "/00control.xml");
-            		xr.setErrorHandler(parser);
-            		xr.parse(new InputSource(fr));
-            		// When we're done, remove all references to parser.
-                	parser = null;
-                	fr.close();
-
-            	} catch (Exception e) {
-            		
-                	e.printStackTrace();
-            	}
-
-            	// This call will end up passing control to processXMLResults
-    			mHandler.post(mResult);
-    		}
-      	   
-    	};
-		t.start();
-
-    } 
-
-	
+    @Override
+    protected void onPause() {
+    	super.onPause();
+    	// TODO Auto-generated method stub
+    	if (refreshThread !=null && refreshThread.isAlive())refreshThread.stop();
+    }
+    
 }
