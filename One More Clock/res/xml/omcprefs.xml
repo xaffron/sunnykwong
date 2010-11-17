@@ -3,15 +3,8 @@
 	android:title="One More Clock - Preferences" android:key="rootPrefs" xmlns:android="http://schemas.android.com/apk/res/android">
 	<PreferenceCategory android:key="LAF" android:title="For this clock:">
 	
-		<ListPreference 
-			android:entries="@array/theme_options" 
-			android:entryValues="@array/theme_values" 
-			android:title="Widget Theme" 
-			android:enabled="true" 
-			android:summary="Change the way OMC looks" 
-			android:key="widgetTheme" android:selectable="true" android:defaultValue="@array/BokehBeauty" android:dialogTitle="Swipe up and down to see the entire list of clocks!">
-		</ListPreference>
-		<Preference android:selectable="true" android:title="Import a Custom Theme" android:key="loadThemeFile" android:enabled="true"></Preference><CheckBoxPreference 
+		
+		<Preference android:selectable="true" android:key="loadThemeFile" android:enabled="true" android:title="Widget Theme" android:summary="Change the way OMC looks"></Preference><CheckBoxPreference 
 			android:key="widget24HrClock" 
 			android:title="Use 24 Hour Clock" 
 			android:summary="23:59 instead of 11:59pm" 
