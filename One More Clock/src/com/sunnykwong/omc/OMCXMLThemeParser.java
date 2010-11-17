@@ -51,6 +51,7 @@ public class OMCXMLThemeParser extends DefaultHandler {
             		// Feed data from control file to XML Parser.
             		FileReader fr = new FileReader(OMCXMLThemeParser.sdRootPath + "/00control.xml");
             		xr.setErrorHandler(OMCXMLThemeParser.this);
+            		
             		xr.parse(new InputSource(fr));
 
                 	fr.close();
@@ -70,14 +71,15 @@ public class OMCXMLThemeParser extends DefaultHandler {
 	
 	@Override
     public void startDocument () {
-    	if (OMC.DEBUG) Log.i("OMCTheme","start document");
+//		if (OMC.DEBUG) Log.i("OMCTParser","Start document.");
     }
 
 	@Override
     public void characters(char[] ch, int start, int length) {
 
 //		If the text is not of result, then keep building the hashmap
-		if (tree.peek()[0].equals("item")) {
+		String sTemp = tree.peek()[0].toLowerCase();
+		if (sTemp.equals("item") || sTemp.equals("b") || sTemp.equals("i") || sTemp.equals("u")) {
 			sb=sb.append(ch, start, length);
 		}
 
@@ -91,21 +93,30 @@ public class OMCXMLThemeParser extends DefaultHandler {
 		if (localName.equals("array") || localName.equals("string-array")) {
 			newTheme.arrays.put(atts.getValue("name"), new ArrayList<String>(3));
 		}
+		if (localName.toLowerCase().equals("b") || localName.toLowerCase().equals("i") || localName.toLowerCase().equals("u")) {
+			sb=sb.append("<" + localName + ">");
+		}
 
 	}
 	@Override
 	public void endElement (String uri, String name, String qName) {
 
 //		OK, so an element ended.
+		String sTemp = tree.peek()[0];
+//		If it's just a formatting tag, then append the endtag and pop the stack.
+		if (name.toLowerCase().equals("b") || name.toLowerCase().equals("i") || name.toLowerCase().equals("u")) {
+			tree.pop();
+			sb=sb.append("</" + sTemp + ">");
+		}
 //		If it's an item subtag, then add to the end of the array.
-		if (tree.peek()[0].equals("item")) {
+		if (sTemp.equals("item")) {
 			//	Pop the stack.
 			tree.pop();
 			newTheme.arrays.get(tree.peek()[1]).add(sb.toString());
 			sb.setLength(0);
 		}
 //		If it's a results tag, post-process the data.
-		if (tree.peek()[0].equals("resources")) {
+		if (sTemp.equals("resources")) {
 			if (OMC.DEBUG) {
 				Log.i("ELEMENT", "---BEGINELEMENT---");
 				Iterator<Map.Entry<String, ArrayList<String>>> i = newTheme.arrays.entrySet().iterator();
@@ -140,7 +151,7 @@ public class OMCXMLThemeParser extends DefaultHandler {
 	@Override
     public void endDocument ()
     {
-		if (OMC.DEBUG) Log.i("OMCTParser","Doc done.");
+//		if (OMC.DEBUG) Log.i("OMCTParser","Doc done.");
 		newTheme.name = null;
 		
 		//Assume valid until proven otherwise.
@@ -166,7 +177,7 @@ public class OMCXMLThemeParser extends DefaultHandler {
 				if (sKey.equals(newTheme.name)){
 					for (Object oTemp:newTheme.arrays.get(sKey).toArray()) {
 						String sTemp = (String)oTemp;
-						if (OMC.DEBUG) Log.i("OMCTParser",sTemp.substring(6));
+//						if (OMC.DEBUG) Log.i("OMCTParser",sTemp.substring(6));
 						if (!newTheme.arrays.containsKey(sTemp.substring(6))) {
 							if (OMC.DEBUG) Log.i("OMCXML","layer invalid");
 							newTheme.valid=false;
@@ -174,9 +185,17 @@ public class OMCXMLThemeParser extends DefaultHandler {
 						}
 						if (sTemp.startsWith("quote:")) {
 							if (!newTheme.arrays.containsKey(newTheme.arrays.get(sTemp.substring(6)).get(13))) {
-								if (OMC.DEBUG) Log.i("OMCXML","talkback invalid");
+								if (OMC.DEBUG) Log.i("OMCXML","quote talkback invalid");
 								newTheme.valid=false;
 								break;
+							}
+							Typeface tf = OMC.getTypeface(newTheme.arrays.get(sTemp.substring(6)).get(1), OMCXMLThemeParser.sdRootPath + "/" + newTheme.arrays.get(sTemp.substring(6)).get(2));
+							if (tf==null) {
+								if (OMC.DEBUG) Log.i("OMCXML","quote typeface "+ newTheme.arrays.get(sTemp.substring(6)).get(2) +" not found");
+								newTheme.valid=false;
+								break;
+							} else {
+								OMC.copyFile(OMCXMLThemeParser.sdRootPath + "/" + newTheme.arrays.get(sTemp.substring(6)).get(2), OMC.CACHEPATH + newTheme.name + newTheme.arrays.get(sTemp.substring(6)).get(2));
 							}
 						}
 	

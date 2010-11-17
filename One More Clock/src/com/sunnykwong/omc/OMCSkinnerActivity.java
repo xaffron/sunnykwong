@@ -52,19 +52,29 @@ public class OMCSkinnerActivity extends Activity {
 	public static char[] THEMECREDITS;
 	public static String CURRSELECTEDTHEME, RAWCONTROLFILE;
 
+	public ImageView FourByTwo, FourByOne, ThreeByOne;
+	public Bitmap bmpRender;
+	public String sTheme;
+	
 	public Thread refreshThread;
 
 	public static int REFRESHINTERVAL;
-	
+	public boolean bCustomStretch, bExternal;
     static AlertDialog mAD;	
 
-    /** Called when the activity is first created. */
+	final Runnable mResult = new Runnable() {
+		public void run() {
+			refreshViews();
+		}
+	};
+
+	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.skinnertool);
 
-        OMCSkinnerActivity.REFRESHINTERVAL = 10000;
+        OMCSkinnerActivity.REFRESHINTERVAL = 3000;
         
         mHandler = new Handler();
 
@@ -83,27 +93,16 @@ public class OMCSkinnerActivity extends Activity {
     		return;
     	}
     	
-    	final String sTheme = (String)(data.getExtras().get("theme"));
-    	boolean bExternal = (Boolean)(data.getExtras().get("external"));
-    	boolean bCustomStretch = true;
+    	sTheme = (String)(data.getExtras().get("theme"));
+    	bExternal = (Boolean)(data.getExtras().get("external"));
+    	bCustomStretch = true;
     	
-    	OMCXMLThemeParser parser = new OMCXMLThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
-				+"/OMC/" + sTheme);
+    	Toast.makeText(this, "Refreshing from SD card every " + OMCSkinnerActivity.REFRESHINTERVAL/1000 + " seconds.", Toast.LENGTH_SHORT).show();
     	
-		parser.importTheme();
+    	FourByTwo = (ImageView)this.findViewById(R.id.FourByTwo);
+    	FourByOne = (ImageView)this.findViewById(R.id.FourByOne);
+    	ThreeByOne = (ImageView)this.findViewById(R.id.ThreeByOne);
 
-		while (!parser.doneParsing){
-			try {
-				Thread.sleep(500);
-			} catch (Exception e) {
-				// Do nothing
-			}
-		}
-		
-		if (!parser.valid) {
-        	Toast.makeText(this, sTheme + " is an invalid theme.  See logcat for errors.", Toast.LENGTH_LONG).show();
-        	return;
-		}
 
     	OMC.PREFS.edit().putString("widgetTheme-1", (String)(data.getExtras().get("theme")))
 		.putBoolean("widget24HrClock-1", OMC.PREFS.getBoolean("widget24HrClock", true))
@@ -111,26 +110,59 @@ public class OMCSkinnerActivity extends Activity {
 		.putString("URI-1", OMC.PREFS.getString("URI", ""))
 		.commit();
     	
-    	Toast.makeText(this, "Refreshing from SD card every " + OMCSkinnerActivity.REFRESHINTERVAL/1000 + " seconds.", Toast.LENGTH_SHORT).show();
-    	
-    	ImageView FourByTwo = (ImageView)this.findViewById(R.id.FourByTwo);
-    	Bitmap bmpRender = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1);
-    	FourByTwo.setImageBitmap(bmpRender);
-    	ImageView FourByOne = (ImageView)this.findViewById(R.id.FourByOne);
-    	ImageView ThreeByOne = (ImageView)this.findViewById(R.id.ThreeByOne);
+    	refreshThread = new Thread() {
 
+    		public void run() {
+    			while (true) {
+	    	    	OMCXMLThemeParser parser = new OMCXMLThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
+	    					+"/OMC/" + sTheme);
+
+	    	    	Log.i("OMCSkinner","about to parse " + Environment.getExternalStorageDirectory().getAbsolutePath()
+	    					+"/OMC/" + sTheme);
+	    			parser.importTheme();
+	
+	    			while (!parser.doneParsing){
+	    				try {
+	    					Thread.sleep(500);
+	    				} catch (InterruptedException e) {
+	    					break;
+	    				}
+	    			}
+	    			
+//	    			if (!parser.valid) {
+//	    	        	Toast.makeText(this, sTheme + " is an invalid theme.  See logcat for errors.", Toast.LENGTH_LONG).show();
+//	    	        	return;
+//	    			}
+	    			
+	    			mHandler.post(mResult);
+
+	    			try {
+	    				Thread.sleep(OMCSkinnerActivity.REFRESHINTERVAL);
+					} catch (InterruptedException e) {
+						break;
+					}
+    			}
+    		};
+		};
+		refreshThread.start();
+    }
+    
+    public void refreshViews() {
 		String[] FourByOneStretch = new String[4];
 		String[] ThreeByOneStretch = new String[4];
 
+    	bmpRender = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1);
+    	FourByTwo.setImageBitmap(bmpRender);
+		
 		try {
 			if (bExternal) {
 				OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sTheme + "_4x1SqueezeInfo").toArray(FourByOneStretch);
 				OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sTheme + "_3x1SqueezeInfo").toArray(ThreeByOneStretch);
 			} else {
-				int iLayerID = this.getResources().getIdentifier(sTheme + "_4x1SqueezeInfo", "array", "com.sunnykwong.omc");
-				FourByOneStretch = this.getResources().getStringArray(iLayerID);
-				iLayerID = this.getResources().getIdentifier(sTheme + "_3x1SqueezeInfo", "array", "com.sunnykwong.omc");
-				ThreeByOneStretch = this.getResources().getStringArray(iLayerID);
+				int iLayerID = OMC.RES.getIdentifier(sTheme + "_4x1SqueezeInfo", "array", "com.sunnykwong.omc");
+				FourByOneStretch = OMC.RES.getStringArray(iLayerID);
+				iLayerID = OMC.RES.getIdentifier(sTheme + "_3x1SqueezeInfo", "array", "com.sunnykwong.omc");
+				ThreeByOneStretch = OMC.RES.getStringArray(iLayerID);
 			}
 		} catch (android.content.res.Resources.NotFoundException e) {
 			// OMC.STRETCHINFO stays null; do nothing
@@ -143,7 +175,7 @@ public class OMCSkinnerActivity extends Activity {
 		}
 
 		if (bCustomStretch){
-			System.out.println("CustomStretch" + FourByOneStretch[0] + FourByOneStretch[1]);
+//			System.out.println("CustomStretch" + FourByOneStretch[0] + FourByOneStretch[1]);
 			//Custom scaling
 			OMC.TEMPMATRIX.reset();
 			OMC.TEMPMATRIX.preScale(Float.parseFloat(FourByOneStretch[0]), 
@@ -161,47 +193,17 @@ public class OMCSkinnerActivity extends Activity {
 			FourByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(FourByOneStretch[2]), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(FourByOneStretch[2]) - Integer.parseInt(FourByOneStretch[3]), OMC.TEMPMATRIX, true));
 			ThreeByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(ThreeByOneStretch[2]), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(ThreeByOneStretch[2]) - Integer.parseInt(ThreeByOneStretch[3]), OMC.TEMPMATRIX, true));
 		}
-	
-	    	
-    	this.findViewById(R.id.FourByTwo).invalidate();
-    	this.findViewById(R.id.FourByOne).invalidate();
-    	this.findViewById(R.id.ThreeByOne).invalidate();
-	    	
-    	refreshThread = new Thread() {
-
-    		public void run() {
-    			while (true) {
-	    	    	OMCXMLThemeParser parser = new OMCXMLThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
-	    					+"/OMC/" + sTheme);
-	    	    	
-	    			System.out.println("about to parse " + Environment.getExternalStorageDirectory().getAbsolutePath()
-	    					+"/OMC/" + sTheme);
-	    			parser.importTheme();
-	
-	    			while (!parser.doneParsing){
-	    				try {
-	    					Thread.sleep(500);
-	    				} catch (Exception e) {
-	    					// Do nothing
-	    				}
-	    			}
-	    			try {
-	    				Thread.sleep(OMCSkinnerActivity.REFRESHINTERVAL);
-					} catch (Exception e) {
-						// Do nothing
-					}
-    			}
-    		};
-		};
-		refreshThread.start();
-	//    	finish();
+		FourByTwo.invalidate();
+		FourByOne.invalidate();
+		ThreeByOne.invalidate();
+   	
     }
     
     @Override
     protected void onPause() {
     	super.onPause();
     	// TODO Auto-generated method stub
-    	if (refreshThread !=null && refreshThread.isAlive())refreshThread.stop();
+    	if (refreshThread !=null && refreshThread.isAlive())refreshThread.interrupt();
     }
     
 }

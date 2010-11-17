@@ -254,13 +254,21 @@ public class OMC extends Application {
 	}
 	
 	public static Typeface getTypeface(String type, String src) {
+//		System.out.println("trying to find " + src);
 		if (OMC.TYPEFACEMAP.get(src)==null) {
 			if (type.equals("fs")) {
-				if (!new File(src).exists()) return null;
+//				System.out.println("trying to find file " + src);
+				if (!new File(src).exists()) {
+//					System.out.println("giving up - cannot find file " + src);
+					return null;
+				}
+//				System.out.println("found file, now caching " + src);
 				OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(src));
 			} else
 				OMC.TYPEFACEMAP.put(src, Typeface.createFromAsset(OMC.AM, src));
 		}
+		
+//		System.out.println("Now retrieving from cache: " + src);
 		return OMC.TYPEFACEMAP.get(src);
 	}
 
@@ -324,6 +332,7 @@ public class OMC extends Application {
 	
 	public static boolean copyFile(String src, String tgt) {
 		try {
+//			System.out.println("Copying " + src + " to " + tgt);
 			FileOutputStream oTGT = new FileOutputStream(tgt);
 			FileInputStream oSRC = new FileInputStream(src);
 		    byte[] buffer = new byte[16384];
@@ -334,6 +343,8 @@ public class OMC extends Application {
 		    oSRC.close();
 			return true;
 		} catch (Exception e) {
+//			System.out.println("Exception copying " + src + " to " + tgt);
+//			e.printStackTrace();
 			return false;
 		}
 	}

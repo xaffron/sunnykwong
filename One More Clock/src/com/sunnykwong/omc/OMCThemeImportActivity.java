@@ -74,8 +74,8 @@ public class OMCThemeImportActivity extends Activity {
         OMCThemeImportActivity.CURRSELECTEDTHEME = null;
         
         OMCThemeImportActivity.mAD = new AlertDialog.Builder(this)
-		.setTitle("OMC - Theme Import")
-		.setMessage("One More Clock! lets you load your own custom-designed theme.  Remember that your theme files should be unzipped and stored on your SD Card for OMC to find them.")
+		.setTitle("OMC - Pick a Theme")
+		.setMessage("Go ahead - Pick your own theme.  Why stick with one all the time?  If you want more, just check out the \"More Clocks\" button at the bottom for more OMC goodness!")
 	    .setCancelable(true)
 	    .setIcon(R.drawable.fredicon_mdpi)
 	    .setPositiveButton("Okay", new OnClickListener() {
@@ -114,7 +114,15 @@ public class OMCThemeImportActivity extends Activity {
     	
     	OMCThemeImportActivity.CURRSELECTEDTHEME = data.getExtras().getString("theme");
 
-    	if (!data.getBooleanExtra("external", false)) return;
+    	if (!data.getBooleanExtra("external", false)) {
+        	OMC.PREFS.edit()
+        	.putString("widgetTheme", OMCThemeImportActivity.CURRSELECTEDTHEME)
+        	.putBoolean("external", false)
+    		.commit();
+        	Toast.makeText(OMCThemeImportActivity.this, "Lockscreen Look theme applied.", Toast.LENGTH_SHORT).show();
+    		finish();
+    		return;
+    	}
 
     	if (OMCThemeImportActivity.CURRSELECTEDTHEME!=null) {
 			if (!OMC.IMPORTEDTHEMEMAP.containsKey(OMCThemeImportActivity.CURRSELECTEDTHEME)) {

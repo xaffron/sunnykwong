@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="wrap_content"
+  android:layout_width="fill_parent"
   android:layout_height="wrap_content" android:orientation="vertical">
-<ImageView android:id="@+id/FourByTwo" android:background="#ff888888" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth = "320dp" android:minHeight = "200dp" android:layout_marginTop="5dp"></ImageView>
-<ImageView android:id="@+id/FourByOne" android:background="#ff888888" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth = "320dp" android:minHeight = "100dp" android:layout_marginTop="5dp"></ImageView>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp">
-<ImageView android:adjustViewBounds="true" android:id="@+id/ThreeByOne" android:background="#ff888888" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth = "270dp" android:minHeight = "100dp"></ImageView>
-<Button android:id="@+id/btnReload" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reload Theme Catalog"></Button>
+<ImageView android:adjustViewBounds="true" android:id="@+id/FourByTwo" android:background="#ff888888" android:minWidth = "320dp" android:minHeight = "200dp" android:layout_marginTop="5dp" android:maxHeight="200dp" android:maxWidth="320dp" android:scaleType="fitCenter" android:layout_gravity="center" android:layout_height="fill_parent" android:layout_width="fill_parent"></ImageView>
+<ImageView android:adjustViewBounds="true" android:id="@+id/FourByOne" android:background="#ff888888" android:minWidth = "320dp" android:minHeight = "100dp" android:layout_marginTop="5dp" android:maxHeight="100dp" android:maxWidth="320dp" android:scaleType="fitCenter" android:layout_gravity="center" android:layout_height="fill_parent" android:layout_width="fill_parent"></ImageView>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5dp">
+<ImageView android:adjustViewBounds="true" android:id="@+id/ThreeByOne" android:background="#ff888888" android:maxHeight="100dp" android:minHeight="100dp" android:maxWidth="240dp" android:minWidth="240dp" android:layout_gravity="center" android:layout_height="fill_parent" android:layout_width="wrap_content" android:layout_weight="0" android:scaleType="centerInside"></ImageView>
+<Button android:id="@+id/btnReload" android:layout_height="fill_parent" android:text="Reload Theme Catalog" android:maxHeight="100dp" android:minHeight="100dp" android:maxWidth="80dp" android:minWidth="80dp" android:layout_weight="0" android:layout_width="fill_parent"></Button>
 
 </LinearLayout>
 

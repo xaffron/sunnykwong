@@ -127,7 +127,7 @@ public class OMCWidgetDrawEngine {
 				OMC.LAYERATTRIBS.getString(1),
 				OMC.CACHEPATH + sTheme + OMC.LAYERATTRIBS.getString(2));
 		if (tempBitmap==null) {
-			Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "Error loading theme bitmap " + OMC.LAYERATTRIBS.getString(2) + ".\nRestoring default look...", Toast.LENGTH_SHORT).show();
 			OMC.PREFS.edit()
 					.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
 					.putBoolean("external"+aWI,false)
@@ -141,6 +141,10 @@ public class OMCWidgetDrawEngine {
 	// Quote layer.  Set the Text to be shown before passing to drawTextLayer.
 	static void drawQuoteLayer(final Context context, final int iLayerID, final String sTheme, final int aWI) {
 		OMC.TALKBACKS = OMC.loadStringArray(sTheme, aWI, OMC.LAYERATTRIBS.getString(13));
+//		System.out.println("Talkbacks found:");
+//		for (String sTemp: OMC.TALKBACKS) {
+//			System.out.println(sTemp);
+//		}
 		if (OMC.TALKBACKS == null) OMC.TXTBUF="ERROR";
 		else OMC.TXTBUF = OMC.TALKBACKS[OMC.RND.nextInt(OMC.TALKBACKS.length)];
 		OMCWidgetDrawEngine.drawTextLayer(context, iLayerID, sTheme, aWI);
@@ -159,7 +163,7 @@ public class OMCWidgetDrawEngine {
 				OMC.LAYERATTRIBS.getString(1),
 				OMC.CACHEPATH + sTheme + OMC.LAYERATTRIBS.getString(2));
 		if (tempTypeface==null) {
-			Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "Error loading theme typeface " + OMC.LAYERATTRIBS.getString(2) + ".\nRestoring default look...", Toast.LENGTH_SHORT).show();
 			OMC.PREFS.edit()
 					.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
 					.putBoolean("external"+aWI,false)

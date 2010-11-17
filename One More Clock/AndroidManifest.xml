@@ -28,7 +28,7 @@
 		</activity>
         <activity android:name=".OMCThemeImportActivity"
                   android:screenOrientation="nosensor"
-                  android:label="Import a Custom Theme">
+                  android:label="Theme Picker">
 		</activity>
         <activity android:name=".OMCCreditsActivity"
                   android:screenOrientation="nosensor"
