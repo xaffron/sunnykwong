@@ -189,28 +189,23 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     			mCreds.put(sTheme, "The default Android Lockscreen Look.");
         		return;
         	}
-        	Thread t = new Thread() {
-        		public void run() {
+            	mBitmaps.put(sTheme, BitmapFactory.decodeFile(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme+"/preview.jpg"));
+        		char[] cCredits = new char[3000];
+        		try {
+        			FileReader fr = new FileReader(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+ "/" + sTheme+"/00name.txt");
+        			fr.read(cCredits);
+        			mNames.put(sTheme,String.valueOf(cCredits).trim());
+        			fr.close();
         			
-                	mBitmaps.put(sTheme, BitmapFactory.decodeFile(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme+"/preview.jpg"));
-            		char[] cCredits = new char[3000];
-            		try {
-            			FileReader fr = new FileReader(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+ "/" + sTheme+"/00name.txt");
-            			fr.read(cCredits);
-            			mNames.put(sTheme,String.valueOf(cCredits).trim());
-            			fr.close();
-            			
-            			fr = new FileReader(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+ "/" + sTheme+"/00credits.txt");
-            			fr.read(cCredits);
-            			mCreds.put(sTheme,String.valueOf(cCredits).trim());
-            			fr.close();
-            			
-            		} catch (Exception e) {
-            			e.printStackTrace();
-            		}
+        			fr = new FileReader(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+ "/" + sTheme+"/00credits.txt");
+        			fr.read(cCredits);
+        			mCreds.put(sTheme,String.valueOf(cCredits).trim());
+        			fr.close();
+        			
+        		} catch (Exception e) {
+        			e.printStackTrace();
         		}
-        	};
-        	t.start();
+        		
         }        
 
         public int getCount() {
