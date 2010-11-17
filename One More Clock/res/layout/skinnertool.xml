@@ -6,7 +6,7 @@
 <ImageView android:id="@+id/FourByTwo" android:background="#ff888888" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth = "320dp" android:minHeight = "200dp" android:layout_marginTop="5dp"></ImageView>
 <ImageView android:id="@+id/FourByOne" android:background="#ff888888" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth = "320dp" android:minHeight = "100dp" android:layout_marginTop="5dp"></ImageView>
 <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp">
-<ImageView android:id="@+id/ThreeByOne" android:background="#ff888888" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth = "270dp" android:minHeight = "100dp"></ImageView>
+<ImageView android:adjustViewBounds="true" android:id="@+id/ThreeByOne" android:background="#ff888888" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth = "270dp" android:minHeight = "100dp"></ImageView>
 <Button android:id="@+id/btnReload" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reload Theme Catalog"></Button>
 
 </LinearLayout>
