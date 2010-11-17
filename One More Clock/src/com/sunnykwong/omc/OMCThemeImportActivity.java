@@ -99,7 +99,7 @@ public class OMCThemeImportActivity extends Activity {
 
     public void chooseTheme() {
         Intent itThemePicker = new Intent(this,OMCThemePickerActivity.class);
-        itThemePicker.putExtra("externalonly", true);
+        itThemePicker.putExtra("externalonly", false);
 
         startActivityForResult(itThemePicker, 0);
     }
@@ -113,11 +113,12 @@ public class OMCThemeImportActivity extends Activity {
     	}
     	
     	OMCThemeImportActivity.CURRSELECTEDTHEME = data.getExtras().getString("theme");
-		if (OMCThemeImportActivity.CURRSELECTEDTHEME!=null) {
+
+    	if (!data.getBooleanExtra("external", false)) return;
+
+    	if (OMCThemeImportActivity.CURRSELECTEDTHEME!=null) {
 			if (!OMC.IMPORTEDTHEMEMAP.containsKey(OMCThemeImportActivity.CURRSELECTEDTHEME)) {
 				OMCXMLThemeParser parser = new OMCXMLThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
-						+"/OMC/" + OMCThemeImportActivity.CURRSELECTEDTHEME);
-				System.out.println("about to parse " + Environment.getExternalStorageDirectory().getAbsolutePath()
 						+"/OMC/" + OMCThemeImportActivity.CURRSELECTEDTHEME);
 				parser.importTheme();
 

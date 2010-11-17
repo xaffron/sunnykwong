@@ -11,12 +11,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -28,27 +24,20 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.Gallery;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class OMCThemePickerActivity extends Activity implements OnClickListener, OnItemClickListener {
 
-	public Handler mHandler;
-	public static TextView TEXT;
-	public static LocationManager LM;
-	public static Location CURRLOCN;
-	public static LocationListener LL;
-	public static String TRAFFICRESULTS;
 	public static HashMap<String,String[]> ELEMENTS;
 	public static HashMap<String,File> THEMES;
 	public static String tempText = "";
 	public static File SDROOT, THEMEROOT;
 	public static ThemePickerAdapter THEMEARRAY;
-	public static Spinner THEMESPINNER;
-	public static char[] THEMECREDITS;
-	public static String CURRSELECTEDTHEME, RAWCONTROLFILE;
+	public static String RAWCONTROLFILE;
+	
+	public boolean bExternalOnly;
 	
 	public Button btnReload,btnGetMore;
 	public Gallery gallery;
@@ -61,16 +50,15 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getWindow().setWindowAnimations(android.R.style.Animation_Toast);
+
+        bExternalOnly = getIntent().getBooleanExtra("externalonly", false);
+
 		setResult(Activity.RESULT_CANCELED);
-		System.out.println(Activity.RESULT_CANCELED);
 
         setContentView(R.layout.themepickerlayout);
 
         setTitle("Swipe Left and Right to Select a Theme");
-
-        mHandler = new Handler();
-        
-        OMCThemePickerActivity.CURRSELECTEDTHEME = null;
 
         btnReload = (Button)findViewById(R.id.btnReload);
         btnReload.setOnClickListener(this);
@@ -82,7 +70,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         refreshThemeList();
 
         gallery.setAdapter(OMCThemePickerActivity.THEMEARRAY);
-        gallery.setSelection(3, true);
         gallery.setOnItemClickListener(this);
         
     }
@@ -108,7 +95,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     		Intent it = new Intent();
     		setResult(Activity.RESULT_OK, it);
     		it.putExtra("theme", OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()));
-    		it.putExtra("external", true);
+    		it.putExtra("external", OMCThemePickerActivity.THEMEARRAY.mExternal.get(gallery.getSelectedItemPosition()));
     		
     		OMCThemePickerActivity.THEMEARRAY.dispose();
     		finish();
@@ -119,8 +106,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
 		gallery.setVisibility(View.INVISIBLE);
 		btnReload.setClickable(false);
-
-		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) && bExternalOnly) {
         	Toast.makeText(this, "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
 			setResult(Activity.RESULT_OK);
 			finish();
@@ -140,7 +126,12 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	OMCThemePickerActivity.THEMEARRAY.dispose();
             gallery.requestLayout();
         }
+
         OMCThemePickerActivity.THEMES =  new HashMap<String, File>();
+		if (!bExternalOnly) {
+			OMCThemePickerActivity.THEMEARRAY.addItem("LockscreenLook", false);
+		}
+
         for (File f:OMCThemePickerActivity.THEMEROOT.listFiles()) {
         	if (!f.isDirectory()) continue;
         	File ff = new File(f.getAbsolutePath()+"/00control.xml");
@@ -150,7 +141,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         		OMCThemePickerActivity.THEMES.put(f.getName(), f);
         	}
         }
-
+        
 		gallery.setVisibility(View.VISIBLE);
 		btnReload.setClickable(true);
 	}
@@ -169,12 +160,14 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     	public ArrayList<Boolean> mExternal = new ArrayList<Boolean>();
     	public HashMap<String,Bitmap> mBitmaps = new HashMap<String,Bitmap>();
     	public HashMap<String, String> mCreds = new HashMap<String, String>();
+    	public HashMap<String, String> mNames = new HashMap<String, String>();
+    	
+    	
 
         public ThemePickerAdapter() {
         }
 
-        public void addItem(String sTheme, boolean bExternal){
-        	System.out.println("Adding " + sTheme);
+        public void addItem(final String sTheme, boolean bExternal){
         	if (mThemes.size()==0 || sTheme.compareTo(mThemes.get(mThemes.size()-1))>0) {
 	        	mThemes.add(sTheme);
 	        	mExternal.add(bExternal);
@@ -190,15 +183,34 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         		}
 	    			
         	}
-        	mBitmaps.put(sTheme, BitmapFactory.decodeFile(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme+"/preview.jpg"));
-    		OMCThemePickerActivity.THEMECREDITS = new char[3000];
-    		try {
-    			FileReader fr = new FileReader(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+ "/" + sTheme+"/00credits.txt");
-    			fr.read(OMCThemePickerActivity.THEMECREDITS);
-    			mCreds.put(sTheme,String.valueOf(OMCThemePickerActivity.THEMECREDITS).trim());
-    		} catch (Exception e) {
-    			e.printStackTrace();
-    		}
+        	if (!bExternal) {
+        		mBitmaps.put(sTheme, BitmapFactory.decodeResource(OMC.RES, R.drawable.llpreview));
+        		mNames.put(sTheme, "Lockscreen Look");
+    			mCreds.put(sTheme, "The default Android Lockscreen Look.");
+        		return;
+        	}
+        	Thread t = new Thread() {
+        		public void run() {
+        			
+                	mBitmaps.put(sTheme, BitmapFactory.decodeFile(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme+"/preview.jpg"));
+            		char[] cCredits = new char[3000];
+            		try {
+            			FileReader fr = new FileReader(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+ "/" + sTheme+"/00name.txt");
+            			fr.read(cCredits);
+            			mNames.put(sTheme,String.valueOf(cCredits).trim());
+            			fr.close();
+            			
+            			fr = new FileReader(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+ "/" + sTheme+"/00credits.txt");
+            			fr.read(cCredits);
+            			mCreds.put(sTheme,String.valueOf(cCredits).trim());
+            			fr.close();
+            			
+            		} catch (Exception e) {
+            			e.printStackTrace();
+            		}
+        		}
+        	};
+        	t.start();
         }        
 
         public int getCount() {
@@ -215,9 +227,9 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
         public View getView(int position, View convertView, ViewGroup parent) {
         	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.themepickerpreview, null);
-        	((TextView)ll.findViewById(R.id.ThemeName)).setText(OMCThemePickerActivity.THEMEARRAY.mThemes.get(position));
+        	((TextView)ll.findViewById(R.id.ThemeName)).setText(mNames.get(mThemes.get(position)));
         	((ImageView)ll.findViewById(R.id.ThemePreview)).setImageBitmap(mBitmaps.get(mThemes.get(position)));
-        	((TextView)ll.findViewById(R.id.ThemeCredits)).setText(OMCThemePickerActivity.THEMEARRAY.mCreds.get(mThemes.get(position)));
+        	((TextView)ll.findViewById(R.id.ThemeCredits)).setText(mCreds.get(mThemes.get(position)));
             return ll;
         }
 
@@ -226,6 +238,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	mCreds.clear();
         	mBitmaps.clear();
         	mExternal.clear();
+        	mNames.clear();
         }
     
     }

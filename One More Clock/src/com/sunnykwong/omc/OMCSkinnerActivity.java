@@ -90,8 +90,6 @@ public class OMCSkinnerActivity extends Activity {
     	OMCXMLThemeParser parser = new OMCXMLThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
 				+"/OMC/" + sTheme);
     	
-		System.out.println("about to parse " + Environment.getExternalStorageDirectory().getAbsolutePath()
-				+"/OMC/" + OMCThemeImportActivity.CURRSELECTEDTHEME);
 		parser.importTheme();
 
 		while (!parser.doneParsing){

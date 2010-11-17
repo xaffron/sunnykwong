@@ -33,7 +33,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	OMC.getPrefs(appWidgetID);
         	OMC.PREFS.edit().putBoolean("widgetPersistence", OMC.FG).commit();
         	addPreferencesFromResource(R.xml.omcprefs);
-        	findPreference("widgetTheme").setOnPreferenceChangeListener(this);
+        	//findPreference("widgetTheme").setOnPreferenceChangeListener(this);
         	findPreference("clearImports").setOnPreferenceChangeListener(this);
     		findPreference("bFourByTwo").setEnabled(false);
         } else {
@@ -80,11 +80,11 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 
-    	if (preference == findPreference("widgetTheme")) {
-	    	if (OMC.DEBUG) Log.i("OMCPref","Setting External to false");
-			OMC.PREFS.edit().putBoolean("external", false).commit();
-	    	return true;
-    	}
+//    	if (preference == findPreference("widgetTheme")) {
+//	    	if (OMC.DEBUG) Log.i("OMCPref","Setting External to false");
+//			OMC.PREFS.edit().putBoolean("external", false).commit();
+//	    	return true;
+//    	}
     	
     	return false;
     }
