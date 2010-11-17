@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string-array name="theme_options">
-	<item>Bokeh Beauty</item>
 	<item>Lockscreen Look</item>
-	<item>Wham! Bam! Widget!</item>
 </string-array>
 
 <string-array name="theme_values">
-	<item>BokehBeauty</item>
 	<item>LockscreenLook</item>
-	<item>WhamBamWidget</item>
 </string-array>
 
 <string-array name="WordNumbers">
@@ -116,71 +112,6 @@
 </string-array>
 
 <!--*************-->
-<!--BOKEH BEAUTY -->
-<!--(10/18)      -->
-<!-- Sunny Kwong -->
-<!--*************-->
-
-<string-array name="BokehBeauty">
-	<item>text :BBClock</item>
-	<item>text :BBDate</item>
-	<item>flare:BBFlare</item>
-</string-array>
-
-<string-array name="BokehBeauty_3x1SqueezeInfo">
-	<item name="HorizontalStretchFactor">1</item>
-	<item name="VerticalStretchFactor">1</item>
-	<item name="TopCropPixels">58</item>
-	<item name="BottomCropPixels">60</item>
-</string-array>
-<string-array name="BokehBeauty_4x1SqueezeInfo">
-	<item name="HorizontalStretchFactor">1.0</item>
-	<item name="VerticalStretchFactor">0.9</item>
-	<item name="TopCropPixels">58</item>
-	<item name="BottomCropPixels">60</item>
-</string-array>
-
-<string-array name="BBClock">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">SALARYMA.ttf</item>
-	<item name="03 font_size">160</item>
-	<item name="04 font_skew">0</item>
-	<item name="05 font_stretch">0.95</item>
-	<item name="06 font_bold">false</item>
-	<item name="07 render_style">emboss</item>
-	<item name="08 fgcolor">#ff918F56</item>
-	<item name="09 bgcolor">[%shift12_color_86400_#ff000000_#ffffffff_#ff000000%]</item>
-	<item name="10 xcoord">240</item>
-	<item name="11 ycoord">202</item>
-	<item name="12 textalign">center</item>
-	<item name="13 words">%H:%M</item>
-</string-array>
-
-<string-array name="BBDate">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">SALARYMA.ttf</item>
-	<item name="03 font_size">60</item>
-	<item name="04 font_skew">0</item>
-	<item name="05 font_stretch">1</item>
-	<item name="06 font_bold">false</item>
-	<item name="07 render_style">emboss</item>
-	<item name="08 fgcolor">#ff918F56</item>
-	<item name="09 bgcolor">[%shift12_color_86400_#ff000000_#ffffffff_#ff000000%]</item>
-	<item name="10 xcoord">240</item>
-	<item name="11 ycoord">240</item>
-	<item name="12 textalign">center</item>
-	<item name="13 words">%a %e %b</item>
-</string-array>
-
-<string-array name="BBFlare">
-	<item name="62 layer_enabled">true</item>
-	<item name="63 noCircles">7</item>
-	<item name="64 Tint">#44ffffff</item>
-</string-array>
-
-<!--*************-->
 <!--LockscreenLook-->
 <!--(10/18)      -->
 <!-- Sunny Kwong -->
@@ -206,8 +137,8 @@
 
 <string-array name="LLClock">
 	<item name="00 layer_enabled">true</item>
-	<item name="01 font_source_type">fs</item>
-	<item name="02 font_source">/system/fonts/Clockopia.ttf</item>
+	<item name="01 font_source_type">asset</item>
+	<item name="02 font_source">Clockopia.ttf</item>
 	<item name="03 font_size">180</item>
 	<item name="04 font_skew">0</item>
 	<item name="05 font_stretch">1</item>
@@ -237,128 +168,6 @@
 	<item name="12 textalign">center</item>
 	<item name="13 words">%A, %B %e</item>
 </string-array>
-
-<!--*************-->
-<!--Wham!Bam!Widget-->
-<!--(10/18)      -->
-<!-- Sunny Kwong -->
-<!--*************-->
-
-<string-array name="WhamBamWidget">
-	<item>image:WWThought</item>
-	<item>panel:WWBubble</item>
-	<item>text :WWOMG</item>
-	<item>text :WWClock</item>
-	<item>quote:WWTalkback</item>
-</string-array>
-
-<string-array name="WhamBamWidget_3x1SqueezeInfo">
-	<item name="HorizontalStretchFactor">1</item>
-	<item name="VerticalStretchFactor">1</item>
-	<item name="TopCropPixels">20</item>
-	<item name="BottomCropPixels">80</item>
-</string-array>
-<string-array name="WhamBamWidget_4x1SqueezeInfo">
-	<item name="HorizontalStretchFactor">1</item>
-	<item name="VerticalStretchFactor">0.8</item>
-	<item name="TopCropPixels">20</item>
-	<item name="BottomCropPixels">80</item>
-</string-array>
-
-<string-array name="WWThought">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 bmp_source_type">asset</item>
-	<item name="02 file_source">bubbles</item>
-	<item name="03 stretch?">false</item>
-	<item name="04 stretchwidthfactor">1</item>
-	<item name="05 stretchheightfactor">1</item>
-	<item name="06 xcoord">5</item>
-	<item name="07 ycoord">180</item>
-</string-array>
-
-<string-array name="WWBubble">
-	<item name="00 layer_enabled">true</item>
-	<item name="53 left">22</item>
-	<item name="54 top">22</item>
-	<item name="55 right">465</item>
-	<item name="56 bottom">210</item>
-	<item name="57 xcorner">22</item>
-	<item name="58 ycorner">22</item>
-	<item name="59 fgcolor">#FFEFDFAD</item>
-	<item name="60 bgcolor">#ff000000</item>
-	<item name="61 render_style">shadow</item>
-</string-array>
-
-<string-array name="WWOMG">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">Laffayette_Comic_Pro.ttf</item>
-	<item name="03 font_size">24</item>
-	<item name="04 font_skew">-0.35</item>
-	<item name="05 font_stretch">1.0</item>
-	<item name="06 font_bold">false</item>
-	<item name="07 render_style">normal</item>
-	<item name="08 fgcolor">#ff000000</item>
-	<item name="09 bgcolor">#a0440000</item>
-	<item name="10 xcoord">45</item>
-	<item name="11 ycoord">55</item>
-	<item name="12 textalign">left</item>
-	<item name="13 words">omg, it\'s</item>
-</string-array>
-
-<string-array name="WWClock">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">Laffayette_Comic_Pro.ttf</item>
-	<item name="03 font_size">112</item>
-	<item name="04 font_skew">-0.35</item>
-	<item name="05 font_stretch">1.2</item>
-	<item name="06 font_bold">false</item>
-	<item name="07 render_style">shadow</item>
-	<item name="08 fgcolor">#ffaa0000</item>
-	<item name="09 bgcolor">#a0440000</item>
-	<item name="10 xcoord">225</item>
-	<item name="11 ycoord">165</item>
-	<item name="12 textalign">center</item>
-	<item name="13 words">%H:%M!</item>
-</string-array>
-
-<string-array name="WWTalkback">
-	<item name="00 layer_enabled">true</item>
-	<item name="01 font_source_type">asset</item>
-	<item name="02 font_source">Laffayette_Comic_Pro.ttf</item>
-	<item name="03 font_size">24</item>
-	<item name="04 font_skew">-0.35</item>
-	<item name="05 font_stretch">0.9</item>
-	<item name="06 font_bold">false</item>
-	<item name="07 render_style">normal</item>
-	<item name="08 fgcolor">#ff000000</item>
-	<item name="09 bgcolor">#a0440000</item>
-	<item name="10 xcoord">240</item>
-	<item name="11 ycoord">199</item>
-	<item name="12 textalign">center</item>
-	<item name="13 talkbacks">whambamtalkbacks</item>
-</string-array>
-
-<string-array name="whambamtalkbacks">
-	<item>what will this Android do?</item>
-	<item>my middle name is awesome.</item>
-	<item>never a dull moment with me.</item>
-	<item>but it\'s five o\'clock for me.</item>
-	<item>don\'t worry, be happy!</item>
-	<item>don\'t trade me in yet...</item>
-	<item>you look fabulous today!</item>
-	<item>i swear i didn\'t miss that call.</item>
-	<item>stop staring at me.</item>
-	<item>ready to work.</item>
-	<item>where did all that time go?</item>
-	<item>using recycled pixels today.</item>
-	<item>go out there and shine!</item>
-	<item>always there to save the day.</item>
-	<item>are we there yet?</item>
-</string-array>
-
-<!-- TEMP -->
 
 </resources>
 
