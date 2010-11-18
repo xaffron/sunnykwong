@@ -39,6 +39,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 	
 	public boolean bExternalOnly;
 	
+	public View topLevel;
 	public Button btnReload,btnGetMore;
 	public Gallery gallery;
 	public TextView tvCredits;
@@ -58,6 +59,9 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
         setContentView(R.layout.themepickerlayout);
 
+        topLevel = findViewById(R.id.PickerTopLevel);
+        topLevel.setEnabled(false);
+        
         setTitle("Swipe Left and Right to Select a Theme");
 
         btnReload = (Button)findViewById(R.id.btnReload);
@@ -71,6 +75,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
         gallery.setAdapter(OMCThemePickerActivity.THEMEARRAY);
         gallery.setOnItemClickListener(this);
+        topLevel.setEnabled(true);
         
     }
     
@@ -104,8 +109,8 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
 	public void refreshThemeList() {
 
-		gallery.setVisibility(View.INVISIBLE);
-		btnReload.setClickable(false);
+        topLevel.setEnabled(false);
+
 		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) && bExternalOnly) {
         	Toast.makeText(this, "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
 			setResult(Activity.RESULT_OK);
@@ -141,17 +146,24 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         		OMCThemePickerActivity.THEMES.put(f.getName(), f);
         	}
         }
-        
-		gallery.setVisibility(View.VISIBLE);
-		btnReload.setClickable(true);
+        topLevel.setEnabled(true);
+
 	}
 	
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		OMCThemePickerActivity.THEMEARRAY.dispose();
-		OMCThemePickerActivity.THEMEARRAY=null;
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if (OMCThemePickerActivity.THEMEARRAY!=null) {
+			OMCThemePickerActivity.THEMEARRAY.dispose();
+			OMCThemePickerActivity.THEMEARRAY=null;
+		}
 	}
 	
     public class ThemePickerAdapter extends BaseAdapter {

@@ -122,11 +122,15 @@ public class OMCService extends Service {
 		} else {
 			//  Refresh at the next minute mark
 			final long timeToRefresh = ((System.currentTimeMillis()+ OMC.UPDATEFREQ)/OMC.UPDATEFREQ) * OMC.UPDATEFREQ;
-			//  Or, refresh at debug intervals (7 secs)
-			//final long timeToRefresh = (System.currentTimeMillis() + 7000);
-			
-			OMC.setServiceAlarm(timeToRefresh);
-			
+
+			//  But if it coincides with a time tick, don't worry about it
+			if (timeToRefresh % 60000 == 0) {
+				// Do nothing
+				System.out.println("skipping alarm and letting time tick work.");
+			} else {
+				OMC.setServiceAlarm(timeToRefresh);
+			}
+		
 			//	Tell the widgets to refresh themselves.
 			OMCService.RUNNING=true;
 			sendBroadcast(OMC.WIDGETREFRESHINTENT);

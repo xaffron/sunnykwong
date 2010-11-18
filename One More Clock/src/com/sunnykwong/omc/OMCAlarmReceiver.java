@@ -9,6 +9,12 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
+//		if (intent.getAction().equals(Intent.ACTION_TIME_TICK)){
+//			if (OMC.DEBUG) Log.i("OMCAlarm","TimeTick");
+//			OMC.FG=false;
+//			OMC.SCREENON=true;
+//			OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.BGSERVICE");
+//		}	
 		if (OMC.DEBUG) Log.i("OMCAlarm","Rcvd " + intent.getAction());
 		
 		// If we come back from a low memory state, all sorts of screwy stuff might happen.

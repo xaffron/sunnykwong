@@ -111,6 +111,8 @@ public class OMC extends Application {
 		OMC.aRC = new OMCAlarmReceiver();
 		OMC.cRC = new OMCConfigReceiver();
 		
+		registerReceiver(OMC.aRC,new IntentFilter(Intent.ACTION_TIME_TICK));
+		
 		OMC.TEMPMATRIX = new Matrix();
 		
 		OMC.FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
