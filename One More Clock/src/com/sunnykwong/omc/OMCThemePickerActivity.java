@@ -27,8 +27,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 
-public class OMCThemePickerActivity extends Activity implements OnClickListener, OnItemClickListener {
+public class OMCThemePickerActivity extends Activity implements OnClickListener, OnItemClickListener, OnItemLongClickListener {
 
 	public static HashMap<String,String[]> ELEMENTS;
 	public static HashMap<String,File> THEMES;
@@ -75,6 +76,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
         gallery.setAdapter(OMCThemePickerActivity.THEMEARRAY);
         gallery.setOnItemClickListener(this);
+        gallery.setOnItemLongClickListener(this);
         topLevel.setEnabled(true);
         
     }
@@ -105,6 +107,15 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     		finish();
     	}
     }
+
+@Override
+	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2,
+			long arg3) {
+		if (arg0==gallery) {
+			Toast.makeText(this, "deleting theme" + OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()), Toast.LENGTH_SHORT).show();
+		}
+		return true;
+	}
 
 	public void refreshThemeList() {
 

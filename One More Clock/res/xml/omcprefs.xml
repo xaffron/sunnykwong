@@ -18,7 +18,7 @@
 	<PreferenceCategory android:key="Persistence" android:title="For all clocks:">
 		<CheckBoxPreference 
 			android:key="widgetPersistence" 
-			android:title="Keep in Memory (2.0+)" android:enabled="false" android:summary="Hopefully no longer needed!" android:selectable="false">
+			android:title="Keep in Memory (2.0+)" android:enabled="false" android:summary="Hopefully no longer needed!" android:selectable="false" android:shouldDisableView="true">
 		</CheckBoxPreference>
 		<com.hlidskialf.android.preference.SeekBarPreference android:key="iUpdateFreq"
         android:title="Clock Update Frequency"

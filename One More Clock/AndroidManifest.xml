@@ -13,13 +13,32 @@
                   android:label="@string/app_name">
 			<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-			    <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+<!--This filter captures specially-written omc:// hyperlinks on websites-->
+			<intent-filter>
+			    <action android:name="android.intent.action.VIEW" />
 			    <category android:name="android.intent.category.DEFAULT" />
 			    <category android:name="android.intent.category.BROWSABLE" />
-			    <data android:scheme="omc" android:mimeType="*/*" android:pathPattern="*"/>
-			    <data android:scheme="file" android:mimeType="*/*" android:pathPattern="*"/>
+			    <data android:scheme="omc"/>
 			</intent-filter>
+<!--This filter captures .omc files downloaded from websites-->
+		    <intent-filter>
+		        <action android:name="android.intent.action.VIEW" />
+		        <category android:name="android.intent.category.DEFAULT" />
+		        <category android:name="android.intent.category.BROWSABLE" />
+		        <data android:scheme="file" />
+		        <data android:mimeType="*/*"/>
+		        <data android:pathPattern=".*\\.omc" />
+		    </intent-filter>
+<!--This filter captures .omc files copied to sdcard and clicked-->
+		    <intent-filter>
+		        <action android:name="android.intent.action.VIEW" />
+		        <category android:name="android.intent.category.DEFAULT" />
+		        <category android:name="android.intent.category.BROWSABLE" />
+		        <data android:scheme="file" />
+		        <data android:pathPattern=".*\\.omc" />
+		    </intent-filter>
 		</activity>
         <activity android:name=".OMCSkinnerActivity"
                   android:screenOrientation="nosensor"

@@ -475,10 +475,16 @@ public class OMCWidgetDrawEngine {
 		}
 		
         if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) { 
-        	Intent intent = new Intent("com.sunnykwong.omc.WIDGET_CONFIG");
+//	Using a broadcast is more flexible, but less crash-proof. So we're not using it for now.
+//        	Intent intent = new Intent("com.sunnykwong.omc.WIDGET_CONFIG");
+//        	intent.setData(Uri.parse("omc:"+appWidgetId));
+//        	PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        	Intent intent = new Intent(context, OMCPrefActivity.class);
         	intent.setData(Uri.parse("omc:"+appWidgetId));
-        	PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-            rv.setOnClickPendingIntent(R.id.omcIV, pi);
+        	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
+        	
+        	rv.setOnClickPendingIntent(R.id.omcIV, pi);
             for (int i = 0; i < 9; i++) {
             	if (OMC.OVERLAYURL[i].equals("default")) {
 	            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], pi);
@@ -514,21 +520,11 @@ public class OMCWidgetDrawEngine {
         	}
         }
         
-        // Set overlay URL if present, else set to dummy class.
-//        if (OMC.OVERLAYURL=null) {
-//            for (int i = 0; i < 9; i++) {
-//            	if (OMC.OVERLAYURL[i].equals("default")); // do nothing if nothing specified
-//            	else rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], 
-//            			PendingIntent.getActivity(context, 0, new Intent(
-//            					Intent.ACTION_DEFAULT,Uri.parse(OMC.OVERLAYURL[i])), 0));
-//            }
-//        } else {
             // Kudos to Eric for solution to dummy out "unsetonlickpendingintent":
             // http://groups.google.com/group/android-developers/browse_thread/thread/f9e80e5ce55bb1e0/78153eb730326488
         	// I'm not using it right now, but it's a useful hint nonetheless. Thanks!
 //        	rv.setOnClickPendingIntent(R.id.omcLink, PendingIntent.getBroadcast(context, 0, OMC.DUMMYINTENT,
 //        		    PendingIntent.FLAG_UPDATE_CURRENT));
-//        }
         
         appWidgetManager.updateAppWidget(appWidgetId, rv);
 	}

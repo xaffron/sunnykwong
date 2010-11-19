@@ -52,26 +52,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	    }).create();
         	OMCPrefActivity.mAD.show();
 
-    		try {
-    			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
-    			if (OMC.DEBUG)Log.i("OMCPref","OMPC installed, let OMPC handle onclick");
-    			try {
-    				getApplicationContext().unregisterReceiver(OMC.cRC);
-    			} catch (java.lang.IllegalArgumentException e) {
-        			if (OMC.DEBUG)Log.i("OMCPref","OMC's receiver already unregistered - doing nothing");
-    				//no need to do anything if receiver not registered
-    			}
-    		} catch (Exception e) {
-
-    			if (OMC.DEBUG)Log.i("OMCPref","OMPC not installed, register self to handle widget clicks");
-    			//e.printStackTrace();
-				try {
-					getApplicationContext().registerReceiver(OMC.cRC,OMC.PREFSINTENTFILT);
-				} catch (Exception ee) {
-	    			if (OMC.DEBUG)Log.i("OMCPref","Failed to register self");
-					ee.printStackTrace();
-				}
-    		}
+        	((OMC)getApplication()).widgetClicks();
+        	
         }
 
     }

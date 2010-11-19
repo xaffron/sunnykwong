@@ -59,6 +59,11 @@ public class OMCService extends Service {
     @Override
     public void onStart(Intent intent, int startId) {
 		
+		getApplicationContext().registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
+		getApplicationContext().registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+		getApplicationContext().registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_TICK));
+    	((OMC)getApplication()).widgetClicks();
+
     	handleCommand(intent);
 
 		if (!OMCService.RUNNING || !OMC.FG) {
@@ -70,10 +75,10 @@ public class OMCService extends Service {
     }
 
 	public int onStartCommand(Intent intent, int flags, int startId) {
-//		this.unregisterReceiver(OMC.aRC);
-//		this.registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
-//		this.registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
-//		this.registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_TICK));
+		getApplicationContext().registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
+		getApplicationContext().registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+		getApplicationContext().registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_TICK));
+    	((OMC)getApplication()).widgetClicks();
 
 		handleCommand(intent);
 
@@ -85,7 +90,8 @@ public class OMCService extends Service {
 		}
 
 		// We want intents redelivered and onStartCommand re-executed if the service is killed.
-		return 1;  // Service.START_STICKY ; have to use literal because Donut is unaware of the constant
+//		return 1;  // Service.START_STICKY ; have to use literal because Donut is unaware of the constant
+		return 3;  // Service.START_REDELIVER_INTENT ; have to use literal because Donut is unaware of the constant
 	}
 	
 	void handleCommand (Intent intent) {

@@ -172,26 +172,7 @@ public class OMC extends Application {
 
 		OMC.WORDNUMBERS = this.getResources().getStringArray(R.array.WordNumbers);
 		
-		try {
-			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
-			if (OMC.DEBUG)Log.i("OMCPref","OMPC installed, let OMPC handle onclick");
-			try {
-				unregisterReceiver(OMC.cRC);
-			} catch (java.lang.IllegalArgumentException e) {
-    			if (OMC.DEBUG)Log.i("OMCPref","OMC's receiver already unregistered - doing nothing");
-				//no need to do anything if receiver not registered
-			}
-		} catch (Exception e) {
-
-			if (OMC.DEBUG)Log.i("OMCPref","OMPC not installed, register self to handle widget clicks");
-			//e.printStackTrace();
-			try {
-				this.registerReceiver(OMC.cRC,OMC.PREFSINTENTFILT);
-			} catch (Exception ee) {
-    			if (OMC.DEBUG)Log.i("OMCPref","Failed to register self");
-				ee.printStackTrace();
-			}
-		}
+		this.widgetClicks();
 		
 		// Enable/Disable the various size widgets
 		if (!OMC.PREFS.getBoolean("bFourByTwo", true)) {
@@ -397,6 +378,32 @@ public class OMC extends Application {
 				return null;
 			}
 		}
+	
+	}
+
+	public void widgetClicks() {
+		try {
+			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
+			if (OMC.DEBUG)Log.i("OMCPref","OMPC installed, let OMPC handle onclick");
+			try {
+				unregisterReceiver(OMC.cRC);
+			} catch (java.lang.IllegalArgumentException e) {
+    			if (OMC.DEBUG)Log.i("OMCPref","OMC's receiver already unregistered - doing nothing");
+				//no need to do anything if receiver not registered
+			}
+		} catch (Exception e) {
+
+			if (OMC.DEBUG)Log.i("OMCPref","OMPC not installed, register self to handle widget clicks");
+			//e.printStackTrace();
+			try {
+				this.registerReceiver(OMC.cRC,OMC.PREFSINTENTFILT);
+			} catch (Exception ee) {
+    			if (OMC.DEBUG)Log.i("OMCPref","Failed to register self");
+				ee.printStackTrace();
+			}
+		}
+		
+
 	}
 	
     @Override
