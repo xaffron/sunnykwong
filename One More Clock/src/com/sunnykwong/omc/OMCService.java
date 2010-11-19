@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -69,7 +70,11 @@ public class OMCService extends Service {
     }
 
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		
+//		this.unregisterReceiver(OMC.aRC);
+//		this.registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
+//		this.registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+//		this.registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_TICK));
+
 		handleCommand(intent);
 
 		if (!OMCService.RUNNING || !OMC.FG) {

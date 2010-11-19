@@ -3,6 +3,7 @@ package com.sunnykwong.omc;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.util.Log;
 
 public class OMCAlarmReceiver extends BroadcastReceiver {
@@ -15,6 +16,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 //			OMC.SCREENON=true;
 //			OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.BGSERVICE");
 //		}	
+
 		if (OMC.DEBUG) Log.i("OMCAlarm","Rcvd " + intent.getAction());
 		
 		// If we come back from a low memory state, all sorts of screwy stuff might happen.

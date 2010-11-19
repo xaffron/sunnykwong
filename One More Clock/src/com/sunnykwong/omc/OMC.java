@@ -114,7 +114,6 @@ public class OMC extends Application {
 		OMC.aRC = new OMCAlarmReceiver();
 		OMC.cRC = new OMCConfigReceiver();
 		
-		registerReceiver(OMC.aRC,new IntentFilter(Intent.ACTION_TIME_TICK));
 		
 		OMC.TEMPMATRIX = new Matrix();
 		
@@ -152,8 +151,9 @@ public class OMC extends Application {
 //		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
 		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
 		
-		registerReceiver(aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
-		registerReceiver(aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
+		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_TICK));
 		
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(6);
 		OMC.BMPMAP = new HashMap<String, Bitmap>(3);
