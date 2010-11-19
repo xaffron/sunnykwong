@@ -135,6 +135,18 @@
 	<item name="BottomCropPixels">60</item>
 </string-array>
 
+<string-array name="LockscreenLook_Links">
+	<item name="N">https://docs.google.com/uc?id=0B6S4jLNkP1XFZTlhOTY3OTctZGUyZS00MzgwLWE1NjUtZmFiODRmYmM2NWE2&amp;export=download&amp;authkey=CJnP0ZYG&amp;hl=en</item>
+	<item name="NE">market://search?q=pub:sunnykwong</item>
+	<item name="E">http://www.yahoo.com</item>
+	<item name="SE">http://www.google.com</item>
+	<item name="S">https://docs.google.com/leaf?id=0B6S4jLNkP1XFOTc3OTdjZWQtOTdhYi00OWZlLThjYjItNWJkMWM3NDRkYzA2&amp;export=download&amp;hl=en&amp;authkey=CKzLusoN&amp;ext=.omc</item>
+	<item name="SW">http://www.force.com</item>
+	<item name="W">http://www.mrflapper.com</item>
+	<item name="NW">http://xaffron.blogspot.com</item>
+	<item name="CENTER">default</item>
+</string-array>
+
 <string-array name="LLClock">
 	<item name="00 layer_enabled">true</item>
 	<item name="01 font_source_type">asset</item>

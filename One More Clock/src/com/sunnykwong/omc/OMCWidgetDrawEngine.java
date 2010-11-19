@@ -438,18 +438,20 @@ public class OMCWidgetDrawEngine {
 		OMC.OVERLAYURL = null;
 		try {
 			if (bExternal) {
-				OMC.OVERLAYURL = (String)(OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sTheme+"_Links").toArray()[0]);
+				ArrayList<String> alTemp = OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sTheme+"_Links");
+				OMC.OVERLAYURL = (alTemp.toArray(new String[alTemp.size()]));
 			} else {
 				int iLayerID = context.getResources().getIdentifier(sTheme+"_Links", "array", "com.sunnykwong.omc");
-				OMC.OVERLAYURL = context.getResources().getStringArray(iLayerID)[0];
+				OMC.OVERLAYURL = context.getResources().getStringArray(iLayerID);
 			}
 		} catch (android.content.res.Resources.NotFoundException e) {
 			// OMC.STRETCHINFO stays null; do nothing
 			if (OMC.DEBUG) Log.i("OMCEngine","No link URL info found for seeded clock.");
+			OMC.OVERLAYURL = new String[] {"default","default","default","default","default","default","default","default","default"};
 		} catch (java.lang.NullPointerException e) {
 			// OMC.STRETCHINFO stays null; do nothing
 			if (OMC.DEBUG) Log.i("OMCEngine","No link URL info found for imported clock.");
-			OMC.OVERLAYURL = null;
+			OMC.OVERLAYURL = new String[] {"default","default","default","default","default","default","default","default","default"};
 		}
 
 		OMCWidgetDrawEngine.drawBitmapForWidget(context,appWidgetId);
@@ -477,29 +479,46 @@ public class OMCWidgetDrawEngine {
         	intent.setData(Uri.parse("omc:"+appWidgetId));
         	PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
             rv.setOnClickPendingIntent(R.id.omcIV, pi);
-            rv.setOnClickPendingIntent(R.id.omcLink, pi);
+            for (int i = 0; i < 9; i++) {
+            	if (OMC.OVERLAYURL[i].equals("default")) {
+	            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], pi);
+            	} else rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], 
+            			PendingIntent.getActivity(context, 0, new Intent(
+            					Intent.ACTION_DEFAULT,Uri.parse(OMC.OVERLAYURL[i])), 0));
+            }
         } else {
         	if (OMC.DEBUG) Log.i("OMCWidget","INTENT " + OMC.PREFS.getString("URI"+appWidgetId, "")) ;
         	try {
-        	Intent intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
-        	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
-            rv.setOnClickPendingIntent(R.id.omcIV, pi);
-            rv.setOnClickPendingIntent(R.id.omcLink, pi);
+	        	Intent intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
+	        	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
+	            rv.setOnClickPendingIntent(R.id.omcIV, pi);
+	            for (int i = 0; i < 9; i++) {
+	            	if (OMC.OVERLAYURL[i].equals("default")) {
+		            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], pi);
+	            	} else rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], 
+	            			PendingIntent.getActivity(context, 0, new Intent(
+	            					Intent.ACTION_DEFAULT,Uri.parse(OMC.OVERLAYURL[i])), 0));
+	            }
         	} catch (Exception e) {
         		e.printStackTrace();
         	}
         }
         
         // Set overlay URL if present, else set to dummy class.
-        if (OMC.OVERLAYURL!=null) {
-        	rv.setOnClickPendingIntent(R.id.omcLink, PendingIntent.getActivity(context, 0, new Intent(Intent.ACTION_DEFAULT,Uri.parse(OMC.OVERLAYURL)), 0));
-        } else {
+//        if (OMC.OVERLAYURL=null) {
+//            for (int i = 0; i < 9; i++) {
+//            	if (OMC.OVERLAYURL[i].equals("default")); // do nothing if nothing specified
+//            	else rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], 
+//            			PendingIntent.getActivity(context, 0, new Intent(
+//            					Intent.ACTION_DEFAULT,Uri.parse(OMC.OVERLAYURL[i])), 0));
+//            }
+//        } else {
             // Kudos to Eric for solution to dummy out "unsetonlickpendingintent":
             // http://groups.google.com/group/android-developers/browse_thread/thread/f9e80e5ce55bb1e0/78153eb730326488
         	// I'm not using it right now, but it's a useful hint nonetheless. Thanks!
 //        	rv.setOnClickPendingIntent(R.id.omcLink, PendingIntent.getBroadcast(context, 0, OMC.DUMMYINTENT,
 //        		    PendingIntent.FLAG_UPDATE_CURRENT));
-        }
+//        }
         
         appWidgetManager.updateAppWidget(appWidgetId, rv);
 	}

@@ -74,12 +74,15 @@ public class OMC extends Application {
 	static String CACHEPATH;
 	static String[] WORDNUMBERS;
 	static String[] STRETCHINFO;
+	static String[] OVERLAYURL;
+	static int[] OVERLAYRESOURCES;
+
+	
 	
 	static final float[] FLARERADII = new float[] {32.f,20.f,21.6f,40.2f,18.4f,19.1f,10.8f,25.f,28.f};
 	static final int[] FLARECOLORS = new int[] {855046894,1140258554,938340342,1005583601,855439588,
 		669384692,905573859,1105458423,921566437};
 	static String TXTBUF;
-	static String OVERLAYURL;
 	
 	static final int SVCNOTIFICATIONID = 1; // Notification ID for the one and only message window we'll show
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
@@ -144,7 +147,9 @@ public class OMC extends Application {
     	OMC.RES = getResources();
     	OMC.NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		OMC.PREFS = getSharedPreferences("com.sunnykwong.omc_preferences", Context.MODE_PRIVATE);
-		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
+		// We are using Zehro's solution (listening for TIME_TICK instead of using AlarmManager + FG Notification) which
+		// should be quite a bit more graceful.
+//		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
 		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
 		
 		registerReceiver(aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
@@ -161,7 +166,9 @@ public class OMC extends Application {
 		OMC.STRETCHINFO = null;
 		
 		OMC.OVERLAYURL = null;
+		OMC.OVERLAYRESOURCES = new int[] {R.id.N,R.id.NE,R.id.E,R.id.SE,R.id.S,R.id.SW,R.id.W,R.id.NW,R.id.C};
 
+		
 
 		OMC.WORDNUMBERS = this.getResources().getStringArray(R.array.WordNumbers);
 		
@@ -394,7 +401,13 @@ public class OMC extends Application {
 	
     @Override
     public void onTerminate() {
-        unregisterReceiver(aRC);
+    	if (!OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1) {
+        	Log.i("OMCApp","APP TERMINATED - NOT UNREGISTERING RECEIVERS - OMC WILL RESTART");
+    		// do nothing
+    	} else {
+        	Log.i("OMCApp","APP TERMINATED - UNREGISTERING RECEIVERS - OMC WILL NOT RESTART");
+    		unregisterReceiver(aRC);
+    	}
         OMC.PREFS.edit().commit();
         super.onTerminate();
     }

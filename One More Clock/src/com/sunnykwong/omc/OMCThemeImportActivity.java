@@ -42,7 +42,7 @@ public class OMCThemeImportActivity extends Activity {
 	public static char[] THEMECREDITS;
 	public static String CURRSELECTEDTHEME, RAWCONTROLFILE;
 	
-    static AlertDialog mAD;	
+//    static AlertDialog mAD;	
 
 	final Runnable mResult = new Runnable() {
 		public void run() {
@@ -73,28 +73,28 @@ public class OMCThemeImportActivity extends Activity {
 
         OMCThemeImportActivity.CURRSELECTEDTHEME = null;
         
-        OMCThemeImportActivity.mAD = new AlertDialog.Builder(this)
-		.setTitle("OMC - Pick a Theme")
-		.setMessage("Go ahead - Pick your own theme.  Why stick with one all the time?  If you want more, just check out the \"More Clocks\" button at the bottom for more OMC goodness!")
-	    .setCancelable(true)
-	    .setIcon(R.drawable.fredicon_mdpi)
-	    .setPositiveButton("Okay", new OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-	       		OMCThemeImportActivity.mAD.dismiss();
-	       		chooseTheme();
-			}
-		})
-	    .setOnKeyListener(new OnKeyListener() {
-	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
-	       		OMCThemeImportActivity.mAD.dismiss();
-	       		chooseTheme();
-	    		return true;
-	    	};
-	    }).create();
-
-        OMCThemeImportActivity.mAD.show();
-
+//        OMCThemeImportActivity.mAD = new AlertDialog.Builder(this)
+//		.setTitle("OMC - Pick a Theme")
+//		.setMessage("Go ahead - Pick your own theme.  Why stick with one all the time?  If you want more, just check out the \"More Clocks\" button at the bottom for more OMC goodness!")
+//	    .setCancelable(true)
+//	    .setIcon(R.drawable.fredicon_mdpi)
+//	    .setPositiveButton("Okay", new OnClickListener() {
+//			@Override
+//			public void onClick(DialogInterface dialog, int which) {
+//	       		OMCThemeImportActivity.mAD.dismiss();
+//	       		chooseTheme();
+//			}
+//		})
+//	    .setOnKeyListener(new OnKeyListener() {
+//	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+//	       		OMCThemeImportActivity.mAD.dismiss();
+//	       		chooseTheme();
+//	    		return true;
+//	    	};
+//	    }).create();
+//
+//        OMCThemeImportActivity.mAD.show();
+        chooseTheme();
     }
 
     public void chooseTheme() {

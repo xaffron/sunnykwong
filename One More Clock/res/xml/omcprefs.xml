@@ -17,9 +17,8 @@
 </PreferenceCategory>
 	<PreferenceCategory android:key="Persistence" android:title="For all clocks:">
 		<CheckBoxPreference 
-			android:summary="Shows process in the notification bar.  Enable if the clock keeps losing sync." 
 			android:key="widgetPersistence" 
-			android:enabled="true" android:selectable="true" android:title="Keep in Memory (2.0+)">
+			android:title="Keep in Memory (2.0+)" android:enabled="false" android:summary="Hopefully no longer needed!" android:selectable="false">
 		</CheckBoxPreference>
 		<com.hlidskialf.android.preference.SeekBarPreference android:key="iUpdateFreq"
         android:title="Clock Update Frequency"

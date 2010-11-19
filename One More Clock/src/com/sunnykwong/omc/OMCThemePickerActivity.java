@@ -102,7 +102,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     		it.putExtra("theme", OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()));
     		it.putExtra("external", OMCThemePickerActivity.THEMEARRAY.mExternal.get(gallery.getSelectedItemPosition()));
     		
-    		OMCThemePickerActivity.THEMEARRAY.dispose();
     		finish();
     	}
     }
