@@ -42,6 +42,7 @@ import android.graphics.Matrix;
  * 
  */
 public class OMC extends Application {
+	static long LASTUPDATEMILLIS;
 	static int UPDATEFREQ = 15000;
 	static final String DEFAULTTHEME = "LockscreenLook";
 	static final boolean DEBUG = true;
@@ -105,6 +106,8 @@ public class OMC extends Application {
 	public void onCreate() {
 		super.onCreate();
 
+		OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
+		
 		OMC.BUFFER= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
 		OMC.CANVAS = new Canvas(OMC.BUFFER);
 		OMC.CANVAS.setDensity(DisplayMetrics.DENSITY_HIGH);
@@ -319,7 +322,15 @@ public class OMC extends Application {
 		}
 		OMC.IMPORTEDTHEMEMAP.clear();
 	}
-	
+		
+	public static void removeDirectory(File f) {
+		for (File ff:f.listFiles()) {
+	    	if (!ff.isDirectory()) ff.delete();
+	    	else removeDirectory(ff);
+		}
+		f.delete();
+	}
+
 	public static boolean copyFile(String src, String tgt) {
 		try {
 //			System.out.println("Copying " + src + " to " + tgt);
@@ -347,6 +358,13 @@ public class OMC extends Application {
 		} catch (Exception e) {
 			if (OMC.DEBUG) Log.i("OMCApp","error saving " + nm + " to cache.");
 			//e.printStackTrace();
+		}
+	}
+	
+	public static void deleteOneThemeFromCache(String nm) {
+		File f = new File(OMC.CACHEPATH);
+		for (File ff:f.listFiles()) {
+	    	if (!ff.getName().startsWith(nm)) ff.delete();
 		}
 	}
 	

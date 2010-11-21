@@ -3,21 +3,21 @@ package com.sunnykwong.omc;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.util.Log;
 
 public class OMCAlarmReceiver extends BroadcastReceiver {
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
-//		if (intent.getAction().equals(Intent.ACTION_TIME_TICK)){
-//			if (OMC.DEBUG) Log.i("OMCAlarm","TimeTick");
-//			OMC.FG=false;
-//			OMC.SCREENON=true;
-//			OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.BGSERVICE");
-//		}	
+		// Set the alarm for next tick first, so we don't lose sync
+		OMC.setServiceAlarm(((System.currentTimeMillis()+ OMC.UPDATEFREQ)/OMC.UPDATEFREQ) * OMC.UPDATEFREQ);
 
+		// Prevent abusive updates - update no more than every 1 secs.
+		if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 1000) return;
+		OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
+		
 		if (OMC.DEBUG) Log.i("OMCAlarm","Rcvd " + intent.getAction());
+		
 		
 		// If we come back from a low memory state, all sorts of screwy stuff might happen.
 		// If the Intent itself is null, let's create one.

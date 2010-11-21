@@ -8,7 +8,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -491,8 +490,6 @@ public class OMCWidgetDrawEngine {
             	} else {
     				Intent s = (new Intent(Intent.ACTION_VIEW,Uri.parse(OMC.OVERLAYURL[i])));
     				s.addCategory(Intent.CATEGORY_DEFAULT);
-    				System.out.println(s.getScheme());
-    				System.out.println(s.getData());
     				//System.out.println(s.get)
             		rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i],            	
             			PendingIntent.getActivity(context, 0, s,0));
@@ -510,10 +507,6 @@ public class OMCWidgetDrawEngine {
 	            	} else rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], 
 	            			PendingIntent.getBroadcast(context, 0, new Intent(
 	            					Intent.ACTION_VIEW,Uri.parse(OMC.OVERLAYURL[i])), 0));
-	            			if (OMC.OVERLAYRESOURCES[i]==R.id.SE) {
-	            				Intent s = (new Intent(Intent.ACTION_VIEW,Uri.parse(OMC.OVERLAYURL[i])));
-	            				System.out.println(s.toURI().toString());
-	            			}
 	            }
         	} catch (Exception e) {
         		e.printStackTrace();

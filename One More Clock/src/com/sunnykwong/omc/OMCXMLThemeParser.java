@@ -1,7 +1,6 @@
 package com.sunnykwong.omc;
 
 import android.util.Log;
-import android.widget.Toast;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 
@@ -14,7 +13,6 @@ import java.util.Stack;
 import java.util.Iterator;
 import java.util.ArrayList;
 
-import java.io.File;
 import java.io.FileReader;
 import java.lang.StringBuilder;
 

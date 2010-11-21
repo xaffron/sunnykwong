@@ -2,10 +2,10 @@ package com.sunnykwong.omc;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
 import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -29,8 +29,6 @@ public class OMCService extends Service {
 	//	When service is created,
 	@Override
 	public void onCreate() {
-		if (OMC.DEBUG) Log.i("OMCSvc","---ONCREATE---");
-		
 		// If we're hogging the foreground, check APIs
 		// Grab the notification Service -
 		
@@ -58,13 +56,12 @@ public class OMCService extends Service {
     // method will not be called.
     @Override
     public void onStart(Intent intent, int startId) {
-		
-		getApplicationContext().registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
-		getApplicationContext().registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
-		getApplicationContext().registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_TICK));
-    	((OMC)getApplication()).widgetClicks();
 
-    	handleCommand(intent);
+    	//	Tell the widgets to refresh themselves.
+		OMCService.RUNNING=true;
+		sendBroadcast(OMC.WIDGETREFRESHINTENT);
+		
+		handleCommand(intent);
 
 		if (!OMCService.RUNNING || !OMC.FG) {
 			// If we're not in FG, then go to sleep and let the alarm wake us up again
@@ -75,10 +72,9 @@ public class OMCService extends Service {
     }
 
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		getApplicationContext().registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
-		getApplicationContext().registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
-		getApplicationContext().registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_TICK));
-    	((OMC)getApplication()).widgetClicks();
+		//	Tell the widgets to refresh themselves.
+		OMCService.RUNNING=true;
+		sendBroadcast(OMC.WIDGETREFRESHINTENT);
 
 		handleCommand(intent);
 
@@ -90,8 +86,7 @@ public class OMCService extends Service {
 		}
 
 		// We want intents redelivered and onStartCommand re-executed if the service is killed.
-//		return 1;  // Service.START_STICKY ; have to use literal because Donut is unaware of the constant
-		return 3;  // Service.START_REDELIVER_INTENT ; have to use literal because Donut is unaware of the constant
+		return 1;  // Service.START_STICKY ; have to use literal because Donut is unaware of the constant
 	}
 	
 	void handleCommand (Intent intent) {
@@ -122,30 +117,6 @@ public class OMCService extends Service {
 
 		}
 		
-		// Either way...
-		if (OMCService.STOPNOW4x2 && OMCService.STOPNOW4x1 && OMCService.STOPNOW3x1 && OMCService.STOPNOW2x1) {
-			// If the widget tells me to stop, then stop setting the alarm and bail.
-			// Do not refresh the widget
-			// Do not fire off the Alarm
-			// Do not pass GO
-			// Do not collect $200
-			OMCService.RUNNING=false;
-		} else {
-			//  Refresh at the next minute mark
-			final long timeToRefresh = ((System.currentTimeMillis()+ OMC.UPDATEFREQ)/OMC.UPDATEFREQ) * OMC.UPDATEFREQ;
-
-			//  But if it coincides with a time tick, don't worry about it
-			if (timeToRefresh % 60000 == 0) {
-				// Do nothing
-				System.out.println("skipping alarm and letting time tick work.");
-			} else {
-				OMC.setServiceAlarm(timeToRefresh);
-			}
-		
-			//	Tell the widgets to refresh themselves.
-			OMCService.RUNNING=true;
-			sendBroadcast(OMC.WIDGETREFRESHINTENT);
-		}
 	}
 
 	// Sad, but I don't know what this is used for.  Someday.

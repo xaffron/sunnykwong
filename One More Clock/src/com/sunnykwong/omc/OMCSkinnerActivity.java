@@ -1,23 +1,12 @@
 package com.sunnykwong.omc;
 
 import java.io.File;
-import java.io.FileReader;
 import java.util.HashMap;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
-
-import android.content.Intent;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnKeyListener;
+import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -25,16 +14,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RemoteViews;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
+
 public class OMCSkinnerActivity extends Activity {
 
 	public Handler mHandler;
@@ -72,6 +59,10 @@ public class OMCSkinnerActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+        //Hide the title bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.skinnertool);
 
         OMCSkinnerActivity.REFRESHINTERVAL = 3000;

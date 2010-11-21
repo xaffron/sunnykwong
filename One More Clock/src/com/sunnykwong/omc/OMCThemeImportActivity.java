@@ -1,19 +1,9 @@
 package com.sunnykwong.omc;
 
 import java.io.File;
-import java.io.FileReader;
-import java.util.HashMap;
-
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnKeyListener;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -100,7 +90,7 @@ public class OMCThemeImportActivity extends Activity {
     public void chooseTheme() {
         Intent itThemePicker = new Intent(this,OMCThemePickerActivity.class);
         itThemePicker.putExtra("externalonly", false);
-
+        itThemePicker.putExtra("default", OMC.PREFS.getString("widgetTheme", "LockscreenLook"));
         startActivityForResult(itThemePicker, 0);
     }
     
