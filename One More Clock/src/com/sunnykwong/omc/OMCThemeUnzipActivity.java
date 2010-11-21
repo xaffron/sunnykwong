@@ -100,9 +100,9 @@ public class OMCThemeUnzipActivity extends Activity {
         			try {
         				pdMessage = "Opening connection";
         				mHandler.post(mUpdateStatus);
-        				String sScheme = "http";
-        				if (uri.getScheme().equals("omcs")) sScheme = "https";
-        				else if (uri.getScheme().equals("omc")) sScheme = "http";
+        				String sScheme = "http:";
+        				if (uri.getScheme().equals("omcs")) sScheme = "https:";
+        				else if (uri.getScheme().equals("omc")) sScheme = "http:";
         				downloadURL = new URL(sScheme + uri.getSchemeSpecificPart());
         				URLConnection conn = downloadURL.openConnection();
         				ZipInputStream zis = new ZipInputStream(conn.getInputStream());
