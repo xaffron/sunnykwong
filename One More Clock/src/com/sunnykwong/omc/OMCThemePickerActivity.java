@@ -96,7 +96,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     		refreshThemeList();
     	}
     	if (v==btnGetMore) {
-    		Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("http://xaffron.mobify.me/search/label/omctheme"));
+    		Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("http://xaffron.blogspot.com/search/label/omctheme"));
     		startActivity(it);
     		finish();
     		return;
@@ -169,6 +169,18 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         if (!OMCThemePickerActivity.THEMEROOT.exists()) {
         	Toast.makeText(this, "OMC folder not found in your SD Card.\nCreating folder...", Toast.LENGTH_LONG).show();
         	OMCThemePickerActivity.THEMEROOT.mkdir();
+        	mAD = new AlertDialog.Builder(this)
+        							.setMessage("Starting in version 1.1, the base application only comes with the Lockscreen Look clock.  To install more clocks, click on the \"More Clocks\" button at the bottom right to get more!")
+        							.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+										@Override
+										public void onClick(DialogInterface dialog, int which) {
+											OMCThemePickerActivity.mAD.cancel();
+										}
+									})
+									.setCancelable(false)
+									.create();
+        	mAD.show();
+							
         }
         
         if (OMCThemePickerActivity.THEMEARRAY == null) {

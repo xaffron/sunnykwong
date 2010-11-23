@@ -402,21 +402,21 @@ public class OMC extends Application {
 	public void widgetClicks() {
 		try {
 			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
-			if (OMC.DEBUG)Log.i("OMCPref","OMPC installed, let OMPC handle onclick");
+			if (OMC.DEBUG)Log.i("OMCApp","OMPC installed, let OMPC handle onclick");
 			try {
 				unregisterReceiver(OMC.cRC);
 			} catch (java.lang.IllegalArgumentException e) {
-    			if (OMC.DEBUG)Log.i("OMCPref","OMC's receiver already unregistered - doing nothing");
+    			if (OMC.DEBUG)Log.i("OMCApp","OMC's receiver already unregistered - doing nothing");
 				//no need to do anything if receiver not registered
 			}
 		} catch (Exception e) {
 
-			if (OMC.DEBUG)Log.i("OMCPref","OMPC not installed, register self to handle widget clicks");
+			if (OMC.DEBUG)Log.i("OMCApp","OMPC not installed, register self to handle widget clicks");
 			//e.printStackTrace();
 			try {
 				this.registerReceiver(OMC.cRC,OMC.PREFSINTENTFILT);
 			} catch (Exception ee) {
-    			if (OMC.DEBUG)Log.i("OMCPref","Failed to register self");
+    			if (OMC.DEBUG)Log.i("OMCApp","Failed to register self");
 				ee.printStackTrace();
 			}
 		}

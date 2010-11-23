@@ -169,7 +169,7 @@ public class OMCTypedArray  {
 			if (OMC.TIME.minute == 0) {
 				sTemp = OMC.WORDNUMBERS[Integer.parseInt(OMC.TIME.format("%I"))] + " o'Clock.";
 			} else if (OMC.TIME.minute == 30) {
-				sTemp = "** half past " + OMC.WORDNUMBERS[Integer.parseInt(OMC.TIME.format("%I"))] + "."; 
+				sTemp = "half past " + OMC.WORDNUMBERS[Integer.parseInt(OMC.TIME.format("%I"))] + "."; 
 			} else if (OMC.TIME.minute == 15) {
 				sTemp = "A Quarter past " + OMC.WORDNUMBERS[Integer.parseInt(OMC.TIME.format("%I"))] + "."; 
 			} else if (OMC.TIME.minute == 45) {
@@ -182,6 +182,8 @@ public class OMCTypedArray  {
 			} else if (OMC.TIME.minute > 30) {
 				if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
 					sTemp = OMC.WORDNUMBERS[60-Integer.parseInt(OMC.TIME.format("%M"))] + " to Twelve.";
+				} else if (OMC.TIME.hour == 0) {
+						sTemp = OMC.WORDNUMBERS[60-Integer.parseInt(OMC.TIME.format("%M"))] + " to One.";
 				} else {
 					sTemp = OMC.WORDNUMBERS[60-Integer.parseInt(OMC.TIME.format("%M"))] + " to " 
 					+ OMC.WORDNUMBERS[Integer.parseInt(OMC.TIME.format("%I"))+1] + ".";

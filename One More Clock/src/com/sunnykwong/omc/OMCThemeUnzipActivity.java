@@ -136,10 +136,12 @@ public class OMCThemeUnzipActivity extends Activity {
                 				pdMessage = "Storing file " + ze.getName();
                 				mHandler.post(mUpdateStatus);
         						try {
-        							//Absolute luxury 1980 style!  Using a 512byte buffer.
-        						    byte[] buffer = new byte[512];
-        						    while (bis.read(buffer)!= -1){
-        						    	fos.write(buffer);
+        							//Absolute luxury 1980 style!  Using a 16k buffer.
+        						    byte[] buffer = new byte[16384];
+        						    int iBytesRead=0;
+        						    while ((iBytesRead=bis.read(buffer))!= -1){
+        						    	fos.write(buffer, 0, iBytesRead);
+//        						    	fos.write(buffer);
         						    }
         						    fos.flush();
         						    fos.close();
