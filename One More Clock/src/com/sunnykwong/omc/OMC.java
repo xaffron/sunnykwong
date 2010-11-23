@@ -42,6 +42,9 @@ import android.graphics.Matrix;
  * 
  */
 public class OMC extends Application {
+	static final boolean FREEEDITION = false;
+	static boolean SHOWHELP = false;
+	static final String THISVERSION = "1.1";
 	static long LASTUPDATEMILLIS;
 	static int UPDATEFREQ = 15000;
 	static final String DEFAULTTHEME = "LockscreenLook";
@@ -151,7 +154,8 @@ public class OMC extends Application {
 		OMC.PREFS = getSharedPreferences("com.sunnykwong.omc_preferences", Context.MODE_PRIVATE);
 		// We are using Zehro's solution (listening for TIME_TICK instead of using AlarmManager + FG Notification) which
 		// should be quite a bit more graceful.
-//		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
+		//		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
+		OMC.PREFS.edit().putString("version", OMC.THISVERSION).commit();
 		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
 		
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
@@ -199,6 +203,12 @@ public class OMC extends Application {
 		if (!OMC.PREFS.getBoolean("bTwoByOne", true)) {
 			getPackageManager().setComponentEnabledSetting(	
 					OMC.WIDGET2x1CNAME,
+					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+		}		
+		if (!OMC.PREFS.getBoolean("bSkinner", true)) {
+			getPackageManager().setComponentEnabledSetting(	
+					new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.OMCSkinnerActivity"),
 					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
 		}		

@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -69,7 +68,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         topLevel = findViewById(R.id.PickerTopLevel);
         topLevel.setEnabled(false);
         
-        setTitle("Swipe Left and Right to Select a Theme");
+        setTitle("Swipe to Select; click & hold to Delete");
 
         btnReload = (Button)findViewById(R.id.btnReload);
         btnReload.setOnClickListener(this);
@@ -97,8 +96,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     	}
     	if (v==btnGetMore) {
     		Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("http://xaffron.blogspot.com/search/label/omctheme"));
-    		startActivity(it);
-    		finish();
+    		startActivityForResult(it, 999);
     		return;
     	}
      }
@@ -125,7 +123,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2,
 			long arg3) {
 		if (arg0==gallery) {
-			Toast.makeText(this, "deleting theme" + OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()), Toast.LENGTH_SHORT).show();
 			AlertDialog ad = new AlertDialog.Builder(this)
 								.setCancelable(true)
 								.setTitle("Delete this theme from SD card?")
@@ -208,7 +205,15 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         gallery.setAdapter(OMCThemePickerActivity.THEMEARRAY);
         gallery.setSelection(OMCThemePickerActivity.THEMEARRAY.getPosition(sDefaultTheme));
 	}
-	
+
+//	@Override
+//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//		super.onActivityResult(requestCode, resultCode, data);
+//		if (requestCode==999) {
+//			refreshThemeList();
+//		}
+//	}	
+
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub

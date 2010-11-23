@@ -36,21 +36,6 @@ public class OMCThemeImportActivity extends Activity {
 
 	final Runnable mResult = new Runnable() {
 		public void run() {
-		// Back from XML importing...
-//			if (OMCXMLThemeParser.valid) {
-//	        	Toast.makeText(OMCThemeImportActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCXMLThemeParser.latestThemeName).arrays.get("theme_options").get(0) + " theme imported.", Toast.LENGTH_SHORT).show();
-//	        	OMC.PREFS.edit()
-//			        	.putString("widgetTheme", OMCXMLThemeParser.latestThemeName)
-//			        	.putBoolean("external", true)
-//			    		.commit();
-//	        	OMC.saveImportedThemeToCache(OMCThemeImportActivity.this,OMCXMLThemeParser.latestThemeName);
-//	        	Toast.makeText(OMCThemeImportActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCXMLThemeParser.latestThemeName).arrays.get("theme_options").get(0) + " theme cached and applied.", Toast.LENGTH_SHORT).show();
-//			} else {
-//	        	Toast.makeText(OMCThemeImportActivity.this, OMCThemeImportActivity.CURRSELECTEDTHEME + " theme did not pass validity checks!\nPlease check with the author of your theme.\nImport cancelled.", Toast.LENGTH_SHORT).show();
-//			}
-//
-//			setResult(Activity.RESULT_OK);
-//        	finish();
 		}
 	};
 	
@@ -166,48 +151,4 @@ public class OMCThemeImportActivity extends Activity {
 			return;
 		}
 	}
-
-//	public void importTheme() {
-//		if (OMCThemeImportActivity.CURRSELECTEDTHEME == null) {
-//        	Toast.makeText(this, "Please select a theme first.", Toast.LENGTH_SHORT).show();
-//			return;
-//		}
-//		
-//        System.setProperty("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver"); 
-//
-//		
-//		
-//    	Thread t = new Thread () {
-//    		public void run() {
-//            	try {
-//            		// Set SD OMC Root
-//            		File root = OMCThemeImportActivity.THEMES.get(OMCThemeImportActivity.CURRSELECTEDTHEME);
-//            		// Setup XML Parsing...
-//            		XMLReader xr = XMLReaderFactory.createXMLReader();
-//            		OMCXMLThemeParser parser = new OMCXMLThemeParser(root.getAbsolutePath());
-//            		xr.setContentHandler(parser);
-//            		// Feed data from control file to XML Parser.
-//            		// XML Parser will populate OMC.IMPORTEDTHEME.
-//            		FileReader fr = new FileReader(root.getAbsolutePath() + "/00control.xml");
-//            		xr.setErrorHandler(parser);
-//            		xr.parse(new InputSource(fr));
-//            		// When we're done, remove all references to parser.
-//                	parser = null;
-//                	fr.close();
-//
-//            	} catch (Exception e) {
-//            		
-//                	e.printStackTrace();
-//            	}
-//
-//            	// This call will end up passing control to processXMLResults
-//    			mHandler.post(mResult);
-//    		}
-//      	   
-//    	};
-//		t.start();
-//
-//    } 
-
-	
 }

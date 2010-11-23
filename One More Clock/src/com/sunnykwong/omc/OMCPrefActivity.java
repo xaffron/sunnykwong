@@ -1,6 +1,7 @@
 package com.sunnykwong.omc;
 
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnKeyListener;
@@ -185,11 +186,17 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 									: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 							PackageManager.DONT_KILL_APP);
 	    	getApplicationContext().getPackageManager()
-					.setComponentEnabledSetting(
-							OMC.WIDGET2x1CNAME,
-							OMC.PREFS.getBoolean("bTwoByOne", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-									: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-							PackageManager.DONT_KILL_APP);
+			.setComponentEnabledSetting(
+					OMC.WIDGET2x1CNAME,
+					OMC.PREFS.getBoolean("bTwoByOne", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+	    	getApplicationContext().getPackageManager()
+			.setComponentEnabledSetting(
+					new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.OMCSkinnerActivity"),
+					OMC.PREFS.getBoolean("bSkinner", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
 
 			OMC.setServiceAlarm(System.currentTimeMillis()+500);
 			sendBroadcast(OMC.WIDGETREFRESHINTENT);
