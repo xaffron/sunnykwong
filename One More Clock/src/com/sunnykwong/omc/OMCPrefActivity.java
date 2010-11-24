@@ -33,10 +33,21 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 			if (OMC.DEBUG) Log.i("OMCPref","Called by Widget " + appWidgetID);
         	OMC.getPrefs(appWidgetID);
         	OMC.PREFS.edit().putBoolean("widgetPersistence", OMC.FG).commit();
+    		if (OMC.FREEEDITION) {
+    			OMC.PREFS.edit().putBoolean("bFourByOne", false)
+    					.putBoolean("bThreeByOne", false)
+    					.putBoolean("bTwoByOne", false)
+    					.commit();
+    		}
         	addPreferencesFromResource(R.xml.omcprefs);
         	//findPreference("widgetTheme").setOnPreferenceChangeListener(this);
         	findPreference("clearImports").setOnPreferenceChangeListener(this);
     		findPreference("bFourByTwo").setEnabled(false);
+    		if (OMC.FREEEDITION) {
+        		findPreference("bFourByOne").setEnabled(false); 
+        		findPreference("bThreeByOne").setEnabled(false);
+        		findPreference("bTwoByOne").setEnabled(false);
+    		}
         } else {
             // If they gave us an intent without the widget id, just bail.
         	if (OMC.DEBUG) Log.i("OMCPref","Called by Launcher - do nothing");
@@ -78,6 +89,9 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		Preference preference) {
     	if (preference == getPreferenceScreen().findPreference("widgetCredits")) {
     		startActivityForResult(OMC.CREDITSINTENT,0);
+    	}
+    	if (preference == getPreferenceScreen().findPreference("downloadStarterPack")) {
+    		startActivity(OMC.GETSTARTERPACKINTENT);
     	}
     	if (preference == getPreferenceScreen().findPreference("loadThemeFile")) {
     		startActivityForResult(OMC.IMPORTTHEMEINTENT,0);

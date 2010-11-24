@@ -164,20 +164,11 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         OMCThemePickerActivity.SDROOT = Environment.getExternalStorageDirectory();
         OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath()+"/OMC");
         if (!OMCThemePickerActivity.THEMEROOT.exists()) {
-        	Toast.makeText(this, "OMC folder not found in your SD Card.\nCreating folder...", Toast.LENGTH_LONG).show();
+        	Toast.makeText(this, "OMC folder not found in your SD Card.\nCreating folder and downloading starter pack...", Toast.LENGTH_LONG).show();
         	OMCThemePickerActivity.THEMEROOT.mkdir();
-        	mAD = new AlertDialog.Builder(this)
-        							.setMessage("Starting in version 1.1, the base application only comes with the Lockscreen Look clock.  To install more clocks, click on the \"More Clocks\" button at the bottom right to get more!")
-        							.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-										@Override
-										public void onClick(DialogInterface dialog, int which) {
-											OMCThemePickerActivity.mAD.cancel();
-										}
-									})
-									.setCancelable(false)
-									.create();
-        	mAD.show();
-							
+
+			OMCThemePickerActivity.this.startActivity(OMC.GETSTARTERPACKINTENT);
+			finish();
         }
         
         if (OMCThemePickerActivity.THEMEARRAY == null) {
@@ -265,10 +256,10 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	if (!bExternal) {
         		mBitmaps.put(sTheme, BitmapFactory.decodeResource(OMC.RES, R.drawable.llpreview));
         		mNames.put(sTheme, "Lockscreen Look");
-    			mCreds.put(sTheme, "LOCKSCREEN LOOK (18th October, 2010)\nTheme created by Sunny Kwong.\nThe default Android Lockscreen Look.");
+    			mCreds.put(sTheme, "LOCKSCREEN LOOK (S. Kwong, 18 Oct 2010)\nThe default Android Lockscreen Look.");
         		return result;
         	}
-        	mBitmaps.put(sTheme, BitmapFactory.decodeFile(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme+"/preview.jpg"));
+        	mBitmaps.put(sTheme, BitmapFactory.decodeFile(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme+"/000preview.jpg"));
     		char[] cCredits = new char[3000];
     		try {
     			FileReader fr = new FileReader(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+ "/" + sTheme+"/00name.txt");

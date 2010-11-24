@@ -28,6 +28,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.text.format.Time;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -42,7 +43,8 @@ import android.graphics.Matrix;
  * 
  */
 public class OMC extends Application {
-	static final boolean FREEEDITION = false;
+	static final boolean FREEEDITION = true;
+	static final String STARTERPACKURL = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFOGRiZWEwZDUtMmU5OC00OTIxLWJiNmUtMzFhMmUxNmIwNGE2&export=download&authkey=CJqajrYE&hl=en";
 	static boolean SHOWHELP = false;
 	static final String THISVERSION = "1.1";
 	static long LASTUPDATEMILLIS;
@@ -91,7 +93,8 @@ public class OMC extends Application {
 	static final int SVCNOTIFICATIONID = 1; // Notification ID for the one and only message window we'll show
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
-    static Intent FGINTENT, BGINTENT, SVCSTARTINTENT, WIDGETREFRESHINTENT, CREDITSINTENT, PREFSINTENT, IMPORTTHEMEINTENT, DUMMYINTENT;
+    static Intent FGINTENT, BGINTENT, SVCSTARTINTENT, WIDGETREFRESHINTENT, CREDITSINTENT, PREFSINTENT;
+    static Intent GETSTARTERPACKINTENT, IMPORTTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT;
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
     static IntentFilter PREFSINTENTFILT;
     static Notification FGNOTIFICIATION;
@@ -136,7 +139,11 @@ public class OMC extends Application {
 		OMC.PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
 		OMC.PREFSINTENTFILT.addDataScheme("omc");
 		OMC.DUMMYINTENT = new Intent(this, DUMMY.class);
+		OMC.GETSTARTERPACKINTENT = new Intent(this, OMCThemeUnzipActivity.class);
+		OMC.GETSTARTERPACKINTENT.setData(Uri.parse(OMC.STARTERPACKURL));
+		OMC.OMCMARKETINTENT = new Intent(Intent.ACTION_VIEW,Uri.parse("market://details?id=com.sunnykwong.omc"));
 
+		
 		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/";
 		
 		OMC.BGRECT = new RectF(30,10,295,150);
@@ -155,6 +162,12 @@ public class OMC extends Application {
 		// We are using Zehro's solution (listening for TIME_TICK instead of using AlarmManager + FG Notification) which
 		// should be quite a bit more graceful.
 		//		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
+		
+		// If we're from a legacy version, then we need to wipe all settings clean to avoid issues.
+		if (OMC.PREFS.getString("version", "1.0.x").startsWith("1.0")) {
+			Log.i("OMCApp","Upgrade from legacy version, wiping all settings.");
+			OMC.PREFS.edit().clear().commit();
+		}
 		OMC.PREFS.edit().putString("version", OMC.THISVERSION).commit();
 		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
 		
@@ -188,19 +201,19 @@ public class OMC extends Application {
 					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
 		}
-		if (!OMC.PREFS.getBoolean("bFourByOne", true)) {
+		if (!OMC.PREFS.getBoolean("bFourByOne", true) || OMC.FREEEDITION) {
     		getPackageManager().setComponentEnabledSetting(
 				OMC.WIDGET4x1CNAME,
 				PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 				PackageManager.DONT_KILL_APP);
 		}
-		if (!OMC.PREFS.getBoolean("bThreeByOne", true)) {
+		if (!OMC.PREFS.getBoolean("bThreeByOne", true) || OMC.FREEEDITION) {
 			getPackageManager().setComponentEnabledSetting(	
 					OMC.WIDGET3x1CNAME,
 					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
 		}
-		if (!OMC.PREFS.getBoolean("bTwoByOne", true)) {
+		if (!OMC.PREFS.getBoolean("bTwoByOne", true) || OMC.FREEEDITION) {
 			getPackageManager().setComponentEnabledSetting(	
 					OMC.WIDGET2x1CNAME,
 					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,

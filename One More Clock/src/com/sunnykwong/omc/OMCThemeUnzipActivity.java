@@ -10,6 +10,7 @@ import java.util.zip.ZipInputStream;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.graphics.BitmapFactory;
@@ -22,6 +23,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 public class OMCThemeUnzipActivity extends Activity {
 
@@ -31,6 +33,8 @@ public class OMCThemeUnzipActivity extends Activity {
 	static String pdPreview;
 	public Uri uri;
 	public File sdRoot,outputFile;
+	public AlertDialog mAD;
+	public boolean NOGO;
 	
 	public URL downloadURL;
 	
@@ -72,102 +76,127 @@ public class OMCThemeUnzipActivity extends Activity {
         //Hide the title bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        checkSetup();
+        NOGO = OMC.FREEEDITION;
         
-        mHandler = new Handler();
-        pdWait = new Dialog(this);
-        pdWait.setContentView(R.layout.themeunzippreview);
-        pdWait.setTitle("Connecting...");
-        pdWait.setCancelable(true);
-        pdWait.setOnCancelListener(new OnCancelListener() {
-			
-			@Override
-			public void onCancel(DialogInterface dialog) {
-				OMCThemeUnzipActivity.this.finish();
-				return;
-			}
-		});
-        pdWait.show();
+        uri = getIntent().getData();
+        if (NOGO && uri.toString().equals(OMC.STARTERPACKURL)) {
+        	NOGO = false;
+        } 
+        if (NOGO) {
+        	mAD = new AlertDialog.Builder(this)
+        						.setTitle("Why doesn't this work?")
+        						.setCancelable(true)
+        						.setMessage("Actually... it does.  Really well.  However, direct theme download requires the paid edition of OMC.  To install themes on the free edition, just download the theme offline to your computer, then unzip and copy to your SD card manually.\n\nAt the end of the day, do you like OMC?  If so, please consider donating!")
+        						.setPositiveButton("Take me to the paid version!", new DialogInterface.OnClickListener() {
+									
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										OMCThemeUnzipActivity.this.mAD.dismiss();
+										OMCThemeUnzipActivity.this.startActivity(OMC.OMCMARKETINTENT);
+							        	OMCThemeUnzipActivity.this.finish();
+										
+									}
+								}).create();
+        	mAD.show();
 
-        Thread t = new Thread() {
-        	public void run() {
-        		uri = getIntent().getData();
-        		if (uri == null) {
-        			Toast.makeText(getApplicationContext(), "Nothing to extract!", Toast.LENGTH_LONG).show();
-        			finish();
-        			return;
-        		} else { 
-        			try {
-        				pdMessage = "Opening connection";
-        				mHandler.post(mUpdateStatus);
-        				String sScheme = "http:";
-        				if (uri.getScheme().equals("omcs")) sScheme = "https:";
-        				else if (uri.getScheme().equals("omc")) sScheme = "http:";
-        				downloadURL = new URL(sScheme + uri.getSchemeSpecificPart());
-        				URLConnection conn = downloadURL.openConnection();
-        				ZipInputStream zis = new ZipInputStream(conn.getInputStream());
-        				BufferedInputStream bis = new BufferedInputStream(zis);
-        				ZipEntry ze;
+        } else {
 
-        				pdMessage = "Streaming data";
-        				mHandler.post(mUpdateStatus);
-        				while ((ze = zis.getNextEntry())!= null) {
-        					outputFile = new File(sdRoot.getAbsolutePath()+"/"+ze.getName());
-        					if (ze.isDirectory()) {
-                				pdMessage = "Importing: " + ze.getName();
-                				mHandler.post(mUpdateTitle);
-        						if (outputFile.exists()) {
-        							//System.out.println(ze.getName() + " Theme already exists!");
-        							pdMessage = "Theme already exists! Cancelling...";
-        							mHandler.post(mResult);
-        						} else {
-        							if (outputFile.mkdir()==false) {
-        								//ERROR CREATING DIRECTORY - crap out
-            							pdMessage = "Error creating directory! Does theme already exist?";
-        								mHandler.post(mResult);
-        								break;
-        							} else {
-                        				pdMessage = "Theme folder '" + ze.getName() + "'created.";
-                        				mHandler.post(mUpdateStatus);
-        							}
-        						}
-        					} else {
-        						FileOutputStream fos = new FileOutputStream(outputFile);
-                				pdMessage = "Storing file " + ze.getName();
-                				mHandler.post(mUpdateStatus);
-        						try {
-        							//Absolute luxury 1980 style!  Using a 16k buffer.
-        						    byte[] buffer = new byte[16384];
-        						    int iBytesRead=0;
-        						    while ((iBytesRead=bis.read(buffer))!= -1){
-        						    	fos.write(buffer, 0, iBytesRead);
-//        						    	fos.write(buffer);
-        						    }
-        						    fos.flush();
-        						    fos.close();
-        						} catch (Exception e) {
-        							e.printStackTrace();
-        						}
-        						if (outputFile.getName().equals("preview.jpg")) {
-        							pdPreview = outputFile.getAbsolutePath();
-        							mHandler.post(mUpdateBitmap);
-        						}
-        					}
-        					zis.closeEntry();
-        					
-        				}
-        				zis.close();
-						pdMessage = "Import complete!";
-        				mHandler.post(mResult);
-        				
-        			} catch (Exception e) {
-        				e.printStackTrace();
-        			}
-        		}	
-        	}
-        };
-        t.start();
-			
+	        checkSetup();
+	        
+	        mHandler = new Handler();
+	        pdWait = new Dialog(this);
+	        pdWait.setContentView(R.layout.themeunzippreview);
+	        pdWait.setTitle("Connecting...");
+	        pdWait.setCancelable(true);
+	        pdWait.setOnCancelListener(new OnCancelListener() {
+				
+				@Override
+				public void onCancel(DialogInterface dialog) {
+					OMCThemeUnzipActivity.this.finish();
+					return;
+				}
+			});
+	        pdWait.show();
+	
+	        Thread t = new Thread() {
+	        	public void run() {
+	        		uri = getIntent().getData();
+	        		if (uri == null) {
+	        			Toast.makeText(getApplicationContext(), "Nothing to extract!", Toast.LENGTH_LONG).show();
+	        			finish();
+	        			return;
+	        		} else { 
+	        			try {
+	        				pdMessage = "Opening connection";
+	        				mHandler.post(mUpdateStatus);
+	        				String sScheme = "http:";
+	        				if (uri.getScheme().equals("omcs")) sScheme = "https:";
+	        				else if (uri.getScheme().equals("omc")) sScheme = "http:";
+	        				if (OMC.DEBUG) Log.i("OMCUnzip","Scheme is " + sScheme);
+	        				downloadURL = new URL(sScheme + uri.getSchemeSpecificPart());
+	        				if (OMC.DEBUG) Log.i("OMCUnzip","The rest is " + uri.getSchemeSpecificPart());
+	        				URLConnection conn = downloadURL.openConnection();
+	        				ZipInputStream zis = new ZipInputStream(conn.getInputStream());
+	        				BufferedInputStream bis = new BufferedInputStream(zis,8192);
+	        				ZipEntry ze;
+	
+	        				pdMessage = "Streaming data";
+	        				mHandler.post(mUpdateStatus);
+	        				while ((ze = zis.getNextEntry())!= null) {
+	            				if (OMC.DEBUG) Log.i("OMCUnzip","Looping - now " + ze.getName());
+	        					outputFile = new File(sdRoot.getAbsolutePath()+"/"+ze.getName());
+	        					if (ze.isDirectory()) {
+	                				pdMessage = "Importing: " + ze.getName();
+	                				mHandler.post(mUpdateTitle);
+	        						if (outputFile.exists()) {
+	        							pdMessage = "Theme already exists - overwriting";
+	                    				mHandler.post(mUpdateStatus);
+	        						} else if (outputFile.mkdir()==false) {
+	    								//ERROR CREATING DIRECTORY - crap out
+	        							pdMessage = "Theme already exists - overwriting";
+	                    				mHandler.post(mUpdateStatus);
+	    								break;
+	    							} else {
+	                    				pdMessage = "Theme folder '" + ze.getName() + "'created.";
+	                    				mHandler.post(mUpdateStatus);
+	    							}
+	        					} else {
+	        						FileOutputStream fos = new FileOutputStream(outputFile);
+	                				pdMessage = "Storing file " + ze.getName();
+	                				mHandler.post(mUpdateStatus);
+	        						try {
+	        							//Absolute luxury 1980 style!  Using an 8k buffer.
+	        						    byte[] buffer = new byte[8192];
+	        						    int iBytesRead=0;
+	        						    while ((iBytesRead=bis.read(buffer))!= -1){
+	        						    	fos.write(buffer, 0, iBytesRead);
+	        						    }
+	        						    fos.flush();
+	        						    fos.close();
+	        						} catch (Exception e) {
+	        							e.printStackTrace();
+	        						}
+	        						if (outputFile.getName().equals("000preview.jpg")) {
+	        							pdPreview = outputFile.getAbsolutePath();
+	        							mHandler.post(mUpdateBitmap);
+	        						}
+	        					}
+	        					zis.closeEntry();
+	        					
+	        				}
+	        				zis.close();
+							pdMessage = "Import complete!";
+	        				mHandler.post(mResult);
+	        				
+	        			} catch (Exception e) {
+	        				e.printStackTrace();
+	        			}
+	        		}	
+	        	}
+	        };
+	        t.start();
+        }			
     }
 
     public void checkSetup() {
