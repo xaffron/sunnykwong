@@ -44,7 +44,7 @@ import android.graphics.Matrix;
  */
 public class OMC extends Application {
 	static final boolean FREEEDITION = false;
-	static final String STARTERPACKURL = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFOGRiZWEwZDUtMmU5OC00OTIxLWJiNmUtMzFhMmUxNmIwNGE2&export=download&authkey=CJqajrYE&hl=en";
+	static final String STARTERPACKURL = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFY2MyZDk3YjItYTJiNS00YjMzLTg0NGUtZTNlZThmY2Y2NjFi&export=download&authkey=CN2qgogO&hl=en";
 	static boolean SHOWHELP = false;
 	static final String THISVERSION = "1.1";
 	static long LASTUPDATEMILLIS;
