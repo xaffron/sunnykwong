@@ -163,11 +163,12 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
         OMCThemePickerActivity.SDROOT = Environment.getExternalStorageDirectory();
         OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath()+"/OMC");
-        if (!OMCThemePickerActivity.THEMEROOT.exists()) {
-        	Toast.makeText(this, "OMC folder not found in your SD Card.\nCreating folder and downloading starter pack...", Toast.LENGTH_LONG).show();
+        if (!OMCThemePickerActivity.THEMEROOT.exists() || !OMC.STARTERPACKDLED) {
+        	Toast.makeText(this, "Downloading starter clock pack...", Toast.LENGTH_LONG).show();
         	OMCThemePickerActivity.THEMEROOT.mkdir();
 
-			OMCThemePickerActivity.this.startActivity(OMC.GETSTARTERPACKINTENT);
+			startActivity(OMC.GETSTARTERPACKINTENT);
+			
 			finish();
         }
         

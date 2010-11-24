@@ -43,7 +43,7 @@ import android.graphics.Matrix;
  * 
  */
 public class OMC extends Application {
-	static final boolean FREEEDITION = true;
+	static final boolean FREEEDITION = false;
 	static final String STARTERPACKURL = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFOGRiZWEwZDUtMmU5OC00OTIxLWJiNmUtMzFhMmUxNmIwNGE2&export=download&authkey=CJqajrYE&hl=en";
 	static boolean SHOWHELP = false;
 	static final String THISVERSION = "1.1";
@@ -69,6 +69,7 @@ public class OMC extends Application {
     static OMCTypedArray LAYERATTRIBS;
 	static String[] LAYERLIST, TALKBACKS; 
 	static Matrix TEMPMATRIX;
+	static boolean STARTERPACKDLED = false;
 
 	static final ComponentName WIDGET4x2CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget4x2");
 	static final ComponentName WIDGET4x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget4x1");
@@ -169,6 +170,7 @@ public class OMC extends Application {
 			OMC.PREFS.edit().clear().commit();
 		}
 		OMC.PREFS.edit().putString("version", OMC.THISVERSION).commit();
+		OMC.STARTERPACKDLED = OMC.PREFS.getBoolean("starterpack", false);
 		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
 		
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
@@ -194,37 +196,37 @@ public class OMC extends Application {
 		
 		this.widgetClicks();
 		
-		// Enable/Disable the various size widgets
-		if (!OMC.PREFS.getBoolean("bFourByTwo", true)) {
-			getPackageManager().setComponentEnabledSetting(	
-					OMC.WIDGET4x2CNAME,
-					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-					PackageManager.DONT_KILL_APP);
-		}
-		if (!OMC.PREFS.getBoolean("bFourByOne", true) || OMC.FREEEDITION) {
-    		getPackageManager().setComponentEnabledSetting(
-				OMC.WIDGET4x1CNAME,
-				PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+    	// Enable/Disable the various size widgets
+    	getApplicationContext().getPackageManager()
+		.setComponentEnabledSetting(
+				OMC.WIDGET4x2CNAME,
+				OMC.PREFS.getBoolean("bFourByTwo", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+						: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 				PackageManager.DONT_KILL_APP);
-		}
-		if (!OMC.PREFS.getBoolean("bThreeByOne", true) || OMC.FREEEDITION) {
-			getPackageManager().setComponentEnabledSetting(	
-					OMC.WIDGET3x1CNAME,
-					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-					PackageManager.DONT_KILL_APP);
-		}
-		if (!OMC.PREFS.getBoolean("bTwoByOne", true) || OMC.FREEEDITION) {
-			getPackageManager().setComponentEnabledSetting(	
-					OMC.WIDGET2x1CNAME,
-					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-					PackageManager.DONT_KILL_APP);
-		}		
-		if (!OMC.PREFS.getBoolean("bSkinner", true)) {
-			getPackageManager().setComponentEnabledSetting(	
-					new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.OMCSkinnerActivity"),
-					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-					PackageManager.DONT_KILL_APP);
-		}		
+    	getApplicationContext().getPackageManager()
+		.setComponentEnabledSetting(
+				OMC.WIDGET4x1CNAME,
+				OMC.PREFS.getBoolean("bFourByOne", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+						: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+				PackageManager.DONT_KILL_APP);
+    	getApplicationContext().getPackageManager()
+				.setComponentEnabledSetting(
+						OMC.WIDGET3x1CNAME,
+						OMC.PREFS.getBoolean("bThreeByOne", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+								: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+						PackageManager.DONT_KILL_APP);
+    	getApplicationContext().getPackageManager()
+		.setComponentEnabledSetting(
+				OMC.WIDGET2x1CNAME,
+				OMC.PREFS.getBoolean("bTwoByOne", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+						: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+				PackageManager.DONT_KILL_APP);
+    	getApplicationContext().getPackageManager()
+		.setComponentEnabledSetting(
+				new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.OMCSkinnerActivity"),
+				OMC.PREFS.getBoolean("bSkinner", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+						: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+				PackageManager.DONT_KILL_APP);
 	}
 
 	static void setServiceAlarm (long lTimeToRefresh) {

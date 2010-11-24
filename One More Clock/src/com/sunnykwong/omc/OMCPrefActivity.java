@@ -190,25 +190,25 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 	    	getApplicationContext().getPackageManager()
 			.setComponentEnabledSetting(
 					OMC.WIDGET4x1CNAME,
-					OMC.PREFS.getBoolean("bFourByOne", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+					OMC.PREFS.getBoolean("bFourByOne", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
 	    	getApplicationContext().getPackageManager()
 					.setComponentEnabledSetting(
 							OMC.WIDGET3x1CNAME,
-							OMC.PREFS.getBoolean("bThreeByOne", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+							OMC.PREFS.getBoolean("bThreeByOne", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 									: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 							PackageManager.DONT_KILL_APP);
 	    	getApplicationContext().getPackageManager()
 			.setComponentEnabledSetting(
 					OMC.WIDGET2x1CNAME,
-					OMC.PREFS.getBoolean("bTwoByOne", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+					OMC.PREFS.getBoolean("bTwoByOne", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
 	    	getApplicationContext().getPackageManager()
 			.setComponentEnabledSetting(
 					new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.OMCSkinnerActivity"),
-					OMC.PREFS.getBoolean("bSkinner", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+					OMC.PREFS.getBoolean("bSkinner", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
 

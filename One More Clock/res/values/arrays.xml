@@ -119,6 +119,7 @@
 
 <string-array name="LockscreenLook">
 	<item>text :LLClock</item>
+	<item>text :LLapm</item>
 	<item>text :LLDate</item>
 </string-array>
 
@@ -153,15 +154,32 @@
 	<item name="02 font_source">Clockopia.ttf</item>
 	<item name="03 font_size">180</item>
 	<item name="04 font_skew">0</item>
+	<item name="05 font_stretch">[%maxfit_1_[%ap24_420_420_480%]%]</item>
+	<item name="06 font_bold">false</item>
+	<item name="07 render_style">shadow</item>
+	<item name="08 fgcolor">#ffffffff</item>
+	<item name="09 bgcolor">#a0000000</item>
+	<item name="10 xcoord">[%ap24_210_210_240%]</item>
+	<item name="11 ycoord">192</item>
+	<item name="12 textalign">center</item>
+	<item name="13 words">%H:%M</item>
+</string-array>
+
+<string-array name="LLapm">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">fs</item>
+	<item name="02 font_source">/system/fonts/DroidSans.ttf</item>
+	<item name="03 font_size">36</item>
+	<item name="04 font_skew">0</item>
 	<item name="05 font_stretch">1</item>
 	<item name="06 font_bold">false</item>
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ffffffff</item>
 	<item name="09 bgcolor">#a0000000</item>
-	<item name="10 xcoord">240</item>
+	<item name="10 xcoord">480</item>
 	<item name="11 ycoord">192</item>
-	<item name="12 textalign">center</item>
-	<item name="13 words">%H:%M</item>
+	<item name="12 textalign">right</item>
+	<item name="13 words">[%flipformat_1_case_[%ap24_%P_%P_ %]%]</item>
 </string-array>
 
 <string-array name="LLDate">

@@ -44,6 +44,10 @@ public class OMCThemeUnzipActivity extends Activity {
 			((TextView)pdWait.findViewById(R.id.UnzipStatus)).invalidate();
 			Toast.makeText(getApplicationContext(), "Import Complete!", Toast.LENGTH_SHORT).show();
 			pdWait.dismiss();
+			if (uri.toString().equals(OMC.STARTERPACKURL)) {
+				OMC.STARTERPACKDLED = true;
+				OMC.PREFS.edit().putBoolean("starterpack", true).commit();
+			}
 			finish();
 		}
 	};
@@ -150,11 +154,11 @@ public class OMCThemeUnzipActivity extends Activity {
 	                				pdMessage = "Importing: " + ze.getName();
 	                				mHandler.post(mUpdateTitle);
 	        						if (outputFile.exists()) {
-	        							pdMessage = "Theme already exists - overwriting";
+	        							pdMessage = ze.getName() + " exists; overwriting";
 	                    				mHandler.post(mUpdateStatus);
 	        						} else if (outputFile.mkdir()==false) {
 	    								//ERROR CREATING DIRECTORY - crap out
-	        							pdMessage = "Theme already exists - overwriting";
+	        							pdMessage = ze.getName() + " exists; overwriting";
 	                    				mHandler.post(mUpdateStatus);
 	    								break;
 	    							} else {
