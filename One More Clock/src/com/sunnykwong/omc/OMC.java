@@ -104,6 +104,8 @@ public class OMC extends Application {
 
 	static Bitmap BUFFER;
 	static Canvas CANVAS;
+	static Bitmap rotBUFFER;
+	static Canvas rotCANVAS;
 	static Paint PT1;
 	static Paint PT2;
 	

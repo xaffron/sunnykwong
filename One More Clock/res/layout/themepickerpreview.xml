@@ -18,7 +18,7 @@
 	<TextView android:adjustViewBounds="true"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:text="&lt;Theme Credits&gt;" android:id="@+id/ThemeCredits"
-		android:textColor="#ffffffff" android:paddingTop="10dp"
+		android:textColor="#ffffffff" android:paddingTop="11dp"
 		android:maxWidth="280dp" android:minWidth="280dp" android:minHeight="150dp"
-		android:maxHeight="150dp" />
+		android:maxHeight="150dp" android:textSize="10dp"/>
 </LinearLayout>

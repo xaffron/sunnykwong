@@ -109,12 +109,6 @@ public class OMCWidgetDrawEngine {
 		OMC.PT1.setAntiAlias(true);
 		OMC.PT1.setColor(Color.BLACK);
 
-		// Prepare the transformation matrix.
-		
-		OMC.TEMPMATRIX.reset();
-		if (OMC.LAYERATTRIBS.getBoolean(3, true)) OMC.TEMPMATRIX.postScale(OMC.LAYERATTRIBS.getFloat(4, 1f), OMC.LAYERATTRIBS.getFloat(5, 1f));
-		OMC.TEMPMATRIX.postTranslate(OMC.LAYERATTRIBS.getFloat(6, 0f), OMC.LAYERATTRIBS.getFloat(7, 0f));
-
     	// theme-specific tweaks.
 		OMCWidgetDrawEngine.layerThemeTweaks(context, iLayerID, sTheme, aWI);
 		
@@ -125,6 +119,22 @@ public class OMCWidgetDrawEngine {
 		if (tempBitmap==null) tempBitmap = OMC.getBitmap(
 				OMC.LAYERATTRIBS.getString(1),
 				OMC.CACHEPATH + sTheme + OMC.LAYERATTRIBS.getString(2));
+
+		// Prepare the transformation matrix.
+		
+		OMC.TEMPMATRIX.reset();
+		OMC.TEMPMATRIX.postTranslate(-tempBitmap.getWidth()/2f, -tempBitmap.getHeight()/2f);
+		if (OMC.LAYERATTRIBS.mImportedArray.length > 8) {
+			if (OMC.LAYERATTRIBS.getBoolean(8, false)) {
+				OMC.TEMPMATRIX.postRotate(OMC.LAYERATTRIBS.getFloat(9, 0f));
+			}
+		}
+		if (OMC.LAYERATTRIBS.getBoolean(3, true)) OMC.TEMPMATRIX.postScale(OMC.LAYERATTRIBS.getFloat(4, 1f), OMC.LAYERATTRIBS.getFloat(5, 1f));
+		OMC.TEMPMATRIX.postTranslate(tempBitmap.getWidth()/2f, tempBitmap.getHeight()/2f);
+		OMC.TEMPMATRIX.postTranslate(OMC.LAYERATTRIBS.getFloat(6, 0f), OMC.LAYERATTRIBS.getFloat(7, 0f));
+
+
+		
 		if (tempBitmap==null) {
 			Toast.makeText(context, "Error loading theme bitmap " + OMC.LAYERATTRIBS.getString(2) + ".\nRestoring default look...", Toast.LENGTH_SHORT).show();
 			OMC.PREFS.edit()
@@ -189,9 +199,18 @@ public class OMCWidgetDrawEngine {
 		} else {
 			OMC.PT1.setTextScaleX(OMC.LAYERATTRIBS.getFloat(5, 1.f));
     	}
+		
 		OMC.PT1.setFakeBoldText(OMC.LAYERATTRIBS.getBoolean(6, false));
 		OMC.PT1.setColor(OMC.LAYERATTRIBS.getColor(8, 0));
 		
+		float fRot = 0f;
+		if (OMC.LAYERATTRIBS.mImportedArray.length > 14) {
+			if (OMC.LAYERATTRIBS.getBoolean(14, false)) {
+				fRot = OMC.LAYERATTRIBS.getFloat(15, 0f);
+			}
+		}
+		
+
 		if (OMC.LAYERATTRIBS.getString(12).equals("center")) {
 			OMC.PT1.setTextAlign(Paint.Align.CENTER);
 		} else if (OMC.LAYERATTRIBS.getString(12).equals("left")) {
@@ -228,7 +247,8 @@ public class OMCWidgetDrawEngine {
     			OMC.LAYERATTRIBS.getInt(10, 0),
     			OMC.LAYERATTRIBS.getInt(11, 0),
     			OMC.PT1,
-    			OMC.PT2);
+    			OMC.PT2,
+    			fRot);
 
 	}
 	
@@ -320,21 +340,17 @@ public class OMCWidgetDrawEngine {
 		return result;
 	}
 	
-	static void fancyDrawSpanned(final Canvas cvas, final String str, final int x, final int y, final Paint pt) {
+	static void fancyDrawSpanned(final Canvas cvas, final String str, final int x, final int y, final Paint pt, final float fRot) {
 		final SpannedString ss = new SpannedString(Html.fromHtml(str));
 		Paint ptTemp = new Paint(pt);
 		ptTemp.setTextAlign(Paint.Align.LEFT);
+		int bufferWidth = Math.max(OMCWidgetDrawEngine.getSpannedStringWidth(ss, pt),1);
+		int bufferHeight = Math.max(pt.getFontMetricsInt().bottom - pt.getFontMetricsInt().top,1);
 		int iCursor = 0;
-
-		if (pt.getTextAlign() == Paint.Align.LEFT) {
-			iCursor = x;
-		} else if (pt.getTextAlign() == Paint.Align.CENTER) {
-			iCursor = x - OMCWidgetDrawEngine.getSpannedStringWidth(ss, pt)/2;
-		} else if (pt.getTextAlign() == Paint.Align.RIGHT) {
-			iCursor = x - OMCWidgetDrawEngine.getSpannedStringWidth(ss, pt);
-		} else {
-			// Huh? do nothing
-		}
+		OMC.rotBUFFER = Bitmap.createBitmap(bufferWidth, bufferHeight, Bitmap.Config.ARGB_4444);
+		OMC.rotBUFFER.setDensity(DisplayMetrics.DENSITY_HIGH);
+		OMC.rotBUFFER.eraseColor(Color.TRANSPARENT);
+		OMC.rotCANVAS = new Canvas(OMC.rotBUFFER);
 
 		int iStart=0;
 		while (iStart < ss.length()){
@@ -359,25 +375,44 @@ public class OMCWidgetDrawEngine {
 				}
 
 			}
-			cvas.drawText(ss.subSequence(iStart, iEnd).toString(), iCursor, y, ptTemp);
+			OMC.rotCANVAS.drawText(ss.subSequence(iStart, iEnd).toString(), iCursor, 0-pt.getFontMetricsInt().top, ptTemp);
 			iCursor+=ptTemp.measureText(ss.toString().substring(iStart, iEnd));
 			iStart = iEnd;
 		}
+		OMC.TEMPMATRIX.reset();
+		OMC.TEMPMATRIX.postTranslate(-bufferWidth/2f, pt.getFontMetricsInt().top);
+		OMC.TEMPMATRIX.postRotate(fRot);
+		if (pt.getTextAlign() == Paint.Align.LEFT) {
+			// Do nothing
+			OMC.TEMPMATRIX.postTranslate(bufferWidth/2f+x, y);
+		} else if (pt.getTextAlign() == Paint.Align.CENTER) {
+			OMC.TEMPMATRIX.postTranslate(x, y);
+		} else if (pt.getTextAlign() == Paint.Align.RIGHT) {
+			OMC.TEMPMATRIX.postTranslate(-bufferWidth/2f+x, y);
+		} else {
+			// Huh? do nothing
+			OMC.TEMPMATRIX.postTranslate(bufferWidth/2f+x, y);
+		}
+		cvas.drawBitmap(OMC.rotBUFFER, OMC.TEMPMATRIX, pt);
+		OMC.rotCANVAS = null;
+		OMC.rotBUFFER.recycle();
+		
+
 		
 	}
 	
-	static void fancyDrawText(final String style, final Canvas cvas, final String text, final int x, final int y, final Paint pt1, final Paint pt2)  {
+	static void fancyDrawText(final String style, final Canvas cvas, final String text, final int x, final int y, final Paint pt1, final Paint pt2, final float fRot)  {
 		//Draw the SFX
 		if (style.equals("emboss")) {
 			
 			//SpannableStringBuilder ssb = new SpannableStringBuilder(Html.fromHtml(text));
-			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x-1, y-1, pt2);
-			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x+1, y+1, pt2);
+			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x-1, y-1, pt2, fRot);
+			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x+1, y+1, pt2, fRot);
 		} else if (style.equals("shadow")) {
-			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x+3, y+3, pt2);
+			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x+3, y+3, pt2, fRot);
 		}
 		//Either way, draw the proper text
-		OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1);
+		OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1, fRot);
 	}
 
 	// Needs to be synchronized now that we have four different widget types 
