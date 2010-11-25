@@ -3,6 +3,7 @@ package com.sunnykwong.omc;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Environment;
 import android.util.Log;
 
 public class OMCAlarmReceiver extends BroadcastReceiver {
@@ -12,11 +13,14 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// Set the alarm for next tick first, so we don't lose sync
 		OMC.setServiceAlarm(((System.currentTimeMillis()+ OMC.UPDATEFREQ)/OMC.UPDATEFREQ) * OMC.UPDATEFREQ);
 
-		// Prevent abusive updates - update no more than every 1 secs.
-		if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 1000) return;
-		OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
-		
 		if (OMC.DEBUG) Log.i("OMCAlarm","Rcvd " + intent.getAction());
+		
+		// Prevent abusive updates - update no more than every 1 secs.
+		if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 1000) {
+			if (OMC.DEBUG) Log.i("OMCAlarm","Abusive " + System.currentTimeMillis() + " " + OMC.LASTUPDATEMILLIS);
+			return;
+		}
+		OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
 		
 		
 		// If we come back from a low memory state, all sorts of screwy stuff might happen.
@@ -56,6 +60,8 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		
 		if (OMC.SCREENON) {
 			context.startService(OMC.SVCSTARTINTENT);
+		} else {
+			if (OMC.DEBUG) Log.i("OMCAlarm","I think scrn is off... no refresh");
 		}
 	}
 }

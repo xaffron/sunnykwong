@@ -115,7 +115,7 @@ public class OMC extends Application {
 	public void onCreate() {
 		super.onCreate();
 
-		OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
+		OMC.LASTUPDATEMILLIS = 0l;
 		
 		OMC.BUFFER= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
 		OMC.CANVAS = new Canvas(OMC.BUFFER);
