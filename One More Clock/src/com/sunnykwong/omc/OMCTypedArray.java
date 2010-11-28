@@ -11,7 +11,7 @@ public class OMCTypedArray  {
 
 	public OMCTypedArray(String[] strArray, int aWI) {
 		mImportedArray = OMCTypedArray.findTokens(strArray, aWI);
-	}
+	} 
 	public OMCTypedArray(ArrayList<String> AL, int aWI) {
 		String[] tempArray = new String[AL.size()];
     	AL.toArray(tempArray);

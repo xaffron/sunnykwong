@@ -129,12 +129,18 @@ public class OMCWidgetDrawEngine {
 				OMC.TEMPMATRIX.postRotate(OMC.LAYERATTRIBS.getFloat(9, 0f));
 			}
 		}
-		if (OMC.LAYERATTRIBS.getBoolean(3, true)) OMC.TEMPMATRIX.postScale(OMC.LAYERATTRIBS.getFloat(4, 1f), OMC.LAYERATTRIBS.getFloat(5, 1f));
-		OMC.TEMPMATRIX.postTranslate(tempBitmap.getWidth()/2f, tempBitmap.getHeight()/2f);
-		OMC.TEMPMATRIX.postTranslate(OMC.LAYERATTRIBS.getFloat(6, 0f), OMC.LAYERATTRIBS.getFloat(7, 0f));
-
-
-		
+		if (OMC.LAYERATTRIBS.getBoolean(3, true)) {
+			OMC.TEMPMATRIX.postScale(OMC.LAYERATTRIBS.getFloat(4, 1f), OMC.LAYERATTRIBS.getFloat(5, 1f));
+			OMC.TEMPMATRIX.postTranslate((tempBitmap.getWidth()*OMC.LAYERATTRIBS.getFloat(4, 1f))/2f
+				+ OMC.LAYERATTRIBS.getFloat(6, 0f), 
+				(tempBitmap.getHeight()*OMC.LAYERATTRIBS.getFloat(5, 1f))/2f
+				+ OMC.LAYERATTRIBS.getFloat(7, 0f));
+		} else {
+			OMC.TEMPMATRIX.postTranslate((tempBitmap.getWidth())/2f
+					+ OMC.LAYERATTRIBS.getFloat(6, 0f), 
+					(tempBitmap.getHeight())/2f
+					+ OMC.LAYERATTRIBS.getFloat(7, 0f));
+		}
 		if (tempBitmap==null) {
 			Toast.makeText(context, "Error loading theme bitmap " + OMC.LAYERATTRIBS.getString(2) + ".\nRestoring default look...", Toast.LENGTH_SHORT).show();
 			OMC.PREFS.edit()
@@ -255,7 +261,7 @@ public class OMCWidgetDrawEngine {
 	static synchronized Bitmap drawBitmapForWidget(final Context context, final int aWI) {
 		OMC.BUFFER.eraseColor(Color.TRANSPARENT);
 
-		String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME);
+		final String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME);
 		boolean bExternal = OMC.PREFS.getBoolean("external"+aWI,false);
 
 		if (bExternal) {
@@ -311,13 +317,15 @@ public class OMCWidgetDrawEngine {
 	static int getSpannedStringWidth(SpannedString ss, final Paint pt) {
 		int result = 0;
 		int iStart=0;
+		float fDefaultskew;
 		Paint ptTemp = new Paint(pt);
 		ptTemp.setTextAlign(Paint.Align.LEFT);
+		fDefaultskew = pt.getTextSkewX();
 		while (iStart < ss.length()){
 			int iEnd = ss.nextSpanTransition(iStart, ss.length(), StyleSpan.class);
 			if (iEnd == -1) return 0;
-			ptTemp.setFakeBoldText(false);
-			ptTemp.setTextSkewX(0f);
+			if (!pt.isFakeBoldText()) ptTemp.setFakeBoldText(false);
+			ptTemp.setTextSkewX(fDefaultskew);
 			for (Object o:ss.getSpans(iStart, iEnd, StyleSpan.class)) {
 				StyleSpan style = (StyleSpan)o;
 				switch (style.getStyle()) {
@@ -326,12 +334,14 @@ public class OMCWidgetDrawEngine {
 						break;
 					case Typeface.BOLD_ITALIC:
 						ptTemp.setFakeBoldText(true);
-						ptTemp.setTextSkewX(-0.25f);
+						ptTemp.setTextSkewX(fDefaultskew-0.25f);
 						break;
 					case Typeface.ITALIC:
-						ptTemp.setTextSkewX(-0.25f);
+						ptTemp.setTextSkewX(fDefaultskew-0.25f);
 						break;
 					default:
+						ptTemp.setFakeBoldText(false);
+						ptTemp.setTextSkewX(fDefaultskew);
 				}
 			}
 			result+=ptTemp.measureText(ss.toString().substring(iStart, iEnd));
@@ -347,7 +357,7 @@ public class OMCWidgetDrawEngine {
 		int bufferWidth = Math.max(OMCWidgetDrawEngine.getSpannedStringWidth(ss, pt),1);
 		int bufferHeight = Math.max(pt.getFontMetricsInt().bottom - pt.getFontMetricsInt().top,1);
 		int iCursor = 0;
-		OMC.rotBUFFER = Bitmap.createBitmap(bufferWidth, bufferHeight, Bitmap.Config.ARGB_4444);
+		OMC.rotBUFFER = Bitmap.createBitmap((int)(bufferWidth*1.2f), bufferHeight, Bitmap.Config.ARGB_4444);
 		OMC.rotBUFFER.setDensity(DisplayMetrics.DENSITY_HIGH);
 		OMC.rotBUFFER.eraseColor(Color.TRANSPARENT);
 		OMC.rotCANVAS = new Canvas(OMC.rotBUFFER);

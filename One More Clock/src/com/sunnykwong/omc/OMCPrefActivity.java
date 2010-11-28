@@ -40,6 +40,14 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     					.commit();
     		}
         	addPreferencesFromResource(R.xml.omcprefs);
+        	if (OMC.FREEEDITION) {
+        		findPreference("sVersion").setTitle("OMC Version " + OMC.THISVERSION + " Free");
+        		findPreference("sVersion").setSummary("Tap me to get the full version!");
+        	} else {
+        		findPreference("sVersion").setTitle("OMC Version " + OMC.THISVERSION);
+        		findPreference("sVersion").setSummary("Thanks for supporting OMC!");
+        		findPreference("sVersion").setSelectable(false);
+        	}
         	//findPreference("widgetTheme").setOnPreferenceChangeListener(this);
         	findPreference("clearImports").setOnPreferenceChangeListener(this);
     		findPreference("bFourByTwo").setEnabled(false);
@@ -90,8 +98,34 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     	if (preference == getPreferenceScreen().findPreference("widgetCredits")) {
     		startActivityForResult(OMC.CREDITSINTENT,0);
     	}
+    	if (preference == getPreferenceScreen().findPreference("sVersion")) {
+			this.startActivity(OMC.OMCMARKETINTENT);
+        	this.finish();
+    	}
     	if (preference == getPreferenceScreen().findPreference("downloadStarterPack")) {
-    		startActivity(OMC.GETSTARTERPACKINTENT);
+        	mAD = new AlertDialog.Builder(this)
+			.setCancelable(true)
+			.setTitle("Starter Clock Pack")
+			.setMessage("Any theme customizations you have made in your sdcard's OMC folder will be overwriten.  Are you sure?\n(If not sure, tap Yes)")
+			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+		        	Toast.makeText(OMCPrefActivity.this, "Downloading starter clock pack...", Toast.LENGTH_LONG).show();
+		        	OMCThemePickerActivity.THEMEROOT.mkdir();
+					startActivity(OMC.GETSTARTERPACKINTENT);
+					mAD.cancel();
+				}
+			})
+			.setNegativeButton("No", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					mAD.cancel();
+				}
+			})
+			.create();
+        	mAD.show();
     	}
     	if (preference == getPreferenceScreen().findPreference("loadThemeFile")) {
     		startActivityForResult(OMC.IMPORTTHEMEINTENT,0);

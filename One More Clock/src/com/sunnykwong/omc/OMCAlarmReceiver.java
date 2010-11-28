@@ -15,13 +15,6 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 
 		if (OMC.DEBUG) Log.i("OMCAlarm","Rcvd " + intent.getAction());
 		
-		// Prevent abusive updates - update no more than every 1 secs.
-		if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 1000) {
-			if (OMC.DEBUG) Log.i("OMCAlarm","Abusive " + System.currentTimeMillis() + " " + OMC.LASTUPDATEMILLIS);
-			return;
-		}
-		OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
-		
 		
 		// If we come back from a low memory state, all sorts of screwy stuff might happen.
 		// If the Intent itself is null, let's create one.
@@ -50,6 +43,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// Thanks to ralfoide's code at http://code.google.com/p/24clock/ for the idea
 		if (action.equals(Intent.ACTION_SCREEN_ON)) {
 			OMC.SCREENON=true;
+			OMC.LASTUPDATEMILLIS=0l;
 			if (OMC.DEBUG) Log.i("OMCAlarm","Scrn on - Refreshing");
 		}
 	
@@ -57,6 +51,13 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			OMC.SCREENON=false;
 			if (OMC.DEBUG) Log.i("OMCAlarm","Scrn off - not refreshing");
 		}
+		
+		// Prevent abusive updates - update no more than every 9 secs.
+		if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 9000) {
+			if (OMC.DEBUG) Log.i("OMCAlarm","Abusive; aborting update " + System.currentTimeMillis() + " " + OMC.LASTUPDATEMILLIS);
+			return;
+		}
+		OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
 		
 		if (OMC.SCREENON) {
 			context.startService(OMC.SVCSTARTINTENT);

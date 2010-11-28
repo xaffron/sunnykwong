@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Map.Entry;
+import java.util.Map;
+import java.util.Collections;
 import java.io.File;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -44,11 +46,11 @@ import android.graphics.Matrix;
  */
 public class OMC extends Application {
 	static final boolean FREEEDITION = false;
-	static final String STARTERPACKURL = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFY2MyZDk3YjItYTJiNS00YjMzLTg0NGUtZTNlZThmY2Y2NjFi&export=download&authkey=CN2qgogO&hl=en";
+	static final String STARTERPACKURL = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFYWVjNGQ5Y2QtZmE4Yy00OWM5LWJhNGYtZmQ4NjFjMmM5Yzc1&export=download&authkey=CO66i_8O&hl=en";
 	static boolean SHOWHELP = false;
-	static final String THISVERSION = "1.1";
+	static final String THISVERSION = "1.1.2";
 	static long LASTUPDATEMILLIS;
-	static int UPDATEFREQ = 15000;
+	static int UPDATEFREQ = 20000;
 	static final String DEFAULTTHEME = "LockscreenLook";
 	static final boolean DEBUG = true;
 	static final Random RND = new Random();
@@ -60,7 +62,7 @@ public class OMC extends Application {
     
     static HashMap<String, Typeface> TYPEFACEMAP;
     static HashMap<String, Bitmap> BMPMAP;
-    static HashMap<String, OMCImportedTheme> IMPORTEDTHEMEMAP;
+    static Map<String, OMCImportedTheme> IMPORTEDTHEMEMAP;
 	
     static OMCConfigReceiver cRC;
 	static OMCAlarmReceiver aRC;
@@ -164,15 +166,20 @@ public class OMC extends Application {
 		OMC.PREFS = getSharedPreferences("com.sunnykwong.omc_preferences", Context.MODE_PRIVATE);
 		// We are using Zehro's solution (listening for TIME_TICK instead of using AlarmManager + FG Notification) which
 		// should be quite a bit more graceful.
-		//		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
+		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
 		
 		// If we're from a legacy version, then we need to wipe all settings clean to avoid issues.
 		if (OMC.PREFS.getString("version", "1.0.x").startsWith("1.0")) {
 			Log.i("OMCApp","Upgrade from legacy version, wiping all settings.");
 			OMC.PREFS.edit().clear().commit();
 		}
+		if (OMC.PREFS.getString("version", "1.0.x").equals(OMC.THISVERSION)) {
+			OMC.STARTERPACKDLED = OMC.PREFS.getBoolean("starterpack", false);
+		} else {
+			OMC.PREFS.edit().putBoolean("starterpack", false).commit();
+			OMC.STARTERPACKDLED = false;
+		}
 		OMC.PREFS.edit().putString("version", OMC.THISVERSION).commit();
-		OMC.STARTERPACKDLED = OMC.PREFS.getBoolean("starterpack", false);
 		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
 		
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
@@ -181,7 +188,7 @@ public class OMC extends Application {
 		
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(6);
 		OMC.BMPMAP = new HashMap<String, Bitmap>(3);
-		OMC.IMPORTEDTHEMEMAP=new HashMap<String, OMCImportedTheme>(3);
+		OMC.IMPORTEDTHEMEMAP=Collections.synchronizedMap(new HashMap<String, OMCImportedTheme>(3));
 		
 		OMC.LAYERLIST = null;
 		OMC.LAYERATTRIBS = null;
@@ -324,7 +331,7 @@ public class OMC extends Application {
 		OMC.BMPMAP.clear();
 	}
 	
-	public static OMCImportedTheme getImportedTheme(Context context, String nm){
+	public synchronized static OMCImportedTheme getImportedTheme(final Context context, final String nm){
 		if (OMC.IMPORTEDTHEMEMAP.containsKey(nm)){ 
 			if (OMC.DEBUG) Log.i("OMCApp",nm + " retrieved from memory.");
 			return OMC.IMPORTEDTHEMEMAP.get(nm);

@@ -63,6 +63,12 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         
 		setResult(Activity.RESULT_CANCELED);
 
+		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+        	Toast.makeText(this, "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+			finish();
+        	return;
+        }
+
         setContentView(R.layout.themepickerlayout);
 
         topLevel = findViewById(R.id.PickerTopLevel);
@@ -154,7 +160,8 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
         topLevel.setEnabled(false);
 
-		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) && bExternalOnly) {
+		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+			System.out.println("madeithere");
         	Toast.makeText(this, "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
 			setResult(Activity.RESULT_OK);
 			finish();
@@ -163,13 +170,42 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
         OMCThemePickerActivity.SDROOT = Environment.getExternalStorageDirectory();
         OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath()+"/OMC");
-        if (!OMCThemePickerActivity.THEMEROOT.exists() || !OMC.STARTERPACKDLED) {
+        if (!OMCThemePickerActivity.THEMEROOT.exists()) {
         	Toast.makeText(this, "Downloading starter clock pack...", Toast.LENGTH_LONG).show();
         	OMCThemePickerActivity.THEMEROOT.mkdir();
 
 			startActivity(OMC.GETSTARTERPACKINTENT);
 			
 			finish();
+        } else if (!OMC.STARTERPACKDLED) {
+
+        	mAD = new AlertDialog.Builder(this)
+			.setCancelable(true)
+			.setTitle("Updated Starter Clock Pack")
+			.setMessage("Any theme customizations you have made in your sdcard's OMC folder will be overwriten.  Are you sure?\n(If not sure, tap Yes)")
+			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+		        	Toast.makeText(OMCThemePickerActivity.this, "Downloading starter clock pack...", Toast.LENGTH_LONG).show();
+		        	OMCThemePickerActivity.THEMEROOT.mkdir();
+					startActivity(OMC.GETSTARTERPACKINTENT);
+					mAD.cancel();
+					finish();
+				}
+			})
+			.setNegativeButton("No", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					OMC.STARTERPACKDLED = true;
+					OMC.PREFS.edit().putBoolean("starterpack", true).commit();
+					mAD.cancel();
+				}
+			})
+			.create();
+        	mAD.show();
+        	
         }
         
         if (OMCThemePickerActivity.THEMEARRAY == null) {

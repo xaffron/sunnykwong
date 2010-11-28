@@ -63,7 +63,7 @@ public class ClockWidget4x1 extends AppWidgetProvider {
 	@Override
 	public void onUpdate(Context context, AppWidgetManager aWM, int[] appWidgetIds) {
 		if (!OMCService.RUNNING) {
-			OMC.setServiceAlarm(System.currentTimeMillis() + 3000);
+			OMC.setServiceAlarm(System.currentTimeMillis() + 500);
 		}
 
 		final int N = appWidgetIds.length;

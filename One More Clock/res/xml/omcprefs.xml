@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
 	android:title="One More Clock - Preferences" android:key="rootPrefs" xmlns:android="http://schemas.android.com/apk/res/android">
-	<PreferenceCategory android:key="LAF" android:title="For this clock:">
+	<Preference android:title="1.0.0" android:selectable="false" android:enabled="true" android:key="sVersion"></Preference><PreferenceCategory android:key="LAF" android:title="For this clock:">
 	
 		
 		<Preference android:selectable="true" android:key="loadThemeFile" android:enabled="true" android:title="Widget Theme" android:summary="Change the way OMC looks"></Preference><CheckBoxPreference 
@@ -16,6 +16,10 @@
 
 </PreferenceCategory>
 	<PreferenceCategory android:key="Persistence" android:title="For all clocks:">
+                <CheckBoxPreference 
+                        android:key="widgetPersistence" 
+                        android:title="Keep in Memory (2.0+)" android:selectable="true" android:shouldDisableView="false" android:enabled="true" android:summary="If OMC freezes, check this box\n(NOTE: Puts up a persistent notification)">
+                </CheckBoxPreference>
 		
 		<com.hlidskialf.android.preference.SeekBarPreference android:key="iUpdateFreq"
         android:title="Clock Update Frequency"
@@ -39,6 +43,7 @@
 			android:key="widgetCredits" android:enabled="true">
 		</Preference>
 	</PreferenceCategory>
+
 
 
 
