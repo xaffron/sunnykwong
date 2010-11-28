@@ -45,14 +45,19 @@ import android.graphics.Matrix;
  * 
  */
 public class OMC extends Application {
+	
+	
+	static final String THISVERSION = "1.1.2";
 	static final boolean FREEEDITION = false;
 	static final String STARTERPACKURL = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFYWVjNGQ5Y2QtZmE4Yy00OWM5LWJhNGYtZmQ4NjFjMmM5Yzc1&export=download&authkey=CO66i_8O&hl=en";
 	static boolean SHOWHELP = false;
-	static final String THISVERSION = "1.1.2";
+	static final boolean DEBUG = true;
+
+	
+	static String PKGNAME;
 	static long LASTUPDATEMILLIS;
 	static int UPDATEFREQ = 20000;
 	static final String DEFAULTTHEME = "LockscreenLook";
-	static final boolean DEBUG = true;
 	static final Random RND = new Random();
 	static SharedPreferences PREFS;
 	static AlarmManager ALARMS;	// I only need one alarmmanager.
@@ -73,10 +78,6 @@ public class OMC extends Application {
 	static Matrix TEMPMATRIX;
 	static boolean STARTERPACKDLED = false;
 
-	static final ComponentName WIDGET4x2CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget4x2");
-	static final ComponentName WIDGET4x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget4x1");
-	static final ComponentName WIDGET3x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget3x1");
-	static final ComponentName WIDGET2x1CNAME = new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.ClockWidget2x1");
 	static final int WIDGETWIDTH=480;
 	static final int WIDGETHEIGHT=300;
 	static final Time TIME = new Time();
@@ -86,8 +87,12 @@ public class OMC extends Application {
 	static String[] OVERLAYURL;
 	static int[] OVERLAYRESOURCES;
 
-	
-	
+	static ComponentName WIDGET4x2CNAME;
+	static ComponentName WIDGET4x1CNAME;
+	static ComponentName WIDGET3x1CNAME;
+	static ComponentName WIDGET2x1CNAME;
+	static ComponentName SKINNERCNAME;
+
 	static final float[] FLARERADII = new float[] {32.f,20.f,21.6f,40.2f,18.4f,19.1f,10.8f,25.f,28.f};
 	static final int[] FLARECOLORS = new int[] {855046894,1140258554,938340342,1005583601,855439588,
 		669384692,905573859,1105458423,921566437};
@@ -117,6 +122,18 @@ public class OMC extends Application {
 	public void onCreate() {
 		super.onCreate();
 
+		if (OMC.FREEEDITION) {
+			OMC.PKGNAME = "com.sunnykwong.freeomc";
+		} else {
+			OMC.PKGNAME = "com.sunnykwong.omc";
+		}
+		OMC.WIDGET4x2CNAME = new ComponentName(OMC.PKGNAME,"com.sunnykwong.omc.ClockWidget4x2");
+		OMC.WIDGET4x1CNAME = new ComponentName(OMC.PKGNAME,"com.sunnykwong.omc.ClockWidget4x1");
+		OMC.WIDGET3x1CNAME = new ComponentName(OMC.PKGNAME,"com.sunnykwong.omc.ClockWidget3x1");
+		OMC.WIDGET2x1CNAME = new ComponentName(OMC.PKGNAME,"com.sunnykwong.omc.ClockWidget2x1");
+		OMC.SKINNERCNAME = new ComponentName(OMC.PKGNAME,"com.sunnykwong.omc.OMCSkinnerActivity");
+
+		
 		OMC.LASTUPDATEMILLIS = 0l;
 		
 		OMC.BUFFER= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
@@ -199,8 +216,6 @@ public class OMC extends Application {
 		OMC.OVERLAYURL = null;
 		OMC.OVERLAYRESOURCES = new int[] {R.id.N,R.id.NE,R.id.E,R.id.SE,R.id.S,R.id.SW,R.id.W,R.id.NW,R.id.C};
 
-		
-
 		OMC.WORDNUMBERS = this.getResources().getStringArray(R.array.WordNumbers);
 		
 		this.widgetClicks();
@@ -232,7 +247,7 @@ public class OMC extends Application {
 				PackageManager.DONT_KILL_APP);
     	getApplicationContext().getPackageManager()
 		.setComponentEnabledSetting(
-				new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.OMCSkinnerActivity"),
+				OMC.SKINNERCNAME,
 				OMC.PREFS.getBoolean("bSkinner", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 						: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 				PackageManager.DONT_KILL_APP);
@@ -307,7 +322,7 @@ public class OMC extends Application {
 				}
 				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(src));
 			} else
-				OMC.BMPMAP.put(src, BitmapFactory.decodeResource(OMC.RES, OMC.RES.getIdentifier(src, "drawable", "com.sunnykwong.omc")));
+				OMC.BMPMAP.put(src, BitmapFactory.decodeResource(OMC.RES, OMC.RES.getIdentifier(src, "drawable", OMC.PKGNAME)));
 		}
 		return OMC.BMPMAP.get(src);
 	}
@@ -413,7 +428,7 @@ public class OMC extends Application {
 				// Can't find in external stuff... see if it's a seeded array.
 				if (OMC.DEBUG) Log.i ("OMCApp","Can't find array " + sKey + " in " + sTheme);
 				try {
-					return OMC.RES.getStringArray(OMC.RES.getIdentifier(sKey, "array", "com.sunnykwong.omc"));
+					return OMC.RES.getStringArray(OMC.RES.getIdentifier(sKey, "array", OMC.PKGNAME));
 				} catch (Exception ee) {
 					if (OMC.DEBUG) Log.i ("OMCApp","Can't find array " + sKey + " in resources!");
 					ee.printStackTrace();
@@ -423,7 +438,7 @@ public class OMC extends Application {
 			}
 		} else {
 			try {
-				return OMC.RES.getStringArray(OMC.RES.getIdentifier(sKey, "array", "com.sunnykwong.omc"));
+				return OMC.RES.getStringArray(OMC.RES.getIdentifier(sKey, "array", OMC.PKGNAME));
 			} catch (Exception e) {
 				if (OMC.DEBUG) Log.i ("OMCApp","Can't find array " + sKey + " in resources!");
 				e.printStackTrace();

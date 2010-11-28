@@ -241,7 +241,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 					PackageManager.DONT_KILL_APP);
 	    	getApplicationContext().getPackageManager()
 			.setComponentEnabledSetting(
-					new ComponentName("com.sunnykwong.omc","com.sunnykwong.omc.OMCSkinnerActivity"),
+					OMC.SKINNERCNAME,
 					OMC.PREFS.getBoolean("bSkinner", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);

@@ -278,7 +278,7 @@ public class OMCWidgetDrawEngine {
   			OMC.LAYERLIST = tempAL.toArray(new String[tempAL.size()]);
 		} else {
 			//		Set LAF based on prefs
-			OMC.LAYERLIST = context.getResources().getStringArray(context.getResources().getIdentifier(sTheme, "array", "com.sunnykwong.omc"));
+			OMC.LAYERLIST = context.getResources().getStringArray(context.getResources().getIdentifier(sTheme, "array", OMC.PKGNAME));
 		}
 		for (String layer:OMC.LAYERLIST) {
 			// Clear the text buffer first.
@@ -292,7 +292,7 @@ public class OMCWidgetDrawEngine {
 				OMC.LAYERATTRIBS = new OMCTypedArray(OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(layer.substring(6)),aWI);
 			} else {
 				//		Set LAF based on prefs
-				iLayerID = context.getResources().getIdentifier(layer.substring(6), "array", "com.sunnykwong.omc");
+				iLayerID = context.getResources().getIdentifier(layer.substring(6), "array", OMC.PKGNAME);
 				OMC.LAYERATTRIBS = new OMCTypedArray(context.getResources().getStringArray(iLayerID), aWI);
 			}
 
@@ -467,7 +467,7 @@ public class OMCWidgetDrawEngine {
 					OMC.STRETCHINFO = new String[4]; 
 					OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sStretch).toArray(OMC.STRETCHINFO);
 				} else {
-					int iLayerID = context.getResources().getIdentifier(sStretch, "array", "com.sunnykwong.omc");
+					int iLayerID = context.getResources().getIdentifier(sStretch, "array", OMC.PKGNAME);
 					OMC.STRETCHINFO = context.getResources().getStringArray(iLayerID);
 				}
 			} catch (android.content.res.Resources.NotFoundException e) {
@@ -485,7 +485,7 @@ public class OMCWidgetDrawEngine {
 				ArrayList<String> alTemp = OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sTheme+"_Links");
 				OMC.OVERLAYURL = (alTemp.toArray(new String[alTemp.size()]));
 			} else {
-				int iLayerID = context.getResources().getIdentifier(sTheme+"_Links", "array", "com.sunnykwong.omc");
+				int iLayerID = context.getResources().getIdentifier(sTheme+"_Links", "array", OMC.PKGNAME);
 				OMC.OVERLAYURL = context.getResources().getStringArray(iLayerID);
 			}
 		} catch (android.content.res.Resources.NotFoundException e) {

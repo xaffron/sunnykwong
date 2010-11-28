@@ -150,9 +150,9 @@ public class OMCSkinnerActivity extends Activity {
 				OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sTheme + "_4x1SqueezeInfo").toArray(FourByOneStretch);
 				OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sTheme + "_3x1SqueezeInfo").toArray(ThreeByOneStretch);
 			} else {
-				int iLayerID = OMC.RES.getIdentifier(sTheme + "_4x1SqueezeInfo", "array", "com.sunnykwong.omc");
+				int iLayerID = OMC.RES.getIdentifier(sTheme + "_4x1SqueezeInfo", "array", OMC.PKGNAME);
 				FourByOneStretch = OMC.RES.getStringArray(iLayerID);
-				iLayerID = OMC.RES.getIdentifier(sTheme + "_3x1SqueezeInfo", "array", "com.sunnykwong.omc");
+				iLayerID = OMC.RES.getIdentifier(sTheme + "_3x1SqueezeInfo", "array", OMC.PKGNAME);
 				ThreeByOneStretch = OMC.RES.getStringArray(iLayerID);
 			}
 		} catch (android.content.res.Resources.NotFoundException e) {
