@@ -55,6 +55,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         		findPreference("bFourByOne").setEnabled(false); 
         		findPreference("bThreeByOne").setEnabled(false);
         		findPreference("bTwoByOne").setEnabled(false);
+        		findPreference("sVersion").setEnabled(true);
     		}
         } else {
             // If they gave us an intent without the widget id, just bail.
@@ -95,6 +96,24 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
+    	if (preference == getPreferenceScreen().findPreference("widgetPrefs") && OMC.FREEEDITION) {
+        	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
+			.setCancelable(true)
+			.setTitle("Why are the widgets so big?")
+			.setMessage("Actually, OMC offers widget sizes of 4x2, 4x1, 3x1 and 2x1.\nPlease consider upgrading to the full edition of OMC to get these sizes!\nAlternatively, if you use an alternative launcher such as ADW or Launcher Pro, you should be able to approximate this ability by dynamically resizing the 4x2 widget.")
+			.setPositiveButton("Take me to the paid version!", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						OMCPrefActivity.mAD.dismiss();
+						OMCPrefActivity.this.startActivity(OMC.OMCMARKETINTENT);
+						OMCPrefActivity.this.finish();
+						
+					}
+				}).create();
+        	OMCPrefActivity.mAD.show();
+    	}
     	if (preference == getPreferenceScreen().findPreference("widgetCredits")) {
     		startActivityForResult(OMC.CREDITSINTENT,0);
     	}
@@ -103,7 +122,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	this.finish();
     	}
     	if (preference == getPreferenceScreen().findPreference("downloadStarterPack")) {
-        	mAD = new AlertDialog.Builder(this)
+        	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
 			.setCancelable(true)
 			.setTitle("Starter Clock Pack")
 			.setMessage("Any theme customizations you have made in your sdcard's OMC folder will be overwriten.  Are you sure?\n(If not sure, tap Yes)")
