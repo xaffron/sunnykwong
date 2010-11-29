@@ -37,6 +37,8 @@ public class OMCThemeUnzipActivity extends Activity {
 	public File sdRoot,outputFile;
 	public AlertDialog mAD;
 	public boolean NOGO;
+	public ProgressBar pg;
+	static public boolean COMPLETE;
 	
 	public URL downloadURL;
 	
@@ -44,12 +46,16 @@ public class OMCThemeUnzipActivity extends Activity {
 		public void run() {
 			((TextView)pdWait.findViewById(R.id.UnzipStatus)).setText(pdMessage);
 			((TextView)pdWait.findViewById(R.id.UnzipStatus)).invalidate();
-			Toast.makeText(getApplicationContext(), "Import Complete!", Toast.LENGTH_SHORT).show();
-			pdWait.dismiss();
-			if (uri.toString().equals(OMC.STARTERPACKURL)) {
-				OMC.STARTERPACKDLED = true;
-				OMC.PREFS.edit().putBoolean("starterpack", true).commit();
+			if (COMPLETE) {
+				Toast.makeText(getApplicationContext(), "Import Complete!", Toast.LENGTH_SHORT).show();
+				if (uri.toString().equals(OMC.STARTERPACKURL)) {
+					OMC.STARTERPACKDLED = true;
+					OMC.PREFS.edit().putBoolean("starterpack", true).commit();
+				}
+			} else {
+				Toast.makeText(getApplicationContext(), "Import Aborted!", Toast.LENGTH_LONG).show();
 			}
+			pdWait.dismiss();
 			finish();
 		}
 	};
@@ -83,6 +89,8 @@ public class OMCThemeUnzipActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         NOGO = OMC.FREEEDITION;
+        COMPLETE = false;
+        pdMessage = "";
         
         uri = getIntent().getData();
         if (NOGO && uri.toString().equals(OMC.STARTERPACKURL)) {
@@ -113,7 +121,7 @@ public class OMCThemeUnzipActivity extends Activity {
 	        mHandler = new Handler();
 	        pdWait = new Dialog(this);
 	        pdWait.setContentView(R.layout.themeunzippreview);
-	        ProgressBar pg = (ProgressBar) pdWait.findViewById(R.id.UnzipProgress);
+	        pg = (ProgressBar) pdWait.findViewById(R.id.UnzipProgress);
 	        pg.setVisibility(ProgressBar.VISIBLE);
 	        
 	        pdWait.setTitle("Connecting...");
@@ -184,6 +192,16 @@ public class OMCThemeUnzipActivity extends Activity {
 	        						    }
 	        						    fos.flush();
 	        						    fos.close();
+	        						} catch (java.io.IOException e) {
+	        	        				pdMessage = "Download Interrupted!";
+	                    				mHandler.post(mUpdateTitle);
+	        	        				try {Thread.sleep(500);}
+	        	        				catch (Exception ee) {ee.printStackTrace();}
+	        	        				pdMessage = "Is your phone in a poor reception area?\nPlease try again later.";
+	        	        				mHandler.post(mUpdateStatus);
+	        	        				try {Thread.sleep(3000);}
+	        	        				catch (Exception ee) {ee.printStackTrace();}
+	        	        				mHandler.post(mResult);
 	        						} catch (Exception e) {
 	        							e.printStackTrace();
 	        						}
@@ -197,8 +215,32 @@ public class OMCThemeUnzipActivity extends Activity {
 	        				}
 	        				zis.close();
 							pdMessage = "Import complete!";
+            				mHandler.post(mUpdateTitle);
+	        				try {Thread.sleep(3000);}
+	        				catch (Exception ee) {ee.printStackTrace();}
+							COMPLETE = true;
 	        				mHandler.post(mResult);
 	        				
+	        			} catch (java.net.SocketException e) {
+	        				pdMessage = "Connection timed out!";
+            				mHandler.post(mUpdateTitle);
+	        				try {Thread.sleep(500);}
+	        				catch (Exception ee) {ee.printStackTrace();}
+	        				pdMessage = "Is your phone in a poor reception area?\nPlease try again later.";
+	        				mHandler.post(mUpdateStatus);
+	        				try {Thread.sleep(3000);}
+	        				catch (Exception ee) {ee.printStackTrace();}
+	        				mHandler.post(mResult);
+	        			} catch (java.net.UnknownHostException e) {
+	        				pdMessage = "Server not found!";
+            				mHandler.post(mUpdateTitle);
+	        				try {Thread.sleep(500);}
+	        				catch (Exception ee) {ee.printStackTrace();}
+	        				pdMessage = "Is your phone in a poor reception area?\nPlease try again later.";
+	        				mHandler.post(mUpdateStatus);
+	        				try {Thread.sleep(3000);}
+	        				catch (Exception ee) {ee.printStackTrace();}
+	        				mHandler.post(mResult);
 	        			} catch (Exception e) {
 	        				e.printStackTrace();
 	        			}

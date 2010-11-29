@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
 	android:title="One More Clock - Preferences" android:key="rootPrefs" xmlns:android="http://schemas.android.com/apk/res/android">
-	<Preference android:title="1.0.0" android:selectable="false" android:enabled="true" android:key="sVersion"></Preference><PreferenceCategory android:key="LAF" android:title="For this clock:">
+	<PreferenceCategory android:key="LAF" android:title="For this clock:">
 	
 		
 		<Preference android:selectable="true" android:key="loadThemeFile" android:enabled="true" android:title="Widget Theme" android:summary="Change the way OMC looks"></Preference><CheckBoxPreference 
@@ -36,7 +36,7 @@
 </PreferenceCategory>
 	<PreferenceCategory 
 		android:title="Credits" 
-		android:key="Credits">
+		android:key="Credits"><Preference android:title="1.0.0" android:selectable="false" android:enabled="true" android:key="sVersion"></Preference>
 		<Preference 
 			android:selectable="true" 
 			android:title="View Credits" 

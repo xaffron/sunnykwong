@@ -14,6 +14,8 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.util.Log;
 import android.widget.Toast;
 
+
+
 public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceChangeListener{ 
     /** Called when the activity is first created. */
     static int appWidgetID;
@@ -43,6 +45,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	if (OMC.FREEEDITION) {
         		findPreference("sVersion").setTitle("OMC Version " + OMC.THISVERSION + " Free");
         		findPreference("sVersion").setSummary("Tap me to get the full version!");
+        		findPreference("sVersion").setSelectable(true);
         	} else {
         		findPreference("sVersion").setTitle("OMC Version " + OMC.THISVERSION);
         		findPreference("sVersion").setSummary("Thanks for supporting OMC!");
