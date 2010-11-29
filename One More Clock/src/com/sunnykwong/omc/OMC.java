@@ -226,33 +226,37 @@ public class OMC extends Application {
 		OMC.WORDNUMBERS = this.getResources().getStringArray(R.array.WordNumbers);
 		
 		this.widgetClicks();
-		
+		OMC.toggleWidgets(this);
+	}
+	
+	static public void toggleWidgets(Context context) {
+			
     	// Enable/Disable the various size widgets
-    	getApplicationContext().getPackageManager()
+    	context.getPackageManager()
 		.setComponentEnabledSetting(
 				OMC.WIDGET4x2CNAME,
 				OMC.PREFS.getBoolean("bFourByTwo", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 						: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 				PackageManager.DONT_KILL_APP);
-    	getApplicationContext().getPackageManager()
+    	context.getPackageManager()
 		.setComponentEnabledSetting(
 				OMC.WIDGET4x1CNAME,
 				OMC.PREFS.getBoolean("bFourByOne", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 						: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 				PackageManager.DONT_KILL_APP);
-    	getApplicationContext().getPackageManager()
+    	context.getPackageManager()
 				.setComponentEnabledSetting(
 						OMC.WIDGET3x1CNAME,
 						OMC.PREFS.getBoolean("bThreeByOne", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 								: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 						PackageManager.DONT_KILL_APP);
-    	getApplicationContext().getPackageManager()
+    	context.getPackageManager()
 		.setComponentEnabledSetting(
 				OMC.WIDGET2x1CNAME,
 				OMC.PREFS.getBoolean("bTwoByOne", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 						: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 				PackageManager.DONT_KILL_APP);
-    	getApplicationContext().getPackageManager()
+    	context.getPackageManager()
 		.setComponentEnabledSetting(
 				OMC.SKINNERCNAME,
 				OMC.PREFS.getBoolean("bSkinner", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
