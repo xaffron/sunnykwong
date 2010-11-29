@@ -112,7 +112,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 		        	Toast.makeText(OMCPrefActivity.this, "Downloading starter clock pack...", Toast.LENGTH_LONG).show();
-		        	OMCThemePickerActivity.THEMEROOT.mkdir();
+//		        	OMCThemePickerActivity.THEMEROOT.mkdir();
 					startActivity(OMC.GETSTARTERPACKINTENT);
 					mAD.cancel();
 				}

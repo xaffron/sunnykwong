@@ -11,6 +11,8 @@ import java.util.zip.ZipInputStream;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.AlertDialog;
+import android.widget.ProgressBar;
+import android.view.ViewGroup.LayoutParams;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.graphics.BitmapFactory;
@@ -111,6 +113,9 @@ public class OMCThemeUnzipActivity extends Activity {
 	        mHandler = new Handler();
 	        pdWait = new Dialog(this);
 	        pdWait.setContentView(R.layout.themeunzippreview);
+	        ProgressBar pg = (ProgressBar) pdWait.findViewById(R.id.UnzipProgress);
+	        pg.setVisibility(ProgressBar.VISIBLE);
+	        
 	        pdWait.setTitle("Connecting...");
 	        pdWait.setCancelable(true);
 	        pdWait.setOnCancelListener(new OnCancelListener() {
@@ -145,7 +150,7 @@ public class OMCThemeUnzipActivity extends Activity {
 	        				BufferedInputStream bis = new BufferedInputStream(zis,8192);
 	        				ZipEntry ze;
 	
-	        				pdMessage = "Streaming data";
+	        				pdMessage = "Streaming " + conn.getContentLength() + " bytes.";
 	        				mHandler.post(mUpdateStatus);
 	        				while ((ze = zis.getNextEntry())!= null) {
 	            				if (OMC.DEBUG) Log.i("OMCUnzip","Looping - now " + ze.getName());
@@ -168,6 +173,7 @@ public class OMCThemeUnzipActivity extends Activity {
 	        					} else {
 	        						FileOutputStream fos = new FileOutputStream(outputFile);
 	                				pdMessage = "Storing file " + ze.getName();
+
 	                				mHandler.post(mUpdateStatus);
 	        						try {
 	        							//Absolute luxury 1980 style!  Using an 8k buffer.
