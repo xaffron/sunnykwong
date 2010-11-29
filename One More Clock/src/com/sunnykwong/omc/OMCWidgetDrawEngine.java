@@ -436,9 +436,9 @@ public class OMCWidgetDrawEngine {
 		final int N = aWM.getAppWidgetIds(cName).length;
 
 		for (int i=0; i<N; i++) {
-			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i],fScaleX, fScaleY, cName, iCutTop, iCutBottom);
+			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i],
+					fScaleX, fScaleY, cName, iCutTop, iCutBottom);
 		}
-		System.gc();
 	}
 	
 	static synchronized void updateAppWidget(final Context context,
@@ -541,7 +541,7 @@ public class OMCWidgetDrawEngine {
             	}
             }
         } else {
-        	if (OMC.DEBUG) Log.i("OMCWidget","INTENT " + OMC.PREFS.getString("URI"+appWidgetId, "")) ;
+
         	try {
 	        	Intent intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
 	        	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);

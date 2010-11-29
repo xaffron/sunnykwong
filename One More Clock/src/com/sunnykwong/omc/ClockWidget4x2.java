@@ -40,6 +40,7 @@ public class ClockWidget4x2 extends AppWidgetProvider {
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
+
 		String action = intent.getAction();
 		if (AppWidgetManager.ACTION_APPWIDGET_DELETED.equals(action)) {
 			Bundle extras = intent.getExtras();

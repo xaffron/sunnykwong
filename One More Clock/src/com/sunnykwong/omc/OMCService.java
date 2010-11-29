@@ -59,7 +59,8 @@ public class OMCService extends Service {
 
     	//	Tell the widgets to refresh themselves.
 		OMCService.RUNNING=true;
-		sendBroadcast(OMC.WIDGETREFRESHINTENT);
+		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
+//		sendBroadcast(OMC.WIDGETREFRESHINTENT);
 		
 		handleCommand(intent);
 
@@ -74,7 +75,8 @@ public class OMCService extends Service {
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		//	Tell the widgets to refresh themselves.
 		OMCService.RUNNING=true;
-		sendBroadcast(OMC.WIDGETREFRESHINTENT);
+
+		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
 
 		handleCommand(intent);
 

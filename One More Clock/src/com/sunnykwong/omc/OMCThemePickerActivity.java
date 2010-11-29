@@ -161,7 +161,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         topLevel.setEnabled(false);
 
 		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-			System.out.println("madeithere");
+
         	Toast.makeText(this, "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
 			setResult(Activity.RESULT_OK);
 			finish();

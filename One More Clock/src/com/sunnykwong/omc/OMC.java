@@ -127,11 +127,11 @@ public class OMC extends Application {
 		} else {
 			OMC.PKGNAME = "com.sunnykwong.omc";
 		}
-		OMC.WIDGET4x2CNAME = new ComponentName(OMC.PKGNAME,"com.sunnykwong.omc.ClockWidget4x2");
-		OMC.WIDGET4x1CNAME = new ComponentName(OMC.PKGNAME,"com.sunnykwong.omc.ClockWidget4x1");
-		OMC.WIDGET3x1CNAME = new ComponentName(OMC.PKGNAME,"com.sunnykwong.omc.ClockWidget3x1");
-		OMC.WIDGET2x1CNAME = new ComponentName(OMC.PKGNAME,"com.sunnykwong.omc.ClockWidget2x1");
-		OMC.SKINNERCNAME = new ComponentName(OMC.PKGNAME,"com.sunnykwong.omc.OMCSkinnerActivity");
+		OMC.WIDGET4x2CNAME = new ComponentName(OMC.PKGNAME,OMC.PKGNAME+".ClockWidget4x2");
+		OMC.WIDGET4x1CNAME = new ComponentName(OMC.PKGNAME,OMC.PKGNAME+".ClockWidget4x1");
+		OMC.WIDGET3x1CNAME = new ComponentName(OMC.PKGNAME,OMC.PKGNAME+".ClockWidget3x1");
+		OMC.WIDGET2x1CNAME = new ComponentName(OMC.PKGNAME,OMC.PKGNAME+".ClockWidget2x1");
+		OMC.SKINNERCNAME = new ComponentName(OMC.PKGNAME,OMC.PKGNAME+".OMCSkinnerActivity");
 
 		
 		OMC.LASTUPDATEMILLIS = 0l;

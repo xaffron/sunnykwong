@@ -52,8 +52,8 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			if (OMC.DEBUG) Log.i("OMCAlarm","Scrn off - not refreshing");
 		}
 		
-		// Prevent abusive updates - update no more than every 9 secs.
-		if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 9000) {
+		// Prevent abusive updates - update no more than every 1 secs.
+		if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 1000) {
 			if (OMC.DEBUG) Log.i("OMCAlarm","Abusive; aborting update " + System.currentTimeMillis() + " " + OMC.LASTUPDATEMILLIS);
 			return;
 		}
