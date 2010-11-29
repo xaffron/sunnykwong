@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -47,7 +48,7 @@ import android.graphics.Matrix;
 public class OMC extends Application {
 	
 	
-	static final String THISVERSION = "1.1.2";
+	static String THISVERSION;
 	static final boolean FREEEDITION = false;
 	static final String STARTERPACKURL = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFYWVjNGQ5Y2QtZmE4Yy00OWM5LWJhNGYtZmQ4NjFjMmM5Yzc1&export=download&authkey=CO66i_8O&hl=en";
 	static boolean SHOWHELP = false;
@@ -122,6 +123,12 @@ public class OMC extends Application {
 	public void onCreate() {
 		super.onCreate();
 
+		try {
+			OMC.THISVERSION = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA).versionName;
+		} catch (NameNotFoundException e) {
+			OMC.THISVERSION = "1.0.0";
+		}
+		
 		if (OMC.FREEEDITION) {
 			OMC.PKGNAME = "com.sunnykwong.freeomc";
 		} else {
