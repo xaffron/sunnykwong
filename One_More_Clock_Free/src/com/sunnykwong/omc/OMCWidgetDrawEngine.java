@@ -34,6 +34,12 @@ public class OMCWidgetDrawEngine {
 		case R.array.MMDate:
 			OMC.TXTBUF = OMC.TIME.format("%A.");
 			break;
+		case R.array.MMNotify1:
+			OMC.TXTBUF = "CLICK ME";
+			break;
+		case R.array.MMNotify2:
+			OMC.TXTBUF = "NEW FREE EDITION!";
+			break;
 		default:
 			
 		}
@@ -245,8 +251,10 @@ public class OMCWidgetDrawEngine {
 		final RemoteViews rv = new RemoteViews(context.getPackageName(),R.layout.omcwidget);
         rv.setImageViewBitmap(R.id.omcIV, Bitmap.createBitmap(OMC.BUFFER, 0, iCutTop, OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT-iCutTop - iCutBottom, matrix, false));
 
-        Intent intent = new Intent(context, OMCAdActivity.class);
-        intent.setData(Uri.parse("omc:"+appWidgetId));
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:com.sunnykwong.freeomc"));
+        
+//        Intent intent = new Intent(context, OMCAdActivity.class);
+//        intent.setData(Uri.parse("omc:"+appWidgetId));
         PendingIntent pi = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         
         rv.setOnClickPendingIntent(R.id.omcIV, pi);

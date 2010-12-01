@@ -18,6 +18,8 @@
 	<item>text :MMSplatter</item>
 	<item>text :MMClock</item>
 	<item>text :MMDate</item>
+	<item>text :MMNotify1</item>
+	<item>text :MMNotify2</item>
 </string-array>
 
 <array name="MMSplatter">
@@ -66,6 +68,38 @@
 	<item name="10 xcoord">300</item>
 	<item name="11 ycoord">185</item>
 	<item name="12 textalign">right</item>
+</array>
+
+<array name="MMNotify1">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">fs</item>
+	<item name="02 font_source">/system/fonts/DroidSans.ttf</item>
+	<item name="03 font_size">50</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">0.6</item>
+	<item name="06 font_bold">true</item>
+	<item name="07 render_style">emboss</item>
+	<item name="08 fgcolor">#ff008800</item>
+	<item name="09 bgcolor">#a0ffffff</item>
+	<item name="10 xcoord">150</item>
+	<item name="11 ycoord">90</item>
+	<item name="12 textalign">center</item>
+</array>
+
+<array name="MMNotify2">
+	<item name="00 layer_enabled">true</item>
+	<item name="01 font_source_type">fs</item>
+	<item name="02 font_source">/system/fonts/DroidSans.ttf</item>
+	<item name="03 font_size">50</item>
+	<item name="04 font_skew">0.00</item>
+	<item name="05 font_stretch">0.6</item>
+	<item name="06 font_bold">true</item>
+	<item name="07 render_style">emboss</item>
+	<item name="08 fgcolor">#ff008800</item>
+	<item name="09 bgcolor">#a0ffffff</item>
+	<item name="10 xcoord">150</item>
+	<item name="11 ycoord">140</item>
+	<item name="12 textalign">center</item>
 </array>
 
 </resources>
