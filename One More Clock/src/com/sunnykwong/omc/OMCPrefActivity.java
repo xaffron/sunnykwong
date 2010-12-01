@@ -41,6 +41,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     					.putBoolean("bTwoByOne", false)
     					.commit();
     		}
+    		this.getPreferenceManager().setSharedPreferencesName("com.sunnykwong.omc_preferences");
         	addPreferencesFromResource(R.xml.omcprefs);
         	if (OMC.FREEEDITION) {
         		findPreference("sVersion").setTitle("OMC Version " + OMC.THISVERSION + " Free");

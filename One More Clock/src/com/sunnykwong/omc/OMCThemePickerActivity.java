@@ -68,6 +68,12 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 			finish();
         	return;
         }
+        OMCThemePickerActivity.SDROOT = Environment.getExternalStorageDirectory();
+		if (!OMCThemePickerActivity.SDROOT.canRead()) {
+        	Toast.makeText(this, "SD Card missing or corrupt.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+			finish();
+        	return;
+        }
 
         setContentView(R.layout.themepickerlayout);
 
@@ -168,7 +174,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	return;
         }
 
-        OMCThemePickerActivity.SDROOT = Environment.getExternalStorageDirectory();
         OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath()+"/OMC");
         if (!OMCThemePickerActivity.THEMEROOT.exists()) {
         	Toast.makeText(this, "Downloading starter clock pack...", Toast.LENGTH_LONG).show();

@@ -105,7 +105,6 @@ public class OMCThemeUnzipActivity extends Activity {
 									
 									@Override
 									public void onClick(DialogInterface dialog, int which) {
-										// TODO Auto-generated method stub
 										OMCThemeUnzipActivity.this.mAD.dismiss();
 										OMCThemeUnzipActivity.this.startActivity(OMC.OMCMARKETINTENT);
 							        	OMCThemeUnzipActivity.this.finish();
@@ -116,7 +115,10 @@ public class OMCThemeUnzipActivity extends Activity {
 
         } else {
 
-	        checkSetup();
+        	if (!checkSetup()) {
+        		finish();
+        		return;
+        	}
 	        
 	        mHandler = new Handler();
 	        pdWait = new Dialog(this);
@@ -251,13 +253,12 @@ public class OMCThemeUnzipActivity extends Activity {
         }			
     }
 
-    public void checkSetup() {
+    public boolean checkSetup() {
     	
 		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
         	Toast.makeText(getApplicationContext(), "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
 			setResult(Activity.RESULT_OK);
-			finish();
-        	return;
+			return false;
         }
 
         sdRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC");
@@ -265,5 +266,11 @@ public class OMCThemeUnzipActivity extends Activity {
         	Toast.makeText(this, "OMC folder not found in your SD Card.\nCreating folder...", Toast.LENGTH_LONG).show();
         	sdRoot.mkdir();
         }
+		if (!sdRoot.canRead()) {
+        	Toast.makeText(this, "SD Card missing or corrupt.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+			setResult(Activity.RESULT_OK);
+        	return false;
+        }
+		return true;
     }
 }
