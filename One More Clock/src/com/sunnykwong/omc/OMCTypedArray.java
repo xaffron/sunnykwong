@@ -108,7 +108,21 @@ public class OMCTypedArray  {
 			} else {
 				//Unknown - do nothing
 			}
+		} else if (sToken.equals("circle")) {
+			// Specifies a point at angle/radius from point.
+			int iOriginVal = Integer.parseInt(st.nextToken());
+			String sType = st.nextToken();
+			int iAngle = Integer.parseInt(st.nextToken());
+			int iRadius =  Integer.parseInt(st.nextToken());
 
+			if (sType.equals("cos")) {
+				result = String.valueOf(iOriginVal + (int)(iRadius * Math.cos(iAngle*Math.PI/180d)));
+			} else if (sType.equals("sin")) {
+				result = String.valueOf(iOriginVal + (int)(iRadius * Math.sin(iAngle*Math.PI/180d)));
+			} else {
+				//Unknown - do nothing
+			}
+			
 		} else if (sToken.equals("ap24")) {
 			if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
 				st.nextToken();
