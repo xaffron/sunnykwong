@@ -50,7 +50,8 @@ public class OMC extends Application {
 	
 	static String THISVERSION;
 	static final boolean FREEEDITION = false;
-	static final String STARTERPACKURL = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFYWVjNGQ5Y2QtZmE4Yy00OWM5LWJhNGYtZmQ4NjFjMmM5Yzc1&export=download&authkey=CO66i_8O&hl=en";
+	static final String STARTERPACKURL = "omc://omc.colormeandroid.com/pk1204.omc";
+//	static final String STARTERPACKURL = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFYWVjNGQ5Y2QtZmE4Yy00OWM5LWJhNGYtZmQ4NjFjMmM5Yzc1&export=download&authkey=CO66i_8O&hl=en";
 	static boolean SHOWHELP = false;
 	static final boolean DEBUG = true;
 
