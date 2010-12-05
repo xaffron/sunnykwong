@@ -54,7 +54,6 @@ public class AB extends Application {
 	static int UPDATEFREQ = 100;
 
 	static SharedPreferences PREFS;
-    static Resources RES;
     
 	static Matrix TEMPMATRIX;
 
@@ -93,7 +92,6 @@ public class AB extends Application {
 		PT2 = new Paint();
 		TEMPMATRIX = new Matrix();
 		
-    	RES = getResources();
 		PREFS = getSharedPreferences("com.sunnykwong.omc_preferences", Context.MODE_PRIVATE);
 		// We are using Zehro's solution (listening for TIME_TICK instead of using AlarmManager + FG Notification) which
 		// should be quite a bit more graceful.

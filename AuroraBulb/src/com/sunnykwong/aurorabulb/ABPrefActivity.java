@@ -94,6 +94,7 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
 //       		OMCPrefActivity.mAD.dismiss();
 //       		OMCPrefActivity.mAD = null;
 //       	}
+    	mAD.cancel();
     	this.startActivity(new Intent(this,ABAnimActivity.class));
     	finish();
     }
