@@ -11,7 +11,7 @@
 			android:enabled="true" android:defaultValue="true" android:selectable="true">
 		</CheckBoxPreference>
 	<CheckBoxPreference android:key="widgetLeadingZero" android:summary="04:23 instead of 4:23" android:enabled="true" android:selectable="true" android:title="Leading Zero in Hours"></CheckBoxPreference>
-<Preference android:key="oTTL" android:title="Tap Me to Launch..." android:summary="NOTE: Setting this option will lock this clock\n(you cannot customize it again unless you create another clock)"></Preference>
+<Preference android:key="oTTL" android:title="Tap Me to Launch..." android:summary="NOTE: If selected, you must create another widget to return to this screen."></Preference>
 
 
 </PreferenceCategory>
