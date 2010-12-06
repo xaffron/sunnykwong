@@ -38,6 +38,7 @@ import android.util.Log;
 import android.graphics.BitmapFactory;
 import android.content.res.Resources;
 import android.graphics.Matrix;
+import android.view.Display;
 
 /**
  * @author skwong01
@@ -56,15 +57,15 @@ public class AB extends Application {
 	static SharedPreferences PREFS;
     
 	static Matrix TEMPMATRIX;
-
-	static final int WIDGETWIDTH=480;
-	static final int WIDGETHEIGHT=300;
+	static int SCRNWIDTH;
+	static int SCRNHEIGHT;
+	
 	static final Time TIME = new Time();
 
 	static String TXTBUF;
 	
-	static Bitmap SCRNBUFFER;
-	static Canvas SCRNCANVAS;
+	static Bitmap SRCBUFFER;
+	static Canvas SRCCANVAS;
 	static Bitmap ROLLBUFFER;
 	static Canvas ROLLCANVAS;
 
@@ -85,9 +86,6 @@ public class AB extends Application {
 		
 		LASTUPDATEMILLIS = 0l;
 		
-		SCRNBUFFER= Bitmap.createBitmap(WIDGETWIDTH,WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
-		SCRNCANVAS = new Canvas(SCRNBUFFER);
-		SCRNCANVAS.setDensity(DisplayMetrics.DENSITY_HIGH);
 		PT1 = new Paint();
 		PT2 = new Paint();
 		TEMPMATRIX = new Matrix();
