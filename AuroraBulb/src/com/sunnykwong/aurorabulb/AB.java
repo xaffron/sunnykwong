@@ -28,6 +28,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
@@ -49,8 +50,14 @@ import android.view.Display;
 public class AB extends Application {
 	
 	static String THISVERSION;
+	static final String PREFNAME = "com.sunnykwong.aurorabulb_preferences";
 	static final boolean DEBUG = true;
-
+	static final int BUFFERWIDTH = 240;
+	static final int BUFFERHEIGHT = 320;
+	
+	static int TARGETFPS;
+	static int COUNTDOWNSECONDS;
+	
 	static long LASTUPDATEMILLIS;
 	static int UPDATEFREQ = 100;
 
@@ -85,23 +92,24 @@ public class AB extends Application {
 		}
 		
 		LASTUPDATEMILLIS = 0l;
+
+		TARGETFPS = 20;
+	
+		COUNTDOWNSECONDS = 10;
 		
-		PT1 = new Paint();
-		PT2 = new Paint();
+		AB.PT1 = new Paint();
+		AB.PT1.setTextSize(AB.BUFFERHEIGHT/2);
+		AB.PT1.setColor(Color.LTGRAY);
+		AB.PT1.setTextAlign(Paint.Align.CENTER);
+		AB.PT1.setAntiAlias(true);
+
+		AB.PT2 = new Paint();
+
 		TEMPMATRIX = new Matrix();
 		
-		PREFS = getSharedPreferences("com.sunnykwong.omc_preferences", Context.MODE_PRIVATE);
-		// We are using Zehro's solution (listening for TIME_TICK instead of using AlarmManager + FG Notification) which
-		// should be quite a bit more graceful.
-
-		// If we're from a legacy version, then we need to wipe all settings clean to avoid issues.
-		if (PREFS.getString("version", "1.0.x").startsWith("1.0")) {
-			Log.i("OMCApp","Upgrade from legacy version, wiping all settings.");
-			PREFS.edit().clear().commit();
-		}
+		PREFS = getSharedPreferences(AB.PREFNAME, Context.MODE_PRIVATE);
 
 		PREFS.edit().putString("version", THISVERSION).commit();
-		UPDATEFREQ = PREFS.getInt("iUpdateFreq", 30) * 1000;
 		
 	}
 

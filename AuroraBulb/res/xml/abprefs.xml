@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	android:key="rootPrefs" xmlns:android="http://schemas.android.com/apk/res/android" android:title="Aurora Bulb" android:enabled="true">
+	<PreferenceCategory android:title="Ready?" android:key="SectionReady"><Preference android:title="Go!" android:key="go" android:summary="Press this when you're all set!"></Preference>
+		
+	
+</PreferenceCategory><PreferenceCategory android:key="SectionContent" android:title="Your content">
+	
+		
+		
+	
+
+
+
+
+
+
+
+
+</PreferenceCategory><Preference android:key="showWhat" android:title="Aurora Bulb Renders Text" android:defaultValue="text" android:selectable="false" android:enabled="false" android:summary="Tap to switch Bitmap/Text (future)"></Preference><PreferenceCategory android:key="bitmapstuff" android:selectable="false"><Preference android:title="Bitmap to show" android:key="pickBitmap" android:summary="&lt;Click me to set&gt;"></Preference></PreferenceCategory><PreferenceCategory android:key="textstuff" android:selectable="false"><Preference android:title="Font to use" android:key="pickFont" android:summary="&lt;Click me to set&gt; (future)" android:selectable="false" android:enabled="false"></Preference><EditTextPreference android:key="pickColor" android:title="Color to use" android:summary="&lt;Click me to set&gt;" android:enabled="true" android:selectable="true" android:defaultValue="#FFFFFFFF"></EditTextPreference><EditTextPreference android:key="pickText" android:title="Text to Show" android:summary="&lt;Click me to set&gt;" android:defaultValue="Aurora Bulb"></EditTextPreference>
+</PreferenceCategory>
+	<PreferenceCategory android:key="SectionCamera" android:title="Your camera setup">
+                
+		
+		
+<EditTextPreference android:key="timeShutterDuration" android:enabled="true" android:selectable="true" android:defaultValue="10" android:title="Shutter (min. 10s)" android:summary="Shutter at (seconds): 10"></EditTextPreference><EditTextPreference android:enabled="true" android:selectable="true" android:defaultValue="10" android:key="timePhotoTimer" android:title="Photo Timer (seconds)" android:summary="Assuming Cam timer of (seconds): 10"></EditTextPreference>
+
+
+
+
+</PreferenceCategory>
+	<PreferenceCategory android:title="Version and Credits" android:key="SectionCredits"><Preference android:title="1.0.0" android:selectable="false" android:enabled="true" android:key="sVersion" android:summary="Your Version of Aurora Bulb."></Preference>
+		<Preference android:selectable="true" android:title="View Credits" android:key="widgetCredits" android:enabled="true">
+		</Preference>
+	
+</PreferenceCategory>
+
+
+
+
+
+
+
+</PreferenceScreen>

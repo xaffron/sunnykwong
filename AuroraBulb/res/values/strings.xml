@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, DEPrefActivity!</string>
-    <string name="app_name">DroidExpose</string>
+    <string name="app_name">AuroraBulb</string>
+<string-array name="choice"><item>Bitmap</item>
+<item>Text</item>
+</string-array>
 </resources>
