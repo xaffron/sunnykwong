@@ -171,7 +171,7 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
 		if (requestCode == 0 ) { // From anim
 	    	mAD = new AlertDialog.Builder(this)
     		.setTitle("Did you like the photo?")
-    		.setMessage("Remember to:\n- Lower your camera ISO\n- Set smallest f/number possible\n- Set your phone's screen brightness to 70-80% of maximum!")
+    		.setMessage("For best results:\n- Lower your camera ISO\n- Lower camera f/number\n- Set your phone's screen brightness to 70-80% of maximum!")
     	    .setCancelable(true)
     	    .setOnKeyListener(new OnKeyListener() {
     	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
