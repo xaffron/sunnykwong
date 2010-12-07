@@ -52,6 +52,7 @@ public class OMC extends Application {
 	
 	static String THISVERSION;
 	static final boolean SINGLETON = false;
+	static final String SINGLETONNAME = "";
 	static final boolean FREEEDITION = false;
 	static final String OMCSHORT = "";
 

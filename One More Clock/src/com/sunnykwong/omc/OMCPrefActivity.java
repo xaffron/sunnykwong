@@ -1,11 +1,9 @@
 package com.sunnykwong.omc;
 
 import android.app.AlertDialog;
-import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnKeyListener;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -19,6 +17,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     /** Called when the activity is first created. */
     static int appWidgetID;
     static AlertDialog mAD;
+    Preference prefloadThemeFile, prefclearCache, prefclearImports, prefdownloadStarterPack, prefbSkinner ;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,13 +41,29 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		}
     		this.getPreferenceManager().setSharedPreferencesName(OMC.SHAREDPREFNAME);
         	addPreferencesFromResource(getResources().getIdentifier("omcprefs", "xml", OMC.PKGNAME));
+
+        	prefloadThemeFile = findPreference("loadThemeFile");
+        	prefclearCache = findPreference("clearCache");
+        	prefclearImports = findPreference("clearImports");
+        	prefdownloadStarterPack = findPreference("downloadStarterPack");
+        	prefbSkinner = findPreference("bSkinner");
+        	
+        	if (OMC.SINGLETON) {
+        		((PreferenceScreen)findPreference("rootPrefs")).removePreference(prefloadThemeFile);
+        		((PreferenceScreen)findPreference("rootPrefs")).removePreference(prefclearCache);
+        		((PreferenceScreen)findPreference("rootPrefs")).removePreference(prefclearImports);
+        		((PreferenceScreen)findPreference("rootPrefs")).removePreference(prefdownloadStarterPack);
+        		((PreferenceScreen)findPreference("rootPrefs")).removePreference(prefbSkinner);
+        		((PreferenceScreen)findPreference("rootPrefs")).setTitle(OMC.SINGLETONNAME + " - Preferences");
+        	}
+        	
         	if (OMC.FREEEDITION) {
-        		findPreference("sVersion").setTitle("OMC Version " + OMC.THISVERSION + " Free");
+        		findPreference("sVersion").setTitle("Version " + OMC.THISVERSION + " Free");
         		findPreference("sVersion").setSummary("Tap me to get the full version!");
         		findPreference("sVersion").setSelectable(true);
         	} else {
-        		findPreference("sVersion").setTitle("OMC Version " + OMC.THISVERSION);
-        		findPreference("sVersion").setSummary("Thanks for supporting OMC!");
+        		findPreference("sVersion").setTitle("Version " + OMC.THISVERSION);
+        		findPreference("sVersion").setSummary("Thanks for supporting Xaffron!");
         		findPreference("sVersion").setSelectable(false);
         	}
         	//findPreference("widgetTheme").setOnPreferenceChangeListener(this);
@@ -64,8 +79,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
             // If they gave us an intent without the widget id, just bail.
         	if (OMC.DEBUG) Log.i("OMCPref","Called by Launcher - do nothing");
         	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
-        		.setTitle("Just One More Clock!")
-        		.setMessage("Thanks for downloading!\nTo begin, hit the back button to go back to the home screen, then push the menu button, select 'Add', then 'Widgets' to see 'One More Clock' listed.  Have fun!")
+        		.setTitle("Thanks for downloading!")
+        		.setMessage("To begin, hit the back button to go back to the home screen, then push the menu button, select 'Add', then 'Widgets' to see your newly-downloaded widget listed.  Have fun!")
         	    .setCancelable(true)
         	    .setIcon(getResources().getIdentifier("fredicon_mdpi", "drawable", OMC.PKGNAME))
         	    .setOnKeyListener(new OnKeyListener() {
@@ -103,8 +118,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
 			.setCancelable(true)
 			.setTitle("Why are the widgets so big?")
-			.setMessage("Actually, OMC offers widget sizes of 4x2, 4x1, 3x1 and 2x1.\nPlease consider upgrading to the full edition of OMC to get these sizes!\nAlternatively, if you use an alternative launcher such as ADW or Launcher Pro, you should be able to approximate this ability by dynamically resizing the 4x2 widget.")
-			.setPositiveButton("Take me to the paid version!", new DialogInterface.OnClickListener() {
+			.setMessage("Actually, the donate version offers widget sizes of 4x2, 4x1, 3x1 and 2x1.\nPlease consider upgrading to get these sizes!\nAlternatively, if you use an alternative launcher such as ADW or Launcher Pro, you should be able to approximate this ability by dynamically resizing the 4x2 widget.")
+			.setPositiveButton("Take me to the donate version!", new DialogInterface.OnClickListener() {
 					
 					@Override
 					public void onClick(DialogInterface dialog, int which) {

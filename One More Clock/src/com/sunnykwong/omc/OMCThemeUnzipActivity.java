@@ -12,7 +12,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.AlertDialog;
 import android.widget.ProgressBar;
-import android.view.ViewGroup.LayoutParams;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.graphics.BitmapFactory;

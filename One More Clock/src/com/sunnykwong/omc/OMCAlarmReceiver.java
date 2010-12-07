@@ -3,7 +3,6 @@ package com.sunnykwong.omc;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Environment;
 import android.util.Log;
 
 public class OMCAlarmReceiver extends BroadcastReceiver {
