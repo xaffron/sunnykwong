@@ -20,7 +20,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
-
+//import com.sunnykwong.omc.whambamwidget.R;
 public class OMCWidgetDrawEngine {
 	// This is where the theme-specific tweaks (regardless of layer) are processed.
 	// Tweaks = hacks, but at least all the hacks are in one block of code.
@@ -501,21 +501,21 @@ public class OMCWidgetDrawEngine {
 		OMCWidgetDrawEngine.drawBitmapForWidget(context,appWidgetId);
 
 		// Blit the buffer over
-		final RemoteViews rv = new RemoteViews(context.getPackageName(),R.layout.omcwidget);
+		final RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
 
-		if (fScaleX==1f && fScaleY==1f) rv.setImageViewBitmap(R.id.omcIV, OMC.BUFFER);
+		if (fScaleX==1f && fScaleY==1f) rv.setImageViewBitmap(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME), OMC.BUFFER);
 		else if (OMC.STRETCHINFO != null){
 			//Custom scaling
 			OMC.TEMPMATRIX.reset();
 			OMC.TEMPMATRIX.preScale(Float.parseFloat(OMC.STRETCHINFO[0]), 
 					Float.parseFloat(OMC.STRETCHINFO[1]));
-			rv.setImageViewBitmap(R.id.omcIV,Bitmap.createBitmap(OMC.BUFFER, 0, Integer.parseInt(OMC.STRETCHINFO[2]), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(OMC.STRETCHINFO[2]) - Integer.parseInt(OMC.STRETCHINFO[3]), OMC.TEMPMATRIX, true));
+			rv.setImageViewBitmap(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME),Bitmap.createBitmap(OMC.BUFFER, 0, Integer.parseInt(OMC.STRETCHINFO[2]), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(OMC.STRETCHINFO[2]) - Integer.parseInt(OMC.STRETCHINFO[3]), OMC.TEMPMATRIX, true));
 		} else {
 			//Default scaling
 			OMC.TEMPMATRIX.reset();
 			OMC.TEMPMATRIX.preTranslate(0, 0-iCutTop);
 			OMC.TEMPMATRIX.preScale(fScaleX, fScaleY);
-			rv.setImageViewBitmap(R.id.omcIV,Bitmap.createBitmap(OMC.BUFFER, 0, 0, OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight(), OMC.TEMPMATRIX, true));
+			rv.setImageViewBitmap(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME),Bitmap.createBitmap(OMC.BUFFER, 0, 0, OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight(), OMC.TEMPMATRIX, true));
 		}
 		
         if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) { 
@@ -528,7 +528,7 @@ public class OMCWidgetDrawEngine {
         	intent.setData(Uri.parse("omc:"+appWidgetId));
         	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
         	
-        	rv.setOnClickPendingIntent(R.id.omcIV, pi);
+        	rv.setOnClickPendingIntent(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME), pi);
             for (int i = 0; i < 9; i++) {
             	if (OMC.OVERLAYURL[i].equals("default")) {
 	            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], pi);
@@ -545,7 +545,7 @@ public class OMCWidgetDrawEngine {
         	try {
 	        	Intent intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
 	        	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
-	            rv.setOnClickPendingIntent(R.id.omcIV, pi);
+	            rv.setOnClickPendingIntent(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME), pi);
 	            for (int i = 0; i < 9; i++) {
 	            	if (OMC.OVERLAYURL[i].equals("default")) {
 		            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], pi);

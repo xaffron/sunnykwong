@@ -75,20 +75,20 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	return;
         }
 
-        setContentView(R.layout.themepickerlayout);
+        setContentView(this.getResources().getIdentifier("themepickerlayout", "layout", OMC.PKGNAME));
 
-        topLevel = findViewById(R.id.PickerTopLevel);
+        topLevel = findViewById(this.getResources().getIdentifier("PickerTopLevel", "id", OMC.PKGNAME));
         topLevel.setEnabled(false);
         
         setTitle("Swipe to Select; click & hold to Delete");
 
-        btnReload = (Button)findViewById(R.id.btnReload);
+        btnReload = (Button)findViewById(this.getResources().getIdentifier("btnReload", "id", OMC.PKGNAME));
         btnReload.setOnClickListener(this);
 
-        btnGetMore = (Button)findViewById(R.id.btnMore);
+        btnGetMore = (Button)findViewById(this.getResources().getIdentifier("btnMore", "id", OMC.PKGNAME));
         btnGetMore.setOnClickListener(this);
         
-        gallery = (Gallery)this.findViewById(R.id.gallery);
+        gallery = (Gallery)this.findViewById(this.getResources().getIdentifier("gallery", "id", OMC.PKGNAME));
         refreshThemeList();
 
         gallery.setAdapter(OMCThemePickerActivity.THEMEARRAY);
@@ -296,7 +296,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 	    			
         	}
         	if (!bExternal) {
-        		mBitmaps.put(sTheme, BitmapFactory.decodeResource(OMC.RES, R.drawable.llpreview));
+        		mBitmaps.put(sTheme, BitmapFactory.decodeResource(OMC.RES, getResources().getIdentifier("llpreview", "drawable", OMC.PKGNAME)));
         		mNames.put(sTheme, "Lockscreen Look");
     			mCreds.put(sTheme, "LOCKSCREEN LOOK (S. Kwong, 18 Oct 2010)\nThe default Android Lockscreen Look.");
         		return result;
@@ -360,10 +360,10 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
-        	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.themepickerpreview, null);
-        	((TextView)ll.findViewById(R.id.ThemeName)).setText(mNames.get(mThemes.get(position)));
-        	((ImageView)ll.findViewById(R.id.ThemePreview)).setImageBitmap(mBitmaps.get(mThemes.get(position)));
-        	((TextView)ll.findViewById(R.id.ThemeCredits)).setText(mCreds.get(mThemes.get(position)));
+        	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("themepickerpreview", "layout", OMC.PKGNAME), null);
+        	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
+        	((ImageView)ll.findViewById(getResources().getIdentifier("ThemePreview", "id", OMC.PKGNAME))).setImageBitmap(mBitmaps.get(mThemes.get(position)));
+        	((TextView)ll.findViewById(getResources().getIdentifier("ThemeCredits", "id", OMC.PKGNAME))).setText(mCreds.get(mThemes.get(position)));
             return ll;
         }
 

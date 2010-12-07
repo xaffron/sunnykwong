@@ -15,7 +15,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 
-
 public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceChangeListener{ 
     /** Called when the activity is first created. */
     static int appWidgetID;
@@ -41,8 +40,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     					.putBoolean("bTwoByOne", false)
     					.commit();
     		}
-    		this.getPreferenceManager().setSharedPreferencesName("com.sunnykwong.omc_preferences");
-        	addPreferencesFromResource(R.xml.omcprefs);
+    		this.getPreferenceManager().setSharedPreferencesName(OMC.SHAREDPREFNAME);
+        	addPreferencesFromResource(getResources().getIdentifier("omcprefs", "xml", OMC.PKGNAME));
         	if (OMC.FREEEDITION) {
         		findPreference("sVersion").setTitle("OMC Version " + OMC.THISVERSION + " Free");
         		findPreference("sVersion").setSummary("Tap me to get the full version!");
@@ -68,7 +67,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         		.setTitle("Just One More Clock!")
         		.setMessage("Thanks for downloading!\nTo begin, hit the back button to go back to the home screen, then push the menu button, select 'Add', then 'Widgets' to see 'One More Clock' listed.  Have fun!")
         	    .setCancelable(true)
-        	    .setIcon(R.drawable.fredicon_mdpi)
+        	    .setIcon(getResources().getIdentifier("fredicon_mdpi", "drawable", OMC.PKGNAME))
         	    .setOnKeyListener(new OnKeyListener() {
         	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
         	    		dialogCancelled();
@@ -191,7 +190,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 					OMCPrefActivity.mAD.dismiss();
 				}
 			})
-    	    .setIcon(R.drawable.fredicon_mdpi)
+    	    .setIcon(getResources().getIdentifier("fredicon_mdpi", "drawable", OMC.PKGNAME))
     	    .setOnKeyListener(new OnKeyListener() {
     	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
 					OMCPrefActivity.mAD.dismiss();

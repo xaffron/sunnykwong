@@ -39,6 +39,8 @@ import android.graphics.BitmapFactory;
 import android.content.res.Resources;
 import android.graphics.Matrix;
 
+//import com.sunnykwong.omc.whambamwidget.R;
+
 /**
  * @author skwong01
  * Thanks to ralfoide's 24clock code; taught me quite a bit about broadcastreceivers
@@ -49,14 +51,20 @@ public class OMC extends Application {
 	
 	
 	static String THISVERSION;
+	static final boolean SINGLETON = false;
 	static final boolean FREEEDITION = false;
+	static final String OMCSHORT = "";
+
+	
+	static final String OMCNAME = "com.sunnykwong.omc";
+	static String SHAREDPREFNAME;
+	static String PKGNAME;
 	static final String STARTERPACKURL = "omc://omc.colormeandroid.com/pk1204.omc";
 //	static final String STARTERPACKURL = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFYWVjNGQ5Y2QtZmE4Yy00OWM5LWJhNGYtZmQ4NjFjMmM5Yzc1&export=download&authkey=CO66i_8O&hl=en";
 	static boolean SHOWHELP = false;
 	static final boolean DEBUG = true;
 
 	
-	static String PKGNAME;
 	static long LASTUPDATEMILLIS;
 	static int UPDATEFREQ = 20000;
 	static final String DEFAULTTHEME = "LockscreenLook";
@@ -130,16 +138,14 @@ public class OMC extends Application {
 			OMC.THISVERSION = "1.0.0";
 		}
 		
-		if (OMC.FREEEDITION) {
-			OMC.PKGNAME = "com.sunnykwong.freeomc";
-		} else {
-			OMC.PKGNAME = "com.sunnykwong.omc";
-		}
-		OMC.WIDGET4x2CNAME = new ComponentName(OMC.PKGNAME,OMC.PKGNAME+".ClockWidget4x2");
-		OMC.WIDGET4x1CNAME = new ComponentName(OMC.PKGNAME,OMC.PKGNAME+".ClockWidget4x1");
-		OMC.WIDGET3x1CNAME = new ComponentName(OMC.PKGNAME,OMC.PKGNAME+".ClockWidget3x1");
-		OMC.WIDGET2x1CNAME = new ComponentName(OMC.PKGNAME,OMC.PKGNAME+".ClockWidget2x1");
-		OMC.SKINNERCNAME = new ComponentName(OMC.PKGNAME,OMC.PKGNAME+".OMCSkinnerActivity");
+		OMC.PKGNAME = getPackageName();
+		OMC.SHAREDPREFNAME = OMC.PKGNAME + "_preferences";
+
+		OMC.WIDGET4x2CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget4x2");
+		OMC.WIDGET4x1CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget4x1");
+		OMC.WIDGET3x1CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget3x1");
+		OMC.WIDGET2x1CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget2x1");
+		OMC.SKINNERCNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".OMCSkinnerActivity");
 
 		
 		OMC.LASTUPDATEMILLIS = 0l;
@@ -179,7 +185,7 @@ public class OMC extends Application {
 		OMC.BGRECT = new RectF(30,10,295,150);
 		OMC.FGRECT = new RectF(25,5,290,145);
 		
-		OMC.FGNOTIFICIATION = new Notification(R.drawable.fredicon_mdpi, 
+		OMC.FGNOTIFICIATION = new Notification(this.getResources().getIdentifier("fredicon_mdpi", "drawable", OMC.PKGNAME), 
 				"",
         		System.currentTimeMillis());
         OMC.FGNOTIFICIATION.flags = OMC.FGNOTIFICIATION.flags|Notification.FLAG_ONGOING_EVENT|Notification.FLAG_NO_CLEAR;
@@ -188,7 +194,7 @@ public class OMC extends Application {
     	OMC.AM = getAssets();
     	OMC.RES = getResources();
     	OMC.NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-		OMC.PREFS = getSharedPreferences("com.sunnykwong.omc_preferences", Context.MODE_PRIVATE);
+		OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_PRIVATE);
 		// We are using Zehro's solution (listening for TIME_TICK instead of using AlarmManager + FG Notification) which
 		// should be quite a bit more graceful.
 		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
@@ -222,9 +228,19 @@ public class OMC extends Application {
 		OMC.STRETCHINFO = null;
 		
 		OMC.OVERLAYURL = null;
-		OMC.OVERLAYRESOURCES = new int[] {R.id.N,R.id.NE,R.id.E,R.id.SE,R.id.S,R.id.SW,R.id.W,R.id.NW,R.id.C};
+		OMC.OVERLAYRESOURCES = new int[] {
+				this.getResources().getIdentifier("N", "id", OMC.PKGNAME),
+				this.getResources().getIdentifier("NE", "id", OMC.PKGNAME),
+				this.getResources().getIdentifier("E", "id", OMC.PKGNAME),
+				this.getResources().getIdentifier("SE", "id", OMC.PKGNAME),
+				this.getResources().getIdentifier("S", "id", OMC.PKGNAME),
+				this.getResources().getIdentifier("SW", "id", OMC.PKGNAME),
+				this.getResources().getIdentifier("W", "id", OMC.PKGNAME),
+				this.getResources().getIdentifier("NW", "id", OMC.PKGNAME),
+				this.getResources().getIdentifier("C", "id", OMC.PKGNAME)
+				};
 
-		OMC.WORDNUMBERS = this.getResources().getStringArray(R.array.WordNumbers);
+		OMC.WORDNUMBERS = this.getResources().getStringArray(this.getResources().getIdentifier("WordNumbers", "array", OMC.PKGNAME));
 		
 		this.widgetClicks();
 		OMC.toggleWidgets(this);

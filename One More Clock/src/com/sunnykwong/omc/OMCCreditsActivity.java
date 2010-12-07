@@ -2,7 +2,6 @@ package com.sunnykwong.omc;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-
 public class OMCCreditsActivity extends PreferenceActivity { 
 
     @Override
@@ -10,7 +9,7 @@ public class OMCCreditsActivity extends PreferenceActivity {
 
     	super.onCreate(savedInstanceState);
         
-       	addPreferencesFromResource(R.xml.credits);
+       	addPreferencesFromResource(getResources().getIdentifier("credits", "xml", OMC.PKGNAME));
 
     }
 

@@ -7,8 +7,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <application android:name=".OMC" android:icon="@drawable/fredicon_mdpi" android:label="@string/app_name" android:debuggable="false">
-        <activity android:name=".OMCPrefActivity"
+    <application android:name="com.sunnykwong.omc.OMC" android:icon="@drawable/fredicon_mdpi" android:label="@string/app_name" android:debuggable="false">
+        <activity android:name="com.sunnykwong.omc.OMCPrefActivity"
                   android:screenOrientation="nosensor"
                   android:label="@string/app_name">
 			<intent-filter>
@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-        <activity android:name=".OMCSkinnerActivity"
+        <activity android:name="com.sunnykwong.omc.OMCSkinnerActivity"
                   android:screenOrientation="nosensor"
                   android:label="OMC Theme Tester" android:icon="@drawable/rubeicon_mdpi"
                   android:theme="@android:style/Theme.Translucent"
@@ -26,15 +26,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 		</activity>
-        <activity android:name=".OMCThemePickerActivity"
+        <activity android:name="com.sunnykwong.omc.OMCThemePickerActivity"
                   android:screenOrientation="nosensor"
                   android:label="Theme Picker">
 		</activity>
-        <activity android:name=".OMCThemeImportActivity"
+        <activity android:name="com.sunnykwong.omc.OMCThemeImportActivity"
                   android:screenOrientation="nosensor"
                   android:label="Theme Picker">
 		</activity>
-        <activity android:name=".OMCThemeUnzipActivity"
+        <activity android:name="com.sunnykwong.omc.OMCThemeUnzipActivity"
                   android:screenOrientation="nosensor" 
                   android:theme="@android:style/Theme.Translucent">
 <!--			This filter captures specially-written omc:// hyperlinks on websites-->
@@ -69,25 +69,25 @@
 		        <data android:pathPattern=".*\\.omc" />
 		    </intent-filter>
 		</activity>
-        <activity android:name=".OMCCreditsActivity"
+        <activity android:name="com.sunnykwong.omc.OMCCreditsActivity"
                   android:screenOrientation="nosensor"
                   android:label="@string/app_name">
 		</activity>
-        <service android:enabled="true" android:name=".OMCService"/>
-        <receiver android:name=".OMCAlarmReceiver">
+        <service android:enabled="true" android:name="com.sunnykwong.omc.OMCService"/>
+        <receiver android:name="com.sunnykwong.omc.OMCAlarmReceiver">
 			<intent-filter>
 				<action android:name="com.sunnykwong.omc.FGSERVICE"/>
 				<action android:name="com.sunnykwong.omc.BGSERVICE"/>
         		<category android:name="android.intent.category.DEFAULT" />  
 			</intent-filter>
 		</receiver>
-        <receiver android:name=".OMCConfigReceiver">
+        <receiver android:name="com.sunnykwong.omc.OMCConfigReceiver">
     		<intent-filter>
         		<action android:name="com.sunnykwong.omc.WIDGET_INDIRECT" />
                 <data android:scheme="omc" />
     		</intent-filter>
 		</receiver>
-    	<receiver android:name=".ClockWidget4x2" android:label="One More Clock(4x2)" android:enabled="true">
+    	<receiver android:name="com.sunnykwong.omc.ClockWidget4x2" android:label="One More Clock(4x2)" android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo4x2"/>
 			<intent-filter>  
@@ -97,7 +97,7 @@
          		<category android:name="android.intent.category.DEFAULT" />
     		</intent-filter>  
 		</receiver>
-	    <receiver android:name=".ClockWidget4x1" android:label="One More Clock(4x1)" android:enabled="true">
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget4x1" android:label="One More Clock(4x1)" android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo4x1"/>
 			<intent-filter>  
@@ -107,7 +107,7 @@
         		<category android:name="android.intent.category.DEFAULT" />  
     		</intent-filter>  
 		</receiver>
-	    <receiver android:name=".ClockWidget3x1" android:label="One More Clock(3x1)" android:enabled="true">
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget3x1" android:label="One More Clock(3x1)" android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo3x1"/>
 			<intent-filter>  
@@ -117,7 +117,7 @@
         		<category android:name="android.intent.category.DEFAULT" />  
     		</intent-filter>  
 		</receiver>
-	    <receiver android:name=".ClockWidget2x1" android:label="One More Clock(2x1)" android:enabled="true">
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget2x1" android:label="One More Clock(2x1)" android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo2x1"/>
 			<intent-filter>  

@@ -44,8 +44,8 @@ public class OMCThemeUnzipActivity extends Activity {
 	
 	final Runnable mResult = new Runnable() {
 		public void run() {
-			((TextView)pdWait.findViewById(R.id.UnzipStatus)).setText(pdMessage);
-			((TextView)pdWait.findViewById(R.id.UnzipStatus)).invalidate();
+			((TextView)pdWait.findViewById(getResources().getIdentifier("UnzipStatus", "id", OMC.PKGNAME))).setText(pdMessage);
+			((TextView)pdWait.findViewById(getResources().getIdentifier("UnzipStatus", "id", OMC.PKGNAME))).invalidate();
 			if (COMPLETE) {
 				Toast.makeText(getApplicationContext(), "Import Complete!", Toast.LENGTH_SHORT).show();
 				if (uri.toString().equals(OMC.STARTERPACKURL)) {
@@ -68,15 +68,15 @@ public class OMCThemeUnzipActivity extends Activity {
 
 	final Runnable mUpdateStatus = new Runnable() {
 		public void run() {
-			((TextView)(pdWait.findViewById(R.id.UnzipStatus))).setText(pdMessage);
-			((TextView)(pdWait.findViewById(R.id.UnzipStatus))).invalidate();
+			((TextView)(pdWait.findViewById(getResources().getIdentifier("UnzipStatus", "id", OMC.PKGNAME)))).setText(pdMessage);
+			((TextView)(pdWait.findViewById(getResources().getIdentifier("UnzipStatus", "id", OMC.PKGNAME)))).invalidate();
 		}
 	};
 
 	final Runnable mUpdateBitmap = new Runnable() {
 		public void run() {
-			((ImageView)pdWait.findViewById(R.id.UnzipPreview)).setImageBitmap(BitmapFactory.decodeFile(pdPreview));
-			((ImageView)pdWait.findViewById(R.id.UnzipPreview)).invalidate();
+			((ImageView)pdWait.findViewById(getResources().getIdentifier("UnzipPreview", "id", OMC.PKGNAME))).setImageBitmap(BitmapFactory.decodeFile(pdPreview));
+			((ImageView)pdWait.findViewById(getResources().getIdentifier("UnzipPreview", "id", OMC.PKGNAME))).invalidate();
 		}
 	};
 
@@ -122,8 +122,8 @@ public class OMCThemeUnzipActivity extends Activity {
 	        
 	        mHandler = new Handler();
 	        pdWait = new Dialog(this);
-	        pdWait.setContentView(R.layout.themeunzippreview);
-	        pg = (ProgressBar) pdWait.findViewById(R.id.UnzipProgress);
+	        pdWait.setContentView(getResources().getIdentifier("themeunzippreview", "layout", OMC.PKGNAME));
+	        pg = (ProgressBar) pdWait.findViewById(getResources().getIdentifier("UnzipProgress", "id", OMC.PKGNAME));
 	        pg.setVisibility(ProgressBar.VISIBLE);
 	        
 	        pdWait.setTitle("Connecting...");
