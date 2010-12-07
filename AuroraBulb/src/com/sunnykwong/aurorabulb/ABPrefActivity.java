@@ -56,6 +56,7 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     	findPreference("pickColor").setOnPreferenceChangeListener(this);
     	findPreference("timeShutterDuration").setOnPreferenceChangeListener(this);
     	findPreference("timePhotoTimer").setOnPreferenceChangeListener(this);
+		findPreference("pickText").setOnPreferenceChangeListener(this);
 
     	mAD = new AlertDialog.Builder(this)
     		.setTitle("Aurora Bulb!")
@@ -93,7 +94,7 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     			Toast.makeText(this, "Invalid Shutter Duration!", Toast.LENGTH_SHORT).show();
     			return false;
     		}
-    		if (temp < 10) {
+    		if (temp < 5) {
     			Toast.makeText(this, "Invalid Shutter Duration!", Toast.LENGTH_SHORT).show();
     			return false;
     		}
@@ -113,6 +114,14 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     		}
     		findPreference("timePhotoTimer").setSummary("Assuming Cam timer of (seconds): " + (String)newValue);
 			return true;
+    	} else if (preference == findPreference("pickText")) {
+    		if (((String)newValue).equals("")) {
+    			Toast.makeText(this, "Zero-length String not allowed!", Toast.LENGTH_SHORT).show();
+    			return false;
+    		} else {
+    			findPreference("pickText").setSummary((String)newValue);
+    		}
+    		return true;
     	}
     	return true;
     }
@@ -173,6 +182,7 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     	AB.COUNTDOWNSECONDS = Integer.parseInt(AB.PREFS.getString("timePhotoTimer", "10"));
     	System.out.println(AB.PREFS.getInt("textColor", Color.WHITE));
     	AB.PT1.setColor(AB.PREFS.getInt("textColor", Color.WHITE));
+    	AB.PT1.setTextSize((float)AB.BUFFERHEIGHT);
 		AB.PT1.setTextAlign(Paint.Align.LEFT);
 		int textwidth = (int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora Bulb"));
 		int shutterDuration = Integer.parseInt(AB.PREFS.getString("timeShutterDuration", "10"));
@@ -184,7 +194,7 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     	AB.SRCBUFFER = Bitmap.createBitmap((int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora Bulb")), AB.BUFFERHEIGHT, Bitmap.Config.ARGB_4444);
     	System.out.println(AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora Bulb")));
     	AB.SRCCANVAS = new Canvas(AB.SRCBUFFER);
-    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0, AB.SRCBUFFER.getHeight()/2, AB.PT1);
+    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0, 0-AB.PT1.getFontMetricsInt().ascent, AB.PT1);
     }
 
 

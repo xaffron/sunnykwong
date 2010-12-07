@@ -23,7 +23,7 @@
                 
 		
 		
-<EditTextPreference android:key="timeShutterDuration" android:enabled="true" android:selectable="true" android:defaultValue="10" android:title="Shutter (min. 10s)" android:summary="Shutter at (seconds): 10"></EditTextPreference><EditTextPreference android:enabled="true" android:selectable="true" android:defaultValue="10" android:key="timePhotoTimer" android:title="Photo Timer (seconds)" android:summary="Assuming Cam timer of (seconds): 10"></EditTextPreference>
+<EditTextPreference android:key="timeShutterDuration" android:enabled="true" android:selectable="true" android:defaultValue="10" android:summary="Shutter at (seconds): 10" android:title="Shutter (min. 4s)"></EditTextPreference><EditTextPreference android:enabled="true" android:selectable="true" android:defaultValue="10" android:key="timePhotoTimer" android:title="Photo Timer (seconds)" android:summary="Assuming Cam timer of (seconds): 4"></EditTextPreference>
 
 
 

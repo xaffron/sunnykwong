@@ -98,12 +98,13 @@ public class AB extends Application {
 		COUNTDOWNSECONDS = 10;
 		
 		AB.PT1 = new Paint();
-		AB.PT1.setTextSize(AB.BUFFERHEIGHT/2);
+		AB.PT1.setTextSize(AB.BUFFERHEIGHT);
 		AB.PT1.setColor(Color.LTGRAY);
 		AB.PT1.setTextAlign(Paint.Align.CENTER);
 		AB.PT1.setAntiAlias(true);
 
-		AB.PT2 = new Paint();
+		AB.PT2 = new Paint(AB.PT1);
+		AB.PT1.setTextSize(AB.BUFFERHEIGHT/2);
 
 		TEMPMATRIX = new Matrix();
 		
