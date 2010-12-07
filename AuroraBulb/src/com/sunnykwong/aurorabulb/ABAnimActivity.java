@@ -80,9 +80,9 @@ public class ABAnimActivity extends Activity {
 		
 		if (AB.SRCBUFFER== null)AB.SRCBUFFER = BitmapFactory.decodeResource(getResources(), R.drawable.llpreview);
 
-		AB.ROLLBUFFER = Bitmap.createBitmap(AB.BUFFERWIDTH,AB.BUFFERHEIGHT,Bitmap.Config.ARGB_4444);
+		AB.ROLLBUFFER = Bitmap.createBitmap(AB.BUFFERWIDTH,AB.BUFFERHEIGHT,Bitmap.Config.RGB_565);
+		AB.ROLLBUFFER.eraseColor(Color.BLACK);
 		AB.ROLLCANVAS = new Canvas(AB.ROLLBUFFER);
-		AB.ROLLCANVAS.setDensity(DisplayMetrics.DENSITY_HIGH);
 
 		AB.TEMPMATRIX.reset();
 		AB.TEMPMATRIX.postScale((float)AB.SCRNWIDTH, (float)AB.ROLLBUFFER.getHeight()/AB.SRCBUFFER.getHeight());
@@ -101,10 +101,15 @@ public class ABAnimActivity extends Activity {
 				for (int i=AB.COUNTDOWNSECONDS; i>0; i-- ) {
 					nextFrameTime += 1000l;
 		
-					AB.ROLLCANVAS.drawColor(Color.BLACK);
-					AB.ROLLCANVAS.drawText(String.valueOf(i), AB.BUFFERWIDTH/2, 0-AB.PT2.getFontMetricsInt().ascent, AB.PT2);
+					AB.ROLLBUFFER.eraseColor(Color.BLACK);
+
+					if (i>1) {
+						AB.ROLLCANVAS.drawText(String.valueOf(i), AB.BUFFERWIDTH/2, 0-AB.PT2.getFontMetricsInt().ascent, AB.PT2);
+					}
+
+					AB.ROLLBUFFER.prepareToDraw();
 					mHandler.post(mFlip);
-					
+
 					while (System.currentTimeMillis() < nextFrameTime) {
 						try {
 							Thread.sleep(2);
@@ -131,6 +136,7 @@ public class ABAnimActivity extends Activity {
 				for (int i=0; i<AB.SRCBUFFER.getWidth(); i++ ) {
 					nextFrameTime += 1000l/AB.TARGETFPS;
 					
+					AB.ROLLCANVAS.save();
 					bmpTemp = Bitmap.createBitmap(AB.SRCBUFFER, i, 0, 1, AB.SRCBUFFER.getHeight());
 					bmpTemp.prepareToDraw();
 					AB.ROLLCANVAS.drawBitmap(bmpTemp, AB.TEMPMATRIX, AB.PT1);
@@ -144,7 +150,7 @@ public class ABAnimActivity extends Activity {
 					}
 					
 					mHandler.post(mFlip);
-					AB.ROLLBUFFER.eraseColor(Color.BLACK);
+					AB.ROLLCANVAS.restore();
 
 					if (AB.DEBUG) Log.i("ABAnim","FPS: " + (i+1)*1000f/(float)(thisUpdateTime-startTime));
 

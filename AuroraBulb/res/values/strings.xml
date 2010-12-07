@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, DEPrefActivity!</string>
-    <string name="app_name">AuroraBulb</string>
-<string-array name="choice"><item>Bitmap</item>
-<item>Text</item>
-</string-array>
+	<string name="hello">Hello World, DEPrefActivity!</string>
+	<string name="app_name">AuroraBulb</string>
+	<string-array name="choices">
+		<item>Comic Font</item>
+		<item>Pixel Font</item>
+		<item>Script Font</item>
+		<item>Default Font</item>
+	</string-array>
+	<string-array name="values">
+		<item>Laffayette_Comic_Pro.ttf</item>
+		<item>Unibody 8-SmallCaps.otf</item>
+		<item>Aquiline_TRUNC.ttf</item>
+		<item>Clockopia.ttf</item>
+	</string-array>
 </resources>

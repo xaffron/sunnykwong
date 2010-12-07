@@ -31,7 +31,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.text.format.Time;
 import android.util.DisplayMetrics;
@@ -66,6 +65,7 @@ public class AB extends Application {
 	static Matrix TEMPMATRIX;
 	static int SCRNWIDTH;
 	static int SCRNHEIGHT;
+	static int SCRNDPI;
 	
 	static final Time TIME = new Time();
 
@@ -93,7 +93,7 @@ public class AB extends Application {
 		
 		LASTUPDATEMILLIS = 0l;
 
-		TARGETFPS = 20;
+		TARGETFPS = 30;
 	
 		COUNTDOWNSECONDS = 10;
 		
@@ -104,7 +104,7 @@ public class AB extends Application {
 		AB.PT1.setAntiAlias(true);
 
 		AB.PT2 = new Paint(AB.PT1);
-		AB.PT1.setTextSize(AB.BUFFERHEIGHT/2);
+		AB.PT2.setTextSize(AB.BUFFERHEIGHT*2/3);
 
 		TEMPMATRIX = new Matrix();
 		
