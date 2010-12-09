@@ -62,7 +62,7 @@ public class AB extends Application {
 
 	static SharedPreferences PREFS;
     
-	static Matrix TEMPMATRIX;
+	static Matrix TEMPMATRIX, TEMPMATRIX2;
 	static int SCRNWIDTH;
 	static int SCRNHEIGHT;
 	static int SCRNDPI;
@@ -73,8 +73,11 @@ public class AB extends Application {
 	
 	static Bitmap SRCBUFFER;
 	static Canvas SRCCANVAS;
+	static Bitmap SRCBUFFER2;
+	static Canvas SRCCANVAS2;
 	static Bitmap ROLLBUFFER;
 	static Canvas ROLLCANVAS;
+	static Bitmap bmpTemp,bmpTemp2;
 
 	static Paint PT1;
 	static Paint PT2;
@@ -107,6 +110,7 @@ public class AB extends Application {
 		AB.PT2.setTextSize(AB.BUFFERHEIGHT*2/3);
 
 		TEMPMATRIX = new Matrix();
+		TEMPMATRIX2 = new Matrix();
 		
 		PREFS = getSharedPreferences(AB.PREFNAME, Context.MODE_PRIVATE);
 

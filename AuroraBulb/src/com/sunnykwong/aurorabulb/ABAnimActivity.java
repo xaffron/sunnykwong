@@ -85,8 +85,14 @@ public class ABAnimActivity extends Activity {
 		AB.ROLLCANVAS = new Canvas(AB.ROLLBUFFER);
 
 		AB.TEMPMATRIX.reset();
-		AB.TEMPMATRIX.postScale((float)AB.SCRNWIDTH, (float)AB.ROLLBUFFER.getHeight()/AB.SRCBUFFER.getHeight());
+		AB.TEMPMATRIX.postScale((float)AB.ROLLBUFFER.getWidth()-20, (float)AB.ROLLBUFFER.getHeight()/AB.SRCBUFFER.getHeight());
+		AB.TEMPMATRIX.postTranslate(10f, 0f);
+		AB.TEMPMATRIX2.reset();
+		AB.TEMPMATRIX2.postScale((float)AB.ROLLBUFFER.getWidth(), (float)AB.ROLLBUFFER.getHeight()/AB.SRCBUFFER.getHeight());
 		
+//		AB.bmpTemp..createBitmap(AB.SRCBUFFER, i, 0, 1, AB.SRCBUFFER.getHeight());
+//		AB.bmpTemp2 = Bitmap.createBitmap(AB.SRCBUFFER2, i, 0, 1, AB.SRCBUFFER.getHeight());
+
 		mScrn.setImageBitmap(AB.ROLLBUFFER);
 		mScrn.buildDrawingCache();
 
@@ -130,7 +136,7 @@ public class ABAnimActivity extends Activity {
 		// Begin animation; use new thread for max precision
 		Thread t = new Thread() {
 			public void run() {
-				Bitmap bmpTemp;
+				Bitmap bmpTemp, bmpTemp2;
 				startTime = System.currentTimeMillis();
 				nextFrameTime = System.currentTimeMillis();
 				for (int i=0; i<AB.SRCBUFFER.getWidth(); i++ ) {
@@ -139,6 +145,9 @@ public class ABAnimActivity extends Activity {
 					AB.ROLLCANVAS.save();
 					bmpTemp = Bitmap.createBitmap(AB.SRCBUFFER, i, 0, 1, AB.SRCBUFFER.getHeight());
 					bmpTemp.prepareToDraw();
+					bmpTemp2 = Bitmap.createBitmap(AB.SRCBUFFER2, i, 0, 1, AB.SRCBUFFER.getHeight());
+					bmpTemp2.prepareToDraw();
+					AB.ROLLCANVAS.drawBitmap(bmpTemp2, AB.TEMPMATRIX2, AB.PT1);
 					AB.ROLLCANVAS.drawBitmap(bmpTemp, AB.TEMPMATRIX, AB.PT1);
 
 					while (System.currentTimeMillis() < nextFrameTime) {
@@ -151,11 +160,15 @@ public class ABAnimActivity extends Activity {
 					
 					mHandler.post(mFlip);
 					AB.ROLLCANVAS.restore();
+					
 
 					if (AB.DEBUG) Log.i("ABAnim","FPS: " + (i+1)*1000f/(float)(thisUpdateTime-startTime));
 
 				}
 				mHandler.post(mFlip);
+				AB.ROLLBUFFER.eraseColor(Color.BLACK);
+				mHandler.post(mFlip);
+				
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {

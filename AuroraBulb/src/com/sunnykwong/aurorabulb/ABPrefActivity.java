@@ -198,7 +198,7 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     	//ok, set global vars before we pass control to anim.
     	AB.COUNTDOWNSECONDS = Integer.parseInt(AB.PREFS.getString("timePhotoTimer", "10"));
     	System.out.println(AB.PREFS.getInt("textColor", Color.WHITE));
-    	AB.PT1.setColor(AB.PREFS.getInt("textColor", Color.WHITE));
+    	
     	AB.PT1.setTextSize((float)AB.BUFFERHEIGHT);
     	AB.PT1.setTextScaleX(1f);
 		AB.PT1.setTextAlign(Paint.Align.LEFT);
@@ -219,6 +219,15 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     	if (AB.SRCBUFFER!=null) AB.SRCBUFFER.recycle();
     	AB.SRCBUFFER = Bitmap.createBitmap((int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora Bulb")), AB.BUFFERHEIGHT, Bitmap.Config.RGB_565);
     	AB.SRCCANVAS = new Canvas(AB.SRCBUFFER);
+    	AB.SRCBUFFER2 = Bitmap.createBitmap((int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora Bulb")), AB.BUFFERHEIGHT, Bitmap.Config.RGB_565);
+    	AB.SRCCANVAS2 = new Canvas(AB.SRCBUFFER2);
+    	AB.PT1.setColor(AB.PREFS.getInt("textColor", Color.WHITE));
+    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0-2, 0-AB.PT1.getFontMetricsInt().ascent-2, AB.PT1);
+    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0+2, 0-AB.PT1.getFontMetricsInt().ascent-2, AB.PT1);
+    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0-2, 0-AB.PT1.getFontMetricsInt().ascent+2, AB.PT1);
+    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0+2, 0-AB.PT1.getFontMetricsInt().ascent+2, AB.PT1);
+    	AB.SRCCANVAS2.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0, 0-AB.PT1.getFontMetricsInt().ascent, AB.PT1);
+    	AB.PT1.setColor(Color.BLACK);
     	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0, 0-AB.PT1.getFontMetricsInt().ascent, AB.PT1);
     }
 
