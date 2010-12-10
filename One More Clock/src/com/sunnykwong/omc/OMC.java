@@ -57,7 +57,11 @@ public class OMC extends Application {
 	static final String STARTERPACKURL = "omc://omc.colormeandroid.com/pk1204.omc";
 	static final String STARTERPACKBACKUP = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFYWVjNGQ5Y2QtZmE4Yy00OWM5LWJhNGYtZmQ4NjFjMmM5Yzc1&export=download&authkey=CO66i_8O&hl=en";
 	static final String DEFAULTTHEME = "LockscreenLook";
-	
+	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
+	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
+	static final Intent WIDGETREFRESHINTENT = new Intent("com.sunnykwong.omc.WIDGET_REFRESH");
+	static final IntentFilter PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
+
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	
 	static final String APPNAME = OMC.SINGLETON? OMC.SINGLETONNAME:"One More Clock";
@@ -115,10 +119,9 @@ public class OMC extends Application {
 	static final int SVCNOTIFICATIONID = 1; // Notification ID for the one and only message window we'll show
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
-    static Intent FGINTENT, BGINTENT, SVCSTARTINTENT, WIDGETREFRESHINTENT, CREDITSINTENT, PREFSINTENT;
+    static Intent SVCSTARTINTENT, CREDITSINTENT, PREFSINTENT;
     static Intent GETSTARTERPACKINTENT, IMPORTTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT;
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
-    static IntentFilter PREFSINTENTFILT;
     static Notification FGNOTIFICIATION;
     
 	static RectF BGRECT, FGRECT;
@@ -167,17 +170,15 @@ public class OMC extends Application {
 		
 		OMC.TEMPMATRIX = new Matrix();
 		
-		OMC.FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
+
+		
 		OMC.FGPENDING = PendingIntent.getBroadcast(this, 0, OMC.FGINTENT, 0);
-		OMC.BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
 		OMC.BGPENDING = PendingIntent.getBroadcast(this, 0, OMC.BGINTENT, 0);
 		OMC.SVCSTARTINTENT = new Intent(this, OMCService.class);
-		OMC.WIDGETREFRESHINTENT = new Intent("com.sunnykwong.omc.WIDGET_REFRESH");
 		OMC.CREDITSINTENT = new Intent(this, OMCCreditsActivity.class);
 		OMC.PREFSINTENT = new Intent(this, OMCPrefActivity.class);
 		OMC.IMPORTTHEMEINTENT = new Intent(this, OMCThemeImportActivity.class);
 		OMC.PREFSPENDING = PendingIntent.getActivity(this, 0, new Intent(this, OMCPrefActivity.class), 0);
-		OMC.PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
 		OMC.PREFSINTENTFILT.addDataScheme("omc");
 		OMC.DUMMYINTENT = new Intent(this, DUMMY.class);
 		OMC.GETSTARTERPACKINTENT = new Intent(this, OMCThemeUnzipActivity.class);

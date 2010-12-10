@@ -7,7 +7,10 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <application android:name="com.sunnykwong.omc.OMC" android:icon="@drawable/fredicon_mdpi" android:label="@string/app_name" android:debuggable="false">
+    <application android:name="com.sunnykwong.omc.OMC" 
+    android:icon="@drawable/fredicon_mdpi" 
+    android:label="@string/app_name" 
+    android:debuggable="false">
         <activity android:name="com.sunnykwong.omc.OMCPrefActivity"
                   android:screenOrientation="nosensor"
                   android:label="@string/app_name">
@@ -87,7 +90,8 @@
                 <data android:scheme="omc" />
     		</intent-filter>
 		</receiver>
-    	<receiver android:name="com.sunnykwong.omc.ClockWidget4x2" android:label="@string/widget_name4x2" android:enabled="true">
+    	<receiver android:name="com.sunnykwong.omc.ClockWidget4x2" android:label="@string/widget_name4x2"
+    	 android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo4x2"/>
 			<intent-filter>  
@@ -97,7 +101,7 @@
          		<category android:name="android.intent.category.DEFAULT" />
     		</intent-filter>  
 		</receiver>
-	    <receiver android:name="com.sunnykwong.omc.ClockWidget4x1" android:label="@string/widget_name4x1" android:enabled="@string/donate">
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget4x1" android:label="@string/widget_name4x1" android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo4x1"/>
 			<intent-filter>  
@@ -107,7 +111,7 @@
         		<category android:name="android.intent.category.DEFAULT" />  
     		</intent-filter>  
 		</receiver>
-	    <receiver android:name="com.sunnykwong.omc.ClockWidget3x1" android:label="@string/widget_name3x1" android:enabled="@string/donate">
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget3x1" android:label="@string/widget_name3x1" android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo3x1"/>
 			<intent-filter>  
@@ -117,7 +121,7 @@
         		<category android:name="android.intent.category.DEFAULT" />  
     		</intent-filter>  
 		</receiver>
-	    <receiver android:name="com.sunnykwong.omc.ClockWidget2x1" android:label="@string/widget_name2x1" android:enabled="@string/donate">
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget2x1" android:label="@string/widget_name2x1" android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo2x1"/>
 			<intent-filter>  
