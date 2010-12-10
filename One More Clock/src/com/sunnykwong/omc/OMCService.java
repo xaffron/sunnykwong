@@ -67,7 +67,7 @@ public class OMCService extends Service {
 		if (!OMCService.RUNNING || !OMC.FG) {
 			// If we're not in FG, then go to sleep and let the alarm wake us up again
 			// If we're supposed to stop, then just stop
-			if (OMC.DEBUG)Log.i("OMCSvc","Stopping Svc");
+			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Svc","Stopping Svc");
 			this.stopSelf();
 		}
     }
@@ -83,7 +83,7 @@ public class OMCService extends Service {
 		if (!OMCService.RUNNING || !OMC.FG) {
 			// If we're not in FG, then go to sleep and let the alarm wake us up again
 			// If we're supposed to stop, then just stop
-			if (OMC.DEBUG)Log.i("OMCSvc","Stopping Svc");
+			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Svc","Stopping Svc");
 			this.stopSelf();
 		}
 

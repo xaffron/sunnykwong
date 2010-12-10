@@ -69,7 +69,7 @@ public class OMCXMLThemeParser extends DefaultHandler {
 	
 	@Override
     public void startDocument () {
-//		if (OMC.DEBUG) Log.i("OMCTParser","Start document.");
+//		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "TParser","Start document.");
     }
 
 	@Override
@@ -149,7 +149,7 @@ public class OMCXMLThemeParser extends DefaultHandler {
 	@Override
     public void endDocument ()
     {
-//		if (OMC.DEBUG) Log.i("OMCTParser","Doc done.");
+//		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "TParser","Doc done.");
 		newTheme.name = null;
 		
 		//Assume valid until proven otherwise.
@@ -175,21 +175,21 @@ public class OMCXMLThemeParser extends DefaultHandler {
 				if (sKey.equals(newTheme.name)){
 					for (Object oTemp:newTheme.arrays.get(sKey).toArray()) {
 						String sTemp = (String)oTemp;
-//						if (OMC.DEBUG) Log.i("OMCTParser",sTemp.substring(6));
+//						if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "TParser",sTemp.substring(6));
 						if (!newTheme.arrays.containsKey(sTemp.substring(6))) {
-							if (OMC.DEBUG) Log.i("OMCXML","layer invalid");
+							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "XML","layer invalid");
 							newTheme.valid=false;
 							break;
 						}
 						if (sTemp.startsWith("quote:")) {
 							if (!newTheme.arrays.containsKey(newTheme.arrays.get(sTemp.substring(6)).get(13))) {
-								if (OMC.DEBUG) Log.i("OMCXML","quote talkback invalid");
+								if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "XML","quote talkback invalid");
 								newTheme.valid=false;
 								break;
 							}
 							Typeface tf = OMC.getTypeface(newTheme.arrays.get(sTemp.substring(6)).get(1), OMCXMLThemeParser.sdRootPath + "/" + newTheme.arrays.get(sTemp.substring(6)).get(2));
 							if (tf==null) {
-								if (OMC.DEBUG) Log.i("OMCXML","quote typeface "+ newTheme.arrays.get(sTemp.substring(6)).get(2) +" not found");
+								if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "XML","quote typeface "+ newTheme.arrays.get(sTemp.substring(6)).get(2) +" not found");
 								newTheme.valid=false;
 								break;
 							} else {
@@ -202,7 +202,7 @@ public class OMCXMLThemeParser extends DefaultHandler {
 						if (sTemp.startsWith("text :")) {
 							Typeface tf = OMC.getTypeface(newTheme.arrays.get(sTemp.substring(6)).get(1), OMCXMLThemeParser.sdRootPath + "/" + newTheme.arrays.get(sTemp.substring(6)).get(2));
 							if (tf==null) {
-								if (OMC.DEBUG) Log.i("OMCXML","typeface "+ newTheme.arrays.get(sTemp.substring(6)).get(2) +" not found");
+								if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "XML","typeface "+ newTheme.arrays.get(sTemp.substring(6)).get(2) +" not found");
 								newTheme.valid=false;
 								break;
 							} else {
@@ -212,7 +212,7 @@ public class OMCXMLThemeParser extends DefaultHandler {
 						if (sTemp.startsWith("image:")) {
 							Bitmap bmp = OMC.getBitmap(newTheme.arrays.get(sTemp.substring(6)).get(1), OMCXMLThemeParser.sdRootPath + "/" + newTheme.arrays.get(sTemp.substring(6)).get(2));
 							if (bmp==null) {
-								if (OMC.DEBUG) Log.i("OMCXML","image "+ newTheme.arrays.get(sTemp.substring(6)).get(2) +" not found");
+								if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "XML","image "+ newTheme.arrays.get(sTemp.substring(6)).get(2) +" not found");
 								newTheme.valid=false;
 								break;
 							} else {

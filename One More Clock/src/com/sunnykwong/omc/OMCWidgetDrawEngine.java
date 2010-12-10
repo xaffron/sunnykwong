@@ -445,7 +445,7 @@ public class OMCWidgetDrawEngine {
 			final AppWidgetManager appWidgetManager,
 			final int appWidgetId, float fScaleX, float fScaleY, ComponentName cName, int iCutTop, int iCutBottom) {
 
-		if (OMC.DEBUG)Log.i("OMCWidget", "Redrawing widget" + appWidgetId + " @ " + OMC.TIME.format("%T"));
+		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Widget", "Redrawing widget" + appWidgetId + " @ " + OMC.TIME.format("%T"));
 
 		String sTheme = OMC.PREFS.getString("widgetTheme"+appWidgetId,OMC.DEFAULTTHEME);
 		boolean bExternal = OMC.PREFS.getBoolean("external"+appWidgetId,false);
@@ -472,10 +472,10 @@ public class OMCWidgetDrawEngine {
 				}
 			} catch (android.content.res.Resources.NotFoundException e) {
 				// OMC.STRETCHINFO stays null; do nothing
-				if (OMC.DEBUG) Log.i("OMCEngine","No stretch info found for seeded clock. Using default.");
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Engine","No stretch info found for seeded clock. Using default.");
 			} catch (java.lang.NullPointerException e) {
 				// OMC.STRETCHINFO stays null; do nothing
-				if (OMC.DEBUG) Log.i("OMCEngine","No stretch info found for imported clock. Using default.");
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Engine","No stretch info found for imported clock. Using default.");
 				OMC.STRETCHINFO = null;
 			}
 		}
@@ -490,11 +490,11 @@ public class OMCWidgetDrawEngine {
 			}
 		} catch (android.content.res.Resources.NotFoundException e) {
 			// OMC.STRETCHINFO stays null; do nothing
-			if (OMC.DEBUG) Log.i("OMCEngine","No link URL info found for seeded clock.");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Engine","No link URL info found for seeded clock.");
 			OMC.OVERLAYURL = new String[] {"default","default","default","default","default","default","default","default","default"};
 		} catch (java.lang.NullPointerException e) {
 			// OMC.STRETCHINFO stays null; do nothing
-			if (OMC.DEBUG) Log.i("OMCEngine","No link URL info found for imported clock.");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Engine","No link URL info found for imported clock.");
 			OMC.OVERLAYURL = new String[] {"default","default","default","default","default","default","default","default","default"};
 		}
 

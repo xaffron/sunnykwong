@@ -52,23 +52,26 @@ public class OMC extends Application {
 	
 	static String THISVERSION;
 	static final boolean SINGLETON = false;
-	static final String SINGLETONNAME = "";
 	static final boolean FREEEDITION = false;
-	static final String OMCSHORT = "";
-
+	static final String SINGLETONNAME = "One More Clock";
+	static final String STARTERPACKURL = "omc://omc.colormeandroid.com/pk1204.omc";
+	static final String STARTERPACKBACKUP = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFYWVjNGQ5Y2QtZmE4Yy00OWM5LWJhNGYtZmQ4NjFjMmM5Yzc1&export=download&authkey=CO66i_8O&hl=en";
+	static final String DEFAULTTHEME = "LockscreenLook";
 	
+//  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
+	
+	static final String APPNAME = OMC.SINGLETON? OMC.SINGLETONNAME:"One More Clock";
+	static final String OMCSHORT = (OMC.SINGLETON? OMC.SINGLETONNAME.substring(0,4):"OMC") + (OMC.FREEEDITION? "free":"");
+
 	static final String OMCNAME = "com.sunnykwong.omc";
 	static String SHAREDPREFNAME;
 	static String PKGNAME;
-	static final String STARTERPACKURL = "omc://omc.colormeandroid.com/pk1204.omc";
-//	static final String STARTERPACKURL = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFYWVjNGQ5Y2QtZmE4Yy00OWM5LWJhNGYtZmQ4NjFjMmM5Yzc1&export=download&authkey=CO66i_8O&hl=en";
 	static boolean SHOWHELP = false;
 	static final boolean DEBUG = true;
-
+	static Uri PAIDURI;
 	
 	static long LASTUPDATEMILLIS;
 	static int UPDATEFREQ = 20000;
-	static final String DEFAULTTHEME = "LockscreenLook";
 	static final Random RND = new Random();
 	static SharedPreferences PREFS;
 	static AlarmManager ALARMS;	// I only need one alarmmanager.
@@ -141,6 +144,7 @@ public class OMC extends Application {
 		
 		OMC.PKGNAME = getPackageName();
 		OMC.SHAREDPREFNAME = OMC.PKGNAME + "_preferences";
+		OMC.PAIDURI = (OMC.SINGLETON? Uri.parse("market://details?id=" + OMC.PKGNAME +"donate"):Uri.parse("market://details?id=com.sunnykwong.omc"));
 
 		OMC.WIDGET4x2CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget4x2");
 		OMC.WIDGET4x1CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget4x1");
@@ -178,7 +182,7 @@ public class OMC extends Application {
 		OMC.DUMMYINTENT = new Intent(this, DUMMY.class);
 		OMC.GETSTARTERPACKINTENT = new Intent(this, OMCThemeUnzipActivity.class);
 		OMC.GETSTARTERPACKINTENT.setData(Uri.parse(OMC.STARTERPACKURL));
-		OMC.OMCMARKETINTENT = new Intent(Intent.ACTION_VIEW,Uri.parse("market://details?id=com.sunnykwong.omc"));
+		OMC.OMCMARKETINTENT = new Intent(Intent.ACTION_VIEW,OMC.PAIDURI);
 
 		
 		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/";
@@ -202,7 +206,7 @@ public class OMC extends Application {
 		
 		// If we're from a legacy version, then we need to wipe all settings clean to avoid issues.
 		if (OMC.PREFS.getString("version", "1.0.x").startsWith("1.0")) {
-			Log.i("OMCApp","Upgrade from legacy version, wiping all settings.");
+			Log.i(OMC.OMCSHORT + "App","Upgrade from legacy version, wiping all settings.");
 			OMC.PREFS.edit().clear().commit();
 		}
 		if (OMC.PREFS.getString("version", "1.0.x").equals(OMC.THISVERSION)) {
@@ -401,17 +405,17 @@ public class OMC extends Application {
 	
 	public synchronized static OMCImportedTheme getImportedTheme(final Context context, final String nm){
 		if (OMC.IMPORTEDTHEMEMAP.containsKey(nm)){ 
-			if (OMC.DEBUG) Log.i("OMCApp",nm + " retrieved from memory.");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " retrieved from memory.");
 			return OMC.IMPORTEDTHEMEMAP.get(nm);
 		}
 		try {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(OMC.CACHEPATH + nm + ".omc"));
 			OMCImportedTheme oResult = (OMCImportedTheme)in.readObject();
 			OMC.IMPORTEDTHEMEMAP.put(nm, oResult);
-			if (OMC.DEBUG) Log.i("OMCApp",nm + " reloaded from cache.");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " reloaded from cache.");
 			return oResult;
 		} catch (Exception e) {
-			if (OMC.DEBUG) Log.i("OMCApp","error reloading " + nm + " from cache.");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error reloading " + nm + " from cache.");
 		
 			//e.printStackTrace();
 		}
@@ -454,11 +458,11 @@ public class OMC extends Application {
 	
 	public static void saveImportedThemeToCache(Context context, String nm) {
 		try {
-			if (OMC.DEBUG) Log.i("OMCApp",nm + " saving to cache.");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " saving to cache.");
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(OMC.CACHEPATH + nm + ".omc"));
 			out.writeObject(OMC.IMPORTEDTHEMEMAP.get(nm));
 		} catch (Exception e) {
-			if (OMC.DEBUG) Log.i("OMCApp","error saving " + nm + " to cache.");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error saving " + nm + " to cache.");
 			//e.printStackTrace();
 		}
 	}
@@ -504,21 +508,21 @@ public class OMC extends Application {
 	public void widgetClicks() {
 		try {
 			this.getPackageManager().getPackageInfo("com.sunnykwong.ompc", 0);
-			if (OMC.DEBUG)Log.i("OMCApp","OMPC installed, let OMPC handle onclick");
+			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "App","OMPC installed, let OMPC handle onclick");
 			try {
 				unregisterReceiver(OMC.cRC);
 			} catch (java.lang.IllegalArgumentException e) {
-    			if (OMC.DEBUG)Log.i("OMCApp","OMC's receiver already unregistered - doing nothing");
+    			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "App","OMC's receiver already unregistered - doing nothing");
 				//no need to do anything if receiver not registered
 			}
 		} catch (Exception e) {
 
-			if (OMC.DEBUG)Log.i("OMCApp","OMPC not installed, register self to handle widget clicks");
+			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "App","OMPC not installed, register self to handle widget clicks");
 			//e.printStackTrace();
 			try {
 				this.registerReceiver(OMC.cRC,OMC.PREFSINTENTFILT);
 			} catch (Exception ee) {
-    			if (OMC.DEBUG)Log.i("OMCApp","Failed to register self");
+    			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "App","Failed to register self");
 				ee.printStackTrace();
 			}
 		}
@@ -529,10 +533,10 @@ public class OMC extends Application {
     @Override
     public void onTerminate() {
     	if (!OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1) {
-        	Log.i("OMCApp","APP TERMINATED - NOT UNREGISTERING RECEIVERS - OMC WILL RESTART");
+    		Log.i(OMC.OMCSHORT + "App","APP TERMINATED - NOT UNREGISTERING RECEIVERS - OMC WILL RESTART");
     		// do nothing
     	} else {
-        	Log.i("OMCApp","APP TERMINATED - UNREGISTERING RECEIVERS - OMC WILL NOT RESTART");
+    		Log.i(OMC.OMCSHORT + "App","APP TERMINATED - UNREGISTERING RECEIVERS - OMC WILL NOT RESTART");
     		unregisterReceiver(aRC);
     	}
         OMC.PREFS.edit().commit();

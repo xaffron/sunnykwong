@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.preference.PreferenceCategory;
+
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.util.Log;
 import android.widget.Toast;
@@ -30,15 +32,20 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 			appWidgetID = Integer.parseInt(getIntent().getData().getSchemeSpecificPart());
 
 		if (appWidgetID >= 0) {
-			if (OMC.DEBUG) Log.i("OMCPref","Called by Widget " + appWidgetID);
-        	OMC.getPrefs(appWidgetID);
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Called by Widget " + appWidgetID);
+
+			if (OMC.SINGLETON) setTitle(OMC.SINGLETONNAME + " - Preferences");
+
+			OMC.getPrefs(appWidgetID);
         	OMC.PREFS.edit().putBoolean("widgetPersistence", OMC.FG).commit();
-    		if (OMC.FREEEDITION) {
+
+        	if (OMC.FREEEDITION) {
     			OMC.PREFS.edit().putBoolean("bFourByOne", false)
     					.putBoolean("bThreeByOne", false)
     					.putBoolean("bTwoByOne", false)
     					.commit();
     		}
+        	
     		this.getPreferenceManager().setSharedPreferencesName(OMC.SHAREDPREFNAME);
         	addPreferencesFromResource(getResources().getIdentifier("omcprefs", "xml", OMC.PKGNAME));
 
@@ -48,39 +55,40 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	prefdownloadStarterPack = findPreference("downloadStarterPack");
         	prefbSkinner = findPreference("bSkinner");
         	
-        	if (OMC.SINGLETON) {
-        		((PreferenceScreen)findPreference("rootPrefs")).removePreference(prefloadThemeFile);
-        		((PreferenceScreen)findPreference("rootPrefs")).removePreference(prefclearCache);
-        		((PreferenceScreen)findPreference("rootPrefs")).removePreference(prefclearImports);
-        		((PreferenceScreen)findPreference("rootPrefs")).removePreference(prefdownloadStarterPack);
-        		((PreferenceScreen)findPreference("rootPrefs")).removePreference(prefbSkinner);
-        		((PreferenceScreen)findPreference("rootPrefs")).setTitle(OMC.SINGLETONNAME + " - Preferences");
-        	}
-        	
         	if (OMC.FREEEDITION) {
         		findPreference("sVersion").setTitle("Version " + OMC.THISVERSION + " Free");
         		findPreference("sVersion").setSummary("Tap me to get the full version!");
         		findPreference("sVersion").setSelectable(true);
         	} else {
         		findPreference("sVersion").setTitle("Version " + OMC.THISVERSION);
-        		findPreference("sVersion").setSummary("Thanks for supporting Xaffron!");
+        		findPreference("sVersion").setSummary("Thanks for your support!");
         		findPreference("sVersion").setSelectable(false);
         	}
         	//findPreference("widgetTheme").setOnPreferenceChangeListener(this);
         	findPreference("clearImports").setOnPreferenceChangeListener(this);
     		findPreference("bFourByTwo").setEnabled(false);
+
     		if (OMC.FREEEDITION) {
         		findPreference("bFourByOne").setEnabled(false); 
         		findPreference("bThreeByOne").setEnabled(false);
         		findPreference("bTwoByOne").setEnabled(false);
         		findPreference("sVersion").setEnabled(true);
     		}
+
+    		if (OMC.SINGLETON) {
+        		((PreferenceCategory)findPreference("thisClock")).removePreference(prefloadThemeFile);
+        		((PreferenceCategory)findPreference("allClocks")).removePreference(prefclearCache);
+        		((PreferenceCategory)findPreference("allClocks")).removePreference(prefclearImports);
+        		((PreferenceCategory)findPreference("allClocks")).removePreference(prefdownloadStarterPack);
+        		((PreferenceScreen)findPreference("widgetPrefs")).removePreference(prefbSkinner);
+        	}
+        	
         } else {
             // If they gave us an intent without the widget id, just bail.
-        	if (OMC.DEBUG) Log.i("OMCPref","Called by Launcher - do nothing");
+        	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Called by Launcher - do nothing");
         	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
         		.setTitle("Thanks for downloading!")
-        		.setMessage("To begin, hit the back button to go back to the home screen, then push the menu button, select 'Add', then 'Widgets' to see your newly-downloaded widget listed.  Have fun!")
+        		.setMessage("To begin, hit the back button to go back to the home screen, then push the menu button, select 'Add', then 'Widgets' to see " + OMC.APPNAME + " listed.  Have fun!")
         	    .setCancelable(true)
         	    .setIcon(getResources().getIdentifier("fredicon_mdpi", "drawable", OMC.PKGNAME))
         	    .setOnKeyListener(new OnKeyListener() {
@@ -102,7 +110,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 
 //    	if (preference == findPreference("widgetTheme")) {
-//	    	if (OMC.DEBUG) Log.i("OMCPref","Setting External to false");
+//	    	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Setting External to false");
 //			OMC.PREFS.edit().putBoolean("external", false).commit();
 //	    	return true;
 //    	}
@@ -168,17 +176,36 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		startActivityForResult(OMC.IMPORTTHEMEINTENT,0);
     	}
     	if (preference == getPreferenceScreen().findPreference("oTTL")) {
-    		OMCPrefActivity.this.getPreferenceScreen().setEnabled(false);
-    		Intent mainIntent = new Intent(Intent.ACTION_MAIN,
-        			null);
-			mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-
-			Intent pickIntent = new
-			Intent(Intent.ACTION_PICK_ACTIVITY);
-			pickIntent.putExtra(Intent.EXTRA_INTENT, mainIntent);
-			startActivityForResult(pickIntent, OMCPrefActivity.appWidgetID);
-			mainIntent=null;
-			pickIntent=null;
+    		if (OMC.SINGLETON && OMC.FREEEDITION) {
+            	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
+    			.setCancelable(true)
+    			.setTitle("Think of the possibilities!")
+    			.setMessage("The donate version lets you set " + OMC.APPNAME + " to launch any activity you want, plus it offers widget sizes of 4x2, 4x1, 3x1 and 2x1.\nPlease consider upgrading to get these sizes!")
+    			.setPositiveButton("Take me to the donate version!", new DialogInterface.OnClickListener() {
+    					
+    					@Override
+    					public void onClick(DialogInterface dialog, int which) {
+    						// TODO Auto-generated method stub
+    						OMCPrefActivity.mAD.dismiss();
+    						OMCPrefActivity.this.startActivity(OMC.OMCMARKETINTENT);
+    						OMCPrefActivity.this.finish();
+    						
+    					}
+    				}).create();
+            	OMCPrefActivity.mAD.show();
+    		} else {
+	    		OMCPrefActivity.this.getPreferenceScreen().setEnabled(false);
+	    		Intent mainIntent = new Intent(Intent.ACTION_MAIN,
+	        			null);
+				mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+	
+				Intent pickIntent = new
+				Intent(Intent.ACTION_PICK_ACTIVITY);
+				pickIntent.putExtra(Intent.EXTRA_INTENT, mainIntent);
+				startActivityForResult(pickIntent, OMCPrefActivity.appWidgetID);
+				mainIntent=null;
+				pickIntent=null;
+    		}
     	}
     	if (preference == getPreferenceScreen().findPreference("clearCache")) {
     		OMC.purgeTypefaceCache();
@@ -246,7 +273,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     public void onDestroy() {
 		if (appWidgetID >= 0) {
 
-			if (OMC.DEBUG) Log.i("OMCPref","Saving Prefs for Widget " + OMCPrefActivity.appWidgetID);
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Saving Prefs for Widget " + OMCPrefActivity.appWidgetID);
 			OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", true)? true : false;
 			OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
 	    	OMC.setPrefs(OMCPrefActivity.appWidgetID);

@@ -2,6 +2,7 @@ package com.sunnykwong.omc;
 
 import java.util.StringTokenizer;
 import android.graphics.Color;
+import android.util.Log;
 //import android.util.Log;
 
 import java.util.ArrayList;
@@ -258,7 +259,7 @@ public class OMCTypedArray  {
 	}
 
 	static public String resolveTokens(String sRawString, int aWI) {
-//		if (OMC.DEBUG) Log.i("OMCArray","Parsing "+sRawString);
+//		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Parsing "+sRawString);
 		StringBuilder result = new StringBuilder();
 
 		// If token contains dynamic elements, recursively resolve them
@@ -283,32 +284,32 @@ public class OMCTypedArray  {
 				iMarker1 = sRawString.indexOf("[%",iCursor+1);
 				iMarker2 = sRawString.indexOf("%]",iCursor);
 
-//				if (OMC.DEBUG) Log.i("OMCArray","Markers: " +iCursor+" " + iMarker1+ " " + iMarker2);
+//				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Markers: " +iCursor+" " + iMarker1+ " " + iMarker2);
 				// No markers found? bad parsing occurred.
 				// exit gracefully (try to)
 				if (iMarker1 == -1 && iMarker2 == -1) {
-//					if (OMC.DEBUG) Log.i("OMCArray","Improper markup. Bailing...");
+//					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Improper markup. Bailing...");
 					break;
 					
 				} else if (iMarker1 == -1) {
 					// No more start markers found, but we have an end marker.
 					// Dive into this substring.
-//					if (OMC.DEBUG) Log.i("OMCArray","Sending down(-1): " + sRawString.substring(iCursor, iMarker2+2));
+//					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Sending down(-1): " + sRawString.substring(iCursor, iMarker2+2));
 					result.append(OMCTypedArray.resolveOneToken(sRawString.substring(iCursor, iMarker2+2), aWI));
 					result.append(sRawString.substring(iMarker2+2));
-//					if (OMC.DEBUG) Log.i("OMCArray","Now at: " + result.toString());
+//					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Now at: " + result.toString());
 				} else if (iMarker1 < iMarker2) {
 					//if [% is closer, keep going until we find the innermost [%
-//					if (OMC.DEBUG) Log.i("OMCArray","Found nested. (1<2)");
+//					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Found nested. (1<2)");
 					result.append(sRawString.substring(iCursor,iMarker1));
-//					if (OMC.DEBUG) Log.i("OMCArray","Now at: " + result.toString());
+//					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Now at: " + result.toString());
 					iCursor = iMarker1;
 				} else if (iMarker2 < iMarker1) {
 					//if %] is closer, we have an end marker.
 					//Dive into this substring.
-//					if (OMC.DEBUG) Log.i("OMCArray","Sending down(2<1): " + sRawString.substring(iCursor, iMarker2+2));
+//					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Sending down(2<1): " + sRawString.substring(iCursor, iMarker2+2));
 					result.append(OMCTypedArray.resolveOneToken(sRawString.substring(iCursor, iMarker2+2), aWI));
-//					if (OMC.DEBUG) Log.i("OMCArray","Now at: " + result.toString());
+//					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Now at: " + result.toString());
 					//Move all markers to the next [% (we only deal with one layer here).
 					//Start looking for the next directive.
 					result.append(sRawString.substring(iMarker2+2, iMarker1));

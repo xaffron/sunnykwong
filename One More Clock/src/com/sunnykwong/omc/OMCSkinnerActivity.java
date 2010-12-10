@@ -108,7 +108,7 @@ public class OMCSkinnerActivity extends Activity {
 	    	    	OMCXMLThemeParser parser = new OMCXMLThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
 	    					+"/OMC/" + sTheme);
 
-	    	    	Log.i("OMCSkinner","about to parse " + Environment.getExternalStorageDirectory().getAbsolutePath()
+	    	    	Log.i(OMC.OMCSHORT + "Skinner","about to parse " + Environment.getExternalStorageDirectory().getAbsolutePath()
 	    					+"/OMC/" + sTheme);
 	    			parser.importTheme();
 	
@@ -157,11 +157,11 @@ public class OMCSkinnerActivity extends Activity {
 			}
 		} catch (android.content.res.Resources.NotFoundException e) {
 			// OMC.STRETCHINFO stays null; do nothing
-			if (OMC.DEBUG) Log.i("OMCEngine","No stretch info found for seeded clock.");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Engine","No stretch info found for seeded clock.");
 			bCustomStretch=false;
 		} catch (java.lang.NullPointerException e) {
 			// OMC.STRETCHINFO stays null; do nothing
-			if (OMC.DEBUG) Log.i("OMCEngine","No stretch info found for imported clock.");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Engine","No stretch info found for imported clock.");
 			bCustomStretch=false;
 		}
 

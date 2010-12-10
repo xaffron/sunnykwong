@@ -19,7 +19,7 @@ public class ClockWidget4x2 extends AppWidgetProvider {
 		final int N = appWidgetIds.length;
 		for (int i=0; i<N; i++) {
 			//Remove Prefs
-			if (OMC.DEBUG)Log.i("OMCWidget","Removed Widget #" + appWidgetIds[i]);
+			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Widget","Removed Widget #" + appWidgetIds[i]);
 			OMC.removePrefs(appWidgetIds[i]);
 		}
 	}

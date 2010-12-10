@@ -12,7 +12,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// Set the alarm for next tick first, so we don't lose sync
 		OMC.setServiceAlarm(((System.currentTimeMillis()+ OMC.UPDATEFREQ)/OMC.UPDATEFREQ) * OMC.UPDATEFREQ);
 
-		if (OMC.DEBUG) Log.i("OMCAlarm","Rcvd " + intent.getAction());
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Rcvd " + intent.getAction());
 		
 		
 		// If we come back from a low memory state, all sorts of screwy stuff might happen.
@@ -43,17 +43,17 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		if (action.equals(Intent.ACTION_SCREEN_ON)) {
 			OMC.SCREENON=true;
 			OMC.LASTUPDATEMILLIS=0l;
-			if (OMC.DEBUG) Log.i("OMCAlarm","Scrn on - Refreshing");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Scrn on - Refreshing");
 		}
 	
 		if (action.equals(Intent.ACTION_SCREEN_OFF)) {
 			OMC.SCREENON=false;
-			if (OMC.DEBUG) Log.i("OMCAlarm","Scrn off - not refreshing");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Scrn off - not refreshing");
 		}
 		
 		// Prevent abusive updates - update no more than every 1 secs.
 		if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 1000) {
-			if (OMC.DEBUG) Log.i("OMCAlarm","Abusive; aborting update " + System.currentTimeMillis() + " " + OMC.LASTUPDATEMILLIS);
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Abusive; aborting update " + System.currentTimeMillis() + " " + OMC.LASTUPDATEMILLIS);
 			return;
 		}
 		OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
@@ -61,7 +61,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		if (OMC.SCREENON) {
 			context.startService(OMC.SVCSTARTINTENT);
 		} else {
-			if (OMC.DEBUG) Log.i("OMCAlarm","I think scrn is off... no refresh");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","I think scrn is off... no refresh");
 		}
 	}
 }

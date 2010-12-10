@@ -103,7 +103,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     public void onClick(View v) {
     	// TODO Auto-generated method stub
     	if (v==btnReload) {
-    		if (OMC.DEBUG) Log.i("OMCSkin","Refreshing Themes");
+    		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Skin","Refreshing Themes");
     		refreshThemeList();
     	}
     	if (v==btnGetMore) {

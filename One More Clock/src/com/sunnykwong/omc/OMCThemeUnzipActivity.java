@@ -151,9 +151,9 @@ public class OMCThemeUnzipActivity extends Activity {
 	        				String sScheme = "http:";
 	        				if (uri.getScheme().equals("omcs")) sScheme = "https:";
 	        				else if (uri.getScheme().equals("omc")) sScheme = "http:";
-	        				if (OMC.DEBUG) Log.i("OMCUnzip","Scheme is " + sScheme);
+	        				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","Scheme is " + sScheme);
 	        				downloadURL = new URL(sScheme + uri.getSchemeSpecificPart());
-	        				if (OMC.DEBUG) Log.i("OMCUnzip","The rest is " + uri.getSchemeSpecificPart());
+	        				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","The rest is " + uri.getSchemeSpecificPart());
 	        				URLConnection conn = downloadURL.openConnection();
 	        				ZipInputStream zis = new ZipInputStream(conn.getInputStream());
 	        				BufferedInputStream bis = new BufferedInputStream(zis,8192);
@@ -162,7 +162,7 @@ public class OMCThemeUnzipActivity extends Activity {
 	        				pdMessage = "Streaming " + conn.getContentLength() + " bytes.";
 	        				mHandler.post(mUpdateStatus);
 	        				while ((ze = zis.getNextEntry())!= null) {
-	            				if (OMC.DEBUG) Log.i("OMCUnzip","Looping - now " + ze.getName());
+	            				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","Looping - now " + ze.getName());
 	        					outputFile = new File(sdRoot.getAbsolutePath()+"/"+ze.getName());
 	        					if (ze.isDirectory()) {
 	                				pdMessage = "Importing: " + ze.getName();

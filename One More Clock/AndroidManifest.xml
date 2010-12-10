@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.sunnykwong.omc" 
-      android:versionCode="15" android:versionName="1.1.5">
+      android:versionCode="16" android:versionName="1.1.6">
     <uses-sdk android:minSdkVersion="4" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
@@ -87,7 +87,7 @@
                 <data android:scheme="omc" />
     		</intent-filter>
 		</receiver>
-    	<receiver android:name="com.sunnykwong.omc.ClockWidget4x2" android:label="One More Clock(4x2)" android:enabled="true">
+    	<receiver android:name="com.sunnykwong.omc.ClockWidget4x2" android:label="@string/widget_name4x2" android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo4x2"/>
 			<intent-filter>  
@@ -97,7 +97,7 @@
          		<category android:name="android.intent.category.DEFAULT" />
     		</intent-filter>  
 		</receiver>
-	    <receiver android:name="com.sunnykwong.omc.ClockWidget4x1" android:label="One More Clock(4x1)" android:enabled="true">
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget4x1" android:label="@string/widget_name4x1" android:enabled="@string/donate">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo4x1"/>
 			<intent-filter>  
@@ -107,7 +107,7 @@
         		<category android:name="android.intent.category.DEFAULT" />  
     		</intent-filter>  
 		</receiver>
-	    <receiver android:name="com.sunnykwong.omc.ClockWidget3x1" android:label="One More Clock(3x1)" android:enabled="true">
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget3x1" android:label="@string/widget_name3x1" android:enabled="@string/donate">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo3x1"/>
 			<intent-filter>  
@@ -117,7 +117,7 @@
         		<category android:name="android.intent.category.DEFAULT" />  
     		</intent-filter>  
 		</receiver>
-	    <receiver android:name="com.sunnykwong.omc.ClockWidget2x1" android:label="One More Clock(2x1)" android:enabled="true">
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget2x1" android:label="@string/widget_name2x1" android:enabled="@string/donate">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo2x1"/>
 			<intent-filter>  
