@@ -90,7 +90,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         		.setTitle("Thanks for downloading!")
         		.setMessage("To begin, hit the back button to go back to the home screen, then push the menu button, select 'Add', then 'Widgets' to see " + OMC.APPNAME + " listed.  Have fun!")
         	    .setCancelable(true)
-        	    .setIcon(getResources().getIdentifier("fredicon_mdpi", "drawable", OMC.PKGNAME))
+        	    .setIcon(getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME))
         	    .setOnKeyListener(new OnKeyListener() {
         	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
         	    		dialogCancelled();
@@ -232,7 +232,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 					OMCPrefActivity.mAD.dismiss();
 				}
 			})
-    	    .setIcon(getResources().getIdentifier("fredicon_mdpi", "drawable", OMC.PKGNAME))
+    	    .setIcon(getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME))
     	    .setOnKeyListener(new OnKeyListener() {
     	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
 					OMCPrefActivity.mAD.dismiss();

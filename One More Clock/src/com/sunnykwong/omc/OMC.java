@@ -39,8 +39,6 @@ import android.graphics.BitmapFactory;
 import android.content.res.Resources;
 import android.graphics.Matrix;
 
-//import com.sunnykwong.omc.whambamwidget.R;
-
 /**
  * @author skwong01
  * Thanks to ralfoide's 24clock code; taught me quite a bit about broadcastreceivers
@@ -61,7 +59,8 @@ public class OMC extends Application {
 	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
 	static final Intent WIDGETREFRESHINTENT = new Intent("com.sunnykwong.omc.WIDGET_REFRESH");
 	static final IntentFilter PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
-
+	static final String APPICON = "fredicon_mdpi";
+	
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	
 	static final String APPNAME = OMC.SINGLETON? OMC.SINGLETONNAME:"One More Clock";
@@ -191,7 +190,7 @@ public class OMC extends Application {
 		OMC.BGRECT = new RectF(30,10,295,150);
 		OMC.FGRECT = new RectF(25,5,290,145);
 		
-		OMC.FGNOTIFICIATION = new Notification(this.getResources().getIdentifier("fredicon_mdpi", "drawable", OMC.PKGNAME), 
+		OMC.FGNOTIFICIATION = new Notification(this.getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME), 
 				"",
         		System.currentTimeMillis());
         OMC.FGNOTIFICIATION.flags = OMC.FGNOTIFICIATION.flags|Notification.FLAG_ONGOING_EVENT|Notification.FLAG_NO_CLEAR;

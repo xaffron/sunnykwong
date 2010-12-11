@@ -111,7 +111,7 @@ public class OMCService extends Service {
 			OMC.FGNOTIFICIATION.icon = getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME);
 			
 	        RemoteViews contentView = new RemoteViews(getPackageName(), getResources().getIdentifier("omc_notification", "layout", OMC.PKGNAME));
-	        contentView.setTextViewText(getResources().getIdentifier("notf_text", "id", OMC.PKGNAME), "- One More Clock! in Foreground Mode -");
+	        contentView.setTextViewText(getResources().getIdentifier("notf_text", "id", OMC.PKGNAME), "- " + OMC.APPNAME + " in Foreground Mode -");
 	        OMC.FGNOTIFICIATION.contentView = contentView;
 			OMC.FGNOTIFICIATION.contentIntent = OMC.PREFSPENDING;
 	        

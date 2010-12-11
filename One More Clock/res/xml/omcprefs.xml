@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen android:title="One More Clock - Preferences"
+<PreferenceScreen android:title="Clock Preferences"
 	android:key="rootPrefs" xmlns:android="http://schemas.android.com/apk/res/android">
 	<PreferenceCategory android:key="thisClock" android:title="For this clock:">
 		<Preference android:selectable="true" android:key="loadThemeFile"
