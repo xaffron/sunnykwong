@@ -51,6 +51,8 @@ public class OMCThemeUnzipActivity extends Activity {
 					OMC.STARTERPACKDLED = true;
 					OMC.PREFS.edit().putBoolean("starterpack", true).commit();
 				}
+			} else if (!COMPLETE && uri.toString().equals(OMC.STARTERPACKURL)) {
+				startActivity(OMC.GETBACKUPPACKINTENT);
 			} else {
 				Toast.makeText(getApplicationContext(), "Import Aborted!", Toast.LENGTH_LONG).show();
 			}
@@ -92,7 +94,7 @@ public class OMCThemeUnzipActivity extends Activity {
         pdMessage = "";
         
         uri = getIntent().getData();
-        if (NOGO && uri.toString().equals(OMC.STARTERPACKURL)) {
+        if (NOGO && (uri.toString().equals(OMC.STARTERPACKURL) || uri.toString().equals(OMC.STARTERPACKBACKUP))) {
         	NOGO = false;
         } 
         if (NOGO) {

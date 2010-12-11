@@ -182,6 +182,13 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 			startActivity(OMC.GETSTARTERPACKINTENT);
 			
 			finish();
+        } else if (OMCThemePickerActivity.THEMEROOT.listFiles().length == 0) {
+	        	Toast.makeText(this, "Downloading starter clock pack...", Toast.LENGTH_LONG).show();
+	        	OMCThemePickerActivity.THEMEROOT.mkdir();
+
+				startActivity(OMC.GETSTARTERPACKINTENT);
+				
+				finish();
         } else if (!OMC.STARTERPACKDLED) {
 
         	mAD = new AlertDialog.Builder(this)

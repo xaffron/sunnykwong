@@ -53,7 +53,7 @@ public class OMC extends Application {
 	static final boolean FREEEDITION = false;
 	static final String SINGLETONNAME = "One More Clock";
 	static final String STARTERPACKURL = "omc://omc.colormeandroid.com/pk1204.omc";
-	static final String STARTERPACKBACKUP = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFYWVjNGQ5Y2QtZmE4Yy00OWM5LWJhNGYtZmQ4NjFjMmM5Yzc1&export=download&authkey=CO66i_8O&hl=en";
+	static final String STARTERPACKBACKUP = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFMjY0ZWRmZGItM2ZiNi00MmQ1LTkxNTMtODIwOGY1OTljYzBi&export=download&authkey=CNKEstMI&hl=en";
 	static final String DEFAULTTHEME = "LockscreenLook";
 	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
 	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
@@ -119,7 +119,7 @@ public class OMC extends Application {
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
     static Intent SVCSTARTINTENT, CREDITSINTENT, PREFSINTENT;
-    static Intent GETSTARTERPACKINTENT, IMPORTTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT;
+    static Intent GETSTARTERPACKINTENT, GETBACKUPPACKINTENT, IMPORTTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT;
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
     static Notification FGNOTIFICIATION;
     
@@ -182,6 +182,8 @@ public class OMC extends Application {
 		OMC.DUMMYINTENT = new Intent(this, DUMMY.class);
 		OMC.GETSTARTERPACKINTENT = new Intent(this, OMCThemeUnzipActivity.class);
 		OMC.GETSTARTERPACKINTENT.setData(Uri.parse(OMC.STARTERPACKURL));
+		OMC.GETBACKUPPACKINTENT = new Intent(this, OMCThemeUnzipActivity.class);
+		OMC.GETBACKUPPACKINTENT.setData(Uri.parse(OMC.STARTERPACKBACKUP));
 		OMC.OMCMARKETINTENT = new Intent(Intent.ACTION_VIEW,OMC.PAIDURI);
 
 		
