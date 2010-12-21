@@ -100,6 +100,13 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     }
     
     @Override
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+        refreshThemeList();
+    	super.onResume();
+    }
+    
+    @Override
     public void onClick(View v) {
     	// TODO Auto-generated method stub
     	if (v==btnReload) {
@@ -108,8 +115,8 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     	}
     	if (v==btnGetMore) {
     		Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("http://xaffron.blogspot.com/search/label/omctheme"));
-    		startActivityForResult(it, 999);
-    		return;
+    		startActivity(it);
+    		finish();
     	}
      }
 
@@ -274,7 +281,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
     	public ArrayList<String> mThemes = new ArrayList<String>();
     	public ArrayList<Boolean> mExternal = new ArrayList<Boolean>();
-    	public HashMap<String,Bitmap> mBitmaps = new HashMap<String,Bitmap>();
     	public HashMap<String, String> mCreds = new HashMap<String, String>();
     	public HashMap<String, String> mNames = new HashMap<String, String>();
     	
@@ -303,12 +309,12 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 	    			
         	}
         	if (!bExternal) {
-        		mBitmaps.put(sTheme, BitmapFactory.decodeResource(OMC.RES, getResources().getIdentifier("llpreview", "drawable", OMC.PKGNAME)));
+//        		mBitmaps.put(sTheme, BitmapFactory.decodeResource(OMC.RES, getResources().getIdentifier("llpreview", "drawable", OMC.PKGNAME)));
         		mNames.put(sTheme, "Lockscreen Look");
     			mCreds.put(sTheme, "LOCKSCREEN LOOK (S. Kwong, 18 Oct 2010)\nThe default Android Lockscreen Look.");
         		return result;
         	}
-        	mBitmaps.put(sTheme, BitmapFactory.decodeFile(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme+"/000preview.jpg"));
+//        	mBitmaps.put(sTheme, BitmapFactory.decodeFile(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme+"/000preview.jpg"));
     		char[] cCredits = new char[3000];
     		try {
     			FileReader fr = new FileReader(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+ "/" + sTheme+"/00name.txt");
@@ -336,7 +342,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	}
         	mThemes.remove(pos);
         	mExternal.remove(pos);
-        	mBitmaps.remove(sTheme);
+        	//mBitmaps.remove(sTheme);
         	mCreds.remove(sTheme);
         	File f = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme);
         	OMC.removeDirectory(f);
@@ -369,7 +375,15 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         public View getView(int position, View convertView, ViewGroup parent) {
         	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("themepickerpreview", "layout", OMC.PKGNAME), null);
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
-        	((ImageView)ll.findViewById(getResources().getIdentifier("ThemePreview", "id", OMC.PKGNAME))).setImageBitmap(mBitmaps.get(mThemes.get(position)));
+        	if (mThemes.get(position).equals("LockscreenLook")) {
+        		((ImageView)ll.findViewById(getResources().getIdentifier("ThemePreview", "id", OMC.PKGNAME)))
+        				.setImageBitmap(BitmapFactory.decodeResource(
+        				OMC.RES, getResources().getIdentifier("llpreview", "drawable", OMC.PKGNAME)));
+        	} else {
+        		((ImageView)ll.findViewById(getResources().getIdentifier("ThemePreview", "id", OMC.PKGNAME)))
+        				.setImageBitmap(BitmapFactory.decodeFile(
+        				OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + mThemes.get(position) +"/000preview.jpg"));
+        	}
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeCredits", "id", OMC.PKGNAME))).setText(mCreds.get(mThemes.get(position)));
             return ll;
         }
@@ -377,9 +391,9 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         public void dispose() {
         	mThemes.clear();
         	mCreds.clear();
-        	mBitmaps.clear();
         	mExternal.clear();
         	mNames.clear();
+        	System.gc();
         }
     
     }

@@ -81,12 +81,12 @@ public class OMCThemeImportActivity extends Activity {
     
     
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	
     	if (resultCode == Activity.RESULT_CANCELED) {
+        	setResult(Activity.RESULT_CANCELED);
+        	finishActivity(0);
     		finish();
     		return;
     	}
-    	
     	OMCThemeImportActivity.CURRSELECTEDTHEME = data.getExtras().getString("theme");
 
     	if (!data.getBooleanExtra("external", false)) {
@@ -147,6 +147,7 @@ public class OMCThemeImportActivity extends Activity {
 
 		} else {
 			//For some reason, no theme selected
+        	setResult(Activity.RESULT_CANCELED);
 			finish();
 			return;
 		}
