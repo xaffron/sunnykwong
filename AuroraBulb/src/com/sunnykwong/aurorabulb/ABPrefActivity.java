@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.DialogInterface.OnKeyListener;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
@@ -39,8 +40,12 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
 
 		this.getPreferenceManager().setSharedPreferencesName(AB.PREFNAME);
     	this.addPreferencesFromResource(R.xml.abprefs);
-    	
     
+    	try {
+    		findPreference("sVersion").setTitle(getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA).versionName);
+    	} catch (NameNotFoundException e) {
+    		// package name not found - not a showstopper, so carry on
+    	}
     	toplevel = (PreferenceScreen)findPreference("rootPrefs");
     	bitmapstuff = (PreferenceCategory)findPreference("bitmapstuff");
     	textstuff = (PreferenceCategory)findPreference("textstuff");
@@ -65,7 +70,7 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     	
     	mAD = new AlertDialog.Builder(this)
     		.setTitle("Aurora Bulb!")
-    		.setMessage("Thanks for downloading!\nJust hit Go! for some quick fun, or change the text/colors to suit your whim.  Have fun!")
+    		.setMessage("This application requires another camera with long-exposure to shoot the screen of this phone after you hit go.  Slide the phone on a straight line while maintaining the screen in the view of the camera's viewfinder, to embed the characters on the picture.")
     	    .setCancelable(true)
     	    .setOnKeyListener(new OnKeyListener() {
     	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {

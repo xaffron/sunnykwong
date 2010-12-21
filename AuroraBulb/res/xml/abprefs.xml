@@ -48,8 +48,9 @@
 			android:enabled="true" android:key="sVersion" android:summary="Your Version of Aurora Bulb." />
 		<Preference android:enabled="true" android:title="Programmer"
 			android:selectable="false" android:summary="Sunny Kwong" />
-		<Preference android:enabled="true" android:selectable="false"
+		<Preference android:title="Art and Graphics" android:selectable="false" android:enabled="true" android:summary="Robert Cosmin, Bizon"></Preference><Preference android:enabled="true" android:selectable="false"
 			android:title="Special Thanks"
 			android:summary="Dentsu London and the Penki App, the true original and pioneer of this light painting technique.\nhttp://www.penkiapp.com/ " />
-	</PreferenceScreen>
+	
+</PreferenceScreen>
 </PreferenceScreen>
