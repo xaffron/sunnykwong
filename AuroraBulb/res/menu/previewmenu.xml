@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:title="Text/Bitmap" android:visible="false" android:enabled="false" android:id="@+id/showWhat"></item><group android:visible="false" android:enabled="false" android:id="@+id/bitmapStuff">
+</group>
+<group android:visible="true" android:enabled="true" android:id="@+id/textStuff"><item android:title="Font" android:id="@+id/pickFont"></item><item android:title="Color" android:id="@+id/pickColor"></item><item android:title="Text" android:id="@+id/pickText"></item>
+</group>
+<item android:id="@+id/camGuidance" android:title="Your Camera"></item>
+<item android:title="Version &amp; Credits" android:id="@+id/credits"></item>
+</menu>

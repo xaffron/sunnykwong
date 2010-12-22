@@ -53,6 +53,7 @@ public class AB extends Application {
 	static final boolean DEBUG = true;
 	static final int BUFFERWIDTH = 240;
 	static final int BUFFERHEIGHT = 320;
+	static String PREFSCREENTOSHOW="";
 	
 	static int TARGETFPS;
 	static int COUNTDOWNSECONDS;
@@ -114,10 +115,64 @@ public class AB extends Application {
 		
 		PREFS = getSharedPreferences(AB.PREFNAME, Context.MODE_PRIVATE);
 
-		PREFS.edit().putString("version", THISVERSION).commit();
+		AB.initSharedPrefs(PREFS);
 		
 	}
 
+	static public void initSharedPrefs(SharedPreferences sp){
+		
+		PREFS.edit().putString("version", THISVERSION).commit();
+		if (PREFS.getString("showWhat", "EMPTY").equals("EMPTY")) PREFS.edit().putString("showWhat", "text");
+		if (PREFS.getString("pickFont", "EMPTY").equals("EMPTY")) PREFS.edit().putString("pickFont", "Unibody 8-SmallCaps.otf");
+		if (PREFS.getInt("textColor", 0)==0) PREFS.edit().putInt("textColor", Color.GREEN);
+		if (PREFS.getString("pickText", "EMPTY").equals("EMPTY")) PREFS.edit().putString("pickText", "Aurora");
+		if (PREFS.getString("timeShutterDuration", "EMPTY").equals("EMPTY")) PREFS.edit().putString("timeShutterDuration", "10");
+		if (PREFS.getString("timePhotoTimer", "EMPTY").equals("EMPTY")) PREFS.edit().putString("timePhotoTimer", "10");
+
+	}
+	
+    static public void updateSrcBuffer(){
+
+    	//ok, set global vars before we pass control to anim.
+    	AB.COUNTDOWNSECONDS = Integer.parseInt(AB.PREFS.getString("timePhotoTimer", "10"));
+
+    	//Calibrate text size.
+    	AB.PT1.setColor(AB.PREFS.getInt("textColor", Color.GREEN));
+    	AB.PT1.setTextSize(300f);
+    	float textScale = AB.BUFFERHEIGHT * 1f / (AB.PT1.getFontMetricsInt().descent-AB.PT1.getFontMetricsInt().ascent);
+    	AB.PT1.setTextSize(300f * textScale);
+    	int drawLocn = (int)((0-AB.PT1.getFontMetricsInt().ascent) * textScale);
+    	
+    	
+    	AB.PT1.setColor(AB.PREFS.getInt("textColor", 0));
+    	AB.PT2.setColor(Color.WHITE);
+    	AB.PT1.setTextScaleX(1f);
+		AB.PT1.setTextAlign(Paint.Align.LEFT);
+		int textwidth = (int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora"));
+		int shutterDuration = Integer.parseInt(AB.PREFS.getString("timeShutterDuration", "10"));
+
+		float fPassDist = (float)textwidth/AB.SCRNDPI;
+//    	findPreference("idealPassDist").setSummary("Ideally: ~" + String.valueOf(Math.round(fPassDist)) + "in./" +String.valueOf(Math.round(fPassDist * 2.54))+ "cm");
+		
+		//Since we are aiming at 30fps, we will have to squeeze/stretch the text.
+		//How many lines can we manage over the shutter duration?
+		int bufferwidth = shutterDuration * AB.TARGETFPS;
+		AB.PT1.setTextScaleX((float)bufferwidth/textwidth);
+
+		if (AB.SRCBUFFER!=null) AB.SRCBUFFER.recycle();
+    	AB.SRCBUFFER = Bitmap.createBitmap((int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora")), AB.BUFFERHEIGHT, Bitmap.Config.RGB_565);
+    	AB.SRCCANVAS = new Canvas(AB.SRCBUFFER);
+    	AB.SRCBUFFER2 = Bitmap.createBitmap((int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora")), AB.BUFFERHEIGHT, Bitmap.Config.RGB_565);
+    	AB.SRCCANVAS2 = new Canvas(AB.SRCBUFFER2);
+    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0-1, drawLocn-1, AB.PT1);
+    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0+1, drawLocn-1, AB.PT1);
+    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0-1, drawLocn+1, AB.PT1);
+    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0+1, drawLocn+1, AB.PT1);
+    	AB.SRCCANVAS2.drawText(AB.PREFS.getString("pickText", "Aurora"), 0, drawLocn, AB.PT1);
+    	AB.PT1.setColor(Color.BLACK);
+    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0, drawLocn, AB.PT1);
+    }
+    
     @Override
     public void onTerminate() {
         PREFS.edit().commit();

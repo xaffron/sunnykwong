@@ -315,7 +315,7 @@ invalidate();
         layoutParams.setMargins(10, 0, 10, 5);
 
         TextView tv = new TextView(mContext);
-        tv.setText(com.android.settings.R.string.lockpattern_settings_custom_msg_color);
+        tv.setText("Custom message color");
         layout.addView(tv, layoutParams);
 
         mColorPickerView = new ColorPickerView(getContext(), onColorChangedListener, mInitialColor);
@@ -334,7 +334,7 @@ layout.addView(mTransparencyBar, layoutParams);
         layout.addView(mEditText, layoutParams);
 
         setContentView(layout);
-        setTitle(com.android.settings.R.string.lockpattern_settings_custom_msg_color);
+        setTitle("Custom message color");
     }
 
     private OnColorChangedListener onColorChangedListener = new OnColorChangedListener() {

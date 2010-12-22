@@ -1,6 +1,7 @@
 package com.sunnykwong.aurorabulb;
 
 import android.graphics.Canvas;
+import com.android.settings.activities.ColorPickerDialog;
 import android.app.Activity;
 import android.os.Bundle;
 import android.app.AlertDialog;
@@ -40,7 +41,7 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
 
 		this.getPreferenceManager().setSharedPreferencesName(AB.PREFNAME);
     	this.addPreferencesFromResource(R.xml.abprefs);
-    
+    	
     	try {
     		findPreference("sVersion").setTitle(getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA).versionName);
     	} catch (NameNotFoundException e) {
@@ -60,47 +61,23 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     	findPreference("showWhat").setOnPreferenceChangeListener(this);
     	findPreference("pickBitmap").setOnPreferenceChangeListener(this);
     	findPreference("pickFont").setOnPreferenceChangeListener(this);
-    	findPreference("pickColor").setOnPreferenceChangeListener(this);
     	findPreference("timeShutterDuration").setOnPreferenceChangeListener(this);
     	findPreference("timePhotoTimer").setOnPreferenceChangeListener(this);
 		findPreference("pickText").setOnPreferenceChangeListener(this);
 
-    	switchTextBitmap(); 
-    	prepGlobalVars();
+		updateSummaries();
     	
-    	mAD = new AlertDialog.Builder(this)
-    		.setTitle("Aurora Bulb!")
-    		.setMessage("This application requires another camera with long-exposure to shoot the screen of this phone after you hit go.  Slide the phone on a straight line while maintaining the screen in the view of the camera's viewfinder, to embed the characters on the picture.")
-    	    .setCancelable(true)
-    	    .setOnKeyListener(new OnKeyListener() {
-    	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
-    	    		dialogCancelled();
-    	    		return true;
-    	    	};
-    	    }).create();
-    	mAD.show();
+    	this.setPreferenceScreen((PreferenceScreen)findPreference(AB.PREFSCREENTOSHOW));
 
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-    	if (preference == findPreference("pickColor")) {
-    		try {
-    			int colr = Color.parseColor((String)newValue);
-    			AB.PREFS.edit().putInt("textColor", colr).commit();
-    			new PrintWriter(sw).format("#%x", colr);
-        		findPreference("pickColor").setSummary("Picked: " + sw.toString());
-        		sw.getBuffer().setLength(0);
-    			return true;
-    		} catch (IllegalArgumentException e) {
-    			Toast.makeText(this, "Invalid Color!", Toast.LENGTH_SHORT).show();
-    			return false;
-    		}
-    	} else if (preference == findPreference("pickFont")) {
+    	if (preference == findPreference("pickFont")) {
     		AB.PT1.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), (String)newValue));
 			AB.PREFS.edit().putString("pickFont", (String)newValue).commit();
 			findPreference("pickFont").setSummary("Picked: " + (String)newValue);
-			prepGlobalVars();
+			return true;
     	} else if (preference == findPreference("timeShutterDuration")) {
     		int temp;
     		try {
@@ -109,7 +86,7 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     			Toast.makeText(this, "Invalid Shutter Duration!", Toast.LENGTH_SHORT).show();
     			return false;
     		}
-    		if (temp < 5) {
+    		if (temp < 1) {
     			Toast.makeText(this, "Invalid Shutter Duration!", Toast.LENGTH_SHORT).show();
     			return false;
     		}
@@ -136,7 +113,12 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     		} else {
     			findPreference("pickText").setSummary((String)newValue);
     			AB.PREFS.edit().putString("pickText", (String)newValue).commit();
-    			prepGlobalVars();
+            	AB.PT1.setTextScaleX(1f);
+        		AB.PT1.setTextAlign(Paint.Align.LEFT);
+        		int textwidth = (int)AB.PT1.measureText((String)newValue);
+        		float fPassDist = (float)textwidth/AB.SCRNDPI;
+        		findPreference("pickText").setSummary((String)newValue);
+        		findPreference("idealPassDist").setSummary("Ideally: ~" + String.valueOf(Math.round(fPassDist)) + "in./" +String.valueOf(Math.round(fPassDist * 2.54))+ "cm");
     			return true;
     		}
     	}
@@ -147,18 +129,13 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
-    	if (preference == getPreferenceScreen().findPreference("go")) {
-        	prepGlobalVars();
-    		prepBuffer();
-        	this.startActivityForResult(new Intent(this,ABAnimActivity.class),0);
-    	}
     	if (preference == findPreference("showWhat")) {
     		if (AB.PREFS.getString("showWhat","bitmap").equals("text")) {
     			AB.PREFS.edit().putString("showWhat", "bitmap").commit();
     		} else {
     			AB.PREFS.edit().putString("showWhat", "text").commit();
     		}
-    		switchTextBitmap();
+    		updateSummaries();
     	}
     	if (preference == findPreference("pickBitmap")) {
             Intent intentBrowseFiles = new
@@ -199,70 +176,23 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     	return;
     }
     
-    public void prepGlobalVars() {
-    	//ok, set global vars before we pass control to anim.
-    	AB.COUNTDOWNSECONDS = Integer.parseInt(AB.PREFS.getString("timePhotoTimer", "10"));
-    	System.out.println(AB.PREFS.getInt("textColor", Color.WHITE));
-    	
-    	AB.PT1.setTextSize((float)AB.BUFFERHEIGHT);
-    	AB.PT1.setTextScaleX(1f);
-		AB.PT1.setTextAlign(Paint.Align.LEFT);
-		int textwidth = (int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora Bulb"));
-		int shutterDuration = Integer.parseInt(AB.PREFS.getString("timeShutterDuration", "10"));
-
-    	System.out.println(AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora Bulb")));
-		float fPassDist = (float)textwidth/AB.SCRNDPI;
-    	findPreference("idealPassDist").setSummary("Ideally: ~" + String.valueOf(Math.round(fPassDist)) + "in./" +String.valueOf(Math.round(fPassDist * 2.54))+ "cm");
-		
-		//Since we are aiming at 30fps, we will have to squeeze/stretch the text.
-		//How many lines can we manage over the shutter duration?
-		int bufferwidth = shutterDuration * AB.TARGETFPS;
-		AB.PT1.setTextScaleX((float)bufferwidth/textwidth);
-    }
-    public void prepBuffer(){
-
-    	if (AB.SRCBUFFER!=null) AB.SRCBUFFER.recycle();
-    	AB.SRCBUFFER = Bitmap.createBitmap((int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora Bulb")), AB.BUFFERHEIGHT, Bitmap.Config.RGB_565);
-    	AB.SRCCANVAS = new Canvas(AB.SRCBUFFER);
-    	AB.SRCBUFFER2 = Bitmap.createBitmap((int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora Bulb")), AB.BUFFERHEIGHT, Bitmap.Config.RGB_565);
-    	AB.SRCCANVAS2 = new Canvas(AB.SRCBUFFER2);
-    	AB.PT1.setColor(AB.PREFS.getInt("textColor", Color.WHITE));
-    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0-2, 0-AB.PT1.getFontMetricsInt().ascent-2, AB.PT1);
-    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0+2, 0-AB.PT1.getFontMetricsInt().ascent-2, AB.PT1);
-    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0-2, 0-AB.PT1.getFontMetricsInt().ascent+2, AB.PT1);
-    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0+2, 0-AB.PT1.getFontMetricsInt().ascent+2, AB.PT1);
-    	AB.SRCCANVAS2.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0, 0-AB.PT1.getFontMetricsInt().ascent, AB.PT1);
-    	AB.PT1.setColor(Color.BLACK);
-    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora Bulb"), 0, 0-AB.PT1.getFontMetricsInt().ascent, AB.PT1);
-    }
 
 
    @Override
     protected void onResume() {
         super.onResume();
-        switchTextBitmap();
    }
    
-   public void switchTextBitmap() {
-        // Set up a listener whenever a key changes
-   
-		if (AB.PREFS.getString("showWhat", "text").equals("text")) {
-			findPreference("showWhat").setTitle("Aurora Bulb Renders Text");
-	    	toplevel.removePreference(bitmapstuff);
-	    	toplevel.addPreference(textstuff);
-	    	findPreference("pickFont").setSummary("Picked: Comic Font");
-	        findPreference("pickColor").setSummary("Picked: " + sw.toString());
-			sw.getBuffer().setLength(0);
-			findPreference("pickText").setSummary(AB.PREFS.getString("pickText", "Aurora Bulb"));
-			findPreference("pickFont").setSummary("Picked: " + AB.PREFS.getString("pickFont", "Unibody 8-SmallCaps.otf"));
-		} else {
-			findPreference("showWhat").setTitle("Aurora Bulb Renders Bitmap");
-	    	toplevel.removePreference(textstuff);
-	    	toplevel.addPreference(bitmapstuff);
-	    	findPreference("pickBitmap").setSummary("Found: /sdcard/aurorabulb.jpg");
-		}
-		findPreference("timeShutterDuration").setSummary("To match your cam's shutter spd (seconds): " + AB.PREFS.getString("timeShutterDuration", "10"));
-		findPreference("timePhotoTimer").setSummary("To match your cam's shutter delay (seconds): " + AB.PREFS.getString("timePhotoTimer", "10"));
+   public void updateSummaries() {
+    	findPreference("pickFont").setSummary(AB.PREFS.getString("pickFont", "Unibody 8-SmallCaps.otf"));
+		findPreference("pickText").setSummary(AB.PREFS.getString("pickText", "Aurora"));
+		findPreference("timeShutterDuration").setSummary("Shutter at (seconds): " + AB.PREFS.getString("timeShutterDuration", "10"));
+		findPreference("timePhotoTimer").setSummary("Assuming Cam timer of (seconds): " + AB.PREFS.getString("timePhotoTimer", "10"));
+    	AB.PT1.setTextScaleX(1f);
+		AB.PT1.setTextAlign(Paint.Align.LEFT);
+		int textwidth = (int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora"));
+		float fPassDist = (float)textwidth/AB.SCRNDPI;
+		findPreference("idealPassDist").setSummary("Ideally: ~" + String.valueOf(Math.round(fPassDist)) + "in./" +String.valueOf(Math.round(fPassDist * 2.54))+ "cm");
     }
 
     @Override

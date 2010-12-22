@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="fill_parent" android:layout_width="fill_parent">
-<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="24dp" android:text="Light Paint Preview" android:typeface="normal" android:layout_gravity="top|center_horizontal"></TextView>
-<ImageView android:id="@+id/ImageView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="50dp" android:minWidth="50dp" android:scaleType="fitCenter" android:layout_gravity="center"></ImageView>
-<LinearLayout android:id="@+id/LinearLayout02" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_width="fill_parent" android:gravity="bottom" android:layout_gravity="bottom|fill_horizontal" android:padding="0dp" android:scrollbarAlwaysDrawVerticalTrack="false" android:layout_margin="0dp"><Button android:id="@+id/Button01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:text="Font Appearance"></Button>
-<Button android:id="@+id/Button02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:text="Camera Guidance"></Button>
-<Button android:id="@+id/Button03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:text="Version &amp; Credits"></Button>
-</LinearLayout>
+<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:typeface="normal" android:layout_gravity="top|center_horizontal" android:text="Tap me to start, or Menu for Options" android:textSize="18dp" android:layout_marginTop="10dp"></TextView>
+<ImageView android:id="@+id/ImageView01" android:layout_height="wrap_content" android:minHeight="50dp" android:minWidth="50dp" android:adjustViewBounds="true" android:layout_width="fill_parent" android:layout_gravity="center" android:scaleType="fitCenter" android:layout_marginBottom="-100dp"></ImageView>
+
 </FrameLayout>

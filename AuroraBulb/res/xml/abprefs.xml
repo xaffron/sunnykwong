@@ -2,13 +2,8 @@
 <PreferenceScreen android:key="rootPrefs"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:title="Aurora Bulb" android:enabled="true">
-	<PreferenceCategory android:title="Ready?"
-		android:key="SectionReady">
-		<Preference android:title="Go!" android:key="go"
-			android:summary="Press this when you're all set!" />
-</PreferenceCategory>
-	<PreferenceCategory android:key="SectionContent"
-		android:title="Your content" />
+	
+	
 	<Preference android:key="showWhat" android:title="Aurora Bulb Renders Text"
 		android:defaultValue="text" android:selectable="false"
 		android:enabled="false" android:summary="Tap to switch Bitmap/Text (future)" />
@@ -17,30 +12,9 @@
 		<Preference android:title="Bitmap to show" android:key="pickBitmap"
 			android:summary="&lt;Click me to set&gt;" />
 	</PreferenceCategory>
-	<PreferenceCategory android:key="textstuff" android:selectable="false" android:enabled="true">
-		
-		<ListPreference android:key="pickFont" android:title="Font to use" android:enabled="true" android:selectable="true" android:entryValues="@array/values" android:entries="@array/choices" android:summary="Picked: Unibody 8-SmallCaps.otf" android:defaultValue="Unibody 8-SmallCaps.otf"></ListPreference><EditTextPreference android:key="pickColor"
-			android:title="Color to use" android:summary="&lt;Click me to set&gt;"
-			android:enabled="true" android:selectable="true"
-			android:defaultValue="#FFFFFFFF" />
-		<EditTextPreference android:key="pickText"
-			android:title="Text to Show" android:summary="&lt;Click me to set&gt;"
-			android:defaultValue="Aurora Bulb" />
+	<PreferenceScreen android:key="pickFontScreen"><ListPreference android:key="pickFont" android:title="Font to use" android:enabled="true" android:selectable="true" android:entryValues="@array/values" android:entries="@array/choices" android:summary="Picked: Unibody 8-SmallCaps.otf" android:defaultValue="Unibody 8-SmallCaps.otf"></ListPreference></PreferenceScreen><PreferenceScreen android:key="pickTextScreen"><EditTextPreference android:key="pickText" android:title="Text to Show" android:summary="&lt;Click me to set&gt;" android:defaultValue="Aurora Bulb" /></PreferenceScreen>
+	<PreferenceScreen android:key="camRefScreen"><EditTextPreference android:key="timeShutterDuration" android:enabled="true" android:selectable="true" android:defaultValue="10" android:summary="Shutter at (seconds): 10" android:title="Shutter Spd (seconds)" /><EditTextPreference android:enabled="true" android:selectable="true" android:defaultValue="10" android:key="timePhotoTimer" android:title="Camera Delay (seconds)" android:summary="Assuming Cam timer of (seconds): 4" /><Preference android:title="Calculated Pass Distance " android:selectable="false" android:enabled="true" android:key="idealPassDist" android:summary="Ideally:" /></PreferenceScreen>
 	
-</PreferenceCategory>
-	<PreferenceCategory android:key="SectionCamera"
-		android:title="Your camera setup">
-		<EditTextPreference android:key="timeShutterDuration"
-			android:enabled="true" android:selectable="true"
-			android:defaultValue="10" android:summary="Shutter at (seconds): 10"
-			android:title="Shutter Spd (seconds)" />
-		<EditTextPreference android:enabled="true"
-			android:selectable="true" android:defaultValue="10" android:key="timePhotoTimer"
-			android:title="Camera Delay (seconds)" android:summary="Assuming Cam timer of (seconds): 4" />
-		<Preference android:title="Calculated Pass Distance " android:selectable="false"
-			android:enabled="true" android:key="idealPassDist" android:summary="Ideally:" />
-	</PreferenceCategory>
-	<PreferenceCategory android:title="Version and Credits" />
 	<PreferenceScreen android:title="Version and Credits"
 		android:key="SectionCredits" android:enabled="true"
 		android:selectable="true">
@@ -48,9 +22,11 @@
 			android:enabled="true" android:key="sVersion" android:summary="Your Version of Aurora Bulb." />
 		<Preference android:enabled="true" android:title="Programmer"
 			android:selectable="false" android:summary="Sunny Kwong" />
-		<Preference android:title="Art and Graphics" android:selectable="false" android:enabled="true" android:summary="Robert Cosmin, Bizon"></Preference><Preference android:enabled="true" android:selectable="false"
-			android:title="Special Thanks"
-			android:summary="Dentsu London and the Penki App, the true original and pioneer of this light painting technique.\nhttp://www.penkiapp.com/ " />
+		<Preference android:title="Art and Graphics" android:selectable="false" android:enabled="true" android:summary="Robert Cosmin, Bizon"></Preference><Preference android:selectable="false" android:enabled="true" android:title="Code: ColorPickerDialog" android:summary="CyanogenMod Team &amp; AOSP"></Preference><Preference android:enabled="true" android:selectable="false"
+			android:title="Special Thanks" android:summary="Dentsu London and the Penki App, the true pioneer of this technique.\nhttp://www.penkiapp.com/ "/>
 	
+
+<Preference android:summary="Full Source at\nhttp://code.google.com/p/sunnykwong/" android:title="Source Available"></Preference>
 </PreferenceScreen>
+
 </PreferenceScreen>
