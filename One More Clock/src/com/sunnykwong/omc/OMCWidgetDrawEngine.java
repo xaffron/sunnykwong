@@ -119,6 +119,14 @@ public class OMCWidgetDrawEngine {
 		if (tempBitmap==null) tempBitmap = OMC.getBitmap(
 				OMC.LAYERATTRIBS.getString(1),
 				OMC.CACHEPATH + sTheme + OMC.LAYERATTRIBS.getString(2));
+		if (tempBitmap==null) {
+			Toast.makeText(context, "Theme not found in memory or in cache directory.\nPlease go to settings screen and re-select your theme.", Toast.LENGTH_SHORT).show();
+			OMC.PREFS.edit()
+					.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
+					.putBoolean("external"+aWI,false)
+					.commit();
+			return;
+		}
 
 		// Prepare the transformation matrix.
 		
@@ -433,7 +441,7 @@ public class OMCWidgetDrawEngine {
 		}
 		AppWidgetManager aWM = AppWidgetManager.getInstance(context);
 
-		final int N = aWM.getAppWidgetIds(cName).length;
+		final int N = aWM.getAppWidgetIds(cName)==null? 0: aWM.getAppWidgetIds(cName).length;
 
 		for (int i=0; i<N; i++) {
 			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i],
