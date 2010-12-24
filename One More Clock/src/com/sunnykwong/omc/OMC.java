@@ -52,7 +52,7 @@ public class OMC extends Application {
 	static final boolean SINGLETON = false;
 	static final boolean FREEEDITION = false;
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "omc://omc.colormeandroid.com/pk1204.omc";
+	static final String STARTERPACKURL = "omc://omc.colormeandroid.com/pk1223.omc";
 	static final String STARTERPACKBACKUP = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFMjY0ZWRmZGItM2ZiNi00MmQ1LTkxNTMtODIwOGY1OTljYzBi&export=download&authkey=CNKEstMI&hl=en";
 	static final String DEFAULTTHEME = "LockscreenLook";
 	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
