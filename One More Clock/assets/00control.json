@@ -1,0 +1,89 @@
+{
+//LOCKSCREEN LOOK
+//10/18 Sunny Kwong
+
+	"id": "LockscreenLook",
+	"name": "Lockscreen Look",
+	"author": "S. Kwong",
+	"date": "18 Oct 2010",
+	"credits": "The default Android Lockscreen Look.",
+	"layers_bottomtotop": [
+		{
+		"name":"LLClock",
+		"type":"text",
+		"enabled":"true",
+		"text":"%H:%M",
+		"filename":"Clockopia.ttf",
+		"x":"240","y":"192",
+		"horizontal_stretch": "1",
+		"fgcolor":"#ffffffff","bgcolor":"#a0000000",
+		"text_size":"180",
+		"text_skew":"0",
+		"text_stretch":"1",
+		"text_align":"center",
+		"render_style":"shadow",
+		"cw_rotate":"0"
+		},
+		{
+		"name":"LLapm",
+		"type":"text",
+		"enabled":"true",
+		"text":"%P",
+		"filename":"/system/fonts/DroidSans.ttf",
+		"x":"480","y":"192",
+		"horizontal_stretch": "1",
+		"fgcolor":"#ffffffff","bgcolor":"#a0000000",
+		"text_size":"36",
+		"text_skew":"0",
+		"text_stretch":"1",
+		"text_align":"right",
+		"render_style":"shadow",
+		"cw_rotate":"0"
+		},
+		{
+		"name":"Date",
+		"type":"text",
+		"enabled":"true",
+		"text":"%A, %B %e",
+		"filename":"/system/fonts/DroidSans.ttf",
+		"x":"240","y":"232",
+		"horizontal_stretch": "1",
+		"fgcolor":"#ffffffff","bgcolor":"#a0000000",
+		"text_size":"36",
+		"text_skew":"0",
+		"text_stretch":"1",
+		"text_align":"center",
+		"render_style":"shadow",
+		"cw_rotate":"0"
+		}	
+	],
+
+	//This is the optional Stuff.
+
+	"arrays":{
+	},
+
+	"customscaling": {
+		"4x1":{
+			"horizontal_stretch": 1,
+			"vertical_stretch":0.9,
+			"top_crop":58,
+			"bottom_crop":60,
+			"left_crop":0,
+			"bottom_crop":0,
+			"cw_rotate":0
+		},
+		"3x1":{
+			"horizontal_stretch": 1,
+			"vertical_stretch":1,
+			"top_crop":58,
+			"bottom_crop":60,
+			"left_crop":0,
+			"bottom_crop":0,
+			"cw_rotate":0
+		}
+	},
+
+	"customURIs": {
+	}
+}

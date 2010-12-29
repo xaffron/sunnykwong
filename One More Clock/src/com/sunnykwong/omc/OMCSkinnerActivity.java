@@ -1,6 +1,8 @@
 package com.sunnykwong.omc;
 
 import java.io.File;
+import org.json.JSONObject;
+import org.json.JSONArray;
 import java.util.HashMap;
 
 import android.app.Activity;
@@ -105,7 +107,7 @@ public class OMCSkinnerActivity extends Activity {
 
     		public void run() {
     			while (true) {
-	    	    	OMCXMLThemeParser parser = new OMCXMLThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
+	    	    	OMCJSONThemeParser parser = new OMCJSONThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
 	    					+"/OMC/" + sTheme);
 
 	    	    	Log.i(OMC.OMCSHORT + "Skinner","about to parse " + Environment.getExternalStorageDirectory().getAbsolutePath()
@@ -139,51 +141,36 @@ public class OMCSkinnerActivity extends Activity {
     }
     
     public void refreshViews() {
-		String[] FourByOneStretch = new String[4];
-		String[] ThreeByOneStretch = new String[4];
 
+    	JSONObject FourByOneStretch, ThreeByOneStretch;
     	bmpRender = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1);
     	FourByTwo.setImageBitmap(bmpRender);
 		
 		try {
-			if (bExternal) {
-				OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sTheme + "_4x1SqueezeInfo").toArray(FourByOneStretch);
-				OMC.IMPORTEDTHEMEMAP.get(sTheme).arrays.get(sTheme + "_3x1SqueezeInfo").toArray(ThreeByOneStretch);
-			} else {
-				int iLayerID = OMC.RES.getIdentifier(sTheme + "_4x1SqueezeInfo", "array", OMC.PKGNAME);
-				FourByOneStretch = OMC.RES.getStringArray(iLayerID);
-				iLayerID = OMC.RES.getIdentifier(sTheme + "_3x1SqueezeInfo", "array", OMC.PKGNAME);
-				ThreeByOneStretch = OMC.RES.getStringArray(iLayerID);
-			}
-		} catch (android.content.res.Resources.NotFoundException e) {
+			FourByOneStretch = OMC.THEMEMAP.get(sTheme).getJSONObject("customscaling").getJSONObject("4x1");
+			ThreeByOneStretch = OMC.THEMEMAP.get(sTheme).getJSONObject("customscaling").getJSONObject("3x1");
+
+			OMC.TEMPMATRIX.reset();
+			OMC.TEMPMATRIX.preScale(Float.parseFloat(FourByOneStretch.getString("horizontal_stretch")), 
+					Float.parseFloat(FourByOneStretch.getString("vertical_stretch")));
+			FourByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(FourByOneStretch.getString("top_crop")), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(FourByOneStretch.getString("top_crop")) - Integer.parseInt(FourByOneStretch.getString("bottom_crop")), OMC.TEMPMATRIX, true));
+			OMC.TEMPMATRIX.reset();
+			OMC.TEMPMATRIX.preScale(Float.parseFloat(ThreeByOneStretch.getString("horizontal_stretch")), 
+					Float.parseFloat(ThreeByOneStretch.getString("vertical_stretch")));
+			ThreeByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(ThreeByOneStretch.getString("top_crop")), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(ThreeByOneStretch.getString("top_crop")) - Integer.parseInt(ThreeByOneStretch.getString("bottom_crop")), OMC.TEMPMATRIX, true));
+
+		} catch (org.json.JSONException e) {
 			// OMC.STRETCHINFO stays null; do nothing
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Engine","No stretch info found for seeded clock.");
-			bCustomStretch=false;
-		} catch (java.lang.NullPointerException e) {
-			// OMC.STRETCHINFO stays null; do nothing
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Engine","No stretch info found for imported clock.");
-			bCustomStretch=false;
-		}
-
-		if (bCustomStretch){
-//			System.out.println("CustomStretch" + FourByOneStretch[0] + FourByOneStretch[1]);
-			//Custom scaling
-			OMC.TEMPMATRIX.reset();
-			OMC.TEMPMATRIX.preScale(Float.parseFloat(FourByOneStretch[0]), 
-					Float.parseFloat(FourByOneStretch[1]));
-			FourByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(FourByOneStretch[2]), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(FourByOneStretch[2]) - Integer.parseInt(FourByOneStretch[3]), OMC.TEMPMATRIX, true));
-			OMC.TEMPMATRIX.reset();
-			OMC.TEMPMATRIX.preScale(Float.parseFloat(ThreeByOneStretch[0]), 
-					Float.parseFloat(ThreeByOneStretch[1]));
-			ThreeByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(ThreeByOneStretch[2]), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(ThreeByOneStretch[2]) - Integer.parseInt(ThreeByOneStretch[3]), OMC.TEMPMATRIX, true));
-		} else {
 			//Default scaling
 			OMC.TEMPMATRIX.reset();
 //			OMC.TEMPMATRIX.preTranslate(0, 0-iCutTop);
 //			OMC.TEMPMATRIX.preScale(fScaleX, fScaleY);
-			FourByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(FourByOneStretch[2]), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(FourByOneStretch[2]) - Integer.parseInt(FourByOneStretch[3]), OMC.TEMPMATRIX, true));
-			ThreeByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(ThreeByOneStretch[2]), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(ThreeByOneStretch[2]) - Integer.parseInt(ThreeByOneStretch[3]), OMC.TEMPMATRIX, true));
+//			FourByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(FourByOneStretch.getString("top_crop")), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(FourByOneStretch.getString("top_crop")) - Integer.parseInt(FourByOneStretch.getString("bottom_crop")), OMC.TEMPMATRIX, true));
+//			ThreeByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(ThreeByOneStretch.getString("top_crop")), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(ThreeByOneStretch.getString("top_crop")) - Integer.parseInt(ThreeByOneStretch.getString("bottom_crop")), OMC.TEMPMATRIX, true));
+
 		}
+
 		FourByTwo.invalidate();
 		FourByOne.invalidate();
 		ThreeByOne.invalidate();

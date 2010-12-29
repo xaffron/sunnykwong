@@ -1,5 +1,6 @@
 package com.sunnykwong.omc;
 
+import java.util.Iterator;
 import java.util.StringTokenizer;
 import android.graphics.Color;
 import android.util.Log;
@@ -7,6 +8,10 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONException;
+import org.json.JSONArray;
 public class OMCTypedArray  {
 	String[] mImportedArray;
 
@@ -35,6 +40,34 @@ public class OMCTypedArray  {
 	}
 	public void recycle() {
 		mImportedArray = null;
+	}
+	
+	static public JSONArray getLayerList(JSONObject theme, int aWI) {
+		JSONArray result;
+		try{
+			result = new JSONObject(layer.toString());
+			//Resolve the layers
+			if (layer.has("arrays")) {
+				@SuppressWarnings("unchecked")
+Iterator<String> i = layer.optJSONObject("arrays").keys();
+				while (i.hasNext()) {
+					String sKey = i.next();
+					JSONArray tempArray = layer.optJSONObject("arrays").optJSONArray(sKey);
+					for (int j=0;j<tempArray.length();j++) {
+						result.optJSONObject("arrays").optJSONArray(sKey).put(j,
+								OMCTypedArray.resolveTokens(tempArray.getString(j), aWI));
+					}
+				}
+			}
+			Iterator<String> i = layer.keys();
+			while (i.hasNext()) {
+				
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return result;
 	}
 	
 	static public String[] findTokens(String[] sArray, int aWI) {
@@ -137,11 +170,11 @@ public class OMCTypedArray  {
 			}
 		} else if (sToken.equals("array")) {
 
-			result = OMC.loadStringArray(OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME), aWI, st.nextToken())[Integer.parseInt(st.nextToken().replace(" ",""))];
-			String sTemp = st.nextToken();
-			if (result == null) result = "ERROR";
-			if (sTemp.equals("lower")) result = result.toLowerCase();
-			else if (sTemp.equals("upper")) result = result.toUpperCase();
+//			result = OMC.loadStringArray(OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME), aWI, st.nextToken())..getString(Integer.parseInt(st.nextToken().replace(" ","")));
+//			String sTemp = st.nextToken();
+//			if (result == null) result = "ERROR";
+//			if (sTemp.equals("lower")) result = result.toLowerCase();
+//			else if (sTemp.equals("upper")) result = result.toUpperCase();
 
 		} else if (sToken.equals("flipformat")) {
 			int iApply = Integer.parseInt(st.nextToken());

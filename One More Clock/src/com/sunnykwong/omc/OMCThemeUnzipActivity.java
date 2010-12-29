@@ -116,7 +116,7 @@ public class OMCThemeUnzipActivity extends Activity {
 
         } else {
 
-        	if (!checkSetup()) {
+        	if (!((OMC)getApplication()).checkSDPresent()) {
         		finish();
         		return;
         	}
@@ -254,24 +254,4 @@ public class OMCThemeUnzipActivity extends Activity {
         }			
     }
 
-    public boolean checkSetup() {
-    	
-		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-        	Toast.makeText(getApplicationContext(), "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
-			setResult(Activity.RESULT_OK);
-			return false;
-        }
-
-        sdRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC");
-        if (!sdRoot.exists()) {
-        	Toast.makeText(this, "OMC folder not found in your SD Card.\nCreating folder...", Toast.LENGTH_LONG).show();
-        	sdRoot.mkdir();
-        }
-		if (!sdRoot.canRead()) {
-        	Toast.makeText(this, "SD Card missing or corrupt.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
-			setResult(Activity.RESULT_OK);
-        	return false;
-        }
-		return true;
-    }
 }

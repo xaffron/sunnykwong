@@ -1,6 +1,9 @@
 package com.sunnykwong.omc;
 
 import java.util.ArrayList;
+import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
@@ -8,11 +11,14 @@ import java.util.Map.Entry;
 import java.util.Map;
 import java.util.Collections;
 import java.io.File;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.StringReader;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.Application;
 import android.app.Notification;
@@ -32,9 +38,11 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Environment;
 import android.text.format.Time;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.widget.Toast;
 import android.graphics.BitmapFactory;
 import android.content.res.Resources;
 import android.graphics.Matrix;
@@ -84,24 +92,26 @@ public class OMC extends Application {
     
     static HashMap<String, Typeface> TYPEFACEMAP;
     static HashMap<String, Bitmap> BMPMAP;
-    static Map<String, OMCImportedTheme> IMPORTEDTHEMEMAP;
+    static Map<String, JSONObject> THEMEMAP;
 	
     static OMCConfigReceiver cRC;
 	static OMCAlarmReceiver aRC;
     static boolean SCREENON = true; 	// Is the screen on?
     static boolean FG = false;
-    static OMCTypedArray LAYERATTRIBS;
-	static String[] LAYERLIST, TALKBACKS; 
+    //static OMCTypedArray LAYERATTRIBS;
+	static JSONArray LAYERLIST, TALKBACKS;
+
 	static Matrix TEMPMATRIX;
 	static boolean STARTERPACKDLED = false;
 
 	static final int WIDGETWIDTH=480;
 	static final int WIDGETHEIGHT=300;
+	static final String[] COMPASSPOINTS = {"NW","N","NE","W","C","E","SW","S","SE"};
 	static final Time TIME = new Time();
 	static String CACHEPATH;
 	static String[] WORDNUMBERS;
-	static String[] STRETCHINFO;
-	static String[] OVERLAYURL;
+	static JSONObject STRETCHINFO;
+	static Uri[] OVERLAYURI;
 	static int[] OVERLAYRESOURCES;
 
 	static ComponentName WIDGET4x2CNAME;
@@ -169,8 +179,6 @@ public class OMC extends Application {
 		
 		OMC.TEMPMATRIX = new Matrix();
 		
-
-		
 		OMC.FGPENDING = PendingIntent.getBroadcast(this, 0, OMC.FGINTENT, 0);
 		OMC.BGPENDING = PendingIntent.getBroadcast(this, 0, OMC.BGINTENT, 0);
 		OMC.SVCSTARTINTENT = new Intent(this, OMCService.class);
@@ -226,15 +234,14 @@ public class OMC extends Application {
 		
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(6);
 		OMC.BMPMAP = new HashMap<String, Bitmap>(3);
-		OMC.IMPORTEDTHEMEMAP=Collections.synchronizedMap(new HashMap<String, OMCImportedTheme>(3));
-		
+		OMC.THEMEMAP=Collections.synchronizedMap(new HashMap<String, JSONObject>(3));
+
 		OMC.LAYERLIST = null;
-		OMC.LAYERATTRIBS = null;
 
 		OMC.TALKBACKS = null;
 		OMC.STRETCHINFO = null;
 		
-		OMC.OVERLAYURL = null;
+		OMC.OVERLAYURI = null;
 		OMC.OVERLAYRESOURCES = new int[] {
 				this.getResources().getIdentifier("N", "id", OMC.PKGNAME),
 				this.getResources().getIdentifier("NE", "id", OMC.PKGNAME),
@@ -249,6 +256,7 @@ public class OMC extends Application {
 
 		OMC.WORDNUMBERS = this.getResources().getStringArray(this.getResources().getIdentifier("WordNumbers", "array", OMC.PKGNAME));
 		
+		setupDefaultTheme();
 		this.widgetClicks();
 		OMC.toggleWidgets(this);
 	}
@@ -354,36 +362,45 @@ public class OMC extends Application {
 			.commit();
 	}
 	
-	public static Typeface getTypeface(String type, String src) {
-//		System.out.println("trying to find " + src);
-		if (OMC.TYPEFACEMAP.get(src)==null) {
-			if (type.equals("fs")) {
-//				System.out.println("trying to find file " + src);
-				if (!new File(src).exists()) {
-//					System.out.println("giving up - cannot find file " + src);
-					return null;
-				}
-//				System.out.println("found file, now caching " + src);
-				OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(src));
-			} else
-				OMC.TYPEFACEMAP.put(src, Typeface.createFromAsset(OMC.AM, src));
+	public static Typeface getTypeface(String sTheme, String src) {
+		//Look in memory cache;
+		if (OMC.TYPEFACEMAP.get(src)!=null) {
+			return OMC.TYPEFACEMAP.get(src);
 		}
-		
-//		System.out.println("Now retrieving from cache: " + src);
-		return OMC.TYPEFACEMAP.get(src);
+		//Look in app cache;
+		if (new File(OMC.CACHEPATH + sTheme + src).exists()) {
+				OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(OMC.CACHEPATH + sTheme + src));
+				return OMC.TYPEFACEMAP.get(src);
+		}
+		//Look in full file system;
+		if (new File(src).exists()) {
+				OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(src));
+				return OMC.TYPEFACEMAP.get(src);
+		}
+		//Look in sd card;
+		if (OMC.checkSDPresent()) {
+			//TODO
+//			return OMC.TYPEFACEMAP.get(src);
+
+		}
+		return null;
 	}
 
-	public static Bitmap getBitmap(String type, String src) {
-		if (OMC.BMPMAP.get(src)==null) {
-			if (type.equals("fs")) {
-				if (!new File(src).exists()) {
-					return null;
-				}
-				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(src));
-			} else
-				OMC.BMPMAP.put(src, BitmapFactory.decodeResource(OMC.RES, OMC.RES.getIdentifier(src, "drawable", OMC.PKGNAME)));
+	public static Bitmap getBitmap(String sTheme, String src) {
+		//Look in memory cache;
+		if (OMC.BMPMAP.get(src)!=null) {
+			return OMC.BMPMAP.get(src);
 		}
-		return OMC.BMPMAP.get(src);
+		//Look in app cache;
+		if (new File(OMC.CACHEPATH + sTheme + src).exists()) {
+			OMC.BMPMAP.put(src, BitmapFactory.decodeFile(OMC.CACHEPATH + sTheme + src));
+			return OMC.BMPMAP.get(src);
+		}
+		//Look in sd card;
+//		if ()
+		//TODO
+		// Bitmap can't be found anywhere
+		return null;
 	}
 
 	public static void purgeTypefaceCache(){
@@ -405,15 +422,15 @@ public class OMC extends Application {
 		OMC.BMPMAP.clear();
 	}
 	
-	public synchronized static OMCImportedTheme getImportedTheme(final Context context, final String nm){
-		if (OMC.IMPORTEDTHEMEMAP.containsKey(nm)){ 
+	public synchronized static JSONObject getTheme(final Context context, final String nm){
+		if (OMC.THEMEMAP.containsKey(nm)){ 
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " retrieved from memory.");
-			return OMC.IMPORTEDTHEMEMAP.get(nm);
+			return OMC.THEMEMAP.get(nm);
 		}
 		try {
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(OMC.CACHEPATH + nm + ".omc"));
-			OMCImportedTheme oResult = (OMCImportedTheme)in.readObject();
-			OMC.IMPORTEDTHEMEMAP.put(nm, oResult);
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(OMC.CACHEPATH + nm + ".json"));
+			JSONObject oResult = (JSONObject)in.readObject();
+			OMC.THEMEMAP.put(nm, oResult);
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " reloaded from cache.");
 			return oResult;
 		} catch (Exception e) {
@@ -428,7 +445,7 @@ public class OMC extends Application {
 		for (File f:(new File(OMC.CACHEPATH).listFiles())) {
 			f.delete();
 		}
-		OMC.IMPORTEDTHEMEMAP.clear();
+		OMC.THEMEMAP.clear();
 	}
 		
 	public static void removeDirectory(File f) {
@@ -458,11 +475,30 @@ public class OMC extends Application {
 		}
 	}
 	
+	public static boolean copyAssetToCache(String src, String sTheme) {
+		try {
+			FileOutputStream oTGT = new FileOutputStream(OMC.CACHEPATH + sTheme + src);
+			InputStream oSRC = OMC.AM.open(src);
+			
+		    byte[] buffer = new byte[16384];
+		    while (oSRC.read(buffer)!= -1){
+		    	oTGT.write(buffer);
+		    }
+		    oTGT.close();
+		    oSRC.close();
+			return true;
+		} catch (Exception e) {
+//			System.out.println("Exception copying " + src + " to " + tgt);
+//			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public static void saveImportedThemeToCache(Context context, String nm) {
 		try {
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " saving to cache.");
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(OMC.CACHEPATH + nm + ".omc"));
-			out.writeObject(OMC.IMPORTEDTHEMEMAP.get(nm));
+			out.writeObject(OMC.THEMEMAP.get(nm));
 		} catch (Exception e) {
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error saving " + nm + " to cache.");
 			//e.printStackTrace();
@@ -476,35 +512,16 @@ public class OMC extends Application {
 		}
 	}
 	
-	public static String[] loadStringArray(String sTheme, int aWI, String sKey) {	
-		boolean bExternal = OMC.PREFS.getBoolean("external"+aWI,false);
-		if (bExternal) {
-			try {
-				OMCImportedTheme oTheme = OMC.IMPORTEDTHEMEMAP.get(sTheme);
-				ArrayList<String> tempAL = oTheme.arrays.get(sKey);
-				return tempAL.toArray(new String[tempAL.size()]);
-			} catch (Exception e) {
-				// Can't find in external stuff... see if it's a seeded array.
-				if (OMC.DEBUG) Log.i ("OMCApp","Can't find array " + sKey + " in " + sTheme);
-				try {
-					return OMC.RES.getStringArray(OMC.RES.getIdentifier(sKey, "array", OMC.PKGNAME));
-				} catch (Exception ee) {
-					if (OMC.DEBUG) Log.i ("OMCApp","Can't find array " + sKey + " in resources!");
-					ee.printStackTrace();
-					return null;
-				}
-				
-			}
-		} else {
-			try {
-				return OMC.RES.getStringArray(OMC.RES.getIdentifier(sKey, "array", OMC.PKGNAME));
-			} catch (Exception e) {
-				if (OMC.DEBUG) Log.i ("OMCApp","Can't find array " + sKey + " in resources!");
-				e.printStackTrace();
-				return null;
-			}
+	public static JSONArray loadStringArray(String sTheme, int aWI, String sKey) {	
+		try {
+			JSONObject oTheme = OMC.THEMEMAP.get(sTheme);
+			return oTheme.getJSONObject("arrays").getJSONArray(sKey);
+
+		} catch (Exception e) {
+			if (OMC.DEBUG) Log.i ("OMCApp","Can't find array " + sKey + " in resources!");
+			e.printStackTrace();
+			return null;
 		}
-	
 	}
 
 	public void widgetClicks() {
@@ -532,6 +549,39 @@ public class OMC extends Application {
 
 	}
 	
+	public static void setupDefaultTheme() {
+		if (new File(OMC.CACHEPATH + "LockscreenLook.json").exists()) return;
+		copyAssetToCache("000preview.jpg", "LockscreenLook");
+		copyAssetToCache("00control.json", "LockscreenLook");
+		copyAssetToCache("Clockopia.ttf", "LockscreenLook");
+		OMCJSONThemeParser temp = new OMCJSONThemeParser(OMC.CACHEPATH+"LockscreenLook");
+		temp.importTheme();
+		try{
+			while (temp.valid) Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+    public static boolean checkSDPresent() {
+    	
+		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+//        	Toast.makeText(getApplicationContext(), "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+			return false;
+        }
+
+        File sdRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC");
+        if (!sdRoot.exists()) {
+//        	Toast.makeText(this, "OMC folder not found in your SD Card.\nCreating folder...", Toast.LENGTH_LONG).show();
+        	sdRoot.mkdir();
+        }
+		if (!sdRoot.canRead()) {
+//        	Toast.makeText(this, "SD Card missing or corrupt.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+        	return false;
+        }
+		return true;
+    }
+
     @Override
     public void onTerminate() {
     	if (!OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1) {

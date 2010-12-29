@@ -54,7 +54,7 @@ public class ClockWidget2x1 extends AppWidgetProvider {
 			// Set time for output
 	        OMC.TIME.setToNow();				        					
 
-	        OMCWidgetDrawEngine.updateAppWidget(context, 0.5f, 0.5f, OMC.WIDGET2x1CNAME, 0,0);
+	        OMCWidgetDrawEngine.updateAppWidget(context, OMC.WIDGET2x1CNAME);
 
 			super.onReceive(context, intent);
 		}
@@ -70,7 +70,7 @@ public class ClockWidget2x1 extends AppWidgetProvider {
 		final int N = appWidgetIds.length;
 		for (int i=0; i<N; i++) {
 		  	OMC.initPrefs(appWidgetIds[i]);
-		  	OMCWidgetDrawEngine.updateAppWidget(context, aWM, appWidgetIds[i], 0.5f, 0.5f,OMC.WIDGET2x1CNAME, 0, 0);
+		  	OMCWidgetDrawEngine.updateAppWidget(context, aWM, appWidgetIds[i],OMC.WIDGET2x1CNAME);
 		}
 
 	}

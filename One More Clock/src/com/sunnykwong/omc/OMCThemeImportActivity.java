@@ -100,8 +100,8 @@ public class OMCThemeImportActivity extends Activity {
     	}
 
     	if (OMCThemeImportActivity.CURRSELECTEDTHEME!=null) {
-			if (!OMC.IMPORTEDTHEMEMAP.containsKey(OMCThemeImportActivity.CURRSELECTEDTHEME)) {
-				OMCXMLThemeParser parser = new OMCXMLThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
+			if (!OMC.THEMEMAP.containsKey(OMCThemeImportActivity.CURRSELECTEDTHEME)) {
+				OMCJSONThemeParser parser = new OMCJSONThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
 						+"/OMC/" + OMCThemeImportActivity.CURRSELECTEDTHEME);
 				parser.importTheme();
 
@@ -119,8 +119,7 @@ public class OMCThemeImportActivity extends Activity {
 				        	.putString("widgetTheme", OMCThemeImportActivity.CURRSELECTEDTHEME)
 				        	.putBoolean("external", true)
 				    		.commit();
-		        	OMC.saveImportedThemeToCache(OMCThemeImportActivity.this,OMCThemeImportActivity.CURRSELECTEDTHEME);
-		        	Toast.makeText(OMCThemeImportActivity.this, OMC.IMPORTEDTHEMEMAP.get(OMCThemeImportActivity.CURRSELECTEDTHEME).arrays.get("theme_options").get(0) + " theme cached and applied.", Toast.LENGTH_SHORT).show();
+		        	Toast.makeText(OMCThemeImportActivity.this, OMC.THEMEMAP.get(OMCThemeImportActivity.CURRSELECTEDTHEME).optString("name") + " theme cached and applied.", Toast.LENGTH_SHORT).show();
 				} else {
 		        	Toast.makeText(OMCThemeImportActivity.this, OMCThemeImportActivity.CURRSELECTEDTHEME + " theme did not pass validity checks!\nPlease check with the author of your theme.\nImport cancelled.", Toast.LENGTH_SHORT).show();
 				}
@@ -131,9 +130,8 @@ public class OMCThemeImportActivity extends Activity {
 				
 				Toast.makeText(OMCThemeImportActivity.this, 
 						"Theme already imported and cached.\n" + 
-						OMC.IMPORTEDTHEMEMAP.get(
-								OMCThemeImportActivity.CURRSELECTEDTHEME).arrays
-								.get("theme_options").get(0) + " theme applied."
+						OMC.THEMEMAP.get(
+								OMCThemeImportActivity.CURRSELECTEDTHEME).optString("name") + " theme applied."
 								, Toast.LENGTH_SHORT).show();
 				
 	        	OMC.PREFS.edit()
