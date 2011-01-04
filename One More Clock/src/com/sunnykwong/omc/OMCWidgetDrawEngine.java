@@ -156,7 +156,11 @@ public class OMCWidgetDrawEngine {
 			return null;
 		}
 		System.out.println("Theme retrieved from memory");
-		OMC.LAYERLIST = OMCTypedArray.getLayerList(oTheme, aWI);
+		oTheme = OMCTypedArray.renderThemeObject(oTheme, aWI);
+		
+		System.out.println("Theme dynamic elements rendered");
+//TODO		
+//		OMC.LAYERLIST = OMCTypedArray.getLayerList(oTheme, aWI);
 
 		for (int i = 0; i < OMC.LAYERLIST.length(); i++) {
 			JSONObject layer = OMC.LAYERLIST.optJSONObject(i);

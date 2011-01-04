@@ -15,66 +15,57 @@ import org.json.JSONArray;
 public class OMCTypedArray  {
 	String[] mImportedArray;
 
-	public OMCTypedArray(String[] strArray, int aWI) {
-		mImportedArray = OMCTypedArray.findTokens(strArray, aWI);
-	} 
-	public OMCTypedArray(ArrayList<String> AL, int aWI) {
-		String[] tempArray = new String[AL.size()];
-    	AL.toArray(tempArray);
-    	mImportedArray = OMCTypedArray.findTokens(tempArray, aWI);
-	}
-	public boolean getBoolean(int index, boolean defValue) {
-		return Boolean.parseBoolean(mImportedArray[index].toString());
-	}
-	public int getColor(int index, int defValue) {
-		return Color.parseColor(mImportedArray[index].toString());
-	}
-	public String getString(int index) {
-		return mImportedArray[index].toString();
-	}
-	public int getInt(int index, int defValue) {
-		return Integer.parseInt(mImportedArray[index].toString().replace(" ", ""));
-	}
-	public float getFloat(int index, float defValue) {
-		return Float.parseFloat(mImportedArray[index].toString().replace(" ", ""));
-	}
-	public void recycle() {
-		mImportedArray = null;
-	}
-	
-	static public JSONArray getLayerList(JSONObject theme, int aWI) {
-		JSONArray result;
-		try{
-			result = new JSONObject(layer.toString());
-			//Resolve the layers
-			if (layer.has("arrays")) {
-				@SuppressWarnings("unchecked")
-Iterator<String> i = layer.optJSONObject("arrays").keys();
-				while (i.hasNext()) {
-					String sKey = i.next();
-					JSONArray tempArray = layer.optJSONObject("arrays").optJSONArray(sKey);
-					for (int j=0;j<tempArray.length();j++) {
-						result.optJSONObject("arrays").optJSONArray(sKey).put(j,
-								OMCTypedArray.resolveTokens(tempArray.getString(j), aWI));
-					}
+	static public JSONObject renderThemeObject(JSONObject theme, int aWI) throws JSONException {
+		JSONObject result;
+		
+		result = new JSONObject();
+
+		// Since the rendered object is only used for drawing, we'll skip
+		// ID, Name, Author and Credits
+		
+		// First, render the dynamic elements in arrays
+		
+		if (theme.has("arrays")) {
+			JSONObject resultArrays = new JSONObject();
+			result.put("arrays", resultArrays);
+			
+			@SuppressWarnings("unchecked")
+			Iterator<String> i = theme.optJSONObject("arrays").keys();
+			while (i.hasNext()) {
+				String sKey = i.next();
+				JSONArray tempResultArray = new JSONArray();
+				resultArrays.put(sKey, tempResultArray);
+
+				JSONArray tempArray = theme.optJSONObject("arrays").optJSONArray(sKey);
+				for (int j=0;j<tempArray.length();j++) {
+					tempResultArray.put(OMCTypedArray.resolveTokens(tempArray.getString(j), aWI));
 				}
 			}
+		}
+
+		// Second, render the dynamic elements in layers
+		
+		JSONArray layerJSONArray = theme.optJSONArray("layers_bottomtotop");
+		if (layerJSONArray==null) return null; //ERR: A theme cannot have no layers
+		JSONArray tempLayerArray = new JSONArray();
+		result.put("layers_bottomtotop", tempLayerArray);
+		
+		for (int j = 0 ; j < layerJSONArray.length(); j++) {
+			JSONObject layer = layerJSONArray.optJSONObject(j);
+			JSONObject renderedLayer = new JSONObject();
+			tempLayerArray.put(renderedLayer);
+			
+			@SuppressWarnings("unchecked")
 			Iterator<String> i = layer.keys();
 			while (i.hasNext()) {
-				
+				String sKey = i.next();
+				renderedLayer.put(sKey, OMCTypedArray.resolveTokens((String)(layer.optString(sKey)), aWI));
 			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-			return null;
+			
 		}
-		return result;
-	}
-	
-	static public String[] findTokens(String[] sArray, int aWI) {
-		String[] result = new String[sArray.length];
-		for (int i = 0; i < sArray.length; i++) {
-			result[i] = OMCTypedArray.resolveTokens(sArray[i], aWI);
-		}
+
+		// Finally, render the max and maxfit elements
+		
 		return result;
 	}
 	
