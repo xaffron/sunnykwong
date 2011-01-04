@@ -44,13 +44,13 @@ public class OMCWidgetDrawEngine {
 	
 	static synchronized void updateAppWidget(final Context context,
 			final AppWidgetManager appWidgetManager,
-			final int appWidgetId, ComponentName cName) {
+			final int appWidgetId, ComponentName cName) { 
 
 		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Widget", "Redrawing widget" + appWidgetId + " @ " + OMC.TIME.format("%T"));
 
 		String sTheme = OMC.PREFS.getString("widgetTheme"+appWidgetId,OMC.DEFAULTTHEME);
-		System.out.println("sTheme " + OMC.THEMEMAP.get(sTheme));
-		System.out.println("sTheme " + OMC.THEMEMAP.get(sTheme).optJSONObject("customscaling"));
+//		System.out.println("sTheme " + OMC.THEMEMAP.get(sTheme));
+//		System.out.println("sTheme " + OMC.THEMEMAP.get(sTheme).optJSONObject("customscaling"));
 
 		// OK, now actually render the widget on a bitmap.
 		OMCWidgetDrawEngine.drawBitmapForWidget(context,appWidgetId);
@@ -58,7 +58,7 @@ public class OMCWidgetDrawEngine {
 		// Blit the buffer over
 		final RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
 
-		OMC.STRETCHINFO = OMC.THEMEMAP.get(sTheme).optJSONObject("customscaling");
+		OMC.STRETCHINFO = OMC.getTheme(context,sTheme).optJSONObject("customscaling");
 		String sWidgetSize = cName.toShortString().substring(cName.toShortString().length()-4,cName.toShortString().length()-1);
 		System.out.println("SWIDGETSIZE: " + sWidgetSize);
 
@@ -86,7 +86,7 @@ public class OMCWidgetDrawEngine {
 //		}
 		
 		OMC.OVERLAYURIS = new String[9];
-		JSONObject temp = OMC.THEMEMAP.get(sTheme).optJSONObject("customURIs");
+		JSONObject temp = OMC.getTheme(context, sTheme).optJSONObject("customURIs");
 		if (temp == null) {
 			//No custom URIs - always go to options screen
         	Intent intent = new Intent(context, OMCPrefActivity.class);
@@ -126,20 +126,22 @@ public class OMCWidgetDrawEngine {
 //            }
 //        } else {
 //
-//        	try {
+        	try {
 //	        	Intent intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
-//	        	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
+	        	Intent intent = new Intent(context, OMCPrefActivity.class);
+	        	intent.setData(Uri.parse("omc:"+appWidgetId));
+	        	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
 //	            rv.setOnClickPendingIntent(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME), pi);
-//	            for (int i = 0; i < 9; i++) {
+	            for (int i = 0; i < 9; i++) {
 //	            	if (OMC.OVERLAYURI[i].equals("default")) {
-//		            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], pi);
+		            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], pi);
 //	            	} else rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], 
 //	            			PendingIntent.getBroadcast(context, 0, new Intent(
 //	            					Intent.ACTION_VIEW,OMC.OVERLAYURI[i]), 0));
-//	            }
-//        	} catch (Exception e) {
-//        		e.printStackTrace();
-//        	}
+	            }
+        	} catch (Exception e) {
+        		e.printStackTrace();
+        	}
 //        }
         
             // Kudos to Eric for solution to dummy out "unsetonlickpendingintent":

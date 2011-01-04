@@ -269,11 +269,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     @Override
     public void onPause() {
-    	super.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
 		if (appWidgetID >= 0) {
 
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Saving Prefs for Widget " + OMCPrefActivity.appWidgetID);
@@ -286,6 +281,11 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 			OMC.setServiceAlarm(System.currentTimeMillis()+500);
 			sendBroadcast(OMC.WIDGETREFRESHINTENT);
 		}
+    	super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
         super.onDestroy();
     }
 } 

@@ -3,6 +3,8 @@ package com.sunnykwong.omc;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 import android.graphics.Color;
+import android.text.Html;
+import android.text.SpannedString;
 import android.util.Log;
 //import android.util.Log;
 
@@ -42,7 +44,7 @@ public class OMCTypedArray  {
 			}
 		}
 
-		// Second, render the dynamic elements in layers
+		// Then, render all the dynamic elements in each layer...
 		
 		JSONArray layerJSONArray = theme.optJSONArray("layers_bottomtotop");
 		if (layerJSONArray==null) return null; //ERR: A theme cannot have no layers
@@ -58,11 +60,24 @@ public class OMCTypedArray  {
 			Iterator<String> i = layer.keys();
 			while (i.hasNext()) {
 				String sKey = i.next();
+				if (sKey.equals("text_stretch")) continue;
+
 				renderedLayer.put(sKey, OMCTypedArray.resolveTokens((String)(layer.optString(sKey)), aWI, result));
+
 			}
 			
+			// before tweaking the max/maxfit stretch factors.
+			String sStretch = layer.optString("text_stretch");
+			if (sStretch==null) {
+				renderedLayer.put("text_stretch", "1");
+			} else {
+				renderedLayer.put("text_stretch", OMCTypedArray.resolveTokens((String)(layer.optString("text_stretch")), aWI, result));
+			}
 		}
 
+		
+
+		
 		return result;
 	}
 	

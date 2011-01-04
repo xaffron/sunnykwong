@@ -150,7 +150,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 									
 									@Override
 									public void onClick(DialogInterface dialog, int which) {
-										OMC.deleteOneThemeFromCache(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()));
+										Toast.makeText(getApplicationContext(), "No-Op right now", Toast.LENGTH_SHORT).show();
 										OMCThemePickerActivity.this.sDefaultTheme=null;
 										OMCThemePickerActivity.THEMEARRAY.removeItem(gallery.getSelectedItemPosition());
 										OMCThemePickerActivity.this.refreshThemeList();

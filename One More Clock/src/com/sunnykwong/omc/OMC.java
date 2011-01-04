@@ -1,9 +1,7 @@
 package com.sunnykwong.omc;
 
-import java.util.ArrayList;
 import org.json.JSONObject;
 import org.json.JSONArray;
-import org.json.JSONException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
@@ -11,14 +9,12 @@ import java.util.Map.Entry;
 import java.util.Map;
 import java.util.Collections;
 import java.io.File;
+import java.io.FileReader;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.StringReader;
+import java.io.BufferedReader;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.Application;
 import android.app.Notification;
@@ -42,7 +38,6 @@ import android.os.Environment;
 import android.text.format.Time;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.widget.Toast;
 import android.graphics.BitmapFactory;
 import android.content.res.Resources;
 import android.graphics.Matrix;
@@ -423,21 +418,59 @@ public class OMC extends Application {
 	}
 	
 	public synchronized static JSONObject getTheme(final Context context, final String nm){
-		if (OMC.THEMEMAP.containsKey(nm)){ 
+		// Look in memory cache
+		if (OMC.THEMEMAP.containsKey(nm) && OMC.THEMEMAP.get(nm)!=null){ 
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " retrieved from memory.");
 			return OMC.THEMEMAP.get(nm);
 		}
-		try {
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(OMC.CACHEPATH + nm + ".json"));
-			JSONObject oResult = (JSONObject)in.readObject();
-			OMC.THEMEMAP.put(nm, oResult);
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " reloaded from cache.");
-			return oResult;
-		} catch (Exception e) {
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error reloading " + nm + " from cache.");
-		
-			//e.printStackTrace();
+		// Look in cache dir
+		if (new File(OMC.CACHEPATH + nm + "00control.json").exists()) {
+			try {
+				BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + nm + "00control.json"));
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[16384];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+				JSONObject oResult = new JSONObject(sb.toString());
+				sb.setLength(0);
+				OMC.THEMEMAP.put(nm, oResult);
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " reloaded from cache.");
+				return oResult;
+			} catch (Exception e) {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error reloading " + nm + " from cache.");
+				e.printStackTrace();
+			}
 		}
+		// Look in SD path
+		if (OMC.checkSDPresent()) {
+			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/"+nm);
+			if (f.exists() && f.isDirectory()) {
+				for (File ff:f.listFiles()) {
+					copyFile(ff.getAbsolutePath(),OMC.CACHEPATH + nm + ff.getName());
+				}
+			}
+			try {
+				BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + nm + "00control.json"));
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[16384];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+				JSONObject oResult = new JSONObject(sb.toString());
+				sb.setLength(0);
+				OMC.THEMEMAP.put(nm, oResult);
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " reloaded from cache.");
+				return oResult;
+			} catch (Exception e) {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error reloading " + nm + " from SD.");
+			}
+		} 
+
 		return null;
 	}
 
@@ -462,8 +495,9 @@ public class OMC extends Application {
 			FileOutputStream oTGT = new FileOutputStream(tgt);
 			FileInputStream oSRC = new FileInputStream(src);
 		    byte[] buffer = new byte[16384];
-		    while (oSRC.read(buffer)!= -1){
-		    	oTGT.write(buffer);
+		    int iBytesRead = 0;
+		    while ((iBytesRead = oSRC.read(buffer))!= -1){
+		    	oTGT.write(buffer,0,iBytesRead);
 		    }
 		    oTGT.close();
 		    oSRC.close();
@@ -481,8 +515,9 @@ public class OMC extends Application {
 			InputStream oSRC = OMC.AM.open(src);
 			
 		    byte[] buffer = new byte[16384];
-		    while (oSRC.read(buffer)!= -1){
-		    	oTGT.write(buffer);
+		    int iBytesRead = 0;
+		    while ((iBytesRead = oSRC.read(buffer))!= -1){
+		    	oTGT.write(buffer,0,iBytesRead);
 		    }
 		    oTGT.close();
 		    oSRC.close();
@@ -491,24 +526,6 @@ public class OMC extends Application {
 //			System.out.println("Exception copying " + src + " to " + tgt);
 //			e.printStackTrace();
 			return false;
-		}
-	}
-	
-	public static void saveImportedThemeToCache(Context context, String nm) {
-		try {
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " saving to cache.");
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(OMC.CACHEPATH + nm + ".omc"));
-			out.writeObject(OMC.THEMEMAP.get(nm));
-		} catch (Exception e) {
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error saving " + nm + " to cache.");
-			//e.printStackTrace();
-		}
-	}
-	
-	public static void deleteOneThemeFromCache(String nm) {
-		File f = new File(OMC.CACHEPATH);
-		for (File ff:f.listFiles()) {
-	    	if (!ff.getName().startsWith(nm)) ff.delete();
 		}
 	}
 	
@@ -550,13 +567,17 @@ public class OMC extends Application {
 	}
 	
 	public static void setupDefaultTheme() {
-		if (new File(OMC.CACHEPATH + "LockscreenLook.json").exists()) return;
+		//if (new File(OMC.CACHEPATH + "LockscreenLook00control.json").exists()) return;
 		copyAssetToCache("000preview.jpg", "LockscreenLook");
 		copyAssetToCache("00control.json", "LockscreenLook");
 		copyAssetToCache("Clockopia.ttf", "LockscreenLook");
-		OMCJSONThemeParser temp = new OMCJSONThemeParser(OMC.CACHEPATH+"LockscreenLook");
-		temp.importTheme();
-		try{
+		(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook")).mkdir();
+		copyFile(OMC.CACHEPATH + "LockscreenLook.json", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/00control.json");
+		copyFile(OMC.CACHEPATH + "000preview.jpg", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/000preview.jpg");
+		copyFile(OMC.CACHEPATH + "Clockopia.ttf", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/Clockopia.ttf");
+		OMCJSONThemeParser temp = new OMCJSONThemeParser(OMC.CACHEPATH+"LockscreenLook00control.json");
+		temp.importTheme(); 
+		try{ 
 			while (temp.valid) Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();

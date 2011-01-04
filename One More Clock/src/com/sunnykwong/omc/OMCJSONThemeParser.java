@@ -24,7 +24,7 @@ public class OMCJSONThemeParser  {
 	public JSONObject newTheme;
 	public boolean doneParsing;
 	public boolean valid;
-	static public String sdRootPath;
+	static public String controlPath;
 	public Handler mHandler;
 	final Runnable mDoneImporting = new Runnable() {
 		public void run() {
@@ -37,7 +37,7 @@ public class OMCJSONThemeParser  {
 		
 		mHandler = new Handler();
 
-        OMCJSONThemeParser.sdRootPath=nm;
+        OMCJSONThemeParser.controlPath=nm;
 		valid=false;
 
 		if (sb == null) sb = new StringBuilder();
@@ -51,23 +51,14 @@ public class OMCJSONThemeParser  {
         		doneParsing=false;
         		// Setup JSON Parsing...
 
-        		try {
+        		try { 
             		char[] cTemp = new char[100000];
-        			FileReader fr = new FileReader(OMCJSONThemeParser.sdRootPath + "/00control.json");
+        			FileReader fr = new FileReader(OMCJSONThemeParser.controlPath);
         			fr.read(cTemp);
         			newTheme = new JSONObject(String.valueOf(cTemp).trim());
         			fr.close();
         		} catch (Exception e) {
-        			e.printStackTrace();
-        			try {
-                		char[] cTemp = new char[100000];
-            			FileReader fr = new FileReader(OMCJSONThemeParser.sdRootPath + "00control.json");
-            			fr.read(cTemp);
-            			newTheme = new JSONObject(String.valueOf(cTemp).trim());
-            			fr.close();
-            		} catch (Exception ee) {
-            			ee.printStackTrace();
-        			}
+        			e.printStackTrace(); 
         		}
 
             	// This call will end up passing control to processJSONResults
