@@ -23,7 +23,8 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-//import com.sunnykwong.omc.whambamwidget.R;
+import org.json.JSONArray;
+
 public class OMCWidgetDrawEngine {
 
 	// Needs to be synchronized now that we have four different widget types 
@@ -84,14 +85,24 @@ public class OMCWidgetDrawEngine {
 			rv.setImageViewBitmap(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME),OMC.BUFFER);
 //		}
 		
-//		OMC.OVERLAYURI = new Uri[9];
-//		JSONObject temp = OMC.THEMEMAP.get(sTheme).optJSONObject("customURIs");
-//		for (int i=0; i<9; i++){
-//			OMC.OVERLAYURI[i] = Uri.parse(temp.optString(OMC.COMPASSPOINTS[i]));
-//		}
-		System.out.println("did we make it here2?");
+		OMC.OVERLAYURIS = new String[9];
+		JSONObject temp = OMC.THEMEMAP.get(sTheme).optJSONObject("customURIs");
+		if (temp == null) {
+			//No custom URIs - always go to options screen
+        	Intent intent = new Intent(context, OMCPrefActivity.class);
+        	intent.setData(Uri.parse("omc:"+appWidgetId));
 
-//        if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) { 
+			for (int i=0; i<9; i++){
+				OMC.OVERLAYURIS[i] = intent.toUri(0);
+			}
+			
+		} else {
+			for (int i=0; i<9; i++){
+				OMC.OVERLAYURIS[i] = temp.optString(OMC.COMPASSPOINTS[i]);
+			}
+		}
+
+        if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) { 
 ////	Using a broadcast is more flexible, but less crash-proof. So we're not using it for now.
 ////        	Intent intent = new Intent("com.sunnykwong.omc.WIDGET_CONFIG");
 ////        	intent.setData(Uri.parse("omc:"+appWidgetId));
@@ -138,7 +149,7 @@ public class OMCWidgetDrawEngine {
 //        		    PendingIntent.FLAG_UPDATE_CURRENT));
         
         appWidgetManager.updateAppWidget(appWidgetId, rv);
-		System.out.println("did we make it here3?");
+        }
 	}
 	
 	static synchronized Bitmap drawBitmapForWidget(final Context context, final int aWI) {
@@ -156,10 +167,15 @@ public class OMCWidgetDrawEngine {
 			return null;
 		}
 		System.out.println("Theme retrieved from memory");
-		oTheme = OMCTypedArray.renderThemeObject(oTheme, aWI);
-		
+		try {
+			oTheme = OMCTypedArray.renderThemeObject(oTheme, aWI);
+		} catch (JSONException e) {
+			System.out.println("ERROR RENDERING DYNAMIC TAGS");
+			e.printStackTrace();
+		}
 		System.out.println("Theme dynamic elements rendered");
 //TODO		
+		OMC.LAYERLIST = oTheme.optJSONArray("layers_bottomtotop");
 //		OMC.LAYERLIST = OMCTypedArray.getLayerList(oTheme, aWI);
 
 		for (int i = 0; i < OMC.LAYERLIST.length(); i++) {
@@ -344,23 +360,28 @@ public class OMCWidgetDrawEngine {
 		OMC.PT1.setTypeface(tempTypeface);
 		OMC.PT1.setTextSize(layer.optInt("text_size"));
 		OMC.PT1.setTextSkewX((float)layer.optDouble("text_skew"));
-		int iTemp;
-////		if (OMC.LAYERATTRIBS.getString(5).startsWith("f")) {
-////			OMC.PT1.setTextScaleX(1f);
-////			float fFactor = Float.parseFloat(OMC.LAYERATTRIBS.getString(5).substring(1))/OMCWidgetDrawEngine.getSpannedStringWidth(new SpannedString(Html.fromHtml(OMC.TXTBUF)),OMC.PT1);
-////			OMC.PT1.setTextScaleX(fFactor);
-//		} else if ((iTemp = OMC.LAYERATTRIBS.getString(5).indexOf("m"))!= -1) {
-//			OMC.PT1.setTextScaleX(Float.parseFloat(OMC.LAYERATTRIBS.getString(5).substring(0,iTemp)));
-//			int iMax = Integer.parseInt(OMC.LAYERATTRIBS.getString(5).substring(iTemp+1));
-//			int iLength = OMCWidgetDrawEngine.getSpannedStringWidth(new SpannedString(Html.fromHtml(OMC.TXTBUF)),OMC.PT1); 
-//			if (iLength <= iMax){
-//				//do nothing, PT1 properly set
-//			} else {
-//				OMC.PT1.setTextScaleX(((float)iMax)/iLength);
-//			}
-//		} else {
-			OMC.PT1.setTextScaleX((float)layer.optDouble("text_stretch"));
-//    	}
+		String sTemp = layer.optString("text_stretch");
+		if (sTemp==null) {
+			OMC.PT1.setTextScaleX(1f);
+		} else {
+			int iTemp;
+			if (sTemp.startsWith("f")) {
+				OMC.PT1.setTextScaleX(1f);
+				float fFactor = Float.parseFloat(sTemp.substring(1))/OMCWidgetDrawEngine.getSpannedStringWidth(new SpannedString(Html.fromHtml(OMC.TXTBUF)),OMC.PT1);
+				OMC.PT1.setTextScaleX(fFactor);
+			} else if ((iTemp = sTemp.indexOf("m"))!= -1) {
+				OMC.PT1.setTextScaleX(Float.parseFloat(sTemp.substring(0,iTemp)));
+				int iMax = Integer.parseInt(sTemp.substring(iTemp+1));
+				int iLength = OMCWidgetDrawEngine.getSpannedStringWidth(new SpannedString(Html.fromHtml(OMC.TXTBUF)),OMC.PT1); 
+				if (iLength <= iMax){
+					//do nothing, PT1 properly set
+				} else {
+					OMC.PT1.setTextScaleX(((float)iMax)/iLength);
+				}
+			} else {
+				OMC.PT1.setTextScaleX((float)layer.optDouble("text_stretch"));
+			}
+		}
 		
 		OMC.PT1.setColor(Color.parseColor(layer.optString("fgcolor")));
 		

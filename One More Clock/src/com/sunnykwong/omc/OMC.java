@@ -111,7 +111,7 @@ public class OMC extends Application {
 	static String CACHEPATH;
 	static String[] WORDNUMBERS;
 	static JSONObject STRETCHINFO;
-	static Uri[] OVERLAYURI;
+	static String[] OVERLAYURIS;
 	static int[] OVERLAYRESOURCES;
 
 	static ComponentName WIDGET4x2CNAME;
@@ -241,7 +241,7 @@ public class OMC extends Application {
 		OMC.TALKBACKS = null;
 		OMC.STRETCHINFO = null;
 		
-		OMC.OVERLAYURI = null;
+		OMC.OVERLAYURIS = null;
 		OMC.OVERLAYRESOURCES = new int[] {
 				this.getResources().getIdentifier("N", "id", OMC.PKGNAME),
 				this.getResources().getIdentifier("NE", "id", OMC.PKGNAME),

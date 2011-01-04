@@ -13,7 +13,6 @@ import org.json.JSONObject;
 import org.json.JSONException;
 import org.json.JSONArray;
 public class OMCTypedArray  {
-	String[] mImportedArray;
 
 	static public JSONObject renderThemeObject(JSONObject theme, int aWI) throws JSONException {
 		JSONObject result;
@@ -38,7 +37,7 @@ public class OMCTypedArray  {
 
 				JSONArray tempArray = theme.optJSONObject("arrays").optJSONArray(sKey);
 				for (int j=0;j<tempArray.length();j++) {
-					tempResultArray.put(OMCTypedArray.resolveTokens(tempArray.getString(j), aWI));
+					tempResultArray.put(OMCTypedArray.resolveTokens(tempArray.getString(j), aWI, result));
 				}
 			}
 		}
@@ -59,17 +58,15 @@ public class OMCTypedArray  {
 			Iterator<String> i = layer.keys();
 			while (i.hasNext()) {
 				String sKey = i.next();
-				renderedLayer.put(sKey, OMCTypedArray.resolveTokens((String)(layer.optString(sKey)), aWI));
+				renderedLayer.put(sKey, OMCTypedArray.resolveTokens((String)(layer.optString(sKey)), aWI, result));
 			}
 			
 		}
 
-		// Finally, render the max and maxfit elements
-		
 		return result;
 	}
 	
-	static public String resolveOneToken(String sRawString, int aWI) {
+	static public String resolveOneToken(String sRawString, int aWI, JSONObject tempResult) {
 		boolean isDynamic = false;
 		if (sRawString.contains("[%")) isDynamic = true;
 		// Strip brackets.
@@ -282,7 +279,7 @@ public class OMCTypedArray  {
 		
 	}
 
-	static public String resolveTokens(String sRawString, int aWI) {
+	static public String resolveTokens(String sRawString, int aWI, JSONObject tempResult) {
 //		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Parsing "+sRawString);
 		StringBuilder result = new StringBuilder();
 
@@ -319,7 +316,7 @@ public class OMCTypedArray  {
 					// No more start markers found, but we have an end marker.
 					// Dive into this substring.
 //					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Sending down(-1): " + sRawString.substring(iCursor, iMarker2+2));
-					result.append(OMCTypedArray.resolveOneToken(sRawString.substring(iCursor, iMarker2+2), aWI));
+					result.append(OMCTypedArray.resolveOneToken(sRawString.substring(iCursor, iMarker2+2), aWI, tempResult));
 					result.append(sRawString.substring(iMarker2+2));
 //					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Now at: " + result.toString());
 				} else if (iMarker1 < iMarker2) {
@@ -332,7 +329,7 @@ public class OMCTypedArray  {
 					//if %] is closer, we have an end marker.
 					//Dive into this substring.
 //					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Sending down(2<1): " + sRawString.substring(iCursor, iMarker2+2));
-					result.append(OMCTypedArray.resolveOneToken(sRawString.substring(iCursor, iMarker2+2), aWI));
+					result.append(OMCTypedArray.resolveOneToken(sRawString.substring(iCursor, iMarker2+2), aWI, tempResult));
 //					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Now at: " + result.toString());
 					//Move all markers to the next [% (we only deal with one layer here).
 					//Start looking for the next directive.
@@ -342,11 +339,11 @@ public class OMCTypedArray  {
 				} while (iMarker1 != -1);
 				
 				// Pass it up to resolve nested stuff.
-				return OMCTypedArray.resolveTokens(result.toString(), aWI);
+				return OMCTypedArray.resolveTokens(result.toString(), aWI, tempResult);
 			}
 		}
 		// If no tags found, then just run strftime; we're done! 
-		return OMCTypedArray.resolveOneToken(sRawString, aWI);
+		return OMCTypedArray.resolveOneToken(sRawString, aWI, tempResult);
 
 	}
 	

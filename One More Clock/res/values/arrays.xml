@@ -191,7 +191,7 @@
 	<item name="07 render_style">shadow</item>
 	<item name="08 fgcolor">#ffffffff</item>
 	<item name="09 bgcolor">#a0000000</item>
-	<item name="10 xcoord">[%ap24_210_210_240%]</item>
+<!--	<item name="10 xcoord">[%ap24_210_210_240%]</item>-->
 	<item name="11 ycoord">192</item>
 	<item name="12 textalign">center</item>
 	<item name="13 words">%H:%M</item>
@@ -211,7 +211,7 @@
 	<item name="10 xcoord">480</item>
 	<item name="11 ycoord">192</item>
 	<item name="12 textalign">right</item>
-	<item name="13 words">[%flipformat_1_case_[%ap24_%P_%P_ %]%]</item>
+<!--	<item name="13 words">[%flipformat_1_case_[%ap24_%P_%P_ %]%]</item>-->
 </string-array>
 
 <string-array name="LLDate">
@@ -228,7 +228,7 @@
 	<item name="10 xcoord">240</item>
 	<item name="11 ycoord">232</item>
 	<item name="12 textalign">center</item>
-	<item name="13 words">%A, %B %e</item>
+<!--	<item name="13 words">%A, %B %e</item>-->
 </string-array>
 
 </resources>
