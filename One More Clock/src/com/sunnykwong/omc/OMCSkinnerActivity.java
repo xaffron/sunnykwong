@@ -107,21 +107,21 @@ public class OMCSkinnerActivity extends Activity {
 
     		public void run() {
     			while (true) {
-	    	    	OMCJSONThemeParser parser = new OMCJSONThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
-	    					+"/OMC/" + sTheme);
-
-	    	    	Log.i(OMC.OMCSHORT + "Skinner","about to parse " + Environment.getExternalStorageDirectory().getAbsolutePath()
-	    					+"/OMC/" + sTheme);
-	    			parser.importTheme();
-	
-	    			while (!parser.doneParsing){
-	    				try {
-	    					Thread.sleep(500);
-	    				} catch (InterruptedException e) {
-	    					break;
-	    				}
-	    			}
-	    			
+//	    	    	OMCJSONThemeParser parser = new OMCJSONThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
+//	    					+"/OMC/" + sTheme);
+//
+//	    	    	Log.i(OMC.OMCSHORT + "Skinner","about to parse " + Environment.getExternalStorageDirectory().getAbsolutePath()
+//	    					+"/OMC/" + sTheme);
+//	    			parser.importTheme();
+//	
+//	    			while (!parser.doneParsing){
+//	    				try {
+//	    					Thread.sleep(500);
+//	    				} catch (InterruptedException e) {
+//	    					break;
+//	    				}
+//	    			}
+//	    			
 //	    			if (!parser.valid) {
 //	    	        	Toast.makeText(this, sTheme + " is an invalid theme.  See logcat for errors.", Toast.LENGTH_LONG).show();
 //	    	        	return;

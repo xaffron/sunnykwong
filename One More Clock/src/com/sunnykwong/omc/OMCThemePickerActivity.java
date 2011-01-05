@@ -1,9 +1,14 @@
 package com.sunnykwong.omc;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -40,7 +45,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 	public static ThemePickerAdapter THEMEARRAY;
 	public static String RAWCONTROLFILE;
 	
-	public boolean bExternalOnly;
 	public String sDefaultTheme;
 	
 	public View topLevel;
@@ -57,8 +61,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
         getWindow().setWindowAnimations(android.R.style.Animation_Toast);
 
-        bExternalOnly = getIntent().getBooleanExtra("externalonly", false);
-        
         sDefaultTheme = getIntent().getStringExtra("default");
         
 		setResult(Activity.RESULT_CANCELED);
@@ -132,7 +134,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     		Intent it = new Intent();
     		setResult(Activity.RESULT_OK, it);
     		it.putExtra("theme", OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()));
-    		it.putExtra("external", OMCThemePickerActivity.THEMEARRAY.mExternal.get(gallery.getSelectedItemPosition()));
     		
     		finish();
     	}
@@ -206,7 +207,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-		        	Toast.makeText(OMCThemePickerActivity.this, "Downloading starter clock pack...", Toast.LENGTH_LONG).show();
+		        	Toast.makeText(OMCThemePickerActivity.this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
 		        	OMCThemePickerActivity.THEMEROOT.mkdir();
 					startActivity(OMC.GETSTARTERPACKINTENT);
 					mAD.cancel();
@@ -235,16 +236,13 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         }
 
         OMCThemePickerActivity.THEMES =  new HashMap<String, File>();
-        if (!bExternalOnly) {
-        	OMCThemePickerActivity.THEMEARRAY.addItem("LockscreenLook", false);
-		}
 
         for (File f:OMCThemePickerActivity.THEMEROOT.listFiles()) {
         	if (!f.isDirectory()) continue;
-        	File ff = new File(f.getAbsolutePath()+"/00control.xml");
+        	File ff = new File(f.getAbsolutePath()+"/00control.json");
         	if (ff.exists()) {
         		
-        		OMCThemePickerActivity.THEMEARRAY.addItem(f.getName(), true);
+        		OMCThemePickerActivity.THEMEARRAY.addItem(f.getName());
         		OMCThemePickerActivity.THEMES.put(f.getName(), f);
         	}
         }
@@ -252,14 +250,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         gallery.setAdapter(OMCThemePickerActivity.THEMEARRAY);
         gallery.setSelection(OMCThemePickerActivity.THEMEARRAY.getPosition(sDefaultTheme));
 	}
-
-//	@Override
-//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//		super.onActivityResult(requestCode, resultCode, data);
-//		if (requestCode==999) {
-//			refreshThemeList();
-//		}
-//	}	
 
 	@Override
 	protected void onPause() {
@@ -280,7 +270,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     public class ThemePickerAdapter extends BaseAdapter {
 
     	public ArrayList<String> mThemes = new ArrayList<String>();
-    	public ArrayList<Boolean> mExternal = new ArrayList<Boolean>();
     	public HashMap<String, String> mCreds = new HashMap<String, String>();
     	public HashMap<String, String> mNames = new HashMap<String, String>();
     	
@@ -289,11 +278,10 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         public ThemePickerAdapter() {
         }
 
-        public int addItem(final String sTheme, boolean bExternal){
+        public int addItem(final String sTheme){
         	int result=0;
         	if (mThemes.size()==0 || sTheme.compareTo(mThemes.get(mThemes.size()-1))>0) {
 	        	mThemes.add(sTheme);
-	        	mExternal.add(bExternal);
 	        	result=0; //position of the add
         	} else {
         		for (int iPos = 0; iPos < mThemes.size(); iPos++) {
@@ -301,31 +289,26 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         				continue;
         			} else {
         				mThemes.add(iPos,sTheme);
-        	        	mExternal.add(iPos,bExternal);
         	        	result= iPos;
         				break;
         			}
         		}
 	    			
         	}
-        	if (!bExternal) {
-//        		mBitmaps.put(sTheme, BitmapFactory.decodeResource(OMC.RES, getResources().getIdentifier("llpreview", "drawable", OMC.PKGNAME)));
-        		mNames.put(sTheme, "Lockscreen Look");
-    			mCreds.put(sTheme, "LOCKSCREEN LOOK (S. Kwong, 18 Oct 2010)\nThe default Android Lockscreen Look.");
-        		return result;
-        	}
-//        	mBitmaps.put(sTheme, BitmapFactory.decodeFile(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme+"/000preview.jpg"));
-    		char[] cCredits = new char[3000];
+
     		try {
-    			FileReader fr = new FileReader(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+ "/" + sTheme+"/00name.txt");
-    			fr.read(cCredits);
-    			mNames.put(sTheme,String.valueOf(cCredits).trim());
-    			fr.close();
-    			
-    			fr = new FileReader(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+ "/" + sTheme+"/00credits.txt");
-    			fr.read(cCredits);
-    			mCreds.put(sTheme,String.valueOf(cCredits).trim());
-    			fr.close();
+				BufferedReader in = new BufferedReader(new FileReader(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+ "/" + sTheme+"/00control.json"),8192);
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[16384];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+				JSONObject oResult = new JSONObject(sb.toString());
+				sb.setLength(0);
+    			mNames.put(sTheme,oResult.optString("name"));
+    			mCreds.put(sTheme,"Author: " + oResult.optString("author") + "  (" +oResult.optString("date")+ ")\n" + oResult.optString("credits"));
     			
     		} catch (Exception e) {
     			e.printStackTrace();
@@ -341,7 +324,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         		return;
         	}
         	mThemes.remove(pos);
-        	mExternal.remove(pos);
         	//mBitmaps.remove(sTheme);
         	mCreds.remove(sTheme);
         	File f = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme);
@@ -391,7 +373,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         public void dispose() {
         	mThemes.clear();
         	mCreds.clear();
-        	mExternal.clear();
         	mNames.clear();
         	System.gc();
         }

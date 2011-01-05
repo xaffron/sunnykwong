@@ -1,5 +1,6 @@
 package com.sunnykwong.omc;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import java.util.HashMap;
@@ -55,7 +56,7 @@ public class OMC extends Application {
 	static final boolean SINGLETON = false;
 	static final boolean FREEEDITION = false;
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "omc://omc.colormeandroid.com/pk1223.omc";
+	static final String STARTERPACKURL = "asset:pk1223.omc";
 	static final String STARTERPACKBACKUP = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFMjY0ZWRmZGItM2ZiNi00MmQ1LTkxNTMtODIwOGY1OTljYzBi&export=download&authkey=CNKEstMI&hl=en";
 	static final String DEFAULTTHEME = "LockscreenLook";
 	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
@@ -426,7 +427,7 @@ public class OMC extends Application {
 		// Look in cache dir
 		if (new File(OMC.CACHEPATH + nm + "00control.json").exists()) {
 			try {
-				BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + nm + "00control.json"));
+				BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + nm + "00control.json"),8192);
 				StringBuilder sb = new StringBuilder();
 			    char[] buffer = new char[16384];
 			    int iCharsRead = 0;
@@ -434,6 +435,7 @@ public class OMC extends Application {
 			    	sb.append(buffer, 0, iCharsRead);
 			    }
 			    in.close();
+			    System.out.println(sb.toString());
 				JSONObject oResult = new JSONObject(sb.toString());
 				sb.setLength(0);
 				OMC.THEMEMAP.put(nm, oResult);
@@ -453,7 +455,7 @@ public class OMC extends Application {
 				}
 			}
 			try {
-				BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + nm + "00control.json"));
+				BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + nm + "00control.json"),8192);
 				StringBuilder sb = new StringBuilder();
 			    char[] buffer = new char[16384];
 			    int iCharsRead = 0;
@@ -463,6 +465,7 @@ public class OMC extends Application {
 			    in.close();
 				JSONObject oResult = new JSONObject(sb.toString());
 				sb.setLength(0);
+				if (!OMC.validateTheme(oResult)) throw new Exception();
 				OMC.THEMEMAP.put(nm, oResult);
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " reloaded from cache.");
 				return oResult;
@@ -491,7 +494,6 @@ public class OMC extends Application {
 
 	public static boolean copyFile(String src, String tgt) {
 		try {
-//			System.out.println("Copying " + src + " to " + tgt);
 			FileOutputStream oTGT = new FileOutputStream(tgt);
 			FileInputStream oSRC = new FileInputStream(src);
 		    byte[] buffer = new byte[16384];
@@ -503,8 +505,7 @@ public class OMC extends Application {
 		    oSRC.close();
 			return true;
 		} catch (Exception e) {
-//			System.out.println("Exception copying " + src + " to " + tgt);
-//			e.printStackTrace();
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -523,8 +524,7 @@ public class OMC extends Application {
 		    oSRC.close();
 			return true;
 		} catch (Exception e) {
-//			System.out.println("Exception copying " + src + " to " + tgt);
-//			e.printStackTrace();
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -572,19 +572,34 @@ public class OMC extends Application {
 		copyAssetToCache("00control.json", "LockscreenLook");
 		copyAssetToCache("Clockopia.ttf", "LockscreenLook");
 		(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook")).mkdir();
-		copyFile(OMC.CACHEPATH + "LockscreenLook.json", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/00control.json");
-		copyFile(OMC.CACHEPATH + "000preview.jpg", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/000preview.jpg");
-		copyFile(OMC.CACHEPATH + "Clockopia.ttf", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/Clockopia.ttf");
-		OMCJSONThemeParser temp = new OMCJSONThemeParser(OMC.CACHEPATH+"LockscreenLook00control.json");
-		temp.importTheme(); 
-		try{ 
-			while (temp.valid) Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		copyFile(OMC.CACHEPATH + "LockscreenLook00control.json", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/00control.json");
+		copyFile(OMC.CACHEPATH + "LockscreenLook000preview.jpg", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/000preview.jpg");
+		copyFile(OMC.CACHEPATH + "LockscreenLookClockopia.ttf", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/Clockopia.ttf");
 	}
 	
-    public static boolean checkSDPresent() {
+	public static boolean validateTheme(JSONObject theme) {	
+		
+		//Innocent until proven guilty.
+		boolean valid = true;
+
+		// Test theme for the required elements:
+		// ID
+		// Name
+		// Layers
+		
+		try {
+			theme.getString("id");
+			theme.getString("name");
+			theme.getJSONArray("layers_bottomtotop");
+		} catch (JSONException e) {
+			valid = false;
+		}
+		
+		return valid;
+		
+    }
+	
+	public static boolean checkSDPresent() {
     	
 		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
 //        	Toast.makeText(getApplicationContext(), "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();

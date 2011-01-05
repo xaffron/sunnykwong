@@ -33,7 +33,7 @@ public class OMCThemeUnzipActivity extends Activity {
 	static String pdMessage="";
 	static String pdPreview;
 	public Uri uri;
-	public File sdRoot,outputFile;
+	public File omcRoot,outputFile;
 	public AlertDialog mAD;
 	public boolean NOGO;
 	public ProgressBar pg;
@@ -115,12 +115,12 @@ public class OMCThemeUnzipActivity extends Activity {
         	mAD.show();
 
         } else {
-
-        	if (!((OMC)getApplication()).checkSDPresent()) {
+        	if (!OMC.checkSDPresent()) {
         		finish();
         		return;
         	}
 	        
+        	omcRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC");
 	        mHandler = new Handler();
 	        pdWait = new Dialog(this);
 	        pdWait.setContentView(getResources().getIdentifier("themeunzippreview", "layout", OMC.PKGNAME));
@@ -150,22 +150,27 @@ public class OMCThemeUnzipActivity extends Activity {
 	        			try {
 	        				pdMessage = "Opening connection";
 	        				mHandler.post(mUpdateStatus);
-	        				String sScheme = "http:";
+	        				String sScheme = "asset:";
 	        				if (uri.getScheme().equals("omcs")) sScheme = "https:";
 	        				else if (uri.getScheme().equals("omc")) sScheme = "http:";
 	        				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","Scheme is " + sScheme);
-	        				downloadURL = new URL(sScheme + uri.getSchemeSpecificPart());
-	        				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","The rest is " + uri.getSchemeSpecificPart());
-	        				URLConnection conn = downloadURL.openConnection();
-	        				ZipInputStream zis = new ZipInputStream(conn.getInputStream());
+
+	        				ZipInputStream zis;
+	        				if (sScheme.equals("asset:")) {
+	        					zis = new ZipInputStream(OMC.AM.open(uri.getSchemeSpecificPart()));
+	        				} else {
+	        					downloadURL = new URL(sScheme + uri.getSchemeSpecificPart());
+	        					URLConnection conn = downloadURL.openConnection();
+	        					zis = new ZipInputStream(conn.getInputStream());
+		        				pdMessage = "Streaming " + conn.getContentLength() + " bytes.";
+		        				mHandler.post(mUpdateStatus);
+	        				}
 	        				BufferedInputStream bis = new BufferedInputStream(zis,8192);
 	        				ZipEntry ze;
 	
-	        				pdMessage = "Streaming " + conn.getContentLength() + " bytes.";
-	        				mHandler.post(mUpdateStatus);
 	        				while ((ze = zis.getNextEntry())!= null) {
 	            				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","Looping - now " + ze.getName());
-	        					outputFile = new File(sdRoot.getAbsolutePath()+"/"+ze.getName());
+	        					outputFile = new File(omcRoot.getAbsolutePath()+"/"+ze.getName());
 	        					if (ze.isDirectory()) {
 	                				pdMessage = "Importing: " + ze.getName();
 	                				mHandler.post(mUpdateTitle);

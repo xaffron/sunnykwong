@@ -49,8 +49,6 @@ public class OMCWidgetDrawEngine {
 		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Widget", "Redrawing widget" + appWidgetId + " @ " + OMC.TIME.format("%T"));
 
 		String sTheme = OMC.PREFS.getString("widgetTheme"+appWidgetId,OMC.DEFAULTTHEME);
-//		System.out.println("sTheme " + OMC.THEMEMAP.get(sTheme));
-//		System.out.println("sTheme " + OMC.THEMEMAP.get(sTheme).optJSONObject("customscaling"));
 
 		// OK, now actually render the widget on a bitmap.
 		OMCWidgetDrawEngine.drawBitmapForWidget(context,appWidgetId);
@@ -60,7 +58,6 @@ public class OMCWidgetDrawEngine {
 
 		OMC.STRETCHINFO = OMC.getTheme(context,sTheme).optJSONObject("customscaling");
 		String sWidgetSize = cName.toShortString().substring(cName.toShortString().length()-4,cName.toShortString().length()-1);
-		System.out.println("SWIDGETSIZE: " + sWidgetSize);
 
 		//look for this size's custom scaling info
 //		OMC.STRETCHINFO = OMC.STRETCHINFO.optJSONObject(sWidgetSize);
@@ -79,7 +76,6 @@ public class OMCWidgetDrawEngine {
 //							OMC.TEMPMATRIX, true));
 //		} else {
 			//Default scaling
-			System.out.println("did we make it here?");
 			OMC.TEMPMATRIX.reset();
 	//		rv.setImageViewBitmap(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME),Bitmap.createBitmap(OMC.BUFFER, 0, 0, OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight(), OMC.TEMPMATRIX, true));
 			rv.setImageViewBitmap(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME),OMC.BUFFER);
@@ -168,17 +164,13 @@ public class OMCWidgetDrawEngine {
 					.commit();
 			return null;
 		}
-		System.out.println("Theme retrieved from memory");
 		try {
 			oTheme = OMCTypedArray.renderThemeObject(oTheme, aWI);
 		} catch (JSONException e) {
-			System.out.println("ERROR RENDERING DYNAMIC TAGS");
 			e.printStackTrace();
 		}
-		System.out.println("Theme dynamic elements rendered");
-//TODO		
+
 		OMC.LAYERLIST = oTheme.optJSONArray("layers_bottomtotop");
-//		OMC.LAYERLIST = OMCTypedArray.getLayerList(oTheme, aWI);
 
 		for (int i = 0; i < OMC.LAYERLIST.length(); i++) {
 			JSONObject layer = OMC.LAYERLIST.optJSONObject(i);
@@ -195,8 +187,6 @@ public class OMCWidgetDrawEngine {
 			
 			//Skip any disabled layers
 			if (layer.optBoolean("enabled")==false) continue;
-			
-			System.out.println("Now at layer " + layer.optString("name"));
 			
 			String sType = layer.optString("type");
 			
@@ -346,12 +336,10 @@ public class OMCWidgetDrawEngine {
 
 	// Text layer.  Written this way so we can have as many as we want with minimal effort.
 	static void drawTextLayer(final Context context, final JSONObject layer, final String sTheme, final int aWI) {
-		System.out.println("text to draw: " + OMC.TXTBUF);
 		OMC.PT1.reset();
 		OMC.PT1.setAntiAlias(true);
 		Typeface tempTypeface = OMC.getTypeface(sTheme, layer.optString("filename"));
 		if (tempTypeface==null) {
-			System.out.println(layer.optString("filename"));
 			Toast.makeText(context, "Error loading theme typeface.\nRestoring default look...", Toast.LENGTH_SHORT).show();
 			OMC.PREFS.edit()
 					.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
@@ -459,7 +447,6 @@ public class OMCWidgetDrawEngine {
 	}
 	
 	static void fancyDrawSpanned(final Canvas cvas, final String str, final int x, final int y, final Paint pt, final float fRot) {
-		System.out.println("facydrawspanned " + str);
 		final SpannedString ss = new SpannedString(Html.fromHtml(str));
 		Paint ptTemp = new Paint(pt);
 		ptTemp.setTextAlign(Paint.Align.LEFT);

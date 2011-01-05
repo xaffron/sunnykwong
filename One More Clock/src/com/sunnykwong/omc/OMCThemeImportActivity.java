@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import org.json.JSONObject;
 public class OMCThemeImportActivity extends Activity {
 
 	public Handler mHandler;
@@ -48,34 +48,12 @@ public class OMCThemeImportActivity extends Activity {
 
         OMCThemeImportActivity.CURRSELECTEDTHEME = null;
         
-//        OMCThemeImportActivity.mAD = new AlertDialog.Builder(this)
-//		.setTitle("OMC - Pick a Theme")
-//		.setMessage("Go ahead - Pick your own theme.  Why stick with one all the time?  If you want more, just check out the \"More Clocks\" button at the bottom for more OMC goodness!")
-//	    .setCancelable(true)
-//	    .setIcon(R.drawable.fredicon_mdpi)
-//	    .setPositiveButton("Okay", new OnClickListener() {
-//			@Override
-//			public void onClick(DialogInterface dialog, int which) {
-//	       		OMCThemeImportActivity.mAD.dismiss();
-//	       		chooseTheme();
-//			}
-//		})
-//	    .setOnKeyListener(new OnKeyListener() {
-//	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
-//	       		OMCThemeImportActivity.mAD.dismiss();
-//	       		chooseTheme();
-//	    		return true;
-//	    	};
-//	    }).create();
-//
-//        OMCThemeImportActivity.mAD.show();
         chooseTheme();
     }
 
     public void chooseTheme() {
         Intent itThemePicker = new Intent(this,OMCThemePickerActivity.class);
-        itThemePicker.putExtra("externalonly", false);
-        itThemePicker.putExtra("default", OMC.PREFS.getString("widgetTheme", "LockscreenLook"));
+        itThemePicker.putExtra("default", OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME));
         startActivityForResult(itThemePicker, 0);
     }
     
@@ -89,59 +67,14 @@ public class OMCThemeImportActivity extends Activity {
     	}
     	OMCThemeImportActivity.CURRSELECTEDTHEME = data.getExtras().getString("theme");
 
-    	if (!data.getBooleanExtra("external", false)) {
-        	OMC.PREFS.edit()
-        	.putString("widgetTheme", OMCThemeImportActivity.CURRSELECTEDTHEME)
-        	.putBoolean("external", false)
-    		.commit();
-        	Toast.makeText(OMCThemeImportActivity.this, "Lockscreen Look theme applied.", Toast.LENGTH_SHORT).show();
-    		finish();
-    		return;
-    	}
-
     	if (OMCThemeImportActivity.CURRSELECTEDTHEME!=null) {
-			if (!OMC.THEMEMAP.containsKey(OMCThemeImportActivity.CURRSELECTEDTHEME)) {
-				OMCJSONThemeParser parser = new OMCJSONThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
-						+"/OMC/" + OMCThemeImportActivity.CURRSELECTEDTHEME);
-				parser.importTheme();
-
-				while (!parser.doneParsing){
-					try {
-						Thread.sleep(500);
-					} catch (Exception e) {
-						// Do nothing
-					}
-				}
-				
-				if (parser.valid) {
-		        	Toast.makeText(this, OMCThemeImportActivity.CURRSELECTEDTHEME + " theme imported.", Toast.LENGTH_SHORT).show();
-		        	OMC.PREFS.edit()
-				        	.putString("widgetTheme", OMCThemeImportActivity.CURRSELECTEDTHEME)
-				        	.putBoolean("external", true)
-				    		.commit();
-		        	Toast.makeText(OMCThemeImportActivity.this, OMC.THEMEMAP.get(OMCThemeImportActivity.CURRSELECTEDTHEME).optString("name") + " theme cached and applied.", Toast.LENGTH_SHORT).show();
-				} else {
-		        	Toast.makeText(OMCThemeImportActivity.this, OMCThemeImportActivity.CURRSELECTEDTHEME + " theme did not pass validity checks!\nPlease check with the author of your theme.\nImport cancelled.", Toast.LENGTH_SHORT).show();
-				}
-
-				setResult(Activity.RESULT_OK);
-	        	finish();
-			} else {
-				
-				Toast.makeText(OMCThemeImportActivity.this, 
-						"Theme already imported and cached.\n" + 
-						OMC.THEMEMAP.get(
-								OMCThemeImportActivity.CURRSELECTEDTHEME).optString("name") + " theme applied."
-								, Toast.LENGTH_SHORT).show();
-				
-	        	OMC.PREFS.edit()
-	        	.putString("widgetTheme", OMCThemeImportActivity.CURRSELECTEDTHEME)
-	        	.putBoolean("external", true)
-	    		.commit();
-
-	        	setResult(Activity.RESULT_OK);
-				finish();
-			}
+    		JSONObject newTheme = OMC.getTheme(this, OMCThemeImportActivity.CURRSELECTEDTHEME);
+        	Toast.makeText(this, newTheme.optString("name") + " selected.", Toast.LENGTH_SHORT).show();
+        	OMC.PREFS.edit()
+		        	.putString("widgetTheme", OMCThemeImportActivity.CURRSELECTEDTHEME)
+		    		.commit();
+        	setResult(Activity.RESULT_OK);
+        	finish();
 
 		} else {
 			//For some reason, no theme selected

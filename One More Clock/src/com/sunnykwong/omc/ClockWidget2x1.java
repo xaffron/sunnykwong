@@ -33,8 +33,6 @@ public class ClockWidget2x1 extends AppWidgetProvider {
 		
 //	This gets called when the very first widget is instantiated.
 	public void onEnabled(Context context) {
-		System.out.println("***** ONENABLED2x1");
-
 		//Unflag the STOP FLAG for OMCService.
 		OMCService.STOPNOW2x1=false;
 	}
