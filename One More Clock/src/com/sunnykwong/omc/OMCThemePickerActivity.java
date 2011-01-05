@@ -39,7 +39,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 public class OMCThemePickerActivity extends Activity implements OnClickListener, OnItemClickListener, OnItemLongClickListener {
 
 	public static HashMap<String,String[]> ELEMENTS;
-	public static HashMap<String,File> THEMES;
+//	public static HashMap<String,File> THEMES;
 	public static String tempText = "";
 	public static File SDROOT, THEMEROOT;
 	public static ThemePickerAdapter THEMEARRAY;
@@ -91,20 +91,19 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         btnGetMore.setOnClickListener(this);
         
         gallery = (Gallery)this.findViewById(this.getResources().getIdentifier("gallery", "id", OMC.PKGNAME));
-        refreshThemeList();
 
-        gallery.setAdapter(OMCThemePickerActivity.THEMEARRAY);
-        gallery.setOnItemClickListener(this);
-        gallery.setOnItemLongClickListener(this);
-        gallery.setSelection(OMCThemePickerActivity.THEMEARRAY.getPosition(sDefaultTheme));
-        topLevel.setEnabled(true);
-        
     }
     
     @Override
     protected void onResume() {
     	// TODO Auto-generated method stub
         refreshThemeList();
+        gallery.setAdapter(OMCThemePickerActivity.THEMEARRAY);
+        gallery.setOnItemClickListener(this);
+        gallery.setOnItemLongClickListener(this);
+        gallery.setSelection(OMCThemePickerActivity.THEMEARRAY.getPosition(sDefaultTheme));
+        topLevel.setEnabled(true);
+        
     	super.onResume();
     }
     
@@ -235,15 +234,14 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
             gallery.requestLayout();
         }
 
-        OMCThemePickerActivity.THEMES =  new HashMap<String, File>();
+//        OMCThemePickerActivity.THEMES =  new HashMap<String, File>();
 
         for (File f:OMCThemePickerActivity.THEMEROOT.listFiles()) {
         	if (!f.isDirectory()) continue;
         	File ff = new File(f.getAbsolutePath()+"/00control.json");
         	if (ff.exists()) {
-        		
+        		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Picker","Found theme: " + f.getName());
         		OMCThemePickerActivity.THEMEARRAY.addItem(f.getName());
-        		OMCThemePickerActivity.THEMES.put(f.getName(), f);
         	}
         }
         topLevel.setEnabled(true);

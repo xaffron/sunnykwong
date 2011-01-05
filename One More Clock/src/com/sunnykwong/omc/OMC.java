@@ -63,7 +63,7 @@ public class OMC extends Application {
 	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
 	static final Intent WIDGETREFRESHINTENT = new Intent("com.sunnykwong.omc.WIDGET_REFRESH");
 	static final IntentFilter PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
-	static final String APPICON = "fredicon_mdpi";
+	static final String APPICON = "fredicon";
 	
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	
@@ -239,15 +239,15 @@ public class OMC extends Application {
 		
 		OMC.OVERLAYURIS = null;
 		OMC.OVERLAYRESOURCES = new int[] {
+				this.getResources().getIdentifier("NW", "id", OMC.PKGNAME),
 				this.getResources().getIdentifier("N", "id", OMC.PKGNAME),
 				this.getResources().getIdentifier("NE", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("E", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("SE", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("S", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("SW", "id", OMC.PKGNAME),
 				this.getResources().getIdentifier("W", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("NW", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("C", "id", OMC.PKGNAME)
+				this.getResources().getIdentifier("C", "id", OMC.PKGNAME),
+				this.getResources().getIdentifier("E", "id", OMC.PKGNAME),
+				this.getResources().getIdentifier("SW", "id", OMC.PKGNAME),
+				this.getResources().getIdentifier("S", "id", OMC.PKGNAME),
+				this.getResources().getIdentifier("SE", "id", OMC.PKGNAME)
 				};
 
 		OMC.WORDNUMBERS = this.getResources().getStringArray(this.getResources().getIdentifier("WordNumbers", "array", OMC.PKGNAME));
@@ -329,7 +329,6 @@ public class OMC extends Application {
 	public static void setPrefs(int aWI) {
 		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
-		.putBoolean("external"+aWI, OMC.PREFS.getBoolean("external", false))
 		.putString("URI"+aWI, OMC.PREFS.getString("URI", ""))
 		.commit();
 	}
@@ -338,14 +337,12 @@ public class OMC extends Application {
 		// For new clocks... just like setPrefs but leaves the URI empty.
 		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
-		.putBoolean("external"+aWI, OMC.PREFS.getBoolean("external", false))
 		.commit();
 	}
  
 	public static void getPrefs(int aWI) {
     	OMC.PREFS.edit().putString("widgetTheme", OMC.PREFS.getString("widgetTheme"+aWI, OMC.DEFAULTTHEME))
 		.putBoolean("widget24HrClock", OMC.PREFS.getBoolean("widget24HrClock"+aWI, true))
-		.putBoolean("external", OMC.PREFS.getBoolean("external"+aWI, false))
 		.putString("URI", OMC.PREFS.getString("URI"+aWI, ""))
 		.commit();
 	}
@@ -421,7 +418,6 @@ public class OMC extends Application {
 	public synchronized static JSONObject getTheme(final Context context, final String nm){
 		// Look in memory cache
 		if (OMC.THEMEMAP.containsKey(nm) && OMC.THEMEMAP.get(nm)!=null){ 
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " retrieved from memory.");
 			return OMC.THEMEMAP.get(nm);
 		}
 		// Look in cache dir
@@ -439,7 +435,7 @@ public class OMC extends Application {
 				JSONObject oResult = new JSONObject(sb.toString());
 				sb.setLength(0);
 				OMC.THEMEMAP.put(nm, oResult);
-				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " reloaded from cache.");
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " loaded from cache.");
 				return oResult;
 			} catch (Exception e) {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error reloading " + nm + " from cache.");
@@ -467,10 +463,10 @@ public class OMC extends Application {
 				sb.setLength(0);
 				if (!OMC.validateTheme(oResult)) throw new Exception();
 				OMC.THEMEMAP.put(nm, oResult);
-				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " reloaded from cache.");
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " loaded from SD.");
 				return oResult;
 			} catch (Exception e) {
-				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error reloading " + nm + " from SD.");
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error loading " + nm + " from SD.");
 			}
 		} 
 

@@ -1,6 +1,8 @@
 package com.sunnykwong.omc;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.appwidget.AppWidgetManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnKeyListener;
@@ -25,12 +27,16 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     public void onCreate(Bundle savedInstanceState) {
 
     	super.onCreate(savedInstanceState);
+    	
+    	setResult(Activity.RESULT_OK, getIntent());
         
-		if (getIntent().getData() == null)
-			appWidgetID=-999;
-		else
+		if (getIntent().getData() == null) {
+			appWidgetID = getIntent().getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -999);
+//			appWidgetID=-999;
+		} else {
 			appWidgetID = Integer.parseInt(getIntent().getData().getSchemeSpecificPart());
-
+			OMC.PREFS.edit().putBoolean("newbie"+appWidgetID, false).commit();
+		}
 		if (appWidgetID >= 0) {
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Called by Widget " + appWidgetID);
 
@@ -105,16 +111,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     }
 
-    // If user sets a seeded theme, set external to false
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-
-//    	if (preference == findPreference("widgetTheme")) {
-//	    	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Setting External to false");
-//			OMC.PREFS.edit().putBoolean("external", false).commit();
-//	    	return true;
-//    	}
-    	
     	return false;
     }
     

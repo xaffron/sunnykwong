@@ -48,7 +48,7 @@ public class OMCSkinnerActivity extends Activity {
 	public Thread refreshThread;
 
 	public static int REFRESHINTERVAL;
-	public boolean bCustomStretch, bExternal;
+	public boolean bCustomStretch;
     static AlertDialog mAD;	
 
 	final Runnable mResult = new Runnable() {
@@ -87,7 +87,6 @@ public class OMCSkinnerActivity extends Activity {
     	}
     	
     	sTheme = (String)(data.getExtras().get("theme"));
-    	bExternal = (Boolean)(data.getExtras().get("external"));
     	bCustomStretch = true;
     	
     	Toast.makeText(this, "Refreshing from SD card every " + OMCSkinnerActivity.REFRESHINTERVAL/1000 + " seconds.", Toast.LENGTH_SHORT).show();
@@ -99,7 +98,6 @@ public class OMCSkinnerActivity extends Activity {
 
     	OMC.PREFS.edit().putString("widgetTheme-1", (String)(data.getExtras().get("theme")))
 		.putBoolean("widget24HrClock-1", OMC.PREFS.getBoolean("widget24HrClock", true))
-		.putBoolean("external-1", (Boolean)(data.getExtras().get("external")))
 		.putString("URI-1", OMC.PREFS.getString("URI", ""))
 		.commit();
     	

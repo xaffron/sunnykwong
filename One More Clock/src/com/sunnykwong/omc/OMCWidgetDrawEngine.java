@@ -18,6 +18,7 @@ import android.text.SpannedString;
 import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -139,6 +140,13 @@ public class OMCWidgetDrawEngine {
         		e.printStackTrace();
         	}
 //        }
+        	
+        	if (OMC.PREFS.getBoolean("newbie" + appWidgetId, true)) {
+        		System.out.println("Adding newbie ribbon to widget "+ appWidgetId + ".");
+        		rv.setInt(OMC.OVERLAYRESOURCES[0], "setBackgroundResource", context.getResources().getIdentifier("tapme", "drawable", OMC.PKGNAME));
+        	} else {
+        		rv.setInt(OMC.OVERLAYRESOURCES[0], "setBackgroundResource", context.getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME));
+        	}
         
             // Kudos to Eric for solution to dummy out "unsetonlickpendingintent":
             // http://groups.google.com/group/android-developers/browse_thread/thread/f9e80e5ce55bb1e0/78153eb730326488
@@ -160,7 +168,6 @@ public class OMCWidgetDrawEngine {
 			Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
 			OMC.PREFS.edit()
 					.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
-					.putBoolean("external"+aWI,false)
 					.commit();
 			return null;
 		}
@@ -178,7 +185,6 @@ public class OMCWidgetDrawEngine {
 				Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
 				OMC.PREFS.edit()
 						.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
-						.putBoolean("external"+aWI,false)
 						.commit();
 				return null;
 			}
@@ -303,7 +309,6 @@ public class OMCWidgetDrawEngine {
 			Toast.makeText(context, "Theme not found in memory or in cache directory.\nPlease go to settings screen and re-select your theme.", Toast.LENGTH_SHORT).show();
 			OMC.PREFS.edit()
 					.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
-					.putBoolean("external"+aWI,false)
 					.commit();
 			return;
 		}
@@ -343,7 +348,6 @@ public class OMCWidgetDrawEngine {
 			Toast.makeText(context, "Error loading theme typeface.\nRestoring default look...", Toast.LENGTH_SHORT).show();
 			OMC.PREFS.edit()
 					.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
-					.putBoolean("external"+aWI,false)
 					.commit();
 			return;
 		}
