@@ -52,11 +52,14 @@ import android.graphics.Matrix;
 public class OMC extends Application {
 	
 	
+	static final boolean DEBUG = true;
+
 	static String THISVERSION;
 	static final boolean SINGLETON = false;
+	
 	static final boolean FREEEDITION = false;
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "asset:pk1223.omc";
+	static final String STARTERPACKURL = "asset:pk120.omc";
 	static final String STARTERPACKBACKUP = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFMjY0ZWRmZGItM2ZiNi00MmQ1LTkxNTMtODIwOGY1OTljYzBi&export=download&authkey=CNKEstMI&hl=en";
 	static final String DEFAULTTHEME = "LockscreenLook";
 	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
@@ -74,7 +77,6 @@ public class OMC extends Application {
 	static String SHAREDPREFNAME;
 	static String PKGNAME;
 	static boolean SHOWHELP = false;
-	static final boolean DEBUG = true;
 	static Uri PAIDURI;
 	
 	static long LASTUPDATEMILLIS;
@@ -94,7 +96,7 @@ public class OMC extends Application {
 	static OMCAlarmReceiver aRC;
     static boolean SCREENON = true; 	// Is the screen on?
     static boolean FG = false;
-    //static OMCTypedArray LAYERATTRIBS;
+
 	static JSONArray LAYERLIST, TALKBACKS;
 
 	static Matrix TEMPMATRIX;
@@ -329,20 +331,24 @@ public class OMC extends Application {
 	public static void setPrefs(int aWI) {
 		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
+		.putBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero", true))
 		.putString("URI"+aWI, OMC.PREFS.getString("URI", ""))
 		.commit();
 	}
  
 	public static void initPrefs(int aWI) {
 		// For new clocks... just like setPrefs but leaves the URI empty.
-		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME))
-		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
+		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)))
+		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true)))
+		.putBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero", true)))
+		.putString("URI"+aWI, OMC.PREFS.getString("URI"+aWI, ""))
 		.commit();
 	}
  
 	public static void getPrefs(int aWI) {
     	OMC.PREFS.edit().putString("widgetTheme", OMC.PREFS.getString("widgetTheme"+aWI, OMC.DEFAULTTHEME))
 		.putBoolean("widget24HrClock", OMC.PREFS.getBoolean("widget24HrClock"+aWI, true))
+		.putBoolean("widgetLeadingZero", OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, true))
 		.putString("URI", OMC.PREFS.getString("URI"+aWI, ""))
 		.commit();
 	}
@@ -351,6 +357,7 @@ public class OMC extends Application {
 		OMC.PREFS.edit()
 			.remove("widgetTheme"+aWI)
 			.remove("widget24HrClock"+aWI)
+			.remove("widgetLeadingZero"+aWI)
 			.remove("URI"+aWI)
 			.commit();
 	}
@@ -418,6 +425,7 @@ public class OMC extends Application {
 	public synchronized static JSONObject getTheme(final Context context, final String nm){
 		// Look in memory cache
 		if (OMC.THEMEMAP.containsKey(nm) && OMC.THEMEMAP.get(nm)!=null){ 
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " loaded from mem.");
 			return OMC.THEMEMAP.get(nm);
 		}
 		// Look in cache dir
@@ -431,15 +439,20 @@ public class OMC extends Application {
 			    	sb.append(buffer, 0, iCharsRead);
 			    }
 			    in.close();
-			    System.out.println(sb.toString());
+			    
+			    //HERE WE DUMP WHAT WE READ
+//			    System.out.println(sb.toString());
+			    
 				JSONObject oResult = new JSONObject(sb.toString());
 				sb.setLength(0);
 				OMC.THEMEMAP.put(nm, oResult);
-				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " loaded from cache.");
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " loaded from cachedir.");
 				return oResult;
 			} catch (Exception e) {
-				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error reloading " + nm + " from cache.");
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error reloading " + nm + " from cachedir.");
 				e.printStackTrace();
+			} finally {
+				System.gc();
 			}
 		}
 		// Look in SD path
@@ -467,7 +480,10 @@ public class OMC extends Application {
 				return oResult;
 			} catch (Exception e) {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error loading " + nm + " from SD.");
+			} finally {
+				System.gc();
 			}
+
 		} 
 
 		return null;
@@ -478,6 +494,7 @@ public class OMC extends Application {
 			f.delete();
 		}
 		OMC.THEMEMAP.clear();
+		System.gc();
 	}
 		
 	public static void removeDirectory(File f) {

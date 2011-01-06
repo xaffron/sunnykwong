@@ -89,13 +89,13 @@ public class OMCTypedArray  {
 		//by default, return strftime'd string.
 		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
 			sBuffer = (OMC.TIME.format(
-				OMC.PREFS.getBoolean("widgetLeadingZero", true)? 
+				OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, true)? 
 						sBuffer : sBuffer.replaceAll("%H", "%k")
 				)
 			);
 		} else {
 			sBuffer = (OMC.TIME.format(
-				OMC.PREFS.getBoolean("widgetLeadingZero", true)? 
+				OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, true)? 
 						sBuffer.replaceAll("%H", "%I") : sBuffer.replaceAll("%H", "%l")
 				)
 			);

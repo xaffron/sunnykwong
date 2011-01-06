@@ -58,7 +58,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        
         getWindow().setWindowAnimations(android.R.style.Animation_Toast);
 
         sDefaultTheme = getIntent().getStringExtra("default");

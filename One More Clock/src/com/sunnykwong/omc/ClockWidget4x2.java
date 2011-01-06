@@ -46,6 +46,7 @@ public class ClockWidget4x2 extends AppWidgetProvider {
 			Bundle extras = intent.getExtras();
 			int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID,
 					AppWidgetManager.INVALID_APPWIDGET_ID);
+
 			if (appWidgetId != AppWidgetManager.INVALID_APPWIDGET_ID) {
 				this.onDeleted(context, new int[] { appWidgetId });
 			}

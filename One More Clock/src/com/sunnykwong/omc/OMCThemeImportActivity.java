@@ -59,6 +59,7 @@ public class OMCThemeImportActivity extends Activity {
     
     
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	if (requestCode!=0) return; // bogus call
     	if (resultCode == Activity.RESULT_CANCELED) {
         	setResult(Activity.RESULT_CANCELED);
         	finishActivity(0);

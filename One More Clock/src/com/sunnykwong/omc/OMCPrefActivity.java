@@ -24,7 +24,24 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     Preference prefloadThemeFile, prefclearCache, prefclearImports, prefdownloadStarterPack, prefbSkinner ;
 
     @Override
+    protected void onNewIntent(Intent intent) {
+    	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","NewIntent");
+    	super.onNewIntent(intent);
+    	setResult(Activity.RESULT_OK, intent);
+    	getPreferenceScreen().removeAll();
+		if (intent.getData() == null) {
+			appWidgetID = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -999);
+		} else {
+			appWidgetID = Integer.parseInt(intent.getData().getSchemeSpecificPart());
+			OMC.PREFS.edit().putBoolean("newbie"+appWidgetID, false).commit();
+		}
+		setupPrefs(appWidgetID);
+		
+    }
+    
+    @Override
     public void onCreate(Bundle savedInstanceState) {
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","OnCreate");
 
     	super.onCreate(savedInstanceState);
     	
@@ -32,13 +49,17 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         
 		if (getIntent().getData() == null) {
 			appWidgetID = getIntent().getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -999);
-//			appWidgetID=-999;
 		} else {
 			appWidgetID = Integer.parseInt(getIntent().getData().getSchemeSpecificPart());
 			OMC.PREFS.edit().putBoolean("newbie"+appWidgetID, false).commit();
 		}
+		setupPrefs(appWidgetID);
+
+    }
+
+    public void setupPrefs(final int appWidgetID) {
 		if (appWidgetID >= 0) {
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Called by Widget " + appWidgetID);
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref"," Called by Widget " + appWidgetID);
 
 			if (OMC.SINGLETON) setTitle(OMC.SINGLETONNAME + " - Preferences");
 
@@ -70,7 +91,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         		findPreference("sVersion").setSummary("Thanks for your support!");
         		findPreference("sVersion").setSelectable(false);
         	}
-        	//findPreference("widgetTheme").setOnPreferenceChangeListener(this);
+
         	findPreference("clearImports").setOnPreferenceChangeListener(this);
     		findPreference("bFourByTwo").setEnabled(false);
 
@@ -111,6 +132,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     }
 
+    
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
     	return false;
@@ -136,7 +158,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 						OMCPrefActivity.mAD.dismiss();
 						OMCPrefActivity.this.startActivity(OMC.OMCMARKETINTENT);
 						OMCPrefActivity.this.finish();
-						
 					}
 				}).create();
         	OMCPrefActivity.mAD.show();
@@ -276,14 +297,14 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
 	    	OMC.toggleWidgets(getApplicationContext());
 
-			OMC.setServiceAlarm(System.currentTimeMillis()+500);
-			sendBroadcast(OMC.WIDGETREFRESHINTENT);
+//			OMC.setServiceAlarm(System.currentTimeMillis()+100);
+			sendBroadcast(OMC.WIDGETREFRESHINTENT); 
 		}
     	super.onPause();
     }
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
+      super.onDestroy();
     }
 } 
