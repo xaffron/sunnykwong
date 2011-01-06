@@ -173,11 +173,11 @@ public class OMCTypedArray  {
 			}
 		} else if (sToken.equals("array")) {
 
-//			result = OMC.loadStringArray(OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME), aWI, st.nextToken())..getString(Integer.parseInt(st.nextToken().replace(" ","")));
-//			String sTemp = st.nextToken();
-//			if (result == null) result = "ERROR";
-//			if (sTemp.equals("lower")) result = result.toLowerCase();
-//			else if (sTemp.equals("upper")) result = result.toUpperCase();
+			result = tempResult.optJSONObject("arrays").optJSONArray(st.nextToken()).optString(Integer.parseInt(st.nextToken().replace(" ","")));
+			String sCase = st.nextToken();
+			if (result == null) result = "ERROR";
+			if (sCase.equals("lower")) result = result.toLowerCase();
+			else if (sCase.equals("upper")) result = result.toUpperCase();
 
 		} else if (sToken.equals("flipformat")) {
 			int iApply = Integer.parseInt(st.nextToken());
