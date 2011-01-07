@@ -53,10 +53,11 @@ public class OMC extends Application {
 	
 	
 	static final boolean DEBUG = true;
-
+	static final boolean THEMESFROMCACHE = false;
+	
 	static String THISVERSION;
 	static final boolean SINGLETON = false;
-	
+
 	static final boolean FREEEDITION = false;
 	static final String SINGLETONNAME = "One More Clock";
 	static final String STARTERPACKURL = "asset:pk120.omc";
@@ -66,7 +67,7 @@ public class OMC extends Application {
 	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
 	static final Intent WIDGETREFRESHINTENT = new Intent("com.sunnykwong.omc.WIDGET_REFRESH");
 	static final IntentFilter PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
-	static final String APPICON = "fredicon";
+	static final String APPICON = "clockicon";
 	
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	
@@ -76,6 +77,7 @@ public class OMC extends Application {
 	static final String OMCNAME = "com.sunnykwong.omc";
 	static String SHAREDPREFNAME;
 	static String PKGNAME;
+	static Context CONTEXT;
 	static boolean SHOWHELP = false;
 	static Uri PAIDURI;
 	
@@ -151,6 +153,7 @@ public class OMC extends Application {
 		} catch (NameNotFoundException e) {
 			OMC.THISVERSION = "1.0.0";
 		}
+		OMC.CONTEXT = getApplicationContext();
 		
 		OMC.PKGNAME = getPackageName();
 		OMC.SHAREDPREFNAME = OMC.PKGNAME + "_preferences";
@@ -422,14 +425,14 @@ public class OMC extends Application {
 		OMC.BMPMAP.clear();
 	}
 	
-	public synchronized static JSONObject getTheme(final Context context, final String nm){
+	public synchronized static JSONObject getTheme(final Context context, final String nm, final boolean bFromCache){
 		// Look in memory cache
-		if (OMC.THEMEMAP.containsKey(nm) && OMC.THEMEMAP.get(nm)!=null){ 
+		if (OMC.THEMEMAP.containsKey(nm) && OMC.THEMEMAP.get(nm)!=null && bFromCache){ 
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " loaded from mem.");
 			return OMC.THEMEMAP.get(nm);
 		}
 		// Look in cache dir
-		if (new File(OMC.CACHEPATH + nm + "00control.json").exists()) {
+		if (new File(OMC.CACHEPATH + nm + "00control.json").exists() && bFromCache) {
 			try {
 				BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + nm + "00control.json"),8192);
 				StringBuilder sb = new StringBuilder();
@@ -630,7 +633,7 @@ public class OMC extends Application {
         }
 		return true;
     }
-
+	
     @Override
     public void onTerminate() {
     	if (!OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1) {

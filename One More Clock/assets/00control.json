@@ -67,7 +67,7 @@
 			"top_crop":58,
 			"bottom_crop":60,
 			"left_crop":0,
-			"bottom_crop":0,
+			"right_crop":0,
 			"cw_rotate":0
 		},
 		"3x1":{
@@ -76,7 +76,7 @@
 			"top_crop":58,
 			"bottom_crop":60,
 			"left_crop":0,
-			"bottom_crop":0,
+			"right_crop":0,
 			"cw_rotate":0
 		}
 	},

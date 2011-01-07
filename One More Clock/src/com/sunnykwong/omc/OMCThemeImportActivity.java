@@ -69,7 +69,7 @@ public class OMCThemeImportActivity extends Activity {
     	OMCThemeImportActivity.CURRSELECTEDTHEME = data.getExtras().getString("theme");
 
     	if (OMCThemeImportActivity.CURRSELECTEDTHEME!=null) {
-    		JSONObject newTheme = OMC.getTheme(this, OMCThemeImportActivity.CURRSELECTEDTHEME);
+    		JSONObject newTheme = OMC.getTheme(this, OMCThemeImportActivity.CURRSELECTEDTHEME, false);
         	Toast.makeText(this, newTheme.optString("name") + " selected.", Toast.LENGTH_SHORT).show();
         	OMC.PREFS.edit()
 		        	.putString("widgetTheme", OMCThemeImportActivity.CURRSELECTEDTHEME)

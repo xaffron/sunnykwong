@@ -8,6 +8,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -47,41 +48,101 @@ public class OMCWidgetDrawEngine {
 			final AppWidgetManager appWidgetManager,
 			final int appWidgetId, ComponentName cName) { 
 
-		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Widget", "Redrawing widget" + appWidgetId + " (" + OMC.PREFS.getString("widgetTheme"+appWidgetId, "")+ ") @ " + OMC.TIME.format("%T"));
-
+		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Engine", "Redrawing widget" + appWidgetId + " (" + OMC.PREFS.getString("widgetTheme"+appWidgetId, "")+ ") @ " + OMC.TIME.format("%T"));
+		
 		String sTheme = OMC.PREFS.getString("widgetTheme"+appWidgetId,OMC.DEFAULTTHEME);
-		JSONObject oTheme = OMC.getTheme(context, sTheme);
+		JSONObject oTheme = OMC.getTheme(context, sTheme, OMC.THEMESFROMCACHE);
 		
 		// OK, now actually render the widget on a bitmap.
 		OMCWidgetDrawEngine.drawBitmapForWidget(context,appWidgetId);
 
-		// Blit the buffer over
-		final RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
-
+		//look for this size's custom scaling info
 		OMC.STRETCHINFO = oTheme.optJSONObject("customscaling");
 		String sWidgetSize = cName.toShortString().substring(cName.toShortString().length()-4,cName.toShortString().length()-1);
 
-		//look for this size's custom scaling info
-//		OMC.STRETCHINFO = OMC.STRETCHINFO.optJSONObject(sWidgetSize);
-//		if (OMC.STRETCHINFO != null){
-//			//Custom scaling
-//			OMC.TEMPMATRIX.reset();
-//			OMC.TEMPMATRIX.postScale((float)OMC.STRETCHINFO.optDouble("horizontal_stretch"), 
-//					(float)OMC.STRETCHINFO.optDouble("vertical_stretch"));
-//			OMC.TEMPMATRIX.postRotate((float)OMC.STRETCHINFO.optDouble("cw_rotate"));
-//			rv.setImageViewBitmap(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME),
-//					Bitmap.createBitmap(OMC.BUFFER, 
-//							OMC.STRETCHINFO.optInt("left_crop"), 
-//							OMC.STRETCHINFO.optInt("top_crop"), 
-//							OMC.BUFFER.getWidth()- OMC.STRETCHINFO.optInt("left_crop") - OMC.STRETCHINFO.optInt("right_crop"), 
-//							OMC.BUFFER.getHeight() - OMC.STRETCHINFO.optInt("top_crop") - OMC.STRETCHINFO.optInt("bottom_crop"), 
-//							OMC.TEMPMATRIX, true));
-//		} else {
-			//Default scaling
-			OMC.TEMPMATRIX.reset();
-	//		rv.setImageViewBitmap(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME),Bitmap.createBitmap(OMC.BUFFER, 0, 0, OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight(), OMC.TEMPMATRIX, true));
-			rv.setImageViewBitmap(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME),OMC.BUFFER);
-//		}
+		//if no custom scaling info present, use default stretch info
+		boolean bDefaultScaling=false;
+		if (OMC.STRETCHINFO==null) {
+			bDefaultScaling=true;
+		} else {
+			OMC.STRETCHINFO = OMC.STRETCHINFO.optJSONObject(sWidgetSize);
+		}
+		if (OMC.STRETCHINFO==null) {
+			bDefaultScaling=true;
+		}
+		if (bDefaultScaling) {
+			JSONObject oDefaultScaling = new JSONObject(); 
+			try {
+				if (sWidgetSize.equals("4x1")) {
+					oDefaultScaling.put("horizontal_stretch", 0.8);
+					oDefaultScaling.put("vertical_stretch", 0.7);
+					oDefaultScaling.put("top_crop", 15);
+					oDefaultScaling.put("bottom_crop", 15);
+					oDefaultScaling.put("left_crop", 0);
+					oDefaultScaling.put("bottom_crop", 0);
+					oDefaultScaling.put("cw_rotate", 0);
+				} else if (sWidgetSize.equals("3x1")) {
+					oDefaultScaling.put("horizontal_stretch", 0.8);
+					oDefaultScaling.put("vertical_stretch", 0.7);
+					oDefaultScaling.put("top_crop", 15);
+					oDefaultScaling.put("bottom_crop", 15);
+					oDefaultScaling.put("left_crop", 0);
+					oDefaultScaling.put("bottom_crop", 0);
+					oDefaultScaling.put("cw_rotate", 0);
+				} else {
+					oDefaultScaling.put("horizontal_stretch", 1);
+					oDefaultScaling.put("vertical_stretch", 1);
+					oDefaultScaling.put("top_crop", 0);
+					oDefaultScaling.put("bottom_crop", 0);
+					oDefaultScaling.put("left_crop", 0);
+					oDefaultScaling.put("bottom_crop", 0);
+					oDefaultScaling.put("cw_rotate", 0);
+				}
+				OMC.STRETCHINFO = oDefaultScaling;
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		OMC.TEMPMATRIX.reset();
+		float rot = (360f+(float)OMC.STRETCHINFO.optDouble("cw_rotate"))%360f;
+		OMC.TEMPMATRIX.postRotate(rot, OMC.BUFFER.getWidth()/2f, OMC.BUFFER.getHeight()/2f);
+
+		OMC.TEMPMATRIX.postScale((float)OMC.STRETCHINFO.optDouble("horizontal_stretch"), 
+				(float)OMC.STRETCHINFO.optDouble("vertical_stretch"));
+
+		int width = OMC.BUFFER.getWidth()- OMC.STRETCHINFO.optInt("left_crop") - OMC.STRETCHINFO.optInt("right_crop"); 
+		int height = OMC.BUFFER.getHeight() - OMC.STRETCHINFO.optInt("top_crop") - OMC.STRETCHINFO.optInt("bottom_crop"); 
+
+		System.out.println(sWidgetSize + " " + width + " " + height + " " + rot + " " + OMC.STRETCHINFO.optInt("top_crop") + " " + OMC.STRETCHINFO.optInt("bottom_crop"));
+		Bitmap bitmap = Bitmap.createBitmap(OMC.BUFFER,
+				OMC.STRETCHINFO.optInt("left_crop"), 
+				OMC.STRETCHINFO.optInt("top_crop"), 
+				width, height,
+				OMC.TEMPMATRIX, false);
+
+		float rotatedHeight = (float)bitmap.getHeight();
+		float rotatedWidth = (float)bitmap.getWidth();
+
+		float factor = Math.min(OMC.BUFFER.getWidth()/rotatedWidth, OMC.BUFFER.getHeight()/rotatedHeight);
+		
+		OMC.TEMPMATRIX.reset();
+		OMC.TEMPMATRIX.postScale(factor, factor);
+		
+		bitmap = Bitmap.createBitmap(bitmap,0,0,(int)rotatedWidth, (int)rotatedHeight,OMC.TEMPMATRIX,true)
+					.copy(Bitmap.Config.ARGB_4444, false);
+		
+		System.out.println(rotatedHeight+" "+rotatedWidth);
+		System.out.println("to " + bitmap.getWidth() +" "+ bitmap.getHeight());
+		// Blit the buffer over
+		RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
+		final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
+		rv.setImageViewBitmap(iViewID,bitmap);
+		appWidgetManager.updateAppWidget(appWidgetId, rv);
+		
+		// Remoteviews bug - memory leak for large IPC load.  So we discard this get a new one.
+		rv = null;
+		rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
 		
 		OMC.OVERLAYURIS = new String[9];
 		JSONObject temp = oTheme.optJSONObject("customURIs");
@@ -128,7 +189,8 @@ public class OMCWidgetDrawEngine {
 //	        	Intent intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
 	        	Intent intent = new Intent(context, OMCPrefActivity.class);
 	        	intent.setData(Uri.parse("omc:"+appWidgetId));
-	        	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	        	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//	        	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	        	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
 //	            rv.setOnClickPendingIntent(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME), pi);
 	            for (int i = 0; i < 9; i++) {
@@ -144,10 +206,10 @@ public class OMCWidgetDrawEngine {
 //        }
         	
         	if (OMC.PREFS.getBoolean("newbie" + appWidgetId, true)) {
-        		System.out.println("Adding newbie ribbon to widget "+ appWidgetId + ".");
-        		rv.setInt(OMC.OVERLAYRESOURCES[0], "setBackgroundResource", context.getResources().getIdentifier("tapme", "drawable", OMC.PKGNAME));
+        		if (OMC.DEBUG)Log.i(OMC.OMCSHORT+"Engine","Adding newbie ribbon to widget "+ appWidgetId + ".");
+        		rv.setInt(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), "setBackgroundResource", context.getResources().getIdentifier("tapme", "drawable", OMC.PKGNAME));
         	} else {
-        		rv.setInt(OMC.OVERLAYRESOURCES[0], "setBackgroundResource", context.getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME));
+        		rv.setInt(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), "setBackgroundResource", context.getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME));
         	}
         
             // Kudos to Eric for solution to dummy out "unsetonlickpendingintent":
@@ -156,7 +218,7 @@ public class OMCWidgetDrawEngine {
 //        	rv.setOnClickPendingIntent(R.id.omcLink, PendingIntent.getBroadcast(context, 0, OMC.DUMMYINTENT,
 //        		    PendingIntent.FLAG_UPDATE_CURRENT));
         
-        appWidgetManager.updateAppWidget(appWidgetId, rv);
+    		appWidgetManager.updateAppWidget(appWidgetId, rv);
         }
 	}
 	
@@ -165,7 +227,7 @@ public class OMCWidgetDrawEngine {
 
 		final String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME);
 
-		JSONObject oTheme = OMC.getTheme(context, sTheme);
+		JSONObject oTheme = OMC.getTheme(context, sTheme, OMC.THEMESFROMCACHE);
 		if (oTheme==null) {
 			Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
 			OMC.PREFS.edit()
@@ -209,7 +271,7 @@ public class OMCWidgetDrawEngine {
 
 		}
 		
-		return Bitmap.createBitmap(OMC.BUFFER);
+		return OMC.BUFFER;
 		
 	}
 

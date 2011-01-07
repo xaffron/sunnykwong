@@ -14,6 +14,7 @@ import android.preference.PreferenceCategory;
 
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.Toast;
 
 
@@ -21,13 +22,26 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     /** Called when the activity is first created. */
     static int appWidgetID;
     static AlertDialog mAD;
+    boolean isInitialConfig=false;
     Preference prefloadThemeFile, prefclearCache, prefclearImports, prefdownloadStarterPack, prefbSkinner ;
 
     @Override
     protected void onNewIntent(Intent intent) {
     	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","NewIntent");
     	super.onNewIntent(intent);
-    	setResult(Activity.RESULT_OK, intent);
+
+    	// If action is null, we are coming from an existing widget - 
+    	// we want both the home and back buttons to apply changes,
+    	// So we set default result to OK.
+    	if (getIntent().getAction()==null) {
+        	setResult(Activity.RESULT_OK, intent);
+        	isInitialConfig=false;
+    	} else if (getIntent().getAction().equals(AppWidgetManager.ACTION_APPWIDGET_CONFIGURE)) {
+    		// but if we're from a configure action, that means the widget hasn't been added yet -
+    		// the home button must not be used or we'll get zombie widgets.
+        	setResult(Activity.RESULT_CANCELED, intent);
+        	isInitialConfig=true;
+    	}
     	getPreferenceScreen().removeAll();
 		if (intent.getData() == null) {
 			appWidgetID = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -999);
@@ -45,8 +59,18 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     	super.onCreate(savedInstanceState);
     	
-    	setResult(Activity.RESULT_OK, getIntent());
-        
+    	// If action is null, we are coming from an existing widget - 
+    	// we want both the home and back buttons to apply changes,
+    	// So we set default result to OK.
+    	if (getIntent().getAction()==null) {
+        	setResult(Activity.RESULT_OK, getIntent());
+        	isInitialConfig=false;
+    	} else if (getIntent().getAction().equals(AppWidgetManager.ACTION_APPWIDGET_CONFIGURE)) {
+    		// but if we're from a configure action, that means the widget hasn't been added yet -
+    		// the home button must not be used or we'll get zombie widgets.
+        	setResult(Activity.RESULT_CANCELED, getIntent());
+        	isInitialConfig=true;
+    	}
 		if (getIntent().getData() == null) {
 			appWidgetID = getIntent().getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -999);
 		} else {
@@ -132,7 +156,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     }
 
-    
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
     	return false;
@@ -288,19 +311,18 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     @Override
     public void onPause() {
+    	super.onPause();
 		if (appWidgetID >= 0) {
 
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Saving Prefs for Widget " + OMCPrefActivity.appWidgetID);
-			OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", true)? true : false;
-			OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
-	    	OMC.setPrefs(OMCPrefActivity.appWidgetID);
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Saving Prefs for Widget " + OMCPrefActivity.appWidgetID);
+		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", true)? true : false;
+		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
+    	OMC.setPrefs(OMCPrefActivity.appWidgetID);
 
-	    	OMC.toggleWidgets(getApplicationContext());
+    	OMC.toggleWidgets(getApplicationContext());
 
-//			OMC.setServiceAlarm(System.currentTimeMillis()+100);
-			sendBroadcast(OMC.WIDGETREFRESHINTENT); 
+		sendBroadcast(OMC.WIDGETREFRESHINTENT); 
 		}
-    	super.onPause();
     }
 
     @Override
