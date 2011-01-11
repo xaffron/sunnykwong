@@ -61,11 +61,20 @@
 	},
 
 	"customscaling": {
+		"4x2":{
+			"horizontal_stretch": 1,
+			"vertical_stretch":1,
+			"top_crop":0,
+			"bottom_crop":180,
+			"left_crop":0,
+			"right_crop":0,
+			"cw_rotate":0
+		},
 		"4x1":{
 			"horizontal_stretch": 1,
-			"vertical_stretch":0.9,
+			"vertical_stretch":0.88,
 			"top_crop":58,
-			"bottom_crop":60,
+			"bottom_crop":240,
 			"left_crop":0,
 			"right_crop":0,
 			"cw_rotate":0
@@ -74,7 +83,7 @@
 			"horizontal_stretch": 1,
 			"vertical_stretch":1,
 			"top_crop":58,
-			"bottom_crop":60,
+			"bottom_crop":240,
 			"left_crop":0,
 			"right_crop":0,
 			"cw_rotate":0

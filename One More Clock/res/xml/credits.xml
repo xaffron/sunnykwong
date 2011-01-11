@@ -2,7 +2,7 @@
 <PreferenceScreen
   xmlns:android="http://schemas.android.com/apk/res/android" android:title="Credits">
 evilgeniusbb_reg.ttf<PreferenceCategory android:title="Team">
-<Preference android:title="Programmer" android:enabled="true" android:selectable="false" android:summary="Sunny Kwong" android:key="1"></Preference><Preference android:enabled="true" android:selectable="false" android:key="2" android:title="Testers" android:summary="Timothy Lai, Jenny Kwong, Hollywooder,zHk3R, spambayes"></Preference>
+<Preference android:title="Programmer" android:enabled="true" android:selectable="false" android:summary="Sunny Kwong" android:key="1"></Preference><Preference android:enabled="true" android:selectable="false" android:key="2" android:title="Testers" android:summary="Timothy Lai, Jenny Kwong, Cosmin Bizon, spambayes, Hollywooder,zHk3R"></Preference>
 <Preference android:title="Special Thanks" android:summary="Zehro for leading the way \nre: in-sync clock widgets w/o notifications."></Preference><Preference android:title="Thanks" android:summary="Hateman and Zehro for giving permission to mock up their designs"></Preference></PreferenceCategory><PreferenceCategory android:title="Copyrights and Licenses"><Preference android:summary="http://android.hlidskialf.com/blog/code/android-seekbar-preference\n(c) Matthew Wiggins.  APACHE 2.0 License." android:title="Code: SeekBarPreference" android:key="SeekBarPreference"></Preference>
 
 

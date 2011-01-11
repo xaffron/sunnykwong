@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnKeyListener;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -23,7 +24,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     static int appWidgetID;
     static AlertDialog mAD;
     boolean isInitialConfig=false;
-    Preference prefloadThemeFile, prefclearCache, prefclearImports, prefdownloadStarterPack, prefbSkinner ;
+    Preference prefloadThemeFile, prefclearCache, prefdownloadStarterPack, prefbSkinner, prefwidgetPersistence, prefemailMe ;
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -100,12 +101,19 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		this.getPreferenceManager().setSharedPreferencesName(OMC.SHAREDPREFNAME);
         	addPreferencesFromResource(getResources().getIdentifier("omcprefs", "xml", OMC.PKGNAME));
 
+        	prefemailMe = findPreference("emailMe");
         	prefloadThemeFile = findPreference("loadThemeFile");
         	prefclearCache = findPreference("clearCache");
-        	prefclearImports = findPreference("clearImports");
         	prefdownloadStarterPack = findPreference("downloadStarterPack");
         	prefbSkinner = findPreference("bSkinner");
+        	prefwidgetPersistence = findPreference("widgetPersistence");
         	
+			if (Build.VERSION.SDK_INT <  5) {
+    			OMC.PREFS.edit().putBoolean("widgetPersistence", true)
+				.commit();
+				((PreferenceCategory)findPreference("allClocks")).removePreference(prefwidgetPersistence);
+			}
+				
         	if (OMC.FREEEDITION) {
         		findPreference("sVersion").setTitle("Version " + OMC.THISVERSION + " Free");
         		findPreference("sVersion").setSummary("Tap me to get the full version!");
@@ -116,20 +124,11 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         		findPreference("sVersion").setSelectable(false);
         	}
 
-        	findPreference("clearImports").setOnPreferenceChangeListener(this);
     		findPreference("bFourByTwo").setEnabled(false);
-
-    		if (OMC.FREEEDITION) {
-        		findPreference("bFourByOne").setEnabled(false); 
-        		findPreference("bThreeByOne").setEnabled(false);
-        		findPreference("bTwoByOne").setEnabled(false);
-        		findPreference("sVersion").setEnabled(true);
-    		}
 
     		if (OMC.SINGLETON) {
         		((PreferenceCategory)findPreference("thisClock")).removePreference(prefloadThemeFile);
         		((PreferenceCategory)findPreference("allClocks")).removePreference(prefclearCache);
-        		((PreferenceCategory)findPreference("allClocks")).removePreference(prefclearImports);
         		((PreferenceCategory)findPreference("allClocks")).removePreference(prefdownloadStarterPack);
         		((PreferenceScreen)findPreference("widgetPrefs")).removePreference(prefbSkinner);
         	}
@@ -165,6 +164,14 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
+    	if (preference == findPreference("emailMe")) {
+    		   Intent email = new Intent(android.content.Intent.ACTION_SEND)
+    		   				.setType("plain/text")
+    		   				.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
+    		   				.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME);
+
+    		  startActivity(Intent.createChooser(email, "Contact Xaffron for issues, help & support."));  
+    	}
     	if (preference == getPreferenceScreen().findPreference("widgetPrefs") && OMC.FREEEDITION) {
     		final CharSequence TitleCS = "Why are the widgets so big?";
     		final CharSequence MessageCS = "Actually, the donate version offers widget sizes of 4x2, 4x1, 3x1 and 2x1.\nPlease consider upgrading to get these sizes!\nAlternatively, if you use an alternative launcher such as ADW or Launcher Pro, you should be able to approximate this ability by dynamically resizing the 4x2 widget.";
@@ -239,7 +246,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     				}).create();
             	OMCPrefActivity.mAD.show();
     		} else {
-	    		OMCPrefActivity.this.getPreferenceScreen().setEnabled(false);
+	    		getPreferenceScreen().setEnabled(false);
 	    		Intent mainIntent = new Intent(Intent.ACTION_MAIN,
 	        			null);
 				mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -254,37 +261,9 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     	}
     	if (preference == getPreferenceScreen().findPreference("clearCache")) {
     		OMC.purgeTypefaceCache();
-    		Toast.makeText(this, "Font Cache Cleared", Toast.LENGTH_SHORT).show();
     		OMC.purgeBitmapCache();
-    		Toast.makeText(this, "Bitmap Cache Cleared", Toast.LENGTH_SHORT).show();
-    	}
-    	if (preference == findPreference("clearImports")) {
-        	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
-    		.setTitle("Warning!")
-    		.setMessage("Clearing the Import cache will revert all your custom clocks to stock look.  Are you sure?")
-    	    .setCancelable(true)
-    	    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-				
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					OMC.clearImportCache();
-				}
-			})
-			.setNegativeButton("No", new DialogInterface.OnClickListener() {
-				
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					OMCPrefActivity.mAD.dismiss();
-				}
-			})
-    	    .setIcon(getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME))
-    	    .setOnKeyListener(new OnKeyListener() {
-    	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
-					OMCPrefActivity.mAD.dismiss();
-    	    		return true;
-    	    	};
-    	    }).create();
-        	OMCPrefActivity.mAD.show();
+    		OMC.clearImportCache();
+    		Toast.makeText(this, "Caches Cleared", Toast.LENGTH_SHORT).show();
     	}
     	return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

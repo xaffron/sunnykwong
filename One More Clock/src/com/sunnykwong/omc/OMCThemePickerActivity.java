@@ -39,7 +39,6 @@ import android.widget.AdapterView.OnItemLongClickListener;
 public class OMCThemePickerActivity extends Activity implements OnClickListener, OnItemClickListener, OnItemLongClickListener {
 
 	public static HashMap<String,String[]> ELEMENTS;
-//	public static HashMap<String,File> THEMES;
 	public static String tempText = "";
 	public static File SDROOT, THEMEROOT;
 	public static ThemePickerAdapter THEMEARRAY;
@@ -124,6 +123,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     @Override
     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
     	// TODO Auto-generated method stub
+    	System.out.println("onclick");
     	if (arg0==gallery) {
 
         	gallery.setVisibility(View.INVISIBLE);
@@ -141,6 +141,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 @Override
 	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2,
 			long arg3) {
+	System.out.println("onlongclick");
 		if (arg0==gallery) {
 			AlertDialog ad = new AlertDialog.Builder(this)
 								.setCancelable(true)
@@ -297,7 +298,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     		try {
 				BufferedReader in = new BufferedReader(new FileReader(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+ "/" + sTheme+"/00control.json"),8192);
 				StringBuilder sb = new StringBuilder();
-			    char[] buffer = new char[16384];
+			    char[] buffer = new char[8192];
 			    int iCharsRead = 0;
 			    while ((iCharsRead=in.read(buffer))!= -1){
 			    	sb.append(buffer, 0, iCharsRead);
@@ -307,6 +308,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 				sb.setLength(0);
     			mNames.put(sTheme,oResult.optString("name"));
     			mCreds.put(sTheme,"Author: " + oResult.optString("author") + "  (" +oResult.optString("date")+ ")\n" + oResult.optString("credits"));
+    			oResult = null;
     			
     		} catch (Exception e) {
     			e.printStackTrace();
@@ -355,15 +357,9 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         public View getView(int position, View convertView, ViewGroup parent) {
         	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("themepickerpreview", "layout", OMC.PKGNAME), null);
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
-        	if (mThemes.get(position).equals("LockscreenLook")) {
-        		((ImageView)ll.findViewById(getResources().getIdentifier("ThemePreview", "id", OMC.PKGNAME)))
-        				.setImageBitmap(BitmapFactory.decodeResource(
-        				OMC.RES, getResources().getIdentifier("llpreview", "drawable", OMC.PKGNAME)));
-        	} else {
-        		((ImageView)ll.findViewById(getResources().getIdentifier("ThemePreview", "id", OMC.PKGNAME)))
-        				.setImageBitmap(BitmapFactory.decodeFile(
-        				OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + mThemes.get(position) +"/000preview.jpg"));
-        	}
+    		((ImageView)ll.findViewById(getResources().getIdentifier("ThemePreview", "id", OMC.PKGNAME)))
+    				.setImageBitmap(BitmapFactory.decodeFile(
+    				OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + mThemes.get(position) +"/000preview.jpg"));
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeCredits", "id", OMC.PKGNAME))).setText(mCreds.get(mThemes.get(position)));
             return ll;
         }
