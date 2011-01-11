@@ -24,7 +24,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     static int appWidgetID;
     static AlertDialog mAD;
     boolean isInitialConfig=false;
-    Preference prefloadThemeFile, prefclearCache, prefdownloadStarterPack, prefbSkinner, prefwidgetPersistence, prefemailMe ;
+    Preference prefloadThemeFile, prefclearCache, prefdownloadStarterPack, prefbSkinner;
+    Preference prefsUpdateFreq, prefwidgetPersistence, prefemailMe, preftweakTheme ;
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -90,7 +91,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
 			OMC.getPrefs(appWidgetID);
         	OMC.PREFS.edit().putBoolean("widgetPersistence", OMC.FG).commit();
-
+        	OMC.PREFS.edit().putBoolean("bFourByTwo", true).commit();
+        	
         	if (OMC.FREEEDITION) {
     			OMC.PREFS.edit().putBoolean("bFourByOne", false)
     					.putBoolean("bThreeByOne", false)
@@ -107,10 +109,14 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	prefdownloadStarterPack = findPreference("downloadStarterPack");
         	prefbSkinner = findPreference("bSkinner");
         	prefwidgetPersistence = findPreference("widgetPersistence");
+        	preftweakTheme = findPreference("tweakTheme");
+        	
+        	prefsUpdateFreq = findPreference("sUpdateFreq");
+        	prefsUpdateFreq.setOnPreferenceChangeListener(this);
+        	prefsUpdateFreq.setSummary("Redraw every " + OMC.PREFS.getString("sUpdateFreq", "30") + " seconds.");
         	
 			if (Build.VERSION.SDK_INT <  5) {
-    			OMC.PREFS.edit().putBoolean("widgetPersistence", true)
-				.commit();
+    			OMC.PREFS.edit().putBoolean("widgetPersistence", true).commit();
 				((PreferenceCategory)findPreference("allClocks")).removePreference(prefwidgetPersistence);
 			}
 				
@@ -124,7 +130,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         		findPreference("sVersion").setSelectable(false);
         	}
 
-    		findPreference("bFourByTwo").setEnabled(false);
+    		((PreferenceScreen)findPreference("widgetPrefs")).removePreference(findPreference("bFourByTwo"));
+//    		findPreference("bFourByTwo").setEnabled(false);
 
     		if (OMC.SINGLETON) {
         		((PreferenceCategory)findPreference("thisClock")).removePreference(prefloadThemeFile);
@@ -157,6 +164,11 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+    	if (preference==findPreference("sUpdateFreq")) {
+    		System.out.println("sdfs");
+    		preference.setSummary("Redraw every " + (String)newValue + " seconds.");
+    		return true;
+    	}
     	return false;
     }
     
@@ -164,6 +176,13 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
+    	if (preference == findPreference("tweakTheme")){
+    		Intent tweakIntent = new Intent(this, OMCThemeTweakerActivity.class);
+    		tweakIntent.putExtra("aWI", OMCPrefActivity.appWidgetID);
+    		tweakIntent.putExtra("theme", OMC.PREFS.getString("widgetTheme"+OMCPrefActivity.appWidgetID, OMC.DEFAULTTHEME));
+    		tweakIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    		startActivityForResult(tweakIntent,0);
+    	}
     	if (preference == findPreference("emailMe")) {
     		   Intent email = new Intent(android.content.Intent.ACTION_SEND)
     		   				.setType("plain/text")
@@ -295,7 +314,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Saving Prefs for Widget " + OMCPrefActivity.appWidgetID);
 		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", true)? true : false;
-		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
+		OMC.UPDATEFREQ = Integer.parseInt(OMC.PREFS.getString("sUpdateFreq", "30")) * 1000;
     	OMC.setPrefs(OMCPrefActivity.appWidgetID);
 
     	OMC.toggleWidgets(getApplicationContext());

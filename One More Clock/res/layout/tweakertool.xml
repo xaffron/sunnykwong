@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" android:orientation="vertical"
+	android:background="@drawable/gray_squares_narrow">
+	<TextView android:layout_height="wrap_content"
+		android:textColor="#FFFFFFFF" android:background="#FF888888"
+		android:layout_width="fill_parent" android:gravity="center"
+		android:layout_margin="2dp" android:id="@+id/TextView02" android:text="Select a Layer for Tweaking"></TextView>
+	<Spinner android:layout_width="fill_parent" android:id="@+id/tweakerlayerspinner"
+		android:layout_height="wrap_content" android:layout_margin="0dp"></Spinner>
+	<TextView android:id="@+id/TextView01" android:layout_height="wrap_content"
+		android:textColor="#FFFFFFFF" android:background="#FF888888"
+		android:layout_width="fill_parent" android:gravity="center"
+		android:layout_margin="2dp" android:text="Drag to Reposition Layer"></TextView>
+	<AbsoluteLayout android:id="@+id/toplevel"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<ImageView android:layout_width="wrap_content"
+		    android:layout_x="0dp" android:layout_y="0dp" 
+			android:layout_height="wrap_content" android:id="@+id/tweakerpreview"
+			android:maxHeight="210dp" android:maxWidth="210dp"
+			android:adjustViewBounds="true" android:layout_gravity="center"></ImageView>
+		<ImageView android:layout_width="wrap_content"
+			android:layout_x="0dp" android:layout_y="0dp" android:layout_height="wrap_content"
+			android:maxHeight="210dp" android:maxWidth="210dp"
+			android:adjustViewBounds="true" android:layout_gravity="center"
+			android:id="@+id/tweakerdragpreview"></ImageView>
+	</AbsoluteLayout>
+	<TextView android:layout_height="wrap_content"
+		android:textColor="#FFFFFFFF" android:background="#FF888888"
+		android:layout_width="fill_parent" android:gravity="center"
+		android:layout_margin="2dp" android:id="@+id/TextView03" android:text="Tweak Layer Options"></TextView>
+	<LinearLayout android:id="@+id/LinearLayout01"
+		android:layout_height="wrap_content" android:orientation="horizontal"
+		android:layout_width="fill_parent">
+		<ToggleButton android:text="@+id/ToggleButton01"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:id="@+id/tweakerlayertoggle" android:layout_gravity="center_vertical"></ToggleButton>
+		<Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="1st Color"
+			android:id="@+id/tweakerbuttoncolor1" android:layout_gravity="center_vertical"></Button>
+		<Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="2nd Color"
+			android:id="@+id/tweakerbuttoncolor2" android:layout_gravity="center_vertical"></Button>
+		<Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="Text"
+			android:id="@+id/tweakerbuttontext" android:layout_gravity="center_vertical"></Button>
+	</LinearLayout>
+	<TextView android:layout_height="wrap_content"
+		android:textColor="#FFFFFFFF" android:background="#FF888888"
+		android:layout_width="fill_parent" android:gravity="center"
+		android:layout_margin="2dp" android:id="@+id/TextView04"
+		android:text="Hit Menu to Save/Apply; Back to Cancel"></TextView>
+</LinearLayout>

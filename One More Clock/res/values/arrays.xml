@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string-array name="interval_options">
-	<item>10 Seconds</item>
-	<item>15 Seconds</item>
-	<item>20 Seconds</item>
-	<item>30 Seconds</item>
-	<item>60 Seconds</item>
+	<item>10sec (Heavy Batt Use)</item>
+	<item>15sec</item>
+	<item>20sec</item>
+	<item>30sec (Default)</item>
+	<item>60sec (Light Batt Use)</item>
 </string-array>
 
-<integer-array name="interval_values">
+<string-array name="interval_values">
 	<item>10</item>
 	<item>15</item>
 	<item>20</item>
 	<item>30</item>
 	<item>60</item>
-</integer-array>
+</string-array>
 
 <string-array name="MonthEnglish">
 <item>MonthZero</item>

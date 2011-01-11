@@ -304,6 +304,60 @@ public class OMCWidgetDrawEngine {
 		
 	}
 
+	static synchronized Bitmap drawLayerForWidget(final Context context, final int aWI, final String sLayer) {
+		OMC.BUFFER.eraseColor(Color.TRANSPARENT);
+
+		final String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME);
+
+		JSONObject oTheme = OMC.getTheme(context, sTheme, OMC.THEMESFROMCACHE);
+		if (oTheme==null) {
+			Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
+			OMC.PREFS.edit()
+					.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
+					.commit();
+			return null;
+		}
+		try {
+			oTheme = OMC.renderThemeObject(oTheme, aWI);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		OMC.LAYERLIST = oTheme.optJSONArray("layers_bottomtotop");
+
+		for (int i = 0; i < OMC.LAYERLIST.length(); i++) {
+			JSONObject layer = OMC.LAYERLIST.optJSONObject(i);
+			if (!layer.optString("name").equals(sLayer)) continue;
+			if (layer==null) {
+				Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
+				OMC.PREFS.edit()
+						.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
+						.commit();
+				return null;
+			}
+			// Clear the text buffer first.
+			OMC.TXTBUF="";
+			
+			//Skip any disabled layers
+			if (layer.optBoolean("enabled")==false) continue;
+			
+			String sType = layer.optString("type");
+			
+			if (sType.equals("text")) {
+				OMC.TXTBUF = layer.optString("text");
+				OMCWidgetDrawEngine.drawTextLayer(context, layer, sTheme, aWI);
+			}
+			else if (sType.equals("panel"))OMCWidgetDrawEngine.drawPanelLayer(context, layer, sTheme, aWI);
+			else if (sType.equals("flare"))OMCWidgetDrawEngine.drawFlareLayer(context, layer, sTheme, aWI);
+			else if (sType.equals("quote"))OMCWidgetDrawEngine.drawQuoteLayer(context, layer, sTheme, aWI);
+			else if (sType.equals("image"))OMCWidgetDrawEngine.drawBitmapLayer(context, layer, sTheme, aWI);
+
+		}
+		
+		return OMC.BUFFER.copy(Bitmap.Config.ARGB_4444, false);
+		
+	}
+
 	// This is where the theme-specific tweaks (regardless of layer) are processed.
 	// Tweaks = hacks, but at least all the hacks are in one block of code.
 	static void layerThemeTweaks(final Context context, final JSONObject layer, final String sTheme, final int aWI) {
