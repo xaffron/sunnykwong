@@ -12,10 +12,12 @@ import java.util.Map;
 import java.util.Collections;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 
 import android.app.AlarmManager;
 import android.app.Application;
@@ -504,7 +506,25 @@ public class OMC extends Application {
 		return null;
 	}
 
-	public static void clearImportCache() {
+	public static void themeToFile(JSONObject obj, File tgt) {
+		try {
+			BufferedWriter out = new BufferedWriter(new FileWriter(tgt),8192);
+			out.write(obj.toString(5));
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static void bmpToJPEG(Bitmap bmp, File tgt) {
+		try {
+		       FileOutputStream out = new FileOutputStream(tgt);
+		       Bitmap.createScaledBitmap(Bitmap.createBitmap(bmp,0,0,480,300),320,200,true).compress(Bitmap.CompressFormat.JPEG, 50, out);
+		       out.close();
+		} catch (Exception e) {
+		       e.printStackTrace();
+		}
+	}	
+	public static void purgeImportCache() {
 		for (File f:(new File(OMC.CACHEPATH).listFiles())) {
 			f.delete();
 		}
@@ -519,6 +539,16 @@ public class OMC extends Application {
 		f.delete();
 	}
 
+	public static void copyDirectory(File src, File tgt) {
+		if (!tgt.exists()) tgt.mkdirs();
+		if (!tgt.isDirectory()) return;
+
+		for (File ff:src.listFiles()) {
+			copyFile(ff.getAbsolutePath(), tgt.getAbsolutePath()+"/"+ff.getName());
+			System.out.println(ff.getAbsolutePath() + "->" + tgt.getAbsolutePath()+"/"+ff.getName());
+		}
+	}
+	
 	public static boolean copyFile(String src, String tgt) {
 		try {
 			FileOutputStream oTGT = new FileOutputStream(tgt);

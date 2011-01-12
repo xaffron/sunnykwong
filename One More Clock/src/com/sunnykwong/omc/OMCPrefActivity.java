@@ -179,7 +179,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     	if (preference == findPreference("tweakTheme")){
     		Intent tweakIntent = new Intent(this, OMCThemeTweakerActivity.class);
     		tweakIntent.putExtra("aWI", OMCPrefActivity.appWidgetID);
-    		tweakIntent.putExtra("theme", OMC.PREFS.getString("widgetTheme"+OMCPrefActivity.appWidgetID, OMC.DEFAULTTHEME));
+    		tweakIntent.putExtra("theme", OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME));
     		tweakIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     		startActivityForResult(tweakIntent,0);
     	}
@@ -281,7 +281,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     	if (preference == getPreferenceScreen().findPreference("clearCache")) {
     		OMC.purgeTypefaceCache();
     		OMC.purgeBitmapCache();
-    		OMC.clearImportCache();
+    		OMC.purgeImportCache();
     		OMC.THEMEMAP.clear();
     		Toast.makeText(this, "Caches Cleared", Toast.LENGTH_SHORT).show();
     	}
