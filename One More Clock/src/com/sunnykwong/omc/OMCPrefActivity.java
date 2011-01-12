@@ -282,6 +282,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		OMC.purgeTypefaceCache();
     		OMC.purgeBitmapCache();
     		OMC.clearImportCache();
+    		OMC.THEMEMAP.clear();
     		Toast.makeText(this, "Caches Cleared", Toast.LENGTH_SHORT).show();
     	}
     	return super.onPreferenceTreeClick(preferenceScreen, preference);
