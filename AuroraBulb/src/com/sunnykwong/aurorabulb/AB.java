@@ -168,6 +168,8 @@ public class AB extends Application {
     	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0+1, drawLocn-1, AB.PT1);
     	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0-1, drawLocn+1, AB.PT1);
     	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0+1, drawLocn+1, AB.PT1);
+//    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0, drawLocn-1, AB.PT1);
+//    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0, drawLocn+1, AB.PT1);
     	AB.SRCCANVAS2.drawText(AB.PREFS.getString("pickText", "Aurora"), 0, drawLocn, AB.PT1);
     	AB.PT1.setColor(Color.BLACK);
     	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0, drawLocn, AB.PT1);

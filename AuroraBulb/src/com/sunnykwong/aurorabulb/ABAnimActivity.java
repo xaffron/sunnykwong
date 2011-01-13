@@ -86,7 +86,7 @@ public class ABAnimActivity extends Activity {
 
 		AB.TEMPMATRIX.reset();
 		AB.TEMPMATRIX.postScale((float)AB.ROLLBUFFER.getWidth()-20, (float)AB.ROLLBUFFER.getHeight()/AB.SRCBUFFER.getHeight());
-		AB.TEMPMATRIX.postTranslate(10f, 0f);
+//		AB.TEMPMATRIX.postTranslate(f, 0f);
 		AB.TEMPMATRIX2.reset();
 		AB.TEMPMATRIX2.postScale((float)AB.ROLLBUFFER.getWidth(), (float)AB.ROLLBUFFER.getHeight()/AB.SRCBUFFER.getHeight());
 		
