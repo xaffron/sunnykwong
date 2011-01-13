@@ -5,7 +5,8 @@ import android.os.Bundle;
 import java.io.File;
 import java.util.HashMap;
 import android.graphics.Paint;
-
+import android.text.Editable;
+import android.widget.EditText;
 import android.graphics.Color;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -138,19 +139,47 @@ public class ABPreviewActivity extends Activity {
 					mPreviewImageView.setBackgroundDrawable(new BitmapDrawable(AB.SRCBUFFER2));
 					mPreviewImageView.postInvalidate();
 				}
-			}, AB.PREFS.getInt("textColor", Color.GREEN));
+			}, AB.PREFS.getInt("textColor", Color.GREEN), false);
     		cpd.show();
     	}
 		if (item.getItemId()==R.id.camGuidance) {
 			System.out.println("Cam Guidance");
 		}
 		if (item.getItemId()==R.id.pickFont) {
-			AB.PREFSCREENTOSHOW = "pickFontScreen";
-			startActivity(new Intent(this, ABPrefActivity.class));
+			final CharSequence[] items = {"Comic Font", "Pixel Font", "Script Font", "Symbol Font", "Default Font"};
+			final String[] values = {"Laffayette_Comic_Pro.ttf", "Unibody 8-SmallCaps.otf", "Aquiline_TRUNC.ttf", "EFON.ttf", "Clockopia.ttf"};
+			new AlertDialog.Builder(this)
+					.setTitle("Pick a Font")
+					.setItems(items, new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int item) {
+								AB.PREFS.edit().putString("pickFont",values[item]).commit();							
+								AB.PT1.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), values[item]));								AB.updateSrcBuffer();
+								mPreviewImageView.setBackgroundDrawable(new BitmapDrawable(AB.SRCBUFFER2));
+								mPreviewImageView.postInvalidate();
+							}
+					})
+					.show();
 		}
 		if (item.getItemId()==R.id.pickText) {
-			AB.PREFSCREENTOSHOW = "pickTextScreen";
-			startActivity(new Intent(this, ABPrefActivity.class));
+			final EditText input = new EditText(this);
+			input.setText(AB.PREFS.getString("pickText",""));
+			new AlertDialog.Builder(this)
+					.setTitle("Enter Text to Show:")
+					.setView(input)
+					.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int whichButton) {
+								AB.PREFS.edit().putString("pickText",input.getText().toString()).commit();
+								AB.updateSrcBuffer();
+								mPreviewImageView.setBackgroundDrawable(new BitmapDrawable(AB.SRCBUFFER2));
+								mPreviewImageView.postInvalidate();
+							}
+					})
+					.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int whichButton) {
+								// Do nothing.
+							}
+					})
+					.show();
 		}
 		if (item.getItemId()==R.id.camGuidance) {
 			AB.PREFSCREENTOSHOW = "camRefScreen";

@@ -295,12 +295,14 @@ invalidate();
     private EditText mEditText;
     private ColorPickerView mColorPickerView;
     private SeekBar mTransparencyBar;
-
-    public ColorPickerDialog(Context context, OnColorChangedListener listener, int initialColor) {
+    private boolean mShowAlpha;
+    
+    public ColorPickerDialog(Context context, OnColorChangedListener listener, int initialColor, boolean showAlpha) {
         super(context);
         mContext = context;
         mListener = listener;
         mInitialColor = initialColor;
+        mShowAlpha = showAlpha;
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -326,7 +328,8 @@ invalidate();
 mTransparencyBar.setProgressDrawable(new TextSeekBarDrawable(mContext.getResources(), "alpha", true));
 mTransparencyBar.setProgress(Color.alpha(mInitialColor));
 mTransparencyBar.setOnSeekBarChangeListener(onTransparencyChangedListener);
-layout.addView(mTransparencyBar, layoutParams);
+
+if (mShowAlpha) layout.addView(mTransparencyBar, layoutParams);
 
         mEditText = new EditText(mContext);
         mEditText.addTextChangedListener(mEditTextListener);

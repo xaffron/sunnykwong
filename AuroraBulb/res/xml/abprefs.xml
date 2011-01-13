@@ -22,11 +22,11 @@
 			android:enabled="true" android:key="sVersion" android:summary="Your Version of Aurora Bulb." />
 		<Preference android:enabled="true" android:title="Programmer"
 			android:selectable="false" android:summary="Sunny Kwong" />
-		<Preference android:title="Art and Graphics" android:selectable="false" android:enabled="true" android:summary="Robert Cosmin, Bizon"></Preference><Preference android:selectable="false" android:enabled="true" android:title="Code: ColorPickerDialog" android:summary="CyanogenMod Team &amp; AOSP"></Preference><Preference android:enabled="true" android:selectable="false"
-			android:title="Special Thanks" android:summary="Dentsu London and the Penki App, the true pioneer of this technique.\nhttp://www.penkiapp.com/ "/>
+		<Preference android:title="Art and Graphics" android:selectable="false" android:enabled="true" android:summary="Cosmin Bizon"></Preference><Preference android:selectable="false" android:enabled="true" android:summary="Cosmin Bizon, Derek Chan" android:title="Testing"></Preference><Preference android:selectable="false" android:enabled="true" android:title="Code: ColorPickerDialog" android:summary="CyanogenMod Team &amp; AOSP"></Preference><Preference android:enabled="true" android:selectable="false"
+			android:title="Special Thanks" android:summary="Dentsu London and the Penki App, the true pioneer of this technique.\nhttp://www.penkiapp.com/ "/><Preference android:summary="Full Source at\nhttp://code.google.com/p/sunnykwong/" android:title="Source Available"></Preference>
 	
 
-<Preference android:summary="Full Source at\nhttp://code.google.com/p/sunnykwong/" android:title="Source Available"></Preference>
+
 </PreferenceScreen>
 
 </PreferenceScreen>
