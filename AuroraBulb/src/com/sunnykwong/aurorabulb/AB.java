@@ -70,14 +70,14 @@ public class AB extends Application {
 	
 	static final Time TIME = new Time();
 
-	static String TXTBUF;
-	
 	static Bitmap SRCBUFFER;
 	static Canvas SRCCANVAS;
 	static Bitmap SRCBUFFER2;
 	static Canvas SRCCANVAS2;
 	static Bitmap ROLLBUFFER;
 	static Canvas ROLLCANVAS;
+	static Bitmap PREVIEWBUFFER;
+	static Canvas PREVIEWCANVAS;
 	static Bitmap bmpTemp,bmpTemp2;
 
 	static Paint PT1;
@@ -130,6 +130,23 @@ public class AB extends Application {
 		if (PREFS.getString("timePhotoTimer", "EMPTY").equals("EMPTY")) PREFS.edit().putString("timePhotoTimer", "10");
 
 	}
+
+	static public void updatePreviewBuffer() {
+    	//Calibrate text size.
+    	AB.PT1.setColor(AB.PREFS.getInt("textColor", Color.GREEN));
+    	AB.PT1.setTextSize(50f);
+
+    	AB.PT1.setColor(AB.PREFS.getInt("textColor", 0));
+    	AB.PT1.setTextScaleX(1f);
+		AB.PT1.setTextAlign(Paint.Align.LEFT);
+		int textwidth = (int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora"));
+
+		// Here we update the preview buffer as well.
+		if (AB.PREVIEWBUFFER!=null)AB.PREVIEWBUFFER.recycle();
+		AB.PREVIEWBUFFER = Bitmap.createBitmap(textwidth+20, Math.max(150, (int)(textwidth*150f/320f) + 20), Bitmap.Config.ARGB_4444); 
+		AB.PREVIEWCANVAS = new Canvas(AB.PREVIEWBUFFER);
+		AB.PREVIEWCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 10, AB.PREVIEWBUFFER.getHeight()/2, AB.PT1);
+	}
 	
     static public void updateSrcBuffer(){
 
@@ -139,8 +156,11 @@ public class AB extends Application {
     	//Calibrate text size.
     	AB.PT1.setColor(AB.PREFS.getInt("textColor", Color.GREEN));
     	AB.PT1.setTextSize(300f);
-    	float textScale = AB.BUFFERHEIGHT * 1f / (AB.PT1.getFontMetricsInt().descent-AB.PT1.getFontMetricsInt().ascent);
-    	AB.PT1.setTextSize(300f * textScale);
+    	int fontascent = AB.PT1.getFontMetricsInt().ascent; 
+    	int fontdescent = AB.PT1.getFontMetricsInt().descent;
+    	
+    	float textScale = AB.BUFFERHEIGHT * 1f / (fontdescent-fontascent);
+    	AB.PT1.setTextSize(300f * textScale); 
     	int drawLocn = (int)((0-AB.PT1.getFontMetricsInt().ascent) * textScale);
     	
     	
@@ -149,10 +169,11 @@ public class AB extends Application {
     	AB.PT1.setTextScaleX(1f);
 		AB.PT1.setTextAlign(Paint.Align.LEFT);
 		int textwidth = (int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora"));
+		
 		int shutterDuration = Integer.parseInt(AB.PREFS.getString("timeShutterDuration", "10"));
 
 		float fPassDist = (float)textwidth/AB.SCRNDPI;
-//    	findPreference("idealPassDist").setSummary("Ideally: ~" + String.valueOf(Math.round(fPassDist)) + "in./" +String.valueOf(Math.round(fPassDist * 2.54))+ "cm");
+    	AB.PREFS.edit().putString("idealPassDist",String.valueOf(Math.round(fPassDist))).commit();
 		
 		//Since we are aiming at 30fps, we will have to squeeze/stretch the text.
 		//How many lines can we manage over the shutter duration?

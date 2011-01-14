@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="fill_parent" android:layout_width="fill_parent">
-<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:typeface="normal" android:layout_gravity="top|center_horizontal" android:text="Tap me to start, or Menu for Options" android:textSize="18dp" android:layout_marginTop="10dp"></TextView>
-<ImageView android:id="@+id/ImageView01" android:layout_height="wrap_content" android:minHeight="50dp" android:minWidth="50dp" android:adjustViewBounds="true" android:layout_width="fill_parent" android:layout_gravity="center" android:scaleType="fitCenter" android:layout_marginBottom="-100dp"></ImageView>
+<TextView android:id="@+id/TextView01" android:layout_height="wrap_content" android:typeface="normal" android:layout_gravity="bottom|center_horizontal" android:layout_width="fill_parent" android:padding="0dp" android:layout_margin="0dp" android:gravity="center" android:background="#FF888888" android:textColor="#FFFFFFFF" android:text="Tap Menu for Options"></TextView>
+<LinearLayout android:id="@+id/LinearLayout01" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"><ImageView android:minHeight="50dp" android:minWidth="50dp" android:adjustViewBounds="true" android:layout_gravity="center" android:src="@drawable/llpreview" android:scaleType="centerInside" android:padding="0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imagePreview"></ImageView><TextView android:text="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:id="@+id/textCam"></TextView><Button android:layout_gravity="center" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="72dp" android:text="GO!" android:padding="20dp" android:layout_margin="20dp" android:id="@+id/buttonGo"></Button>
+</LinearLayout>
+
+
 
 </FrameLayout>

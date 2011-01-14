@@ -23,6 +23,7 @@ import android.graphics.Paint.Align;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.widget.CheckBox;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -34,6 +35,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -57,7 +59,11 @@ public class ABPreviewActivity extends Activity {
 
 	ImageView mPreviewImageView;
 	Button mAppearanceButton, mCameraButton, mCreditsButton;
+	Button mGoButton;
 	AlertDialog mAD;
+	CheckBox mCheckBox;
+	Boolean mTempFlag;
+	TextView mTextCam;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,41 +71,68 @@ public class ABPreviewActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setTitle("AuroraBulb - Light Drawing Preview");
 		setContentView(R.layout.preview);
+
 		
-		mPreviewImageView = (ImageView)findViewById(R.id.ImageView01);
+		mPreviewImageView = (ImageView)findViewById(R.id.imagePreview);
 		mPreviewImageView.setOnClickListener(new View.OnClickListener() {
-			
+			@Override
+			public void onClick(View v) {
+				ABPreviewActivity.this.openOptionsMenu();
+			}
+		});
+
+		mTextCam = (TextView)findViewById(R.id.textCam);
+		mTextCam.setText("Camera: Timer @ " + (AB.PREFS.getString("timePhotoTimer", "10"))
+				+ " sec, Shutter @ " + (AB.PREFS.getString("timeShutterDuration", "10"))
+				+ " sec.");
+		mTextCam.invalidate();
+		
+		mGoButton = (Button)findViewById(R.id.buttonGo);
+		mGoButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 	    		AB.updateSrcBuffer();
 	        	ABPreviewActivity.this.startActivityForResult(new Intent(ABPreviewActivity.this,ABAnimActivity.class),0);
-				
 			}
 		});
-
+		
 		if (AB.PREFS.getBoolean("showIntro", true)) {
-			CharSequence[] donotshow = {"Do not show again"};
-			boolean[] donotshowBool = {false};
-//			mAD = new AlertDialog.Builder(this)
-//			.setTitle("Aurora Bulb!")
-//			.setMessage("This application requires another camera with long-exposure to shoot the screen of this phone after you hit go.  Slide the phone on a straight line while maintaining the screen in the view of the camera's viewfinder, to embed the characters on the picture.")
-//		    .setCancelable(true)
-////		    .setMultiChoiceItems(donotshow, null, new AlertDialog.OnMultiChoiceClickListener() {
-////				
-////				@Override
-////				public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-////					// TODO Auto-generated method stub
-////					AB.PREFS.edit().putBoolean("showIntro", false).commit();
-////				}
-////			})
-//		    .setOnKeyListener(new OnKeyListener() {
-//		    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
-//		    		mAD.cancel();
-//		    		return true;
-//		    	};
-//		    }).create();
-//			mAD.show();
+			mTempFlag = false;
+
+			mCheckBox = new CheckBox(this);
+			mCheckBox.setText("Do not show again.");
+			mCheckBox.setChecked(mTempFlag);
+			mCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+				
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					// TODO Auto-generated method stub
+					mTempFlag = isChecked;
+				}
+			});
+
+			mAD = new AlertDialog.Builder(this)
+			.setTitle("Aurora Bulb!")
+			.setMessage("This application requires another camera with long-exposure to shoot the screen of this phone.\nAfter you hit go, slide the phone in a straight line while maintaining the screen in the view of the camera's viewfinder to embed the characters on the picture.")
+		    .setCancelable(true)
+		    .setView(mCheckBox)
+		    .setOnKeyListener(new OnKeyListener() {
+		    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+		    		mAD.cancel();
+		    		return true;
+		    	};
+		    })
+		    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					AB.PREFS.edit().putBoolean("showIntro", !mTempFlag).commit();
+					mAD.dismiss();
+				}
+			})
+		    .show();
+
 		}
 	}
 	
@@ -113,10 +146,16 @@ public class ABPreviewActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		AB.PT1.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), AB.PREFS.getString("pickFont", "Unibody 8-SmallCaps.otf")));
-		AB.updateSrcBuffer();
+		try {
+			AB.PT1.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), AB.PREFS.getString("pickFont", "Unibody 8-SmallCaps.otf")));
+		} catch (RuntimeException e ) {
+			//Typeface not found - revert to clockopia
+			AB.PREFS.edit().putString("pickFont", "Unibody 8-SmallCaps.otf").commit();
+			AB.PT1.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), AB.PREFS.getString("pickFont", "Unibody 8-SmallCaps.otf")));
+		}
+		AB.updatePreviewBuffer();
 
-		mPreviewImageView.setBackgroundDrawable(new BitmapDrawable(AB.SRCBUFFER2));
+		mPreviewImageView.setImageBitmap(AB.PREVIEWBUFFER);
 		mPreviewImageView.invalidate();
 	}
 
@@ -135,26 +174,80 @@ public class ABPreviewActivity extends Activity {
 				public void colorChanged(int color) {
 					// TODO Auto-generated method stub
 					AB.PREFS.edit().putInt("textColor", color).commit();
-					AB.updateSrcBuffer();
-					mPreviewImageView.setBackgroundDrawable(new BitmapDrawable(AB.SRCBUFFER2));
+					AB.updatePreviewBuffer();
+					mPreviewImageView.setImageBitmap(AB.PREVIEWBUFFER);
 					mPreviewImageView.postInvalidate();
 				}
 			}, AB.PREFS.getInt("textColor", Color.GREEN), false);
     		cpd.show();
     	}
-		if (item.getItemId()==R.id.camGuidance) {
-			System.out.println("Cam Guidance");
+		if (item.getItemId()==R.id.camShutter) {
+			final EditText input = new EditText(this);
+			input.setText(AB.PREFS.getString("timeShutterDuration",""));
+			new AlertDialog.Builder(this)
+					.setTitle("Enter Shutter Duration:")
+					.setView(input)
+					.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int whichButton) {
+								try {
+									Integer.parseInt(input.getText().toString());
+									AB.PREFS.edit().putString("timeShutterDuration",input.getText().toString()).commit();
+								} catch (NumberFormatException e) {
+									// Invalid value; do nothing									
+								}
+								AB.updateSrcBuffer();
+								mTextCam.setText("Camera: Timer @ " + (AB.PREFS.getString("timePhotoTimer", "10"))
+										+ " sec, Shutter @ " + (AB.PREFS.getString("timeShutterDuration", "10"))
+										+ " sec.");
+								mTextCam.invalidate();
+							}
+					})
+					.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int whichButton) {
+								// Do nothing.
+							}
+					})
+					.show();
+		}
+		if (item.getItemId()==R.id.camTimer) {
+			final EditText input = new EditText(this);
+			input.setText(AB.PREFS.getString("timePhotoTimer",""));
+			new AlertDialog.Builder(this)
+					.setTitle("Enter Photo Timer:")
+					.setView(input)
+					.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int whichButton) {
+								try {
+									Integer.parseInt(input.getText().toString());
+									AB.PREFS.edit().putString("timePhotoTimer",input.getText().toString()).commit();
+								} catch (NumberFormatException e) {
+									// Invalid value; do nothing									
+								}
+								AB.updateSrcBuffer();
+								mTextCam.setText("Camera: Timer @ " + (AB.PREFS.getString("timePhotoTimer", "10"))
+										+ " sec, Shutter @ " + (AB.PREFS.getString("timeShutterDuration", "10"))
+										+ " sec.");
+								mTextCam.invalidate();
+							}
+					})
+					.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int whichButton) {
+								// Do nothing.
+							}
+					})
+					.show();
 		}
 		if (item.getItemId()==R.id.pickFont) {
 			final CharSequence[] items = {"Comic Font", "Pixel Font", "Script Font", "Symbol Font", "Default Font"};
-			final String[] values = {"Laffayette_Comic_Pro.ttf", "Unibody 8-SmallCaps.otf", "Aquiline_TRUNC.ttf", "EFON.ttf", "Clockopia.ttf"};
+			final String[] values = {"YESTERDAYSMEAL.ttf", "Unibody 8-SmallCaps.otf", "Forelle.ttf", "EFON.ttf", "Clockopia.ttf"};
 			new AlertDialog.Builder(this)
 					.setTitle("Pick a Font")
 					.setItems(items, new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int item) {
 								AB.PREFS.edit().putString("pickFont",values[item]).commit();							
-								AB.PT1.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), values[item]));								AB.updateSrcBuffer();
-								mPreviewImageView.setBackgroundDrawable(new BitmapDrawable(AB.SRCBUFFER2));
+								AB.PT1.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), values[item]));								
+								AB.updatePreviewBuffer();
+								mPreviewImageView.setImageBitmap(AB.PREVIEWBUFFER);
 								mPreviewImageView.postInvalidate();
 							}
 					})
@@ -169,8 +262,8 @@ public class ABPreviewActivity extends Activity {
 					.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int whichButton) {
 								AB.PREFS.edit().putString("pickText",input.getText().toString()).commit();
-								AB.updateSrcBuffer();
-								mPreviewImageView.setBackgroundDrawable(new BitmapDrawable(AB.SRCBUFFER2));
+								AB.updatePreviewBuffer();
+								mPreviewImageView.setImageBitmap(AB.PREVIEWBUFFER);
 								mPreviewImageView.postInvalidate();
 							}
 					})
@@ -180,10 +273,6 @@ public class ABPreviewActivity extends Activity {
 							}
 					})
 					.show();
-		}
-		if (item.getItemId()==R.id.camGuidance) {
-			AB.PREFSCREENTOSHOW = "camRefScreen";
-			startActivity(new Intent(this, ABPrefActivity.class));
 		}
 		if (item.getItemId()==R.id.credits) {
 			AB.PREFSCREENTOSHOW = "SectionCredits";

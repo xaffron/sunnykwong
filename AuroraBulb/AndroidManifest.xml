@@ -3,9 +3,9 @@
       package="com.sunnykwong.aurorabulb"
       android:versionCode="2"
       android:versionName="1.0.2">
-    <application android:name=".AB" android:icon="@drawable/abicon" android:label="@string/app_name">
+    <application android:name=".AB" android:icon="@drawable/abicon" android:label="Aurora Bulb">
         <activity android:name=".ABPreviewActivity"
-                  android:label="@string/app_name"
+                  android:label="Aurora Bulb"
                   android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -14,12 +14,12 @@
         </activity>
 
         <activity android:name=".ABPrefActivity"
-                  android:label="@string/app_name"
+                  android:label="Aurora Bulb"
                   android:screenOrientation="nosensor">
         </activity>
 
         <activity android:name=".ABAnimActivity"
-                  android:label="@string/app_name"
+                  android:label="Aurora Bulb"
                   android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                   android:screenOrientation="nosensor">
         </activity>

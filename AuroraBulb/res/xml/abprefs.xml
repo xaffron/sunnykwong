@@ -2,19 +2,6 @@
 <PreferenceScreen android:key="rootPrefs"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:title="Aurora Bulb" android:enabled="true">
-	
-	
-	<Preference android:key="showWhat" android:title="Aurora Bulb Renders Text"
-		android:defaultValue="text" android:selectable="false"
-		android:enabled="false" android:summary="Tap to switch Bitmap/Text (future)" />
-	<PreferenceCategory android:key="bitmapstuff"
-		android:selectable="false">
-		<Preference android:title="Bitmap to show" android:key="pickBitmap"
-			android:summary="&lt;Click me to set&gt;" />
-	</PreferenceCategory>
-	<PreferenceScreen android:key="pickFontScreen"><ListPreference android:key="pickFont" android:title="Font to use" android:enabled="true" android:selectable="true" android:entryValues="@array/values" android:entries="@array/choices" android:summary="Picked: Unibody 8-SmallCaps.otf" android:defaultValue="Unibody 8-SmallCaps.otf"></ListPreference></PreferenceScreen><PreferenceScreen android:key="pickTextScreen"><EditTextPreference android:key="pickText" android:title="Text to Show" android:summary="&lt;Click me to set&gt;" android:defaultValue="Aurora Bulb" /></PreferenceScreen>
-	<PreferenceScreen android:key="camRefScreen"><EditTextPreference android:key="timeShutterDuration" android:enabled="true" android:selectable="true" android:defaultValue="10" android:summary="Shutter at (seconds): 10" android:title="Shutter Spd (seconds)" /><EditTextPreference android:enabled="true" android:selectable="true" android:defaultValue="10" android:key="timePhotoTimer" android:title="Camera Delay (seconds)" android:summary="Assuming Cam timer of (seconds): 4" /><Preference android:title="Calculated Pass Distance " android:selectable="false" android:enabled="true" android:key="idealPassDist" android:summary="Ideally:" /></PreferenceScreen>
-	
 	<PreferenceScreen android:title="Version and Credits"
 		android:key="SectionCredits" android:enabled="true"
 		android:selectable="true">

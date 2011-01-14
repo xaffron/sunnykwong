@@ -41,6 +41,7 @@ import android.view.Display;
 
 public class ABAnimActivity extends Activity {
 
+	Thread currentThread;
 	boolean mDone;
 	Handler mHandler;
 	ImageView mScrn;
@@ -100,7 +101,7 @@ public class ABAnimActivity extends Activity {
 	}
 	public void countDown() {
 		// Begin animation; use new thread for max precision
-		Thread t = new Thread() {
+		currentThread = new Thread() {
 			public void run() {
 				// Countdown
 				nextFrameTime = System.currentTimeMillis();
@@ -128,13 +129,13 @@ public class ABAnimActivity extends Activity {
 				mHandler.post(mAnim);
 			}
 		};		
-		t.start();
+		currentThread.start();
 
 	}
 	public void renderFrames() {
 
 		// Begin animation; use new thread for max precision
-		Thread t = new Thread() {
+		currentThread = new Thread() {
 			public void run() {
 				Bitmap bmpTemp, bmpTemp2;
 				startTime = System.currentTimeMillis();
@@ -179,6 +180,11 @@ public class ABAnimActivity extends Activity {
 				
 			}
 		};
-		t.start();
+		currentThread.start();
 	}
+	@Override
+	protected void onPause() {
+		super.onPause();
+		 if (currentThread !=null && currentThread.isAlive()) currentThread.interrupt();
+		}
 }
