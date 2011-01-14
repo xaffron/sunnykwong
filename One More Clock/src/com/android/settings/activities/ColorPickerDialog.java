@@ -315,7 +315,7 @@ invalidate();
         layoutParams.setMargins(10, 0, 10, 5);
 
         TextView tv = new TextView(mContext);
-        tv.setText("Custom message color");
+        tv.setText("Tap Center to Set");
         layout.addView(tv, layoutParams);
 
         mColorPickerView = new ColorPickerView(getContext(), onColorChangedListener, mInitialColor);
@@ -334,7 +334,7 @@ layout.addView(mTransparencyBar, layoutParams);
         layout.addView(mEditText, layoutParams);
 
         setContentView(layout);
-        setTitle("Custom message color");
+        setTitle("Select a New Color");
     }
 
     private OnColorChangedListener onColorChangedListener = new OnColorChangedListener() {

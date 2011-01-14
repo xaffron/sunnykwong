@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string-array name="interval_options">
-	<item>10sec (Heavy Batt Use)</item>
-	<item>15sec</item>
-	<item>20sec</item>
-	<item>30sec (Default)</item>
-	<item>60sec (Light Batt Use)</item>
+	<item>10 sec (Heavy Batt Use)</item>
+	<item>15 sec</item>
+	<item>20 sec</item>
+	<item>30 sec (Default)</item>
+	<item>60 sec (Light Batt Use)</item>
 </string-array>
 
 <string-array name="interval_values">

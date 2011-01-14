@@ -38,6 +38,7 @@ public class OMCThemeUnzipActivity extends Activity {
 	public boolean NOGO;
 	public ProgressBar pg;
 	static public boolean COMPLETE;
+	public Thread currentThread;
 	
 	public URL downloadURL;
 	
@@ -56,7 +57,7 @@ public class OMCThemeUnzipActivity extends Activity {
 			} else {
 				Toast.makeText(getApplicationContext(), "Import Aborted!", Toast.LENGTH_LONG).show();
 			}
-			pdWait.dismiss();
+			if (pdWait.isShowing()) pdWait.dismiss();
 			finish();
 		}
 	};
@@ -139,7 +140,7 @@ public class OMCThemeUnzipActivity extends Activity {
 			});
 	        pdWait.show();
 	
-	        Thread t = new Thread() {
+	        currentThread = new Thread() {
 	        	public void run() {
 	        		uri = getIntent().getData();
 	        		if (uri == null) {
@@ -249,14 +250,22 @@ public class OMCThemeUnzipActivity extends Activity {
 	        				try {Thread.sleep(3000);}
 	        				catch (Exception ee) {ee.printStackTrace();}
 	        				mHandler.post(mResult);
-	        			} catch (Exception e) {
+	        			} catch (java.io.IOException e) {
 	        				e.printStackTrace();
 	        			}
 	        		}	
 	        	}
 	        };
-	        t.start();
+	        currentThread.start();
         }			
     }
+ 
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (currentThread !=null && currentThread.isAlive()) currentThread.interrupt();
+		if (pdWait.isShowing()) pdWait.dismiss();
+		if (!isFinishing())finish();
+	}
 
 }
