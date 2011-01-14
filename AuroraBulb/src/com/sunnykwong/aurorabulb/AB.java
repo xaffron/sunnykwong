@@ -185,13 +185,16 @@ public class AB extends Application {
     	AB.SRCCANVAS = new Canvas(AB.SRCBUFFER);
     	AB.SRCBUFFER2 = Bitmap.createBitmap((int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora")), AB.BUFFERHEIGHT, Bitmap.Config.RGB_565);
     	AB.SRCCANVAS2 = new Canvas(AB.SRCBUFFER2);
+    	AB.PT1.setAlpha(128);
     	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0-1, drawLocn-1, AB.PT1);
     	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0+1, drawLocn-1, AB.PT1);
     	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0-1, drawLocn+1, AB.PT1);
     	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0+1, drawLocn+1, AB.PT1);
+    	AB.PT1.setAlpha(255);
 //    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0, drawLocn-1, AB.PT1);
 //    	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0, drawLocn+1, AB.PT1);
     	AB.SRCCANVAS2.drawText(AB.PREFS.getString("pickText", "Aurora"), 0, drawLocn, AB.PT1);
+
     	AB.PT1.setColor(Color.BLACK);
     	AB.SRCCANVAS.drawText(AB.PREFS.getString("pickText", "Aurora"), 0, drawLocn, AB.PT1);
     }
