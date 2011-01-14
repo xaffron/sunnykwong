@@ -214,20 +214,31 @@ public class OMCWidgetDrawEngine {
 //            }
 //        } else {
 //
+        	
         	try {
-//	        	Intent intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
-	        	Intent intent = new Intent(context, OMCPrefActivity.class);
+        		Intent intent;
+	        	intent = new Intent(context, OMCPrefActivity.class);
 	        	intent.setData(Uri.parse("omc:"+appWidgetId));
 	        	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//	        	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	        	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
-//	            rv.setOnClickPendingIntent(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME), pi);
-	            for (int i = 0; i < 9; i++) {
-//	            	if (OMC.OVERLAYURI[i].equals("default")) {
+            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[0], pi);
+
+            	if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) {
+    	        	intent = new Intent(context, OMCPrefActivity.class);
+    	        	intent.setData(Uri.parse("omc:"+appWidgetId));
+    	        	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        		} else {
+        			intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
+    	        	intent.setData(Uri.parse("omc:"+appWidgetId));
+        		}
+
+	        	pi = PendingIntent.getActivity(context, 0, intent, 0);
+
+	        	
+	        	// NOTE BELOW:  We're only going from 1-9 (not 0-9)
+	        	// Because we are skipping the NW corner.
+	        	for (int i = 1; i < 9; i++) { 
 		            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], pi);
-//	            	} else rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], 
-//	            			PendingIntent.getBroadcast(context, 0, new Intent(
-//	            					Intent.ACTION_VIEW,OMC.OVERLAYURI[i]), 0));
 	            }
         	} catch (Exception e) {
         		e.printStackTrace();
