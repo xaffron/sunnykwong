@@ -61,8 +61,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 	public ImageView FourByTwo, FourByOne, ThreeByOne, vPreview, vDrag;
 	public Bitmap bmpRender,bmpDrag;
 	
-	public Thread dragThread;
-
 	public static int REFRESHINTERVAL;
 	public boolean bCustomStretch;
 
@@ -75,7 +73,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 	public JSONObject oTheme, baseTheme, oActiveLayer;
 	public String sTheme;
 	public String sActiveLayer;
-	public boolean bRefresh;
 	public AbsoluteLayout toplevel;
 	public Spinner spinnerLayers;
 	
@@ -151,27 +148,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         vPreview.setImageBitmap(OMCWidgetDrawEngine.drawBitmapForWidget(this, -1));
         vDrag = (ImageView)findViewById(getResources().getIdentifier("tweakerdragpreview", "id", OMC.PKGNAME));
         vPreview.setOnTouchListener(this);
-        
-
-    	dragThread = new Thread() {
-    		public void run() {
-    			while (true) {
-    				if (OMCThemeTweakerActivity.this.bRefresh) {
-	    				mHandler.post(mDrag);
-	    				try {
-		    				Thread.sleep(50);
-						} catch (InterruptedException e) {
-							break;
-						}
-    				}
-    			}
-    		};
-		};
-		bRefresh=false;
-//		dragThread.start();
-		
-		
-		
     }
 
 	@Override
@@ -310,7 +286,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     		iRectHeight = oActiveLayer.optInt("bottom")-oActiveLayer.optInt("top");
     		
     		vDrag.setImageBitmap(OMCWidgetDrawEngine.drawLayerForWidget(this, aWI, oActiveLayer.optString("name")));
-    		bRefresh = true;
     	}
     	if (event.getAction()==MotionEvent.ACTION_MOVE) {
     		fXMove = event.getX();
@@ -332,11 +307,8 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     		vDrag.setLayoutParams(new AbsoluteLayout.LayoutParams(AbsoluteLayout.LayoutParams.WRAP_CONTENT,AbsoluteLayout.LayoutParams.WRAP_CONTENT,
     				(int)event.getX()-(int)fXDown, (int)event.getY()-(int)fYDown ));
 			mHandler.post(mDrag);
-
-    		
     	}
     	if (event.getAction()==MotionEvent.ACTION_UP) {
-    		bRefresh = false;
     		vDrag.setImageResource(R.drawable.transparent);
     		refreshDrag();
     		refreshViews();
@@ -383,7 +355,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     protected void onPause() {
     	super.onPause();
     	// TODO Auto-generated method stub
-    	if (dragThread !=null && dragThread.isAlive())dragThread.interrupt();
     	if (!bApply) {
     		OMC.THEMEMAP.put(sTheme, baseTheme);
     	}

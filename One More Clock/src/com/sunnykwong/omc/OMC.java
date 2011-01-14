@@ -628,7 +628,7 @@ public class OMC extends Application {
 		copyAssetToCache("000preview.jpg", "LockscreenLook");
 		copyAssetToCache("00control.json", "LockscreenLook");
 		copyAssetToCache("Clockopia.ttf", "LockscreenLook");
-		(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook")).mkdir();
+		(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook")).mkdirs();
 		copyFile(OMC.CACHEPATH + "LockscreenLook00control.json", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/00control.json");
 		copyFile(OMC.CACHEPATH + "LockscreenLook000preview.jpg", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/000preview.jpg");
 		copyFile(OMC.CACHEPATH + "LockscreenLookClockopia.ttf", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/Clockopia.ttf");
