@@ -74,12 +74,14 @@ public class ABPreviewActivity extends Activity {
 
 		
 		mPreviewImageView = (ImageView)findViewById(R.id.imagePreview);
+		AB.updatePreviewBuffer();
 		mPreviewImageView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				ABPreviewActivity.this.openOptionsMenu();
 			}
 		});
+		mPreviewImageView.invalidate();
 
 		mTextCam = (TextView)findViewById(R.id.textCam);
 		mTextCam.setText("Camera: Timer @ " + (AB.PREFS.getString("timePhotoTimer", "10"))

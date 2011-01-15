@@ -103,7 +103,7 @@ public class AB extends Application {
 		
 		AB.PT1 = new Paint();
 		AB.PT1.setTextSize(AB.BUFFERHEIGHT);
-		AB.PT1.setColor(Color.LTGRAY);
+		AB.PT1.setColor(Color.GREEN);
 		AB.PT1.setTextAlign(Paint.Align.CENTER);
 		AB.PT1.setAntiAlias(true);
 
@@ -136,7 +136,6 @@ public class AB extends Application {
     	AB.PT1.setColor(AB.PREFS.getInt("textColor", Color.GREEN));
     	AB.PT1.setTextSize(50f);
 
-    	AB.PT1.setColor(AB.PREFS.getInt("textColor", 0));
     	AB.PT1.setTextScaleX(1f);
 		AB.PT1.setTextAlign(Paint.Align.LEFT);
 		int textwidth = (int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora"));

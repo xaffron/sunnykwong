@@ -185,6 +185,6 @@ public class ABAnimActivity extends Activity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		 if (currentThread !=null && currentThread.isAlive()) currentThread.interrupt();
-		}
+		if (currentThread !=null && currentThread.isAlive()) currentThread.interrupt();
+	}
 }

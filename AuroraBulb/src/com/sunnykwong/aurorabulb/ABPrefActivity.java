@@ -58,15 +58,6 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     	getWindowManager().getDefaultDisplay().getMetrics(metrics);
     	AB.SCRNDPI = metrics.densityDpi;
     	
-    	findPreference("showWhat").setOnPreferenceChangeListener(this);
-    	findPreference("pickBitmap").setOnPreferenceChangeListener(this);
-    	findPreference("pickFont").setOnPreferenceChangeListener(this);
-    	findPreference("timeShutterDuration").setOnPreferenceChangeListener(this);
-    	findPreference("timePhotoTimer").setOnPreferenceChangeListener(this);
-		findPreference("pickText").setOnPreferenceChangeListener(this);
-
-		updateSummaries();
-    	
     	this.setPreferenceScreen((PreferenceScreen)findPreference(AB.PREFSCREENTOSHOW));
 
     }
@@ -125,75 +116,15 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
     	return true;
     }
 
-    // If user clicks on a preference...
-    @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
-    		Preference preference) {
-    	if (preference == findPreference("showWhat")) {
-    		if (AB.PREFS.getString("showWhat","bitmap").equals("text")) {
-    			AB.PREFS.edit().putString("showWhat", "bitmap").commit();
-    		} else {
-    			AB.PREFS.edit().putString("showWhat", "text").commit();
-    		}
-    		updateSummaries();
-    	}
-    	if (preference == findPreference("pickBitmap")) {
-            Intent intentBrowseFiles = new
-            Intent(Intent.ACTION_GET_CONTENT);
-                            intentBrowseFiles.setType("image/*");
-
-            intentBrowseFiles.addCategory(Intent.CATEGORY_OPENABLE);     		
-            startActivityForResult(intentBrowseFiles, 1);
-    	}
-    	return super.onPreferenceTreeClick(preferenceScreen, preference);
-    }
-
-    // The result is obtained in onActivityResult:
-	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode == 0 ) { // From anim
-	    	mAD = new AlertDialog.Builder(this)
-    		.setTitle("Did you like the photo?")
-    		.setMessage("For best results:\n- Lower your camera ISO\n- Lower camera f/number\n- Set your phone's screen brightness to 70-80% of maximum!")
-    	    .setCancelable(true)
-    	    .setOnKeyListener(new OnKeyListener() {
-    	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
-    	    		dialogCancelled();
-    	    		return true;
-    	    	};
-    	    }).create();
-	    	mAD.show();
-			return;
-		} else if (requestCode == 1) {  // From pick Bitmap
-			if (data!=null) {
-				findPreference("pickBitmap").setSummary("Selected " + data.getDataString());
-			}
-		}
-}
-
-    
     public void dialogCancelled() {
     	mAD.cancel();
     	return;
     }
-    
-
 
    @Override
     protected void onResume() {
         super.onResume();
    }
-   
-   public void updateSummaries() {
-    	findPreference("pickFont").setSummary(AB.PREFS.getString("pickFont", "Unibody 8-SmallCaps.otf"));
-		findPreference("pickText").setSummary(AB.PREFS.getString("pickText", "Aurora"));
-		findPreference("timeShutterDuration").setSummary("Shutter at (seconds): " + AB.PREFS.getString("timeShutterDuration", "10"));
-		findPreference("timePhotoTimer").setSummary("Assuming Cam timer of (seconds): " + AB.PREFS.getString("timePhotoTimer", "10"));
-    	AB.PT1.setTextScaleX(1f);
-		AB.PT1.setTextAlign(Paint.Align.LEFT);
-		int textwidth = (int)AB.PT1.measureText(AB.PREFS.getString("pickText", "Aurora"));
-		float fPassDist = (float)textwidth/AB.SCRNDPI;
-		findPreference("idealPassDist").setSummary("Ideally: ~" + String.valueOf(Math.round(fPassDist)) + "in./" +String.valueOf(Math.round(fPassDist * 2.54))+ "cm");
-    }
 
     @Override
     public void onDestroy() {
