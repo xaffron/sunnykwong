@@ -325,11 +325,11 @@ invalidate();
 
         mTransparencyBar = new SeekBar(mContext);
         mTransparencyBar.setMax(255);
-mTransparencyBar.setProgressDrawable(new TextSeekBarDrawable(mContext.getResources(), "alpha", true));
-mTransparencyBar.setProgress(Color.alpha(mInitialColor));
-mTransparencyBar.setOnSeekBarChangeListener(onTransparencyChangedListener);
-
-if (mShowAlpha) layout.addView(mTransparencyBar, layoutParams);
+		mTransparencyBar.setProgressDrawable(new TextSeekBarDrawable(mContext.getResources(), "alpha", true));
+		mTransparencyBar.setProgress(Color.alpha(mInitialColor));
+		mTransparencyBar.setOnSeekBarChangeListener(onTransparencyChangedListener);
+		
+		if (mShowAlpha) layout.addView(mTransparencyBar, layoutParams);
 
         mEditText = new EditText(mContext);
         mEditText.addTextChangedListener(mEditTextListener);
@@ -346,7 +346,7 @@ if (mShowAlpha) layout.addView(mTransparencyBar, layoutParams);
            dismiss();
         }
         public void colorUpdate(int color) {
-mListener.colorUpdate(color);
+        	mListener.colorUpdate(color);
         }
     };
 
@@ -386,8 +386,8 @@ mListener.colorUpdate(color);
     };
 
     //Source: http://www.anddev.org/announce_color_picker_dialog-t10771.html
-static final int[] STATE_FOCUSED = {android.R.attr.state_focused};
-static final int[] STATE_PRESSED = {android.R.attr.state_pressed};
+	static final int[] STATE_FOCUSED = {android.R.attr.state_focused};
+	static final int[] STATE_PRESSED = {android.R.attr.state_pressed};
 
     static class TextSeekBarDrawable extends Drawable implements Runnable {
 

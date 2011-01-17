@@ -129,7 +129,7 @@ public class ABPreviewActivity extends Activity {
 		    .setView(ll)
 		    .setOnKeyListener(new OnKeyListener() {
 		    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
-		    		mAD.cancel();
+		    		if (arg2.getKeyCode()==android.view.KeyEvent.KEYCODE_BACK) mAD.cancel();
 		    		return true;
 		    	};
 		    })
