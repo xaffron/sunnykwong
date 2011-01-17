@@ -120,15 +120,19 @@ public class AB extends Application {
 	}
 
 	static public void initSharedPrefs(SharedPreferences sp){
-		
-		PREFS.edit().putString("version", THISVERSION).commit();
-		if (PREFS.getString("showWhat", "EMPTY").equals("EMPTY")) PREFS.edit().putString("showWhat", "text");
-		if (PREFS.getString("pickFont", "EMPTY").equals("EMPTY")) PREFS.edit().putString("pickFont", "Unibody 8-SmallCaps.otf");
-		if (PREFS.getInt("textColor", 0)==0) PREFS.edit().putInt("textColor", Color.GREEN);
-		if (PREFS.getString("pickText", "EMPTY").equals("EMPTY")) PREFS.edit().putString("pickText", "Aurora");
-		if (PREFS.getString("timeShutterDuration", "EMPTY").equals("EMPTY")) PREFS.edit().putString("timeShutterDuration", "10");
-		if (PREFS.getString("timePhotoTimer", "EMPTY").equals("EMPTY")) PREFS.edit().putString("timePhotoTimer", "10");
 
+		// If we're coming from a different version, wipe everything clean.
+		if (!THISVERSION.equals(PREFS.getString("version", "1.0.0"))) {
+			PREFS.edit().clear().commit();
+		}
+		
+		// Initialize the prefs.
+		PREFS.edit().putString("version", THISVERSION).commit();
+		if (PREFS.getString("pickFont", "EMPTY").equals("EMPTY")) PREFS.edit().putString("pickFont", "Unibody 8-SmallCaps.otf").commit();
+		if (PREFS.getInt("textColor", 0)==0) PREFS.edit().putInt("textColor", Color.GREEN).commit();
+		if (PREFS.getString("pickText", "EMPTY").equals("EMPTY")) PREFS.edit().putString("pickText", "Aurora").commit();
+		if (PREFS.getString("timeShutterDuration", "EMPTY").equals("EMPTY")) PREFS.edit().putString("timeShutterDuration", "10").commit();
+		if (PREFS.getString("timePhotoTimer", "EMPTY").equals("EMPTY")) PREFS.edit().putString("timePhotoTimer", "10").commit();
 	}
 
 	static public void updatePreviewBuffer() {
