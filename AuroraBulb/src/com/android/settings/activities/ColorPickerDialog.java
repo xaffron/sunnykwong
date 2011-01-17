@@ -317,7 +317,7 @@ invalidate();
         layoutParams.setMargins(10, 0, 10, 5);
 
         TextView tv = new TextView(mContext);
-        tv.setText("Tap Center to Set");
+        tv.setText("");
         layout.addView(tv, layoutParams);
 
         mColorPickerView = new ColorPickerView(getContext(), onColorChangedListener, mInitialColor);
@@ -337,7 +337,7 @@ if (mShowAlpha) layout.addView(mTransparencyBar, layoutParams);
         layout.addView(mEditText, layoutParams);
 
         setContentView(layout);
-        setTitle("Select a New Color");
+        setTitle("Pick Color & Tap Center Spot");
     }
 
     private OnColorChangedListener onColorChangedListener = new OnColorChangedListener() {

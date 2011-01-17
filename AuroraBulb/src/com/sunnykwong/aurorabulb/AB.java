@@ -50,7 +50,7 @@ public class AB extends Application {
 	
 	static String THISVERSION;
 	static final String PREFNAME = "com.sunnykwong.aurorabulb_preferences";
-	static final boolean DEBUG = true;
+	static final boolean DEBUG = false;
 	static final int BUFFERWIDTH = 240;
 	static final int BUFFERHEIGHT = 320;
 	static String PREFSCREENTOSHOW="";
@@ -158,14 +158,35 @@ public class AB extends Application {
 
     	//Calibrate text size.
     	AB.PT1.setColor(AB.PREFS.getInt("textColor", Color.GREEN));
-    	AB.PT1.setTextSize(300f);
-    	int fontascent = AB.PT1.getFontMetricsInt().ascent; 
-    	int fontdescent = AB.PT1.getFontMetricsInt().descent;
-    	
+    	AB.PT1.setTextSize(320f);
+    	System.out.println("textsz " + (int)AB.PT1.getTextSize() + " top " + AB.PT1.getFontMetricsInt().top + " bottom " + AB.PT1.getFontMetricsInt().bottom);
+    	System.out.println("textsz " + (int)AB.PT1.getTextSize() + " ascent " + AB.PT1.getFontMetricsInt().ascent + " descent " + AB.PT1.getFontMetricsInt().descent);
+    	int fontascent, fontdescent;
+    	String sTemp = AB.PREFS.getString("pickFont", "Unibody 8-SmallCaps.otf");
+    	if (sTemp.equals("Unibody 8-SmallCaps.otf")) {
+    		fontascent = -280;
+    		fontdescent = 80;
+    	} else if (sTemp.equals("Forelle.ttf")) {
+    		fontascent = -250;
+    		fontdescent = 50;
+       	} else if (sTemp.equals("YESTERDAYSMEAL.ttf")) {
+    		fontascent = -260;
+    		fontdescent = 70;
+       	} else if (sTemp.equals("EFON.ttf")) {
+    		fontascent = -260;
+    		fontdescent = 3;
+       	} else if (sTemp.equals("Clockopia.ttf")) {
+    		fontascent = -230;
+    		fontdescent = 80;
+    	} else {
+    		
+    		fontascent = AB.PT1.getFontMetricsInt().ascent; 
+    		fontdescent = AB.PT1.getFontMetricsInt().descent;
+    	}
     	float textScale = AB.BUFFERHEIGHT * 1f / (fontdescent-fontascent);
-    	AB.PT1.setTextSize(300f * textScale); 
-    	int drawLocn = (int)((0-AB.PT1.getFontMetricsInt().ascent) * textScale);
-    	
+    	AB.PT1.setTextSize(320f * textScale); 
+    	int drawLocn = (int)((0-fontascent) * textScale);
+
     	
     	AB.PT1.setColor(AB.PREFS.getInt("textColor", 0));
     	AB.PT2.setColor(Color.WHITE);

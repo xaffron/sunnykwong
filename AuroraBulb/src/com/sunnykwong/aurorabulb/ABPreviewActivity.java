@@ -3,6 +3,10 @@ package com.sunnykwong.aurorabulb;
 import android.app.Activity;
 import android.os.Bundle;
 import java.io.File;
+
+import android.view.LayoutInflater;
+import android.widget.LinearLayout;
+
 import java.util.HashMap;
 import android.graphics.Paint;
 import android.text.Editable;
@@ -10,6 +14,7 @@ import android.widget.EditText;
 import android.graphics.Color;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnKeyListener;
@@ -32,6 +37,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
@@ -101,9 +107,12 @@ public class ABPreviewActivity extends Activity {
 		
 		if (AB.PREFS.getBoolean("showIntro", true)) {
 			mTempFlag = false;
-
-			mCheckBox = new CheckBox(this);
-			mCheckBox.setText("Do not show again.");
+			
+			LayoutInflater li = LayoutInflater.from(this);
+			LinearLayout ll = (LinearLayout)(li.inflate(R.layout.splashdialog, null));
+			TextView v = (TextView)ll.findViewById(R.id.splashtext);
+			v.setText("This application requires another camera with long-exposure to shoot the screen of this phone.\nAfter you hit go, slide the phone in a straight line while maintaining the screen in the view of the camera's viewfinder to embed the characters on the picture.");
+			mCheckBox = (CheckBox)ll.findViewById(R.id.splashcheck);
 			mCheckBox.setChecked(mTempFlag);
 			mCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 				
@@ -116,9 +125,8 @@ public class ABPreviewActivity extends Activity {
 
 			mAD = new AlertDialog.Builder(this)
 			.setTitle("Aurora Bulb!")
-			.setMessage("This application requires another camera with long-exposure to shoot the screen of this phone.\nAfter you hit go, slide the phone in a straight line while maintaining the screen in the view of the camera's viewfinder to embed the characters on the picture.")
 		    .setCancelable(true)
-		    .setView(mCheckBox)
+		    .setView(ll)
 		    .setOnKeyListener(new OnKeyListener() {
 		    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
 		    		mAD.cancel();
