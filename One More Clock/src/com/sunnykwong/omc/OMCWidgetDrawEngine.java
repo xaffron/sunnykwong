@@ -421,10 +421,36 @@ public class OMCWidgetDrawEngine {
 		}
 		OMC.PT1.reset();
 		OMC.PT1.setAntiAlias(true);
-		OMC.PT1.setColor(Color.parseColor(layer.optString("fgcolor")));
+		try {
+			OMC.PT1.setColor(Color.parseColor(layer.optString("fgcolor")));
+		} catch (java.lang.IllegalArgumentException e) {
+			// JSON has unknown color; maybe # is missing?
+			try {
+				OMC.PT1.setColor(Color.parseColor("#" + layer.optString("fgcolor")));
+				Log.w(OMC.OMCSHORT+"Engine","Color missing #");
+			} catch (java.lang.IllegalArgumentException ee) {
+				// Still unknown color; default to white
+				Log.w(OMC.OMCSHORT+"Engine","Color invalid");
+				OMC.PT1.setColor(Color.WHITE);
+				ee.printStackTrace();
+			}
+		}
 		OMC.PT2.reset();
 		OMC.PT2.setAntiAlias(true);
-		OMC.PT2.setColor(Color.parseColor(layer.optString("bgcolor")));
+		try {
+			OMC.PT2.setColor(Color.parseColor(layer.optString("bgcolor")));
+		} catch (java.lang.IllegalArgumentException e) {
+			// JSON has unknown color; maybe # is missing?
+			try {
+				OMC.PT2.setColor(Color.parseColor("#" + layer.optString("bgcolor")));
+				Log.w(OMC.OMCSHORT+"Engine","Color missing #");
+			} catch (java.lang.IllegalArgumentException ee) {
+				// Still unknown color; default to white
+				Log.w(OMC.OMCSHORT+"Engine","Color invalid");
+				OMC.PT2.setColor(Color.WHITE);
+				ee.printStackTrace();
+			}
+		}
 
     	// theme-specific tweaks.
 		OMCWidgetDrawEngine.layerThemeTweaks(context, layer, sTheme, aWI);
@@ -535,7 +561,20 @@ public class OMCWidgetDrawEngine {
 			}
 		}
 		
-		OMC.PT1.setColor(Color.parseColor(layer.optString("fgcolor")));
+		try {
+			OMC.PT1.setColor(Color.parseColor(layer.optString("fgcolor")));
+		} catch (java.lang.IllegalArgumentException e) {
+			// JSON has unknown color; maybe # is missing?
+			try {
+				OMC.PT1.setColor(Color.parseColor("#" + layer.optString("fgcolor")));
+				Log.w(OMC.OMCSHORT+"Engine","Color missing #");
+			} catch (java.lang.IllegalArgumentException ee) {
+				// Still unknown color; default to white
+				Log.w(OMC.OMCSHORT+"Engine","Color invalid");
+				OMC.PT1.setColor(Color.WHITE);
+				ee.printStackTrace();
+			}
+		}
 		
 		float fRot = (float)layer.optDouble("cw_rotate");
 
@@ -553,7 +592,20 @@ public class OMCWidgetDrawEngine {
 		OMC.PT2.setTextSize(OMC.PT1.getTextSize());
 		OMC.PT2.setTextSkewX(OMC.PT1.getTextSkewX());
 		OMC.PT2.setTextScaleX(OMC.PT1.getTextScaleX());
-		OMC.PT2.setColor(Color.parseColor(layer.optString("bgcolor")));
+		try {
+			OMC.PT2.setColor(Color.parseColor(layer.optString("bgcolor")));
+		} catch (java.lang.IllegalArgumentException e) {
+			// JSON has unknown color; maybe # is missing?
+			try {
+				OMC.PT2.setColor(Color.parseColor("#" + layer.optString("bgcolor")));
+				Log.w(OMC.OMCSHORT+"Engine","Color missing #");
+			} catch (java.lang.IllegalArgumentException ee) {
+				// Still unknown color; default to white
+				Log.w(OMC.OMCSHORT+"Engine","Color invalid");
+				OMC.PT2.setColor(Color.WHITE);
+				ee.printStackTrace();
+			}
+		}
 		OMC.PT2.setTextAlign(OMC.PT1.getTextAlign());
 
     	// theme-specific tweaks.
