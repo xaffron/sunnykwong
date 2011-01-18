@@ -1,62 +1,29 @@
 package com.sunnykwong.aurorabulb;
 
 import android.app.Activity;
-import android.os.Bundle;
-import java.io.File;
-import android.database.Cursor;
-import android.view.LayoutInflater;
-import android.widget.LinearLayout;
-
-import android.widget.EditText;
-import android.graphics.Color;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnKeyListener;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.Matrix;
+import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.Paint.Align;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.widget.CheckBox;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.util.DisplayMetrics;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Collections;
-import java.util.Iterator;
 
 import com.android.settings.activities.ColorPickerDialog;
-
-import android.graphics.drawable.BitmapDrawable;
-
-import android.widget.ImageView;
-import android.widget.Button;
-import android.view.Display;
-import android.app.AlertDialog;
 
 public class ABPreviewActivity extends Activity {
 

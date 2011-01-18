@@ -1,32 +1,21 @@
 package com.sunnykwong.aurorabulb;
 
-import android.graphics.Canvas;
-import com.android.settings.activities.ColorPickerDialog;
-import android.app.Activity;
-import android.os.Bundle;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 import android.app.AlertDialog;
-import android.content.ComponentName;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.DialogInterface.OnKeyListener;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceScreen;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.util.Log;
-import android.widget.Toast;
-import java.io.StringWriter;
-import java.io.PrintWriter;
 import android.util.DisplayMetrics;
-import android.graphics.Typeface;
+import android.widget.Toast;
 
 public class ABPrefActivity extends PreferenceActivity implements OnPreferenceChangeListener {
 	AlertDialog mAD;

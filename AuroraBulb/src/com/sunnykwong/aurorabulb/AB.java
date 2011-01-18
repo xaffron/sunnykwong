@@ -1,44 +1,17 @@
 package com.sunnykwong.aurorabulb;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Map.Entry;
-import java.util.Map;
-import java.util.Collections;
-import java.io.File;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
-import android.app.AlarmManager;
 import android.app.Application;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.net.Uri;
-import android.text.format.Time;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.graphics.BitmapFactory;
-import android.content.res.Resources;
 import android.graphics.Matrix;
-import android.view.Display;
+import android.graphics.Paint;
+import android.media.MediaPlayer;
+import android.text.format.Time;
 
 /**
  * @author skwong01
@@ -48,6 +21,7 @@ import android.view.Display;
  */
 public class AB extends Application {
 	
+	static MediaPlayer BEEPER;
 	static String THISVERSION;
 	static final String PREFNAME = "com.sunnykwong.aurorabulb_preferences";
 	static final boolean DEBUG = false;
@@ -106,6 +80,8 @@ public class AB extends Application {
 		TARGETFPS = 30;
 	
 		COUNTDOWNSECONDS = 10;
+			
+		AB.BEEPER = MediaPlayer.create(this, R.raw.beep7);
 		
 		AB.PT1 = new Paint();
 		AB.PT1.setTextSize(AB.BUFFERHEIGHT);
@@ -115,6 +91,7 @@ public class AB extends Application {
 
 		AB.PT2 = new Paint(AB.PT1);
 		AB.PT2.setTextSize(AB.BUFFERHEIGHT*2/3);
+		AB.PT2.setColor(Color.WHITE);
 
 		TEMPMATRIX = new Matrix();
 		TEMPMATRIX2 = new Matrix();

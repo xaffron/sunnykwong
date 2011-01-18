@@ -1,47 +1,21 @@
 package com.sunnykwong.aurorabulb;
 
-import android.app.Activity;
-import android.os.Bundle;
-import java.io.File;
-import java.util.HashMap;
-import android.graphics.Paint;
+import java.util.List;
 
-import android.graphics.Color;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.Matrix;
-import android.graphics.Paint.Align;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Collections;
-import java.util.Iterator;
-
-import android.view.Display;
 
 public class ABAnimActivity extends Activity {
 
-	Thread currentThread;
+	Thread currentThread, beepThread;
 	boolean mDone;
 	Handler mHandler;
 	ImageView mScrn;
@@ -51,6 +25,7 @@ public class ABAnimActivity extends Activity {
 	long startTime = 0l;
 	long thisUpdateTime = 0l;
 	long nextFrameTime = 0l;
+	long nextSecond = 0l;
 	
 	final Runnable mAnim = new Runnable() {
 		public void run() {
@@ -126,6 +101,7 @@ public class ABAnimActivity extends Activity {
 
 					AB.ROLLBUFFER.prepareToDraw();
 					mHandler.post(mFlip);
+					AB.BEEPER.start();
 
 					while (System.currentTimeMillis() < nextFrameTime) {
 						try {
@@ -145,6 +121,29 @@ public class ABAnimActivity extends Activity {
 	public void renderFrames() {
 
 		// Begin animation; use new thread for max precision
+		beepThread = new Thread() {
+			public void run() {
+				// Countdown
+				nextSecond = System.currentTimeMillis();
+				for (int i=0; i<Integer.parseInt(AB.PREFS.getString("timeShutterDuration", "10")); i++ ) {
+					nextSecond += 1000l;
+		
+					AB.BEEPER.start();
+
+					while (System.currentTimeMillis() < nextSecond) {
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+		
+				}
+				AB.BEEPER.start();
+			}
+		};		
+		beepThread.start();
+
 		currentThread = new Thread() {
 			public void run() {
 				Bitmap bmpTemp, bmpTemp2;
@@ -198,5 +197,6 @@ public class ABAnimActivity extends Activity {
 	protected void onPause() {
 		super.onPause();
 		if (currentThread !=null && currentThread.isAlive()) currentThread.interrupt();
+		if (beepThread !=null && beepThread.isAlive()) beepThread.interrupt();
 	}
 }
