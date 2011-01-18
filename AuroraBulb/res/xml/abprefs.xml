@@ -9,11 +9,10 @@
 			android:enabled="true" android:key="sVersion" android:summary="Your Version of Aurora Bulb." />
 		<Preference android:enabled="true" android:title="Programmer"
 			android:selectable="false" android:summary="Sunny Kwong" />
-		<Preference android:title="Art and Graphics" android:selectable="false" android:enabled="true" android:summary="Cosmin Bizon"></Preference><Preference android:selectable="false" android:enabled="true" android:summary="Cosmin Bizon, Derek Chan" android:title="Testing"></Preference><Preference android:selectable="false" android:enabled="true" android:title="Code: ColorPickerDialog" android:summary="CyanogenMod Team &amp; AOSP"></Preference><Preference android:enabled="true" android:selectable="false"
-			android:title="Special Thanks" android:summary="Dentsu London and the Penki App, the true pioneer of this technique.\nhttp://www.penkiapp.com/ "/><Preference android:summary="Full Source at\nhttp://code.google.com/p/sunnykwong/" android:title="Source Available"></Preference>
+		<Preference android:title="Art and Graphics" android:selectable="false" android:enabled="true" android:summary="Cosmin Bizon"></Preference><Preference android:selectable="false" android:enabled="true" android:summary="Cosmin Bizon, Derek Chan" android:title="Testing"></Preference><Preference android:selectable="false" android:enabled="true" android:title="Code: ColorPickerDialog" android:summary="CyanogenMod Team &amp; AOSP"></Preference><Preference android:selectable="false" android:enabled="true" android:title="Font: EFON" android:summary="(c) 桜井ナン.\nhttp://www.n-plus.jp/about/copyright.shtml"></Preference><Preference android:selectable="false" android:enabled="true" android:title="Font: Forelle" android:summary="(c) Dieter Steffmann.\nhttp://www.steffmann.de/"></Preference><Preference android:selectable="false" android:enabled="true" android:title="Font: Unibody 8" android:summary="(c) Underware.\nhttp://www.underware.nl/"></Preference><Preference android:selectable="false" android:enabled="true" android:title="Font: Yesterdays Meal" android:summary="(c) Jakob Fischer.\nhttp://www.pizzadude.dk"></Preference><Preference android:selectable="false" android:enabled="true" android:title="Sound: Beep-7" android:summary="(c) SoundJay.com.\nhttp://www.soundjay.com"></Preference>
 	
 
 
-	</PreferenceScreen>
+	<Preference android:enabled="true" android:selectable="false" android:title="Special Thanks" android:summary="Dentsu London and the Penki App, the true pioneer of this technique.\nhttp://www.penkiapp.com/ " /><Preference android:summary="Full Source at\nhttp://code.google.com/p/sunnykwong/" android:title="Source Available"></Preference></PreferenceScreen>
 
 </PreferenceScreen>
