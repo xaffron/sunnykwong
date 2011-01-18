@@ -85,12 +85,22 @@ public class ABAnimActivity extends Activity {
 		AB.ROLLBUFFER.eraseColor(Color.BLACK);
 		AB.ROLLCANVAS = new Canvas(AB.ROLLBUFFER);
 
-		AB.TEMPMATRIX.reset();
-		AB.TEMPMATRIX.postScale((float)AB.ROLLBUFFER.getWidth()-20, (float)AB.ROLLBUFFER.getHeight()/AB.SRCBUFFER.getHeight());
-//		AB.TEMPMATRIX.postTranslate(f, 0f);
-		AB.TEMPMATRIX2.reset();
-		AB.TEMPMATRIX2.postScale((float)AB.ROLLBUFFER.getWidth(), (float)AB.ROLLBUFFER.getHeight()/AB.SRCBUFFER.getHeight());
+		if (AB.PREFS.getString("whatToShow", "text").equals("bitmap")) {
+
+			AB.TEMPMATRIX.reset();
+			AB.TEMPMATRIX.postScale(20, (float)AB.ROLLBUFFER.getHeight()/AB.SRCBUFFER.getHeight());
+			AB.TEMPMATRIX.postTranslate((float)AB.ROLLBUFFER.getWidth()-30, 0f);
+			
+		} else {
 		
+			AB.TEMPMATRIX.reset();
+			AB.TEMPMATRIX.postScale((float)AB.ROLLBUFFER.getWidth()-20, (float)AB.ROLLBUFFER.getHeight()/AB.SRCBUFFER.getHeight());
+	//		AB.TEMPMATRIX.postTranslate(f, 0f);
+			AB.TEMPMATRIX2.reset();
+			AB.TEMPMATRIX2.postScale((float)AB.ROLLBUFFER.getWidth(), (float)AB.ROLLBUFFER.getHeight()/AB.SRCBUFFER.getHeight());
+
+		}
+			
 //		AB.bmpTemp..createBitmap(AB.SRCBUFFER, i, 0, 1, AB.SRCBUFFER.getHeight());
 //		AB.bmpTemp2 = Bitmap.createBitmap(AB.SRCBUFFER2, i, 0, 1, AB.SRCBUFFER.getHeight());
 
@@ -148,7 +158,9 @@ public class ABAnimActivity extends Activity {
 					bmpTemp.prepareToDraw();
 					bmpTemp2 = Bitmap.createBitmap(AB.SRCBUFFER2, i, 0, 1, AB.SRCBUFFER.getHeight());
 					bmpTemp2.prepareToDraw();
-					AB.ROLLCANVAS.drawBitmap(bmpTemp2, AB.TEMPMATRIX2, AB.PT1);
+					if (AB.PREFS.getString("whatToShow", "text").equals("text")) {
+						AB.ROLLCANVAS.drawBitmap(bmpTemp2, AB.TEMPMATRIX2, AB.PT1);
+					}
 					AB.ROLLCANVAS.drawBitmap(bmpTemp, AB.TEMPMATRIX, AB.PT1);
 
 					while (System.currentTimeMillis() < nextFrameTime) {

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.sunnykwong.aurorabulb"
-      android:versionCode="2"
-      android:versionName="1.0.2">
+      android:versionName="1.0.3" android:versionCode="3">
     <application android:name=".AB" android:icon="@drawable/abicon" android:label="Aurora Bulb">
         <activity android:name=".ABPreviewActivity"
                   android:label="Aurora Bulb"
