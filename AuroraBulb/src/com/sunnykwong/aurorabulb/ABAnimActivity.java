@@ -79,7 +79,7 @@ public class ABAnimActivity extends Activity {
 		AB.SCRNWIDTH = getWindowManager().getDefaultDisplay().getWidth();
 		AB.SCRNHEIGHT = getWindowManager().getDefaultDisplay().getHeight();
 		
-		if (AB.SRCBUFFER== null)AB.SRCBUFFER = BitmapFactory.decodeResource(getResources(), R.drawable.llpreview);
+		if (AB.SRCBUFFER== null)AB.SRCBUFFER = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.transparent),320,170,false);
 
 		AB.ROLLBUFFER = Bitmap.createBitmap(AB.BUFFERWIDTH,AB.BUFFERHEIGHT,Bitmap.Config.RGB_565);
 		AB.ROLLBUFFER.eraseColor(Color.BLACK);
