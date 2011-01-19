@@ -4,10 +4,13 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -17,7 +20,7 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
 
-public class ABPrefActivity extends PreferenceActivity implements OnPreferenceChangeListener {
+public class ABPrefActivity extends PreferenceActivity {
 	AlertDialog mAD;
 	PreferenceCategory bitmapstuff, textstuff;
 	PreferenceScreen toplevel;
@@ -31,11 +34,9 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
 		this.getPreferenceManager().setSharedPreferencesName(AB.PREFNAME);
     	this.addPreferencesFromResource(R.xml.abprefs);
     	
-    	try {
-    		findPreference("sVersion").setTitle(getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA).versionName);
-    	} catch (NameNotFoundException e) {
-    		// package name not found - not a showstopper, so carry on
-    	}
+    	findPreference("SectionCredits").setTitle("Aurora Bulb v." + AB.THISVERSION);
+    	
+    	
     	toplevel = (PreferenceScreen)findPreference("rootPrefs");
     	bitmapstuff = (PreferenceCategory)findPreference("bitmapstuff");
     	textstuff = (PreferenceCategory)findPreference("textstuff");
@@ -51,60 +52,47 @@ public class ABPrefActivity extends PreferenceActivity implements OnPreferenceCh
 
     }
 
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-    	if (preference == findPreference("pickFont")) {
-    		AB.PT1.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), (String)newValue));
-			AB.PREFS.edit().putString("pickFont", (String)newValue).commit();
-			findPreference("pickFont").setSummary("Picked: " + (String)newValue);
-			return true;
-    	} else if (preference == findPreference("timeShutterDuration")) {
-    		int temp;
-    		try {
-    			temp = Integer.parseInt((String)newValue);
-    		} catch (IllegalArgumentException e) {
-    			Toast.makeText(this, "Invalid Shutter Duration!", Toast.LENGTH_SHORT).show();
-    			return false;
-    		}
-    		if (temp < 1) {
-    			Toast.makeText(this, "Invalid Shutter Duration!", Toast.LENGTH_SHORT).show();
-    			return false;
-    		}
-    		findPreference("timeShutterDuration").setSummary("Shutter at (seconds): " + (String)newValue);
-			return true;
-    	} else if (preference == findPreference("timePhotoTimer")) {
-    		int temp;
-    		try {
-    			temp = Integer.parseInt((String)newValue);
-    		} catch (IllegalArgumentException e) {
-    			Toast.makeText(this, "Invalid Photo Timer Duration!", Toast.LENGTH_SHORT).show();
-    			return false;
-    		}
-    		if (temp < 0) {
-    			Toast.makeText(this, "Invalid Photo Timer Duration!", Toast.LENGTH_SHORT).show();
-    			return false;
-    		}
-    		findPreference("timePhotoTimer").setSummary("Assuming Cam timer of (seconds): " + (String)newValue);
-			return true;
-    	} else if (preference == findPreference("pickText")) {
-    		if (((String)newValue).equals("")) {
-    			Toast.makeText(this, "Zero-length String not allowed!", Toast.LENGTH_SHORT).show();
-    			return false;
-    		} else {
-    			findPreference("pickText").setSummary((String)newValue);
-    			AB.PREFS.edit().putString("pickText", (String)newValue).commit();
-            	AB.PT1.setTextScaleX(1f);
-        		AB.PT1.setTextAlign(Paint.Align.LEFT);
-        		int textwidth = (int)AB.PT1.measureText((String)newValue);
-        		float fPassDist = (float)textwidth/AB.SCRNDPI;
-        		findPreference("pickText").setSummary((String)newValue);
-        		findPreference("idealPassDist").setSummary("Ideally: ~" + String.valueOf(Math.round(fPassDist)) + "in./" +String.valueOf(Math.round(fPassDist * 2.54))+ "cm");
-    			return true;
-    		}
+	@Override
+	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
+			Preference preference) {
+    	if (preference == findPreference("sFlickr")) {
+    		Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.flickr.com/groups/aurorabulb"));
+    		startActivity(it);
+    		finish();
     	}
-    	return true;
-    }
-
+    	if (preference == findPreference("contactProg")) {
+			final CharSequence[] items = {"Email", "Donate"};
+			new AlertDialog.Builder(this)
+				.setTitle("Email or Donate to Xaffron")
+				.setItems(items, new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int item) {
+							switch (item) {
+								case 0: //Email
+									Intent it = new Intent(android.content.Intent.ACTION_SEND)
+		    		   					.setType("plain/text")
+		    		   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
+		    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, "Aurora Bulb Feedback v" + AB.THISVERSION);
+					    		   	startActivity(Intent.createChooser(it, "Contact Xaffron for issues, help & support."));  
+					    		   	finish();
+					    		   	break;
+								case 1: //Donate
+						    		it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=S9VEL3WFGXK48"));
+						    		startActivity(it);
+						    		finish();
+									break;
+								default:
+									//do nothing
+							}
+						}
+				})
+				.show();
+    	}
+    	if (preference == findPreference("contactArt")) {
+    		//Nothing yet
+    	}
+    	return super.onPreferenceTreeClick(preferenceScreen, preference);
+	}
+	
     public void dialogCancelled() {
     	mAD.cancel();
     	return;

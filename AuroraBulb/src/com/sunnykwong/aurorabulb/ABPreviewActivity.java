@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.settings.activities.ColorPickerDialog;
 
@@ -40,7 +41,7 @@ public class ABPreviewActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setTitle("AuroraBulb - Light Drawing Preview");
+		setTitle("Aurora Bulb - Light Drawing Preview");
 		setContentView(R.layout.preview);
 
 		
@@ -301,11 +302,33 @@ public class ABPreviewActivity extends Activity {
 					}
 					c.close();
 				}
+				
+				// Ok, before we dive into it, let's find out how big a bitmap we're talking about.
 				BitmapFactory.Options opt = new BitmapFactory.Options();
 				opt.inJustDecodeBounds=true;
 				
+				BitmapFactory.decodeFile(sImgPath,opt);
 				
-				AB.BMPTODRAW = BitmapFactory.decodeFile(sImgPath);
+				// If it's an invalid file, let's just generate a dummy bitmap.
+				if (opt.outHeight==0) {
+					Toast.makeText(this, "Not a valid bitmap! Aborting.", Toast.LENGTH_SHORT).show();
+					return;
+				}
+				
+				float fEstimatedSize = (float)opt.outHeight*opt.outWidth;
+				int iScale = 1;
+				// If less than 500k then OK.
+				while (fEstimatedSize > 500000) {
+					iScale *= 2;
+					fEstimatedSize/=4f;
+				}
+//				System.out.println("Bitmap scaled down by factor of " + iScale);
+				
+				// Ok, this time we decode the bitmap for real.
+				opt.inSampleSize=iScale;
+				opt.inJustDecodeBounds=false;
+				
+				AB.BMPTODRAW = BitmapFactory.decodeFile(sImgPath,opt);
 				AB.updatePreviewBuffer();
 				mPreviewImageView.setImageBitmap(AB.SRCBUFFER);
 				mPreviewImageView.invalidate();
