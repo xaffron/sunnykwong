@@ -278,15 +278,33 @@ public class ABPreviewActivity extends Activity {
 				// Do nothing 
 			} else {
 				Cursor c = getContentResolver().query(data.getData(), null, null, null, null);
-				System.out.println(c.getColumnCount()); 
-//				for (String s:c.getColumnNames()) {
-//					System.out.println("ColName: "+ s); 
-//				}
-//				System.out.println(c.getCount()); 
-				c.moveToFirst();
-				String sImgPath = c.getString(1); //1 is the file path
-				c.close();
+				String sImgPath = new String();
+				if (c==null) {
+//					System.out.println(data.getDataString());
+					try {
+						sImgPath = data.getData().getSchemeSpecificPart(); //1 is the file path
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				} else {
+//					System.out.println(c.getColumnCount());
+//					for (String s:c.getColumnNames()) {
+//						System.out.println("ColName: "+ s); 
+//					}
+//					System.out.println(c.getCount()); 
 
+					c.moveToFirst();
+					try {
+						sImgPath = c.getString(c.getColumnIndexOrThrow("_data")); //1 is the file path
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					c.close();
+				}
+				BitmapFactory.Options opt = new BitmapFactory.Options();
+				opt.inJustDecodeBounds=true;
+				
+				
 				AB.BMPTODRAW = BitmapFactory.decodeFile(sImgPath);
 				AB.updatePreviewBuffer();
 				mPreviewImageView.setImageBitmap(AB.SRCBUFFER);
