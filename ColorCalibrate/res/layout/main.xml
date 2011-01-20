@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-	android:id="@+id/resultText"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text=""
-    />
-<SurfaceView android:id="@+id/surfacepreview" android:layout_height="fill_parent" android:layout_width="fill_parent"></SurfaceView>
-
-</LinearLayout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal" android:layout_height="fill_parent" android:layout_width="fill_parent">
+	<SurfaceView android:id="@+id/surfacepreview"
+		android:minHeight="144dp" android:minWidth="172dp"
+		android:drawingCacheQuality="low" android:keepScreenOn="true" android:layout_height="fill_parent" android:layout_width="fill_parent"></SurfaceView>
+<ImageView android:id="@+id/overlay" android:layout_height="fill_parent" android:layout_width="fill_parent"></ImageView>
+<TextView android:text="@+id/TextView01" android:layout_height="fill_parent" android:layout_width="fill_parent" android:id="@+id/overlayText"></TextView>
+</FrameLayout>

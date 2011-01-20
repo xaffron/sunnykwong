@@ -15,6 +15,7 @@ import android.hardware.Camera;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.Window;
 
 public class CCActivity extends Activity {
 
@@ -62,11 +63,24 @@ public class CCActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Hide the title bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.main);
 
         mSurfacePreview = (SurfaceView)findViewById(R.id.surfacepreview);
+        mSurfacePreview.getHolder().setSizeFromLayout();
         mSurfacePreview.getHolder().addCallback(mSurfaceCallback);
         mSurfacePreview.getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        
+        resultText = (TextView)findViewById(R.id.overlayText);
+        resultText.setText("TESTING");
+        resultText.invalidate();
+        
+        resultImage = (ImageView)findViewById(R.id.overlay);
+        
+        
     }
     
 	@Override
