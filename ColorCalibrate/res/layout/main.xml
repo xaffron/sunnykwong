@@ -1,9 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="horizontal" android:layout_height="fill_parent" android:layout_width="fill_parent">
+	android:layout_height="fill_parent" android:layout_width="fill_parent">
 	<SurfaceView android:id="@+id/surfacepreview"
 		android:minHeight="144dp" android:minWidth="172dp"
-		android:drawingCacheQuality="low" android:keepScreenOn="true" android:layout_height="fill_parent" android:layout_width="fill_parent"></SurfaceView>
-<ImageView android:id="@+id/overlay" android:layout_height="fill_parent" android:layout_width="fill_parent"></ImageView>
-<TextView android:text="@+id/TextView01" android:layout_height="fill_parent" android:layout_width="fill_parent" android:id="@+id/overlayText"></TextView>
+		android:drawingCacheQuality="low" android:keepScreenOn="true"
+		android:layout_height="fill_parent" android:layout_width="fill_parent"></SurfaceView>
+	<ImageView android:id="@+id/overlay" android:layout_height="fill_parent"
+		android:layout_width="fill_parent"></ImageView>
+	<LinearLayout android:orientation="vertical"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/OverlayGrid">
+		<LinearLayout android:orientation="horizontal"
+			android:layout_weight="1" android:id="@+id/OverlayRow1"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			xmlns:android="http://schemas.android.com/apk/res/android">
+			<TextView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/NW" android:layout_width="fill_parent" />
+			<TextView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/N" android:layout_width="fill_parent" />
+			<TextView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/NE" android:layout_width="fill_parent" />
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal"
+			android:layout_weight="1" android:id="@+id/OverlayRow2"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			xmlns:android="http://schemas.android.com/apk/res/android">
+			<TextView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/W" android:layout_width="fill_parent" />
+			<TextView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/C" android:layout_width="fill_parent" />
+			<TextView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/E" android:layout_width="fill_parent" />
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal"
+			android:layout_weight="1" android:id="@+id/OverlayRow3"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			xmlns:android="http://schemas.android.com/apk/res/android">
+			<TextView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/SW" android:layout_width="fill_parent" />
+			<TextView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/S" android:layout_width="fill_parent" />
+			<TextView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/SE" android:layout_width="fill_parent" />
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout android:id="@+id/LinearLayout01"
+		android:layout_height="fill_parent" android:layout_width="fill_parent">
+		<TextView android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:layout_margin="0dp"
+			android:padding="0dp" android:minHeight="320dp" android:id="@+id/dummyfiller" android:minWidth="400dp"></TextView>
+		<ToggleButton android:id="@+id/Mark"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_gravity="bottom|right" android:textOff="MARK" android:textOn="UNMARK" android:minWidth="80dp" android:minHeight="60dp"></ToggleButton>
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </FrameLayout>
