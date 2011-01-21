@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnKeyListener;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -165,7 +166,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
     	if (preference==findPreference("sUpdateFreq")) {
-    		System.out.println("sdfs");
     		preference.setSummary("Redraw every " + (String)newValue + " seconds.");
     		return true;
     	}
@@ -227,7 +227,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-		        	Toast.makeText(OMCPrefActivity.this, "Downloading starter clock pack...", Toast.LENGTH_LONG).show();
+		        	Toast.makeText(OMCPrefActivity.this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
 //		        	OMCThemePickerActivity.THEMEROOT.mkdir();
 					startActivity(OMC.GETSTARTERPACKINTENT);
 					mAD.cancel();
@@ -265,17 +265,34 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     				}).create();
             	OMCPrefActivity.mAD.show();
     		} else {
-	    		getPreferenceScreen().setEnabled(false);
-	    		Intent mainIntent = new Intent(Intent.ACTION_MAIN,
-	        			null);
-				mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-	
-				Intent pickIntent = new
-				Intent(Intent.ACTION_PICK_ACTIVITY);
-				pickIntent.putExtra(Intent.EXTRA_INTENT, mainIntent);
-				startActivityForResult(pickIntent, OMCPrefActivity.appWidgetID);
-				mainIntent=null;
-				pickIntent=null;
+    			final CharSequence[] items = {"Open options (default)", "Do nothing", "Launch activity..."};
+    			final String[] values = {"default", "noop", "activity"};
+    			new AlertDialog.Builder(this)
+    					.setTitle("Tap on clock to:")
+    					.setItems(items, new DialogInterface.OnClickListener() {
+    							public void onClick(DialogInterface dialog, int item) {
+    								if (values[item].equals("default")) {
+    									OMC.PREFS.edit().putString("URI", "").commit();
+    								}
+    								if (values[item].equals("noop")) {
+    									OMC.PREFS.edit().putString("URI", "noop").commit();
+    								}
+    								if (values[item].equals("activity")) {
+    						    		getPreferenceScreen().setEnabled(false);
+    						    		Intent mainIntent = new Intent(Intent.ACTION_MAIN,
+    						        			null);
+    									mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+    						
+    									Intent pickIntent = new
+    									Intent(Intent.ACTION_PICK_ACTIVITY);
+    									pickIntent.putExtra(Intent.EXTRA_INTENT, mainIntent);
+    									startActivityForResult(pickIntent, OMCPrefActivity.appWidgetID);
+    									mainIntent=null;
+    									pickIntent=null;
+    								}
+    							}
+    					})
+    					.show();
     		}
     	}
     	if (preference == getPreferenceScreen().findPreference("clearCache")) {
@@ -295,6 +312,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 		if (requestCode == 0) return;
 		if (data != null) {
 			String s = data.toUri(MODE_PRIVATE).toString();
+			
 			OMC.PREFS.edit().putString("URI", s).commit();
 		}
 	}

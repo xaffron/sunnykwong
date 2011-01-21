@@ -45,7 +45,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.graphics.BitmapFactory;
 import android.content.res.Resources;
-import android.graphics.Matrix;
 
 /**
  * @author skwong01
@@ -103,9 +102,6 @@ public class OMC extends Application {
     static boolean SCREENON = true; 	// Is the screen on?
     static boolean FG = false;
 
-	static JSONArray LAYERLIST, TALKBACKS;
-
-	static Matrix TEMPMATRIX;
 	static boolean STARTERPACKDLED = false;
 
 	static final int WIDGETWIDTH=480;
@@ -127,7 +123,6 @@ public class OMC extends Application {
 	static final float[] FLARERADII = new float[] {32.f,20.f,21.6f,40.2f,18.4f,19.1f,10.8f,25.f,28.f};
 	static final int[] FLARECOLORS = new int[] {855046894,1140258554,938340342,1005583601,855439588,
 		669384692,905573859,1105458423,921566437};
-	static String TXTBUF;
 	
 	static final int SVCNOTIFICATIONID = 1; // Notification ID for the one and only message window we'll show
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
@@ -137,17 +132,6 @@ public class OMC extends Application {
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
     static Notification FGNOTIFICIATION;
     
-	static RectF BGRECT, FGRECT;
-
-	static Bitmap BUFFER;
-	static Canvas CANVAS;
-	static Bitmap rotBUFFER;
-	static Canvas rotCANVAS;
-	static Paint PT1;
-	static Paint PT2;
-	
-	static float fSCALEX, fSCALEY;
-
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -172,17 +156,17 @@ public class OMC extends Application {
 		
 		OMC.LASTUPDATEMILLIS = 0l;
 		
-		OMC.BUFFER= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
-		OMC.CANVAS = new Canvas(OMC.BUFFER);
-		OMC.CANVAS.setDensity(DisplayMetrics.DENSITY_HIGH);
-		OMC.PT1 = new Paint();
-		OMC.PT2 = new Paint();
+//		OMC.BUFFER= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
+//		OMC.CANVAS = new Canvas(OMC.BUFFER);
+//		OMC.CANVAS.setDensity(DisplayMetrics.DENSITY_HIGH);
+//		OMC.PT1 = new Paint();
+//		OMC.PT2 = new Paint();
 		
 		OMC.aRC = new OMCAlarmReceiver();
 		OMC.cRC = new OMCConfigReceiver();
 		
 		
-		OMC.TEMPMATRIX = new Matrix();
+		//OMC.TEMPMATRIX = new Matrix();
 		
 		OMC.FGPENDING = PendingIntent.getBroadcast(this, 0, OMC.FGINTENT, 0);
 		OMC.BGPENDING = PendingIntent.getBroadcast(this, 0, OMC.BGINTENT, 0);
@@ -201,9 +185,6 @@ public class OMC extends Application {
 
 		
 		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/";
-		
-		OMC.BGRECT = new RectF(30,10,295,150);
-		OMC.FGRECT = new RectF(25,5,290,145);
 		
 		OMC.FGNOTIFICIATION = new Notification(this.getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME), 
 				"",
@@ -241,9 +222,9 @@ public class OMC extends Application {
 		OMC.BMPMAP = new HashMap<String, Bitmap>(3);
 		OMC.THEMEMAP=Collections.synchronizedMap(new HashMap<String, JSONObject>(3));
 
-		OMC.LAYERLIST = null;
-
-		OMC.TALKBACKS = null;
+//		OMC.LAYERLIST = null;
+//
+//		OMC.TALKBACKS = null;
 		OMC.STRETCHINFO = null;
 		
 		OMC.OVERLAYURIS = null;
@@ -456,9 +437,6 @@ public class OMC extends Application {
 			    	sb.append(buffer, 0, iCharsRead);
 			    }
 			    in.close();
-			    
-			    //HERE WE DUMP WHAT WE READ
-//			    System.out.println(sb.toString());
 			    
 				JSONObject oResult = new JSONObject(sb.toString());
 				sb.setLength(0);

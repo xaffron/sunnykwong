@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.graphics.Matrix;
 
 public class OMCSkinnerActivity extends Activity {
 
@@ -148,24 +149,18 @@ public class OMCSkinnerActivity extends Activity {
 			FourByOneStretch = OMC.THEMEMAP.get(sTheme).getJSONObject("customscaling").getJSONObject("4x1");
 			ThreeByOneStretch = OMC.THEMEMAP.get(sTheme).getJSONObject("customscaling").getJSONObject("3x1");
 
-			OMC.TEMPMATRIX.reset();
-			OMC.TEMPMATRIX.preScale(Float.parseFloat(FourByOneStretch.getString("horizontal_stretch")), 
+			final Matrix tempMatrix = new Matrix();
+			tempMatrix.preScale(Float.parseFloat(FourByOneStretch.getString("horizontal_stretch")), 
 					Float.parseFloat(FourByOneStretch.getString("vertical_stretch")));
-			FourByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(FourByOneStretch.getString("top_crop")), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(FourByOneStretch.getString("top_crop")) - Integer.parseInt(FourByOneStretch.getString("bottom_crop")), OMC.TEMPMATRIX, true));
-			OMC.TEMPMATRIX.reset();
-			OMC.TEMPMATRIX.preScale(Float.parseFloat(ThreeByOneStretch.getString("horizontal_stretch")), 
+			FourByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(FourByOneStretch.getString("top_crop")), OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT - Integer.parseInt(FourByOneStretch.getString("top_crop")) - Integer.parseInt(FourByOneStretch.getString("bottom_crop")), tempMatrix, true));
+			tempMatrix.reset();
+			tempMatrix.preScale(Float.parseFloat(ThreeByOneStretch.getString("horizontal_stretch")), 
 					Float.parseFloat(ThreeByOneStretch.getString("vertical_stretch")));
-			ThreeByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(ThreeByOneStretch.getString("top_crop")), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(ThreeByOneStretch.getString("top_crop")) - Integer.parseInt(ThreeByOneStretch.getString("bottom_crop")), OMC.TEMPMATRIX, true));
+			ThreeByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(ThreeByOneStretch.getString("top_crop")), OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT - Integer.parseInt(ThreeByOneStretch.getString("top_crop")) - Integer.parseInt(ThreeByOneStretch.getString("bottom_crop")), tempMatrix, true));
 
 		} catch (org.json.JSONException e) {
 			// OMC.STRETCHINFO stays null; do nothing
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Engine","No stretch info found for seeded clock.");
-			//Default scaling
-			OMC.TEMPMATRIX.reset();
-//			OMC.TEMPMATRIX.preTranslate(0, 0-iCutTop);
-//			OMC.TEMPMATRIX.preScale(fScaleX, fScaleY);
-//			FourByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(FourByOneStretch.getString("top_crop")), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(FourByOneStretch.getString("top_crop")) - Integer.parseInt(FourByOneStretch.getString("bottom_crop")), OMC.TEMPMATRIX, true));
-//			ThreeByOne.setImageBitmap(Bitmap.createBitmap(bmpRender, 0, Integer.parseInt(ThreeByOneStretch.getString("top_crop")), OMC.BUFFER.getWidth(), OMC.BUFFER.getHeight() - Integer.parseInt(ThreeByOneStretch.getString("top_crop")) - Integer.parseInt(ThreeByOneStretch.getString("bottom_crop")), OMC.TEMPMATRIX, true));
 
 		}
 

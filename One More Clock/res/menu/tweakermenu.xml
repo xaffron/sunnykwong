@@ -5,5 +5,5 @@
 <item android:id="@+id/tweakmenupickColor1" android:title="Color 1" android:icon="@android:drawable/ic_menu_edit"></item><item android:id="@+id/tweakmenupickColor2" android:title="Color 2" android:icon="@android:drawable/ic_menu_edit"></item></group>
 
 
-<item android:id="@+id/tweakmenurevert" android:title="Revert Changes" android:icon="@android:drawable/ic_menu_revert"></item><item android:id="@+id/tweakmenuapply" android:title="Apply Changes" android:icon="@android:drawable/ic_menu_agenda"></item>
+
 </menu> 

@@ -12,9 +12,12 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.location.LocationListener;
@@ -23,6 +26,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -37,10 +41,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.view.View.OnTouchListener;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnClickListener;
 import android.widget.AbsoluteLayout;
+import android.graphics.Rect;
 
 
-public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedListener, OnTouchListener {
+public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedListener, OnTouchListener, OnLongClickListener {
 
 	public Handler mHandler;
 	public static TextView TEXT;
@@ -58,7 +65,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 	public static char[] THEMECREDITS;
 	public static String CURRSELECTEDTHEME, RAWCONTROLFILE;
 
-	public ImageView FourByTwo, FourByOne, ThreeByOne, vPreview, vDrag;
+	public ImageView FourByTwo, FourByOne, ThreeByOne, vPreview, vDrag, vBounds;
 	public Bitmap bmpRender,bmpDrag;
 	
 	public static int REFRESHINTERVAL;
@@ -68,9 +75,10 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 	public int aWI;
 	public int iXDown, iYDown;
 	public int iRectWidth, iRectHeight;
-	public float fXDown, fYDown, fXMove, fYMove;
+	public float fXDown=-1f, fYDown, fXMove, fYMove;
 
 	public JSONObject oTheme, baseTheme, oActiveLayer;
+	public int iActivepos;
 	public String sTheme;
 	public String sActiveLayer;
 	public AbsoluteLayout toplevel;
@@ -147,9 +155,78 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         vPreview = (ImageView)findViewById(getResources().getIdentifier("tweakerpreview", "id", OMC.PKGNAME));
         vPreview.setImageBitmap(OMCWidgetDrawEngine.drawBitmapForWidget(this, -1));
         vDrag = (ImageView)findViewById(getResources().getIdentifier("tweakerdragpreview", "id", OMC.PKGNAME));
-        vPreview.setOnTouchListener(this);
+        vBounds = (ImageView)findViewById(getResources().getIdentifier("tweakerbounds", "id", OMC.PKGNAME));
+        
+        Rect BoundingBox ;
+        try {
+        	JSONObject box = oTheme.getJSONObject("customscaling").getJSONObject("4x2");
+        	BoundingBox = new Rect(box.getInt("left_crop"),box.getInt("top_crop"),
+        			OMC.WIDGETWIDTH-box.getInt("right_crop"),
+        			OMC.WIDGETHEIGHT-box.getInt("bottom_crop"));
+        } catch (JSONException e) {
+        	BoundingBox = new Rect(0,0,480,320);
+        }
+        Bitmap tempBmp = Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
+        Canvas tempCvas = new Canvas(tempBmp);
+        Paint tempPaint = new Paint();
+        tempPaint.reset();
+        tempPaint.setColor(Color.GREEN);
+        
+        tempCvas.drawRect(BoundingBox, tempPaint);
+        vBounds.setImageBitmap(tempBmp);
+        vBounds.invalidate();
+        
+        vPreview.setOnLongClickListener(this);
+        vPreview.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				OMCThemeTweakerActivity.this.openOptionsMenu();
+			}
+		});
+        
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    	
+    	if (keyCode == android.view.KeyEvent.KEYCODE_BACK) {
+    		mAD = new AlertDialog.Builder(this)
+    				.setTitle("Keep Changes?")
+    				.setPositiveButton("Apply", new DialogInterface.OnClickListener() {	
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+				    		bApply=true;
+				    		// If it's already a tweak, just overwrite the control file
+				        	if (sTheme.endsWith("Tweak")) {
+				        		OMC.themeToFile(oTheme, new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"/00control.json"));
+				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"/000preview.jpg"));
+				        	} else {
+				        		// Otherwise, create a copy of the theme	
+				        		OMC.copyDirectory(new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme), new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"Tweak"));
+				        		OMC.PREFS.edit().putString("widgetTheme"+aWI, sTheme+"Tweak")
+				        				.putString("widgetTheme", sTheme+"Tweak")
+				        				.commit();
+				        		OMC.themeToFile(oTheme, new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"Tweak/00control.json"));
+				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"Tweak/000preview.jpg"));
+				        	}
+				        	finish();
+						}
+    				})
+    				.setNegativeButton("Abandon", new DialogInterface.OnClickListener() {	
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+				    		oTheme = null;
+				    		finish();
+						}
+    				})
+    				.show();
+    		return true;
+    	}
+
+    	return super.onKeyDown(keyCode, event);
+    }
+    
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(getResources().getIdentifier("tweakermenu", "menu", OMC.PKGNAME), menu);
@@ -164,8 +241,9 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos,
     		long id) {
+    	iActivepos = pos;
     	sActiveLayer = parent.getItemAtPosition(pos).toString();
-    	oActiveLayer = oTheme.optJSONArray("layers_bottomtotop").optJSONObject(pos);
+    	oActiveLayer = oTheme.optJSONArray("layers_bottomtotop").optJSONObject(iActivepos);
     	System.out.println(oActiveLayer.optString("name"));
     	refreshViews();
     }
@@ -238,56 +316,49 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 			}, initialColor);
     		cpd.show();
     	}
-    	if (item.getItemId()==getResources().getIdentifier("tweakmenurevert", "id", OMC.PKGNAME)) {
-    		oTheme = null;
-    		finish();
-    	}    	
-    	if (item.getItemId()==getResources().getIdentifier("tweakmenuapply", "id", OMC.PKGNAME)) {
-    		bApply=true;
-    		// If it's already a tweak, just overwrite the control file
-        	if (sTheme.endsWith("Tweak")) {
-        		OMC.themeToFile(oTheme, new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"/00control.json"));
-        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(this, -1), new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"/000preview.jpg"));
-        	} else {
-        		// Otherwise, create a copy of the theme	
-        		OMC.copyDirectory(new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme), new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"Tweak"));
-        		OMC.PREFS.edit().putString("widgetTheme"+aWI, sTheme+"Tweak")
-        				.putString("widgetTheme", sTheme+"Tweak")
-        				.commit();
-        		OMC.themeToFile(oTheme, new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"Tweak/00control.json"));
-        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(this, -1), new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"Tweak/000preview.jpg"));
-        	}
-    		OMC.purgeBitmapCache();
-    		OMC.purgeTypefaceCache();
-    		OMC.purgeImportCache();
-    		OMC.THEMEMAP.clear();
-    		finish();
-    		
-    	}    	
 		return true;
 	}
-    
+
+    @Override
+	public boolean onLongClick(View v){
+    	if (v != vPreview) return false;
+    	vPreview.setOnTouchListener(this);
+		return true;
+	}
+	
     @Override
 	@SuppressWarnings("deprecation")
     public boolean onTouch(View v, MotionEvent event) {
     	System.out.println("ONTOUCH");
     	if (v != vPreview) return false;
     	if (event.getAction()==MotionEvent.ACTION_DOWN) {
-    		fXDown = event.getX();
-    		fYDown = event.getY();
-    		if (oActiveLayer.optString("type").equals("panel")) {
-        		iXDown = oActiveLayer.optInt("left");
-        		iYDown = oActiveLayer.optInt("top");
-			} else {
-	    		iXDown = oActiveLayer.optInt("x");
-	    		iYDown = oActiveLayer.optInt("y");
-			}
-    		iRectWidth = oActiveLayer.optInt("right")-oActiveLayer.optInt("left");
-    		iRectHeight = oActiveLayer.optInt("bottom")-oActiveLayer.optInt("top");
-    		
-    		vDrag.setImageBitmap(OMCWidgetDrawEngine.drawLayerForWidget(this, aWI, oActiveLayer.optString("name")));
+    		// Not longer setting initial drag vals here because we want longclick.
     	}
     	if (event.getAction()==MotionEvent.ACTION_MOVE) {
+    		if (fXDown==-1f) {
+        		fXDown = event.getX();
+        		fYDown = event.getY();
+        		try {
+        			final JSONObject tempTheme = OMC.renderThemeObject(oTheme, -1);
+            		final JSONObject tempActiveLayer = tempTheme.optJSONArray("layers_bottomtotop").optJSONObject(iActivepos);
+
+            		if (tempActiveLayer.optString("type").equals("panel")) {
+                		iXDown = tempActiveLayer.optInt("left");
+                		iYDown = tempActiveLayer.optInt("top");
+        			} else {
+        	    		iXDown = tempActiveLayer.optInt("x");
+        	    		iYDown = tempActiveLayer.optInt("y");
+        			}
+            		iRectWidth = tempActiveLayer.optInt("right")-tempActiveLayer.optInt("left");
+            		iRectHeight = tempActiveLayer.optInt("bottom")-tempActiveLayer.optInt("top");
+            		
+            		vDrag.setImageBitmap(OMCWidgetDrawEngine.drawLayerForWidget(this, aWI, tempTheme, tempActiveLayer.optString("name")));
+        			
+        		} catch (JSONException e ) {
+        			e.printStackTrace();
+        		}
+        		
+    		}
     		fXMove = event.getX();
     		fYMove = event.getY();
     		float fScaleFactor = (float)vPreview.getMeasuredWidth()/OMC.WIDGETWIDTH;
@@ -312,6 +383,8 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     		vDrag.setImageResource(R.drawable.transparent);
     		refreshDrag();
     		refreshViews();
+    		vPreview.setOnTouchListener(null);
+    		fXDown=-1f;
     	}
     	return true;
     }
