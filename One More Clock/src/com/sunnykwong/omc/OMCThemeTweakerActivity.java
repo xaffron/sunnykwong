@@ -18,6 +18,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.Style;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.location.LocationListener;
@@ -152,30 +153,9 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         spinnerLayers = (Spinner)findViewById(getResources().getIdentifier("tweakerlayerspinner", "id", OMC.PKGNAME));
         spinnerLayers.setAdapter(aa);
         spinnerLayers.setOnItemSelectedListener(this);
+
         vPreview = (ImageView)findViewById(getResources().getIdentifier("tweakerpreview", "id", OMC.PKGNAME));
         vPreview.setImageBitmap(OMCWidgetDrawEngine.drawBitmapForWidget(this, -1));
-        vDrag = (ImageView)findViewById(getResources().getIdentifier("tweakerdragpreview", "id", OMC.PKGNAME));
-        vBounds = (ImageView)findViewById(getResources().getIdentifier("tweakerbounds", "id", OMC.PKGNAME));
-        
-        Rect BoundingBox ;
-        try {
-        	JSONObject box = oTheme.getJSONObject("customscaling").getJSONObject("4x2");
-        	BoundingBox = new Rect(box.getInt("left_crop"),box.getInt("top_crop"),
-        			OMC.WIDGETWIDTH-box.getInt("right_crop"),
-        			OMC.WIDGETHEIGHT-box.getInt("bottom_crop"));
-        } catch (JSONException e) {
-        	BoundingBox = new Rect(0,0,480,320);
-        }
-        Bitmap tempBmp = Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
-        Canvas tempCvas = new Canvas(tempBmp);
-        Paint tempPaint = new Paint();
-        tempPaint.reset();
-        tempPaint.setColor(Color.GREEN);
-        
-        tempCvas.drawRect(BoundingBox, tempPaint);
-        vBounds.setImageBitmap(tempBmp);
-        vBounds.invalidate();
-        
         vPreview.setOnLongClickListener(this);
         vPreview.setOnClickListener(new View.OnClickListener() {
 			
@@ -184,6 +164,30 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				OMCThemeTweakerActivity.this.openOptionsMenu();
 			}
 		});
+        vPreview.invalidate();
+
+        vBounds = (ImageView)findViewById(getResources().getIdentifier("tweakerbounds", "id", OMC.PKGNAME));
+        
+        Rect BoundingBox ;
+        try {
+        	JSONObject box = oTheme.getJSONObject("customscaling").getJSONObject("4x2");
+        	BoundingBox = new Rect(box.getInt("left_crop"),box.getInt("top_crop"),
+        			OMC.WIDGETWIDTH-box.getInt("right_crop")-1,
+        			OMC.WIDGETHEIGHT-box.getInt("bottom_crop")-1);
+        } catch (JSONException e) {
+        	BoundingBox = new Rect(0,0,480,320);
+        }
+        Bitmap tempBmp = Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
+        Canvas tempCvas = new Canvas(tempBmp);
+        Paint tempPaint = new Paint();
+        tempPaint.setStyle(Style.STROKE);
+        tempPaint.setColor(Color.GREEN);
+        
+        tempCvas.drawRect(BoundingBox, tempPaint);
+        vBounds.setImageBitmap(tempBmp);
+        vBounds.invalidate();
+        
+        vDrag = (ImageView)findViewById(getResources().getIdentifier("tweakerdragpreview", "id", OMC.PKGNAME));
         
     }
 
@@ -329,7 +333,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     @Override
 	@SuppressWarnings("deprecation")
     public boolean onTouch(View v, MotionEvent event) {
-    	System.out.println("ONTOUCH");
     	if (v != vPreview) return false;
     	if (event.getAction()==MotionEvent.ACTION_DOWN) {
     		// Not longer setting initial drag vals here because we want longclick.
@@ -419,7 +422,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     
     public void refreshViews() {
 		vPreview.setImageBitmap(OMCWidgetDrawEngine.drawBitmapForWidget(this, -1));
-		
 		System.out.println("redraw");
 		vPreview.invalidate();
     }

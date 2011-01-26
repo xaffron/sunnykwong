@@ -51,8 +51,6 @@ public class ClockWidget3x1 extends AppWidgetProvider {
 		}
 		else {
 			// Set time for output
-	        OMC.TIME.setToNow();				        					
-
 	        OMCWidgetDrawEngine.updateAppWidget(context, OMC.WIDGET3x1CNAME);
 
 			super.onReceive(context, intent);

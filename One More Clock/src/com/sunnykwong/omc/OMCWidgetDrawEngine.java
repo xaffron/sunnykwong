@@ -35,6 +35,8 @@ public class OMCWidgetDrawEngine {
 	// Needs to be synchronized now that we have four different widget types 
 	// calling this same method creating a potential race condition
 	static synchronized void updateAppWidget(Context context, ComponentName cName) {
+        OMC.TIME.setToNow();				        					
+
 		if (!OMCService.RUNNING) {
 			OMC.setServiceAlarm(System.currentTimeMillis() + 10000);
 		}
@@ -156,7 +158,7 @@ public class OMCWidgetDrawEngine {
 				OMC.STRETCHINFO.optInt("left_crop"), 
 				OMC.STRETCHINFO.optInt("top_crop"), 
 				width, height,
-				tempMatrix, true).copy(Bitmap.Config.ARGB_4444, false);
+				tempMatrix, true).copy(Bitmap.Config.ARGB_8888, false);
 
 		bitmap.recycle();
 
@@ -275,7 +277,7 @@ public class OMCWidgetDrawEngine {
 	}
 	
 	static Bitmap drawBitmapForWidget(final Context context, final int aWI) {
-		final Bitmap resultBitmap = Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
+		final Bitmap resultBitmap = Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_8888);
 		final Canvas resultCanvas = new Canvas(resultBitmap);
 		resultCanvas.setDensity(DisplayMetrics.DENSITY_HIGH);
 
@@ -330,7 +332,7 @@ public class OMCWidgetDrawEngine {
 	}
 
 	static Bitmap drawLayerForWidget(final Context context, final int aWI, final JSONObject oTheme, final String sLayer) {
-		final Bitmap resultBitmap = Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
+		final Bitmap resultBitmap = Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_8888);
 		final Canvas resultCanvas = new Canvas(resultBitmap);
 		resultCanvas.setDensity(DisplayMetrics.DENSITY_HIGH);
 
@@ -681,7 +683,7 @@ public class OMCWidgetDrawEngine {
 		int bufferWidth = Math.max(OMCWidgetDrawEngine.getSpannedStringWidth(ss, pt),1);
 		int bufferHeight = Math.max(pt.getFontMetricsInt().bottom - pt.getFontMetricsInt().top,1);
 		int iCursor = 0;
-		final Bitmap rotBUFFER = Bitmap.createBitmap((int)(bufferWidth*1.2f), bufferHeight, Bitmap.Config.ARGB_4444);
+		final Bitmap rotBUFFER = Bitmap.createBitmap((int)(bufferWidth*1.2f), bufferHeight, Bitmap.Config.ARGB_8888);
 		rotBUFFER.setDensity(DisplayMetrics.DENSITY_HIGH);
 		rotBUFFER.eraseColor(Color.TRANSPARENT);
 
