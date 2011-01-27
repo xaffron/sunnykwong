@@ -140,6 +140,16 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         		((PreferenceCategory)findPreference("allClocks")).removePreference(prefdownloadStarterPack);
         		((PreferenceScreen)findPreference("widgetPrefs")).removePreference(prefbSkinner);
         	}
+    		
+    		if (OMC.FREEEDITION) {
+        		findPreference("bFourByOne").setEnabled(false);
+        		findPreference("bFourByOne").setSelectable(false);
+        		findPreference("bThreeByOne").setEnabled(false);
+        		findPreference("bThreeByOne").setSelectable(false);
+        		findPreference("bTwoByOne").setEnabled(false);
+        		findPreference("bTwoByOne").setSelectable(false);
+    		}
+    		
         	
         } else {
             // If they gave us an intent without the widget id, just bail.
