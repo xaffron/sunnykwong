@@ -383,7 +383,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 			mHandler.post(mDrag);
     	}
     	if (event.getAction()==MotionEvent.ACTION_UP) {
-    		vDrag.setImageResource(R.drawable.transparent);
+    		vDrag.setImageResource(getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME));
     		refreshDrag();
     		refreshViews();
     		vPreview.setOnTouchListener(null);
