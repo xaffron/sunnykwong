@@ -314,9 +314,9 @@ invalidate();
                                                     LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(10, 0, 10, 5);
 
-        TextView tv = new TextView(mContext);
-        tv.setText("Tap Center to Set");
-        layout.addView(tv, layoutParams);
+//        TextView tv = new TextView(mContext);
+//        tv.setText("Tap Center to Set");
+//        layout.addView(tv, layoutParams);
 
         mColorPickerView = new ColorPickerView(getContext(), onColorChangedListener, mInitialColor);
         layout.addView(mColorPickerView, layoutParams);
@@ -334,7 +334,7 @@ layout.addView(mTransparencyBar, layoutParams);
         layout.addView(mEditText, layoutParams);
 
         setContentView(layout);
-        setTitle("Select a New Color");
+        setTitle("Tap Center to Pick Color");
     }
 
     private OnColorChangedListener onColorChangedListener = new OnColorChangedListener() {
