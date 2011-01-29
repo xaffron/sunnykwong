@@ -30,7 +30,7 @@ public class OMCThemeUnzipActivity extends Activity {
 
 	public Handler mHandler;
 	static Dialog pdWait;
-	static String pdMessage="";
+	static String pdTitleMessage="",pdMessage="";
 	static String pdPreview;
 	public Uri uri;
 	public File omcRoot,outputFile;
@@ -64,7 +64,7 @@ public class OMCThemeUnzipActivity extends Activity {
 
 	final Runnable mUpdateTitle = new Runnable() {
 		public void run() {
-			pdWait.setTitle(pdMessage);
+			pdWait.setTitle(pdTitleMessage);
 		}
 	};
 
@@ -173,7 +173,7 @@ public class OMCThemeUnzipActivity extends Activity {
 	            				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","Looping - now " + ze.getName());
 	        					outputFile = new File(omcRoot.getAbsolutePath()+"/"+ze.getName());
 	        					if (ze.isDirectory()) {
-	                				pdMessage = "Importing: " + ze.getName();
+	                				pdTitleMessage = ze.getName();
 	                				mHandler.post(mUpdateTitle);
 	        						if (outputFile.exists()) {
 	        							pdMessage = ze.getName() + " exists; overwriting";
@@ -202,7 +202,7 @@ public class OMCThemeUnzipActivity extends Activity {
 	        						    fos.flush();
 	        						    fos.close();
 	        						} catch (java.io.IOException e) {
-	        	        				pdMessage = "Download Interrupted!";
+	        	        				pdTitleMessage = "Download Interrupted!";
 	                    				mHandler.post(mUpdateTitle);
 	        	        				try {Thread.sleep(500);}
 	        	        				catch (Exception ee) {ee.printStackTrace();}
@@ -223,7 +223,7 @@ public class OMCThemeUnzipActivity extends Activity {
 	        					
 	        				}
 	        				zis.close();
-							pdMessage = "Import complete!";
+							pdTitleMessage = "Import complete!";
             				mHandler.post(mUpdateTitle);
 	        				try {Thread.sleep(3000);}
 	        				catch (Exception ee) {ee.printStackTrace();}
@@ -231,7 +231,7 @@ public class OMCThemeUnzipActivity extends Activity {
 	        				mHandler.post(mResult);
 	        				
 	        			} catch (java.net.SocketException e) {
-	        				pdMessage = "Connection timed out!";
+	        				pdTitleMessage = "Connection timed out!";
             				mHandler.post(mUpdateTitle);
 	        				try {Thread.sleep(500);}
 	        				catch (Exception ee) {ee.printStackTrace();}
@@ -241,7 +241,7 @@ public class OMCThemeUnzipActivity extends Activity {
 	        				catch (Exception ee) {ee.printStackTrace();}
 	        				mHandler.post(mResult);
 	        			} catch (java.net.UnknownHostException e) {
-	        				pdMessage = "Server not found!";
+	        				pdTitleMessage = "Server not found!";
             				mHandler.post(mUpdateTitle);
 	        				try {Thread.sleep(500);}
 	        				catch (Exception ee) {ee.printStackTrace();}
