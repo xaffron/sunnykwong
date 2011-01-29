@@ -276,7 +276,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     	public ArrayList<String> mThemes = new ArrayList<String>();
     	public HashMap<String, String> mCreds = new HashMap<String, String>();
     	public HashMap<String, String> mNames = new HashMap<String, String>();
-    	
+    	public HashMap<String, Boolean> mTweaked = new HashMap<String, Boolean>();
     	
 
         public ThemePickerAdapter() {
@@ -312,6 +312,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 				JSONObject oResult = new JSONObject(sb.toString());
 				sb.setLength(0);
     			mNames.put(sTheme,oResult.optString("name"));
+    			mTweaked.put(sTheme, oResult.optBoolean("tweaked"));
     			mCreds.put(sTheme,"Author: " + oResult.optString("author") + "  (" +oResult.optString("date")+ ")\n" + oResult.optString("credits"));
     			oResult = null;
     			
@@ -331,6 +332,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	mThemes.remove(pos);
         	//mBitmaps.remove(sTheme);
         	mCreds.remove(sTheme);
+        	mTweaked.remove(sTheme);
         	File f = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme);
         	OMC.removeDirectory(f);
         	OMC.purgeBitmapCache();
@@ -362,6 +364,9 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         public View getView(int position, View convertView, ViewGroup parent) {
         	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("themepickerpreview", "layout", OMC.PKGNAME), null);
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
+        	if (mTweaked.get(position)) {
+        		((TextView)ll.findViewById(getResources().getIdentifier("ThemeTweakedFlag", "id", OMC.PKGNAME))).setText("(Tweaked)");
+        	}
     		((ImageView)ll.findViewById(getResources().getIdentifier("ThemePreview", "id", OMC.PKGNAME)))
     				.setImageBitmap(BitmapFactory.decodeFile(
     				OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + mThemes.get(position) +"/000preview.jpg"));
@@ -373,6 +378,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	mThemes.clear();
         	mCreds.clear();
         	mNames.clear();
+        	mTweaked.clear();
         	System.gc();
         }
     

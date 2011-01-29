@@ -130,6 +130,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         	} else {
 	        	// Otherwise, edit a tweaked theme to preserve "stock"
 	        	oTheme.put("id", baseTheme.getString("id") + "Tweak");
+	        	oTheme.put("tweaked", true);
 	        	oTheme.put("name", baseTheme.getString("name") + "(Tweaked)");
         	}
         	OMC.THEMEMAP.put(sTheme,oTheme);

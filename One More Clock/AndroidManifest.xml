@@ -141,4 +141,5 @@
     		</intent-filter>  
 		</receiver>
      </application>
+<supports-screens android:anyDensity="true" android:largeScreens="true" android:smallScreens="true" android:normalScreens="true"></supports-screens>
 </manifest> 

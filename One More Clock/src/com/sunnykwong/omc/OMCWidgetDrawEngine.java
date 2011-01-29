@@ -267,9 +267,9 @@ public class OMCWidgetDrawEngine {
         	
         	if (OMC.PREFS.getBoolean("newbie" + appWidgetId, true)) {
         		if (OMC.DEBUG)Log.i(OMC.OMCSHORT+"Engine","Adding newbie ribbon to widget "+ appWidgetId + ".");
-        		rv.setInt(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), "setBackgroundResource", context.getResources().getIdentifier("tapme", "drawable", OMC.PKGNAME));
+        		rv.setImageViewResource(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), context.getResources().getIdentifier("tapme", "drawable", OMC.PKGNAME));
         	} else {
-        		rv.setInt(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), "setBackgroundResource", context.getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME));
+        		rv.setImageViewResource(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), context.getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME));
         	}
         
     		appWidgetManager.updateAppWidget(appWidgetId, rv);

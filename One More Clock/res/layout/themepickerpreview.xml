@@ -5,10 +5,13 @@
 	<TextView android:adjustViewBounds="true"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:id="@+id/ThemeName" android:text="&lt;Theme Name&gt;"
-		android:maxWidth="280dp" android:minWidth="280dp"
-		android:minHeight="60dp" android:maxHeight="60dp"
 		android:textSize="30dp" android:shadowRadius="2"
 		android:shadowDy="1" android:shadowDx="1" android:shadowColor="#ff888888"
+		android:textColor="#ffffffff" android:layout_gravity="center" />
+	<TextView android:adjustViewBounds="true"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:id="@+id/ThemeTweakedFlag" android:text="(Tweaked)"
+		android:textSize="16dp"		
 		android:textColor="#ffffffff" android:layout_gravity="center" />
 	<ImageView android:adjustViewBounds="true"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
