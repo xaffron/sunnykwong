@@ -646,7 +646,7 @@ public class OMC extends Application {
 
         File sdRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes");
         if (!sdRoot.exists()) {
-//        	Toast.makeText(this, "OMC folder not found in your SD Card.\nCreating folder...", Toast.LENGTH_LONG).show();
+//        	Toast.makeText(this, "OMCThemes folder not found in your SD Card.\nCreating folder...", Toast.LENGTH_LONG).show();
         	sdRoot.mkdir();
         }
 		if (!sdRoot.canRead()) {
