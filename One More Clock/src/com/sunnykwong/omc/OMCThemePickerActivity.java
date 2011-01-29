@@ -58,6 +58,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+    	if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"ThemePicker","OnCreate");
         getWindow().setWindowAnimations(android.R.style.Animation_Toast);
 
         sDefaultTheme = getIntent().getStringExtra("default");
@@ -189,14 +190,14 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
         OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath()+"/OMCThemes");
         if (!OMCThemePickerActivity.THEMEROOT.exists()) {
-        	Toast.makeText(this, "Downloading starter clock pack...", Toast.LENGTH_LONG).show();
+        	Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
         	OMCThemePickerActivity.THEMEROOT.mkdir();
 
 			startActivity(OMC.GETSTARTERPACKINTENT);
 			
 			finish();
         } else if (OMCThemePickerActivity.THEMEROOT.listFiles().length == 0) {
-	        	Toast.makeText(this, "Downloading starter clock pack...", Toast.LENGTH_LONG).show();
+	        	Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
 	        	OMCThemePickerActivity.THEMEROOT.mkdir();
 
 				startActivity(OMC.GETSTARTERPACKINTENT);
@@ -206,8 +207,8 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
         	mAD = new AlertDialog.Builder(this)
 			.setCancelable(true)
-			.setTitle("Updated Starter Clock Pack")
-			.setMessage("Any theme customizations you have made in your sdcard's OMC folder will be overwriten.  Are you sure?\n(If not sure, tap Yes)")
+			.setTitle("Starter Clock Pack")
+			.setMessage("Files in your sdcard's OMCThemes folder will be overwritten.  Are you sure?\n(If not sure, tap Yes)")
 			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 				
 				@Override
@@ -239,8 +240,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	OMCThemePickerActivity.THEMEARRAY.dispose();
             gallery.requestLayout();
         }
-
-//        OMCThemePickerActivity.THEMES =  new HashMap<String, File>();
 
         for (File f:OMCThemePickerActivity.THEMEROOT.listFiles()) {
         	if (!f.isDirectory()) continue;
