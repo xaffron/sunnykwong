@@ -96,6 +96,7 @@ public class OMC extends Application {
     static HashMap<String, Typeface> TYPEFACEMAP;
     static HashMap<String, Bitmap> BMPMAP;
     static Map<String, JSONObject> THEMEMAP;
+    static HashMap<Integer, Bitmap> LOWQUALWIDGETMAP;
 	
     static OMCConfigReceiver cRC;
 	static OMCAlarmReceiver aRC;
@@ -201,15 +202,18 @@ public class OMC extends Application {
 		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
 		
 		// If we're from a legacy version, then we need to wipe all settings clean to avoid issues.
-		if (OMC.PREFS.getString("version", "1.0.x").startsWith("1.0")) {
+		if (OMC.PREFS.getString("version", "1.0.x").startsWith("1.0") || OMC.PREFS.getString("version", "1.0.x").startsWith("1.1")) {
 			Log.i(OMC.OMCSHORT + "App","Upgrade from legacy version, wiping all settings.");
 			OMC.PREFS.edit().clear().commit();
+			OMC.SHOWHELP=true;
 		}
 		if (OMC.PREFS.getString("version", "1.0.x").equals(OMC.THISVERSION)) {
 			OMC.STARTERPACKDLED = OMC.PREFS.getBoolean("starterpack", false);
+			OMC.SHOWHELP=OMC.PREFS.getBoolean("showhelp", true);
 		} else {
 			OMC.PREFS.edit().putBoolean("starterpack", false).commit();
 			OMC.STARTERPACKDLED = false;
+			OMC.SHOWHELP=true;
 		}
 		OMC.PREFS.edit().putString("version", OMC.THISVERSION).commit();
 		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
@@ -221,10 +225,8 @@ public class OMC extends Application {
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(6);
 		OMC.BMPMAP = new HashMap<String, Bitmap>(3);
 		OMC.THEMEMAP=Collections.synchronizedMap(new HashMap<String, JSONObject>(3));
-
-//		OMC.LAYERLIST = null;
-//
-//		OMC.TALKBACKS = null;
+		OMC.LOWQUALWIDGETMAP = new HashMap<Integer, Bitmap>(1);
+		
 		OMC.STRETCHINFO = null;
 		
 		OMC.OVERLAYURIS = null;
@@ -367,7 +369,7 @@ public class OMC extends Application {
 		}
 		//Look in sd card;
 		if (OMC.checkSDPresent()) {
-			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/"+sTheme+"/"+src);
+			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/"+sTheme+"/"+src);
 			if (f.exists()) {
 				copyFile(f.getAbsolutePath(),OMC.CACHEPATH +"/"+sTheme+f.getName());
 				OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(f));
@@ -389,7 +391,7 @@ public class OMC extends Application {
 		}
 		// Look in SD path
 		if (OMC.checkSDPresent()) {
-			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/"+sTheme+"/"+src);
+			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/"+sTheme+"/"+src);
 			if (f.exists()) {
 				copyFile(f.getAbsolutePath(),OMC.CACHEPATH +"/"+sTheme+f.getName());
 				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(f.getAbsolutePath()));
@@ -452,7 +454,7 @@ public class OMC extends Application {
 		}
 		// Look in SD path
 		if (OMC.checkSDPresent()) {
-			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/"+nm);
+			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/"+nm);
 			if (f.exists() && f.isDirectory()) {
 				for (File ff:f.listFiles()) {
 					copyFile(ff.getAbsolutePath(),OMC.CACHEPATH + nm + ff.getName());
@@ -496,7 +498,7 @@ public class OMC extends Application {
 	public static void bmpToJPEG(Bitmap bmp, File tgt) {
 		try {
 		       FileOutputStream out = new FileOutputStream(tgt);
-		       Bitmap.createScaledBitmap(Bitmap.createBitmap(bmp,0,0,480,300),320,200,true).compress(Bitmap.CompressFormat.JPEG, 50, out);
+		       Bitmap.createScaledBitmap(Bitmap.createBitmap(bmp,0,0,480,300),320,200,true).compress(Bitmap.CompressFormat.JPEG, 85, out);
 		       out.close();
 		} catch (Exception e) {
 		       e.printStackTrace();
@@ -602,14 +604,15 @@ public class OMC extends Application {
 	}
 	
 	public static void setupDefaultTheme() {
-		//if (new File(OMC.CACHEPATH + "LockscreenLook00control.json").exists()) return;
+		if (new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/LockscreenLook/00control.json").exists()) return;
 		copyAssetToCache("000preview.jpg", "LockscreenLook");
 		copyAssetToCache("00control.json", "LockscreenLook");
 		copyAssetToCache("Clockopia.ttf", "LockscreenLook");
-		(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook")).mkdirs();
-		copyFile(OMC.CACHEPATH + "LockscreenLook00control.json", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/00control.json");
-		copyFile(OMC.CACHEPATH + "LockscreenLook000preview.jpg", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/000preview.jpg");
-		copyFile(OMC.CACHEPATH + "LockscreenLookClockopia.ttf", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC/LockscreenLook/Clockopia.ttf");
+		(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/LockscreenLook")).mkdirs();
+		copyFile(OMC.CACHEPATH + "LockscreenLook00control.json", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/LockscreenLook/00control.json");
+		copyFile(OMC.CACHEPATH + "LockscreenLook000preview.jpg", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/LockscreenLook/000preview.jpg");
+		copyFile(OMC.CACHEPATH + "LockscreenLookClockopia.ttf", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/LockscreenLook/Clockopia.ttf");
+		if (new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/HoneycombLook/00control.json").exists()) return;
 	}
 	
 	public static boolean validateTheme(JSONObject theme) {	
@@ -641,7 +644,7 @@ public class OMC extends Application {
 			return false;
         }
 
-        File sdRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMC");
+        File sdRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes");
         if (!sdRoot.exists()) {
 //        	Toast.makeText(this, "OMC folder not found in your SD Card.\nCreating folder...", Toast.LENGTH_LONG).show();
         	sdRoot.mkdir();

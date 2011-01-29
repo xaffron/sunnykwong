@@ -51,16 +51,22 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Scrn off - not refreshing");
 		}
 		
-		// Prevent abusive updates - update no more than every 1 secs.
-		if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 1000) {
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Abusive; aborting update " + System.currentTimeMillis() + " " + OMC.LASTUPDATEMILLIS);
-			return;
-		}
-		OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
 		
+		// If the screen is on, honor the update frequency.
 		if (OMC.SCREENON) {
+			// Prevent abusive updates - update no more than every 1 secs.
+			if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 1000) {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Abusive; aborting update " + System.currentTimeMillis() + " " + OMC.LASTUPDATEMILLIS);
+				return;
+			}
+			OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
+			context.startService(OMC.SVCSTARTINTENT);
+		// If the screen is off, update bare minimum to mimic foreground mode.
+		} else if (action.equals(Intent.ACTION_TIME_TICK)) {
+			OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
 			context.startService(OMC.SVCSTARTINTENT);
 		} else {
+			OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","I think scrn is off... no refresh");
 		}
 	}

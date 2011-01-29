@@ -45,6 +45,15 @@ public class OMCWidgetDrawEngine {
 		final int N = aWM.getAppWidgetIds(cName)==null? 0: aWM.getAppWidgetIds(cName).length;
 
 		for (int i=0; i<N; i++) {
+			final Bitmap lqBitmap = OMC.LOWQUALWIDGETMAP.get(aWM.getAppWidgetIds(cName)[i]);
+			if (lqBitmap!=null && OMC.SCREENON) {
+				// Blit something lowqual over first
+				RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
+				final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
+				rv.setImageViewBitmap(iViewID,lqBitmap);
+				aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);
+			}
+			// Then do a high-res refresh
 			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i], cName);
 		}
 	}
@@ -146,29 +155,43 @@ public class OMCWidgetDrawEngine {
 		float vtStretch = (float)OMC.STRETCHINFO.optDouble("vertical_stretch");
 
 		Matrix tempMatrix = new Matrix();
-		tempMatrix.postScale(hzStretch, vtStretch);
-
+		//Use very low res if screen off
+		if (OMC.SCREENON) {
+			tempMatrix.postScale(hzStretch, vtStretch);
+		} else {
+			tempMatrix.postScale(hzStretch/2f, vtStretch/2f);
+		}
 		float rot = ((float)OMC.STRETCHINFO.optDouble("cw_rotate"));
 		int scaledHeight = (int)(height * vtStretch);
 		int scaledWidth = (int)(width * hzStretch); 
 
 		tempMatrix.postRotate(rot, scaledWidth/2f, scaledHeight/2f);
 
-		final Bitmap croppedScaledBmp = Bitmap.createBitmap(bitmap,
-				OMC.STRETCHINFO.optInt("left_crop"), 
-				OMC.STRETCHINFO.optInt("top_crop"), 
-				width, height,
-				tempMatrix, true).copy(Bitmap.Config.ARGB_8888, false);
+		final Bitmap croppedScaledBmp;
+		if (OMC.SCREENON) {
+			croppedScaledBmp = Bitmap.createBitmap(bitmap,
+					OMC.STRETCHINFO.optInt("left_crop"), 
+					OMC.STRETCHINFO.optInt("top_crop"), 
+					width, height,
+					tempMatrix, true).copy(Bitmap.Config.ARGB_8888, false);
+			bitmap.recycle();
+			scaledHeight = croppedScaledBmp.getHeight();
+			scaledWidth = croppedScaledBmp.getWidth(); 
+			
+			// Then scale back to a size smaller than the full buffer
+			float factor = Math.min(OMC.WIDGETWIDTH/(float)croppedScaledBmp.getWidth(),OMC.WIDGETHEIGHT/(float)croppedScaledBmp.getHeight());
+			tempMatrix.reset();
+			tempMatrix.postScale(factor, factor, croppedScaledBmp.getWidth()/2f, croppedScaledBmp.getHeight()/2f);
 
-		bitmap.recycle();
-
-		scaledHeight = croppedScaledBmp.getHeight();
-		scaledWidth = croppedScaledBmp.getWidth(); 
-		
-		// Then scale back to a size smaller than the full buffer
-		float factor = Math.min(OMC.WIDGETWIDTH/(float)croppedScaledBmp.getWidth(),OMC.WIDGETHEIGHT/(float)croppedScaledBmp.getHeight());
-		tempMatrix.reset();
-		tempMatrix.postScale(factor, factor, croppedScaledBmp.getWidth()/2f, croppedScaledBmp.getHeight()/2f);
+		} else {
+			croppedScaledBmp = Bitmap.createBitmap(bitmap,
+					OMC.STRETCHINFO.optInt("left_crop"), 
+					OMC.STRETCHINFO.optInt("top_crop"), 
+					width, height,
+					tempMatrix, true).copy(Bitmap.Config.ARGB_4444, false);
+			bitmap.recycle();
+			tempMatrix.reset();
+		}
 
 		final Bitmap finalBitmap = Bitmap.createBitmap(croppedScaledBmp,0,0,croppedScaledBmp.getWidth(), croppedScaledBmp.getHeight(),tempMatrix, true).copy(Bitmap.Config.ARGB_4444, false);
 
@@ -177,10 +200,14 @@ public class OMCWidgetDrawEngine {
 		final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
 		rv.setImageViewBitmap(iViewID,finalBitmap);
 		appWidgetManager.updateAppWidget(appWidgetId, rv);
-		
+
+		Bitmap oldBitmap = OMC.LOWQUALWIDGETMAP.get(appWidgetId);
+		if (oldBitmap!=null) {
+			if(!oldBitmap.isRecycled()) oldBitmap.recycle();
+		}
+		OMC.LOWQUALWIDGETMAP.put(appWidgetId, finalBitmap);
 		bitmap.recycle();
 		croppedScaledBmp.recycle();
-		finalBitmap.recycle();
 		
 		// Remoteviews bug - memory leak for large IPC load.  So we discard this get a new one.
 		rv = null;
@@ -277,7 +304,12 @@ public class OMCWidgetDrawEngine {
 	}
 	
 	static Bitmap drawBitmapForWidget(final Context context, final int aWI) {
-		final Bitmap resultBitmap = Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_8888);
+		final Bitmap resultBitmap;
+		if (OMC.SCREENON) {
+			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_8888);
+		} else {
+			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
+		}
 		final Canvas resultCanvas = new Canvas(resultBitmap);
 		resultCanvas.setDensity(DisplayMetrics.DENSITY_HIGH);
 
@@ -332,7 +364,12 @@ public class OMCWidgetDrawEngine {
 	}
 
 	static Bitmap drawLayerForWidget(final Context context, final int aWI, final JSONObject oTheme, final String sLayer) {
-		final Bitmap resultBitmap = Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_8888);
+		final Bitmap resultBitmap;
+		if (OMC.SCREENON) {
+			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_8888);
+		} else {
+			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
+		}
 		final Canvas resultCanvas = new Canvas(resultBitmap);
 		resultCanvas.setDensity(DisplayMetrics.DENSITY_HIGH);
 
@@ -683,7 +720,12 @@ public class OMCWidgetDrawEngine {
 		int bufferWidth = Math.max(OMCWidgetDrawEngine.getSpannedStringWidth(ss, pt),1);
 		int bufferHeight = Math.max(pt.getFontMetricsInt().bottom - pt.getFontMetricsInt().top,1);
 		int iCursor = 0;
-		final Bitmap rotBUFFER = Bitmap.createBitmap((int)(bufferWidth*1.2f), bufferHeight, Bitmap.Config.ARGB_8888);
+		final Bitmap rotBUFFER;
+		if (OMC.SCREENON) {
+			rotBUFFER = Bitmap.createBitmap((int)(bufferWidth*1.2f), bufferHeight, Bitmap.Config.ARGB_8888);
+		} else {
+			rotBUFFER = Bitmap.createBitmap((int)(bufferWidth*1.2f), bufferHeight, Bitmap.Config.ARGB_4444);
+		}
 		rotBUFFER.setDensity(DisplayMetrics.DENSITY_HIGH);
 		rotBUFFER.eraseColor(Color.TRANSPARENT);
 

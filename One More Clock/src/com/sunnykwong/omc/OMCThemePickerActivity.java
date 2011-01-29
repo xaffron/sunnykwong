@@ -156,7 +156,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 //										OMC.purgeBitmapCache();
 //										OMC.purgeTypefaceCache();
 //										OMC.purgeImportCache();
-//										OMC.removeDirectory(Environment.getExternalStorageDirectory()+"/OMC/"+)
+//										OMC.removeDirectory(Environment.getExternalStorageDirectory()+"/OMCThemes/"+)
 										OMCThemePickerActivity.this.sDefaultTheme=null;
 										OMCThemePickerActivity.THEMEARRAY.removeItem(gallery.getSelectedItemPosition());
 										OMCThemePickerActivity.this.refreshThemeList();
@@ -187,7 +187,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	return;
         }
 
-        OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath()+"/OMC");
+        OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath()+"/OMCThemes");
         if (!OMCThemePickerActivity.THEMEROOT.exists()) {
         	Toast.makeText(this, "Downloading starter clock pack...", Toast.LENGTH_LONG).show();
         	OMCThemePickerActivity.THEMEROOT.mkdir();
@@ -312,7 +312,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 				JSONObject oResult = new JSONObject(sb.toString());
 				sb.setLength(0);
     			mNames.put(sTheme,oResult.optString("name"));
-    			mTweaked.put(sTheme, oResult.optBoolean("tweaked"));
+    			mTweaked.put(sTheme, new Boolean(oResult.optBoolean("tweaked")));
     			mCreds.put(sTheme,"Author: " + oResult.optString("author") + "  (" +oResult.optString("date")+ ")\n" + oResult.optString("credits"));
     			oResult = null;
     			
@@ -364,8 +364,10 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         public View getView(int position, View convertView, ViewGroup parent) {
         	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("themepickerpreview", "layout", OMC.PKGNAME), null);
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
-        	if (mTweaked.get(position)) {
+        	if (mTweaked.get(mThemes.get(position)).booleanValue()) {
         		((TextView)ll.findViewById(getResources().getIdentifier("ThemeTweakedFlag", "id", OMC.PKGNAME))).setText("(Tweaked)");
+        	} else {
+        		((TextView)ll.findViewById(getResources().getIdentifier("ThemeTweakedFlag", "id", OMC.PKGNAME))).setText("");
         	}
     		((ImageView)ll.findViewById(getResources().getIdentifier("ThemePreview", "id", OMC.PKGNAME)))
     				.setImageBitmap(BitmapFactory.decodeFile(

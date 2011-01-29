@@ -131,7 +131,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 	        	// Otherwise, edit a tweaked theme to preserve "stock"
 	        	oTheme.put("id", baseTheme.getString("id") + "Tweak");
 	        	oTheme.put("tweaked", true);
-	        	oTheme.put("name", baseTheme.getString("name") + "(Tweaked)");
         	}
         	OMC.THEMEMAP.put(sTheme,oTheme);
         	
@@ -204,16 +203,16 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				    		bApply=true;
 				    		// If it's already a tweak, just overwrite the control file
 				        	if (sTheme.endsWith("Tweak")) {
-				        		OMC.themeToFile(oTheme, new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"/00control.json"));
-				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"/000preview.jpg"));
+				        		OMC.themeToFile(oTheme, new File(Environment.getExternalStorageDirectory()+"/OMCThemes/"+sTheme+"/00control.json"));
+				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(Environment.getExternalStorageDirectory()+"/OMCThemes/"+sTheme+"/000preview.jpg"));
 				        	} else {
 				        		// Otherwise, create a copy of the theme	
-				        		OMC.copyDirectory(new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme), new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"Tweak"));
+				        		OMC.copyDirectory(new File(Environment.getExternalStorageDirectory()+"/OMCThemes/"+sTheme), new File(Environment.getExternalStorageDirectory()+"/OMCThemes/"+sTheme+"Tweak"));
 				        		OMC.PREFS.edit().putString("widgetTheme"+aWI, sTheme+"Tweak")
 				        				.putString("widgetTheme", sTheme+"Tweak")
 				        				.commit();
-				        		OMC.themeToFile(oTheme, new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"Tweak/00control.json"));
-				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(Environment.getExternalStorageDirectory()+"/OMC/"+sTheme+"Tweak/000preview.jpg"));
+				        		OMC.themeToFile(oTheme, new File(Environment.getExternalStorageDirectory()+"/OMCThemes/"+sTheme+"Tweak/00control.json"));
+				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(Environment.getExternalStorageDirectory()+"/OMCThemes/"+sTheme+"Tweak/000preview.jpg"));
 				        	}
 				        	finish();
 						}
