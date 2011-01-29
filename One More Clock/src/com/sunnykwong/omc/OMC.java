@@ -225,7 +225,7 @@ public class OMC extends Application {
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(6);
 		OMC.BMPMAP = new HashMap<String, Bitmap>(3);
 		OMC.THEMEMAP=Collections.synchronizedMap(new HashMap<String, JSONObject>(3));
-		OMC.LOWQUALWIDGETMAP = new HashMap<Integer, Bitmap>(1);
+		OMC.LOWQUALWIDGETMAP = new HashMap<Integer, Bitmap>(10);
 		
 		OMC.STRETCHINFO = null;
 		
