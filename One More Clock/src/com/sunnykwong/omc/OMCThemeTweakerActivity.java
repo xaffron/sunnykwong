@@ -123,6 +123,11 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         try {
         	
         	baseTheme = OMC.getTheme(this, sTheme, true);
+        	if (baseTheme==null) {
+        		Toast.makeText(this, "Theme not found!  Reverting to default look.", Toast.LENGTH_LONG).show();
+        		OMC.PREFS.edit().putString("widgettheme"+aWI, OMC.DEFAULTTHEME).commit();
+        		finish();
+        	}
         	oTheme = new JSONObject(baseTheme.toString());
         	// If this is already a tweak, just edit the current theme
         	if (sTheme.endsWith("Tweak")) {

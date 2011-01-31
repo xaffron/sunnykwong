@@ -107,10 +107,30 @@
         		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
          		<category android:name="android.intent.category.DEFAULT" />
     		</intent-filter>  
+		</receiver> 
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget4x4" android:label="@string/widget_name4x4" android:enabled="true">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo4x4"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<category android:name="android.intent.category.DEFAULT" />  
+    		</intent-filter>  
 		</receiver>
 	    <receiver android:name="com.sunnykwong.omc.ClockWidget4x1" android:label="@string/widget_name4x1" android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo4x1"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<category android:name="android.intent.category.DEFAULT" />  
+    		</intent-filter>  
+		</receiver>
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget3x3" android:label="@string/widget_name3x3" android:enabled="true">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo3x3"/>
 			<intent-filter>  
         		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -128,9 +148,29 @@
         		<category android:name="android.intent.category.DEFAULT" />  
     		</intent-filter>  
 		</receiver>
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget2x2" android:label="@string/widget_name2x2" android:enabled="true">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo2x2"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<category android:name="android.intent.category.DEFAULT" />  
+    		</intent-filter>  
+		</receiver>
 	    <receiver android:name="com.sunnykwong.omc.ClockWidget2x1" android:label="@string/widget_name2x1" android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo2x1"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<category android:name="android.intent.category.DEFAULT" />  
+    		</intent-filter>  
+		</receiver>
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget1x3" android:label="@string/widget_name1x3" android:enabled="true">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo1x3"/>
 			<intent-filter>  
         		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

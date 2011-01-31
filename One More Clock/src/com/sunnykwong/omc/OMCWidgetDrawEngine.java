@@ -100,11 +100,11 @@ public class OMCWidgetDrawEngine {
 		if (bDefaultScaling) {
 			JSONObject oDefaultScaling = new JSONObject(); 
 			try {
-				if (sWidgetSize.equals("4x1")) {
-					oDefaultScaling.put("horizontal_stretch", 0.8);
-					oDefaultScaling.put("vertical_stretch", 0.7);
-					oDefaultScaling.put("top_crop", 15);
-					oDefaultScaling.put("bottom_crop", 15);
+				if (sWidgetSize.equals("4x4")) {
+					oDefaultScaling.put("horizontal_stretch", 1);
+					oDefaultScaling.put("vertical_stretch", 1);
+					oDefaultScaling.put("top_crop", 0);
+					oDefaultScaling.put("bottom_crop", 0);
 					oDefaultScaling.put("left_crop", 0);
 					oDefaultScaling.put("right_crop", 0);
 					oDefaultScaling.put("cw_rotate", 0);
@@ -116,11 +116,35 @@ public class OMCWidgetDrawEngine {
 					oDefaultScaling.put("left_crop", 0);
 					oDefaultScaling.put("right_crop", 0);
 					oDefaultScaling.put("cw_rotate", 0);
+				} else if (sWidgetSize.equals("4x1")) {
+					oDefaultScaling.put("horizontal_stretch", 0.8);
+					oDefaultScaling.put("vertical_stretch", 0.7);
+					oDefaultScaling.put("top_crop", 15);
+					oDefaultScaling.put("bottom_crop", 195);
+					oDefaultScaling.put("left_crop", 0);
+					oDefaultScaling.put("right_crop", 0);
+					oDefaultScaling.put("cw_rotate", 0);
+				} else if (sWidgetSize.equals("3x3")) {
+					oDefaultScaling.put("horizontal_stretch", 0.7);
+					oDefaultScaling.put("vertical_stretch", 0.7);
+					oDefaultScaling.put("top_crop", 0);
+					oDefaultScaling.put("bottom_crop", 0);
+					oDefaultScaling.put("left_crop", 0);
+					oDefaultScaling.put("right_crop", 0);
+					oDefaultScaling.put("cw_rotate", 0);
 				} else if (sWidgetSize.equals("3x1")) {
 					oDefaultScaling.put("horizontal_stretch", 0.8);
 					oDefaultScaling.put("vertical_stretch", 0.7);
 					oDefaultScaling.put("top_crop", 15);
-					oDefaultScaling.put("bottom_crop", 15);
+					oDefaultScaling.put("bottom_crop", 195);
+					oDefaultScaling.put("left_crop", 0);
+					oDefaultScaling.put("right_crop", 0);
+					oDefaultScaling.put("cw_rotate", 0);
+				} else if (sWidgetSize.equals("2x2")) {
+					oDefaultScaling.put("horizontal_stretch", 0.5);
+					oDefaultScaling.put("vertical_stretch", 0.5);
+					oDefaultScaling.put("top_crop", 0);
+					oDefaultScaling.put("bottom_crop", 0);
 					oDefaultScaling.put("left_crop", 0);
 					oDefaultScaling.put("right_crop", 0);
 					oDefaultScaling.put("cw_rotate", 0);
@@ -132,6 +156,14 @@ public class OMCWidgetDrawEngine {
 					oDefaultScaling.put("left_crop", 0);
 					oDefaultScaling.put("right_crop", 0);
 					oDefaultScaling.put("cw_rotate", 0);
+				} else if (sWidgetSize.equals("1x3")) {
+					oDefaultScaling.put("horizontal_stretch", 0.8);
+					oDefaultScaling.put("vertical_stretch", 0.7);
+					oDefaultScaling.put("top_crop", 15);
+					oDefaultScaling.put("bottom_crop", 195);
+					oDefaultScaling.put("left_crop", 0);
+					oDefaultScaling.put("right_crop", 0);
+					oDefaultScaling.put("cw_rotate", -90);
 				} else {
 					oDefaultScaling.put("horizontal_stretch", 1);
 					oDefaultScaling.put("vertical_stretch", 1);

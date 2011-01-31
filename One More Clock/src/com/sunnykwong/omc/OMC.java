@@ -115,10 +115,14 @@ public class OMC extends Application {
 	static String[] OVERLAYURIS;
 	static int[] OVERLAYRESOURCES;
 
+	static ComponentName WIDGET4x4CNAME;
 	static ComponentName WIDGET4x2CNAME;
 	static ComponentName WIDGET4x1CNAME;
+	static ComponentName WIDGET3x3CNAME;
 	static ComponentName WIDGET3x1CNAME;
+	static ComponentName WIDGET2x2CNAME;
 	static ComponentName WIDGET2x1CNAME;
+	static ComponentName WIDGET1x3CNAME;
 	static ComponentName SKINNERCNAME;
 
 	static final float[] FLARERADII = new float[] {32.f,20.f,21.6f,40.2f,18.4f,19.1f,10.8f,25.f,28.f};
@@ -149,9 +153,13 @@ public class OMC extends Application {
 		OMC.PAIDURI = (OMC.SINGLETON? Uri.parse("market://details?id=" + OMC.PKGNAME +"donate"):Uri.parse("market://details?id=com.sunnykwong.omc"));
 
 		OMC.WIDGET4x2CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget4x2");
+		OMC.WIDGET4x4CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget4x4");
 		OMC.WIDGET4x1CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget4x1");
+		OMC.WIDGET3x3CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget3x3");
 		OMC.WIDGET3x1CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget3x1");
+		OMC.WIDGET2x2CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget2x2");
 		OMC.WIDGET2x1CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget2x1");
+		OMC.WIDGET1x3CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget1x3");
 		OMC.SKINNERCNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".OMCSkinnerActivity");
 
 		
@@ -273,7 +281,17 @@ public class OMC extends Application {
     				.commit();
 	    	context.getPackageManager()
 			.setComponentEnabledSetting(
+					OMC.WIDGET4x4CNAME,
+					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
 					OMC.WIDGET4x1CNAME,
+					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
+					OMC.WIDGET3x3CNAME,
 					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
 	    	context.getPackageManager()
@@ -283,10 +301,26 @@ public class OMC extends Application {
 					PackageManager.DONT_KILL_APP);
 	    	context.getPackageManager()
 			.setComponentEnabledSetting(
+					OMC.WIDGET2x2CNAME,
+					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
 					OMC.WIDGET2x1CNAME,
 					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
+					OMC.WIDGET1x3CNAME,
+					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
     	} else {
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
+					OMC.WIDGET4x4CNAME,
+					OMC.PREFS.getBoolean("bFourByFour", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
 	    	context.getPackageManager()
 			.setComponentEnabledSetting(
 					OMC.WIDGET4x1CNAME,
@@ -294,15 +328,33 @@ public class OMC extends Application {
 							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
 	    	context.getPackageManager()
-					.setComponentEnabledSetting(
-							OMC.WIDGET3x1CNAME,
-							OMC.PREFS.getBoolean("bThreeByOne", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-									: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-							PackageManager.DONT_KILL_APP);
+			.setComponentEnabledSetting(
+					OMC.WIDGET3x3CNAME,
+					OMC.PREFS.getBoolean("bThreeByThree", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
+					OMC.WIDGET3x1CNAME,
+					OMC.PREFS.getBoolean("bThreeByOne", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
+					OMC.WIDGET2x2CNAME,
+					OMC.PREFS.getBoolean("bTwoByTwo", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
 	    	context.getPackageManager()
 			.setComponentEnabledSetting(
 					OMC.WIDGET2x1CNAME,
 					OMC.PREFS.getBoolean("bTwoByOne", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
+					OMC.WIDGET1x3CNAME,
+					OMC.PREFS.getBoolean("bOneByThree", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
     	}
@@ -1055,7 +1107,10 @@ public class OMC extends Application {
 
     @Override
     public void onTerminate() {
-    	if (!OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1 || !OMCService.STOPNOW2x1) {
+    	if (!OMCService.STOPNOW4x4 || !OMCService.STOPNOW4x2 || !OMCService.STOPNOW4x1 
+    			|| !OMCService.STOPNOW3x3 || !OMCService.STOPNOW3x1 
+    			|| !OMCService.STOPNOW2x2 || !OMCService.STOPNOW2x1
+    			|| !OMCService.STOPNOW1x3) {
     		Log.i(OMC.OMCSHORT + "App","APP TERMINATED - NOT UNREGISTERING RECEIVERS - OMC WILL RESTART");
     		// do nothing
     	} else {

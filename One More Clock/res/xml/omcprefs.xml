@@ -25,14 +25,22 @@
 			<Preference android:enabled="true"
 				android:summary="Changes to these settings will require a reboot of your phone to take effect."
 				android:selectable="false" android:title="Reboot Required" />
+			<CheckBoxPreference android:defaultValue="true"
+				android:selectable="true" android:enabled="true" android:key="bFourByFour" android:title="Enable (4x4) Widget"/>
 			<CheckBoxPreference android:key="bFourByTwo" android:defaultValue="true"
 				android:selectable="false" android:enabled="true" android:title="Enable (4x2) Widget"/>
 			<CheckBoxPreference android:defaultValue="true"
 				android:selectable="true" android:enabled="true" android:key="bFourByOne" android:title="Enable (4x1) Widget"/>
+			<CheckBoxPreference android:key="bThreeByThree" android:defaultValue="true"
+				android:selectable="true" android:enabled="true" android:title="Enable (3x3) Widget"/>
 			<CheckBoxPreference android:key="bThreeByOne" android:defaultValue="true"
 				android:selectable="true" android:enabled="true" android:title="Enable (3x1) Widget"/>
+			<CheckBoxPreference android:key="bTwoByTwo" android:defaultValue="true"
+				android:selectable="true" android:enabled="true" android:title="Enable (2x2) Widget"/>
 			<CheckBoxPreference android:key="bTwoByOne" android:defaultValue="true"
 				android:selectable="true" android:enabled="true" android:title="Enable (2x1) Widget"/>
+			<CheckBoxPreference android:key="bOneByThree" android:defaultValue="true"
+				android:selectable="true" android:enabled="true" android:title="Enable (1x3) Widget"/>
 			<CheckBoxPreference android:selectable="true"
 				android:enabled="true" android:key="bSkinner" android:defaultValue="false" android:summary="Development tool for skinners only." android:title="Enable Theme Tester"/>
 		</PreferenceScreen>
@@ -45,7 +53,7 @@
 </PreferenceCategory>
 	<PreferenceCategory android:title="Credits"
 		android:key="Credits">
-		<Preference android:title="Email Xaffron" android:selectable="true" android:key="emailMe" android:enabled="true" android:summary="Contact author for issues, bugs and help."></Preference><Preference android:title="1.0.0" android:selectable="false"
+		<Preference android:selectable="true" android:key="emailMe" android:enabled="true" android:title="Contact Xaffron" android:summary="Donate or Contact author for help."></Preference><Preference android:title="1.0.0" android:selectable="false"
 			android:enabled="true" android:key="sVersion" />
 		<Preference android:selectable="true" android:title="View Credits"
 			android:key="widgetCredits" android:enabled="true" />

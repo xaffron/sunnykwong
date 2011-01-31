@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnKeyListener;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -187,6 +188,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
     	if (preference == findPreference("tweakTheme")){
+    		getPreferenceScreen().setEnabled(false);
     		Intent tweakIntent = new Intent(this, OMCThemeTweakerActivity.class);
     		tweakIntent.putExtra("aWI", OMCPrefActivity.appWidgetID);
     		tweakIntent.putExtra("theme", OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME));
@@ -194,12 +196,31 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		startActivityForResult(tweakIntent,0);
     	}
     	if (preference == findPreference("emailMe")) {
-    		   Intent email = new Intent(android.content.Intent.ACTION_SEND)
-    		   				.setType("plain/text")
-    		   				.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
-    		   				.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME);
-
-    		  startActivity(Intent.createChooser(email, "Contact Xaffron for issues, help & support."));  
+			final CharSequence[] items = {"Email", "Donate"};
+			new AlertDialog.Builder(this)
+				.setTitle("Email or Donate to Xaffron")
+				.setItems(items, new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int item) {
+							switch (item) {
+								case 0: //Email
+									Intent it = new Intent(android.content.Intent.ACTION_SEND)
+		    		   					.setType("plain/text")
+		    		   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
+		    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME + " Feedback v" + OMC.THISVERSION);
+					    		   	startActivity(Intent.createChooser(it, "Contact Xaffron for issues, help & support."));  
+					    		   	finish();
+					    		   	break;
+								case 1: //Donate
+						    		it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=S9VEL3WFGXK48"));
+						    		startActivity(it);
+						    		finish();
+									break;
+								default:
+									//do nothing
+							}
+						}
+				})
+				.show();
     	}
     	if (preference == getPreferenceScreen().findPreference("widgetPrefs") && OMC.FREEEDITION) {
     		final CharSequence TitleCS = "Why are the widgets so big?";
@@ -254,6 +275,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	mAD.show();
     	}
     	if (preference == getPreferenceScreen().findPreference("loadThemeFile")) {
+    		getPreferenceScreen().setEnabled(false);
     		startActivityForResult(OMC.IMPORTTHEMEINTENT,0);
     	}
     	if (preference == getPreferenceScreen().findPreference("oTTL")) {
