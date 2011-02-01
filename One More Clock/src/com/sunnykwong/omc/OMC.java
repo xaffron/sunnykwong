@@ -51,7 +51,7 @@ import android.content.res.Resources;
  * Thanks to ralfoide's 24clock code; taught me quite a bit about broadcastreceivers
  * Thanks to the Open Font Library for a great resource.
  * 
- */
+ */ 
 public class OMC extends Application {
 	
 	
@@ -72,7 +72,30 @@ public class OMC extends Application {
 	static final IntentFilter PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
 	static final String APPICON = "clockicon";
 	
+	static final String[] FULLWEEKDAYS = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+	static final String[] ABVWEEKDAYS = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
+	static final String[] FULLMONTHS = {"January","February","March","April","May","June",
+		"July","August","September","October","November","December"};
+	static final String[] ABVMONTHS = {"Jan","Feb","Mar","Apr","May","Jun",
+		"Jul","Aug","Sep","Oct","Nov","Dec"};
+	static final String[] APM = {"Ante Meridiem","Post Meridiem"};	
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
+	static int faqtoshow = 0;
+	static final String[] FAQS = {
+		"OMC now uses JSON instead of XML; themes are stored in the OMCThemes folder.  The old OMC folder is safe to delete, but if you made XML changes before, you'll want to port them over manually!",
+		"OMC now allows theme personalization on the phone.  Try moving each layer around, changing colors and toggling visibility!",
+		"Theme personalization overwrites dynamic elements (changing colors, positions, text, etc).  To make fine-tuned changes to dynamic elements, fire up a text editor on your phone or computer and look at the contents of the 00control.json file.",
+		"The donate version now features 8 widget sizes.  Not all themes work well with all widget sizes, but feel free to experiment! The newer ones look particularly good in the square and vertical widgets.",
+		"Too many widget sizes?  Tap on 'Toggle Widget Sizes' and disable the ones you don't want.  Remember to reboot your phone to apply changes!",
+		"Comments? Complaints? Donations?  Tap on the 'Contact Xaffron' box to send me a message.  I'll get back to you ASAP!",
+		"Did you know that you can delete any clock you don't like by long-pressing on a clock?  If you want it back, simply select 'Re-Get Starter Clock Pack' and you're right back where you started.",
+		"Tap-to-Launch now allows you to set 'Do nothing', which is great for avoiding accidental taps.  Tapping on the top left corner of the widget always brings you back to this screen.",
+		"Foreground mode (Android 2.0 and above) is useful if your clock widget keeps lagging.  Clock lag should almost never happen as of version 1.2.0, but it's good to know that Foreground Mode is there when you need it.",
+		"Want more quotes/different text?  I hear you!  For now, use a text editor on the 00control.json files (it's easy, I promise).  Otherwise, expect enhanced 'Personalization' features in the next couple of versions!",
+		"Have an idea for a cool clock widget?  Tap 'Contact Xaffron' and let me know. I don't bite!",
+		"Which clock is your favorite?  Let me know via 'Contact Xaffron'!  This will help me archive less popular widgets and keep the application size manageable.",
+		"Did you know that there is a support thread on XDA-Developers?  I monitor questions on that board on a daily basis.  http://forum.xda-developers.com/showthread.php?t=807929"
+	};
 	
 	static final String APPNAME = OMC.SINGLETON? OMC.SINGLETONNAME:"One More Clock";
 	static final String OMCSHORT = (OMC.SINGLETON? OMC.SINGLETONNAME.substring(0,4):"OMC") + (OMC.FREEEDITION? "free":"");
@@ -81,10 +104,10 @@ public class OMC extends Application {
 	static String SHAREDPREFNAME;
 	static String PKGNAME;
 	static Context CONTEXT;
-	static boolean SHOWHELP = false;
+	static boolean SHOWHELP = true;
 	static Uri PAIDURI;
 	
-	static long LASTUPDATEMILLIS;
+	static long LASTUPDATEMILLIS, LEASTLAGMILLIS=200;
 	static int UPDATEFREQ = 20000;
 	static final Random RND = new Random();
 	static SharedPreferences PREFS;
@@ -164,6 +187,7 @@ public class OMC extends Application {
 
 		
 		OMC.LASTUPDATEMILLIS = 0l;
+		OMC.LEASTLAGMILLIS = 0l;
 		
 //		OMC.BUFFER= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
 //		OMC.CANVAS = new Canvas(OMC.BUFFER);
@@ -177,18 +201,18 @@ public class OMC extends Application {
 		
 		//OMC.TEMPMATRIX = new Matrix();
 		
-		OMC.FGPENDING = PendingIntent.getBroadcast(this, 0, OMC.FGINTENT, 0);
-		OMC.BGPENDING = PendingIntent.getBroadcast(this, 0, OMC.BGINTENT, 0);
-		OMC.SVCSTARTINTENT = new Intent(this, OMCService.class);
-		OMC.CREDITSINTENT = new Intent(this, OMCCreditsActivity.class);
-		OMC.PREFSINTENT = new Intent(this, OMCPrefActivity.class);
-		OMC.IMPORTTHEMEINTENT = new Intent(this, OMCThemeImportActivity.class);
-		OMC.PREFSPENDING = PendingIntent.getActivity(this, 0, new Intent(this, OMCPrefActivity.class), 0);
+		OMC.FGPENDING = PendingIntent.getBroadcast(OMC.CONTEXT, 0, OMC.FGINTENT, 0);
+		OMC.BGPENDING = PendingIntent.getBroadcast(OMC.CONTEXT, 0, OMC.BGINTENT, 0);
+		OMC.SVCSTARTINTENT = new Intent(OMC.CONTEXT, OMCService.class);
+		OMC.CREDITSINTENT = new Intent(OMC.CONTEXT, OMCCreditsActivity.class);
+		OMC.PREFSINTENT = new Intent(OMC.CONTEXT, OMCPrefActivity.class);
+		OMC.IMPORTTHEMEINTENT = new Intent(OMC.CONTEXT, OMCThemeImportActivity.class);
+		OMC.PREFSPENDING = PendingIntent.getActivity(OMC.CONTEXT, 0, new Intent(OMC.CONTEXT, OMCPrefActivity.class), 0);
 		OMC.PREFSINTENTFILT.addDataScheme("omc");
-		OMC.DUMMYINTENT = new Intent(this, DUMMY.class);
-		OMC.GETSTARTERPACKINTENT = new Intent(this, OMCThemeUnzipActivity.class);
+		OMC.DUMMYINTENT = new Intent(OMC.CONTEXT, DUMMY.class);
+		OMC.GETSTARTERPACKINTENT = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
 		OMC.GETSTARTERPACKINTENT.setData(Uri.parse(OMC.STARTERPACKURL));
-		OMC.GETBACKUPPACKINTENT = new Intent(this, OMCThemeUnzipActivity.class);
+		OMC.GETBACKUPPACKINTENT = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
 		OMC.GETBACKUPPACKINTENT.setData(Uri.parse(OMC.STARTERPACKBACKUP));
 		OMC.OMCMARKETINTENT = new Intent(Intent.ACTION_VIEW,OMC.PAIDURI);
 
@@ -212,7 +236,7 @@ public class OMC extends Application {
 		// If we're from a legacy version, then we need to wipe all settings clean to avoid issues.
 		if (OMC.PREFS.getString("version", "1.0.x").startsWith("1.0") || OMC.PREFS.getString("version", "1.0.x").startsWith("1.1")) {
 			Log.i(OMC.OMCSHORT + "App","Upgrade from legacy version, wiping all settings.");
-			OMC.PREFS.edit().clear().commit();
+			OMC.PREFS.edit().clear().putBoolean("showhelp", true).commit();
 			OMC.SHOWHELP=true;
 		}
 		if (OMC.PREFS.getString("version", "1.0.x").equals(OMC.THISVERSION)) {
@@ -221,8 +245,10 @@ public class OMC extends Application {
 		} else {
 			OMC.PREFS.edit().putBoolean("starterpack", false).commit();
 			OMC.STARTERPACKDLED = false;
+			OMC.PREFS.edit().clear().putBoolean("showhelp", true).commit();
 			OMC.SHOWHELP=true;
 		}
+
 		OMC.PREFS.edit().putString("version", OMC.THISVERSION).commit();
 		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
 		
@@ -363,6 +389,8 @@ public class OMC extends Application {
 	static void setServiceAlarm (long lTimeToRefresh) {
 		//We want the pending intent to be for this service, and 
 		// at the same FG/BG preference as the intent that woke us up
+		OMC.ALARMS.cancel(OMC.FGPENDING);
+		OMC.ALARMS.cancel(OMC.BGPENDING);
 		if (OMC.FG) {
 			OMC.ALARMS.set(AlarmManager.RTC, lTimeToRefresh, OMC.FGPENDING);
 		} else {
@@ -780,13 +808,13 @@ public class OMC extends Application {
 		String sBuffer = sRawString.replace("[%", "").replace("%]", "");
 		//by default, return strftime'd string.
 		if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
-			sBuffer = (OMC.TIME.format(
+			sBuffer = (OMC.OMCstrf(
 				OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, true)? 
 						sBuffer : sBuffer.replaceAll("%H", "%k")
 				)
 			);
 		} else {
-			sBuffer = (OMC.TIME.format(
+			sBuffer = (OMC.OMCstrf(
 				OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, true)? 
 						sBuffer.replaceAll("%H", "%I") : sBuffer.replaceAll("%H", "%l")
 				)
@@ -916,30 +944,30 @@ public class OMC extends Application {
 			String sType = st.nextToken();
 			String sTemp = "";
 			if (OMC.TIME.minute == 0) {
-				sTemp = OMC.WORDNUMBERS[Integer.parseInt(OMC.TIME.format("%I"))] + " o'Clock.";
+				sTemp = OMC.WORDNUMBERS[OMC.TIME.hour] + " o'Clock.";
 			} else if (OMC.TIME.minute == 30) {
-				sTemp = "half past " + OMC.WORDNUMBERS[Integer.parseInt(OMC.TIME.format("%I"))] + "."; 
+				sTemp = "half past " + OMC.WORDNUMBERS[OMC.TIME.hour] + "."; 
 			} else if (OMC.TIME.minute == 15) {
-				sTemp = "A Quarter past " + OMC.WORDNUMBERS[Integer.parseInt(OMC.TIME.format("%I"))] + "."; 
+				sTemp = "A Quarter past " + OMC.WORDNUMBERS[OMC.TIME.hour] + "."; 
 			} else if (OMC.TIME.minute == 45) {
 				if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
 					sTemp = "A Quarter to Twelve.";
 				} else {
 					sTemp = "A Quarter to " 
-					+ OMC.WORDNUMBERS[Integer.parseInt(OMC.TIME.format("%I"))+1] + ".";
+					+ OMC.WORDNUMBERS[OMC.TIME.hour+1] + ".";
 				}
 			} else if (OMC.TIME.minute > 30) {
 				if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
-					sTemp = OMC.WORDNUMBERS[60-Integer.parseInt(OMC.TIME.format("%M"))] + " to Twelve.";
+					sTemp = OMC.WORDNUMBERS[60-OMC.TIME.minute] + " to Twelve.";
 				} else if (OMC.TIME.hour == 0) {
-						sTemp = OMC.WORDNUMBERS[60-Integer.parseInt(OMC.TIME.format("%M"))] + " to One.";
+						sTemp = OMC.WORDNUMBERS[60-OMC.TIME.minute] + " to One.";
 				} else {
-					sTemp = OMC.WORDNUMBERS[60-Integer.parseInt(OMC.TIME.format("%M"))] + " to " 
-					+ OMC.WORDNUMBERS[Integer.parseInt(OMC.TIME.format("%I"))+1] + ".";
+					sTemp = OMC.WORDNUMBERS[60-OMC.TIME.minute] + " to " 
+					+ OMC.WORDNUMBERS[OMC.TIME.hour+1] + ".";
 				}
 			} else {
-				sTemp = OMC.WORDNUMBERS[Integer.parseInt(OMC.TIME.format("%M"))] + " past " 
-				+ OMC.WORDNUMBERS[Integer.parseInt(OMC.TIME.format("%I"))] + ".";
+				sTemp = OMC.WORDNUMBERS[OMC.TIME.minute] + " past " 
+				+ OMC.WORDNUMBERS[OMC.TIME.hour] + ".";
 			}
 			if (sType.equals("diary")) result = (sTemp);
 			else if (sType.equals("upper")) result = (sTemp.toUpperCase());
@@ -1058,6 +1086,36 @@ public class OMC extends Application {
 		// If no tags found, then just run strftime; we're done! 
 		return OMC.resolveOneToken(sRawString, aWI, tempResult);
 
+	}
+	
+	static public String OMCstrf (final String input) {
+		final char[] inputChars = input.toCharArray();
+		final StringBuilder sb = new StringBuilder(inputChars.length);
+		boolean bIsTag = false;
+		for (int i = 0; i < inputChars.length; i++) {
+			if (bIsTag) {
+				if (inputChars[i]=='A') {
+					sb.append(OMC.FULLWEEKDAYS[OMC.TIME.weekDay]);
+				} else if (inputChars[i]=='a') {
+					sb.append(OMC.ABVWEEKDAYS[OMC.TIME.weekDay]);
+				} else if (inputChars[i]=='B') {
+					sb.append(OMC.FULLMONTHS[OMC.TIME.month]);
+				} else if (inputChars[i]=='b') {
+					sb.append(OMC.ABVMONTHS[OMC.TIME.month]);
+				} else if (inputChars[i]=='p') {
+					sb.append(OMC.APM[OMC.TIME.hour<12?0:1]);
+				} else {
+					sb.append(OMC.TIME.format("%"+inputChars[i]));
+				}
+				bIsTag=false;
+			} else if (inputChars[i]=='%'){
+				bIsTag=true;
+			} else {
+				sb.append(inputChars[i]);
+			}
+		}
+		
+		return sb.toString();
 	}
 	
 	static public int numberInterpolate (int n1, int n2, int n3, float gradient) {

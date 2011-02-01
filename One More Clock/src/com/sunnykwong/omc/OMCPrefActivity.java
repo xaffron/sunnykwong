@@ -16,8 +16,15 @@ import android.preference.PreferenceScreen;
 import android.preference.PreferenceCategory;
 
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.widget.CheckBox;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -25,7 +32,9 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     /** Called when the activity is first created. */
     static int appWidgetID;
     static AlertDialog mAD;
-    boolean isInitialConfig=false;
+    CheckBox mCheckBox;
+    TextView mTextView;
+    boolean isInitialConfig=false, mTempFlag=false;
     Preference prefloadThemeFile, prefclearCache, prefdownloadStarterPack, prefbSkinner;
     Preference prefsUpdateFreq, prefwidgetPersistence, prefemailMe, preftweakTheme ;
 
@@ -96,9 +105,13 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	OMC.PREFS.edit().putBoolean("bFourByTwo", true).commit();
         	
         	if (OMC.FREEEDITION) {
-    			OMC.PREFS.edit().putBoolean("bFourByOne", false)
+    			OMC.PREFS.edit().putBoolean("bFourByFour", false)
+    					.putBoolean("bFourByOne", false)
+    					.putBoolean("bThreeByThree", false)
     					.putBoolean("bThreeByOne", false)
+    					.putBoolean("bTwoByTwo", false)
     					.putBoolean("bTwoByOne", false)
+    					.putBoolean("bOneByThree", false)
     					.commit();
     		}
         	
@@ -143,14 +156,75 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	}
     		
     		if (OMC.FREEEDITION) {
+        		findPreference("bFourByFour").setEnabled(false);
+        		findPreference("bFourByFour").setSelectable(false);
         		findPreference("bFourByOne").setEnabled(false);
         		findPreference("bFourByOne").setSelectable(false);
+        		findPreference("bThreeByThree").setEnabled(false);
+        		findPreference("bThreeByThree").setSelectable(false);
         		findPreference("bThreeByOne").setEnabled(false);
         		findPreference("bThreeByOne").setSelectable(false);
+        		findPreference("bTwoByTwo").setEnabled(false);
+        		findPreference("bTwoByTwo").setSelectable(false);
         		findPreference("bTwoByOne").setEnabled(false);
         		findPreference("bTwoByOne").setSelectable(false);
+        		findPreference("bOneByThree").setEnabled(false);
+        		findPreference("bOneByThree").setSelectable(false);
     		}
+
+    		// This is the help/FAQ dialog.
     		
+    		if (OMC.SHOWHELP) {
+				LayoutInflater li = LayoutInflater.from(this);
+				LinearLayout ll = (LinearLayout)(li.inflate(getResources().getIdentifier("faqdialog", "layout", OMC.PKGNAME), null));
+				mTextView = (TextView)ll.findViewById(getResources().getIdentifier("splashtext", "id", OMC.PKGNAME));
+				mTextView.setAutoLinkMask(Linkify.ALL);
+				mTextView.setMinLines(8);
+				mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
+				OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
+				
+				mCheckBox = (CheckBox)ll.findViewById(getResources().getIdentifier("splashcheck", "id", OMC.PKGNAME));
+				mCheckBox.setChecked(!OMC.SHOWHELP);
+				mCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+					
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+						// TODO Auto-generated method stub
+						OMC.SHOWHELP = !isChecked;
+					}
+				});
+	
+				((Button)ll.findViewById(getResources().getIdentifier("faqOK", "id", OMC.PKGNAME))).setOnClickListener(new Button.OnClickListener() {
+					
+					@Override
+					public void onClick(android.view.View v) {
+						OMC.PREFS.edit().putBoolean("showhelp", OMC.SHOWHELP).commit();
+						mAD.dismiss();
+					}
+				});
+				((Button)ll.findViewById(getResources().getIdentifier("faqNeutral", "id", OMC.PKGNAME))).setOnClickListener(new Button.OnClickListener() {
+					
+					@Override
+					public void onClick(android.view.View v) {
+						mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
+						mTextView.invalidate();
+						OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
+					}
+				});;
+				
+				mAD = new AlertDialog.Builder(this)
+				.setTitle("Useful Tip")
+			    .setCancelable(true)
+			    .setView(ll)
+			    .setOnKeyListener(new OnKeyListener() {
+			    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+			    		if (arg2.getKeyCode()==android.view.KeyEvent.KEYCODE_BACK) mAD.cancel();
+			    		return true;
+			    	};
+			    })
+			    .show();
+    		}
+
         	
         } else {
             // If they gave us an intent without the widget id, just bail.
@@ -253,7 +327,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
 			.setCancelable(true)
 			.setTitle("Starter Clock Pack")
-			.setMessage("Any theme customizations you have made in your sdcard's OMCThemes folder will be overwriten.  Are you sure?\n(If not sure, tap Yes)")
+			.setMessage("Any theme customizations you have made in your sdcard's OMCThemes folder will be overwritten.  Are you sure?\n(If not sure, tap Yes)")
 			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 				
 				@Override

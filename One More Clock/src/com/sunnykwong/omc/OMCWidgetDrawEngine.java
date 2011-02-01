@@ -16,6 +16,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.text.Html;
 import android.text.SpannedString;
+import android.text.format.Time;
 import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -35,7 +36,8 @@ public class OMCWidgetDrawEngine {
 	// Needs to be synchronized now that we have four different widget types 
 	// calling this same method creating a potential race condition
 	static synchronized void updateAppWidget(Context context, ComponentName cName) {
-        OMC.TIME.setToNow();				        					
+		// Set target time to be 2 seconds ahead to account for lag
+		OMC.TIME.set(((System.currentTimeMillis()+2000l)*1000l)/1000l);
 
 		if (!OMCService.RUNNING) {
 			OMC.setServiceAlarm(System.currentTimeMillis() + 10000);
@@ -61,6 +63,7 @@ public class OMCWidgetDrawEngine {
 	static synchronized void updateAppWidget(final Context context,
 			final AppWidgetManager appWidgetManager,
 			final int appWidgetId, ComponentName cName) { 
+		long lStartTime = System.currentTimeMillis();
 
 		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Engine", "Redrawing widget" + appWidgetId + " (" + OMC.PREFS.getString("widgetTheme"+appWidgetId, "")+ ") @ " + OMC.TIME.format("%T"));
 		
@@ -233,6 +236,11 @@ public class OMCWidgetDrawEngine {
 		rv.setImageViewBitmap(iViewID,finalBitmap);
 		appWidgetManager.updateAppWidget(appWidgetId, rv);
 
+		// Do some fancy footwork here and adjust the average lag (so OMC's slowness is less apparent)
+		// We will start at least 200 millis early.
+		OMC.LEASTLAGMILLIS = Math.max(200l, (OMC.LEASTLAGMILLIS + (System.currentTimeMillis() - lStartTime))/2l);
+
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Engine","Calc. lead time for next tick: " + OMC.LEASTLAGMILLIS + "ms");
 		Bitmap oldBitmap = OMC.LOWQUALWIDGETMAP.get(appWidgetId);
 		if (oldBitmap!=null) {
 			if(!oldBitmap.isRecycled()) oldBitmap.recycle();
