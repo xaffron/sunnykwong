@@ -56,7 +56,7 @@ public class OMC extends Application {
 	
 	
 	static final boolean DEBUG = true;
-	static final boolean THEMESFROMCACHE = true;
+	static final boolean THEMESFROMCACHE = false;//TODO
 	
 	static String THISVERSION;
 	static final boolean SINGLETON = false;
@@ -944,30 +944,30 @@ public class OMC extends Application {
 			String sType = st.nextToken();
 			String sTemp = "";
 			if (OMC.TIME.minute == 0) {
-				sTemp = OMC.WORDNUMBERS[OMC.TIME.hour] + " o'Clock.";
+				sTemp = OMC.WORDNUMBERS[OMC.TIME.hour%12] + " o'Clock.";
 			} else if (OMC.TIME.minute == 30) {
-				sTemp = "half past " + OMC.WORDNUMBERS[OMC.TIME.hour] + "."; 
+				sTemp = "half past " + OMC.WORDNUMBERS[OMC.TIME.hour%12] + "."; 
 			} else if (OMC.TIME.minute == 15) {
-				sTemp = "A Quarter past " + OMC.WORDNUMBERS[OMC.TIME.hour] + "."; 
+				sTemp = "A Quarter past " + OMC.WORDNUMBERS[OMC.TIME.hour%12] + "."; 
 			} else if (OMC.TIME.minute == 45) {
 				if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
 					sTemp = "A Quarter to Twelve.";
 				} else {
 					sTemp = "A Quarter to " 
-					+ OMC.WORDNUMBERS[OMC.TIME.hour+1] + ".";
+					+ OMC.WORDNUMBERS[OMC.TIME.hour%12+1] + ".";
 				}
 			} else if (OMC.TIME.minute > 30) {
 				if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
 					sTemp = OMC.WORDNUMBERS[60-OMC.TIME.minute] + " to Twelve.";
-				} else if (OMC.TIME.hour == 0) {
+				} else if (OMC.TIME.hour%12 == 0) {
 						sTemp = OMC.WORDNUMBERS[60-OMC.TIME.minute] + " to One.";
 				} else {
 					sTemp = OMC.WORDNUMBERS[60-OMC.TIME.minute] + " to " 
-					+ OMC.WORDNUMBERS[OMC.TIME.hour+1] + ".";
+					+ OMC.WORDNUMBERS[OMC.TIME.hour%12+1] + ".";
 				}
 			} else {
 				sTemp = OMC.WORDNUMBERS[OMC.TIME.minute] + " past " 
-				+ OMC.WORDNUMBERS[OMC.TIME.hour] + ".";
+				+ OMC.WORDNUMBERS[OMC.TIME.hour%12] + ".";
 			}
 			if (sType.equals("diary")) result = (sTemp);
 			else if (sType.equals("upper")) result = (sTemp.toUpperCase());
