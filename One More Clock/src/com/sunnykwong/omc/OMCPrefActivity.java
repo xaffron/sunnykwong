@@ -131,7 +131,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	prefsUpdateFreq.setSummary("Redraw every " + OMC.PREFS.getString("sUpdateFreq", "30") + " seconds.");
         	
 			if (Build.VERSION.SDK_INT <  5) {
-    			OMC.PREFS.edit().putBoolean("widgetPersistence", true).commit();
+    			OMC.PREFS.edit().putBoolean("widgetPersistence", false).commit();
 				((PreferenceCategory)findPreference("allClocks")).removePreference(prefwidgetPersistence);
 			}
 				

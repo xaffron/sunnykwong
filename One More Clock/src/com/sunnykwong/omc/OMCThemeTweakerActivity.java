@@ -253,10 +253,34 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     	iActivepos = pos;
     	sActiveLayer = parent.getItemAtPosition(pos).toString();
     	oActiveLayer = oTheme.optJSONArray("layers_bottomtotop").optJSONObject(iActivepos);
-    	System.out.println(oActiveLayer.optString("name"));
     	refreshViews();
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+    	
+    	String sLayerType = oActiveLayer.optString("type");
+    	if (sLayerType==null) {
+    		menu.findItem(getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)).setEnabled(false);
+    		menu.findItem(getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)).setEnabled(false);
+    		menu.findItem(getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)).setEnabled(false);
+    	} else if (sLayerType.equals("image")) {
+    		menu.findItem(getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)).setEnabled(true);
+    		menu.findItem(getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)).setEnabled(false);
+    		menu.findItem(getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)).setEnabled(false);
+    	} else if (sLayerType.equals("flare")) {
+    		menu.findItem(getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)).setEnabled(true);
+    		menu.findItem(getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)).setEnabled(false);
+    		menu.findItem(getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)).setEnabled(false);
+    	} else {
+    		menu.findItem(getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)).setEnabled(true);
+    		menu.findItem(getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)).setEnabled(true);
+    		menu.findItem(getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)).setEnabled(true);
+    	}
+    	
+    	return super.onPrepareOptionsMenu(menu);
+    }
+    
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		// TODO Auto-generated method stub
@@ -272,10 +296,14 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     	if (item.getItemId()==getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)) {
     		System.out.println(oActiveLayer.optString("fgcolor"));
     		int initialColor;
-    		try {
-    			initialColor = Color.parseColor(oActiveLayer.optString("fgcolor"));
-    		} catch (IllegalArgumentException e) {
+    		if (oActiveLayer.optString("fgcolor")==null) {
     			initialColor = Color.BLACK;
+    		} else {
+	    		try {
+	    			initialColor = Color.parseColor(oActiveLayer.optString("fgcolor"));
+	    		} catch (IllegalArgumentException e) {
+	    			initialColor = Color.BLACK;
+	    		}
     		}
     		ColorPickerDialog cpd = new ColorPickerDialog(this, new ColorPickerDialog.OnColorChangedListener() {
 				
@@ -300,10 +328,14 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     	if (item.getItemId()==getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)) {
     		System.out.println(oActiveLayer.optString("bgcolor"));
     		int initialColor;
-    		try {
-    			initialColor = Color.parseColor(oActiveLayer.optString("bgcolor"));
-    		} catch (IllegalArgumentException e) {
+    		if (oActiveLayer.optString("bgcolor")==null) {
     			initialColor = Color.BLACK;
+    		} else {
+	    		try {
+	    			initialColor = Color.parseColor(oActiveLayer.optString("bgcolor"));
+	    		} catch (IllegalArgumentException e) {
+	    			initialColor = Color.BLACK;
+	    		}
     		}
     		ColorPickerDialog cpd = new ColorPickerDialog(this, new ColorPickerDialog.OnColorChangedListener() {
 				
