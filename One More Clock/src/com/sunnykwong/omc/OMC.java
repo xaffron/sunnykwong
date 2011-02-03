@@ -64,7 +64,8 @@ public class OMC extends Application {
 	static final boolean FREEEDITION = false;
 	static final String SINGLETONNAME = "One More Clock";
 	static final String STARTERPACKURL = "asset:pk120.omc";
-	static final String STARTERPACKBACKUP = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFMjY0ZWRmZGItM2ZiNi00MmQ1LTkxNTMtODIwOGY1OTljYzBi&export=download&authkey=CNKEstMI&hl=en";
+	static final String STARTERPACKBACKUP = "omc://omc.colormeandroid.com/omc/pk120.omc";
+	static final String EXTENDEDPACK = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFMjk3OTNhZTQtN2Q4MC00ZGIwLTgzYWItN2YxNDc5YWM0ZTll&export=download&authkey=CJXcxbgK&hl=en";
 	static final String DEFAULTTHEME = "HoneycombLook";
 	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
 	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
@@ -82,6 +83,7 @@ public class OMC extends Application {
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
+		"Not finding your favorite clock?  OMC 1.2 only comes with 15 clocks.  To get the remaining ones, tap on 'Download More Clocks' when you're in the theme picker screen!",
 		"OMC now uses JSON instead of XML; themes are stored in the OMCThemes folder.  The old OMC folder is safe to delete, but if you made XML changes before, you'll want to port them over manually!",
 		"OMC now allows theme personalization on the phone.  Try moving each layer around, changing colors and toggling visibility!",
 		"Theme personalization overwrites dynamic elements (changing colors, positions, text, etc).  To make fine-tuned changes to dynamic elements, fire up a text editor on your phone or computer and look at the contents of the 00control.json file.",
@@ -156,7 +158,7 @@ public class OMC extends Application {
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
     static Intent SVCSTARTINTENT, CREDITSINTENT, PREFSINTENT;
-    static Intent GETSTARTERPACKINTENT, GETBACKUPPACKINTENT, IMPORTTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT;
+    static Intent GETSTARTERPACKINTENT, GETBACKUPPACKINTENT, GETEXTENDEDPACKINTENT, IMPORTTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT;
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
     static Notification FGNOTIFICIATION;
     
@@ -214,6 +216,8 @@ public class OMC extends Application {
 		OMC.GETSTARTERPACKINTENT.setData(Uri.parse(OMC.STARTERPACKURL));
 		OMC.GETBACKUPPACKINTENT = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
 		OMC.GETBACKUPPACKINTENT.setData(Uri.parse(OMC.STARTERPACKBACKUP));
+		OMC.GETEXTENDEDPACKINTENT = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
+		OMC.GETEXTENDEDPACKINTENT.setData(Uri.parse(OMC.EXTENDEDPACK));
 		OMC.OMCMARKETINTENT = new Intent(Intent.ACTION_VIEW,OMC.PAIDURI);
 
 		
@@ -256,10 +260,10 @@ public class OMC extends Application {
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_TICK));
 		
-		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(6);
-		OMC.BMPMAP = new HashMap<String, Bitmap>(3);
+		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(3);
+		OMC.BMPMAP = new HashMap<String, Bitmap>(16);
 		OMC.THEMEMAP=Collections.synchronizedMap(new HashMap<String, JSONObject>(3));
-		OMC.LOWQUALWIDGETMAP = new HashMap<Integer, Bitmap>(10);
+		OMC.LOWQUALWIDGETMAP = new HashMap<Integer, Bitmap>(3);
 		
 		OMC.STRETCHINFO = null;
 		
@@ -460,10 +464,12 @@ public class OMC extends Application {
 	}
 
 	public static Bitmap getBitmap(String sTheme, String src) {
+		
 		//Look in memory cache;
 		if (OMC.BMPMAP.get(src)!=null) {
 			return OMC.BMPMAP.get(src);
 		}
+
 		//Look in app cache;
 		if (new File(OMC.CACHEPATH + sTheme + src).exists()) {
 			OMC.BMPMAP.put(src, BitmapFactory.decodeFile(OMC.CACHEPATH + sTheme + src));
@@ -1206,6 +1212,14 @@ public class OMC extends Application {
     	}
         OMC.PREFS.edit().commit();
         super.onTerminate();
+    }
+
+    @Override
+    public void onLowMemory() {
+    	purgeBitmapCache();
+    	purgeImportCache();
+    	purgeTypefaceCache();
+    	super.onLowMemory();
     }
 
 }

@@ -74,6 +74,11 @@ public class OMCThemeImportActivity extends Activity {
         	OMC.PREFS.edit()
 		        	.putString("widgetTheme", OMCThemeImportActivity.CURRSELECTEDTHEME)
 		    		.commit();
+        	
+        	// Clear the cache for a clean slate
+        	OMC.purgeBitmapCache();
+        	OMC.purgeTypefaceCache();
+
         	setResult(Activity.RESULT_OK);
         	finish();
 

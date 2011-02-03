@@ -115,9 +115,8 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     		refreshThemeList();
     	}
     	if (v==btnGetMore) {
-    		Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("http://xaffron.blogspot.com/search/label/omctheme"));
-    		startActivity(it);
-    		finish();
+			startActivity(OMC.GETEXTENDEDPACKINTENT);
+    		refreshThemeList();
     	}
      }
 
@@ -195,14 +194,17 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
 			startActivity(OMC.GETSTARTERPACKINTENT);
 			
-			finish();
+			refreshThemeList();
         } else if (OMCThemePickerActivity.THEMEROOT.listFiles().length == 0) {
-	        	Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
-	        	OMCThemePickerActivity.THEMEROOT.mkdir();
+        	Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+        	OMCThemePickerActivity.THEMEROOT.mkdir();
 
-				startActivity(OMC.GETSTARTERPACKINTENT);
-				
-				finish();
+			startActivity(OMC.GETSTARTERPACKINTENT);
+        } else if (OMCThemePickerActivity.THEMEROOT.listFiles().length == 1 && OMCThemePickerActivity.THEMEROOT.list()[0].equals(OMC.DEFAULTTHEME)) {
+        	Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+        	OMCThemePickerActivity.THEMEROOT.mkdir();
+
+			startActivity(OMC.GETSTARTERPACKINTENT);
         } else if (!OMC.STARTERPACKDLED) {
 
         	mAD = new AlertDialog.Builder(this)
@@ -217,7 +219,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 		        	OMCThemePickerActivity.THEMEROOT.mkdir();
 					startActivity(OMC.GETSTARTERPACKINTENT);
 					mAD.cancel();
-					finish();
 				}
 			})
 			.setNegativeButton("No", new DialogInterface.OnClickListener() {

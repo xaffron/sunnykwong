@@ -90,14 +90,16 @@ public class OMCThemeUnzipActivity extends Activity {
         //Hide the title bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        NOGO = OMC.FREEEDITION;
+//        NOGO = OMC.FREEEDITION;
+        NOGO = false;
+
         COMPLETE = false;
         pdMessage = "";
         
         uri = getIntent().getData();
-        if (NOGO && (uri.toString().equals(OMC.STARTERPACKURL) || uri.toString().equals(OMC.STARTERPACKBACKUP))) {
-        	NOGO = false;
-        } 
+//        if (NOGO && (uri.toString().equals(OMC.STARTERPACKURL) || uri.toString().equals(OMC.STARTERPACKBACKUP))) {
+//        	NOGO = false;
+//        } 
         if (NOGO) {
         	mAD = new AlertDialog.Builder(this)
         						.setTitle("Why doesn't this work?")
