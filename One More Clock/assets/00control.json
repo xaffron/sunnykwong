@@ -1,41 +1,77 @@
 {
-//LOCKSCREEN LOOK
-//10/18 Sunny Kwong
-
-	"id": "LockscreenLook",
-	"name": "Lockscreen Look",
+	"id": "HoneycombLook",
+	"name": "Honeycomb Look",
 	"author": "S. Kwong",
-	"date": "18 Oct 2010",
-	"credits": "The default Android Lockscreen Look.",
+	"date": "27 Jan 2010",
+	"credits": "The clock theme based on the upcoming 3.0 release of Android.  Impress your friends!\n\nPNG Graphics by Cosmin Bizon.",
 	"layers_bottomtotop": [
 		{
-		"name":"LLClock",
-		"type":"text",
+		"name":"Panel",
+		"type":"panel",
 		"enabled":"true",
-		"text":"%H:%M",
-		"filename":"Clockopia.ttf",
-		"x":"[%ap24_210_210_240%]","y":"192",
-		"fgcolor":"#ffffffff","bgcolor":"#a0000000",
-		"text_size":"180",
-		"text_skew":"0",
-		"text_stretch":"[%maxfit_1_[%ap24_420_420_480%]%]",
-		"text_align":"center",
-		"render_style":"shadow",
+		"left":"0","top":"0","right":"480","bottom":"180",
+		"xcorner":"5","ycorner":"5",
+		"fgcolor":"#88000000","bgcolor":"#FF000000",
+		"render_style":"normal"
+		},
+		{
+		"name":"Colon",
+		"type":"image",
+		"enabled":"true",
+		"filename":"colon.png",
+		"x":"170","y":"20",
+		"horizontal_stretch": "1",
+		"vertical_stretch":"1",
 		"cw_rotate":"0"
 		},
 		{
-		"name":"LLapm",
-		"type":"text",
+		"name":"Hour Digit 1",
+		"type":"image",
 		"enabled":"true",
-		"text":"[%flipformat_1_case_[%ap24_%P_%P_ %]%]",
-		"filename":"/system/fonts/DroidSans.ttf",
-		"x":"480","y":"192",
-		"fgcolor":"#ffffffff","bgcolor":"#a0000000",
-		"text_size":"36",
-		"text_skew":"0",
-		"text_stretch":"1",
-		"text_align":"right",
-		"render_style":"shadow",
+		"filename":"digit[%digit_%H_1%].png",
+		"x":"10","y":"20",
+		"horizontal_stretch": "1",
+		"vertical_stretch":"1",
+		"cw_rotate":"0"
+		},
+		{
+		"name":"Hour Digit 2",
+		"type":"image",
+		"enabled":"true",
+		"filename":"digit[%digit_%H_2%].png",
+		"x":"110","y":"20",
+		"horizontal_stretch": "1",
+		"vertical_stretch":"1",
+		"cw_rotate":"0"
+		},
+		{
+		"name":"Minute Digit 1",
+		"type":"image",
+		"enabled":"true",
+		"filename":"digit[%digit_%M_1%].png",
+		"x":"230","y":"20",
+		"horizontal_stretch": "1",
+		"vertical_stretch":"1",
+		"cw_rotate":"0"
+		},
+		{
+		"name":"Minute Digit 2",
+		"type":"image",
+		"enabled":"true",
+		"filename":"digit[%digit_%M_2%].png",
+		"x":"330","y":"20",
+		"horizontal_stretch": "1",
+		"vertical_stretch":"1",
+		"cw_rotate":"0"
+		},
+		{
+		"name":"APM",
+		"type":"image",
+		"enabled":"[%ap24_true_true_false%]",
+		"filename":"[%ap24_small-a.png_small-p.png_ %]",
+		"x":"410","y":"20",
+		"horizontal_stretch": "1",
+		"vertical_stretch":"1",
 		"cw_rotate":"0"
 		},
 		{
@@ -44,50 +80,95 @@
 		"enabled":"true",
 		"text":"%A, %B %e",
 		"filename":"/system/fonts/DroidSans.ttf",
-		"x":"240","y":"232",
+		"x":"410","y":"115",
 		"fgcolor":"#ffffffff","bgcolor":"#a0000000",
-		"text_size":"36",
+		"text_size":"20",
 		"text_skew":"0",
 		"text_stretch":"1",
-		"text_align":"center",
-		"render_style":"shadow",
+		"text_align":"right",
+		"render_style":"normal",
 		"cw_rotate":"0"
 		}	
-	],
 
-	//This is the optional Stuff.
+	],
 
 	"arrays":{
 	},
 
 	"customscaling": {
+		"4x4":{
+			"horizontal_stretch": 0.9,
+			"vertical_stretch":1,
+			"top_crop":0,
+			"bottom_crop":250,
+			"left_crop":0,
+			"right_crop":60,
+			"cw_rotate":0
+		},
 		"4x2":{
 			"horizontal_stretch": 1,
 			"vertical_stretch":1,
 			"top_crop":0,
-			"bottom_crop":180,
+			"bottom_crop":350,
 			"left_crop":0,
 			"right_crop":0,
 			"cw_rotate":0
 		},
 		"4x1":{
 			"horizontal_stretch": 1,
-			"vertical_stretch":0.88,
-			"top_crop":58,
-			"bottom_crop":240,
+			"vertical_stretch":1,
+			"top_crop":0,
+			"bottom_crop":350,
 			"left_crop":0,
 			"right_crop":0,
 			"cw_rotate":0
 		},
-		"3x1":{
-			"horizontal_stretch": 1,
+		"3x3":{
+			"horizontal_stretch": 0.9,
 			"vertical_stretch":1,
-			"top_crop":58,
-			"bottom_crop":240,
+			"top_crop":0,
+			"bottom_crop":250,
+			"left_crop":0,
+			"right_crop":60,
+			"cw_rotate":0
+		},
+		"3x1":{
+			"horizontal_stretch": 0.5,
+			"vertical_stretch":0.5,
+			"top_crop":0,
+			"bottom_crop":350,
 			"left_crop":0,
 			"right_crop":0,
 			"cw_rotate":0
+		},
+		"2x2":{
+			"horizontal_stretch": 0.45,
+			"vertical_stretch":0.5,
+			"top_crop":0,
+			"bottom_crop":250,
+			"left_crop":0,
+			"right_crop":60,
+			"cw_rotate":0
+		},
+		"2x1":{
+			"horizontal_stretch": 0.5,
+			"vertical_stretch":0.5,
+			"top_crop":0,
+			"bottom_crop":350,
+			"left_crop":0,
+			"right_crop":60,
+			"cw_rotate":0
+		},
+		"1x3":{
+			"horizontal_stretch": 1,
+			"vertical_stretch":1,
+			"top_crop":0,
+			"bottom_crop":350,
+			"left_crop":0,
+			"right_crop":0,
+			"cw_rotate":-90
 		}
+
 	},
 
 	"customURIs": {
