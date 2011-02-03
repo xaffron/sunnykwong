@@ -32,6 +32,7 @@ import org.json.JSONArray;
 import android.graphics.Matrix;
 
 public class OMCWidgetDrawEngine {
+//	static final String TESTTHEME="IronIndicant";
 
 	// Needs to be synchronized now that we have four different widget types 
 	// calling this same method creating a potential race condition
@@ -69,7 +70,13 @@ public class OMCWidgetDrawEngine {
 		
 		
 		// Get theme.  (Nowadays, OMC.getTheme takes care of caching/importing.)
+
 		String sTheme = OMC.PREFS.getString("widgetTheme"+appWidgetId,OMC.DEFAULTTHEME);
+		//TODO
+		// WHEN TESTING NEW THEME, UNCOMMENT THIS LINE 
+		//String sTheme = TESTTHEME;
+
+		
 		JSONObject oTheme = OMC.getTheme(context, sTheme, OMC.THEMESFROMCACHE);
 
 		// If we can't get theme (from memory, cache or SD), the theme is just gone.  
@@ -354,6 +361,9 @@ public class OMCWidgetDrawEngine {
 		resultCanvas.setDensity(DisplayMetrics.DENSITY_HIGH);
 
 		final String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME);
+		//TODO
+		// WHEN TESTING NEW THEME, UNCOMMENT THIS LINE 
+		//String sTheme = TESTTHEME;
 
 		JSONObject oTheme = OMC.getTheme(context, sTheme, OMC.THEMESFROMCACHE);
 		if (oTheme==null) {
@@ -414,6 +424,9 @@ public class OMCWidgetDrawEngine {
 		resultCanvas.setDensity(DisplayMetrics.DENSITY_HIGH);
 
 		final String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME);
+		//TODO
+		// WHEN TESTING NEW THEME, UNCOMMENT THIS LINE 
+		//String sTheme = TESTTHEME;
 
 		if (oTheme==null) {
 			Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
