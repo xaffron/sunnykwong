@@ -16,6 +16,7 @@ import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 
@@ -460,6 +461,10 @@ public class OMC extends Application {
 				return OMC.TYPEFACEMAP.get(src);
 			}
 		}
+		//Look in assets if default theme.
+		if (sTheme.equals(OMC.DEFAULTTHEME)) {
+			return Typeface.createFromAsset(OMC.AM, src);
+		}
 		return null;
 	}
 
@@ -484,7 +489,14 @@ public class OMC extends Application {
 				return OMC.BMPMAP.get(src);
 			}
 		} 
-
+		// Look in assets
+		if (sTheme.equals(OMC.DEFAULTTHEME)) {
+			try {
+				return BitmapFactory.decodeStream(OMC.AM.open(src));
+			} catch (Exception e) {
+				// Asset not found - do nothing
+			}
+		}
 		// Bitmap can't be found anywhere
 		return null;
 	}
@@ -568,7 +580,30 @@ public class OMC extends Application {
 			}
 
 		} 
-
+		// If default theme, look in assets
+		if (nm.equals(OMC.DEFAULTTHEME)) {
+			try {
+				InputStreamReader in = new InputStreamReader(OMC.AM.open("00control.json"));
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[8192];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+			    
+				JSONObject oResult = new JSONObject(sb.toString());
+				sb.setLength(0);
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " loaded from assets.");
+				return oResult;
+			} catch (Exception e) {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error reloading " + nm + " from assets.");
+				e.printStackTrace();
+			} finally {
+				System.gc();
+			}
+			
+		}
 		return null;
 	}
 
