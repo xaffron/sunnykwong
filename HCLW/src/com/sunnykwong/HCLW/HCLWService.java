@@ -6,29 +6,23 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Matrix;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.service.wallpaper.WallpaperService;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
+import android.view.VelocityTracker;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
-public class HCLWService  extends WallpaperService  {
-	// First, a few flags for the service.
-	static boolean RUNNING=false;	// Am I (already) running?
-	static boolean STOPNOW4x4=false;		// Should I stop now? from 4x4 widgets
-	static boolean STOPNOW4x2=false;		// Should I stop now? from 4x2 widgets
-	static boolean STOPNOW4x1=false;		// Should I stop now? from 4x1 widgets
-	static boolean STOPNOW3x3=false;		// Should I stop now? from 3x3 widgets
-	static boolean STOPNOW3x1=false;		// Should I stop now? from 3x1 widgets
-	static boolean STOPNOW2x2=false;		// Should I stop now? from 2x2 widgets
-	static boolean STOPNOW2x1=false;		// Should I stop now? from 2x1 widgets
-	static boolean STOPNOW1x3=false;		// Should I stop now? from 1x3 widgets
-    static Object[] mStartForegroundArgs = new Object[2];
-    static Object[] mStopForegroundArgs = new Object[1];
-
+public class HCLWService extends WallpaperService  {
+	public Bitmap bkgd;
+	public Bitmap flare; 
     private final Handler mHandler = new Handler();
 
 	//	 Code for oncreate/ondestroy.
@@ -38,14 +32,14 @@ public class HCLWService  extends WallpaperService  {
 	//	When service is created,
 	@Override
 	public void onCreate() {
-
-	
+		bkgd = BitmapFactory.decodeResource(this.getResources(), R.drawable.bkgd);
+		flare = BitmapFactory.decodeResource(this.getResources(), R.drawable.flare);
 	}
 
 	@Override
 	public Engine onCreateEngine() {
 		// TODO Auto-generated method stub
-		return new CubeEngine();
+		return new FlareEngine();
 	}
 
 	@Override
@@ -68,9 +62,59 @@ public class HCLWService  extends WallpaperService  {
 		return 1;  // Service.START_STICKY ; have to use literal because Donut is unaware of the constant
 	}
 
-    class CubeEngine extends Engine {
+    class FlareEngine extends Engine {
 
-        private final Paint mPaint = new Paint();
+    	public final float[] FLAREPATHINITX
+    		= {259f,272f,288f,410f,
+    		420f,432f,443f,453f,
+    		467f,478f,489f,506f};
+    	public final float[] FLAREPATHINITY
+    		= {234f,234f,234f,248f,
+    			248f,248f,248f,248f,
+    			248f,248f,248f,248f};
+    	public final float[] FLAREPATHINITZ
+        	= {0.1f,0.1f,0.1f,0.1f,
+    		0.1f,0.1f,0.1f,0.1f,
+    		0.1f,0.1f,0.1f,0.1f};
+    	
+    	public final float[] FLAREPATHMIDX
+			= {163,169,181,272,
+			313,359,404,448,
+			494,540,585,572};
+    	public final float[] FLAREPATHMIDY
+			= {296,304,315,300,
+			300,300,300,300,
+			300,300,300,276};
+    	public final float[] FLAREPATHMIDZ
+	    	= {0.3f,0.3f,0.3f,0.5f,
+			0.5f,0.5f,0.5f,0.5f,
+			0.5f,0.5f,0.5f,0.5f};
+	
+    	public final float[] FLAREPATHFINALX
+			= {0,0,0,0,
+			0,121,270,433,
+			590,640,640,640};
+    	public final float[] FLAREPATHFINALY
+			= {332,348,372,403,
+			459,480,480,480,
+			480,380,328,300};
+		public final float[] FLAREPATHFINALZ
+	    	= {1f,1f,1f,1f,
+			1f,1f,1f,1f,
+			1f,1f,1f,1f};
+		public float MINFLARESPEED = 0.02f;
+		public float[] FLARESPEEDS
+			= {0.01f,0.02f,0.01f,0.02f,
+				0.01f,0.02f,0.01f,0.02f,
+				0.01f,0.02f,0.01f,0.02f};
+		public float[] DISPLACEMENTS
+			= {0f,0f,0f,0f,
+				0f,0f,0f,0f,
+				0f,0f,0f,0f};
+	
+		public final Matrix TEMPMATRIX = new Matrix(), TEMPMATRIX2=new Matrix();
+		
+		private final Paint mPaint = new Paint();
         private float mOffset;
         private float mTouchX = -1;
         private float mTouchY = -1;
@@ -78,14 +122,17 @@ public class HCLWService  extends WallpaperService  {
         private float mCenterX;
         private float mCenterY;
 
-        private final Runnable mDrawCube = new Runnable() {
+        private long IGNORETOUCHUNTIL;
+        
+        private final Runnable mDrawFlare = new Runnable() {
             public void run() {
                 drawFrame();
             }
         };
+        
         private boolean mVisible;
 
-        CubeEngine() {
+        FlareEngine() {
             // Create a Paint to draw the lines for our cube
             final Paint paint = mPaint;
             paint.setColor(0xffffffff);
@@ -108,7 +155,7 @@ public class HCLWService  extends WallpaperService  {
         @Override
         public void onDestroy() {
             super.onDestroy();
-            mHandler.removeCallbacks(mDrawCube);
+            mHandler.removeCallbacks(mDrawFlare);
         }
 
         @Override
@@ -117,7 +164,7 @@ public class HCLWService  extends WallpaperService  {
             if (visible) {
                 drawFrame();
             } else {
-                mHandler.removeCallbacks(mDrawCube);
+                mHandler.removeCallbacks(mDrawFlare);
             }
         }
 
@@ -139,7 +186,7 @@ public class HCLWService  extends WallpaperService  {
         public void onSurfaceDestroyed(SurfaceHolder holder) {
             super.onSurfaceDestroyed(holder);
             mVisible = false;
-            mHandler.removeCallbacks(mDrawCube);
+            mHandler.removeCallbacks(mDrawFlare);
         }
 
         @Override
@@ -164,6 +211,7 @@ public class HCLWService  extends WallpaperService  {
             super.onTouchEvent(event);
         }
 
+       
         /*
          * Draw one frame of the animation. This method gets called repeatedly
          * by posting a delayed Runnable. You can do any drawing you want in
@@ -177,7 +225,7 @@ public class HCLWService  extends WallpaperService  {
                 c = holder.lockCanvas();
                 if (c != null) {
                     // draw something
-                    drawCube(c);
+                	drawFlares(c);
                     drawTouchPoint(c);
                 }
             } finally {
@@ -185,9 +233,9 @@ public class HCLWService  extends WallpaperService  {
             }
 
             // Reschedule the next redraw
-            mHandler.removeCallbacks(mDrawCube);
+            mHandler.removeCallbacks(mDrawFlare);
             if (mVisible) {
-                mHandler.postDelayed(mDrawCube, 1000 / 25);
+                mHandler.postDelayed(mDrawFlare, 1000 / 25);
             }
         }
 
@@ -195,66 +243,54 @@ public class HCLWService  extends WallpaperService  {
          * Draw a wireframe cube by drawing 12 3 dimensional lines between
          * adjacent corners of the cube
          */
-        void drawCube(Canvas c) {
-            c.save();
-            c.translate(mCenterX, mCenterY);
-            c.drawColor(0xff000000);
-            drawLine(c, -400, -400, -400,  400, -400, -400);
-            drawLine(c,  400, -400, -400,  400,  400, -400);
-            drawLine(c,  400,  400, -400, -400,  400, -400);
-            drawLine(c, -400,  400, -400, -400, -400, -400);
+        void drawFlares(Canvas c) {
+        	Paint pt = new Paint();
+        	pt.setColor(Color.WHITE);
+        	c.drawBitmap(bkgd, 0f,0f, pt);
+        	for (int i = 0; i < 12; i++) {
+        		if (DISPLACEMENTS[i]>1f) {
+        			DISPLACEMENTS[i]=0f;
+        		} else if (DISPLACEMENTS[i]==0f) {
+        			//Only relaunch a flare 1% of the time
+        			if (Math.random() < 0.01d) {
+        				FLARESPEEDS[i]= (float)Math.random() * 0.05f + MINFLARESPEED;
+            			DISPLACEMENTS[i]+=FLARESPEEDS[i];
+        			}
+        		} else {
+        			DISPLACEMENTS[i]+=FLARESPEEDS[i];
+        		}
+        		
+        		TEMPMATRIX.reset();
+        		float xPos = floatInterpolate(FLAREPATHINITX[i],FLAREPATHMIDX[i],FLAREPATHFINALX[i],DISPLACEMENTS[i]);
+        		float yPos = floatInterpolate(FLAREPATHINITY[i],FLAREPATHMIDY[i],FLAREPATHFINALY[i],DISPLACEMENTS[i]);
+        		float zFactor = ((float)Math.random()*0.5f + 0.5f)  * floatInterpolate(FLAREPATHINITZ[i], FLAREPATHMIDZ[i], FLAREPATHFINALZ[i], DISPLACEMENTS[i]);
+        		TEMPMATRIX.postScale(zFactor, zFactor);
+        		TEMPMATRIX.postTranslate(xPos-flare.getWidth()/2f*zFactor, yPos-flare.getHeight()/2f*zFactor);
+        		
+        		c.drawBitmap(flare, TEMPMATRIX, pt);
+            }
 
-            drawLine(c, -400, -400,  400,  400, -400,  400);
-            drawLine(c,  400, -400,  400,  400,  400,  400);
-            drawLine(c,  400,  400,  400, -400,  400,  400);
-            drawLine(c, -400,  400,  400, -400, -400,  400);
-
-            drawLine(c, -400, -400,  400, -400, -400, -400);
-            drawLine(c,  400, -400,  400,  400, -400, -400);
-            drawLine(c,  400,  400,  400,  400,  400, -400);
-            drawLine(c, -400,  400,  400, -400,  400, -400);
-            c.restore();
+        
         }
 
-        /*
-         * Draw a 3 dimensional line on to the screen
-         */
-        void drawLine(Canvas c, int x1, int y1, int z1, int x2, int y2, int z2) {
-            long now = SystemClock.elapsedRealtime();
-            float xrot = ((float)(now - mStartTime)) / 1000;
-            float yrot = (0.5f - mOffset) * 2.0f;
-            float zrot = 0;
-
-            // 3D transformations
-
-            // rotation around X-axis
-            float newy1 = (float)(Math.sin(xrot) * z1 + Math.cos(xrot) * y1);
-            float newy2 = (float)(Math.sin(xrot) * z2 + Math.cos(xrot) * y2);
-            float newz1 = (float)(Math.cos(xrot) * z1 - Math.sin(xrot) * y1);
-            float newz2 = (float)(Math.cos(xrot) * z2 - Math.sin(xrot) * y2);
-
-            // rotation around Y-axis
-            float newx1 = (float)(Math.sin(yrot) * newz1 + Math.cos(yrot) * x1);
-            float newx2 = (float)(Math.sin(yrot) * newz2 + Math.cos(yrot) * x2);
-            newz1 = (float)(Math.cos(yrot) * newz1 - Math.sin(yrot) * x1);
-            newz2 = (float)(Math.cos(yrot) * newz2 - Math.sin(yrot) * x2);
-
-            // 3D-to-2D projection
-            float startX = newx1 / (4 - newz1 / 400);
-            float startY = newy1 / (4 - newz1 / 400);
-            float stopX =  newx2 / (4 - newz2 / 400);
-            float stopY =  newy2 / (4 - newz2 / 400);
-
-            c.drawLine(startX, startY, stopX, stopY, mPaint);
-        }
+    	public float floatInterpolate (float n1, float n2, float n3, float gradient) {
+    		if (gradient > 0.5f) return (n2+ (n3-n2)*(gradient-0.5f) * 2);
+    		else return (n1 + (n2-n1) * gradient * 2);
+    	}
 
         /*
          * Draw a circle around the current touch point, if any.
          */
         void drawTouchPoint(Canvas c) {
+        	if (System.currentTimeMillis()<IGNORETOUCHUNTIL) return;
             if (mTouchX >=0 && mTouchY >= 0) {
-                c.drawCircle(mTouchX, mTouchY, 80, mPaint);
+        		TEMPMATRIX2.reset();
+            	float zFactor = ((float)Math.random()*0.5f + 0.5f);
+        		TEMPMATRIX2.postScale(zFactor, zFactor);
+        		TEMPMATRIX2.postTranslate(mTouchX-flare.getWidth()/2f*zFactor, mTouchY-flare.getHeight()/2f*zFactor);
+        		c.drawBitmap(flare, TEMPMATRIX2, mPaint);
             }
+            IGNORETOUCHUNTIL=System.currentTimeMillis()+50;
         }
 
     }
