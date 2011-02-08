@@ -19,6 +19,7 @@ import android.view.SurfaceHolder;
 import android.view.VelocityTracker;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.DisplayMetrics;
 
 public class HCLWService extends WallpaperService  {
 	public Bitmap bkgd;
@@ -64,6 +65,15 @@ public class HCLWService extends WallpaperService  {
 
     class FlareEngine extends Engine {
 
+    	public final float LDPISCALEX=0.75f;
+    	public final float LDPISCALEY=0.75f;
+    	public final float MDPISCALEX=1f;
+    	public final float MDPISCALEY=1f;
+    	public final float HDPISCALEX=1.5f;
+    	public final float HDPISCALEY=1.78f;
+    	public float SCALEX=1f;
+    	public float SCALEY=1f;
+    	
     	public final float[] FLAREPATHINITX
     		= {259f,272f,288f,410f,
     		420f,432f,443f,453f,
@@ -142,6 +152,24 @@ public class HCLWService extends WallpaperService  {
             paint.setStyle(Paint.Style.STROKE);
 
             mStartTime = SystemClock.elapsedRealtime();
+            
+            switch (HCLWService.this.getResources().getDisplayMetrics().densityDpi) {
+            	case (DisplayMetrics.DENSITY_HIGH):
+            		SCALEX = HDPISCALEX;
+            		SCALEY = HDPISCALEY;
+            		break;
+            	case (DisplayMetrics.DENSITY_MEDIUM):
+            		SCALEX = MDPISCALEX;
+            		SCALEY = MDPISCALEY;
+            		break;
+            	case (DisplayMetrics.DENSITY_LOW):
+            		SCALEX = LDPISCALEX;
+            		SCALEY = LDPISCALEY;
+            		break;
+            	default:
+            		break;
+            }
+            
         }
 
         @Override
@@ -261,8 +289,8 @@ public class HCLWService extends WallpaperService  {
         		}
         		
         		TEMPMATRIX.reset();
-        		float xPos = floatInterpolate(FLAREPATHINITX[i],FLAREPATHMIDX[i],FLAREPATHFINALX[i],DISPLACEMENTS[i]);
-        		float yPos = floatInterpolate(FLAREPATHINITY[i],FLAREPATHMIDY[i],FLAREPATHFINALY[i],DISPLACEMENTS[i]);
+        		float xPos = floatInterpolate(FLAREPATHINITX[i],FLAREPATHMIDX[i],FLAREPATHFINALX[i],DISPLACEMENTS[i]) * SCALEX;
+        		float yPos = floatInterpolate(FLAREPATHINITY[i],FLAREPATHMIDY[i],FLAREPATHFINALY[i],DISPLACEMENTS[i])* SCALEY;
         		float zFactor = ((float)Math.random()*0.5f + 0.5f)  * floatInterpolate(FLAREPATHINITZ[i], FLAREPATHMIDZ[i], FLAREPATHFINALZ[i], DISPLACEMENTS[i]);
         		TEMPMATRIX.postScale(zFactor, zFactor);
         		TEMPMATRIX.postTranslate(xPos-flare.getWidth()/2f*zFactor, yPos-flare.getHeight()/2f*zFactor);
