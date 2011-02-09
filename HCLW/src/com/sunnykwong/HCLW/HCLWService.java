@@ -8,6 +8,8 @@ import android.widget.RemoteViews;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.Matrix;
 import android.os.Handler;
@@ -199,7 +201,7 @@ public class HCLWService extends WallpaperService  {
         @Override
         public void onSurfaceChanged(SurfaceHolder holder, int format, int width, int height) {
             super.onSurfaceChanged(holder, format, width, height);
-            // store the center of the surface, so we can draw the cube in the right spot
+            // store the center of the surface
             mCenterX = width/2.0f;
             mCenterY = height/2.0f;
             drawFrame();
@@ -220,6 +222,7 @@ public class HCLWService extends WallpaperService  {
         @Override
         public void onOffsetsChanged(float xOffset, float yOffset,
                 float xStep, float yStep, int xPixels, int yPixels) {
+        	System.out.println(xPixels);
             mOffset = xOffset;
             drawFrame();
         }
@@ -243,7 +246,7 @@ public class HCLWService extends WallpaperService  {
         /*
          * Draw one frame of the animation. This method gets called repeatedly
          * by posting a delayed Runnable. You can do any drawing you want in
-         * here. This example draws a wireframe cube.
+         * here.
          */
         void drawFrame() {
             final SurfaceHolder holder = getSurfaceHolder();
@@ -267,11 +270,7 @@ public class HCLWService extends WallpaperService  {
             }
         }
 
-        /*
-         * Draw a wireframe cube by drawing 12 3 dimensional lines between
-         * adjacent corners of the cube
-         */
-        void drawFlares(Canvas c) {
+         void drawFlares(Canvas c) {
         	Paint pt = new Paint();
         	pt.setColor(Color.WHITE);
         	c.drawBitmap(bkgd, 0f,0f, pt);
@@ -294,7 +293,8 @@ public class HCLWService extends WallpaperService  {
         		float zFactor = ((float)Math.random()*0.5f + 0.5f)  * floatInterpolate(FLAREPATHINITZ[i], FLAREPATHMIDZ[i], FLAREPATHFINALZ[i], DISPLACEMENTS[i]);
         		TEMPMATRIX.postScale(zFactor, zFactor);
         		TEMPMATRIX.postTranslate(xPos-flare.getWidth()/2f*zFactor, yPos-flare.getHeight()/2f*zFactor);
-        		
+//        		int iGrn = Color.parseColor("#8800FF00");
+//        		pt.setColorFilter(new PorterDuffColorFilter(iGrn, PorterDuff.Mode.SRC_ATOP));
         		c.drawBitmap(flare, TEMPMATRIX, pt);
             }
 
@@ -307,7 +307,7 @@ public class HCLWService extends WallpaperService  {
     	}
 
         /*
-         * Draw a circle around the current touch point, if any.
+         * Draw a flare around the current touch point.
          */
         void drawTouchPoint(Canvas c) {
         	if (System.currentTimeMillis()<IGNORETOUCHUNTIL) return;
