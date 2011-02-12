@@ -33,6 +33,16 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.FGSERVICE");
 		}
 
+		if (action.equals(Intent.ACTION_BATTERY_CHANGED)) {
+			System.out.println("Batt "+ intent.getIntExtra("level", 0) + "/" +intent.getIntExtra("scale", 10000));
+			OMC.PREFS.edit()
+				.putInt("ompc_battlevel", intent.getIntExtra("level", 0))
+				.putInt("ompc_battscale", intent.getIntExtra("scale", 100))
+				.putInt("ompc_battpercent", intent.getIntExtra("level", 0)/intent.getIntExtra("scale", 100))
+				.commit();
+			return;
+		}
+		
 		if (action.equals(OMC.FGINTENT)) OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.FGSERVICE");
 		else OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.BGSERVICE");
 		

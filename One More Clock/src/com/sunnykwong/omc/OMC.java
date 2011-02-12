@@ -975,6 +975,8 @@ public class OMC extends Application {
 			} else {
 				//Unknown - do nothing
 			}
+		} else if (sToken.equals("ompc")) {
+			result = OMC.PREFS.getString("ompc_"+st.nextToken(), "Unavail.");
 		} else if (sToken.equals("circle")) {
 			// Specifies a point at angle/radius from point.
 			int iOriginVal = Integer.parseInt(st.nextToken());
