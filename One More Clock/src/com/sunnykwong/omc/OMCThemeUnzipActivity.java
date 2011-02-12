@@ -123,7 +123,7 @@ public class OMCThemeUnzipActivity extends Activity {
         		return;
         	}
 	        
-        	omcRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes");
+        	omcRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes");
 	        mHandler = new Handler();
 	        pdWait = new Dialog(this);
 	        pdWait.setContentView(getResources().getIdentifier("themeunzippreview", "layout", OMC.PKGNAME));

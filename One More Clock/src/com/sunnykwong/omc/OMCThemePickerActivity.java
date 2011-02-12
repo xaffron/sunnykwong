@@ -156,7 +156,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 //										OMC.purgeBitmapCache();
 //										OMC.purgeTypefaceCache();
 //										OMC.purgeImportCache();
-//										OMC.removeDirectory(Environment.getExternalStorageDirectory()+"/OMCThemes/"+)
+//										OMC.removeDirectory(Environment.getExternalStorageDirectory()+"/.OMCThemes/"+)
 										OMCThemePickerActivity.this.sDefaultTheme=null;
 										OMCThemePickerActivity.THEMEARRAY.removeItem(gallery.getSelectedItemPosition());
 										OMCThemePickerActivity.this.refreshThemeList();
@@ -187,7 +187,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	return;
         }
 
-        OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath()+"/OMCThemes");
+        OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath()+"/.OMCThemes");
         if (!OMCThemePickerActivity.THEMEROOT.exists()) {
         	Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
         	OMCThemePickerActivity.THEMEROOT.mkdir();

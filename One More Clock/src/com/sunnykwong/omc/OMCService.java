@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -178,5 +179,26 @@ public class OMCService extends Service {
         OMC.NM.cancel(id);
         setForeground(false);
     }
+    
+//    @Override
+//    public void onConfigurationChanged(Configuration newConfig) {
+//    	// TODO Auto-generated method stub
+//		//	Tell the widgets to refresh themselves.
+//		OMCService.RUNNING=true;
+//		System.out.println("WORKY");
+//
+//		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
+//
+//		handleCommand(OMC.SVCSTARTINTENT);
+//
+//		if (!OMCService.RUNNING || !OMC.FG) {
+//			// If we're not in FG, then go to sleep and let the alarm wake us up again
+//			// If we're supposed to stop, then just stop
+//			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Svc","Stopping Svc");
+//			this.stopSelf();
+//		}
+//
+//    	super.onConfigurationChanged(newConfig);
+//    }
 
 }

@@ -30,6 +30,8 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 
 import android.graphics.Matrix;
+import android.graphics.Bitmap.CompressFormat;
+import java.io.FileOutputStream;
 
 public class OMCWidgetDrawEngine {
 //	static final String TESTTHEME="IronIndicant";
@@ -48,15 +50,14 @@ public class OMCWidgetDrawEngine {
 		final int N = aWM.getAppWidgetIds(cName)==null? 0: aWM.getAppWidgetIds(cName).length;
 
 		for (int i=0; i<N; i++) {
-			final Bitmap lqBitmap = OMC.LOWQUALWIDGETMAP.get(aWM.getAppWidgetIds(cName)[i]);
-			if (lqBitmap!=null && OMC.SCREENON) {
-				// Blit something lowqual over first
-				RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
-				final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
-				rv.setImageViewBitmap(iViewID,lqBitmap);
-				aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);
-			}
-			// Then do a high-res refresh
+//			if (OMC.SCREENON) {
+//				// Blit something lowqual over first
+//				RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
+//				final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
+//				rv.setImageViewUri(iViewID,Uri.parse("content://com.sunnykwong.omc/widgets?awi="+aWM.getAppWidgetIds(cName)[i]));
+//				aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);
+//			}
+
 			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i], cName);
 		}
 	}
@@ -235,31 +236,33 @@ public class OMCWidgetDrawEngine {
 			tempMatrix.reset();
 		}
 
-		final Bitmap finalBitmap = Bitmap.createBitmap(croppedScaledBmp,0,0,croppedScaledBmp.getWidth(), croppedScaledBmp.getHeight(),tempMatrix, true).copy(Bitmap.Config.ARGB_4444, false);
+		final Bitmap finalBitmap = Bitmap.createBitmap(croppedScaledBmp,0,0,croppedScaledBmp.getWidth(), croppedScaledBmp.getHeight(),tempMatrix, true);
 
-		// Blit the buffer over
-		RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
-		final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
-		rv.setImageViewBitmap(iViewID,finalBitmap);
-		appWidgetManager.updateAppWidget(appWidgetId, rv);
+		try {
+		FileOutputStream fos = new FileOutputStream(OMC.CACHEPATH + appWidgetId +"cache.png");
+		finalBitmap.compress(CompressFormat.PNG, 100, fos);
+		fos.close();
+		
+		bitmap.recycle();
+		croppedScaledBmp.recycle();
+		finalBitmap.recycle();
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		// Do some fancy footwork here and adjust the average lag (so OMC's slowness is less apparent)
 		// We will start at least 200 millis early.
 		OMC.LEASTLAGMILLIS = Math.max(200l, (OMC.LEASTLAGMILLIS + (System.currentTimeMillis() - lStartTime))/2l);
 
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Engine","Calc. lead time for next tick: " + OMC.LEASTLAGMILLIS + "ms");
-		Bitmap oldBitmap = OMC.LOWQUALWIDGETMAP.get(appWidgetId);
-		if (oldBitmap!=null) {
-			if(!oldBitmap.isRecycled()) oldBitmap.recycle();
-		}
-		OMC.LOWQUALWIDGETMAP.put(appWidgetId, finalBitmap);
-		bitmap.recycle();
-		croppedScaledBmp.recycle();
+
+		// Blit the buffer over
+		RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
+		final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
+    	rv.setImageViewUri(iViewID, Uri.parse("content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+appWidgetId));
 		
-		// Remoteviews bug - memory leak for large IPC load.  So we discard this get a new one.
-		rv = null;
-		rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
-		
+    	// Now for overlay URIs
 		OMC.OVERLAYURIS = new String[9];
 		JSONObject temp = oTheme.optJSONObject("customURIs");
 		if (temp == null) {
@@ -345,8 +348,9 @@ public class OMCWidgetDrawEngine {
         	} else {
         		rv.setImageViewResource(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), context.getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME));
         	}
-        
-    		appWidgetManager.updateAppWidget(appWidgetId, rv);
+
+        	// OK, the IPC instructions are done; send them over to the homescreen.
+        	appWidgetManager.updateAppWidget(appWidgetId, rv);
 //        }
 	}
 	

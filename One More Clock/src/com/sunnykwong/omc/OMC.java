@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -44,9 +45,11 @@ import android.os.Environment;
 import android.text.format.Time;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.graphics.BitmapFactory;
 import android.content.res.Resources;
-
+import android.os.Handler;
 /**
  * @author skwong01
  * Thanks to ralfoide's 24clock code; taught me quite a bit about broadcastreceivers
@@ -122,7 +125,6 @@ public class OMC extends Application {
     static HashMap<String, Typeface> TYPEFACEMAP;
     static HashMap<String, Bitmap> BMPMAP;
     static Map<String, JSONObject> THEMEMAP;
-    static HashMap<Integer, Bitmap> LOWQUALWIDGETMAP;
 	
     static OMCConfigReceiver cRC;
 	static OMCAlarmReceiver aRC;
@@ -163,6 +165,14 @@ public class OMC extends Application {
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
     static Notification FGNOTIFICIATION;
     
+    final Handler mHandler = new Handler();
+    static String mMessage;
+	final Runnable mPopToast = new Runnable() {
+		public void run() {
+			Toast.makeText(OMC.this, mMessage, Toast.LENGTH_LONG).show();
+		}
+	};
+    
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -192,17 +202,8 @@ public class OMC extends Application {
 		OMC.LASTUPDATEMILLIS = 0l;
 		OMC.LEASTLAGMILLIS = 0l;
 		
-//		OMC.BUFFER= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
-//		OMC.CANVAS = new Canvas(OMC.BUFFER);
-//		OMC.CANVAS.setDensity(DisplayMetrics.DENSITY_HIGH);
-//		OMC.PT1 = new Paint();
-//		OMC.PT2 = new Paint();
-		
 		OMC.aRC = new OMCAlarmReceiver();
 		OMC.cRC = new OMCConfigReceiver();
-		
-		
-		//OMC.TEMPMATRIX = new Matrix();
 		
 		OMC.FGPENDING = PendingIntent.getBroadcast(OMC.CONTEXT, 0, OMC.FGINTENT, 0);
 		OMC.BGPENDING = PendingIntent.getBroadcast(OMC.CONTEXT, 0, OMC.BGINTENT, 0);
@@ -221,7 +222,6 @@ public class OMC extends Application {
 		OMC.GETEXTENDEDPACKINTENT.setData(Uri.parse(OMC.EXTENDEDPACK));
 		OMC.OMCMARKETINTENT = new Intent(Intent.ACTION_VIEW,OMC.PAIDURI);
 
-		
 		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/";
 		
 		OMC.FGNOTIFICIATION = new Notification(this.getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME), 
@@ -260,11 +260,14 @@ public class OMC extends Application {
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_TICK));
+		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_CHANGED));
+		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIMEZONE_CHANGED));
+		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_CONFIGURATION_CHANGED));
+		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 		
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(3);
 		OMC.BMPMAP = new HashMap<String, Bitmap>(16);
 		OMC.THEMEMAP=Collections.synchronizedMap(new HashMap<String, JSONObject>(3));
-		OMC.LOWQUALWIDGETMAP = new HashMap<Integer, Bitmap>(3);
 		
 		OMC.STRETCHINFO = null;
 		
@@ -435,6 +438,8 @@ public class OMC extends Application {
 			.remove("widgetLeadingZero"+aWI)
 			.remove("URI"+aWI)
 			.commit();
+		File f = new File(OMC.CACHEPATH + aWI +"cache.png");
+		if (f.exists())f.delete();
 	}
 	
 	public static Typeface getTypeface(String sTheme, String src) {
@@ -454,7 +459,7 @@ public class OMC extends Application {
 		}
 		//Look in sd card;
 		if (OMC.checkSDPresent()) {
-			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/"+sTheme+"/"+src);
+			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+sTheme+"/"+src);
 			if (f.exists()) {
 				copyFile(f.getAbsolutePath(),OMC.CACHEPATH +"/"+sTheme+f.getName());
 				OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(f));
@@ -482,7 +487,7 @@ public class OMC extends Application {
 		}
 		// Look in SD path
 		if (OMC.checkSDPresent()) {
-			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/"+sTheme+"/"+src);
+			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+sTheme+"/"+src);
 			if (f.exists()) {
 				copyFile(f.getAbsolutePath(),OMC.CACHEPATH +"/"+sTheme+f.getName());
 				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(f.getAbsolutePath()));
@@ -547,12 +552,12 @@ public class OMC extends Application {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error reloading " + nm + " from cachedir.");
 				e.printStackTrace();
 			} finally {
-				System.gc();
+				//System.gc();
 			}
 		}
 		// Look in SD path
 		if (OMC.checkSDPresent()) {
-			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/"+nm);
+			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+nm);
 			if (f.exists() && f.isDirectory()) {
 				for (File ff:f.listFiles()) {
 					copyFile(ff.getAbsolutePath(),OMC.CACHEPATH + nm + ff.getName());
@@ -576,7 +581,7 @@ public class OMC extends Application {
 			} catch (Exception e) {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error loading " + nm + " from SD.");
 			} finally {
-				System.gc();
+				//System.gc();
 			}
 
 		} 
@@ -600,7 +605,7 @@ public class OMC extends Application {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error reloading " + nm + " from assets.");
 				e.printStackTrace();
 			} finally {
-				System.gc();
+				//System.gc();
 			}
 			
 		}
@@ -629,7 +634,7 @@ public class OMC extends Application {
 		for (File f:(new File(OMC.CACHEPATH).listFiles())) {
 			f.delete();
 		}
-		System.gc();
+		//System.gc();
 	}
 		
 	public static void removeDirectory(File f) {
@@ -640,13 +645,38 @@ public class OMC extends Application {
 		f.delete();
 	}
 
+	public boolean fixnomedia() {
+		File dotomcdir = new File( Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes");
+		if (!dotomcdir.exists()) return true;
+		Thread t = new Thread() {
+			public void run() {
+				mMessage = "Moving your themes to the new .OMCThemes directory from the Gallery.  Please do not mount or remove your SD card while this fix is in progress...";
+				mHandler.post(mPopToast);
+				File srcDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes");
+				File tgtDir=new File( Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes");
+				tgtDir.mkdirs();
+				OMC.copyDirectory(srcDir, tgtDir);
+				mMessage = "Almost There...";
+				mHandler.post(mPopToast);
+				OMC.removeDirectory(srcDir);
+				mMessage = "Your OMC themes are now hidden from media scans.  You can now use your phone normally.";
+				mHandler.post(mPopToast);
+			}
+		};
+		t.start();
+		return true;
+	}
+	
 	public static void copyDirectory(File src, File tgt) {
 		if (!tgt.exists()) tgt.mkdirs();
 		if (!tgt.isDirectory()) return;
 
 		for (File ff:src.listFiles()) {
-			copyFile(ff.getAbsolutePath(), tgt.getAbsolutePath()+"/"+ff.getName());
-			System.out.println(ff.getAbsolutePath() + "->" + tgt.getAbsolutePath()+"/"+ff.getName());
+			if (ff.isDirectory()) {
+				copyDirectory(ff,new File(tgt.getAbsolutePath()+"/"+ff.getName()));
+			} else {
+				copyFile(ff.getAbsolutePath(), tgt.getAbsolutePath()+"/"+ff.getName());
+			}
 		}
 	}
 	
@@ -725,7 +755,7 @@ public class OMC extends Application {
 	}
 	
 	public static void setupDefaultTheme() {
-		if (new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/"+ OMC.DEFAULTTHEME + "/00control.json").exists()) return;
+		if (new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME + "/00control.json").exists()) return;
 		copyAssetToCache("000preview.jpg", OMC.DEFAULTTHEME);
 		copyAssetToCache("00control.json", OMC.DEFAULTTHEME);
 		copyAssetToCache("A.png", OMC.DEFAULTTHEME);
@@ -744,25 +774,25 @@ public class OMC extends Application {
 		copyAssetToCache("P.png", OMC.DEFAULTTHEME);
 		copyAssetToCache("small-a.png", OMC.DEFAULTTHEME);
 		copyAssetToCache("small-p.png", OMC.DEFAULTTHEME);
-		(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/"+ OMC.DEFAULTTHEME)).mkdirs();
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "00control.json", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/00control.json");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "000preview.jpg", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/000preview.jpg");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "A.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/A.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "colon.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/colon.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit .png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/digit .png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit0.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/digit0.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit1.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/digit1.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit2.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/digit2.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit3.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/digit3.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit4.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/digit4.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit5.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/digit5.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit6.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/digit6.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit7.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/digit7.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit8.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/digit8.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit9.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/digit9.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "P.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/P.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "small-a.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/small-a.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "small-p.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes/" + OMC.DEFAULTTHEME + "/small-p.png");
+		(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME)).mkdirs();
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "00control.json", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/00control.json");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "000preview.jpg", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/000preview.jpg");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "A.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/A.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "colon.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/colon.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit .png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit .png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit0.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit0.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit1.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit1.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit2.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit2.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit3.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit3.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit4.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit4.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit5.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit5.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit6.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit6.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit7.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit7.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit8.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit8.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit9.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit9.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "P.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/P.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "small-a.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/small-a.png");
+		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "small-p.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/small-p.png");
 	}
 	
 	public static boolean validateTheme(JSONObject theme) {	
@@ -794,7 +824,7 @@ public class OMC extends Application {
 			return false;
         }
 
-        File sdRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes");
+        File sdRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes");
         if (!sdRoot.exists()) {
 //        	Toast.makeText(this, "OMCThemes folder not found in your SD Card.\nCreating folder...", Toast.LENGTH_LONG).show();
         	sdRoot.mkdir();

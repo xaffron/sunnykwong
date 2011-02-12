@@ -107,10 +107,10 @@ public class OMCSkinnerActivity extends Activity {
     		public void run() {
     			while (true) {
 //	    	    	OMCJSONThemeParser parser = new OMCJSONThemeParser(Environment.getExternalStorageDirectory().getAbsolutePath()
-//	    					+"/OMCThemes/" + sTheme);
+//	    					+"/.OMCThemes/" + sTheme);
 //
 //	    	    	Log.i(OMC.OMCSHORT + "Skinner","about to parse " + Environment.getExternalStorageDirectory().getAbsolutePath()
-//	    					+"/OMCThemes/" + sTheme);
+//	    					+"/.OMCThemes/" + sTheme);
 //	    			parser.importTheme();
 //	
 //	    			while (!parser.doneParsing){

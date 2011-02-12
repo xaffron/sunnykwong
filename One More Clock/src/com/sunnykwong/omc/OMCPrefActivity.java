@@ -72,6 +72,9 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     	super.onCreate(savedInstanceState);
     	
+		// FIX FOR NOMEDIA
+		if (OMC.checkSDPresent()) ((OMC)(this.getApplication())).fixnomedia();
+
     	// If action is null, we are coming from an existing widget - 
     	// we want both the home and back buttons to apply changes,
     	// So we set default result to OK.
