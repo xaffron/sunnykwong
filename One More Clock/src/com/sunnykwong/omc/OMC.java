@@ -87,8 +87,11 @@ public class OMC extends Application {
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
-		"Not finding your favorite clock?  OMC 1.2 only comes with 15 clocks.  To get the remaining ones, tap on 'Download More Clocks' when you're in the theme picker screen!",
-		"OMC now uses JSON instead of XML; themes are stored in the OMCThemes folder.  The old OMC folder is safe to delete, but if you made XML changes before, you'll want to port them over manually!",
+		"We're moving your themes from OMCThemes to .OMCThemes (with a dot).  This will keep OMC from cluttering up your Gallery... you may have to reboot your phone to see the changes.",
+		"OMC v1.2.2 now lets you send your favorite personalizations to Xaffron!  Tap and hold a clock on the theme picker screen, then select 'Email Tweaked Theme' to send to me.",
+		"Did you notice the improved sharpness of the clocks?  OMC now renders the widget at 32-bit color, up to the highest color depth your device supports... no more blurry dithering!",
+		"Not finding your favorite clock?  OMC comes with just the latest clocks.  To get the remaining ones, tap on 'Download More Clocks' when you're in the theme picker screen!",
+		"OMC now uses JSON instead of XML; themes are stored in the .OMCThemes folder.  The old OMC and OMCThemes folders are safe to delete, but if you made XML changes before, you'll want to port them over manually!",
 		"OMC now allows theme personalization on the phone.  Try moving each layer around, changing colors and toggling visibility!",
 		"Theme personalization overwrites dynamic elements (changing colors, positions, text, etc).  To make fine-tuned changes to dynamic elements, fire up a text editor on your phone or computer and look at the contents of the 00control.json file.",
 		"The donate version now features 8 widget sizes.  Not all themes work well with all widget sizes, but feel free to experiment! The newer ones look particularly good in the square and vertical widgets.",
@@ -125,7 +128,7 @@ public class OMC extends Application {
     static HashMap<String, Typeface> TYPEFACEMAP;
     static HashMap<String, Bitmap> BMPMAP;
     static Map<String, JSONObject> THEMEMAP;
-	
+
     static OMCConfigReceiver cRC;
 	static OMCAlarmReceiver aRC;
     static boolean SCREENON = true; 	// Is the screen on?
@@ -639,6 +642,7 @@ public class OMC extends Application {
 		
 	public static void removeDirectory(File f) {
 		for (File ff:f.listFiles()) {
+			if (ff.equals(f)) continue;
 	    	if (!ff.isDirectory()) ff.delete();
 	    	else removeDirectory(ff);
 		}
@@ -646,8 +650,8 @@ public class OMC extends Application {
 	}
 
 	public boolean fixnomedia() {
-		File dotomcdir = new File( Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes");
-		if (!dotomcdir.exists()) return true;
+		File oldomcdir = new File( Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes");
+		if (!oldomcdir.exists()) return true;
 		Thread t = new Thread() {
 			public void run() {
 				mMessage = "Moving your themes to the new .OMCThemes directory from the Gallery.  Please do not mount or remove your SD card while this fix is in progress...";

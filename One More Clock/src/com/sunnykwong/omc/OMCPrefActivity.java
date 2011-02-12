@@ -330,7 +330,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
 			.setCancelable(true)
 			.setTitle("Starter Clock Pack")
-			.setMessage("Any theme customizations you have made in your sdcard's OMCThemes folder will be overwritten.  Are you sure?\n(If not sure, tap Yes)")
+			.setMessage("Any theme customizations you have made in your sdcard's .OMCThemes folder will be overwritten.  Are you sure?\n(If not sure, tap Yes)")
 			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 				
 				@Override
