@@ -67,9 +67,9 @@ public class OMC extends Application {
 
 	static final boolean FREEEDITION = false;
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "asset:pk120.omc";
-	static final String STARTERPACKBACKUP = "omc://omc.colormeandroid.com/omc/pk120.omc";
-	static final String EXTENDEDPACK = "omcs://docs.google.com/uc?id=0B6S4jLNkP1XFMjk3OTNhZTQtN2Q4MC00ZGIwLTgzYWItN2YxNDc5YWM0ZTll&export=download&authkey=CJXcxbgK&hl=en";
+	static final String STARTERPACKURL = "asset:pk122.omc";
+	static final String STARTERPACKBACKUP = "omc://omc.colormeandroid.com/pk122.omc";
+	static final String EXTENDEDPACK = "omc://omc.colormeandroid.com/pk122_extended.omc";
 	static final String DEFAULTTHEME = "HoneycombLook";
 	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
 	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
@@ -87,6 +87,7 @@ public class OMC extends Application {
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
+		"Welcome to version 1.2.2!  3 new clocks arrive in this version - Indicia, Terra Eclipse and Valentine Kiss.  Have fun!",
 		"We're moving your themes from OMCThemes to .OMCThemes (with a dot).  This will keep OMC from cluttering up your Gallery... you may have to reboot your phone to see the changes.",
 		"OMC v1.2.2 now lets you send your favorite personalizations to Xaffron!  Tap and hold a clock on the theme picker screen, then select 'Email Tweaked Theme' to send to me.",
 		"Did you notice the improved sharpness of the clocks?  OMC now renders the widget at 32-bit color, up to the highest color depth your device supports... no more blurry dithering!",
