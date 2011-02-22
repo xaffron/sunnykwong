@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:key="livewallpaper_settings"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:title="Preferences">
+<ListPreference android:entries="@array/LAF" android:entryValues="@array/LAF" android:key="HCLWLAF" android:title="Choose a Look"/>
+<Preference android:key="flarecolors" android:title="Pick Flare Colors"/>
+<ListPreference android:key="TrailLength" android:title="Set Trail Length" android:entries="@array/TrailLength" android:entryValues="@array/TrailLengthValues"/>
+<ListPreference android:key="FlareFrequency" android:title="Set Flare Frequency" android:entries="@array/FlareFreq" android:entryValues="@array/FlareFreqValues"/>
+</PreferenceScreen>

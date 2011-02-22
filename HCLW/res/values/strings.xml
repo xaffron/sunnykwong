@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World!</string>
-    <string name="app_name">Honeycomb Live Wallpaper</string>
+	<string name="hello">Hello World!</string>
+	<string name="app_name">Honeycomb Live Wallpaper</string>
+	<string-array name="LAF">
+		<item>Racing Flares</item>
+		<item>Lightning Strikes</item>
+		<item>Electric Sparks</item>
+	</string-array>
+	<string-array name="FlareFreq">
+		<item>Rare</item>
+		<item>Normal (Default)</item>
+		<item>Frequent</item>
+		<item>Frantic!</item>
+	</string-array>
+	<string-array name="FlareFreqValues">
+		<item>0.5</item>
+		<item>1</item>
+		<item>3</item>
+		<item>75</item>
+	</string-array>
+	<string-array name="TrailLength">
+		<item>No Trail</item>
+		<item>Short</item>
+		<item>Medium (Default)</item>
+		<item>Long</item>
+	</string-array>
+	<string-array name="TrailLengthValues">
+		<item>1</item>
+		<item>5</item>
+		<item>10</item>
+		<item>20</item>
+	</string-array>
 </resources>

@@ -14,6 +14,8 @@ import android.graphics.Rect;
 import android.graphics.Matrix;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
+import android.content.SharedPreferences;
 import android.service.wallpaper.WallpaperService;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -24,10 +26,10 @@ import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;
 
 public class HCLWService extends WallpaperService  {
-	public Bitmap bkgd;
-	public Bitmap flare; 
-    private final Handler mHandler = new Handler();
 
+	public Handler mHandler;
+
+	
 	//	 Code for oncreate/ondestroy.
 	//	 Code stolen wholesale from api samples:
 	//	 http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/app/ForegroundService.html
@@ -35,8 +37,7 @@ public class HCLWService extends WallpaperService  {
 	//	When service is created,
 	@Override
 	public void onCreate() {
-		bkgd = BitmapFactory.decodeResource(this.getResources(), R.drawable.bkgd);
-		flare = BitmapFactory.decodeResource(this.getResources(), R.drawable.flare);
+		mHandler = new Handler();
 	}
 
 	@Override
@@ -67,111 +68,19 @@ public class HCLWService extends WallpaperService  {
 
     class FlareEngine extends Engine {
 
-    	public final float LDPISCALEX=0.75f;
-    	public final float LDPISCALEY=0.75f;
-    	public final float MDPISCALEX=1f;
-    	public final float MDPISCALEY=1f;
-    	public final float HDPISCALEX=1.5f;
-    	public final float HDPISCALEY=1.78f;
-    	public float SCALEX=1f;
-    	public float SCALEY=1f;
-    	
-    	public final float[] FLAREPATHINITX
-    		= {259f,272f,288f,410f,
-    		420f,432f,443f,453f,
-    		467f,478f,489f,506f};
-    	public final float[] FLAREPATHINITY
-    		= {234f,234f,234f,248f,
-    			248f,248f,248f,248f,
-    			248f,248f,248f,248f};
-    	public final float[] FLAREPATHINITZ
-        	= {0.1f,0.1f,0.1f,0.1f,
-    		0.1f,0.1f,0.1f,0.1f,
-    		0.1f,0.1f,0.1f,0.1f};
-    	
-    	public final float[] FLAREPATHMIDX
-			= {163,169,181,272,
-			313,359,404,448,
-			494,540,585,572};
-    	public final float[] FLAREPATHMIDY
-			= {296,304,315,300,
-			300,300,300,300,
-			300,300,300,276};
-    	public final float[] FLAREPATHMIDZ
-	    	= {0.3f,0.3f,0.3f,0.5f,
-			0.5f,0.5f,0.5f,0.5f,
-			0.5f,0.5f,0.5f,0.5f};
-	
-    	public final float[] FLAREPATHFINALX
-			= {0,0,0,0,
-			0,121,270,433,
-			590,640,640,640};
-    	public final float[] FLAREPATHFINALY
-			= {332,348,372,403,
-			459,480,480,480,
-			480,380,328,300};
-		public final float[] FLAREPATHFINALZ
-	    	= {1f,1f,1f,1f,
-			1f,1f,1f,1f,
-			1f,1f,1f,1f};
-		public float MINFLARESPEED = 0.02f;
-		public float[] FLARESPEEDS
-			= {0.01f,0.02f,0.01f,0.02f,
-				0.01f,0.02f,0.01f,0.02f,
-				0.01f,0.02f,0.01f,0.02f};
-		public float[] DISPLACEMENTS
-			= {0f,0f,0f,0f,
-				0f,0f,0f,0f,
-				0f,0f,0f,0f};
-	
-		public final Matrix TEMPMATRIX = new Matrix(), TEMPMATRIX2=new Matrix();
-		
-		private final Paint mPaint = new Paint();
-        private float mOffset;
-        private float mTouchX = -1;
-        private float mTouchY = -1;
-        private long mStartTime;
-        private float mCenterX;
-        private float mCenterY;
-
-        private long IGNORETOUCHUNTIL;
-        
-        private final Runnable mDrawFlare = new Runnable() {
+        public final Runnable mDrawFlare = new Runnable() {
             public void run() {
                 drawFrame();
             }
         };
-        
-        private boolean mVisible;
-
+    
+        // FLARE ENGINE. THIS IS WHERE THE WALLPAPER RENDERING OCCURS.
+        //
         FlareEngine() {
-            // Create a Paint to draw the lines for our cube
-            final Paint paint = mPaint;
-            paint.setColor(0xffffffff);
-            paint.setAntiAlias(true);
-            paint.setStrokeWidth(2);
-            paint.setStrokeCap(Paint.Cap.ROUND);
-            paint.setStyle(Paint.Style.STROKE);
 
-            mStartTime = SystemClock.elapsedRealtime();
-            
-            switch (HCLWService.this.getResources().getDisplayMetrics().densityDpi) {
-            	case (DisplayMetrics.DENSITY_HIGH):
-            		SCALEX = HDPISCALEX;
-            		SCALEY = HDPISCALEY;
-            		break;
-            	case (DisplayMetrics.DENSITY_MEDIUM):
-            		SCALEX = MDPISCALEX;
-            		SCALEY = MDPISCALEY;
-            		break;
-            	case (DisplayMetrics.DENSITY_LOW):
-            		SCALEX = LDPISCALEX;
-            		SCALEY = LDPISCALEY;
-            		break;
-            	default:
-            		break;
-            }
-            
+        	HCLW.LightningFactor = 0f;
+        	HCLW.StartTime = SystemClock.elapsedRealtime();
+
         }
 
         @Override
@@ -190,20 +99,38 @@ public class HCLWService extends WallpaperService  {
 
         @Override
         public void onVisibilityChanged(boolean visible) {
-            mVisible = visible;
+        	HCLW.Visible = visible;
             if (visible) {
                 drawFrame();
             } else {
-                mHandler.removeCallbacks(mDrawFlare);
+            	mHandler.removeCallbacks(mDrawFlare);
             }
         }
 
         @Override
         public void onSurfaceChanged(SurfaceHolder holder, int format, int width, int height) {
             super.onSurfaceChanged(holder, format, width, height);
+            // If no colors are enabled, enable all of them!
+            boolean bAllColorsDisabled=true;
+            for (int i =0; i<5; i++) {
+            	if (HCLW.PREFS.getBoolean("showcolor"+i, false)) {
+            		bAllColorsDisabled = false;
+            		break;
+            	}
+            }
+            if (bAllColorsDisabled) {
+            	HCLW.PREFS.edit()
+        		.putBoolean("showcolor0", true)
+        		.putBoolean("showcolor1", true)
+        		.putBoolean("showcolor2", true)
+        		.putBoolean("showcolor3", true)
+        		.putBoolean("showcolor4", true)
+        		.commit();
+            }
+            
             // store the center of the surface
-            mCenterX = width/2.0f;
-            mCenterY = height/2.0f;
+            HCLW.CenterX = width/2.0f;
+            HCLW.CenterY = height/2.0f;
             drawFrame();
         }
 
@@ -215,15 +142,14 @@ public class HCLWService extends WallpaperService  {
         @Override
         public void onSurfaceDestroyed(SurfaceHolder holder) {
             super.onSurfaceDestroyed(holder);
-            mVisible = false;
+            HCLW.Visible = false;
             mHandler.removeCallbacks(mDrawFlare);
         }
 
         @Override
         public void onOffsetsChanged(float xOffset, float yOffset,
                 float xStep, float yStep, int xPixels, int yPixels) {
-        	System.out.println(xPixels);
-            mOffset = xOffset;
+            HCLW.Offset = xPixels;
             drawFrame();
         }
 
@@ -233,11 +159,12 @@ public class HCLWService extends WallpaperService  {
         @Override
         public void onTouchEvent(MotionEvent event) {
             if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                mTouchX = event.getX();
-                mTouchY = event.getY();
+                HCLW.TouchX = event.getX();
+                HCLW.TouchY = event.getY();
             } else {
-                mTouchX = -1;
-                mTouchY = -1;
+                HCLW.TouchX = -1;
+                HCLW.TouchY = -1;
+                HCLW.LightningFactor=1f;
             }
             super.onTouchEvent(event);
         }
@@ -256,8 +183,11 @@ public class HCLWService extends WallpaperService  {
                 c = holder.lockCanvas();
                 if (c != null) {
                     // draw something
+//                	drawFlares(HCLW.BUFFERCANVAS);
+//                    drawTouchPoint(HCLW.BUFFERCANVAS);
+//                    c.drawBitmap(HCLW.BUFFER, 0f,0f, HCLW.PaintMid);
                 	drawFlares(c);
-                    drawTouchPoint(c);
+                  drawTouchPoint(c);
                 }
             } finally {
                 if (c != null) holder.unlockCanvasAndPost(c);
@@ -265,40 +195,110 @@ public class HCLWService extends WallpaperService  {
 
             // Reschedule the next redraw
             mHandler.removeCallbacks(mDrawFlare);
-            if (mVisible) {
-                mHandler.postDelayed(mDrawFlare, 1000 / 25);
+            if (HCLW.Visible) {
+            	mHandler.postDelayed(mDrawFlare, 1000 / 25);
             }
         }
 
          void drawFlares(Canvas c) {
-        	Paint pt = new Paint();
-        	pt.setColor(Color.WHITE);
-        	c.drawBitmap(bkgd, 0f,0f, pt);
-        	for (int i = 0; i < 12; i++) {
-        		if (DISPLACEMENTS[i]>1f) {
-        			DISPLACEMENTS[i]=0f;
-        		} else if (DISPLACEMENTS[i]==0f) {
-        			//Only relaunch a flare 1% of the time
-        			if (Math.random() < 0.01d) {
-        				FLARESPEEDS[i]= (float)Math.random() * 0.05f + MINFLARESPEED;
-            			DISPLACEMENTS[i]+=FLARESPEEDS[i];
+        	 
+        	 float fTempOffset = HCLW.Offset;
+        	 
+        	// Draw the "Channels" on the bottom.
+        	// Default to channel bkgd (white for Sparks).
+    		if (HCLW.PREFS.getBoolean("SparkEffect", false)) {
+    			c.drawColor(Color.parseColor("#888C8C8C"));
+    		} else {
+//    			c.drawColor(Color.parseColor("#ff1b1939"));
+    			c.drawColor(Color.parseColor("#111b1939"));
+    		}
+        	
+        	// if Flares are to be above surface, draw the "Surface" now (and skip the "middle" mask).
+        	if (HCLW.PREFS.getBoolean("FlaresAboveSurface", false)) {
+        		c.drawBitmap(HCLW.FG, fTempOffset,0f, HCLW.PaintFg);
+        	}
+        	
+        	// We're tracking each flare.
+        	for (int i = 0; i < HCLW.DISPLACEMENTS.length; i++) {
+        		// We want each flare to go completely offscreen (plus ample margin)
+        		// before resetting... this is to account for trails.
+        		if (HCLW.DISPLACEMENTS[i]>2f) {
+        			HCLW.DISPLACEMENTS[i]=0f;
+        		} else if (HCLW.DISPLACEMENTS[i]==0f) {
+        			//Only relaunch a flare 1% of the time by default (can be customized)
+        			if (Math.random() < 0.01d * Double.parseDouble(HCLW.PREFS.getString("FlareFrequency", "1"))) {
+    	        		if (HCLW.PREFS.getBoolean("SparkEffect", false)) {
+    	        			HCLW.FLARESPEEDS[i]= (float)(HCLW.MINFLARESPEEDS[i]*(1+Math.random()));
+    	        		} else {
+    	        			HCLW.FLARESPEEDS[i]= HCLW.MINFLARESPEEDS[i]*2;
+    	        		}
+    	        		HCLW.DISPLACEMENTS[i]+=HCLW.FLARESPEEDS[i];
+    	        		// Pick a color for each flare.
+            			do {
+            				HCLW.COLORS[i]=(int)(Math.random()*5.);
+            			} while (!HCLW.PREFS.getBoolean("showcolor"+HCLW.COLORS[i], true));
         			}
         		} else {
-        			DISPLACEMENTS[i]+=FLARESPEEDS[i];
+        			HCLW.DISPLACEMENTS[i]+=HCLW.FLARESPEEDS[i];
         		}
-        		
-        		TEMPMATRIX.reset();
-        		float xPos = floatInterpolate(FLAREPATHINITX[i],FLAREPATHMIDX[i],FLAREPATHFINALX[i],DISPLACEMENTS[i]) * SCALEX;
-        		float yPos = floatInterpolate(FLAREPATHINITY[i],FLAREPATHMIDY[i],FLAREPATHFINALY[i],DISPLACEMENTS[i])* SCALEY;
-        		float zFactor = ((float)Math.random()*0.5f + 0.5f)  * floatInterpolate(FLAREPATHINITZ[i], FLAREPATHMIDZ[i], FLAREPATHFINALZ[i], DISPLACEMENTS[i]);
-        		TEMPMATRIX.postScale(zFactor, zFactor);
-        		TEMPMATRIX.postTranslate(xPos-flare.getWidth()/2f*zFactor, yPos-flare.getHeight()/2f*zFactor);
-//        		int iGrn = Color.parseColor("#8800FF00");
-//        		pt.setColorFilter(new PorterDuffColorFilter(iGrn, PorterDuff.Mode.SRC_ATOP));
-        		c.drawBitmap(flare, TEMPMATRIX, pt);
-            }
 
-        
+        		//Flares
+        		
+        		//If spark effects, no trails; otherwise, trails
+        		int iTrailLength=Integer.parseInt(HCLW.PREFS.getString("TrailLength", "10"));
+
+        		//Render trail for each flare
+        		for (int j=0; j>-iTrailLength; j--) {
+        			// If Spark effect, always only render flare head
+//        			if (j<0) break;
+        			if (HCLW.PREFS.getBoolean("SparkEffect", false) && j<0) break;
+
+        			// If the flare head/tail will be offscreen, skip drawing that part
+        			if (HCLW.DISPLACEMENTS[i]+HCLW.FLARESPEEDS[i]*j<0) continue;
+        			if (HCLW.DISPLACEMENTS[i]+HCLW.FLARESPEEDS[i]*j>1) continue;
+        			
+        			
+        			if (!HCLW.PREFS.getBoolean("SparkEffect", false) && HCLW.DISPLACEMENTS[i]+HCLW.FLARESPEEDS[i]*j==0) continue;
+        			HCLW.TEMPMATRIX.reset();
+	        		float xPos = floatInterpolate(HCLW.FLAREPATHINITX[i],HCLW.FLAREPATHMIDX[i],HCLW.FLAREPATHFINALX[i],HCLW.DISPLACEMENTS[i]+HCLW.FLARESPEEDS[i]*j) * HCLW.SCALEX;
+	        		float yPos = floatInterpolate(HCLW.FLAREPATHINITY[i],HCLW.FLAREPATHMIDY[i],HCLW.FLAREPATHFINALY[i],HCLW.DISPLACEMENTS[i]+HCLW.FLARESPEEDS[i]*j) * HCLW.SCALEY;
+	        		float zFactor;
+	        		//Sparks
+	        		if (HCLW.PREFS.getBoolean("SparkEffect", false)) {
+	        			zFactor = floatInterpolate(HCLW.FLAREPATHINITZ[i], HCLW.FLAREPATHMIDZ[i], 
+	        					HCLW.FLAREPATHFINALZ[i], HCLW.DISPLACEMENTS[i]+HCLW.FLARESPEEDS[i]*j) 
+	        					* (1f + (float)(.5d*Math.random()));
+	        		} else {
+	        			zFactor = floatInterpolate(HCLW.FLAREPATHINITZ[i], HCLW.FLAREPATHMIDZ[i], 
+	        					HCLW.FLAREPATHFINALZ[i], HCLW.DISPLACEMENTS[i]+HCLW.FLARESPEEDS[i]*j);
+	        		}
+	        		HCLW.TEMPMATRIX.postScale(zFactor, zFactor);
+	        		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[HCLW.COLORS[i]].getWidth()/2f*zFactor+fTempOffset, yPos-HCLW.FLARE[HCLW.COLORS[i]].getHeight()/2f*zFactor);
+
+	        		HCLW.PaintFlare.setAlpha((int)(255*(1f+(float)j/iTrailLength)));
+	        		c.drawBitmap(HCLW.FLARE[HCLW.COLORS[i]], HCLW.TEMPMATRIX, HCLW.PaintFlare);
+        		}
+        	}
+        	
+        	if (HCLW.PREFS.getBoolean("LightningEffect", false)) {
+        		if (Math.random()<0.05d) {
+        			HCLW.LightningFactor=1f;
+        		} else if (HCLW.LightningFactor<=0f) {
+        			HCLW.LightningFactor=0f;
+        		} else {
+        			HCLW.LightningFactor-=0.05f;
+        		}
+    			HCLW.PaintFg.setAlpha((int)(255f*HCLW.LightningFactor));
+        	} else {
+        		HCLW.PaintFg.setAlpha(255);
+        	}
+
+           	// Draw the  "Middle" mask, then the "Surface".
+        	if (!HCLW.PREFS.getBoolean("FlaresAboveSurface", false)) {
+        		if (HCLW.PaintFg.getAlpha()<255) c.drawBitmap(HCLW.MIDDLE, fTempOffset, 0f, HCLW.PaintMid);
+        		if (HCLW.LightningFactor>0f) c.drawBitmap(HCLW.FG, fTempOffset,0f, HCLW.PaintFg);
+        	}
+
         }
 
     	public float floatInterpolate (float n1, float n2, float n3, float gradient) {
@@ -310,15 +310,16 @@ public class HCLWService extends WallpaperService  {
          * Draw a flare around the current touch point.
          */
         void drawTouchPoint(Canvas c) {
-        	if (System.currentTimeMillis()<IGNORETOUCHUNTIL) return;
-            if (mTouchX >=0 && mTouchY >= 0) {
-        		TEMPMATRIX2.reset();
+//        	if (System.currentTimeMillis()<HCLW.IGNORETOUCHUNTIL) return;
+            if (HCLW.TouchX >=0 && HCLW.TouchY >= 0) {
+            	HCLW.TEMPMATRIX2.reset();
             	float zFactor = ((float)Math.random()*0.5f + 0.5f);
-        		TEMPMATRIX2.postScale(zFactor, zFactor);
-        		TEMPMATRIX2.postTranslate(mTouchX-flare.getWidth()/2f*zFactor, mTouchY-flare.getHeight()/2f*zFactor);
-        		c.drawBitmap(flare, TEMPMATRIX2, mPaint);
+            	HCLW.TEMPMATRIX2.postScale(zFactor, zFactor);
+            	HCLW.TEMPMATRIX2.postTranslate(HCLW.TouchX-HCLW.FLARE[0].getWidth()/2f*zFactor, 
+            			HCLW.TouchY-HCLW.FLARE[0].getHeight()/2f*zFactor);
+        		c.drawBitmap(HCLW.FLARE[0], HCLW.TEMPMATRIX2, HCLW.PaintFlare);
             }
-            IGNORETOUCHUNTIL=System.currentTimeMillis()+50;
+            HCLW.IGNORETOUCHUNTIL=System.currentTimeMillis()+50;
         }
 
     }
