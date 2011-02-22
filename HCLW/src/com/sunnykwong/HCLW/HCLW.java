@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
@@ -36,45 +37,48 @@ public class HCLW extends Application {
 	static int SCRNHEIGHT;
 	static int SCRNDPI;
 
-	static public final float LDPISCALEX=0.75f, LDPISCALEY=0.75f;
-	static public final float MDPISCALEX=1f, MDPISCALEY=1f;
-	static public final float HDPISCALEX=1.5f, HDPISCALEY=1.78f;
+//	static public final float LDPISCALEX=0.75f, LDPISCALEY=0.75f;
+//	static public final float MDPISCALEX=1f, MDPISCALEY=1f;
+//	static public final float HDPISCALEX=1.5f, HDPISCALEY=1.78f;
+	static public final float LDPISCALEX=0.25f, LDPISCALEY=0.25f;
+	static public final float MDPISCALEX=.33f, MDPISCALEY=.33f;
+	static public final float HDPISCALEX=.5f, HDPISCALEY=0.59f;
 	static public float SCALEX, SCALEY;
 	
 	static public final float[] FLAREPATHINITX
-		= {263f,275f,291f,412f,
-		423f,438f,445f,453f,
-		463f,477f,489f,507f};
+		= {269f,280f,297f,422f,
+		432f,442f,448f,458f,
+		468f,480f,486f,502f};
 	static public final float[] FLAREPATHINITY
 		= {322f,322f,322f,334f,
-			336f,334f,334f,334f,
-			334f,336f,338f,338f};
+			336f,338f,338f,338f,
+			338f,338f,338f,338f};
 	static public final float[] FLAREPATHINITZ
-    	= {0.15f,0.15f,0.15f,0.15f,
-		0.1f,0.1f,0.1f,0.2f,
+    	= {0.1f,0.1f,0.1f,0.1f,
+		0.1f,0.1f,0.15f,0.15f,
 		0.1f,0.1f,0.1f,0.1f};
 	
 	static public final float[] FLAREPATHMIDX
 		= {163,171,181,273,
-		315,360,404,448,
+		322,360,412,452,
 		492,534,577,572};
 	static public final float[] FLAREPATHMIDY
-		= {376,383,393,378,
-		378,376,376,376,
-		376,376,376,358};
+		= {380,386,395,385,
+		381,384,384,380,
+		380,380,380,361};
 	static public final float[] FLAREPATHMIDZ
     	= {0.2f,0.2f,0.2f,0.3f,
-		0.3f,0.4f,0.4f,0.4f,
-		0.3f,0.4f,0.2f,0.2f};
+		0.3f,0.3f,0.4f,0.4f,
+		0.4f,0.3f,0.2f,0.2f};
 
 	static public final float[] FLAREPATHFINALX
 		= {0,0,0,0,
-		76,192,315,437,
-		558,640,640,640};
+		76,192,318,437,
+		558,645,645,645};
 	static public final float[] FLAREPATHFINALY
-		= {407,421,443,469,
-		481,480,480,480,
-		480,447,403,379};
+		= {410,424,446,472,
+		484,484,492,492,
+		480,452,408,387};
 	static public final float[] FLAREPATHFINALZ
     	= {.25f,.3f,.3f,.5f,
 		.5f,.5f,.7f,.7f,
@@ -101,14 +105,15 @@ public class HCLW extends Application {
 		0,0,0,0};
 
 	static final Paint PaintFlare = new Paint(), PaintBg = new Paint(), PaintMid = new Paint(), PaintFg =  new Paint();
+    static Rect srcFullRect, tgtFullRect, srcFlareRect, tgtFlareRect;
 	static final Matrix TEMPMATRIX = new Matrix(), TEMPMATRIX2 = new Matrix();
-    static public float Offset;
+    static public int xPixels;
     static public float TouchX = -1;
     static public float TouchY = -1;
     static public long StartTime;
     static public float CenterX;
     static public float CenterY;
-    static public float LightningFactor;
+    static public float LightningFactor = 1f;
     static public boolean Sparks;
     
     static public long IGNORETOUCHUNTIL;
@@ -125,31 +130,64 @@ public class HCLW extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-
+  
 		PKGNAME = getPackageName();
 		PREFS = PreferenceManager.getDefaultSharedPreferences(this);
 
-        switch (getResources().getDisplayMetrics().densityDpi) {
+		String sLAF = HCLW.PREFS.getString("HCLWLAF", "Racing Flares");
+    	if (sLAF.equals("Racing Flares")) {
+    		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", false)
+    		.putBoolean("LightningEffect", false)
+    		.putBoolean("SparkEffect", false)
+    		.commit();
+    	} else if (sLAF.equals("Lightning Strikes")) {
+    		// Lightning Strikes
+    		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", false)
+    		.putBoolean("LightningEffect", true)
+    		.putBoolean("SparkEffect", false)
+    		.commit();
+    		
+    	} else {
+    		// Electric Sparks
+    		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", true)
+    		.putBoolean("LightningEffect", false)
+    		.putBoolean("SparkEffect", true)
+    		.commit();
+    	}
+  
+		SCRNDPI = getResources().getDisplayMetrics().densityDpi;
+		
+        switch (SCRNDPI) {
 	    	case (DisplayMetrics.DENSITY_HIGH):
 	    		SCALEX = HDPISCALEX;
 	    		SCALEY = HDPISCALEY;
-	    		BUFFER = Bitmap.createBitmap(960, 854, Bitmap.Config.RGB_565);
+	    		BUFFER = Bitmap.createBitmap(960/3, 427/3, Bitmap.Config.ARGB_8888);
+	    		SCRNHEIGHT = 854;
+	    		SCRNWIDTH = 480;
 	    		break;
 	    	case (DisplayMetrics.DENSITY_MEDIUM):
 	    		SCALEX = MDPISCALEX;
 	    		SCALEY = MDPISCALEY;
-	    		BUFFER = Bitmap.createBitmap(640, 480, Bitmap.Config.RGB_565);
+	    		BUFFER = Bitmap.createBitmap(640/3, 240/3, Bitmap.Config.ARGB_8888);
+	    		SCRNHEIGHT = 480;
+	    		SCRNWIDTH = 640;
 	    		break;
 	    	case (DisplayMetrics.DENSITY_LOW):
 	    		SCALEX = LDPISCALEX;
 	    		SCALEY = LDPISCALEY;
-	    		BUFFER = Bitmap.createBitmap(480, 320, Bitmap.Config.RGB_565);
+	    		BUFFER = Bitmap.createBitmap(480/3, 160/3, Bitmap.Config.ARGB_8888);
+	    		SCRNHEIGHT = 320;
+	    		SCRNWIDTH = 480;
 	    		break;
 	    	default:
 	    		break;
         }
 
         HCLW.BUFFERCANVAS = new Canvas(HCLW.BUFFER);
+        HCLW.srcFullRect = new Rect(0,0,SCRNWIDTH, SCRNHEIGHT);
+        HCLW.tgtFullRect = new Rect(0,0,SCRNWIDTH,SCRNHEIGHT);
+        HCLW.srcFlareRect = new Rect(0,0,SCRNWIDTH/3, SCRNHEIGHT/6);
+        HCLW.tgtFlareRect = new Rect(0,SCRNHEIGHT/2,SCRNWIDTH,SCRNHEIGHT);
         
 		HCLW.MIDDLE = BitmapFactory.decodeResource(this.getResources(), R.drawable.middle);
 		HCLW.FG = BitmapFactory.decodeResource(this.getResources(), R.drawable.top);
@@ -179,6 +217,15 @@ public class HCLW extends Application {
 		
 	}
 
+	static public void resetTheme() {
+    		HCLW.PREFS.edit()
+    		.putString("HCLWLAF", "Racing Flares")
+    		.putBoolean("FlaresAboveSurface", false)
+    		.putBoolean("LightningEffect", false)
+    		.putBoolean("SparkEffect", false)
+    		.commit();
+	}
+	
 	@Override
 	public void onTerminate() {
 		PREFS.edit().commit();

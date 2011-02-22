@@ -26,9 +26,9 @@
 		<item>Long</item>
 	</string-array>
 	<string-array name="TrailLengthValues">
-		<item>1</item>
-		<item>5</item>
-		<item>10</item>
-		<item>20</item>
+		<item>FF</item>
+		<item>44</item>
+		<item>11</item>
+		<item>05</item>
 	</string-array>
 </resources>
