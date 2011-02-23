@@ -40,8 +40,8 @@ public class HCLWPrefsActivity extends PreferenceActivity {
 
     	PreferenceManager.getDefaultSharedPreferences(this);
     	addPreferencesFromResource(R.xml.hclwprefs);
-    	findPreference("dpi").setTitle("screen DPI " +HCLW.SCRNDPI);
-    	findPreference("dpi").setSummary("screen dimension " +HCLW.SCRNWIDTH + "x" + HCLW.SCRNHEIGHT);
+    	findPreference("dpi").setTitle("Screen DPI " +HCLW.SCRNDPI);
+    	findPreference("dpi").setSummary("Screen dimension " +HCLW.SCRNWIDTH + "x" + HCLW.SCRNHEIGHT);
     	
     	if (HCLW.FREEEDITION) {
     		findPreference("sVersion").setTitle("Version " + HCLW.THISVERSION + " Free");
@@ -248,14 +248,20 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		.putBoolean("LightningEffect", true)
     		.putBoolean("SparkEffect", false)
     		.commit();
-    		if (HCLW.FREEEDITION) HCLW.HANDLER.postDelayed(HCLW.rTRIALOVER, 5l*60000l);
+    		if (HCLW.FREEEDITION) {
+    			HCLW.HANDLER.postDelayed(HCLW.rTRIALOVER, 5l*60000l);
+    			Toast.makeText(this, "This look is limited to 5 minutes in the free version.  Consider donating if you like this wallpaper!", Toast.LENGTH_LONG).show();
+    		}
     	} else {
     		// Electric Sparks
     		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", true)
     		.putBoolean("LightningEffect", false)
     		.putBoolean("SparkEffect", true)
     		.commit();
-    		if (HCLW.FREEEDITION) HCLW.HANDLER.postDelayed(HCLW.rTRIALOVER, 5l*60000l);
+    		if (HCLW.FREEEDITION) {
+    			HCLW.HANDLER.postDelayed(HCLW.rTRIALOVER, 5l*60000l);
+    			Toast.makeText(this, "This look is limited to 5 minutes in the free version.  Consider donating if you like this wallpaper!", Toast.LENGTH_LONG).show();
+    		}
     	}
     	super.onPause();
     }
