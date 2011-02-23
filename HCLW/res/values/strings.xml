@@ -14,21 +14,21 @@
 		<item>Frantic!</item>
 	</string-array>
 	<string-array name="FlareFreqValues">
-		<item>0.5</item>
-		<item>1</item>
-		<item>3</item>
-		<item>75</item>
+		<item>"0.5"</item>
+		<item>"1"</item>
+		<item>"3"</item>
+		<item>"75"</item>
 	</string-array>
 	<string-array name="TrailLength">
-		<item>No Trail</item>
-		<item>Short</item>
-		<item>Medium (Default)</item>
-		<item>Long</item>
+		<item>"No Trail"</item>
+		<item>"Short"</item>
+		<item>"Medium (Default)"</item>
+		<item>"Long"</item>
 	</string-array>
 	<string-array name="TrailLengthValues">
-		<item>FF</item>
-		<item>44</item>
-		<item>11</item>
-		<item>05</item>
+		<item>"FF"</item>
+		<item>"44"</item>
+		<item>"11"</item>
+		<item>"05"</item>
 	</string-array>
 </resources>

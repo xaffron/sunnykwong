@@ -10,6 +10,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
@@ -37,14 +38,80 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
 
-    	getPreferenceManager().getDefaultSharedPreferences(this);
+    	PreferenceManager.getDefaultSharedPreferences(this);
     	addPreferencesFromResource(R.xml.hclwprefs);
+    	findPreference("dpi").setTitle("screen DPI " +HCLW.SCRNDPI);
+    	findPreference("dpi").setSummary("screen dimension " +HCLW.SCRNWIDTH + "x" + HCLW.SCRNHEIGHT);
+    	
+    	if (HCLW.FREEEDITION) {
+    		findPreference("sVersion").setTitle("Version " + HCLW.THISVERSION + " Free");
+    		findPreference("sVersion").setSummary("Tap me to get the full version!");
+    		findPreference("sVersion").setSelectable(true);
+    	} else {
+    		findPreference("sVersion").setTitle("Version " + HCLW.THISVERSION);
+    		findPreference("sVersion").setSummary("Thanks for your support!");
+    		findPreference("sVersion").setSelectable(false);
+    	}
+
+		// This is the help/FAQ dialog.
+		
+		if (HCLW.SHOWHELP) {
+			LayoutInflater li = LayoutInflater.from(this);
+			LinearLayout ll = (LinearLayout)(li.inflate(getResources().getIdentifier("faqdialog", "layout", HCLW.PKGNAME), null));
+			mTextView = (TextView)ll.findViewById(getResources().getIdentifier("splashtext", "id", HCLW.PKGNAME));
+			mTextView.setAutoLinkMask(Linkify.ALL);
+			mTextView.setMinLines(8);
+			mTextView.setText(HCLW.FAQS[HCLW.faqtoshow++]);
+			HCLW.faqtoshow = HCLW.faqtoshow==HCLW.FAQS.length?0:HCLW.faqtoshow;
+			
+			mCheckBox = (CheckBox)ll.findViewById(getResources().getIdentifier("splashcheck", "id", HCLW.PKGNAME));
+			mCheckBox.setChecked(!HCLW.SHOWHELP);
+			mCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+				
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					// TODO Auto-generated method stub
+					HCLW.SHOWHELP = !isChecked;
+				}
+			});
+
+			((Button)ll.findViewById(getResources().getIdentifier("faqOK", "id", HCLW.PKGNAME))).setOnClickListener(new Button.OnClickListener() {
+				
+				@Override
+				public void onClick(android.view.View v) {
+					HCLW.PREFS.edit().putBoolean("showhelp", HCLW.SHOWHELP).commit();
+					mAD.dismiss();
+				}
+			});
+			((Button)ll.findViewById(getResources().getIdentifier("faqNeutral", "id", HCLW.PKGNAME))).setOnClickListener(new Button.OnClickListener() {
+				
+				@Override
+				public void onClick(android.view.View v) {
+					mTextView.setText(HCLW.FAQS[HCLW.faqtoshow++]);
+					mTextView.invalidate();
+					HCLW.faqtoshow = HCLW.faqtoshow==HCLW.FAQS.length?0:HCLW.faqtoshow;
+				}
+			});;
+			
+			mAD = new AlertDialog.Builder(this)
+			.setTitle("Useful Tip")
+		    .setCancelable(true)
+		    .setView(ll)
+		    .setOnKeyListener(new OnKeyListener() {
+		    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+		    		if (arg2.getKeyCode()==android.view.KeyEvent.KEYCODE_BACK) mAD.cancel();
+		    		return true;
+		    	};
+		    })
+		    .show();
+		}
 
     }
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
+		final CharSequence[] items = {"Email", "Donate"};
     	if (preference == this.findPreference("flarecolors")) {
 			LayoutInflater li = LayoutInflater.from(this);
 			LinearLayout ll = (LinearLayout)(li.inflate(R.layout.flares, null));
@@ -107,6 +174,63 @@ public class HCLWPrefsActivity extends PreferenceActivity {
 		    .show();
 
     	}
+    	if (preference == findPreference("contactProg")) {
+			new AlertDialog.Builder(this)
+				.setTitle("Email or Donate to Xaffron")
+				.setItems(items, new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int item) {
+							switch (item) {
+								case 0: //Email
+									Intent it = new Intent(android.content.Intent.ACTION_SEND)
+		    		   					.setType("plain/text")
+		    		   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
+		    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, "Aurora Bulb Feedback v" + HCLW.THISVERSION);
+					    		   	startActivity(Intent.createChooser(it, "Contact Xaffron for issues, help & support."));  
+					    		   	finish();
+					    		   	break;
+								case 1: //Donate
+						    		it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=S9VEL3WFGXK48"));
+						    		startActivity(it);
+						    		finish();
+									break;
+								default:
+									//do nothing
+							}
+						}
+				})
+				.show();
+    	}
+    	if (preference == findPreference("contactArt")) {
+			new AlertDialog.Builder(this)
+				.setTitle("Email or Donate to Nemuro")
+				.setItems(items, new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int item) {
+							switch (item) {
+								case 0: //Email
+									Intent it = new Intent(android.content.Intent.ACTION_SEND)
+		    		   					.setType("plain/text")
+		    		   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"brcosmin@gmail.com"})
+		    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, "Aurora Bulb Feedback v" + HCLW.THISVERSION);
+					    		   	startActivity(Intent.createChooser(it, "Contact Xaffron for issues, help & support."));  
+					    		   	finish();
+					    		   	break;
+								case 1: //Donate
+						    		it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=brcosmin%40gmail%2ecom&lc=RO&item_name=Cosmin%20Bizon&item_number=cosminbizon&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"));
+						    		startActivity(it);
+						    		finish();
+									break;
+								default:
+									//do nothing
+							}
+						}
+				})
+				.show();
+    	}
+    	if (preference == getPreferenceScreen().findPreference("sVersion")) {
+			this.startActivity(HCLW.HCLWMARKETINTENT);
+        	this.finish();
+    	}
+
     	return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
     @Override
@@ -124,13 +248,14 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		.putBoolean("LightningEffect", true)
     		.putBoolean("SparkEffect", false)
     		.commit();
-    		
+    		if (HCLW.FREEEDITION) HCLW.HANDLER.postDelayed(HCLW.rTRIALOVER, 5l*60000l);
     	} else {
     		// Electric Sparks
     		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", true)
     		.putBoolean("LightningEffect", false)
     		.putBoolean("SparkEffect", true)
     		.commit();
+    		if (HCLW.FREEEDITION) HCLW.HANDLER.postDelayed(HCLW.rTRIALOVER, 5l*60000l);
     	}
     	super.onPause();
     }

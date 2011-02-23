@@ -14,6 +14,8 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.content.SharedPreferences;
+import android.content.Intent;
+import android.net.Uri;
 
 /**
  * @author skwong01 Thanks to Cosmin Bizon for the idea, graphical assets,
@@ -25,7 +27,29 @@ public class HCLW extends Application {
 	static String THISVERSION;
 	static String PKGNAME;
 	static final boolean DEBUG = false;
+	static final boolean FREEEDITION = true;
+	static boolean SHOWHELP=true;
+	
+	static int faqtoshow = 0;
+	static final String[] FAQS = {
+		"Nemuro and Xaffron present their impression of the Honeycomb Live Wallpaper!  This Live Wallpaper is light on CPU usage and has been tested to perform on phones from the G1 to the HD2.  Email either one of us for feedback and issues, and we will resolve them ASAP!",
+		"Do the flares not seem to move along the channels?  This is almost certainly because of custom DPI settings.  If you reset your custom DPI settings to what they should be, the wallpaper should work normally.",
+		"This free version features a fully-functional 'Racing Flares' look.  The other two looks, 'Lightning Strikes' and 'Electric Sparks', are also available as 5 minute trials.",
+		"Like this app?  Check out Xaffron's One More Clock Collection for clock widgets that go well with your new live wallpaper!",
+		"Can't get this wallpaper to work?  See a bug?  Feature request?  Send Nemuro or Xaffron a message by scrolling down and tapping on 'Contact Artist' or 'Contact Dev'.",
+		"You can enable and disable different colored flares for dramatic effect.",
+		"The Frantic! flare frequency is not for everyone, but makes for great fireworks... try it out!",
+		"Did you know that there is a support thread on XDA-Developers?  I monitor questions on that board on a daily basis.  http://forum.xda-developers.com/showthread.php?t=807929"
+	};
 
+	static public final Handler HANDLER = new Handler();
+    static public final Runnable rTRIALOVER = new Runnable() {
+        public void run() {
+            HCLW.resetTheme();
+        }
+    };
+
+	
 	static int TARGETFPS;
 
 	static long LASTUPDATEMILLIS;
@@ -37,9 +61,6 @@ public class HCLW extends Application {
 	static int SCRNHEIGHT;
 	static int SCRNDPI;
 
-//	static public final float LDPISCALEX=0.75f, LDPISCALEY=0.75f;
-//	static public final float MDPISCALEX=1f, MDPISCALEY=1f;
-//	static public final float HDPISCALEX=1.5f, HDPISCALEY=1.78f;
 	static public final float LDPISCALEX=0.25f, LDPISCALEY=0.25f;
 	static public final float MDPISCALEX=.33f, MDPISCALEY=.33f;
 	static public final float HDPISCALEX=.5f, HDPISCALEY=0.59f;
@@ -126,14 +147,20 @@ public class HCLW extends Application {
     
     static public boolean Visible;
 
-	
+    static public Intent HCLWMARKETINTENT;
+	static public Uri PAIDURI;
+    
 	@Override
 	public void onCreate() {
 		super.onCreate();
   
 		PKGNAME = getPackageName();
 		PREFS = PreferenceManager.getDefaultSharedPreferences(this);
+		HCLW.SHOWHELP = PREFS.getBoolean("showhelp", true);
 
+		HCLW.PAIDURI = (Uri.parse("market://details?id=com.sunnykwong.HCLW"));
+		HCLW.HCLWMARKETINTENT = new Intent(Intent.ACTION_VIEW,HCLW.PAIDURI);
+		
 		String sLAF = HCLW.PREFS.getString("HCLWLAF", "Racing Flares");
     	if (sLAF.equals("Racing Flares")) {
     		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", false)
@@ -218,6 +245,7 @@ public class HCLW extends Application {
 	}
 
 	static public void resetTheme() {
+			HCLW.HANDLER.removeCallbacks(HCLW.rTRIALOVER);
     		HCLW.PREFS.edit()
     		.putString("HCLWLAF", "Racing Flares")
     		.putBoolean("FlaresAboveSurface", false)

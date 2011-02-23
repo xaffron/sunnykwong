@@ -27,9 +27,6 @@ import android.util.DisplayMetrics;
 
 public class HCLWService extends WallpaperService  {
 
-	public Handler mHandler;
-
-	
 	//	 Code for oncreate/ondestroy.
 	//	 Code stolen wholesale from api samples:
 	//	 http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/app/ForegroundService.html
@@ -37,7 +34,7 @@ public class HCLWService extends WallpaperService  {
 	//	When service is created,
 	@Override
 	public void onCreate() {
-		mHandler = new Handler();
+
 	}
 
 	@Override
@@ -74,12 +71,6 @@ public class HCLWService extends WallpaperService  {
             }
         };
 
-        public final Runnable mTrialOver = new Runnable() {
-            public void run() {
-                HCLW.resetTheme();
-            }
-        };
-    
         // FLARE ENGINE. THIS IS WHERE THE WALLPAPER RENDERING OCCURS.
         //
         FlareEngine() {
@@ -99,7 +90,7 @@ public class HCLWService extends WallpaperService  {
         @Override
         public void onDestroy() {
             super.onDestroy();
-            mHandler.removeCallbacks(mDrawFlare);
+            HCLW.HANDLER.removeCallbacks(mDrawFlare);
         }
 
         @Override
@@ -108,7 +99,7 @@ public class HCLWService extends WallpaperService  {
             if (visible) {
                 drawFrame();
             } else {
-            	mHandler.removeCallbacks(mDrawFlare);
+            	HCLW.HANDLER.removeCallbacks(mDrawFlare);
             }
         }
 
@@ -148,7 +139,7 @@ public class HCLWService extends WallpaperService  {
         public void onSurfaceDestroyed(SurfaceHolder holder) {
             super.onSurfaceDestroyed(holder);
             HCLW.Visible = false;
-            mHandler.removeCallbacks(mDrawFlare);
+            HCLW.HANDLER.removeCallbacks(mDrawFlare);
         }
 
         @Override
@@ -199,10 +190,9 @@ public class HCLWService extends WallpaperService  {
             }
 
             // Reschedule the next redraw
-            mHandler.removeCallbacks(mDrawFlare);
+            HCLW.HANDLER.removeCallbacks(mDrawFlare);
             if (HCLW.Visible) {
-//            	mHandler.postAtTime(mDrawFlare, System.currentTimeMillis()+100);
-            	mHandler.postDelayed(mDrawFlare, 1000 / 60);
+            	HCLW.HANDLER.postDelayed(mDrawFlare, 1000 / 45);
             }
 
         }
@@ -220,7 +210,11 @@ public class HCLWService extends WallpaperService  {
 
         		//Trail Length is an optical illusion actually driven by
     			//The opacity of each frame's screen erase
-    			HCLW.BUFFERCANVAS.drawColor(Color.parseColor("#" + HCLW.PREFS.getString("TrailLength", "11") + "1b1939"));
+    			try {
+    				HCLW.BUFFERCANVAS.drawColor(Color.parseColor("#" + HCLW.PREFS.getString("TrailLength", "11") + "1b1939"));
+    			} catch (Exception e) {
+    				HCLW.BUFFERCANVAS.drawColor(Color.parseColor("#111b1939"));
+    			}
     		}
         	
         	// if Flares are to be above surface, draw the "Surface" now (and skip the "middle" mask).
