@@ -233,7 +233,8 @@ public class HCLWService extends WallpaperService  {
     	        		if (HCLW.PREFS.getBoolean("SparkEffect", false)) {
     	        			HCLW.FLARESPEEDS[i]= (float)(HCLW.MINFLARESPEEDS[i]*(1+Math.random()));
     	        		} else {
-    	        			HCLW.FLARESPEEDS[i]= HCLW.MINFLARESPEEDS[i]*2;
+    	        			HCLW.FLARESPEEDS[i]= (float)(HCLW.MINFLARESPEEDS[i]*(1+Math.random()));
+//    	        			HCLW.FLARESPEEDS[i]= HCLW.MINFLARESPEEDS[i]*2;
     	        		}
     	        		HCLW.DISPLACEMENTS[i]+=HCLW.FLARESPEEDS[i];
     	        		// Pick a color for each flare.
