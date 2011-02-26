@@ -16,6 +16,7 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.service.wallpaper.WallpaperService;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -34,7 +35,7 @@ public class HCLWService extends WallpaperService  {
 	//	When service is created,
 	@Override
 	public void onCreate() {
-
+        super.onCreate();
 	}
 
 	@Override
@@ -63,6 +64,17 @@ public class HCLWService extends WallpaperService  {
 		return 1;  // Service.START_STICKY ; have to use literal because Donut is unaware of the constant
 	}
 
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		// TODO Auto-generated method stub
+		if (HCLW.CURRENTORIENTATION == newConfig.orientation) {
+			// Orientation has not changed!  Do nothing.
+		} else {
+			HCLW.CURRENTORIENTATION = newConfig.orientation;
+			((HCLW)getApplication()).adjustOrientationOffsets();
+		}
+	}
+	
     class FlareEngine extends Engine {
 
         public final Runnable mDrawFlare = new Runnable() {
@@ -174,16 +186,20 @@ public class HCLWService extends WallpaperService  {
         void drawFrame() {
             final SurfaceHolder holder = getSurfaceHolder();
 
+            if (HCLW.TRIALOVERTIME!=0l && System.currentTimeMillis()>HCLW.TRIALOVERTIME) {
+            	HCLW.resetTheme();
+            }
+            
             //  Redraw
             Canvas c = null;
             try {
                 c = holder.lockCanvas();
                 if (c != null) {
                     // draw something
-                	int iOffset = HCLW.xPixels;
+                	HCLW.OFFSETTHISFRAME = HCLW.xPixels;
 
-                	drawFlares(c, iOffset);
-                  drawTouchPoint(c, iOffset);
+                	drawFlares(c, HCLW.OFFSETTHISFRAME);
+                  drawTouchPoint(c, HCLW.OFFSETTHISFRAME);
                 }
             } finally {
                 if (c != null) holder.unlockCanvasAndPost(c);
@@ -192,13 +208,13 @@ public class HCLWService extends WallpaperService  {
             // Reschedule the next redraw
             HCLW.HANDLER.removeCallbacks(mDrawFlare);
             if (HCLW.Visible) {
-            	HCLW.HANDLER.postDelayed(mDrawFlare, 1000 / 45);
+            	HCLW.HANDLER.postDelayed(mDrawFlare, 1000 / 60);
             }
 
         }
 
-         void drawFlares(Canvas c, int iOffset) {
-        	 HCLW.srcFullRect.offsetTo(-iOffset, 0);
+         void drawFlares(final Canvas c, final int iOffset) {
+        	 HCLW.srcFullRect.offsetTo(-iOffset,-HCLW.YOFFSET);
         	 HCLW.srcFlareRect.offsetTo(-iOffset/3,0);
 
         	// Draw the "Channels" on the bottom.
@@ -211,7 +227,7 @@ public class HCLWService extends WallpaperService  {
         		//Trail Length is an optical illusion actually driven by
     			//The opacity of each frame's screen erase
     			try {
-    				HCLW.BUFFERCANVAS.drawColor(Color.parseColor("#" + HCLW.PREFS.getString("TrailLength", "11") + "1b1939"));
+    				HCLW.BUFFERCANVAS.drawColor(Color.parseColor(HCLW.PREFS.getString("TrailLength", "#111b1939")));
     			} catch (Exception e) {
     				HCLW.BUFFERCANVAS.drawColor(Color.parseColor("#111b1939"));
     			}
@@ -237,10 +253,14 @@ public class HCLWService extends WallpaperService  {
 //    	        			HCLW.FLARESPEEDS[i]= HCLW.MINFLARESPEEDS[i]*2;
     	        		}
     	        		HCLW.DISPLACEMENTS[i]+=HCLW.FLARESPEEDS[i];
+
+    	        		//Slight acceleration.
+    	        		HCLW.FLARESPEEDS[i]+=HCLW.FLAREACCEL[i];
+    	        		
     	        		// Pick a color for each flare.
             			do {
             				HCLW.COLORS[i]=(int)(Math.random()*5.);
-            			} while (!HCLW.PREFS.getBoolean("showcolor"+HCLW.COLORS[i], true));
+            			} while ((i>0 && HCLW.COLORS[i]==HCLW.COLORS[i-1]) || !HCLW.PREFS.getBoolean("showcolor"+HCLW.COLORS[i], true) );
         			}
         		} else {
         			HCLW.DISPLACEMENTS[i]+=HCLW.FLARESPEEDS[i];
@@ -255,7 +275,7 @@ public class HCLWService extends WallpaperService  {
 
     			// For Spark Effect, we want the sparks to sparkle on the horizon;
     			// For flares/trails, we don't want the flares sitting around
-        		if (HCLW.DISPLACEMENTS[i]==0 && !HCLW.PREFS.getBoolean("SparkEffect", false)) continue;
+        		if (HCLW.DISPLACEMENTS[i]==0) continue;
 
         			
     			HCLW.TEMPMATRIX.reset();
@@ -268,14 +288,16 @@ public class HCLWService extends WallpaperService  {
         					HCLW.FLAREPATHFINALZ[i], HCLW.DISPLACEMENTS[i]) 
         					* (.5f + (float)(.5d*Math.random()));
             		HCLW.TEMPMATRIX.postScale(zFactor, zFactor);
-            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[0].getWidth()/2f*zFactor, yPos-HCLW.SCRNHEIGHT/2/3-HCLW.FLARE[HCLW.COLORS[i]].getHeight()/2f*zFactor);
+            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[0].getWidth()/2f*zFactor, 
+            				yPos-HCLW.SCRNLONGEREDGELENGTH/2/3-HCLW.FLARE[HCLW.COLORS[i]].getHeight()/2f*zFactor);
 
             		HCLW.BUFFERCANVAS.drawBitmap(HCLW.FLARE[0], HCLW.TEMPMATRIX, HCLW.PaintFlare);
         		} else {
         			zFactor = floatInterpolate(HCLW.FLAREPATHINITZ[i], HCLW.FLAREPATHMIDZ[i], 
         					HCLW.FLAREPATHFINALZ[i], HCLW.DISPLACEMENTS[i])*.33f;
             		HCLW.TEMPMATRIX.postScale(zFactor, zFactor);
-            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[HCLW.COLORS[i]].getWidth()/2f*zFactor, yPos-HCLW.SCRNHEIGHT/2/3-HCLW.FLARE[HCLW.COLORS[i]].getHeight()/2f*zFactor);
+            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[HCLW.COLORS[i]].getWidth()/2f*zFactor, 
+            				yPos-HCLW.SCRNLONGEREDGELENGTH/2/3-HCLW.FLARE[HCLW.COLORS[i]].getHeight()/2f*zFactor);
 
             		HCLW.BUFFERCANVAS.drawBitmap(HCLW.FLARE[HCLW.COLORS[i]], HCLW.TEMPMATRIX, HCLW.PaintFlare);
         		}
@@ -314,16 +336,16 @@ public class HCLWService extends WallpaperService  {
         /*
          * Draw a flare around the current touch point.
          */
-        void drawTouchPoint(Canvas c, int iOffset) {
+        void drawTouchPoint(final Canvas c, final int iOffset) {
         	if (System.currentTimeMillis()<HCLW.IGNORETOUCHUNTIL) return;
-            if (HCLW.TouchX >=0 && HCLW.TouchY >= 0) {
-            	HCLW.TEMPMATRIX2.reset();
-            	float zFactor = ((float)Math.random()*0.5f + 0.5f);
-            	HCLW.TEMPMATRIX2.postScale(zFactor, zFactor);
-            	HCLW.TEMPMATRIX2.postTranslate(HCLW.TouchX-HCLW.FLARE[0].getWidth()/2f*zFactor, 
-            			HCLW.TouchY-HCLW.FLARE[0].getHeight()/2f*zFactor);
-        		c.drawBitmap(HCLW.FLARE[0], HCLW.TEMPMATRIX2, HCLW.PaintFlare);
-            }
+//            if (HCLW.TouchX >=0 && HCLW.TouchY >= 0) {
+//            	HCLW.TEMPMATRIX2.reset();
+//            	float zFactor = ((float)Math.random()*0.5f + 0.5f);
+//            	HCLW.TEMPMATRIX2.postScale(zFactor, zFactor);
+//            	HCLW.TEMPMATRIX2.postTranslate(HCLW.TouchX-HCLW.FLARE[0].getWidth()/2f*zFactor, 
+//            			HCLW.TouchY-HCLW.FLARE[0].getHeight()/2f*zFactor);
+//        		c.drawBitmap(HCLW.FLARE[0], HCLW.TEMPMATRIX2, HCLW.PaintFlare);
+//            }
             HCLW.IGNORETOUCHUNTIL=System.currentTimeMillis()+50;
         }
 

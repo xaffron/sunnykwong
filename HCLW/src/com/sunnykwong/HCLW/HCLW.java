@@ -29,12 +29,13 @@ public class HCLW extends Application {
 	static final boolean DEBUG = false;
 	static final boolean FREEEDITION = true;
 	static boolean SHOWHELP=true;
-	
+
+	static int OFFSETTHISFRAME=0;
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
 		"Nemuro and Xaffron present their impression of the Honeycomb Live Wallpaper!  This Live Wallpaper is light on CPU usage and has been tested to perform on phones from the G1 to the HD2.  Email either one of us for feedback and issues, and we will resolve them ASAP!",
 		"Do the flares not seem to move along the channels?  This is almost certainly because of custom DPI settings.  If you reset your custom DPI settings to what they should be, the wallpaper should work normally.",
-		"This free version features a fully-functional 'Racing Flares' look.  The other two looks, 'Lightning Strikes' and 'Electric Sparks', are also available as 5 minute trials.",
+		"This free version features a fully-functional 'Racing Flares' look.  The other two looks, 'Lightning Strikes' and 'Electric Sparks', are also available as one-minute trials.",
 		"Like this app?  Check out Xaffron's One More Clock Collection for clock widgets that go well with your new live wallpaper!",
 		"Can't get this wallpaper to work?  See a bug?  Feature request?  Send Nemuro or Xaffron a message by scrolling down and tapping on 'Contact Artist' or 'Contact Dev'.",
 		"You can enable and disable different colored flares for dramatic effect.",
@@ -43,23 +44,20 @@ public class HCLW extends Application {
 	};
 
 	static public final Handler HANDLER = new Handler();
-    static public final Runnable rTRIALOVER = new Runnable() {
-        public void run() {
-            HCLW.resetTheme();
-        }
-    };
-
 	
 	static int TARGETFPS;
 
 	static long LASTUPDATEMILLIS;
+	static long TRIALOVERTIME = 0l;
 	static int UPDATEFREQ = 100;
 
 	static SharedPreferences PREFS;
 
 	static int SCRNWIDTH;
 	static int SCRNHEIGHT;
+	static int SCRNLONGEREDGELENGTH, SCRNSHORTEREDGELENGTH;
 	static int SCRNDPI;
+	static int YOFFSET;
 
 	static public final float LDPISCALEX=0.25f, LDPISCALEY=0.25f;
 	static public final float MDPISCALEX=.33f, MDPISCALEY=.33f;
@@ -68,7 +66,7 @@ public class HCLW extends Application {
 	
 	static public final float[] FLAREPATHINITX
 		= {269f,280f,297f,422f,
-		432f,442f,448f,458f,
+		433f,442f,448f,458f,
 		468f,480f,486f,502f};
 	static public final float[] FLAREPATHINITY
 		= {322f,322f,322f,334f,
@@ -76,7 +74,7 @@ public class HCLW extends Application {
 			338f,338f,338f,338f};
 	static public final float[] FLAREPATHINITZ
     	= {0.1f,0.1f,0.1f,0.1f,
-		0.1f,0.1f,0.15f,0.15f,
+		0.1f,0.15f,0.15f,0.15f,
 		0.1f,0.1f,0.1f,0.1f};
 	
 	static public final float[] FLAREPATHMIDX
@@ -106,9 +104,14 @@ public class HCLW extends Application {
 		.7f,.5f,.3f,.3f};
 
 	static public final float[] MINFLARESPEEDS
-	= {0.01f,0.01f,0.01f,0.012f,
-	0.012f,0.02f,0.03f,0.03f,
-	0.02f,0.015f,0.015f,0.015f};
+	= {0.005f,0.005f,0.005f,0.006f,
+	0.006f,0.01f,0.015f,0.015f,
+	0.010f,0.008f,0.008f,0.008f};
+
+	static public final float[] FLAREACCEL
+	= {0.01f,0.01f,0.01f,0.01f,
+	0.01f,0.015f,0.02f,0.02f,
+	0.02f,0.01f,0.01f,0.01f};
 
 	static public float[] FLARESPEEDS
 		= {0.01f,0.01f,0.01f,0.01f,
@@ -139,6 +142,8 @@ public class HCLW extends Application {
     
     static public long IGNORETOUCHUNTIL;
     
+    static public int CURRENTORIENTATION;
+    
     static public Bitmap MIDDLE, FG;
     static public Bitmap[] FLARE;
     
@@ -166,6 +171,8 @@ public class HCLW extends Application {
     		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", false)
     		.putBoolean("LightningEffect", false)
     		.putBoolean("SparkEffect", false)
+    		.putString("FlareFreqValues", "1")
+    		.putString("TrailLength", "#441b1939")
     		.commit();
     	} else if (sLAF.equals("Lightning Strikes")) {
     		// Lightning Strikes
@@ -182,40 +189,36 @@ public class HCLW extends Application {
     		.commit();
     	}
   
-		SCRNDPI = getResources().getDisplayMetrics().densityDpi;
-		
+    	
+    	
+    	HCLW.SCRNDPI = getResources().getDisplayMetrics().densityDpi;
+    	HCLW.SCRNHEIGHT = getResources().getDisplayMetrics().heightPixels;
+    	HCLW.SCRNWIDTH = getResources().getDisplayMetrics().widthPixels;
+    	HCLW.SCRNLONGEREDGELENGTH = Math.max(SCRNHEIGHT, SCRNWIDTH);
+    	HCLW.SCRNSHORTEREDGELENGTH = Math.min(SCRNHEIGHT, SCRNWIDTH);
+    	HCLW.CURRENTORIENTATION = getResources().getConfiguration().orientation;
+    	HCLW.BUFFER = Bitmap.createBitmap(SCRNSHORTEREDGELENGTH*2/3, SCRNLONGEREDGELENGTH/6, Bitmap.Config.ARGB_8888);
+        HCLW.BUFFERCANVAS = new Canvas(HCLW.BUFFER);
+
+        adjustOrientationOffsets();
+        
         switch (SCRNDPI) {
 	    	case (DisplayMetrics.DENSITY_HIGH):
 	    		SCALEX = HDPISCALEX;
 	    		SCALEY = HDPISCALEY;
-	    		BUFFER = Bitmap.createBitmap(960/3, 427/3, Bitmap.Config.ARGB_8888);
-	    		SCRNHEIGHT = 854;
-	    		SCRNWIDTH = 480;
 	    		break;
 	    	case (DisplayMetrics.DENSITY_MEDIUM):
 	    		SCALEX = MDPISCALEX;
 	    		SCALEY = MDPISCALEY;
-	    		BUFFER = Bitmap.createBitmap(640/3, 240/3, Bitmap.Config.ARGB_8888);
-	    		SCRNHEIGHT = 480;
-	    		SCRNWIDTH = 640;
 	    		break;
 	    	case (DisplayMetrics.DENSITY_LOW):
 	    		SCALEX = LDPISCALEX;
 	    		SCALEY = LDPISCALEY;
-	    		BUFFER = Bitmap.createBitmap(480/3, 160/3, Bitmap.Config.ARGB_8888);
-	    		SCRNHEIGHT = 320;
-	    		SCRNWIDTH = 480;
 	    		break;
 	    	default:
 	    		break;
         }
 
-        HCLW.BUFFERCANVAS = new Canvas(HCLW.BUFFER);
-        HCLW.srcFullRect = new Rect(0,0,SCRNWIDTH, SCRNHEIGHT);
-        HCLW.tgtFullRect = new Rect(0,0,SCRNWIDTH,SCRNHEIGHT);
-        HCLW.srcFlareRect = new Rect(0,0,SCRNWIDTH/3, SCRNHEIGHT/6);
-        HCLW.tgtFlareRect = new Rect(0,SCRNHEIGHT/2,SCRNWIDTH,SCRNHEIGHT);
-        
 		HCLW.MIDDLE = BitmapFactory.decodeResource(this.getResources(), R.drawable.middle);
 		HCLW.FG = BitmapFactory.decodeResource(this.getResources(), R.drawable.top);
 		HCLW.FLARE = new Bitmap[] {
@@ -244,8 +247,28 @@ public class HCLW extends Application {
 		
 	}
 
+	public void adjustOrientationOffsets(){
+		HCLW.SCRNWIDTH=getResources().getDisplayMetrics().widthPixels;
+		HCLW.SCRNHEIGHT=getResources().getDisplayMetrics().heightPixels;
+		if (HCLW.SCRNWIDTH < HCLW.SCRNHEIGHT){
+			// Portrait
+	        HCLW.YOFFSET=0;
+	        HCLW.srcFullRect = new Rect(0,0,HCLW.SCRNWIDTH, HCLW.SCRNHEIGHT);
+	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
+	        HCLW.srcFlareRect = new Rect(0,0,HCLW.SCRNWIDTH/3, HCLW.SCRNHEIGHT/6);
+	        HCLW.tgtFlareRect = new Rect(0,HCLW.SCRNHEIGHT/2,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
+		} else {
+			// Landscape
+	        HCLW.YOFFSET = HCLW.SCRNHEIGHT-HCLW.SCRNWIDTH;
+	        HCLW.srcFullRect = new Rect(0,-HCLW.YOFFSET,HCLW.SCRNWIDTH, HCLW.SCRNWIDTH);
+	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
+	        
+	        HCLW.srcFlareRect = new Rect(0,0,HCLW.SCRNWIDTH/3, HCLW.SCRNWIDTH/6);
+	        HCLW.tgtFlareRect = new Rect(0,HCLW.SCRNHEIGHT-HCLW.SCRNWIDTH/2,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
+		}
+	}
+	
 	static public void resetTheme() {
-			HCLW.HANDLER.removeCallbacks(HCLW.rTRIALOVER);
     		HCLW.PREFS.edit()
     		.putString("HCLWLAF", "Racing Flares")
     		.putBoolean("FlaresAboveSurface", false)

@@ -242,6 +242,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		.putBoolean("LightningEffect", false)
     		.putBoolean("SparkEffect", false)
     		.commit();
+    		HCLW.TRIALOVERTIME=0l;
     	} else if (sLAF.equals("Lightning Strikes")) {
     		// Lightning Strikes
     		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", false)
@@ -249,8 +250,8 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		.putBoolean("SparkEffect", false)
     		.commit();
     		if (HCLW.FREEEDITION) {
-    			HCLW.HANDLER.postDelayed(HCLW.rTRIALOVER, 5l*60000l);
-    			Toast.makeText(this, "This look is limited to 5 minutes in the free version.  Consider donating if you like this wallpaper!", Toast.LENGTH_LONG).show();
+    			HCLW.TRIALOVERTIME = System.currentTimeMillis()+ 60000l;
+    			Toast.makeText(this, "This look is limited to 1 minute in the free version.  Consider donating if you like this wallpaper!", Toast.LENGTH_LONG).show();
     		}
     	} else {
     		// Electric Sparks
@@ -259,8 +260,8 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		.putBoolean("SparkEffect", true)
     		.commit();
     		if (HCLW.FREEEDITION) {
-    			HCLW.HANDLER.postDelayed(HCLW.rTRIALOVER, 5l*60000l);
-    			Toast.makeText(this, "This look is limited to 5 minutes in the free version.  Consider donating if you like this wallpaper!", Toast.LENGTH_LONG).show();
+    			HCLW.TRIALOVERTIME = System.currentTimeMillis()+ 60000l;
+    			Toast.makeText(this, "This look is limited to 1 minute in the free version.  Consider donating if you like this wallpaper!", Toast.LENGTH_LONG).show();
     		}
     	}
     	super.onPause();
