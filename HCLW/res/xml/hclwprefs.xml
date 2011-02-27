@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen android:key="livewallpaper_settings"
 	xmlns:android="http://schemas.android.com/apk/res/android" android:title="HoneyComb Live Wallpaper - Preferences">
-	<PreferenceCategory android:title="Look and Feel"><ListPreference android:entries="@array/LAF" android:entryValues="@array/LAF" android:key="HCLWLAF" android:title="Choose a Look" /><Preference android:key="flarecolors" android:title="Pick Flare Colors" /><ListPreference android:key="TrailLength" android:title="Set Trail Length" android:entries="@array/TrailLength" android:entryValues="@array/TrailLengthValues" /><ListPreference android:key="FlareFrequency" android:title="Set Flare Frequency" android:entries="@array/FlareFreq" android:entryValues="@array/FlareFreqValues" /></PreferenceCategory>
+	<PreferenceCategory android:title="Look and Feel"><ListPreference android:entries="@array/LAF" android:entryValues="@array/LAF" android:key="HCLWLAF" android:title="Choose a Look" android:defaultValue="Racing Flares"/><Preference android:key="flarecolors" android:title="Pick Flare Colors" /><ListPreference android:key="TrailLength" android:title="Set Trail Length" android:entries="@array/TrailLength" android:entryValues="@array/TrailLengthValues" android:defaultValue="#051b1939"/><ListPreference android:key="FlareFrequency" android:title="Set Flare Frequency" android:entries="@array/FlareFreq" android:entryValues="@array/FlareFreqValues" android:defaultValue="1"/></PreferenceCategory>
 	
 	
 	

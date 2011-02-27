@@ -26,9 +26,9 @@
 		<item>"Long"</item>
 	</string-array>
 	<string-array name="TrailLengthValues">
-		<item>ff1b1939</item>
-		<item>441b1939</item>
-		<item>111b1939</item>
-		<item>051b1939</item>
+		<item>#ff1b1939</item>
+		<item>#441b1939</item>
+		<item>#051b1939</item>
+		<item>#021b1939</item>
 	</string-array>
 </resources>

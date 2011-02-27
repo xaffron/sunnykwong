@@ -259,10 +259,14 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		.putBoolean("LightningEffect", false)
     		.putBoolean("SparkEffect", true)
     		.commit();
+
+    		((HCLW)getApplication()).countFlareColors();
+    		
     		if (HCLW.FREEEDITION) {
     			HCLW.TRIALOVERTIME = System.currentTimeMillis()+ 60000l;
     			Toast.makeText(this, "This look is limited to 1 minute in the free version.  Consider donating if you like this wallpaper!", Toast.LENGTH_LONG).show();
     		}
+    		
     	}
     	super.onPause();
     }

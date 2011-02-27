@@ -227,7 +227,7 @@ public class HCLWService extends WallpaperService  {
         		//Trail Length is an optical illusion actually driven by
     			//The opacity of each frame's screen erase
     			try {
-    				HCLW.BUFFERCANVAS.drawColor(Color.parseColor(HCLW.PREFS.getString("TrailLength", "#111b1939")));
+    				HCLW.BUFFERCANVAS.drawColor(Color.parseColor(HCLW.PREFS.getString("TrailLength", "#051b1939")));
     			} catch (Exception e) {
     				HCLW.BUFFERCANVAS.drawColor(Color.parseColor("#111b1939"));
     			}
@@ -250,17 +250,21 @@ public class HCLWService extends WallpaperService  {
     	        			HCLW.FLARESPEEDS[i]= (float)(HCLW.MINFLARESPEEDS[i]*(1+Math.random()));
     	        		} else {
     	        			HCLW.FLARESPEEDS[i]= (float)(HCLW.MINFLARESPEEDS[i]*(1+Math.random()));
-//    	        			HCLW.FLARESPEEDS[i]= HCLW.MINFLARESPEEDS[i]*2;
     	        		}
     	        		HCLW.DISPLACEMENTS[i]+=HCLW.FLARESPEEDS[i];
 
     	        		//Slight acceleration.
-    	        		HCLW.FLARESPEEDS[i]+=HCLW.FLAREACCEL[i];
+    	        		HCLW.FLARESPEEDS[i]+=HCLW.FLAREACCEL[i]; 
     	        		
     	        		// Pick a color for each flare.
             			do {
             				HCLW.COLORS[i]=(int)(Math.random()*5.);
-            			} while ((i>0 && HCLW.COLORS[i]==HCLW.COLORS[i-1]) || !HCLW.PREFS.getBoolean("showcolor"+HCLW.COLORS[i], true) );
+            			} while 
+            				(
+        						// If 
+            					(HCLW.NUMBEROFFLARECOLORS>2 && i>0 && i<HCLW.DISPLACEMENTS.length-1 && (HCLW.COLORS[i]==HCLW.COLORS[i-1] || HCLW.COLORS[i]==HCLW.COLORS[i+1])) 
+            					|| !HCLW.PREFS.getBoolean("showcolor"+HCLW.COLORS[i], true) 
+            				);
         			}
         		} else {
         			HCLW.DISPLACEMENTS[i]+=HCLW.FLARESPEEDS[i];

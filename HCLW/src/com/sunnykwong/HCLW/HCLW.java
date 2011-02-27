@@ -30,6 +30,7 @@ public class HCLW extends Application {
 	static final boolean FREEEDITION = true;
 	static boolean SHOWHELP=true;
 
+	static int NUMBEROFFLARECOLORS=0;
 	static int OFFSETTHISFRAME=0;
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
@@ -188,9 +189,7 @@ public class HCLW extends Application {
     		.putBoolean("SparkEffect", true)
     		.commit();
     	}
-  
-    	
-    	
+    	countFlareColors();
     	HCLW.SCRNDPI = getResources().getDisplayMetrics().densityDpi;
     	HCLW.SCRNHEIGHT = getResources().getDisplayMetrics().heightPixels;
     	HCLW.SCRNWIDTH = getResources().getDisplayMetrics().widthPixels;
@@ -245,6 +244,13 @@ public class HCLW extends Application {
 		HCLW.PaintFlare.setColor(Color.WHITE);
 		HCLW.PaintFg.setColor(Color.BLUE);
 		
+	}
+
+	public void countFlareColors() {
+		NUMBEROFFLARECOLORS=0;
+		for (int i=0; i<5; i++) {
+			if (HCLW.PREFS.getBoolean("showcolor"+i, true)) NUMBEROFFLARECOLORS++;
+		}
 	}
 
 	public void adjustOrientationOffsets(){
