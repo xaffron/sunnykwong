@@ -235,6 +235,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     }
     @Override
     protected void onPause() {
+    	((HCLW)getApplication()).countFlareColors();
     	//Translate Changes
     	String sLAF = HCLW.PREFS.getString("HCLWLAF", "Racing Flares");
     	if (sLAF.equals("Racing Flares")) {

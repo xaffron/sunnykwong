@@ -210,7 +210,7 @@ public class HCLWService extends WallpaperService  {
             // Reschedule the next redraw
             HCLW.HANDLER.removeCallbacks(mDrawFlare);
         	HCLW.HANDLER.postDelayed(mDrawFlare, 1000 / 60);
-//        	HCLW.HANDLER.postDelayed(mDrawFlare, 1000);
+//        	HCLW.HANDLER.postDelayed(mDrawFlare, 300);
 
         }
 
@@ -244,6 +244,7 @@ public class HCLWService extends WallpaperService  {
         		// If a flare is done, reset. (the 1.1 is to make sure the flare goes offscreen first)
         		if (HCLW.DISPLACEMENTS[i]>1.1f) {
         			HCLW.DISPLACEMENTS[i]=0f;
+        			HCLW.COLORS[i]=-1;
         		} else if (HCLW.DISPLACEMENTS[i]==0f) {
         			//Only relaunch a flare 1% of the time by default (can be customized)
         			if (Math.random() < 0.01d * Double.parseDouble(HCLW.PREFS.getString("FlareFrequency", "1"))) {
@@ -327,7 +328,7 @@ public class HCLWService extends WallpaperService  {
         			c.drawBitmap(HCLW.MIDDLE, HCLW.srcFullRect, HCLW.tgtFullRect, HCLW.PaintMid);
         		}
         		if (HCLW.LightningFactor>0f) {
-        			//HCLW.PaintFg.setAlpha(60);
+//        			HCLW.PaintFg.setAlpha(60);
         			c.drawBitmap(HCLW.FG, HCLW.srcFullRect, HCLW.tgtFullRect, HCLW.PaintFg);
         		}
         	}

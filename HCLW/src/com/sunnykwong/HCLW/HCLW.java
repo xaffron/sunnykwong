@@ -60,15 +60,15 @@ public class HCLW extends Application {
 	static int SCRNDPI;
 	static int YOFFSET;
 
-	static public final float LDPISCALEX=0.25f, LDPISCALEY=0.22f;
-	static public final float MDPISCALEX=.33f, MDPISCALEY=.33f;
-	static public final float HDPISCALEX=.5f, HDPISCALEY=0.59f;
+	static public final float LDPISCALEX=0.2500f, LDPISCALEY=0.2222f;
+	static public final float MDPISCALEX=.3333f, MDPISCALEY=.3333f;
+	static public final float HDPISCALEX=.5000f, HDPISCALEY=0.5930f;
 	static public float SCALEX, SCALEY;
 	
 	static public final float[] FLAREPATHINITX
-		= {267f,278f,291f,411f,
-		424f,436.5f,444f,454f,
-		466f,474.5f,486f,500f};
+		= {264f,277f,288f,404f,
+		419f,433f,443f,454f,
+		466f,474.5f,487f,501f};
 	static public final float[] FLAREPATHINITY
 		= {322f,322f,322f,336f,
 			336f,336f,336f,336f,
@@ -79,15 +79,15 @@ public class HCLW extends Application {
 		0.1f,0.1f,0.1f,0.1f};
 	
 	static public final float[] FLAREPATHMIDX
-		= {162,171,181,260,
+		= {162,171,181,259,
 		318,357,405,451,
 		492,536,556,566};
 	static public final float[] FLAREPATHMIDY
-		= {377,384,394,385,
+		= {376,384,394,385,
 		382,384,384,380,
 		380,380,369,357};
 	static public final float[] FLAREPATHMIDZ
-    	= {0.15f,0.15f,0.15f,0.25f,
+    	= {0.15f,0.15f,0.15f,0.2f,
 		0.3f,0.3f,0.35f,0.4f,
 		0.35f,0.3f,0.2f,0.2f};
 
@@ -96,16 +96,16 @@ public class HCLW extends Application {
 		76,192,315,437,
 		558,645,645,645};
 	static public final float[] FLAREPATHFINALY
-		= {409,423,445,468,
+		= {407,423,445,468,
 		480,484,492,492,
 		480,452,408,385};
 	static public final float[] FLAREPATHFINALZ
-    	= {.2f,.2f,.2f,.5f,
+    	= {.2f,.2f,.2f,.4f,
 		.6f,.7f,.7f,.7f,
 		.7f,.5f,.3f,.3f};
 
 	static public final float[] MINFLARESPEEDS
-	= {0.003f,0.003f,0.003f,0.006f,
+	= {0.003f,0.003f,0.003f,0.004f,
 	0.006f,0.01f,0.015f,0.015f,
 	0.010f,0.008f,0.008f,0.008f};
 
@@ -125,9 +125,9 @@ public class HCLW extends Application {
 		0f,0f,0f,0f};
 
 	static public int[] COLORS
-	= {0,0,0,0,
-		0,0,0,0,
-		0,0,0,0};
+	= {-1,-1,-1,-1,
+		-1,-1,-1,-1,
+		-1,-1,-1,-1};
 
 	static final Paint PaintFlare = new Paint(), PaintBg = new Paint(), PaintMid = new Paint(), PaintFg =  new Paint();
     static Rect srcFullRect, tgtFullRect, srcFlareRect, tgtFlareRect;
@@ -164,6 +164,10 @@ public class HCLW extends Application {
 		PREFS = PreferenceManager.getDefaultSharedPreferences(this);
 		HCLW.SHOWHELP = PREFS.getBoolean("showhelp", true);
 
+		for (int i=0;i<5;i++) {
+			if (!PREFS.contains("showcolor"+i)) PREFS.edit().putBoolean("showcolor"+i, true).commit();
+		}
+		
 		HCLW.PAIDURI = (Uri.parse("market://details?id=com.sunnykwong.HCLW"));
 		HCLW.HCLWMARKETINTENT = new Intent(Intent.ACTION_VIEW,HCLW.PAIDURI);
 		
