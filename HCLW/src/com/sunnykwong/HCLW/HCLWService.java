@@ -109,8 +109,10 @@ public class HCLWService extends WallpaperService  {
         public void onVisibilityChanged(boolean visible) {
         	HCLW.Visible = visible;
             if (visible) {
+//            	Log.i("HCLW","Start animating");
                 drawFrame();
             } else {
+//            	Log.i("HCLW","Stop animating");
             	HCLW.HANDLER.removeCallbacks(mDrawFlare);
             }
         }
@@ -207,9 +209,8 @@ public class HCLWService extends WallpaperService  {
 
             // Reschedule the next redraw
             HCLW.HANDLER.removeCallbacks(mDrawFlare);
-            if (HCLW.Visible) {
-            	HCLW.HANDLER.postDelayed(mDrawFlare, 1000 / 60);
-            }
+        	HCLW.HANDLER.postDelayed(mDrawFlare, 1000 / 60);
+//        	HCLW.HANDLER.postDelayed(mDrawFlare, 1000);
 
         }
 
@@ -229,7 +230,7 @@ public class HCLWService extends WallpaperService  {
     			try {
     				HCLW.BUFFERCANVAS.drawColor(Color.parseColor(HCLW.PREFS.getString("TrailLength", "#051b1939")));
     			} catch (Exception e) {
-    				HCLW.BUFFERCANVAS.drawColor(Color.parseColor("#111b1939"));
+    				HCLW.BUFFERCANVAS.drawColor(Color.parseColor("#051b1939"));
     			}
     		}
         	
@@ -240,8 +241,8 @@ public class HCLWService extends WallpaperService  {
         	
         	// We're tracking each flare.
         	for (int i = 0; i < HCLW.DISPLACEMENTS.length; i++) {
-        		// If a flare is done, reset.
-        		if (HCLW.DISPLACEMENTS[i]>1f) {
+        		// If a flare is done, reset. (the 1.1 is to make sure the flare goes offscreen first)
+        		if (HCLW.DISPLACEMENTS[i]>1.1f) {
         			HCLW.DISPLACEMENTS[i]=0f;
         		} else if (HCLW.DISPLACEMENTS[i]==0f) {
         			//Only relaunch a flare 1% of the time by default (can be customized)
@@ -326,6 +327,7 @@ public class HCLWService extends WallpaperService  {
         			c.drawBitmap(HCLW.MIDDLE, HCLW.srcFullRect, HCLW.tgtFullRect, HCLW.PaintMid);
         		}
         		if (HCLW.LightningFactor>0f) {
+        			//HCLW.PaintFg.setAlpha(60);
         			c.drawBitmap(HCLW.FG, HCLW.srcFullRect, HCLW.tgtFullRect, HCLW.PaintFg);
         		}
         	}

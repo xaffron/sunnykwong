@@ -27,7 +27,7 @@ public class HCLW extends Application {
 	static String THISVERSION;
 	static String PKGNAME;
 	static final boolean DEBUG = false;
-	static final boolean FREEEDITION = true;
+	static final boolean FREEEDITION = false;
 	static boolean SHOWHELP=true;
 
 	static int NUMBEROFFLARECOLORS=0;
@@ -60,59 +60,59 @@ public class HCLW extends Application {
 	static int SCRNDPI;
 	static int YOFFSET;
 
-	static public final float LDPISCALEX=0.25f, LDPISCALEY=0.25f;
+	static public final float LDPISCALEX=0.25f, LDPISCALEY=0.22f;
 	static public final float MDPISCALEX=.33f, MDPISCALEY=.33f;
 	static public final float HDPISCALEX=.5f, HDPISCALEY=0.59f;
 	static public float SCALEX, SCALEY;
 	
 	static public final float[] FLAREPATHINITX
-		= {269f,280f,297f,422f,
-		433f,442f,448f,458f,
-		468f,480f,486f,502f};
+		= {267f,278f,291f,411f,
+		424f,436.5f,444f,454f,
+		466f,474.5f,486f,500f};
 	static public final float[] FLAREPATHINITY
-		= {322f,322f,322f,334f,
-			336f,338f,338f,338f,
-			338f,338f,338f,338f};
+		= {322f,322f,322f,336f,
+			336f,336f,336f,336f,
+			336f,336f,336f,336f};
 	static public final float[] FLAREPATHINITZ
     	= {0.1f,0.1f,0.1f,0.1f,
-		0.1f,0.15f,0.15f,0.15f,
+		0.07f,0.1f,0.1f,0.1f,
 		0.1f,0.1f,0.1f,0.1f};
 	
 	static public final float[] FLAREPATHMIDX
-		= {163,171,181,273,
-		322,360,412,452,
-		492,534,577,572};
+		= {162,171,181,260,
+		318,357,405,451,
+		492,536,556,566};
 	static public final float[] FLAREPATHMIDY
-		= {380,386,395,385,
-		381,384,384,380,
-		380,380,380,361};
+		= {377,384,394,385,
+		382,384,384,380,
+		380,380,369,357};
 	static public final float[] FLAREPATHMIDZ
-    	= {0.2f,0.2f,0.2f,0.3f,
-		0.3f,0.3f,0.4f,0.4f,
-		0.4f,0.3f,0.2f,0.2f};
+    	= {0.15f,0.15f,0.15f,0.25f,
+		0.3f,0.3f,0.35f,0.4f,
+		0.35f,0.3f,0.2f,0.2f};
 
 	static public final float[] FLAREPATHFINALX
 		= {0,0,0,0,
-		76,192,318,437,
+		76,192,315,437,
 		558,645,645,645};
 	static public final float[] FLAREPATHFINALY
-		= {410,424,446,472,
-		484,484,492,492,
-		480,452,408,387};
+		= {409,423,445,468,
+		480,484,492,492,
+		480,452,408,385};
 	static public final float[] FLAREPATHFINALZ
-    	= {.25f,.3f,.3f,.5f,
-		.5f,.5f,.7f,.7f,
+    	= {.2f,.2f,.2f,.5f,
+		.6f,.7f,.7f,.7f,
 		.7f,.5f,.3f,.3f};
 
 	static public final float[] MINFLARESPEEDS
-	= {0.005f,0.005f,0.005f,0.006f,
+	= {0.003f,0.003f,0.003f,0.006f,
 	0.006f,0.01f,0.015f,0.015f,
 	0.010f,0.008f,0.008f,0.008f};
 
 	static public final float[] FLAREACCEL
-	= {0.01f,0.01f,0.01f,0.01f,
-	0.01f,0.015f,0.02f,0.02f,
-	0.02f,0.01f,0.01f,0.01f};
+	= {0.013f,0.013f,0.013f,0.015f,
+	0.015f,0.015f,0.02f,0.02f,
+	0.02f,0.02f,0.02f,0.02f};
 
 	static public float[] FLARESPEEDS
 		= {0.01f,0.01f,0.01f,0.01f,
@@ -173,7 +173,7 @@ public class HCLW extends Application {
     		.putBoolean("LightningEffect", false)
     		.putBoolean("SparkEffect", false)
     		.putString("FlareFreqValues", "1")
-    		.putString("TrailLength", "#441b1939")
+    		.putString("TrailLength", "#051b1939")
     		.commit();
     	} else if (sLAF.equals("Lightning Strikes")) {
     		// Lightning Strikes
