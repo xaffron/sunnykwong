@@ -27,7 +27,7 @@ public class HCLW extends Application {
 	static String THISVERSION;
 	static String PKGNAME;
 	static final boolean DEBUG = false;
-	static final boolean FREEEDITION = true;
+	static final boolean FREEEDITION = false;
 	static boolean SHOWHELP=true;
 
 	static int NUMBEROFFLARECOLORS=0;
@@ -67,7 +67,7 @@ public class HCLW extends Application {
 	
 	static public final float[] FLAREPATHINITX
 		= {264f,277f,288f,404f,
-		419f,433f,443f,454f,
+		418f,432f,440f,454f,
 		466f,474.5f,487f,501f};
 	static public final float[] FLAREPATHINITY
 		= {322f,322f,322f,336f,
@@ -79,8 +79,8 @@ public class HCLW extends Application {
 		0.1f,0.1f,0.1f,0.1f};
 	
 	static public final float[] FLAREPATHMIDX
-		= {162,171,181,259,
-		318,357,405,451,
+		= {162,170,180,257,
+		316,355,403,449,
 		492,536,556,566};
 	static public final float[] FLAREPATHMIDY
 		= {376,384,394,385,
@@ -92,9 +92,9 @@ public class HCLW extends Application {
 		0.35f,0.3f,0.2f,0.2f};
 
 	static public final float[] FLAREPATHFINALX
-		= {0,0,0,0,
-		76,192,315,437,
-		558,645,645,645};
+		= {0,-1,-1,-3,
+		73,189,312,435,
+		558,645,646,646};
 	static public final float[] FLAREPATHFINALY
 		= {407,423,445,468,
 		480,484,492,492,
@@ -285,6 +285,7 @@ public class HCLW extends Application {
     		.putBoolean("LightningEffect", false)
     		.putBoolean("SparkEffect", false)
     		.commit();
+    		HCLW.LightningFactor=1f;
 	}
 	
 	@Override
