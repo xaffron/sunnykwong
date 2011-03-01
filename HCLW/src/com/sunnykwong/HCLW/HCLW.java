@@ -41,7 +41,7 @@ public class HCLW extends Application {
 		"Can't get this wallpaper to work?  See a bug?  Feature request?  Send Nemuro or Xaffron a message by scrolling down and tapping on 'Contact Artist' or 'Contact Dev'.",
 		"You can enable and disable different colored flares for dramatic effect.",
 		"The Frantic! flare frequency is not for everyone, but makes for great fireworks... try it out!",
-		"Did you know that there is a support thread on XDA-Developers?  I monitor questions on that board on a daily basis.  http://forum.xda-developers.com/showthread.php?t=807929"
+		"Did you know that there is a support thread on XDA-Developers?  I monitor questions on that board on a daily basis.  http://forum.xda-developers.com/showthread.php?t=975413"
 	};
 
 	static public final Handler HANDLER = new Handler();
@@ -80,7 +80,7 @@ public class HCLW extends Application {
 	
 	static public final float[] FLAREPATHMIDX
 		= {162,170,180,257,
-		316,355,403,449,
+		313,355,403,449,
 		492,536,556,566};
 	static public final float[] FLAREPATHMIDY
 		= {376,384,394,385,
@@ -105,12 +105,12 @@ public class HCLW extends Application {
 		.7f,.5f,.3f,.3f};
 
 	static public final float[] MINFLARESPEEDS
-	= {0.003f,0.003f,0.003f,0.004f,
+	= {0.003f,0.003f,0.003f,0.0025f,
 	0.006f,0.01f,0.015f,0.015f,
 	0.010f,0.008f,0.008f,0.008f};
 
 	static public final float[] FLAREACCEL
-	= {0.013f,0.013f,0.013f,0.015f,
+	= {0.013f,0.013f,0.013f,0.013f,
 	0.015f,0.015f,0.02f,0.02f,
 	0.02f,0.02f,0.02f,0.02f};
 
