@@ -1,6 +1,7 @@
 package com.sunnykwong.HCLW;
 
 import android.app.Activity;
+import android.widget.ScrollView;
 import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
 import android.content.DialogInterface;
@@ -39,7 +40,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     	super.onCreate(savedInstanceState);
 
     	PreferenceManager.getDefaultSharedPreferences(this);
-    	addPreferencesFromResource(R.xml.hclwprefs);
+    	addPreferencesFromResource(getResources().getIdentifier("hclwprefs", "xml", HCLW.PKGNAME));
     	findPreference("dpi").setTitle("Screen DPI " +HCLW.SCRNDPI);
     	findPreference("dpi").setSummary("Screen dimension " +HCLW.SCRNWIDTH + "x" + HCLW.SCRNHEIGHT);
     	
@@ -114,8 +115,8 @@ public class HCLWPrefsActivity extends PreferenceActivity {
 		final CharSequence[] items = {"Email", "Donate"};
     	if (preference == this.findPreference("flarecolors")) {
 			LayoutInflater li = LayoutInflater.from(this);
-			LinearLayout ll = (LinearLayout)(li.inflate(R.layout.flares, null));
-			CheckBox cb = (CheckBox)ll.findViewById(this.getResources().getIdentifier("showcolor0", "id", HCLW.PKGNAME));
+			ScrollView sv = (ScrollView)(li.inflate(getResources().getIdentifier("flares", "layout", HCLW.PKGNAME), null));
+			CheckBox cb = (CheckBox)sv.findViewById(this.getResources().getIdentifier("showcolor0", "id", HCLW.PKGNAME));
 			cb.setChecked(HCLW.PREFS.getBoolean("showcolor0", true));
 			cb.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 				@Override
@@ -124,7 +125,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
 					HCLW.PREFS.edit().putBoolean("showcolor0", isChecked).commit();
 				}
 			});
-			cb = (CheckBox)ll.findViewById(this.getResources().getIdentifier("showcolor1", "id", HCLW.PKGNAME));
+			cb = (CheckBox)sv.findViewById(this.getResources().getIdentifier("showcolor1", "id", HCLW.PKGNAME));
 			cb.setChecked(HCLW.PREFS.getBoolean("showcolor1", true));
 			cb.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 				@Override
@@ -133,7 +134,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
 					HCLW.PREFS.edit().putBoolean("showcolor1", isChecked).commit();
 				}
 			});
-			cb = (CheckBox)ll.findViewById(this.getResources().getIdentifier("showcolor2", "id", HCLW.PKGNAME));
+			cb = (CheckBox)sv.findViewById(this.getResources().getIdentifier("showcolor2", "id", HCLW.PKGNAME));
 			cb.setChecked(HCLW.PREFS.getBoolean("showcolor2", true));
 			cb.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 				@Override
@@ -142,7 +143,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
 					HCLW.PREFS.edit().putBoolean("showcolor2", isChecked).commit();
 				}
 			});
-			cb = (CheckBox)ll.findViewById(this.getResources().getIdentifier("showcolor3", "id", HCLW.PKGNAME));
+			cb = (CheckBox)sv.findViewById(this.getResources().getIdentifier("showcolor3", "id", HCLW.PKGNAME));
 			cb.setChecked(HCLW.PREFS.getBoolean("showcolor3", true));
 			cb.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 				@Override
@@ -151,7 +152,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
 					HCLW.PREFS.edit().putBoolean("showcolor3", isChecked).commit();
 				}
 			});
-			cb = (CheckBox)ll.findViewById(this.getResources().getIdentifier("showcolor4", "id", HCLW.PKGNAME));
+			cb = (CheckBox)sv.findViewById(this.getResources().getIdentifier("showcolor4", "id", HCLW.PKGNAME));
 			cb.setChecked(HCLW.PREFS.getBoolean("showcolor4", true));
 			cb.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 				@Override
@@ -164,7 +165,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
 			mAD = new AlertDialog.Builder(this)
 			.setTitle("Toggle Colors")
 		    .setCancelable(true)
-		    .setView(ll)
+		    .setView(sv)
 		    .setOnKeyListener(new OnKeyListener() {
 		    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
 		    		if (arg2.getKeyCode()==android.view.KeyEvent.KEYCODE_BACK) mAD.cancel();

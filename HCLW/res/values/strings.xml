@@ -14,7 +14,7 @@
 		<item>Frantic!</item>
 	</string-array>
 	<string-array name="FlareFreqValues">
-		<item>"0.5"</item>
+		<item>"0.25"</item>
 		<item>"1"</item>
 		<item>"3"</item>
 		<item>"75"</item>
@@ -27,7 +27,7 @@
 	</string-array>
 	<string-array name="TrailLengthValues">
 		<item>#ff1b1939</item>
-		<item>#441b1939</item>
+		<item>#221b1939</item>
 		<item>#051b1939</item>
 		<item>#021b1939</item>
 	</string-array>

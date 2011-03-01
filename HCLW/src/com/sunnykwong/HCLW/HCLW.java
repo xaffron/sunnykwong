@@ -27,7 +27,7 @@ public class HCLW extends Application {
 	static String THISVERSION;
 	static String PKGNAME;
 	static final boolean DEBUG = false;
-	static final boolean FREEEDITION = false;
+	static final boolean FREEEDITION = true;
 	static boolean SHOWHELP=true;
 
 	static int NUMBEROFFLARECOLORS=0;
@@ -222,14 +222,14 @@ public class HCLW extends Application {
 	    		break;
         }
 
-		HCLW.MIDDLE = BitmapFactory.decodeResource(this.getResources(), R.drawable.middle);
-		HCLW.FG = BitmapFactory.decodeResource(this.getResources(), R.drawable.top);
+		HCLW.MIDDLE = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middle", "drawable", HCLW.PKGNAME));
+		HCLW.FG = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("top", "drawable", HCLW.PKGNAME));
 		HCLW.FLARE = new Bitmap[] {
-			BitmapFactory.decodeResource(this.getResources(), R.drawable.flare_white),
-			BitmapFactory.decodeResource(this.getResources(), R.drawable.flare_red),
-			BitmapFactory.decodeResource(this.getResources(), R.drawable.flare_green),
-			BitmapFactory.decodeResource(this.getResources(), R.drawable.flare_blue),
-			BitmapFactory.decodeResource(this.getResources(), R.drawable.flare_yellow)
+			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_white", "drawable", HCLW.PKGNAME)),
+			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_red", "drawable", HCLW.PKGNAME)),
+			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_green", "drawable", HCLW.PKGNAME)),
+			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_blue", "drawable", HCLW.PKGNAME)),
+			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_yellow", "drawable", HCLW.PKGNAME))
 		};
 		try {
 			THISVERSION = getPackageManager().getPackageInfo(getPackageName(),
