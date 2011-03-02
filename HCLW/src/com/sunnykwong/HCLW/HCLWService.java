@@ -209,8 +209,7 @@ public class HCLWService extends WallpaperService  {
 
             // Reschedule the next redraw
             HCLW.HANDLER.removeCallbacks(mDrawFlare);
-        	HCLW.HANDLER.postDelayed(mDrawFlare, 1000 / 60);
-//        	HCLW.HANDLER.postDelayed(mDrawFlare, 300);
+        	HCLW.HANDLER.postDelayed(mDrawFlare, 1000 / HCLW.FPS);
 
         }
 

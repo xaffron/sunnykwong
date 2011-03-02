@@ -31,4 +31,16 @@
 		<item>#051b1939</item>
 		<item>#021b1939</item>
 	</string-array>
+	<string-array name="FrameRate">
+		<item>"15 frames/sec"</item>
+		<item>"25 frames/sec (default)"</item>
+		<item>"45 frames/sec"</item>
+		<item>"60 frames/sec"</item>
+	</string-array>
+	<string-array name="FrameRateValues">
+		<item>"15"</item>
+		<item>"25"</item>
+		<item>"45"</item>
+		<item>"60"</item>
+	</string-array>
 </resources>

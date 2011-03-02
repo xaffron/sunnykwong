@@ -24,6 +24,7 @@ import android.net.Uri;
  */
 public class HCLW extends Application {
 
+	static int FPS=25;
 	static String THISVERSION;
 	static String PKGNAME;
 	static final boolean DEBUG = false;
@@ -164,6 +165,12 @@ public class HCLW extends Application {
 		PREFS = PreferenceManager.getDefaultSharedPreferences(this);
 		HCLW.SHOWHELP = PREFS.getBoolean("showhelp", true);
 
+		if (!PREFS.contains("FrameRates")) {
+			PREFS.edit().putString("FrameRates", "25").commit();
+		}
+		HCLW.FPS = Integer.parseInt(PREFS.getString("FrameRates", "25"));
+		
+		
 		for (int i=0;i<5;i++) {
 			if (!PREFS.contains("showcolor"+i)) PREFS.edit().putBoolean("showcolor"+i, true).commit();
 		}

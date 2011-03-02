@@ -237,6 +237,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     @Override
     protected void onPause() {
     	((HCLW)getApplication()).countFlareColors();
+    	HCLW.FPS = Integer.parseInt(HCLW.PREFS.getString("FrameRates", "25"));
     	//Translate Changes
     	String sLAF = HCLW.PREFS.getString("HCLWLAF", "Racing Flares");
     	if (sLAF.equals("Racing Flares")) {
