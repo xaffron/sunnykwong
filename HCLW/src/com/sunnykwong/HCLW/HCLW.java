@@ -16,6 +16,14 @@ import android.util.DisplayMetrics;
 import android.content.SharedPreferences;
 import android.content.Intent;
 import android.net.Uri;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.InputStreamReader;
 
 /**
  * @author skwong01 Thanks to Cosmin Bizon for the idea, graphical assets,
@@ -25,6 +33,7 @@ import android.net.Uri;
 public class HCLW extends Application {
 
 	static int FPS=25;
+	static final boolean JSON = true;
 	static String THISVERSION;
 	static String PKGNAME;
 	static final boolean DEBUG = false;
@@ -170,6 +179,7 @@ public class HCLW extends Application {
 		}
 		HCLW.FPS = Integer.parseInt(PREFS.getString("FrameRates", "25"));
 		
+		if (JSON) loadFlaresFromJSON();
 		
 		for (int i=0;i<5;i++) {
 			if (!PREFS.contains("showcolor"+i)) PREFS.edit().putBoolean("showcolor"+i, true).commit();
@@ -212,25 +222,11 @@ public class HCLW extends Application {
 
         adjustOrientationOffsets();
         
-        switch (SCRNDPI) {
-	    	case (DisplayMetrics.DENSITY_HIGH):
-	    		SCALEX = HDPISCALEX;
-	    		SCALEY = HDPISCALEY;
-	    		break;
-	    	case (DisplayMetrics.DENSITY_MEDIUM):
-	    		SCALEX = MDPISCALEX;
-	    		SCALEY = MDPISCALEY;
-	    		break;
-	    	case (DisplayMetrics.DENSITY_LOW):
-	    		SCALEX = LDPISCALEX;
-	    		SCALEY = LDPISCALEY;
-	    		break;
-	    	default:
-	    		break;
-        }
-
-		HCLW.MIDDLE = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middle", "drawable", HCLW.PKGNAME));
-		HCLW.FG = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("top", "drawable", HCLW.PKGNAME));
+        SCALEX = HCLW.SCRNSHORTEREDGELENGTH/3f/320f;
+        SCALEY = HCLW.SCRNLONGEREDGELENGTH/3f/480f;
+        
+		HCLW.MIDDLE = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middle", "drawable", HCLW.PKGNAME)),HCLW.SCRNSHORTEREDGELENGTH*2,HCLW.SCRNLONGEREDGELENGTH,true);
+		HCLW.FG = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("top", "drawable", HCLW.PKGNAME)),HCLW.SCRNSHORTEREDGELENGTH*2,HCLW.SCRNLONGEREDGELENGTH,true);
 		HCLW.FLARE = new Bitmap[] {
 			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_white", "drawable", HCLW.PKGNAME)),
 			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_red", "drawable", HCLW.PKGNAME)),
@@ -295,6 +291,50 @@ public class HCLW extends Application {
     		HCLW.LightningFactor=1f;
 	}
 	
+	public void loadFlaresFromJSON() {
+		// Look in SD path
+//			File f = new File("/mnt/sdcard/hclw_flares.json");
+			try {
+//				BufferedReader in = new BufferedReader(new FileReader("/mnt/sdcard/hclw_flares.json"),8192);
+				InputStreamReader in = new InputStreamReader(this.getAssets().open("hclw_flares.json"));
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[8192];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+				JSONArray oResult = new JSONArray(sb.toString());
+				sb.setLength(0);
+				
+				// now read flare data to our format
+				for (int i=0;i<12;i++) {
+					JSONObject flare = oResult.getJSONObject(i);
+					HCLW.FLAREPATHINITX[i] = (float)(flare.optJSONArray("initial").getDouble(0));
+					HCLW.FLAREPATHINITY[i] = (float)(flare.optJSONArray("initial").getDouble(1));
+					HCLW.FLAREPATHINITZ[i] = (float)(flare.optJSONArray("initial").getDouble(2));
+
+					HCLW.FLAREPATHMIDX[i] = (float)(flare.optJSONArray("middle").getDouble(0));
+					HCLW.FLAREPATHMIDY[i] = (float)(flare.optJSONArray("middle").getDouble(1));
+					HCLW.FLAREPATHMIDZ[i] = (float)(flare.optJSONArray("middle").getDouble(2));
+
+					HCLW.FLAREPATHFINALX[i] = (float)(flare.optJSONArray("final").getDouble(0));
+					HCLW.FLAREPATHFINALY[i] = (float)(flare.optJSONArray("final").getDouble(1));
+					HCLW.FLAREPATHFINALZ[i] = (float)(flare.optJSONArray("final").getDouble(2));
+					
+					HCLW.MINFLARESPEEDS[i] = (float)(flare.optDouble("minimumspeed"));
+					HCLW.FLAREACCEL[i] = (float)(flare.optDouble("accel"));
+					
+				}
+				oResult = null;
+				
+			} catch (Exception e) {
+				
+			} finally {
+				//System.gc();
+			}
+	}
+
 	@Override
 	public void onTerminate() {
 		PREFS.edit().commit();

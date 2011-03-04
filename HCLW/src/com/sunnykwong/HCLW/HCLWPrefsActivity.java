@@ -271,6 +271,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		}
     		
     	}
+    	if (HCLW.JSON) ((HCLW)getApplication()).loadFlaresFromJSON();
     	super.onPause();
     }
     

@@ -1,0 +1,87 @@
+
+[
+		{ 
+		"initial": [260,322,0.1],
+		"middle": [161,375,0.15],
+		"final":[0,405,0.2],
+		"minimumspeed":0.003,
+		"accel":0.013
+		},
+		{ 
+		"initial": [274,322,0.1],
+		"middle": [166,383,0.15],
+		"final":[-1,418,0.2],
+		"minimumspeed":0.003,
+		"accel":0.013
+		},
+		{ 
+		"initial": [287,322,0.1],
+		"middle": [180,390,0.15],
+		"final":[-1,440,0.2],
+		"minimumspeed":0.003,
+		"accel":0.013
+		},
+		{ 
+		"initial": [404,336,0.07],
+		"middle": [252,383,0.2],
+		"final":[01,468,0.4],
+		"minimumspeed":0.0025,
+		"accel":0.013
+		},
+		{ 
+		"initial": [416,336,0.1],
+		"middle": [308,379,0.3],
+		"final":[69,480,0.6],
+		"minimumspeed":0.006,
+		"accel":0.015
+		},
+		{ 
+		"initial": [429,336,0.1],
+		"middle": [351,381,0.3],
+		"final":[185,479,0.7],
+		"minimumspeed":0.01,
+		"accel":0.015
+		},
+		{ 
+		"initial": [440,336,0.1],
+		"middle": [400,381,0.35],
+		"final":[308,488,0.7],
+		"minimumspeed":0.015,
+		"accel":0.02
+		},
+		{ 
+		"initial": [452,336,0.1],
+		"middle": [449,380,0.4],
+		"final":[435,492,0.7],
+		"minimumspeed":0.015,
+		"accel":0.02
+		},
+		{ 
+		"initial": [466,336,0.1],
+		"middle": [495,380,0.35],
+		"final":[561,480,0.7],
+		"minimumspeed":0.010,
+		"accel":0.02
+		},
+		{ 
+		"initial": [474.5,336,0.1],
+		"middle": [533,377,0.3],
+		"final":[647,450,0.5],
+		"minimumspeed":0.008,
+		"accel":0.02
+		},
+		{ 
+		"initial": [487,336,0.1],
+		"middle": [558,367,0.2],
+		"final":[649,405,0.3],
+		"minimumspeed":0.008,
+		"accel":0.02
+		},
+		{ 
+		"initial": [501,336,0.1],
+		"middle": [568,355,0.2],
+		"final":[649,382,0.3],
+		"minimumspeed":0.008,
+		"accel":0.02
+		}
+	]
