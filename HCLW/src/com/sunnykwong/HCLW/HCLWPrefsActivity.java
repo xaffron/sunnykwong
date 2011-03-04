@@ -185,7 +185,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
 									Intent it = new Intent(android.content.Intent.ACTION_SEND)
 		    		   					.setType("plain/text")
 		    		   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
-		    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, "Aurora Bulb Feedback v" + HCLW.THISVERSION);
+		    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, "HCLW Feedback v" + HCLW.THISVERSION);
 					    		   	startActivity(Intent.createChooser(it, "Contact Xaffron for issues, help & support."));  
 					    		   	finish();
 					    		   	break;
@@ -211,7 +211,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
 									Intent it = new Intent(android.content.Intent.ACTION_SEND)
 		    		   					.setType("plain/text")
 		    		   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"brcosmin@gmail.com"})
-		    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, "Aurora Bulb Feedback v" + HCLW.THISVERSION);
+		    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, "HCLW Feedback v" + HCLW.THISVERSION);
 					    		   	startActivity(Intent.createChooser(it, "Contact Xaffron for issues, help & support."));  
 					    		   	finish();
 					    		   	break;
@@ -244,6 +244,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", false)
     		.putBoolean("LightningEffect", false)
     		.putBoolean("SparkEffect", false)
+    		.putBoolean("Searchlight", false)
     		.commit();
     		HCLW.TRIALOVERTIME=0l;
     	} else if (sLAF.equals("Lightning Strikes")) {
@@ -251,6 +252,17 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", false)
     		.putBoolean("LightningEffect", true)
     		.putBoolean("SparkEffect", false)
+    		.putBoolean("Searchlight", false)
+    		.commit();
+    		if (HCLW.FREEEDITION) {
+    			HCLW.TRIALOVERTIME = System.currentTimeMillis()+ 60000l;
+    			Toast.makeText(this, "This look is limited to 1 minute in the free version.  Consider donating if you like this wallpaper!", Toast.LENGTH_LONG).show();
+    		}
+    	} else if (sLAF.equals("Searchlight")) {
+    		// Searchlight
+    		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", false)
+    		.putBoolean("LightningEffect", false)
+    		.putBoolean("Searchlight", true)
     		.commit();
     		if (HCLW.FREEEDITION) {
     			HCLW.TRIALOVERTIME = System.currentTimeMillis()+ 60000l;
@@ -261,6 +273,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", true)
     		.putBoolean("LightningEffect", false)
     		.putBoolean("SparkEffect", true)
+    		.putBoolean("Searchlight", false)
     		.commit();
 
     		((HCLW)getApplication()).countFlareColors();
@@ -272,6 +285,24 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		
     	}
     	if (HCLW.JSON) ((HCLW)getApplication()).loadFlaresFromJSON();
+    	
+        boolean bAllColorsDisabled=true;
+        for (int i =0; i<5; i++) {
+        	if (HCLW.PREFS.getBoolean("showcolor"+i, false)) {
+        		bAllColorsDisabled = false;
+        		break;
+        	}
+        }
+        if (bAllColorsDisabled) {
+        	HCLW.PREFS.edit()
+    		.putBoolean("showcolor0", true)
+    		.putBoolean("showcolor1", true)
+    		.putBoolean("showcolor2", true)
+    		.putBoolean("showcolor3", true)
+    		.putBoolean("showcolor4", true)
+    		.commit();
+        }
+
     	super.onPause();
     }
     

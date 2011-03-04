@@ -10,9 +10,11 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.PorterDuff.Mode;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.widget.Toast;
 import android.content.SharedPreferences;
 import android.content.Intent;
 import android.net.Uri;
@@ -45,8 +47,11 @@ public class HCLW extends Application {
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
 		"Nemuro and Xaffron present their impression of the Honeycomb Live Wallpaper!  This Live Wallpaper is light on CPU usage and has been tested to perform on phones from the G1 to the HD2.  Email either one of us for feedback and issues, and we will resolve them ASAP!",
-		"Do the flares not seem to move along the channels?  This is almost certainly because of custom DPI settings.  If you reset your custom DPI settings to what they should be, the wallpaper should work normally.",
-		"This free version features a fully-functional 'Racing Flares' look.  The other two looks, 'Lightning Strikes' and 'Electric Sparks', are also available as one-minute trials.",
+		"Version 1.0.4 of this wallpaper brings tablet support, at a smaller package size.  If the wallpaper still does not look right on your screen, just let us know!",
+//		"Starting in v1.0.5, you can change the color of the slopes as well.  However, the app needs to download extra resources from the web, so please be patient.",
+		"v1.0.5 adds a new premium look, 'Searchlight', to the one basic ('Racing Flares') and two premium ('Lightning Strikes' and 'Electric Sparks') looks.",
+		"Try changing the 'Target Framerate' setting if your homescreen is choppy.  Remember, higher is not always better, even for fast devices! Your homescreen app also has a lot to do with it.",
+		"The free version features the basic 'Racing Flares' look.  The premium looks are also available as one-minute trials.",
 		"Like this app?  Check out Xaffron's One More Clock Collection for clock widgets that go well with your new live wallpaper!",
 		"Can't get this wallpaper to work?  See a bug?  Feature request?  Send Nemuro or Xaffron a message by scrolling down and tapping on 'Contact Artist' or 'Contact Dev'.",
 		"You can enable and disable different colored flares for dramatic effect.",
@@ -54,6 +59,9 @@ public class HCLW extends Application {
 		"Did you know that there is a support thread on XDA-Developers?  I monitor questions on that board on a daily basis.  http://forum.xda-developers.com/showthread.php?t=975413"
 	};
 
+	// gold: http://farm6.static.flickr.com/5254/5496531931_92cb027088_b.jpg
+	// red: http://farm6.static.flickr.com/5217/5497124656_bb551e9cb1_b.jpg
+	
 	static public final Handler HANDLER = new Handler();
 	
 	static int TARGETFPS;
@@ -78,66 +86,66 @@ public class HCLW extends Application {
 	static public final float[] FLAREPATHINITX
 		= {264f,277f,288f,404f,
 		418f,432f,440f,454f,
-		466f,474.5f,487f,501f};
+		466f,474.5f,487f,501f,0f};
 	static public final float[] FLAREPATHINITY
 		= {322f,322f,322f,336f,
 			336f,336f,336f,336f,
-			336f,336f,336f,336f};
+			336f,336f,336f,336f,0f};
 	static public final float[] FLAREPATHINITZ
     	= {0.1f,0.1f,0.1f,0.1f,
 		0.07f,0.1f,0.1f,0.1f,
-		0.1f,0.1f,0.1f,0.1f};
+		0.1f,0.1f,0.1f,0.1f,12f};
 	
 	static public final float[] FLAREPATHMIDX
 		= {162,170,180,257,
 		313,355,403,449,
-		492,536,556,566};
+		492,536,556,566,640f};
 	static public final float[] FLAREPATHMIDY
 		= {376,384,394,385,
 		382,384,384,380,
-		380,380,369,357};
+		380,380,369,357,120f};
 	static public final float[] FLAREPATHMIDZ
     	= {0.15f,0.15f,0.15f,0.2f,
 		0.3f,0.3f,0.35f,0.4f,
-		0.35f,0.3f,0.2f,0.2f};
+		0.35f,0.3f,0.2f,0.2f,12f};
 
 	static public final float[] FLAREPATHFINALX
 		= {0,-1,-1,-3,
 		73,189,312,435,
-		558,645,646,646};
+		558,645,646,646,0f};
 	static public final float[] FLAREPATHFINALY
 		= {407,423,445,468,
 		480,484,492,492,
-		480,452,408,385};
+		480,452,408,385,0f};
 	static public final float[] FLAREPATHFINALZ
     	= {.2f,.2f,.2f,.4f,
 		.6f,.7f,.7f,.7f,
-		.7f,.5f,.3f,.3f};
+		.7f,.5f,.3f,.3f,12f};
 
 	static public final float[] MINFLARESPEEDS
 	= {0.003f,0.003f,0.003f,0.0025f,
 	0.006f,0.01f,0.015f,0.015f,
-	0.010f,0.008f,0.008f,0.008f};
+	0.010f,0.008f,0.008f,0.008f,0.03f};
 
 	static public final float[] FLAREACCEL
 	= {0.013f,0.013f,0.013f,0.013f,
 	0.015f,0.015f,0.02f,0.02f,
-	0.02f,0.02f,0.02f,0.02f};
+	0.02f,0.02f,0.02f,0.02f,0.02f};
 
 	static public float[] FLARESPEEDS
 		= {0.01f,0.01f,0.01f,0.01f,
 		0.01f,0.01f,0.01f,0.01f,
-		0.01f,0.01f,0.01f,0.01f};
+		0.01f,0.01f,0.01f,0.01f,0.02f};
 
 	static public float[] DISPLACEMENTS
 	= {0f,0f,0f,0f,
 		0f,0f,0f,0f,
-		0f,0f,0f,0f};
+		0f,0f,0f,0f,0f};
 
 	static public int[] COLORS
 	= {-1,-1,-1,-1,
 		-1,-1,-1,-1,
-		-1,-1,-1,-1};
+		-1,-1,-1,-1,-1};
 
 	static final Paint PaintFlare = new Paint(), PaintBg = new Paint(), PaintMid = new Paint(), PaintFg =  new Paint();
     static Rect srcFullRect, tgtFullRect, srcFlareRect, tgtFlareRect;
@@ -195,19 +203,28 @@ public class HCLW extends Application {
     		.putBoolean("SparkEffect", false)
     		.putString("FlareFreqValues", "1")
     		.putString("TrailLength", "#051b1939")
+    		.putBoolean("Searchlight", false)
     		.commit();
     	} else if (sLAF.equals("Lightning Strikes")) {
     		// Lightning Strikes
     		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", false)
     		.putBoolean("LightningEffect", true)
     		.putBoolean("SparkEffect", false)
+    		.putBoolean("Searchlight", false)
     		.commit();
     		
+       	} else if (sLAF.equals("Searchlight")) {
+    		// Searchlight
+    		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", false)
+    		.putBoolean("LightningEffect", false)
+    		.putBoolean("Searchlight", true)
+    		.commit();
     	} else {
     		// Electric Sparks
     		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", true)
     		.putBoolean("LightningEffect", false)
     		.putBoolean("SparkEffect", true)
+    		.putBoolean("Searchlight", false)
     		.commit();
     	}
     	countFlareColors();
@@ -227,6 +244,8 @@ public class HCLW extends Application {
         
 		HCLW.MIDDLE = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middle", "drawable", HCLW.PKGNAME)),HCLW.SCRNSHORTEREDGELENGTH*2,HCLW.SCRNLONGEREDGELENGTH,true);
 		HCLW.FG = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("top", "drawable", HCLW.PKGNAME)),HCLW.SCRNSHORTEREDGELENGTH*2,HCLW.SCRNLONGEREDGELENGTH,true);
+//		Canvas c = new Canvas(HCLW.FG);
+//		c.drawColor(Color.parseColor("#FFFF0000"), Mode.MULTIPLY);
 		HCLW.FLARE = new Bitmap[] {
 			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_white", "drawable", HCLW.PKGNAME)),
 			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_red", "drawable", HCLW.PKGNAME)),
@@ -287,6 +306,7 @@ public class HCLW extends Application {
     		.putBoolean("FlaresAboveSurface", false)
     		.putBoolean("LightningEffect", false)
     		.putBoolean("SparkEffect", false)
+    		.putBoolean("Searchlight", false)
     		.commit();
     		HCLW.LightningFactor=1f;
 	}

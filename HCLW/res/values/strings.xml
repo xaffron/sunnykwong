@@ -6,6 +6,7 @@
 		<item>Racing Flares</item>
 		<item>Lightning Strikes</item>
 		<item>Electric Sparks</item>
+		<item>Searchlight</item>
 	</string-array>
 	<string-array name="FlareFreq">
 		<item>Rare</item>

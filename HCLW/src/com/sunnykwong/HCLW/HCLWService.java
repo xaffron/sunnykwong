@@ -222,6 +222,8 @@ public class HCLWService extends WallpaperService  {
     		if (HCLW.PREFS.getBoolean("SparkEffect", false)) {
     			c.drawColor(Color.parseColor("#FFACACAC"));
     			HCLW.BUFFER.eraseColor(Color.TRANSPARENT);
+    		} else if (HCLW.PREFS.getBoolean("Searchlight", false)) { 
+    			HCLW.BUFFERCANVAS.drawColor(Color.parseColor("#441b1939"));
     		} else {
 
         		//Trail Length is an optical illusion actually driven by
@@ -239,14 +241,14 @@ public class HCLWService extends WallpaperService  {
         	}
         	
         	// We're tracking each flare.
-        	for (int i = 0; i < HCLW.DISPLACEMENTS.length; i++) {
+        	for (int i = 0; i < (HCLW.PREFS.getBoolean("Searchlight", false)?HCLW.DISPLACEMENTS.length:HCLW.DISPLACEMENTS.length-1); i++) {
         		// If a flare is done, reset. (the 1.1 is to make sure the flare goes offscreen first)
         		if (HCLW.DISPLACEMENTS[i]>1.1f) {
         			HCLW.DISPLACEMENTS[i]=0f;
         			HCLW.COLORS[i]=-1;
         		} else if (HCLW.DISPLACEMENTS[i]==0f) {
         			//Only relaunch a flare 1% of the time by default (can be customized)
-        			if (Math.random() < 0.01d * Double.parseDouble(HCLW.PREFS.getString("FlareFrequency", "1"))) {
+        			if (Math.random() < (i==HCLW.DISPLACEMENTS.length-1?0.02d:0.01d * Double.parseDouble(HCLW.PREFS.getString("FlareFrequency", "1")))) {
     	        		if (HCLW.PREFS.getBoolean("SparkEffect", false)) {
     	        			HCLW.FLARESPEEDS[i]= (float)(HCLW.MINFLARESPEEDS[i]*(1+Math.random()));
     	        		} else {
