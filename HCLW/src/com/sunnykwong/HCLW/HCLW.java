@@ -245,7 +245,7 @@ public class HCLW extends Application {
 		HCLW.MIDDLE = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middle", "drawable", HCLW.PKGNAME)),HCLW.SCRNSHORTEREDGELENGTH*2,HCLW.SCRNLONGEREDGELENGTH,true);
 		HCLW.FG = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("top", "drawable", HCLW.PKGNAME)),HCLW.SCRNSHORTEREDGELENGTH*2,HCLW.SCRNLONGEREDGELENGTH,true);
 //		Canvas c = new Canvas(HCLW.FG);
-//		c.drawColor(Color.parseColor("#FFFF0000"), Mode.MULTIPLY);
+//		c.drawColor(Color.parseColor("#33FF0000"), Mode.SRC_ATOP);
 		HCLW.FLARE = new Bitmap[] {
 			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_white", "drawable", HCLW.PKGNAME)),
 			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_red", "drawable", HCLW.PKGNAME)),
