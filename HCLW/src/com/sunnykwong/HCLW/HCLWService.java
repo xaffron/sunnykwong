@@ -292,17 +292,17 @@ public class HCLWService extends WallpaperService  {
         			zFactor = floatInterpolate(HCLW.FLAREPATHINITZ[i], HCLW.FLAREPATHMIDZ[i], 
         					HCLW.FLAREPATHFINALZ[i], HCLW.DISPLACEMENTS[i]) 
         					* (.5f + (float)(.5d*Math.random()));
-            		HCLW.TEMPMATRIX.postScale(zFactor, zFactor);
-            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[0].getWidth()/2f*zFactor, 
-            				yPos-HCLW.SCRNLONGEREDGELENGTH/2/3-HCLW.FLARE[HCLW.COLORS[i]].getHeight()/2f*zFactor);
+            		HCLW.TEMPMATRIX.postScale(zFactor*HCLW.SCALEX*3, zFactor*HCLW.SCALEY*3);
+            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[0].getWidth()/2f*zFactor*HCLW.SCALEX*3, 
+            				yPos-HCLW.SCRNLONGEREDGELENGTH/2/3-HCLW.FLARE[HCLW.COLORS[i]].getHeight()/2f*zFactor*HCLW.SCALEY*3);
 
             		HCLW.BUFFERCANVAS.drawBitmap(HCLW.FLARE[0], HCLW.TEMPMATRIX, HCLW.PaintFlare);
         		} else {
         			zFactor = floatInterpolate(HCLW.FLAREPATHINITZ[i], HCLW.FLAREPATHMIDZ[i], 
-        					HCLW.FLAREPATHFINALZ[i], HCLW.DISPLACEMENTS[i])*.33f;
-            		HCLW.TEMPMATRIX.postScale(zFactor, zFactor);
-            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[HCLW.COLORS[i]].getWidth()/2f*zFactor, 
-            				yPos-HCLW.SCRNLONGEREDGELENGTH/2/3-HCLW.FLARE[HCLW.COLORS[i]].getHeight()/2f*zFactor);
+        					HCLW.FLAREPATHFINALZ[i], HCLW.DISPLACEMENTS[i]);
+            		HCLW.TEMPMATRIX.postScale(zFactor*HCLW.SCALEX, zFactor*HCLW.SCALEY);
+            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[HCLW.COLORS[i]].getWidth()/2f*zFactor*HCLW.SCALEX, 
+            				yPos-HCLW.SCRNLONGEREDGELENGTH/2/3-HCLW.FLARE[HCLW.COLORS[i]].getHeight()/2f*zFactor*HCLW.SCALEY);
 
             		HCLW.BUFFERCANVAS.drawBitmap(HCLW.FLARE[HCLW.COLORS[i]], HCLW.TEMPMATRIX, HCLW.PaintFlare);
         		}
