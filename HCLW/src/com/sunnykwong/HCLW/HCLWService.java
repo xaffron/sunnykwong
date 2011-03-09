@@ -8,6 +8,7 @@ import android.widget.RemoteViews;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
@@ -94,7 +95,7 @@ public class HCLWService extends WallpaperService  {
         @Override
         public void onCreate(SurfaceHolder surfaceHolder) {
             super.onCreate(surfaceHolder);
-
+            surfaceHolder.setFormat(PixelFormat.RGBA_8888);
             // By default we don't get touch events, so enable them.
             setTouchEventsEnabled(true);
         }
@@ -119,6 +120,7 @@ public class HCLWService extends WallpaperService  {
 
         @Override
         public void onSurfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+        	System.out.println("surfchanged fmt:"+ format + " width "+width + " height " + height);
             super.onSurfaceChanged(holder, format, width, height);
             // If no colors are enabled, enable all of them!
             boolean bAllColorsDisabled=true;
@@ -137,8 +139,11 @@ public class HCLWService extends WallpaperService  {
         		.putBoolean("showcolor4", true)
         		.commit();
             }
-            
-            // store the center of the surface
+            HCLW.LWPWIDTH = width;
+            HCLW.LWPHEIGHT = height;
+    		((HCLW)getApplication()).prepareBitmaps();
+
+    		// store the center of the surface
             HCLW.CenterX = width/2.0f;
             HCLW.CenterY = height/2.0f;
             drawFrame();
@@ -214,6 +219,7 @@ public class HCLWService extends WallpaperService  {
         }
 
          void drawFlares(final Canvas c, final int iOffset) {
+
         	 HCLW.srcFullRect.offsetTo(-iOffset,-HCLW.YOFFSET);
         	 HCLW.srcFlareRect.offsetTo(-iOffset/3,0);
 

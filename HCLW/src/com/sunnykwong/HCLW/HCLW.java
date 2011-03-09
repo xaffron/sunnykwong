@@ -26,7 +26,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.InputStreamReader;
-
+import android.app.WallpaperManager;
 /**
  * @author skwong01 Thanks to Cosmin Bizon for the idea, graphical assets,
  * constant feedback and reliable testing.
@@ -42,6 +42,7 @@ public class HCLW extends Application {
 	static final boolean FREEEDITION = false;
 	static boolean SHOWHELP=true;
 
+	static int LWPWIDTH, LWPHEIGHT;
 	static int NUMBEROFFLARECOLORS=0;
 	static int OFFSETTHISFRAME=0;
 	static int faqtoshow = 0;
@@ -228,31 +229,6 @@ public class HCLW extends Application {
     		.commit();
     	}
     	countFlareColors();
-    	HCLW.SCRNDPI = getResources().getDisplayMetrics().densityDpi;
-    	HCLW.SCRNHEIGHT = getResources().getDisplayMetrics().heightPixels;
-    	HCLW.SCRNWIDTH = getResources().getDisplayMetrics().widthPixels;
-    	HCLW.SCRNLONGEREDGELENGTH = Math.max(SCRNHEIGHT, SCRNWIDTH);
-    	HCLW.SCRNSHORTEREDGELENGTH = Math.min(SCRNHEIGHT, SCRNWIDTH);
-    	HCLW.CURRENTORIENTATION = getResources().getConfiguration().orientation;
-    	HCLW.BUFFER = Bitmap.createBitmap(SCRNSHORTEREDGELENGTH*2/3, SCRNLONGEREDGELENGTH/6, Bitmap.Config.ARGB_8888);
-        HCLW.BUFFERCANVAS = new Canvas(HCLW.BUFFER);
-
-        adjustOrientationOffsets();
-        
-        SCALEX = HCLW.SCRNSHORTEREDGELENGTH/3f/320f;
-        SCALEY = HCLW.SCRNLONGEREDGELENGTH/3f/480f;
-        
-		HCLW.MIDDLE = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middle", "drawable", HCLW.PKGNAME)),HCLW.SCRNSHORTEREDGELENGTH*2,HCLW.SCRNLONGEREDGELENGTH,true);
-		HCLW.FG = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("top", "drawable", HCLW.PKGNAME)),HCLW.SCRNSHORTEREDGELENGTH*2,HCLW.SCRNLONGEREDGELENGTH,true);
-//		Canvas c = new Canvas(HCLW.FG);
-//		c.drawColor(Color.parseColor("#33FF0000"), Mode.SRC_ATOP);
-		HCLW.FLARE = new Bitmap[] {
-			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_white", "drawable", HCLW.PKGNAME)),
-			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_red", "drawable", HCLW.PKGNAME)),
-			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_green", "drawable", HCLW.PKGNAME)),
-			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_blue", "drawable", HCLW.PKGNAME)),
-			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_yellow", "drawable", HCLW.PKGNAME))
-		};
 		try {
 			THISVERSION = getPackageManager().getPackageInfo(getPackageName(),
 					PackageManager.GET_META_DATA).versionName;
@@ -269,7 +245,42 @@ public class HCLW extends Application {
 		HCLW.PaintMid.setAlpha(255);
 		HCLW.PaintFlare.setColor(Color.WHITE);
 		HCLW.PaintFg.setColor(Color.BLUE);
-		
+		HCLW.PaintFg.setDither(true);
+		HCLW.PaintFg.setFilterBitmap(true);
+	
+	}
+	
+	public void prepareBitmaps() {
+		HCLW.LWPWIDTH = WallpaperManager.getInstance(this).getDesiredMinimumWidth();
+		HCLW.LWPHEIGHT = WallpaperManager.getInstance(this).getDesiredMinimumHeight();
+    	HCLW.SCRNDPI = getResources().getDisplayMetrics().densityDpi;
+    	HCLW.SCRNHEIGHT = getResources().getDisplayMetrics().heightPixels;
+    	HCLW.SCRNWIDTH = getResources().getDisplayMetrics().widthPixels;
+    	HCLW.SCRNLONGEREDGELENGTH = Math.max(SCRNHEIGHT, SCRNWIDTH);
+    	HCLW.SCRNSHORTEREDGELENGTH = Math.min(SCRNHEIGHT, SCRNWIDTH);
+    	HCLW.CURRENTORIENTATION = getResources().getConfiguration().orientation;
+    	HCLW.BUFFER = Bitmap.createBitmap(HCLW.LWPWIDTH/3, HCLW.LWPHEIGHT/6, Bitmap.Config.ARGB_8888);
+        HCLW.BUFFERCANVAS = new Canvas(HCLW.BUFFER);
+
+        adjustOrientationOffsets();
+        
+        SCALEX = HCLW.SCRNSHORTEREDGELENGTH/3f/320f;
+        SCALEY = HCLW.SCRNLONGEREDGELENGTH/3f/480f;
+        
+		HCLW.MIDDLE = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middle", "drawable", HCLW.PKGNAME)),HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
+		BitmapFactory.Options opts = new BitmapFactory.Options();
+		opts.inDither=true;
+//		opts.inPreferredConfig= Bitmap.Config.ARGB_8888;
+		HCLW.FG = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("top", "drawable", HCLW.PKGNAME),opts),HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
+//		Canvas c = new Canvas(HCLW.FG);
+//		c.drawColor(Color.parseColor("#33FF0000"), Mode.SRC_ATOP);
+		HCLW.FLARE = new Bitmap[] {
+			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_white", "drawable", HCLW.PKGNAME)),
+			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_red", "drawable", HCLW.PKGNAME)),
+			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_green", "drawable", HCLW.PKGNAME)),
+			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_blue", "drawable", HCLW.PKGNAME)),
+			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_yellow", "drawable", HCLW.PKGNAME))
+		};
 	}
 
 	public void countFlareColors() {
