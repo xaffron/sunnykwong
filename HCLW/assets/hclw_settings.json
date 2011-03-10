@@ -4,7 +4,7 @@
 "paint_antialias":"true",
 "paint_filterbitmap":"true",
 "topsurface_file":"/mnt/sdcard/top_16bitdithered.png",
-"topsurface_hue":"#0000SS0000",
+"topsurface_hue":"#00000000",
 "topsurface_dither":"true",
 "topsurface_32bit":"true",
 "flare_use_hues":"false",

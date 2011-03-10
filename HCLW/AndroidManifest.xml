@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.sunnykwong.HCLW" android:versionCode="6"
-	android:versionName="1.0.6">
+	package="com.sunnykwong.HCLW" android:versionCode="8"
+	android:versionName="1.0.8">
 	<application android:icon="@drawable/icon" android:label="Honeycomb Live Wallpaper" android:name="com.sunnykwong.HCLW.HCLW">
 		<service android:enabled="true" android:name="com.sunnykwong.HCLW.HCLWService"
 			android:permission="android.permission.BIND_WALLPAPER">

@@ -202,6 +202,7 @@ public class HCLW extends Application {
 		HCLW.PaintFg.setFilterBitmap(true);
 	
 		if (JSON) loadFlaresFromJSON();
+		prepareBitmaps();
 		
 		for (int i=0;i<5;i++) {
 			if (!PREFS.contains("showcolor"+i)) PREFS.edit().putBoolean("showcolor"+i, true).commit();
