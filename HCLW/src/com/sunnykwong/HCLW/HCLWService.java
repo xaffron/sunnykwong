@@ -95,7 +95,7 @@ public class HCLWService extends WallpaperService  {
         @Override
         public void onCreate(SurfaceHolder surfaceHolder) {
             super.onCreate(surfaceHolder);
-            surfaceHolder.setFormat(PixelFormat.RGBA_8888);
+            if (HCLW.LWPSURF_32BIT) surfaceHolder.setFormat(PixelFormat.RGBA_8888);
             // By default we don't get touch events, so enable them.
             setTouchEventsEnabled(true);
         }

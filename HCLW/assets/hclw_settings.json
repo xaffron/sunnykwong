@@ -1,5 +1,16 @@
-
-[
+{
+"livewallpaper_surface_32bit":"true",
+"paint_dither":"true",
+"paint_antialias":"true",
+"paint_filterbitmap":"true",
+"topsurface_file":"/mnt/sdcard/top_16bitdithered.png",
+"topsurface_hue":"#0000SS0000",
+"topsurface_dither":"true",
+"topsurface_32bit":"true",
+"flare_use_hues":"false",
+"flare_file":"/mnt/sdcard/flare_white_thick.png",
+"flare_hues_WRGBY":["#00000000","#33FF0000","#3300FF00","#330000FF","#33FFFF00"],
+"flarepositions":[
 		{ 
 		"initial": [260,322,0.1],
 		"middle": [161,375,0.15],
@@ -24,7 +35,7 @@
 		{ 
 		"initial": [404,336,0.07],
 		"middle": [252,383,0.2],
-		"final":[01,468,0.4],
+		"final":[1,468,0.4],
 		"minimumspeed":0.0025,
 		"accel":0.013
 		},
@@ -85,3 +96,4 @@
 		"accel":0.02
 		}
 	]
+}

@@ -18,6 +18,7 @@ import android.widget.Toast;
 import android.content.SharedPreferences;
 import android.content.Intent;
 import android.net.Uri;
+import java.io.File;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -42,6 +43,10 @@ public class HCLW extends Application {
 	static final boolean FREEEDITION = false;
 	static boolean SHOWHELP=true;
 
+	static boolean TOPSURF_DITHER, TOPSURF_32BIT, PAINTFG_DITHER, PAINTFG_AA, PAINTFG_FILTERBMP, LWPSURF_32BIT, FLARE_USEHUES;
+	static String TOPSURF_FILE, FLARE_FILE;
+	static int FLAREHUES[], TOPSURF_HUE;
+	
 	static int LWPWIDTH, LWPHEIGHT;
 	static int NUMBEROFFLARECOLORS=0;
 	static int OFFSETTHISFRAME=0;
@@ -188,6 +193,14 @@ public class HCLW extends Application {
 		}
 		HCLW.FPS = Integer.parseInt(PREFS.getString("FrameRates", "25"));
 		
+		HCLW.PaintBg.setColor(Color.WHITE);
+		HCLW.PaintMid.setColor(Color.BLACK);
+		HCLW.PaintMid.setAlpha(255);
+		HCLW.PaintFlare.setColor(Color.WHITE);
+		HCLW.PaintFg.setColor(Color.BLUE);
+		HCLW.PaintFg.setDither(true);
+		HCLW.PaintFg.setFilterBitmap(true);
+	
 		if (JSON) loadFlaresFromJSON();
 		
 		for (int i=0;i<5;i++) {
@@ -240,14 +253,6 @@ public class HCLW extends Application {
 
 		TARGETFPS = 30;
 
-		HCLW.PaintBg.setColor(Color.WHITE);
-		HCLW.PaintMid.setColor(Color.BLACK);
-		HCLW.PaintMid.setAlpha(255);
-		HCLW.PaintFlare.setColor(Color.WHITE);
-		HCLW.PaintFg.setColor(Color.BLUE);
-		HCLW.PaintFg.setDither(true);
-		HCLW.PaintFg.setFilterBitmap(true);
-	
 	}
 	
 	public void prepareBitmaps() {
@@ -259,6 +264,7 @@ public class HCLW extends Application {
     	HCLW.SCRNLONGEREDGELENGTH = Math.max(SCRNHEIGHT, SCRNWIDTH);
     	HCLW.SCRNSHORTEREDGELENGTH = Math.min(SCRNHEIGHT, SCRNWIDTH);
     	HCLW.CURRENTORIENTATION = getResources().getConfiguration().orientation;
+    	if (HCLW.BUFFER!=null)HCLW.BUFFER.recycle();
     	HCLW.BUFFER = Bitmap.createBitmap(HCLW.LWPWIDTH/3, HCLW.LWPHEIGHT/6, Bitmap.Config.ARGB_8888);
         HCLW.BUFFERCANVAS = new Canvas(HCLW.BUFFER);
 
@@ -267,20 +273,39 @@ public class HCLW extends Application {
         SCALEX = HCLW.SCRNSHORTEREDGELENGTH/3f/320f;
         SCALEY = HCLW.SCRNLONGEREDGELENGTH/3f/480f;
         
+        if (HCLW.MIDDLE!=null)HCLW.MIDDLE.recycle();
 		HCLW.MIDDLE = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middle", "drawable", HCLW.PKGNAME)),HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
 		BitmapFactory.Options opts = new BitmapFactory.Options();
-		opts.inDither=true;
-//		opts.inPreferredConfig= Bitmap.Config.ARGB_8888;
+		if (HCLW.TOPSURF_DITHER) opts.inDither=true;
+		if (HCLW.TOPSURF_32BIT) opts.inPreferredConfig= Bitmap.Config.ARGB_8888;
+
+		if (HCLW.FG!=null)HCLW.FG.recycle();
+		if (HCLW.TOPSURF_FILE==null || !new File(HCLW.TOPSURF_FILE).exists()) {
 		HCLW.FG = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("top", "drawable", HCLW.PKGNAME),opts),HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
-//		Canvas c = new Canvas(HCLW.FG);
-//		c.drawColor(Color.parseColor("#33FF0000"), Mode.SRC_ATOP);
-		HCLW.FLARE = new Bitmap[] {
-			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_white", "drawable", HCLW.PKGNAME)),
-			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_red", "drawable", HCLW.PKGNAME)),
-			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_green", "drawable", HCLW.PKGNAME)),
-			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_blue", "drawable", HCLW.PKGNAME)),
-			BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_yellow", "drawable", HCLW.PKGNAME))
-		};
+		} else {
+		HCLW.FG = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(HCLW.TOPSURF_FILE,opts),HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
+		}
+
+		Canvas c = new Canvas(HCLW.FG);
+		c.drawColor(HCLW.TOPSURF_HUE, Mode.SRC_ATOP);
+		if (HCLW.FLARE_USEHUES || HCLW.FLARE_FILE==null){
+			HCLW.FLARE = new Bitmap[] {
+				BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_white", "drawable", HCLW.PKGNAME)),
+				BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_red", "drawable", HCLW.PKGNAME)),
+				BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_green", "drawable", HCLW.PKGNAME)),
+				BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_blue", "drawable", HCLW.PKGNAME)),
+				BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_yellow", "drawable", HCLW.PKGNAME))
+			};
+		} else {
+			HCLW.FLARE = new Bitmap[5];
+			HCLW.FLARE[0] = BitmapFactory.decodeFile(HCLW.FLARE_FILE);
+			for (int i=1;i<5;i++) {
+				HCLW.FLARE[i]=HCLW.FLARE[0].copy(Bitmap.Config.ARGB_8888, true);
+				Canvas cc = new Canvas(HCLW.FLARE[i]);
+				cc.drawColor(HCLW.FLAREHUES[i], Mode.SRC_ATOP);
+				cc=null;
+			}
+		}
 	}
 
 	public void countFlareColors() {
@@ -323,20 +348,55 @@ public class HCLW extends Application {
 	}
 	
 	public void loadFlaresFromJSON() {
-		// Look in SD path
-//			File f = new File("/mnt/sdcard/hclw_flares.json");
 			try {
-//				BufferedReader in = new BufferedReader(new FileReader("/mnt/sdcard/hclw_flares.json"),8192);
-				InputStreamReader in = new InputStreamReader(this.getAssets().open("hclw_flares.json"));
-				StringBuilder sb = new StringBuilder();
-			    char[] buffer = new char[8192];
-			    int iCharsRead = 0;
-			    while ((iCharsRead=in.read(buffer))!= -1){
-			    	sb.append(buffer, 0, iCharsRead);
-			    }
-			    in.close();
-				JSONArray oResult = new JSONArray(sb.toString());
-				sb.setLength(0);
+				File f = new File("/mnt/sdcard/hclw_settings.json");
+				// Look in SD path
+				JSONObject oObj;
+				JSONArray oResult;
+				if (f.exists()) {
+					BufferedReader in = new BufferedReader(new FileReader(f),8192);
+					StringBuilder sb = new StringBuilder();
+				    char[] buffer = new char[8192];
+				    int iCharsRead = 0;
+				    while ((iCharsRead=in.read(buffer))!= -1){
+				    	sb.append(buffer, 0, iCharsRead);
+				    }
+				    in.close();
+				    oObj = new JSONObject(sb.toString());
+					oResult = oObj.getJSONArray("flarepositions");
+					sb.setLength(0);
+					TOPSURF_FILE = oObj.getString("topsurface_file");
+					FLARE_FILE = oObj.getString("flare_file");
+				} else {
+					// Look in assets
+					InputStreamReader in = new InputStreamReader(this.getAssets().open("hclw_settings.json"));
+					StringBuilder sb = new StringBuilder();
+				    char[] buffer = new char[8192];
+				    int iCharsRead = 0;
+				    while ((iCharsRead=in.read(buffer))!= -1){
+				    	sb.append(buffer, 0, iCharsRead);
+				    }
+				    in.close();
+				    oObj = new JSONObject(sb.toString());
+					oResult = oObj.getJSONArray("flarepositions");
+					sb.setLength(0);
+					TOPSURF_FILE = null;
+					FLARE_FILE = null;
+				}
+				
+				LWPSURF_32BIT = oObj.getBoolean("livewallpaper_surface_32bit");
+				PAINTFG_DITHER = oObj.getBoolean("paint_dither");
+				PAINTFG_AA = oObj.getBoolean("paint_antialias");
+				PAINTFG_FILTERBMP = oObj.getBoolean("paint_filterbitmap");
+				TOPSURF_HUE = Color.parseColor(oObj.getString("topsurface_hue"));
+				TOPSURF_DITHER = oObj.getBoolean("topsurface_dither");
+				TOPSURF_32BIT = oObj.getBoolean("topsurface_32bit");
+				FLARE_USEHUES = oObj.getBoolean("flare_use_hues");
+				FLAREHUES = new int[5];
+				for (int i=0;i<5;i++) {
+					FLAREHUES[i] = Color.parseColor(oObj.getJSONArray("flare_hues_WRGBY").getString(i));
+				}
+				oObj=null;
 				
 				// now read flare data to our format
 				for (int i=0;i<12;i++) {
@@ -358,9 +418,9 @@ public class HCLW extends Application {
 					
 				}
 				oResult = null;
-				
+//				prepareBitmaps();
 			} catch (Exception e) {
-				
+				e.printStackTrace();
 			} finally {
 				//System.gc();
 			}
