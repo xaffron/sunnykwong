@@ -8,6 +8,7 @@ import android.widget.RemoteViews;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
@@ -94,7 +95,12 @@ public class HCLWService extends WallpaperService  {
         @Override
         public void onCreate(SurfaceHolder surfaceHolder) {
             super.onCreate(surfaceHolder);
-
+            // ASSUMPTION:  If phone is HDPI or above, it has enough horsepower to draw 32-bit
+            if (HCLW.LWPHEIGHT>480) {
+            	surfaceHolder.setFormat(PixelFormat.RGBA_8888);
+            } else {
+            	surfaceHolder.setFormat(PixelFormat.OPAQUE);
+            }
             // By default we don't get touch events, so enable them.
             setTouchEventsEnabled(true);
         }
@@ -215,7 +221,7 @@ public class HCLWService extends WallpaperService  {
 
          void drawFlares(final Canvas c, final int iOffset) {
         	 HCLW.srcFullRect.offsetTo(-iOffset,-HCLW.YOFFSET);
-        	 HCLW.srcFlareRect.offsetTo((int)(-iOffset*640f/3f/HCLW.LWPWIDTH),0);
+        	 HCLW.srcFlareRect.offsetTo((int)(-iOffset*640f/HCLW.LWPWIDTH),0);
 
         	// Draw the "Channels" on the bottom.
         	// Default to channel bkgd (white for Sparks).
@@ -293,20 +299,18 @@ public class HCLWService extends WallpaperService  {
         		if (HCLW.PREFS.getBoolean("SparkEffect", false)) {
         			zFactor = floatInterpolate(HCLW.FLAREPATHINITZ[i], HCLW.FLAREPATHMIDZ[i], 
         					HCLW.FLAREPATHFINALZ[i], HCLW.DISPLACEMENTS[i]) 
-        					* (.5f + (float)(.5d*Math.random()))/3f;
-            		HCLW.TEMPMATRIX.postScale(zFactor, zFactor);
-            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[0].getWidth()*zFactor/2f, 
-            				yPos-HCLW.FLARE[0].getHeight()*zFactor/2f);
-            		HCLW.TEMPMATRIX.postScale(1/3f, 1/3f);
+        					* (.5f + (float)(.5d*Math.random()))*1.5f;
+            		HCLW.TEMPMATRIX.postScale(zFactor/HCLW.SCALEX, zFactor/HCLW.SCALEY );
+            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[0].getWidth()*zFactor/HCLW.SCALEX/2f, 
+            				yPos-HCLW.FLARE[0].getHeight()*zFactor/HCLW.SCALEY/2f);
 
             		HCLW.BUFFERCANVAS.drawBitmap(HCLW.FLARE[0], HCLW.TEMPMATRIX, HCLW.PaintFlare);
         		} else {
         			zFactor = floatInterpolate(HCLW.FLAREPATHINITZ[i], HCLW.FLAREPATHMIDZ[i], 
         					HCLW.FLAREPATHFINALZ[i], HCLW.DISPLACEMENTS[i]);
-            		HCLW.TEMPMATRIX.postScale(zFactor, zFactor);
-            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[HCLW.COLORS[i]].getWidth()*zFactor/2f, 
-            				yPos-HCLW.FLARE[HCLW.COLORS[i]].getHeight()*zFactor/2f);
-            		HCLW.TEMPMATRIX.postScale(1/3f, 1/3f);
+            		HCLW.TEMPMATRIX.postScale(zFactor/HCLW.SCALEX, zFactor/HCLW.SCALEY);
+            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[HCLW.COLORS[i]].getWidth()*zFactor/HCLW.SCALEX/2f, 
+            				yPos-HCLW.FLARE[HCLW.COLORS[i]].getHeight()*zFactor/HCLW.SCALEY/2f);
 
             		HCLW.BUFFERCANVAS.drawBitmap(HCLW.FLARE[HCLW.COLORS[i]], HCLW.TEMPMATRIX, HCLW.PaintFlare);
         		}

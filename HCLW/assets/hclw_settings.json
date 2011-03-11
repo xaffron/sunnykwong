@@ -12,63 +12,63 @@
 "flare_hues_WRGBY":["#00000000","#33FF0000","#3300FF00","#330000FF","#33FFFF00"],
 "flarepositions":[
 		{ 
-		"initial": [260,322,0.15],
-		"middle": [161,375,0.2],
-		"final":[0,405,0.25],
+		"initial": [260,322,0.1],
+		"middle": [161,375,0.15],
+		"final":[0,405,0.2],
+		"minimumspeed":0.003,
+		"accel":0.013
+		},
+		{ 
+		"initial": [274,322,0.1],
+		"middle": [166,385,0.15],
+		"final":[-1,420,0.2],
+		"minimumspeed":0.003,
+		"accel":0.013
+		},
+		{ 
+		"initial": [287,322,0.1],
+		"middle": [180,394,0.2],
+		"final":[-1,440,0.2],
+		"minimumspeed":0.003,
+		"accel":0.013
+		},
+		{ 
+		"initial": [404,336,0.15],
+		"middle": [252,383,0.3],
+		"final":[1,468,0.4],
 		"minimumspeed":0.0025,
 		"accel":0.013
 		},
 		{ 
-		"initial": [274,322,0.15],
-		"middle": [166,383,0.2],
-		"final":[-1,418,0.25],
-		"minimumspeed":0.0025,
-		"accel":0.013
-		},
-		{ 
-		"initial": [288,322,0.15],
-		"middle": [180,390,0.25],
-		"final":[-1,440,0.25],
-		"minimumspeed":0.0025,
-		"accel":0.013
-		},
-		{ 
-		"initial": [406,336,0.10],
-		"middle": [252,384,0.25],
-		"final":[1,468,0.25],
-		"minimumspeed":0.0015,
-		"accel":0.013
-		},
-		{ 
-		"initial": [420,335,0.1],
-		"middle": [312,379,0.3],
-		"final":[69,482,0.55],
-		"minimumspeed":0.0025,
-		"accel":0.015
-		},
-		{ 
-		"initial": [432,335,0.1],
-		"middle": [353,381,0.3],
-		"final":[185,479,0.7],
+		"initial": [419,336,0.15],
+		"middle": [268,400,0.25],
+		"final":[69,480,0.4],
 		"minimumspeed":0.006,
 		"accel":0.015
 		},
 		{ 
-		"initial": [441,336,0.1],
+		"initial": [431,336,0.1],
+		"middle": [351,381,0.3],
+		"final":[185,479,0.7],
+		"minimumspeed":0.01,
+		"accel":0.015
+		},
+		{ 
+		"initial": [442,336,0.1],
 		"middle": [400,381,0.35],
 		"final":[308,488,0.7],
 		"minimumspeed":0.015,
 		"accel":0.02
 		},
 		{ 
-		"initial": [451,336,0.15],
-		"middle": [449,380,0.35],
+		"initial": [452,336,0.1],
+		"middle": [449,380,0.4],
 		"final":[435,492,0.7],
 		"minimumspeed":0.015,
 		"accel":0.02
 		},
 		{ 
-		"initial": [464,336,0.1],
+		"initial": [466,336,0.1],
 		"middle": [495,380,0.35],
 		"final":[561,480,0.7],
 		"minimumspeed":0.010,
@@ -82,17 +82,17 @@
 		"accel":0.02
 		},
 		{ 
-		"initial": [484,336,0.1],
+		"initial": [487,336,0.1],
 		"middle": [558,367,0.2],
 		"final":[649,405,0.3],
-		"minimumspeed":0.006,
+		"minimumspeed":0.008,
 		"accel":0.02
 		},
 		{ 
 		"initial": [501,336,0.1],
 		"middle": [568,355,0.2],
 		"final":[649,382,0.3],
-		"minimumspeed":0.006,
+		"minimumspeed":0.008,
 		"accel":0.02
 		}
 	]

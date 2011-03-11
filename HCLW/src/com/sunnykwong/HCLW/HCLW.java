@@ -270,7 +270,7 @@ public class HCLW extends Application {
     	if (HCLW.BUFFER!=null)HCLW.BUFFER.recycle();
     	// The flare buffer is fixed at the lower half of a 640x480 canvas (i.e. 640x240)
     	// Then shrunk down by a factor of three.
-    	HCLW.BUFFER = Bitmap.createBitmap(640/3, 240/3, Bitmap.Config.ARGB_8888);
+    	HCLW.BUFFER = Bitmap.createBitmap(640, 240, Bitmap.Config.ARGB_8888);
         HCLW.BUFFERCANVAS = new Canvas(HCLW.BUFFER);
 
         adjustOrientationOffsets();
@@ -278,7 +278,7 @@ public class HCLW extends Application {
         // The scaling factor for the flares -
         // From 640x480 format to the full lwp size.
         SCALEX = (float)HCLW.LWPWIDTH/640f;
-        SCALEY = (float)HCLW.LWPHEIGHT/240f;
+        SCALEY = (float)HCLW.LWPHEIGHT/480f;
 
 		Bitmap tempBmp = null;
         if (HCLW.MIDDLE!=null)HCLW.MIDDLE.recycle();
@@ -339,7 +339,7 @@ public class HCLW extends Application {
 	        HCLW.YOFFSET=0;
 	        HCLW.srcFullRect = new Rect(0,0,HCLW.SCRNWIDTH, HCLW.SCRNHEIGHT);
 	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
-	        HCLW.srcFlareRect = new Rect(0,0,(int)(HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH*640/3f),480/2/3);
+	        HCLW.srcFlareRect = new Rect(0,0,(int)(HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH*640),480/2);
 //	        HCLW.srcFlareRect = new Rect(0,0,HCLW.SCRNWIDTH/3, HCLW.SCRNHEIGHT/6);
 	        HCLW.tgtFlareRect = new Rect(0,HCLW.SCRNHEIGHT/2,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
 		} else {
@@ -350,7 +350,7 @@ public class HCLW extends Application {
 
 //	        SCALEX = (float)(HCLW.BUFFER.getWidth())/(float)HCLW.LWPWIDTH;
 
-	        HCLW.srcFlareRect = new Rect(0,0,(int)(HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH*640/3f),480/2/3);
+	        HCLW.srcFlareRect = new Rect(0,0,(int)(HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH*640),480/2);
 	        HCLW.tgtFlareRect = new Rect(0,HCLW.SCRNHEIGHT-HCLW.SCRNWIDTH/2,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
 		}
 	}
