@@ -8,7 +8,6 @@ import android.widget.RemoteViews;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
@@ -95,7 +94,7 @@ public class HCLWService extends WallpaperService  {
         @Override
         public void onCreate(SurfaceHolder surfaceHolder) {
             super.onCreate(surfaceHolder);
-            if (HCLW.LWPSURF_32BIT) surfaceHolder.setFormat(PixelFormat.RGBA_8888);
+
             // By default we don't get touch events, so enable them.
             setTouchEventsEnabled(true);
         }
@@ -120,7 +119,6 @@ public class HCLWService extends WallpaperService  {
 
         @Override
         public void onSurfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        	System.out.println("surfchanged fmt:"+ format + " width "+width + " height " + height);
             super.onSurfaceChanged(holder, format, width, height);
             // If no colors are enabled, enable all of them!
             boolean bAllColorsDisabled=true;
@@ -139,11 +137,8 @@ public class HCLWService extends WallpaperService  {
         		.putBoolean("showcolor4", true)
         		.commit();
             }
-            HCLW.LWPWIDTH = width;
-            HCLW.LWPHEIGHT = height;
-    		((HCLW)getApplication()).prepareBitmaps();
-
-    		// store the center of the surface
+            
+            // store the center of the surface
             HCLW.CenterX = width/2.0f;
             HCLW.CenterY = height/2.0f;
             drawFrame();
@@ -219,9 +214,8 @@ public class HCLWService extends WallpaperService  {
         }
 
          void drawFlares(final Canvas c, final int iOffset) {
-
         	 HCLW.srcFullRect.offsetTo(-iOffset,-HCLW.YOFFSET);
-        	 HCLW.srcFlareRect.offsetTo(-iOffset/3,0);
+        	 HCLW.srcFlareRect.offsetTo((int)(-iOffset*640f/3f/HCLW.LWPWIDTH),0);
 
         	// Draw the "Channels" on the bottom.
         	// Default to channel bkgd (white for Sparks).
@@ -290,31 +284,34 @@ public class HCLWService extends WallpaperService  {
     			// For flares/trails, we don't want the flares sitting around
         		if (HCLW.DISPLACEMENTS[i]==0) continue;
 
-        			
+        		// Position each flare in the 640x480 space.	
     			HCLW.TEMPMATRIX.reset();
-        		float xPos = floatInterpolate(HCLW.FLAREPATHINITX[i],HCLW.FLAREPATHMIDX[i],HCLW.FLAREPATHFINALX[i],HCLW.DISPLACEMENTS[i]) * HCLW.SCALEX;
-        		float yPos = floatInterpolate(HCLW.FLAREPATHINITY[i],HCLW.FLAREPATHMIDY[i],HCLW.FLAREPATHFINALY[i],HCLW.DISPLACEMENTS[i]) * HCLW.SCALEY;
+        		float xPos = floatInterpolate(HCLW.FLAREPATHINITX[i],HCLW.FLAREPATHMIDX[i],HCLW.FLAREPATHFINALX[i],HCLW.DISPLACEMENTS[i]);
+        		float yPos = floatInterpolate(HCLW.FLAREPATHINITY[i],HCLW.FLAREPATHMIDY[i],HCLW.FLAREPATHFINALY[i],HCLW.DISPLACEMENTS[i])-240f;
         		float zFactor;
         		//Sparks are white; trails are multicolored
         		if (HCLW.PREFS.getBoolean("SparkEffect", false)) {
         			zFactor = floatInterpolate(HCLW.FLAREPATHINITZ[i], HCLW.FLAREPATHMIDZ[i], 
         					HCLW.FLAREPATHFINALZ[i], HCLW.DISPLACEMENTS[i]) 
-        					* (.5f + (float)(.5d*Math.random()));
-            		HCLW.TEMPMATRIX.postScale(zFactor*HCLW.SCALEX*3, zFactor*HCLW.SCALEY*3);
-            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[0].getWidth()/2f*zFactor*HCLW.SCALEX*3, 
-            				yPos-HCLW.SCRNLONGEREDGELENGTH/2/3-HCLW.FLARE[HCLW.COLORS[i]].getHeight()/2f*zFactor*HCLW.SCALEY*3);
+        					* (.5f + (float)(.5d*Math.random()))/3f;
+            		HCLW.TEMPMATRIX.postScale(zFactor, zFactor);
+            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[0].getWidth()*zFactor/2f, 
+            				yPos-HCLW.FLARE[0].getHeight()*zFactor/2f);
+            		HCLW.TEMPMATRIX.postScale(1/3f, 1/3f);
 
             		HCLW.BUFFERCANVAS.drawBitmap(HCLW.FLARE[0], HCLW.TEMPMATRIX, HCLW.PaintFlare);
         		} else {
         			zFactor = floatInterpolate(HCLW.FLAREPATHINITZ[i], HCLW.FLAREPATHMIDZ[i], 
         					HCLW.FLAREPATHFINALZ[i], HCLW.DISPLACEMENTS[i]);
-            		HCLW.TEMPMATRIX.postScale(zFactor*HCLW.SCALEX, zFactor*HCLW.SCALEY);
-            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[HCLW.COLORS[i]].getWidth()/2f*zFactor*HCLW.SCALEX, 
-            				yPos-HCLW.SCRNLONGEREDGELENGTH/2/3-HCLW.FLARE[HCLW.COLORS[i]].getHeight()/2f*zFactor*HCLW.SCALEY);
+            		HCLW.TEMPMATRIX.postScale(zFactor, zFactor);
+            		HCLW.TEMPMATRIX.postTranslate(xPos-HCLW.FLARE[HCLW.COLORS[i]].getWidth()*zFactor/2f, 
+            				yPos-HCLW.FLARE[HCLW.COLORS[i]].getHeight()*zFactor/2f);
+            		HCLW.TEMPMATRIX.postScale(1/3f, 1/3f);
 
             		HCLW.BUFFERCANVAS.drawBitmap(HCLW.FLARE[HCLW.COLORS[i]], HCLW.TEMPMATRIX, HCLW.PaintFlare);
         		}
     		}
+
         	c.drawBitmap(HCLW.BUFFER, HCLW.srcFlareRect, HCLW.tgtFlareRect, HCLW.PaintMid);
         	
         	if (HCLW.PREFS.getBoolean("LightningEffect", false)) {

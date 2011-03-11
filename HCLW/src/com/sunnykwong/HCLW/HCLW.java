@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Bitmap.Config;
 import android.graphics.PorterDuff.Mode;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -170,6 +171,7 @@ public class HCLW extends Application {
     static public int CURRENTORIENTATION;
     
     static public Bitmap MIDDLE, FG;
+    static public Canvas FGCANVAS;
     static public Bitmap[] FLARE;
     
     static public Bitmap BUFFER;
@@ -266,29 +268,42 @@ public class HCLW extends Application {
     	HCLW.SCRNSHORTEREDGELENGTH = Math.min(SCRNHEIGHT, SCRNWIDTH);
     	HCLW.CURRENTORIENTATION = getResources().getConfiguration().orientation;
     	if (HCLW.BUFFER!=null)HCLW.BUFFER.recycle();
-    	HCLW.BUFFER = Bitmap.createBitmap(HCLW.LWPWIDTH/3, HCLW.LWPHEIGHT/6, Bitmap.Config.ARGB_8888);
+    	// The flare buffer is fixed at the lower half of a 640x480 canvas (i.e. 640x240)
+    	// Then shrunk down by a factor of three.
+    	HCLW.BUFFER = Bitmap.createBitmap(640/3, 240/3, Bitmap.Config.ARGB_8888);
         HCLW.BUFFERCANVAS = new Canvas(HCLW.BUFFER);
 
         adjustOrientationOffsets();
-        
-        SCALEX = HCLW.SCRNSHORTEREDGELENGTH/3f/320f;
-        SCALEY = HCLW.SCRNLONGEREDGELENGTH/3f/480f;
-        
+
+        // The scaling factor for the flares -
+        // From 640x480 format to the full lwp size.
+        SCALEX = (float)HCLW.LWPWIDTH/640f;
+        SCALEY = (float)HCLW.LWPHEIGHT/240f;
+
+		Bitmap tempBmp = null;
         if (HCLW.MIDDLE!=null)HCLW.MIDDLE.recycle();
-		HCLW.MIDDLE = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middle", "drawable", HCLW.PKGNAME)),HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
+        tempBmp = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middle", "drawable", HCLW.PKGNAME));
+		HCLW.MIDDLE = Bitmap.createScaledBitmap(tempBmp,HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
+		tempBmp.recycle();
 		BitmapFactory.Options opts = new BitmapFactory.Options();
+		opts.inTempStorage=new byte[4];
 		if (HCLW.TOPSURF_DITHER) opts.inDither=true;
 		if (HCLW.TOPSURF_32BIT) opts.inPreferredConfig= Bitmap.Config.ARGB_8888;
 
 		if (HCLW.FG!=null)HCLW.FG.recycle();
 		if (HCLW.TOPSURF_FILE==null || !new File(HCLW.TOPSURF_FILE).exists()) {
-		HCLW.FG = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("top", "drawable", HCLW.PKGNAME),opts),HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
+			tempBmp = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("top", "drawable", HCLW.PKGNAME),opts);
+			HCLW.FG = Bitmap.createScaledBitmap(tempBmp,HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
+			tempBmp.recycle();
 		} else {
-		HCLW.FG = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(HCLW.TOPSURF_FILE,opts),HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
+			tempBmp = BitmapFactory.decodeFile(HCLW.TOPSURF_FILE,opts);
+			HCLW.FG = Bitmap.createScaledBitmap(tempBmp,HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
+			tempBmp.recycle();
 		}
 
-		Canvas c = new Canvas(HCLW.FG);
-		c.drawColor(HCLW.TOPSURF_HUE, Mode.SRC_ATOP);
+		if (FGCANVAS==null) FGCANVAS = new Canvas(HCLW.FG);
+		FGCANVAS.drawColor(HCLW.TOPSURF_HUE, Mode.SRC_ATOP);
+		FGCANVAS=null;
 		if (HCLW.FLARE_USEHUES || HCLW.FLARE_FILE==null){
 			HCLW.FLARE = new Bitmap[] {
 				BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_white", "drawable", HCLW.PKGNAME)),
@@ -324,15 +339,18 @@ public class HCLW extends Application {
 	        HCLW.YOFFSET=0;
 	        HCLW.srcFullRect = new Rect(0,0,HCLW.SCRNWIDTH, HCLW.SCRNHEIGHT);
 	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
-	        HCLW.srcFlareRect = new Rect(0,0,HCLW.SCRNWIDTH/3, HCLW.SCRNHEIGHT/6);
+	        HCLW.srcFlareRect = new Rect(0,0,(int)(HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH*640/3f),480/2/3);
+//	        HCLW.srcFlareRect = new Rect(0,0,HCLW.SCRNWIDTH/3, HCLW.SCRNHEIGHT/6);
 	        HCLW.tgtFlareRect = new Rect(0,HCLW.SCRNHEIGHT/2,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
 		} else {
 			// Landscape
 	        HCLW.YOFFSET = HCLW.SCRNHEIGHT-HCLW.SCRNWIDTH;
 	        HCLW.srcFullRect = new Rect(0,-HCLW.YOFFSET,HCLW.SCRNWIDTH, HCLW.SCRNWIDTH);
 	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
-	        
-	        HCLW.srcFlareRect = new Rect(0,0,HCLW.SCRNWIDTH/3, HCLW.SCRNWIDTH/6);
+
+//	        SCALEX = (float)(HCLW.BUFFER.getWidth())/(float)HCLW.LWPWIDTH;
+
+	        HCLW.srcFlareRect = new Rect(0,0,(int)(HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH*640/3f),480/2/3);
 	        HCLW.tgtFlareRect = new Rect(0,HCLW.SCRNHEIGHT-HCLW.SCRNWIDTH/2,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
 		}
 	}
