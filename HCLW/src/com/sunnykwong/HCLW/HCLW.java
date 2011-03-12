@@ -22,7 +22,7 @@ import android.net.Uri;
 import java.io.File;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
+import android.util.Log;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -304,7 +304,7 @@ public class HCLW extends Application {
 		if (FGCANVAS==null) FGCANVAS = new Canvas(HCLW.FG);
 		FGCANVAS.drawColor(HCLW.TOPSURF_HUE, Mode.SRC_ATOP);
 		FGCANVAS=null;
-		if (HCLW.FLARE_USEHUES || HCLW.FLARE_FILE==null){
+		if (HCLW.FLARE_USEHUES){
 			HCLW.FLARE = new Bitmap[] {
 				BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_white", "drawable", HCLW.PKGNAME)),
 				BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_red", "drawable", HCLW.PKGNAME)),
@@ -312,7 +312,16 @@ public class HCLW extends Application {
 				BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_blue", "drawable", HCLW.PKGNAME)),
 				BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_yellow", "drawable", HCLW.PKGNAME))
 			};
-		} else {
+		} else if (HCLW.FLARE_FILE==null) { 
+			HCLW.FLARE = new Bitmap[5];
+			HCLW.FLARE[0] = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_white", "drawable", HCLW.PKGNAME));
+			for (int i=1;i<5;i++) {
+				HCLW.FLARE[i]=HCLW.FLARE[0].copy(Bitmap.Config.ARGB_8888, true);
+				Canvas cc = new Canvas(HCLW.FLARE[i]);
+				cc.drawColor(HCLW.FLAREHUES[i], Mode.SRC_ATOP);
+				cc=null;
+			}
+		} else {	
 			HCLW.FLARE = new Bitmap[5];
 			HCLW.FLARE[0] = BitmapFactory.decodeFile(HCLW.FLARE_FILE);
 			for (int i=1;i<5;i++) {
@@ -339,16 +348,14 @@ public class HCLW extends Application {
 	        HCLW.YOFFSET=0;
 	        HCLW.srcFullRect = new Rect(0,0,HCLW.SCRNWIDTH, HCLW.SCRNHEIGHT);
 	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
+
 	        HCLW.srcFlareRect = new Rect(0,0,(int)(HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH*640),480/2);
-//	        HCLW.srcFlareRect = new Rect(0,0,HCLW.SCRNWIDTH/3, HCLW.SCRNHEIGHT/6);
 	        HCLW.tgtFlareRect = new Rect(0,HCLW.SCRNHEIGHT/2,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
 		} else {
 			// Landscape
 	        HCLW.YOFFSET = HCLW.SCRNHEIGHT-HCLW.SCRNWIDTH;
 	        HCLW.srcFullRect = new Rect(0,-HCLW.YOFFSET,HCLW.SCRNWIDTH, HCLW.SCRNWIDTH);
 	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
-
-//	        SCALEX = (float)(HCLW.BUFFER.getWidth())/(float)HCLW.LWPWIDTH;
 
 	        HCLW.srcFlareRect = new Rect(0,0,(int)(HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH*640),480/2);
 	        HCLW.tgtFlareRect = new Rect(0,HCLW.SCRNHEIGHT-HCLW.SCRNWIDTH/2,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
@@ -367,12 +374,14 @@ public class HCLW extends Application {
 	}
 	
 	public void loadFlaresFromJSON() {
+		System.out.println("werw");
 			try {
 				File f = new File("/mnt/sdcard/hclw_settings.json");
 				// Look in SD path
 				JSONObject oObj;
 				JSONArray oResult;
 				if (f.exists()) {
+					Toast.makeText(this, "hclw_settings.json file found on SD card.  Applying advanced settings...", Toast.LENGTH_LONG).show();
 					BufferedReader in = new BufferedReader(new FileReader(f),8192);
 					StringBuilder sb = new StringBuilder();
 				    char[] buffer = new char[8192];
@@ -385,7 +394,9 @@ public class HCLW extends Application {
 					oResult = oObj.getJSONArray("flarepositions");
 					sb.setLength(0);
 					TOPSURF_FILE = oObj.getString("topsurface_file");
+					if (!new File(TOPSURF_FILE).exists()) TOPSURF_FILE=null;
 					FLARE_FILE = oObj.getString("flare_file");
+					if (!new File(FLARE_FILE).exists()) FLARE_FILE=null;
 				} else {
 					// Look in assets
 					InputStreamReader in = new InputStreamReader(this.getAssets().open("hclw_settings.json"));

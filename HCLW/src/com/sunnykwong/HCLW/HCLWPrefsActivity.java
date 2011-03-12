@@ -285,8 +285,8 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		
     	}
     	if (HCLW.JSON) {
+    		System.out.println("JSON");
     		((HCLW)getApplication()).loadFlaresFromJSON();
-    		((HCLW)getApplication()).prepareBitmaps();
     	}
     	
         boolean bAllColorsDisabled=true;
