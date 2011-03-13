@@ -282,19 +282,45 @@ public class HCLW extends Application {
 
 		Bitmap tempBmp = null;
         if (HCLW.MIDDLE!=null)HCLW.MIDDLE.recycle();
-        tempBmp = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middle", "drawable", HCLW.PKGNAME));
-		HCLW.MIDDLE = Bitmap.createScaledBitmap(tempBmp,HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
-		tempBmp.recycle();
+        HCLW.MIDDLE = Bitmap.createBitmap(HCLW.LWPWIDTH,HCLW.LWPHEIGHT,Config.ARGB_8888);
+        Canvas c = new Canvas(HCLW.MIDDLE);
+        
 		BitmapFactory.Options opts = new BitmapFactory.Options();
-		opts.inTempStorage=new byte[4];
+		opts.inTempStorage=new byte[16*1024];
 		if (HCLW.TOPSURF_DITHER) opts.inDither=true;
 		if (HCLW.TOPSURF_32BIT) opts.inPreferredConfig= Bitmap.Config.ARGB_8888;
 
+        tempBmp = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middlenw", "drawable", HCLW.PKGNAME),opts);
+        c.drawBitmap(tempBmp,null,new Rect(0,0,HCLW.LWPWIDTH/2,HCLW.LWPHEIGHT/2),HCLW.PaintFg);
+		tempBmp.recycle();
+        tempBmp = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middlene", "drawable", HCLW.PKGNAME),opts);
+        c.drawBitmap(tempBmp,null,new Rect(HCLW.LWPWIDTH/2,0,HCLW.LWPWIDTH,HCLW.LWPHEIGHT/2),HCLW.PaintFg);
+		tempBmp.recycle();
+        tempBmp = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middlesw", "drawable", HCLW.PKGNAME),opts);
+        c.drawBitmap(tempBmp,null,new Rect(0,HCLW.LWPHEIGHT/2,HCLW.LWPWIDTH/2,HCLW.LWPHEIGHT),HCLW.PaintFg);
+		tempBmp.recycle();
+        tempBmp = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("middlese", "drawable", HCLW.PKGNAME),opts);
+        c.drawBitmap(tempBmp,null,new Rect(HCLW.LWPWIDTH/2,HCLW.LWPHEIGHT/2,HCLW.LWPWIDTH,HCLW.LWPHEIGHT),HCLW.PaintFg);
+		tempBmp.recycle();
+		c=null;
+		
 		if (HCLW.FG!=null)HCLW.FG.recycle();
 		if (HCLW.TOPSURF_FILE==null || !new File(HCLW.TOPSURF_FILE).exists()) {
-			tempBmp = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("top", "drawable", HCLW.PKGNAME),opts);
-			HCLW.FG = Bitmap.createScaledBitmap(tempBmp,HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
+			HCLW.FG = Bitmap.createBitmap(HCLW.LWPWIDTH, HCLW.LWPHEIGHT, Config.ARGB_8888);
+			c = new Canvas(HCLW.FG);
+	        tempBmp = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("topnw", "drawable", HCLW.PKGNAME),opts);
+	        c.drawBitmap(tempBmp,null,new Rect(0,0,HCLW.LWPWIDTH/2,HCLW.LWPHEIGHT/2),HCLW.PaintFg);
 			tempBmp.recycle();
+	        tempBmp = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("topne", "drawable", HCLW.PKGNAME),opts);
+	        c.drawBitmap(tempBmp,null,new Rect(HCLW.LWPWIDTH/2,0,HCLW.LWPWIDTH,HCLW.LWPHEIGHT/2),HCLW.PaintFg);
+			tempBmp.recycle();
+	        tempBmp = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("topsw", "drawable", HCLW.PKGNAME),opts);
+	        c.drawBitmap(tempBmp,null,new Rect(0,HCLW.LWPHEIGHT/2,HCLW.LWPWIDTH/2,HCLW.LWPHEIGHT),HCLW.PaintFg);
+			tempBmp.recycle();
+	        tempBmp = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("topse", "drawable", HCLW.PKGNAME),opts);
+	        c.drawBitmap(tempBmp,null,new Rect(HCLW.LWPWIDTH/2,HCLW.LWPHEIGHT/2,HCLW.LWPWIDTH,HCLW.LWPHEIGHT),HCLW.PaintFg);
+			tempBmp.recycle();
+			c=null;
 		} else {
 			tempBmp = BitmapFactory.decodeFile(HCLW.TOPSURF_FILE,opts);
 			HCLW.FG = Bitmap.createScaledBitmap(tempBmp,HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
@@ -374,7 +400,6 @@ public class HCLW extends Application {
 	}
 	
 	public void loadFlaresFromJSON() {
-		System.out.println("werw");
 			try {
 				File f = new File("/mnt/sdcard/hclw_settings.json");
 				// Look in SD path
