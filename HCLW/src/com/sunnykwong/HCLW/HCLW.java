@@ -374,17 +374,26 @@ public class HCLW extends Application {
 	        HCLW.YOFFSET=0;
 	        HCLW.srcFullRect = new Rect(0,0,HCLW.SCRNWIDTH, HCLW.SCRNHEIGHT);
 	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
+	        
+	        float WidthRatio = HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH;
+	        float HeightRatio = HCLW.SCRNHEIGHT/(float)HCLW.LWPHEIGHT;
 
-	        HCLW.srcFlareRect = new Rect(0,0,(int)(HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH*640),480/2);
-	        HCLW.tgtFlareRect = new Rect(0,HCLW.SCRNHEIGHT/2,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
+	        HCLW.srcFlareRect = new Rect(0,0,(int)(WidthRatio*640),(int)(HeightRatio*480/2));
+	        HCLW.tgtFlareRect = new Rect(0,(int)(HeightRatio*HCLW.SCRNHEIGHT/2+HCLW.LWPHEIGHT-HCLW.SCRNHEIGHT),HCLW.SCRNWIDTH,(int)(HeightRatio*HCLW.SCRNHEIGHT+HCLW.LWPHEIGHT-HCLW.SCRNHEIGHT));
 		} else {
 			// Landscape
 	        HCLW.YOFFSET = HCLW.SCRNHEIGHT-HCLW.SCRNWIDTH;
 	        HCLW.srcFullRect = new Rect(0,-HCLW.YOFFSET,HCLW.SCRNWIDTH, HCLW.SCRNWIDTH);
 	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
 
-	        HCLW.srcFlareRect = new Rect(0,0,(int)(HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH*640),480/2);
+	        float WidthRatio = HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH;
+	        float HeightRatio = HCLW.SCRNHEIGHT/(float)HCLW.LWPHEIGHT;
+
+	        HCLW.srcFlareRect = new Rect(0,0,(int)(WidthRatio*640),480/2);
 	        HCLW.tgtFlareRect = new Rect(0,HCLW.SCRNHEIGHT-HCLW.SCRNWIDTH/2,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
+	        
+	        //HCLW.tgtFlareRect = new Rect(0,HCLW.LWPWIDTH/2-HCLW.LWPHEIGHT/2,HCLW.LWPHEIGHT,HCLW.LWPWIDTH/2);
+
 		}
 	}
 	
