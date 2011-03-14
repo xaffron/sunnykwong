@@ -338,7 +338,7 @@ public class HCLW extends Application {
 		if (FGCANVAS==null) FGCANVAS = new Canvas(HCLW.FG);
 		FGCANVAS.drawColor(HCLW.TOPSURF_HUE, Mode.SRC_ATOP);
 		FGCANVAS=null;
-		if (HCLW.FLARE_USEHUES){
+		if (!HCLW.FLARE_USEHUES){
 			HCLW.FLARE = new Bitmap[] {
 				BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_white", "drawable", HCLW.PKGNAME)),
 				BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("flare_red", "drawable", HCLW.PKGNAME)),

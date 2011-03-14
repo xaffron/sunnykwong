@@ -1,63 +1,95 @@
 {
+// The lwp options control the brightness, offset and bit-depth of the 
+// wallpaper surface.  Higher is not necessarily better... 
+// experiment for your phone! 
 "livewallpaper_surface_32bit":"true",
+"lwp_fixed_offset":"100",
+"lwp_baseline_brightness":"100",
+
+// The paint options control how the background is drawn onto the wallpaper.
 "paint_dither":"true",
 "paint_antialias":"true",
 "paint_filterbitmap":"true",
+
+// The topsurface options control what background to load, 
+// and what format it is loaded into memory.
+// notably: 
+// topsurface_file allows you to swap out the background completely.
+// topsurface_hue allows you to customize the background color.
+
 "topsurface_file":"/mnt/sdcard/top_16bitdithered.png",
 "topsurface_hue":"#00000000",
 "topsurface_dither":"true",
 "topsurface_32bit":"true",
-"flare_use_hues":"true",
+
+// The flare options let you customize the file used for flares,
+// and allows you to change the hues of the flares.  Remember to set 
+// flare_use_hues to true, otherwise the WRGBY hues will not be applied.
+
+"flare_use_hues":"false",
 "flare_file":"/mnt/sdcard/flare_white_thick.png",
 "flare_hues_WRGBY":["#00000000","#33FF0000","#3300FF00","#330000FF","#33FFFF00"],
+
+// HERE BE DRAGONS.
+// This is the belly of the beast.  Each flare follows a two-segmented path
+// endpointed by the initial, middle and final points.
+// the ordinates used are (x,y) in a 640x480 palette that gets scaled to 
+// native screen size.
+// the z coordinate is virtual, and controls the scaling of the flare.
+// Minimumspeed and Accel are self-explanatory.
+// 
+// One more note:  You can add as many flares as you want.  Do you want to fill
+// all the channels?  Knock yourself out.
+// The last flare is *always* the searchlight.
+
 "flarepositions":[
 		{ 
 		"initial": [260,322,0.1],
 		"middle": [161,375,0.15],
 		"final":[0,405,0.2],
-		"minimumspeed":0.003,
+		"minimumspeed":0.002,
 		"accel":0.013
 		},
 		{ 
 		"initial": [274,322,0.1],
 		"middle": [166,385,0.15],
 		"final":[-1,420,0.2],
-		"minimumspeed":0.003,
+		"minimumspeed":0.002,
 		"accel":0.013
 		},
 		{ 
 		"initial": [287,322,0.1],
 		"middle": [180,394,0.2],
 		"final":[-1,440,0.2],
-		"minimumspeed":0.003,
+		"minimumspeed":0.002,
 		"accel":0.013
 		},
 		{ 
-		"initial": [404,336,0.2],
+		"initial": [409,332,0.2],
 		"middle": [212,400,0.2],
-		"final":[0,465,0.2],
-		"minimumspeed":0.0025,
+		"final":[0,465,0.25],
+		"minimumspeed":0.002,
 		"accel":0.013
 		},
 		{ 
-		"initial": [419,336,0.12],
+		"initial": [420,336,0.13],
 		"middle": [268,400,0.3],
 		"final":[69,480,0.5],
-		"minimumspeed":0.004,
+		"minimumspeed":0.0018,
 		"accel":0.015
 		},
 		{ 
 		"initial": [431,336,0.1],
-		"middle": [351,381,0.3],
+		"middle": [351,384,0.3],
 		"final":[185,479,0.7],
-		"minimumspeed":0.01,
+		"minimumspeed":0.008,
 		"accel":0.015
 		},
 		{ 
 		"initial": [442,336,0.1],
 		"middle": [400,381,0.35],
 		"final":[308,488,0.7],
-		"minimumspeed":0.015,
+		"minimumspeed":0.012,
 		"accel":0.02
 		},
 		{ 
@@ -93,6 +125,14 @@
 		"middle": [568,355,0.2],
 		"final":[649,382,0.3],
 		"minimumspeed":0.008,
+		"accel":0.02
+		},
+// BE CAREFUL - THIS IS THE SEARCHLIGHT, NOT A FLARE
+		{ 
+		"initial": [0,0,12],
+		"middle": [640,120,12],
+		"final":[0,0,12],
+		"minimumspeed":0.02,
 		"accel":0.02
 		}
 	]

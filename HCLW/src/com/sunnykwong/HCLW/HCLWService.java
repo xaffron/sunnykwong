@@ -316,10 +316,10 @@ public class HCLWService extends WallpaperService  {
         		}
     		}
 
-        	System.out.println("LWP: " + HCLW.LWPWIDTH + " x " + HCLW.LWPHEIGHT);
-        	System.out.println("SCRN:" + HCLW.SCRNWIDTH + " x " + HCLW.SCRNHEIGHT);
-        	System.out.println("SRCFLARE " + HCLW.srcFlareRect.toString());
-        	System.out.println("TGTFLARE " + HCLW.tgtFlareRect.toString());
+//        	System.out.println("LWP: " + HCLW.LWPWIDTH + " x " + HCLW.LWPHEIGHT);
+//        	System.out.println("SCRN:" + HCLW.SCRNWIDTH + " x " + HCLW.SCRNHEIGHT);
+//        	System.out.println("SRCFLARE " + HCLW.srcFlareRect.toString());
+//        	System.out.println("TGTFLARE " + HCLW.tgtFlareRect.toString());
         	c.drawBitmap(HCLW.BUFFER, HCLW.srcFlareRect, HCLW.tgtFlareRect, HCLW.PaintMid);
         	
         	if (HCLW.PREFS.getBoolean("LightningEffect", false)) {
