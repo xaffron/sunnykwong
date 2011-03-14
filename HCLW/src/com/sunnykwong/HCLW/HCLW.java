@@ -56,9 +56,7 @@ public class HCLW extends Application {
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
 		"Nemuro and Xaffron present their impression of the Honeycomb Live Wallpaper!  This Live Wallpaper is light on CPU usage and has been tested to perform on phones from the G1 to the HD2.  Email either one of us for feedback and issues, and we will resolve them ASAP!",
-		"Version 1.0.4 of this wallpaper brings tablet support, at a smaller package size.  If the wallpaper still does not look right on your screen, just let us know!",
-//		"Starting in v1.0.5, you can change the color of the slopes as well.  However, the app needs to download extra resources from the web, so please be patient.",
-		"v1.0.5 adds a new premium look, 'Searchlight', to the one basic ('Racing Flares') and two premium ('Lightning Strikes' and 'Electric Sparks') looks.",
+		"v1.0.8 of this wallpaper cleans up any remaining pixellation issues.  If the wallpaper still does not look right on your screen, just let us know!",
 		"Try changing the 'Target Framerate' setting if your homescreen is choppy.  Remember, higher is not always better, even for fast devices! Your homescreen app also has a lot to do with it.",
 		"The free version features the basic 'Racing Flares' look.  The premium looks are also available as one-minute trials.",
 		"Like this app?  Check out Xaffron's One More Clock Collection for clock widgets that go well with your new live wallpaper!",
