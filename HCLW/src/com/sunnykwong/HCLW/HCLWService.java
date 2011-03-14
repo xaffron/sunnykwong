@@ -340,7 +340,7 @@ public class HCLWService extends WallpaperService  {
         			c.drawBitmap(HCLW.MIDDLE, HCLW.srcFullRect, HCLW.tgtFullRect, HCLW.PaintMid);
         		}
         		if (HCLW.LightningFactor>0f) {
-        			HCLW.PaintFg.setAlpha(60);
+        			//HCLW.PaintFg.setAlpha(60);
         			c.drawBitmap(HCLW.FG, HCLW.srcFullRect, HCLW.tgtFullRect, HCLW.PaintFg);
         		}
         	}

@@ -259,17 +259,23 @@ public class HCLW extends Application {
 	}
 	
 	public void prepareBitmaps() {
-		HCLW.LWPWIDTH = WallpaperManager.getInstance(this).getDesiredMinimumWidth();
-		HCLW.LWPHEIGHT = WallpaperManager.getInstance(this).getDesiredMinimumHeight();
-    	HCLW.SCRNDPI = getResources().getDisplayMetrics().densityDpi;
+
+		// Honeycomb feature - only top portion of LWP gets shown... the lower portion is reserved for wallpaper pickers.
+		// Since HCLW's action occurs in the lower portion, we will leave the lower portion blank and pretend the requested LWP size
+		// is smaller than it really is.
     	HCLW.SCRNHEIGHT = getResources().getDisplayMetrics().heightPixels;
     	HCLW.SCRNWIDTH = getResources().getDisplayMetrics().widthPixels;
     	HCLW.SCRNLONGEREDGELENGTH = Math.max(SCRNHEIGHT, SCRNWIDTH);
     	HCLW.SCRNSHORTEREDGELENGTH = Math.min(SCRNHEIGHT, SCRNWIDTH);
+		HCLW.LWPWIDTH = WallpaperManager.getInstance(this).getDesiredMinimumWidth();
+		HCLW.LWPHEIGHT = Math.min(WallpaperManager.getInstance(this).getDesiredMinimumHeight(),HCLW.SCRNLONGEREDGELENGTH);
+//		HCLW.LWPHEIGHT = WallpaperManager.getInstance(this).getDesiredMinimumHeight();
+
+		HCLW.SCRNDPI = getResources().getDisplayMetrics().densityDpi;
     	HCLW.CURRENTORIENTATION = getResources().getConfiguration().orientation;
     	if (HCLW.BUFFER!=null)HCLW.BUFFER.recycle();
+
     	// The flare buffer is fixed at the lower half of a 640x480 canvas (i.e. 640x240)
-    	// Then shrunk down by a factor of three.
     	HCLW.BUFFER = Bitmap.createBitmap(640, 240, Bitmap.Config.ARGB_8888);
         HCLW.BUFFERCANVAS = new Canvas(HCLW.BUFFER);
 
@@ -277,8 +283,10 @@ public class HCLW extends Application {
 
         // The scaling factor for the flares -
         // From 640x480 format to the full lwp size.
-        SCALEX = (float)HCLW.LWPWIDTH/640f;
-        SCALEY = (float)HCLW.LWPHEIGHT/480f;
+//        SCALEX = (float)HCLW.LWPWIDTH/640f;
+//        SCALEY = (float)HCLW.LWPHEIGHT/480f;
+        SCALEX = (float)1f;
+        SCALEY = (float)1f;
 
 		Bitmap tempBmp = null;
         if (HCLW.MIDDLE!=null)HCLW.MIDDLE.recycle();
@@ -369,28 +377,29 @@ public class HCLW extends Application {
 	public void adjustOrientationOffsets(){
 		HCLW.SCRNWIDTH=getResources().getDisplayMetrics().widthPixels;
 		HCLW.SCRNHEIGHT=getResources().getDisplayMetrics().heightPixels;
+		int Midpoint;
 		if (HCLW.SCRNWIDTH < HCLW.SCRNHEIGHT){
 			// Portrait
 	        HCLW.YOFFSET=0;
-	        HCLW.srcFullRect = new Rect(0,0,HCLW.SCRNWIDTH, HCLW.SCRNHEIGHT);
-	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
+			Midpoint = (HCLW.YOFFSET + HCLW.LWPHEIGHT)/2; 
+	        HCLW.srcFullRect = new Rect(0,0,HCLW.SCRNWIDTH, HCLW.LWPHEIGHT);
+	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH, HCLW.LWPHEIGHT);
 	        
 	        float WidthRatio = HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH;
-	        float HeightRatio = HCLW.SCRNHEIGHT/(float)HCLW.LWPHEIGHT;
 
-	        HCLW.srcFlareRect = new Rect(0,0,(int)(WidthRatio*640),(int)(HeightRatio*480/2));
-	        HCLW.tgtFlareRect = new Rect(0,(int)(HeightRatio*HCLW.SCRNHEIGHT/2+HCLW.LWPHEIGHT-HCLW.SCRNHEIGHT),HCLW.SCRNWIDTH,(int)(HeightRatio*HCLW.SCRNHEIGHT+HCLW.LWPHEIGHT-HCLW.SCRNHEIGHT));
+	        HCLW.srcFlareRect = new Rect(0,0,(int)(WidthRatio*640),(int)(480/2));
+	        HCLW.tgtFlareRect = new Rect(0,Midpoint,HCLW.SCRNWIDTH,HCLW.LWPHEIGHT);
 		} else {
 			// Landscape
 	        HCLW.YOFFSET = HCLW.SCRNHEIGHT-HCLW.SCRNWIDTH;
+			Midpoint = (HCLW.YOFFSET + HCLW.SCRNHEIGHT)/2; 
 	        HCLW.srcFullRect = new Rect(0,-HCLW.YOFFSET,HCLW.SCRNWIDTH, HCLW.SCRNWIDTH);
 	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
 
 	        float WidthRatio = HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH;
-	        float HeightRatio = HCLW.SCRNHEIGHT/(float)HCLW.LWPHEIGHT;
 
 	        HCLW.srcFlareRect = new Rect(0,0,(int)(WidthRatio*640),480/2);
-	        HCLW.tgtFlareRect = new Rect(0,HCLW.SCRNHEIGHT-HCLW.SCRNWIDTH/2,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
+	        HCLW.tgtFlareRect = new Rect(0,Midpoint,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
 	        
 	        //HCLW.tgtFlareRect = new Rect(0,HCLW.LWPWIDTH/2-HCLW.LWPHEIGHT/2,HCLW.LWPHEIGHT,HCLW.LWPWIDTH/2);
 
