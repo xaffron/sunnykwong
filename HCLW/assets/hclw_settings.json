@@ -9,11 +9,11 @@
 "lwp_fixed_offset":"-1",
 // Baseline brightness lets you adjust how bright the wallpaper is by default.
 // Put in a value between 0 and 100, with 100 being default brightness.
-"lwp_baseline_brightness":"90",
+"lwp_baseline_brightness":"100",
 
 // The paint options control how the background is drawn onto the wallpaper.
-"paint_dither":"true",
-"paint_antialias":"true",
+"paint_dither":"false",
+"paint_antialias":"false",
 "paint_filterbitmap":"true",
 
 // The topsurface options control what background to load, 
@@ -24,8 +24,8 @@
 
 "topsurface_file":"/mnt/sdcard/top_16bitdithered.png",
 "topsurface_hue":"#00000000",
-"topsurface_dither":"true",
-"topsurface_32bit":"true",
+"topsurface_dither":"false",
+"topsurface_32bit":"false",
 
 // The flare options let you customize the file used for flares,
 // and allows you to change the hues of the flares.  Remember to set 

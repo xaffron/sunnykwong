@@ -367,6 +367,7 @@ public class HCLW extends Application {
 				cc=null;
 			}
 		}
+		HCLW.PaintFg.setFilterBitmap(false);
 	}
 
 	public void countFlareColors() {
