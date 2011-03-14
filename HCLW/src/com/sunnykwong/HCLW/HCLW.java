@@ -47,6 +47,8 @@ public class HCLW extends Application {
 	static boolean TOPSURF_DITHER, TOPSURF_32BIT, PAINTFG_DITHER, PAINTFG_AA, PAINTFG_FILTERBMP, LWPSURF_32BIT, FLARE_USEHUES;
 	static String TOPSURF_FILE, FLARE_FILE;
 	static int FLAREHUES[], TOPSURF_HUE;
+	static int FIXEDOFFSET=-1;
+	static int DEFAULTBRIGHTNESS=100;
 	
 	static int LWPWIDTH, LWPHEIGHT;
 	static int NUMBEROFFLARECOLORS=0;
@@ -413,6 +415,7 @@ public class HCLW extends Application {
     		.putBoolean("LightningEffect", false)
     		.putBoolean("SparkEffect", false)
     		.putBoolean("Searchlight", false)
+    		.putString("LightnFrequency", "0.05")
     		.commit();
     		HCLW.LightningFactor=1f;
 	}
@@ -458,6 +461,7 @@ public class HCLW extends Application {
 				}
 				
 				LWPSURF_32BIT = oObj.getBoolean("livewallpaper_surface_32bit");
+				FIXEDOFFSET = oObj.getInt("lwp_fixed_offset");
 				PAINTFG_DITHER = oObj.getBoolean("paint_dither");
 				PAINTFG_AA = oObj.getBoolean("paint_antialias");
 				PAINTFG_FILTERBMP = oObj.getBoolean("paint_filterbitmap");
@@ -465,6 +469,7 @@ public class HCLW extends Application {
 				TOPSURF_DITHER = oObj.getBoolean("topsurface_dither");
 				TOPSURF_32BIT = oObj.getBoolean("topsurface_32bit");
 				FLARE_USEHUES = oObj.getBoolean("flare_use_hues");
+				DEFAULTBRIGHTNESS = oObj.getInt("lwp_baseline_brightness");
 				FLAREHUES = new int[5];
 				for (int i=0;i<5;i++) {
 					FLAREHUES[i] = Color.parseColor(oObj.getJSONArray("flare_hues_WRGBY").getString(i));

@@ -12,12 +12,13 @@
 			android:entryValues="@array/TrailLengthValues" android:defaultValue="#051b1939" />
 		<ListPreference android:key="FlareFrequency"
 			android:title="Set Flare Frequency" android:entries="@array/FlareFreq"
-			android:entryValues="@array/FlareFreqValues" android:defaultValue="1" />
+			android:entryValues="@array/FlareFreqValues" android:defaultValue="1" /><ListPreference android:entries="@array/LightnFreq" android:title="Set Lightning Freq." android:entryValues="@array/LightnFreqValues" android:key="LightnFrequency" android:summary="(Lightning Strikes mode only)" android:defaultValue="0.05"/>
 		<ListPreference android:key="FrameRates" android:title="Target Frame Rate"
 			android:entryValues="@array/FrameRateValues" android:entries="@array/FrameRate"
 			android:defaultValue="25" android:selectable="true"
 			android:summary="Lower to improve homescreen responsiveness."
 			android:enabled="true"></ListPreference>
+		
 	</PreferenceCategory>
 
 

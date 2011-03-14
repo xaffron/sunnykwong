@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.ListView.FixedViewInfo;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -204,8 +205,11 @@ public class HCLWService extends WallpaperService  {
                 c = holder.lockCanvas();
                 if (c != null) {
                     // draw something
-                	HCLW.OFFSETTHISFRAME = HCLW.xPixels;
-
+                	if (HCLW.FIXEDOFFSET!=-1) {
+                		HCLW.OFFSETTHISFRAME=-HCLW.FIXEDOFFSET;
+                	} else {
+                		HCLW.OFFSETTHISFRAME = HCLW.xPixels;
+                	}
                 	drawFlares(c, HCLW.OFFSETTHISFRAME);
                   drawTouchPoint(c, HCLW.OFFSETTHISFRAME);
                 }
@@ -323,7 +327,7 @@ public class HCLWService extends WallpaperService  {
         	c.drawBitmap(HCLW.BUFFER, HCLW.srcFlareRect, HCLW.tgtFlareRect, HCLW.PaintMid);
         	
         	if (HCLW.PREFS.getBoolean("LightningEffect", false)) {
-        		if (Math.random()<0.05d) {
+        		if (Math.random()<Double.parseDouble(HCLW.PREFS.getString("LightnFrequency","0.05"))) {
         			HCLW.LightningFactor=1f;
         		} else if (HCLW.LightningFactor<=0f) {
         			HCLW.LightningFactor=0f;
@@ -332,7 +336,7 @@ public class HCLWService extends WallpaperService  {
         		}
     			HCLW.PaintFg.setAlpha((int)(255f*HCLW.LightningFactor));
         	} else {
-        		HCLW.PaintFg.setAlpha(255);
+    			HCLW.PaintFg.setAlpha((int)(255f*HCLW.DEFAULTBRIGHTNESS/100f));
         	}
            	// Draw the  "Middle" mask, then the "Surface".
         	if (!HCLW.PREFS.getBoolean("FlaresAboveSurface", false)) {

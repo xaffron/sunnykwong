@@ -3,8 +3,13 @@
 // wallpaper surface.  Higher is not necessarily better... 
 // experiment for your phone! 
 "livewallpaper_surface_32bit":"true",
-"lwp_fixed_offset":"100",
-"lwp_baseline_brightness":"100",
+// The fixed_offset option lets you freeze the LWP and not let it scroll.
+// Set it to -1 for default scrolling, or a positive value to freeze.
+// Be careful not to go overboard with the offset, you can corrupt the homescreen.
+"lwp_fixed_offset":"-1",
+// Baseline brightness lets you adjust how bright the wallpaper is by default.
+// Put in a value between 0 and 100, with 100 being default brightness.
+"lwp_baseline_brightness":"90",
 
 // The paint options control how the background is drawn onto the wallpaper.
 "paint_dither":"true",
