@@ -260,16 +260,29 @@ public class HCLW extends Application {
 	
 	public void prepareBitmaps() {
 
-		// Honeycomb feature - only top portion of LWP gets shown... the lower portion is reserved for wallpaper pickers.
-		// Since HCLW's action occurs in the lower portion, we will leave the lower portion blank and pretend the requested LWP size
-		// is smaller than it really is.
     	HCLW.SCRNHEIGHT = getResources().getDisplayMetrics().heightPixels;
     	HCLW.SCRNWIDTH = getResources().getDisplayMetrics().widthPixels;
     	HCLW.SCRNLONGEREDGELENGTH = Math.max(SCRNHEIGHT, SCRNWIDTH);
     	HCLW.SCRNSHORTEREDGELENGTH = Math.min(SCRNHEIGHT, SCRNWIDTH);
-		HCLW.LWPWIDTH = WallpaperManager.getInstance(this).getDesiredMinimumWidth();
-		HCLW.LWPHEIGHT = Math.min(WallpaperManager.getInstance(this).getDesiredMinimumHeight(),HCLW.SCRNLONGEREDGELENGTH);
-//		HCLW.LWPHEIGHT = WallpaperManager.getInstance(this).getDesiredMinimumHeight();
+
+    	
+    	// Let's see if the phone/homescreen has a desired minimum width for the wallpaper.
+    	// If it does, we will honor it
+    	HCLW.LWPWIDTH = WallpaperManager.getInstance(this).getDesiredMinimumWidth();
+    	// If it doesn't, we'll eyeball it - say twice the shorter edge length.
+    	if (HCLW.LWPWIDTH<=0) HCLW.LWPWIDTH=HCLW.SCRNSHORTEREDGELENGTH*2;
+
+    	// Next, let's see if the phone/homescreen has a desired minimum height.
+		HCLW.LWPHEIGHT = WallpaperManager.getInstance(this).getDesiredMinimumHeight();
+    	// If it doesn't, we'll eyeball it - say exactly the longer edge length.
+	    if (HCLW.LWPHEIGHT<=0) {
+	    	HCLW.LWPHEIGHT=HCLW.SCRNLONGEREDGELENGTH;
+	    } else {
+	    	// Honeycomb feature - only top portion of LWP gets shown... the lower portion is reserved for wallpaper pickers.
+			// Since HCLW's action occurs in the lower portion, we will leave the lower portion blank and pretend the requested LWP size
+			// is smaller than it really is.
+	    	HCLW.LWPHEIGHT = Math.min(WallpaperManager.getInstance(this).getDesiredMinimumHeight(),HCLW.SCRNLONGEREDGELENGTH);
+	    }
 
 		HCLW.SCRNDPI = getResources().getDisplayMetrics().densityDpi;
     	HCLW.CURRENTORIENTATION = getResources().getConfiguration().orientation;
@@ -283,11 +296,13 @@ public class HCLW extends Application {
 
         // The scaling factor for the flares -
         // From 640x480 format to the full lwp size.
-//        SCALEX = (float)HCLW.LWPWIDTH/640f;
-//        SCALEY = (float)HCLW.LWPHEIGHT/480f;
         SCALEX = (float)1f;
         SCALEY = (float)1f;
 
+        Log.i("HCLW","Requested LWP Dim: " +HCLW.LWPWIDTH + " x " + HCLW.LWPHEIGHT);
+        Log.i("HCLW","Detected Screen Dim: " +HCLW.SCRNWIDTH + " x " + HCLW.SCRNHEIGHT);
+        Log.i("HCLW","Detected Screen Edges: " +HCLW.SCRNSHORTEREDGELENGTH + " x " + HCLW.SCRNLONGEREDGELENGTH);
+        
 		Bitmap tempBmp = null;
         if (HCLW.MIDDLE!=null)HCLW.MIDDLE.recycle();
         HCLW.MIDDLE = Bitmap.createBitmap(HCLW.LWPWIDTH,HCLW.LWPHEIGHT,Config.ARGB_8888);
