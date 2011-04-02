@@ -62,7 +62,7 @@ public class OMC extends Application {
 	static final boolean DEBUG = true;
 	static final boolean THEMESFROMCACHE = true;
 	
-	static String THISVERSION;
+	static String THISVERSION; 
 	static final boolean SINGLETON = false;
 
 	static final boolean FREEEDITION = false;
