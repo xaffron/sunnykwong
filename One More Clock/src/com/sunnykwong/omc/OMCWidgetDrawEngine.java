@@ -50,14 +50,6 @@ public class OMCWidgetDrawEngine {
 		final int N = aWM.getAppWidgetIds(cName)==null? 0: aWM.getAppWidgetIds(cName).length;
 
 		for (int i=0; i<N; i++) {
-//			if (OMC.SCREENON) {
-//				// Blit something lowqual over first
-//				RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
-//				final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
-//				rv.setImageViewUri(iViewID,Uri.parse("content://com.sunnykwong.omc/widgets?awi="+aWM.getAppWidgetIds(cName)[i]));
-//				aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);
-//			}
-
 			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i], cName);
 		}
 	}
@@ -189,7 +181,8 @@ public class OMCWidgetDrawEngine {
 				e.printStackTrace();
 			}
 		}
-
+		final Bitmap finalbitmap = OMC.getWidgetBMP();
+		finalbitmap.
 		// Crop, Scale & Rotate the clock first
 		
 		int width = bitmap.getWidth()- OMC.STRETCHINFO.optInt("left_crop") - OMC.STRETCHINFO.optInt("right_crop"); 
@@ -197,7 +190,7 @@ public class OMCWidgetDrawEngine {
 		float hzStretch = (float)OMC.STRETCHINFO.optDouble("horizontal_stretch");
 		float vtStretch = (float)OMC.STRETCHINFO.optDouble("vertical_stretch");
 
-		Matrix tempMatrix = new Matrix();
+		Matrix tempMatrix = OMC.getMatrix();
 		//Use very low res if screen off
 		if (OMC.SCREENON) {
 			tempMatrix.postScale(hzStretch, vtStretch);
@@ -209,7 +202,7 @@ public class OMCWidgetDrawEngine {
 		int scaledWidth = (int)(width * hzStretch); 
 
 		tempMatrix.postRotate(rot, scaledWidth/2f, scaledHeight/2f);
-
+		
 		final Bitmap croppedScaledBmp;
 		if (OMC.SCREENON) {
 			croppedScaledBmp = Bitmap.createBitmap(bitmap,
@@ -246,7 +239,8 @@ public class OMCWidgetDrawEngine {
 		bitmap.recycle();
 		croppedScaledBmp.recycle();
 		finalBitmap.recycle();
-
+		OMC.returnMatrix(tempMatrix);
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -483,7 +477,7 @@ public class OMCWidgetDrawEngine {
 	// This layer is pretty much dedicated to lens flare (bokeh beauty), 
 	// but will need more tweaking for realism 
 	static void drawFlareLayer(final Context context, final JSONObject layer, final String sTheme, final int aWI, final Canvas cvas) {
-		Paint pt1= new Paint(), pt2 = new Paint();
+		Paint pt1= OMC.getPaint(), pt2 = OMC.getPaint();
 		pt1.setAntiAlias(true);
 		pt1.setStyle(Paint.Style.FILL_AND_STROKE);
 		pt2.setAntiAlias(true);
@@ -509,6 +503,8 @@ public class OMCWidgetDrawEngine {
 		
     	// theme-specific tweaks.
 		OMCWidgetDrawEngine.layerThemeTweaks(context, layer, sTheme, aWI);
+		OMC.returnPaint(pt1);
+		OMC.returnPaint(pt2);
 	}
 
 	// Static rectangular panel.
@@ -526,7 +522,7 @@ public class OMCWidgetDrawEngine {
 			if (OMC.DEBUG) e.printStackTrace();
 			return;
 		}
-		final Paint pt1 = new Paint();
+		final Paint pt1 = OMC.getPaint();
 		pt1.setAntiAlias(true);
 		try {
 			pt1.setColor(Color.parseColor(layer.optString("fgcolor")));
@@ -542,7 +538,7 @@ public class OMCWidgetDrawEngine {
 				ee.printStackTrace();
 			}
 		}
-		final Paint pt2 = new Paint();
+		final Paint pt2 = OMC.getPaint();
 		pt2.setAntiAlias(true);
 		try {
 			pt2.setColor(Color.parseColor(layer.optString("bgcolor")));
@@ -583,12 +579,13 @@ public class OMCWidgetDrawEngine {
 		}
 		//Either way, draw the proper panel
 		cvas.drawRoundRect(tempFGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt1);
-
+		OMC.returnPaint(pt1);
+		OMC.returnPaint(pt2);
 	}
 
 	//Bitmap layer.
 	static void drawBitmapLayer(final Context context, final JSONObject layer, final String sTheme, final int aWI, final Canvas cvas) {
-		final Paint pt1 = new Paint();
+		final Paint pt1 = OMC.getPaint();
 		pt1.reset();
 		pt1.setAntiAlias(true);
 		pt1.setFlags(Paint.FILTER_BITMAP_FLAG);
@@ -608,8 +605,8 @@ public class OMCWidgetDrawEngine {
 		}
 
 		// Prepare the transformation matrix.
-		
-		Matrix tempMatrix = new Matrix();
+
+		Matrix tempMatrix = OMC.getMatrix();
 		tempMatrix.postTranslate(-tempBitmap.getWidth()/2f, -tempBitmap.getHeight()/2f);
 		tempMatrix.postScale((float)layer.optDouble("horizontal_stretch"),(float)layer.optDouble("vertical_stretch"));
 		tempMatrix.postRotate((float)layer.optDouble("cw_rotate"));
@@ -621,6 +618,8 @@ public class OMCWidgetDrawEngine {
 
 		tempBitmap.setDensity(DisplayMetrics.DENSITY_HIGH);
 		cvas.drawBitmap(tempBitmap,tempMatrix,pt1);
+		OMC.returnPaint(pt1);
+		OMC.returnMatrix(tempMatrix);
 	}
 
 	// Quote layer.  Set the Text to be shown before passing to drawTextLayer.
@@ -634,8 +633,8 @@ public class OMCWidgetDrawEngine {
 
 	// Text layer.  Written this way so we can have as many as we want with minimal effort.
 	static void drawTextLayer(final Context context, final JSONObject layer, final String sTheme, final int aWI, final String text, final Canvas cvas) {
-		final Paint pt1 = new Paint();
-		final Paint pt2 = new Paint();
+		final Paint pt1 = OMC.getPaint();
+		final Paint pt2 = OMC.getPaint();
 		pt1.setAntiAlias(true);
 		final Typeface tempTypeface = OMC.getTypeface(sTheme, layer.optString("filename"));
 		if (tempTypeface==null) {
@@ -731,7 +730,8 @@ public class OMCWidgetDrawEngine {
     			pt1,
     			pt2,
     			fRot);
-
+		OMC.returnPaint(pt1);
+		OMC.returnPaint(pt2);
 	}
 	
 	static int getSpannedStringWidth(SpannedString ss, final Paint pt) {
@@ -770,24 +770,18 @@ public class OMCWidgetDrawEngine {
 		return result;
 	}
 	
-	static void fancyDrawSpanned(final Canvas cvas, final String str, final int x, final int y, final Paint pt, final float fRot) {
+	static synchronized void fancyDrawSpanned(final Canvas cvas, final String str, final int x, final int y, final Paint pt, final float fRot) {
 		final SpannedString ss = new SpannedString(Html.fromHtml(str));
 		Paint ptTemp = new Paint(pt);
 		ptTemp.setTextAlign(Paint.Align.LEFT);
 		int bufferWidth = Math.max(OMCWidgetDrawEngine.getSpannedStringWidth(ss, pt),1);
 		int bufferHeight = Math.max(pt.getFontMetricsInt().bottom - pt.getFontMetricsInt().top,1);
 		int iCursor = 0;
-		final Bitmap rotBUFFER;
-		if (OMC.SCREENON) {
-			rotBUFFER = Bitmap.createBitmap((int)(bufferWidth*1.2f), bufferHeight, Bitmap.Config.ARGB_8888);
-		} else {
-			rotBUFFER = Bitmap.createBitmap((int)(bufferWidth*1.2f), bufferHeight, Bitmap.Config.ARGB_4444);
-		}
-		rotBUFFER.setDensity(DisplayMetrics.DENSITY_HIGH);
-		rotBUFFER.eraseColor(Color.TRANSPARENT);
-
-		final Canvas rotCANVAS = new Canvas(rotBUFFER);
-
+		
+		OMC.ROTBUFFER.eraseColor(Color.TRANSPARENT);
+		OMC.ROTBUFFER.setDensity(DisplayMetrics.DENSITY_HIGH);
+		final Canvas rotCANVAS = OMC.BMPTOCVAS.get(OMC.ROTBUFFER);
+			
 		int iStart=0;
 		while (iStart < ss.length()){
 			int iEnd = ss.nextSpanTransition(iStart, ss.length(), StyleSpan.class);
@@ -811,11 +805,12 @@ public class OMCWidgetDrawEngine {
 				}
 
 			}
+
 			rotCANVAS.drawText(ss.subSequence(iStart, iEnd).toString(), iCursor, 0-pt.getFontMetricsInt().top, ptTemp);
 			iCursor+=ptTemp.measureText(ss.toString().substring(iStart, iEnd));
 			iStart = iEnd;
 		}
-		final Matrix tempMatrix = new Matrix();
+		final Matrix tempMatrix = OMC.getMatrix();
 		tempMatrix.postTranslate(-bufferWidth/2f, pt.getFontMetricsInt().top);
 		tempMatrix.postRotate(fRot);
 		if (pt.getTextAlign() == Paint.Align.LEFT) {
@@ -830,10 +825,10 @@ public class OMCWidgetDrawEngine {
 			tempMatrix.postTranslate(bufferWidth/2f+x, y);
 		}
 		pt.setFilterBitmap(true);
-		cvas.drawBitmap(rotBUFFER, tempMatrix, pt);
+		cvas.drawBitmap(OMC.ROTBUFFER, tempMatrix, pt);
 		pt.setFilterBitmap(false);
 
-		rotBUFFER.recycle();
+		OMC.returnMatrix(tempMatrix);
 	}
 	
 	static void fancyDrawText(final String style, final Canvas cvas, final String text, final int x, final int y, final Paint pt1, final Paint pt2, final float fRot)  {

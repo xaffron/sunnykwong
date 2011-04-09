@@ -21,6 +21,8 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 
+import java.util.concurrent.ArrayBlockingQueue;
+
 import android.app.AlarmManager;
 import android.app.Application;
 import android.app.Notification;
@@ -50,6 +52,8 @@ import android.widget.Toast;
 import android.graphics.BitmapFactory;
 import android.content.res.Resources;
 import android.os.Handler;
+import android.graphics.Matrix;
+
 /**
  * @author skwong01
  * Thanks to ralfoide's 24clock code; taught me quite a bit about broadcastreceivers
@@ -129,7 +133,8 @@ public class OMC extends Application {
     static HashMap<String, Typeface> TYPEFACEMAP;
     static HashMap<String, Bitmap> BMPMAP;
     static Map<String, JSONObject> THEMEMAP;
-
+    static HashMap<Bitmap, Canvas> BMPTOCVAS;
+    
     static OMCConfigReceiver cRC;
 	static OMCAlarmReceiver aRC;
     static boolean SCREENON = true; 	// Is the screen on?
@@ -169,6 +174,12 @@ public class OMC extends Application {
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
     static Notification FGNOTIFICIATION;
     
+    static final ArrayBlockingQueue<Matrix> MATRIXPOOL = new ArrayBlockingQueue<Matrix>(3);
+    static final ArrayBlockingQueue<Paint> PAINTPOOL = new ArrayBlockingQueue<Paint>(4);
+    static final ArrayBlockingQueue<Bitmap> WIDGETPOOL = new ArrayBlockingQueue<Bitmap>(2);
+    
+    static final Bitmap ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
+
     final Handler mHandler = new Handler();
     static String mMessage;
 	final Runnable mPopToast = new Runnable() {
@@ -272,6 +283,8 @@ public class OMC extends Application {
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(3);
 		OMC.BMPMAP = new HashMap<String, Bitmap>(16);
 		OMC.THEMEMAP=Collections.synchronizedMap(new HashMap<String, JSONObject>(3));
+		OMC.BMPTOCVAS = new HashMap<Bitmap, Canvas>(16);
+		
 		
 		OMC.STRETCHINFO = null;
 		
@@ -289,6 +302,16 @@ public class OMC extends Application {
 				};
 
 		OMC.WORDNUMBERS = this.getResources().getStringArray(this.getResources().getIdentifier("WordNumbers", "array", OMC.PKGNAME));
+
+		while (OMC.MATRIXPOOL.remainingCapacity() > 0 ) OMC.MATRIXPOOL.add(new Matrix());
+		while (OMC.PAINTPOOL.remainingCapacity() > 0 ) OMC.PAINTPOOL.add(new Paint());
+		while (OMC.WIDGETPOOL.remainingCapacity() > 0 ) {
+			Bitmap bmp = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
+			Canvas cvas = new Canvas(bmp);
+			OMC.WIDGETPOOL.add(bmp);
+			OMC.BMPTOCVAS.put(bmp, cvas);
+		}
+		OMC.BMPTOCVAS.put(OMC.ROTBUFFER, new Canvas(OMC.ROTBUFFER));
 		
 		setupDefaultTheme();
 		this.widgetClicks();
@@ -1294,4 +1317,58 @@ public class OMC extends Application {
     	super.onLowMemory();
     }
 
+    static public Matrix getMatrix() {
+    	try {
+    		return OMC.MATRIXPOOL.take();
+    	} catch (InterruptedException e) {
+    		e.printStackTrace();
+    		return null;
+    	}
+    }
+    
+    static public void returnMatrix(Matrix m) {
+    	try {
+    		m.reset();
+        	OMC.MATRIXPOOL.put(m);
+    	} catch (InterruptedException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    static public Paint getPaint() {
+    	try {
+    		return OMC.PAINTPOOL.take();
+    	} catch (InterruptedException e) {
+    		e.printStackTrace();
+    		return null;
+    	}
+    }
+    
+    static public void returnPaint(Paint pt) {
+    	try {
+    		pt.reset();
+        	OMC.PAINTPOOL.put(pt);
+    	} catch (InterruptedException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    static public Bitmap getWidgetBMP() {
+    	try {
+    		return OMC.WIDGETPOOL.take();
+    	} catch (InterruptedException e) {
+    		e.printStackTrace();
+    		return null;
+    	}
+    }
+    
+    static public void returnWidgetBMP(Bitmap bmp) {
+    	try {
+    		bmp.eraseColor(Color.TRANSPARENT);
+        	OMC.WIDGETPOOL.put(bmp);
+    	} catch (InterruptedException e) {
+    		e.printStackTrace();
+    	}
+    }
+   
 }
