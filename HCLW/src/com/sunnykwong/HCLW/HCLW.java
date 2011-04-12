@@ -85,6 +85,10 @@ public class HCLW extends Application {
 	static int SCRNDPI;
 	static int YOFFSET;
 
+	static final int SPARKEFFECTCOLOR = Color.parseColor("#FFACACAC");
+	static final int SEARCHLIGHTEFFECTCOLOR = Color.parseColor("#441B1939");
+	static int DEFAULTEFFECTCOLOR = Color.parseColor("#051b1939");
+
 	static public final float LDPISCALEX=0.2500f, LDPISCALEY=0.2222f;
 	static public final float MDPISCALEX=.3333f, MDPISCALEY=.3333f;
 	static public final float HDPISCALEX=.5000f, HDPISCALEY=0.5930f;
@@ -198,6 +202,7 @@ public class HCLW extends Application {
 		HCLW.PaintBg.setColor(Color.WHITE);
 		HCLW.PaintMid.setColor(Color.BLACK);
 		HCLW.PaintMid.setAlpha(255);
+		HCLW.PaintMid.setFilterBitmap(true);
 		HCLW.PaintFlare.setColor(Color.WHITE);
 		HCLW.PaintFg.setColor(Color.BLUE);
 		HCLW.PaintFg.setDither(true);

@@ -211,7 +211,7 @@ public class HCLWService extends WallpaperService  {
                 		HCLW.OFFSETTHISFRAME = HCLW.xPixels;
                 	}
                 	drawFlares(c, HCLW.OFFSETTHISFRAME);
-                  drawTouchPoint(c, HCLW.OFFSETTHISFRAME);
+                  //drawTouchPoint(c, HCLW.OFFSETTHISFRAME);
                 }
             } finally {
                 if (c != null) holder.unlockCanvasAndPost(c);
@@ -229,20 +229,31 @@ public class HCLWService extends WallpaperService  {
 
         	// Draw the "Channels" on the bottom.
         	// Default to channel bkgd (white for Sparks).
+//     		if (HCLW.PREFS.getBoolean("SparkEffect", false)) {
+//    			c.drawColor(Color.parseColor("#FFACACAC"));
+//    			HCLW.BUFFER.eraseColor(Color.TRANSPARENT);
+//    		} else if (HCLW.PREFS.getBoolean("Searchlight", false)) { 
+//    			HCLW.BUFFERCANVAS.drawColor(Color.parseColor("#441b1939"));
+//    		} else {
+//
+//        		//Trail Length is an optical illusion actually driven by
+//    			//The opacity of each frame's screen erase
+//    			try {
+//    				HCLW.BUFFERCANVAS.drawColor(Color.parseColor(HCLW.PREFS.getString("TrailLength", "#051b1939")));
+//    			} catch (Exception e) {
+//    				HCLW.BUFFERCANVAS.drawColor(Color.parseColor("#051b1939"));
+//    			}
+//    		}
     		if (HCLW.PREFS.getBoolean("SparkEffect", false)) {
-    			c.drawColor(Color.parseColor("#FFACACAC"));
+    			c.drawColor(HCLW.SPARKEFFECTCOLOR);
     			HCLW.BUFFER.eraseColor(Color.TRANSPARENT);
     		} else if (HCLW.PREFS.getBoolean("Searchlight", false)) { 
-    			HCLW.BUFFERCANVAS.drawColor(Color.parseColor("#441b1939"));
+    			HCLW.BUFFERCANVAS.drawColor(HCLW.SEARCHLIGHTEFFECTCOLOR);
     		} else {
 
         		//Trail Length is an optical illusion actually driven by
     			//The opacity of each frame's screen erase
-    			try {
-    				HCLW.BUFFERCANVAS.drawColor(Color.parseColor(HCLW.PREFS.getString("TrailLength", "#051b1939")));
-    			} catch (Exception e) {
-    				HCLW.BUFFERCANVAS.drawColor(Color.parseColor("#051b1939"));
-    			}
+    			HCLW.BUFFERCANVAS.drawColor(HCLW.DEFAULTEFFECTCOLOR);
     		}
         	
         	// if Flares are to be above surface, draw the "Surface" now (and skip the "middle" mask).

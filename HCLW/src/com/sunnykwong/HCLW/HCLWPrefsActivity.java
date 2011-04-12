@@ -7,6 +7,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnKeyListener;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
@@ -236,7 +237,9 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     }
     @Override
     protected void onPause() {
-    	((HCLW)getApplication()).countFlareColors();
+		HCLW.DEFAULTEFFECTCOLOR = Color.parseColor(HCLW.PREFS.getString("TrailLength", "#051b1939"));
+
+		((HCLW)getApplication()).countFlareColors();
     	HCLW.FPS = Integer.parseInt(HCLW.PREFS.getString("FrameRates", "25"));
     	//Translate Changes
     	String sLAF = HCLW.PREFS.getString("HCLWLAF", "Racing Flares");
