@@ -134,6 +134,7 @@ public class OMC extends Application {
     static HashMap<String, Bitmap> BMPMAP;
     static Map<String, JSONObject> THEMEMAP;
     static HashMap<Bitmap, Canvas> BMPTOCVAS;
+    static HashMap<Integer, Bitmap> WIDGETBMPMAP;
     
     static OMCConfigReceiver cRC;
 	static OMCAlarmReceiver aRC;
@@ -174,9 +175,9 @@ public class OMC extends Application {
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
     static Notification FGNOTIFICIATION;
     
-    static final ArrayBlockingQueue<Matrix> MATRIXPOOL = new ArrayBlockingQueue<Matrix>(3);
-    static final ArrayBlockingQueue<Paint> PAINTPOOL = new ArrayBlockingQueue<Paint>(4);
-    static final ArrayBlockingQueue<Bitmap> WIDGETPOOL = new ArrayBlockingQueue<Bitmap>(2);
+    static final ArrayBlockingQueue<Matrix> MATRIXPOOL = new ArrayBlockingQueue<Matrix>(2);
+    static final ArrayBlockingQueue<Paint> PAINTPOOL = new ArrayBlockingQueue<Paint>(2);
+    static final ArrayBlockingQueue<Bitmap> WIDGETPOOL = new ArrayBlockingQueue<Bitmap>(1);
     
     static final Bitmap ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
 
@@ -284,7 +285,7 @@ public class OMC extends Application {
 		OMC.BMPMAP = new HashMap<String, Bitmap>(16);
 		OMC.THEMEMAP=Collections.synchronizedMap(new HashMap<String, JSONObject>(3));
 		OMC.BMPTOCVAS = new HashMap<Bitmap, Canvas>(16);
-		
+		OMC.WIDGETBMPMAP = new HashMap<Integer, Bitmap>(3);
 		
 		OMC.STRETCHINFO = null;
 		
@@ -1000,7 +1001,12 @@ public class OMC extends Application {
 				//Unknown - do nothing
 			}
 		} else if (sToken.equals("ompc")) {
-			result = OMC.PREFS.getString("ompc_"+st.nextToken(), "Unavail.");
+//			OMC.PREFS.edit()
+//			.putInt("ompc_battlevel", intent.getIntExtra("level", 0))
+//			.putInt("ompc_battscale", intent.getIntExtra("scale", 100))
+//			.putInt("ompc_battpercent", intent.getIntExtra("level", 0)/intent.getIntExtra("scale", 100))
+//			.commit();
+			result = String.valueOf(OMC.PREFS.getInt("ompc_"+st.nextToken(), 99));
 		} else if (sToken.equals("circle")) {
 			// Specifies a point at angle/radius from point.
 			int iOriginVal = Integer.parseInt(st.nextToken());
@@ -1314,10 +1320,12 @@ public class OMC extends Application {
     	purgeBitmapCache();
     	purgeImportCache();
     	purgeTypefaceCache();
+    	OMC.WIDGETBMPMAP.clear();
     	super.onLowMemory();
     }
 
     static public Matrix getMatrix() {
+    	//System.out.println("GETMATRIX");
     	try {
     		return OMC.MATRIXPOOL.take();
     	} catch (InterruptedException e) {
@@ -1336,6 +1344,7 @@ public class OMC extends Application {
     }
     
     static public Paint getPaint() {
+    	//System.out.println("GETPAINT");
     	try {
     		return OMC.PAINTPOOL.take();
     	} catch (InterruptedException e) {
@@ -1354,6 +1363,7 @@ public class OMC extends Application {
     }
     
     static public Bitmap getWidgetBMP() {
+    	//System.out.println("GETWIDGETBMP");
     	try {
     		return OMC.WIDGETPOOL.take();
     	} catch (InterruptedException e) {

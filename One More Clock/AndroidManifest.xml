@@ -10,7 +10,6 @@
     <application android:name="com.sunnykwong.omc.OMC" 
     android:icon="@drawable/clockicon" 
     android:label="@string/app_name"> 
-    	<provider android:name="com.sunnykwong.omc.OMCProvider" android:authorities="com.sunnykwong.omc"/>
         <activity android:name="com.sunnykwong.omc.OMCPrefActivity"
                   android:screenOrientation="nosensor"
                   android:label="@string/app_name">

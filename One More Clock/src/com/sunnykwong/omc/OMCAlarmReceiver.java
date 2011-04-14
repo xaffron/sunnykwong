@@ -65,7 +65,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// If the screen is on, honor the update frequency.
 		if (OMC.SCREENON) {
 			// Prevent abusive updates - update no more than every 5 secs.
-			if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 5000) {
+			if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 5000 && !action.equals(Intent.ACTION_CONFIGURATION_CHANGED)) {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Abusive; aborting update " + System.currentTimeMillis() + " " + OMC.LASTUPDATEMILLIS);
 				return;
 			}

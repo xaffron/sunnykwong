@@ -21,6 +21,10 @@ public class ClockWidget4x4 extends AppWidgetProvider {
 			//Remove Prefs
 			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Widget","Removed Widget #" + appWidgetIds[i]);
 			OMC.removePrefs(appWidgetIds[i]);
+	    	if (OMC.WIDGETBMPMAP.containsKey(appWidgetIds[i])) {
+	    		if (!OMC.WIDGETBMPMAP.get(appWidgetIds[i]).isRecycled()) OMC.WIDGETBMPMAP.get(appWidgetIds[i]).recycle();
+	    		OMC.WIDGETBMPMAP.remove(appWidgetIds[i]);
+	    	}
 		}
 	}
 

@@ -24,6 +24,7 @@ import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 import android.graphics.RectF;
+import android.graphics.Rect;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,6 +33,7 @@ import org.json.JSONArray;
 import android.graphics.Matrix;
 import android.graphics.Bitmap.CompressFormat;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class OMCWidgetDrawEngine {
 //	static final String TESTTHEME="IronIndicant";
@@ -50,6 +52,15 @@ public class OMCWidgetDrawEngine {
 		final int N = aWM.getAppWidgetIds(cName)==null? 0: aWM.getAppWidgetIds(cName).length;
 
 		for (int i=0; i<N; i++) {
+             if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i])) {
+            	// Blit existing bitmap over first
+            	RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
+                rv.setImageViewBitmap(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME),
+                		OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
+                aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);                    
+                rv = null;
+              }
+
 			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i], cName);
 		}
 	}
@@ -89,7 +100,31 @@ public class OMCWidgetDrawEngine {
 		//look for this size's custom scaling info
 		OMC.STRETCHINFO = oTheme.optJSONObject("customscaling");
 		String sWidgetSize = cName.toShortString().substring(cName.toShortString().length()-4,cName.toShortString().length()-1);
-
+		int thisWidgetWidth = 480;
+		int thisWidgetHeight = 480;
+		if (sWidgetSize.equals("4x2")) {
+			thisWidgetWidth = 480;
+			thisWidgetHeight = 240;
+		} else if (sWidgetSize.equals("4x1")) {
+			thisWidgetWidth = 480;
+			thisWidgetHeight = 120;
+		} else if (sWidgetSize.equals("3x3")) {
+			thisWidgetWidth = 360;
+			thisWidgetHeight = 360;
+		} else if (sWidgetSize.equals("3x1")) {
+			thisWidgetWidth = 360;
+			thisWidgetHeight = 120;
+		} else if (sWidgetSize.equals("2x2")) {
+			thisWidgetWidth = 240;
+			thisWidgetHeight = 240;
+		} else if (sWidgetSize.equals("2x1")) {
+			thisWidgetWidth = 240;
+			thisWidgetHeight = 120;
+		} else if (sWidgetSize.equals("1x3")) {
+			thisWidgetWidth = 120;
+			thisWidgetHeight = 360;
+		}
+		
 		//if no custom scaling info present, use default stretch info
 		boolean bDefaultScaling=false;
 		if (OMC.STRETCHINFO==null) {
@@ -181,69 +216,70 @@ public class OMCWidgetDrawEngine {
 				e.printStackTrace();
 			}
 		}
-		final Bitmap finalbitmap = OMC.getWidgetBMP();
-		finalbitmap.
-		// Crop, Scale & Rotate the clock first
+
+		final Bitmap finalbitmap = OMC.WIDGETBMPMAP.containsKey(appWidgetId) ?
+				OMC.WIDGETBMPMAP.get(appWidgetId) :
+					Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,Bitmap.Config.ARGB_4444);
+		OMC.WIDGETBMPMAP.put(appWidgetId, finalbitmap);
 		
+		finalbitmap.setDensity(DisplayMetrics.DENSITY_HIGH);
+		finalbitmap.eraseColor(Color.TRANSPARENT);
+
+		Canvas finalcanvas = OMC.BMPTOCVAS.get(finalbitmap);
+		if (finalcanvas==null) {
+			finalcanvas = new Canvas(finalbitmap);
+			OMC.BMPTOCVAS.put(finalbitmap, finalcanvas);
+		}
+
 		int width = bitmap.getWidth()- OMC.STRETCHINFO.optInt("left_crop") - OMC.STRETCHINFO.optInt("right_crop"); 
 		int height = bitmap.getHeight() - OMC.STRETCHINFO.optInt("top_crop") - OMC.STRETCHINFO.optInt("bottom_crop"); 
 		float hzStretch = (float)OMC.STRETCHINFO.optDouble("horizontal_stretch");
 		float vtStretch = (float)OMC.STRETCHINFO.optDouble("vertical_stretch");
-
+		double dScaledWidth = width * hzStretch;
+		double dScaledHeight = height * vtStretch;
+		double rot = (OMC.STRETCHINFO.optDouble("cw_rotate"));
+		double rotRad = rot*Math.PI/180d;
+		
+		double rotHeight = Math.abs(dScaledHeight* Math.cos(rotRad)) + Math.abs(dScaledWidth*Math.sin(rotRad)) ;
+		double rotWidth = Math.abs(dScaledHeight* Math.sin(rotRad)) + Math.abs(dScaledWidth*Math.cos(rotRad));
+		System.out.println("WidgetWidth:" +thisWidgetWidth+ ", WidgetHt:"+thisWidgetHeight);
+		System.out.println("rotWidth:" +rotWidth+ ", rotHt:"+rotHeight);
+		float fFitGraphic = (float) Math.min(thisWidgetWidth/rotWidth, thisWidgetHeight/rotHeight);
+		
+		// Crop, Scale & Rotate the clock first
+		
+		finalcanvas.save();
 		Matrix tempMatrix = OMC.getMatrix();
-		//Use very low res if screen off
-		if (OMC.SCREENON) {
-			tempMatrix.postScale(hzStretch, vtStretch);
-		} else {
-			tempMatrix.postScale(hzStretch/2f, vtStretch/2f);
-		}
-		float rot = ((float)OMC.STRETCHINFO.optDouble("cw_rotate"));
-		int scaledHeight = (int)(height * vtStretch);
-		int scaledWidth = (int)(width * hzStretch); 
+		tempMatrix.postScale(hzStretch, vtStretch);
+		tempMatrix.postTranslate((float)((thisWidgetWidth-dScaledWidth)/2d), (float)((thisWidgetHeight-dScaledHeight)/2d));
+		tempMatrix.postRotate((float)rot, thisWidgetWidth/2f, thisWidgetHeight/2f);
+		tempMatrix.postScale(fFitGraphic, fFitGraphic, thisWidgetWidth/2f, thisWidgetHeight/2f);
 
-		tempMatrix.postRotate(rot, scaledWidth/2f, scaledHeight/2f);
 		
-		final Bitmap croppedScaledBmp;
-		if (OMC.SCREENON) {
-			croppedScaledBmp = Bitmap.createBitmap(bitmap,
-					OMC.STRETCHINFO.optInt("left_crop"), 
-					OMC.STRETCHINFO.optInt("top_crop"), 
-					width, height,
-					tempMatrix, true).copy(Bitmap.Config.ARGB_8888, false);
-			bitmap.recycle();
-			scaledHeight = croppedScaledBmp.getHeight();
-			scaledWidth = croppedScaledBmp.getWidth(); 
-			
-			// Then scale back to a size smaller than the full buffer
-			float factor = Math.min(OMC.WIDGETWIDTH/(float)croppedScaledBmp.getWidth(),OMC.WIDGETHEIGHT/(float)croppedScaledBmp.getHeight());
-			tempMatrix.reset();
-			tempMatrix.postScale(factor, factor, croppedScaledBmp.getWidth()/2f, croppedScaledBmp.getHeight()/2f);
-
-		} else {
-			croppedScaledBmp = Bitmap.createBitmap(bitmap,
-					OMC.STRETCHINFO.optInt("left_crop"), 
-					OMC.STRETCHINFO.optInt("top_crop"), 
-					width, height,
-					tempMatrix, true).copy(Bitmap.Config.ARGB_4444, false);
-			bitmap.recycle();
-			tempMatrix.reset();
-		}
-
-		final Bitmap finalBitmap = Bitmap.createBitmap(croppedScaledBmp,0,0,croppedScaledBmp.getWidth(), croppedScaledBmp.getHeight(),tempMatrix, true);
-
-		try {
-		FileOutputStream fos = new FileOutputStream(OMC.CACHEPATH + appWidgetId +"cache.png");
-		finalBitmap.compress(CompressFormat.PNG, 100, fos);
-		fos.close();
+		Paint pt = OMC.getPaint();
+		pt.setAlpha(255);
+		pt.setAntiAlias(true);
+		pt.setFilterBitmap(true);
+		pt.setDither(true);
 		
+		finalcanvas.setMatrix(tempMatrix);
+		finalcanvas.drawBitmap(Bitmap.createBitmap(bitmap, 
+				(int)(OMC.STRETCHINFO.optInt("left_crop")),
+				(int)(OMC.STRETCHINFO.optInt("top_crop")),
+				width, height),0,0, pt);
+
 		bitmap.recycle();
-		croppedScaledBmp.recycle();
-		finalBitmap.recycle();
+
+		finalcanvas.restore();
+		finalbitmap.prepareToDraw();
 		OMC.returnMatrix(tempMatrix);
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		OMC.returnPaint(pt);
+
+		RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
+		final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
+
+		System.out.println("finalbitmap width:" + finalbitmap.getWidth() + " ht:" + finalbitmap.getHeight());
+		rv.setImageViewBitmap(iViewID, finalbitmap);
 		
 		// Do some fancy footwork here and adjust the average lag (so OMC's slowness is less apparent)
 		// We will start at least 200 millis early.
@@ -252,16 +288,16 @@ public class OMCWidgetDrawEngine {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Engine","Calc. lead time for next tick: " + OMC.LEASTLAGMILLIS + "ms");
 
 		// Blit the buffer over
-		RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
-		final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
-    	rv.setImageViewUri(iViewID, Uri.parse("content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+appWidgetId));
+		appWidgetManager.updateAppWidget(appWidgetId, rv);
+		rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
+		
 		
     	// Now for overlay URIs
 		OMC.OVERLAYURIS = new String[9];
 		JSONObject temp = oTheme.optJSONObject("customURIs");
 		if (temp == null) {
 			//No custom URIs - always go to options screen
-        	Intent intent = new Intent(context, OMCPrefActivity.class);
+        	Intent intent = new Intent(OMC.CONTEXT, OMCPrefActivity.class);
         	intent.setData(Uri.parse("omc:"+appWidgetId));
 
 			for (int i=0; i<9; i++){

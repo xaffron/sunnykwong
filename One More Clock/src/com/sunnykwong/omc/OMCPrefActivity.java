@@ -444,6 +444,11 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", true)? true : false;
 		OMC.UPDATEFREQ = Integer.parseInt(OMC.PREFS.getString("sUpdateFreq", "30")) * 1000;
     	OMC.setPrefs(OMCPrefActivity.appWidgetID);
+    	if (OMC.WIDGETBMPMAP.containsKey(OMCPrefActivity.appWidgetID)) {
+    		if (!OMC.WIDGETBMPMAP.get(OMCPrefActivity.appWidgetID).isRecycled()) OMC.WIDGETBMPMAP.get(OMCPrefActivity.appWidgetID).recycle();
+        	OMC.WIDGETBMPMAP.remove(OMCPrefActivity.appWidgetID);
+    	}
+		
 
     	OMC.toggleWidgets(getApplicationContext());
 

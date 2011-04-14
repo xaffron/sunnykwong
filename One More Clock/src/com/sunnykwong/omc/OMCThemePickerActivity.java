@@ -426,9 +426,12 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	} else {
         		((TextView)ll.findViewById(getResources().getIdentifier("ThemeTweakedFlag", "id", OMC.PKGNAME))).setText("");
         	}
+        	BitmapFactory.Options bo = new BitmapFactory.Options();
+        	bo.inDither=true;
+        	bo.inPreferredConfig = Bitmap.Config.ARGB_4444;
     		((ImageView)ll.findViewById(getResources().getIdentifier("ThemePreview", "id", OMC.PKGNAME)))
     				.setImageBitmap(BitmapFactory.decodeFile(
-    				OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + mThemes.get(position) +"/000preview.jpg"));
+    				OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + mThemes.get(position) +"/000preview.jpg",bo));
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeCredits", "id", OMC.PKGNAME))).setText(mCreds.get(mThemes.get(position)));
             return ll;
         }
