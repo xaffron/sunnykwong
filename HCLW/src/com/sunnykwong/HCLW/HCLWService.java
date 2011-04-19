@@ -1,11 +1,14 @@
 package com.sunnykwong.HCLW;
 
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.ListView.FixedViewInfo;
+import android.widget.Toast;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -183,6 +186,11 @@ public class HCLWService extends WallpaperService  {
                 HCLW.TouchY = -1;
                 HCLW.LightningFactor=1f;
             }
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+            	HCLW.UpX = event.getX();
+            	HCLW.UpY = event.getY();
+            	easteregg();
+            }
             super.onTouchEvent(event);
         }
 
@@ -195,38 +203,62 @@ public class HCLWService extends WallpaperService  {
         void drawFrame() {
             final SurfaceHolder holder = getSurfaceHolder();
 
+//    		HCLW.RENDERWHILESWIPING = HCLW.PREFS.getBoolean("RenderWhileSwiping", true);
+
             if (HCLW.TRIALOVERTIME!=0l && System.currentTimeMillis()>HCLW.TRIALOVERTIME) {
             	HCLW.resetTheme();
             }
-            
+
+            // Reschedule the next redraw
+            // If swiping, render at lower framerate
+            boolean bFullRender = true;
+            if (!HCLW.RENDERWHILESWIPING && Math.abs(HCLW.OFFSETTHISFRAME - HCLW.xPixels) > HCLW.SCRNHEIGHT/10 ) {
+            	bFullRender=false;
+            } else {
+            }
+            if (HCLW.FIXEDOFFSET!=-1) {
+            	HCLW.OFFSETTHISFRAME=-HCLW.FIXEDOFFSET;
+            } else {
+            	HCLW.OFFSETTHISFRAME = HCLW.xPixels;
+            }
             //  Redraw
             Canvas c = null;
             try {
-                c = holder.lockCanvas();
-                if (c != null) {
-                    // draw something
-                	if (HCLW.FIXEDOFFSET!=-1) {
-                		HCLW.OFFSETTHISFRAME=-HCLW.FIXEDOFFSET;
-                	} else {
-                		HCLW.OFFSETTHISFRAME = HCLW.xPixels;
-                	}
-                	drawFlares(c, HCLW.OFFSETTHISFRAME);
-                  //drawTouchPoint(c, HCLW.OFFSETTHISFRAME);
-                }
+            	Bitmap bmp = drawFlares(HCLW.OFFSETTHISFRAME, true);
+            	c = holder.lockCanvas();
+            	if (c != null) {
+            		// draw something
+            		c.drawBitmap(bmp,0,0,HCLW.PaintBuf);
+            	//	c.drawBitmap(HCLW.FG, HCLW.OFFSETTHISFRAME,0,HCLW.PaintBuf);
+            	}
             } finally {
-                if (c != null) holder.unlockCanvasAndPost(c);
+            	if (c != null) holder.unlockCanvasAndPost(c);
             }
 
-            // Reschedule the next redraw
-            HCLW.HANDLER.removeCallbacks(mDrawFlare);
-        	HCLW.HANDLER.postDelayed(mDrawFlare, 1000 / HCLW.FPS);
-
+            if (bFullRender) {
+            	HCLW.HANDLER.removeCallbacks(mDrawFlare);
+            	HCLW.HANDLER.postDelayed(mDrawFlare, 1000 / HCLW.FPS);
+            } else {
+            	HCLW.HANDLER.removeCallbacks(mDrawFlare);
+            	HCLW.HANDLER.postDelayed(mDrawFlare, 3000 / HCLW.FPS);
+            }
         }
 
-         void drawFlares(final Canvas c, final int iOffset) {
+         Bitmap drawFlares(final int iOffset, final boolean bFullRender) {
+        	 
+        	 final Canvas c = HCLW.SCRNBUFFERCANVAS;
         	 HCLW.srcFullRect.offsetTo(-iOffset,-HCLW.YOFFSET);
         	 HCLW.srcFlareRect.offsetTo((int)(-iOffset*640f/HCLW.LWPWIDTH),0);
 
+        	 if (!bFullRender) {
+         		HCLW.PaintFg.setAntiAlias(false);
+        		HCLW.PaintFg.setDither(false);
+        		HCLW.PaintFg.setFilterBitmap(false);
+     			c.drawBitmap(HCLW.FG, HCLW.srcFullRect, HCLW.tgtFullRect, HCLW.PaintFg);
+     			HCLW.PaintFg.setDither(true);
+     			HCLW.PaintFg.setFilterBitmap(true);
+             	return HCLW.SCRNBUFFER;
+             }
         	// Draw the "Channels" on the bottom.
         	// Default to channel bkgd (white for Sparks).
 //     		if (HCLW.PREFS.getBoolean("SparkEffect", false)) {
@@ -359,27 +391,101 @@ public class HCLWService extends WallpaperService  {
         			c.drawBitmap(HCLW.FG, HCLW.srcFullRect, HCLW.tgtFullRect, HCLW.PaintFg);
         		}
         	}
-
+        	return HCLW.SCRNBUFFER;
         }
 
+        /* Utility Function (linear interpolation). */
     	public float floatInterpolate (float n1, float n2, float n3, float gradient) {
     		if (gradient > 0.5f) return (n2+ (n3-n2)*(gradient-0.5f) * 2);
     		else return (n1 + (n2-n1) * gradient * 2);
     	}
 
         /*
-         * Draw a flare around the current touch point.
+         * Easter Egg fun.
          */
-        void drawTouchPoint(final Canvas c, final int iOffset) {
+        void easteregg() {
+        	if (HCLW.PREFS.getBoolean("Egg", false)) return;
+        	if (HCLW.BONUSPHRASE.length()>15) HCLW.BONUSPHRASE="";
         	if (System.currentTimeMillis()<HCLW.IGNORETOUCHUNTIL) return;
-//            if (HCLW.TouchX >=0 && HCLW.TouchY >= 0) {
-//            	HCLW.TEMPMATRIX2.reset();
-//            	float zFactor = ((float)Math.random()*0.5f + 0.5f);
-//            	HCLW.TEMPMATRIX2.postScale(zFactor, zFactor);
-//            	HCLW.TEMPMATRIX2.postTranslate(HCLW.TouchX-HCLW.FLARE[0].getWidth()/2f*zFactor, 
-//            			HCLW.TouchY-HCLW.FLARE[0].getHeight()/2f*zFactor);
-//        		c.drawBitmap(HCLW.FLARE[0], HCLW.TEMPMATRIX2, HCLW.PaintFlare);
-//            }
+        	switch ((int)HCLW.UpY * 5 / HCLW.SCRNHEIGHT) {
+        		case 0:
+        			switch ((int)HCLW.UpX * 5 / HCLW.SCRNWIDTH) {
+        			case 0:
+        				Log.i("HCLW","Reset");
+        				HCLW.BONUSPHRASE="";
+        				break;
+        			case 2:
+        				Log.i("HCLW","E");
+        				HCLW.BONUSPHRASE+="E";
+        				break;
+        			case 4:
+        				Log.i("HCLW","A");
+        				HCLW.BONUSPHRASE+="A";
+        				break;
+        			default:	
+        			}
+        			break;
+        		case 2:
+        			switch ((int)HCLW.UpX * 5 / HCLW.SCRNWIDTH) {
+        			case 0:
+        				Log.i("HCLW","S");
+        				HCLW.BONUSPHRASE+="S";
+        				break;
+        			case 2:
+        				Log.i("HCLW","T");
+        				HCLW.BONUSPHRASE+="T";
+        				break;
+        			case 4:
+        				Log.i("HCLW","R");
+        				HCLW.BONUSPHRASE+="R";
+        				break;
+        			default:	
+        			}
+        			break;
+        		case 4:
+        			switch ((int)HCLW.UpX * 5 / HCLW.SCRNWIDTH) {
+        			case 0:
+        				Log.i("HCLW","G");
+        				HCLW.BONUSPHRASE+="G";
+        				break;
+        			case 2:
+        				Log.i("HCLW","<space>");
+        				HCLW.BONUSPHRASE+=" ";
+        				break;
+        			case 4:
+        				Log.i("HCLW","C");
+        				HCLW.BONUSPHRASE+="C";
+        				break;
+        			default:	
+        			}
+        			break;
+        		default:
+        	}
+        	if (HCLW.BONUSPHRASE.equals("EASTER EGG")) {
+        		HCLW.BONUSPHRASE="";
+    			HCLW.PREFS.edit().putBoolean("Egg", true).commit();
+	    		Intent it = new Intent(getApplicationContext(), HCLWPrefsActivity.class);
+	    		android.app.PendingIntent pi = PendingIntent.getActivity(
+	    				getApplicationContext(), 
+	    				0, 
+	    				it, 
+	    				Intent.FLAG_ACTIVITY_NEW_TASK) ;
+	    		
+	    		android.app.Notification note =  new android.app.Notification(
+        				R.drawable.icon,
+        				"HCLW Easter Egg Activated!",
+        				System.currentTimeMillis()
+        				);
+	    		note.flags = note.flags|android.app.Notification.FLAG_AUTO_CANCEL;
+
+	    		note.setLatestEventInfo(getApplicationContext(), 
+	    				"Honeycomb Live Wallpaper", 
+	    				"Tap to download Easter Egg!", 
+	    				pi);
+
+	    		android.app.NotificationManager mNotificationManager = (android.app.NotificationManager) getSystemService(android.content.Context.NOTIFICATION_SERVICE);
+        		mNotificationManager.notify(0,note);
+        	}
             HCLW.IGNORETOUCHUNTIL=System.currentTimeMillis()+50;
         }
 

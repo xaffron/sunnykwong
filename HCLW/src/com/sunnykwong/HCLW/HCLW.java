@@ -43,6 +43,8 @@ public class HCLW extends Application {
 	static final boolean DEBUG = false;
 	static final boolean FREEEDITION = false;
 	static boolean SHOWHELP=true;
+	static boolean RENDERWHILESWIPING=true;
+	static String BONUSPHRASE="";
 
 	static boolean TOPSURF_DITHER, TOPSURF_32BIT, PAINTFG_DITHER, PAINTFG_AA, PAINTFG_FILTERBMP, LWPSURF_32BIT, FLARE_USEHUES;
 	static String TOPSURF_FILE, FLARE_FILE;
@@ -56,7 +58,9 @@ public class HCLW extends Application {
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
 		"Nemuro and Xaffron present their impression of the Honeycomb Live Wallpaper!  This Live Wallpaper is light on CPU usage and has been tested to perform on phones from the G1 to the HD2.  Email either one of us for feedback and issues, and we will resolve them ASAP!",
-		"v1.0.8 of this wallpaper cleans up any remaining pixellation issues.  If the wallpaper still does not look right on your screen, just let us know!",
+		"v1.1.0 adds a fun easter egg to the wallpaper.  See if you can figure it out and unlock a fun extra feature!",
+		"Lightning frequency is adjustable in the preferences.  If you find the wallpaper too flashy, you can disable it completely.",
+		"v1.0.8 of this wallpaper cleans up any remaining pixellation issues.  If the wallpaper still does not look right on your screen, just let us know.",
 		"Try changing the 'Target Framerate' setting if your homescreen is choppy.  Remember, higher is not always better, even for fast devices! Your homescreen app also has a lot to do with it.",
 		"The free version features the basic 'Racing Flares' look.  The premium looks are also available as one-minute trials.",
 		"Like this app?  Check out Xaffron's One More Clock Collection for clock widgets that go well with your new live wallpaper!",
@@ -65,7 +69,9 @@ public class HCLW extends Application {
 		"The Frantic! flare frequency is not for everyone, but makes for great fireworks... try it out!",
 		"Did you know that there is a support thread on XDA-Developers?  I monitor questions on that board on a daily basis.  http://forum.xda-developers.com/showthread.php?t=975413"
 	};
-
+	
+	static final String EGG = "Congratulations on unlocking the Easter Egg!  There is now a 'Reverse Flow' option in the preferences screen; all four looks, premium and basic, work with the reverse flow.  Thanks again for playing... and please remember to visit our thread on XDA Developers for more news! http://forum.xda-developers.com/showthread.php?t=975413";
+	static boolean REVERSE = false;
 	// gold: http://farm6.static.flickr.com/5254/5496531931_92cb027088_b.jpg
 	// red: http://farm6.static.flickr.com/5217/5497124656_bb551e9cb1_b.jpg
 	
@@ -158,12 +164,14 @@ public class HCLW extends Application {
 		-1,-1,-1,-1,
 		-1,-1,-1,-1,-1};
 
-	static final Paint PaintFlare = new Paint(), PaintBg = new Paint(), PaintMid = new Paint(), PaintFg =  new Paint();
+	static final Paint PaintFlare = new Paint(), PaintBg = new Paint(), PaintMid = new Paint(), PaintFg =  new Paint(), PaintBuf = new Paint();
     static Rect srcFullRect, tgtFullRect, srcFlareRect, tgtFlareRect;
 	static final Matrix TEMPMATRIX = new Matrix(), TEMPMATRIX2 = new Matrix();
     static public int xPixels;
     static public float TouchX = -1;
     static public float TouchY = -1;
+    static public float UpX = -1;
+    static public float UpY = -1;
     static public long StartTime;
     static public float CenterX;
     static public float CenterY;
@@ -181,6 +189,9 @@ public class HCLW extends Application {
     static public Bitmap BUFFER;
     static public Canvas BUFFERCANVAS;
     
+    static public Bitmap SCRNBUFFER;
+    static public Canvas SCRNBUFFERCANVAS;
+    
     static public boolean Visible;
 
     static public Intent HCLWMARKETINTENT;
@@ -193,12 +204,14 @@ public class HCLW extends Application {
 		PKGNAME = getPackageName();
 		PREFS = PreferenceManager.getDefaultSharedPreferences(this);
 		HCLW.SHOWHELP = PREFS.getBoolean("showhelp", true);
-
+		if (!PREFS.contains("Egg")){
+			PREFS.edit().putBoolean("Egg", false).commit();
+		}
 		if (!PREFS.contains("FrameRates")) {
 			PREFS.edit().putString("FrameRates", "25").commit();
 		}
 		HCLW.FPS = Integer.parseInt(PREFS.getString("FrameRates", "25"));
-		
+		HCLW.RENDERWHILESWIPING = PREFS.getBoolean("RenderWhileSwiping", true);
 		HCLW.PaintBg.setColor(Color.WHITE);
 		HCLW.PaintMid.setColor(Color.BLACK);
 		HCLW.PaintMid.setAlpha(255);
@@ -207,6 +220,10 @@ public class HCLW extends Application {
 		HCLW.PaintFg.setColor(Color.BLUE);
 		HCLW.PaintFg.setDither(true);
 		HCLW.PaintFg.setFilterBitmap(true);
+		HCLW.PaintBuf.setColor(Color.BLUE);
+		HCLW.PaintBuf.setDither(true);
+		HCLW.PaintBuf.setFilterBitmap(false);
+		HCLW.PaintBuf.setAntiAlias(true);
 	
 		if (JSON) loadFlaresFromJSON();
 		prepareBitmaps();
@@ -398,7 +415,10 @@ public class HCLW extends Application {
 	public void adjustOrientationOffsets(){
 		HCLW.SCRNWIDTH=getResources().getDisplayMetrics().widthPixels;
 		HCLW.SCRNHEIGHT=getResources().getDisplayMetrics().heightPixels;
-		int Midpoint;
+        HCLW.SCRNBUFFER = Bitmap.createBitmap(HCLW.SCRNWIDTH, HCLW.SCRNHEIGHT, Bitmap.Config.ARGB_8888);
+        HCLW.SCRNBUFFERCANVAS = new Canvas(HCLW.SCRNBUFFER);
+
+        int Midpoint;
 		if (HCLW.SCRNWIDTH < HCLW.SCRNHEIGHT){
 			// Portrait
 	        HCLW.YOFFSET=0;
@@ -440,87 +460,149 @@ public class HCLW extends Application {
 	}
 	
 	public void loadFlaresFromJSON() {
-			try {
-				File f = new File("/mnt/sdcard/hclw_settings.json");
-				// Look in SD path
-				JSONObject oObj;
-				JSONArray oResult;
-				if (f.exists()) {
-					Toast.makeText(this, "hclw_settings.json file found on SD card.  Applying advanced settings...", Toast.LENGTH_LONG).show();
-					BufferedReader in = new BufferedReader(new FileReader(f),8192);
-					StringBuilder sb = new StringBuilder();
-				    char[] buffer = new char[8192];
-				    int iCharsRead = 0;
-				    while ((iCharsRead=in.read(buffer))!= -1){
-				    	sb.append(buffer, 0, iCharsRead);
-				    }
-				    in.close();
-				    oObj = new JSONObject(sb.toString());
-					oResult = oObj.getJSONArray("flarepositions");
-					sb.setLength(0);
-					TOPSURF_FILE = oObj.getString("topsurface_file");
-					if (!new File(TOPSURF_FILE).exists()) TOPSURF_FILE=null;
-					FLARE_FILE = oObj.getString("flare_file");
-					if (!new File(FLARE_FILE).exists()) FLARE_FILE=null;
-				} else {
-					// Look in assets
-					InputStreamReader in = new InputStreamReader(this.getAssets().open("hclw_settings.json"));
-					StringBuilder sb = new StringBuilder();
-				    char[] buffer = new char[8192];
-				    int iCharsRead = 0;
-				    while ((iCharsRead=in.read(buffer))!= -1){
-				    	sb.append(buffer, 0, iCharsRead);
-				    }
-				    in.close();
-				    oObj = new JSONObject(sb.toString());
-					oResult = oObj.getJSONArray("flarepositions");
-					sb.setLength(0);
-					TOPSURF_FILE = null;
-					FLARE_FILE = null;
-				}
-				
-				LWPSURF_32BIT = oObj.getBoolean("livewallpaper_surface_32bit");
-				FIXEDOFFSET = oObj.getInt("lwp_fixed_offset");
-				PAINTFG_DITHER = oObj.getBoolean("paint_dither");
-				PAINTFG_AA = oObj.getBoolean("paint_antialias");
-				PAINTFG_FILTERBMP = oObj.getBoolean("paint_filterbitmap");
-				TOPSURF_HUE = Color.parseColor(oObj.getString("topsurface_hue"));
-				TOPSURF_DITHER = oObj.getBoolean("topsurface_dither");
-				TOPSURF_32BIT = oObj.getBoolean("topsurface_32bit");
-				FLARE_USEHUES = oObj.getBoolean("flare_use_hues");
-				DEFAULTBRIGHTNESS = oObj.getInt("lwp_baseline_brightness");
-				FLAREHUES = new int[5];
-				for (int i=0;i<5;i++) {
-					FLAREHUES[i] = Color.parseColor(oObj.getJSONArray("flare_hues_WRGBY").getString(i));
-				}
-				oObj=null;
-				
-				// now read flare data to our format
-				for (int i=0;i<12;i++) {
-					JSONObject flare = oResult.getJSONObject(i);
-					HCLW.FLAREPATHINITX[i] = (float)(flare.optJSONArray("initial").getDouble(0));
-					HCLW.FLAREPATHINITY[i] = (float)(flare.optJSONArray("initial").getDouble(1));
-					HCLW.FLAREPATHINITZ[i] = (float)(flare.optJSONArray("initial").getDouble(2));
-
-					HCLW.FLAREPATHMIDX[i] = (float)(flare.optJSONArray("middle").getDouble(0));
-					HCLW.FLAREPATHMIDY[i] = (float)(flare.optJSONArray("middle").getDouble(1));
-					HCLW.FLAREPATHMIDZ[i] = (float)(flare.optJSONArray("middle").getDouble(2));
-
-					HCLW.FLAREPATHFINALX[i] = (float)(flare.optJSONArray("final").getDouble(0));
-					HCLW.FLAREPATHFINALY[i] = (float)(flare.optJSONArray("final").getDouble(1));
-					HCLW.FLAREPATHFINALZ[i] = (float)(flare.optJSONArray("final").getDouble(2));
-					
-					HCLW.MINFLARESPEEDS[i] = (float)(flare.optDouble("minimumspeed"));
-					HCLW.FLAREACCEL[i] = (float)(flare.optDouble("accel"));
-					
-				}
-				oResult = null;
-//				prepareBitmaps();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				//System.gc();
+		try {
+			File f = new File("/mnt/sdcard/hclw_settings.json");
+			// Look in SD path
+			JSONObject oObj;
+			JSONArray oResult;
+			if (f.exists()) {
+				Toast.makeText(this, "hclw_settings.json file found on SD card.  Applying advanced settings...", Toast.LENGTH_LONG).show();
+				BufferedReader in = new BufferedReader(new FileReader(f),8192);
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[8192];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+			    oObj = new JSONObject(sb.toString());
+				oResult = oObj.getJSONArray("flarepositions");
+				sb.setLength(0);
+				TOPSURF_FILE = oObj.getString("topsurface_file");
+				if (!new File(TOPSURF_FILE).exists()) TOPSURF_FILE=null;
+				FLARE_FILE = oObj.getString("flare_file");
+				if (!new File(FLARE_FILE).exists()) FLARE_FILE=null;
+			} else {
+				// Look in assets
+				InputStreamReader in = new InputStreamReader(this.getAssets().open("hclw_settings.json"));
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[8192];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+			    oObj = new JSONObject(sb.toString());
+				oResult = oObj.getJSONArray("flarepositions");
+				sb.setLength(0);
+				TOPSURF_FILE = null;
+				FLARE_FILE = null;
 			}
+			
+			LWPSURF_32BIT = oObj.getBoolean("livewallpaper_surface_32bit");
+			FIXEDOFFSET = oObj.getInt("lwp_fixed_offset");
+			PAINTFG_DITHER = oObj.getBoolean("paint_dither");
+			PAINTFG_AA = oObj.getBoolean("paint_antialias");
+			PAINTFG_FILTERBMP = oObj.getBoolean("paint_filterbitmap");
+			TOPSURF_HUE = Color.parseColor(oObj.getString("topsurface_hue"));
+			TOPSURF_DITHER = oObj.getBoolean("topsurface_dither");
+			TOPSURF_32BIT = oObj.getBoolean("topsurface_32bit");
+			FLARE_USEHUES = oObj.getBoolean("flare_use_hues");
+			DEFAULTBRIGHTNESS = oObj.getInt("lwp_baseline_brightness");
+			FLAREHUES = new int[5];
+			for (int i=0;i<5;i++) {
+				FLAREHUES[i] = Color.parseColor(oObj.getJSONArray("flare_hues_WRGBY").getString(i));
+			}
+			oObj=null;
+			
+			// now read flare data to our format
+			for (int i=0;i<12;i++) {
+				JSONObject flare = oResult.getJSONObject(i);
+				HCLW.FLAREPATHINITX[i] = (float)(flare.optJSONArray("initial").getDouble(0));
+				HCLW.FLAREPATHINITY[i] = (float)(flare.optJSONArray("initial").getDouble(1));
+				HCLW.FLAREPATHINITZ[i] = (float)(flare.optJSONArray("initial").getDouble(2));
+
+				HCLW.FLAREPATHMIDX[i] = (float)(flare.optJSONArray("middle").getDouble(0));
+				HCLW.FLAREPATHMIDY[i] = (float)(flare.optJSONArray("middle").getDouble(1));
+				HCLW.FLAREPATHMIDZ[i] = (float)(flare.optJSONArray("middle").getDouble(2));
+
+				HCLW.FLAREPATHFINALX[i] = (float)(flare.optJSONArray("final").getDouble(0));
+				HCLW.FLAREPATHFINALY[i] = (float)(flare.optJSONArray("final").getDouble(1));
+				HCLW.FLAREPATHFINALZ[i] = (float)(flare.optJSONArray("final").getDouble(2));
+				
+				HCLW.MINFLARESPEEDS[i] = (float)(flare.optDouble("minimumspeed"));
+				HCLW.FLAREACCEL[i] = (float)(flare.optDouble("accel"));
+				
+			}
+			oResult = null;
+//			prepareBitmaps();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			//System.gc();
+		}
+	}
+	public void loadEggFromJSON() {
+		try {
+			JSONObject oObj;
+			JSONArray oResult;
+			// Look in assets
+			InputStreamReader in = new InputStreamReader(this.getAssets().open("hclw_reverse.json"));
+			StringBuilder sb = new StringBuilder();
+		    char[] buffer = new char[8192];
+		    int iCharsRead = 0;
+		    while ((iCharsRead=in.read(buffer))!= -1){
+		    	sb.append(buffer, 0, iCharsRead);
+		    }
+		    in.close();
+		    oObj = new JSONObject(sb.toString());
+			oResult = oObj.getJSONArray("flarepositions");
+			sb.setLength(0);
+			TOPSURF_FILE = null;
+			FLARE_FILE = null;
+			
+			LWPSURF_32BIT = oObj.getBoolean("livewallpaper_surface_32bit");
+			FIXEDOFFSET = oObj.getInt("lwp_fixed_offset");
+			PAINTFG_DITHER = oObj.getBoolean("paint_dither");
+			PAINTFG_AA = oObj.getBoolean("paint_antialias");
+			PAINTFG_FILTERBMP = oObj.getBoolean("paint_filterbitmap");
+			TOPSURF_HUE = Color.parseColor(oObj.getString("topsurface_hue"));
+			TOPSURF_DITHER = oObj.getBoolean("topsurface_dither");
+			TOPSURF_32BIT = oObj.getBoolean("topsurface_32bit");
+			FLARE_USEHUES = oObj.getBoolean("flare_use_hues");
+			DEFAULTBRIGHTNESS = oObj.getInt("lwp_baseline_brightness");
+			FLAREHUES = new int[5];
+			for (int i=0;i<5;i++) {
+				FLAREHUES[i] = Color.parseColor(oObj.getJSONArray("flare_hues_WRGBY").getString(i));
+			}
+			oObj=null;
+			
+			// now read flare data to our format
+			for (int i=0;i<12;i++) {
+				JSONObject flare = oResult.getJSONObject(i);
+				HCLW.FLAREPATHINITX[i] = (float)(flare.optJSONArray("initial").getDouble(0));
+				HCLW.FLAREPATHINITY[i] = (float)(flare.optJSONArray("initial").getDouble(1));
+				HCLW.FLAREPATHINITZ[i] = (float)(flare.optJSONArray("initial").getDouble(2));
+
+				HCLW.FLAREPATHMIDX[i] = (float)(flare.optJSONArray("middle").getDouble(0));
+				HCLW.FLAREPATHMIDY[i] = (float)(flare.optJSONArray("middle").getDouble(1));
+				HCLW.FLAREPATHMIDZ[i] = (float)(flare.optJSONArray("middle").getDouble(2));
+
+				HCLW.FLAREPATHFINALX[i] = (float)(flare.optJSONArray("final").getDouble(0));
+				HCLW.FLAREPATHFINALY[i] = (float)(flare.optJSONArray("final").getDouble(1));
+				HCLW.FLAREPATHFINALZ[i] = (float)(flare.optJSONArray("final").getDouble(2));
+				
+				HCLW.MINFLARESPEEDS[i] = (float)(flare.optDouble("minimumspeed"));
+				HCLW.FLAREACCEL[i] = (float)(flare.optDouble("accel"));
+				
+			}
+			oResult = null;
+//			prepareBitmaps();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			//System.gc();
+		}
 	}
 
 	@Override

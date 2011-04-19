@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:orientation="vertical" android:id="@+id/splashtop" android:padding="0dp" android:layout_margin="0dp" android:layout_height="fill_parent">
+<ImageView android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/xda_egg"></ImageView>
+<TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/reversetext" android:padding="5dp" android:text="MOTD" android:autoLink="all" android:textColor="#FF000000" android:textSize="18dp"></TextView>
+</FrameLayout>

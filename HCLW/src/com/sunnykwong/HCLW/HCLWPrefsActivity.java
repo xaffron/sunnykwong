@@ -1,6 +1,7 @@
 package com.sunnykwong.HCLW;
 
 import android.app.Activity;
+import android.widget.FrameLayout;
 import android.widget.ScrollView;
 import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
@@ -41,6 +42,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     	super.onCreate(savedInstanceState);
 
     	PreferenceManager.getDefaultSharedPreferences(this);
+    	
     	addPreferencesFromResource(getResources().getIdentifier("hclwprefs", "xml", HCLW.PKGNAME));
     	findPreference("dpi").setTitle("Screen DPI " +HCLW.SCRNDPI);
     	findPreference("dpi").setSummary("Screen dimension " +HCLW.SCRNWIDTH + "x" + HCLW.SCRNHEIGHT);
@@ -56,6 +58,18 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     	}
 
 		// This is the help/FAQ dialog.
+    	if (HCLW.PREFS.getBoolean("Egg", false)) {
+    		//Populate current flow direction.
+			if (HCLW.REVERSE) {
+				findPreference("reverseFlow").setSummary("Flowing Uphill.");
+			} else {
+				findPreference("reverseFlow").setSummary("Flowing Downhill.");
+			}
+    	} else {
+    		//hide the reverse Flow option
+    		getPreferenceScreen().removePreference(findPreference("reverseFlow"));
+    	}
+
 		
 		if (HCLW.SHOWHELP) {
 			LayoutInflater li = LayoutInflater.from(this);
@@ -114,6 +128,35 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
 		final CharSequence[] items = {"Email", "Donate"};
+    	if (preference == this.findPreference("reverseFlow")) {
+			LayoutInflater li = LayoutInflater.from(this);
+			FrameLayout ll = (FrameLayout)(li.inflate(getResources().getIdentifier("reverse", "layout", HCLW.PKGNAME), null));
+			TextView tv = (TextView)ll.findViewById(getResources().getIdentifier("reversetext", "id", HCLW.PKGNAME));
+			tv.setAutoLinkMask(Linkify.ALL);
+			tv.setMinLines(10);
+			tv.setText(HCLW.EGG);
+			if (HCLW.REVERSE) {
+				preference.setSummary("Flowing Downhill.");
+				HCLW.REVERSE=false;
+			} else {
+				preference.setSummary("Flowing Uphill.");
+				HCLW.REVERSE=true;
+				mAD = new AlertDialog.Builder(this)
+				.setTitle("Congratulations!")
+			    .setCancelable(true)
+			    .setView(ll)
+			    .setOnKeyListener(new OnKeyListener() {
+			    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+			    		if (arg2.getKeyCode()==android.view.KeyEvent.KEYCODE_BACK) {
+			    			mAD.cancel();
+			    		}
+			    		return true;
+			    	};
+			    })
+			    .show();
+			}
+			
+    	}
     	if (preference == this.findPreference("flarecolors")) {
 			LayoutInflater li = LayoutInflater.from(this);
 			ScrollView sv = (ScrollView)(li.inflate(getResources().getIdentifier("flares", "layout", HCLW.PKGNAME), null));
@@ -238,6 +281,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     @Override
     protected void onPause() {
 		HCLW.DEFAULTEFFECTCOLOR = Color.parseColor(HCLW.PREFS.getString("TrailLength", "#051b1939"));
+		HCLW.RENDERWHILESWIPING = HCLW.PREFS.getBoolean("RenderWhileSwiping", true);
 
 		((HCLW)getApplication()).countFlareColors();
     	HCLW.FPS = Integer.parseInt(HCLW.PREFS.getString("FrameRates", "25"));
@@ -287,7 +331,9 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		}
     		
     	}
-    	if (HCLW.JSON) {
+    	if (HCLW.JSON && HCLW.REVERSE) {
+    		((HCLW)getApplication()).loadEggFromJSON();
+    	} else if (HCLW.JSON && !HCLW.REVERSE) {
     		((HCLW)getApplication()).loadFlaresFromJSON();
     	}
     	

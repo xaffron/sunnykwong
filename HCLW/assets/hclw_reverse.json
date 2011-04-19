@@ -1,0 +1,144 @@
+{
+// The lwp options control the brightness, offset and bit-depth of the 
+// wallpaper surface.  Higher is not necessarily better... 
+// experiment for your phone! 
+"livewallpaper_surface_32bit":"true",
+// The fixed_offset option lets you freeze the LWP and not let it scroll.
+// Set it to -1 for default scrolling, or a positive value to freeze.
+// Be careful not to go overboard with the offset, you can corrupt the homescreen.
+"lwp_fixed_offset":"-1",
+// Baseline brightness lets you adjust how bright the wallpaper is by default.
+// Put in a value between 0 and 100, with 100 being default brightness.
+"lwp_baseline_brightness":"100",
+
+// The paint options control how the background is drawn onto the wallpaper.
+"paint_dither":"false",
+"paint_antialias":"false",
+"paint_filterbitmap":"true",
+
+// The topsurface options control what background to load, 
+// and what format it is loaded into memory.
+// notably: 
+// topsurface_file allows you to swap out the background completely.
+// topsurface_hue allows you to customize the background color.
+
+"topsurface_file":"/mnt/sdcard/top_16bitdithered.png",
+"topsurface_hue":"#00000000",
+"topsurface_dither":"false",
+"topsurface_32bit":"false",
+
+// The flare options let you customize the file used for flares,
+// and allows you to change the hues of the flares.  Remember to set 
+// flare_use_hues to true, otherwise the WRGBY hues will not be applied.
+
+"flare_use_hues":"false",
+"flare_file":"/mnt/sdcard/flare_white_thick.png",
+"flare_hues_WRGBY":["#00000000","#33FF0000","#3300FF00","#330000FF","#33FFFF00"],
+
+// HERE BE DRAGONS.
+// This is the belly of the beast.  Each flare follows a two-segmented path
+// endpointed by the initial, middle and final points.
+// the ordinates used are (x,y) in a 640x480 palette that gets scaled to 
+// native screen size.
+// the z coordinate is virtual, and controls the scaling of the flare.
+// Minimumspeed and Accel are self-explanatory.
+// 
+// One more note:  You can add as many flares as you want.  Do you want to fill
+// all the channels?  Knock yourself out.
+// The last flare is *always* the searchlight.
+
+"flarepositions":[
+		{ 
+		"initial": [0,405,0.2],
+		"middle": [161,375,0.15],
+		"final":[260,322,0.1],
+		"minimumspeed":0.002,
+		"accel":0
+		},
+		{ 
+		"initial": [-1,420,0.2],
+		"middle": [166,385,0.15],
+		"final":[274,322,0.1],
+		"minimumspeed":0.002,
+		"accel":0
+		},
+		{ 
+		"initial":[-1,440,0.2] ,
+		"middle": [180,394,0.2],
+		"final":[287,322,0.1],
+		"minimumspeed":0.002,
+		"accel":0
+		},
+		{ 
+		"initial": [0,465,0.25],
+		"middle": [212,400,0.2],
+		"final":[409,332,0.2],
+		"minimumspeed":0.002,
+		"accel":0
+		},
+		{ 
+		"initial": [69,480,0.5],
+		"middle": [268,400,0.3],
+		"final":[420,336,0.13],
+		"minimumspeed":0.0018,
+		"accel":0
+		},
+		{ 
+		"initial": [185,479,0.7],
+		"middle": [351,384,0.3],
+		"final":[431,336,0.1],
+		"minimumspeed":0.008,
+		"accel":0
+		},
+		{ 
+		"initial": [308,488,0.7],
+		"middle": [400,381,0.35],
+		"final":[442,336,0.1],
+		"minimumspeed":0.012,
+		"accel":0
+		},
+		{ 
+		"initial": [435,492,0.7],
+		"middle": [449,380,0.4],
+		"final":[452,336,0.1],
+		"minimumspeed":0.015,
+		"accel":0
+		},
+		{ 
+		"initial": [561,480,0.7],
+		"middle": [495,380,0.35],
+		"final":[466,336,0.1],
+		"minimumspeed":0.010,
+		"accel":0
+		},
+		{ 
+		"initial": [647,450,0.5],
+		"middle": [533,377,0.3],
+		"final":[474.5,336,0.1],
+		"minimumspeed":0.008,
+		"accel":0
+		},
+		{ 
+		"initial": [649,405,0.3],
+		"middle": [558,367,0.2],
+		"final":[487,336,0.1],
+		"minimumspeed":0.008,
+		"accel":0
+		},
+		{ 
+		"initial": [649,382,0.3],
+		"middle": [568,355,0.2],
+		"final":[501,336,0.1],
+		"minimumspeed":0.008,
+		"accel":0
+		},
+// BE CAREFUL - THIS IS THE SEARCHLIGHT, NOT A FLARE
+		{ 
+		"initial": [0,0,12],
+		"middle": [640,120,12],
+		"final":[0,0,12],
+		"minimumspeed":0.02,
+		"accel":0
+		}
+	]
+}

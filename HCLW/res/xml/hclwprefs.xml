@@ -2,7 +2,7 @@
 <PreferenceScreen android:key="livewallpaper_settings"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:title="HoneyComb Live Wallpaper - Preferences">
-	<PreferenceCategory android:title="Look and Feel">
+	<Preference android:key="reverseFlow" android:defaultValue="false" android:title="Easter Egg: Reverse Flow!"/><PreferenceCategory android:title="Look and Feel">
 		<ListPreference android:entries="@array/LAF"
 			android:entryValues="@array/LAF" android:key="HCLWLAF" android:title="Choose a Look"
 			android:defaultValue="Racing Flares" />
@@ -13,11 +13,12 @@
 		<ListPreference android:key="FlareFrequency"
 			android:title="Set Flare Frequency" android:entries="@array/FlareFreq"
 			android:entryValues="@array/FlareFreqValues" android:defaultValue="1" /><ListPreference android:entries="@array/LightnFreq" android:title="Set Lightning Freq." android:entryValues="@array/LightnFreqValues" android:key="LightnFrequency" android:summary="(Lightning Strikes mode only)" android:defaultValue="0.05"/>
-		<ListPreference android:key="FrameRates" android:title="Target Frame Rate"
+		<CheckBoxPreference android:key="RenderWhileSwiping" android:title="Render While Swiping" android:selectable="true" android:enabled="true" android:defaultValue="true" android:summary="Uncheck for better homescreen performance."></CheckBoxPreference><ListPreference android:key="FrameRates" android:title="Target Frame Rate"
 			android:entryValues="@array/FrameRateValues" android:entries="@array/FrameRate"
 			android:defaultValue="25" android:selectable="true"
 			android:summary="Lower to improve homescreen responsiveness."
 			android:enabled="true"></ListPreference>
+		
 		
 	</PreferenceCategory>
 
@@ -34,7 +35,6 @@
 			android:title="Source Code Available at " android:enabled="true"
 			android:selectable="false" android:key="99" />
 	</PreferenceCategory>
-
 
 
 </PreferenceScreen>
