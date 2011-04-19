@@ -38,7 +38,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			OMC.PREFS.edit()
 				.putInt("ompc_battlevel", intent.getIntExtra("level", 0))
 				.putInt("ompc_battscale", intent.getIntExtra("scale", 100))
-				.putInt("ompc_battpercent", intent.getIntExtra("level", 0)/intent.getIntExtra("scale", 100))
+				.putInt("ompc_battpercent", (int)(100*intent.getIntExtra("level", 0)/(float)intent.getIntExtra("scale", 100)))
 				.commit();
 			return;
 		}
@@ -65,14 +65,16 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// If the screen is on, honor the update frequency.
 		if (OMC.SCREENON) {
 			// Prevent abusive updates - update no more than every 5 secs.
-			if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 5000 && !action.equals(Intent.ACTION_CONFIGURATION_CHANGED)) {
+			if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 5000 && (action.equals(OMC.FGINTENT) || action.equals(OMC.BGINTENT))) {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Abusive; aborting update " + System.currentTimeMillis() + " " + OMC.LASTUPDATEMILLIS);
 				return;
 			}
 			OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
 			context.startService(OMC.SVCSTARTINTENT);
 		// If the screen is off, update bare minimum to mimic foreground mode.
-		} else if (action.equals(Intent.ACTION_TIME_TICK)) {
+		} else if (action.equals(Intent.ACTION_TIME_TICK)
+				||action.equals(Intent.ACTION_TIME_CHANGED)
+				||action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
 			OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
 			context.startService(OMC.SVCSTARTINTENT);
 		} else {

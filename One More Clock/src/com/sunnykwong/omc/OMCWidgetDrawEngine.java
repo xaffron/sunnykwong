@@ -101,28 +101,28 @@ public class OMCWidgetDrawEngine {
 		OMC.STRETCHINFO = oTheme.optJSONObject("customscaling");
 		String sWidgetSize = cName.toShortString().substring(cName.toShortString().length()-4,cName.toShortString().length()-1);
 		int thisWidgetWidth = 480;
-		int thisWidgetHeight = 480;
+		int thisWidgetHeight = 600;
 		if (sWidgetSize.equals("4x2")) {
 			thisWidgetWidth = 480;
-			thisWidgetHeight = 240;
+			thisWidgetHeight = 300;
 		} else if (sWidgetSize.equals("4x1")) {
 			thisWidgetWidth = 480;
-			thisWidgetHeight = 120;
+			thisWidgetHeight = 150;
 		} else if (sWidgetSize.equals("3x3")) {
 			thisWidgetWidth = 360;
-			thisWidgetHeight = 360;
+			thisWidgetHeight = 450;
 		} else if (sWidgetSize.equals("3x1")) {
 			thisWidgetWidth = 360;
-			thisWidgetHeight = 120;
+			thisWidgetHeight = 150;
 		} else if (sWidgetSize.equals("2x2")) {
 			thisWidgetWidth = 240;
-			thisWidgetHeight = 240;
+			thisWidgetHeight = 300;
 		} else if (sWidgetSize.equals("2x1")) {
 			thisWidgetWidth = 240;
-			thisWidgetHeight = 120;
+			thisWidgetHeight = 150;
 		} else if (sWidgetSize.equals("1x3")) {
 			thisWidgetWidth = 120;
-			thisWidgetHeight = 360;
+			thisWidgetHeight = 450;
 		}
 		
 		//if no custom scaling info present, use default stretch info
@@ -242,8 +242,12 @@ public class OMCWidgetDrawEngine {
 		
 		double rotHeight = Math.abs(dScaledHeight* Math.cos(rotRad)) + Math.abs(dScaledWidth*Math.sin(rotRad)) ;
 		double rotWidth = Math.abs(dScaledHeight* Math.sin(rotRad)) + Math.abs(dScaledWidth*Math.cos(rotRad));
-		System.out.println("WidgetWidth:" +thisWidgetWidth+ ", WidgetHt:"+thisWidgetHeight);
-		System.out.println("rotWidth:" +rotWidth+ ", rotHt:"+rotHeight);
+//		System.out.println("WidgetWidth:" +thisWidgetWidth+ ", WidgetHt:"+thisWidgetHeight);
+//		System.out.println("rotWidth:" +rotWidth+ ", rotHt:"+rotHeight);
+//		System.out.println("Width:" +width+ ", Ht:"+height);
+//		System.out.println("CROP:" +OMC.STRETCHINFO.optInt("left_crop")+ ", CROP:"+OMC.STRETCHINFO.optInt("right_crop"));
+//		System.out.println("bmpWidth:" +bitmap.getWidth()+ ", bmpHt:"+bitmap.getHeight());
+//		System.out.println("hzStretch:" +hzStretch+ ", vtStretch:"+vtStretch);
 		float fFitGraphic = (float) Math.min(thisWidgetWidth/rotWidth, thisWidgetHeight/rotHeight);
 		
 		// Crop, Scale & Rotate the clock first
@@ -260,7 +264,7 @@ public class OMCWidgetDrawEngine {
 		pt.setAlpha(255);
 		pt.setAntiAlias(true);
 		pt.setFilterBitmap(true);
-		pt.setDither(true);
+//		pt.setDither(true);
 		
 		finalcanvas.setMatrix(tempMatrix);
 		finalcanvas.drawBitmap(Bitmap.createBitmap(bitmap, 
@@ -612,6 +616,8 @@ public class OMCWidgetDrawEngine {
 			tempBGRect.right = tempFGRect.right+3;
 			tempBGRect.bottom = tempFGRect.bottom+3;
 			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
+		} else if (layer.optString("render_style").startsWith("glow")) {
+			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5)), 0f, 0f, pt2.getColor());
 		}
 		//Either way, draw the proper panel
 		cvas.drawRoundRect(tempFGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt1);
@@ -874,11 +880,16 @@ public class OMCWidgetDrawEngine {
 			//SpannableStringBuilder ssb = new SpannableStringBuilder(Html.fromHtml(text));
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x-1, y-1, pt2, fRot);
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x+1, y+1, pt2, fRot);
+			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1, fRot);
 		} else if (style.equals("shadow")) {
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x+3, y+3, pt2, fRot);
+			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1, fRot);
+		} else if (style.startsWith("glow")) {
+			pt1.setShadowLayer(Float.parseFloat(style.substring(5)), 0f, 0f, pt2.getColor());
+			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1, fRot);
+		} else if (style.startsWith("normal")) {
+			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1, fRot);
 		}
-		//Either way, draw the proper text
-		OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1, fRot);
 	}
 
 

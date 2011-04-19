@@ -1001,12 +1001,12 @@ public class OMC extends Application {
 				//Unknown - do nothing
 			}
 		} else if (sToken.equals("ompc")) {
-//			OMC.PREFS.edit()
-//			.putInt("ompc_battlevel", intent.getIntExtra("level", 0))
-//			.putInt("ompc_battscale", intent.getIntExtra("scale", 100))
-//			.putInt("ompc_battpercent", intent.getIntExtra("level", 0)/intent.getIntExtra("scale", 100))
-//			.commit();
-			result = String.valueOf(OMC.PREFS.getInt("ompc_"+st.nextToken(), 99));
+			String sType = st.nextToken();
+			if (sType.equals("battpercent")) {
+				result = String.valueOf(OMC.PREFS.getInt("ompc_"+sType,99)/100f);
+			} else {
+				result = String.valueOf(OMC.PREFS.getInt("ompc_"+sType, 99));
+			}
 		} else if (sToken.equals("circle")) {
 			// Specifies a point at angle/radius from point.
 			int iOriginVal = Integer.parseInt(st.nextToken());
@@ -1141,6 +1141,30 @@ public class OMC extends Application {
 				int color = OMC.colorInterpolate(
 						st.nextToken(), 
 						st.nextToken(), 
+						gradient);
+				result = String.valueOf("#" + Integer.toHexString(color));
+			} else {
+				//Unknown - do nothing
+			}
+			
+
+		} else if (sToken.equals("gradient")){
+			// value that randomly jumps between two values.
+			String sType = st.nextToken();
+			String sMin = st.nextToken();
+			String sVal = st.nextToken();
+			String sMax = st.nextToken();
+			float gradient = Float.parseFloat(sVal);
+			System.out.println("GRAD " + gradient);
+			if (sType.equals("number")) {
+				result = String.valueOf(OMC.numberInterpolate(
+						Integer.parseInt(sMin), 
+						Integer.parseInt(sMax), 
+						gradient));
+			} else if (sType.equals("color")) { // must be color
+				int color = OMC.colorInterpolate(
+						sMin, 
+						sMax, 
 						gradient);
 				result = String.valueOf("#" + Integer.toHexString(color));
 			} else {
