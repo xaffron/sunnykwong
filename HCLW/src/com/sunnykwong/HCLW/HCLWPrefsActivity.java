@@ -130,7 +130,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
 		final CharSequence[] items = {"Email", "Donate"};
     	if (preference == this.findPreference("reverseFlow")) {
 			LayoutInflater li = LayoutInflater.from(this);
-			FrameLayout ll = (FrameLayout)(li.inflate(getResources().getIdentifier("reverse", "layout", HCLW.PKGNAME), null));
+			LinearLayout ll = (LinearLayout)(li.inflate(getResources().getIdentifier("reverse", "layout", HCLW.PKGNAME), null));
 			TextView tv = (TextView)ll.findViewById(getResources().getIdentifier("reversetext", "id", HCLW.PKGNAME));
 			tv.setAutoLinkMask(Linkify.ALL);
 			tv.setMinLines(10);

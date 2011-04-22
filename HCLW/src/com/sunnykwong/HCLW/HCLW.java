@@ -70,7 +70,7 @@ public class HCLW extends Application {
 		"Did you know that there is a support thread on XDA-Developers?  I monitor questions on that board on a daily basis.  http://forum.xda-developers.com/showthread.php?t=975413"
 	};
 	
-	static final String EGG = "Congratulations on unlocking the Easter Egg!  There is now a 'Reverse Flow' option in the preferences screen; all four looks, premium and basic, work with the reverse flow.  Thanks again for playing... and please remember to visit our thread on XDA Developers for more news! http://forum.xda-developers.com/showthread.php?t=975413";
+	static final String EGG = "Congratulations on unlocking the Easter Egg!  There is now a 'Reverse Flow' option in the preferences screen; all four looks, premium and basic, work with the reverse flow.  Please remember to visit our thread on XDA Developers for more news! http://forum.xda-developers.com/showthread.php?t=975413";
 	static boolean REVERSE = false;
 	// gold: http://farm6.static.flickr.com/5254/5496531931_92cb027088_b.jpg
 	// red: http://farm6.static.flickr.com/5217/5497124656_bb551e9cb1_b.jpg

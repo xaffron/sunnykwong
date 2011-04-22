@@ -224,8 +224,8 @@ public class HCLWService extends WallpaperService  {
             //  Redraw
             Canvas c = null;
             try {
-            	Bitmap bmp = drawFlares(HCLW.OFFSETTHISFRAME, true);
             	c = holder.lockCanvas();
+            	Bitmap bmp = drawFlares(HCLW.OFFSETTHISFRAME, true);
             	if (c != null) {
             		// draw something
             		c.drawBitmap(bmp,0,0,HCLW.PaintBuf);
