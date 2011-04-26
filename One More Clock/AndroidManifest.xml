@@ -57,14 +57,14 @@
 <!--			    <data android:scheme="omcs"/>-->
 <!--			</intent-filter>-->
 <!--			This filter captures .omc files downloaded from websites-->
-<!--		    <intent-filter>-->
-<!--		        <action android:name="android.intent.action.VIEW" />-->
-<!--		        <category android:name="android.intent.category.DEFAULT" />-->
-<!--		        <category android:name="android.intent.category.BROWSABLE" />-->
-<!--		        <data android:scheme="file" />-->
-<!--		        <data android:mimeType="*/*"/>-->
-<!--		        <data android:pathPattern=".*\\.omc" />-->
-<!--		    </intent-filter>-->
+		    <intent-filter>
+		        <action android:name="android.intent.action.VIEW" />
+		        <category android:name="android.intent.category.DEFAULT" />
+		        <category android:name="android.intent.category.BROWSABLE" />
+		        <data android:scheme="file" />
+		        <data android:mimeType="application/os"/>
+		        <data android:pathPattern=".*.omc" />
+		    </intent-filter>
 <!--			This filter captures .omc files copied to sdcard and clicked-->
 <!--		    <intent-filter>-->
 <!--		        <action android:name="android.intent.action.VIEW" />-->
