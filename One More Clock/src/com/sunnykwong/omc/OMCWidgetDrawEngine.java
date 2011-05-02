@@ -631,6 +631,9 @@ public class OMCWidgetDrawEngine {
 		pt1.reset();
 		pt1.setAntiAlias(true);
 		pt1.setFlags(Paint.FILTER_BITMAP_FLAG);
+		if (layer.has("tint")) {
+			pt1.setColor(Color.parseColor(layer.optString("tint")));
+		}
 
     	// theme-specific tweaks.
 		OMCWidgetDrawEngine.layerThemeTweaks(context, layer, sTheme, aWI);
