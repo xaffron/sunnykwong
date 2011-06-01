@@ -1,35 +1,17 @@
 package com.sunnykwong.HCLW;
 
 import android.app.PendingIntent;
-import android.app.Service;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.IBinder;
 import android.util.Log;
-import android.widget.RemoteViews;
-import android.widget.ListView.FixedViewInfo;
-import android.widget.Toast;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.PixelFormat;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.Rect;
-import android.graphics.Matrix;
-import android.os.Handler;
 import android.os.SystemClock;
-import android.preference.PreferenceManager;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.service.wallpaper.WallpaperService;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
-import android.view.VelocityTracker;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.DisplayMetrics;
 
 public class HCLWService extends WallpaperService  {
 
@@ -62,6 +44,7 @@ public class HCLWService extends WallpaperService  {
 
     }
 
+	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		//	Tell the widgets to refresh themselves.
 
@@ -83,7 +66,8 @@ public class HCLWService extends WallpaperService  {
     class FlareEngine extends Engine {
 
         public final Runnable mDrawFlare = new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 drawFrame();
             }
         };
