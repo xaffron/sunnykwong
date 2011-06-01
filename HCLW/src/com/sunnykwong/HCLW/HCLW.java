@@ -44,7 +44,9 @@ public class HCLW extends Application {
 	static final boolean FREEEDITION = false;
 	static boolean SHOWHELP=true;
 	static boolean RENDERWHILESWIPING=true;
+	static boolean SLOWPAN=true;
 	static String BONUSPHRASE="";
+	static final int SLOWPANSPEED = 3;
 
 	static boolean TOPSURF_DITHER, TOPSURF_32BIT, PAINTFG_DITHER, PAINTFG_AA, PAINTFG_FILTERBMP, LWPSURF_32BIT, FLARE_USEHUES;
 	static String TOPSURF_FILE, FLARE_FILE;
@@ -168,6 +170,7 @@ public class HCLW extends Application {
     static Rect srcFullRect, tgtFullRect, srcFlareRect, tgtFlareRect;
 	static final Matrix TEMPMATRIX = new Matrix(), TEMPMATRIX2 = new Matrix();
     static public int xPixels;
+    static public int targetXPixels;
     static public float TouchX = -1;
     static public float TouchY = -1;
     static public float UpX = -1;
@@ -212,6 +215,7 @@ public class HCLW extends Application {
 		}
 		HCLW.FPS = Integer.parseInt(PREFS.getString("FrameRates", "25"));
 		HCLW.RENDERWHILESWIPING = PREFS.getBoolean("RenderWhileSwiping", true);
+		HCLW.SLOWPAN = PREFS.getBoolean("SlowPan", true);
 		HCLW.PaintBg.setColor(Color.WHITE);
 		HCLW.PaintMid.setColor(Color.BLACK);
 		HCLW.PaintMid.setAlpha(255);

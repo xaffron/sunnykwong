@@ -169,8 +169,9 @@ public class HCLWService extends WallpaperService  {
         @Override
         public void onOffsetsChanged(float xOffset, float yOffset,
                 float xStep, float yStep, int xPixels, int yPixels) {
-            HCLW.xPixels = xPixels;
-            drawFrame();
+        	HCLW.targetXPixels = xPixels;
+//            HCLW.xPixels = xPixels;
+//            drawFrame();
         }
 
         /*
@@ -212,13 +213,19 @@ public class HCLWService extends WallpaperService  {
             // Reschedule the next redraw
             // If swiping, render at lower framerate
             boolean bFullRender = true;
-            if (!HCLW.RENDERWHILESWIPING && Math.abs(HCLW.OFFSETTHISFRAME - HCLW.xPixels) > HCLW.SCRNHEIGHT/10 ) {
+            if (!HCLW.RENDERWHILESWIPING && Math.abs(HCLW.OFFSETTHISFRAME - HCLW.xPixels) > HCLW.SCRNHEIGHT/20 ) {
             	bFullRender=false;
             } else {
             }
             if (HCLW.FIXEDOFFSET!=-1) {
             	HCLW.OFFSETTHISFRAME=-HCLW.FIXEDOFFSET;
             } else {
+            	if (HCLW.SLOWPAN) {
+	            	if (Math.abs(HCLW.targetXPixels-HCLW.xPixels)<HCLW.SLOWPANSPEED) HCLW.xPixels = HCLW.targetXPixels;
+	            	else HCLW.xPixels+=(HCLW.targetXPixels-HCLW.xPixels>0?HCLW.SLOWPANSPEED:-HCLW.SLOWPANSPEED);
+            	} else {
+            		HCLW.xPixels = HCLW.targetXPixels;
+            	}
             	HCLW.OFFSETTHISFRAME = HCLW.xPixels;
             }
             //  Redraw
@@ -472,7 +479,7 @@ public class HCLWService extends WallpaperService  {
 	    				Intent.FLAG_ACTIVITY_NEW_TASK) ;
 	    		
 	    		android.app.Notification note =  new android.app.Notification(
-        				R.drawable.icon,
+	    				getResources().getIdentifier("icon", "drawable", HCLW.PKGNAME),
         				"HCLW Easter Egg Activated!",
         				System.currentTimeMillis()
         				);

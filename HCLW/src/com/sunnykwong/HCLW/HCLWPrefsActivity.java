@@ -282,6 +282,7 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     protected void onPause() {
 		HCLW.DEFAULTEFFECTCOLOR = Color.parseColor(HCLW.PREFS.getString("TrailLength", "#051b1939"));
 		HCLW.RENDERWHILESWIPING = HCLW.PREFS.getBoolean("RenderWhileSwiping", true);
+		HCLW.SLOWPAN = HCLW.PREFS.getBoolean("SlowPan", true);
 
 		((HCLW)getApplication()).countFlareColors();
     	HCLW.FPS = Integer.parseInt(HCLW.PREFS.getString("FrameRates", "25"));
