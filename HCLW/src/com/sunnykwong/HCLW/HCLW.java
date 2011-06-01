@@ -43,7 +43,7 @@ public class HCLW extends Application {
 	static boolean RENDERWHILESWIPING=true;
 	static boolean SLOWPAN=true;
 	static String BONUSPHRASE="";
-	static final int SLOWPANSPEED = 3;
+	static final int SLOWPANSPEED = 2;
 
 	static boolean TOPSURF_DITHER, TOPSURF_32BIT, PAINTFG_DITHER, PAINTFG_AA, PAINTFG_FILTERBMP, LWPSURF_32BIT, FLARE_USEHUES;
 	static String TOPSURF_FILE, FLARE_FILE;
