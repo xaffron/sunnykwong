@@ -3,12 +3,22 @@
 	android:versionCode="11" android:versionName="1.1.1" package="com.sunnykwong.HCLW">
 	<application android:icon="@drawable/icon" android:label="Honeycomb Live Wallpaper" android:name="com.sunnykwong.HCLW.HCLW">
 		<service android:enabled="true" android:name="com.sunnykwong.HCLW.HCLWService"
+			android:label="Honeycomb Classic"
 			android:permission="android.permission.BIND_WALLPAPER">
 			<intent-filter>
 				<action android:name="android.service.wallpaper.WallpaperService" />
 			</intent-filter>
 			<meta-data android:name="android.service.wallpaper"
 				android:resource="@xml/livewallpaper" />
+		</service>
+		<service android:enabled="true" android:name="com.sunnykwong.HCLW.HCLWGLService"
+			android:label="Honeycomb OpenGL"
+			android:permission="android.permission.BIND_WALLPAPER">
+			<intent-filter>
+				<action android:name="android.service.wallpaper.WallpaperService" />
+			</intent-filter>
+			<meta-data android:name="android.service.wallpaper"
+				android:resource="@xml/gllivewallpaper" />
 		</service>
 		<activity android:name="com.sunnykwong.HCLW.HCLWPrefsActivity"
 			android:exported="true"/>

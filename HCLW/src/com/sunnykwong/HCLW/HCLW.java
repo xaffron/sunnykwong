@@ -1,6 +1,7 @@
 package com.sunnykwong.HCLW;
 
 import android.content.pm.PackageManager;
+import com.jayway.opengl.tutorial.mesh.SimplePlane;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.app.Application;
 import android.graphics.Bitmap;
@@ -32,7 +33,7 @@ import android.app.WallpaperManager;
  * 
  */
 public class HCLW extends Application {
-
+    static SimplePlane plane;
 	static int FPS=25;
 	static final boolean JSON = true;
 	static String THISVERSION;
@@ -283,8 +284,10 @@ public class HCLW extends Application {
 	
 	public void prepareBitmaps() {
 
-    	HCLW.SCRNHEIGHT = getResources().getDisplayMetrics().heightPixels;
-    	HCLW.SCRNWIDTH = getResources().getDisplayMetrics().widthPixels;
+    	HCLW.SCRNHEIGHT = 512;
+    	HCLW.SCRNWIDTH = 512;
+//    	HCLW.SCRNHEIGHT = getResources().getDisplayMetrics().heightPixels;
+//    	HCLW.SCRNWIDTH = getResources().getDisplayMetrics().widthPixels;
     	HCLW.SCRNLONGEREDGELENGTH = Math.max(SCRNHEIGHT, SCRNWIDTH);
     	HCLW.SCRNSHORTEREDGELENGTH = Math.min(SCRNHEIGHT, SCRNWIDTH);
 
@@ -416,7 +419,8 @@ public class HCLW extends Application {
 	public void adjustOrientationOffsets(){
 		HCLW.SCRNWIDTH=getResources().getDisplayMetrics().widthPixels;
 		HCLW.SCRNHEIGHT=getResources().getDisplayMetrics().heightPixels;
-        HCLW.SCRNBUFFER = Bitmap.createBitmap(HCLW.SCRNWIDTH, HCLW.SCRNHEIGHT, Bitmap.Config.ARGB_8888);
+//        HCLW.SCRNBUFFER = Bitmap.createBitmap(HCLW.SCRNWIDTH, HCLW.SCRNHEIGHT, Bitmap.Config.ARGB_8888);
+        HCLW.SCRNBUFFER = Bitmap.createBitmap(512, 512, Bitmap.Config.ARGB_8888);
         HCLW.SCRNBUFFERCANVAS = new Canvas(HCLW.SCRNBUFFER);
 
         int Midpoint;

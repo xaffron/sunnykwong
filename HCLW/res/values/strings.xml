@@ -56,4 +56,6 @@
 		<item>"45"</item>
 		<item>"60"</item>
 	</string-array>
+	<string name="Classic_desc">Recommended for older phones.</string>
+	<string name="GL_desc">Recommended for newer devices.</string>
 </resources>
