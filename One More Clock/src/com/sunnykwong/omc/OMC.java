@@ -1000,10 +1000,23 @@ public class OMC extends Application {
 			} else {
 				//Unknown - do nothing
 			}
+		} else if (sToken.equals("ifequal")) {
+			if (st.nextToken().equals(st.nextToken())) {
+				//go to the positive result and skip the negative
+				result = st.nextToken();
+				st.nextToken();
+			} else {
+				//Skip the positive result and go to the negative result
+				st.nextToken();
+				result = st.nextToken();
+			}
 		} else if (sToken.equals("ompc")) {
 			String sType = st.nextToken();
 			if (sType.equals("battpercent")) {
-				result = String.valueOf(OMC.PREFS.getInt("ompc_"+sType,99)/100f);
+				result = String.valueOf((int)(1000+OMC.PREFS.getInt("ompc_"+sType,99))).substring(1);
+			} else if (sType.equals("battdecimal")) {
+					result = String.valueOf(OMC.PREFS.getInt("ompc_battpercent",99)/100f);
+					System.out.println("BattDec "+ result);
 			} else {
 				result = String.valueOf(OMC.PREFS.getInt("ompc_"+sType, 99));
 			}
@@ -1155,7 +1168,6 @@ public class OMC extends Application {
 			String sVal = st.nextToken();
 			String sMax = st.nextToken();
 			float gradient = Float.parseFloat(sVal);
-			System.out.println("GRAD " + gradient);
 			if (sType.equals("number")) {
 				result = String.valueOf(OMC.numberInterpolate(
 						Integer.parseInt(sMin), 
@@ -1166,7 +1178,7 @@ public class OMC extends Application {
 						sMin, 
 						sMax, 
 						gradient);
-				result = String.valueOf("#" + Integer.toHexString(color));
+				result = String.format("#%1$08X",color);
 			} else {
 				//Unknown - do nothing
 			}
