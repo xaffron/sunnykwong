@@ -2,19 +2,19 @@ package com.sunnykwong.omc;
 
 import java.io.File;
 
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import org.json.JSONObject;
 public class OMCThemeImportActivity extends Activity {
 
 	public Handler mHandler;

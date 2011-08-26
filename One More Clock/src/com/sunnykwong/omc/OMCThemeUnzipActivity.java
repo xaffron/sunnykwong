@@ -9,9 +9,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.AlertDialog;
-import android.widget.ProgressBar;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.graphics.BitmapFactory;
@@ -19,12 +18,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.util.Log;
 
 public class OMCThemeUnzipActivity extends Activity {
 

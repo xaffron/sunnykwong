@@ -1,19 +1,19 @@
 package com.sunnykwong.omc;
 
 import java.io.File;
-import org.json.JSONObject;
-import org.json.JSONArray;
 import java.util.HashMap;
+
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Window;
@@ -23,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.graphics.Matrix;
 
 public class OMCSkinnerActivity extends Activity {
 

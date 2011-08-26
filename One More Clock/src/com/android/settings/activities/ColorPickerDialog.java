@@ -16,31 +16,38 @@
 
 package com.android.settings.activities;
 
-import android.os.Bundle;
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.*;
+import android.content.res.Resources;
+import android.graphics.BlurMaskFilter;
+import android.graphics.BlurMaskFilter.Blur;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.ColorMatrix;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.PixelFormat;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.SweepGradient;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.StateSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-
-import android.graphics.BlurMaskFilter.Blur;
-import android.graphics.drawable.Drawable;
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.Paint.Style;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Transformation;
-import android.os.SystemClock;
-import android.util.StateSet;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
 
 
 public class ColorPickerDialog extends Dialog {

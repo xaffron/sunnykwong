@@ -6,7 +6,6 @@ import java.lang.reflect.Method;
 import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;

@@ -1,6 +1,8 @@
 package com.sunnykwong.omc;
 
-import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -8,37 +10,25 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.text.Html;
 import android.text.SpannedString;
-import android.text.format.Time;
 import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.Toast;
-import android.graphics.RectF;
-import android.graphics.Rect;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONArray;
-
-import android.graphics.Matrix;
-import android.graphics.Bitmap.CompressFormat;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class OMCWidgetDrawEngine {
 //	static final String TESTTHEME="IronIndicant";
 
-	// Needs to be synchronized now that we have four different widget types 
+	// Needs to be synchronized now that we have different widget sizes 
 	// calling this same method creating a potential race condition
 	static synchronized void updateAppWidget(Context context, ComponentName cName) {
 		// Set target time to be 2 seconds ahead to account for lag
@@ -53,7 +43,7 @@ public class OMCWidgetDrawEngine {
 
 		for (int i=0; i<N; i++) {
              if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i])) {
-            	// Blit existing bitmap over first
+            	// Blit cached bitmap over first
             	RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
                 rv.setImageViewBitmap(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME),
                 		OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
@@ -74,9 +64,8 @@ public class OMCWidgetDrawEngine {
 		
 		
 		// Get theme.  (Nowadays, OMC.getTheme takes care of caching/importing.)
-
 		String sTheme = OMC.PREFS.getString("widgetTheme"+appWidgetId,OMC.DEFAULTTHEME);
-		//TODO
+
 		// WHEN TESTING NEW THEME, UNCOMMENT THIS LINE 
 		//String sTheme = TESTTHEME;
 
@@ -94,7 +83,7 @@ public class OMCWidgetDrawEngine {
 		
 		// OK, now actually render the widget on a bitmap.
 		// Calling the actual drawing engine (below).
-		// OMC.BUFFER (square, raw buffer) is updated and copy-returned.
+		// OMC.BUFFER (square, bitmap buffer) is updated and copy-returned.
 		final Bitmap bitmap = OMCWidgetDrawEngine.drawBitmapForWidget(context,appWidgetId);
 
 		//look for this size's custom scaling info
@@ -242,12 +231,7 @@ public class OMCWidgetDrawEngine {
 		
 		double rotHeight = Math.abs(dScaledHeight* Math.cos(rotRad)) + Math.abs(dScaledWidth*Math.sin(rotRad)) ;
 		double rotWidth = Math.abs(dScaledHeight* Math.sin(rotRad)) + Math.abs(dScaledWidth*Math.cos(rotRad));
-//		System.out.println("WidgetWidth:" +thisWidgetWidth+ ", WidgetHt:"+thisWidgetHeight);
-//		System.out.println("rotWidth:" +rotWidth+ ", rotHt:"+rotHeight);
-//		System.out.println("Width:" +width+ ", Ht:"+height);
-//		System.out.println("CROP:" +OMC.STRETCHINFO.optInt("left_crop")+ ", CROP:"+OMC.STRETCHINFO.optInt("right_crop"));
-//		System.out.println("bmpWidth:" +bitmap.getWidth()+ ", bmpHt:"+bitmap.getHeight());
-//		System.out.println("hzStretch:" +hzStretch+ ", vtStretch:"+vtStretch);
+
 		float fFitGraphic = (float) Math.min(thisWidgetWidth/rotWidth, thisWidgetHeight/rotHeight);
 		
 		// Crop, Scale & Rotate the clock first
@@ -258,7 +242,6 @@ public class OMCWidgetDrawEngine {
 		tempMatrix.postTranslate((float)((thisWidgetWidth-dScaledWidth)/2d), (float)((thisWidgetHeight-dScaledHeight)/2d));
 		tempMatrix.postRotate((float)rot, thisWidgetWidth/2f, thisWidgetHeight/2f);
 		tempMatrix.postScale(fFitGraphic, fFitGraphic, thisWidgetWidth/2f, thisWidgetHeight/2f);
-
 		
 		Paint pt = OMC.getPaint();
 		pt.setAlpha(255);
@@ -282,19 +265,16 @@ public class OMCWidgetDrawEngine {
 		RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
 		final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
 
-		System.out.println("finalbitmap width:" + finalbitmap.getWidth() + " ht:" + finalbitmap.getHeight());
 		rv.setImageViewBitmap(iViewID, finalbitmap);
 		
 		// Do some fancy footwork here and adjust the average lag (so OMC's slowness is less apparent)
-		// We will start at least 200 millis early.
-		OMC.LEASTLAGMILLIS = Math.max(200l, (OMC.LEASTLAGMILLIS + (System.currentTimeMillis() - lStartTime))/2l);
+		OMC.LEASTLAGMILLIS = OMC.LEASTLAGMILLIS + (System.currentTimeMillis() - lStartTime)/2l;
 
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Engine","Calc. lead time for next tick: " + OMC.LEASTLAGMILLIS + "ms");
 
 		// Blit the buffer over
 		appWidgetManager.updateAppWidget(appWidgetId, rv);
 		rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
-		
 		
     	// Now for overlay URIs
 		OMC.OVERLAYURIS = new String[9];
@@ -364,8 +344,7 @@ public class OMCWidgetDrawEngine {
     	        	pi = PendingIntent.getActivity(context, 0, intent, 0);
         		}
 
-
-	        	
+       	
 	        	// NOTE BELOW:  We're only going from 1-9 (not 0-9)
 	        	// Because we are skipping the NW corner.
 	        	for (int i = 1; i < 9; i++) { 
@@ -375,7 +354,8 @@ public class OMCWidgetDrawEngine {
         		e.printStackTrace();
         	}
 //        }
-        	
+
+        	//  If we're a new install or a new widget, add a "newbie ribbon" so the user knows how to get to options
         	if (OMC.PREFS.getBoolean("newbie" + appWidgetId, true)) {
         		if (OMC.DEBUG)Log.i(OMC.OMCSHORT+"Engine","Adding newbie ribbon to widget "+ appWidgetId + ".");
         		rv.setImageViewResource(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), context.getResources().getIdentifier("tapme", "drawable", OMC.PKGNAME));
@@ -820,7 +800,6 @@ public class OMCWidgetDrawEngine {
 		Paint ptTemp = new Paint(pt);
 		ptTemp.setTextAlign(Paint.Align.LEFT);
 		int bufferWidth = Math.max(OMCWidgetDrawEngine.getSpannedStringWidth(ss, pt),1);
-		int bufferHeight = Math.max(pt.getFontMetricsInt().bottom - pt.getFontMetricsInt().top,1);
 		int iCursor = 0;
 		
 		OMC.ROTBUFFER.eraseColor(Color.TRANSPARENT);

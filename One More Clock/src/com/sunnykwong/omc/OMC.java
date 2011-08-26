@@ -1,27 +1,26 @@
 package com.sunnykwong.omc;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONArray;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.StringTokenizer;
-import java.util.Map.Entry;
-import java.util.Map;
-import java.util.Collections;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Random;
+import java.util.StringTokenizer;
 import java.util.concurrent.ArrayBlockingQueue;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.AlarmManager;
 import android.app.Application;
@@ -36,23 +35,20 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
-import android.text.format.Time;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.graphics.BitmapFactory;
-import android.content.res.Resources;
 import android.os.Handler;
-import android.graphics.Matrix;
+import android.text.format.Time;
+import android.util.Log;
+import android.widget.Toast;
 
 /**
  * @author skwong01

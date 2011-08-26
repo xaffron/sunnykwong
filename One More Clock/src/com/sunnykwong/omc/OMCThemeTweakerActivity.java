@@ -1,14 +1,10 @@
 package com.sunnykwong.omc;
 
 import java.io.File;
+import java.util.HashMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONArray;
-
-import com.android.settings.activities.ColorPickerDialog;
-
-import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -19,33 +15,32 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.Rect;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AbsoluteLayout;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.view.View.OnTouchListener;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnClickListener;
-import android.widget.AbsoluteLayout;
-import android.graphics.Rect;
+
+import com.android.settings.activities.ColorPickerDialog;
 
 
 public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedListener, OnTouchListener, OnLongClickListener {
