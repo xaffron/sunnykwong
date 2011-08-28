@@ -1012,7 +1012,6 @@ public class OMC extends Application {
 				result = String.valueOf((int)(1000+OMC.PREFS.getInt("ompc_"+sType,99))).substring(1);
 			} else if (sType.equals("battdecimal")) {
 					result = String.valueOf(OMC.PREFS.getInt("ompc_battpercent",99)/100f);
-					System.out.println("BattDec "+ result);
 			} else {
 				result = String.valueOf(OMC.PREFS.getInt("ompc_"+sType, 99));
 			}
@@ -1357,7 +1356,6 @@ public class OMC extends Application {
     }
 
     static public Matrix getMatrix() {
-    	//System.out.println("GETMATRIX");
     	try {
     		return OMC.MATRIXPOOL.take();
     	} catch (InterruptedException e) {
@@ -1376,7 +1374,6 @@ public class OMC extends Application {
     }
     
     static public Paint getPaint() {
-    	//System.out.println("GETPAINT");
     	try {
     		return OMC.PAINTPOOL.take();
     	} catch (InterruptedException e) {
@@ -1395,7 +1392,6 @@ public class OMC extends Application {
     }
     
     static public Bitmap getWidgetBMP() {
-    	//System.out.println("GETWIDGETBMP");
     	try {
     		return OMC.WIDGETPOOL.take();
     	} catch (InterruptedException e) {

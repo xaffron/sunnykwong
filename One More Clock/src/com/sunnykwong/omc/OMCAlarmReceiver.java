@@ -34,7 +34,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		}
 
 		if (action.equals(Intent.ACTION_BATTERY_CHANGED)) {
-			System.out.println("Batt "+ intent.getIntExtra("level", 0) + "/" +intent.getIntExtra("scale", 10000));
+			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm","Batt "+ intent.getIntExtra("level", 0) + "/" +intent.getIntExtra("scale", 10000));
 			OMC.PREFS.edit()
 				.putInt("ompc_battlevel", intent.getIntExtra("level", 0))
 				.putInt("ompc_battscale", intent.getIntExtra("scale", 100))

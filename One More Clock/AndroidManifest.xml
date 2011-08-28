@@ -62,7 +62,6 @@
     			<category android:name="android.intent.category.DEFAULT" />
     			<category android:name="android.intent.category.BROWSABLE" />
     			<data android:mimeType="*/*" />
-    			<data android:mimeType="" />
     			<data android:pathPattern="*.*\\.omc" />
 			</intent-filter>
 <!--			This filter captures .omc files copied to sdcard and clicked-->

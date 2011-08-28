@@ -184,7 +184,6 @@ public class OMCService extends Service {
 //    	// TODO Auto-generated method stub
 //		//	Tell the widgets to refresh themselves.
 //		OMCService.RUNNING=true;
-//		System.out.println("WORKY");
 //
 //		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
 //

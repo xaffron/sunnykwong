@@ -31,8 +31,8 @@ public class OMCWidgetDrawEngine {
 	// Needs to be synchronized now that we have different widget sizes 
 	// calling this same method creating a potential race condition
 	static synchronized void updateAppWidget(Context context, ComponentName cName) {
-		// Set target time to be 2 seconds ahead to account for lag
-		OMC.TIME.set(((System.currentTimeMillis()+2000l)*1000l)/1000l);
+		// Set target time slightly ahead to account for lag
+		OMC.TIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)*1000l)/1000l);
 
 		if (!OMCService.RUNNING) {
 			OMC.setServiceAlarm(System.currentTimeMillis() + 10000);
@@ -268,7 +268,8 @@ public class OMCWidgetDrawEngine {
 		rv.setImageViewBitmap(iViewID, finalbitmap);
 		
 		// Do some fancy footwork here and adjust the average lag (so OMC's slowness is less apparent)
-		OMC.LEASTLAGMILLIS = OMC.LEASTLAGMILLIS + (System.currentTimeMillis() - lStartTime)/2l;
+		// Max the lagtime out at 5 seconds to avoid accumulating alarm intent
+		OMC.LEASTLAGMILLIS = Math.min(5000l, (OMC.LEASTLAGMILLIS + (System.currentTimeMillis() - lStartTime))/2l);
 
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Engine","Calc. lead time for next tick: " + OMC.LEASTLAGMILLIS + "ms");
 

@@ -289,7 +289,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 			}
     	}
     	if (item.getItemId()==getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)) {
-    		System.out.println(oActiveLayer.optString("fgcolor"));
     		int initialColor;
     		if (oActiveLayer.optString("fgcolor")==null) {
     			initialColor = Color.BLACK;
@@ -321,7 +320,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     		cpd.show();
     	}
     	if (item.getItemId()==getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)) {
-    		System.out.println(oActiveLayer.optString("bgcolor"));
     		int initialColor;
     		if (oActiveLayer.optString("bgcolor")==null) {
     			initialColor = Color.BLACK;
@@ -454,7 +452,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     
     public void refreshViews() {
 		vPreview.setImageBitmap(OMCWidgetDrawEngine.drawBitmapForWidget(this, -1));
-		System.out.println("redraw");
 		vPreview.invalidate();
     }
     
