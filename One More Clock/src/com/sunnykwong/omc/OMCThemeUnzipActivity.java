@@ -93,9 +93,16 @@ public class OMCThemeUnzipActivity extends Activity {
 //        NOGO = OMC.FREEEDITION;
         NOGO = false;
 
+//    	android.os.PatternMatcher pm = new 	android.os.PatternMatcher(	android.os.PatternMatcher.PATTERN_SIMPLE_GLOB)
+        
         COMPLETE = false;
         pdMessage = "";
-        
+        System.out.println("INTENT ACTION: "+getIntent().getAction());
+        System.out.println("INTENT DATA: "+getIntent().getDataString());
+        System.out.println("INTENT SCHEME: "+getIntent().getScheme());
+        System.out.println("INTENT HOST: "+getIntent().getData().getHost());
+        System.out.println("INTENT PATH: "+getIntent().getData().getPath());
+
         uri = getIntent().getData();
 //        if (NOGO && (uri.toString().equals(OMC.STARTERPACKURL) || uri.toString().equals(OMC.STARTERPACKBACKUP))) {
 //        	NOGO = false;
