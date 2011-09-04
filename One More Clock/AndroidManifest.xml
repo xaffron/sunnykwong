@@ -43,8 +43,8 @@
         <activity android:name="com.sunnykwong.omc.OMCThemeUnzipActivity"
                   android:screenOrientation="nosensor" 
                   android:theme="@android:style/Theme.Translucent">
-<!--			This filter captures .omc files downloaded from websites-->
-<!-- 			<intent-filter>
+<!--			This filter captures .omc files in hyperlinks -->
+ 			<intent-filter>
     			<action android:name="android.intent.action.VIEW" />
     			<category android:name="android.intent.category.DEFAULT" />
     			<category android:name="android.intent.category.BROWSABLE" />
@@ -57,12 +57,11 @@
 	            <data android:pathPattern=".*\\..*\\..*\\.omc"/>
 	            <data android:pathPattern=".*\\..*\\..*\\..*\\.omc"/>			
 	        </intent-filter>
- -->
 <!--			This filter captures .omc files copied to sdcard and clicked-->
 			<intent-filter>
     			<action android:name="android.intent.action.VIEW" />
     			<category android:name="android.intent.category.DEFAULT" />
-    			<data android:scheme="file" android:mimeType="*/*" android:pathPattern=".*\\.omc"/>
+    			<data android:scheme="file" android:host="*" android:mimeType="*/*" android:pathPattern=".*\\.omc"/>
 	        </intent-filter>
 		</activity>
         <activity android:name="com.sunnykwong.omc.OMCCreditsActivity"
