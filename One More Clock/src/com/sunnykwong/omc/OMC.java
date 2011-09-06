@@ -68,8 +68,8 @@ public class OMC extends Application {
 	static final boolean FREEEDITION = false;
 	static final String SINGLETONNAME = "One More Clock";
 	static final String STARTERPACKURL = "asset:pk122.omc";
-	static final String STARTERPACKBACKUP = "omc://omc.colormeandroid.com/pk122.omc";
-	static final String EXTENDEDPACK = "omc://omc.colormeandroid.com/pk122_extended.omc";
+	static final String STARTERPACKBACKUP = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v123.omc";
+	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v123.omc";
 	static final String DEFAULTTHEME = "HoneycombLook";
 	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
 	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
@@ -125,6 +125,8 @@ public class OMC extends Application {
 	static AssetManager AM;
     static NotificationManager NM;
     static Resources RES;
+
+    static Typeface GEOFONT;
     
     static HashMap<String, Typeface> TYPEFACEMAP;
     static HashMap<String, Bitmap> BMPMAP;
@@ -245,7 +247,8 @@ public class OMC extends Application {
     	OMC.AM = getAssets();
     	OMC.RES = getResources();
     	OMC.NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-		OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_PRIVATE);
+    	OMC.GEOFONT = Typeface.createFromAsset(OMC.AM, "GeosansLight.ttf");
+    	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_PRIVATE);
 		// We are using Zehro's solution (listening for TIME_TICK instead of using AlarmManager + FG Notification) which
 		// should be quite a bit more graceful.
 		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;

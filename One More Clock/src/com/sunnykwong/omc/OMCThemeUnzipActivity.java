@@ -130,13 +130,15 @@ public class OMCThemeUnzipActivity extends Activity {
 					try {
 						pdMessage = "Opening connection";
 						mHandler.post(mUpdateStatus);
-						String sScheme = uri.getScheme();
+						String sScheme = uri.getScheme()+":";
 						if (sScheme.equals("")) sScheme = "http:";
 
 						if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","Scheme is " + sScheme);
 
 						ZipInputStream zis;
 						if (sScheme.equals("asset:")) {
+							zis = new ZipInputStream(OMC.AM.open(uri.getSchemeSpecificPart()));
+						} else if (sScheme.equals("file:")) {
 							zis = new ZipInputStream(OMC.AM.open(uri.getSchemeSpecificPart()));
 						} else {
 							downloadURL = new URL(sScheme + uri.getSchemeSpecificPart());

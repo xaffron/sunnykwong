@@ -15,6 +15,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -89,7 +90,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         btnGetMore.setOnClickListener(this);
         
         gallery = (Gallery)this.findViewById(this.getResources().getIdentifier("gallery", "id", OMC.PKGNAME));
-
     }
     
     @Override
@@ -121,7 +121,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     @Override
     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
     	// TODO Auto-generated method stub
-    	System.out.println("onclick");
     	if (arg0==gallery) {
 
         	gallery.setVisibility(View.INVISIBLE);
@@ -418,6 +417,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
         public View getView(int position, View convertView, ViewGroup parent) {
         	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("themepickerpreview", "layout", OMC.PKGNAME), null);
+        	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setTypeface(OMC.GEOFONT);
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
         	if (mTweaked.get(mThemes.get(position)).booleanValue()) {
         		((TextView)ll.findViewById(getResources().getIdentifier("ThemeTweakedFlag", "id", OMC.PKGNAME))).setText("(Tweaked)");

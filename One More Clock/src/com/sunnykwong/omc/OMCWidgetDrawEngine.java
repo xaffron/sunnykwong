@@ -597,6 +597,13 @@ public class OMCWidgetDrawEngine {
 			tempBGRect.right = tempFGRect.right+3;
 			tempBGRect.bottom = tempFGRect.bottom+3;
 			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
+		} else if (layer.optString("render_style").startsWith("shadow")) {
+			int iShadowWidth = Integer.parseInt(layer.optString("render_style").substring(7));
+			tempBGRect.left = tempFGRect.left+iShadowWidth;
+			tempBGRect.top = tempFGRect.top+iShadowWidth;
+			tempBGRect.right = tempFGRect.right+iShadowWidth;
+			tempBGRect.bottom = tempFGRect.bottom+iShadowWidth;
+			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
 		} else if (layer.optString("render_style").startsWith("glow")) {
 			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5)), 0f, 0f, pt2.getColor());
 		}
@@ -866,6 +873,10 @@ public class OMCWidgetDrawEngine {
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1, fRot);
 		} else if (style.equals("shadow")) {
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x+3, y+3, pt2, fRot);
+			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1, fRot);
+		} else if (style.startsWith("shadow")) {
+			int iShadowWidth = Integer.parseInt(style.substring(7));
+			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x+iShadowWidth, y+iShadowWidth, pt2, fRot);
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1, fRot);
 		} else if (style.startsWith("glow")) {
 			pt1.setShadowLayer(Float.parseFloat(style.substring(5)), 0f, 0f, pt2.getColor());

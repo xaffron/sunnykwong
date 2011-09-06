@@ -13,10 +13,7 @@
 		android:id="@+id/ThemeTweakedFlag" android:textSize="16dp"		
 		android:textColor="#ffffffff" android:layout_gravity="center" />
 	<ImageView android:adjustViewBounds="true"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:id="@+id/ThemePreview" android:maxWidth="280dp"
-		android:maxHeight="180dp" android:minHeight="180dp" android:minWidth="280dp"
-		android:scaleType="fitXY" />
+		android:id="@+id/ThemePreview" android:layout_width="fill_parent" android:scaleType="fitStart" android:layout_height="200dp"/>
 	<TextView android:adjustViewBounds="true"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:text="&lt;Theme Credits&gt;" android:id="@+id/ThemeCredits"
