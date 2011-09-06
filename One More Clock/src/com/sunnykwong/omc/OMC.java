@@ -59,7 +59,7 @@ import android.widget.Toast;
 public class OMC extends Application {
 	
 	
-	static final boolean DEBUG = true;
+	static final boolean DEBUG = false;
 	static final boolean THEMESFROMCACHE = true;
 	
 	static String THISVERSION; 
@@ -67,7 +67,7 @@ public class OMC extends Application {
 
 	static final boolean FREEEDITION = false;
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "asset:pk122.omc";
+	static final String STARTERPACKURL = "asset:pk123.omc";
 	static final String STARTERPACKBACKUP = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v123.omc";
 	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v123.omc";
 	static final String DEFAULTTHEME = "HoneycombLook";
