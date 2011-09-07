@@ -59,7 +59,7 @@ import android.widget.Toast;
 public class OMC extends Application {
 	
 	
-	static final boolean DEBUG = false;
+	static final boolean DEBUG = true;
 	static final boolean THEMESFROMCACHE = true;
 	
 	static String THISVERSION; 
@@ -87,13 +87,13 @@ public class OMC extends Application {
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
-		"Welcome to version 1.2.2!  3 new clocks arrive in this version - Indicia, Terra Eclipse and Valentine Kiss.  Have fun!",
-		"We're moving your themes from OMCThemes to .OMCThemes (with a dot).  This will keep OMC from cluttering up your Gallery... you may have to reboot your phone to see the changes.",
-		"OMC v1.2.2 now lets you send your favorite personalizations to Xaffron!  Tap and hold a clock on the theme picker screen, then select 'Email Tweaked Theme' to send to me.",
-		"Did you notice the improved sharpness of the clocks?  OMC now renders the widget at 32-bit color, up to the highest color depth your device supports... no more blurry dithering!",
-		"Not finding your favorite clock?  OMC comes with just the latest clocks.  To get the remaining ones, tap on 'Download More Clocks' when you're in the theme picker screen!",
-		"OMC now uses JSON instead of XML; themes are stored in the .OMCThemes folder.  The old OMC and OMCThemes folders are safe to delete, but if you made XML changes before, you'll want to port them over manually!",
-		"OMC now allows theme personalization on the phone.  Try moving each layer around, changing colors and toggling visibility!",
+		"After an extended hiatus, Xaffron presents version 1.2.3!  As of this version, we are up to a dizzying 58 clocks (from 37 in v1.2.2).",
+		"OMC now supports battery levels.  Some of the widgets contain battery indicators in surprising ways - browse around and experiment!",
+		"Version 1.2.3 had to move back to 16-bit color rendering due to performance issues.  The good news, however, is that v1.2.3 is much snappier than previous versions!",
+		"OMC stores themes in the .OMCThemes folder (with a dot).  This will keep OMC from cluttering up your Gallery... feel free to delete any old themes in your SD card's OMCThemes directory (without dot).",
+		"OMC lets you send your favorite personalizations to Xaffron!  Tap and hold a clock on the theme picker screen, then select 'Email Tweaked Theme' to send to me.",
+		"Not finding your favorite clock?  OMC comes with just a few initially.  To get the full clock collection, tap on 'Download More Clocks' when you're in the theme picker screen.",
+		"OMC allows theme personalization on the phone.  Try moving each layer around, changing colors and toggling visibility!",
 		"Theme personalization overwrites dynamic elements (changing colors, positions, text, etc).  To make fine-tuned changes to dynamic elements, fire up a text editor on your phone or computer and look at the contents of the 00control.json file.",
 		"The donate version now features 8 widget sizes.  Not all themes work well with all widget sizes, but feel free to experiment! The newer ones look particularly good in the square and vertical widgets.",
 		"Too many widget sizes?  Tap on 'Toggle Widget Sizes' and disable the ones you don't want.  Remember to reboot your phone to apply changes!",

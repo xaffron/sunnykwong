@@ -264,7 +264,6 @@ public class OMCWidgetDrawEngine {
 
 		RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
 		final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
-
 		rv.setImageViewBitmap(iViewID, finalbitmap);
 		
 		// Do some fancy footwork here and adjust the average lag (so OMC's slowness is less apparent)
