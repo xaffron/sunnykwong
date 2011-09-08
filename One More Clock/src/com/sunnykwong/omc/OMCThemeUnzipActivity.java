@@ -1,8 +1,10 @@
 package com.sunnykwong.omc;
 
 import java.io.BufferedInputStream;
+
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileInputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.zip.ZipEntry;
@@ -139,7 +141,7 @@ public class OMCThemeUnzipActivity extends Activity {
 						if (sScheme.equals("asset:")) {
 							zis = new ZipInputStream(OMC.AM.open(uri.getSchemeSpecificPart()));
 						} else if (sScheme.equals("file:")) {
-							zis = new ZipInputStream(OMC.AM.open(uri.getSchemeSpecificPart()));
+							zis = new ZipInputStream(new FileInputStream(uri.getSchemeSpecificPart()));
 						} else {
 							downloadURL = new URL(sScheme + uri.getSchemeSpecificPart());
 							URLConnection conn = downloadURL.openConnection();

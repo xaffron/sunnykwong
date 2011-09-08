@@ -42,8 +42,8 @@ public class OMCWidgetDrawEngine {
 		final int N = aWM.getAppWidgetIds(cName)==null? 0: aWM.getAppWidgetIds(cName).length;
 
 		for (int i=0; i<N; i++) {
-             if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i])) {
-            	// Blit cached bitmap over first
+             if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i]) && OMC.LEASTLAGMILLIS > 500l) {
+            	// If this clock takes more than 0.5 sec to render, then blit cached bitmap over first
             	RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
                 rv.setImageViewBitmap(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME),
                 		OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
@@ -272,10 +272,6 @@ public class OMCWidgetDrawEngine {
 
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Engine","Calc. lead time for next tick: " + OMC.LEASTLAGMILLIS + "ms");
 
-		// Blit the buffer over
-		appWidgetManager.updateAppWidget(appWidgetId, rv);
-		rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
-		
     	// Now for overlay URIs
 		OMC.OVERLAYURIS = new String[9];
 		JSONObject temp = oTheme.optJSONObject("customURIs");

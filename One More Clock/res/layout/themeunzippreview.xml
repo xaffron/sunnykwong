@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_height="wrap_content"
-	android:layout_width="wrap_content" android:padding="10dp"
+	android:layout_width="fill_parent" android:padding="10dp"
 	>
-	<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+	<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
 	<ImageView android:adjustViewBounds="true"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:id="@+id/UnzipPreview" android:maxWidth="280dp"
-		android:maxHeight="180dp" android:minHeight="180dp" android:minWidth="280dp"
-		android:scaleType="fitXY" />
+		android:layout_width="fill_parent" android:scaleType="fitStart" android:layout_height="200dp"
+		android:id="@+id/UnzipPreview" android:maxWidth="280dp"/>
 	<ProgressBar android:id="@+id/UnzipProgress" style="?android:attr/progressBarStyleLarge"
 		android:layout_width="wrap_content" android:layout_height="wrap_content" 
 		android:indeterminateOnly="true" android:layout_gravity="center" android:visibility="invisible"/>
