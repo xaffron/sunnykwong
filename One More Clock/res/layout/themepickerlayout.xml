@@ -8,8 +8,8 @@
                 android:layout_height="wrap_content" android:spacing="5dp">
         </Gallery>
 <LinearLayout android:layout_alignParentBottom="true" android:id="@+id/LinearLayout02" android:layout_height="wrap_content" android:layout_width="fill_parent">
-<Button android:id="@+id/btnReload" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Refresh Clock List"></Button>
-<Button android:id="@+id/btnMore" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Download More Clocks"></Button>
+<Button android:id="@+id/btnReload" android:layout_width="160dp" android:layout_height="wrap_content" android:text="Re-Extract Bundled Clocks"></Button>
+<Button android:id="@+id/btnMore" android:layout_width="160dp" android:layout_height="wrap_content" android:text="Download (7MB) Full Online Collection"></Button>
 </LinearLayout>
 
 

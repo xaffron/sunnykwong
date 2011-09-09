@@ -46,9 +46,6 @@
 		</PreferenceScreen>
 		<Preference android:selectable="true"
 			android:key="clearCache" android:enabled="true" android:title="Clear Render Caches"/>
-		
-		<Preference android:selectable="true" android:enabled="true"
-			android:key="downloadStarterPack" android:title="Re-Get Starter Clock Pack" android:summary="Re-extracts the default list of clocks."/>
 	
 </PreferenceCategory>
 	<PreferenceCategory android:title="Credits"

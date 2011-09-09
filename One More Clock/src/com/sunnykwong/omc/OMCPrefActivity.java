@@ -32,7 +32,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     CheckBox mCheckBox;
     TextView mTextView;
     boolean isInitialConfig=false, mTempFlag=false;
-    Preference prefloadThemeFile, prefclearCache, prefdownloadStarterPack, prefbSkinner;
+    Preference prefloadThemeFile, prefclearCache, prefbSkinner;
     Preference prefsUpdateFreq, prefwidgetPersistence, prefemailMe, preftweakTheme ;
 
     @Override
@@ -121,7 +121,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	prefemailMe = findPreference("emailMe");
         	prefloadThemeFile = findPreference("loadThemeFile");
         	prefclearCache = findPreference("clearCache");
-        	prefdownloadStarterPack = findPreference("downloadStarterPack");
         	prefbSkinner = findPreference("bSkinner");
         	prefwidgetPersistence = findPreference("widgetPersistence");
         	preftweakTheme = findPreference("tweakTheme");
@@ -151,7 +150,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		if (OMC.SINGLETON) {
         		((PreferenceCategory)findPreference("thisClock")).removePreference(prefloadThemeFile);
         		((PreferenceCategory)findPreference("allClocks")).removePreference(prefclearCache);
-        		((PreferenceCategory)findPreference("allClocks")).removePreference(prefdownloadStarterPack);
         		((PreferenceScreen)findPreference("widgetPrefs")).removePreference(prefbSkinner);
         	}
     		
@@ -322,31 +320,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     	if (preference == getPreferenceScreen().findPreference("sVersion")) {
 			this.startActivity(OMC.OMCMARKETINTENT);
         	this.finish();
-    	}
-    	if (preference == getPreferenceScreen().findPreference("downloadStarterPack")) {
-        	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
-			.setCancelable(true)
-			.setTitle("Starter Clock Pack")
-			.setMessage("Any theme customizations you have made in your sdcard's .OMCThemes folder will be overwritten.  Are you sure?\n(If not sure, tap Yes)")
-			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-				
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-		        	Toast.makeText(OMCPrefActivity.this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
-//		        	OMCThemePickerActivity.THEMEROOT.mkdir();
-					startActivity(OMC.GETSTARTERPACKINTENT);
-					mAD.cancel();
-				}
-			})
-			.setNegativeButton("No", new DialogInterface.OnClickListener() {
-				
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					mAD.cancel();
-				}
-			})
-			.create();
-        	mAD.show();
     	}
     	if (preference == getPreferenceScreen().findPreference("loadThemeFile")) {
     		getPreferenceScreen().setEnabled(false);
