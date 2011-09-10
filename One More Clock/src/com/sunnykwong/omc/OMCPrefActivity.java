@@ -23,7 +23,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import java.util.TimeZone;
 
 public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceChangeListener{ 
     /** Called when the activity is first created. */
@@ -32,7 +32,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     CheckBox mCheckBox;
     TextView mTextView;
     boolean isInitialConfig=false, mTempFlag=false;
-    Preference prefloadThemeFile, prefclearCache, prefbSkinner;
+    Preference prefloadThemeFile, prefclearCache, prefbSkinner, prefTimeZone;
     Preference prefsUpdateFreq, prefwidgetPersistence, prefemailMe, preftweakTheme ;
 
     @Override
@@ -122,7 +122,14 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	prefloadThemeFile = findPreference("loadThemeFile");
         	prefclearCache = findPreference("clearCache");
         	prefbSkinner = findPreference("bSkinner");
-        	prefwidgetPersistence = findPreference("widgetPersistence");
+        	prefTimeZone = findPreference("timeZone");
+    		if (OMC.PREFS.getString("sTimeZone", "default").equals("default")) {
+        		findPreference("timeZone").setSummary("(Following Device Time Zone)");
+    		} else {
+    			findPreference("timeZone").setSummary(OMC.PREFS.getString("sTimeZone", "default"));
+    		}
+
+    		prefwidgetPersistence = findPreference("widgetPersistence");
         	preftweakTheme = findPreference("tweakTheme");
         	
         	prefsUpdateFreq = findPreference("sUpdateFreq");
@@ -381,15 +388,32 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		OMC.THEMEMAP.clear();
     		Toast.makeText(this, "Caches Cleared", Toast.LENGTH_SHORT).show();
     	}
+    	if (preference == getPreferenceScreen().findPreference("timeZone")) {
+    		getPreferenceScreen().setEnabled(false);
+    		Intent mainIntent = new Intent(Intent.ACTION_MAIN,
+        			null);
+			mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+
+			Intent pickIntent = new Intent(OMC.CONTEXT, ZoneList.class);
+			startActivityForResult(pickIntent, OMCPrefActivity.appWidgetID);
+			mainIntent=null;
+			pickIntent=null;
+    	}
     	return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     // The result is obtained in onActivityResult:
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (OMC.PREFS.getString("sTimeZone", "default").equals("default")) {
+			getPreferenceScreen().findPreference("timeZone").setSummary("(Following Device Time Zone)");
+		} else {
+			getPreferenceScreen().findPreference("timeZone").setSummary(OMC.PREFS.getString("sTimeZone", "default"));
+		}
 		getPreferenceScreen().setEnabled(true);
 		// If it's an independent child activity, do nothing
 		if (requestCode == 0) return;
 		if (data != null) {
+			System.out.println(data.toString());
 			String s = data.toUri(MODE_PRIVATE).toString();
 			
 			OMC.PREFS.edit().putString("URI", s).commit();

@@ -65,6 +65,7 @@ public class ZoneList extends ListActivity {
     private static final int MENU_TIMEZONE = Menu.FIRST+1;
     private static final int MENU_ALPHABETICAL = Menu.FIRST;
 
+    private static final HashMap<String,String> oDefaultChoice = new HashMap<String,String>();
     // Initial focus position
     private int mDefault;
     
@@ -77,22 +78,27 @@ public class ZoneList extends ListActivity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        oDefaultChoice.put(KEY_ID, "default");
+        oDefaultChoice.put(KEY_DISPLAYNAME, "(Follow Device Time Zone)");
+
         String[] from = new String[] {KEY_DISPLAYNAME, KEY_GMT};
         int[] to = new int[] {android.R.id.text1, android.R.id.text2};
 
         MyComparator comparator = new MyComparator(KEY_OFFSET);
         
         List<HashMap> timezoneSortedList = getZones();
+        List<HashMap> alphabeticalList = new ArrayList<HashMap>(timezoneSortedList);
+        
         Collections.sort(timezoneSortedList, comparator);
+        timezoneSortedList.add(0,oDefaultChoice);
         mTimezoneSortedAdapter = new SimpleAdapter(this,
                 (List) timezoneSortedList,
                 android.R.layout.simple_list_item_2,
                 from,
                 to);
-
-        List<HashMap> alphabeticalList = new ArrayList<HashMap>(timezoneSortedList);
         comparator.setSortingKey(KEY_DISPLAYNAME);
         Collections.sort(alphabeticalList, comparator);
+        alphabeticalList.add(0,oDefaultChoice);
         mAlphabeticalAdapter = new SimpleAdapter(this,
                 (List) alphabeticalList,
                 android.R.layout.simple_list_item_2,
@@ -232,9 +238,7 @@ public class ZoneList extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Map map = (Map) l.getItemAtPosition(position);
         // Update the system timezone value
-//        AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//        alarm.setTimeZone((String) map.get(KEY_ID));
-        System.out.println((String) map.get(KEY_ID));
+        OMC.PREFS.edit().putString("sTimeZone", (String) map.get(KEY_ID)).commit();
         setResult(RESULT_OK);
         finish();
     }

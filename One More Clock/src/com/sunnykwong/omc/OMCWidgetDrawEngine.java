@@ -24,6 +24,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
+import java.util.TimeZone;
 
 public class OMCWidgetDrawEngine {
 //	static final String TESTTHEME="IronIndicant";
@@ -50,7 +51,11 @@ public class OMCWidgetDrawEngine {
                 aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);                    
                 rv = null;
               }
-
+     		if (!OMC.PREFS.getString("sTimeZone"+aWM.getAppWidgetIds(cName)[i],"default").equals("default")) {
+     			OMC.TIME.switchTimezone(OMC.PREFS.getString("sTimeZone"+aWM.getAppWidgetIds(cName)[i],TimeZone.getDefault().getID()));
+     		} else {
+     			OMC.TIME.switchTimezone(TimeZone.getDefault().getID());
+     		}
 			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i], cName);
 		}
 	}
@@ -60,7 +65,7 @@ public class OMCWidgetDrawEngine {
 			final int appWidgetId, ComponentName cName) { 
 		long lStartTime = System.currentTimeMillis();
 
-		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Engine", "Redrawing widget" + appWidgetId + " (" + OMC.PREFS.getString("widgetTheme"+appWidgetId, "")+ ") @ " + OMC.TIME.format("%T"));
+		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Engine", "Redrawing widget" + appWidgetId + " (" + OMC.PREFS.getString("widgetTheme"+appWidgetId, "")+ ") as " + OMC.TIME.format("%T"));
 		
 		
 		// Get theme.  (Nowadays, OMC.getTheme takes care of caching/importing.)

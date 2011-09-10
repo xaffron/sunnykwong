@@ -116,6 +116,10 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 			startActivity(OMC.GETEXTENDEDPACKINTENT);
     		refreshThemeList();
     	}
+    	if (v==btnGetMore) {
+			startActivity(OMC.GETEXTENDEDPACKINTENT);
+    		refreshThemeList();
+    	}
      }
 
     @Override

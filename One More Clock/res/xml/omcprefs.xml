@@ -12,8 +12,8 @@
 			android:enabled="true"
 			android:selectable="true" android:summary="Show 04:23 instead of 4:23." android:title="Show Leading Zero"/>
 		<Preference android:key="oTTL" android:summary="NB: Click on top left corner to return to this screen." android:title="Assign Tap-to-Launch"></Preference>
-	
-</PreferenceCategory>
+		<Preference android:key="timeZone" android:title="Change Time Zone" android:enabled="true" android:selectable="true"></Preference>
+	</PreferenceCategory>
 	<PreferenceCategory android:key="allClocks"
 		android:title="For all clocks:">
 		<CheckBoxPreference android:key="widgetPersistence"

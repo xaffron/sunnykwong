@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.StringTokenizer;
@@ -89,6 +90,7 @@ public class OMC extends Application {
 	static final String[] FAQS = {
 		"After an extended hiatus, Xaffron presents version 1.2.3!  As of this version, we are up to a dizzying 58 clocks (from 37 in v1.2.2).",
 		"OMC now supports battery levels.  Some of the widgets contain battery indicators in surprising ways - browse around and experiment!",
+		"You can now specify a timezone for each clock independently of the device setting.  This allows for nice home/travel clock scenarios.",
 		"Version 1.2.3 had to move back to 16-bit color rendering due to performance issues.  The good news, however, is that v1.2.3 is much snappier than previous versions!",
 		"OMC stores themes in the .OMCThemes folder (with a dot).  This will keep OMC from cluttering up your Gallery... feel free to delete any old themes in your SD card's OMCThemes directory (without dot).",
 		"OMC lets you send your favorite personalizations to Xaffron!  Tap and hold a clock on the theme picker screen, then select 'Email Tweaked Theme' to send to me.",
@@ -438,6 +440,7 @@ public class OMC extends Application {
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
 		.putBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero", true))
 		.putString("URI"+aWI, OMC.PREFS.getString("URI", ""))
+		.putString("sTimeZone"+aWI, OMC.PREFS.getString("sTimeZone", "default"))
 		.commit();
 	}
  
@@ -446,7 +449,8 @@ public class OMC extends Application {
 		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true)))
 		.putBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero", true)))
-		.putString("URI"+aWI, OMC.PREFS.getString("URI"+aWI, ""))
+		.putString("URI"+aWI, "")
+		.putString("sTimeZone"+aWI, OMC.PREFS.getString("sTimeZone"+aWI, "default"))
 		.commit();
 	}
  
@@ -455,6 +459,7 @@ public class OMC extends Application {
 		.putBoolean("widget24HrClock", OMC.PREFS.getBoolean("widget24HrClock"+aWI, true))
 		.putBoolean("widgetLeadingZero", OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, true))
 		.putString("URI", OMC.PREFS.getString("URI"+aWI, ""))
+		.putString("sTimeZone", OMC.PREFS.getString("sTimeZone"+aWI, "default"))
 		.commit();
 	}
 	
@@ -464,6 +469,7 @@ public class OMC extends Application {
 			.remove("widget24HrClock"+aWI)
 			.remove("widgetLeadingZero"+aWI)
 			.remove("URI"+aWI)
+			.remove("sTimeZone"+aWI)
 			.commit();
 		File f = new File(OMC.CACHEPATH + aWI +"cache.png");
 		if (f.exists())f.delete();
