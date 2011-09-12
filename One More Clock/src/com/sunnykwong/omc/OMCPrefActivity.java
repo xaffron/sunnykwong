@@ -303,7 +303,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     	}
     	if (preference == getPreferenceScreen().findPreference("widgetPrefs") && OMC.FREEEDITION) {
     		final CharSequence TitleCS = "Why are the widgets so big?";
-    		final CharSequence MessageCS = "Actually, the donate version offers widget sizes of 4x2, 4x1, 3x1 and 2x1.\nPlease consider upgrading to get these sizes!\nAlternatively, if you use an alternative launcher such as ADW or Launcher Pro, you should be able to approximate this ability by dynamically resizing the 4x2 widget.";
+    		final CharSequence MessageCS = "Actually, the paid version offers widget sizes of 4x2, 4x1, 3x1 and 2x1.\nPlease consider upgrading to get these sizes!\nAlternatively, if you use an alternative launcher such as ADW or Launcher Pro, you should be able to approximate this ability by dynamically resizing the 4x2 widget.";
     		final CharSequence PosButtonCS = "Take me to the paid version!";
         	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
 			.setCancelable(true)
