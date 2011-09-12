@@ -88,8 +88,8 @@ public class OMC extends Application {
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
-		"After an extended hiatus, Xaffron presents a new version of OMC!  As of this version, we are up to a dizzying 58 clocks (from 37 in v1.2.2).",
-		"v1.2.4 fixes a showstopper issue with Tap-to-Launch settings not sticking.  Thanks for yelling at me early and often... keep the feedback coming!",
+		"After an extended hiatus, Xaffron presents a new version of OMC!  As of this version, we are up to a dizzying 59 clocks (from 37 in v1.2.2).",
+		"v1.2.4 fixes a showstopper issue with Tap-to-Launch settings not sticking.  That and I threw in one extra clock - Lucky WIP!",
 		"OMC now supports battery levels.  Some of the widgets contain battery indicators in surprising ways - browse around and experiment!",
 		"You can now specify a timezone for each clock independently of the device setting.  This allows for nice home/travel clock scenarios.",
 		"Version 1.2.3 had to move back to 16-bit color rendering due to performance issues.  The good news, however, is that v1.2.3 is much snappier than previous versions!",
