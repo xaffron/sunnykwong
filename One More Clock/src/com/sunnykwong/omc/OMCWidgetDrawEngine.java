@@ -91,9 +91,20 @@ public class OMCWidgetDrawEngine {
 		// OMC.BUFFER (square, bitmap buffer) is updated and copy-returned.
 		final Bitmap bitmap = OMCWidgetDrawEngine.drawBitmapForWidget(context,appWidgetId);
 
-		//look for this size's custom scaling info
+		//
+		//Step 1: 
+		// look for this size's custom scaling info. 
+		// Scaling info is in 00control.json: CustomScaling.  This section is optional in the JSON for legacy clocks.
+		//
 		OMC.STRETCHINFO = oTheme.optJSONObject("customscaling");
 		String sWidgetSize = cName.toShortString().substring(cName.toShortString().length()-4,cName.toShortString().length()-1);
+
+		//Step 2: 
+		// Depending on the widget size, we make assumptions on the widget shape.
+		// These assumptions are necessary to prevent the homescreen from scaling our widget down
+		// when/if the final widget is rotated via "customscaling"->"cw_rotate".
+		// Entire homescreen is assumed to be 480dp x 600dp, 4 icons x 4 icons.
+		//
 		int thisWidgetWidth = 480;
 		int thisWidgetHeight = 600;
 		if (sWidgetSize.equals("4x2")) {
@@ -118,8 +129,10 @@ public class OMCWidgetDrawEngine {
 			thisWidgetWidth = 120;
 			thisWidgetHeight = 450;
 		}
-		
-		//if no custom scaling info present, use default stretch info
+
+		//Step 3:
+		// if no custom scaling info present, use default stretch info
+		//
 		boolean bDefaultScaling=false;
 		if (OMC.STRETCHINFO==null) {
 			bDefaultScaling=true;
@@ -211,6 +224,42 @@ public class OMCWidgetDrawEngine {
 			}
 		}
 
+		//Step 4:
+		// Now, based on the full canvas size (as of v125 it is 480x480), we estimate the size of the final widget canvas
+		// after cropping, stretching and rotating.
+		// Note that rotation in android grows the size of the bitmap because android doesn't throw away pixels
+		//
+		int width = bitmap.getWidth()- OMC.STRETCHINFO.optInt("left_crop") - OMC.STRETCHINFO.optInt("right_crop"); 
+		int height = bitmap.getHeight() - OMC.STRETCHINFO.optInt("top_crop") - OMC.STRETCHINFO.optInt("bottom_crop"); 
+		float hzStretch = (float)OMC.STRETCHINFO.optDouble("horizontal_stretch");
+		float vtStretch = (float)OMC.STRETCHINFO.optDouble("vertical_stretch");
+		double dScaledWidth = width * hzStretch;
+		double dScaledHeight = height * vtStretch;
+		double rot = (OMC.STRETCHINFO.optDouble("cw_rotate"));
+		double rotRad = rot*Math.PI/180d;
+		
+		double rotWidth = Math.abs(dScaledHeight* Math.sin(rotRad)) + Math.abs(dScaledWidth*Math.cos(rotRad));
+		double rotHeight = Math.abs(dScaledHeight* Math.cos(rotRad)) + Math.abs(dScaledWidth*Math.sin(rotRad)) ;
+
+		//Step 5:
+		// Now that we know the rotated size of the canvas, we want to constrain it to the actual widget size.  
+		// Again, this is necessary to prevent the homescreen from scaling our widget down
+		// when/if the final widget is rotated via "customscaling"->"cw_rotate".
+		// We will figure out the size ratios of height and width, then select the less destructive (closer to 1x) scaling
+		// This results in center-cropped display of the OMC canvas.
+		//
+		thisWidgetWidth = Math.min((int)rotWidth, thisWidgetWidth);
+		thisWidgetHeight = Math.min((int)rotHeight, thisWidgetHeight);
+		
+		float fFitGraphic = (float) Math.max(thisWidgetWidth/rotWidth, thisWidgetHeight/rotHeight);
+
+		//Step 6:
+		// Create the final bitmap to be sent over to the homescreen app.  We are using 16-bit because 
+		// sending a 480x480x32 bitmap over IPC will choke half the time... 
+		// and compressing a 480x480x32 bitmap to flash and decompressing immediately after is both CPU and I/O heavy
+		//  (not to mention flash wear)
+		// Note that the bitmaps are put in a hashmap keyed by the appwidgetID.
+		//
 		final Bitmap finalbitmap = OMC.WIDGETBMPMAP.containsKey(appWidgetId) ?
 				OMC.WIDGETBMPMAP.get(appWidgetId) :
 					Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,Bitmap.Config.ARGB_4444);
@@ -225,21 +274,8 @@ public class OMCWidgetDrawEngine {
 			OMC.BMPTOCVAS.put(finalbitmap, finalcanvas);
 		}
 
-		int width = bitmap.getWidth()- OMC.STRETCHINFO.optInt("left_crop") - OMC.STRETCHINFO.optInt("right_crop"); 
-		int height = bitmap.getHeight() - OMC.STRETCHINFO.optInt("top_crop") - OMC.STRETCHINFO.optInt("bottom_crop"); 
-		float hzStretch = (float)OMC.STRETCHINFO.optDouble("horizontal_stretch");
-		float vtStretch = (float)OMC.STRETCHINFO.optDouble("vertical_stretch");
-		double dScaledWidth = width * hzStretch;
-		double dScaledHeight = height * vtStretch;
-		double rot = (OMC.STRETCHINFO.optDouble("cw_rotate"));
-		double rotRad = rot*Math.PI/180d;
-		
-		double rotHeight = Math.abs(dScaledHeight* Math.cos(rotRad)) + Math.abs(dScaledWidth*Math.sin(rotRad)) ;
-		double rotWidth = Math.abs(dScaledHeight* Math.sin(rotRad)) + Math.abs(dScaledWidth*Math.cos(rotRad));
-
-		float fFitGraphic = (float) Math.min(thisWidgetWidth/rotWidth, thisWidgetHeight/rotHeight);
-		
-		// Crop, Scale & Rotate the clock first
+		//Step 7:
+		// Now we do the actual Crop, Scale & Rotate.
 		
 		finalcanvas.save();
 		Matrix tempMatrix = OMC.getMatrix();
@@ -252,7 +288,9 @@ public class OMCWidgetDrawEngine {
 		pt.setAlpha(255);
 		pt.setAntiAlias(true);
 		pt.setFilterBitmap(true);
-//		pt.setDither(true);
+
+		//Step 8:
+		// The actual draw to final bitmap.
 		
 		finalcanvas.setMatrix(tempMatrix);
 		finalcanvas.drawBitmap(Bitmap.createBitmap(bitmap, 
@@ -260,6 +298,9 @@ public class OMCWidgetDrawEngine {
 				(int)(OMC.STRETCHINFO.optInt("top_crop")),
 				width, height),0,0, pt);
 
+
+		//Step 9:
+		// Cleaning up.  The bitmap used for scaling is recycled, and matrix+paint returned to pool.
 		bitmap.recycle();
 
 		finalcanvas.restore();
@@ -267,6 +308,11 @@ public class OMCWidgetDrawEngine {
 		OMC.returnMatrix(tempMatrix);
 		OMC.returnPaint(pt);
 
+		//Step 10:
+		// Instructing the final bitmap to be sent over to the remote view (specifically, the homescreen).
+		// Note that the final bitmap isn't actually sent until Step XX below.
+		//
+		
 		RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
 		final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
 		rv.setImageViewBitmap(iViewID, finalbitmap);
@@ -295,78 +341,54 @@ public class OMCWidgetDrawEngine {
 			}
 		}
 
-//        if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) { 
-////	Using a broadcast is more flexible, but less crash-proof. So we're not using it for now.
-////        	Intent intent = new Intent("com.sunnykwong.omc.WIDGET_CONFIG");
-////        	intent.setData(Uri.parse("omc:"+appWidgetId));
-////        	PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//
-//        	Intent intent = new Intent(context, OMCPrefActivity.class);
-//        	intent.setData(Uri.parse("omc:"+appWidgetId));
-//        	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
-//        	
-//        	rv.setOnClickPendingIntent(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME), pi);
-//            for (int i = 0; i < 9; i++) {
-//            	if (OMC.OVERLAYURI[i].equals("default")) {
-//	            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], pi);
-//            	} else {
-//    				Intent s = (new Intent(Intent.ACTION_VIEW,OMC.OVERLAYURI[i]));
-//    				s.addCategory(Intent.CATEGORY_DEFAULT);
-//
-//            		rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i],            	
-//            			PendingIntent.getActivity(context, 0, s,0));
-//            	}
-//            }
-//        } else {
-//
-        	
-        	try {
-        		Intent intent;
+    	try {
+    		Intent intent;
+        	intent = new Intent(context, OMCPrefActivity.class);
+        	intent.setData(Uri.parse("omc:"+appWidgetId));
+        	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
+        	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[0], pi);
+
+        	if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) {
 	        	intent = new Intent(context, OMCPrefActivity.class);
 	        	intent.setData(Uri.parse("omc:"+appWidgetId));
 	        	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-	        	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
-            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[0], pi);
+	        	pi = PendingIntent.getActivity(context, 0, intent, 0);
+    		} else if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("noop")) {
+                // Kudos to Eric for solution to dummy out "unsetonlickpendingintent":
+                // http://groups.google.com/group/android-developers/browse_thread/thread/f9e80e5ce55bb1e0/78153eb730326488
+            	// I'm not using it right now, but it's a useful hint nonetheless. Thanks!
+	        	pi = PendingIntent.getBroadcast(context, 0, OMC.DUMMYINTENT,
+            		    PendingIntent.FLAG_UPDATE_CURRENT);
+    		} else {
+    			intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
+	        	intent.setData(Uri.parse("omc:"+appWidgetId));
+	        	pi = PendingIntent.getActivity(context, 0, intent, 0);
+    		}
 
-            	if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) {
-    	        	intent = new Intent(context, OMCPrefActivity.class);
-    	        	intent.setData(Uri.parse("omc:"+appWidgetId));
-    	        	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    	        	pi = PendingIntent.getActivity(context, 0, intent, 0);
-        		} else if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("noop")) {
-                    // Kudos to Eric for solution to dummy out "unsetonlickpendingintent":
-                    // http://groups.google.com/group/android-developers/browse_thread/thread/f9e80e5ce55bb1e0/78153eb730326488
-                	// I'm not using it right now, but it's a useful hint nonetheless. Thanks!
-    	        	pi = PendingIntent.getBroadcast(context, 0, OMC.DUMMYINTENT,
-                		    PendingIntent.FLAG_UPDATE_CURRENT);
-        		} else {
-        			intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
-    	        	intent.setData(Uri.parse("omc:"+appWidgetId));
-    	        	pi = PendingIntent.getActivity(context, 0, intent, 0);
-        		}
+   	
+        	// NOTE BELOW:  We're only going from 1-9 (not 0-9)
+        	// Because we are skipping the NW corner.
+        	for (int i = 1; i < 9; i++) { 
+	            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], pi);
+            }
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
 
-       	
-	        	// NOTE BELOW:  We're only going from 1-9 (not 0-9)
-	        	// Because we are skipping the NW corner.
-	        	for (int i = 1; i < 9; i++) { 
-		            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], pi);
-	            }
-        	} catch (Exception e) {
-        		e.printStackTrace();
-        	}
-//        }
+    	//  If we're a new install or a new widget, add a "newbie ribbon" so the user knows how to get to options
+    	if (OMC.PREFS.getBoolean("newbie" + appWidgetId, true)) {
+    		if (OMC.DEBUG)Log.i(OMC.OMCSHORT+"Engine","Adding newbie ribbon to widget "+ appWidgetId + ".");
+    		rv.setImageViewResource(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), context.getResources().getIdentifier("tapme", "drawable", OMC.PKGNAME));
+    	} else {
+    		rv.setImageViewResource(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), context.getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME));
+    	}
 
-        	//  If we're a new install or a new widget, add a "newbie ribbon" so the user knows how to get to options
-        	if (OMC.PREFS.getBoolean("newbie" + appWidgetId, true)) {
-        		if (OMC.DEBUG)Log.i(OMC.OMCSHORT+"Engine","Adding newbie ribbon to widget "+ appWidgetId + ".");
-        		rv.setImageViewResource(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), context.getResources().getIdentifier("tapme", "drawable", OMC.PKGNAME));
-        	} else {
-        		rv.setImageViewResource(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), context.getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME));
-        	}
+    	//Step XX:
+    	// OK, the IPC instructions are done; send them over to the homescreen.
+    	//
+    	appWidgetManager.updateAppWidget(appWidgetId, rv);
 
-        	// OK, the IPC instructions are done; send them over to the homescreen.
-        	appWidgetManager.updateAppWidget(appWidgetId, rv);
-//        }
 	}
 	
 	static Bitmap drawBitmapForWidget(final Context context, final int aWI) {
