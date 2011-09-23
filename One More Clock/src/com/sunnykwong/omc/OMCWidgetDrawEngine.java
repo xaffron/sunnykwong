@@ -260,11 +260,22 @@ public class OMCWidgetDrawEngine {
 		//  (not to mention flash wear)
 		// Note that the bitmaps are put in a hashmap keyed by the appwidgetID.
 		//
-		final Bitmap finalbitmap = OMC.WIDGETBMPMAP.containsKey(appWidgetId) ?
-				OMC.WIDGETBMPMAP.get(appWidgetId) :
-					Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,Bitmap.Config.ARGB_4444);
-		OMC.WIDGETBMPMAP.put(appWidgetId, finalbitmap);
-		
+		final Bitmap finalbitmap;
+		if (!OMC.WIDGETBMPMAP.containsKey(appWidgetId)) {
+			finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,Bitmap.Config.ARGB_4444);
+			OMC.WIDGETBMPMAP.put(appWidgetId, finalbitmap);
+					} else {
+			if (OMC.WIDGETBMPMAP.get(appWidgetId).getWidth() != thisWidgetWidth ||
+					OMC.WIDGETBMPMAP.get(appWidgetId).getHeight() != thisWidgetHeight) {
+	    		if (!OMC.WIDGETBMPMAP.get(appWidgetId).isRecycled()) OMC.WIDGETBMPMAP.get(appWidgetId).recycle();
+	    		OMC.WIDGETBMPMAP.remove(appWidgetId);
+				finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,Bitmap.Config.ARGB_4444);
+				OMC.WIDGETBMPMAP.put(appWidgetId, finalbitmap);				
+			} else {
+				finalbitmap=OMC.WIDGETBMPMAP.get(appWidgetId);
+			}
+		}
+
 		finalbitmap.setDensity(DisplayMetrics.DENSITY_HIGH);
 		finalbitmap.eraseColor(Color.TRANSPARENT);
 
@@ -276,7 +287,6 @@ public class OMCWidgetDrawEngine {
 
 		//Step 7:
 		// Now we do the actual Crop, Scale & Rotate.
-		
 		finalcanvas.save();
 		Matrix tempMatrix = OMC.getMatrix();
 		tempMatrix.postScale(hzStretch, vtStretch);
@@ -316,6 +326,7 @@ public class OMCWidgetDrawEngine {
 		RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
 		final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
 		rv.setImageViewBitmap(iViewID, finalbitmap);
+	
 		
 		// Do some fancy footwork here and adjust the average lag (so OMC's slowness is less apparent)
 		// Max the lagtime out at 5 seconds to avoid accumulating alarm intent
@@ -444,6 +455,7 @@ public class OMCWidgetDrawEngine {
 				OMCWidgetDrawEngine.drawTextLayer(context, layer, sTheme, aWI, sTextBuffer, resultCanvas);
 			}
 			else if (sType.equals("panel"))OMCWidgetDrawEngine.drawPanelLayer(context, layer, sTheme, aWI, resultCanvas);
+			else if (sType.equals("arc"))OMCWidgetDrawEngine.drawArcLayer(context, layer, sTheme, aWI, resultCanvas);
 			else if (sType.equals("flare"))OMCWidgetDrawEngine.drawFlareLayer(context, layer, sTheme, aWI, resultCanvas);
 			else if (sType.equals("quote"))OMCWidgetDrawEngine.drawQuoteLayer(context, layer, sTheme, aWI, resultCanvas);
 			else if (sType.equals("image"))OMCWidgetDrawEngine.drawBitmapLayer(context, layer, sTheme, aWI, resultCanvas);
@@ -496,12 +508,13 @@ public class OMCWidgetDrawEngine {
 			if (layer.optBoolean("enabled")==false) continue;
 			
 			String sType = layer.optString("type");
-			
+
 			if (sType.equals("text")) {
 				sTextBuffer = layer.optString("text");
 				OMCWidgetDrawEngine.drawTextLayer(context, layer, sTheme, aWI, sTextBuffer, resultCanvas);
 			}
 			else if (sType.equals("panel"))OMCWidgetDrawEngine.drawPanelLayer(context, layer, sTheme, aWI, resultCanvas);
+			else if (sType.equals("arc"))OMCWidgetDrawEngine.drawArcLayer(context, layer, sTheme, aWI, resultCanvas);
 			else if (sType.equals("flare"))OMCWidgetDrawEngine.drawFlareLayer(context, layer, sTheme, aWI, resultCanvas);
 			else if (sType.equals("quote"))OMCWidgetDrawEngine.drawQuoteLayer(context, layer, sTheme, aWI, resultCanvas);
 			else if (sType.equals("image"))OMCWidgetDrawEngine.drawBitmapLayer(context, layer, sTheme, aWI, resultCanvas);
@@ -631,6 +644,98 @@ public class OMCWidgetDrawEngine {
 		}
 		//Either way, draw the proper panel
 		cvas.drawRoundRect(tempFGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt1);
+		OMC.returnPaint(pt1);
+		OMC.returnPaint(pt2);
+	}
+
+	// Static arc.
+	static void drawArcLayer(final Context context, final JSONObject layer, final String sTheme, final int aWI, final Canvas cvas) {
+
+
+		final RectF tempFGRect = new RectF();
+		final RectF tempBGRect = new RectF();
+//		try {
+//			
+//			tempFGRect.left = (float)layer.getDouble("left");
+//			tempFGRect.top = (float)layer.getDouble("top");
+//			tempFGRect.right = (float)layer.getDouble("right");
+//			tempFGRect.bottom = (float)layer.getDouble("bottom");
+//		} catch (JSONException e) {
+//			Log.w(OMC.OMCSHORT + "Engine", " (panel) is missing left/top/right/bottom values!  Giving up.");
+//			if (OMC.DEBUG) e.printStackTrace();
+//			return;
+//		}
+		final Paint pt1 = OMC.getPaint();
+		pt1.setAntiAlias(true);
+		pt1.setStyle(Paint.Style.STROKE);
+		pt1.setStrokeWidth(80);
+		System.out.println("ARC");
+		try {
+			pt1.setColor(Color.parseColor(layer.optString("fgcolor")));
+		} catch (java.lang.IllegalArgumentException e) {
+			// JSON has unknown color; maybe # is missing?
+			try {
+				pt1.setColor(Color.parseColor("#" + layer.optString("fgcolor")));
+				Log.w(OMC.OMCSHORT+"Engine","Color missing #");
+			} catch (java.lang.IllegalArgumentException ee) {
+				// Still unknown color; default to white
+				Log.w(OMC.OMCSHORT+"Engine","Color invalid");
+				pt1.setColor(Color.WHITE);
+				ee.printStackTrace();
+			}
+		}
+		final Paint pt2 = OMC.getPaint();
+		pt2.setAntiAlias(true);
+		try {
+			pt2.setColor(Color.parseColor(layer.optString("bgcolor")));
+		} catch (java.lang.IllegalArgumentException e) {
+			// JSON has unknown color; maybe # is missing?
+			try {
+				pt2.setColor(Color.parseColor("#" + layer.optString("bgcolor")));
+				Log.w(OMC.OMCSHORT+"Engine","Color missing #");
+			} catch (java.lang.IllegalArgumentException ee) {
+				// Still unknown color; default to white
+				Log.w(OMC.OMCSHORT+"Engine","Color invalid");
+				pt2.setColor(Color.WHITE);
+				ee.printStackTrace();
+			}
+		}
+
+    	// theme-specific tweaks.
+		OMCWidgetDrawEngine.layerThemeTweaks(context, layer, sTheme, aWI);
+    	
+		cvas.drawArc(new RectF(10, 10, 90, 90), 0, 270, false, pt1);
+
+		//Draw the SFX
+//		if (layer.optString("render_style").equals("emboss")) {
+//			tempBGRect.left = tempFGRect.left-1;
+//			tempBGRect.top = tempFGRect.top-1;
+//			tempBGRect.right = tempFGRect.right-1;
+//			tempBGRect.bottom = tempFGRect.bottom-1;
+//			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
+//			tempBGRect.left+=2;
+//			tempBGRect.top+=2;
+//			tempBGRect.right+=2;
+//			tempBGRect.bottom+=2;
+//			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
+//		} else if (layer.optString("render_style").equals("shadow")) {
+//			tempBGRect.left = tempFGRect.left+3;
+//			tempBGRect.top = tempFGRect.top+3;
+//			tempBGRect.right = tempFGRect.right+3;
+//			tempBGRect.bottom = tempFGRect.bottom+3;
+//			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
+//		} else if (layer.optString("render_style").startsWith("shadow")) {
+//			int iShadowWidth = Integer.parseInt(layer.optString("render_style").substring(7));
+//			tempBGRect.left = tempFGRect.left+iShadowWidth;
+//			tempBGRect.top = tempFGRect.top+iShadowWidth;
+//			tempBGRect.right = tempFGRect.right+iShadowWidth;
+//			tempBGRect.bottom = tempFGRect.bottom+iShadowWidth;
+//			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
+//		} else if (layer.optString("render_style").startsWith("glow")) {
+//			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5)), 0f, 0f, pt2.getColor());
+//		}
+//		//Either way, draw the proper panel
+//		cvas.drawRoundRect(tempFGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt1);
 		OMC.returnPaint(pt1);
 		OMC.returnPaint(pt2);
 	}
