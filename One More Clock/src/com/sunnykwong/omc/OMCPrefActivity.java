@@ -413,7 +413,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 		// If it's an independent child activity, do nothing
 		if (requestCode == 0) return;
 		if (data != null) {
-			System.out.println(data.toString());
 			String s = data.toUri(MODE_PRIVATE).toString();
 			
 			OMC.PREFS.edit().putString("URI", s).commit();
