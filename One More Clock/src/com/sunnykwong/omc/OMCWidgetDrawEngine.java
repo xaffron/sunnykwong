@@ -652,24 +652,25 @@ public class OMCWidgetDrawEngine {
 	static void drawArcLayer(final Context context, final JSONObject layer, final String sTheme, final int aWI, final Canvas cvas) {
 
 
-		final RectF tempFGRect = new RectF();
-		final RectF tempBGRect = new RectF();
-//		try {
-//			
-//			tempFGRect.left = (float)layer.getDouble("left");
-//			tempFGRect.top = (float)layer.getDouble("top");
-//			tempFGRect.right = (float)layer.getDouble("right");
-//			tempFGRect.bottom = (float)layer.getDouble("bottom");
-//		} catch (JSONException e) {
-//			Log.w(OMC.OMCSHORT + "Engine", " (panel) is missing left/top/right/bottom values!  Giving up.");
-//			if (OMC.DEBUG) e.printStackTrace();
-//			return;
-//		}
 		final Paint pt1 = OMC.getPaint();
 		pt1.setAntiAlias(true);
-		pt1.setStyle(Paint.Style.STROKE);
-		pt1.setStrokeWidth(80);
-		System.out.println("ARC");
+		pt1.setStyle(Paint.Style.FILL_AND_STROKE);
+		pt1.setStrokeWidth(1);
+
+		final RectF tempFGRect = new RectF();
+		final RectF tempBGRect = new RectF();
+		
+		try {
+			tempFGRect.left = (float)layer.getDouble("x")-(float)layer.getDouble("radius");
+			tempFGRect.top = (float)layer.getDouble("y")-(float)layer.getDouble("radius");
+			tempFGRect.right = (float)layer.getDouble("x")+(float)layer.getDouble("radius");
+			tempFGRect.bottom = (float)layer.getDouble("y")+(float)layer.getDouble("radius");
+		} catch (JSONException e) {
+			Log.w(OMC.OMCSHORT + "Engine", " (arc) is missing left/top/right/bottom values!  Giving up.");
+			if (OMC.DEBUG) e.printStackTrace();
+			return;
+		}
+
 		try {
 			pt1.setColor(Color.parseColor(layer.optString("fgcolor")));
 		} catch (java.lang.IllegalArgumentException e) {
@@ -686,6 +687,9 @@ public class OMCWidgetDrawEngine {
 		}
 		final Paint pt2 = OMC.getPaint();
 		pt2.setAntiAlias(true);
+		pt2.setStyle(Paint.Style.FILL_AND_STROKE);
+		pt2.setStrokeWidth(1);
+
 		try {
 			pt2.setColor(Color.parseColor(layer.optString("bgcolor")));
 		} catch (java.lang.IllegalArgumentException e) {
@@ -703,39 +707,37 @@ public class OMCWidgetDrawEngine {
 
     	// theme-specific tweaks.
 		OMCWidgetDrawEngine.layerThemeTweaks(context, layer, sTheme, aWI);
-    	
-		cvas.drawArc(new RectF(10, 10, 90, 90), 0, 270, false, pt1);
 
 		//Draw the SFX
-//		if (layer.optString("render_style").equals("emboss")) {
-//			tempBGRect.left = tempFGRect.left-1;
-//			tempBGRect.top = tempFGRect.top-1;
-//			tempBGRect.right = tempFGRect.right-1;
-//			tempBGRect.bottom = tempFGRect.bottom-1;
-//			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
-//			tempBGRect.left+=2;
-//			tempBGRect.top+=2;
-//			tempBGRect.right+=2;
-//			tempBGRect.bottom+=2;
-//			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
-//		} else if (layer.optString("render_style").equals("shadow")) {
-//			tempBGRect.left = tempFGRect.left+3;
-//			tempBGRect.top = tempFGRect.top+3;
-//			tempBGRect.right = tempFGRect.right+3;
-//			tempBGRect.bottom = tempFGRect.bottom+3;
-//			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
-//		} else if (layer.optString("render_style").startsWith("shadow")) {
-//			int iShadowWidth = Integer.parseInt(layer.optString("render_style").substring(7));
-//			tempBGRect.left = tempFGRect.left+iShadowWidth;
-//			tempBGRect.top = tempFGRect.top+iShadowWidth;
-//			tempBGRect.right = tempFGRect.right+iShadowWidth;
-//			tempBGRect.bottom = tempFGRect.bottom+iShadowWidth;
-//			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
-//		} else if (layer.optString("render_style").startsWith("glow")) {
-//			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5)), 0f, 0f, pt2.getColor());
-//		}
-//		//Either way, draw the proper panel
-//		cvas.drawRoundRect(tempFGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt1);
+		if (layer.optString("render_style").equals("emboss")) {
+			tempBGRect.left = tempFGRect.left-1;
+			tempBGRect.top = tempFGRect.top-1;
+			tempBGRect.right = tempFGRect.right-1;
+			tempBGRect.bottom = tempFGRect.bottom-1;
+			cvas.drawArc(tempBGRect, layer.optInt("cw_start_angle"), layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle"), true, pt2);
+			tempBGRect.left+=2;
+			tempBGRect.top+=2;
+			tempBGRect.right+=2;
+			tempBGRect.bottom+=2;
+			cvas.drawArc(tempBGRect, layer.optInt("cw_start_angle"), layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle"), true, pt2);
+		} else if (layer.optString("render_style").equals("shadow")) {
+			tempBGRect.left = tempFGRect.left+3;
+			tempBGRect.top = tempFGRect.top+3;
+			tempBGRect.right = tempFGRect.right+3;
+			tempBGRect.bottom = tempFGRect.bottom+3;
+			cvas.drawArc(tempBGRect, layer.optInt("cw_start_angle"), layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle"), true, pt2);
+		} else if (layer.optString("render_style").startsWith("shadow")) {
+			int iShadowWidth = Integer.parseInt(layer.optString("render_style").substring(7));
+			tempBGRect.left = tempFGRect.left+iShadowWidth;
+			tempBGRect.top = tempFGRect.top+iShadowWidth;
+			tempBGRect.right = tempFGRect.right+iShadowWidth;
+			tempBGRect.bottom = tempFGRect.bottom+iShadowWidth;
+			cvas.drawArc(tempBGRect, layer.optInt("cw_start_angle"), layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle"), true, pt2);
+		} else if (layer.optString("render_style").startsWith("glow")) {
+			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5)), 0f, 0f, pt2.getColor());
+		}
+		//Either way, draw the proper panel
+		cvas.drawArc(tempFGRect, layer.optInt("cw_start_angle"), layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle"), true, pt1);
 		OMC.returnPaint(pt1);
 		OMC.returnPaint(pt2);
 	}
