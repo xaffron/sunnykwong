@@ -241,6 +241,17 @@ public class OMCWidgetDrawEngine {
 		double rotWidth = Math.abs(dScaledHeight* Math.sin(rotRad)) + Math.abs(dScaledWidth*Math.cos(rotRad));
 		double rotHeight = Math.abs(dScaledHeight* Math.cos(rotRad)) + Math.abs(dScaledWidth*Math.sin(rotRad)) ;
 
+		float fSqueezeFactor=1f;
+		if (rotWidth > thisWidgetWidth) fSqueezeFactor = (float)thisWidgetWidth/(float)rotWidth;
+		if (rotHeight > thisWidgetHeight) fSqueezeFactor = Math.min(fSqueezeFactor, (float)thisWidgetHeight/(float)rotHeight);
+
+		hzStretch *= fSqueezeFactor;
+		vtStretch *= fSqueezeFactor;
+		dScaledWidth = width * hzStretch;
+		dScaledHeight = height * vtStretch;
+		rotWidth = Math.abs(dScaledHeight* Math.sin(rotRad)) + Math.abs(dScaledWidth*Math.cos(rotRad));
+		rotHeight = Math.abs(dScaledHeight* Math.cos(rotRad)) + Math.abs(dScaledWidth*Math.sin(rotRad)) ;
+		
 		//Step 5:
 		// Now that we know the rotated size of the canvas, we want to constrain it to the actual widget size.  
 		// Again, this is necessary to prevent the homescreen from scaling our widget down
