@@ -68,9 +68,9 @@ public class OMC extends Application {
 
 	static final boolean FREEEDITION = false;
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "asset:pk123.omc";
-	static final String STARTERPACKBACKUP = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v123.omc";
-	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v123.omc";
+	static final String STARTERPACKURL = "asset:pk125.omc";
+	static final String STARTERPACKBACKUP = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v125.omc";
+	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v125.omc";
 	static final String DEFAULTTHEME = "HoneycombLook";
 	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
 	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
@@ -88,7 +88,8 @@ public class OMC extends Application {
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
-		"After an extended hiatus, Xaffron presents a new version of OMC!  As of this version, we are up to a dizzying 59 clocks (from 37 in v1.2.2).",
+		"After an extended hiatus, Xaffron presents a new version of OMC!  As of v1.2.5, we are up to 61 clocks (from 37 in v1.2.2).",
+		"Our newest additions are two beautiful clocks - Bare Basics and Red LED.  Selected clocks were also tweaked for better presentation.",
 		"v1.2.5 reverts to the more popular scaling algorithm used in v1.2.2. Keep the feedback coming!",
 		"OMC now supports battery levels.  Some of the widgets contain battery indicators in surprising ways - browse around and experiment!",
 		"You can now specify a timezone for each clock independently of the device setting.  This allows for nice home/travel clock scenarios.",
