@@ -484,8 +484,12 @@ public class OMC extends Application {
 		}
 		//Look in app cache;
 		if (new File(OMC.CACHEPATH + sTheme + src).exists()) {
-				OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(OMC.CACHEPATH + sTheme + src));
-				return OMC.TYPEFACEMAP.get(src);
+				try {
+					OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(OMC.CACHEPATH + sTheme + src));
+					return OMC.TYPEFACEMAP.get(src);
+				} catch (RuntimeException e) {
+					// if Cache is invalid, do nothing; we'll let this flow through to the full FS case.
+				}
 		}
 		//Look in full file system;
 		if (new File(src).exists()) {
