@@ -68,7 +68,7 @@ public class OMC extends Application {
 
 	static final boolean FREEEDITION = false;
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "asset:pk125.omc";
+	static final String STARTERPACKURL = "asset:pk126.omc";
 	static final String STARTERPACKBACKUP = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v125.omc";
 	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v125.omc";
 	static final String DEFAULTTHEME = "HoneycombLook";
@@ -88,7 +88,8 @@ public class OMC extends Application {
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
-		"After an extended hiatus, Xaffron presents a new version of OMC!  As of v1.2.5, we are up to 61 clocks (from 37 in v1.2.2).",
+		"Happy birthday, OMC!  v1.2.6 adds two Ice Cream Sandwich-inspired clocks, Ice Roboto and Ice Lock.  Enjoy!",
+		"After an extended hiatus, Xaffron presents a new version of OMC!  As of v1.2.6, we are up to 62 clocks (from 37 in v1.2.2).",
 		"Our newest additions are two beautiful clocks - Bare Basics and Red LED.  Selected clocks were also tweaked for better presentation.",
 		"v1.2.5 reverts to the more popular scaling algorithm used in v1.2.2. Keep the feedback coming!",
 		"OMC now supports battery levels.  Some of the widgets contain battery indicators in surprising ways - browse around and experiment!",
