@@ -1126,8 +1126,12 @@ public class OMC extends Application {
 					+ OMC.WORDNUMBERS[OMC.TIME.hour%12+1] + ".";
 				}
 			} else {
-				sTemp = OMC.WORDNUMBERS[OMC.TIME.minute] + " past " 
-				+ OMC.WORDNUMBERS[OMC.TIME.hour%12] + ".";
+				if (OMC.TIME.hour%12 == 0) {
+					sTemp = OMC.WORDNUMBERS[OMC.TIME.minute] + " past Twelve.";
+				} else {
+					sTemp = OMC.WORDNUMBERS[OMC.TIME.minute] + " past " 
+							+ OMC.WORDNUMBERS[OMC.TIME.hour%12] + ".";
+				}
 			}
 			if (sType.equals("diary")) result = (sTemp);
 			else if (sType.equals("upper")) result = (sTemp.toUpperCase());
