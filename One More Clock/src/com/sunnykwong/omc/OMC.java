@@ -69,8 +69,8 @@ public class OMC extends Application {
 	static final boolean FREEEDITION = false;
 	static final String SINGLETONNAME = "One More Clock";
 	static final String STARTERPACKURL = "asset:pk126.omc";
-	static final String STARTERPACKBACKUP = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v125.omc";
 	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v125.omc";
+	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v125.omc";
 	static final String DEFAULTTHEME = "HoneycombLook";
 	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
 	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
@@ -235,10 +235,10 @@ public class OMC extends Application {
 		OMC.DUMMYINTENT = new Intent(OMC.CONTEXT, DUMMY.class);
 		OMC.GETSTARTERPACKINTENT = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
 		OMC.GETSTARTERPACKINTENT.setData(Uri.parse(OMC.STARTERPACKURL));
-		OMC.GETBACKUPPACKINTENT = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
-		OMC.GETBACKUPPACKINTENT.setData(Uri.parse(OMC.STARTERPACKBACKUP));
 		OMC.GETEXTENDEDPACKINTENT = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
 		OMC.GETEXTENDEDPACKINTENT.setData(Uri.parse(OMC.EXTENDEDPACK));
+		OMC.GETBACKUPPACKINTENT = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
+		OMC.GETBACKUPPACKINTENT.setData(Uri.parse(OMC.EXTENDEDPACKBACKUP));
 		OMC.OMCMARKETINTENT = new Intent(Intent.ACTION_VIEW,OMC.PAIDURI);
 
 		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/";

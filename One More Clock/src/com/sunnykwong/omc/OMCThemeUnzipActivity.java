@@ -54,7 +54,7 @@ public class OMCThemeUnzipActivity extends Activity {
 					OMC.STARTERPACKDLED = true;
 					OMC.PREFS.edit().putBoolean("starterpack", true).commit();
 				}
-			} else if (!COMPLETE && uri.toString().equals(OMC.STARTERPACKURL)) {
+			} else if (!COMPLETE && uri.toString().equals(OMC.EXTENDEDPACK)) {
 				startActivity(OMC.GETBACKUPPACKINTENT);
 			} else {
 				Toast.makeText(getApplicationContext(), "Import Aborted!", Toast.LENGTH_LONG).show();
