@@ -1280,7 +1280,7 @@ public class OMC extends Application {
 		final StringBuilder sb = new StringBuilder(inputChars.length);
 		boolean bIsTag = false;
 		for (int i = 0; i < inputChars.length; i++) {
-			if (bIsTag) {
+			if (bIsTag && OMC.PREFS.getBoolean("widgetEnglishOnly", true)) {
 				if (inputChars[i]=='A') {
 					sb.append(OMC.FULLWEEKDAYS[OMC.TIME.weekDay]);
 				} else if (inputChars[i]=='a') {
@@ -1294,6 +1294,9 @@ public class OMC extends Application {
 				} else {
 					sb.append(OMC.TIME.format("%"+inputChars[i]));
 				}
+				bIsTag=false;
+			} else if (bIsTag) {
+				sb.append(OMC.TIME.format("%"+inputChars[i]));
 				bIsTag=false;
 			} else if (inputChars[i]=='%'){
 				bIsTag=true;
