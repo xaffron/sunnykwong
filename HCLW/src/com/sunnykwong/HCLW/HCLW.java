@@ -1,7 +1,7 @@
 package com.sunnykwong.HCLW;
 
 import android.content.pm.PackageManager;
-import com.jayway.opengl.tutorial.mesh.SimplePlane;
+import android.graphics.Picture;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.app.Application;
 import android.graphics.Bitmap;
@@ -15,6 +15,7 @@ import android.graphics.Bitmap.Config;
 import android.graphics.PorterDuff.Mode;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.widget.Toast;
 import android.content.SharedPreferences;
 import android.content.Intent;
@@ -24,6 +25,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import android.util.Log;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.InputStreamReader;
 import android.app.WallpaperManager;
@@ -33,31 +36,39 @@ import android.app.WallpaperManager;
  * 
  */
 public class HCLW extends Application {
-    static SimplePlane plane;
+	static final Picture PICTURE = new Picture();
+	static int SCREENSCALEFACTOR=1;
+	static int LIGHTNINGCOUNTER=0;
+	static float LWPCEILING = (322f/480f);
+	static float LWPFLOOR = 480f;
+	static int LWPBORDER;
 	static int FPS=25;
 	static final boolean JSON = true;
 	static String THISVERSION;
 	static String PKGNAME;
-	static final boolean DEBUG = false;
+	static boolean DEBUG = false;
 	static final boolean FREEEDITION = false;
 	static boolean SHOWHELP=true;
-	static boolean RENDERWHILESWIPING=true;
-	static boolean SLOWPAN=true;
+	static boolean FIRSTDRAW=true,FULLDRAW=true;
 	static String BONUSPHRASE="";
-	static final int SLOWPANSPEED = 2;
-
 	static boolean TOPSURF_DITHER, TOPSURF_32BIT, PAINTFG_DITHER, PAINTFG_AA, PAINTFG_FILTERBMP, LWPSURF_32BIT, FLARE_USEHUES;
 	static String TOPSURF_FILE, FLARE_FILE;
 	static int FLAREHUES[], TOPSURF_HUE;
 	static int FIXEDOFFSET=-1;
 	static int DEFAULTBRIGHTNESS=100;
 	
+	static boolean FLARESABOVESURFACE, LIGHTNINGEFFECT, SPARKEFFECT, SEARCHLIGHTEFFECT, RENDERWHILESWIPING, HDRENDERING, SHOWCOLOR[];
+	static double LIGHTNFREQUENCY;
+	
+	static long WAITTIME=0l, TARGETTIME=1000l/FPS, RENDERTIME=0l;
+	
 	static int LWPWIDTH, LWPHEIGHT;
 	static int NUMBEROFFLARECOLORS=0;
 	static int OFFSETTHISFRAME=0;
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
-		"Nemuro and Xaffron present their impression of the Honeycomb Live Wallpaper!  This Live Wallpaper is light on CPU usage and has been tested to perform on phones from the G1 to the HD2.  Email either one of us for feedback and issues, and we will resolve them ASAP!",
+		"Nemuro and Xaffron present the Honeycomb Live Wallpaper!  This Live Wallpaper has been tested to perform on phones from the G1 to the HD2.  Email either one of us for feedback and issues, and we will resolve them ASAP!",
+		"v1.1.1 boosts frame rates more than 100%!  The wallpaper should now fly on all phones, and render acceptably on tablets.",
 		"v1.1.0 adds a fun easter egg to the wallpaper.  See if you can figure it out and unlock a fun extra feature!",
 		"Lightning frequency is adjustable in the preferences.  If you find the wallpaper too flashy, you can disable it completely.",
 		"v1.0.8 of this wallpaper cleans up any remaining pixellation issues.  If the wallpaper still does not look right on your screen, just let us know.",
@@ -72,14 +83,13 @@ public class HCLW extends Application {
 	
 	static final String EGG = "Congratulations on unlocking the Easter Egg!  There is now a 'Reverse Flow' option in the preferences screen; all four looks, premium and basic, work with the reverse flow.  Please remember to visit our thread on XDA Developers for more news! http://forum.xda-developers.com/showthread.php?t=975413";
 	static boolean REVERSE = false;
-	// gold: http://farm6.static.flickr.com/5254/5496531931_92cb027088_b.jpg
-	// red: http://farm6.static.flickr.com/5217/5497124656_bb551e9cb1_b.jpg
 	
 	static public final Handler HANDLER = new Handler();
 	
 	static int TARGETFPS;
 
 	static long LASTUPDATEMILLIS;
+	static float fFPS;
 	static long TRIALOVERTIME = 0l;
 	static int UPDATEFREQ = 100;
 
@@ -90,16 +100,13 @@ public class HCLW extends Application {
 	static int SCRNLONGEREDGELENGTH, SCRNSHORTEREDGELENGTH;
 	static int SCRNDPI;
 	static int YOFFSET;
+	static Rect SCRNCLIP, FULLSCRNCLIP;
+	static double FLAREFREQ;
 
 	static final int SPARKEFFECTCOLOR = Color.parseColor("#FFACACAC");
 	static final int SEARCHLIGHTEFFECTCOLOR = Color.parseColor("#441B1939");
 	static int DEFAULTEFFECTCOLOR = Color.parseColor("#051b1939");
 
-	static public final float LDPISCALEX=0.2500f, LDPISCALEY=0.2222f;
-	static public final float MDPISCALEX=.3333f, MDPISCALEY=.3333f;
-	static public final float HDPISCALEX=.5000f, HDPISCALEY=0.5930f;
-	static public float SCALEX, SCALEY;
-	
 	static public final float[] FLAREPATHINITX
 		= {264f,277f,288f,404f,
 		418f,432f,440f,454f,
@@ -165,10 +172,8 @@ public class HCLW extends Application {
 		-1,-1,-1,-1,-1};
 
 	static final Paint PaintFlare = new Paint(), PaintBg = new Paint(), PaintMid = new Paint(), PaintFg =  new Paint(), PaintBuf = new Paint();
-    static Rect srcFullRect, tgtFullRect, srcFlareRect, tgtFlareRect;
 	static final Matrix TEMPMATRIX = new Matrix(), TEMPMATRIX2 = new Matrix();
     static public int xPixels;
-    static public int targetXPixels;
     static public float TouchX = -1;
     static public float TouchY = -1;
     static public float UpX = -1;
@@ -211,23 +216,32 @@ public class HCLW extends Application {
 		if (!PREFS.contains("FrameRates")) {
 			PREFS.edit().putString("FrameRates", "25").commit();
 		}
-		HCLW.FPS = Integer.parseInt(PREFS.getString("FrameRates", "25"));
-		HCLW.RENDERWHILESWIPING = PREFS.getBoolean("RenderWhileSwiping", true);
-		HCLW.SLOWPAN = PREFS.getBoolean("SlowPan", true);
+		
 		HCLW.PaintBg.setColor(Color.WHITE);
 		HCLW.PaintMid.setColor(Color.BLACK);
 		HCLW.PaintMid.setAlpha(255);
-		HCLW.PaintMid.setFilterBitmap(true);
+		HCLW.PaintMid.setFilterBitmap(false);
+		HCLW.PaintMid.setAntiAlias(false);
+		HCLW.PaintMid.setDither(false);
 		HCLW.PaintFlare.setColor(Color.WHITE);
 		HCLW.PaintFg.setColor(Color.BLUE);
-		HCLW.PaintFg.setDither(true);
-		HCLW.PaintFg.setFilterBitmap(true);
+		HCLW.PaintFg.setFilterBitmap(false);
+		HCLW.PaintFg.setAntiAlias(false);
+		HCLW.PaintFg.setDither(false);
 		HCLW.PaintBuf.setColor(Color.BLUE);
-		HCLW.PaintBuf.setDither(true);
+		HCLW.PaintBuf.setDither(false);
 		HCLW.PaintBuf.setFilterBitmap(false);
-		HCLW.PaintBuf.setAntiAlias(true);
+		HCLW.PaintBuf.setAntiAlias(false);
+        HCLW.FULLSCRNCLIP = new Rect(0,0,getResources().getDisplayMetrics().widthPixels,getResources().getDisplayMetrics().heightPixels);
+        HCLW.SCRNCLIP = new Rect(0,(int)(HCLW.SCRNHEIGHT*.6),getResources().getDisplayMetrics().widthPixels,getResources().getDisplayMetrics().heightPixels);
+        HCLW.FLAREFREQ = 0.01d * Double.parseDouble(HCLW.PREFS.getString("FlareFrequency", "1"));
 	
 		if (JSON) loadFlaresFromJSON();
+
+		HCLW.HDRENDERING = PREFS.getBoolean("HDRendering", true);
+		if (HCLW.HDRENDERING) HCLW.SCREENSCALEFACTOR=1;
+		else HCLW.SCREENSCALEFACTOR=2;
+
 		prepareBitmaps();
 		
 		for (int i=0;i<5;i++) {
@@ -276,30 +290,37 @@ public class HCLW extends Application {
 			THISVERSION = "1.0.0";
 		}
 
-		LASTUPDATEMILLIS = 0l;
+		HCLW.FPS = Integer.parseInt(PREFS.getString("FrameRates", "25"));
+		HCLW.TARGETTIME=1000l/HCLW.FPS;
+		HCLW.DEBUG=PREFS.getBoolean("Debug", false);
+		HCLW.RENDERWHILESWIPING = PREFS.getBoolean("RenderWhileSwiping", true);
+		HCLW.FLARESABOVESURFACE=HCLW.PREFS.getBoolean("FlaresAboveSurface", false);
+		HCLW.LIGHTNINGEFFECT=HCLW.PREFS.getBoolean("LightningEffect", false);
+		HCLW.SPARKEFFECT=HCLW.PREFS.getBoolean("SparkEffect", false);
+		HCLW.SEARCHLIGHTEFFECT=HCLW.PREFS.getBoolean("Searchlight", false);
+		HCLW.LIGHTNFREQUENCY=Double.parseDouble(HCLW.PREFS.getString("LightnFrequency","0.05"));
+
+		LASTUPDATEMILLIS = System.currentTimeMillis();
 
 		TARGETFPS = 30;
 
 	}
 	
 	public void prepareBitmaps() {
-
-    	HCLW.SCRNHEIGHT = 512;
-    	HCLW.SCRNWIDTH = 512;
-//    	HCLW.SCRNHEIGHT = getResources().getDisplayMetrics().heightPixels;
-//    	HCLW.SCRNWIDTH = getResources().getDisplayMetrics().widthPixels;
+    	HCLW.SCRNHEIGHT = getResources().getDisplayMetrics().heightPixels/HCLW.SCREENSCALEFACTOR;
+    	HCLW.SCRNWIDTH = getResources().getDisplayMetrics().widthPixels/HCLW.SCREENSCALEFACTOR;
     	HCLW.SCRNLONGEREDGELENGTH = Math.max(SCRNHEIGHT, SCRNWIDTH);
     	HCLW.SCRNSHORTEREDGELENGTH = Math.min(SCRNHEIGHT, SCRNWIDTH);
 
     	
     	// Let's see if the phone/homescreen has a desired minimum width for the wallpaper.
     	// If it does, we will honor it
-    	HCLW.LWPWIDTH = WallpaperManager.getInstance(this).getDesiredMinimumWidth();
+    	HCLW.LWPWIDTH = WallpaperManager.getInstance(this).getDesiredMinimumWidth()/HCLW.SCREENSCALEFACTOR;
     	// If it doesn't, we'll eyeball it - say twice the shorter edge length.
     	if (HCLW.LWPWIDTH<=0) HCLW.LWPWIDTH=HCLW.SCRNSHORTEREDGELENGTH*2;
 
     	// Next, let's see if the phone/homescreen has a desired minimum height.
-		HCLW.LWPHEIGHT = WallpaperManager.getInstance(this).getDesiredMinimumHeight();
+		HCLW.LWPHEIGHT = WallpaperManager.getInstance(this).getDesiredMinimumHeight()/HCLW.SCREENSCALEFACTOR;
     	// If it doesn't, we'll eyeball it - say exactly the longer edge length.
 	    if (HCLW.LWPHEIGHT<=0) {
 	    	HCLW.LWPHEIGHT=HCLW.SCRNLONGEREDGELENGTH;
@@ -307,9 +328,12 @@ public class HCLW extends Application {
 	    	// Honeycomb feature - only top portion of LWP gets shown... the lower portion is reserved for wallpaper pickers.
 			// Since HCLW's action occurs in the lower portion, we will leave the lower portion blank and pretend the requested LWP size
 			// is smaller than it really is.
-	    	HCLW.LWPHEIGHT = Math.min(WallpaperManager.getInstance(this).getDesiredMinimumHeight(),HCLW.SCRNLONGEREDGELENGTH);
+	    	HCLW.LWPHEIGHT = Math.min(HCLW.LWPHEIGHT,HCLW.SCRNLONGEREDGELENGTH);
 	    }
 
+//	    HCLW.SCRNBUFFER = Bitmap.createBitmap(HCLW.LWPWIDTH, HCLW.LWPHEIGHT, Bitmap.Config.RGB_565);
+//	    HCLW.SCRNBUFFERCANVAS = new Canvas(HCLW.SCRNBUFFER);
+//	    
 		HCLW.SCRNDPI = getResources().getDisplayMetrics().densityDpi;
     	HCLW.CURRENTORIENTATION = getResources().getConfiguration().orientation;
     	if (HCLW.BUFFER!=null)HCLW.BUFFER.recycle();
@@ -319,11 +343,6 @@ public class HCLW extends Application {
         HCLW.BUFFERCANVAS = new Canvas(HCLW.BUFFER);
 
         adjustOrientationOffsets();
-
-        // The scaling factor for the flares -
-        // From 640x480 format to the full lwp size.
-        SCALEX = (float)1f;
-        SCALEY = (float)1f;
 
         Log.i("HCLW","Requested LWP Dim: " +HCLW.LWPWIDTH + " x " + HCLW.LWPHEIGHT);
         Log.i("HCLW","Detected Screen Dim: " +HCLW.SCRNWIDTH + " x " + HCLW.SCRNHEIGHT);
@@ -356,6 +375,7 @@ public class HCLW extends Application {
 		if (HCLW.FG!=null)HCLW.FG.recycle();
 		if (HCLW.TOPSURF_FILE==null || !new File(HCLW.TOPSURF_FILE).exists()) {
 			HCLW.FG = Bitmap.createBitmap(HCLW.LWPWIDTH, HCLW.LWPHEIGHT, Config.ARGB_8888);
+			HCLW.PaintFg.setFilterBitmap(true);
 			c = new Canvas(HCLW.FG);
 	        tempBmp = BitmapFactory.decodeResource(this.getResources(), getResources().getIdentifier("topnw", "drawable", HCLW.PKGNAME),opts);
 	        c.drawBitmap(tempBmp,null,new Rect(0,0,HCLW.LWPWIDTH/2,HCLW.LWPHEIGHT/2),HCLW.PaintFg);
@@ -374,6 +394,7 @@ public class HCLW extends Application {
 			tempBmp = BitmapFactory.decodeFile(HCLW.TOPSURF_FILE,opts);
 			HCLW.FG = Bitmap.createScaledBitmap(tempBmp,HCLW.LWPWIDTH, HCLW.LWPHEIGHT,true);
 			tempBmp.recycle();
+			HCLW.PaintFg.setFilterBitmap(false);
 		}
 
 		if (FGCANVAS==null) FGCANVAS = new Canvas(HCLW.FG);
@@ -411,45 +432,36 @@ public class HCLW extends Application {
 
 	public void countFlareColors() {
 		NUMBEROFFLARECOLORS=0;
+		HCLW.SHOWCOLOR = new boolean[5];
 		for (int i=0; i<5; i++) {
+			
 			if (HCLW.PREFS.getBoolean("showcolor"+i, true)) NUMBEROFFLARECOLORS++;
+			HCLW.SHOWCOLOR[i]=HCLW.PREFS.getBoolean("showcolor"+i, true);
 		}
 	}
 
 	public void adjustOrientationOffsets(){
-		HCLW.SCRNWIDTH=getResources().getDisplayMetrics().widthPixels;
-		HCLW.SCRNHEIGHT=getResources().getDisplayMetrics().heightPixels;
-//        HCLW.SCRNBUFFER = Bitmap.createBitmap(HCLW.SCRNWIDTH, HCLW.SCRNHEIGHT, Bitmap.Config.ARGB_8888);
-        HCLW.SCRNBUFFER = Bitmap.createBitmap(512, 512, Bitmap.Config.ARGB_8888);
-        HCLW.SCRNBUFFERCANVAS = new Canvas(HCLW.SCRNBUFFER);
+        HCLW.FLAREFREQ = 0.01d * Double.parseDouble(HCLW.PREFS.getString("FlareFrequency", "1"));
 
-        int Midpoint;
+		HCLW.SCRNWIDTH=getResources().getDisplayMetrics().widthPixels/HCLW.SCREENSCALEFACTOR;
+		HCLW.SCRNHEIGHT=getResources().getDisplayMetrics().heightPixels/HCLW.SCREENSCALEFACTOR;
+    	HCLW.LWPBORDER = 0;
+
 		if (HCLW.SCRNWIDTH < HCLW.SCRNHEIGHT){
 			// Portrait
 	        HCLW.YOFFSET=0;
-			Midpoint = (HCLW.YOFFSET + HCLW.LWPHEIGHT)/2; 
-	        HCLW.srcFullRect = new Rect(0,0,HCLW.SCRNWIDTH, HCLW.LWPHEIGHT);
-	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH, HCLW.LWPHEIGHT);
-	        
-	        float WidthRatio = HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH;
-
-	        HCLW.srcFlareRect = new Rect(0,0,(int)(WidthRatio*640),(int)(480/2));
-	        HCLW.tgtFlareRect = new Rect(0,Midpoint,HCLW.SCRNWIDTH,HCLW.LWPHEIGHT);
+	        FULLSCRNCLIP = new Rect(0+HCLW.LWPBORDER,0+HCLW.LWPBORDER,getResources().getDisplayMetrics().widthPixels-HCLW.LWPBORDER,getResources().getDisplayMetrics().heightPixels-HCLW.LWPBORDER);
+	        SCRNCLIP = new Rect(0+HCLW.LWPBORDER,0+(int)(HCLW.SCRNHEIGHT*0.65)+HCLW.LWPBORDER,getResources().getDisplayMetrics().widthPixels-HCLW.LWPBORDER,getResources().getDisplayMetrics().heightPixels-HCLW.LWPBORDER);
 		} else {
 			// Landscape
-	        HCLW.YOFFSET = HCLW.SCRNHEIGHT-HCLW.SCRNWIDTH;
-			Midpoint = (HCLW.YOFFSET + HCLW.SCRNHEIGHT)/2; 
-	        HCLW.srcFullRect = new Rect(0,-HCLW.YOFFSET,HCLW.SCRNWIDTH, HCLW.SCRNWIDTH);
-	        HCLW.tgtFullRect = new Rect(0,0,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
-
-	        float WidthRatio = HCLW.SCRNWIDTH/(float)HCLW.LWPWIDTH;
-
-	        HCLW.srcFlareRect = new Rect(0,0,(int)(WidthRatio*640),480/2);
-	        HCLW.tgtFlareRect = new Rect(0,Midpoint,HCLW.SCRNWIDTH,HCLW.SCRNHEIGHT);
-	        
-	        //HCLW.tgtFlareRect = new Rect(0,HCLW.LWPWIDTH/2-HCLW.LWPHEIGHT/2,HCLW.LWPHEIGHT,HCLW.LWPWIDTH/2);
-
+	        HCLW.YOFFSET = ((int)(HCLW.SCRNHEIGHT*1.20)-HCLW.SCRNWIDTH)*HCLW.SCREENSCALEFACTOR;
+	        FULLSCRNCLIP = new Rect(0+HCLW.LWPBORDER,0+HCLW.LWPBORDER,getResources().getDisplayMetrics().widthPixels-HCLW.LWPBORDER,getResources().getDisplayMetrics().heightPixels-HCLW.LWPBORDER);
+	        SCRNCLIP = new Rect(0+HCLW.LWPBORDER,0+(int)(HCLW.SCRNHEIGHT*0.65)+HCLW.LWPBORDER,getResources().getDisplayMetrics().widthPixels-HCLW.LWPBORDER,getResources().getDisplayMetrics().heightPixels-HCLW.LWPBORDER);
 		}
+
+        HCLW.TEMPMATRIX2.reset();
+		HCLW.TEMPMATRIX2.postScale(HCLW.SCREENSCALEFACTOR, HCLW.SCREENSCALEFACTOR);
+
 	}
 	
 	static public void resetTheme() {
@@ -546,6 +558,16 @@ public class HCLW extends Application {
 		} finally {
 			//System.gc();
 		}
+		
+		HCLW.FPS = Integer.parseInt(PREFS.getString("FrameRates", "25"));
+		HCLW.TARGETTIME=1000l/HCLW.FPS;
+		HCLW.RENDERWHILESWIPING = PREFS.getBoolean("RenderWhileSwiping", true);
+		HCLW.FLARESABOVESURFACE=HCLW.PREFS.getBoolean("FlaresAboveSurface", false);
+		HCLW.LIGHTNINGEFFECT=HCLW.PREFS.getBoolean("LightningEffect", false);
+		HCLW.SPARKEFFECT=HCLW.PREFS.getBoolean("SparkEffect", false);
+		HCLW.SEARCHLIGHTEFFECT=HCLW.PREFS.getBoolean("Searchlight", false);
+		HCLW.LIGHTNFREQUENCY=Double.parseDouble(HCLW.PREFS.getString("LightnFrequency","0.05"));
+
 	}
 	public void loadEggFromJSON() {
 		try {
