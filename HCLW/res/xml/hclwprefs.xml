@@ -13,11 +13,12 @@
 		<ListPreference android:key="FlareFrequency"
 			android:title="Set Flare Frequency" android:entries="@array/FlareFreq"
 			android:entryValues="@array/FlareFreqValues" android:defaultValue="1" /><ListPreference android:entries="@array/LightnFreq" android:title="Set Lightning Freq." android:entryValues="@array/LightnFreqValues" android:key="LightnFrequency" android:summary="(Lightning Strikes mode only)" android:defaultValue="0.05"/>
-		<CheckBoxPreference android:key="RenderWhileSwiping" android:title="Render While Swiping" android:selectable="true" android:enabled="true" android:defaultValue="true" android:summary="Uncheck for better homescreen performance."></CheckBoxPreference><CheckBoxPreference android:selectable="true" android:enabled="true" android:defaultValue="true" android:key="SlowPan" android:summary="Smoother coupling of wallpaper pan and homescreen swipe." android:title="Gradual Pan"></CheckBoxPreference><ListPreference android:key="FrameRates" android:title="Target Frame Rate"
+		<CheckBoxPreference android:selectable="true" android:enabled="true" android:title="Render in HD" android:key="HDRendering" android:summary="Uncheck for Faster Rendering." android:defaultValue="true"></CheckBoxPreference><ListPreference android:key="FrameRates" android:title="Target Frame Rate"
 			android:entryValues="@array/FrameRateValues" android:entries="@array/FrameRate"
 			android:defaultValue="25" android:selectable="true"
 			android:summary="Lower to improve homescreen responsiveness."
 			android:enabled="true"></ListPreference>
+		<CheckBoxPreference android:enabled="true" android:selectable="true" android:title="Show FPS" android:defaultValue="false" android:key="Debug"></CheckBoxPreference>
 		
 		
 	</PreferenceCategory>
