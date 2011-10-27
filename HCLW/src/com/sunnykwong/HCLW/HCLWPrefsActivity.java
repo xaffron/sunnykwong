@@ -1,18 +1,29 @@
 package com.sunnykwong.HCLW;
 
+import android.app.Activity;
+import android.widget.FrameLayout;
 import android.widget.ScrollView;
 import android.app.AlertDialog;
+import android.appwidget.AppWidgetManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnKeyListener;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.PreferenceManager;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.preference.PreferenceCategory;
+
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.text.util.Linkify;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.widget.CheckBox;
 import android.widget.Button;
@@ -270,13 +281,22 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     }
     @Override
     protected void onPause() {
+		HCLW.HDRENDERING = HCLW.PREFS.getBoolean("HDRendering", true);
+		if (HCLW.HDRENDERING) HCLW.SCREENSCALEFACTOR=1;
+		else HCLW.SCREENSCALEFACTOR=2;
+		((HCLW)getApplication()).prepareBitmaps();
+		
+		HCLW.DEBUG=HCLW.PREFS.getBoolean("Debug", false);
 		HCLW.DEFAULTEFFECTCOLOR = Color.parseColor(HCLW.PREFS.getString("TrailLength", "#051b1939"));
 		HCLW.RENDERWHILESWIPING = HCLW.PREFS.getBoolean("RenderWhileSwiping", true);
-		HCLW.SLOWPAN = HCLW.PREFS.getBoolean("SlowPan", true);
-
+		HCLW.FPS = Integer.parseInt(HCLW.PREFS.getString("FrameRates", "25"));
+		HCLW.TARGETTIME=1000l/HCLW.FPS;
+		
 		((HCLW)getApplication()).countFlareColors();
     	HCLW.FPS = Integer.parseInt(HCLW.PREFS.getString("FrameRates", "25"));
-    	//Translate Changes
+		HCLW.TARGETTIME=1000l/HCLW.FPS;
+		
+		//Translate Changes
     	String sLAF = HCLW.PREFS.getString("HCLWLAF", "Racing Flares");
     	if (sLAF.equals("Racing Flares")) {
     		HCLW.PREFS.edit().putBoolean("FlaresAboveSurface", false)
@@ -343,7 +363,14 @@ public class HCLWPrefsActivity extends PreferenceActivity {
     		.putBoolean("showcolor3", true)
     		.putBoolean("showcolor4", true)
     		.commit();
+    		((HCLW)getApplication()).countFlareColors();
         }
+
+		HCLW.FLARESABOVESURFACE=HCLW.PREFS.getBoolean("FlaresAboveSurface", false);
+		HCLW.LIGHTNINGEFFECT=HCLW.PREFS.getBoolean("LightningEffect", false);
+		HCLW.SPARKEFFECT=HCLW.PREFS.getBoolean("SparkEffect", false);
+		HCLW.SEARCHLIGHTEFFECT=HCLW.PREFS.getBoolean("Searchlight", false);
+		HCLW.LIGHTNFREQUENCY=Double.parseDouble(HCLW.PREFS.getString("LightnFrequency","0.05"));
 
     	super.onPause();
     }
