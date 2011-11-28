@@ -14,9 +14,12 @@ public class FW extends Application {
 	static final boolean DEBUG = false;
 	static Typeface FONT;
 	static AssetManager AM;
-	
-	public FW() {
-		AM = this.getAssets();
+
+	@Override
+	public void onCreate() {
+		// TODO Auto-generated method stub
+		super.onCreate();
+		AM = getAssets();
 		FONT = Typeface.createFromAsset(FW.AM, "Roboto-Bold.ttf");
 	}
 }

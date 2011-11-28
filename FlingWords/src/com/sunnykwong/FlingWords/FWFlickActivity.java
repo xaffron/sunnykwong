@@ -46,8 +46,7 @@ public class FWFlickActivity extends Activity //implements OnClickListener, OnIt
 	public static File SDROOT, THEMEROOT;
 	
 	public View topLevel;
-	public Gallery gallery;
-	
+	public FWGallery gallery;	
     static AlertDialog mAD;	
 
     /** Called when the activity is first created. */
@@ -82,7 +81,14 @@ public class FWFlickActivity extends Activity //implements OnClickListener, OnIt
 //        btnGetMore = (Button)findViewById(this.getResources().getIdentifier("btnMore", "id", OMC.PKGNAME));
 //        btnGetMore.setOnClickListener(this);
         
-      gallery = (Gallery)this.findViewById(R.id.gallery1);
+      gallery = (FWGallery)this.findViewById(R.id.gallery1);
+      FlickAdapter fa = new FlickAdapter(this);
+      fa.addItem("0HELLO");
+      fa.addItem("1HELLO");
+      fa.addItem("2HELLO");
+      fa.addItem("3HELLO");
+      gallery.setAdapter(fa);
+      gallery.setEnabled(true);
     }
     
 //    @Override
@@ -321,6 +327,30 @@ public class FWFlickActivity extends Activity //implements OnClickListener, OnIt
 //		}
 //	}
 //	
+    public class FWGallery extends Gallery {
+
+    	public FWGallery(Context c) {
+    		super(c);
+		}
+
+    	@Override
+        public boolean onFling(android.view.MotionEvent e1, android.view.MotionEvent e2, float velocityX, float velocityY)
+        {
+
+            //limit the max speed in either direction
+            if (velocityX > 1200.0f)
+            {
+                velocityX = 1200.0f;
+            }
+            else if(velocityX < 1200.0f)
+            {
+                velocityX = -1200.0f;
+            }
+
+            return super.onFling(e1, e2, velocityX, velocityY);
+        }
+    }
+
     public class FlickAdapter extends BaseAdapter {
 
     	public ArrayList<String> mWords = new ArrayList<String>();
