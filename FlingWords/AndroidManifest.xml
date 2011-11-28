@@ -10,7 +10,7 @@
                   android:screenOrientation="landscape">
         </activity>
         <activity android:name=".FWFlickActivity"
-                  android:label="Aurora Bulb"
+                  android:label="FlingWords!"
                   android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                   android:screenOrientation="landscape">
             <intent-filter>
