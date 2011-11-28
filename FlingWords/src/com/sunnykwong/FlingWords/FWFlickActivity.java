@@ -83,10 +83,11 @@ public class FWFlickActivity extends Activity //implements OnClickListener, OnIt
         
       gallery = (FWGallery)this.findViewById(R.id.gallery1);
       FlickAdapter fa = new FlickAdapter(this);
-      fa.addItem("0HELLO");
-      fa.addItem("1HELLO");
-      fa.addItem("2HELLO");
-      fa.addItem("3HELLO");
+      fa.addItem("Hayden");
+      fa.addItem("mommy");
+      fa.addItem("daddy");
+      fa.addItem("baby");
+      fa.addItem("ball");
       gallery.setAdapter(fa);
       gallery.setEnabled(true);
     }
@@ -327,108 +328,6 @@ public class FWFlickActivity extends Activity //implements OnClickListener, OnIt
 //		}
 //	}
 //	
-    public class FWGallery extends Gallery {
-
-    	public FWGallery(Context c) {
-    		super(c);
-		}
-
-    	@Override
-        public boolean onFling(android.view.MotionEvent e1, android.view.MotionEvent e2, float velocityX, float velocityY)
-        {
-
-            //limit the max speed in either direction
-            if (velocityX > 1200.0f)
-            {
-                velocityX = 1200.0f;
-            }
-            else if(velocityX < 1200.0f)
-            {
-                velocityX = -1200.0f;
-            }
-
-            return super.onFling(e1, e2, velocityX, velocityY);
-        }
-    }
-
-    public class FlickAdapter extends BaseAdapter {
-
-    	public ArrayList<String> mWords = new ArrayList<String>();
-    	public FWFlickActivity parentActivity = null;
-    	
-
-        public FlickAdapter(FWFlickActivity parentAv) {
-        	this.parentActivity=parentAv;
-        }
-
-        public int addItem(final String str){
-        	int result=0;
-        	if (mWords.size()==0 || str.compareTo(mWords.get(mWords.size()-1))>0) {
-        		mWords.add(str);
-	        	result=0; //position of the add
-        	} else {
-        		for (int iPos = 0; iPos < mWords.size(); iPos++) {
-        			if (str.compareTo(mWords.get(iPos))>0) {
-        				continue;
-        			} else {
-        				mWords.add(iPos,str);
-        	        	result= iPos;
-        				break;
-        			}
-        		}
-	    			
-        	}
-
-    		return result;
-        }        
-
-        public void removeItem(int pos){
-        	if (mWords.size()==0)return;
-        	String sTheme = mWords.get(pos);
-        	mWords.remove(pos);
-        	//mBitmaps.remove(sTheme);
-        }        
-
-        public int getCount() {
-        	return mWords.size();
-        }
-
-        public Object getItem(int position) {
-            return position;
-        }
-
-        public int getPosition(String sTheme) {
-        	if (sTheme==null) return 0;
-        	for (int position = 0; position < mWords.size(); position ++) {
-        		if (mWords.get(position).equals(sTheme)){
-        			return position;
-        		}
-        	}
-        	return 0;
-        }
-
-        public long getItemId(int position) {
-            return position;
-        }
-
-        public View getView(int position, View convertView, ViewGroup parent) {
-        	TextView tvFling = new TextView(parentActivity.getApplicationContext());
-        	tvFling.setTypeface(FW.FONT);
-        	tvFling.setBackgroundColor(Color.TRANSPARENT);
-        	tvFling.setCursorVisible(false);
-        	tvFling.setGravity(Gravity.CENTER);
-        	tvFling.setTextColor(Color.RED);
-        	tvFling.setTextSize(150f);
-        	tvFling.setText("TEST"+position);
-            return tvFling;
-        }
-
-        public void dispose() {
-        	mWords.clear();
-        	parentActivity=null;
-        	System.gc();
-        }
-    
-    }
-
 }
+
+
