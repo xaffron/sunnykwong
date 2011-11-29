@@ -66,7 +66,6 @@ public class FlickAdapter extends BaseAdapter {
     	tvFling.setGravity(Gravity.CENTER);
     	tvFling.setTextColor(FW.TEXTCOLOR);
     	tvFling.setTextSize(FW.TEXTSIZE);
-    	tvFling.setBackgroundResource(R.drawable.curl);
     	float fScaleFactor = Math.min(1f,FW.SCRNLONGEREDGELENGTH/FW.getStringWidth(mWords.get(position)));
     	tvFling.setTextScaleX(fScaleFactor);
     	tvFling.setText(mWords.get(position));

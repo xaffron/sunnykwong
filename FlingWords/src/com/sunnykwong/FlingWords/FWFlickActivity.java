@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -68,7 +69,10 @@ public class FWFlickActivity extends Activity //implements OnClickListener, OnIt
 //        	return;
 //        } 
 //
+		
        setContentView(R.layout.flinglayout);
+       topLevel = (View)findViewById(R.id.toplvl);
+       topLevel.setSystemUiVisibility(View.STATUS_BAR_HIDDEN);
 //
 //        topLevel = findViewById(this.getResources().getIdentifier("PickerTopLevel", "id", OMC.PKGNAME));
 //        topLevel.setEnabled(false);
@@ -83,11 +87,18 @@ public class FWFlickActivity extends Activity //implements OnClickListener, OnIt
         
       gallery = (FWGallery)this.findViewById(R.id.gallery1);
       FlickAdapter fa = new FlickAdapter(this);
-      fa.addItem("Hayden");
-      fa.addItem("mommy");
-      fa.addItem("daddy");
-      fa.addItem("baby");
-      fa.addItem("ball");
+      int size = FW.CURRENTBATCH.optJSONArray("words").length();
+      fa.addItem("");
+      int[] seq = FW.generateRandomSequence(size);
+      for (int i = 0; i < size; i++) {
+    	  fa.addItem(FW.CURRENTBATCH.optJSONArray("words").optString(seq[i]));
+      }
+      fa.addItem("");
+      try {
+    	  FW.CURRENTBATCH.put("TotalUsedTimes", FW.CURRENTBATCH.optInt("TotalUsedTimes")+1);
+      } catch (JSONException e) {
+      }
+
       gallery.setAdapter(fa);
       gallery.setEnabled(true);
     }
@@ -312,11 +323,12 @@ public class FWFlickActivity extends Activity //implements OnClickListener, OnIt
 //        gallery.setSelection(OMCThemePickerActivity.THEMEARRAY.getPosition(sDefaultTheme));
 //	}
 //
-//	@Override
-//	protected void onPause() {
-//		// TODO Auto-generated method stub
-//		super.onPause();
-//	}
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		
+	}
 //
 //	@Override
 //	protected void onDestroy() {

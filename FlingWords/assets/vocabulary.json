@@ -1,0 +1,17 @@
+{
+	"00index" : ["Panel1","Panel2"],
+	"Panel1" : 
+		{
+		"FirstUsedDate":"01-JAN-1900",
+		"LastUsedTimes":["","","","","","","","","","","","","","","","","","","",""],
+		"TotalUsedTimes":"0",
+		"words":["hand","foot","finger","toe","hair"]
+		},
+	"Panel2" : 
+		{
+		"FirstUsedDate":"01-JAN-1900",
+		"LastUsedTimes":["","","","","","","","","","","","","","","","","","","",""],
+		"TotalUsedTimes":"0", 
+		"words":["apple","pear","orange","carrot","potato"]
+		}
+}
