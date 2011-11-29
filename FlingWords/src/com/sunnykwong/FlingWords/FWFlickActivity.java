@@ -19,6 +19,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -71,8 +72,8 @@ public class FWFlickActivity extends Activity //implements OnClickListener, OnIt
 //
 		
        setContentView(R.layout.flinglayout);
-       topLevel = (View)findViewById(R.id.toplvl);
-       topLevel.setSystemUiVisibility(View.STATUS_BAR_HIDDEN);
+	   topLevel = (View)findViewById(R.id.toplvl);
+       if (Build.VERSION.SDK_INT>=11) topLevel.setSystemUiVisibility(View.STATUS_BAR_HIDDEN);
 //
 //        topLevel = findViewById(this.getResources().getIdentifier("PickerTopLevel", "id", OMC.PKGNAME));
 //        topLevel.setEnabled(false);

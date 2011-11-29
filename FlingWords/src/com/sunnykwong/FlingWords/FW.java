@@ -33,7 +33,9 @@ public class FW extends Application {
 	static JSONArray VOCABINDEX;
 	static JSONObject VOCABBATCHES;
 	static JSONObject CURRENTBATCH;
-
+	static String PKGNAME;
+	static boolean VIEWRETIREDBATCHES=false;
+	
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
@@ -43,9 +45,10 @@ public class FW extends Application {
     	SCRNWIDTH = getResources().getDisplayMetrics().widthPixels;
     	SCRNLONGEREDGELENGTH = Math.max(SCRNHEIGHT, SCRNWIDTH);
     	SCRNSHORTEREDGELENGTH = Math.min(SCRNHEIGHT, SCRNWIDTH);
-		TEXTSIZE = SCRNSHORTEREDGELENGTH/4;
+		TEXTSIZE = SCRNSHORTEREDGELENGTH/3;
 		TEXTCOLOR = Color.RED;
 
+		PKGNAME=getPackageName();
 		AM = getAssets();
 		FONT = Typeface.createFromAsset(FW.AM, "Roboto-Bold.ttf");
 		PT = new Paint();
