@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+	<ViewFlipper android:id="@+id/details"
+		android:layout_width="fill_parent"
+		android:layout_height="390px"
+		>
+		<LinearLayout     
+			android:id="@+id/leftscreen"
+			android:orientation="vertical"
+    		android:layout_height="390px"
+    		android:background="@drawable/mktscroll"
+		    android:layout_width="fill_parent" android:layout_gravity="left" android:paddingRight="30px" android:paddingLeft="10px" android:paddingTop="50px">
+	        <ListView
+				android:id="@+id/shoplist"
+    			android:layout_width="fill_parent"
+    			android:layout_height="wrap_content"
+			/>				
+	        <TextView
+				android:id="@+id/cashonhand"
+				android:gravity="bottom"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:textColor="#FF000000"
+	            android:text="You have 0 gold."
+			/>
+		</LinearLayout>
+		<TextView
+			android:id="@+id/centerscreen"
+			android:background="@drawable/wuguan"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:textStyle="bold"
+			android:textColor="#FFFF0000"
+			android:text="This is the second panel"
+		/>
+		<TextView
+			android:id="@+id/rightscreen"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:textStyle="bold"
+			android:textColor="#FFFFFF00"
+			android:text="This is the third panel"
+		/>
+	</ViewFlipper>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="40px"
+    >
+<Button android:text="Button01" android:id="@+id/Button01" android:layout_width="wrap_content" android:layout_height="fill_parent"></Button>
+<TextView
+			android:id="@+id/console"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:textStyle="bold"
+			android:text="This is the console"
+/>
+</LinearLayout>
+</LinearLayout>

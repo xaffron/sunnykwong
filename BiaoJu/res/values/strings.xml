@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, turnActivity!</string>
+    <string name="app_name">biaoju</string>
+
+<string name="DEBUG">true</string>
+<string-array name="goods">
+<!--
+ITEM FORMAT:
+Name BasePrice Volatility(1-10) TechFactor(1-10) PopFactor(1-10) OrdFactor(1-10) CbandFactor(1-10)
+-->
+<!--  <item>麻沸散 50000 3 1 1 10 10</item>
+<item>五粮液 60 1 1 5 1 1</item>-->
+<item>Opium 6000 1 1 5 5 8</item>
+<item>Rice 15 1 1 1 1 1</item>
+<item>Silk 100 3 1 1 1 1</item>
+<item>Meat 30 4 1 1 1 1</item>
+<item>Art 50 6 1 1 1 2</item>
+<item>Tools 200 1 1 1 1 1</item>
+<!-- <item>Water 50 7 1 1 1 1</item>
+<item>Weapons 1000 1 1 1 10 3</item>
+<item>Firearms 3000 5 1 1 10 7</item>
+-->
+</string-array>
+</resources>
