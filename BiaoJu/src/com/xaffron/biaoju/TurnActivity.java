@@ -5,7 +5,10 @@ import android.widget.ViewFlipper;
 //import android.util.Log;
 //import android.view.Window;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.TextView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.os.Bundle;
@@ -47,6 +50,22 @@ public class TurnActivity extends Activity {
         mActionButton = (Button)findViewById(R.id.Button01);
         mActionButton.setClickable(false);
         mConsoleView = (TextView)findViewById(R.id.console);
+    	mConsoleView.addTextChangedListener(new TextWatcher() {
+			
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				//nothing
+			}
+			
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				//nothing
+				}
+			
+			public void afterTextChanged(Editable s) {
+				if (s.length()<500) return;
+				s.delete(0, s.toString().indexOf("\n")+1);
+			}
+		});
         
     	mActionButton.setText("出發!!");
 
@@ -78,7 +97,6 @@ public class TurnActivity extends Activity {
     	//		Game Setup
     	master = new GameMaster(this);
     	master.nextTurn();
-   	
     }
     
     @Override
@@ -114,7 +132,7 @@ public class TurnActivity extends Activity {
     }
 
     public void writeLog(String comment) {
-    	this.mConsoleView.setText(comment);
+    	mConsoleView.append(comment + "\n");
 //    	Log.i("XAFFRON",comment);
     }
 

@@ -29,13 +29,11 @@
 			/>
 		</LinearLayout>
 		<TextView
-			android:id="@+id/centerscreen"
-			android:background="@drawable/wuguan"
+			android:id="@+id/console"
 			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="fill_parent"
 			android:textStyle="bold"
 			android:textColor="#FFFF0000"
-			android:text="This is the second panel"
 		/>
 		<TextView
 			android:id="@+id/rightscreen"
