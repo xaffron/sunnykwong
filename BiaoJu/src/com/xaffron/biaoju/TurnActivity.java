@@ -5,7 +5,6 @@ import android.widget.ViewFlipper;
 //import android.util.Log;
 //import android.view.Window;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.TextView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -62,7 +61,7 @@ public class TurnActivity extends Activity {
 				}
 			
 			public void afterTextChanged(Editable s) {
-				if (s.length()<500) return;
+				if (s.length()<1000) return;
 				s.delete(0, s.toString().indexOf("\n")+1);
 			}
 		});
