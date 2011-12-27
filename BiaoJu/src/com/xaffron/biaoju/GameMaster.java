@@ -74,7 +74,7 @@ public class GameMaster {
 		turnLuck = rnd.nextDouble() * protag.baseluck / 5. + 0.5;  //luck factor
 
 		// Refresh Market Prices.
-		marketRefresh(turnLuck);
+//		marketRefresh(turnLuck);
 
 		// Where are we now?
 		tact.writeLog("Arrived in " + getLocation().name + " with " + String.valueOf(cash) + " gold.");
@@ -87,22 +87,22 @@ public class GameMaster {
 
 	}
 
-	public void marketRefresh(double turnLuck) {
-		int i,j,k;
-		//TextView tempTV;
-		
-		ListView lv = (ListView)tact.findViewById(R.id.shoplist);
-		lv.setAdapter(new IconTextButtonAdapter(tact));
-		LinearLayout ll = (LinearLayout)tact.findViewById(R.id.leftscreen);
-		ll.setClickable(false);
-
-//		lv.setOnItemClickListener(New OnItemClickListener l )
-		for (i=0;i<goods.length;i++){
-			for (j=0;j<5;j++){
-				mktPrices[i] = (int) Math.round(rawPrices[i][0] * turnLuck);
-			}
-		}
-		
-	}
+//	public void marketRefresh(double turnLuck) {
+//		int i,j,k;
+//		//TextView tempTV;
+//		
+//		ListView lv = (ListView)tact.findViewById(R.id.shoplist);
+//		lv.setAdapter(new IconTextButtonAdapter(tact));
+//		LinearLayout ll = (LinearLayout)tact.findViewById(R.id.leftscreen);
+//		ll.setClickable(false);
+//
+////		lv.setOnItemClickListener(New OnItemClickListener l )
+//		for (i=0;i<goods.length;i++){
+//			for (j=0;j<5;j++){
+//				mktPrices[i] = (int) Math.round(rawPrices[i][0] * turnLuck);
+//			}
+//		}
+//		
+//	}
 	
 }

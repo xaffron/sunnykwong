@@ -6,67 +6,24 @@
     android:orientation="vertical"
     android:weightSum="1.0" >
 
-	<ViewFlipper
+	<Gallery
 	    android:id="@+id/details"
 	    android:layout_width="fill_parent"
 	    android:layout_height="0dp" 
-	    android:layout_weight="0.8">
-
-		<LinearLayout
-		    android:id="@+id/leftscreen"
-		    android:layout_width="fill_parent"
-		    android:layout_height="match_parent"
-		    android:layout_gravity="left"
-		    android:background="@drawable/mktscroll"
-		    android:orientation="vertical"
-		    android:paddingLeft="10px"
-		    android:paddingRight="30px"
-		    android:paddingTop="50px" >
-
-	        <ListView
-	            android:id="@+id/shoplist"
-	            android:layout_width="fill_parent"
-	            android:layout_height="match_parent" />
-				
-	        <TextView
-	            android:id="@+id/cashonhand"
-	            android:layout_width="fill_parent"
-	            android:layout_height="match_parent"
-	            android:gravity="bottom"
-	            android:text="You have 0 gold."
-	            android:textColor="#FF000000" />
-
-		</LinearLayout>
-		<TextView
-			android:id="@+id/console"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:textStyle="bold"
-			android:textColor="#FFFF0000"
-		/>
-
-		<TextView
-		    android:id="@+id/rightscreen"
-		    android:layout_width="fill_parent"
-		    android:layout_height="match_parent"
-		    android:text="This is the third panel"
-		    android:textColor="#FFFFFF00"
-		    android:textStyle="bold" />
-
-	</ViewFlipper>
+	    android:layout_weight="1"/>
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="0dp"
-    android:layout_weight="0.2"
+    android:layout_height="wrap_content"
     android:orientation="horizontal" >
 
 <Button
     android:id="@+id/Button01"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Button01" >
+    android:text="Button01" 
+    android:minHeight="20dp">
 </Button>
 
 <TextView
