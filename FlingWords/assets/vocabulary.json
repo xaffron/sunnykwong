@@ -1,6 +1,6 @@
 {
-	"00index" : ["Panel1","Panel2","Panel3","Panel4","Panel5","Panel6","Panel7","Panel8","Panel9"],
-	"Panel1" : 
+	"00index" : ["Hand/Foot","Knee/Shoulder","Potato/Orange","Mommy/Daddy","Circle/Square","Bird/Elephant","Cookie/Cream"],
+	"Hand/Foot" : 
 		{
 		"FirstUsedDate":"01-JAN-1900",
 		"Retired":"false",
@@ -8,68 +8,52 @@
 		"TotalUsedTimes":"0",
 		"words":["hand","foot","finger","toe","hair"]
 		},
-	"Panel2" : 
+	"Knee/Shoulder" : 
 		{
 		"FirstUsedDate":"01-JAN-1900",
 		"Retired":"false",
 		"LastUsedTimes":["","","","","","","","","","","","","","","","","","","",""],
 		"TotalUsedTimes":"0",
-		"words":["hand","foot","finger","toe","hair"]
+		"words":["knee","shoulder","head","Hayden","baby"]
 		},
-	"Panel3" : 
+	"Potato/Orange" : 
 		{
 		"FirstUsedDate":"01-JAN-1900",
 		"Retired":"false",
 		"LastUsedTimes":["","","","","","","","","","","","","","","","","","","",""],
 		"TotalUsedTimes":"0",
-		"words":["hand","foot","finger","toe","hair"]
+		"words":["potato","orange","carrot","apple","pear"]
 		},
-	"Panel4" : 
+	"Mommy/Daddy" : 
 		{
 		"FirstUsedDate":"01-JAN-1900",
 		"Retired":"false",
 		"LastUsedTimes":["","","","","","","","","","","","","","","","","","","",""],
 		"TotalUsedTimes":"0",
-		"words":["hand","foot","finger","toe","hair"]
+		"words":["mommy","daddy","milk","bath","water"]
 		},
-	"Panel5" : 
+	"Circle/Square" : 
 		{
 		"FirstUsedDate":"01-JAN-1900",
 		"Retired":"false",
 		"LastUsedTimes":["","","","","","","","","","","","","","","","","","","",""],
 		"TotalUsedTimes":"0",
-		"words":["hand","foot","finger","toe","hair"]
+		"words":["circle","square","star","triangle","box"]
 		},
-	"Panel6" : 
+	"Bird/Elephant" : 
 		{
 		"FirstUsedDate":"01-JAN-1900",
 		"Retired":"false",
 		"LastUsedTimes":["","","","","","","","","","","","","","","","","","","",""],
 		"TotalUsedTimes":"0",
-		"words":["hand","foot","finger","toe","hair"]
+		"words":["bird","elephant","monkey","bee","bear"]
 		},
-	"Panel7" : 
+	"Cookie/Cream" : 
 		{
 		"FirstUsedDate":"01-JAN-1900",
 		"Retired":"false",
 		"LastUsedTimes":["","","","","","","","","","","","","","","","","","","",""],
 		"TotalUsedTimes":"0",
-		"words":["hand","foot","finger","toe","hair"]
-		},
-	"Panel8" : 
-		{
-		"FirstUsedDate":"01-JAN-1900",
-		"Retired":"false",
-		"LastUsedTimes":["","","","","","","","","","","","","","","","","","","",""],
-		"TotalUsedTimes":"0",
-		"words":["hand","foot","finger","toe","hair"]
-		},
-	"Panel9" : 
-		{
-		"FirstUsedDate":"01-JAN-1900",
-		"Retired":"false",
-		"LastUsedTimes":["","","","","","","","","","","","","","","","","","","",""],
-		"TotalUsedTimes":"0", 
-		"words":["apple","pear","orange","carrot","potato"]
+		"words":["cookie","cream","tea","yogurt","lemon"]
 		}
 }
