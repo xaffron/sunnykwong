@@ -5,7 +5,7 @@
 		"FirstUsedDate":"01-JAN-1900",
 		"Retired":"false",
 		"LastUsedTimes":["","","","","","","","","","","","","","","","","","","",""],
-		"TotalUsedTimes":"0",
+		"TotalUsedTimes":"0", 
 		"words":["hand","foot","finger","toe","hair"]
 		},
 	"Knee/Shoulder" : 
