@@ -2,9 +2,11 @@ package com.sunnykwong.omc;
 
 import java.io.BufferedInputStream;
 
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.zip.ZipEntry;
@@ -15,6 +17,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
@@ -41,7 +44,7 @@ public class OMCThemeUnzipActivity extends Activity {
 	public ProgressBar pg;
 	static public boolean COMPLETE;
 	public Thread currentThread;
-
+	
 	public URL downloadURL;
 
 	final Runnable mResult = new Runnable() {
@@ -79,8 +82,13 @@ public class OMCThemeUnzipActivity extends Activity {
 
 	final Runnable mUpdateBitmap = new Runnable() {
 		public void run() {
-			((ImageView)pdWait.findViewById(getResources().getIdentifier("UnzipPreview", "id", OMC.PKGNAME))).setImageBitmap(BitmapFactory.decodeFile(pdPreview));
-			((ImageView)pdWait.findViewById(getResources().getIdentifier("UnzipPreview", "id", OMC.PKGNAME))).invalidate();
+			try {
+				Bitmap bmp = BitmapFactory.decodeFile(pdPreview);
+				((ImageView)pdWait.findViewById(getResources().getIdentifier("UnzipPreview", "id", OMC.PKGNAME))).setImageBitmap(bmp);
+				((ImageView)pdWait.findViewById(getResources().getIdentifier("UnzipPreview", "id", OMC.PKGNAME))).invalidate();
+			} catch (Exception e) {
+				System.out.println("MarkInvalidated");
+			}
 		}
 	};
 
@@ -209,7 +217,7 @@ public class OMCThemeUnzipActivity extends Activity {
 						pdTitleMessage = "Import complete!";
 						mHandler.post(mUpdateTitle);
 						try {Thread.sleep(3000);}
-						catch (Exception ee) {ee.printStackTrace();}
+						catch (Exception ee) {}
 						COMPLETE = true;
 						mHandler.post(mResult);
 
