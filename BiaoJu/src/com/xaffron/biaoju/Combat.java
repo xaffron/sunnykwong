@@ -13,6 +13,7 @@ import android.widget.ListView;
 public class Combat {
 
 	boolean inProgress=false;
+	int whoseTurn;
 	
 	PartyList friends;
 	PartyList foes;
@@ -31,15 +32,17 @@ public class Combat {
 		BJ.TACT.writeBlow("You see: " + headlineFoe.desc);
 
 		foes.add(headlineFoe);
+		
+		// Flag inProgress:  Once this var is set to false, the combat is considered over.
 		inProgress=true;
 
 		calculateInitOrder();
-		
-		boolean frienddead = foes.getFirst().harm(friends.getFirst());
-		if (frienddead) {
-			tact.writeBlow("Game over!");
-			inProgress = false;
-		}
+
+		// Person with the most initiative is first to move.
+		whoseTurn=0;
+		friends.getWeakest();
+		foes.getWeakest();
+		keepGoing(GM.PENDING);
 		
 	}
 
@@ -80,32 +83,71 @@ public class Combat {
 		}
 	}
 	
-	public void nextTurn(int action){
-		// Roll the dice for this turn.
-		double turnLuck = Math.random() *1. + 0.5;   //luck factor
-		switch (action) {
-			case GM.ATTACK:
-			
-				boolean foedead = friends.getFirst().harm(foes.getFirst());
-				if (foedead) {
-					foes.remove(0);
+	public void keepGoing(int action){
+		//Endless loop unless broken
+		while (true) {
+			// Start turn; keep going down initiative list from marker
+			Character actor = initiativeOrder.get(whoseTurn);
+			whoseTurn++;
+			if (whoseTurn==initiativeOrder.size()) whoseTurn=0;
+			if (actor.isFriend && action==GM.PENDING) {
+				break;
+			}
+			if (actor.isFriend) {
+				switch (action) {
+				case GM.ATTACK:
+					boolean foedead = actor.harm(foes.getFirst());
+					if (foedead) {
+						foes.remove(0);
+					}
+					break;
+				case GM.ITEM:
+					tact.writeBlow(actor.name + " uses an item... fails!");
+					break;
+				case GM.RECRUIT:
+					tact.writeBlow(actor.name + " cannot be recruited!");
+					break;
+				case GM.RUN:
+					tact.writeBlow(actor.name + " flees successfully!");
+					break;
+				default:
+					//do nothing
 				}
-				
-				break;
-			case GM.ITEM:
-				tact.writeBlow(friends.getFirst().name + " uses an item... fails!");
-				break;
-			case GM.RECRUIT:
-				tact.writeBlow(foes.getFirst().name + " cannot be recruited!");
-				break;
-			case GM.RUN:
-				tact.writeBlow(friends.getFirst().name + " flees successfully!");
-				break;
-		default:
-		}
-		if (foes.size()==0) {
-			tact.writeBlow("You are victorious!");
-			inProgress=false;
+				action=GM.PENDING;
+			}
+			if (!actor.isFriend) {
+				switch (action) {
+					case GM.ATTACK:
+						boolean dead = actor.harm(friends.weakest);
+						if (dead) {
+							friends.remove(friends.weakest);
+						}
+						break;
+					case GM.ITEM:
+						tact.writeBlow(actor.name + " uses an item... fails!");
+						break;
+					case GM.RECRUIT:
+						tact.writeBlow(actor.name + " cannot be recruited!");
+						break;
+					case GM.RUN:
+						tact.writeBlow(actor.name + " flees successfully!");
+						break;
+					default:
+						//do nothing
+				}
+			}
+			if (friends.size()==0) {
+				tact.writeBlow("You have been defeated...");
+				inProgress=false;
+				return;
+			}
+			if (foes.size()==0) {
+				tact.writeBlow("You are victorious!");
+				inProgress=false;
+				return;
+			}
+			friends.getWeakest();
+			foes.getWeakest();
 		}
 	}
 

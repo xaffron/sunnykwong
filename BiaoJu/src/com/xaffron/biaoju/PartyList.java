@@ -1,15 +1,33 @@
 package com.xaffron.biaoju;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class PartyList extends LinkedList<Character> {
 
 	static final long serialVersionUID=1; 
+	int weakestHP;
+	Character weakest;
+	
 	
 	public PartyList() {
 		super();
 	}
 
+	public Character getWeakest() {
+		weakestHP=getPlayer().hp;
+		weakest = getPlayer();
+		Iterator<Character> i = iterator();
+		while (i.hasNext()){
+			Character ch = i.next();
+			if (ch.hp < weakestHP) {
+				weakestHP = ch.hp;
+				weakest = ch;
+			}
+		}
+		return weakest;
+	}
+	
 	public Character getPlayer() {
 		return getFirst();
 	}

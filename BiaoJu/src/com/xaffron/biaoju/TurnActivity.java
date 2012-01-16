@@ -56,10 +56,6 @@ public class TurnActivity extends Activity {
     	BJ.MASTER = new GM(this);
     	BJ.TACT = this;
     	
-    	for (int i = 0 ; i < 50; i++) {
-    		System.out.println(i + ": mod " + GM.getAbilityModifier(i));
-    	}
- 
     	setContentView(R.layout.main);
         
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
@@ -77,7 +73,7 @@ public class TurnActivity extends Activity {
 				}
 			
 			public void afterTextChanged(Editable s) {
-				if (s.length()<1000) return;
+				if (s.length()<500) return;
 				s.delete(0, s.toString().indexOf("\n")+1);
 			}
 		});

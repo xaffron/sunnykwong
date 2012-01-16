@@ -11,7 +11,7 @@ import android.widget.ListView;
 public class GM {
 
 	static int ACTION;
-	static final int ATTACK=0, ITEM=1, RECRUIT=2, RUN=3;
+	static final int PENDING=0, ATTACK=1, RECRUIT=2, RUN=3, ITEM=4;
 	WorldMap map;
 	Character protag;
 	PartyList party;
@@ -81,11 +81,11 @@ public class GM {
 
 		// Where are we now?
 		if (currentFight!=null && currentFight.inProgress) {
-			currentFight.nextTurn(GM.ACTION);
+			currentFight.keepGoing(GM.ACTION);
 		} else {
 			currentFight = new Combat(party, tact);
 			tact.writeConsole("Combat!");
-			currentFight.nextTurn(GM.ACTION);
+			currentFight.keepGoing(GM.ACTION);
 		}
 		
 //		tact.writeConsole("Arrived in " + getLocation().name + " with " + String.valueOf(cash) + " gold.");

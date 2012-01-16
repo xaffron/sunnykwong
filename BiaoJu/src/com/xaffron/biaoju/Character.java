@@ -10,6 +10,7 @@ public class Character {
 	//Combat-related
 	boolean flatFooted;
 	boolean enemyAware;
+	boolean isFriend;
 	int initiative;
 	
 	int level;
@@ -30,7 +31,7 @@ public class Character {
 	
 	int posInParty;
 	
-	public Character(String a, String b, String c) {
+	public Character(String a, String b, String c, boolean friendly) {
 		super();
 		title=a;
 		name=b;
@@ -43,16 +44,17 @@ public class Character {
 		artifact=0; 
 		hp=100;
 		shield=0;
+		isFriend=friendly;
 	}
 	public boolean harm (Character victim) {
 		// How's my aim? If opponent is more dextrous than I am, I'll never hit
 		// Luck counts into 10% of aim
 		double myaim = Math.max(1, dex-victim.dex) * Math.random() ;
-		BJ.TACT.writeBlow("myaim:" + myaim);
+//		BJ.TACT.writeBlow("myaim:" + myaim);
 		int damage = (int)(str * myaim);
 		boolean critical = (dex)*Math.random() + 0.01 > 1;
 		if (critical) {
-			BJ.TACT.writeBlow(name + "uses his finishing move!");
+			BJ.TACT.writeBlow(name + " uses his finishing move!");
 			damage*=3;
 		}
 		BJ.TACT.writeBlow(name + " hits " + victim.name + " for "+damage+" damage!");
@@ -88,7 +90,7 @@ public class Character {
 	}
 
 	public static Character chooseProtag(){
-		Character protag = new Character("齊天大聖","孫悟空","從奇石中蹦出來的神猴").initBase(5);
+		Character protag = new Character("齊天大聖","孫悟空","從奇石中蹦出來的神猴", true).initBase(5);
 		return protag;
 	}
 	
@@ -96,7 +98,7 @@ public class Character {
 		final String[] sFirstNames = {"Mog","Peter","Ug","Jojo","Gab"}; 
 		final String[] sLastNames = {"Schog","Razog","Trog","Pog","Hog"}; 
 		final int iListLength=5;
-		Character foe = new Character("An", sFirstNames[(int)(Math.random()*iListLength)]+" "+sLastNames[(int)(Math.random()*iListLength)],"A beast thirsty for your blood.").initBase(5);
+		Character foe = new Character("An", sFirstNames[(int)(Math.random()*iListLength)]+" "+sLastNames[(int)(Math.random()*iListLength)],"A beast thirsty for your blood.", false).initBase(5);
 		return foe;
 	}
 }
