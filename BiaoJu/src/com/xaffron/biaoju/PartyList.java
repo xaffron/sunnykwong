@@ -2,7 +2,7 @@ package com.xaffron.biaoju;
 
 import java.util.LinkedList;
 
-public class PartyList extends LinkedList<Hero> {
+public class PartyList extends LinkedList<Character> {
 
 	static final long serialVersionUID=1; 
 	
@@ -10,24 +10,24 @@ public class PartyList extends LinkedList<Hero> {
 		super();
 	}
 
-	public Hero getPlayer() {
+	public Character getPlayer() {
 		return getFirst();
 	}
 	
-	public Hero changeProtag(Hero h) {
+	public Character changeProtag(Character h) {
 		if (size()>0) removeFirst();
 		addFirst(h);
 		return h;
 	}
 	
-	public Hero addToParty(Hero h) {
+	public Character addToParty(Character h) {
 		int sz = size();
 		h.posInParty = sz;
 		add(h);
 		return h;
 	}
 
-	public int removeFromParty(Hero h) {
+	public int removeFromParty(Character h) {
 		remove(h.posInParty);
 		h.posInParty=0;
 		return h.posInParty;

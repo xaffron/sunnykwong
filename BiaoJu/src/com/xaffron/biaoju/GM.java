@@ -8,10 +8,12 @@ import android.widget.TextView;
 import android.widget.ListView;
 
 
-public class GameMaster {
+public class GM {
 
+	static int ACTION;
+	static final int ATTACK=0, ITEM=1, RECRUIT=2, RUN=3;
 	WorldMap map;
-	Hero protag;
+	Character protag;
 	PartyList party;
 	int location;
 	TurnActivity tact;
@@ -22,8 +24,9 @@ public class GameMaster {
 	int[] carry;
 	static MugToast mt;
 	int cash;
+	Combat currentFight;
 	
-	public GameMaster(TurnActivity ta) {
+	public GM(TurnActivity ta) {
 		
 		int i,j;
 		String[] tempStr;
@@ -32,7 +35,7 @@ public class GameMaster {
 		Random rnd = new Random();
 		map	= new WorldMap();
 	    party = new PartyList();
-	    protag = party.addToParty(Hero.chooseProtag());
+	    protag = party.addToParty(Character.chooseProtag());
 	    location = rnd.nextInt(5);
 	    cash = 1000;
 	    tact=ta;
@@ -71,22 +74,53 @@ public class GameMaster {
 		location = rnd.nextInt(5);
 
 	    // Determining protag's luck this turn.
-		turnLuck = rnd.nextDouble() * protag.baseluck / 5. + 0.5;  //luck factor
+		turnLuck = rnd.nextDouble()  + 0.5;  //luck factor
 
 		// Refresh Market Prices.
 //		marketRefresh(turnLuck);
 
 		// Where are we now?
-		tact.writeLog("Arrived in " + getLocation().name + " with " + String.valueOf(cash) + " gold.");
+		if (currentFight!=null && currentFight.inProgress) {
+			currentFight.nextTurn(GM.ACTION);
+		} else {
+			currentFight = new Combat(party, tact);
+			tact.writeConsole("Combat!");
+			currentFight.nextTurn(GM.ACTION);
+		}
+		
+//		tact.writeConsole("Arrived in " + getLocation().name + " with " + String.valueOf(cash) + " gold.");
 		
 		
 		// Show the Toast
 //		mt = new MugToast(tact);
-		mt.setText(protag.name + ": 回到鏢局, 終於可以洗臉了!");
-		mt.show();
+//		mt.setText(protag.name + ": 回到鏢局, 終於可以洗臉了!");
+//		mt.show();
 
 	}
+	static public int getAbilityModifier(int iAbilityScore) {
+		return (iAbilityScore)/2-5;
+	}
 
+	static public boolean d20Roll(int[] iModifiers, int iTarget) {
+		int iDiceRoll = (int)(Math.random()*20)+1;
+		for (int imod:iModifiers) {
+			iDiceRoll+=imod;
+		}
+		return iDiceRoll>=iTarget;
+	}
+	
+	static public int diceRoll(int iNumDice, int iSides, int iMod) {
+		int iResult=iMod;
+		for (int i=0;i<iNumDice; i++) {
+			iResult += (int)(Math.random()*iSides)+1;
+		}
+		return iResult;
+	}
+	
+	static public int dicePercent(int iMod) {
+		int iResult = ((int)(Math.random()*10))*10 + (int)(Math.random()*10) + iMod;
+		return iResult==0?100:iResult;
+	}
 //	public void marketRefresh(double turnLuck) {
 //		int i,j,k;
 //		//TextView tempTV;

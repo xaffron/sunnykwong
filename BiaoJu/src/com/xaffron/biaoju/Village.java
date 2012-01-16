@@ -29,7 +29,7 @@ public class Village {
 		String result;
 		List<Village> list;
 		try{
-			list = TurnActivity.master.map.distMap.nearest(new double[] {x,y}, 3);
+			list = BJ.MASTER.map.distMap.nearest(new double[] {x,y}, 3);
 			result =list.get(0).name + " " + list.get(1).name;
 		}
 		catch (KeySizeException e) {
