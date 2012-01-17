@@ -16,7 +16,6 @@ public class GM {
 	Character protag;
 	PartyList party;
 	int location;
-	TurnActivity tact;
 	String[] goods;
 	int[][] rawPrices;
 	int[] mktPrices;
@@ -38,11 +37,10 @@ public class GM {
 	    protag = party.addToParty(Character.chooseProtag());
 	    location = rnd.nextInt(5);
 	    cash = 1000;
-	    tact=ta;
 
-	    mt = new MugToast(tact);
+	    mt = new MugToast(BJ.TACT);
 	    
-	    tempStr = tact.getResources().getStringArray(R.array.goods);
+	    tempStr = BJ.TACT.getResources().getStringArray(R.array.goods);
 	    goods = new String[tempStr.length];
 	    rawPrices = new int[tempStr.length][5];
 	    mktPrices = new int[tempStr.length];
@@ -83,8 +81,8 @@ public class GM {
 		if (currentFight!=null && currentFight.inProgress) {
 			currentFight.keepGoing(GM.ACTION);
 		} else {
-			currentFight = new Combat(party, tact);
-			tact.writeConsole("Combat!");
+			currentFight = new Combat(party);
+			BJ.TACT.writeBlow("Combat!");
 			currentFight.keepGoing(GM.ACTION);
 		}
 		

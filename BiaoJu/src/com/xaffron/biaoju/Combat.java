@@ -19,10 +19,7 @@ public class Combat {
 	PartyList foes;
 	ArrayList<Character> initiativeOrder;
 
-	TurnActivity tact;
-	
-	public Combat(PartyList f, TurnActivity ta) {
-		tact = ta;
+	public Combat(PartyList f) {
 		friends = f;
 
 		//Generate random foe
@@ -88,11 +85,11 @@ public class Combat {
 		while (true) {
 			// Start turn; keep going down initiative list from marker
 			Character actor = initiativeOrder.get(whoseTurn);
-			whoseTurn++;
-			if (whoseTurn==initiativeOrder.size()) whoseTurn=0;
 			if (actor.isFriend && action==GM.PENDING) {
 				break;
 			}
+			whoseTurn++;
+			if (whoseTurn==initiativeOrder.size()) whoseTurn=0;
 			if (actor.isFriend) {
 				switch (action) {
 				case GM.ATTACK:
@@ -102,13 +99,13 @@ public class Combat {
 					}
 					break;
 				case GM.ITEM:
-					tact.writeBlow(actor.name + " uses an item... fails!");
+					BJ.TACT.writeBlow(actor.name + " uses an item... fails!");
 					break;
 				case GM.RECRUIT:
-					tact.writeBlow(actor.name + " cannot be recruited!");
+					BJ.TACT.writeBlow(actor.name + " cannot be recruited!");
 					break;
 				case GM.RUN:
-					tact.writeBlow(actor.name + " flees successfully!");
+					BJ.TACT.writeBlow(actor.name + " flees successfully!");
 					break;
 				default:
 					//do nothing
@@ -116,38 +113,39 @@ public class Combat {
 				action=GM.PENDING;
 			}
 			if (!actor.isFriend) {
-				switch (action) {
-					case GM.ATTACK:
+//				switch (action) {
+//					case GM.ATTACK:
 						boolean dead = actor.harm(friends.weakest);
 						if (dead) {
 							friends.remove(friends.weakest);
 						}
-						break;
-					case GM.ITEM:
-						tact.writeBlow(actor.name + " uses an item... fails!");
-						break;
-					case GM.RECRUIT:
-						tact.writeBlow(actor.name + " cannot be recruited!");
-						break;
-					case GM.RUN:
-						tact.writeBlow(actor.name + " flees successfully!");
-						break;
-					default:
-						//do nothing
-				}
+//						break;
+//					case GM.ITEM:
+//						BJ.TACT.writeBlow(actor.name + " uses an item... fails!");
+//						break;
+//					case GM.RECRUIT:
+//						BJ.TACT.writeBlow(actor.name + " cannot be recruited!");
+//						break;
+//					case GM.RUN:
+//						BJ.TACT.writeBlow(actor.name + " flees successfully!");
+//						break;
+//					default:
+//						//do nothing
+//				}
 			}
 			if (friends.size()==0) {
-				tact.writeBlow("You have been defeated...");
+				BJ.TACT.writeBlow("You have been defeated...");
 				inProgress=false;
 				return;
 			}
 			if (foes.size()==0) {
-				tact.writeBlow("You are victorious!");
+				BJ.TACT.writeBlow("You are victorious!");
 				inProgress=false;
 				return;
 			}
 			friends.getWeakest();
 			foes.getWeakest();
+			BJ.TACT.writeConsole(friends.getPlayer().name + "'s HP:" + friends.getPlayer().hp + "\t" + foes.getFirst().name + "'s HP:" + foes.getFirst().hp );
 		}
 	}
 

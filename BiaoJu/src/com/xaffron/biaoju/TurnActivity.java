@@ -53,14 +53,15 @@ public class TurnActivity extends Activity {
         super.onCreate(savedInstanceState);
 
     	//		Game Setup
-    	BJ.MASTER = new GM(this);
     	BJ.TACT = this;
+    	BJ.MASTER = new GM(this);
     	
     	setContentView(R.layout.main);
         
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
 		mAction = inflater.inflate(R.layout.action, null);
         mBlowbyBlow = (TextView)mAction.findViewById(R.id.blowbyblow);
+        mBlowbyBlow.setClickable(false);
     	mBlowbyBlow.addTextChangedListener(new TextWatcher() {
 			
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -73,7 +74,7 @@ public class TurnActivity extends Activity {
 				}
 			
 			public void afterTextChanged(Editable s) {
-				if (s.length()<500) return;
+				if (s.length()<300) return;
 				s.delete(0, s.toString().indexOf("\n")+1);
 			}
 		});
@@ -161,7 +162,8 @@ public class TurnActivity extends Activity {
     }
 
     public void writeConsole(String comment) {
-    	mConsoleView.append(comment + "\n");
+    	mConsoleView.setText(comment);
+//    	mConsoleView.append(comment + "\n");
 //    	Log.i("XAFFRON",comment);
     }
     public class ScreenAdapter extends BaseAdapter {
