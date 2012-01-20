@@ -1,40 +1,24 @@
 {
-	"name": "Monsters",
-	"comments1": "This is a test bestiary.  Only ID field is required to be unique.",
-	"comments2": "Monsters are grouped by geographical area, then individual monster types.",
-	"comments3": "If you make changes, remember to run it by JSON lint: http://www.jsonlint.com",
-	"comments4": "Have fun rolling your own monsters!",
+	"name": "Townes",
+	"comments1": "This is a test location list.  Only ID field is required to be unique.",
 	"author": "S. Kwong",
 	"date": "18 Jan 2012",
 	
-	"Midgaard": [
+	"Townes": [
 		{
-		"name":"Ogre",
-		"fnames":["Moog","Goog","Oog","Joo","Goob"],
-		"lnames":["Schoog","Razoog","McTroog","Poog","Hoog"],
-		"hitdice": [4,8,11],
-		"ac": 16,
-		"str": 21,
-		"dex": 8,
-		"con": 15,
-		"int": 6,
-		"wis": 10,
-		"cha": 7,
-		"class":"FIGHTER"
+		"name":"Midgaard",
+		"monsterlevels": [1,10],
+		"location": [0,0]
 		},
 		{
-		"name":"Orc",
-		"fnames":["Mog","Gog","Ug","Jojo","Gab"],
-		"lnames":["Schog","Razog","McTrog","Pog","Hog"],
-		"hitdice": [1,8,1],
-		"ac": 13,
-		"str": 17,
-		"dex": 11,
-		"con": 12,
-		"int": 8,
-		"wis": 7,
-		"cha": 6,
-		"class":"FIGHTER"
+		"name":"Tadaran",
+		"monsterlevels": [5,15],
+		"location": [3,3]
+		},
+		{
+		"name":"Jescalth",
+		"monsterlevels": [10,20],
+		"location": [1,-1]
 		}
 	]
 }
