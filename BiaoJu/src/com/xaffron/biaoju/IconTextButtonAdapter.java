@@ -33,7 +33,7 @@ public class IconTextButtonAdapter extends ArrayAdapter<String> {
 		TextView label = (TextView)row.findViewById(R.id.label);
 		label.setText(items[position]);
 		ImageView icon = (ImageView)row.findViewById(R.id.icon);
-		icon.setImageResource(R.drawable.goku);
+		icon.setImageResource(R.drawable.icon);
  		return row;
 	}
 	
