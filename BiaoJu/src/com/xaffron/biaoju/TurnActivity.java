@@ -56,6 +56,14 @@ public class TurnActivity extends Activity {
     	BJ.TACT = this;
     	BJ.MASTER = new GM(this);
     	
+    	if (!BJ.loadFlaresFromJSON())
+		{
+			MugToast mt = new MugToast(this);
+			mt.setText("Cannot load data from SD card - Exiting!");
+			mt.show();
+			this.moveTaskToBack(true);
+		}
+    	
     	setContentView(R.layout.main);
         
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
