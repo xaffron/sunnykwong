@@ -7,9 +7,11 @@
 	"author": "S. Kwong",
 	"date": "18 Jan 2012",
 	
-	"Midgaard": [
+	"monsters": [
 		{
+		"id":1,
 		"name":"Ogre",
+		"area":"Midgaard",
 		"fnames":["Moog","Goog","Oog","Joo","Goob"],
 		"lnames":["Schoog","Razoog","McTroog","Poog","Hoog"],
 		"hitdice": [4,8,11],
@@ -23,7 +25,9 @@
 		"class":"FIGHTER"
 		},
 		{
+		"id":2,
 		"name":"Orc",
+		"area":"Midgaard",
 		"fnames":["Mog","Gog","Ug","Jojo","Gab"],
 		"lnames":["Schog","Razog","McTrog","Pog","Hog"],
 		"hitdice": [1,8,1],

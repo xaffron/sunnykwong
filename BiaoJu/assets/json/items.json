@@ -6,12 +6,14 @@
 	
 	"items": [
 		{
+		"id":1,
 		"name":"Healing Potion",
 		"hp":100,
 		"mp":0,
 		"cost":50
 		},
 		{
+		"id":2,
 		"name":"Mana Potion",
 		"hp":0,
 		"mp":50,

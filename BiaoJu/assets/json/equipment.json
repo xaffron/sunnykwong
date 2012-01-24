@@ -9,6 +9,7 @@
 	
 	"equipment": [
 		{
+		"id":1,
 		"name":"Dagger",
 		"type":"weapon",
 		"cost": 2,
@@ -17,6 +18,7 @@
 		"weight": 1
 		},
 		{
+		"id":2,
 		"name":"Longsword",
 		"type":"weapon",
 		"cost": 15,
@@ -25,6 +27,7 @@
 		"weight": 4
 		},
 		{
+		"id":1001,
 		"name":"Leather Armor",
 		"type":"armor",
 		"cost": 10,
@@ -35,6 +38,7 @@
 		"weight": 15
 		},
 		{
+		"id":1002,
 		"name":"Chain Mail",
 		"type":"armor",
 		"cost": 150,

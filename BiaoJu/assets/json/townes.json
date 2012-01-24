@@ -6,16 +6,19 @@
 	
 	"Townes": [
 		{
+		"id":1,
 		"name":"Midgaard",
 		"monsterlevels": [1,10],
 		"location": [0,0]
 		},
 		{
+		"id":2,
 		"name":"Tadaran",
 		"monsterlevels": [5,15],
 		"location": [3,3]
 		},
 		{
+		"id":3,
 		"name":"Jescalth",
 		"monsterlevels": [10,20],
 		"location": [1,-1]
