@@ -45,7 +45,7 @@ public class TurnActivity extends Activity {
 	public TextView mConsoleView, mBlowbyBlow;
 	public View mAction;
 	public Gallery mGallery;
-
+ 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,14 +55,6 @@ public class TurnActivity extends Activity {
     	//		Game Setup
     	BJ.TACT = this;
     	BJ.MASTER = new GM(this);
-    	
-    	if (!BJ.loadFlaresFromJSON())
-		{
-			MugToast mt = new MugToast(this);
-			mt.setText("Cannot load data from SD card - Exiting!");
-			mt.show();
-			this.moveTaskToBack(true);
-		}
     	
     	setContentView(R.layout.main);
         

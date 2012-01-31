@@ -9,6 +9,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.app.Application;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.widget.Toast;
 
@@ -17,27 +19,41 @@ public class BJ extends Application {
 	static GM MASTER;
 	static TurnActivity TACT;
 	static Combat CURRENTFIGHT;
+	static Bitmap bmpCOMPERE;
+	static JSONObject jsonMONSTERS, jsonITEMS, jsonTOWNES, jsonEQUIPMENT;
+	static JSONArray jaryMONSTERS;
 	
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		loadFlaresFromJSON();
+		initFromJSON();
 	}
 	
-	static public boolean loadFlaresFromJSON() {
+	public boolean initFromJSON() {
 		try {
-			if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
+			if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
 				return false;
-		}	catch (Exception e) {}
-		return true;
-/*				
-//			Environment.getExternalStoragePublicDirectory();
-			File f = new File("/mnt/sdcard/hclw_settings.json");
-			// Look in SD path
-			JSONObject oObj;
-			JSONArray oResult;
+			String sdpath = getApplicationContext().getExternalFilesDir(null).getAbsolutePath();
+			File f = new File(sdpath + "/.nomedia");
+			if (!f.exists()) {
+				f.createNewFile();
+			}
+			
+			f = new File(sdpath + "/00compere.png");
 			if (f.exists()) {
-				Toast.makeText(this, "hclw_settings.json file found on SD card.  Applying advanced settings...", Toast.LENGTH_LONG).show();
+				BJ.bmpCOMPERE = BitmapFactory.decodeFile(f.getAbsolutePath());
+			} else {
+				BJ.bmpCOMPERE = BitmapFactory.decodeStream(this.getAssets().open("portraits/00compere.png"));
+			}
+
+			//
+			//Loading Equipment.
+			//
+			f = new File(sdpath + "/equipment.json");
+
+			// Look in SD path
+			if (f.exists()) {
+				MugToast.makeText(this, "Loading equipment...", BJ.bmpCOMPERE, Toast.LENGTH_LONG).show();
 				BufferedReader in = new BufferedReader(new FileReader(f),8192);
 				StringBuilder sb = new StringBuilder();
 			    char[] buffer = new char[8192];
@@ -46,16 +62,12 @@ public class BJ extends Application {
 			    	sb.append(buffer, 0, iCharsRead);
 			    }
 			    in.close();
-			    oObj = new JSONObject(sb.toString());
-				oResult = oObj.getJSONArray("flarepositions");
-				sb.setLength(0);
-				TOPSURF_FILE = oObj.getString("topsurface_file");
-				if (!new File(TOPSURF_FILE).exists()) TOPSURF_FILE=null;
-				FLARE_FILE = oObj.getString("flare_file");
-				if (!new File(FLARE_FILE).exists()) FLARE_FILE=null;
+			    jsonEQUIPMENT = new JSONObject(sb.toString());
+			// Look in assets
 			} else {
-				// Look in assets
-				InputStreamReader in = new InputStreamReader(this.getAssets().open("hclw_settings.json"));
+				MugToast.makeText(this, "Using default equipment...", BJ.bmpCOMPERE, Toast.LENGTH_LONG).show();
+				
+				InputStreamReader in = new InputStreamReader(this.getAssets().open("json/equipment.json"));
 				StringBuilder sb = new StringBuilder();
 			    char[] buffer = new char[8192];
 			    int iCharsRead = 0;
@@ -63,12 +75,116 @@ public class BJ extends Application {
 			    	sb.append(buffer, 0, iCharsRead);
 			    }
 			    in.close();
-			    oObj = new JSONObject(sb.toString());
-				oResult = oObj.getJSONArray("flarepositions");
-				sb.setLength(0);
-				TOPSURF_FILE = null;
-				FLARE_FILE = null;
+			    jsonEQUIPMENT = new JSONObject(sb.toString());
 			}
+			
+
+			//
+			//Loading items.
+			//
+			f = new File(sdpath + "/items.json");
+
+			// Look in SD path
+			if (f.exists()) {
+				MugToast.makeText(this, "Loading items...", BJ.bmpCOMPERE, Toast.LENGTH_LONG).show();
+				BufferedReader in = new BufferedReader(new FileReader(f),8192);
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[8192];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+			    jsonITEMS = new JSONObject(sb.toString());
+			// Look in assets
+			} else {
+				MugToast.makeText(this, "Using default items...", BJ.bmpCOMPERE, Toast.LENGTH_LONG).show();
+				
+				InputStreamReader in = new InputStreamReader(this.getAssets().open("json/items.json"));
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[8192];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+			    jsonITEMS = new JSONObject(sb.toString());
+			}
+			
+
+			//
+			//Loading Monsters.
+			//
+			f = new File(sdpath + "/monsters.json");
+
+			// Look in SD path
+			if (f.exists()) {
+				MugToast.makeText(this, "Loading bestiary...", BJ.bmpCOMPERE, Toast.LENGTH_LONG).show();
+				BufferedReader in = new BufferedReader(new FileReader(f),8192);
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[8192];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+			    jsonMONSTERS = new JSONObject(sb.toString());
+			// Look in assets
+			} else {
+				MugToast.makeText(this, "Using default bestiary...", BJ.bmpCOMPERE, Toast.LENGTH_LONG).show();
+				
+				InputStreamReader in = new InputStreamReader(this.getAssets().open("json/monsters.json"));
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[8192];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+			    jsonMONSTERS = new JSONObject(sb.toString());
+			}
+			jaryMONSTERS = jsonMONSTERS.optJSONArray("monsters");
+			
+
+			//
+			//Loading Townes.
+			//
+			f = new File(sdpath + "/townes.json");
+
+			// Look in SD path
+			if (f.exists()) {
+				MugToast.makeText(this, "Loading townes...", BJ.bmpCOMPERE, Toast.LENGTH_LONG).show();
+				BufferedReader in = new BufferedReader(new FileReader(f),8192);
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[8192];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+			    jsonTOWNES = new JSONObject(sb.toString());
+			// Look in assets
+			} else {
+				MugToast.makeText(this, "Using default townes...", BJ.bmpCOMPERE, Toast.LENGTH_LONG).show();
+				
+				InputStreamReader in = new InputStreamReader(this.getAssets().open("json/townes.json"));
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[8192];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+			    jsonTOWNES = new JSONObject(sb.toString());
+			}
+			
+		}	catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+/*				
+//			Environment.getExternalStoragePublicDirectory();
 			
 			LWPSURF_32BIT = oObj.getBoolean("livewallpaper_surface_32bit");
 			FIXEDOFFSET = oObj.getInt("lwp_fixed_offset");

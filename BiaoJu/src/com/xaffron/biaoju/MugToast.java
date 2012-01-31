@@ -1,6 +1,7 @@
 package com.xaffron.biaoju;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.widget.Toast;
 import android.widget.TextView;
 import android.widget.ImageView;
@@ -27,11 +28,22 @@ public class MugToast extends Toast {
 		
         setDuration(Toast.LENGTH_LONG);
 
-
+	}
+	
+	static public MugToast makeText(Context context, CharSequence text, Bitmap bmp, int duration) {
+		MugToast mt = new MugToast(context);
+		mt.txt.setText(text);
+		mt.img.setImageBitmap(bmp);
+		return mt;
 	}
 
-	@Override
-	public void setText(CharSequence s) {
-		txt.setText(s);
+	static public MugToast makeText(Context context, CharSequence text, int duration) {
+		MugToast mt = new MugToast(context);
+		mt.txt.setText(text);
+		mt.img.setImageResource(R.id.toastportrait);
+		return mt;
 	}
+
+	
+
 }

@@ -1,5 +1,7 @@
 package com.xaffron.biaoju;
 
+import org.json.JSONObject;
+
 public class Character {
 
 	static final int BARBARIAN=0,BARD=1,CLERIC=2,DRUID=3,FIGHTER=4,MONK=5,PALADIN=6,RANGER=7,ROGUE=8,SORCERER=9,WIZARD=10;
@@ -79,7 +81,7 @@ public class Character {
 				hit=true; 
 				if (GM.diceRoll(1, 20, baseAttack + GM.getAbilityModifier(str)) > victim.ac) {
 					critical = true;
-					BJ.TACT.writeBlow(name + " uses his finishing move...");
+					BJ.TACT.writeBlow(name + " scores a critical hit!");
 				} else {
 					critical = false;
 				}
@@ -128,15 +130,34 @@ public class Character {
 	}
 
 	public static Character chooseProtag(){
-		Character protag = new Character("齊天大聖","孫悟空","從奇石中蹦出來的神猴", Character.FIGHTER, true).initBase(11);
+		Character protag = new Character("The","Great Hero", "That's you!", Character.FIGHTER, true).initBase(16);
+		protag.hp=1000;
+//		Character protag = new Character("齊天大聖","孫悟空","從奇石中蹦出來的神猴", Character.FIGHTER, true).initBase(11);
 		return protag;
 	}
 	
 	public static Character generateFoe(int iLevel) {
-		final String[] sFirstNames = {"Mog","Peter","Ug","Jojo","Gab"}; 
-		final String[] sLastNames = {"Schog","Razog","Trog","Pog","Hog"}; 
+		
+		final int iMonsterCount = BJ.jaryMONSTERS.length();
+		final int iMonster = (int)(Math.random()*iMonsterCount);
+		final JSONObject jsonMonster = BJ.jaryMONSTERS.optJSONObject(iMonster);
+		
 		final int iListLength=5;
-		Character foe = new Character("An", sFirstNames[(int)(Math.random()*iListLength)]+" "+sLastNames[(int)(Math.random()*iListLength)],"A beast thirsty for your blood.", Character.FIGHTER, false).initBase(5);
+		Character foe = new Character("An", jsonMonster.optJSONArray("fnames").optString(0)
+				+" "+
+				jsonMonster.optJSONArray("lnames").optString(0)
+				+" the "+
+				jsonMonster.optString("name"),
+				"A beast thirsty for your blood.", Character.FIGHTER, false);
+		foe.initBase(1);
+		foe.ac=jsonMonster.optInt("ac");
+		foe.str=jsonMonster.optInt("str");
+		foe.dex=jsonMonster.optInt("dex");
+		foe.con=jsonMonster.optInt("con");
+		foe.intel=jsonMonster.optInt("int");
+		foe.wis=jsonMonster.optInt("wis");
+		foe.cha=jsonMonster.optInt("cha");
+
 		return foe;
 	}
 
