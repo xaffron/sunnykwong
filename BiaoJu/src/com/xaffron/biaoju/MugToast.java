@@ -26,7 +26,7 @@ public class MugToast extends Toast {
 		img = (ImageView) ll.findViewById(R.id.toastportrait);
 		txt = (TextView) ll.findViewById(R.id.toastmsg);
 		
-        setDuration(Toast.LENGTH_LONG);
+        setDuration(Toast.LENGTH_SHORT);
 
 	}
 	
