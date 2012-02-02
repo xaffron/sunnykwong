@@ -20,7 +20,7 @@ public class BJ extends Application {
 	static TurnActivity TACT;
 	static Combat CURRENTFIGHT;
 	static Bitmap bmpCOMPERE;
-	static JSONObject jsonMONSTERS, jsonITEMS, jsonTOWNES, jsonEQUIPMENT;
+	static JSONObject jsonMONSTERS, jsonITEMS, jsonTOWNES, jsonEQUIPMENT, jsonPROTAG;
 	static JSONArray jaryMONSTERS, jaryEQUIPMENT, jaryTOWNES, jaryITEMS;
 	
 	static final int PARTYARRIVED=0, PARTYENCOUNTER=1, PARTYNOENCOUNTER=2;
@@ -49,13 +49,46 @@ public class BJ extends Application {
 			}
 
 			//
+			//Loading Protagonist.
+			//
+			f = new File(sdpath + "/protagonist.json");
+
+			// Look in SD path
+			if (f.exists()) {
+				//MugToast.makeText(this, "Loading equipment...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
+				BufferedReader in = new BufferedReader(new FileReader(f),8192);
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[8192];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+			    jsonPROTAG = new JSONObject(sb.toString());
+			// Look in assets
+			} else {
+				//MugToast.makeText(this, "Using default equipment...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
+				
+				InputStreamReader in = new InputStreamReader(this.getAssets().open("json/protagonist.json"));
+				StringBuilder sb = new StringBuilder();
+			    char[] buffer = new char[8192];
+			    int iCharsRead = 0;
+			    while ((iCharsRead=in.read(buffer))!= -1){
+			    	sb.append(buffer, 0, iCharsRead);
+			    }
+			    in.close();
+			    jsonPROTAG = new JSONObject(sb.toString());
+			}
+			
+
+			//
 			//Loading Equipment.
 			//
 			f = new File(sdpath + "/equipment.json");
 
 			// Look in SD path
 			if (f.exists()) {
-				MugToast.makeText(this, "Loading equipment...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
+				//MugToast.makeText(this, "Loading equipment...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
 				BufferedReader in = new BufferedReader(new FileReader(f),8192);
 				StringBuilder sb = new StringBuilder();
 			    char[] buffer = new char[8192];
@@ -67,7 +100,7 @@ public class BJ extends Application {
 			    jsonEQUIPMENT = new JSONObject(sb.toString());
 			// Look in assets
 			} else {
-				MugToast.makeText(this, "Using default equipment...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
+				//MugToast.makeText(this, "Using default equipment...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
 				
 				InputStreamReader in = new InputStreamReader(this.getAssets().open("json/equipment.json"));
 				StringBuilder sb = new StringBuilder();
@@ -89,7 +122,7 @@ public class BJ extends Application {
 
 			// Look in SD path
 			if (f.exists()) {
-				MugToast.makeText(this, "Loading items...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
+				//MugToast.makeText(this, "Loading items...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
 				BufferedReader in = new BufferedReader(new FileReader(f),8192);
 				StringBuilder sb = new StringBuilder();
 			    char[] buffer = new char[8192];
@@ -101,7 +134,7 @@ public class BJ extends Application {
 			    jsonITEMS = new JSONObject(sb.toString());
 			// Look in assets
 			} else {
-				MugToast.makeText(this, "Using default items...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
+				//MugToast.makeText(this, "Using default items...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
 				
 				InputStreamReader in = new InputStreamReader(this.getAssets().open("json/items.json"));
 				StringBuilder sb = new StringBuilder();
@@ -122,7 +155,7 @@ public class BJ extends Application {
 
 			// Look in SD path
 			if (f.exists()) {
-				MugToast.makeText(this, "Loading bestiary...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
+				//MugToast.makeText(this, "Loading bestiary...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
 				BufferedReader in = new BufferedReader(new FileReader(f),8192);
 				StringBuilder sb = new StringBuilder();
 			    char[] buffer = new char[8192];
@@ -134,7 +167,7 @@ public class BJ extends Application {
 			    jsonMONSTERS = new JSONObject(sb.toString());
 			// Look in assets
 			} else {
-				MugToast.makeText(this, "Using default bestiary...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
+				//MugToast.makeText(this, "Using default bestiary...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
 				
 				InputStreamReader in = new InputStreamReader(this.getAssets().open("json/monsters.json"));
 				StringBuilder sb = new StringBuilder();
@@ -156,7 +189,7 @@ public class BJ extends Application {
 
 			// Look in SD path
 			if (f.exists()) {
-				MugToast.makeText(this, "Loading townes...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
+				//MugToast.makeText(this, "Loading townes...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
 				BufferedReader in = new BufferedReader(new FileReader(f),8192);
 				StringBuilder sb = new StringBuilder();
 			    char[] buffer = new char[8192];
@@ -168,7 +201,7 @@ public class BJ extends Application {
 			    jsonTOWNES = new JSONObject(sb.toString());
 			// Look in assets
 			} else {
-				MugToast.makeText(this, "Using default townes...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
+				//MugToast.makeText(this, "Using default townes...", BJ.bmpCOMPERE, Toast.LENGTH_SHORT).show();
 				
 				InputStreamReader in = new InputStreamReader(this.getAssets().open("json/townes.json"));
 				StringBuilder sb = new StringBuilder();

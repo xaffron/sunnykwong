@@ -10,9 +10,11 @@ public class Character {
 	static final int BARBARIAN=0,BARD=1,CLERIC=2,DRUID=3,FIGHTER=4,MONK=5,PALADIN=6,RANGER=7,ROGUE=8,SORCERER=9,WIZARD=10;
 	static final HashMap<String, Integer> OCCUPATIONMAP = new HashMap<String, Integer>(10);
 	String name;
-	String title;
+	String type;
 	String desc;
 	String portrait;
+	
+	static JSONObject BAREHANDS;
 	
 	//Combat-related
 	boolean flatFooted;
@@ -33,7 +35,6 @@ public class Character {
 	String sOccupation;
 	int level;
 	int hitdie;
-	JSONArray hostileHitDice;
 	
 	JSONObject weapon;
 	int armor;
@@ -56,37 +57,54 @@ public class Character {
 		OCCUPATIONMAP.put("ROGUE", ROGUE);
 		OCCUPATIONMAP.put("SORCEROR", SORCERER);
 		OCCUPATIONMAP.put("WIZARD", WIZARD);
+		try {
+			BAREHANDS = new JSONObject ("{\"id\":0,\"name\":\"Bare Hands\",\"type\":\"weapon\",\"cost\": 2,\"dmg\": [1,2,0],\"critical\": [20,2],\"weight\": 0}");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public Character(String a, String b, String c, String sOccup, boolean friendly, JSONArray hostileHD) {
+	public Character(JSONObject obj, boolean friendly) {
 		super();
-		title=a;
-		name=b;
-		desc=c;
+		type=obj.optString("name");
+		final int iFname=(int)(Math.random()*obj.optJSONArray("fnames").length());
+		final int iLname=(int)(Math.random()*obj.optJSONArray("lnames").length());
+		name = obj.optJSONArray("fnames").optString(iFname)
+				+" "+
+				obj.optJSONArray("lnames").optString(iLname);
+		desc = "A beast thirsty for your blood.";
+
 		portrait="generic";
 		posInParty=0;
 		level=1;
 		
-		sOccupation = sOccup;
-		iOccupation = OCCUPATIONMAP.get(sOccup);
+		sOccupation = obj.optString("class");
+		iOccupation = OCCUPATIONMAP.get(sOccupation);
 		hitdie = Character.getHitDie(iOccupation);
 		
-		if (!friendly) {
-			hostileHitDice = hostileHD;
-		} else {
-			hostileHitDice = null;
-		}
+		isFriend = friendly;
+
+		armor=0;
+		artifact=0; 
+		JSONArray hitdice = obj.optJSONArray("hitdice");
+		hp=GM.diceRoll(hitdice.optInt(0), hitdice.optInt(1), hitdice.optInt(2));
+		shield=0;
 		
 		if (friendly) {
 			weapon=BJ.jaryEQUIPMENT.optJSONObject(0);
 		} else {
-			weapon=null;
+			weapon=BAREHANDS;
 		}
-		armor=0;
-		artifact=0; 
-		hp=100;
-		shield=0;
-		isFriend=friendly;
+		
+		ac=obj.optInt("ac");
+		str=obj.optInt("str");
+		dex=obj.optInt("dex");
+		con=obj.optInt("con");
+		intel=obj.optInt("int");
+		wis=obj.optInt("wis");
+		cha=obj.optInt("cha");
+
+
 	}
 	public boolean harm (Character victim) {
 		int[] baseAttackBonuses = getBaseAttackBonus(iOccupation, level);
@@ -98,26 +116,20 @@ public class Character {
 			hit=false;
 			critical=false;
 			damage=1;
+
+			String sBlow="";
 			
 			//roll d20 + (Base attack bonus + Strength modifier + size modifier) 
 			int attackRoll = GM.diceRoll(1, 20, 0);
 			if (attackRoll==1) {
 				hit=false;
-				BJ.TACT.writeBlow(name + " misses!");
+				sBlow = name + " misses!";
 				continue;
-			} else if (!isFriend && attackRoll==20) {
-				hit=true; 
-				if (GM.diceRoll(1, 20, baseAttack + GM.getAbilityModifier(str)) > victim.ac) {
-					critical = true;
-					BJ.TACT.writeBlow(name + " scores a critical hit!");
-				} else {
-					critical = false;
-				}
-			} else if (isFriend && attackRoll >= weapon.optJSONArray("critical").optInt(0)) {
+			} else if (attackRoll >= weapon.optJSONArray("critical").optInt(0)) {
 					hit=true; 
 					if (GM.diceRoll(1, 20, baseAttack + GM.getAbilityModifier(str)) > victim.ac) {
 						critical = true;
-						BJ.TACT.writeBlow(name + " scores a critical hit!");
+						sBlow = "<Crit>";
 					} else {
 						critical = false;
 					}
@@ -126,46 +138,48 @@ public class Character {
 			}
 			
 			JSONArray damageArray;
-			if (this.isFriend) {
-				damageArray = weapon.optJSONArray("dmg");
-			} else {
-				damageArray = hostileHitDice;
-			}
+			damageArray = weapon.optJSONArray("dmg");
 			
 			int hitcount = 1;
 			if (critical) {
 				hitcount = weapon.optJSONArray("critical").optInt(1);
-			} else {
-				hitcount = 1;
 			}
 					
-			// If critical, combine two attacks
+			// If critical, combine multiple attacks
 			for (int i =0; i< hitcount;i++) {
 				damage += GM.diceRoll(damageArray.optInt(0), damageArray.optInt(1), damageArray.optInt(2) + GM.getAbilityModifier(str));
 			}
 
+			final String actorname,victimname;
+			if (isFriend) {
+				actorname=name;
+				victimname=victim.type;
+			} else {
+				actorname=type;
+				victimname=victim.name;
+			}
+			
+			
 			// Enforce minimum damage
 			if (damage<1) damage=1;
-
-			BJ.TACT.writeBlow(name + " hits " + victim.name + " for "+damage+" damage!");
+			sBlow +=actorname + " hits " + victimname + " for "+damage+" damage!";
+			BJ.TACT.writeBlow(sBlow);
 			victim.hp-=damage;
 			if (victim.hp<=0) {
-				BJ.TACT.writeBlow(victim.name + " is killed!");
+				BJ.TACT.writeBlow(victimname + " is killed!");
 				return true; //victim died
 			} else if (victim.hp/(float)victim.hp < 0.2f) {
-				BJ.TACT.writeBlow(victim.name + " is critically injured.");
+				BJ.TACT.writeBlow(victimname + " is critically injured.");
 			}
 		}
 		return false;
 	}
-	public Character changeTitle(String a) {
-		title=a;
-		return this;
-	}
+
 	public Character changeDesc(String a) {
 		desc=a;
 		return this;
 	}
+	
 	public Character initBase(int val){
 		level=1;
 		str=val;
@@ -179,9 +193,8 @@ public class Character {
 	}
 
 	public static Character chooseProtag(){
-		Character protag = new Character("The","Great Hero", "That's you!", "FIGHTER", true, BJ.jaryEQUIPMENT.optJSONObject(0).optJSONArray("dmg")).initBase(16);
+		Character protag = new Character(BJ.jsonPROTAG, true);
 		protag.hp=1000;
-//		Character protag = new Character("齊天大聖","孫悟空","從奇石中蹦出來的神猴", Character.FIGHTER, true).initBase(11);
 		return protag;
 	}
 	
@@ -190,25 +203,7 @@ public class Character {
 		final int iMonsterCount = BJ.jaryMONSTERS.length();
 		final int iMonster = (int)(Math.random()*iMonsterCount);
 		final JSONObject jsonMonster = BJ.jaryMONSTERS.optJSONObject(iMonster);
-		
-		final int iFname=(int)(Math.random()*jsonMonster.optJSONArray("fnames").length());
-		final int iLname=(int)(Math.random()*jsonMonster.optJSONArray("lnames").length());
-		Character foe = new Character("An", jsonMonster.optJSONArray("fnames").optString(iFname)
-				+" "+
-				jsonMonster.optJSONArray("lnames").optString(iLname)
-				+" the "+
-				jsonMonster.optString("name"),
-				"A beast thirsty for your blood.", jsonMonster.optString("class"), false);
-		foe.initBase(1);
-		foe.ac=jsonMonster.optInt("ac");
-		foe.str=jsonMonster.optInt("str");
-		foe.dex=jsonMonster.optInt("dex");
-		foe.con=jsonMonster.optInt("con");
-		foe.intel=jsonMonster.optInt("int");
-		foe.wis=jsonMonster.optInt("wis");
-		foe.cha=jsonMonster.optInt("cha");
-
-		return foe;
+		return new Character(jsonMonster, false);
 	}
 
 	//Straight lookup functions.

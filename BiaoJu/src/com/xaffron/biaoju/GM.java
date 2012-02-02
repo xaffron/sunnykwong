@@ -62,18 +62,6 @@ public class GM {
 	}
 	
 	public void nextTurn(){
-		Random rnd;
-		double turnLuck;
-
-		// Roll the dice for this turn.
-		rnd = new Random();
-
-	    //TEMP: Roll the dice for the next location.
-		location = rnd.nextInt(5);
-
-	    // Determining protag's luck this turn.
-		turnLuck = rnd.nextDouble()  + 0.5;  //luck factor
-
 		// Refresh Market Prices.
 //		marketRefresh(turnLuck);
 
@@ -81,9 +69,25 @@ public class GM {
 		if (currentFight!=null && currentFight.inProgress) {
 			currentFight.keepGoing(GM.ACTION);
 		} else {
-			currentFight = new Combat(party);
-			BJ.TACT.writeBlow("Combat!");
-			currentFight.keepGoing(GM.ACTION);
+			switch (party.move(1d)) {
+				case BJ.PARTYARRIVED:
+					int iNewTarget;
+					do {
+						iNewTarget = (int)(Math.random()*BJ.jaryTOWNES.length());
+					} while (iNewTarget == party.iLocTarget);
+					party.iLocTarget = iNewTarget;
+					party.iTargetX = BJ.jaryTOWNES.optJSONObject(iNewTarget).optJSONArray("location").optInt(0);
+					party.iTargetY = BJ.jaryTOWNES.optJSONObject(iNewTarget).optJSONArray("location").optInt(1);
+					party.dDistFromTgt = Math.sqrt(Math.pow(party.iTargetY-party.dLocationY,2) + Math.pow(party.iTargetX-party.dLocationX,2));
+					break;
+				case BJ.PARTYENCOUNTER:
+					BJ.TACT.writeBlow("Combat!");
+					currentFight = new Combat(party);
+					currentFight.keepGoing(GM.ACTION);
+					break;
+				case BJ.PARTYNOENCOUNTER:
+					break;
+			}
 		}
 		
 //		tact.writeConsole("Arrived in " + getLocation().name + " with " + String.valueOf(cash) + " gold.");

@@ -81,6 +81,11 @@ public class PartyList extends LinkedList<Character> {
 				dLocationX = iTargetX;
 				dLocationY = iTargetY;
 				dDistFromTgt=0;
+				BJ.TACT.writeBlow(null);
+				BJ.TACT.writeConsole(
+						"You arrive at " + BJ.jaryTOWNES.optJSONObject(iLocTarget).optString("name") + ".\n" +
+						getPlayer().name + "'s HP:" + getPlayer().hp);
+
 				return BJ.PARTYARRIVED;
 			} else {
 				double angle = Math.atan((iTargetY-dLocationY)/(iTargetX-dLocationX));
@@ -89,10 +94,15 @@ public class PartyList extends LinkedList<Character> {
 				
 			    // Will we encounter combat?
 				// 1d20 + dex modifier
-				if (GM.diceRoll(1,20,GM.getAbilityModifier(getSlowest().dex)) > 10)
+				if (GM.diceRoll(1,20,GM.getAbilityModifier(getSlowest().dex)) > 10) {
+					BJ.TACT.writeBlow(null);
+					BJ.TACT.writeConsole(
+							"You are " + Math.round(dDistFromTgt) + " leagues from " + BJ.jaryTOWNES.optJSONObject(iLocTarget).optString("name") + ".\n" +
+							getPlayer().name + "'s HP:" + getPlayer().hp);
 					return BJ.PARTYNOENCOUNTER;
-				else
+				} else {
 					return BJ.PARTYENCOUNTER;
+				}
 			}
 			
 	}

@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.text.Editable;
+import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -41,8 +42,9 @@ public class TurnActivity extends Activity {
 	public static ScreenAdapter SCREENADAPTER;
 	public static boolean DEBUG;
 
-	public Button mActionButton, mAttack, mItem, mRecruit, mRun;
+	public Button mAttack, mItem, mRecruit, mRun;
 	public TextView mConsoleView, mBlowbyBlow;
+	public SpannableStringBuilder sBlow;
 	public View mAction;
 	public Gallery mGallery;
  
@@ -82,38 +84,39 @@ public class TurnActivity extends Activity {
     	mAttack.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				writeBlow("You Attack!");
+//				writeBlow("You Attack!");
 				BJ.MASTER.ACTION = BJ.MASTER.ATTACK;
 				BJ.MASTER.nextTurn();
 			}
 		});
     	mItem = (Button)mAction.findViewById(R.id.btItem);
+    	mItem.setEnabled(false);
     	mItem.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				writeBlow("You Use an Item!");
+//				writeBlow("You Use an Item!");
 				BJ.MASTER.nextTurn();
 			}
 		});
     	mRecruit = (Button)mAction.findViewById(R.id.btRecruit);
+    	mRecruit.setEnabled(false);
     	mRecruit.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				writeBlow("You try to recruit your foe.");
+//				writeBlow("You try to recruit your foe.");
 			}
 		});
     	mRun = (Button)mAction.findViewById(R.id.btRun);
+    	mRun.setEnabled(false);
     	mRun.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				writeBlow("You try to Flee...");
+//				writeBlow("You try to Flee...");
 			}
 		});
         
         DEBUG = Boolean.parseBoolean(getString(R.string.DEBUG));
         
-        mActionButton = (Button)findViewById(R.id.Button01);
-        mActionButton.setClickable(false);
         mConsoleView = (TextView)findViewById(R.id.console);
         mConsoleView.addTextChangedListener(new TextWatcher() {
 			
@@ -138,18 +141,6 @@ public class TurnActivity extends Activity {
         mGallery.setSelected(false);
         mGallery.setClickable(false);
         
-    	mActionButton.setText("Go!!");
-
-        mActionButton.setOnClickListener(new View.OnClickListener(){
-        	public void onClick (View v) {
-        		//what to do when clicked
-        		GM.mt.cancel();
-        		mActionButton.setEnabled(false);
-        		BJ.MASTER.nextTurn();
-        		mActionButton.setEnabled(true);
-        	} 
-        });
-        
     	if (DEBUG) writeConsole("Gui Setup Complete");
 
        	BJ.MASTER.nextTurn();
@@ -157,7 +148,11 @@ public class TurnActivity extends Activity {
     }
     
     public void writeBlow(String comment) {
-    	mBlowbyBlow.append(comment + "\n");
+    	if (comment==null) {
+    		mBlowbyBlow.setText("");
+    	} else {
+    		mBlowbyBlow.append(comment + "\n");
+    	}
 //    	Log.i("XAFFRON",comment);
     }
 
@@ -166,6 +161,7 @@ public class TurnActivity extends Activity {
 //    	mConsoleView.append(comment + "\n");
 //    	Log.i("XAFFRON",comment);
     }
+    
     public class ScreenAdapter extends BaseAdapter {
 
     	public View tvConsole;

@@ -145,7 +145,9 @@ public class Combat {
 			}
 			friends.getWeakest();
 			foes.getWeakest();
-			BJ.TACT.writeConsole(friends.getPlayer().name + "'s HP:" + friends.getPlayer().hp + "\t" + foes.getFirst().name + "'s HP:" + foes.getFirst().hp );
+			BJ.TACT.writeConsole(
+					"You are " + Math.round(friends.dDistFromTgt) + " leagues from " + BJ.jaryTOWNES.optJSONObject(friends.iLocTarget).optString("name") + ".\n" +
+					friends.getPlayer().name + "'s HP:" + friends.getPlayer().hp + "\t" + foes.getFirst().name + "'s HP:" + foes.getFirst().hp );
 		}
 	}
 
