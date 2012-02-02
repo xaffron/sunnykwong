@@ -1,0 +1,16 @@
+{
+	"id":1,
+	"name":"Ogre",
+	"area":"Midgaard",
+	"fnames":["Great"],
+	"lnames":["Hero"],
+	"hitdice": [4,8,11],
+	"ac": 11,
+	"str": 11,
+	"dex": 11,
+	"con": 11,
+	"int": 11,
+	"wis": 11,
+	"cha": 11,
+	"class":"FIGHTER"
+}
