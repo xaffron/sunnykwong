@@ -386,6 +386,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		OMC.purgeBitmapCache();
     		OMC.purgeImportCache();
     		OMC.THEMEMAP.clear();
+        	OMC.WIDGETBMPMAP.clear();
     		Toast.makeText(this, "Caches Cleared", Toast.LENGTH_SHORT).show();
     	}
     	if (preference == getPreferenceScreen().findPreference("timeZone")) {

@@ -205,6 +205,12 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				        	if (sTheme.endsWith("Tweak")) {
 				        		OMC.themeToFile(oTheme, new File(Environment.getExternalStorageDirectory()+"/.OMCThemes/"+sTheme+"/00control.json"));
 				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(Environment.getExternalStorageDirectory()+"/.OMCThemes/"+sTheme+"/000preview.jpg"));
+				        		// Purge all caches to eliminate "non-sticky" settings bug
+				            	OMC.purgeBitmapCache();
+				            	OMC.purgeImportCache();
+				            	OMC.purgeTypefaceCache();
+				        		OMC.THEMEMAP.clear();
+				            	OMC.WIDGETBMPMAP.clear();
 				        	} else {
 				        		// Otherwise, create a copy of the theme	
 				        		OMC.copyDirectory(new File(Environment.getExternalStorageDirectory()+"/.OMCThemes/"+sTheme), new File(Environment.getExternalStorageDirectory()+"/.OMCThemes/"+sTheme+"Tweak"));
@@ -213,6 +219,12 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				        				.commit();
 				        		OMC.themeToFile(oTheme, new File(Environment.getExternalStorageDirectory()+"/.OMCThemes/"+sTheme+"Tweak/00control.json"));
 				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(Environment.getExternalStorageDirectory()+"/.OMCThemes/"+sTheme+"Tweak/000preview.jpg"));
+				        		// Purge all caches to eliminate "non-sticky" settings bug
+				            	OMC.purgeBitmapCache();
+				            	OMC.purgeImportCache();
+				            	OMC.purgeTypefaceCache();
+				        		OMC.THEMEMAP.clear();
+				            	OMC.WIDGETBMPMAP.clear();
 				        	}
 				        	finish();
 						}

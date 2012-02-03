@@ -210,6 +210,13 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 										
 										@Override
 										public void onClick(DialogInterface dialog, int which) {
+							        		// Purge all caches to eliminate "non-sticky" settings bug
+							            	OMC.purgeBitmapCache();
+							            	OMC.purgeImportCache();
+							            	OMC.purgeTypefaceCache();
+							        		OMC.THEMEMAP.clear();
+							            	OMC.WIDGETBMPMAP.clear();
+
 											OMCThemePickerActivity.this.sDefaultTheme=null;
 											OMCThemePickerActivity.THEMEARRAY.removeItem(gallery.getSelectedItemPosition());
 											OMCThemePickerActivity.this.refreshThemeList();

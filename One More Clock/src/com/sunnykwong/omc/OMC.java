@@ -1374,6 +1374,7 @@ public class OMC extends Application {
     	purgeBitmapCache();
     	purgeImportCache();
     	purgeTypefaceCache();
+    	OMC.THEMEMAP.clear();
     	OMC.WIDGETBMPMAP.clear();
     	super.onLowMemory();
     }
