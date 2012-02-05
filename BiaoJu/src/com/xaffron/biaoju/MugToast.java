@@ -34,7 +34,7 @@ public class MugToast extends Toast {
 		MugToast mt = new MugToast(context);
 		mt.txt.setText(text);
 		mt.img.setImageBitmap(bmp);
-		return mt;
+		return mt; 
 	}
 
 	static public MugToast makeText(Context context, CharSequence text, int duration) {

@@ -15,6 +15,8 @@ import android.graphics.BitmapFactory;
 import android.widget.ViewFlipper;
 //import android.util.Log;
 //import android.view.Window;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.Gallery;
@@ -36,7 +38,7 @@ import android.view.ViewGroup;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.animation.Animation;
 
-public class TurnActivity extends Activity {
+public class TurnActivity extends Activity implements OnItemSelectedListener {
 
 	
 	public static ScreenAdapter SCREENADAPTER;
@@ -45,7 +47,7 @@ public class TurnActivity extends Activity {
 	public Button mAttack, mItem, mRecruit, mRun;
 	public TextView mConsoleView, mBlowbyBlow;
 	public SpannableStringBuilder sBlow;
-	public View mAction;
+	public View mAction, mStats, mMap;
 	public Gallery mGallery;
  
     /** Called when the activity is first created. */
@@ -57,11 +59,13 @@ public class TurnActivity extends Activity {
     	//		Game Setup
     	BJ.TACT = this;
     	BJ.MASTER = new GM(this);
-    	
+
     	setContentView(R.layout.main);
         
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
 		mAction = inflater.inflate(R.layout.action, null);
+		mStats = inflater.inflate(R.layout.stats, null);
+		mMap = inflater.inflate(R.layout.map,null);
         mBlowbyBlow = (TextView)mAction.findViewById(R.id.blowbyblow);
         mBlowbyBlow.setClickable(false);
     	mBlowbyBlow.addTextChangedListener(new TextWatcher() {
@@ -135,17 +139,21 @@ public class TurnActivity extends Activity {
 			}
 		});
         mGallery = (Gallery)findViewById(R.id.details);
-        if (TurnActivity.SCREENADAPTER==null) TurnActivity.SCREENADAPTER = new ScreenAdapter(mAction); 
+        if (TurnActivity.SCREENADAPTER==null) TurnActivity.SCREENADAPTER = new ScreenAdapter(mStats,mAction,mMap); 
         mGallery.setAdapter(TurnActivity.SCREENADAPTER);
         mGallery.setSelection(1);
-        mGallery.setSelected(false);
-        mGallery.setClickable(false);
-        
+        mGallery.setOnItemSelectedListener(this);
     	if (DEBUG) writeConsole("Gui Setup Complete");
 
        	BJ.MASTER.nextTurn();
         
     }
+    
+    public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
+    		long arg3) {
+    	
+    }
+    public void onNothingSelected(android.widget.AdapterView<?> arg0) {};
     
     public void writeBlow(String comment) {
     	if (comment==null) {
@@ -169,10 +177,10 @@ public class TurnActivity extends Activity {
     	public View ivImage2;
     	
 
-        public ScreenAdapter(View tv) {
-        	tvConsole = tv;
-        	ivImage = tv;
-        	ivImage2 = tv;
+        public ScreenAdapter(View stats, View console, View map) {
+        	ivImage = stats;
+        	tvConsole = console;
+        	ivImage2 = map;
         }
 
         public int getCount() {

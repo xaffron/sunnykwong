@@ -29,7 +29,7 @@ public class BJ extends Application {
 	public void onCreate() {
 		super.onCreate();
 		initFromJSON();
-	}
+	} 
 	
 	public boolean initFromJSON() {
 		try {
