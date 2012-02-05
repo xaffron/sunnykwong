@@ -6,11 +6,12 @@
     android:orientation="vertical"
     android:weightSum="1.0" >
 
-	<Gallery
+	<com.xaffron.biaoju.SlowGallery
 	    android:id="@+id/details"
 	    android:layout_width="fill_parent"
 	    android:layout_height="0dp" 
 	    android:layout_weight="1"
+	    android:unselectedAlpha="255"
 		android:spacing="0dp"/>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
