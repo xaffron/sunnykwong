@@ -3,8 +3,6 @@ package com.sunnykwong.FlingWords;
 import java.util.ArrayList;
 
 import android.graphics.Color;
-import android.text.Html;
-import android.text.SpannedString;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +27,6 @@ public class FlickAdapter extends BaseAdapter {
 
     public void removeItem(int pos){
     	if (mWords.size()==0)return;
-    	String sTheme = mWords.get(pos);
     	mWords.remove(pos);
     	//mBitmaps.remove(sTheme);
     }        
