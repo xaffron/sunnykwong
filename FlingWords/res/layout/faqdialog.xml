@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:orientation="vertical" android:id="@+id/splashtop" android:padding="0dp" android:layout_margin="0dp" android:layout_height="fill_parent">
+
+
+<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/splashscroll"><TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/splashtext" android:padding="5dp" android:text="MOTD" android:autoLink="all" android:textSize="16dp"></TextView></ScrollView>
+<CheckBox android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/splashcheck" android:text="Do not show again." android:textSize="16dp"></CheckBox>
+
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+<Button android:minWidth="100dp" android:gravity="center" android:layout_weight="1" android:text="OK" android:id="@+id/faqOK" android:layout_width="fill_parent" android:layout_height="wrap_content"></Button>
+<Button android:minWidth="100dp" android:gravity="center" android:layout_weight="1" android:text="More..." android:id="@+id/faqNeutral" android:layout_width="fill_parent" android:layout_height="wrap_content"></Button>
+</LinearLayout>
+</LinearLayout>
