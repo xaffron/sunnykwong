@@ -5,19 +5,31 @@ import org.json.JSONException;
 import com.android.settings.activities.ColorPickerDialog;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnKeyListener;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class FWSetup extends Activity {
+	
+	TextView mTextView;
+	CheckBox mCheckBox;
+	AlertDialog mAD;
 	
     /** Called when the activity is first created. */
     @Override
@@ -55,6 +67,57 @@ public class FWSetup extends Activity {
         	topLevel.addView(tv);
         }
         topLevel.requestLayout();
+        
+		if (this.getPreferences(MODE_PRIVATE).getBoolean("SHOWHELP", true)) {
+			LayoutInflater li = LayoutInflater.from(this);
+			LinearLayout ll = (LinearLayout)(li.inflate(R.layout.faqdialog, null));
+			mTextView = (TextView)ll.findViewById(R.id.splashtext);
+			mTextView.setAutoLinkMask(Linkify.ALL);
+			mTextView.setMinLines(3);
+			mTextView.setText(FW.FAQS[FW.faqtoshow++]);
+			FW.faqtoshow = FW.faqtoshow==FW.FAQS.length?0:FW.faqtoshow;
+			
+			mCheckBox = (CheckBox)ll.findViewById(R.id.splashcheck);
+			mCheckBox.setChecked(!this.getPreferences(MODE_PRIVATE).getBoolean("SHOWHELP", true));
+			mCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+				
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					// TODO Auto-generated method stub
+					FWSetup.this.getPreferences(MODE_PRIVATE).edit().putBoolean("SHOWHELP", !isChecked).commit();
+				}
+			});
+
+			((Button)ll.findViewById(R.id.faqOK)).setOnClickListener(new Button.OnClickListener() {
+				
+				@Override
+				public void onClick(android.view.View v) {
+					mAD.dismiss();
+				}
+			});
+			((Button)ll.findViewById(R.id.faqNeutral)).setOnClickListener(new Button.OnClickListener() {
+				
+				@Override
+				public void onClick(android.view.View v) {
+					mTextView.setText(FW.FAQS[FW.faqtoshow++]);
+					mTextView.invalidate();
+					FW.faqtoshow = FW.faqtoshow==FW.FAQS.length?0:FW.faqtoshow;
+				}
+			});;
+			
+			mAD = new AlertDialog.Builder(this)
+			.setTitle("Welcome to FlingWords!")
+		    .setCancelable(true)
+		    .setView(ll)
+		    .setOnKeyListener(new OnKeyListener() {
+		    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+		    		if (arg2.getKeyCode()==android.view.KeyEvent.KEYCODE_BACK) mAD.cancel();
+		    		return true;
+		    	};
+		    })
+		    .show();
+		}
+
     }
 
     @Override

@@ -20,9 +20,7 @@ import android.text.style.StyleSpan;
 import android.widget.Toast;
 
 public class FW extends Application {
-	static MediaPlayer BEEPER;
 	static String THISVERSION;
-	static final String PREFNAME = "com.sunnykwong.FlingWords";
 	static final boolean DEBUG = false;
 	static Typeface FONT;
 	static AssetManager AM;
@@ -35,6 +33,12 @@ public class FW extends Application {
 	static JSONObject CURRENTBATCH;
 	static String PKGNAME;
 	static boolean VIEWRETIREDBATCHES=false;
+	static int faqtoshow = 0;
+	static final String[] FAQS = {
+		"FlingWords is based on Dr Glenn Doman's famous research suggesting that children learn reading early when exposed to high-contrast, simple words in quick sucession.",
+		"This app offers over 50 sets of such \"Flash Cards\" that can assist the parent with teaching his child to read, even on the go.",
+		"FlingWords is not endorsed or sponsored by Dr Doman or his organization.  No such endorsement or sponsorship is suggested or implied."
+	};
 	
 	@Override
 	public void onCreate() {

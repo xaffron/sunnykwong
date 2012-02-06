@@ -102,6 +102,8 @@ public class FWFlickActivity extends Activity //implements OnClickListener, OnIt
 
       gallery.setAdapter(fa);
       gallery.setEnabled(true);
+      Toast.makeText(this, "Swipe right to left\n(Or tap right-hand side of screen)", Toast.LENGTH_SHORT).show();
+      
     }
     
 //    @Override
