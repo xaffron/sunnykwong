@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,9 +13,6 @@ import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
-import android.text.SpannedString;
-import android.text.style.StyleSpan;
 import android.widget.Toast;
 
 public class FW extends Application {
