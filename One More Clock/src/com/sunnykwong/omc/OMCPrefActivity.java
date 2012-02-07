@@ -351,8 +351,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     				}).create();
             	OMCPrefActivity.mAD.show();
     		} else {
-    			final CharSequence[] items = {"Open options (default)", "Do nothing", "Launch activity..."};
-    			final String[] values = {"default", "noop", "activity"};
+    			final CharSequence[] items = {"Open options (default)", "Do nothing", "View alarms (Experimental)", "Launch activity..."};
+    			final String[] values = {"default", "noop", "alarms", "activity"};
     			new AlertDialog.Builder(this)
     					.setTitle("Tap on clock to:")
     					.setItems(items, new DialogInterface.OnClickListener() {
@@ -362,6 +362,9 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     								}
     								if (values[item].equals("noop")) {
     									OMC.PREFS.edit().putString("URI", "noop").commit();
+    								}
+    								if (values[item].equals("alarms")) {
+    									OMC.PREFS.edit().putString("URI", "alarms").commit();
     								}
     								if (values[item].equals("activity")) {
     						    		getPreferenceScreen().setEnabled(false);

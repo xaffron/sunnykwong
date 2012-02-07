@@ -13,7 +13,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.TimeZone;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.StringTokenizer;
@@ -45,6 +44,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.format.Time;
@@ -59,8 +59,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application {
 	
-	
-	static final boolean DEBUG = false;
+	static final boolean DEBUG = true;
 	static final boolean THEMESFROMCACHE = true;
 	
 	static String THISVERSION; 
@@ -129,6 +128,7 @@ public class OMC extends Application {
 	static AlarmManager ALARMS;	// I only need one alarmmanager.
 	static AssetManager AM;
     static NotificationManager NM;
+	static PackageManager PKM;
     static Resources RES;
 
     static Typeface GEOFONT;
@@ -169,13 +169,22 @@ public class OMC extends Application {
 	static final float[] FLARERADII = new float[] {32.f,20.f,21.6f,40.2f,18.4f,19.1f,10.8f,25.f,28.f};
 	static final int[] FLARECOLORS = new int[] {855046894,1140258554,938340342,1005583601,855439588,
 		669384692,905573859,1105458423,921566437};
+	static final String clockImpls[][] = {
+        {"HTC Alarm Clock", "com.htc.android.worldclock", "com.htc.android.worldclock.WorldClockTabControl" },
+        {"Standard Alarm Clock", "com.android.deskclock", "com.htc.android.worldclock.action.ALARMCLOCK"},
+        {"Froyo Nexus Alarm Clock", "com.google.android.deskclock", "com.android.deskclock.DeskClock"},
+        {"Froyo Alarm Clock", "com.android.alarmclock", "com.android.alarmclock.AlarmClock"},
+        {"Moto Blur Alarm Clock", "com.motorola.blur.alarmclock",  "com.motorola.blur.alarmclock.AlarmClock"}
+	};
+
 	
 	static final int SVCNOTIFICATIONID = 1; // Notification ID for the one and only message window we'll show
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
-    static Intent SVCSTARTINTENT, CREDITSINTENT, PREFSINTENT;
+    static final Class<?>[] mSetForegroundSignature = new Class[] {boolean.class};
+    static Intent SVCSTARTINTENT, CREDITSINTENT, PREFSINTENT, ALARMCLOCKINTENT;
     static Intent GETSTARTERPACKINTENT, GETBACKUPPACKINTENT, GETEXTENDEDPACKINTENT, IMPORTTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT;
-    static PendingIntent FGPENDING, BGPENDING, PREFSPENDING;
+    static PendingIntent FGPENDING, BGPENDING, PREFSPENDING, ALARMCLOCKPENDING;
     static Notification FGNOTIFICIATION;
     
     static final ArrayBlockingQueue<Matrix> MATRIXPOOL = new ArrayBlockingQueue<Matrix>(2);
@@ -240,7 +249,8 @@ public class OMC extends Application {
 		OMC.GETBACKUPPACKINTENT = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
 		OMC.GETBACKUPPACKINTENT.setData(Uri.parse(OMC.EXTENDEDPACKBACKUP));
 		OMC.OMCMARKETINTENT = new Intent(Intent.ACTION_VIEW,OMC.PAIDURI);
-
+		OMC.ALARMCLOCKINTENT = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER);
+		
 		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/";
 		
 		OMC.FGNOTIFICIATION = new Notification(this.getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME), 
@@ -249,6 +259,7 @@ public class OMC extends Application {
         OMC.FGNOTIFICIATION.flags = OMC.FGNOTIFICIATION.flags|Notification.FLAG_ONGOING_EVENT|Notification.FLAG_NO_CLEAR;
 		
     	OMC.ALARMS = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+    	OMC.PKM = getPackageManager();
     	OMC.AM = getAssets();
     	OMC.RES = getResources();
     	OMC.NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -274,6 +285,42 @@ public class OMC extends Application {
 			OMC.SHOWHELP=true;
 		}
 
+		//Alarm Clock Intent - Thanks frusso for the shared code!
+		// http://stackoverflow.com/questions/3590955/intent-to-launch-the-clock-application-on-android/4281243#4281243
+	    boolean foundClockImpl = false;
+
+//	    try {
+//	    	// in higher SDK versions, we have a dedicated alarm intent
+//	    	Class.forName("android.provider.AlarmClock");
+//	    	OMC.ALARMCLOCKINTENT=new Intent("android.intent.action.SET_ALARM");
+//            if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Found SDK>9, using new Android Alarm Intent");
+//	    	foundClockImpl = true;
+//	    	
+//	    } catch (ClassNotFoundException ee) {
+//
+		    for(int i=0; i<clockImpls.length; i++) {
+		        String vendor = clockImpls[i][0];
+		        String packageName = clockImpls[i][1];
+		        String className = clockImpls[i][2];
+		        try {
+		            ComponentName cn = new ComponentName(packageName, className);
+		            PKM.getActivityInfo(cn, PackageManager.GET_META_DATA);
+		            OMC.ALARMCLOCKINTENT.setComponent(cn);
+		            if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Found " + vendor + " --> " + packageName + "/" + className);
+		            foundClockImpl = true; 
+		            break;
+		        } catch (NameNotFoundException e) {
+		        	if (OMC.DEBUG) Log.w(OMC.OMCSHORT + "App",vendor + " does not exist");
+		        }
+		    }
+//		}
+
+	    if (!foundClockImpl) {
+	    	OMC.ALARMCLOCKINTENT = OMC.DUMMYINTENT;
+	    }
+        OMC.ALARMCLOCKPENDING = PendingIntent.getActivity(this, 0, OMC.ALARMCLOCKINTENT, 0);
+
+		
 		OMC.PREFS.edit().putString("version", OMC.THISVERSION).commit();
 		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
 		

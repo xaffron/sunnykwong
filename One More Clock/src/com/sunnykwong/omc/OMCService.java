@@ -21,10 +21,10 @@ public class OMCService extends Service {
 	static boolean STOPNOW2x2=false;		// Should I stop now? from 2x2 widgets
 	static boolean STOPNOW2x1=false;		// Should I stop now? from 2x1 widgets
 	static boolean STOPNOW1x3=false;		// Should I stop now? from 1x3 widgets
-    static Method mStartForeground;
-    static Method mStopForeground;
+    static Method mStartForeground, mStopForeground, mSetForeground;
     static Object[] mStartForegroundArgs = new Object[2];
     static Object[] mStopForegroundArgs = new Object[1];
+    static Object[] mSetForegroundArgs = new Object[1];
 
 	//	 Code for oncreate/ondestroy.
 	//	 Code stolen wholesale from api samples:
@@ -43,9 +43,17 @@ public class OMCService extends Service {
 					OMC.mStartForegroundSignature);
 			mStopForeground = getClass().getMethod("stopForeground",
 					OMC.mStopForegroundSignature);
+			mSetForeground = null;
 		} catch (NoSuchMethodException e) {
 			// Running on an older platform.
 			mStartForeground = mStopForeground = null;
+			try {
+				mSetForeground = getClass().getMethod("setForeground",OMC.mSetForegroundSignature);
+			} catch (Exception ee) {
+				// do nothing
+                if(OMC.DEBUG)Log.w("OMC", "Unable to find any setForeground?!", e);
+				mSetForeground = null;
+			}
 		}
 	}
 	
@@ -153,7 +161,19 @@ public class OMCService extends Service {
         }
 
         // Fall back on the old API.
-        setForeground(true);
+        if (mSetForeground != null) {
+            mSetForegroundArgs[0] = true;
+            try {
+            	mSetForeground.invoke(this, mSetForegroundArgs);
+            } catch (InvocationTargetException e) {
+                // Should not happen.
+                if(OMC.DEBUG)Log.w("OMC", "Unable to invoke setForeground", e);
+            } catch (IllegalAccessException e) {
+                // Should not happen.
+            	if(OMC.DEBUG)Log.w("OMC", "Unable to invoke setForeground", e);
+            }
+            return;
+        }
         OMC.NM.notify(id, notification);
     }
 
@@ -176,7 +196,19 @@ public class OMCService extends Service {
         // Fall back on the old API.  Note to cancel BEFORE changing the
         // foreground state, since we could be killed at that point.
         OMC.NM.cancel(id);
-        setForeground(false);
+        if (mSetForeground != null) {
+            mSetForegroundArgs[0] = false;
+            try {
+            	mSetForeground.invoke(this, mSetForegroundArgs);
+            } catch (InvocationTargetException e) {
+                // Should not happen.
+                if(OMC.DEBUG)Log.w("OMC", "Unable to invoke setForeground", e);
+            } catch (IllegalAccessException e) {
+                // Should not happen.
+            	if(OMC.DEBUG)Log.w("OMC", "Unable to invoke setForeground", e);
+            }
+            return;
+        }
     }
     
 //    @Override

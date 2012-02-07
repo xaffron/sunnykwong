@@ -379,9 +379,10 @@ public class OMCWidgetDrawEngine {
     		} else if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("noop")) {
                 // Kudos to Eric for solution to dummy out "unsetonlickpendingintent":
                 // http://groups.google.com/group/android-developers/browse_thread/thread/f9e80e5ce55bb1e0/78153eb730326488
-            	// I'm not using it right now, but it's a useful hint nonetheless. Thanks!
 	        	pi = PendingIntent.getBroadcast(context, 0, OMC.DUMMYINTENT,
             		    PendingIntent.FLAG_UPDATE_CURRENT);
+    		} else if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("alarms")) {
+	        	pi = OMC.ALARMCLOCKPENDING;
     		} else {
     			intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
 	        	intent.setData(Uri.parse("omc:"+appWidgetId));
