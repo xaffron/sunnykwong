@@ -25,6 +25,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.ContactsContract.Directory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -172,11 +173,12 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 											    //Build an ArrayList of the files in this theme
 											    ArrayList<Uri> uris = new ArrayList<Uri>();
 											    //convert from paths to Android friendly Parcelable Uri's
-											    
-											    File outzip = new File(OMC.CACHEPATH,OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())+".zip");
+
+											    File outzip = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+"/tmp/",OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())+".zip");
 											    if (outzip.exists()) outzip.delete();
-											    
-									        	File f = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" 
+											    else outzip.mkdirs();
+
+											    File f = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" 
 									        			+ OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()));
 									        	
 									        	try {
@@ -248,7 +250,8 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 							        		// Purge all caches to eliminate "non-sticky" settings bug
 							            	OMC.purgeBitmapCache();
 							            	OMC.purgeImportCache();
-							            	OMC.purgeTypefaceCache();
+							            	OMC.purgeEmailCache();
+							        		OMC.purgeTypefaceCache();
 							        		OMC.THEMEMAP.clear();
 							            	OMC.WIDGETBMPMAP.clear();
 

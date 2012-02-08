@@ -77,7 +77,8 @@ public class OMCThemeImportActivity extends Activity {
         	
         	// Clear the cache for a clean slate
         	OMC.purgeBitmapCache();
-        	OMC.purgeTypefaceCache();
+        	OMC.purgeEmailCache();
+    		OMC.purgeTypefaceCache();
 
         	setResult(Activity.RESULT_OK);
         	finish();

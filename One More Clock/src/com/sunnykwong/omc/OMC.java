@@ -723,7 +723,17 @@ public class OMC extends Application {
 		}
 		//System.gc();
 	}
-		
+	public static void purgeEmailCache() {
+		File tempDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/tmp/");
+		if (!tempDir.exists()) return;
+		else {
+			for (File f:(tempDir.listFiles())) {
+				f.delete();
+			}
+		}
+		//System.gc();
+	}
+			
 	public static void removeDirectory(File f) {
 		for (File ff:f.listFiles()) {
 			if (ff.equals(f)) continue;
@@ -1420,6 +1430,7 @@ public class OMC extends Application {
     public void onLowMemory() {
     	purgeBitmapCache();
     	purgeImportCache();
+    	purgeEmailCache();
     	purgeTypefaceCache();
     	OMC.THEMEMAP.clear();
     	OMC.WIDGETBMPMAP.clear();

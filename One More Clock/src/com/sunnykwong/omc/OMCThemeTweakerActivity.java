@@ -208,7 +208,8 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				        		// Purge all caches to eliminate "non-sticky" settings bug
 				            	OMC.purgeBitmapCache();
 				            	OMC.purgeImportCache();
-				            	OMC.purgeTypefaceCache();
+				            	OMC.purgeEmailCache();
+				        		OMC.purgeTypefaceCache();
 				        		OMC.THEMEMAP.clear();
 				            	OMC.WIDGETBMPMAP.clear();
 				        	} else {
@@ -222,7 +223,8 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				        		// Purge all caches to eliminate "non-sticky" settings bug
 				            	OMC.purgeBitmapCache();
 				            	OMC.purgeImportCache();
-				            	OMC.purgeTypefaceCache();
+				            	OMC.purgeEmailCache();
+				        		OMC.purgeTypefaceCache();
 				        		OMC.THEMEMAP.clear();
 				            	OMC.WIDGETBMPMAP.clear();
 				        	}
