@@ -1,10 +1,16 @@
 package com.sunnykwong.omc;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import org.json.JSONObject;
 
@@ -143,23 +149,21 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2,
 			long arg3) {
 		if (arg0==gallery) {
-			final CharSequence[] items = {"Email Theme", "Delete Theme"};
+			final CharSequence[] items = {"Email Theme", "Delete Theme", "Submit Theme to Dev"};
 			new AlertDialog.Builder(this)
 				.setTitle("Email or Delete Theme")
 				.setItems(items, new DialogInterface.OnClickListener() {
+						@Override
 						public void onClick(DialogInterface dialog, int item) {
 							switch (item) {
 								case 0: //Email
 						        	String sTheme = OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition());
-									String msg = "Are you absolutely sure?";
-									if (!OMCThemePickerActivity.THEMEARRAY.mTweaked.get(sTheme)) {
-										msg = "This theme does not have the 'Tweaked' flag set; it looks like a stock theme.\n"+msg;
-									}
+									String msg = "Package up this theme and email it to yourself, or a friend.\nDo you want to do this?";
 									AlertDialog ad = new AlertDialog.Builder(OMCThemePickerActivity.this)
 									.setCancelable(true)
-									.setTitle("Submit " + 
-											(String)(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())) 
-											+ " to Xaffron as a new theme?")
+									.setTitle("Email " + 
+											(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())) 
+											+ "?")
 									.setMessage(msg)
 									.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 										
@@ -169,20 +173,51 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 											    ArrayList<Uri> uris = new ArrayList<Uri>();
 											    //convert from paths to Android friendly Parcelable Uri's
 											    
+											    File outzip = new File(OMC.CACHEPATH,OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())+".zip");
+											    if (outzip.exists()) outzip.delete();
+											    
 									        	File f = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" 
 									        			+ OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()));
+									        	
+									        	try {
+										        	ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(outzip),8192));
+										        	ZipEntry zd = new ZipEntry(f.getPath());
+										        	zos.putNextEntry(zd);
+													zos.closeEntry();
+										        	for (File file : f.listFiles())
+												    {
+										        		ZipEntry ze = new ZipEntry(file.getName());
+											        	zos.putNextEntry(ze);
+													    FileInputStream ffis = new FileInputStream(file);
+														try {
+															//Absolute luxury 1980 style!  Using an 8k buffer.
+															byte[] buffer = new byte[8192];
+															int iBytesRead=0;
+															while ((iBytesRead=ffis.read(buffer))!= -1){
+																zos.write(buffer, 0, iBytesRead);
+															}
+															zos.flush();
+															zos.closeEntry();
+														} catch (Exception e) {
+											        		if (OMC.DEBUG) Log.w(OMC.OMCSHORT + "Picker","cannot zip, zip error below");
+															e.printStackTrace();
+														}
+											        	
+												    }
+										        	zos.close();
 
-									        	for (File file : f.listFiles())
-											    {
-											        Uri u = Uri.fromFile(file);
-											        uris.add(u);
-											    }
-
-												
+												} catch (Exception e) {
+													// File exists and read-only?  Shouldn't happen
+									        		if (OMC.DEBUG) Log.w(OMC.OMCSHORT + "Picker","cannot zip, file already open or RO");
+													e.printStackTrace();
+												}
+									        	
+										        Uri u = Uri.fromFile(outzip);
+										        uris.add(u);
+										        
 												Intent it = new Intent(android.content.Intent.ACTION_SEND_MULTIPLE)
 					    		   					.setType("plain/text")
-					    		   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
-					    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME + " Theme submission")
+					    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()) + " for " + OMC.APPNAME)
 											    	.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
 
 											    startActivity(Intent.createChooser(it, "Packaging your theme files for email."));  
@@ -203,7 +238,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 									ad = new AlertDialog.Builder(OMCThemePickerActivity.this)
 									.setCancelable(true)
 									.setTitle("Delete " + 
-											(String)(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())) 
+											(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())) 
 											+ " from SD card?")
 									.setMessage("You'll have to download/extract the theme again to use it.  Are you sure?")
 									.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -231,10 +266,63 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 									})
 									.create();
 									ad.show();
+									break;
+							case 2: //Submit to Dev
+					        	sTheme = OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition());
+								msg = "Are you absolutely sure?";
+								if (!OMCThemePickerActivity.THEMEARRAY.mTweaked.get(sTheme)) {
+									msg = "This theme does not have the 'Tweaked' flag set; it looks like a stock theme.\n"+msg;
+								}
+								ad = new AlertDialog.Builder(OMCThemePickerActivity.this)
+								.setCancelable(true)
+								.setTitle("Submit " + 
+										(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())) 
+										+ " to Xaffron as a new theme?")
+								.setMessage(msg)
+								.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+									
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										    //Build an ArrayList of the files in this theme
+										    ArrayList<Uri> uris = new ArrayList<Uri>();
+										    //convert from paths to Android friendly Parcelable Uri's
+										    
+								        	File f = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" 
+								        			+ OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()));
+	
+								        	for (File file : f.listFiles())
+										    {
+										        Uri u = Uri.fromFile(file);
+										        uris.add(u);
+										    }
+	
+											
+											Intent it = new Intent(android.content.Intent.ACTION_SEND_MULTIPLE)
+				    		   					.setType("plain/text")
+				    		   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
+				    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME + " Theme submission")
+										    	.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+	
+										    startActivity(Intent.createChooser(it, "Packaging your theme files for email."));  
+							    		   	finish();
 									}
-							}
-				})
-				.show();
+								})
+								.setNegativeButton("No", new DialogInterface.OnClickListener() {
+									
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										// Do nothing
+									}
+								})
+								.create();
+								ad.show();
+								break;
+							default:
+								// do nothing
+						}
+
+					}
+				}).show();
 		}
 		return true;
 	}
@@ -404,11 +492,13 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	OMC.purgeTypefaceCache();
         }        
 
-        public int getCount() {
+        @Override
+		public int getCount() {
             return mThemes.size();
         }
 
-        public Object getItem(int position) {
+        @Override
+		public Object getItem(int position) {
             return position;
         }
 
@@ -422,11 +512,13 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	return 0;
         }
 
-        public long getItemId(int position) {
+        @Override
+		public long getItemId(int position) {
             return position;
         }
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @Override
+		public View getView(int position, View convertView, ViewGroup parent) {
         	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("themepickerpreview", "layout", OMC.PKGNAME), null);
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setTypeface(OMC.GEOFONT);
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
