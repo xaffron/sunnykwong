@@ -206,6 +206,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 														}
 											        	
 												    }
+										        	zos.finish();
 										        	zos.close();
 
 												} catch (Exception e) {
