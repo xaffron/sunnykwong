@@ -174,7 +174,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 											    ArrayList<Uri> uris = new ArrayList<Uri>();
 											    //convert from paths to Android friendly Parcelable Uri's
 
-											    File outzip = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+"/tmp/",OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())+".zip");
+											    File outzip = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath()+"/tmp/",OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())+".omc");
 											    if (outzip.exists()) outzip.delete();
 											    else outzip.mkdirs();
 
@@ -183,12 +183,9 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 									        	
 									        	try {
 										        	ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(outzip),8192));
-										        	ZipEntry zd = new ZipEntry(f.getPath());
-										        	zos.putNextEntry(zd);
-													zos.closeEntry();
 										        	for (File file : f.listFiles())
 												    {
-										        		ZipEntry ze = new ZipEntry(file.getName());
+										        		ZipEntry ze = new ZipEntry(new ZipEntry(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()) + "/" + file.getName()));
 											        	zos.putNextEntry(ze);
 													    FileInputStream ffis = new FileInputStream(file);
 														try {
@@ -217,7 +214,9 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 									        	
 										        Uri u = Uri.fromFile(outzip);
 										        uris.add(u);
-										        
+										        if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Picker","uris:"+uris);
+										        if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Picker","outzip:"+outzip);
+										        if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Picker","outzipsize:"+outzip.length());
 												Intent it = new Intent(android.content.Intent.ACTION_SEND_MULTIPLE)
 					    		   					.setType("plain/text")
 					    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()) + " for " + OMC.APPNAME)
