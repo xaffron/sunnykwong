@@ -59,7 +59,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application {
 	
-	static final boolean DEBUG = true;
+	static final boolean DEBUG = false;
 	static final boolean THEMESFROMCACHE = true;
 	
 	static String THISVERSION; 
@@ -67,9 +67,9 @@ public class OMC extends Application {
 
 	static final boolean FREEEDITION = false;
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "asset:pk126.omc";
-	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v125.omc";
-	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v125.omc";
+	static final String STARTERPACKURL = "asset:pk127.omc";
+	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v127.omc";
+	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v127.omc";
 	static final String DEFAULTTHEME = "HoneycombLook";
 	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
 	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
@@ -87,16 +87,15 @@ public class OMC extends Application {
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
-		"Happy birthday, OMC!  v1.2.6 adds two Ice Cream Sandwich-inspired clocks, Ice Roboto and Ice Lock.  Enjoy!",
-		"After an extended hiatus, Xaffron presents a new version of OMC!  As of v1.2.6, we are up to 62 clocks (from 37 in v1.2.2).",
-		"Our newest additions are two beautiful clocks - Bare Basics and Red LED.  Selected clocks were also tweaked for better presentation.",
-		"v1.2.5 reverts to the more popular scaling algorithm used in v1.2.2. Keep the feedback coming!",
+		"v1.2.7 is a maintenance release, fixing an issue where tweak settings do not save properly.  Keep the feedback coming!",
+		"Not finding your favorite clock?  OMC comes with just a few initially.  To get the full clock collection, tap on 'Download Full Online Collection' when you're in the theme picker screen.",
+		"In v1.2.7, International Users can now toggle 'Force English Dates' for better compatibility.",
+		"A new, experimental change now allows a tap to launch the clock/alarm app.  Send me email and let me know how well it works!",
+		"To back up or share your changes, try the new experimental feature!  On 'Set Widget Theme', long-press a theme and select 'email theme'.",
 		"OMC now supports battery levels.  Some of the widgets contain battery indicators in surprising ways - browse around and experiment!",
 		"You can now specify a timezone for each clock independently of the device setting.  This allows for nice home/travel clock scenarios.",
-		"Version 1.2.3 had to move back to 16-bit color rendering due to performance issues.  The good news, however, is that v1.2.3 is much snappier than previous versions!",
 		"OMC stores themes in the .OMCThemes folder (with a dot).  This will keep OMC from cluttering up your Gallery... feel free to delete any old themes in your SD card's OMCThemes directory (without dot).",
 		"OMC lets you send your favorite personalizations to Xaffron!  Tap and hold a clock on the theme picker screen, then select 'Email Tweaked Theme' to send to me.",
-		"Not finding your favorite clock?  OMC comes with just a few initially.  To get the full clock collection, tap on 'Download Full Online Collection' when you're in the theme picker screen.",
 		"OMC allows theme personalization on the phone.  Try moving each layer around, changing colors and toggling visibility!",
 		"Theme personalization overwrites dynamic elements (changing colors, positions, text, etc).  To make fine-tuned changes to dynamic elements, fire up a text editor on your phone or computer and look at the contents of the 00control.json file.",
 		"The paid version now features 8 widget sizes.  Not all themes work well with all widget sizes, but feel free to experiment! The newer ones look particularly good in the square and vertical widgets.",
@@ -104,7 +103,6 @@ public class OMC extends Application {
 		"Comments? Complaints? Donations?  Tap on the 'Contact Xaffron' box to send me a message.  I'll get back to you ASAP!",
 		"Did you know that you can delete any clock you don't like by long-pressing on a clock?  If you want it back, simply select 'Re-Get Starter Clock Pack' and you're right back where you started.",
 		"Tap-to-Launch now allows you to set 'Do nothing', which is great for avoiding accidental taps.  Tapping on the top left corner of the widget always brings you back to this screen.",
-		"Foreground mode (Android 2.0 and above) is useful if your clock widget keeps lagging.  Clock lag should almost never happen as of version 1.2.0, but it's good to know that Foreground Mode is there when you need it.",
 		"Want more quotes/different text?  I hear you!  For now, use a text editor on the 00control.json files (it's easy, I promise).  Otherwise, expect enhanced 'Personalization' features in the next couple of versions!",
 		"Have an idea for a cool clock widget?  Tap 'Contact Xaffron' and let me know. I don't bite!",
 		"Which clock is your favorite?  Let me know via 'Contact Xaffron'!  This will help me archive less popular widgets and keep the application size manageable.",
