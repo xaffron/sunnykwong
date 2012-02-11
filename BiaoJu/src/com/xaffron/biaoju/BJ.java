@@ -11,7 +11,9 @@ import org.json.JSONObject;
 import android.app.Application;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.os.Environment;
+import android.renderscript.Font;
 import android.widget.Toast;
 
 public class BJ extends Application {
@@ -22,7 +24,7 @@ public class BJ extends Application {
 	static Bitmap bmpCOMPERE;
 	static JSONObject jsonMONSTERS, jsonITEMS, jsonTOWNES, jsonEQUIPMENT, jsonPROTAG;
 	static JSONArray jaryMONSTERS, jaryEQUIPMENT, jaryTOWNES, jaryITEMS;
-	
+	static Typeface DEFAULTSCRIPTTYPEFACE;
 	static final int PARTYARRIVED=0, PARTYENCOUNTER=1, PARTYNOENCOUNTER=2;
 	
 	@Override
@@ -33,6 +35,10 @@ public class BJ extends Application {
 	
 	public boolean initFromJSON() {
 		try {
+			
+			// Load default script
+			DEFAULTSCRIPTTYPEFACE = Typeface.createFromAsset(getAssets(), "fonts/KaushanScript-Regular.otf");
+
 			if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
 				return false;
 			String sdpath = getApplicationContext().getExternalFilesDir(null).getAbsolutePath();

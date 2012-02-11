@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.widget.ViewFlipper;
 //import android.util.Log;
 //import android.view.Window;
@@ -30,6 +31,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.os.Bundle;
+import android.view.DragEvent;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -49,7 +51,11 @@ public class TurnActivity extends Activity implements OnItemSelectedListener {
 	public SpannableStringBuilder sBlow;
 	public View mAction, mStats, mMap;
 	public Gallery mGallery;
- 
+@Override
+protected void onRestart() {
+	// TODO Auto-generated method stub
+	super.onRestart();
+}
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,14 +66,28 @@ public class TurnActivity extends Activity implements OnItemSelectedListener {
     	BJ.TACT = this;
     	BJ.MASTER = new GM(this);
 
+    }
+    protected void onStart() {
+    	super.onStart();
+    	
     	setContentView(R.layout.main);
         
-        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        LayoutInflater inflater = LayoutInflater.from(this);
 		mAction = inflater.inflate(R.layout.action, null);
+
 		mStats = inflater.inflate(R.layout.stats, null);
+		
 		mMap = inflater.inflate(R.layout.map,null);
         mBlowbyBlow = (TextView)mAction.findViewById(R.id.blowbyblow);
-        mBlowbyBlow.setClickable(false);
+        mBlowbyBlow.setTypeface(BJ.DEFAULTSCRIPTTYPEFACE);
+        mBlowbyBlow.setTextSize(16f);
+        mBlowbyBlow.setOnTouchListener(new View.OnTouchListener() {
+			
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		});
     	mBlowbyBlow.addTextChangedListener(new TextWatcher() {
 			
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -122,6 +142,8 @@ public class TurnActivity extends Activity implements OnItemSelectedListener {
         DEBUG = Boolean.parseBoolean(getString(R.string.DEBUG));
         
         mConsoleView = (TextView)findViewById(R.id.console);
+        mConsoleView.setTypeface(BJ.DEFAULTSCRIPTTYPEFACE);
+        mConsoleView.setTextSize(12f);
         mConsoleView.addTextChangedListener(new TextWatcher() {
 			
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -169,7 +191,12 @@ public class TurnActivity extends Activity implements OnItemSelectedListener {
 //    	mConsoleView.append(comment + "\n");
 //    	Log.i("XAFFRON",comment);
     }
-    
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		finish();
+	}    
     public class ScreenAdapter extends BaseAdapter {
 
     	public View tvConsole;

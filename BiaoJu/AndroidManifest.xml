@@ -3,7 +3,7 @@
       package="com.xaffron.biaoju"
       android:versionCode="1"
       android:versionName="1.0">
-    <application android:name=".BJ" android:debuggable="true" android:icon="@drawable/icon" android:label="@string/app_name">
+    <application android:name=".BJ" android:icon="@drawable/icon" android:label="@string/app_name">
         <activity android:name=".TurnActivity"
                   android:label="@string/app_name"
                   android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">

@@ -25,6 +25,8 @@ public class MugToast extends Toast {
 		
 		img = (ImageView) ll.findViewById(R.id.toastportrait);
 		txt = (TextView) ll.findViewById(R.id.toastmsg);
+		txt.setTypeface(BJ.DEFAULTSCRIPTTYPEFACE);
+		txt.setTextSize(12f);
 		
         setDuration(Toast.LENGTH_SHORT);
 
