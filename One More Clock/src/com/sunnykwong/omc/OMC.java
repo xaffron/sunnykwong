@@ -66,6 +66,7 @@ public class OMC extends Application {
 	static final boolean SINGLETON = false;
 
 	static final boolean FREEEDITION = false;
+
 	static final String SINGLETONNAME = "One More Clock";
 	static final String STARTERPACKURL = "asset:pk127.omc";
 	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v127.omc";
@@ -87,7 +88,8 @@ public class OMC extends Application {
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
-		"v1.2.7 is a maintenance release, fixing an issue where tweak settings do not save properly.  Keep the feedback coming!",
+		"v1.2.8 is a maintenance release, fixing less-common FCs.  Please, if you see crashes, please submit a bug report or email me!",
+		"In v1.2.7, the issue where tweak settings did not save properly was fixed.  Thanks for the feedback!",
 		"Not finding your favorite clock?  OMC comes with just a few initially.  To get the full clock collection, tap on 'Download Full Online Collection' when you're in the theme picker screen.",
 		"In v1.2.7, International Users can now toggle 'Force English Dates' for better compatibility.",
 		"A new, experimental change now allows a tap to launch the clock/alarm app.  Send me email and let me know how well it works!",
@@ -553,7 +555,14 @@ public class OMC extends Application {
 		}
 		//Look in assets if default theme.
 		if (sTheme.equals(OMC.DEFAULTTHEME)) {
-			return Typeface.createFromAsset(OMC.AM, src);
+			Typeface tf = null;
+			// New fix 1.2.8:  For phones without the DroidSans.ttf in /system/fonts, we return the fallback font (Geo Sans).
+			try {
+				tf = Typeface.createFromAsset(OMC.AM, src);
+			} catch (Exception e) {
+				tf = OMC.GEOFONT;
+			}
+			return tf;
 		}
 		return null;
 	}
@@ -604,7 +613,7 @@ public class OMC extends Application {
 		Iterator<Entry<String,Bitmap>> i = OMC.BMPMAP.entrySet().iterator();
 		while (i.hasNext()) {
 			Entry<String,Bitmap> entry = i.next();
-			entry.getValue().recycle();
+			if (entry.getValue()!=null)	entry.getValue().recycle();
 			entry.setValue(null);
 		}
 		OMC.BMPMAP.clear();

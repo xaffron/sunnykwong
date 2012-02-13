@@ -101,6 +101,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     
     @Override
     protected void onResume() {
+    	super.onResume();
     	// TODO Auto-generated method stub
         refreshThemeList();
         gallery.setAdapter(OMCThemePickerActivity.THEMEARRAY);
@@ -109,7 +110,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         gallery.setSelection(OMCThemePickerActivity.THEMEARRAY.getPosition(sDefaultTheme));
         topLevel.setEnabled(true);
         
-    	super.onResume();
     }
     
     @Override
@@ -335,8 +335,11 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         topLevel.setEnabled(false);
 
 		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-
-        	Toast.makeText(this, "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+			try {
+				Toast.makeText(this, "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			setResult(Activity.RESULT_OK);
 			finish();
         	return;
@@ -344,19 +347,31 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
         OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath()+"/.OMCThemes");
         if (!OMCThemePickerActivity.THEMEROOT.exists()) {
-        	Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+			try {
+				Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
         	OMCThemePickerActivity.THEMEROOT.mkdir();
 
 			startActivity(OMC.GETSTARTERPACKINTENT);
 			
 			refreshThemeList();
         } else if (OMCThemePickerActivity.THEMEROOT.listFiles().length == 0) {
-        	Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+			try {
+				Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
         	OMCThemePickerActivity.THEMEROOT.mkdir();
 
 			startActivity(OMC.GETSTARTERPACKINTENT);
         } else if (OMCThemePickerActivity.THEMEROOT.listFiles().length == 1 && OMCThemePickerActivity.THEMEROOT.list()[0].equals(OMC.DEFAULTTHEME)) {
-        	Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+			try {
+				Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
         	OMCThemePickerActivity.THEMEROOT.mkdir();
 
 			startActivity(OMC.GETSTARTERPACKINTENT);
@@ -370,7 +385,11 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-		        	Toast.makeText(OMCThemePickerActivity.this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+					try {
+						Toast.makeText(OMCThemePickerActivity.this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 		        	OMCThemePickerActivity.THEMEROOT.mkdir();
 					startActivity(OMC.GETSTARTERPACKINTENT);
 					mAD.cancel();
@@ -525,9 +544,14 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("themepickerpreview", "layout", OMC.PKGNAME), null);
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setTypeface(OMC.GEOFONT);
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
-        	if (mTweaked.get(mThemes.get(position)).booleanValue()) {
-        		((TextView)ll.findViewById(getResources().getIdentifier("ThemeTweakedFlag", "id", OMC.PKGNAME))).setText("(Tweaked)");
-        	} else {
+        	try {
+	        	if (mTweaked.get(mThemes.get(position)).booleanValue()) {
+	        		((TextView)ll.findViewById(getResources().getIdentifier("ThemeTweakedFlag", "id", OMC.PKGNAME))).setText("(Tweaked)");
+	        	} else {
+	        		((TextView)ll.findViewById(getResources().getIdentifier("ThemeTweakedFlag", "id", OMC.PKGNAME))).setText("");
+	        	}
+        	} catch (NullPointerException e) {
+        		//v1.2.8 fix issue where theme flag not set
         		((TextView)ll.findViewById(getResources().getIdentifier("ThemeTweakedFlag", "id", OMC.PKGNAME))).setText("");
         	}
         	BitmapFactory.Options bo = new BitmapFactory.Options();
