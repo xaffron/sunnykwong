@@ -324,7 +324,8 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				public void colorChanged(int color) {
 					// TODO Auto-generated method stub
 					try {
-						oActiveLayer.put("fgcolor",String.format("#%X", color));
+						String sColor = "#"+Long.toHexString(0x100000000l + color).substring(1).toUpperCase();
+						oActiveLayer.put("fgcolor",sColor);
 						refreshViews();
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -355,7 +356,8 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				public void colorChanged(int color) {
 					// TODO Auto-generated method stub
 					try {
-						oActiveLayer.put("bgcolor",String.format("#%X", color));
+						String sColor = "#"+Long.toHexString(0x100000000l + color).substring(1).toUpperCase();
+						oActiveLayer.put("bgcolor",sColor);
 						refreshViews();
 					} catch (JSONException e) {
 						e.printStackTrace();
