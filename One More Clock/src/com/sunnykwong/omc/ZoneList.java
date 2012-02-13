@@ -17,24 +17,19 @@ package com.sunnykwong.omc;
  */
 
 
-import android.app.AlarmManager;
 import android.app.ListActivity;
-import android.content.Context;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;

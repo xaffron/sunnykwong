@@ -44,7 +44,6 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.format.Time;

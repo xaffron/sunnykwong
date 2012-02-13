@@ -23,7 +23,6 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.util.TimeZone;
 
 public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceChangeListener{ 
     /** Called when the activity is first created. */
