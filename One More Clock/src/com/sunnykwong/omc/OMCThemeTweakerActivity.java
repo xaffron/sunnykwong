@@ -292,7 +292,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-		// TODO Auto-generated method stub
     	if (item.getItemId()==getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)) {
 			try {
 				if (oActiveLayer.optBoolean("enabled")) oActiveLayer.put("enabled",false);
@@ -317,12 +316,10 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				
 				@Override
 				public void colorUpdate(int color) {
-					// TODO Auto-generated method stub
 				}
 				
 				@Override
 				public void colorChanged(int color) {
-					// TODO Auto-generated method stub
 					try {
 						String sColor = "#"+Long.toHexString(0x100000000l + color).substring(1).toUpperCase();
 						oActiveLayer.put("fgcolor",sColor);
@@ -349,12 +346,10 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				
 				@Override
 				public void colorUpdate(int color) {
-					// TODO Auto-generated method stub
 				}
 				
 				@Override
 				public void colorChanged(int color) {
-					// TODO Auto-generated method stub
 					try {
 						String sColor = "#"+Long.toHexString(0x100000000l + color).substring(1).toUpperCase();
 						oActiveLayer.put("bgcolor",sColor);
@@ -440,7 +435,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	// TODO Auto-generated method stub
     	super.onActivityResult(requestCode, resultCode, data);
 
     	if (resultCode == Activity.RESULT_CANCELED) {
@@ -474,7 +468,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     @Override
     protected void onPause() {
     	super.onPause();
-    	// TODO Auto-generated method stub
     	if (!bApply) {
     		OMC.THEMEMAP.put(sTheme, baseTheme);
     	}
