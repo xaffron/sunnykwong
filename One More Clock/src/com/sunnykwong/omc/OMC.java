@@ -87,8 +87,8 @@ public class OMC extends Application {
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
-		"v1.2.8 features a new clock - Stamp.  If you have the paid version, remember to check out the Stamp clock in 4x4, 3x3 or 2x2!",
-		"v1.2.8 continues to fix a number of less-common FCs.  Please, if you see crashes, please submit a bug report or email me.",
+		"v1.2.9 features a new clock - Stamp.  If you have the paid version, remember to check out the Stamp clock in 4x4, 3x3 or 2x2!",
+		"v1.2.9 continues to fix a number of less-common FCs.  Please, if you see crashes, please submit a bug report or email me.",
 		"In v1.2.7, the issue where tweak settings did not save properly was fixed.  Thanks for the feedback!",
 		"Not finding your favorite clock?  OMC comes with just a few initially.  To get the full clock collection, tap on 'Download Full Online Collection' when you're in the theme picker screen.",
 		"In v1.2.7, International Users can now toggle 'Force English Dates' for better compatibility.",
