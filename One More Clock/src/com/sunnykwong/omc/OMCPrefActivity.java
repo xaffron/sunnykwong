@@ -20,6 +20,7 @@ import android.preference.PreferenceScreen;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -183,12 +184,10 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		String sOtherEd = OMC.FREEEDITION? "com.sunnykwong.omc":"com.sunnykwong.freeomc";
     		String sConflictEd = OMC.FREEEDITION? "paid":"free";
     		try {
-    			ComponentName cn = new ComponentName(sOtherEd, "com.sunny.kwong.omc.OMC");
-    			OMC.PKM.getActivityInfo(cn, PackageManager.GET_META_DATA);
-    		} catch (NameNotFoundException e) {
+    			OMC.PKM.getApplicationInfo(sOtherEd, PackageManager.GET_META_DATA);
             	mAD = new AlertDialog.Builder(this)
-        		.setTitle("WARNING! Conflict with " + sConflictEd + " edition")
-        		.setMessage("You have both the free and paid versions installed simultaneously.  Note that theme customization and clock settings from one version will interfere with the other.\nPlease uninstall the free edition at your earliest convenience!")
+        		.setTitle("WARNING!\nConflict with " + sConflictEd + " edition")
+        		.setMessage("Theme customization and clock settings will not work properly.\nPlease uninstall the free edition at your earliest convenience!")
         	    .setCancelable(true)
         	    .setIcon(getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME))
         	    .setOnKeyListener(new OnKeyListener() {
@@ -196,8 +195,20 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	    		dialogCancelled();
         	    		return true;
         	    	};
-        	    }).create();
+        	    })
+        	    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+        	    		dialogCancelled();
+					}
+				})
+        	    .create();
             	mAD.show();
+    		} catch (NameNotFoundException e) {
+    			System.out.println("cannot find " + sOtherEd + " " + "com.sunnykwong.omc.OMC");
+    			
+    			e.printStackTrace();
     		}
 
     		
