@@ -58,9 +58,11 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application {
 	
-	static final boolean DEBUG = false;
+	static final boolean DEBUG = true;
 	static final boolean THEMESFROMCACHE = true;
-	
+	static int WEATHERUPDATEHOUR = 0;
+	static final int WEATHERUPDATEMINUTE = (int)(Math.random()*60);
+			
 	static String THISVERSION; 
 	static final boolean SINGLETON = false;
 
@@ -206,6 +208,7 @@ public class OMC extends Application {
 	public void onCreate() {
 		super.onCreate();
 
+		System.setProperty ("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver");
 		try {
 			OMC.THISVERSION = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA).versionName;
 		} catch (NameNotFoundException e) {

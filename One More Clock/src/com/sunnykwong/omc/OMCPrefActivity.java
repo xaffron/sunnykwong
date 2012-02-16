@@ -35,6 +35,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     CheckBox mCheckBox;
     TextView mTextView;
     boolean isInitialConfig=false, mTempFlag=false;
+//    Preference prefWeather;
     Preference prefloadThemeFile, prefclearCache, prefbSkinner, prefTimeZone;
     Preference prefsUpdateFreq, prefwidgetPersistence, prefemailMe, preftweakTheme ;
 
@@ -120,7 +121,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	
     		this.getPreferenceManager().setSharedPreferencesName(OMC.SHAREDPREFNAME);
         	addPreferencesFromResource(getResources().getIdentifier("omcprefs", "xml", OMC.PKGNAME));
-
+//        	prefWeather = findPreference("weather");
         	prefemailMe = findPreference("emailMe");
         	prefloadThemeFile = findPreference("loadThemeFile");
         	prefclearCache = findPreference("clearCache");
@@ -206,9 +207,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	    .create();
             	mAD.show();
     		} catch (NameNotFoundException e) {
-    			System.out.println("cannot find " + sOtherEd + " " + "com.sunnykwong.omc.OMC");
-    			
-    			e.printStackTrace();
+    			// If we can't find the conflicting package, we're all good - no need to show warning
     		}
 
     		
@@ -301,6 +300,9 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
+    	if (preference == findPreference("weather")){
+    		GoogleWeatherXMLHandler.updateWeather();
+    	}
     	if (preference == findPreference("tweakTheme")){
     		getPreferenceScreen().setEnabled(false);
     		Intent tweakIntent = new Intent(this, OMCThemeTweakerActivity.class);

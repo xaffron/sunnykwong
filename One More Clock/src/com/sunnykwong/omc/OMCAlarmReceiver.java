@@ -3,6 +3,7 @@ package com.sunnykwong.omc;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.text.format.Time;
 import android.util.Log;
 
 public class OMCAlarmReceiver extends BroadcastReceiver {
@@ -43,6 +44,17 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 				.commit();
 			return;
 		}
+		//SUNNY
+		if (action.equals(Intent.ACTION_TIME_TICK)) {
+			Time t = new Time();
+			t.set(System.currentTimeMillis());
+			if (t.hour!=OMC.WEATHERUPDATEHOUR && t.minute==OMC.WEATHERUPDATEMINUTE) {
+				// Get weather updates
+				GoogleWeatherXMLHandler.updateWeather();
+			}
+		}
+		//SUNNY
+		
 		
 		if (action.equals(OMC.FGINTENT)) OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.FGSERVICE");
 		else OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.BGSERVICE");

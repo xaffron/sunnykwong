@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen android:title="Clock Preferences"
 	android:key="rootPrefs" xmlns:android="http://schemas.android.com/apk/res/android">
-	<PreferenceCategory android:key="thisClock" android:title="For this clock:">
+	<Preference android:title="weather" android:key="weather" android:summary="upd weather"/><PreferenceCategory android:key="thisClock" android:title="For this clock:">
 		<Preference android:selectable="true" android:key="loadThemeFile"
 			android:enabled="true" android:title="Set Widget Theme"/>
 		<Preference android:key="tweakTheme" android:title="Personalize Clock" android:summary="Tweak Colors and Layers." android:enabled="true" android:selectable="true"></Preference><CheckBoxPreference android:key="widget24HrClock"
@@ -58,5 +58,6 @@
 		<Preference android:selectable="true" android:title="View Credits"
 			android:key="widgetCredits" android:enabled="true" />
 	</PreferenceCategory>
+	
 
 </PreferenceScreen>
