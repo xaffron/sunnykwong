@@ -542,30 +542,35 @@ public class OMC extends Application {
 		}
 		//Look in full file system;
 		if (new File(src).exists()) {
-				OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(src));
-				return OMC.TYPEFACEMAP.get(src);
+				try {
+					OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(src));
+					return OMC.TYPEFACEMAP.get(src);
+				} catch (RuntimeException e) {
+					// if Cache is invalid, do nothing; we'll let this flow through to the full SD case.
+				}
 		}
 		//Look in sd card;
 		if (OMC.checkSDPresent()) {
 			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+sTheme+"/"+src);
-			if (f.exists()) {
-				copyFile(f.getAbsolutePath(),OMC.CACHEPATH +"/"+sTheme+f.getName());
-				OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(f));
-				return OMC.TYPEFACEMAP.get(src);
-			}
-		}
-		//Look in assets if default theme.
-		if (sTheme.equals(OMC.DEFAULTTHEME)) {
-			Typeface tf = null;
-			// New fix 1.2.8:  For phones without the DroidSans.ttf in /system/fonts, we return the fallback font (Geo Sans).
 			try {
-				tf = Typeface.createFromAsset(OMC.AM, src);
-			} catch (Exception e) {
-				tf = OMC.GEOFONT;
+				if (f.exists()) {
+					copyFile(f.getAbsolutePath(),OMC.CACHEPATH +"/"+sTheme+f.getName());
+					OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(f));
+					return OMC.TYPEFACEMAP.get(src);
+				}
+			} catch (RuntimeException e) {
+				// if Cache is invalid, do nothing; we'll let this flow through to the fallback case.
 			}
-			return tf;
 		}
-		return null;
+		//Look in assets.
+		Typeface tf = null;
+		// New fix 1.2.8:  For phones without the DroidSans.ttf in /system/fonts, we return the fallback font (Geo Sans).
+		try {
+			tf = Typeface.createFromAsset(OMC.AM, src);
+		} catch (Exception e) {
+			tf = OMC.GEOFONT;
+		}
+		return tf;
 	}
 
 	public static Bitmap getBitmap(String sTheme, String src) {

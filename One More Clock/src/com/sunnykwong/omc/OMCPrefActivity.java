@@ -3,8 +3,11 @@ package com.sunnykwong.omc;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -176,6 +179,28 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         		findPreference("bOneByThree").setSelectable(false);
     		}
 
+    		// This is the free/paid version conflict dialog.
+    		String sOtherEd = OMC.FREEEDITION? "com.sunnykwong.omc":"com.sunnykwong.freeomc";
+    		String sConflictEd = OMC.FREEEDITION? "paid":"free";
+    		try {
+    			ComponentName cn = new ComponentName(sOtherEd, "com.sunny.kwong.omc.OMC");
+    			OMC.PKM.getActivityInfo(cn, PackageManager.GET_META_DATA);
+    		} catch (NameNotFoundException e) {
+            	mAD = new AlertDialog.Builder(this)
+        		.setTitle("WARNING! Conflict with " + sConflictEd + " edition")
+        		.setMessage("You have both the free and paid versions installed simultaneously.  Note that theme customization and clock settings from one version will interfere with the other.\nPlease uninstall the free edition at your earliest convenience!")
+        	    .setCancelable(true)
+        	    .setIcon(getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME))
+        	    .setOnKeyListener(new OnKeyListener() {
+        	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+        	    		dialogCancelled();
+        	    		return true;
+        	    	};
+        	    }).create();
+            	mAD.show();
+    		}
+
+    		
     		// This is the help/FAQ dialog.
     		
     		if (OMC.SHOWHELP) {
