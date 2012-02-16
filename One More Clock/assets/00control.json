@@ -88,7 +88,23 @@
 		"text_align":"right",
 		"render_style":"normal",
 		"cw_rotate":"0"
+		},
+		{
+		"name":"Weather",
+		"type":"text",
+		"enabled":"true",
+		"text":"[%weather_tempf%]",
+		"filename":"/system/fonts/DroidSans.ttf",
+		"x":"410","y":"135",
+		"fgcolor":"#ffffffff","bgcolor":"#a0000000",
+		"text_size":"20",
+		"text_skew":"0",
+		"text_stretch":"1",
+		"text_align":"right",
+		"render_style":"normal",
+		"cw_rotate":"0"
 		}	
+
 
 	],
 

@@ -1104,6 +1104,20 @@ public class OMC extends Application {
 			} else {
 				result = String.valueOf(OMC.PREFS.getInt("ompc_"+sType, 99));
 			}
+		} else if (sToken.equals("weather")) {
+			JSONObject jsonWeather = new JSONObject();
+			try {
+				jsonWeather = new JSONObject(OMC.PREFS.getString("weather", ""));
+			} catch (JSONException e) {
+				e.printStackTrace();
+				// JSON parse error - probably uknown weather. Do nothing
+			}
+			String sType = st.nextToken();
+			if (sType.equals("tempf")) {
+				result = jsonWeather.optString("current_date_time")+ " " +jsonWeather.optString("temp_f");
+			} else {
+				// JSON parse error - probably uknown weather. Do nothing
+			}
 		} else if (sToken.equals("circle")) {
 			// Specifies a point at angle/radius from point.
 			int iOriginVal = Integer.parseInt(st.nextToken());
