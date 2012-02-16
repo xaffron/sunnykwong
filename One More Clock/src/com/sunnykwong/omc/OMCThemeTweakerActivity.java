@@ -100,7 +100,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
         //Hide the title bar
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//      requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(getResources().getIdentifier("tweakertool", "layout", OMC.PKGNAME));
         toplevel = (AbsoluteLayout)findViewById(getResources().getIdentifier("toplevel", "id", OMC.PKGNAME));
@@ -267,12 +267,19 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-    	
+    	// For Honeycomb and above, sometimes this gets called before active layer is initialized
+    	if (oActiveLayer==null) {
+    		menu.findItem(getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)).setEnabled(false);
+    		menu.findItem(getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)).setEnabled(false);
+   			menu.findItem(getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)).setEnabled(false);
+   			return super.onPrepareOptionsMenu(menu);
+    	}
+
     	String sLayerType = oActiveLayer.optString("type");
     	if (sLayerType==null) {
     		menu.findItem(getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)).setEnabled(false);
     		menu.findItem(getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)).setEnabled(false);
-    		menu.findItem(getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)).setEnabled(false);
+   			menu.findItem(getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)).setEnabled(false);
     	} else if (sLayerType.equals("image")) {
     		menu.findItem(getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)).setEnabled(true);
     		menu.findItem(getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)).setEnabled(false);
