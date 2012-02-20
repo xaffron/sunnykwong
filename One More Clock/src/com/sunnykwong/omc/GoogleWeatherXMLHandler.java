@@ -52,6 +52,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		ELEMENTS = new ArrayList<HashMap<String, String>>();
 		Thread t = new Thread() {
 			public void run() {
+				OMC.LASTWEATHERTRY=System.currentTimeMillis();
 				try {
 					XMLReader xr = XMLReaderFactory.createXMLReader();
 					GoogleWeatherXMLHandler GXhandler = new GoogleWeatherXMLHandler();
@@ -62,7 +63,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					HttpGet request = new HttpGet();
 
 					request.setURI(new URI(
-							"http://www.google.com/ig/api?weather=77584"));
+							"http://www.google.com/ig/api?oe=utf-8&weather=77584"));
 					HttpResponse response = client.execute(request);
 
 					xr.parse(new InputSource(response.getEntity().getContent()));
@@ -90,13 +91,27 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 
 			if (tree.peek()[0].equals("forecast_information")
 					|| tree.peek()[0].equals("current_conditions")) {
+				String sData = atts.getValue("data");
 				if (OMC.DEBUG)
 					Log.i(OMC.OMCSHORT + "Weather", "Reading " + tree.peek()[0]
 							+ " - " + localName);
 				try {
-					jsonWeather.putOpt(localName, atts.getValue("data"));
+					jsonWeather.putOpt(localName, sData);
 				} catch (JSONException e) {
 					e.printStackTrace();
+				}
+				if (localName.equals("current_date_time")){
+					String timeString = sData.substring(0, 19).replace(":","").replace("-","").replace(' ','T')+"Z";
+					Time tCurrentTime = new Time(Time.TIMEZONE_UTC);
+					tCurrentTime.parse(timeString);
+					try {
+						jsonWeather.putOpt("current_time", tCurrentTime.format2445());
+						jsonWeather.putOpt("current_millis", tCurrentTime.toMillis(false));
+						tCurrentTime.switchTimezone(Time.getCurrentTimezone());
+						jsonWeather.putOpt("current_local_time", tCurrentTime.format2445());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
 				}
 			} else if (tree.peek()[0].equals("forecast_conditions")) {
 				if (OMC.DEBUG)
@@ -155,6 +170,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		tree.clear();
 		tree = null;
 		OMC.PREFS.edit().putString("weather", jsonWeather.toString()).commit();
+		OMC.LASTWEATHERREFRESH=System.currentTimeMillis();
 	}
 
 }

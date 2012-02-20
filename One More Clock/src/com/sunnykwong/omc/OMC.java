@@ -60,8 +60,6 @@ public class OMC extends Application {
 	
 	static final boolean DEBUG = true;
 	static final boolean THEMESFROMCACHE = true;
-	static int WEATHERUPDATEHOUR = 0;
-	static final int WEATHERUPDATEMINUTE = (int)(Math.random()*60);
 			
 	static String THISVERSION; 
 	static final boolean SINGLETON = false;
@@ -125,6 +123,7 @@ public class OMC extends Application {
 	static Uri PAIDURI;
 	
 	static long LASTUPDATEMILLIS, LEASTLAGMILLIS=200;
+	static long LASTWEATHERTRY=0l,LASTWEATHERREFRESH=0l;
 	static int UPDATEFREQ = 20000;
 	static final Random RND = new Random();
 	static SharedPreferences PREFS;
@@ -1114,7 +1113,16 @@ public class OMC extends Application {
 			}
 			String sType = st.nextToken();
 			if (sType.equals("tempf")) {
-				result = jsonWeather.optString("current_date_time")+ " " +jsonWeather.optString("temp_f");
+				Time t = new Time();
+				t.parse(jsonWeather.optString("current_local_time"));
+				Time t2 = new Time();
+				t2.set(OMC.LASTWEATHERREFRESH);
+				Time t3 = new Time();
+				t3.set(OMC.LASTWEATHERTRY);
+				result = t.format("%R") + " cond.: " + jsonWeather.optString("temp_f")+ " " + " lastupd " + t2.format("%R")
+						+ " " + " lasttry " + t3.format("%R");
+			} else if (sType.equals("tempc")) {
+				result = jsonWeather.optString("current_date_time")+ " " +jsonWeather.optString("temp_c");
 			} else {
 				// JSON parse error - probably uknown weather. Do nothing
 			}
