@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen android:title="Clock Preferences"
 	android:key="rootPrefs" xmlns:android="http://schemas.android.com/apk/res/android">
-	<Preference android:title="weather" android:key="weather" android:summary="upd weather"/><PreferenceCategory android:key="thisClock" android:title="For this clock:">
+	<PreferenceCategory android:key="thisClock" android:title="For this clock:">
 		<Preference android:selectable="true" android:key="loadThemeFile"
 			android:enabled="true" android:title="Set Widget Theme"/>
 		<Preference android:key="tweakTheme" android:title="Personalize Clock" android:summary="Tweak Colors and Layers." android:enabled="true" android:selectable="true"></Preference><CheckBoxPreference android:key="widget24HrClock"
@@ -15,7 +15,7 @@
 		<Preference android:key="timeZone" android:title="Change Time Zone" android:enabled="true" android:selectable="true"></Preference>
 	</PreferenceCategory>
 	<PreferenceCategory android:key="allClocks"
-		android:title="For all clocks:">
+		android:title="For all clocks:"><Preference android:title="Weather Options..." android:key="weather" android:summary="upd weather" />
 		<CheckBoxPreference android:key="widgetPersistence"
 			android:selectable="true"
 			android:enabled="true" android:summary="Keep OMC from sleeping.\n(at the cost of a persistent notification)" android:title="Set Foreground Mode"/>

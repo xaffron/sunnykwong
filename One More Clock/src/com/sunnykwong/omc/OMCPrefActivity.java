@@ -121,7 +121,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	
     		this.getPreferenceManager().setSharedPreferencesName(OMC.SHAREDPREFNAME);
         	addPreferencesFromResource(getResources().getIdentifier("omcprefs", "xml", OMC.PKGNAME));
-//        	prefWeather = findPreference("weather");
         	prefemailMe = findPreference("emailMe");
         	prefloadThemeFile = findPreference("loadThemeFile");
         	prefclearCache = findPreference("clearCache");
@@ -301,7 +300,30 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
     	if (preference == findPreference("weather")){
-    		GoogleWeatherXMLHandler.updateWeather();
+			final CharSequence[] items = {"Disabled (default)", "Follow Device", "Set Location", "Update Now"};
+			new AlertDialog.Builder(this)
+				.setTitle("Experimental Feature - Try at own risk!")
+				.setItems(items, new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int item) {
+							switch (item) {
+								case 0: //Disabled (default)
+									OMC.PREFS.edit().putString("weathersetting", "disabled").commit();
+									break;
+								case 1: //Follow Device
+									OMC.PREFS.edit().putString("weathersetting", "bylatlong").commit();
+									break;
+								case 2: //Set Location
+									OMC.PREFS.edit().putString("weathersetting", "specific").commit();
+									break;
+								case 3: //Update Now
+						    		GoogleWeatherXMLHandler.updateWeather();
+									break;
+								default:
+									//do nothing
+							}
+						}
+				})
+				.show();
     	}
     	if (preference == findPreference("tweakTheme")){
     		getPreferenceScreen().setEnabled(false);

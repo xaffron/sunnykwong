@@ -1,6 +1,10 @@
 package com.sunnykwong.omc;
 
 import java.io.BufferedReader;
+import android.location.Location;
+import android.location.LocationManager;
+import android.location.LocationListener;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,6 +48,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.format.Time;
@@ -132,6 +137,8 @@ public class OMC extends Application {
     static NotificationManager NM;
 	static PackageManager PKM;
     static Resources RES;
+    static LocationManager LM;
+    static LocationListener LL;
 
     static Typeface GEOFONT;
     
@@ -265,6 +272,7 @@ public class OMC extends Application {
     	OMC.PKM = getPackageManager();
     	OMC.AM = getAssets();
     	OMC.RES = getResources();
+    	OMC.LM = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
     	OMC.NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     	OMC.GEOFONT = Typeface.createFromAsset(OMC.AM, "GeosansLight.ttf");
     	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_PRIVATE);
@@ -1104,27 +1112,41 @@ public class OMC extends Application {
 				result = String.valueOf(OMC.PREFS.getInt("ompc_"+sType, 99));
 			}
 		} else if (sToken.equals("weather")) {
-			JSONObject jsonWeather = new JSONObject();
-			try {
-				jsonWeather = new JSONObject(OMC.PREFS.getString("weather", ""));
-			} catch (JSONException e) {
-				e.printStackTrace();
-				// JSON parse error - probably uknown weather. Do nothing
-			}
-			String sType = st.nextToken();
-			if (sType.equals("tempf")) {
-				Time t = new Time();
-				t.parse(jsonWeather.optString("current_local_time"));
-				Time t2 = new Time();
-				t2.set(OMC.LASTWEATHERREFRESH);
-				Time t3 = new Time();
-				t3.set(OMC.LASTWEATHERTRY);
-				result = t.format("%R") + " cond.: " + jsonWeather.optString("temp_f")+ " " + " lastupd " + t2.format("%R")
-						+ " " + " lasttry " + t3.format("%R");
-			} else if (sType.equals("tempc")) {
-				result = jsonWeather.optString("current_date_time")+ " " +jsonWeather.optString("temp_c");
+			if (OMC.PREFS.getString("weathersetting", "disabled").equals("disabled")) {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Weather Disabled - weather tags ignored");
+				result = "";
 			} else {
-				// JSON parse error - probably uknown weather. Do nothing
+				JSONObject jsonWeather = new JSONObject();
+				try {
+					jsonWeather = new JSONObject(OMC.PREFS.getString("weather", ""));
+					String sType = st.nextToken();
+					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","weathertag:"+sType);
+					if (sType.equals("debug")) {
+						Time t = new Time();
+						t.parse(jsonWeather.optString("current_local_time"));
+						Time t2 = new Time();
+						t2.set(OMC.LASTWEATHERREFRESH);
+						Time t3 = new Time();
+						t3.set(OMC.LASTWEATHERTRY);
+						result = t.format("%R") + " cond.: " + jsonWeather.optString("temp_f")+ " " + " lastupd " + t2.format("%R")
+								+ " " + " lasttry " + t3.format("%R");
+					} else if (sType.equals("condition")) {
+						result = jsonWeather.optString("condition");
+					} else if (sType.equals("tempc")) {
+						result = jsonWeather.optString("temp_c");
+					} else if (sType.equals("tempf")) {
+						result = jsonWeather.optString("temp_f");
+					} else if (sType.equals("city")) {
+						result = jsonWeather.optString("city");
+						System.out.println(jsonWeather.toString());
+					} else {
+						// JSON parse error - probably uknown weather. Do nothing
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+					// JSON parse error - probably uknown weather. Do nothing
+					
+				}
 			}
 		} else if (sToken.equals("circle")) {
 			// Specifies a point at angle/radius from point.
