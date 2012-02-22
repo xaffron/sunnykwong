@@ -17,6 +17,7 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.text.format.Time;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,18 +28,58 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Handler;
+import java.lang.Runnable;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceChangeListener{ 
     /** Called when the activity is first created. */
     static int appWidgetID;
     static AlertDialog mAD;
+    final Time timeTemp = new Time(), timeTemp2 = new Time();
+    Handler mHandler;
     CheckBox mCheckBox;
     TextView mTextView;
+    Thread mRefresh;
     boolean isInitialConfig=false, mTempFlag=false;
-//    Preference prefWeather;
+    Preference prefWeather, prefWeatherDisplay;
     Preference prefloadThemeFile, prefclearCache, prefbSkinner, prefTimeZone;
-    Preference prefsUpdateFreq, prefwidgetPersistence, prefemailMe, preftweakTheme ;
+    Preference prefsUpdateFreq, prefwidgetPersistence, prefemailMe, preftweakTheme;
 
+    final Runnable mUpdatePrefs = new Runnable() {
+    	@Override
+    	public void run() {								
+    		try {
+        		String sWSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
+    			JSONObject jsonWeather = new JSONObject(OMC.PREFS.getString("weather", ""));
+    			String sCity = jsonWeather.getString("city");
+    			timeTemp.set(OMC.LASTWEATHERTRY);
+    			timeTemp2.set(OMC.LASTWEATHERREFRESH);
+        		if (sWSetting.equals("bylatlong")) {
+        			prefWeather.setTitle("Weather: " + sCity +" (Detected)");
+        			prefWeather.setSummary("Last refresh: "+timeTemp2.format("%R") + " Last try: "+timeTemp.format("%R"));
+        			prefWeatherDisplay.setSummary("Now displaying in "+ OMC.PREFS.getString("weatherdisplay", "f").toUpperCase());
+        		} else if (sWSetting.equals("specific")) {
+        			prefWeather.setTitle("Weather: Unknown (Fixed)");
+        			prefWeather.setSummary("Last update: "+timeTemp2.format("%R") + " Last try: "+timeTemp.format("%R"));
+        			prefWeatherDisplay.setSummary("Now displaying in "+ OMC.PREFS.getString("weatherdisplay", "f").toUpperCase());
+        		} else {
+        			prefWeather.setTitle("Weather updates disabled");
+        			prefWeatherDisplay.setSummary("Now displaying in "+ OMC.PREFS.getString("weatherdisplay", "f").toUpperCase());
+        			prefWeather.setSummary("Tap to enable");
+        		} 
+    		} catch (JSONException e) {
+    			prefWeather.setTitle("Weather updates disabled");
+    			prefWeather.setSummary("Tap to enable");
+    			prefWeatherDisplay.setSummary("Now displaying in "+ OMC.PREFS.getString("weatherdisplay", "f").toUpperCase());
+    		}
+			return;
+    	}
+    };
+    
+    
     @Override
     protected void onNewIntent(Intent intent) {
     	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","NewIntent");
@@ -72,7 +113,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","OnCreate");
 
     	super.onCreate(savedInstanceState);
-    	
+    	mHandler = new Handler();
 		// FIX FOR NOMEDIA
 		if (OMC.checkSDPresent()) ((OMC)(this.getApplication())).fixnomedia();
 
@@ -138,7 +179,9 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	prefsUpdateFreq = findPreference("sUpdateFreq");
         	prefsUpdateFreq.setOnPreferenceChangeListener(this);
         	prefsUpdateFreq.setSummary("Redraw every " + OMC.PREFS.getString("sUpdateFreq", "30") + " seconds.");
-        	
+
+        	prefWeather = findPreference("weather");
+        	prefWeatherDisplay = findPreference("weatherDisplay");
 			if (Build.VERSION.SDK_INT <  5) {
     			OMC.PREFS.edit().putBoolean("widgetPersistence", false).commit();
 				((PreferenceCategory)findPreference("allClocks")).removePreference(prefwidgetPersistence);
@@ -262,7 +305,21 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 			    })
 			    .show();
     		}
-
+    		mRefresh = (new Thread() {
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					try {
+						while(true) {
+							mHandler.post(mUpdatePrefs);
+							Thread.sleep(5000l);
+						}
+					} catch (InterruptedException e) {
+						// interrupted; stop gracefully
+					}
+				}
+			});
+    		mRefresh.start();
         	
         } else {
             // If they gave us an intent without the widget id, just bail.
@@ -300,9 +357,9 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
     	if (preference == findPreference("weather")){
-			final CharSequence[] items = {"Disabled (default)", "Follow Device", "Set Location", "Update Now"};
+			final CharSequence[] items = {"Disabled", "Follow Device (default)", "Set Location", "Update Now"};
 			new AlertDialog.Builder(this)
-				.setTitle("Experimental Feature - Try at own risk!")
+				.setTitle("Experimental Feature\nTry at own risk!")
 				.setItems(items, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int item) {
 							switch (item) {
@@ -311,12 +368,33 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 									break;
 								case 1: //Follow Device
 									OMC.PREFS.edit().putString("weathersetting", "bylatlong").commit();
+						    		GoogleWeatherXMLHandler.updateWeather();
 									break;
 								case 2: //Set Location
 									OMC.PREFS.edit().putString("weathersetting", "specific").commit();
 									break;
 								case 3: //Update Now
 						    		GoogleWeatherXMLHandler.updateWeather();
+									break;
+								default:
+									//do nothing
+							}
+						}
+				})
+				.show();
+    	}
+    	if (preference == findPreference("weatherDisplay")){
+			final CharSequence[] items = {"Show Celsius", "Show Fahrenheit"};
+			new AlertDialog.Builder(this)
+				.setTitle("Experimental Feature\nTry at own risk!")
+				.setItems(items, new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int item) {
+							switch (item) {
+								case 0: //Celsius (default)
+									OMC.PREFS.edit().putString("weatherdisplay", "c").commit();
+									break;
+								case 1: //Fahrenheit
+									OMC.PREFS.edit().putString("weatherdisplay", "f").commit();
 									break;
 								default:
 									//do nothing
@@ -497,20 +575,22 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     	super.onPause();
 		if (appWidgetID >= 0) {
 
-		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Saving Prefs for Widget " + OMCPrefActivity.appWidgetID);
-		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", true)? true : false;
-		OMC.UPDATEFREQ = Integer.parseInt(OMC.PREFS.getString("sUpdateFreq", "30")) * 1000;
-    	OMC.setPrefs(OMCPrefActivity.appWidgetID);
-    	if (OMC.WIDGETBMPMAP.containsKey(OMCPrefActivity.appWidgetID)) {
-    		if (!OMC.WIDGETBMPMAP.get(OMCPrefActivity.appWidgetID).isRecycled()) OMC.WIDGETBMPMAP.get(OMCPrefActivity.appWidgetID).recycle();
-        	OMC.WIDGETBMPMAP.remove(OMCPrefActivity.appWidgetID);
-    	}
-		
-
-    	OMC.toggleWidgets(getApplicationContext());
-
-		sendBroadcast(OMC.WIDGETREFRESHINTENT); 
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Saving Prefs for Widget " + OMCPrefActivity.appWidgetID);
+			OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", true)? true : false;
+			OMC.UPDATEFREQ = Integer.parseInt(OMC.PREFS.getString("sUpdateFreq", "30")) * 1000;
+	    	OMC.setPrefs(OMCPrefActivity.appWidgetID);
+	    	if (OMC.WIDGETBMPMAP.containsKey(OMCPrefActivity.appWidgetID)) {
+	    		if (!OMC.WIDGETBMPMAP.get(OMCPrefActivity.appWidgetID).isRecycled()) OMC.WIDGETBMPMAP.get(OMCPrefActivity.appWidgetID).recycle();
+	        	OMC.WIDGETBMPMAP.remove(OMCPrefActivity.appWidgetID);
+	    	}
+			
+	
+	    	OMC.toggleWidgets(getApplicationContext());
+	
+			sendBroadcast(OMC.WIDGETREFRESHINTENT); 
 		}
+		if (mRefresh!=null) mRefresh.interrupt();
+		
     }
 
     @Override

@@ -15,8 +15,8 @@
 		<Preference android:key="timeZone" android:title="Change Time Zone" android:enabled="true" android:selectable="true"></Preference>
 	</PreferenceCategory>
 	<PreferenceCategory android:key="allClocks"
-		android:title="For all clocks:"><Preference android:title="Weather Options..." android:key="weather" android:summary="upd weather" />
-		<CheckBoxPreference android:key="widgetPersistence"
+		android:title="For all clocks:"><Preference android:title="Weather settings loading..." android:key="weather" android:summary="Tap to enable" />
+		<Preference android:key="weatherDisplay" android:title="Weather display settings" android:summary="C or F"/><CheckBoxPreference android:key="widgetPersistence"
 			android:selectable="true"
 			android:enabled="true" android:summary="Keep OMC from sleeping.\n(at the cost of a persistent notification)" android:title="Set Foreground Mode"/>
 		
@@ -49,6 +49,7 @@
 			android:enabled="true" android:summary="Uncheck for some non-English locales. (Experimental)" android:title="Force English Dates" android:defaultValue="true"/>
 		<Preference android:selectable="true"
 			android:key="clearCache" android:enabled="true" android:title="Clear Render Caches"/>
+		
 	
 </PreferenceCategory>
 	<PreferenceCategory android:title="Credits"

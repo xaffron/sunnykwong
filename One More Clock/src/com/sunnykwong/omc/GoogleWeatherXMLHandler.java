@@ -122,7 +122,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 	}
 	
 	static public void updateWeather() {
-		String sWeatherSetting = OMC.PREFS.getString("weathersetting", "disabled");
+		String sWeatherSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
 		if (sWeatherSetting.equals("disabled")) {
 			// If weather is disabled (default), do nothing
 			return;
@@ -218,6 +218,10 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					jsonOneDayForecast = new JSONObject();
 				try {
 					jsonOneDayForecast.putOpt(localName, atts.getValue("data"));
+					if (localName.equals("low") || localName.equals("high")) {
+						int tempC = (int)((Float.parseFloat(atts.getValue("data"))-32.2f)*5f/9f);
+						jsonOneDayForecast.putOpt(localName+"_c", tempC);
+					}
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -273,6 +277,8 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 				else if (!jsonWeather.optString("country2").equals(""))
 					jsonWeather.putOpt("city", jsonWeather.optString("country2"));
 			}
+			
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

@@ -1112,7 +1112,7 @@ public class OMC extends Application {
 				result = String.valueOf(OMC.PREFS.getInt("ompc_"+sType, 99));
 			}
 		} else if (sToken.equals("weather")) {
-			if (OMC.PREFS.getString("weathersetting", "disabled").equals("disabled")) {
+			if (OMC.PREFS.getString("weathersetting", "bylatlong").equals("disabled")) {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Weather Disabled - weather tags ignored");
 				result = "";
 			} else {
@@ -1132,6 +1132,8 @@ public class OMC extends Application {
 								+ " " + " lasttry " + t3.format("%R");
 					} else if (sType.equals("condition")) {
 						result = jsonWeather.optString("condition");
+					} else if (sType.equals("temp")) {
+						result = jsonWeather.optString("temp_"+OMC.PREFS.getString("weatherdisplay", "f"))+OMC.PREFS.getString("weatherdisplay", "f").toUpperCase();
 					} else if (sType.equals("tempc")) {
 						result = jsonWeather.optString("temp_c");
 					} else if (sType.equals("tempf")) {
@@ -1310,12 +1312,17 @@ public class OMC extends Application {
 						sMin, 
 						sMax, 
 						gradient);
-				result = String.format("#%1$08X",color);
+				
+				result = "#"+Long.toHexString(0x300000000l + color).substring(1).toUpperCase();
+						
 			} else {
 				//Unknown - do nothing
 			}
 			
-
+		} else if (sToken.equals("uppercase")){
+			result = st.nextToken().toUpperCase();
+		} else if (sToken.equals("lowercase")){
+			result = st.nextToken().toLowerCase();
 		} else {
 			//unrecognized macro - ignore
 		}
