@@ -129,6 +129,7 @@ public class OMC extends Application {
 	
 	static long LASTUPDATEMILLIS, LEASTLAGMILLIS=200;
 	static long LASTWEATHERTRY=0l,LASTWEATHERREFRESH=0l;
+	static String LASTKNOWNCITY, LASTKNOWNCOUNTRY;
 	static int UPDATEFREQ = 20000;
 	static final Random RND = new Random();
 	static SharedPreferences PREFS;
@@ -1127,8 +1128,8 @@ public class OMC extends Application {
 						t2.set(OMC.LASTWEATHERREFRESH);
 						Time t3 = new Time();
 						t3.set(OMC.LASTWEATHERTRY);
-						result = t.format("%R") + " cond.: " + jsonWeather.optString("temp_f")+ " " + " lastupd " + t2.format("%R")
-								+ " " + " lasttry " + t3.format("%R");
+						result = "Weather as of " + t.format("%R") + "; lastupd " + t2.format("%R")
+								+ " " + "; lasttry " + t3.format("%R");
 					} else if (sType.equals("condition")) {
 						result = jsonWeather.optString("condition");
 					} else if (sType.equals("temp")) {
@@ -1139,6 +1140,22 @@ public class OMC extends Application {
 						result = jsonWeather.optString("temp_f");
 					} else if (sType.equals("city")) {
 						result = jsonWeather.optString("city");
+					} else if (sType.equals("high")) {
+						int iDay = Integer.parseInt(st.nextToken());
+						String sFahrenheit = jsonWeather.optJSONArray("zzforecast_conditions").optJSONObject(iDay).optString("high");
+						if (OMC.PREFS.getString("weatherdisplay", "f").equals("c")) {
+							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32.2f)*5f/9f+0.5f));
+						} else {
+							result = sFahrenheit;
+						}
+					} else if (sType.equals("low")) {
+						int iDay = Integer.parseInt(st.nextToken());
+						String sFahrenheit = jsonWeather.optJSONArray("zzforecast_conditions").optJSONObject(iDay).optString("low");
+						if (OMC.PREFS.getString("weatherdisplay", "f").equals("c")) {
+							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32.2f)*5f/9f+0.5f));
+						} else {
+							result = sFahrenheit;
+						}
 					} else {
 						// JSON parse error - probably uknown weather. Do nothing
 					}
