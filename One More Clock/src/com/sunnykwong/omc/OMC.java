@@ -181,10 +181,11 @@ public class OMC extends Application {
 		669384692,905573859,1105458423,921566437};
 	static final String clockImpls[][] = {
         {"HTC Alarm Clock", "com.htc.android.worldclock", "com.htc.android.worldclock.WorldClockTabControl" },
-        {"Standard Alarm Clock", "com.android.deskclock", "com.htc.android.worldclock.action.ALARMCLOCK"},
+        {"Standard Alarm Clock", "com.android.deskclock", "com.android.deskclock.AlarmClock"},
         {"Froyo Nexus Alarm Clock", "com.google.android.deskclock", "com.android.deskclock.DeskClock"},
         {"Froyo Alarm Clock", "com.android.alarmclock", "com.android.alarmclock.AlarmClock"},
-        {"Moto Blur Alarm Clock", "com.motorola.blur.alarmclock",  "com.motorola.blur.alarmclock.AlarmClock"}
+        {"Moto Blur Alarm Clock", "com.motorola.blur.alarmclock",  "com.motorola.blur.alarmclock.AlarmClock"},
+        {"Samsung Galaxy S", "com.sec.android.app.clockpackage","com.sec.android.app.clockpackage.ClockPackage"} 
 	};
 
 	
@@ -577,7 +578,7 @@ public class OMC extends Application {
 		Typeface tf = null;
 		// New fix 1.2.8:  For phones without the DroidSans.ttf in /system/fonts, we return the fallback font (Geo Sans).
 		try {
-			tf = Typeface.createFromAsset(OMC.AM, src);
+			tf = Typeface.createFromAsset(OMC.AM, "defaulttheme/"+src);
 		} catch (Exception e) {
 			tf = OMC.GEOFONT;
 		}
@@ -608,7 +609,7 @@ public class OMC extends Application {
 		// Look in assets
 		if (sTheme.equals(OMC.DEFAULTTHEME)) {
 			try {
-				return BitmapFactory.decodeStream(OMC.AM.open(src));
+				return BitmapFactory.decodeStream(OMC.AM.open("defaulttheme/"+src));
 			} catch (Exception e) {
 				// Asset not found - do nothing
 			}
@@ -699,7 +700,7 @@ public class OMC extends Application {
 		// If default theme, look in assets
 		if (nm.equals(OMC.DEFAULTTHEME)) {
 			try {
-				InputStreamReader in = new InputStreamReader(OMC.AM.open("00control.json"));
+				InputStreamReader in = new InputStreamReader(OMC.AM.open("defaulttheme/00control.json"));
 				StringBuilder sb = new StringBuilder();
 			    char[] buffer = new char[8192];
 			    int iCharsRead = 0;
@@ -820,9 +821,9 @@ public class OMC extends Application {
 		}
 	}
 	
-	public static boolean copyAssetToCache(String src, String sTheme) {
+	public static boolean copyAssetToCache(String src, String filename, String sTheme) {
 		try {
-			FileOutputStream oTGT = new FileOutputStream(OMC.CACHEPATH + sTheme + src);
+			FileOutputStream oTGT = new FileOutputStream(OMC.CACHEPATH + sTheme + filename);
 			InputStream oSRC = OMC.AM.open(src);
 			
 		    byte[] buffer = new byte[8192];
@@ -877,25 +878,26 @@ public class OMC extends Application {
 	}
 	
 	public static void setupDefaultTheme() {
+		String sDefaultThemeAssetDir = "defaulttheme/";
 		if (new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME + "/00control.json").exists()) return;
-		copyAssetToCache("000preview.jpg", OMC.DEFAULTTHEME);
-		copyAssetToCache("00control.json", OMC.DEFAULTTHEME);
-		copyAssetToCache("A.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("colon.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("digit .png", OMC.DEFAULTTHEME);
-		copyAssetToCache("digit0.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("digit1.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("digit2.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("digit3.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("digit4.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("digit5.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("digit6.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("digit7.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("digit8.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("digit9.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("P.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("small-a.png", OMC.DEFAULTTHEME);
-		copyAssetToCache("small-p.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"000preview.jpg","000preview.jpg", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"00control.json","00control.json", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"A.png","A.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"colon.png","colon.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"digit .png","digit .png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"digit0.png","digit0.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"digit1.png","digit1.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"digit2.png","digit2.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"digit3.png","digit3.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"digit4.png","digit4.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"digit5.png","digit5.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"digit6.png","digit6.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"digit7.png","digit7.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"digit8.png","digit8.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"digit9.png","digit9.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"P.png","P.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"small-a.png","small-a.png", OMC.DEFAULTTHEME);
+		copyAssetToCache(sDefaultThemeAssetDir+"small-p.png","small-p.png", OMC.DEFAULTTHEME);
 		(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME)).mkdirs();
 		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "00control.json", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/00control.json");
 		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "000preview.jpg", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/000preview.jpg");
@@ -1115,7 +1117,7 @@ public class OMC extends Application {
 		} else if (sToken.equals("weather")) {
 			if (OMC.PREFS.getString("weathersetting", "bylatlong").equals("disabled")) {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Weather Disabled - weather tags ignored");
-				result = "";
+				result = "--";
 			} else {
 				JSONObject jsonWeather = new JSONObject();
 				try {

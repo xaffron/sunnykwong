@@ -109,11 +109,12 @@ public class OMCThemeUnzipActivity extends Activity {
 			finish();
 			return;
 		}
-		
-		if (!uri.getLastPathSegment().matches(".*.omc")) {
-			Toast.makeText(getApplicationContext(), "Clock import works with .omc files.\nWere you opening the wrong file?", Toast.LENGTH_LONG).show();
-			finish();
-			return;
+		if (!uri.getScheme().equals("asset")) {
+			if (!uri.getLastPathSegment().matches(".*.omc")) {
+				Toast.makeText(getApplicationContext(), "Clock import works with .omc files.\nWere you opening the wrong file?", Toast.LENGTH_LONG).show();
+				finish();
+				return;
+			}
 		}
 		
 		if (!OMC.checkSDPresent()) {
