@@ -86,7 +86,7 @@ public class OMCThemeUnzipActivity extends Activity {
 				((ImageView)pdWait.findViewById(getResources().getIdentifier("UnzipPreview", "id", OMC.PKGNAME))).setImageBitmap(bmp);
 				((ImageView)pdWait.findViewById(getResources().getIdentifier("UnzipPreview", "id", OMC.PKGNAME))).invalidate();
 			} catch (Exception e) {
-				System.out.println("MarkInvalidated");
+				if (OMC.DEBUG) Log.e(OMC.OMCSHORT + "Unzip","Mark Invalidated!");
 			}
 		}
 	};
@@ -106,6 +106,12 @@ public class OMCThemeUnzipActivity extends Activity {
 		// Check file scheme first... we don't want to support Preview!
 		if (uri.getScheme().equals("content")) {
 			Toast.makeText(getApplicationContext(), "Please use Download instead of Preview to import an OMC clock!", Toast.LENGTH_SHORT).show();
+			finish();
+			return;
+		}
+		
+		if (!uri.getLastPathSegment().matches(".*.omc")) {
+			Toast.makeText(getApplicationContext(), "Clock import works with .omc files.\nWere you opening the wrong file?", Toast.LENGTH_LONG).show();
 			finish();
 			return;
 		}

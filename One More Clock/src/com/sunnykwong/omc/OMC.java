@@ -1120,7 +1120,6 @@ public class OMC extends Application {
 				try {
 					jsonWeather = new JSONObject(OMC.PREFS.getString("weather", ""));
 					String sType = st.nextToken();
-					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","weathertag:"+sType);
 					if (sType.equals("debug")) {
 						Time t = new Time();
 						t.parse(jsonWeather.optString("current_local_time"));
@@ -1140,7 +1139,6 @@ public class OMC extends Application {
 						result = jsonWeather.optString("temp_f");
 					} else if (sType.equals("city")) {
 						result = jsonWeather.optString("city");
-						System.out.println(jsonWeather.toString());
 					} else {
 						// JSON parse error - probably uknown weather. Do nothing
 					}

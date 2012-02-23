@@ -157,7 +157,6 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 						request.setURI(new URI(
 								"http://www.google.com/ig/api?oe=utf-8&weather="+city));
 					} else {
-						System.out.println("http://www.google.com/ig/api?oe=utf-8&weather=,,,"+(long)(latitude*1000000)+","+(long)(longitude*1000000));
 						request.setURI(new URI(
 								"http://www.google.com/ig/api?oe=utf-8&weather=,,,"+(long)(latitude*1000000)+","+(long)(longitude*1000000)));
 					}
