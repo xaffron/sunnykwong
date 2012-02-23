@@ -103,7 +103,13 @@ public class OMCThemeUnzipActivity extends Activity {
 		pdMessage = "";
 
 		uri = getIntent().getData();
-
+		// Check file scheme first... we don't want to support Preview!
+		if (uri.getScheme().equals("content")) {
+			Toast.makeText(getApplicationContext(), "Please use Download instead of Preview to import an OMC clock!", Toast.LENGTH_SHORT).show();
+			finish();
+			return;
+		}
+		
 		if (!OMC.checkSDPresent()) {
 			finish();
 			return;
