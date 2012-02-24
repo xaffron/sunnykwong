@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="min1width">72dp</dimen>
+    <dimen name="min2width">146dp</dimen>
+    <dimen name="min3width">220dp</dimen>
+    <dimen name="min4width">294dp</dimen>
+    <dimen name="min1Height">72dp</dimen>
+    <dimen name="min2Height">146dp</dimen>
+    <dimen name="min3Height">220dp</dimen>
+    <dimen name="min4Height">294dp</dimen>
+</resources>

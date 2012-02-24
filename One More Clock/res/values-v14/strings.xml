@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">One More Clock</string>
+<string name="widget_name1x3">One More Clock</string>
+<string name="widget_name2x1">One More Clock</string>
+<string name="widget_name2x2">One More Clock</string>
+<string name="widget_name3x1">One More Clock</string>
+<string name="widget_name3x3">One More Clock</string>
+<string name="widget_name4x1">One More Clock</string>
+<string name="widget_name4x2">One More Clock</string>
+<string name="widget_name4x4">One More Clock</string>
+</resources>
