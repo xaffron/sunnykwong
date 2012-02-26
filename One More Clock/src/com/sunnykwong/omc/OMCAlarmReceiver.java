@@ -46,18 +46,16 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		}
 		//SUNNY WEATHER
 		if (action.equals(Intent.ACTION_TIME_TICK)) {
-			Time t = new Time();
-			t.set(System.currentTimeMillis());
-			// If we have never updated weather before, try
-			if (OMC.LASTWEATHERTRY==0l) {
-				GoogleWeatherXMLHandler.updateWeather();
-			// If it has been less than 15 minutes after the last weather try, don't try yet
-			} else if (System.currentTimeMillis()-OMC.LASTWEATHERTRY < 15l * 60000l) {
-				// do nothing
-			} else if (System.currentTimeMillis()-OMC.LASTWEATHERREFRESH >= 60l * 60000l) {
-			// IF it has been more than an hour after the last successful weather update, try
-				// Get weather updates
-				GoogleWeatherXMLHandler.updateWeather();
+			
+			// First, are we due for a weather update?
+			if (System.currentTimeMillis()>OMC.NEXTWEATHERREFRESH) {
+				// If it has been less than 15 minutes after the last weather try, don't try yet
+				if (System.currentTimeMillis()-OMC.LASTWEATHERTRY < 15l * 60000l) {
+					// do nothing
+				} else {
+					// Get weather updates
+					GoogleWeatherXMLHandler.updateWeather();
+				}
 			}
 		}
 		//SUNNY

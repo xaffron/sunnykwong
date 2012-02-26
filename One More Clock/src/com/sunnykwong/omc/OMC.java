@@ -47,6 +47,8 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -128,7 +130,7 @@ public class OMC extends Application {
 	static Uri PAIDURI;
 	
 	static long LASTUPDATEMILLIS, LEASTLAGMILLIS=200;
-	static long LASTWEATHERTRY=0l,LASTWEATHERREFRESH=0l;
+	static long LASTWEATHERTRY=0l,NEXTWEATHERREFRESH=0l;
 	static String LASTKNOWNCITY, LASTKNOWNCOUNTRY;
 	static int UPDATEFREQ = 20000;
 	static final Random RND = new Random();
@@ -200,7 +202,7 @@ public class OMC extends Application {
     
     static final ArrayBlockingQueue<Matrix> MATRIXPOOL = new ArrayBlockingQueue<Matrix>(2);
     static final ArrayBlockingQueue<Paint> PAINTPOOL = new ArrayBlockingQueue<Paint>(2);
-    static final ArrayBlockingQueue<Bitmap> WIDGETPOOL = new ArrayBlockingQueue<Bitmap>(1);
+    static final ArrayBlockingQueue<Bitmap> WIDGETPOOL = new ArrayBlockingQueue<Bitmap>(3);
     
     static final Bitmap ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
 
@@ -281,7 +283,9 @@ public class OMC extends Application {
 		// We are using Zehro's solution (listening for TIME_TICK instead of using AlarmManager + FG Notification) which
 		// should be quite a bit more graceful.
 		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
-		
+		OMC.LASTWEATHERTRY = OMC.PREFS.getLong("weather_lastweathertry", 0l);
+		OMC.NEXTWEATHERREFRESH = OMC.PREFS.getLong("weather_nextweatherrefresh", 0l);
+
 		// If we're from a legacy version, then we need to wipe all settings clean to avoid issues.
 		if (OMC.PREFS.getString("version", "1.0.x").startsWith("1.0") || OMC.PREFS.getString("version", "1.0.x").startsWith("1.1")) {
 			Log.i(OMC.OMCSHORT + "App","Upgrade from legacy version, wiping all settings.");
@@ -489,7 +493,7 @@ public class OMC extends Application {
 	static void setServiceAlarm (long lTimeToRefresh) {
 		//We want the pending intent to be for this service, and 
 		// at the same FG/BG preference as the intent that woke us up
-		OMC.ALARMS.cancel(OMC.FGPENDING);
+		OMC.ALARMS.cancel(OMC.FGPENDING); 
 		OMC.ALARMS.cancel(OMC.BGPENDING);
 		if (OMC.FG) {
 			OMC.ALARMS.set(AlarmManager.RTC, lTimeToRefresh, OMC.FGPENDING);
@@ -1127,11 +1131,11 @@ public class OMC extends Application {
 						Time t = new Time();
 						t.parse(jsonWeather.optString("current_local_time"));
 						Time t2 = new Time();
-						t2.set(OMC.LASTWEATHERREFRESH);
+						t2.set(OMC.NEXTWEATHERREFRESH);
 						Time t3 = new Time();
 						t3.set(OMC.LASTWEATHERTRY);
-						result = "Weather as of " + t.format("%R") + "; lastupd " + t2.format("%R")
-								+ " " + "; lasttry " + t3.format("%R");
+						result = "Weather as of " + t.format("%R") + "; lastry " + t3.format("%R")
+								+ "; nextupd " + t2.format("%R");
 					} else if (sType.equals("condition")) {
 						result = jsonWeather.optString("condition");
 					} else if (sType.equals("temp")) {
@@ -1160,11 +1164,12 @@ public class OMC extends Application {
 						}
 					} else {
 						// JSON parse error - probably uknown weather. Do nothing
+						result = "--";
 					}
 				} catch (JSONException e) {
 					e.printStackTrace();
 					// JSON parse error - probably uknown weather. Do nothing
-					
+					result = "--";
 				}
 			}
 		} else if (sToken.equals("circle")) {
@@ -1564,6 +1569,18 @@ public class OMC extends Application {
     		e.printStackTrace();
     		return null;
     	}
+    }
+
+    static public boolean isConnected() {
+    	ConnectivityManager conMgr =  (ConnectivityManager)OMC.CONTEXT.getSystemService(Context.CONNECTIVITY_SERVICE);
+    	boolean result = false;
+    	for (NetworkInfo ni: conMgr.getAllNetworkInfo()) {
+    		if (ni.isConnected()) {
+    			result = true;
+    			break;
+    		}
+    	}
+    	return result;
     }
     
     static public void returnWidgetBMP(Bitmap bmp) {

@@ -55,15 +55,15 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         		String sWSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
     			JSONObject jsonWeather = new JSONObject(OMC.PREFS.getString("weather", ""));
     			String sCity = jsonWeather.getString("city");
-    			timeTemp.set(OMC.LASTWEATHERTRY);
-    			timeTemp2.set(OMC.LASTWEATHERREFRESH);
+    			timeTemp.set(OMC.NEXTWEATHERREFRESH);
+    			timeTemp2.set(OMC.LASTWEATHERTRY);
         		if (sWSetting.equals("bylatlong")) {
         			prefWeather.setTitle("Weather: " + sCity +" (Detected)");
-        			prefWeather.setSummary("Last refresh: "+timeTemp2.format("%R") + " Last try: "+timeTemp.format("%R"));
+        			prefWeather.setSummary("Last try: "+timeTemp2.format("%R") + " Next Refresh: "+timeTemp.format("%R"));
         			prefWeatherDisplay.setSummary("Now displaying in "+ OMC.PREFS.getString("weatherdisplay", "f").toUpperCase());
         		} else if (sWSetting.equals("specific")) {
         			prefWeather.setTitle("Weather: Unknown (Fixed)");
-        			prefWeather.setSummary("Last update: "+timeTemp2.format("%R") + " Last try: "+timeTemp.format("%R"));
+        			prefWeather.setSummary("Last try: "+timeTemp2.format("%R") + " Next Refresh: "+timeTemp.format("%R"));
         			prefWeatherDisplay.setSummary("Now displaying in "+ OMC.PREFS.getString("weatherdisplay", "f").toUpperCase());
         		} else {
         			prefWeather.setTitle("Weather updates disabled");

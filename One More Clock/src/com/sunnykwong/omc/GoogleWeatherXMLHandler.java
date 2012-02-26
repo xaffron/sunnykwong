@@ -59,6 +59,32 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		jsonOneDayForecast = null;
 	}
 
+	static public void updateWeather() {
+		String sWeatherSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
+		if (sWeatherSetting.equals("disabled")) {
+        	Log.i(OMC.OMCSHORT + "Weather", "Weather Disabled, no weather update");
+			// If weather is disabled (default), do nothing
+			return;
+		} else if (!OMC.isConnected()) {
+			// If phone has no connectivity, do nothing
+        	Log.i(OMC.OMCSHORT + "Weather", "No connectivity - no weather update");
+			return;
+		} else if (sWeatherSetting.equals("bylatlong")) {
+			// If weather is disabled (default), do nothing
+			OMC.LASTWEATHERTRY=System.currentTimeMillis();
+			OMC.PREFS.edit().putLong("weather_lastweathertry", OMC.LASTWEATHERTRY).commit();
+			GoogleWeatherXMLHandler.updateLocationThenWeather();
+			return;
+		} else if (sWeatherSetting.equals("specific")) {
+			// If weather is disabled (default), do nothing
+			OMC.LASTWEATHERTRY=System.currentTimeMillis();
+			OMC.PREFS.edit().putLong("weather_lastweathertry", OMC.LASTWEATHERTRY).commit();
+			GoogleWeatherXMLHandler.updateWeather(0d, 0d, "", OMC.PREFS.getString("weathercity", "Unknown"), false);
+			return;
+		}
+		
+	}
+	
 	static public void updateLocationThenWeather() {
     	OMC.LL = new LocationListener() {
             public void onLocationChanged(Location location) {
@@ -127,28 +153,10 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		t.start();
 	}
 	
-	static public void updateWeather() {
-		String sWeatherSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
-		if (sWeatherSetting.equals("disabled")) {
-			// If weather is disabled (default), do nothing
-			return;
-		} else if (sWeatherSetting.equals("bylatlong")) {
-			// If weather is disabled (default), do nothing
-			GoogleWeatherXMLHandler.updateLocationThenWeather();
-			return;
-		} else if (sWeatherSetting.equals("specific")) {
-			// If weather is disabled (default), do nothing
-			GoogleWeatherXMLHandler.updateWeather(0d, 0d, "", OMC.PREFS.getString("weathercity", "Unknown"), false);
-			return;
-		}
-		
-	}
-	
 	static public void updateWeather(final double latitude, final double longitude, final String country, final String city, final boolean bylatlong) {
 		ELEMENTS = new ArrayList<HashMap<String, String>>();
 		Thread t = new Thread() {
 			public void run() {
-				OMC.LASTWEATHERTRY=System.currentTimeMillis();
 				try {
 					XMLReader xr = XMLReaderFactory.createXMLReader();
 					GoogleWeatherXMLHandler GXhandler = new GoogleWeatherXMLHandler();
@@ -288,7 +296,20 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 			e.printStackTrace();
 		}
 		OMC.PREFS.edit().putString("weather", jsonWeather.toString()).commit();
-		OMC.LASTWEATHERREFRESH=System.currentTimeMillis();
+		Time t = new Time();
+		t.parse(jsonWeather.optString("current_local_time"));
+		// If the weather information (international, mostly) doesn't have a timestamp, set next update to be
+		// 78 minutes from now
+		if (t.year<1980) {
+			OMC.NEXTWEATHERREFRESH = Math.max(System.currentTimeMillis() + 78l * 60000l, OMC.LASTWEATHERTRY+15l*60000l);
+		} else {
+		// If we get a weather station timestamp, we try to "catch" the update by setting next update to 78 minutes
+		// after the last station refresh.
+			OMC.NEXTWEATHERREFRESH = Math.max(t.toMillis(false) + 78l * 60000l, OMC.LASTWEATHERTRY+15l*60000l);
+		}
+		OMC.PREFS.edit().putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH).commit();
+
+		
 	}
 
 }

@@ -93,7 +93,7 @@
 		"name":"Weather",
 		"type":"text",
 		"enabled":"true",
-		"text":"[%weather_tempf%]",
+		"text":"[%weather_debug%]",
 		"filename":"/system/fonts/DroidSans.ttf",
 		"x":"410","y":"135",
 		"fgcolor":"#ffffffff","bgcolor":"#a0000000",
