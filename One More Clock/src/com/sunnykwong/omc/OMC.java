@@ -348,6 +348,8 @@ public class OMC extends Application {
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIMEZONE_CHANGED));
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_CONFIGURATION_CHANGED));
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+		registerReceiver(OMC.aRC, new IntentFilter(OMC.FGINTENT.getAction()));
+		registerReceiver(OMC.aRC, new IntentFilter(OMC.BGINTENT.getAction()));
 		
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(3);
 		OMC.BMPMAP = new HashMap<String, Bitmap>(16);

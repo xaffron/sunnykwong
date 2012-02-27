@@ -88,11 +88,6 @@
 		</activity>
         <service android:enabled="true" android:name="com.sunnykwong.omc.OMCService"/>
         <receiver android:name="com.sunnykwong.omc.OMCAlarmReceiver" >
-			<intent-filter>
-				<action android:name="com.sunnykwong.omc.FGSERVICE"/>
-				<action android:name="com.sunnykwong.omc.BGSERVICE"/>
-        		<category android:name="android.intent.category.DEFAULT" />  
-			</intent-filter>
 		</receiver>
         <receiver android:name="com.sunnykwong.omc.OMCConfigReceiver">
     		<intent-filter>

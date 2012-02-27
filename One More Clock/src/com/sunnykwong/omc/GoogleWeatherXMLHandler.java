@@ -60,6 +60,11 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 	}
 
 	static public void updateWeather() {
+		OMC.LASTWEATHERTRY=System.currentTimeMillis();
+		OMC.NEXTWEATHERREFRESH=OMC.LASTWEATHERTRY+15l*60000l;
+		OMC.PREFS.edit().putLong("weather_lastweathertry", OMC.LASTWEATHERTRY)
+		.putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH)
+		.commit();
 		String sWeatherSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
 		if (sWeatherSetting.equals("disabled")) {
         	Log.i(OMC.OMCSHORT + "Weather", "Weather Disabled, no weather update");
@@ -71,14 +76,10 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 			return;
 		} else if (sWeatherSetting.equals("bylatlong")) {
 			// If weather is disabled (default), do nothing
-			OMC.LASTWEATHERTRY=System.currentTimeMillis();
-			OMC.PREFS.edit().putLong("weather_lastweathertry", OMC.LASTWEATHERTRY).commit();
 			GoogleWeatherXMLHandler.updateLocationThenWeather();
 			return;
 		} else if (sWeatherSetting.equals("specific")) {
 			// If weather is disabled (default), do nothing
-			OMC.LASTWEATHERTRY=System.currentTimeMillis();
-			OMC.PREFS.edit().putLong("weather_lastweathertry", OMC.LASTWEATHERTRY).commit();
 			GoogleWeatherXMLHandler.updateWeather(0d, 0d, "", OMC.PREFS.getString("weathercity", "Unknown"), false);
 			return;
 		}

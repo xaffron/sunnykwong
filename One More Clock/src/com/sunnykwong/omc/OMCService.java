@@ -211,24 +211,4 @@ public class OMCService extends Service {
         }
     }
     
-//    @Override
-//    public void onConfigurationChanged(Configuration newConfig) {
-//    	// TODO Auto-generated method stub
-//		//	Tell the widgets to refresh themselves.
-//		OMCService.RUNNING=true;
-//
-//		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
-//
-//		handleCommand(OMC.SVCSTARTINTENT);
-//
-//		if (!OMCService.RUNNING || !OMC.FG) {
-//			// If we're not in FG, then go to sleep and let the alarm wake us up again
-//			// If we're supposed to stop, then just stop
-//			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Svc","Stopping Svc");
-//			this.stopSelf();
-//		}
-//
-//    	super.onConfigurationChanged(newConfig);
-//    }
-
 }

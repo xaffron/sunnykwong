@@ -36,7 +36,7 @@ public class OMCWidgetDrawEngine {
 		OMC.TIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)*1000l)/1000l);
 
 		if (!OMCService.RUNNING) {
-			OMC.setServiceAlarm(System.currentTimeMillis() + 1000);
+			OMC.setServiceAlarm(System.currentTimeMillis() + 500);
 		}
 		AppWidgetManager aWM = AppWidgetManager.getInstance(context);
 
@@ -665,18 +665,21 @@ public class OMCWidgetDrawEngine {
 
 
 		final Paint pt1 = OMC.getPaint();
-		pt1.setAntiAlias(true);
-		pt1.setStyle(Paint.Style.FILL_AND_STROKE);
-		pt1.setStrokeWidth(1);
 
 		final RectF tempFGRect = new RectF();
 		final RectF tempBGRect = new RectF();
 		
 		try {
-			tempFGRect.left = (float)layer.getDouble("x")-(float)layer.getDouble("radius");
-			tempFGRect.top = (float)layer.getDouble("y")-(float)layer.getDouble("radius");
-			tempFGRect.right = (float)layer.getDouble("x")+(float)layer.getDouble("radius");
-			tempFGRect.bottom = (float)layer.getDouble("y")+(float)layer.getDouble("radius");
+			pt1.setAntiAlias(true);
+			pt1.setStyle(Paint.Style.STROKE);
+			pt1.setStrokeCap(Paint.Cap.BUTT);
+			final float fInnerRadius = (float)layer.optDouble("inner_radius", 0);
+			final float fStrokeWidth = Math.abs((float)layer.getDouble("radius")-fInnerRadius);
+			pt1.setStrokeWidth(fStrokeWidth);
+			tempFGRect.left = (float)layer.getDouble("x")-fInnerRadius-fStrokeWidth/2f;
+			tempFGRect.top = (float)layer.getDouble("y")-fInnerRadius-fStrokeWidth/2f;
+			tempFGRect.right = (float)layer.getDouble("x")+fInnerRadius+fStrokeWidth/2f;
+			tempFGRect.bottom = (float)layer.getDouble("y")+fInnerRadius+fStrokeWidth/2f;
 		} catch (JSONException e) {
 			Log.w(OMC.OMCSHORT + "Engine", " (arc) is missing left/top/right/bottom values!  Giving up.");
 			if (OMC.DEBUG) e.printStackTrace();
@@ -698,11 +701,11 @@ public class OMCWidgetDrawEngine {
 			}
 		}
 		final Paint pt2 = OMC.getPaint();
-		pt2.setAntiAlias(true);
-		pt2.setStyle(Paint.Style.FILL_AND_STROKE);
-		pt2.setStrokeWidth(1);
 
 		try {
+			pt2.setAntiAlias(true);
+			pt2.setStyle(Paint.Style.STROKE);
+			pt2.setStrokeCap(Paint.Cap.BUTT);
 			pt2.setColor(Color.parseColor(layer.optString("bgcolor")));
 		} catch (java.lang.IllegalArgumentException e) {
 			// JSON has unknown color; maybe # is missing?
@@ -749,7 +752,7 @@ public class OMCWidgetDrawEngine {
 			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5)), 0f, 0f, pt2.getColor());
 		}
 		//Either way, draw the proper panel
-		cvas.drawArc(tempFGRect, layer.optInt("cw_start_angle"), layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle"), true, pt1);
+		cvas.drawArc(tempFGRect, layer.optInt("cw_start_angle"), layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle"), false, pt1);
 		OMC.returnPaint(pt1);
 		OMC.returnPaint(pt2);
 	}

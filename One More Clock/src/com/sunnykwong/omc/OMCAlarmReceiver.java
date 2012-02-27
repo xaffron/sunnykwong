@@ -11,10 +11,9 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// Set the alarm for next tick first, so we don't lose sync
-//		OMC.setServiceAlarm(((System.currentTimeMillis()+ 5000 + OMC.UPDATEFREQ )/OMC.UPDATEFREQ) * OMC.UPDATEFREQ - OMC.LEASTLAGMILLIS);
 		OMC.setServiceAlarm(((System.currentTimeMillis() + OMC.UPDATEFREQ )/OMC.UPDATEFREQ) * OMC.UPDATEFREQ - OMC.LEASTLAGMILLIS);
 
-		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Rcvd " + intent.getAction());
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Rcvd " + intent.toString());
 		
 		
 		// If we come back from a low memory state, all sorts of screwy stuff might happen.
@@ -82,11 +81,11 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		
 		// If the screen is on, honor the update frequency.
 		if (OMC.SCREENON) {
-			// Prevent abusive updates - update no more than every 5 secs.
-//			if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 5000 && (action.equals(OMC.FGINTENT) || action.equals(OMC.BGINTENT))) {
-//				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Abusive; aborting update " + System.currentTimeMillis() + " " + OMC.LASTUPDATEMILLIS);
-//				return;
-//			}
+			// Prevent abusive updates - update no more than every .5 secs.
+			if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 500l && (action.equals(OMC.FGINTENT.getAction()) || action.equals(OMC.BGINTENT.getAction()) || action.equals(Intent.ACTION_TIME_TICK))) {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Last upd was " + (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS) + "ms ago! Not redrawing clocks again.");
+				return;
+			}
 			OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
 			context.startService(OMC.SVCSTARTINTENT);
 		// If the screen is off, update bare minimum to mimic foreground mode.
