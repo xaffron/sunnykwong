@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="0dp" android:gravity="center_vertical|center_horizontal">
+
+        <TextView
+            android:id="@+id/CurrTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:text="100F"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:minHeight="95dp"
+            android:textSize="48dp" android:gravity="center_vertical|center_horizontal"/>
+
+        <TextView
+            android:id="@+id/City"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/CurrTemp"
+            android:layout_toRightOf="@+id/CurrTemp"
+            android:gravity="bottom|right"
+            android:minHeight="68dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            android:text="Hong Kong"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/Conditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/City"
+            android:layout_below="@+id/City"
+            android:gravity="bottom|right"
+            android:paddingBottom="10dp"
+            android:paddingRight="10dp"
+            android:text="93F Mostly Cloudy"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/dayofweek0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/CurrTemp"
+            android:background="@drawable/fredicon"
+            android:gravity="right|bottom"
+            android:minHeight="70dp"
+            android:minWidth="75dp"
+            android:padding="7dp"
+            android:text="Wed"
+            android:textSize="24dp" />
+        <TextView
+            android:id="@+id/ForecastCond0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/dayofweek0"
+            android:layout_toRightOf="@+id/dayofweek0"
+            android:gravity="bottom|right"
+            android:minHeight="70dp"
+            android:minWidth="150dp"
+            android:padding="10dp"
+            android:text="Mostly Cloudy"
+            android:textSize="16dp" />
+        <TextView
+            android:id="@+id/HighTemp0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignTop="@+id/ForecastCond0"
+            android:layout_toRightOf="@+id/ForecastCond0"
+            android:gravity="right|bottom"
+            android:minHeight="25dp"
+            android:minWidth="75dp"
+            android:padding="5dp"
+            android:text="93F"
+            android:textSize="24dp" />
+        <TextView
+            android:id="@+id/LowTemp0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ForecastCond0"
+            android:layout_toRightOf="@+id/ForecastCond0"
+            android:gravity="right|bottom"
+            android:minHeight="25dp"
+            android:minWidth="75dp"
+            android:padding="5dp"
+            android:text="93F"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/dayofweek1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/dayofweek0"
+            android:background="@drawable/fredicon"
+            android:gravity="right|bottom"
+            android:minHeight="70dp"
+            android:minWidth="75dp"
+            android:padding="7dp"
+            android:text="Wed"
+            android:textSize="24dp" />
+        <TextView
+            android:id="@+id/ForecastCond1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/dayofweek1"
+            android:layout_toRightOf="@+id/dayofweek1"
+            android:gravity="bottom|right"
+            android:minHeight="70dp"
+            android:minWidth="150dp"
+            android:padding="10dp"
+            android:text="Mostly Cloudy"
+            android:textSize="16dp" />
+        <TextView
+            android:id="@+id/HighTemp1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignTop="@+id/ForecastCond1"
+            android:layout_toRightOf="@+id/ForecastCond1"
+            android:gravity="right|bottom"
+            android:minHeight="25dp"
+            android:minWidth="75dp"
+            android:padding="5dp"
+            android:text="93F"
+            android:textSize="24dp" />
+        <TextView
+            android:id="@+id/LowTemp1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ForecastCond1"
+            android:layout_toRightOf="@+id/ForecastCond1"
+            android:gravity="right|bottom"
+            android:minHeight="25dp"
+            android:minWidth="75dp"
+            android:padding="5dp"
+            android:text="93F"
+            android:textSize="24dp" />
+        
+                <TextView
+            android:id="@+id/dayofweek2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/dayofweek1"
+            android:background="@drawable/fredicon"
+            android:gravity="right|bottom"
+            android:minHeight="70dp"
+            android:minWidth="75dp"
+            android:padding="7dp"
+            android:text="Wed"
+            android:textSize="24dp" />
+        <TextView
+            android:id="@+id/ForecastCond2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/dayofweek2"
+            android:layout_toRightOf="@+id/dayofweek2"
+            android:gravity="bottom|right"
+            android:minHeight="70dp"
+            android:minWidth="150dp"
+            android:padding="10dp"
+            android:text="Mostly Cloudy"
+            android:textSize="16dp" />
+        <TextView
+            android:id="@+id/HighTemp2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignTop="@+id/ForecastCond2"
+            android:layout_toRightOf="@+id/ForecastCond2"
+            android:gravity="right|bottom"
+            android:minHeight="25dp"
+            android:minWidth="75dp"
+            android:padding="5dp"
+            android:text="93F"
+            android:textSize="24dp" />
+        <TextView
+            android:id="@+id/LowTemp2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ForecastCond2"
+            android:layout_toRightOf="@+id/ForecastCond2"
+            android:gravity="right|bottom"
+            android:minHeight="25dp"
+            android:minWidth="75dp"
+            android:padding="5dp"
+            android:text="93F"
+            android:textSize="24dp" />
+        
+                <TextView
+            android:id="@+id/dayofweek3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/dayofweek2"
+            android:background="@drawable/fredicon"
+            android:gravity="right|bottom"
+            android:minHeight="70dp"
+            android:minWidth="75dp"
+            android:padding="7dp"
+            android:text="Wed"
+            android:textSize="24dp" />
+        <TextView
+            android:id="@+id/ForecastCond3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/dayofweek3"
+            android:layout_toRightOf="@+id/dayofweek3"
+            android:gravity="bottom|right"
+            android:minHeight="70dp"
+            android:minWidth="150dp"
+            android:padding="10dp"
+            android:text="Mostly Cloudy"
+            android:textSize="16dp" />
+        <TextView
+            android:id="@+id/HighTemp3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignTop="@+id/ForecastCond3"
+            android:layout_toRightOf="@+id/ForecastCond3"
+            android:gravity="right|bottom"
+            android:minHeight="25dp"
+            android:minWidth="75dp"
+            android:padding="5dp"
+            android:text="93F"
+            android:textSize="24dp" />
+        <TextView
+            android:id="@+id/LowTemp3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ForecastCond3"
+            android:layout_toRightOf="@+id/ForecastCond3"
+            android:gravity="right|bottom"
+            android:minHeight="25dp"
+            android:minWidth="75dp"
+            android:padding="5dp"
+            android:text="93F"
+            android:textSize="24dp" />
+        
+
+    </RelativeLayout>

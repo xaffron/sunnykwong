@@ -3,6 +3,7 @@ package com.sunnykwong.omc;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.BatteryManager;
 import android.text.format.Time;
 import android.util.Log;
 
@@ -34,12 +35,35 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.FGSERVICE");
 		}
 
+		
 		if (action.equals(Intent.ACTION_BATTERY_CHANGED)) {
 			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm","Batt "+ intent.getIntExtra("level", 0) + "/" +intent.getIntExtra("scale", 10000));
+			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm","ChargeStatus: "+ action);
+			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm",""+intent.getIntExtra("status", -1));
+			String sChargeStatus = "Unknown";
+			switch (intent.getIntExtra("status", -1)) {
+			case BatteryManager.BATTERY_STATUS_CHARGING: 
+				sChargeStatus="Charging";
+				break;
+			case BatteryManager.BATTERY_STATUS_DISCHARGING:
+				sChargeStatus="Discharging";
+				break;
+			case BatteryManager.BATTERY_STATUS_FULL:
+				sChargeStatus="Full";
+				break;
+			case BatteryManager.BATTERY_STATUS_NOT_CHARGING:
+				sChargeStatus="Not Charging";
+				break;
+			case -1:
+				break;
+			default:
+				break;
+			}
 			OMC.PREFS.edit()
 				.putInt("ompc_battlevel", intent.getIntExtra("level", 0))
 				.putInt("ompc_battscale", intent.getIntExtra("scale", 100))
 				.putInt("ompc_battpercent", (int)(100*intent.getIntExtra("level", 0)/(float)intent.getIntExtra("scale", 100)))
+				.putString("ompc_chargestatus", sChargeStatus)
 				.commit();
 			return;
 		}

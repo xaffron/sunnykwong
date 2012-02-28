@@ -44,6 +44,15 @@
                   android:screenOrientation="nosensor"
                   android:label="Choose Time Zone">
 		</activity>
+        <activity android:name="com.sunnykwong.omc.OMCWeatherForecastActivity"
+                  android:screenOrientation="nosensor"
+                  android:theme="@android:style/Theme.Dialog"
+                  android:label="Weather Forecast">
+			<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+        		</activity>
         <activity android:name="com.sunnykwong.omc.OMCThemeImportActivity"
                   android:screenOrientation="nosensor"
                   android:label="Theme Picker">

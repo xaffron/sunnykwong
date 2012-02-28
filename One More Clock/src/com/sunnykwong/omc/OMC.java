@@ -1116,9 +1116,11 @@ public class OMC extends Application {
 			if (sType.equals("battpercent")) {
 				result = String.valueOf((int)(1000+OMC.PREFS.getInt("ompc_"+sType,99))).substring(1);
 			} else if (sType.equals("battdecimal")) {
-					result = String.valueOf(OMC.PREFS.getInt("ompc_battpercent",99)/100f);
+				result = String.valueOf(OMC.PREFS.getInt("ompc_battpercent",99)/100f);
+			} else if (sType.equals("battlevel")) {
+				result = String.valueOf(OMC.PREFS.getInt("ompc_battlevel",99));
 			} else {
-				result = String.valueOf(OMC.PREFS.getInt("ompc_"+sType, 99));
+				result = OMC.PREFS.getString("ompc_"+sType, "99");
 			}
 		} else if (sToken.equals("weather")) {
 			if (OMC.PREFS.getString("weathersetting", "bylatlong").equals("disabled")) {
