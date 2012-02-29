@@ -39,20 +39,14 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		if (action.equals(Intent.ACTION_BATTERY_CHANGED)) {
 			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm","Batt "+ intent.getIntExtra("level", 0) + "/" +intent.getIntExtra("scale", 10000));
 			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm","ChargeStatus: "+ action);
-			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm",""+intent.getIntExtra("status", -1));
-			String sChargeStatus = "Unknown";
-			switch (intent.getIntExtra("status", -1)) {
-			case BatteryManager.BATTERY_STATUS_CHARGING: 
-				sChargeStatus="Charging";
+			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm",""+intent.getIntExtra("plugged", -1));
+			String sChargeStatus = "Discharging";
+			switch (intent.getIntExtra("plugged", -1)) {
+			case BatteryManager.BATTERY_PLUGGED_AC: 
+				sChargeStatus="AC Charging";
 				break;
-			case BatteryManager.BATTERY_STATUS_DISCHARGING:
-				sChargeStatus="Discharging";
-				break;
-			case BatteryManager.BATTERY_STATUS_FULL:
-				sChargeStatus="Full";
-				break;
-			case BatteryManager.BATTERY_STATUS_NOT_CHARGING:
-				sChargeStatus="Not Charging";
+			case BatteryManager.BATTERY_PLUGGED_USB:
+				sChargeStatus="USB Charging";
 				break;
 			case -1:
 				break;
