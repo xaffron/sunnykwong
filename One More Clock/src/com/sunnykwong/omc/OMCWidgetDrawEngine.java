@@ -383,6 +383,8 @@ public class OMCWidgetDrawEngine {
             		    PendingIntent.FLAG_UPDATE_CURRENT);
     		} else if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("alarms")) {
 	        	pi = OMC.ALARMCLOCKPENDING;
+    		} else if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("weather")) {
+	        	pi = OMC.WEATHERFORECASTPENDING;
     		} else {
     			intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
 	        	intent.setData(Uri.parse("omc:"+appWidgetId));

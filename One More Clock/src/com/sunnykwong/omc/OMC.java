@@ -11,8 +11,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -22,6 +24,10 @@ import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.concurrent.ArrayBlockingQueue;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -130,7 +136,8 @@ public class OMC extends Application {
 	static Uri PAIDURI;
 	
 	static long LASTUPDATEMILLIS, LEASTLAGMILLIS=200;
-	static long LASTWEATHERTRY=0l,NEXTWEATHERREFRESH=0l;
+	static long LASTWEATHERTRY=0l,LASTWEATHERREFRESH=0l,NEXTWEATHERREFRESH=0l;
+	static String WEATHERTRANSLATETYPE = "AccuWeather";
 	static String LASTKNOWNCITY, LASTKNOWNCOUNTRY;
 	static int UPDATEFREQ = 20000;
 	static final Random RND = new Random();
@@ -165,6 +172,7 @@ public class OMC extends Application {
 	static String CACHEPATH;
 	static String[] WORDNUMBERS;
 	static JSONObject STRETCHINFO;
+	static JSONObject WEATHERCONVERSIONS;
 	static String[] OVERLAYURIS;
 	static int[] OVERLAYRESOURCES;
 
@@ -196,8 +204,8 @@ public class OMC extends Application {
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
     static final Class<?>[] mSetForegroundSignature = new Class[] {boolean.class};
     static Intent SVCSTARTINTENT, CREDITSINTENT, PREFSINTENT, ALARMCLOCKINTENT;
-    static Intent GETSTARTERPACKINTENT, GETBACKUPPACKINTENT, GETEXTENDEDPACKINTENT, IMPORTTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT;
-    static PendingIntent FGPENDING, BGPENDING, PREFSPENDING, ALARMCLOCKPENDING;
+    static Intent GETSTARTERPACKINTENT, GETBACKUPPACKINTENT, GETEXTENDEDPACKINTENT, IMPORTTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT, OMCWEATHERFORECASTINTENT;
+    static PendingIntent FGPENDING, BGPENDING, PREFSPENDING, ALARMCLOCKPENDING, WEATHERFORECASTPENDING;
     static Notification FGNOTIFICIATION;
     
     static final ArrayBlockingQueue<Matrix> MATRIXPOOL = new ArrayBlockingQueue<Matrix>(2);
@@ -263,6 +271,9 @@ public class OMC extends Application {
 		OMC.GETBACKUPPACKINTENT = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
 		OMC.GETBACKUPPACKINTENT.setData(Uri.parse(OMC.EXTENDEDPACKBACKUP));
 		OMC.OMCMARKETINTENT = new Intent(Intent.ACTION_VIEW,OMC.PAIDURI);
+		OMC.OMCWEATHERFORECASTINTENT = new Intent(OMC.CONTEXT, OMCWeatherForecastActivity.class);
+        OMC.WEATHERFORECASTPENDING = PendingIntent.getActivity(this, 0, OMC.OMCWEATHERFORECASTINTENT, 0);
+
 		OMC.ALARMCLOCKINTENT = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER);
 		
 		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/";
@@ -336,7 +347,7 @@ public class OMC extends Application {
 	    	OMC.ALARMCLOCKINTENT = OMC.DUMMYINTENT;
 	    }
         OMC.ALARMCLOCKPENDING = PendingIntent.getActivity(this, 0, OMC.ALARMCLOCKINTENT, 0);
-
+        
 		
 		OMC.PREFS.edit().putString("version", OMC.THISVERSION).commit();
 		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
@@ -358,7 +369,11 @@ public class OMC extends Application {
 		OMC.WIDGETBMPMAP = new HashMap<Integer, Bitmap>(3);
 		
 		OMC.STRETCHINFO = null;
-		
+		try {
+			OMC.WEATHERCONVERSIONS = streamToJSONObject(OMC.AM.open("weathericons/weathertranslation.json"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		OMC.OVERLAYURIS = null;
 		OMC.OVERLAYRESOURCES = new int[] {
 				this.getResources().getIdentifier("NW", "id", OMC.PKGNAME),
@@ -389,6 +404,24 @@ public class OMC extends Application {
 		OMC.toggleWidgets(this);
 	}
 	
+	static public JSONObject streamToJSONObject(InputStream is) throws IOException {
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr,8192);
+			StringBuilder sb = new StringBuilder();
+			String line;
+			while ((line = br.readLine()) != null){
+				sb.append(line+"\n");
+			}
+			isr.close();
+			br.close();
+			try {
+				return new JSONObject(sb.toString());
+			} catch (JSONException e) {
+				e.printStackTrace();
+				return null;
+			}
+	}
+
 	static public void toggleWidgets(Context context) {
 			
     	// Enable/Disable the various size widgets
@@ -592,7 +625,39 @@ public class OMC extends Application {
 	}
 
 	public static Bitmap getBitmap(String sTheme, String src) {
-		
+		System.out.println(src);
+		if (src.startsWith("w-")) {
+			if (checkSDPresent()) {
+				OMC.WEATHERTRANSLATETYPE="AccuWeather";
+				File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/zz_WeatherSkin/accuweather.type");
+				if (f.exists()) {
+					OMC.WEATHERTRANSLATETYPE = "AccuWeather";
+				}
+				f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/zz_WeatherSkin/weatherdotcom.type");
+				if (f.exists()) {
+					OMC.WEATHERTRANSLATETYPE = "WeatherDotCom";
+				}
+			}
+			// Translate from condition to filename
+			final StringTokenizer st = new StringTokenizer(src, "-.");
+			st.nextToken();
+			final String condition = st.nextToken(), daynight=st.nextToken();
+			String src2;
+			if (condition.equals("")) {
+				src2="Unk";
+			} else {
+				try {
+					src2 = OMC.WEATHERCONVERSIONS.getJSONObject(OMC.WEATHERTRANSLATETYPE)
+								.getJSONObject(daynight).optString(condition,"Unk");
+				} catch (JSONException e) {
+					e.printStackTrace();
+					src2 = "Unk";
+				}
+			}
+			src2+=".png";
+			return getBitmap(sTheme, src2);
+		}
+
 		//Look in memory cache;
 		if (OMC.BMPMAP.get(src)!=null) {
 			return OMC.BMPMAP.get(src);
@@ -611,13 +676,22 @@ public class OMC extends Application {
 				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(f.getAbsolutePath()));
 				return OMC.BMPMAP.get(src);
 			}
+			f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/zz_WeatherSkin/"+src);
+			if (f.exists()) {
+				copyFile(f.getAbsolutePath(),OMC.CACHEPATH +"/"+sTheme+f.getName());
+				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(f.getAbsolutePath()));
+				return OMC.BMPMAP.get(src);
+			}
 		} 
 		// Look in assets
-		if (sTheme.equals(OMC.DEFAULTTHEME)) {
+		try {
+			return BitmapFactory.decodeStream(OMC.AM.open("defaulttheme/"+src));
+		} catch (Exception e) {
+			// Asset not found - do nothing
 			try {
-				return BitmapFactory.decodeStream(OMC.AM.open("defaulttheme/"+src));
-			} catch (Exception e) {
-				// Asset not found - do nothing
+				return BitmapFactory.decodeStream(OMC.AM.open("weathericons/"+src));
+			} catch (Exception ee) {
+				
 			}
 		}
 		// Bitmap can't be found anywhere

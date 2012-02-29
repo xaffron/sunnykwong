@@ -110,16 +110,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					HttpGet request = new HttpGet();
 					request.setURI(new URI("http://maps.googleapis.com/maps/api/geocode/json?latlng="+location.getLatitude()+","+location.getLongitude()+"&sensor=false"));
 					HttpResponse response = client.execute(request);
-					InputStreamReader isr = new InputStreamReader(response.getEntity().getContent());
-					BufferedReader br = new BufferedReader(isr,8192);
-					StringBuilder sb = new StringBuilder();
-					String line;
-					while ((line = br.readLine()) != null){
-						sb.append(line+"\n");
-					}
-					isr.close();
-					br.close();
-					result = new JSONObject(sb.toString());
+					result = OMC.streamToJSONObject(response.getEntity().getContent());
 					String city = OMC.LASTKNOWNCITY, country = OMC.LASTKNOWNCOUNTRY;
 					if (!result.optString("status").equals("OK")) {
 						// Not ok response - do nothing
@@ -173,9 +164,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 								"http://www.google.com/ig/api?oe=utf-8&weather="+city));
 					} else {
 						request.setURI(new URI(
-								"http://www.google.com/ig/api?oe=utf-8&weather=a9sd9f"));
-//						request.setURI(new URI(
-//								"http://www.google.com/ig/api?oe=utf-8&weather=,,,"+(long)(latitude*1000000)+","+(long)(longitude*1000000)));
+								"http://www.google.com/ig/api?oe=utf-8&weather=,,,"+(long)(latitude*1000000)+","+(long)(longitude*1000000)));
 					}
 					HttpResponse response = client.execute(request);
 
@@ -296,7 +285,9 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		tree = null;
 		
 		// Check if the reply was valid.
-		if (jsonWeather.optString("problem_cause")!=null) {
+		if (jsonWeather.optString("problem_cause",null)!=null) {
+			if (OMC.DEBUG)
+				Log.i(OMC.OMCSHORT + "Weather", "Error, so no refresh.");
 			//Google returned error - abandon refresh
 			return;
 		}
@@ -315,12 +306,13 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 			return;
 		}
 		OMC.PREFS.edit().putString("weather", jsonWeather.toString()).commit();
+		OMC.LASTWEATHERREFRESH = System.currentTimeMillis();
 		Time t = new Time();
 		t.parse(jsonWeather.optString("current_local_time"));
 		// If the weather information (international, mostly) doesn't have a timestamp, set next update to be
 		// 59 minutes from now
 		if (t.year<1980) {
-			OMC.NEXTWEATHERREFRESH = Math.max(System.currentTimeMillis() + 59l * 60000l, OMC.LASTWEATHERTRY+15l*60000l);
+			OMC.NEXTWEATHERREFRESH = Math.max(OMC.LASTWEATHERREFRESH + 59l * 60000l, OMC.LASTWEATHERTRY+15l*60000l);
 		} else {
 		// If we get a weather station timestamp, we try to "catch" the update by setting next update to 89 minutes
 		// after the last station refresh.
