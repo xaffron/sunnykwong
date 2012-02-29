@@ -180,7 +180,6 @@ public class OMCThemeUnzipActivity extends Activity {
 								mHandler.post(mUpdateTitle);
 								if (outputFile.exists()) {
 									pdMessage = ze.getName() + " exists; overwriting";
-									OMC.removeDirectory(outputFile);
 									mHandler.post(mUpdateStatus);
 								} else if (outputFile.mkdir()==false) {
 									//ERROR CREATING DIRECTORY - crap out
