@@ -50,17 +50,22 @@ public class OMCWeatherForecastActivity extends Activity {
 		try {
 			JSONObject weather = new JSONObject(OMC.PREFS.getString("weather", ""));
 			
-			setText(findViewById(getResources().getIdentifier("CurrTemp", "id", OMC.PKGNAME)),weather.optString("tempf"));
+			setText(findViewById(getResources().getIdentifier("CurrTemp", "id", OMC.PKGNAME)),weather.optString("temp"+OMC.PREFS.getString("weatherdisplay", "f")));
 			setText(findViewById(getResources().getIdentifier("City", "id", OMC.PKGNAME)),weather.optString("city"));
 			setText(findViewById(getResources().getIdentifier("Conditions", "id", OMC.PKGNAME)),weather.optString("condition"));
-
-			JSONArray wary = weather.optJSONArray("forecast_conditions");
+			System.out.println(weather.toString(5));
+			JSONArray wary = weather.optJSONArray("zzforecast_conditions");
 			for (int i=0; i<wary.length(); i++) {
 				JSONObject day = wary.optJSONObject(i);
 				setText(findViewById(getResources().getIdentifier("dayofweek"+i, "id", OMC.PKGNAME)),day.optString("day_of_week"));
 				setText(findViewById(getResources().getIdentifier("ForecastCond"+i, "id", OMC.PKGNAME)),day.optString("condition"));
-				setText(findViewById(getResources().getIdentifier("HighTemp"+i, "id", OMC.PKGNAME)),day.optString("high"));
-				setText(findViewById(getResources().getIdentifier("LowTemp"+i, "id", OMC.PKGNAME)),day.optString("low"));
+				if (OMC.PREFS.getString("weatherdisplay", "f").equals("f")) {
+					setText(findViewById(getResources().getIdentifier("HighTemp"+i, "id", OMC.PKGNAME)),day.optString("high")+"°F");
+					setText(findViewById(getResources().getIdentifier("LowTemp"+i, "id", OMC.PKGNAME)),day.optString("low")+"°F");
+				} else {
+					setText(findViewById(getResources().getIdentifier("HighTemp"+i, "id", OMC.PKGNAME)),day.optString("high_c")+"°C");
+					setText(findViewById(getResources().getIdentifier("LowTemp"+i, "id", OMC.PKGNAME)),day.optString("low_c")+"°C");
+				}
 			}
 		} catch (JSONException e) {
 			Toast.makeText(this, "No Weather Loaded!", Toast.LENGTH_LONG);

@@ -14,7 +14,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="10dp"
-            android:text="100F"
+            android:text="--"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:minHeight="95dp"
             android:textSize="48dp" android:gravity="center_vertical|center_horizontal"/>
@@ -28,10 +28,10 @@
             android:layout_toRightOf="@+id/CurrTemp"
             android:gravity="bottom|right"
             android:minHeight="68dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:paddingTop="20dp"
-            android:text="Hong Kong"
+            android:text="Unknown"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="24dp" />
 
@@ -42,10 +42,9 @@
             android:layout_alignLeft="@+id/City"
             android:layout_below="@+id/City"
             android:gravity="bottom|right"
-            android:paddingBottom="10dp"
-            android:paddingRight="10dp"
-            android:text="93F Mostly Cloudy"
-            android:textSize="12dp" />
+            android:paddingBottom="5dp"
+            android:text="Unknown"
+            android:textSize="16dp" android:paddingRight="5dp"/>
 
         <TextView
             android:id="@+id/dayofweek0"
@@ -53,12 +52,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/CurrTemp"
-            android:background="@drawable/fredicon"
             android:gravity="right|bottom"
             android:minHeight="70dp"
             android:minWidth="75dp"
             android:padding="7dp"
-            android:text="Wed"
+            android:text="--"
             android:textSize="24dp" />
         <TextView
             android:id="@+id/ForecastCond0"
@@ -70,7 +68,7 @@
             android:minHeight="70dp"
             android:minWidth="150dp"
             android:padding="10dp"
-            android:text="Mostly Cloudy"
+            android:text="Unknown"
             android:textSize="16dp" />
         <TextView
             android:id="@+id/HighTemp0"
@@ -83,7 +81,7 @@
             android:minHeight="25dp"
             android:minWidth="75dp"
             android:padding="5dp"
-            android:text="93F"
+            android:text="--"
             android:textSize="24dp" />
         <TextView
             android:id="@+id/LowTemp0"
@@ -95,7 +93,7 @@
             android:minHeight="25dp"
             android:minWidth="75dp"
             android:padding="5dp"
-            android:text="93F"
+            android:text="--"
             android:textSize="24dp" />
 
         <TextView
@@ -104,12 +102,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/dayofweek0"
-            android:background="@drawable/fredicon"
             android:gravity="right|bottom"
             android:minHeight="70dp"
             android:minWidth="75dp"
             android:padding="7dp"
-            android:text="Wed"
+            android:text="--"
             android:textSize="24dp" />
         <TextView
             android:id="@+id/ForecastCond1"
@@ -121,7 +118,7 @@
             android:minHeight="70dp"
             android:minWidth="150dp"
             android:padding="10dp"
-            android:text="Mostly Cloudy"
+            android:text="Unknown"
             android:textSize="16dp" />
         <TextView
             android:id="@+id/HighTemp1"
@@ -134,7 +131,7 @@
             android:minHeight="25dp"
             android:minWidth="75dp"
             android:padding="5dp"
-            android:text="93F"
+            android:text="--"
             android:textSize="24dp" />
         <TextView
             android:id="@+id/LowTemp1"
@@ -146,7 +143,7 @@
             android:minHeight="25dp"
             android:minWidth="75dp"
             android:padding="5dp"
-            android:text="93F"
+            android:text="--"
             android:textSize="24dp" />
         
                 <TextView
@@ -155,12 +152,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/dayofweek1"
-            android:background="@drawable/fredicon"
             android:gravity="right|bottom"
             android:minHeight="70dp"
             android:minWidth="75dp"
             android:padding="7dp"
-            android:text="Wed"
+            android:text="--"
             android:textSize="24dp" />
         <TextView
             android:id="@+id/ForecastCond2"
@@ -172,7 +168,7 @@
             android:minHeight="70dp"
             android:minWidth="150dp"
             android:padding="10dp"
-            android:text="Mostly Cloudy"
+            android:text="Unknown"
             android:textSize="16dp" />
         <TextView
             android:id="@+id/HighTemp2"
@@ -185,7 +181,7 @@
             android:minHeight="25dp"
             android:minWidth="75dp"
             android:padding="5dp"
-            android:text="93F"
+            android:text="--"
             android:textSize="24dp" />
         <TextView
             android:id="@+id/LowTemp2"
@@ -197,7 +193,7 @@
             android:minHeight="25dp"
             android:minWidth="75dp"
             android:padding="5dp"
-            android:text="93F"
+            android:text="--"
             android:textSize="24dp" />
         
                 <TextView
@@ -206,12 +202,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/dayofweek2"
-            android:background="@drawable/fredicon"
             android:gravity="right|bottom"
             android:minHeight="70dp"
             android:minWidth="75dp"
             android:padding="7dp"
-            android:text="Wed"
+            android:text="--"
             android:textSize="24dp" />
         <TextView
             android:id="@+id/ForecastCond3"
@@ -223,7 +218,7 @@
             android:minHeight="70dp"
             android:minWidth="150dp"
             android:padding="10dp"
-            android:text="Mostly Cloudy"
+            android:text="Unknown"
             android:textSize="16dp" />
         <TextView
             android:id="@+id/HighTemp3"
@@ -236,7 +231,7 @@
             android:minHeight="25dp"
             android:minWidth="75dp"
             android:padding="5dp"
-            android:text="93F"
+            android:text="--"
             android:textSize="24dp" />
         <TextView
             android:id="@+id/LowTemp3"
@@ -248,7 +243,7 @@
             android:minHeight="25dp"
             android:minWidth="75dp"
             android:padding="5dp"
-            android:text="93F"
+            android:text="--"
             android:textSize="24dp" />
         
 

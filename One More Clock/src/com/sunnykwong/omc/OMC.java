@@ -1141,18 +1141,18 @@ public class OMC extends Application {
 						result = "Weather as of " + t.format("%R") + "; lastry " + t3.format("%R")
 								+ "; nextupd " + t2.format("%R");
 					} else if (sType.equals("condition")) {
-						result = jsonWeather.optString("condition");
+						result = jsonWeather.optString("condition","Unknown");
 					} else if (sType.equals("temp")) {
-						result = jsonWeather.optString("temp_"+OMC.PREFS.getString("weatherdisplay", "f"))+OMC.PREFS.getString("weatherdisplay", "f").toUpperCase();
+						result = jsonWeather.optString("temp_"+OMC.PREFS.getString("weatherdisplay", "f"),"--")+OMC.PREFS.getString("weatherdisplay", "f").toUpperCase();
 					} else if (sType.equals("tempc")) {
-						result = jsonWeather.optString("temp_c");
+						result = jsonWeather.optString("temp_c","--");
 					} else if (sType.equals("tempf")) {
-						result = jsonWeather.optString("temp_f");
+						result = jsonWeather.optString("temp_f","--");
 					} else if (sType.equals("city")) {
-						result = jsonWeather.optString("city");
+						result = jsonWeather.optString("city","Unknown");
 					} else if (sType.equals("high")) {
 						int iDay = Integer.parseInt(st.nextToken());
-						String sFahrenheit = jsonWeather.optJSONArray("zzforecast_conditions").optJSONObject(iDay).optString("high");
+						String sFahrenheit = jsonWeather.getJSONArray("zzforecast_conditions").getJSONObject(iDay).optString("high","--");
 						if (OMC.PREFS.getString("weatherdisplay", "f").equals("c")) {
 							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32.2f)*5f/9f+0.5f));
 						} else {
@@ -1160,7 +1160,7 @@ public class OMC extends Application {
 						}
 					} else if (sType.equals("low")) {
 						int iDay = Integer.parseInt(st.nextToken());
-						String sFahrenheit = jsonWeather.optJSONArray("zzforecast_conditions").optJSONObject(iDay).optString("low");
+						String sFahrenheit = jsonWeather.getJSONArray("zzforecast_conditions").getJSONObject(iDay).optString("low","--");
 						if (OMC.PREFS.getString("weatherdisplay", "f").equals("c")) {
 							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32.2f)*5f/9f+0.5f));
 						} else {

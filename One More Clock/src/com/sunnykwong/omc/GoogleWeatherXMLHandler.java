@@ -173,7 +173,9 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 								"http://www.google.com/ig/api?oe=utf-8&weather="+city));
 					} else {
 						request.setURI(new URI(
-								"http://www.google.com/ig/api?oe=utf-8&weather=,,,"+(long)(latitude*1000000)+","+(long)(longitude*1000000)));
+								"http://www.google.com/ig/api?oe=utf-8&weather=a9sd9f"));
+//						request.setURI(new URI(
+//								"http://www.google.com/ig/api?oe=utf-8&weather=,,,"+(long)(latitude*1000000)+","+(long)(longitude*1000000)));
 					}
 					HttpResponse response = client.execute(request);
 
@@ -208,22 +210,21 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 							+ " - " + localName);
 				try {
 					jsonWeather.putOpt(localName, sData);
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-				if (localName.equals("current_date_time")){
-					String timeString = sData.substring(0, 19).replace(":","").replace("-","").replace(' ','T')+"Z";
-					Time tCurrentTime = new Time(Time.TIMEZONE_UTC);
-					tCurrentTime.parse(timeString);
-					try {
+					if (localName.equals("current_date_time")){
+						String timeString = sData.substring(0, 19).replace(":","").replace("-","").replace(' ','T')+"Z";
+						Time tCurrentTime = new Time(Time.TIMEZONE_UTC);
+						tCurrentTime.parse(timeString);
 						jsonWeather.putOpt("current_time", tCurrentTime.format2445());
 						jsonWeather.putOpt("current_millis", tCurrentTime.toMillis(false));
 						tCurrentTime.switchTimezone(Time.getCurrentTimezone());
 						jsonWeather.putOpt("current_local_time", tCurrentTime.format2445());
-					} catch (JSONException e) {
-						e.printStackTrace();
+					} else if (localName.equals("condition")) {
+						jsonWeather.putOpt("condition_lcase", atts.getValue("data").toLowerCase());
 					}
+				} catch (JSONException e) {
+					e.printStackTrace();
 				}
+
 			} else if (tree.peek()[0].equals("forecast_conditions")) {
 				if (OMC.DEBUG)
 					Log.i(OMC.OMCSHORT + "Weather", "Reading " + tree.peek()[0]
@@ -235,12 +236,21 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					if (localName.equals("low") || localName.equals("high")) {
 						int tempC = (int)((Float.parseFloat(atts.getValue("data"))-32.2f)*5f/9f);
 						jsonOneDayForecast.putOpt(localName+"_c", tempC);
+					} else if (localName.equals("condition")) {
+						jsonOneDayForecast.putOpt("condition_lcase", atts.getValue("data").toLowerCase());
 					}
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
+			} else if (localName.equals("problem_cause")) {
+				if (OMC.DEBUG)
+					Log.i(OMC.OMCSHORT + "Weather", "Google Weather returned error.");
+				try {
+					jsonWeather.putOpt(localName, "error");
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
 			}
-
 		}
 		tree.push(new String[] { localName });
 	}
@@ -284,6 +294,13 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		// - just basic cleanup.
 		tree.clear();
 		tree = null;
+		
+		// Check if the reply was valid.
+		if (jsonWeather.optString("problem_cause")!=null) {
+			//Google returned error - abandon refresh
+			return;
+		}
+			
 		try {
 			if (jsonWeather.optString("city")==null || jsonWeather.optString("city").equals("")) {
 				if (!jsonWeather.optString("city2").equals(""))
@@ -295,18 +312,19 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
+			return;
 		}
 		OMC.PREFS.edit().putString("weather", jsonWeather.toString()).commit();
 		Time t = new Time();
 		t.parse(jsonWeather.optString("current_local_time"));
 		// If the weather information (international, mostly) doesn't have a timestamp, set next update to be
-		// 78 minutes from now
+		// 59 minutes from now
 		if (t.year<1980) {
-			OMC.NEXTWEATHERREFRESH = Math.max(System.currentTimeMillis() + 78l * 60000l, OMC.LASTWEATHERTRY+15l*60000l);
+			OMC.NEXTWEATHERREFRESH = Math.max(System.currentTimeMillis() + 59l * 60000l, OMC.LASTWEATHERTRY+15l*60000l);
 		} else {
-		// If we get a weather station timestamp, we try to "catch" the update by setting next update to 78 minutes
+		// If we get a weather station timestamp, we try to "catch" the update by setting next update to 82 minutes
 		// after the last station refresh.
-			OMC.NEXTWEATHERREFRESH = Math.max(t.toMillis(false) + 78l * 60000l, OMC.LASTWEATHERTRY+15l*60000l);
+			OMC.NEXTWEATHERREFRESH = Math.max(t.toMillis(false) + 82l * 60000l, OMC.LASTWEATHERTRY+15l*60000l);
 		}
 		OMC.PREFS.edit().putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH).commit();
 
