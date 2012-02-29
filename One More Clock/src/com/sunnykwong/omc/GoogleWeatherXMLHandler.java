@@ -322,9 +322,9 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		if (t.year<1980) {
 			OMC.NEXTWEATHERREFRESH = Math.max(System.currentTimeMillis() + 59l * 60000l, OMC.LASTWEATHERTRY+15l*60000l);
 		} else {
-		// If we get a weather station timestamp, we try to "catch" the update by setting next update to 82 minutes
+		// If we get a weather station timestamp, we try to "catch" the update by setting next update to 89 minutes
 		// after the last station refresh.
-			OMC.NEXTWEATHERREFRESH = Math.max(t.toMillis(false) + 82l * 60000l, OMC.LASTWEATHERTRY+15l*60000l);
+			OMC.NEXTWEATHERREFRESH = Math.max(t.toMillis(false) + 89l * 60000l, OMC.LASTWEATHERTRY+15l*60000l);
 		}
 		OMC.PREFS.edit().putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH).commit();
 
