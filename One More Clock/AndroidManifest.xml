@@ -18,10 +18,10 @@
         <activity android:name="com.sunnykwong.omc.OMCPrefActivity"
                   android:screenOrientation="nosensor"
                   android:label="@string/app_name">
-			<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
+<!-- 			<intent-filter> -->
+<!--                 <action android:name="android.intent.action.MAIN" /> -->
+<!--                 <category android:name="android.intent.category.LAUNCHER" /> -->
+<!-- 			</intent-filter> -->
 			<intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
 			</intent-filter>
@@ -31,10 +31,10 @@
                   android:label="OMC Theme Tester" android:icon="@drawable/rubeicon_mdpi"
                   android:theme="@android:style/Theme.Translucent"
                   android:enabled="false">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--             <intent-filter> -->
+<!--                 <action android:name="android.intent.action.MAIN" /> -->
+<!--                 <category android:name="android.intent.category.LAUNCHER" /> -->
+<!--             </intent-filter> -->
 		</activity>
         <activity android:name="com.sunnykwong.omc.OMCThemePickerActivity"
                   android:screenOrientation="nosensor"
@@ -47,12 +47,21 @@
         <activity android:name="com.sunnykwong.omc.OMCWeatherForecastActivity"
                   android:screenOrientation="nosensor"
                   android:theme="@android:style/Theme.Dialog"
-                  android:label="Weather Forecast">
+                  android:label="OMC Weather Forecast">
+<!-- 			<intent-filter> -->
+<!--                 <action android:name="android.intent.action.MAIN" /> -->
+<!--                 <category android:name="android.intent.category.LAUNCHER" /> -->
+<!-- 			</intent-filter> -->
+        </activity>
+        <activity android:name="com.sunnykwong.omc.OMCFixedLocationActivity"
+                  android:screenOrientation="nosensor"
+                  android:theme="@android:style/Theme.Dialog"
+                  android:label="OMC Fixed Location">
 			<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
-        		</activity>
+        </activity>
         <activity android:name="com.sunnykwong.omc.OMCThemeImportActivity"
                   android:screenOrientation="nosensor"
                   android:label="Theme Picker">

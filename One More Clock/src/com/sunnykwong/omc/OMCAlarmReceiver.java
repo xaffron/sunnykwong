@@ -59,7 +59,6 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 				.putInt("ompc_battpercent", (int)(100*intent.getIntExtra("level", 0)/(float)intent.getIntExtra("scale", 100)))
 				.putString("ompc_chargestatus", sChargeStatus)
 				.commit();
-			return;
 		}
 		//SUNNY WEATHER
 		if (action.equals(Intent.ACTION_TIME_TICK)) {

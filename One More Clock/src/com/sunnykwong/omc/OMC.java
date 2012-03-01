@@ -139,6 +139,7 @@ public class OMC extends Application {
 	static long LASTWEATHERTRY=0l,LASTWEATHERREFRESH=0l,NEXTWEATHERREFRESH=0l;
 	static String WEATHERTRANSLATETYPE = "AccuWeather";
 	static String LASTKNOWNCITY, LASTKNOWNCOUNTRY;
+	static JSONObject jsonFIXEDLOCN;
 	static int UPDATEFREQ = 20000;
 	static final Random RND = new Random();
 	static SharedPreferences PREFS;
@@ -370,8 +371,9 @@ public class OMC extends Application {
 		
 		OMC.STRETCHINFO = null;
 		try {
+			OMC.jsonFIXEDLOCN = new JSONObject(OMC.PREFS.getString("weather_fixedlocation", "{}"));
 			OMC.WEATHERCONVERSIONS = streamToJSONObject(OMC.AM.open("weathericons/weathertranslation.json"));
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		OMC.OVERLAYURIS = null;
@@ -625,7 +627,6 @@ public class OMC extends Application {
 	}
 
 	public static Bitmap getBitmap(String sTheme, String src) {
-		System.out.println(src);
 		if (src.startsWith("w-")) {
 			if (checkSDPresent()) {
 				OMC.WEATHERTRANSLATETYPE="AccuWeather";

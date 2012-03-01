@@ -380,7 +380,8 @@
         android:text="--"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="18dp" />
-
+
+
     <TextView
         android:id="@+id/LastUpdate"
         android:layout_width="wrap_content"
