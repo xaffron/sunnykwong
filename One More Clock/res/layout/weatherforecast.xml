@@ -85,6 +85,14 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="24dp" />
 
+    <TextView
+        android:id="@+id/divider0"
+        android:layout_below="@+id/CurrTemp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF888888"
+        android:maxHeight="1dp"/>
+
     <ImageView
         android:id="@+id/ConditionImage0"
         android:layout_width="wrap_content"
@@ -147,6 +155,14 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="18dp" />
 
+    <TextView
+        android:id="@+id/divider1"
+        android:layout_below="@+id/dayofweek0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF888888"
+        android:maxHeight="1dp"/>
+    
     <TextView
         android:id="@+id/dayofweek1"
         android:layout_width="wrap_content"
@@ -226,6 +242,14 @@
         android:textSize="18dp" />
 
     <TextView
+        android:id="@+id/divider2"
+        android:layout_below="@+id/dayofweek1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF888888"
+        android:maxHeight="1dp"/>
+    
+    <TextView
         android:id="@+id/dayofweek2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -303,6 +327,14 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="18dp" />
 
+    <TextView
+        android:id="@+id/divider3"
+        android:layout_below="@+id/dayofweek2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF888888"
+        android:maxHeight="1dp"/>
+    
     <TextView
         android:id="@+id/dayofweek3"
         android:layout_width="wrap_content"
@@ -383,6 +415,14 @@
 
 
     <TextView
+        android:id="@+id/divider4"
+        android:layout_below="@+id/dayofweek3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF888888"
+        android:maxHeight="1dp"/>
+    
+    <TextView
         android:id="@+id/LastUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -405,11 +445,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Unknown"
         android:textSize="16dp"
-        android:textColor="#FF91E7FA"
+        android:textColor="#FF79C3D4"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
         android:padding="5dp"
         android:gravity="bottom|center"/>
-
 
 </RelativeLayout>
