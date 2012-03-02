@@ -27,14 +27,14 @@
         android:layout_alignParentTop="true"
         android:gravity="center_vertical|center_horizontal"
         android:minHeight="95dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:paddingTop="10dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
         android:text="--"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="48dp" />
+        android:textSize="42dp" />
 
     <TextView
         android:id="@+id/City"
@@ -47,7 +47,7 @@
         android:minHeight="68dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:paddingTop="20dp"
+        android:paddingTop="5dp"
         android:text="Unknown"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:shadowColor="#FF000000"
@@ -394,6 +394,22 @@
         android:textSize="10dp"
         android:padding="5dp"
          android:gravity="bottom|right"/>
+
+    <TextView
+        android:id="@+id/AccuLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/LastUpdate"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Unknown"
+        android:textSize="16dp"
+        android:textColor="#FF91E7FA"
+        android:shadowColor="#FF000000"
+        android:shadowRadius="5"
+        android:padding="5dp"
+        android:gravity="bottom|center"/>
 
 
 </RelativeLayout>

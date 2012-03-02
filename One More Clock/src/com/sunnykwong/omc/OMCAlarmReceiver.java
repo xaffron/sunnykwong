@@ -36,6 +36,8 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		}
 
 		
+		// Battery-related responses.
+		// If something about the battery changed, we need to record the changes.
 		if (action.equals(Intent.ACTION_BATTERY_CHANGED)) {
 			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm","Batt "+ intent.getIntExtra("level", 0) + "/" +intent.getIntExtra("scale", 10000));
 			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm","ChargeStatus: "+ action);
@@ -59,8 +61,21 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 				.putInt("ompc_battpercent", (int)(100*intent.getIntExtra("level", 0)/(float)intent.getIntExtra("scale", 100)))
 				.putString("ompc_chargestatus", sChargeStatus)
 				.commit();
+			
+			// Note that especially when the charge status changes 
+			// from plugged to unplugged, we want to update the widget asap.
 		}
-		//SUNNY WEATHER
+
+		// Weather-related responses.
+		// If we just set the clock or switched timezones, we definitely want to refresh weather right now.
+		if (action.equals(Intent.ACTION_TIME_CHANGED)
+				|| action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
+			OMC.NEXTWEATHERREFRESH=0l;
+			OMC.LASTWEATHERTRY=0l;
+		}
+
+		// Otherwise, we can be more polite about updating weather.
+		
 		if (action.equals(Intent.ACTION_TIME_TICK)) {
 			
 			// First, are we due for a weather update?
@@ -74,8 +89,6 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 				}
 			}
 		}
-		//SUNNY
-		
 		
 		if (action.equals(OMC.FGINTENT)) OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.FGSERVICE");
 		else OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.BGSERVICE");

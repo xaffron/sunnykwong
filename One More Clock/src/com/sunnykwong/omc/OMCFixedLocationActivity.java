@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.StringTokenizer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -92,12 +93,16 @@ public class OMCFixedLocationActivity extends Activity {
 					mHandler.post(mBADRESULT);
 					return;
 				}
-				final String sSearchText = etSearchBox.getText().toString().replace(".", "").replace(",", "+").replace(" ", "+").trim();
+				final String sSearchText = etSearchBox.getText().toString()
+						.trim()
+						.replace(".", "")
+						.replace(",", "+")
+						.replace(" ", "+");
 				if (sSearchText.equals("") || sSearchText == null) {
 					mHandler.post(mBADRESULT);
 					return;
 				}
-				Toast.makeText(OMCFixedLocationActivity.this,  sSearchText, Toast.LENGTH_LONG).show();
+
 				Thread t = new Thread() {
 					public void run() {
 						try {
@@ -124,13 +129,19 @@ public class OMCFixedLocationActivity extends Activity {
 	}
 
 	public void populateResults() {
+		
 		llResults.removeAllViews();
+		View topseparator = new View(this);
+		topseparator.setBackgroundColor(Color.LTGRAY);
+		topseparator.setMinimumHeight(1);
+		llResults.addView(topseparator);
 		// Find locality
 		JSONArray jary = jsonLocations.optJSONArray("results");
 		for (int counter = 0; counter < jary.length(); counter++){
 			final JSONObject jobj = jary.optJSONObject(counter);
-			TextView tv = new TextView(this);
+			final TextView tv = new TextView(this);
 			tv.setPadding(10, 10, 10, 10);
+			tv.setMinimumHeight(50);
 			tv.setTextColor(Color.WHITE);
 			tv.setShadowLayer(3f, 1, 1, Color.BLACK);
 			tv.setBackgroundColor(Color.DKGRAY);
@@ -140,10 +151,43 @@ public class OMCFixedLocationActivity extends Activity {
 				
 				@Override
 				public void onClick(View v) {
-					OMC.jsonFIXEDLOCN = jobj;
+					tv.setBackgroundColor(Color.LTGRAY);
+					
+					OMC.jsonFIXEDLOCN = new JSONObject();
+					StringTokenizer st = new StringTokenizer(jobj.optString("formatted_address","error"),",");
+					String city="";
+					try {
+						if (st.hasMoreElements()) {
+							city = st.nextToken().trim();
+							OMC.jsonFIXEDLOCN.putOpt("city",city);
+						} else {
+							OMC.jsonFIXEDLOCN.putOpt("city","Unknown");
+						}
+						if (st.hasMoreElements()) {
+							OMC.jsonFIXEDLOCN.putOpt("country",st.nextToken().trim());
+						} else {
+							OMC.jsonFIXEDLOCN.putOpt("country",city);
+						}
+						OMC.jsonFIXEDLOCN.putOpt("latitude",jobj.getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
+						OMC.jsonFIXEDLOCN.putOpt("longitude",jobj.getJSONObject("geometry").getJSONObject("location").getDouble("lng"));
+	
+						OMC.PREFS.edit().putString("weathersetting", "specific").commit();
+						
+						OMC.PREFS.edit().putString("weather_fixedlocation", OMC.jsonFIXEDLOCN.toString());
+						GoogleWeatherXMLHandler.updateWeather();
+						finish();
+					} catch (Exception e) {
+						e.printStackTrace();
+						Toast.makeText(OMCFixedLocationActivity.this, "Unknown Error Occurred.\nPlease Try Again.", Toast.LENGTH_LONG).show();
+						tv.setBackgroundColor(Color.DKGRAY);
+					}
 				}
 			});
 			llResults.addView(tv);
+			View separator = new View(this);
+			separator.setBackgroundColor(Color.LTGRAY);
+			separator.setMinimumHeight(1);
+			llResults.addView(separator);
 		}
 		llResults.requestLayout();
 	}

@@ -62,7 +62,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         			prefWeather.setSummary("Last try: "+timeTemp2.format("%R") + " Next Refresh: "+timeTemp.format("%R"));
         			prefWeatherDisplay.setSummary("Now displaying in "+ OMC.PREFS.getString("weatherdisplay", "f").toUpperCase());
         		} else if (sWSetting.equals("specific")) {
-        			prefWeather.setTitle("Weather: Unknown (Fixed)");
+        			prefWeather.setTitle("Weather: "+OMC.jsonFIXEDLOCN.optString("city","Unknown")+" (Fixed)");
         			prefWeather.setSummary("Last try: "+timeTemp2.format("%R") + " Next Refresh: "+timeTemp.format("%R"));
         			prefWeatherDisplay.setSummary("Now displaying in "+ OMC.PREFS.getString("weatherdisplay", "f").toUpperCase());
         		} else {
@@ -252,6 +252,21 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     			// If we can't find the conflicting package, we're all good - no need to show warning
     		}
 
+    		mRefresh = (new Thread() {
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					try {
+						while(true) {
+							mHandler.post(mUpdatePrefs);
+							Thread.sleep(1000l);
+						}
+					} catch (InterruptedException e) {
+						// interrupted; stop gracefully
+					}
+				}
+			});
+    		mRefresh.start();
     		
     		// This is the help/FAQ dialog.
     		
@@ -305,21 +320,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 			    })
 			    .show();
     		}
-    		mRefresh = (new Thread() {
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					try {
-						while(true) {
-							mHandler.post(mUpdatePrefs);
-							Thread.sleep(5000l);
-						}
-					} catch (InterruptedException e) {
-						// interrupted; stop gracefully
-					}
-				}
-			});
-    		mRefresh.start();
         	
         } else {
             // If they gave us an intent without the widget id, just bail.
@@ -362,6 +362,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 				.setTitle("Experimental Feature\nTry at own risk!")
 				.setItems(items, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int item) {
+
 							switch (item) {
 								case 0: //Disabled (default)
 									OMC.PREFS.edit().putString("weathersetting", "disabled").commit();
@@ -371,7 +372,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 						    		GoogleWeatherXMLHandler.updateWeather();
 									break;
 								case 2: //Set Location
-									OMC.PREFS.edit().putString("weathersetting", "specific").commit();
+									startActivityForResult(new Intent(OMCPrefActivity.this, OMCFixedLocationActivity.class), 0);
 									break;
 								case 3: //Update Now
 						    		GoogleWeatherXMLHandler.updateWeather();
@@ -555,6 +556,22 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 			getPreferenceScreen().findPreference("timeZone").setSummary(OMC.PREFS.getString("sTimeZone", "default"));
 		}
 		getPreferenceScreen().setEnabled(true);
+
+		mRefresh = (new Thread() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				try {
+					while(true) {
+						mHandler.post(mUpdatePrefs);
+						Thread.sleep(1000l);
+					}
+				} catch (InterruptedException e) {
+					// interrupted; stop gracefully
+				}
+			}
+		});
+		mRefresh.start();
 		// If it's an independent child activity, do nothing
 		if (requestCode == 0) return;
 		if (data != null) {

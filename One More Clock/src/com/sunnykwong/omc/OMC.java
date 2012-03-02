@@ -660,11 +660,11 @@ public class OMC extends Application {
 		}
 		//Look in assets.
 		Typeface tf = null;
-		// New fix 1.2.8:  For phones without the DroidSans.ttf in /system/fonts, we return the fallback font (Geo Sans).
+		// New fix 1.2.8:  For phones without the DroidSans.ttf in /system/fonts, we return the system fallback font.
 		try {
 			tf = Typeface.createFromAsset(OMC.AM, "defaulttheme/"+src);
 		} catch (Exception e) {
-			tf = OMC.GEOFONT;
+			tf = Typeface.DEFAULT;
 		}
 		return tf;
 	}
@@ -738,8 +738,8 @@ public class OMC extends Application {
 				
 			}
 		}
-		// Bitmap can't be found anywhere
-		return null;
+		// Bitmap can't be found anywhere; return a transparent png
+		return BitmapFactory.decodeResource(OMC.RES, OMC.RES.getIdentifier("transparent", "drawable", OMC.PKGNAME));
 	}
 
 	public static void purgeTypefaceCache(){

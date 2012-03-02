@@ -20,13 +20,17 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.text.Html;
 import android.text.format.Time;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -49,14 +53,19 @@ public class OMCWeatherForecastActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(getResources().getIdentifier("weatherforecast", "layout", OMC.PKGNAME));
 		try {
-			JSONObject weather = new JSONObject(OMC.PREFS.getString("weather", ""));
-			
+			final JSONObject weather = new JSONObject(OMC.PREFS.getString("weather", ""));
+			String sWeatherDigits = "--";
 			if (OMC.PREFS.getString("weatherdisplay", "f").equals("f")) {
-				setText(findViewById(getResources().getIdentifier("CurrTemp", "id", OMC.PKGNAME)),weather.optString("temp_f", "f")+"°F");
+				sWeatherDigits = weather.optString("temp_f", "--")+"°F";
 			} else {
-				setText(findViewById(getResources().getIdentifier("CurrTemp", "id", OMC.PKGNAME)),weather.optString("temp_c", "f")+"°C");
+				sWeatherDigits = weather.optString("temp_c", "--")+"°C";
 			}
-			setText(findViewById(getResources().getIdentifier("City", "id", OMC.PKGNAME)),weather.optString("city") + ", " + weather.optString("country2"));
+			float fStretch = Math.min(1f,120f/(sWeatherDigits.length()*40f));
+			setText(findViewById(getResources().getIdentifier("CurrTemp", "id", OMC.PKGNAME)),sWeatherDigits,fStretch);
+
+			String sCity = weather.optString("city") + ",\n" + weather.optString("country2")+" ";
+			fStretch = Math.min(1f,800f/(sCity.length()*40f));
+			setText(findViewById(getResources().getIdentifier("City", "id", OMC.PKGNAME)),sCity,fStretch);
 			setText(findViewById(getResources().getIdentifier("Conditions", "id", OMC.PKGNAME)),weather.optString("condition") + " | " + weather.optString("wind_condition") + " " + weather.optString("humidity"));
 			Time t = new Time();
 			t.set(System.currentTimeMillis());
@@ -91,6 +100,18 @@ public class OMCWeatherForecastActivity extends Activity {
 				setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather recorded by Google API at " + tStation.format("%R") );
 				
 			}
+			TextView acculink = ((TextView)findViewById(getResources().getIdentifier("AccuLink", "id", OMC.PKGNAME)));
+			acculink.setText("Alternate Forecast from Accuweather®");
+			acculink.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent accu = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.accuweather.com/m/Forecast.aspx?lat="+weather.optLong("latitude_e6",0l)/1000000d
+							+ "&lon=" + weather.optLong("longitude_e6",0l)/1000000d));
+					startActivity(accu);
+					finish();
+				}
+			});
 		} catch (JSONException e) {
 			Toast.makeText(this, "No Weather Loaded!", Toast.LENGTH_LONG);
 			e.printStackTrace();
@@ -98,7 +119,12 @@ public class OMCWeatherForecastActivity extends Activity {
 	}			
 
 	public void setText(View vw, String sText) {
+		setText(vw,sText,1f);
+	}	
+	
+	public void setText(View vw, String sText, float stretchX) {
 		TextView tv = (TextView)vw;
+		tv.setTextScaleX(stretchX);
 		tv.setText(sText);
 	}
 	
