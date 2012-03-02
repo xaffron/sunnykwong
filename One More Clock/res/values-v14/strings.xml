@@ -9,4 +9,6 @@
 <string name="widget_name4x1">O.M. Clock 4x1</string>
 <string name="widget_name4x2">O.M. Clock 4x2</string>
 <string name="widget_name4x4">O.M. Clock 4x4</string>
+<string name="resize">horizontal|vertical</string>
+<string name="resizefree">none</string>
 </resources>
