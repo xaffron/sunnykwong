@@ -481,49 +481,6 @@ public class OMC extends Application {
 					OMC.WIDGET1x3CNAME,
 					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
-    	} else if (Integer.parseInt(android.os.Build.VERSION.SDK)>=12){
-	    	context.getPackageManager()
-			.setComponentEnabledSetting(
-					OMC.WIDGET4x4CNAME,
-					OMC.PREFS.getBoolean("bFourByFour", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-					PackageManager.DONT_KILL_APP);
-	    	context.getPackageManager()
-			.setComponentEnabledSetting(
-					OMC.WIDGET4x1CNAME,
-					OMC.PREFS.getBoolean("bFourByOne", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-					PackageManager.DONT_KILL_APP);
-	    	context.getPackageManager()
-			.setComponentEnabledSetting(
-					OMC.WIDGET3x3CNAME,
-					OMC.PREFS.getBoolean("bThreeByThree", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-					PackageManager.DONT_KILL_APP);
-	    	context.getPackageManager()
-			.setComponentEnabledSetting(
-					OMC.WIDGET3x1CNAME,
-					OMC.PREFS.getBoolean("bThreeByOne", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-					PackageManager.DONT_KILL_APP);
-	    	context.getPackageManager()
-			.setComponentEnabledSetting(
-					OMC.WIDGET2x2CNAME,
-					OMC.PREFS.getBoolean("bTwoByTwo", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-					PackageManager.DONT_KILL_APP);
-	    	context.getPackageManager()
-			.setComponentEnabledSetting(
-					OMC.WIDGET2x1CNAME,
-					OMC.PREFS.getBoolean("bTwoByOne", false) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-					PackageManager.DONT_KILL_APP);
-	    	context.getPackageManager()
-			.setComponentEnabledSetting(
-					OMC.WIDGET1x3CNAME,
-					OMC.PREFS.getBoolean("bOneByThree", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-					PackageManager.DONT_KILL_APP);
     	} else {
 	    	context.getPackageManager()
 			.setComponentEnabledSetting(
