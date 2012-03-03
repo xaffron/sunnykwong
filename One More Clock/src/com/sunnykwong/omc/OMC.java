@@ -640,9 +640,9 @@ public class OMC extends Application {
 				}
 			}
 			// Translate from condition to filename
-			final StringTokenizer st = new StringTokenizer(src, "-.");
-			st.nextToken();
-			final String condition = st.nextToken(), daynight=st.nextToken();
+			final String[] sTokens = src.split("[-.]");
+
+			final String condition = sTokens[1], daynight=sTokens[2];
 			String src2;
 			if (condition.equals("")) {
 				src2="Unk";

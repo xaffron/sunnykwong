@@ -200,7 +200,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					String sData = atts.getValue("data");
 					if (OMC.DEBUG)
 						Log.i(OMC.OMCSHORT + "Weather",
-								"Reading " + tree.peek()[0] + " - " + localName);
+								"Reading " + tree.peek()[0] + " - " + localName + ": " + sData);
 					jsonWeather.putOpt(localName, sData);
 					if (localName.equals("current_date_time")) {
 						String timeString = sData.substring(0, 19)
@@ -218,23 +218,22 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 								tCurrentTime.format2445());
 					} else if (localName.equals("condition")) {
 						jsonWeather.putOpt("condition_lcase",
-								atts.getValue("data").toLowerCase());
+								sData.toLowerCase());
 					}
 
 				} else if (tree.peek()[0].equals("forecast_conditions")) {
+					String sData = atts.getValue("data");
 					if (OMC.DEBUG)
 						Log.i(OMC.OMCSHORT + "Weather",
-								"Reading " + tree.peek()[0] + " - " + localName);
+								"Reading " + tree.peek()[0] + " - " + localName + ": " + sData);
 					if (jsonOneDayForecast == null)
 						jsonOneDayForecast = new JSONObject();
-					jsonOneDayForecast.putOpt(localName, atts.getValue("data"));
+					jsonOneDayForecast.putOpt(localName, sData);
 					if (localName.equals("low") || localName.equals("high")) {
-						int tempC = (int) ((Float.parseFloat(atts
-								.getValue("data")) - 32.2f) * 5f / 9f);
+						int tempC = (int) ((Float.parseFloat(sData) - 32.2f) * 5f / 9f);
 						jsonOneDayForecast.putOpt(localName + "_c", tempC);
 					} else if (localName.equals("condition")) {
-						jsonOneDayForecast.putOpt("condition_lcase", atts
-								.getValue("data").toLowerCase());
+						jsonOneDayForecast.putOpt("condition_lcase", sData.toLowerCase());
 					}
 				} else if (localName.equals("problem_cause")) {
 					if (OMC.DEBUG)
@@ -242,9 +241,10 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 								"Google Weather returned error.");
 					jsonWeather.putOpt(localName, "error");
 				}
+			} else {
+				jsonWeather.putOpt(localName, atts.getValue("data"));
 			}
 			tree.push(new String[] { localName });
-			jsonWeather.putOpt(localName, atts.getValue("data"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
