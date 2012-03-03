@@ -219,7 +219,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					} else if (localName.equals("condition")) {
 						jsonWeather.putOpt("condition_lcase",
 								sData.toLowerCase());
-					}
+					} 
 
 				} else if (tree.peek()[0].equals("forecast_conditions")) {
 					String sData = atts.getValue("data");
