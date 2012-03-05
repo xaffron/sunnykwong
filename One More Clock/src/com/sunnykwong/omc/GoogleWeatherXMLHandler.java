@@ -247,6 +247,9 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 			tree.push(new String[] { localName });
 		} catch (JSONException e) {
 			e.printStackTrace();
+			try {
+				jsonWeather.putOpt("problem_cause", "error");
+			} catch (Exception ee) {}
 		}
 	}
 
@@ -291,6 +294,13 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		tree = null;
 		
 		// Check if the reply was valid.
+		if (jsonWeather.optString("condition")==null) {
+			if (OMC.DEBUG)
+				Log.i(OMC.OMCSHORT + "Weather", "Error, so no refresh.");
+			//Google returned error - abandon refresh
+			return;
+		}
+
 		if (jsonWeather.optString("problem_cause",null)!=null) {
 			if (OMC.DEBUG)
 				Log.i(OMC.OMCSHORT + "Weather", "Error, so no refresh.");
@@ -314,7 +324,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		OMC.PREFS.edit().putString("weather", jsonWeather.toString()).commit();
 		OMC.LASTWEATHERREFRESH = System.currentTimeMillis();
 		Time t = new Time();
-		t.parse(jsonWeather.optString("current_local_time"));
+		t.parse(jsonWeather.optString("current_local_time","19700101T000000"));
 		// If the weather information (international, mostly) doesn't have a timestamp, set next update to be
 		// 59 minutes from now
 		if (t.year<1980) {

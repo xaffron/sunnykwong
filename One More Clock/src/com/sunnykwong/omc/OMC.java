@@ -1215,6 +1215,18 @@ public class OMC extends Application {
 						t3.set(OMC.LASTWEATHERTRY);
 						result = "Weather as of " + t.format("%R") + "; lastry " + t3.format("%R")
 								+ "; nextupd " + t2.format("%R");
+					} else if (sType.equals("index")) {
+						String sTranslateType = st.nextToken();
+						String sDay;
+						if (OMC.TIME.hour >= 6 && OMC.TIME.hour < 18) {
+							//Day
+							sDay="day";
+						} else {
+							//Night - throw away the day token + the night indicator
+							sDay="night";
+						}
+						result = OMC.WEATHERCONVERSIONS.getJSONObject(sTranslateType)
+								.getJSONObject(sDay).optString(jsonWeather.optString("condition","Unknown").toLowerCase(),"00");
 					} else if (sType.equals("condition")) {
 						result = jsonWeather.optString("condition","Unknown");
 					} else if (sType.equals("temp")) {
