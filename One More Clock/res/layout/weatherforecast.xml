@@ -6,6 +6,16 @@
     android:layout_margin="0dp"
     android:gravity="center_vertical|center_horizontal" >
 
+    <TextView
+        android:id="@+id/dividerTop"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+    	android:background="@drawable/gradient_selector"
+        android:minHeight="95dp"
+        android:maxHeight="95dp"/>
+    
     <ImageView
         android:id="@+id/ConditionImage"
         android:layout_width="wrap_content"
@@ -70,6 +80,15 @@
         android:textSize="10dp" />
 
     <TextView
+        android:id="@+id/divider0"
+        android:layout_below="@+id/CurrTemp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+    	android:background="@drawable/gradient_selector"
+        android:minHeight="70dp"
+        android:maxHeight="70dp"/>
+
+    <TextView
         android:id="@+id/dayofweek0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,14 +103,6 @@
         android:text="--"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="24dp" />
-
-    <TextView
-        android:id="@+id/divider0"
-        android:layout_below="@+id/CurrTemp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#FF888888"
-        android:maxHeight="1dp"/>
 
     <ImageView
         android:id="@+id/ConditionImage0"
@@ -160,8 +171,9 @@
         android:layout_below="@+id/dayofweek0"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#FF888888"
-        android:maxHeight="1dp"/>
+    	android:background="@drawable/gradient_selector"
+        android:minHeight="70dp"
+        android:maxHeight="70dp"/>
     
     <TextView
         android:id="@+id/dayofweek1"
@@ -246,8 +258,9 @@
         android:layout_below="@+id/dayofweek1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#FF888888"
-        android:maxHeight="1dp"/>
+    	android:background="@drawable/gradient_selector"
+        android:minHeight="70dp"
+        android:maxHeight="70dp"/>
     
     <TextView
         android:id="@+id/dayofweek2"
@@ -332,8 +345,9 @@
         android:layout_below="@+id/dayofweek2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#FF888888"
-        android:maxHeight="1dp"/>
+    	android:background="@drawable/gradient_selector"
+        android:minHeight="70dp"
+        android:maxHeight="70dp"/>
     
     <TextView
         android:id="@+id/dayofweek3"
@@ -419,8 +433,9 @@
         android:layout_below="@+id/dayofweek3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#FF888888"
-        android:maxHeight="1dp"/>
+    	android:background="@drawable/gradient_selector"
+        android:minHeight="70dp"
+        android:maxHeight="70dp"/>
     
     <TextView
         android:id="@+id/LastUpdate"
