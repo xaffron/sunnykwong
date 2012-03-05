@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.StringTokenizer;
@@ -1231,6 +1232,7 @@ public class OMC extends Application {
 							//Night - throw away the day token + the night indicator
 							sDay="night";
 						}
+						String sIndex = 
 						result = OMC.WEATHERCONVERSIONS.getJSONObject(sTranslateType)
 								.getJSONObject(sDay).optString(jsonWeather.optString("condition","Unknown").toLowerCase(),"00");
 					} else if (sType.equals("condition")) {
@@ -1296,8 +1298,13 @@ public class OMC extends Application {
 				result = (st.nextToken());
 			}
 		} else if (sToken.equals("array")) {
-
-			result = tempResult.optJSONObject("arrays").optJSONArray(st.nextToken()).optString(Integer.parseInt(st.nextToken().replace(" ","")));
+			String sArrayName = st.nextToken();
+			String sIndex = st.nextToken();
+			if (sIndex.equals("--") || sIndex.equals("Unk")) {
+				result = "";
+			} else {
+				result = tempResult.optJSONObject("arrays").optJSONArray(sArrayName).optString(Integer.parseInt(sIndex.replace(" ","")));
+			}
 			String sCase = st.nextToken();
 			if (result == null) result = "ERROR";
 			if (sCase.equals("lower")) result = result.toLowerCase();
@@ -1387,12 +1394,18 @@ public class OMC extends Application {
 			// value that switches between two fixed symbols - day (6a-6p) and night (6p-6a).
 			if (OMC.TIME.hour >= 6 && OMC.TIME.hour < 18) {
 				//Day
-				result = (st.nextToken());
+				if (st.hasMoreElements()) 
+					result = (st.nextToken());
+				else result="";
 			} else {
 				//Night - throw away the day token + the night indicator
-				st.nextToken();
-				st.nextToken();
-				result = (st.nextToken());
+				try {
+					st.nextToken();
+					st.nextToken();
+					result = (st.nextToken());
+				} catch (NoSuchElementException e) {
+					result="";
+				}
 			}
 		} else if (sToken.equals("random")){
 			// value that randomly jumps between two values.
