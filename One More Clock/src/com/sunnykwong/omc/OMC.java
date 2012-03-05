@@ -849,6 +849,12 @@ public class OMC extends Application {
 		f.delete();
 	}
 
+	public static void removeFile(File f) {
+		if (f.exists()) {
+			if (!f.isDirectory()) f.delete();
+		}
+	}
+	
 	public boolean fixnomedia() {
 		File oldomcdir = new File( Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes");
 		if (!oldomcdir.exists()) return true;

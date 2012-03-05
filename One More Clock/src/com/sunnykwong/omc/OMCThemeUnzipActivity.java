@@ -191,6 +191,12 @@ public class OMCThemeUnzipActivity extends Activity {
 									mHandler.post(mUpdateStatus);
 								}
 							} else {
+								if (ze.getName().contains("weatherdotcom.type") ||
+										ze.getName().contains("accuweather.type")) {
+									if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","Detected WeatherSkin " + ze.getName());
+									OMC.removeFile(new File(omcRoot.getAbsolutePath()+"/zz_WeatherSkin/weatherdotcom.type"));
+									OMC.removeFile(new File(omcRoot.getAbsolutePath()+"/zz_WeatherSkin/accuweather.type"));
+								}
 								FileOutputStream fos = new FileOutputStream(outputFile);
 								pdMessage = "Storing file " + ze.getName();
 
