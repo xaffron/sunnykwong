@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -448,6 +449,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     	public HashMap<String, String> mCreds = new HashMap<String, String>();
     	public HashMap<String, String> mNames = new HashMap<String, String>();
     	public HashMap<String, Boolean> mTweaked = new HashMap<String, Boolean>();
+    	public HashMap<String, String[]> mTags = new HashMap<String, String[]>();
     	
 
         public ThemePickerAdapter() {
@@ -485,8 +487,18 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     			mNames.put(sTheme,oResult.optString("name"));
     			mTweaked.put(sTheme, new Boolean(oResult.optBoolean("tweaked")));
     			mCreds.put(sTheme,"Author: " + oResult.optString("author") + "  (" +oResult.optString("date")+ ")\n" + oResult.optString("credits"));
-    			oResult = null;
+    			if (oResult.has("tags")) {
+    				final JSONArray tags = oResult.getJSONArray("tags");
+    				final String[] tempStrArray = new String[tags.length()];
+    				for (int i=0;i<tags.length();i++) {
+    					tempStrArray[i]=tags.getString(i);
+    				}
+    				mTags.put(sTheme, tempStrArray);
+    			} else {
+    				mTags.put(sTheme, new String[0]);
+    			}
     			
+       			oResult = null;
     		} catch (Exception e) {
     			e.printStackTrace();
     		}
@@ -543,14 +555,25 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
         	try {
 	        	if (mTweaked.get(mThemes.get(position)).booleanValue()) {
-	        		((TextView)ll.findViewById(getResources().getIdentifier("ThemeTweakedFlag", "id", OMC.PKGNAME))).setText("(Tweaked)");
-	        	} else {
-	        		((TextView)ll.findViewById(getResources().getIdentifier("ThemeTweakedFlag", "id", OMC.PKGNAME))).setText("");
+	        		((ImageView)ll.findViewById(getResources().getIdentifier("LikeFlag", "id", OMC.PKGNAME)))
+	        		.setImageResource(getResources().getIdentifier("tweaked", "drawable", OMC.PKGNAME));
 	        	}
         	} catch (NullPointerException e) {
         		//v1.2.8 fix issue where theme flag not set
-        		((TextView)ll.findViewById(getResources().getIdentifier("ThemeTweakedFlag", "id", OMC.PKGNAME))).setText("");
         	}
+        	LinearLayout tagll = ((LinearLayout)ll.findViewById(getResources().getIdentifier("tags", "id", OMC.PKGNAME)));
+        	for (String sTag: mTags.get(mThemes.get(position))) {
+        		ImageView iv = new ImageView(OMCThemePickerActivity.this);
+        		iv.setAdjustViewBounds(true);
+        		try{
+        			iv.setImageResource(getResources().getIdentifier(sTag, "drawable", OMC.PKGNAME));
+            		tagll.addView(iv);
+        		} catch (Exception e) {
+        			
+        		}
+        	}
+        	
+        	
         	BitmapFactory.Options bo = new BitmapFactory.Options();
         	bo.inDither=true;
         	bo.inPreferredConfig = Bitmap.Config.ARGB_4444;
