@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,6 +26,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -555,8 +557,29 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
         	try {
 	        	if (mTweaked.get(mThemes.get(position)).booleanValue()) {
-	        		((ImageView)ll.findViewById(getResources().getIdentifier("LikeFlag", "id", OMC.PKGNAME)))
-	        		.setImageResource(getResources().getIdentifier("tweaked", "drawable", OMC.PKGNAME));
+	        		ImageView iv = ((ImageView)ll.findViewById(getResources().getIdentifier("LikeFlag", "id", OMC.PKGNAME)));
+	        		iv.setImageResource(getResources().getIdentifier("tweaked", "drawable", OMC.PKGNAME));
+	        		iv.setOnClickListener(new View.OnClickListener() {
+	    				
+	    				@Override
+	    				public void onClick(View v) {
+	    					
+	    					final Dialog d = new Dialog(OMCThemePickerActivity.this);
+	    					d.setContentView(getResources().getIdentifier("taglegend", "layout", OMC.PKGNAME));
+	    					d.setTitle("Legend");
+	    					d.setOnKeyListener(new DialogInterface.OnKeyListener() {
+	    						
+	    						@Override
+	    						public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+	    							// TODO Auto-generated method stub
+	    							dialog.dismiss();
+	    							return true;
+	    						}
+	    					});
+	    					d.setCanceledOnTouchOutside(true);
+	    					d.show();
+	    				}
+	    			});
 	        	}
         	} catch (NullPointerException e) {
         		//v1.2.8 fix issue where theme flag not set
@@ -572,6 +595,27 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         			
         		}
         	}
+        	tagll.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					
+					final Dialog d = new Dialog(OMCThemePickerActivity.this);
+					d.setContentView(getResources().getIdentifier("taglegend", "layout", OMC.PKGNAME));
+					d.setTitle("Legend");
+					d.setOnKeyListener(new DialogInterface.OnKeyListener() {
+						
+						@Override
+						public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+							// TODO Auto-generated method stub
+							dialog.dismiss();
+							return true;
+						}
+					});
+					d.setCanceledOnTouchOutside(true);
+					d.show();
+				}
+			});
         	
         	
         	BitmapFactory.Options bo = new BitmapFactory.Options();

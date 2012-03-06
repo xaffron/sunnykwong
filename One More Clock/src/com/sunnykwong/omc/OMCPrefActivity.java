@@ -326,7 +326,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Called by Launcher - do nothing");
         	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
         		.setTitle("Thanks for downloading!")
-        		.setMessage("To begin, hit the back button to go back to the home screen, then push the menu button, select 'Add', then 'Widgets' to see " + OMC.APPNAME + " listed.  Have fun!")
+        		.setMessage("To begin, hit the back button to go back to the home screen, then access the 'Widgets' list to see " + OMC.APPNAME + " listed.  Have fun!")
         	    .setCancelable(true)
         	    .setIcon(getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME))
         	    .setOnKeyListener(new OnKeyListener() {
@@ -334,7 +334,15 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	    		dialogCancelled();
         	    		return true;
         	    	};
-        	    }).create();
+        	    }).setOnCancelListener(new DialogInterface.OnCancelListener() {
+					
+					@Override
+					public void onCancel(DialogInterface dialog) {
+						dialogCancelled();
+					}
+				})
+        	    .create();
+        	OMCPrefActivity.mAD.setCanceledOnTouchOutside(true);
         	OMCPrefActivity.mAD.show();
 
         	((OMC)getApplication()).widgetClicks();
