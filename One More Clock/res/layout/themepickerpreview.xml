@@ -1,23 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_height="wrap_content"
-	android:layout_width="wrap_content">
-	<TextView android:adjustViewBounds="true"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:id="@+id/ThemeName" android:text="&lt;Theme Name&gt;"
-		android:textSize="30dp" android:shadowRadius="2"
-		android:shadowDy="1" android:shadowDx="1" android:shadowColor="#ff888888"
-		android:textColor="#ffffffff" android:layout_gravity="center" />
-	<TextView android:adjustViewBounds="true"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:id="@+id/ThemeTweakedFlag" android:textSize="16dp"		
-		android:textColor="#ffffffff" android:layout_gravity="center" />
-	<ImageView android:adjustViewBounds="true"
-		android:id="@+id/ThemePreview" android:layout_width="fill_parent" android:scaleType="fitStart" android:layout_height="200dp"/>
-	<TextView android:adjustViewBounds="true"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:text="&lt;Theme Credits&gt;" android:id="@+id/ThemeCredits"
-		android:textColor="#ffffffff" android:paddingTop="11dp"
-		android:maxWidth="280dp" android:minWidth="280dp" android:minHeight="150dp"
-		android:maxHeight="150dp" android:textSize="10dp"/>
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/ThemeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:shadowColor="#ff888888"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        android:text="Theme Name"
+        android:textColor="#ffffffff"
+        android:textSize="30dp" />
+
+
+    <ImageView
+        android:id="@+id/ThemePreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="180dp"
+        android:minWidth="288dp"
+        android:scaleType="fitXY" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="24dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:layout_weight="1" >
+
+        <ImageView
+            android:id="@+id/LikeFlag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" android:adjustViewBounds="true"/>
+
+        <LinearLayout
+            android:id="@+id/tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" >
+        </LinearLayout>
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/ThemeCredits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="150dp"
+        android:maxWidth="280dp"
+        android:minHeight="150dp"
+        android:minWidth="280dp"
+        android:paddingTop="11dp"
+        android:text="Theme Credits"
+        android:textColor="#ffffffff"
+        android:textSize="10dp" />
+
 </LinearLayout>
