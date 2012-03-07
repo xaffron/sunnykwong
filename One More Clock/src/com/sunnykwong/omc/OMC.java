@@ -298,7 +298,7 @@ public class OMC extends Application {
 		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
 		OMC.LASTWEATHERTRY = OMC.PREFS.getLong("weather_lastweathertry", 0l);
 		OMC.NEXTWEATHERREFRESH = OMC.PREFS.getLong("weather_nextweatherrefresh", 0l);
-
+		
 		// If we're from a legacy version, then we need to wipe all settings clean to avoid issues.
 		if (OMC.PREFS.getString("version", "1.0.x").startsWith("1.0") || OMC.PREFS.getString("version", "1.0.x").startsWith("1.1")) {
 			Log.i(OMC.OMCSHORT + "App","Upgrade from legacy version, wiping all settings.");
@@ -967,14 +967,15 @@ public class OMC extends Application {
 	
 	public static void setupDefaultTheme() {
 		String sDefaultThemeAssetDir = "defaulttheme/";
-		String[] sFileNames = {"000preview.jpg","00control.json","AndroidClock_Solid.ttf","Roboto-Bold.ttf",
-				"Roboto-Regular.ttf","battery1.png","battery2.png","battery3.png","battery4.png"
-		};
-		if (new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME + "/00control.json").exists()) return;
-		(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME)).mkdirs();
-		for (String sFile : sFileNames) {
-			copyAssetToCache(sDefaultThemeAssetDir+sFile,sFile, OMC.DEFAULTTHEME);
-			copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + sFile, Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/" + sFile);
+		try {
+			if (new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME + "/00control.json").exists()) return;
+			(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME)).mkdirs();
+			for (String sFile : OMC.AM.list("defaulttheme")) {
+				copyAssetToCache(sDefaultThemeAssetDir+sFile,sFile, OMC.DEFAULTTHEME);
+				copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + sFile, Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/" + sFile);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
