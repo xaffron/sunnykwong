@@ -152,7 +152,7 @@ public class OMC extends Application {
     static LocationManager LM;
     static LocationListener LL;
 
-    static Typeface GEOFONT;
+    static Typeface GEOFONT,WEATHERFONT;
     
     static HashMap<String, Typeface> TYPEFACEMAP;
     static HashMap<String, Bitmap> BMPMAP;
@@ -292,6 +292,7 @@ public class OMC extends Application {
     	OMC.LM = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
     	OMC.NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     	OMC.GEOFONT = Typeface.createFromAsset(OMC.AM, "GeosansLight.ttf");
+    	OMC.WEATHERFONT = Typeface.createFromAsset(OMC.AM, "wef.ttf");
     	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_PRIVATE);
 		// We are using Zehro's solution (listening for TIME_TICK instead of using AlarmManager + FG Notification) which
 		// should be quite a bit more graceful.
@@ -581,6 +582,7 @@ public class OMC extends Application {
 	}
 	
 	public static Typeface getTypeface(String sTheme, String src) {
+		if (src.equals("wef.ttf")) return OMC.WEATHERFONT;
 		//Look in memory cache;
 		if (OMC.TYPEFACEMAP.get(src)!=null) {
 			return OMC.TYPEFACEMAP.get(src);
@@ -1199,6 +1201,18 @@ public class OMC extends Application {
 						t3.set(OMC.LASTWEATHERTRY);
 						result = "Weather as of " + t.format("%R") + "; lastry " + t3.format("%R")
 								+ "; nextupd " + t2.format("%R");
+					} else if (sType.equals("icontext")) {
+						String sDay;
+						if (OMC.TIME.hour >= 6 && OMC.TIME.hour < 18) {
+							//Day
+							sDay="day";
+						} else {
+							//Night - throw away the day token + the night indicator
+							sDay="night";
+						}
+						String sIndex = 
+						result = OMC.WEATHERCONVERSIONS.getJSONObject("WeatherFont")
+								.getJSONObject(sDay).optString(jsonWeather.optString("condition","Unknown").toLowerCase(),"E");
 					} else if (sType.equals("index")) {
 						String sTranslateType = st[iTokenNum++];
 						String sDay;
