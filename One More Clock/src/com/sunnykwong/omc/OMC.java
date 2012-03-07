@@ -84,7 +84,7 @@ public class OMC extends Application {
 	static final String STARTERPACKURL = "asset:pk128.omc";
 	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v127.omc";
 	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v127.omc";
-	static final String DEFAULTTHEME = "HoneycombLook";
+	static final String DEFAULTTHEME = "IceLock";
 	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
 	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
 	static final Intent WIDGETREFRESHINTENT = new Intent("com.sunnykwong.omc.WIDGET_REFRESH");
@@ -967,44 +967,15 @@ public class OMC extends Application {
 	
 	public static void setupDefaultTheme() {
 		String sDefaultThemeAssetDir = "defaulttheme/";
+		String[] sFileNames = {"000preview.jpg","00control.json","AndroidClock_Solid.ttf","Roboto-Bold.ttf",
+				"Roboto-Regular.ttf","battery1.png","battery2.png","battery3.png","battery4.png"
+		};
 		if (new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME + "/00control.json").exists()) return;
-		copyAssetToCache(sDefaultThemeAssetDir+"000preview.jpg","000preview.jpg", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"00control.json","00control.json", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"A.png","A.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"colon.png","colon.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"digit .png","digit .png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"digit0.png","digit0.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"digit1.png","digit1.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"digit2.png","digit2.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"digit3.png","digit3.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"digit4.png","digit4.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"digit5.png","digit5.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"digit6.png","digit6.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"digit7.png","digit7.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"digit8.png","digit8.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"digit9.png","digit9.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"P.png","P.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"small-a.png","small-a.png", OMC.DEFAULTTHEME);
-		copyAssetToCache(sDefaultThemeAssetDir+"small-p.png","small-p.png", OMC.DEFAULTTHEME);
 		(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME)).mkdirs();
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "00control.json", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/00control.json");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "000preview.jpg", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/000preview.jpg");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "A.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/A.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "colon.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/colon.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit .png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit .png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit0.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit0.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit1.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit1.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit2.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit2.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit3.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit3.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit4.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit4.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit5.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit5.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit6.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit6.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit7.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit7.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit8.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit8.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "digit9.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/digit9.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "P.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/P.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "small-a.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/small-a.png");
-		copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + "small-p.png", Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/small-p.png");
+		for (String sFile : sFileNames) {
+			copyAssetToCache(sDefaultThemeAssetDir+sFile,sFile, OMC.DEFAULTTHEME);
+			copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + sFile, Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/" + sFile);
+		}
 	}
 	
 	public static boolean validateTheme(JSONObject theme) {	
