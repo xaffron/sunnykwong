@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="app_name">One More Clock</string>
-<string name="widget_name1x3">O.M. Clock 1x3</string>
-<string name="widget_name2x1">O.M. Clock 2x1</string>
-<string name="widget_name2x2">O.M. Clock 2x2</string>
-<string name="widget_name3x1">O.M. Clock 3x1</string>
-<string name="widget_name3x3">O.M. Clock 3x3</string>
-<string name="widget_name4x1">O.M. Clock 4x1</string>
-<string name="widget_name4x2">O.M. Clock 4x2</string>
-<string name="widget_name4x4">O.M. Clock 4x4</string>
+<string name="widget_name1x3">OMC 1x3</string>
+<string name="widget_name2x1">OMC 2x1</string>
+<string name="widget_name2x2">OMC 2x2</string>
+<string name="widget_name3x1">OMC 3x1</string>
+<string name="widget_name3x3">OMC 3x3</string>
+<string name="widget_name4x1">OMC 4x1</string>
+<string name="widget_name4x2">OMC 4x2</string>
+<string name="widget_name4x4">OMC 4x4</string>
 </resources>
