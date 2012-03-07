@@ -94,6 +94,18 @@ public class OMCWeatherForecastActivity extends Activity {
 						setText(findViewById(getResources().getIdentifier("HighTemp"+i, "id", OMC.PKGNAME)),day.optString("high_c")+"°C");
 						setText(findViewById(getResources().getIdentifier("LowTemp"+i, "id", OMC.PKGNAME)),day.optString("low_c")+"°C");
 					}
+//				    TextView gradient = (TextView)findViewById(getResources().getIdentifier("divider"+i, "id", OMC.PKGNAME));
+//				    final int iDay = i;
+//				    gradient.setOnClickListener(new View.OnClickListener() {
+//						
+//						@Override
+//						public void onClick(View v) {
+//							Intent accu = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.accuweather.com/m/Details"+iDay+".aspx?lat="+weather.optLong("latitude_e6",0l)/1000000d
+//									+ "&lon=" + weather.optLong("longitude_e6",0l)/1000000d));
+//							startActivity(accu);
+//							finish();
+//						}
+//					});
 				}
 				Time tStation = new Time();
 				tStation.parse(weather.optString("current_local_time","19700101T000000"));
@@ -105,7 +117,7 @@ public class OMCWeatherForecastActivity extends Activity {
 					
 				}
 				TextView acculink = ((TextView)findViewById(getResources().getIdentifier("AccuLink", "id", OMC.PKGNAME)));
-				acculink.setText("Alternate Forecast from AccuWeather®");
+				acculink.setText("Tap for Alternate Forecasts from AccuWeather®");
 				acculink.setOnClickListener(new View.OnClickListener() {
 					
 					@Override

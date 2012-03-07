@@ -1140,15 +1140,16 @@ public class OMC extends Application {
 		// By default, 
 		String result = "";
 
-		StringTokenizer st = new StringTokenizer(sBuffer, "_");
+		String[] st = sBuffer.split("_");
+		int iTokenNum=0;
 
 		//Get the first element (command).
-		String sToken = st.nextToken();
+		String sToken = st[iTokenNum++];
 		if (sToken.startsWith("shift")) {
 
 			// value that changes linearly and repeats every X seconds from 6am.
-			String sType = st.nextToken();
-			int iIntervalSeconds =  Integer.parseInt(st.nextToken());
+			String sType = st[iTokenNum++];
+			int iIntervalSeconds =  Integer.parseInt(st[iTokenNum++]);
 			int iGradientSeconds = 0;
 
 			// Where are we in time?  intGradientSeconds starts the count from either 12am or 6am
@@ -1160,41 +1161,45 @@ public class OMC extends Application {
 			} 
 
 			float gradient = (iGradientSeconds % iIntervalSeconds)/(float)iIntervalSeconds;
-			
+			final String sLowVal = st[iTokenNum++];
+			final String sMidVal = st[iTokenNum++];
+			final String sHighVal = st[iTokenNum++];
 			if (sType.equals("number")) {
 				result = String.valueOf(OMC.numberInterpolate(
-						Integer.parseInt(st.nextToken()), 
-						Integer.parseInt(st.nextToken()), 
-						Integer.parseInt(st.nextToken()), 
+						Integer.parseInt(sLowVal), 
+						Integer.parseInt(sMidVal), 
+						Integer.parseInt(sHighVal), 
 						gradient));
 			} else if (sType.equals("color")) {
 				int color = OMC.colorInterpolate(
-						st.nextToken(), 
-						st.nextToken(), 
-						st.nextToken(), 
+						sLowVal, 
+						sMidVal, 
+						sHighVal, 
 						gradient);
 				result = String.valueOf("#" + Integer.toHexString(color));
 			} else if (sType.equals("float")) {
 				result = String.valueOf(OMC.floatInterpolate(
-						Float.parseFloat(st.nextToken()), 
-						Float.parseFloat(st.nextToken()), 
-						Float.parseFloat(st.nextToken()), 
+						Float.parseFloat(sLowVal), 
+						Float.parseFloat(sMidVal), 
+						Float.parseFloat(sHighVal), 
 						gradient));
 			} else {
 				//Unknown - do nothing
 			}
 		} else if (sToken.equals("ifequal")) {
-			if (st.nextToken().equals(st.nextToken())) {
+			final String sSubj = st[iTokenNum++];
+			final String sTest = st[iTokenNum++];
+			final String sPos = st[iTokenNum++];
+			final String sNeg = st[iTokenNum++];
+			if (sSubj.equals(sTest)) {
 				//go to the positive result and skip the negative
-				result = st.nextToken();
-				st.nextToken();
+				result = sPos;
 			} else {
 				//Skip the positive result and go to the negative result
-				st.nextToken();
-				result = st.nextToken();
+				result = sNeg;
 			}
 		} else if (sToken.equals("ompc")) {
-			String sType = st.nextToken();
+			String sType = st[iTokenNum++];
 			if (sType.equals("battpercent")) {
 				result = String.valueOf((int)(1000+OMC.PREFS.getInt("ompc_"+sType,99))).substring(1);
 			} else if (sType.equals("battdecimal")) {
@@ -1212,7 +1217,7 @@ public class OMC extends Application {
 				JSONObject jsonWeather = new JSONObject();
 				try {
 					jsonWeather = new JSONObject(OMC.PREFS.getString("weather", ""));
-					String sType = st.nextToken();
+					String sType = st[iTokenNum++];
 					if (sType.equals("debug")) {
 						Time t = new Time();
 						t.parse(jsonWeather.optString("current_local_time"));
@@ -1223,7 +1228,7 @@ public class OMC extends Application {
 						result = "Weather as of " + t.format("%R") + "; lastry " + t3.format("%R")
 								+ "; nextupd " + t2.format("%R");
 					} else if (sType.equals("index")) {
-						String sTranslateType = st.nextToken();
+						String sTranslateType = st[iTokenNum++];
 						String sDay;
 						if (OMC.TIME.hour >= 6 && OMC.TIME.hour < 18) {
 							//Day
@@ -1246,7 +1251,7 @@ public class OMC extends Application {
 					} else if (sType.equals("city")) {
 						result = jsonWeather.optString("city","Unknown");
 					} else if (sType.equals("high")) {
-						int iDay = Integer.parseInt(st.nextToken());
+						int iDay = Integer.parseInt(st[iTokenNum++]);
 						String sFahrenheit = jsonWeather.getJSONArray("zzforecast_conditions").getJSONObject(iDay).optString("high","--");
 						if (OMC.PREFS.getString("weatherdisplay", "f").equals("c")) {
 							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32.2f)*5f/9f+0.5f));
@@ -1254,7 +1259,7 @@ public class OMC extends Application {
 							result = sFahrenheit;
 						}
 					} else if (sType.equals("low")) {
-						int iDay = Integer.parseInt(st.nextToken());
+						int iDay = Integer.parseInt(st[iTokenNum++]);
 						String sFahrenheit = jsonWeather.getJSONArray("zzforecast_conditions").getJSONObject(iDay).optString("low","--");
 						if (OMC.PREFS.getString("weatherdisplay", "f").equals("c")) {
 							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32.2f)*5f/9f+0.5f));
@@ -1273,80 +1278,78 @@ public class OMC extends Application {
 			}
 		} else if (sToken.equals("circle")) {
 			// Specifies a point at angle/radius from point.
-			int iOriginVal = Integer.parseInt(st.nextToken());
-			String sType = st.nextToken();
-			int iAngle = Integer.parseInt(st.nextToken());
-			int iRadius =  Integer.parseInt(st.nextToken());
+			double dOriginVal = Double.parseDouble(st[iTokenNum++]);
+			String sType = st[iTokenNum++];
+			double dAngle = Double.parseDouble(st[iTokenNum++]);
+			double dRadius =  Double.parseDouble(st[iTokenNum++]);
 
 			if (sType.equals("cos")) {
-				result = String.valueOf(iOriginVal + (int)(iRadius * Math.cos(iAngle*Math.PI/180d)));
+				result = String.valueOf(dOriginVal + dRadius * Math.cos(dAngle*Math.PI/180d));
 			} else if (sType.equals("sin")) {
-				result = String.valueOf(iOriginVal + (int)(iRadius * Math.sin(iAngle*Math.PI/180d)));
+				result = String.valueOf(dOriginVal + dRadius * Math.sin(dAngle*Math.PI/180d));
 			} else {
 				//Unknown - do nothing
 			}
 			
 		} else if (sToken.equals("ap24")) {
 			if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
-				st.nextToken();
-				st.nextToken();
-				result = (st.nextToken());
+				result = (st[iTokenNum+2]);
 			} else if (OMC.TIME.hour < 12) {
-				result = (st.nextToken());
+				result = (st[iTokenNum]);
 			} else {
-				st.nextToken();
-				result = (st.nextToken());
+				result = (st[iTokenNum+1]);
 			}
 		} else if (sToken.equals("array")) {
-			String sArrayName = st.nextToken();
-			String sIndex = st.nextToken();
+			String sArrayName = st[iTokenNum++];
+			String sIndex = st[iTokenNum++];
 			if (sIndex.equals("--") || sIndex.equals("Unk")) {
 				result = "";
 			} else {
 				result = tempResult.optJSONObject("arrays").optJSONArray(sArrayName).optString(Integer.parseInt(sIndex.replace(" ","")));
 			}
-			String sCase = st.nextToken();
+			String sCase = st[iTokenNum++];
 			if (result == null) result = "ERROR";
 			if (sCase.equals("lower")) result = result.toLowerCase();
 			else if (sCase.equals("upper")) result = result.toUpperCase();
 
 		} else if (sToken.equals("flipformat")) {
-			int iApply = Integer.parseInt(st.nextToken());
-			String sType = st.nextToken("_ ");
+			int iApply = Integer.parseInt(st[iTokenNum++]);
+			String sType = st[iTokenNum++];
+			StringTokenizer stt = new StringTokenizer(st[iTokenNum++]," ");
 			if (sType.equals("bold")) {
 				StringBuilder sb = new StringBuilder();
-				while (st.hasMoreTokens()) {
-					if (iApply==1) sb.append("<B>"+st.nextToken()+"</B> ");
-					else sb.append(st.nextToken()+" ");
+				while (stt.hasMoreElements()){
+					if (iApply==1) sb.append("<B>"+stt.nextToken()+"</B> ");
+					else sb.append(stt.nextToken()+" ");
 					iApply*=-1;
 				}
 				result = sb.toString();
 			} else if (sType.equals("case")) {
 				StringBuilder sb = new StringBuilder();
-				while (st.hasMoreTokens()) {
-					if (iApply==1) sb.append(st.nextToken().toUpperCase()+" ");
-					else sb.append(st.nextToken().toLowerCase()+" ");
+				while (stt.hasMoreElements()){
+					if (iApply==1) sb.append(stt.nextToken().toUpperCase()+" ");
+					else sb.append(stt.nextToken().toLowerCase()+" ");
 					iApply*=-1;
 				}
 				result = sb.toString();
 			} else if (sType.equals("italics")) {
 				StringBuilder sb = new StringBuilder();
-				while (st.hasMoreTokens()) {
-					if (iApply==1) sb.append("<I>"+st.nextToken()+"</I> ");
-					else sb.append(st.nextToken()+" ");
+				while (stt.hasMoreElements()){
+					if (iApply==1) sb.append("<I>"+stt.nextToken()+"</I> ");
+					else sb.append(stt.nextToken()+" ");
 					iApply*=-1;
 				}
 				result = sb.toString();
 			}
 		} else if (sToken.equals("stripspaces")){
-			result = st.nextToken().replace(" ", "");
+			result = st[iTokenNum++].replace(" ", "");
 		} else if (sToken.equals("fit")){
-			result = "f"+st.nextToken();
+			result = "f"+st[iTokenNum++];
 		} else if (sToken.equals("maxfit")){
-			result = st.nextToken()+"m"+st.nextToken();
+			result = st[iTokenNum++]+"m"+st[iTokenNum++];
 		} else if (sToken.equals("fullenglishtime")){
 			// full english time
-			String sType = st.nextToken();
+			String sType = st[iTokenNum++];
 			String sTemp = "";
 			if (OMC.TIME.minute == 0) {
 				sTemp = OMC.WORDNUMBERS[OMC.TIME.hour%12] + " o'Clock.";
@@ -1384,42 +1387,36 @@ public class OMC extends Application {
 			else result = (sTemp);
 
 		} else if (sToken.equals("digit")) { // must be color
-			String sTemp = st.nextToken();
+			String sTemp = st[iTokenNum++];
 
-    		int iOffset = Integer.parseInt(st.nextToken());
+    		int iOffset = Integer.parseInt(st[iTokenNum++]);
     		result = (sTemp.substring(iOffset-1,iOffset));
 			
 			
 		} else if (sToken.equals("day")){
 			// value that switches between two fixed symbols - day (6a-6p) and night (6p-6a).
 			if (OMC.TIME.hour >= 6 && OMC.TIME.hour < 18) {
+				result = st[iTokenNum];
 				//Day
-				if (st.hasMoreElements()) 
-					result = (st.nextToken());
-				else result="";
 			} else {
 				//Night - throw away the day token + the night indicator
-				try {
-					st.nextToken();
-					st.nextToken();
-					result = (st.nextToken());
-				} catch (NoSuchElementException e) {
-					result="";
-				}
+				result = st[iTokenNum+2];
 			}
 		} else if (sToken.equals("random")){
 			// value that randomly jumps between two values.
-			String sType = st.nextToken();
+			String sType = st[iTokenNum++];
+			String sLow = st[iTokenNum++];
+			String sHigh = st[iTokenNum++];
 			float gradient = OMC.RND.nextFloat();
 			if (sType.equals("number")) {
 				result = String.valueOf(OMC.numberInterpolate(
-						Integer.parseInt(st.nextToken()), 
-						Integer.parseInt(st.nextToken()), 
+						Integer.parseInt(sLow), 
+						Integer.parseInt(sHigh), 
 						gradient));
 			} else if (sType.equals("color")) { // must be color
 				int color = OMC.colorInterpolate(
-						st.nextToken(), 
-						st.nextToken(), 
+						sLow, 
+						sHigh, 
 						gradient);
 				result = String.valueOf("#" + Integer.toHexString(color));
 			} else {
@@ -1429,10 +1426,10 @@ public class OMC extends Application {
 
 		} else if (sToken.equals("gradient")){
 			// value that randomly jumps between two values.
-			String sType = st.nextToken();
-			String sMin = st.nextToken();
-			String sVal = st.nextToken();
-			String sMax = st.nextToken();
+			String sType = st[iTokenNum++];
+			String sMin = st[iTokenNum++];
+			String sVal = st[iTokenNum++];
+			String sMax = st[iTokenNum++];
 			float gradient = Float.parseFloat(sVal);
 			if (sType.equals("number")) {
 				result = String.valueOf(OMC.numberInterpolate(
@@ -1452,9 +1449,9 @@ public class OMC extends Application {
 			}
 			
 		} else if (sToken.equals("uppercase")){
-			result = st.nextToken().toUpperCase();
+			result = st[iTokenNum++].toUpperCase();
 		} else if (sToken.equals("lowercase")){
-			result = st.nextToken().toLowerCase();
+			result = st[iTokenNum++].toLowerCase();
 		} else {
 			//unrecognized macro - ignore
 		}
