@@ -73,7 +73,7 @@ import android.widget.Toast;
 public class OMC extends Application {
 	
 	static final boolean DEBUG = true;
-	static final boolean THEMESFROMCACHE = true;
+	static final boolean THEMESFROMCACHE = false;
 			
 	static String THISVERSION; 
 	static final boolean SINGLETON = false;
@@ -297,6 +297,10 @@ public class OMC extends Application {
 		// We are using Zehro's solution (listening for TIME_TICK instead of using AlarmManager + FG Notification) which
 		// should be quite a bit more graceful.
 		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
+		if (!OMC.PREFS.contains("weathersetting")){
+			OMC.PREFS.edit().putString("weathersetting", "bylatlong").commit();
+		}
+		
 		OMC.LASTWEATHERTRY = OMC.PREFS.getLong("weather_lastweathertry", 0l);
 		OMC.NEXTWEATHERREFRESH = OMC.PREFS.getLong("weather_nextweatherrefresh", 0l);
 		
@@ -583,18 +587,20 @@ public class OMC extends Application {
 	
 	public static Typeface getTypeface(String sTheme, String src) {
 		if (src.equals("wef.ttf")) return OMC.WEATHERFONT;
-		//Look in memory cache;
-		if (OMC.TYPEFACEMAP.get(src)!=null) {
-			return OMC.TYPEFACEMAP.get(src);
-		}
-		//Look in app cache;
-		if (new File(OMC.CACHEPATH + sTheme + src).exists()) {
-				try {
-					OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(OMC.CACHEPATH + sTheme + src));
-					return OMC.TYPEFACEMAP.get(src);
-				} catch (RuntimeException e) {
-					// if Cache is invalid, do nothing; we'll let this flow through to the full FS case.
-				}
+		if (OMC.THEMESFROMCACHE) {
+			//Look in memory cache;
+			if (OMC.TYPEFACEMAP.get(src)!=null) {
+				return OMC.TYPEFACEMAP.get(src);
+			}
+			//Look in app cache;
+			if (new File(OMC.CACHEPATH + sTheme + src).exists()) {
+					try {
+						OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(OMC.CACHEPATH + sTheme + src));
+						return OMC.TYPEFACEMAP.get(src);
+					} catch (RuntimeException e) {
+						// if Cache is invalid, do nothing; we'll let this flow through to the full FS case.
+					}
+			}
 		}
 		//Look in full file system;
 		if (new File(src).exists()) {
@@ -662,15 +668,17 @@ public class OMC extends Application {
 			return getBitmap(sTheme, src2);
 		}
 
-		//Look in memory cache;
-		if (OMC.BMPMAP.get(src)!=null) {
-			return OMC.BMPMAP.get(src);
-		}
-
-		//Look in app cache;
-		if (new File(OMC.CACHEPATH + sTheme + src).exists()) {
-			OMC.BMPMAP.put(src, BitmapFactory.decodeFile(OMC.CACHEPATH + sTheme + src));
-			return OMC.BMPMAP.get(src);
+		if (OMC.THEMESFROMCACHE) {
+			//Look in memory cache;
+			if (OMC.BMPMAP.get(src)!=null) {
+				return OMC.BMPMAP.get(src);
+			}
+	
+			//Look in app cache;
+			if (new File(OMC.CACHEPATH + sTheme + src).exists()) {
+				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(OMC.CACHEPATH + sTheme + src));
+				return OMC.BMPMAP.get(src);
+			}
 		}
 		// Look in SD path
 		if (OMC.checkSDPresent()) {
