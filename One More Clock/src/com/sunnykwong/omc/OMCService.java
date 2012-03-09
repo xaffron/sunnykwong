@@ -71,6 +71,7 @@ public class OMCService extends Service {
 
     	//	Tell the widgets to refresh themselves.
 		OMCService.RUNNING=true;
+		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Svc","Starting Svc");
 		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
 //		sendBroadcast(OMC.WIDGETREFRESHINTENT);
 		
@@ -88,6 +89,7 @@ public class OMCService extends Service {
 		//	Tell the widgets to refresh themselves.
 		OMCService.RUNNING=true;
 
+		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Svc","Starting Svc");
 		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
 
 		handleCommand(intent);
