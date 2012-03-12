@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="Clock Preferences"
+	android:key="rootPrefs" xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:key="thisClock" android:title="For this clock:">
+		<Preference android:selectable="true" android:key="loadThemeFile"
+			android:enabled="true" android:title="Set Widget Theme"/>
+		<Preference android:key="tweakTheme" android:title="Personalize Clock" android:summary="Tweak Colors and Layers." android:enabled="true" android:selectable="true"></Preference><CheckBoxPreference android:key="widget24HrClock"
+			android:title="Use 24 Hour Clock" android:enabled="true" android:defaultValue="true"
+			android:selectable="true" android:summary="Show 23:59 instead of 11:59pm."/>
+
+		<CheckBoxPreference android:key="widgetLeadingZero"
+			android:enabled="true"
+			android:selectable="true" android:summary="Show 04:23 instead of 4:23." android:title="Show Leading Zero"/>
+		<Preference android:key="oTTL" android:summary="NB: Click on top left corner to return to this screen." android:title="Assign Tap-to-Launch"></Preference>
+		<Preference android:key="timeZone" android:title="Change Time Zone" android:enabled="true" android:selectable="true"></Preference>
+	</PreferenceCategory>
+	<PreferenceCategory android:key="allClocks"
+		android:title="For all clocks:"><Preference android:title="Weather settings loading..." android:key="weather" android:summary="Tap to enable" />
+		<Preference android:key="weatherDisplay" android:title="Weather display settings" android:summary="C or F"/><CheckBoxPreference android:key="widgetPersistence"
+			android:selectable="true"
+			android:enabled="true" android:summary="Keep OMC from sleeping.\n(at the cost of a persistent notification)" android:title="Set Foreground Mode"/>
+		
+		<ListPreference android:entryValues="@array/interval_values" android:entries="@array/interval_options" android:summary="Redraw Every 30 Seconds." android:enabled="true" android:selectable="true" android:title="Set Update Interval" android:key="sUpdateFreq"></ListPreference><PreferenceScreen android:key="widgetPrefs"
+			android:title="Toggle Widget Sizes">
+			<Preference android:enabled="true"
+				android:summary="Changes to these settings will require a reboot of your phone to take effect."
+				android:selectable="false" android:title="Reboot Required" />
+			<CheckBoxPreference android:defaultValue="true"
+				android:selectable="true" android:enabled="true" android:key="bFourByFour" android:title="Enable (4x4) Widget"/>
+			<CheckBoxPreference android:key="bFourByTwo" android:defaultValue="true"
+				android:selectable="false" android:enabled="true" android:title="Enable (4x2) Widget"/>
+			<CheckBoxPreference android:defaultValue="true"
+				android:selectable="true" android:enabled="true" android:key="bFourByOne" android:title="Enable (4x1) Widget"/>
+			<CheckBoxPreference android:key="bThreeByThree" android:defaultValue="true"
+				android:selectable="true" android:enabled="true" android:title="Enable (3x3) Widget"/>
+			<CheckBoxPreference android:key="bThreeByOne" android:defaultValue="true"
+				android:selectable="true" android:enabled="true" android:title="Enable (3x1) Widget"/>
+			<CheckBoxPreference android:key="bTwoByTwo" android:defaultValue="true"
+				android:selectable="true" android:enabled="true" android:title="Enable (2x2) Widget"/>
+			<CheckBoxPreference android:key="bTwoByOne" android:defaultValue="true"
+				android:selectable="true" android:enabled="true" android:title="Enable (2x1) Widget"/>
+			<CheckBoxPreference android:key="bOneByThree" android:defaultValue="true"
+				android:selectable="true" android:enabled="true" android:title="Enable (1x3) Widget"/>
+			<CheckBoxPreference android:selectable="true"
+				android:enabled="true" android:key="bSkinner" android:defaultValue="false" android:summary="Development tool for skinners only." android:title="Enable Theme Tester"/>
+		</PreferenceScreen>
+		<CheckBoxPreference android:key="widgetEnglishOnly"
+			android:selectable="true"
+			android:enabled="true" android:summary="Uncheck for some non-English locales. (Experimental)" android:title="Force English Dates" android:defaultValue="true"/>
+		<Preference android:selectable="true"
+			android:key="clearCache" android:enabled="true" android:title="Clear Render Caches"/>
+		
+	
+</PreferenceCategory>
+	<PreferenceCategory android:title="Credits"
+		android:key="Credits">
+		<Preference android:selectable="true" android:key="emailMe" android:enabled="true" android:title="Contact Xaffron" android:summary="Donate or Contact author for help."></Preference><Preference android:title="1.0.0" android:selectable="false"
+			android:enabled="true" android:key="sVersion" />
+		<Preference android:selectable="true" android:title="View Credits"
+			android:key="widgetCredits" android:enabled="true" />
+	</PreferenceCategory>
+	
+
+</PreferenceScreen>

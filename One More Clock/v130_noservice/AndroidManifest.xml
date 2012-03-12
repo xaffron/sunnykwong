@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.sunnykwong.omc" 
+      android:versionCode="30" android:versionName="1.3.0">
+    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="14"/>
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.BATTERY_STATS"></uses-permission>
+	<uses-permission android:name="com.android.alarm.permission.SET_ALARM"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+	<uses-feature android:name="android.hardware.touchscreen" android:required="false"></uses-feature>
+    <application android:name="com.sunnykwong.omc.OMC" 
+    android:icon="@drawable/clockicon" 
+    android:label="@string/app_name"> 
+        <activity android:name="com.sunnykwong.omc.OMCPrefActivity"
+                  android:screenOrientation="nosensor"
+                  android:label="@string/app_name">
+			<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+			<intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+			</intent-filter>
+		</activity>
+        <activity android:name="com.sunnykwong.omc.OMCSkinnerActivity"
+                  android:screenOrientation="nosensor"
+                  android:label="OMC Theme Tester" android:icon="@drawable/rubeicon_mdpi"
+                  android:theme="@android:style/Theme.Translucent"
+                  android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+		</activity>
+        <activity android:name="com.sunnykwong.omc.OMCThemePickerActivity"
+                  android:screenOrientation="nosensor"
+                  android:label="Theme Picker">
+		</activity>
+        <activity android:name="com.sunnykwong.omc.ZoneList"
+                  android:screenOrientation="nosensor"
+                  android:label="Choose Time Zone">
+		</activity>
+        <activity android:name="com.sunnykwong.omc.OMCWeatherForecastActivity"
+                  android:screenOrientation="nosensor"
+                  android:theme="@android:style/Theme.Dialog"
+                  android:label="OMC Weather Forecast">
+        </activity>
+        <activity android:name="com.sunnykwong.omc.OMCFixedLocationActivity"
+                  android:screenOrientation="nosensor"
+                  android:theme="@android:style/Theme.Dialog"
+                  android:label="OMC Fixed Location">
+        </activity>
+        <activity android:name="com.sunnykwong.omc.OMCThemeImportActivity"
+                  android:screenOrientation="nosensor"
+                  android:label="Theme Picker">
+		</activity>
+        <activity android:name="com.sunnykwong.omc.OMCThemeUnzipActivity"
+                  android:screenOrientation="nosensor" 
+                  android:theme="@android:style/Theme.Translucent">
+<!--			This filter captures .omc files in hyperlinks -->
+ 			<intent-filter>
+    			<action android:name="android.intent.action.VIEW" />
+    			<category android:name="android.intent.category.DEFAULT" />
+    			<category android:name="android.intent.category.BROWSABLE" />
+    			<data android:scheme="https" />
+    			<data android:scheme="http" />
+    			<data android:scheme="file" />
+    			<data android:host="*" />
+	            <data android:pathPattern=".*\\.omc"/>
+	            <data android:pathPattern=".*\\..*\\.omc"/>
+	            <data android:pathPattern=".*\\..*\\..*\\.omc"/>
+	            <data android:pathPattern=".*\\..*\\..*\\..*\\.omc"/>			
+	        </intent-filter>
+<!--			This filter offers OMC as an option to open *all* attachments -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/octet-stream" />
+                </intent-filter>
+<!--			This filter captures .omc files copied to sdcard and clicked-->
+			<intent-filter>
+    			<action android:name="android.intent.action.VIEW" />
+    			<category android:name="android.intent.category.DEFAULT" />
+    			<data android:scheme="file" android:host="*" android:mimeType="*/*" android:pathPattern=".*\\.omc"/>
+	        </intent-filter>
+		</activity>
+        <activity android:name="com.sunnykwong.omc.OMCCreditsActivity"
+                  android:screenOrientation="nosensor"
+                  android:label="@string/app_name">
+		</activity>
+        <activity android:name="com.sunnykwong.omc.OMCThemeTweakerActivity"
+                  android:screenOrientation="nosensor"
+                  android:label="@string/app_name">
+		</activity>
+        <service android:enabled="true" android:name="com.sunnykwong.omc.OMCService"/>
+        <receiver android:name="com.sunnykwong.omc.OMCAlarmReceiver" >
+		</receiver>
+        <receiver android:name="com.sunnykwong.omc.OMCConfigReceiver">
+    		<intent-filter>
+        		<action android:name="com.sunnykwong.omc.WIDGET_INDIRECT" />
+                <data android:scheme="omc" />
+    		</intent-filter>
+		</receiver>
+    	<receiver android:name="com.sunnykwong.omc.ClockWidget4x2" android:label="@string/widget_name4x2"
+    	 android:enabled="true">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo4x2"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+         		<category android:name="android.intent.category.DEFAULT" />
+    		</intent-filter>  
+		</receiver> 
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget4x4" android:label="@string/widget_name4x4" android:enabled="true">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo4x4"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<category android:name="android.intent.category.DEFAULT" />  
+    		</intent-filter>  
+		</receiver>
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget4x1" android:label="@string/widget_name4x1" android:enabled="true">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo4x1"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<category android:name="android.intent.category.DEFAULT" />  
+    		</intent-filter>  
+		</receiver>
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget3x3" android:label="@string/widget_name3x3" android:enabled="true">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo3x3"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<category android:name="android.intent.category.DEFAULT" />  
+    		</intent-filter>  
+		</receiver>
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget3x1" android:label="@string/widget_name3x1" android:enabled="true">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo3x1"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<category android:name="android.intent.category.DEFAULT" />  
+    		</intent-filter>  
+		</receiver>
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget2x2" android:label="@string/widget_name2x2" android:enabled="true">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo2x2"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<category android:name="android.intent.category.DEFAULT" />  
+    		</intent-filter>  
+		</receiver>
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget2x1" android:label="@string/widget_name2x1" android:enabled="true">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo2x1"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<category android:name="android.intent.category.DEFAULT" />  
+    		</intent-filter>  
+		</receiver>
+	    <receiver android:name="com.sunnykwong.omc.ClockWidget1x3" android:label="@string/widget_name1x3" android:enabled="true">
+     		<meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/clockinfo1x3"/>
+			<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
+        		<category android:name="android.intent.category.DEFAULT" />  
+    		</intent-filter>  
+		</receiver>
+     </application>
+<supports-screens android:anyDensity="true" android:largeScreens="true" android:smallScreens="true" android:normalScreens="true"></supports-screens>
+</manifest> 

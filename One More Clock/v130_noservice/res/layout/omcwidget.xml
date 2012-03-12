@@ -1,0 +1,46 @@
+<FrameLayout android:id="@+id/FrameLayout01"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:gravity="fill_horizontal|fill_vertical" android:background="#00ffffff"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<ImageView android:id="@+id/omcIV" android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:gravity="fill_horizontal|fill_vertical"></ImageView>
+	<ImageView android:id="@+id/omcNB" android:layout_width="wrap_content"
+		android:layout_height="wrap_content"></ImageView>
+	<LinearLayout android:orientation="vertical" android:id="@+id/OverlayURLs"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		xmlns:android="http://schemas.android.com/apk/res/android">
+		<LinearLayout android:orientation="horizontal"
+			android:layout_weight="1" android:id="@+id/OverlayRow1"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			xmlns:android="http://schemas.android.com/apk/res/android">
+			<ImageView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/NW" android:layout_width="fill_parent" />
+			<ImageView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/N" android:layout_width="fill_parent" />
+			<ImageView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/NE" android:layout_width="fill_parent" />
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal"
+			android:layout_weight="1" android:id="@+id/OverlayRow2"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			xmlns:android="http://schemas.android.com/apk/res/android">
+			<ImageView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/W" android:layout_width="fill_parent" />
+			<ImageView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/C" android:layout_width="fill_parent" />
+			<ImageView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/E" android:layout_width="fill_parent" />
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal"
+			android:layout_weight="1" android:id="@+id/OverlayRow3"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			xmlns:android="http://schemas.android.com/apk/res/android">
+			<ImageView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/SW" android:layout_width="fill_parent" />
+			<ImageView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/S" android:layout_width="fill_parent" />
+			<ImageView android:layout_weight="1" android:layout_height="fill_parent"
+				android:id="@+id/SE" android:layout_width="fill_parent" />
+		</LinearLayout>
+	</LinearLayout>
+</FrameLayout>

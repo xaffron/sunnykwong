@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" android:title="Credits">
+evilgeniusbb_reg.ttf<PreferenceCategory android:title="Team">
+<Preference android:title="Programmer" android:enabled="true" android:selectable="false" android:summary="Sunny Kwong" android:key="1"></Preference><Preference android:enabled="true" android:selectable="false" android:key="2" android:title="Testers" android:summary="ibawanzingee, Cosmin Bizon, spambayes, Hollywooder,zHk3R"></Preference>
+<Preference android:title="Special Thanks" android:summary="Zehro for leading the way \nre: in-sync clock widgets w/o notifications."></Preference></PreferenceCategory><PreferenceCategory android:title="Copyrights and Licenses"><Preference android:summary="Copied from CyanogenMod source repo." android:key="ColorPickerDialog" android:title="Code: ColorPickerDialog"></Preference><Preference android:summary="SVG support provided by svg-android library (Apache License).\nhttp://code.google.com/p/svg-android/" android:key="svg-android" android:title="Code: svg-android"></Preference>
+
+
+
+
+
+</PreferenceCategory><PreferenceCategory android:title="Source Code"><Preference android:summary="http://code.google.com/p/sunnykwong/" android:title="Source Code Available at " android:enabled="true" android:selectable="false" android:key="99"></Preference>
+</PreferenceCategory>evilgeniusbb_reg.ttf
+
+
+</PreferenceScreen>
