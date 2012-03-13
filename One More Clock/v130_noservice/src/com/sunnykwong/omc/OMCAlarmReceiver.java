@@ -116,13 +116,11 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Last upd was " + (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS) + "ms ago! Not redrawing clocks again.");
 				return;
 			}
-			OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
 			context.startService(OMC.SVCSTARTINTENT);
 		// If the screen is off, update bare minimum to mimic foreground mode.
 		} else if (action.equals(Intent.ACTION_TIME_TICK)
 				||action.equals(Intent.ACTION_TIME_CHANGED)
 				||action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
-			OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
 			context.startService(OMC.SVCSTARTINTENT);
 		} else {
 			OMC.LASTUPDATEMILLIS = System.currentTimeMillis();

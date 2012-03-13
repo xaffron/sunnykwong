@@ -58,6 +58,9 @@ public class OMCWidgetDrawEngine {
      		}
 			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i], cName);
 		}
+
+		OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
+
 	}
 	
 	static synchronized void updateAppWidget(final Context context,

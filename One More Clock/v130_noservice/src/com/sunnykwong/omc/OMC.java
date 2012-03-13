@@ -636,6 +636,7 @@ public class OMC extends Application {
 	}
 
 	public static Bitmap getBitmap(String sTheme, String src) {
+		System.out.println(src);
 		if (src.startsWith("w-")) {
 			if (checkSDPresent()) {
 				OMC.WEATHERTRANSLATETYPE="AccuWeather";
@@ -1602,16 +1603,16 @@ public class OMC extends Application {
 
     @Override
     public void onTerminate() {
-    	if (!OMCService.STOPNOW4x4 || !OMCService.STOPNOW4x2 || !OMCService.STOPNOW4x1 
-    			|| !OMCService.STOPNOW3x3 || !OMCService.STOPNOW3x1 
-    			|| !OMCService.STOPNOW2x2 || !OMCService.STOPNOW2x1
-    			|| !OMCService.STOPNOW1x3) {
-    		Log.i(OMC.OMCSHORT + "App","APP TERMINATED - NOT UNREGISTERING RECEIVERS - OMC WILL RESTART");
-    		// do nothing
-    	} else {
-    		Log.i(OMC.OMCSHORT + "App","APP TERMINATED - UNREGISTERING RECEIVERS - OMC WILL NOT RESTART");
-    		unregisterReceiver(aRC);
-    	}
+//    	if (!OMCService.STOPNOW4x4 || !OMCService.STOPNOW4x2 || !OMCService.STOPNOW4x1 
+//    			|| !OMCService.STOPNOW3x3 || !OMCService.STOPNOW3x1 
+//    			|| !OMCService.STOPNOW2x2 || !OMCService.STOPNOW2x1
+//    			|| !OMCService.STOPNOW1x3) {
+//    		Log.i(OMC.OMCSHORT + "App","APP TERMINATED - NOT UNREGISTERING RECEIVERS - OMC WILL RESTART");
+//    		// do nothing
+//    	} else {
+//    		Log.i(OMC.OMCSHORT + "App","APP TERMINATED - UNREGISTERING RECEIVERS - OMC WILL NOT RESTART");
+//    		unregisterReceiver(aRC);
+//    	}
         OMC.PREFS.edit().commit();
         super.onTerminate();
     }
