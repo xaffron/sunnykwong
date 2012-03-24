@@ -728,37 +728,39 @@ public class OMCWidgetDrawEngine {
 
     	// theme-specific tweaks.
 		OMCWidgetDrawEngine.layerThemeTweaks(context, layer, sTheme, aWI);
-
+		float fStartAngle = (float)layer.optDouble("cw_rotate")+layer.optInt("cw_start_angle");
+		float fSweepAngle = (float)layer.optDouble("cw_rotate")+layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle");
+		if (fSweepAngle>360)fSweepAngle = fSweepAngle % 360f;
 		//Draw the SFX
 		if (layer.optString("render_style").equals("emboss")) {
 			tempBGRect.left = tempFGRect.left-1;
 			tempBGRect.top = tempFGRect.top-1;
 			tempBGRect.right = tempFGRect.right-1;
 			tempBGRect.bottom = tempFGRect.bottom-1;
-			cvas.drawArc(tempBGRect, layer.optInt("cw_start_angle"), layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle"), true, pt2);
+			cvas.drawArc(tempBGRect, fStartAngle, fSweepAngle, true, pt2);
 			tempBGRect.left+=2;
 			tempBGRect.top+=2;
 			tempBGRect.right+=2;
 			tempBGRect.bottom+=2;
-			cvas.drawArc(tempBGRect, layer.optInt("cw_start_angle"), layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle"), true, pt2);
+			cvas.drawArc(tempBGRect, fStartAngle, fSweepAngle, true, pt2);
 		} else if (layer.optString("render_style").equals("shadow")) {
 			tempBGRect.left = tempFGRect.left+3;
 			tempBGRect.top = tempFGRect.top+3;
 			tempBGRect.right = tempFGRect.right+3;
 			tempBGRect.bottom = tempFGRect.bottom+3;
-			cvas.drawArc(tempBGRect, layer.optInt("cw_start_angle"), layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle"), true, pt2);
+			cvas.drawArc(tempBGRect, fStartAngle, fSweepAngle, true, pt2);
 		} else if (layer.optString("render_style").startsWith("shadow")) {
 			int iShadowWidth = Integer.parseInt(layer.optString("render_style").substring(7));
 			tempBGRect.left = tempFGRect.left+iShadowWidth;
 			tempBGRect.top = tempFGRect.top+iShadowWidth;
 			tempBGRect.right = tempFGRect.right+iShadowWidth;
 			tempBGRect.bottom = tempFGRect.bottom+iShadowWidth;
-			cvas.drawArc(tempBGRect, layer.optInt("cw_start_angle"), layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle"), true, pt2);
+			cvas.drawArc(tempBGRect, fStartAngle, fSweepAngle, true, pt2);
 		} else if (layer.optString("render_style").startsWith("glow")) {
 			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5)), 0f, 0f, pt2.getColor());
 		}
 		//Either way, draw the proper panel
-		cvas.drawArc(tempFGRect, layer.optInt("cw_start_angle"), layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle"), false, pt1);
+		cvas.drawArc(tempFGRect, fStartAngle, fSweepAngle, false, pt1);
 		OMC.returnPaint(pt1);
 		OMC.returnPaint(pt2);
 	}
