@@ -111,16 +111,20 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		
 		// If the screen is on, honor the update frequency.
 		if (OMC.SCREENON) {
-			// Prevent abusive updates - update no more than every .5 secs.
-			if (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS < 500l && (action.equals(OMC.FGINTENT.getAction()) || action.equals(OMC.BGINTENT.getAction()) || action.equals(Intent.ACTION_TIME_TICK))) {
-				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Last upd was " + (System.currentTimeMillis()-OMC.LASTUPDATEMILLIS) + "ms ago! Not redrawing clocks again.");
-				return;
+			if ((action.equals(OMC.FGINTENT.getAction()) || action.equals(OMC.BGINTENT.getAction()) || action.equals(Intent.ACTION_TIME_TICK))) {
+				if (((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l==OMC.LASTRENDEREDTIME.toMillis(false)) {
+					// Prevent abusive updates - we've already rendered this target time.
+					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm",OMC.LASTRENDEREDTIME.format2445() + " already rendered! Not redrawing clocks again.");
+					return;
+				}
 			}
+			OMC.LASTRENDEREDTIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l);
 			context.startService(OMC.SVCSTARTINTENT);
 		// If the screen is off, update bare minimum to mimic foreground mode.
 		} else if (action.equals(Intent.ACTION_TIME_TICK)
 				||action.equals(Intent.ACTION_TIME_CHANGED)
 				||action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
+			OMC.LASTRENDEREDTIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l);
 			context.startService(OMC.SVCSTARTINTENT);
 		} else {
 			OMC.LASTUPDATEMILLIS = System.currentTimeMillis();

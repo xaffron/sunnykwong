@@ -33,8 +33,8 @@ public class OMCWidgetDrawEngine {
 	// calling this same method creating a potential race condition
 	static synchronized void updateAppWidget(Context context, ComponentName cName) {
 		// Set target time slightly ahead to account for lag
-		OMC.TIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)*1000l)/1000l);
-
+		OMC.TIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l);
+		
 		if (!OMCService.RUNNING) {
 			OMC.setServiceAlarm(System.currentTimeMillis() + 500);
 		}
@@ -60,6 +60,7 @@ public class OMCWidgetDrawEngine {
 		}
 
 		OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
+		
 
 	}
 	
