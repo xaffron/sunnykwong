@@ -53,6 +53,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -60,6 +63,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.provider.AlarmClock;
 import android.text.format.Time;
 import android.util.Log;
 import android.widget.Toast;
@@ -75,7 +79,6 @@ public class OMC extends Application {
 	static final boolean DEBUG = true;
 	static final boolean THEMESFROMCACHE = true;
 	static final String FALLBACKTHEME = "{ \"id\": \"Fallback\", \"name\": \"FB\", \"author\": \"\", \"date\": \"\", \"credits\": \"\", \"layers_bottomtotop\": [ { \"name\": \"T\", \"type\": \"text\", \"enabled\": true, \"text\": \"%H:%M\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 100, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 120, \"text_skew\": 0, \"text_stretch\": 1, \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 }, { \"name\": \"E\", \"type\": \"text\", \"enabled\": true, \"text\": \"! Theme Loading / No SD Card !\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 118, \"fgcolor\": \"#ffffcccc\", \"bgcolor\": \"#ff000000\", \"text_size\": 28, \"text_skew\": 0, \"text_stretch\": 0.9, \"text_align\": \"center\", \"render_style\": \"glow_3\", \"cw_rotate\": 0 }, { \"name\": \"S\", \"type\": \"text\", \"enabled\": true, \"text\": \"[%ompc_battlevel%]%% - [%weather_city%] - [%weather_temp%] - [%weather_condition%]\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 142, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 20, \"text_skew\": 0, \"text_stretch\": \"[%maxfit_1_300%]\", \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 } ] }";
-			
 	static String THISVERSION; 
 	static final boolean SINGLETON = false;
 
@@ -180,6 +183,15 @@ public class OMC extends Application {
 	static String[] OVERLAYURIS;
 	static int[] OVERLAYRESOURCES;
 
+	static final PorterDuffXfermode PORTERDUFF_XOR = new PorterDuffXfermode(Mode.XOR);
+	static final PorterDuffXfermode PORTERDUFF_SRC_ATOP = new PorterDuffXfermode(Mode.SRC_ATOP);
+	static final PorterDuffXfermode PORTERDUFF_DST_ATOP = new PorterDuffXfermode(Mode.DST_ATOP);
+	static final PorterDuffXfermode PORTERDUFF_SRC_IN = new PorterDuffXfermode(Mode.SRC_IN);
+	static final PorterDuffXfermode PORTERDUFF_DST_IN = new PorterDuffXfermode(Mode.DST_IN);
+	static final PorterDuffXfermode PORTERDUFF_SRC_OUT = new PorterDuffXfermode(Mode.SRC_OUT);
+	static final PorterDuffXfermode PORTERDUFF_DST_OUT = new PorterDuffXfermode(Mode.DST_OUT);
+	static final PorterDuffXfermode PORTERDUFF_SRC_OVER = new PorterDuffXfermode(Mode.SRC_OVER);
+	static final PorterDuffXfermode PORTERDUFF_DST_OVER = new PorterDuffXfermode(Mode.DST_OVER);
 	static ComponentName WIDGET4x4CNAME;
 	static ComponentName WIDGET4x2CNAME;
 	static ComponentName WIDGET4x1CNAME;
@@ -196,10 +208,11 @@ public class OMC extends Application {
 	static final String clockImpls[][] = {
         {"HTC Alarm Clock", "com.htc.android.worldclock", "com.htc.android.worldclock.WorldClockTabControl" },
         {"Standard Alarm Clock", "com.android.deskclock", "com.android.deskclock.AlarmClock"},
-        {"Froyo Nexus Alarm Clock", "com.google.android.deskclock", "com.android.deskclock.DeskClock"},
         {"Froyo Alarm Clock", "com.android.alarmclock", "com.android.alarmclock.AlarmClock"},
+        {"Froyo Nexus Alarm Clock", "com.google.android.deskclock", "com.android.deskclock.DeskClock"},
         {"Moto Blur Alarm Clock", "com.motorola.blur.alarmclock",  "com.motorola.blur.alarmclock.AlarmClock"},
-        {"Samsung Galaxy S", "com.sec.android.app.clockpackage","com.sec.android.app.clockpackage.ClockPackage"} 
+        {"Samsung Galaxy S", "com.sec.android.app.clockpackage","com.sec.android.app.clockpackage.ClockPackage"},
+        {"Sony Ericsson XPERIA X10 Mini Pro", "com.sec.android.app.clockpackage","com.sec.android.app.clockpackage.ClockPackage"} 
 	};
 
 	
@@ -329,7 +342,11 @@ public class OMC extends Application {
 //	    try {
 //	    	// in higher SDK versions, we have a dedicated alarm intent
 //	    	Class.forName("android.provider.AlarmClock");
-//	    	OMC.ALARMCLOCKINTENT=new Intent("android.intent.action.SET_ALARM");
+//	    	System.out.println(android.provider.AlarmClock.ACTION_SET_ALARM);
+//	    	OMC.ALARMCLOCKINTENT=new Intent(AlarmClock.ACTION_SET_ALARM);
+//	    	OMC.ALARMCLOCKINTENT.putExtra(AlarmClock.EXTRA_HOUR, 0);
+//	    	OMC.ALARMCLOCKINTENT.putExtra(AlarmClock.EXTRA_MINUTES, 0);
+//	    	OMC.ALARMCLOCKINTENT.putExtra(AlarmClock.EXTRA_MESSAGE , "");
 //            if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Found SDK>9, using new Android Alarm Intent");
 //	    	foundClockImpl = true;
 //	    	
@@ -1207,7 +1224,7 @@ public class OMC extends Application {
 			} else {
 				JSONObject jsonWeather = new JSONObject();
 				try {
-					jsonWeather = new JSONObject(OMC.PREFS.getString("weather", ""));
+					jsonWeather = new JSONObject(OMC.PREFS.getString("weather", "{}"));
 					String sType = st[iTokenNum++];
 					if (sType.equals("debug")) {
 						Time t = new Time();
@@ -1227,7 +1244,6 @@ public class OMC extends Application {
 							//Night - throw away the day token + the night indicator
 							sDay="night";
 						}
-						String sIndex = 
 						result = OMC.WEATHERCONVERSIONS.getJSONObject("WeatherFont")
 								.getJSONObject(sDay).optString(jsonWeather.optString("condition","Unknown").toLowerCase(),"E");
 					} else if (sType.equals("index")) {
@@ -1240,7 +1256,6 @@ public class OMC extends Application {
 							//Night - throw away the day token + the night indicator
 							sDay="night";
 						}
-						String sIndex = 
 						result = OMC.WEATHERCONVERSIONS.getJSONObject(sTranslateType)
 								.getJSONObject(sDay).optString(jsonWeather.optString("condition","Unknown").toLowerCase(),"00");
 					} else if (sType.equals("condition")) {

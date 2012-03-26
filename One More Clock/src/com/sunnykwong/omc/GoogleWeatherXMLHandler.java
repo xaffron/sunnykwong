@@ -100,7 +100,11 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		    public void onProviderEnabled(String provider) {}
 		    public void onProviderDisabled(String provider) {}
 		};
-		OMC.LM.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, OMC.LL);
+		try {
+			OMC.LM.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, OMC.LL);
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	static public void updateLocation(final Location location) {

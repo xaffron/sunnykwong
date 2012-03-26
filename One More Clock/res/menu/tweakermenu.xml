@@ -6,5 +6,5 @@
 <item android:id="@+id/tweakmenupickColor2" showAsAction="ifRoom" android:title="Color 2" android:icon="@android:drawable/ic_menu_edit"></item></group>
 
 
-
+ 
 </menu> 

@@ -14,6 +14,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -659,6 +660,26 @@ public class OMCWidgetDrawEngine {
 			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
 		} else if (layer.optString("render_style").startsWith("glow")) {
 			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5)), 0f, 0f, pt2.getColor());
+		} else if (layer.optString("render_style").startsWith("porterduff")) {
+			String sType = layer.optString("render_style").substring(11);
+			if (sType.equals("XOR"))
+				pt1.setXfermode(OMC.PORTERDUFF_XOR);
+			else if (sType.equals("SRC_ATOP"))
+				pt1.setXfermode(OMC.PORTERDUFF_SRC_ATOP);
+			else if (sType.equals("DST_ATOP"))
+				pt1.setXfermode(OMC.PORTERDUFF_DST_ATOP);
+			else if (sType.equals("SRC_IN"))
+				pt1.setXfermode(OMC.PORTERDUFF_SRC_IN);
+			else if (sType.equals("DST_IN"))
+				pt1.setXfermode(OMC.PORTERDUFF_DST_IN);
+			else if (sType.equals("SRC_OUT"))
+				pt1.setXfermode(OMC.PORTERDUFF_SRC_OUT);
+			else if (sType.equals("DST_OUT"))
+				pt1.setXfermode(OMC.PORTERDUFF_DST_OUT);
+			else if (sType.equals("SRC_OVER"))
+				pt1.setXfermode(OMC.PORTERDUFF_SRC_OVER);
+			else if (sType.equals("DST_OVER"))
+				pt1.setXfermode(OMC.PORTERDUFF_DST_OVER);
 		}
 		//Either way, draw the proper panel
 		cvas.drawRoundRect(tempFGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt1);
@@ -1016,9 +1037,10 @@ public class OMCWidgetDrawEngine {
 	}
 	
 	static void fancyDrawText(final String style, final Canvas cvas, final String text, final int x, final int y, final Paint pt1, final Paint pt2, final float fRot)  {
+		System.out.println("---");
+		System.out.println(style);
 		//Draw the SFX
 		if (style.equals("emboss")) {
-			
 			//SpannableStringBuilder ssb = new SpannableStringBuilder(Html.fromHtml(text));
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x-1, y-1, pt2, fRot);
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x+1, y+1, pt2, fRot);
@@ -1033,6 +1055,28 @@ public class OMCWidgetDrawEngine {
 		} else if (style.startsWith("glow")) {
 			pt1.setShadowLayer(Float.parseFloat(style.substring(5)), 0f, 0f, pt2.getColor());
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1, fRot);
+		} else if (style.startsWith("porterduff")) {
+			String sType = style.substring(11);
+			System.out.println("porterduff_"+sType);
+			if (sType.equals("XOR"))
+				pt1.setXfermode(OMC.PORTERDUFF_XOR);
+			else if (sType.equals("SRC_ATOP"))
+				pt1.setXfermode(OMC.PORTERDUFF_SRC_ATOP);
+			else if (sType.equals("DST_ATOP"))
+				pt1.setXfermode(OMC.PORTERDUFF_DST_ATOP);
+			else if (sType.equals("SRC_IN"))
+				pt1.setXfermode(OMC.PORTERDUFF_SRC_IN);
+			else if (sType.equals("DST_IN"))
+				pt1.setXfermode(OMC.PORTERDUFF_DST_IN);
+			else if (sType.equals("SRC_OUT"))
+				pt1.setXfermode(OMC.PORTERDUFF_SRC_OUT);
+			else if (sType.equals("DST_OUT"))
+				pt1.setXfermode(OMC.PORTERDUFF_DST_OUT);
+			else if (sType.equals("SRC_OVER"))
+				pt1.setXfermode(OMC.PORTERDUFF_SRC_OVER);
+			else if (sType.equals("DST_OVER"))
+				pt1.setXfermode(OMC.PORTERDUFF_DST_OVER);
+				OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1, fRot);
 		} else if (style.startsWith("normal")) {
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1, fRot);
 		}
