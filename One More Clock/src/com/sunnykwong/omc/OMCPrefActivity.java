@@ -355,6 +355,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     public boolean onPreferenceChange(Preference preference, Object newValue) {
     	if (preference==findPreference("sUpdateFreq")) {
     		preference.setSummary("Redraw every " + (String)newValue + " seconds.");
+    		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
+
     		return true;
     	}
     	return false;

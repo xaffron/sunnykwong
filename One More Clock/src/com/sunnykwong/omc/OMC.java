@@ -73,7 +73,8 @@ import android.widget.Toast;
 public class OMC extends Application {
 	
 	static final boolean DEBUG = true;
-	static final boolean THEMESFROMCACHE = false;
+	static final boolean THEMESFROMCACHE = true;
+	static final String FALLBACKTHEME = "{ \"id\": \"Fallback\", \"name\": \"FB\", \"author\": \"\", \"date\": \"\", \"credits\": \"\", \"layers_bottomtotop\": [ { \"name\": \"T\", \"type\": \"text\", \"enabled\": true, \"text\": \"%H:%M\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 100, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 120, \"text_skew\": 0, \"text_stretch\": 1, \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 }, { \"name\": \"E\", \"type\": \"text\", \"enabled\": true, \"text\": \"! Theme Loading / No SD Card !\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 118, \"fgcolor\": \"#ffffcccc\", \"bgcolor\": \"#ff000000\", \"text_size\": 28, \"text_skew\": 0, \"text_stretch\": 0.9, \"text_align\": \"center\", \"render_style\": \"glow_3\", \"cw_rotate\": 0 }, { \"name\": \"S\", \"type\": \"text\", \"enabled\": true, \"text\": \"[%ompc_battlevel%]%% - [%weather_city%] - [%weather_temp%] - [%weather_condition%]\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 142, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 20, \"text_skew\": 0, \"text_stretch\": \"[%maxfit_1_300%]\", \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 } ] }";
 			
 	static String THISVERSION; 
 	static final boolean SINGLETON = false;
@@ -81,7 +82,7 @@ public class OMC extends Application {
 	static final boolean FREEEDITION = false;
 
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "asset:pk128.omc";
+	static final String STARTERPACKURL = "asset:pk130.omc";
 	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v127.omc";
 	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v127.omc";
 	static final String DEFAULTTHEME = "IceLock";
@@ -171,6 +172,7 @@ public class OMC extends Application {
 	static final int WIDGETHEIGHT=480;
 	static final String[] COMPASSPOINTS = {"NW","N","NE","W","C","E","SW","S","SE"};
 	static final Time TIME = new Time();
+	static final Time LASTRENDEREDTIME = new Time();
 	static String CACHEPATH;
 	static String[] WORDNUMBERS;
 	static JSONObject STRETCHINFO;
@@ -370,9 +372,9 @@ public class OMC extends Application {
 		registerReceiver(OMC.aRC, new IntentFilter(OMC.BGINTENT.getAction()));
 		
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(3);
-		OMC.BMPMAP = new HashMap<String, Bitmap>(16);
+		OMC.BMPMAP = new HashMap<String, Bitmap>(5);
 		OMC.THEMEMAP=Collections.synchronizedMap(new HashMap<String, JSONObject>(3));
-		OMC.BMPTOCVAS = new HashMap<Bitmap, Canvas>(16);
+		OMC.BMPTOCVAS = new HashMap<Bitmap, Canvas>(3);
 		OMC.WIDGETBMPMAP = new HashMap<Integer, Bitmap>(3);
 		
 		OMC.STRETCHINFO = null;
@@ -813,7 +815,14 @@ public class OMC extends Application {
 			}
 			
 		}
-		return null;
+		JSONObject fb=null;
+		try {
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " not available; drop to fallback.");
+			fb = new JSONObject(FALLBACKTHEME);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return fb;
 	}
 
 	public static void themeToFile(JSONObject obj, File tgt) {
@@ -1602,16 +1611,16 @@ public class OMC extends Application {
 
     @Override
     public void onTerminate() {
-    	if (!OMCService.STOPNOW4x4 || !OMCService.STOPNOW4x2 || !OMCService.STOPNOW4x1 
-    			|| !OMCService.STOPNOW3x3 || !OMCService.STOPNOW3x1 
-    			|| !OMCService.STOPNOW2x2 || !OMCService.STOPNOW2x1
-    			|| !OMCService.STOPNOW1x3) {
-    		Log.i(OMC.OMCSHORT + "App","APP TERMINATED - NOT UNREGISTERING RECEIVERS - OMC WILL RESTART");
-    		// do nothing
-    	} else {
-    		Log.i(OMC.OMCSHORT + "App","APP TERMINATED - UNREGISTERING RECEIVERS - OMC WILL NOT RESTART");
-    		unregisterReceiver(aRC);
-    	}
+//    	if (!OMCService.STOPNOW4x4 || !OMCService.STOPNOW4x2 || !OMCService.STOPNOW4x1 
+//    			|| !OMCService.STOPNOW3x3 || !OMCService.STOPNOW3x1 
+//    			|| !OMCService.STOPNOW2x2 || !OMCService.STOPNOW2x1
+//    			|| !OMCService.STOPNOW1x3) {
+//    		Log.i(OMC.OMCSHORT + "App","APP TERMINATED - NOT UNREGISTERING RECEIVERS - OMC WILL RESTART");
+//    		// do nothing
+//    	} else {
+//    		Log.i(OMC.OMCSHORT + "App","APP TERMINATED - UNREGISTERING RECEIVERS - OMC WILL NOT RESTART");
+//    		unregisterReceiver(aRC);
+//    	}
         OMC.PREFS.edit().commit();
         super.onTerminate();
     }

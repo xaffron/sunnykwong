@@ -102,7 +102,19 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         //Hide the title bar
 //      requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        setContentView(getResources().getIdentifier("tweakertool", "layout", OMC.PKGNAME));
+		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+        	Toast.makeText(this, "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+			finish();
+        	return;
+        }
+        OMCThemePickerActivity.SDROOT = Environment.getExternalStorageDirectory();
+		if (!OMCThemePickerActivity.SDROOT.canRead()) {
+        	Toast.makeText(this, "SD Card missing or corrupt.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+			finish();
+        	return;
+        }
+
+		setContentView(getResources().getIdentifier("tweakertool", "layout", OMC.PKGNAME));
         toplevel = (AbsoluteLayout)findViewById(getResources().getIdentifier("toplevel", "id", OMC.PKGNAME));
 
         OMCThemeTweakerActivity.REFRESHINTERVAL = 1000;
