@@ -728,8 +728,8 @@ public class OMCWidgetDrawEngine {
 
     	// theme-specific tweaks.
 		OMCWidgetDrawEngine.layerThemeTweaks(context, layer, sTheme, aWI);
-		float fStartAngle = (float)layer.optDouble("cw_rotate")+layer.optInt("cw_start_angle");
-		float fSweepAngle = (float)layer.optDouble("cw_rotate")+layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle");
+		float fStartAngle = (float)layer.optDouble("cw_rotate",0d)+layer.optInt("cw_start_angle");
+		float fSweepAngle = layer.optInt("cw_end_angle")-layer.optInt("cw_start_angle");
 		if (fSweepAngle>360)fSweepAngle = fSweepAngle % 360f;
 		//Draw the SFX
 		if (layer.optString("render_style").equals("emboss")) {
