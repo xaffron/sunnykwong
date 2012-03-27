@@ -22,6 +22,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -66,6 +67,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         
     	if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"ThemePicker","OnCreate");
         getWindow().setWindowAnimations(android.R.style.Animation_Toast);
+        getWindow().setFormat(PixelFormat.RGB_565);
 
         sDefaultTheme = getIntent().getStringExtra("default");
         
@@ -620,14 +622,14 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	
         	BitmapFactory.Options bo = new BitmapFactory.Options();
         	bo.inDither=true;
-        	bo.inPreferredConfig = Bitmap.Config.ARGB_4444;
+        	bo.inPreferredConfig = Bitmap.Config.RGB_565;
     		((ImageView)ll.findViewById(getResources().getIdentifier("ThemePreview", "id", OMC.PKGNAME)))
     				.setImageBitmap(BitmapFactory.decodeFile(
     				OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + mThemes.get(position) +"/000preview.jpg",bo));
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeCredits", "id", OMC.PKGNAME))).setText(mCreds.get(mThemes.get(position)));
             return ll;
         }
-
+        
         public void dispose() {
         	mThemes.clear();
         	mCreds.clear();
