@@ -360,6 +360,7 @@ public class OMC extends Application {
 		            ComponentName cn = new ComponentName(packageName, className);
 		            PKM.getActivityInfo(cn, PackageManager.GET_META_DATA);
 		            OMC.ALARMCLOCKINTENT.setComponent(cn);
+		            OMC.ALARMCLOCKINTENT.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		            if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Found " + vendor + " --> " + packageName + "/" + className);
 		            foundClockImpl = true; 
 		            break;
@@ -373,7 +374,6 @@ public class OMC extends Application {
 	    	OMC.ALARMCLOCKINTENT = OMC.DUMMYINTENT;
 	    }
         OMC.ALARMCLOCKPENDING = PendingIntent.getActivity(this, 0, OMC.ALARMCLOCKINTENT, 0);
-        
 		
 		OMC.PREFS.edit().putString("version", OMC.THISVERSION).commit();
 		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
@@ -1412,6 +1412,7 @@ public class OMC extends Application {
     			result = (sTemp.substring(iOffset-1,iOffset));
     		} catch (StringIndexOutOfBoundsException e) {
     			e.printStackTrace();
+    			result="";
     		}
 			
 			
