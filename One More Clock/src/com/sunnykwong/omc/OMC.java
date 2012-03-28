@@ -86,8 +86,8 @@ public class OMC extends Application {
 
 	static final String SINGLETONNAME = "One More Clock";
 	static final String STARTERPACKURL = "asset:pk130.omc";
-	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v127.omc";
-	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v127.omc";
+	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v130.omc";
+	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v130.omc";
 	static final String DEFAULTTHEME = "IceLock";
 	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
 	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
