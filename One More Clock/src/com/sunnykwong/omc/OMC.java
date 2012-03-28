@@ -1404,11 +1404,15 @@ public class OMC extends Application {
 			else if (sType.equals("lower")) result = (sTemp.toLowerCase());
 			else result = (sTemp);
 
-		} else if (sToken.equals("digit")) { // must be color
+		} else if (sToken.equals("digit")) {
 			String sTemp = st[iTokenNum++];
 
     		int iOffset = Integer.parseInt(st[iTokenNum++]);
-    		result = (sTemp.substring(iOffset-1,iOffset));
+    		try {
+    			result = (sTemp.substring(iOffset-1,iOffset));
+    		} catch (StringIndexOutOfBoundsException e) {
+    			e.printStackTrace();
+    		}
 			
 			
 		} else if (sToken.equals("day")){

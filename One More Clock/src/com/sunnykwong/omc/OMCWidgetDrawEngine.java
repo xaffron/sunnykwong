@@ -779,6 +779,27 @@ public class OMCWidgetDrawEngine {
 			cvas.drawArc(tempBGRect, fStartAngle, fSweepAngle, true, pt2);
 		} else if (layer.optString("render_style").startsWith("glow")) {
 			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5)), 0f, 0f, pt2.getColor());
+		} else if (layer.optString("render_style").startsWith("porterduff")) {
+			String sType = layer.optString("render_style").substring(11);
+			System.out.println("porterduff_"+sType);
+			if (sType.equals("XOR"))
+				pt1.setXfermode(OMC.PORTERDUFF_XOR);
+			else if (sType.equals("SRC_ATOP"))
+				pt1.setXfermode(OMC.PORTERDUFF_SRC_ATOP);
+			else if (sType.equals("DST_ATOP"))
+				pt1.setXfermode(OMC.PORTERDUFF_DST_ATOP);
+			else if (sType.equals("SRC_IN"))
+				pt1.setXfermode(OMC.PORTERDUFF_SRC_IN);
+			else if (sType.equals("DST_IN"))
+				pt1.setXfermode(OMC.PORTERDUFF_DST_IN);
+			else if (sType.equals("SRC_OUT"))
+				pt1.setXfermode(OMC.PORTERDUFF_SRC_OUT);
+			else if (sType.equals("DST_OUT"))
+				pt1.setXfermode(OMC.PORTERDUFF_DST_OUT);
+			else if (sType.equals("SRC_OVER"))
+				pt1.setXfermode(OMC.PORTERDUFF_SRC_OVER);
+			else if (sType.equals("DST_OVER"))
+				pt1.setXfermode(OMC.PORTERDUFF_DST_OVER);
 		}
 		//Either way, draw the proper panel
 		cvas.drawArc(tempFGRect, fStartAngle, fSweepAngle, false, pt1);
@@ -794,6 +815,30 @@ public class OMCWidgetDrawEngine {
 		pt1.setFlags(Paint.FILTER_BITMAP_FLAG);
 		if (layer.has("tint")) {
 			pt1.setColor(Color.parseColor(layer.optString("tint")));
+		}
+		if (layer.has("render_style")) {
+			if (layer.optString("render_style").startsWith("porterduff")) {
+					String sType = layer.optString("render_style").substring(11);
+					System.out.println("porterduff_"+sType);
+					if (sType.equals("XOR"))
+						pt1.setXfermode(OMC.PORTERDUFF_XOR);
+					else if (sType.equals("SRC_ATOP"))
+						pt1.setXfermode(OMC.PORTERDUFF_SRC_ATOP);
+					else if (sType.equals("DST_ATOP"))
+						pt1.setXfermode(OMC.PORTERDUFF_DST_ATOP);
+					else if (sType.equals("SRC_IN"))
+						pt1.setXfermode(OMC.PORTERDUFF_SRC_IN);
+					else if (sType.equals("DST_IN"))
+						pt1.setXfermode(OMC.PORTERDUFF_DST_IN);
+					else if (sType.equals("SRC_OUT"))
+						pt1.setXfermode(OMC.PORTERDUFF_SRC_OUT);
+					else if (sType.equals("DST_OUT"))
+						pt1.setXfermode(OMC.PORTERDUFF_DST_OUT);
+					else if (sType.equals("SRC_OVER"))
+						pt1.setXfermode(OMC.PORTERDUFF_SRC_OVER);
+					else if (sType.equals("DST_OVER"))
+						pt1.setXfermode(OMC.PORTERDUFF_DST_OVER);
+			}
 		}
 
     	// theme-specific tweaks.
