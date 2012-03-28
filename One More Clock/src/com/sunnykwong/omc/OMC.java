@@ -429,6 +429,9 @@ public class OMC extends Application {
 		setupDefaultTheme();
 		this.widgetClicks();
 		OMC.toggleWidgets(this);
+
+		//v1.3.0 kickstart the widget!
+		OMC.setServiceAlarm(System.currentTimeMillis()+500l);
 	}
 	
 	static public JSONObject streamToJSONObject(InputStream is) throws IOException {
