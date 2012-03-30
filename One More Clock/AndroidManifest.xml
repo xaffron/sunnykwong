@@ -98,11 +98,15 @@
 		</activity>
         <service android:enabled="true" android:name="com.sunnykwong.omc.OMCService"/>
         <receiver android:name="com.sunnykwong.omc.OMCAlarmReceiver" >
-		</receiver>
+    		<intent-filter>
+        		<action android:name="com.sunnykwong.omc.CANCEL_FG" />
+         		<category android:name="android.intent.category.DEFAULT" />
+        	</intent-filter>
+        </receiver>
         <receiver android:name="com.sunnykwong.omc.OMCConfigReceiver">
     		<intent-filter>
         		<action android:name="com.sunnykwong.omc.WIDGET_INDIRECT" />
-                <data android:scheme="omc" />
+        		<data android:scheme="omc" />
     		</intent-filter>
 		</receiver>
     	<receiver android:name="com.sunnykwong.omc.ClockWidget4x2" android:label="@string/widget_name4x2"

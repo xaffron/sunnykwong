@@ -34,8 +34,14 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			OMC.SCREENON=true;
 			OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.FGSERVICE");
 		}
-
-		
+		// If user taps on notification, cancel FG mode.
+		if (action.equals("com.sunnykwong.omc.CANCEL_FG")) {
+			OMC.FG=false;
+			OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.BGSERVICE");
+			OMC.LASTRENDEREDTIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l);
+			context.startService(OMC.SVCSTARTINTENT);
+		}
+				
 		// Battery-related responses.
 		// If something about the battery changed, we need to record the changes.
 		if (action.equals(Intent.ACTION_BATTERY_CHANGED)) {

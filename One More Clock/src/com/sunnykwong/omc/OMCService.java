@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -129,9 +130,10 @@ public class OMCService extends Service {
 			OMC.FGNOTIFICIATION.icon = getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME);
 			
 	        RemoteViews contentView = new RemoteViews(getPackageName(), getResources().getIdentifier("omc_notification", "layout", OMC.PKGNAME));
-	        contentView.setTextViewText(getResources().getIdentifier("notf_text", "id", OMC.PKGNAME), "- " + OMC.APPNAME + " in Foreground Mode -");
+	        contentView.setTextViewText(getResources().getIdentifier("notf_text", "id", OMC.PKGNAME), OMC.APPNAME + " in Foreground - Tap to stop");
 	        OMC.FGNOTIFICIATION.contentView = contentView;
-			OMC.FGNOTIFICIATION.contentIntent = OMC.PREFSPENDING;
+	        Intent it = new Intent("com.sunnykwong.omc.CANCEL_FG");
+			OMC.FGNOTIFICIATION.contentIntent = PendingIntent.getBroadcast(this, 0, it, 0);
 	        
 	        startForegroundCompat(OMC.SVCNOTIFICATIONID, OMC.FGNOTIFICIATION);
 

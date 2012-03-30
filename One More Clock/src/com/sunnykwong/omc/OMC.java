@@ -106,15 +106,15 @@ public class OMC extends Application {
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	static int faqtoshow = 0;
 	static final String[] FAQS = {
-		"With v1.3.0, All customization-related bugs, on both ICS devices and pre-Honeycomb phones, should be fixed.",
-		"OMC's latest clock is Stamp.  If you have the paid version, remember to check out the Stamp clock in 4x4, 3x3 or 2x2!",
-		"v1.3.0 continues to fix a number of less-common FCs.  Please, if you see crashes, please submit a bug report or email me.",
-		"In v1.2.7, the issue where tweak settings did not save properly was fixed.  Thanks for the feedback!",
+		"Welcome to version 1.3.0!  This version introduces weather display and forecasts on many clocks.",
+		"The high-quality clocks launching with v.1.3.0 are Calendar, Chrome Rings, Dresses and Legend of Helda.",
+		"In addition, some clocsk have been rewritten and many have been updated.  Please download the 'full online collection'!",
+		"In version 1.3.0, clocks now have tags.  Tap on a tag to understand what it means!",
+		"v1.3.0 continues to fix a number of less-common bugs.  Please, if you see crashes, please submit a bug report or email me.",
 		"Not finding your favorite clock?  OMC comes with just a few initially.  To get the full clock collection, tap on 'Download Full Online Collection' when you're in the theme picker screen.",
-		"In v1.2.7, International Users can now toggle 'Force English Dates' for better compatibility.",
-		"A new, experimental change now allows a tap to launch the clock/alarm app.  Send me email and let me know how well it works!",
+		"International Users can now toggle 'Force English Dates' for better compatibility.",
 		"To back up or share your changes, try the new experimental feature!  On 'Set Widget Theme', long-press a theme and select 'email theme'.",
-		"OMC now supports battery levels.  Some of the widgets contain battery indicators in surprising ways - browse around and experiment!",
+		"OMC supports battery levels.  Some of the widgets contain battery indicators in surprising ways - browse around and experiment!",
 		"You can now specify a timezone for each clock independently of the device setting.  This allows for nice home/travel clock scenarios.",
 		"OMC stores themes in the .OMCThemes folder (with a dot).  This will keep OMC from cluttering up your Gallery... feel free to delete any old themes in your SD card's OMCThemes directory (without dot).",
 		"OMC lets you send your favorite personalizations to Xaffron!  Tap and hold a clock on the theme picker screen, then select 'Email Tweaked Theme' to send to me.",
@@ -294,7 +294,7 @@ public class OMC extends Application {
 
 		OMC.ALARMCLOCKINTENT = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER);
 		
-		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/";
+		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/"; 
 		
 		OMC.FGNOTIFICIATION = new Notification(this.getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME), 
 				"", 
@@ -336,6 +336,22 @@ public class OMC extends Application {
 			OMC.SHOWHELP=true;
 		}
 
+		// If paid and OMWPP installed, disable ads; otherwise, enable them
+		File noads = new File("/sdcard/Android/data/com.sunnykwong.omwpp/files/.noads");
+		if (!OMC.FREEEDITION) {
+	        try {
+	        	if (!noads.exists()) noads.createNewFile();
+	        } catch (Exception e) {
+	        	e.printStackTrace();
+	        }
+		} else {
+	        try {
+	        	if (noads.exists()) noads.delete();
+	        } catch (Exception e) {
+	        	e.printStackTrace();
+	        }
+		}
+		
 		//Alarm Clock Intent - Thanks frusso for the shared code!
 		// http://stackoverflow.com/questions/3590955/intent-to-launch-the-clock-application-on-android/4281243#4281243
 	    boolean foundClockImpl = false;

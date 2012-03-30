@@ -355,7 +355,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 				e.printStackTrace();
 			}
         	OMCThemePickerActivity.THEMEROOT.mkdir();
-
+        	OMC.setupDefaultTheme();
 			startActivity(OMC.GETSTARTERPACKINTENT);
 			
 			refreshThemeList();
@@ -366,7 +366,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 				e.printStackTrace();
 			}
         	OMCThemePickerActivity.THEMEROOT.mkdir();
-
+        	OMC.setupDefaultTheme();
 			startActivity(OMC.GETSTARTERPACKINTENT);
         } else if (OMCThemePickerActivity.THEMEROOT.listFiles().length == 1 && OMCThemePickerActivity.THEMEROOT.list()[0].equals(OMC.DEFAULTTHEME)) {
 			try {
@@ -375,7 +375,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 				e.printStackTrace();
 			}
         	OMCThemePickerActivity.THEMEROOT.mkdir();
-
+        	OMC.setupDefaultTheme();
 			startActivity(OMC.GETSTARTERPACKINTENT);
         } else if (!OMC.STARTERPACKDLED) {
 
@@ -393,6 +393,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 						e.printStackTrace();
 					}
 		        	OMCThemePickerActivity.THEMEROOT.mkdir();
+		        	OMC.setupDefaultTheme();
 					startActivity(OMC.GETSTARTERPACKINTENT);
 					mAD.cancel();
 				}
