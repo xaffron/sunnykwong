@@ -1082,8 +1082,6 @@ public class OMCWidgetDrawEngine {
 	}
 	
 	static void fancyDrawText(final String style, final Canvas cvas, final String text, final int x, final int y, final Paint pt1, final Paint pt2, final float fRot)  {
-		System.out.println("---");
-		System.out.println(style);
 		//Draw the SFX
 		if (style.equals("emboss")) {
 			//SpannableStringBuilder ssb = new SpannableStringBuilder(Html.fromHtml(text));

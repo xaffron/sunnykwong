@@ -35,6 +35,8 @@ public class OMCService extends Service {
 	public void onCreate() {
 		// If we're hogging the foreground, check APIs
 		// Grab the notification Service -
+		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
+		OMC.setServiceAlarm(System.currentTimeMillis() + 500);
 		
 		// Use reflection to find the methods for starting foreground using
 		// newer API
@@ -86,6 +88,7 @@ public class OMCService extends Service {
     }
 
 	public int onStartCommand(Intent intent, int flags, int startId) {
+		System.out.println("Service Flags: " + intent.getFlags());
 		//	Tell the widgets to refresh themselves.
 		OMCService.RUNNING=true;
 
@@ -102,7 +105,8 @@ public class OMCService extends Service {
 		}
 
 		// We want intents redelivered and onStartCommand re-executed if the service is killed.
-		return 1;  // Service.START_STICKY ; have to use literal because Donut is unaware of the constant
+		//return 1;  // Service.START_STICKY ; have to use literal because Donut is unaware of the constant
+		return 3;  // Service.START_REDELIVER_INTENT  ; have to use literal because Donut is unaware of the constant
 	}
 	
 	void handleCommand (Intent intent) {

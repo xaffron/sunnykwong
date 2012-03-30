@@ -37,7 +37,9 @@ public class ClockWidget4x4 extends AppWidgetProvider {
 		
 //	This gets called when the very first widget is instantiated.
 	public void onEnabled(Context context) {
-
+		if (!OMCService.RUNNING) {
+			OMC.setServiceAlarm(System.currentTimeMillis() + 500);
+		}
 		//Unflag the STOP FLAG for OMCService.
 		OMCService.STOPNOW4x4=false;
 	}

@@ -79,6 +79,8 @@ public class OMCThemeImportActivity extends Activity {
         	OMC.purgeBitmapCache();
         	OMC.purgeEmailCache();
     		OMC.purgeTypefaceCache();
+        	OMC.THEMEMAP.clear();
+        	OMC.WIDGETBMPMAP.clear();
 
         	setResult(Activity.RESULT_OK);
         	finish();

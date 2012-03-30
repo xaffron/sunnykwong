@@ -38,6 +38,7 @@ import android.app.Application;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -227,7 +228,7 @@ public class OMC extends Application {
     
     static final ArrayBlockingQueue<Matrix> MATRIXPOOL = new ArrayBlockingQueue<Matrix>(2);
     static final ArrayBlockingQueue<Paint> PAINTPOOL = new ArrayBlockingQueue<Paint>(2);
-    static final ArrayBlockingQueue<Bitmap> WIDGETPOOL = new ArrayBlockingQueue<Bitmap>(3);
+    static final ArrayBlockingQueue<Bitmap> WIDGETPOOL = new ArrayBlockingQueue<Bitmap>(2);
     
     static final Bitmap ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
 
@@ -271,7 +272,7 @@ public class OMC extends Application {
 		
 		OMC.aRC = new OMCAlarmReceiver();
 		OMC.cRC = new OMCConfigReceiver();
-		
+
 		OMC.FGPENDING = PendingIntent.getBroadcast(OMC.CONTEXT, 0, OMC.FGINTENT, 0);
 		OMC.BGPENDING = PendingIntent.getBroadcast(OMC.CONTEXT, 0, OMC.BGINTENT, 0);
 		OMC.SVCSTARTINTENT = new Intent(OMC.CONTEXT, OMCService.class);
@@ -296,7 +297,7 @@ public class OMC extends Application {
 		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/";
 		
 		OMC.FGNOTIFICIATION = new Notification(this.getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME), 
-				"",
+				"", 
         		System.currentTimeMillis());
         OMC.FGNOTIFICIATION.flags = OMC.FGNOTIFICIATION.flags|Notification.FLAG_ONGOING_EVENT|Notification.FLAG_NO_CLEAR;
 		
@@ -390,7 +391,7 @@ public class OMC extends Application {
 		
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(3);
 		OMC.BMPMAP = new HashMap<String, Bitmap>(5);
-		OMC.THEMEMAP=Collections.synchronizedMap(new HashMap<String, JSONObject>(3));
+		OMC.THEMEMAP=Collections.synchronizedMap(new HashMap<String, JSONObject>(2));
 		OMC.BMPTOCVAS = new HashMap<Bitmap, Canvas>(3);
 		OMC.WIDGETBMPMAP = new HashMap<Integer, Bitmap>(3);
 		

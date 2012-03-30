@@ -53,8 +53,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     	public void run() {								
     		try {
         		String sWSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
-    			JSONObject jsonWeather = new JSONObject(OMC.PREFS.getString("weather", ""));
-    			String sCity = jsonWeather.getString("city");
+    			JSONObject jsonWeather = new JSONObject(OMC.PREFS.getString("weather", "{}"));
+    			String sCity = jsonWeather.optString("city","Unknown");
     			timeTemp.set(OMC.NEXTWEATHERREFRESH);
     			timeTemp2.set(OMC.LASTWEATHERTRY);
         		if (sWSetting.equals("bylatlong")) {
@@ -71,6 +71,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         			prefWeather.setSummary("Tap to enable");
         		} 
     		} catch (JSONException e) {
+    			e.printStackTrace();
     			prefWeather.setTitle("Weather updates disabled");
     			prefWeather.setSummary("Tap to enable");
     			prefWeatherDisplay.setSummary("Now displaying in "+ OMC.PREFS.getString("weatherdisplay", "f").toUpperCase());
