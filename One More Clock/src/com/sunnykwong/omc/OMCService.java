@@ -101,7 +101,7 @@ public class OMCService extends Service {
 	    if ((flags & START_FLAG_REDELIVERY)!=0) { 
 			if (OMC.DEBUG)Log.w(OMC.OMCSHORT + "Svc","Redelivery Flag - reregister Receivers.");
 			unregisterReceiver(OMC.aRC);
-			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
+			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON)); 
 			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
 			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_TICK));
 			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_CHANGED));
