@@ -296,11 +296,6 @@ public class OMC extends Application {
 		
 		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/"; 
 		
-		OMC.FGNOTIFICIATION = new Notification(this.getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME), 
-				"", 
-        		System.currentTimeMillis());
-        OMC.FGNOTIFICIATION.flags = OMC.FGNOTIFICIATION.flags|Notification.FLAG_ONGOING_EVENT|Notification.FLAG_NO_CLEAR;
-		
     	OMC.ALARMS = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
     	OMC.PKM = getPackageManager();
     	OMC.AM = getAssets();
@@ -316,6 +311,11 @@ public class OMC extends Application {
 		if (!OMC.PREFS.contains("weathersetting")){
 			OMC.PREFS.edit().putString("weathersetting", "bylatlong").commit();
 		}
+		
+		OMC.FGNOTIFICIATION = new Notification(OMC.RES.getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME), 
+				"", 
+        		System.currentTimeMillis());
+        OMC.FGNOTIFICIATION.flags = OMC.FGNOTIFICIATION.flags|Notification.FLAG_ONGOING_EVENT|Notification.FLAG_NO_CLEAR;
 		
 		OMC.LASTWEATHERTRY = OMC.PREFS.getLong("weather_lastweathertry", 0l);
 		OMC.NEXTWEATHERREFRESH = OMC.PREFS.getLong("weather_nextweatherrefresh", 0l);

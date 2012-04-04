@@ -7,6 +7,7 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -89,11 +90,28 @@ public class OMCService extends Service {
     }
 
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		System.out.println("Service Flags: " + intent.getFlags());
+
 		//	Tell the widgets to refresh themselves.
 		OMCService.RUNNING=true;
 
 		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Svc","Starting Svc");
+		// v130 edit:  trying to stamp out sync loss.
+		// if the service was restarted after low memory... reregister all my receivers.
+		// Because of Android issue #26574, I cannot depend on START_FLAG_RETRY being accurate. 
+	    if ((flags & START_FLAG_REDELIVERY)!=0) { 
+			if (OMC.DEBUG)Log.w(OMC.OMCSHORT + "Svc","Redelivery Flag - reregister Receivers.");
+			unregisterReceiver(OMC.aRC);
+			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
+			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_TICK));
+			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_CHANGED));
+			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIMEZONE_CHANGED));
+			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_CONFIGURATION_CHANGED));
+			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+			registerReceiver(OMC.aRC, new IntentFilter(OMC.FGINTENT.getAction()));
+			registerReceiver(OMC.aRC, new IntentFilter(OMC.BGINTENT.getAction()));
+			OMC.setServiceAlarm(System.currentTimeMillis() + 500);
+	    }
 		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
 
 		handleCommand(intent);
