@@ -12,7 +12,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// Set the alarm for next tick first, so we don't lose sync
-		OMC.setServiceAlarm(((System.currentTimeMillis() + OMC.UPDATEFREQ )/OMC.UPDATEFREQ) * OMC.UPDATEFREQ - OMC.LEASTLAGMILLIS);
+		OMC.setServiceAlarm((System.currentTimeMillis() - System.currentTimeMillis()%OMC.UPDATEFREQ + OMC.UPDATEFREQ + OMC.UPDATEFREQ ) - OMC.LEASTLAGMILLIS);
 
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Rcvd " + intent.toString());
 		

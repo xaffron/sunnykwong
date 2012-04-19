@@ -575,6 +575,12 @@ public class OMC extends Application {
 	static void setServiceAlarm (long lTimeToRefresh) {
 		//We want the pending intent to be for this service, and 
 		// at the same FG/BG preference as the intent that woke us up
+		System.out.println("SERVICE ALARM SET for "+ new java.sql.Time(lTimeToRefresh).toLocaleString());
+		int counter=0;
+		for (StackTraceElement e: Thread.currentThread().getStackTrace()) {
+			System.out.println(e);
+			if (counter++>5) break;
+		}
 		OMC.ALARMS.cancel(OMC.FGPENDING); 
 		OMC.ALARMS.cancel(OMC.BGPENDING);
 		if (OMC.FG) {

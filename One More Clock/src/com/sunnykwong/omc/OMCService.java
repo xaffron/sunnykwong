@@ -37,8 +37,6 @@ public class OMCService extends Service {
 	public void onCreate() {
 		// If we're hogging the foreground, check APIs
 		// Grab the notification Service -
-		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
-		OMC.setServiceAlarm(System.currentTimeMillis() + 500);
 		
 		// Use reflection to find the methods for starting foreground using
 		// newer API
