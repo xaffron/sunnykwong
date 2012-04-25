@@ -451,6 +451,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     public class ThemePickerAdapter extends BaseAdapter {
 
     	public ArrayList<String> mThemes = new ArrayList<String>();
+    	public ArrayList<Bitmap> mBitmaps = new ArrayList<Bitmap>();
     	public HashMap<String, String> mCreds = new HashMap<String, String>();
     	public HashMap<String, String> mNames = new HashMap<String, String>();
     	public HashMap<String, Boolean> mTweaked = new HashMap<String, Boolean>();
@@ -464,6 +465,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	int result=0;
         	if (mThemes.size()==0 || sTheme.compareTo(mThemes.get(mThemes.size()-1))>0) {
 	        	mThemes.add(sTheme);
+	        	mBitmaps.add(OMC.PLACEHOLDERBMP);
 	        	result=0; //position of the add
         	} else {
         		for (int iPos = 0; iPos < mThemes.size(); iPos++) {
@@ -471,6 +473,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         				continue;
         			} else {
         				mThemes.add(iPos,sTheme);
+        	        	mBitmaps.add(iPos,OMC.PLACEHOLDERBMP);
         	        	result= iPos;
         				break;
         			}
@@ -518,7 +521,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         		return;
         	}
         	mThemes.remove(pos);
-        	//mBitmaps.remove(sTheme);
+        	mBitmaps.remove(pos);
         	mCreds.remove(sTheme);
         	mTweaked.remove(sTheme);
         	File f = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme);
@@ -624,10 +627,26 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	BitmapFactory.Options bo = new BitmapFactory.Options();
         	bo.inDither=true;
         	bo.inPreferredConfig = Bitmap.Config.RGB_565;
+        	Bitmap bmp = BitmapFactory.decodeFile(
+    				OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + mThemes.get(position) +"/000preview.jpg",bo);
+        	if (mBitmaps.size()>=position) mBitmaps.set(position, bmp);
     		((ImageView)ll.findViewById(getResources().getIdentifier("ThemePreview", "id", OMC.PKGNAME)))
-    				.setImageBitmap(BitmapFactory.decodeFile(
-    				OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + mThemes.get(position) +"/000preview.jpg",bo));
+    				.setImageBitmap(bmp);
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeCredits", "id", OMC.PKGNAME))).setText(mCreds.get(mThemes.get(position)));
+
+        	if (position>5 && mThemes.size()-position>5) {
+	        	int leftclear = position-5 >= 0 ? position-5 : 0;
+	        	if (mBitmaps.get(leftclear)!=OMC.PLACEHOLDERBMP) {
+	        		mBitmaps.get(leftclear).recycle();
+	        		mBitmaps.set(leftclear, OMC.PLACEHOLDERBMP);
+	        	}
+	        	int rightclear = position+5 < mThemes.size() ? position+5 : mThemes.size();
+	        	if (mBitmaps.get(rightclear)!=OMC.PLACEHOLDERBMP) {
+	        		mBitmaps.get(rightclear).recycle();
+	        		mBitmaps.set(rightclear, OMC.PLACEHOLDERBMP);
+	        	}
+        	}
+
             return ll;
         }
         

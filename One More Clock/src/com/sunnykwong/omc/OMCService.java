@@ -97,12 +97,10 @@ public class OMCService extends Service {
 		// if the service was restarted after low memory... reregister all my receivers.
 		// Because of Android issue #26574, I cannot depend on START_FLAG_RETRY being accurate. 
 		if (intent==null) {
-	    	System.out.println("null intent");
 			if (OMC.DEBUG)Log.w(OMC.OMCSHORT + "Svc","Null Intent - Reset Alarm.");
 			OMC.setServiceAlarm(System.currentTimeMillis() + 500);
 		}
 	    if ((flags & START_FLAG_REDELIVERY)!=0) { 
-	    	System.out.println("redelivery");
 			if (OMC.DEBUG)Log.w(OMC.OMCSHORT + "Svc","Redelivery Flag - reregister Receivers.");
 			unregisterReceiver(OMC.aRC);
 			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON)); 

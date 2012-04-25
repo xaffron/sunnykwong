@@ -272,6 +272,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		// This is the help/FAQ dialog.
     		
     		if (OMC.SHOWHELP) {
+    			OMC.FAQS = OMC.RES.getStringArray(getResources().getIdentifier("faqs", "array", OMC.PKGNAME));
 				LayoutInflater li = LayoutInflater.from(this);
 				LinearLayout ll = (LinearLayout)(li.inflate(getResources().getIdentifier("faqdialog", "layout", OMC.PKGNAME), null));
 				mTextView = (TextView)ll.findViewById(getResources().getIdentifier("splashtext", "id", OMC.PKGNAME));
@@ -618,7 +619,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 	
 	    	OMC.toggleWidgets(getApplicationContext());
 	
-			sendBroadcast(OMC.WIDGETREFRESHINTENT); 
+			// Set the alarm for next tick first, so we don't lose sync
+			OMC.setServiceAlarm(System.currentTimeMillis()+500l);
 		}
 		if (mRefresh!=null) mRefresh.interrupt();
 		

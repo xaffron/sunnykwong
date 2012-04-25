@@ -82,7 +82,7 @@ public class OMC extends Application {
 	static final String FALLBACKTHEME = "{ \"id\": \"Fallback\", \"name\": \"FB\", \"author\": \"\", \"date\": \"\", \"credits\": \"\", \"layers_bottomtotop\": [ { \"name\": \"T\", \"type\": \"text\", \"enabled\": true, \"text\": \"%H:%M\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 100, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 120, \"text_skew\": 0, \"text_stretch\": 1, \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 }, { \"name\": \"E\", \"type\": \"text\", \"enabled\": true, \"text\": \"! Theme Loading / No SD Card !\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 118, \"fgcolor\": \"#ffffcccc\", \"bgcolor\": \"#ff000000\", \"text_size\": 28, \"text_skew\": 0, \"text_stretch\": 0.9, \"text_align\": \"center\", \"render_style\": \"glow_3\", \"cw_rotate\": 0 }, { \"name\": \"S\", \"type\": \"text\", \"enabled\": true, \"text\": \"[%ompc_battlevel%]%% - [%weather_city%] - [%weather_temp%] - [%weather_condition%]\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 142, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 20, \"text_skew\": 0, \"text_stretch\": \"[%maxfit_1_300%]\", \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 } ] }";
 	static String THISVERSION; 
 	static final boolean SINGLETON = false;
-
+	static Bitmap PLACEHOLDERBMP;
 	static final boolean FREEEDITION = false;
 
 	static final String SINGLETONNAME = "One More Clock";
@@ -105,31 +105,7 @@ public class OMC extends Application {
 	static final String[] APM = {"Ante Meridiem","Post Meridiem"};	
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	static int faqtoshow = 0;
-	static final String[] FAQS = {
-		"Welcome to version 1.3.0!  This version introduces weather display and forecasts on many clocks.",
-		"The high-quality clocks launching with v.1.3.0 are Calendar, Chrome Rings, Dresses and Legend of Helda.",
-		"In addition, some clocsk have been rewritten and many have been updated.  Please download the 'full online collection'!",
-		"In version 1.3.0, clocks now have tags.  Tap on a tag to understand what it means!",
-		"v1.3.0 continues to fix a number of less-common bugs.  Please, if you see crashes, please submit a bug report or email me.",
-		"Not finding your favorite clock?  OMC comes with just a few initially.  To get the full clock collection, tap on 'Download Full Online Collection' when you're in the theme picker screen.",
-		"International Users can now toggle 'Force English Dates' for better compatibility.",
-		"To back up or share your changes, try the new experimental feature!  On 'Set Widget Theme', long-press a theme and select 'email theme'.",
-		"OMC supports battery levels.  Some of the widgets contain battery indicators in surprising ways - browse around and experiment!",
-		"You can now specify a timezone for each clock independently of the device setting.  This allows for nice home/travel clock scenarios.",
-		"OMC stores themes in the .OMCThemes folder (with a dot).  This will keep OMC from cluttering up your Gallery... feel free to delete any old themes in your SD card's OMCThemes directory (without dot).",
-		"OMC lets you send your favorite personalizations to Xaffron!  Tap and hold a clock on the theme picker screen, then select 'Email Tweaked Theme' to send to me.",
-		"OMC allows theme personalization on the phone.  Try moving each layer around, changing colors and toggling visibility!",
-		"Theme personalization overwrites dynamic elements (changing colors, positions, text, etc).  To make fine-tuned changes to dynamic elements, fire up a text editor on your phone or computer and look at the contents of the 00control.json file.",
-		"The paid version now features 8 widget sizes.  Not all themes work well with all widget sizes, but feel free to experiment! The newer ones look particularly good in the square and vertical widgets.",
-		"Too many widget sizes?  Tap on 'Toggle Widget Sizes' and disable the ones you don't want.  Remember to reboot your phone to apply changes!",
-		"Comments? Complaints? Donations?  Tap on the 'Contact Xaffron' box to send me a message.  I'll get back to you ASAP!",
-		"Did you know that you can delete any clock you don't like by long-pressing on a clock?  If you want it back, simply select 'Re-Get Starter Clock Pack' and you're right back where you started.",
-		"Tap-to-Launch now allows you to set 'Do nothing', which is great for avoiding accidental taps.  Tapping on the top left corner of the widget always brings you back to this screen.",
-		"Want more quotes/different text?  I hear you!  For now, use a text editor on the 00control.json files (it's easy, I promise).  Otherwise, expect enhanced 'Personalization' features in the next couple of versions!",
-		"Have an idea for a cool clock widget?  Tap 'Contact Xaffron' and let me know. I don't bite!",
-		"Which clock is your favorite?  Let me know via 'Contact Xaffron'!  This will help me archive less popular widgets and keep the application size manageable.",
-		"Did you know that there is a support thread on XDA-Developers?  I monitor questions on that board on a daily basis.  http://forum.xda-developers.com/showthread.php?t=807929"
-	};
+	static String[] FAQS;
 	
 	static final String APPNAME = OMC.SINGLETON? OMC.SINGLETONNAME:"One More Clock";
 	static final String OMCSHORT = (OMC.SINGLETON? OMC.SINGLETONNAME.substring(0,4):"OMC") + (OMC.FREEEDITION? "free":"");
@@ -304,6 +280,8 @@ public class OMC extends Application {
     	OMC.NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     	OMC.GEOFONT = Typeface.createFromAsset(OMC.AM, "GeosansLight.ttf");
     	OMC.WEATHERFONT = Typeface.createFromAsset(OMC.AM, "wef.ttf");
+    	OMC.PLACEHOLDERBMP = BitmapFactory.decodeResource(OMC.RES, OMC.RES.getIdentifier("transparent", "drawable", OMC.PKGNAME));
+    	
     	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_PRIVATE);
 		// We are using Zehro's solution (listening for TIME_TICK instead of using AlarmManager + FG Notification) which
 		// should be quite a bit more graceful.
@@ -359,7 +337,6 @@ public class OMC extends Application {
 //	    try {
 //	    	// in higher SDK versions, we have a dedicated alarm intent
 //	    	Class.forName("android.provider.AlarmClock");
-//	    	System.out.println(android.provider.AlarmClock.ACTION_SET_ALARM);
 //	    	OMC.ALARMCLOCKINTENT=new Intent(AlarmClock.ACTION_SET_ALARM);
 //	    	OMC.ALARMCLOCKINTENT.putExtra(AlarmClock.EXTRA_HOUR, 0);
 //	    	OMC.ALARMCLOCKINTENT.putExtra(AlarmClock.EXTRA_MINUTES, 0);
@@ -575,18 +552,17 @@ public class OMC extends Application {
 	static void setServiceAlarm (long lTimeToRefresh) {
 		//We want the pending intent to be for this service, and 
 		// at the same FG/BG preference as the intent that woke us up
-		System.out.println("SERVICE ALARM SET for "+ new java.sql.Time(lTimeToRefresh).toLocaleString());
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","SERVICE ALARM SET for "+ new java.sql.Time(lTimeToRefresh).toLocaleString());
 		int counter=0;
 		for (StackTraceElement e: Thread.currentThread().getStackTrace()) {
-			System.out.println(e);
-			if (counter++>5) break;
+			if (counter++<2) continue;
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","   " + e);
+			if (counter>5) break;
 		}
-		OMC.ALARMS.cancel(OMC.FGPENDING); 
-		OMC.ALARMS.cancel(OMC.BGPENDING);
 		if (OMC.FG) {
-			OMC.ALARMS.set(AlarmManager.RTC, lTimeToRefresh, OMC.FGPENDING);
+			OMC.ALARMS.set(AlarmManager.RTC_WAKEUP, lTimeToRefresh, OMC.FGPENDING);
 		} else {
-			OMC.ALARMS.set(AlarmManager.RTC, lTimeToRefresh, OMC.BGPENDING);
+			OMC.ALARMS.set(AlarmManager.RTC_WAKEUP, lTimeToRefresh, OMC.BGPENDING);
 		}
     }
 

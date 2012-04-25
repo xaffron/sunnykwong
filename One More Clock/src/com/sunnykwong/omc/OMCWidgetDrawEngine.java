@@ -70,7 +70,7 @@ public class OMCWidgetDrawEngine {
 			final int appWidgetId, ComponentName cName) { 
 		long lStartTime = System.currentTimeMillis();
 
-		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Engine", "Redrawing widget" + appWidgetId + " (" + OMC.PREFS.getString("widgetTheme"+appWidgetId, "")+ ") as " + OMC.TIME.format("%T"));
+		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Engine", "Redrawing widget" + appWidgetId + " (" + OMC.PREFS.getString("widgetTheme"+appWidgetId, "")+ ") at " + OMC.TIME.format("%T"));
 		
 		
 		// Get theme.  (Nowadays, OMC.getTheme takes care of caching/importing.)
@@ -781,7 +781,6 @@ public class OMCWidgetDrawEngine {
 			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5)), 0f, 0f, pt2.getColor());
 		} else if (layer.optString("render_style").startsWith("porterduff")) {
 			String sType = layer.optString("render_style").substring(11);
-			System.out.println("porterduff_"+sType);
 			if (sType.equals("XOR"))
 				pt1.setXfermode(OMC.PORTERDUFF_XOR);
 			else if (sType.equals("SRC_ATOP"))
@@ -819,7 +818,6 @@ public class OMCWidgetDrawEngine {
 		if (layer.has("render_style")) {
 			if (layer.optString("render_style").startsWith("porterduff")) {
 					String sType = layer.optString("render_style").substring(11);
-					System.out.println("porterduff_"+sType);
 					if (sType.equals("XOR"))
 						pt1.setXfermode(OMC.PORTERDUFF_XOR);
 					else if (sType.equals("SRC_ATOP"))
@@ -1100,7 +1098,6 @@ public class OMCWidgetDrawEngine {
 			OMCWidgetDrawEngine.fancyDrawSpanned(cvas, text, x, y, pt1, fRot);
 		} else if (style.startsWith("porterduff")) {
 			String sType = style.substring(11);
-			System.out.println("porterduff_"+sType);
 			if (sType.equals("XOR"))
 				pt1.setXfermode(OMC.PORTERDUFF_XOR);
 			else if (sType.equals("SRC_ATOP"))
