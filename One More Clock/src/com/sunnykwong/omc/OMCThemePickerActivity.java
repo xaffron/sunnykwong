@@ -200,7 +200,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 															zos.flush();
 															zos.closeEntry();
 														} catch (Exception e) {
-											        		if (OMC.DEBUG) Log.w(OMC.OMCSHORT + "Picker","cannot zip, zip error below");
+											        		Log.w(OMC.OMCSHORT + "Picker","cannot zip, zip error below");
 															e.printStackTrace();
 														}
 											        	
@@ -210,7 +210,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
 												} catch (Exception e) {
 													// File exists and read-only?  Shouldn't happen
-									        		if (OMC.DEBUG) Log.w(OMC.OMCSHORT + "Picker","cannot zip, file already open or RO");
+									        		Log.w(OMC.OMCSHORT + "Picker","cannot zip, file already open or RO");
 													e.printStackTrace();
 												}
 									        	

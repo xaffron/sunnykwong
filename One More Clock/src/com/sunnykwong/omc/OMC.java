@@ -359,7 +359,7 @@ public class OMC extends Application {
 		            foundClockImpl = true; 
 		            break;
 		        } catch (NameNotFoundException e) {
-		        	if (OMC.DEBUG) Log.w(OMC.OMCSHORT + "App",vendor + " does not exist");
+		        	Log.w(OMC.OMCSHORT + "App",vendor + " does not exist");
 		        }
 		    }
 //		}

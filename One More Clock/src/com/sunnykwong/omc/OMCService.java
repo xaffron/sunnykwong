@@ -53,7 +53,7 @@ public class OMCService extends Service {
 				mSetForeground = getClass().getMethod("setForeground",OMC.mSetForegroundSignature);
 			} catch (Exception ee) {
 				// do nothing
-                if(OMC.DEBUG)Log.w("OMC", "Unable to find any setForeground?!", e);
+                Log.w("OMC", "Unable to find any setForeground?!", e);
 				mSetForeground = null;
 			}
 		}
@@ -97,11 +97,11 @@ public class OMCService extends Service {
 		// if the service was restarted after low memory... reregister all my receivers.
 		// Because of Android issue #26574, I cannot depend on START_FLAG_RETRY being accurate. 
 		if (intent==null) {
-			if (OMC.DEBUG)Log.w(OMC.OMCSHORT + "Svc","Null Intent - Reset Alarm.");
+			Log.w(OMC.OMCSHORT + "Svc","Null Intent - Reset Alarm.");
 			OMC.setServiceAlarm(System.currentTimeMillis() + 500);
 		}
 	    if ((flags & START_FLAG_REDELIVERY)!=0) { 
-			if (OMC.DEBUG)Log.w(OMC.OMCSHORT + "Svc","Redelivery Flag - reregister Receivers.");
+			Log.w(OMC.OMCSHORT + "Svc","Redelivery Flag - reregister Receivers.");
 			unregisterReceiver(OMC.aRC);
 			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON)); 
 			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
@@ -179,10 +179,10 @@ public class OMCService extends Service {
                 mStartForeground.invoke(this, mStartForegroundArgs);
             } catch (InvocationTargetException e) {
                 // Should not happen.
-                if(OMC.DEBUG)Log.w("OMC", "Unable to invoke startForeground", e);
+                Log.w("OMC", "Unable to invoke startForeground", e);
             } catch (IllegalAccessException e) {
                 // Should not happen.
-            	if(OMC.DEBUG)Log.w("OMC", "Unable to invoke startForeground", e);
+            	Log.w("OMC", "Unable to invoke startForeground", e);
             }
             return;
         }
@@ -194,10 +194,10 @@ public class OMCService extends Service {
             	mSetForeground.invoke(this, mSetForegroundArgs);
             } catch (InvocationTargetException e) {
                 // Should not happen.
-                if(OMC.DEBUG)Log.w("OMC", "Unable to invoke setForeground", e);
+                Log.w("OMC", "Unable to invoke setForeground", e);
             } catch (IllegalAccessException e) {
                 // Should not happen.
-            	if(OMC.DEBUG)Log.w("OMC", "Unable to invoke setForeground", e);
+            	Log.w("OMC", "Unable to invoke setForeground", e);
             }
             return;
         }
@@ -212,10 +212,10 @@ public class OMCService extends Service {
                 mStopForeground.invoke(this, mStopForegroundArgs);
             } catch (InvocationTargetException e) {
                 // Should not happen.
-            	if(OMC.DEBUG)Log.w("OMC", "Unable to invoke stopForeground", e);
+            	Log.w("OMC", "Unable to invoke stopForeground", e);
             } catch (IllegalAccessException e) {
                 // Should not happen.
-            	if(OMC.DEBUG)Log.w("OMC", "Unable to invoke stopForeground", e);
+            	Log.w("OMC", "Unable to invoke stopForeground", e);
             }
             return;
         }
@@ -229,10 +229,10 @@ public class OMCService extends Service {
             	mSetForeground.invoke(this, mSetForegroundArgs);
             } catch (InvocationTargetException e) {
                 // Should not happen.
-                if(OMC.DEBUG)Log.w("OMC", "Unable to invoke setForeground", e);
+                Log.w("OMC", "Unable to invoke setForeground", e);
             } catch (IllegalAccessException e) {
                 // Should not happen.
-            	if(OMC.DEBUG)Log.w("OMC", "Unable to invoke setForeground", e);
+            	Log.w("OMC", "Unable to invoke setForeground", e);
             }
             return;
         }

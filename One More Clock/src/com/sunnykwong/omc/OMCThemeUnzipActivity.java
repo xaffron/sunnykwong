@@ -86,7 +86,7 @@ public class OMCThemeUnzipActivity extends Activity {
 				((ImageView)pdWait.findViewById(getResources().getIdentifier("UnzipPreview", "id", OMC.PKGNAME))).setImageBitmap(bmp);
 				((ImageView)pdWait.findViewById(getResources().getIdentifier("UnzipPreview", "id", OMC.PKGNAME))).invalidate();
 			} catch (Exception e) {
-				if (OMC.DEBUG) Log.e(OMC.OMCSHORT + "Unzip","Mark Invalidated!");
+				Log.e(OMC.OMCSHORT + "Unzip","Mark Invalidated!");
 			}
 		}
 	};
