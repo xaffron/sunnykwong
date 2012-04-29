@@ -99,7 +99,13 @@
         <service android:enabled="true" android:name="com.sunnykwong.omc.OMCService"/>
         <receiver android:name="com.sunnykwong.omc.OMCAlarmReceiver" >
     		<intent-filter>
-        		<action android:name="com.sunnykwong.freeomc.CANCEL_FG" />
+        		<action android:name="android.intent.action.SCREEN_ON" />
+        		<action android:name="android.intent.action.SCREEN_OFF" />
+        		<action android:name="android.intent.action.TIME_SET" />
+        		<action android:name="android.intent.action.TIMEZONE_CHANGED" />
+    		    <action android:name="com.sunnykwong.omc.BGSERVICEFREE" />
+        		<action android:name="com.sunnykwong.omc.FGSERVICEFREE" />
+  				<action android:name="com.sunnykwong.omc.CANCEL_FGFREE" />
          		<category android:name="android.intent.category.DEFAULT" />
         	</intent-filter>
         </receiver>

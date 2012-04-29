@@ -77,7 +77,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application {
 	
-	static final boolean DEBUG = false;
+	static final boolean DEBUG = true;
 	static final boolean THEMESFROMCACHE = true;
 	static final String FALLBACKTHEME = "{ \"id\": \"Fallback\", \"name\": \"FB\", \"author\": \"\", \"date\": \"\", \"credits\": \"\", \"layers_bottomtotop\": [ { \"name\": \"T\", \"type\": \"text\", \"enabled\": true, \"text\": \"%H:%M\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 100, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 120, \"text_skew\": 0, \"text_stretch\": 1, \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 }, { \"name\": \"E\", \"type\": \"text\", \"enabled\": true, \"text\": \"! Theme Loading / No SD Card !\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 118, \"fgcolor\": \"#ffffcccc\", \"bgcolor\": \"#ff000000\", \"text_size\": 28, \"text_skew\": 0, \"text_stretch\": 0.9, \"text_align\": \"center\", \"render_style\": \"glow_3\", \"cw_rotate\": 0 }, { \"name\": \"S\", \"type\": \"text\", \"enabled\": true, \"text\": \"[%ompc_battlevel%]%% - [%weather_city%] - [%weather_temp%] - [%weather_condition%]\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 142, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 20, \"text_skew\": 0, \"text_stretch\": \"[%maxfit_1_300%]\", \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 } ] }";
 	static String THISVERSION; 
@@ -90,8 +90,11 @@ public class OMC extends Application {
 	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v130.omc";
 	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v130.omc";
 	static final String DEFAULTTHEME = "IceLock";
-	static final Intent FGINTENT = new Intent("com.sunnykwong.omc.FGSERVICE");
-	static final Intent BGINTENT = new Intent("com.sunnykwong.omc.BGSERVICE");
+	static final String FGSTRING = FREEEDITION?"com.sunnykwong.omc.FGSERVICEFREE":"com.sunnykwong.omc.FGSERVICEPAID";
+	static final String BGSTRING = FREEEDITION?"com.sunnykwong.omc.BGSERVICEFREE":"com.sunnykwong.omc.BGSERVICEPAID";
+	static final String CANCELFGSTRING = FREEEDITION?"com.sunnykwong.omc.CANCEL_FGFREE":"com.sunnykwong.omc.CANCEL_FGPAID";
+	static final Intent FGINTENT = new Intent(FGSTRING);
+	static final Intent BGINTENT = new Intent(BGSTRING);
 	static final Intent WIDGETREFRESHINTENT = new Intent("com.sunnykwong.omc.WIDGET_REFRESH");
 	static final IntentFilter PREFSINTENTFILT = new IntentFilter("com.sunnykwong.omc.WIDGET_CONFIG");
 	static final String APPICON = "clockicon";
@@ -371,16 +374,12 @@ public class OMC extends Application {
 		
 		OMC.PREFS.edit().putString("version", OMC.THISVERSION).commit();
 		OMC.UPDATEFREQ = OMC.PREFS.getInt("iUpdateFreq", 30) * 1000;
-		
-		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
-		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
-		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_TICK));
-		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_CHANGED));
-		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIMEZONE_CHANGED));
+
+		// These are two system intents that Android forces us to register programmatically
+		// We register everything we can through manifest because ICS's ActivityManager will
+		// randomly wipe out OMC's registered receivers when it kills OMC on low memory.
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_CONFIGURATION_CHANGED));
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-		registerReceiver(OMC.aRC, new IntentFilter(OMC.FGINTENT.getAction()));
-		registerReceiver(OMC.aRC, new IntentFilter(OMC.BGINTENT.getAction()));
 		
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(3);
 		OMC.BMPMAP = new HashMap<String, Bitmap>(5);

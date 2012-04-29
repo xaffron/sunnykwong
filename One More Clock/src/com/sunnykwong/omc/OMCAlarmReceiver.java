@@ -14,11 +14,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// Set the alarm for next tick first, so we don't lose sync
 		long targettime = System.currentTimeMillis()+1000l;
 		targettime = targettime-targettime%OMC.UPDATEFREQ + OMC.UPDATEFREQ;
-		if (targettime%60000l == 0) {
-			//let time tick do its work - no need to set alarm
-		} else {
-			OMC.setServiceAlarm(targettime - OMC.LEASTLAGMILLIS);
-		}
+		OMC.setServiceAlarm(targettime - OMC.LEASTLAGMILLIS);
 
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Rcvd " + intent.toString());
 		
@@ -28,7 +24,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		if (intent == null) {
 			OMC.FG=true;
 			OMC.SCREENON=true;
-			OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.FGSERVICE");
+			OMC.SVCSTARTINTENT.setAction(OMC.FGSTRING);
 		}
 
 		final String action = intent.getAction();
@@ -38,12 +34,12 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		if (action==null) {
 			OMC.FG=true;
 			OMC.SCREENON=true;
-			OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.FGSERVICE");
+			OMC.SVCSTARTINTENT.setAction(OMC.FGSTRING);
 		}
 		// If user taps on notification, cancel FG mode.
-		if (action.equals("com.sunnykwong.omc.CANCEL_FG")) {
+		if (action.equals(OMC.CANCELFGSTRING)) {
 			OMC.FG=false;
-			OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.BGSERVICE");
+			OMC.SVCSTARTINTENT.setAction(OMC.BGSTRING);
 			OMC.LASTRENDEREDTIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l);
 			context.startService(OMC.SVCSTARTINTENT);
 		}
@@ -88,22 +84,19 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 
 		// Otherwise, we can be more polite about updating weather.
 		
-		if (action.equals(Intent.ACTION_TIME_TICK)) {
-			
-			// First, are we due for a weather update?
-			if (System.currentTimeMillis()>OMC.NEXTWEATHERREFRESH) {
-				// If it has been less than 15 minutes after the last weather try, don't try yet
-				if (System.currentTimeMillis()-OMC.LASTWEATHERTRY < 15l * 60000l) {
-					// do nothing
-				} else {
-					// Get weather updates
-					GoogleWeatherXMLHandler.updateWeather();
-				}
+		// First, are we due for a weather update?
+		if (System.currentTimeMillis()>OMC.NEXTWEATHERREFRESH) {
+			// If it has been less than 15 minutes after the last weather try, don't try yet
+			if (System.currentTimeMillis()-OMC.LASTWEATHERTRY < 15l * 60000l) {
+				// do nothing
+			} else {
+				// Get weather updates
+				GoogleWeatherXMLHandler.updateWeather();
 			}
 		}
 		
-		if (action.equals(OMC.FGINTENT)) OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.FGSERVICE");
-		else OMC.SVCSTARTINTENT.setAction("com.sunnykwong.omc.BGSERVICE");
+		if (action.equals(OMC.FGINTENT)) OMC.SVCSTARTINTENT.setAction(OMC.FGSTRING);
+		else OMC.SVCSTARTINTENT.setAction(OMC.BGSTRING);
 		
 		// Do nothing if the screen turns off, but
 		// Start working again if the screen turns on.
@@ -123,7 +116,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		
 		// If the screen is on, honor the update frequency.
 		if (OMC.SCREENON) {
-			if ((action.equals(OMC.FGINTENT.getAction()) || action.equals(OMC.BGINTENT.getAction()) || action.equals(Intent.ACTION_TIME_TICK))) {
+			if ((action.equals(OMC.FGINTENT.getAction()) || action.equals(OMC.BGINTENT.getAction()))) {
 				if (((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l==OMC.LASTRENDEREDTIME.toMillis(false)) {
 					// Prevent abusive updates - we've already rendered this target time.
 					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm",OMC.LASTRENDEREDTIME.format2445() + " already rendered! Not redrawing clocks again.");
@@ -133,8 +126,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			OMC.LASTRENDEREDTIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l);
 			context.startService(OMC.SVCSTARTINTENT);
 		// If the screen is off, update bare minimum to mimic foreground mode.
-		} else if (action.equals(Intent.ACTION_TIME_TICK)
-				||action.equals(Intent.ACTION_TIME_CHANGED)
+		} else if (action.equals(Intent.ACTION_TIME_CHANGED)
 				||action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
 			OMC.LASTRENDEREDTIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l);
 			context.startService(OMC.SVCSTARTINTENT);

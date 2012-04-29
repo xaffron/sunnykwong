@@ -102,16 +102,13 @@ public class OMCService extends Service {
 		}
 	    if ((flags & START_FLAG_REDELIVERY)!=0) { 
 			Log.w(OMC.OMCSHORT + "Svc","Redelivery Flag - reregister Receivers.");
-			unregisterReceiver(OMC.aRC);
-			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON)); 
-			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
-			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_TICK));
-			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIME_CHANGED));
-			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_TIMEZONE_CHANGED));
+			
+			// These are two system intents that Android forces us to register programmatically
+			// We register everything we can through manifest because ICS's ActivityManager will
+			// randomly wipe out OMC's registered receivers when it kills OMC on low memory.
 			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_CONFIGURATION_CHANGED));
 			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-			registerReceiver(OMC.aRC, new IntentFilter(OMC.FGINTENT.getAction()));
-			registerReceiver(OMC.aRC, new IntentFilter(OMC.BGINTENT.getAction()));
+
 			OMC.setServiceAlarm(System.currentTimeMillis() + 500);
 	    }
 		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
@@ -151,7 +148,7 @@ public class OMCService extends Service {
 	        RemoteViews contentView = new RemoteViews(getPackageName(), getResources().getIdentifier("omc_notification", "layout", OMC.PKGNAME));
 	        contentView.setTextViewText(getResources().getIdentifier("notf_text", "id", OMC.PKGNAME), OMC.APPNAME + " in Foreground - Tap to stop");
 	        OMC.FGNOTIFICIATION.contentView = contentView;
-	        Intent it = new Intent("com.sunnykwong.omc.CANCEL_FG");
+	        Intent it = new Intent(OMC.CANCELFGSTRING);
 			OMC.FGNOTIFICIATION.contentIntent = PendingIntent.getBroadcast(this, 0, it, 0);
 	        
 	        startForegroundCompat(OMC.SVCNOTIFICATIONID, OMC.FGNOTIFICIATION);
