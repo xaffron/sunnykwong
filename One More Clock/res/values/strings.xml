@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">One More Clock</string>
+<string name="app_name_paid">One More Clock</string><string name="app_name_free">One More Clock Free</string>
 <string name="widget_name1x3">OMC 1x3</string>
 <string name="widget_name2x1">OMC 2x1</string>
 <string name="widget_name2x2">OMC 2x2</string>
