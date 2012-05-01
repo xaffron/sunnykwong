@@ -1,5 +1,7 @@
 package com.sunnykwong.omc;
 
+import java.util.TimeZone;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,7 +16,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -25,7 +26,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
-import java.util.TimeZone;
 
 public class OMCWidgetDrawEngine {
 //	static final String TESTTHEME="IronIndicant";

@@ -1,38 +1,29 @@
 package com.sunnykwong.omc;
 
-import android.util.Log;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.os.Looper;
-import android.text.format.Time;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Stack;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONTokener;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.xml.sax.XMLReader;
+import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import org.xml.sax.helpers.DefaultHandler;
-import org.xml.sax.*;
-
-import java.util.ArrayList;
-import java.util.Stack;
-import java.util.HashMap;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.URI;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.text.format.Time;
+import android.util.Log;
 
 public class GoogleWeatherXMLHandler extends DefaultHandler {
 
