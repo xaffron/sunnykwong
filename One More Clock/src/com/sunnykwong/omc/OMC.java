@@ -276,8 +276,7 @@ public class OMC extends Application {
     	OMC.PLACEHOLDERBMP = BitmapFactory.decodeResource(OMC.RES, OMC.RES.getIdentifier("transparent", "drawable", OMC.PKGNAME));
     	
     	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_PRIVATE);
-		// We are using Zehro's solution (listening for TIME_TICK instead of using AlarmManager + FG Notification) which
-		// should be quite a bit more graceful.
+
 		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
 		if (!OMC.PREFS.contains("weathersetting")){
 			OMC.PREFS.edit().putString("weathersetting", "bylatlong").commit();
