@@ -560,6 +560,10 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 		public View getView(int position, View convertView, ViewGroup parent) {
         	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("themepickerpreview", "layout", OMC.PKGNAME), null);
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setTypeface(OMC.GEOFONT);
+        	
+        	//  If the theme list isn't loaded yet, just return a blank screen!
+        	if (position < 0 || position > mThemes.size()) return ll;
+
         	if (mNames.get(mThemes.get(position)) != null) {
         		((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
         	} else {
@@ -643,12 +647,12 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         	if (position>5 && mThemes.size()-position>5) {
 	        	int leftclear = position-5 >= 0 ? position-5 : 0;
 	        	if (mBitmaps.get(leftclear)!=OMC.PLACEHOLDERBMP) {
-	        		mBitmaps.get(leftclear).recycle();
+	        		if (mBitmaps.get(leftclear)!=null)	mBitmaps.get(leftclear).recycle();
 	        		mBitmaps.set(leftclear, OMC.PLACEHOLDERBMP);
 	        	}
 	        	int rightclear = position+5 < mThemes.size() ? position+5 : mThemes.size();
 	        	if (mBitmaps.get(rightclear)!=OMC.PLACEHOLDERBMP) {
-	        		mBitmaps.get(rightclear).recycle();
+	        		if (mBitmaps.get(rightclear)!=null)	mBitmaps.get(rightclear).recycle();
 	        		mBitmaps.set(rightclear, OMC.PLACEHOLDERBMP);
 	        	}
         	}
