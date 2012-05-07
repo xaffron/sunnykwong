@@ -548,10 +548,13 @@ public class OMC extends Application {
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","   " + e);
 			if (counter>5) break;
 		}
+		//v1.3.1: Scaling back from RTC_WAKEUP to RTC for bettery battery life.  Hopefully reliability still holds.
 		if (OMC.FG) {
-			OMC.ALARMS.set(AlarmManager.RTC_WAKEUP, lTimeToRefresh, OMC.FGPENDING);
+//			OMC.ALARMS.set(AlarmManager.RTC_WAKEUP, lTimeToRefresh, OMC.FGPENDING);
+			OMC.ALARMS.set(AlarmManager.RTC, lTimeToRefresh, OMC.FGPENDING);
 		} else {
-			OMC.ALARMS.set(AlarmManager.RTC_WAKEUP, lTimeToRefresh, OMC.BGPENDING);
+//			OMC.ALARMS.set(AlarmManager.RTC_WAKEUP, lTimeToRefresh, OMC.BGPENDING);
+			OMC.ALARMS.set(AlarmManager.RTC, lTimeToRefresh, OMC.BGPENDING);
 		}
     }
 
@@ -1087,6 +1090,9 @@ public class OMC extends Application {
 			JSONObject renderedLayer = new JSONObject();
 			tempLayerArray.put(renderedLayer);
 			
+			//v1.3.1: If Layer is null, it's a corrupt layer in a corrupt theme.  
+			// Try to make the best of it and move to the next layer.
+			if (layer==null) continue;
 			@SuppressWarnings("unchecked")
 			Iterator<String> i = layer.keys();
 			while (i.hasNext()) {

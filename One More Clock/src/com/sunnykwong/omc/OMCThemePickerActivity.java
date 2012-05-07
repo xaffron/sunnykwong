@@ -560,7 +560,11 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 		public View getView(int position, View convertView, ViewGroup parent) {
         	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("themepickerpreview", "layout", OMC.PKGNAME), null);
         	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setTypeface(OMC.GEOFONT);
-        	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
+        	if (mNames.get(mThemes.get(position)) != null) {
+        		((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
+        	} else {
+        		((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText("[Corrupt - Pls Delete]");
+        	}
         	try {
 	        	if (mTweaked.get(mThemes.get(position)).booleanValue()) {
 	        		ImageView iv = ((ImageView)ll.findViewById(getResources().getIdentifier("LikeFlag", "id", OMC.PKGNAME)));
@@ -591,15 +595,17 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         		//v1.2.8 fix issue where theme flag not set
         	}
         	LinearLayout tagll = ((LinearLayout)ll.findViewById(getResources().getIdentifier("tags", "id", OMC.PKGNAME)));
-        	for (String sTag: mTags.get(mThemes.get(position))) {
-        		ImageView iv = new ImageView(OMCThemePickerActivity.this);
-        		iv.setAdjustViewBounds(true);
-        		try{
-        			iv.setImageResource(getResources().getIdentifier(sTag, "drawable", OMC.PKGNAME));
-            		tagll.addView(iv);
-        		} catch (Exception e) {
-        			
-        		}
+        	if (mTags.get(mThemes.get(position))!=null) {
+	        	for (String sTag: mTags.get(mThemes.get(position))) {
+	        		ImageView iv = new ImageView(OMCThemePickerActivity.this);
+	        		iv.setAdjustViewBounds(true);
+	        		try{
+	        			iv.setImageResource(getResources().getIdentifier(sTag, "drawable", OMC.PKGNAME));
+	            		tagll.addView(iv);
+	        		} catch (Exception e) {
+	        			
+	        		}
+	        	}
         	}
         	tagll.setOnClickListener(new View.OnClickListener() {
 				
