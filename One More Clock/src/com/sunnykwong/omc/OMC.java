@@ -1468,9 +1468,17 @@ public class OMC extends Application {
 			}
 			
 		} else if (sToken.equals("uppercase")){
-			result = st[iTokenNum++].toUpperCase();
+			try {
+				result = st[iTokenNum++].toUpperCase();
+			} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+				result = "";
+			}
 		} else if (sToken.equals("lowercase")){
-			result = st[iTokenNum++].toLowerCase();
+			try {
+				result = st[iTokenNum++].toLowerCase();
+			} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+				result = "";
+			}
 		} else {
 			//unrecognized macro - ignore
 		}
