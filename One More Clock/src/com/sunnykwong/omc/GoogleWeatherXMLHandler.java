@@ -84,7 +84,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
     	OMC.LL = new LocationListener() {
             public void onLocationChanged(Location location) {
             	OMC.LM.removeUpdates(OMC.LL);
-            	Log.i(OMC.OMCSHORT + "Weather", "Fixed Locn: " + location.getLongitude() + " + " + location.getLatitude());
+            	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Fixed Locn: " + location.getLongitude() + " + " + location.getLatitude());
             	GoogleWeatherXMLHandler.updateLocation(location);
             }
             public void onStatusChanged(String provider, int status, Bundle extras) {}
@@ -109,6 +109,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					request.setURI(new URI("http://maps.googleapis.com/maps/api/geocode/json?latlng="+location.getLatitude()+","+location.getLongitude()+"&sensor=false"));
 					HttpResponse response = client.execute(request);
 					result = OMC.streamToJSONObject(response.getEntity().getContent());
+
 					String city = OMC.LASTKNOWNCITY, country = OMC.LASTKNOWNCOUNTRY;
 					if (!result.optString("status").equals("OK")) {
 						// Not ok response - do nothing
@@ -131,7 +132,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 							}
 						}
 					}
-					Log.i(OMC.OMCSHORT + "Weather", "Reverse Geocode: " + city + ", " + country);
+					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Reverse Geocode: " + city + ", " + country);
 					OMC.LASTKNOWNCITY=city;
 					OMC.LASTKNOWNCOUNTRY=country;
 					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), country, city, true);

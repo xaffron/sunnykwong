@@ -14,6 +14,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		long targettime = System.currentTimeMillis()+1000l;
 		targettime = targettime-targettime%OMC.UPDATEFREQ + OMC.UPDATEFREQ;
 		OMC.setServiceAlarm(targettime - OMC.LEASTLAGMILLIS);
+		long omctime = targettime-targettime%OMC.UPDATEFREQ;
 
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Rcvd " + intent.toString());
 		
@@ -39,7 +40,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		if (action.equals(OMC.CANCELFGSTRING)) {
 			OMC.FG=false;
 			OMC.SVCSTARTINTENT.setAction(OMC.BGSTRING);
-			OMC.LASTRENDEREDTIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l);
+			OMC.LASTRENDEREDTIME.set(((omctime+OMC.LEASTLAGMILLIS)/1000l)*1000l);
 			context.startService(OMC.SVCSTARTINTENT);
 		}
 				
@@ -84,9 +85,9 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// Otherwise, we can be more polite about updating weather.
 		
 		// First, are we due for a weather update?
-		if (System.currentTimeMillis()>OMC.NEXTWEATHERREFRESH) {
+		if (omctime>OMC.NEXTWEATHERREFRESH) {
 			// If it has been less than 15 minutes after the last weather try, don't try yet
-			if (System.currentTimeMillis()-OMC.LASTWEATHERTRY < 15l * 60000l) {
+			if (omctime-OMC.LASTWEATHERTRY < 15l * 60000l) {
 				// do nothing
 			} else {
 				// Get weather updates
@@ -116,18 +117,18 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// If the screen is on, honor the update frequency.
 		if (OMC.SCREENON) {
 			if ((action.equals(OMC.FGINTENT.getAction()) || action.equals(OMC.BGINTENT.getAction()))) {
-				if (((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l==OMC.LASTRENDEREDTIME.toMillis(false)) {
+				if (omctime==OMC.LASTRENDEREDTIME.toMillis(false)) {
 					// Prevent abusive updates - we've already rendered this target time.
 					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm",OMC.LASTRENDEREDTIME.format2445() + " already rendered! Not redrawing clocks again.");
 					return;
 				}
 			}
-			OMC.LASTRENDEREDTIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l);
+			OMC.LASTRENDEREDTIME.set(omctime);
 			context.startService(OMC.SVCSTARTINTENT);
 		// If the screen is off, update bare minimum to mimic foreground mode.
 		} else if (action.equals(Intent.ACTION_TIME_CHANGED)
 				||action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
-			OMC.LASTRENDEREDTIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l);
+			OMC.LASTRENDEREDTIME.set(omctime);
 			context.startService(OMC.SVCSTARTINTENT);
 		} else {
 			OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
