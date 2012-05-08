@@ -116,13 +116,14 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		
 		// If the screen is on, honor the update frequency.
 		if (OMC.SCREENON) {
-			if ((action.equals(OMC.FGINTENT.getAction()) || action.equals(OMC.BGINTENT.getAction()))) {
-				if (omctime==OMC.LASTRENDEREDTIME.toMillis(false)) {
-					// Prevent abusive updates - we've already rendered this target time.
-					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm",OMC.LASTRENDEREDTIME.format2445() + " already rendered! Not redrawing clocks again.");
-					return;
-				}
-			}
+			//v1.3.2:  With Alarms cleaned up, we no longer need this check.
+//			if ((action.equals(OMC.FGINTENT.getAction()) || action.equals(OMC.BGINTENT.getAction()))) {
+//				if (omctime==OMC.LASTRENDEREDTIME.toMillis(false)) {
+//					// Prevent abusive updates - we've already rendered this target time.
+//					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm",OMC.LASTRENDEREDTIME.format2445() + " already rendered! Not redrawing clocks again.");
+//					return;
+//				}
+//			} 
 			OMC.LASTRENDEREDTIME.set(omctime);
 			context.startService(OMC.SVCSTARTINTENT);
 		// If the screen is off, update bare minimum to mimic foreground mode.
