@@ -51,6 +51,7 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.BatteryManager;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.format.Time;
@@ -112,6 +113,7 @@ public class OMC extends Application {
 	
 	static long LASTUPDATEMILLIS, LEASTLAGMILLIS=200;
 	static long LASTWEATHERTRY=0l,LASTWEATHERREFRESH=0l,NEXTWEATHERREFRESH=0l;
+	static int LASTBATTERYPLUGGEDSTATUS=0;
 	static String WEATHERTRANSLATETYPE = "AccuWeather";
 	static String LASTKNOWNCITY, LASTKNOWNCOUNTRY;
 	static JSONObject jsonFIXEDLOCN;

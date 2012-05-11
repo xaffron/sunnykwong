@@ -51,7 +51,8 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm","ChargeStatus: "+ action);
 			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm",""+intent.getIntExtra("plugged", -1));
 			String sChargeStatus = "Discharging";
-			switch (intent.getIntExtra("plugged", -1)) {
+			final int iNewBatteryPluggedStatus = intent.getIntExtra("plugged", -1);
+			switch (iNewBatteryPluggedStatus) {
 			case BatteryManager.BATTERY_PLUGGED_AC: 
 				sChargeStatus="AC Charging";
 				break;
@@ -63,15 +64,25 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			default:
 				break;
 			}
-			OMC.PREFS.edit()
-				.putInt("ompc_battlevel", intent.getIntExtra("level", 0))
-				.putInt("ompc_battscale", intent.getIntExtra("scale", 100))
-				.putInt("ompc_battpercent", (int)(100*intent.getIntExtra("level", 0)/(float)intent.getIntExtra("scale", 100)))
-				.putString("ompc_chargestatus", sChargeStatus)
-				.commit();
-			
+
 			// Note that especially when the charge status changes 
 			// from plugged to unplugged, we want to update the widget asap.
+			// v1.3.3:  NOTE THAT WE *ONLY* WANT TO UPDATE ASAP if CHARGE STATUS CHANGED
+			// to avoid serious battery drain on weaker batteries!!
+			OMC.PREFS.edit()
+			.putInt("ompc_battlevel", intent.getIntExtra("level", 0))
+			.putInt("ompc_battscale", intent.getIntExtra("scale", 100))
+			.putInt("ompc_battpercent", (int)(100*intent.getIntExtra("level", 0)/(float)intent.getIntExtra("scale", 100)))
+			.putString("ompc_chargestatus", sChargeStatus)
+			.commit();
+			if (OMC.LASTBATTERYPLUGGEDSTATUS != iNewBatteryPluggedStatus) {
+				// Update the current plugged status
+				OMC.LASTBATTERYPLUGGEDSTATUS = iNewBatteryPluggedStatus;
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Battery now "+ sChargeStatus +" - refresh widget");
+			} else {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Batt Level Change Only - no refresh");
+				return;
+			}		
 		}
 
 		// Weather-related responses.
