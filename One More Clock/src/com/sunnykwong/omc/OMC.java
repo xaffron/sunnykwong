@@ -66,7 +66,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application {
 	
-	static final boolean DEBUG = false;
+	static final boolean DEBUG = true;
 	static final boolean THEMESFROMCACHE = true;
 	static final String FALLBACKTHEME = "{ \"id\": \"Fallback\", \"name\": \"FB\", \"author\": \"\", \"date\": \"\", \"credits\": \"\", \"layers_bottomtotop\": [ { \"name\": \"T\", \"type\": \"text\", \"enabled\": true, \"text\": \"%H:%M\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 100, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 120, \"text_skew\": 0, \"text_stretch\": 1, \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 }, { \"name\": \"E\", \"type\": \"text\", \"enabled\": true, \"text\": \"! Theme Loading / No SD Card !\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 118, \"fgcolor\": \"#ffffcccc\", \"bgcolor\": \"#ff000000\", \"text_size\": 28, \"text_skew\": 0, \"text_stretch\": 0.9, \"text_align\": \"center\", \"render_style\": \"glow_3\", \"cw_rotate\": 0 }, { \"name\": \"S\", \"type\": \"text\", \"enabled\": true, \"text\": \"[%ompc_battlevel%]%% - [%weather_city%] - [%weather_temp%] - [%weather_condition%]\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 142, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 20, \"text_skew\": 0, \"text_stretch\": \"[%maxfit_1_300%]\", \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 } ] }";
 	static String THISVERSION; 
@@ -114,6 +114,9 @@ public class OMC extends Application {
 	static long LASTUPDATEMILLIS, LEASTLAGMILLIS=200;
 	static long LASTWEATHERTRY=0l,LASTWEATHERREFRESH=0l,NEXTWEATHERREFRESH=0l;
 	static int LASTBATTERYPLUGGEDSTATUS=0;
+	static long NEXTBATTSAVEMILLIS=0l;
+	static int BATTLEVEL=0, BATTSCALE=100, BATTPERCENT=0;
+	static String CHARGESTATUS = "Discharging";
 	static String WEATHERTRANSLATETYPE = "AccuWeather";
 	static String LASTKNOWNCITY, LASTKNOWNCOUNTRY;
 	static JSONObject jsonFIXEDLOCN;
@@ -291,6 +294,10 @@ public class OMC extends Application {
 		
 		OMC.LASTWEATHERTRY = OMC.PREFS.getLong("weather_lastweathertry", 0l);
 		OMC.NEXTWEATHERREFRESH = OMC.PREFS.getLong("weather_nextweatherrefresh", 0l);
+		OMC.BATTLEVEL = OMC.PREFS.getInt("ompc_battlevel", 0);
+		OMC.BATTSCALE = OMC.PREFS.getInt("ompc_battscale", 100);
+		OMC.BATTPERCENT = OMC.PREFS.getInt("ompc_battpercent", 0);
+		OMC.CHARGESTATUS = OMC.PREFS.getString("ompc_chargestatus", "Discharging");
 		
 		// If we're from a legacy version, then we need to wipe all settings clean to avoid issues.
 		if (OMC.PREFS.getString("version", "1.0.x").startsWith("1.0") || OMC.PREFS.getString("version", "1.0.x").startsWith("1.1")) {
@@ -1207,11 +1214,15 @@ public class OMC extends Application {
 		} else if (sToken.equals("ompc")) {
 			String sType = st[iTokenNum++];
 			if (sType.equals("battpercent")) {
-				result = String.valueOf((int)(1000+OMC.PREFS.getInt("ompc_"+sType,99))).substring(1);
+				result = String.valueOf((int)(1000+OMC.BATTPERCENT)).substring(1);
+			} else if (sType.equals("battscale")) {
+				result = String.valueOf(OMC.BATTSCALE);
 			} else if (sType.equals("battdecimal")) {
-				result = String.valueOf(OMC.PREFS.getInt("ompc_battpercent",99)/100f);
+				result = String.valueOf(OMC.BATTPERCENT/100f);
 			} else if (sType.equals("battlevel")) {
-				result = String.valueOf(OMC.PREFS.getInt("ompc_battlevel",99));
+				result = String.valueOf(OMC.BATTLEVEL);
+			} else if (sType.equals("chargestatus")) {
+				result = OMC.CHARGESTATUS;
 			} else {
 				result = OMC.PREFS.getString("ompc_"+sType, "99");
 			}
@@ -1659,6 +1670,13 @@ public class OMC extends Application {
     	purgeTypefaceCache();
     	OMC.THEMEMAP.clear();
     	OMC.WIDGETBMPMAP.clear();
+    	OMC.PREFS.edit()
+    		.putInt("ompc_battlevel", OMC.BATTLEVEL)
+			.putInt("ompc_battscale", OMC.BATTSCALE)
+			.putInt("ompc_battpercent", OMC.BATTPERCENT)
+			.putString("ompc_chargestatus", OMC.CHARGESTATUS)
+			.commit();
+    	
     	super.onLowMemory();
     }
 
