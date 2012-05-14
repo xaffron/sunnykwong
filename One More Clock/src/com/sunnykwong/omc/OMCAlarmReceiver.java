@@ -67,14 +67,13 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 
 			// Note that especially when the charge status changes 
 			// from plugged to unplugged, we want to update the widget asap.
-			// v1.3.3:  NOTE THAT WE *ONLY* WANT TO UPDATE ASAP if CHARGE STATUS CHANGED
+			// v1.3.3:   NOTE THAT WE *ONLY* WANT TO UPDATE ASAP if CHARGE STATUS CHANGED
 			// to avoid serious battery drain on weaker batteries!!
-			OMC.PREFS.edit()
-			.putInt("ompc_battlevel", intent.getIntExtra("level", 0))
-			.putInt("ompc_battscale", intent.getIntExtra("scale", 100))
-			.putInt("ompc_battpercent", (int)(100*intent.getIntExtra("level", 0)/(float)intent.getIntExtra("scale", 100)))
-			.putString("ompc_chargestatus", sChargeStatus)
-			.commit();
+			OMC.BATTLEVEL = intent.getIntExtra("level", 0);
+			OMC.BATTSCALE = intent.getIntExtra("scale", 100);
+			OMC.BATTPERCENT = (int)(100*intent.getIntExtra("level", 0)/(float)intent.getIntExtra("scale", 100));
+			OMC.CHARGESTATUS = sChargeStatus;
+
 			if (OMC.LASTBATTERYPLUGGEDSTATUS != iNewBatteryPluggedStatus) {
 				// Update the current plugged status
 				OMC.LASTBATTERYPLUGGEDSTATUS = iNewBatteryPluggedStatus;
@@ -82,7 +81,21 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			} else {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Batt Level Change Only - no refresh");
 				return;
-			}		
+			}	
+			
+			// v1.3.4:  We don't want to write to flash/SD every 5 seconds either.  Batch up the edits and write out
+			// every fifteen minutes.
+			if (omctime > OMC.NEXTBATTSAVEMILLIS) {
+		    	OMC.PREFS.edit()
+	    		.putInt("ompc_battlevel", OMC.BATTLEVEL)
+				.putInt("ompc_battscale", OMC.BATTSCALE)
+				.putInt("ompc_battpercent", OMC.BATTPERCENT)
+				.putString("ompc_chargestatus", OMC.CHARGESTATUS)
+				.commit();
+				OMC.NEXTBATTSAVEMILLIS=omctime+900000l;
+			}
+    	
+
 		}
 
 		// Weather-related responses.
