@@ -378,6 +378,8 @@ public class OMC extends Application {
 		// randomly wipe out OMC's registered receivers when it kills OMC on low memory.
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_CONFIGURATION_CHANGED));
 		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_ON));
+		registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_SCREEN_OFF));
 		
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(3);
 		OMC.BMPMAP = new HashMap<String, Bitmap>(5);
