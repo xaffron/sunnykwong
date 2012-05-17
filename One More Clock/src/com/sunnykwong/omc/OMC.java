@@ -51,7 +51,6 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.BatteryManager;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.format.Time;
