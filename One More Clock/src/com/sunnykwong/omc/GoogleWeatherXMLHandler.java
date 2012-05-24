@@ -153,6 +153,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					GoogleWeatherXMLHandler GXhandler = new GoogleWeatherXMLHandler();
 					GXhandler.jsonWeather.putOpt("country2", country);
 					GXhandler.jsonWeather.putOpt("city2", city);
+					GXhandler.jsonWeather.putOpt("bylatlong", bylatlong);
 					xr.setContentHandler(GXhandler);
 					xr.setErrorHandler(GXhandler);
 
@@ -160,7 +161,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					HttpGet request = new HttpGet();
 					if (!bylatlong) {
 						request.setURI(new URI(
-								"http://www.google.com/ig/api?oe=utf-8&weather="+city));
+								"http://www.google.com/ig/api?oe=utf-8&weather="+city.replace(' ', '+') + "+" + country.replace(' ', '+')));
 					} else {
 						request.setURI(new URI(
 								"http://www.google.com/ig/api?oe=utf-8&weather=,,,"+(long)(latitude*1000000)+","+(long)(longitude*1000000)));
@@ -290,18 +291,16 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		tree = null;
 		
 		// Check if the reply was valid.
-		if (jsonWeather.optString("condition")==null) {
-			if (OMC.DEBUG)
-				Log.i(OMC.OMCSHORT + "Weather", "Error, so no refresh.");
-			//Google returned error - abandon refresh
-			return;
-		}
-
-		if (jsonWeather.optString("problem_cause",null)!=null) {
-			if (OMC.DEBUG)
-				Log.i(OMC.OMCSHORT + "Weather", "Error, so no refresh.");
-			//Google returned error - abandon refresh
-			return;
+		if (jsonWeather.optString("condition",null)==null || jsonWeather.optString("problem_cause",null)!=null) {
+			//Google returned error - retry by city name, then abandon refresh
+			if (jsonWeather.optBoolean("bylatlong")) {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Error using Lat/Long, retrying using city name.");
+				GoogleWeatherXMLHandler.updateWeather(0d, 0d, jsonWeather.optString("country2"), jsonWeather.optString("city2"), false);
+				return;
+			} else {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Error using city name. No refresh.");
+				return;
+			}
 		}
 			
 		try {

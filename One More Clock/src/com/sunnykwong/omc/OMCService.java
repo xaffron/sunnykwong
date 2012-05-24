@@ -73,16 +73,15 @@ public class OMCService extends Service {
 
     	//	Tell the widgets to refresh themselves.
 		OMCService.RUNNING=true;
-		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Svc","Starting Svc");
+//		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Svc","Starting Svc");
 		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
-//		sendBroadcast(OMC.WIDGETREFRESHINTENT);
 		
 		handleCommand(intent);
 
 		if (!OMCService.RUNNING || !OMC.FG) {
 			// If we're not in FG, then go to sleep and let the alarm wake us up again
 			// If we're supposed to stop, then just stop
-			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Svc","Stopping Svc");
+//			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Svc","Stopping Svc");
 			this.stopSelf();
 		}
     }

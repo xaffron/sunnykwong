@@ -53,6 +53,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
+import android.provider.AlarmClock;
 import android.text.format.Time;
 import android.util.Log;
 import android.widget.Toast;
@@ -334,35 +335,22 @@ public class OMC extends Application {
 		// http://stackoverflow.com/questions/3590955/intent-to-launch-the-clock-application-on-android/4281243#4281243
 	    boolean foundClockImpl = false;
 
-//	    try {
-//	    	// in higher SDK versions, we have a dedicated alarm intent
-//	    	Class.forName("android.provider.AlarmClock");
-//	    	OMC.ALARMCLOCKINTENT=new Intent(AlarmClock.ACTION_SET_ALARM);
-//	    	OMC.ALARMCLOCKINTENT.putExtra(AlarmClock.EXTRA_HOUR, 0);
-//	    	OMC.ALARMCLOCKINTENT.putExtra(AlarmClock.EXTRA_MINUTES, 0);
-//	    	OMC.ALARMCLOCKINTENT.putExtra(AlarmClock.EXTRA_MESSAGE , "");
-//            if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Found SDK>9, using new Android Alarm Intent");
-//	    	foundClockImpl = true;
-//	    	
-//	    } catch (ClassNotFoundException ee) {
-//
-		    for(int i=0; i<clockImpls.length; i++) {
-		        String vendor = clockImpls[i][0];
-		        String packageName = clockImpls[i][1];
-		        String className = clockImpls[i][2];
-		        try {
-		            ComponentName cn = new ComponentName(packageName, className);
-		            PKM.getActivityInfo(cn, PackageManager.GET_META_DATA);
-		            OMC.ALARMCLOCKINTENT.setComponent(cn);
-		            OMC.ALARMCLOCKINTENT.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		            if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Found " + vendor + " --> " + packageName + "/" + className);
-		            foundClockImpl = true; 
-		            break;
-		        } catch (NameNotFoundException e) {
-		        	Log.w(OMC.OMCSHORT + "App",vendor + " does not exist");
-		        }
-		    }
-//		}
+	    for(int i=0; i<clockImpls.length; i++) {
+	        String vendor = clockImpls[i][0];
+	        String packageName = clockImpls[i][1];
+	        String className = clockImpls[i][2];
+	        try {
+	            ComponentName cn = new ComponentName(packageName, className);
+	            PKM.getActivityInfo(cn, PackageManager.GET_META_DATA);
+	            OMC.ALARMCLOCKINTENT.setComponent(cn);
+	            OMC.ALARMCLOCKINTENT.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	            if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Found " + vendor + " --> " + packageName + "/" + className);
+	            foundClockImpl = true; 
+	            break;
+	        } catch (NameNotFoundException e) {
+	        	Log.w(OMC.OMCSHORT + "App",vendor + " does not exist");
+	        }
+	    }
 
 	    if (!foundClockImpl) {
 	    	OMC.ALARMCLOCKINTENT = OMC.DUMMYINTENT;
@@ -551,12 +539,12 @@ public class OMC extends Application {
 		//We want the pending intent to be for this service, and 
 		// at the same FG/BG preference as the intent that woke us up
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","SERVICE ALARM SET for "+ new java.sql.Time(lTimeToRefresh).toLocaleString());
-		int counter=0;
-		for (StackTraceElement e: Thread.currentThread().getStackTrace()) {
-			if (counter++<2) continue;
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","   " + e);
-			if (counter>5) break;
-		}
+//		int counter=0;
+//		for (StackTraceElement e: Thread.currentThread().getStackTrace()) {
+//			if (counter++<2) continue;
+//			if (OMC.DEBUG) Log.d(OMC.OMCSHORT + "App","   " + e);
+//			if (counter>5) break;
+//		}
 		//v1.3.1: Scaling back from RTC_WAKEUP to RTC for bettery battery life.  Hopefully reliability still holds.
 		if (OMC.FG) {
 //			OMC.ALARMS.set(AlarmManager.RTC_WAKEUP, lTimeToRefresh, OMC.FGPENDING);
@@ -754,7 +742,7 @@ public class OMC extends Application {
 	public synchronized static JSONObject getTheme(final Context context, final String nm, final boolean bFromCache){
 		// Look in memory cache
 		if (OMC.THEMEMAP.containsKey(nm) && OMC.THEMEMAP.get(nm)!=null && bFromCache){ 
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " loaded from mem.");
+//			if (OMC.DEBUG) Log.d(OMC.OMCSHORT + "App",nm + " loaded from mem.");
 			return OMC.THEMEMAP.get(nm);
 		}
 		// Look in cache dir
@@ -1225,6 +1213,7 @@ public class OMC extends Application {
 			} else if (sType.equals("chargestatus")) {
 				result = OMC.CHARGESTATUS;
 			} else {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","fallback");
 				result = OMC.PREFS.getString("ompc_"+sType, "99");
 			}
 		} else if (sToken.equals("weather")) {

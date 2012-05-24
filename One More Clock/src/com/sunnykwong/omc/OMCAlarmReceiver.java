@@ -79,23 +79,24 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 				OMC.LASTBATTERYPLUGGEDSTATUS = iNewBatteryPluggedStatus;
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Battery now "+ sChargeStatus +" - refresh widget");
 			} else {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","BattLevel now " + OMC.BATTLEVEL + " - no refresh");
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Batt Level Change Only - no refresh");
 				return;
 			}	
 			
-			// v1.3.4:  We don't want to write to flash/SD every 5 seconds either.  Batch up the edits and write out
-			// every fifteen minutes.
-			if (omctime > OMC.NEXTBATTSAVEMILLIS) {
-		    	OMC.PREFS.edit()
-	    		.putInt("ompc_battlevel", OMC.BATTLEVEL)
-				.putInt("ompc_battscale", OMC.BATTSCALE)
-				.putInt("ompc_battpercent", OMC.BATTPERCENT)
-				.putString("ompc_chargestatus", OMC.CHARGESTATUS)
-				.commit();
-				OMC.NEXTBATTSAVEMILLIS=omctime+900000l;
-			}
-    	
+		}
 
+		// v1.3.4:  We don't want to write to flash/SD every 5 seconds either.  Batch up the edits and write out
+		// every fifteen minutes.
+		if (omctime > OMC.NEXTBATTSAVEMILLIS) {
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Flushing BattLevels to SharedPrefs");
+	    	OMC.PREFS.edit()
+    		.putInt("ompc_battlevel", OMC.BATTLEVEL)
+			.putInt("ompc_battscale", OMC.BATTSCALE)
+			.putInt("ompc_battpercent", OMC.BATTPERCENT)
+			.putString("ompc_chargestatus", OMC.CHARGESTATUS)
+			.commit();
+			OMC.NEXTBATTSAVEMILLIS=omctime+900000l;
 		}
 
 		// Weather-related responses.
