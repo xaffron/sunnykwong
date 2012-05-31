@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
@@ -442,10 +443,19 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 						    		finish();
 									break;
 								case 2: //Facebook
-						    		it = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com/XaffronSoftware"));
-						    		startActivity(it);
+						    		it = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/389054721147516"));
+						    		
+						    		// Add try and catch because the scheme could be changed in an update! 
+						    		// Another reason is that the Facebook-App is not installed 
+						    		try {
+							    		startActivity(it);
+						    		} catch (ActivityNotFoundException ex) {      
+						    		// start web browser and the facebook mobile page as fallback    
+						    			it = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com/XaffronSoftware"));    
+						    			startActivity(it); 
+						    		}
 						    		finish();
-									break;
+						    		break;
 								default:
 									//do nothing
 							}
