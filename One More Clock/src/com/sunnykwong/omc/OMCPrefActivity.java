@@ -422,9 +422,9 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		startActivityForResult(tweakIntent,0);
     	}
     	if (preference == findPreference("emailMe")) {
-			final CharSequence[] items = {"Email", "Donate"};
+			final CharSequence[] items = {"Email", "Donate", "Facebook"};
 			new AlertDialog.Builder(this)
-				.setTitle("Email or Donate to Xaffron")
+				.setTitle("Contact Xaffron")
 				.setItems(items, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int item) {
 							switch (item) {
@@ -438,6 +438,11 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 					    		   	break;
 								case 1: //Donate
 						    		it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=S9VEL3WFGXK48"));
+						    		startActivity(it);
+						    		finish();
+									break;
+								case 2: //Facebook
+						    		it = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com/XaffronSoftware"));
 						    		startActivity(it);
 						    		finish();
 									break;
