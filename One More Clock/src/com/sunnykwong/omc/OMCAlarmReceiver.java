@@ -47,9 +47,9 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// Battery-related responses.
 		// If something about the battery changed, we need to record the changes.
 		if (action.equals(Intent.ACTION_BATTERY_CHANGED)) {
-			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm","Batt "+ intent.getIntExtra("level", 0) + "/" +intent.getIntExtra("scale", 10000));
-			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm","ChargeStatus: "+ action);
-			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm",""+intent.getIntExtra("plugged", -1));
+//			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm","Batt "+ intent.getIntExtra("level", 0) + "/" +intent.getIntExtra("scale", 10000));
+//			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm","ChargeStatus: "+ action);
+//			if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm",""+intent.getIntExtra("plugged", -1));
 			String sChargeStatus = "Discharging";
 			final int iNewBatteryPluggedStatus = intent.getIntExtra("plugged", -1);
 			switch (iNewBatteryPluggedStatus) {
@@ -103,20 +103,18 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// If we just set the clock or switched timezones, we definitely want to refresh weather right now.
 		if (action.equals(Intent.ACTION_TIME_CHANGED)
 				|| action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
-			OMC.NEXTWEATHERREFRESH=0l;
-			OMC.LASTWEATHERTRY=0l;
-		}
-
-		// Otherwise, we can be more polite about updating weather.
-		
-		// First, are we due for a weather update?
-		if (omctime>OMC.NEXTWEATHERREFRESH) {
-			// If it has been less than 15 minutes after the last weather try, don't try yet
-			if (omctime-OMC.LASTWEATHERTRY < 15l * 60000l) {
-				// do nothing
-			} else {
-				// Get weather updates
-				GoogleWeatherXMLHandler.updateWeather();
+			GoogleWeatherXMLHandler.updateWeather();
+		} else {
+			// Otherwise, we can be more polite about updating weather.
+			// First, are we due for a weather update?
+			if (omctime>OMC.NEXTWEATHERREFRESH) {
+				// If it has been less than 15 minutes after the last weather try, don't try yet
+				if (omctime-OMC.LASTWEATHERTRY < 15l * 60000l) {
+					// do nothing
+				} else {
+					// Get weather updates
+					GoogleWeatherXMLHandler.updateWeather();
+				}
 			}
 		}
 		

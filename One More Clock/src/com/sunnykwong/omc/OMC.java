@@ -33,6 +33,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
@@ -556,41 +557,54 @@ public class OMC extends Application {
     }
 
 	public static void setPrefs(int aWI) {
-		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME))
+		final Editor e = OMC.PREFS.edit();
+		e.putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
 		.putBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero", true))
-		.putString("URI"+aWI, OMC.PREFS.getString("URI", ""))
-		.putString("sTimeZone"+aWI, OMC.PREFS.getString("sTimeZone", "default"))
-		.commit();
+		.putString("sTimeZone"+aWI, OMC.PREFS.getString("sTimeZone", "default"));
+		for (int i=0;i<9;i++) {
+			e.putString("URI"+OMC.COMPASSPOINTS[i]+aWI, OMC.PREFS.getString("URI"+OMC.COMPASSPOINTS[i], ""));
+		}
+		e.commit();
 	}
  
 	public static void initPrefs(int aWI) {
 		// For new clocks... just like setPrefs but leaves the URI empty.
-		OMC.PREFS.edit().putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)))
+		final Editor e = OMC.PREFS.edit();
+		e.putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true)))
 		.putBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero", true)))
-		.putString("URI"+aWI, OMC.PREFS.getString("URI"+aWI, ""))
-		.putString("sTimeZone"+aWI, OMC.PREFS.getString("sTimeZone"+aWI, "default"))
-		.commit();
+		.putString("sTimeZone"+aWI, OMC.PREFS.getString("sTimeZone"+aWI, "default"));
+		for (int i=0;i<9;i++) {
+			e.putString("URI"+OMC.COMPASSPOINTS[i]+aWI, OMC.PREFS.getString("URI"+OMC.COMPASSPOINTS[i], ""));
+		}
+		e.commit();
 	}
  
 	public static void getPrefs(int aWI) {
-    	OMC.PREFS.edit().putString("widgetTheme", OMC.PREFS.getString("widgetTheme"+aWI, OMC.DEFAULTTHEME))
+		final Editor e = OMC.PREFS.edit();
+		e.putString("widgetTheme", OMC.PREFS.getString("widgetTheme"+aWI, OMC.DEFAULTTHEME))
 		.putBoolean("widget24HrClock", OMC.PREFS.getBoolean("widget24HrClock"+aWI, true))
 		.putBoolean("widgetLeadingZero", OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, true))
 		.putString("URI", OMC.PREFS.getString("URI"+aWI, ""))
-		.putString("sTimeZone", OMC.PREFS.getString("sTimeZone"+aWI, "default"))
-		.commit();
+		.putString("sTimeZone", OMC.PREFS.getString("sTimeZone"+aWI, "default"));
+		for (int i=0;i<9;i++) {
+			e.putString("URI"+OMC.COMPASSPOINTS[i], OMC.PREFS.getString("URI"+OMC.COMPASSPOINTS[i]+aWI, ""));
+		}
+		e.commit();
 	}
 	
 	public static void removePrefs(int aWI) {
-		OMC.PREFS.edit()
-			.remove("widgetTheme"+aWI)
+		final Editor e = OMC.PREFS.edit();
+		e.remove("widgetTheme"+aWI) 
 			.remove("widget24HrClock"+aWI)
 			.remove("widgetLeadingZero"+aWI)
 			.remove("URI"+aWI)
-			.remove("sTimeZone"+aWI)
-			.commit();
+			.remove("sTimeZone"+aWI);
+		for (int i=0;i<9;i++) {
+			e.remove("URI"+OMC.COMPASSPOINTS[i]+aWI);
+		}
+		e.commit();
 		File f = new File(OMC.CACHEPATH + aWI +"cache.png");
 		if (f.exists())f.delete();
 	}

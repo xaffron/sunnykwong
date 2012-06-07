@@ -1,112 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_gravity="center"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/OverlayURLs"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="300dp"
+    android:minWidth="300dp"
+    android:orientation="vertical"
+    android:weightSum="3.0" >
 
-    <Button
-        android:id="@+id/buttonNWPrv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:minWidth="80dp"
-        android:maxWidth="80dp"
-        android:minHeight="80dp"
-        android:maxHeight="80dp"
-        android:text="NW" />
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/OverlayRow1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
 
-    <Button
-        android:id="@+id/buttonNNPrv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/buttonNWPrv"
-        android:minWidth="80dp"
-        android:maxWidth="80dp"
-        android:minHeight="80dp"
-        android:maxHeight="80dp"
-        android:text="N" />
+        <Button
+            android:id="@+id/buttonNWPrv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" 
+            android:enabled="false"/>
 
-    <Button
-        android:id="@+id/buttonNEPrv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/buttonNNPrv"
-        android:minWidth="80dp"
-        android:maxWidth="80dp"
-        android:minHeight="80dp"
-        android:maxHeight="80dp"
-        android:text="NE" />
+        <Button
+            android:id="@+id/buttonNNPrv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/buttonWWPrv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonNWPrv"
-        android:minWidth="80dp"
-        android:maxWidth="80dp"
-        android:minHeight="80dp"
-        android:maxHeight="80dp"
-        android:text="W" />
+        <Button
+            android:id="@+id/buttonNEPrv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonCCPrv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/buttonWWPrv"
-        android:layout_alignTop="@+id/buttonWWPrv"
-        android:minWidth="80dp"
-        android:maxWidth="80dp"
-        android:minHeight="80dp"
-        android:maxHeight="80dp"
-        android:text="C" />
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/OverlayRow2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
 
-    <Button
-        android:id="@+id/buttonEEPrv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/buttonCCPrv"
-        android:layout_alignTop="@+id/buttonCCPrv"
-        android:minWidth="80dp"
-        android:maxWidth="80dp"
-        android:minHeight="80dp"
-        android:maxHeight="80dp"
-        android:text="E" />
+        <Button
+            android:id="@+id/buttonWWPrv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/buttonSWPrv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonWWPrv"
-        android:minWidth="80dp"
-        android:maxWidth="80dp"
-        android:minHeight="80dp"
-        android:maxHeight="80dp"
-        android:text="SW" />
+        <Button
+            android:id="@+id/buttonCCPrv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/buttonSSPrv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/buttonSWPrv"
-        android:layout_alignTop="@+id/buttonSWPrv"
-        android:minWidth="80dp"
-        android:maxWidth="80dp"
-        android:minHeight="80dp"
-        android:maxHeight="80dp"
-        android:text="S" />
+        <Button
+            android:id="@+id/buttonEEPrv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonSEPrv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/buttonSSPrv"
-        android:layout_alignTop="@+id/buttonSSPrv"
-        android:minWidth="80dp"
-        android:maxWidth="80dp"
-        android:minHeight="80dp"
-        android:maxHeight="80dp"
-        android:text="SE" />
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/OverlayRow3"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
 
-    
-</RelativeLayout>
+        <Button
+            android:id="@+id/buttonSWPrv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/buttonSSPrv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/buttonSEPrv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</LinearLayout>

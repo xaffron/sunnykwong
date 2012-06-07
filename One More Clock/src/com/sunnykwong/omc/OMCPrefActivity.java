@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.appwidget.AppWidgetManager;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
@@ -24,11 +25,14 @@ import android.preference.PreferenceScreen;
 import android.text.format.Time;
 import android.text.util.Linkify;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +40,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     /** Called when the activity is first created. */
     static int appWidgetID;
     static AlertDialog mAD;
+    AlertDialog mTTL;
     final Time timeTemp = new Time(), timeTemp2 = new Time();
     Handler mHandler;
     CheckBox mCheckBox;
@@ -45,6 +50,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     Preference prefWeather, prefWeatherDisplay;
     Preference prefloadThemeFile, prefclearCache, prefbSkinner, prefTimeZone;
     Preference prefsUpdateFreq, prefwidgetPersistence, prefemailMe, preftweakTheme;
+    int iTTLArea=0;
 
     final Runnable mUpdatePrefs = new Runnable() {
     	@Override
@@ -515,37 +521,118 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		} else {
     			final CharSequence[] items = {"Open options (default)", "Do nothing", "Weather Forecast (Experimental)", "View alarms (Experimental)", "Other activity..."};
     			final String[] values = {"default", "noop", "weather", "alarms", "activity"};
-    			new AlertDialog.Builder(this)
-    					.setTitle("Tap on clock to:")
-    					.setItems(items, new DialogInterface.OnClickListener() {
-    							public void onClick(DialogInterface dialog, int item) {
-    								if (values[item].equals("default")) {
-    									OMC.PREFS.edit().putString("URI", "").commit();
-    								}
-    								if (values[item].equals("noop")) {
-    									OMC.PREFS.edit().putString("URI", "noop").commit();
-    								}
-    								if (values[item].equals("weather")) {
-    									OMC.PREFS.edit().putString("URI", "weather").commit();
-    								}
-    								if (values[item].equals("alarms")) {
-    									OMC.PREFS.edit().putString("URI", "alarms").commit();
-    								}
-    								if (values[item].equals("activity")) {
-    						    		getPreferenceScreen().setEnabled(false);
-    						    		Intent mainIntent = new Intent(Intent.ACTION_MAIN,
-    						        			null);
-    									mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-    						
-    									Intent pickIntent = new
-    									Intent(Intent.ACTION_PICK_ACTIVITY);
-    									pickIntent.putExtra(Intent.EXTRA_INTENT, mainIntent);
-    									startActivityForResult(pickIntent, OMCPrefActivity.appWidgetID);
-    									mainIntent=null;
-    									pickIntent=null;
-    								}
-    							}
-    					})
+				
+				final AlertDialog dlgTTL  =  new AlertDialog.Builder(this)
+				.setTitle("Choose action")
+				.setItems(items, new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int item) {
+							if (values[item].equals("default")) {
+								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "").commit();
+							}
+							if (values[item].equals("noop")) {
+								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "noop").commit();
+							}
+							if (values[item].equals("weather")) {
+								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "weather").commit();
+							}
+							if (values[item].equals("alarms")) {
+								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "alarms").commit();
+							}
+							if (values[item].equals("activity")) {
+					    		getPreferenceScreen().setEnabled(false);
+					    		cancelTTL();
+					    		Intent mainIntent = new Intent(Intent.ACTION_MAIN,
+					        			null);
+								mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+					
+								Intent pickIntent = new	Intent(Intent.ACTION_PICK_ACTIVITY);
+								pickIntent.putExtra(Intent.EXTRA_INTENT, mainIntent);
+								startActivityForResult(pickIntent, iTTLArea);
+								mainIntent=null;
+								pickIntent=null;
+							}
+						}
+				}).create();
+
+				LayoutInflater li = LayoutInflater.from(this);
+				LinearLayout ll = (LinearLayout)(li.inflate(getResources().getIdentifier("ttlpreview", "layout", OMC.PKGNAME), null));
+
+				Button bNW = (Button)ll.findViewById(getResources().getIdentifier("buttonNWPrv", "id", OMC.PKGNAME));
+				bNW.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						iTTLArea=0;
+						dlgTTL.show();
+					}
+				});
+				Button bNN = (Button)ll.findViewById(getResources().getIdentifier("buttonNNPrv", "id", OMC.PKGNAME));
+				bNN.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						iTTLArea=1;
+						dlgTTL.show();
+					}
+				});
+				Button bNE = (Button)ll.findViewById(getResources().getIdentifier("buttonNEPrv", "id", OMC.PKGNAME));
+				bNE.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						iTTLArea=2;
+						dlgTTL.show();
+					}
+				});
+				Button bWW = (Button)ll.findViewById(getResources().getIdentifier("buttonWWPrv", "id", OMC.PKGNAME));
+				bWW.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						iTTLArea=3;
+						dlgTTL.show();
+					}
+				});
+				Button bCC = (Button)ll.findViewById(getResources().getIdentifier("buttonCCPrv", "id", OMC.PKGNAME));
+				bCC.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						iTTLArea=4;
+						dlgTTL.show();
+					}
+				});
+				Button bEE = (Button)ll.findViewById(getResources().getIdentifier("buttonEEPrv", "id", OMC.PKGNAME));
+				bEE.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						iTTLArea=5;
+						dlgTTL.show();
+					}
+				});
+				Button bSW = (Button)ll.findViewById(getResources().getIdentifier("buttonSWPrv", "id", OMC.PKGNAME));
+				bSW.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						iTTLArea=6;
+						dlgTTL.show();
+					}
+				});
+				Button bSS = (Button)ll.findViewById(getResources().getIdentifier("buttonSSPrv", "id", OMC.PKGNAME));
+				bSS.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						iTTLArea=7;
+						dlgTTL.show();
+					}
+				});
+				Button bSE = (Button)ll.findViewById(getResources().getIdentifier("buttonSEPrv", "id", OMC.PKGNAME));
+				bSE.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						iTTLArea=8;
+						dlgTTL.show();
+					}
+				});
+				
+    			mTTL = new AlertDialog.Builder(this)
+    					.setView(ll)
+    					.setTitle("Area to customize:")
     					.show();
     		}
     	}
@@ -560,6 +647,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     	}
     	if (preference == getPreferenceScreen().findPreference("timeZone")) {
     		getPreferenceScreen().setEnabled(false);
+    		cancelTTL();
     		Intent mainIntent = new Intent(Intent.ACTION_MAIN,
         			null);
 			mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -601,16 +689,26 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 		if (data != null) {
 			String s = data.toUri(MODE_PRIVATE).toString();
 			
-			OMC.PREFS.edit().putString("URI", s).commit();
+			OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[requestCode], s).commit();
 		}
 	}
-
     
+	public void cancelTTL() {
+       	if (mTTL!=null) { // && mAD.isShowing()
+       		mTTL.dismiss();
+       		mTTL = null;
+       	}
+	}
+	
     public void dialogCancelled() {
-   	if (OMCPrefActivity.mAD!=null) { // && mAD.isShowing()
-   		OMCPrefActivity.mAD.dismiss();
-   		OMCPrefActivity.mAD = null;
-   	}
+       	if (OMCPrefActivity.mAD!=null) { // && mAD.isShowing()
+       		OMCPrefActivity.mAD.dismiss();
+       		OMCPrefActivity.mAD = null;
+       	}
+       	if (mTTL!=null) { // && mAD.isShowing()
+       		mTTL.dismiss();
+       		mTTL = null;
+       	}
     	finish();
     }
 

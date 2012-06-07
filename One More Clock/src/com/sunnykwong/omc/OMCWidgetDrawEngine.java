@@ -376,31 +376,30 @@ public class OMCWidgetDrawEngine {
         	PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
         	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[0], pi);
 
-        	if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("")) {
-	        	intent = new Intent(context, OMCPrefActivity.class);
-	        	intent.setData(Uri.parse("omc:"+appWidgetId));
-	        	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-	        	pi = PendingIntent.getActivity(context, 0, intent, 0);
-    		} else if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("noop")) {
-                // Kudos to Eric for solution to dummy out "unsetonlickpendingintent":
-                // http://groups.google.com/group/android-developers/browse_thread/thread/f9e80e5ce55bb1e0/78153eb730326488
-	        	pi = PendingIntent.getBroadcast(context, 0, OMC.DUMMYINTENT,
-            		    PendingIntent.FLAG_UPDATE_CURRENT);
-    		} else if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("alarms")) {
-	        	pi = OMC.ALARMCLOCKPENDING;
-    		} else if (OMC.PREFS.getString("URI"+appWidgetId, "").equals("weather")) {
-	        	pi = OMC.WEATHERFORECASTPENDING;
-    		} else {
-    			intent = Intent.parseUri(OMC.PREFS.getString("URI"+appWidgetId, ""), 0);
-	        	intent.setData(Uri.parse("omc:"+appWidgetId));
-	        	pi = PendingIntent.getActivity(context, 0, intent, 0);
-    		}
-
-   	
         	// NOTE BELOW:  We're only going from 1-9 (not 0-9)
         	// Because we are skipping the NW corner.
         	for (int i = 1; i < 9; i++) { 
-	            	rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], pi);
+        		final String sPrefString = OMC.PREFS.getString("URI"+OMC.COMPASSPOINTS[i]+appWidgetId, "");
+        		if (sPrefString.equals("")) {
+		        	intent = new Intent(context, OMCPrefActivity.class);
+		        	intent.setData(Uri.parse("omc:"+appWidgetId));
+		        	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		        	pi = PendingIntent.getActivity(context, 0, intent, 0);
+	    		} else if (sPrefString.equals("noop")) {
+	                // Kudos to Eric for solution to dummy out "unsetonlickpendingintent":
+	                // http://groups.google.com/group/android-developers/browse_thread/thread/f9e80e5ce55bb1e0/78153eb730326488
+		        	pi = PendingIntent.getBroadcast(context, 0, OMC.DUMMYINTENT,
+	            		    PendingIntent.FLAG_UPDATE_CURRENT);
+	    		} else if (sPrefString.equals("alarms")) {
+		        	pi = OMC.ALARMCLOCKPENDING;
+	    		} else if (sPrefString.equals("weather")) {
+		        	pi = OMC.WEATHERFORECASTPENDING;
+	    		} else {
+	    			intent = Intent.parseUri(sPrefString, 0);
+		        	intent.setData(Uri.parse("omc:"+appWidgetId));
+		        	pi = PendingIntent.getActivity(context, 0, intent, 0);
+	    		}
+	            rv.setOnClickPendingIntent(OMC.OVERLAYRESOURCES[i], pi);
             }
     	} catch (Exception e) {
     		e.printStackTrace();
