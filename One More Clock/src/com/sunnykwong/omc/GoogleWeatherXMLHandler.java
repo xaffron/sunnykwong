@@ -128,7 +128,8 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
             public void onLocationChanged(Location location) {
             	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Using Locn: " + location.getLongitude() + " + " + location.getLatitude());
             	OMC.LM.removeUpdates(OMC.LL);
-            	GoogleWeatherXMLHandler.updateLocation(location);
+            	GoogleWeatherXMLHandler.calculateSunriseSunset(location);
+            	//GoogleWeatherXMLHandler.updateLocation(location);
             }
             public void onStatusChanged(String provider, int status, Bundle extras) {}
 		    public void onProviderEnabled(String provider) {}
@@ -162,6 +163,38 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 	static public void updateLocationThenWeather() {
 		//v134:  Get the last best location within the last 90 minutes.
 		getLastBestLocation(System.currentTimeMillis()-5400000l);
+	}
+	
+	static public void calculateSunriseSunset(final Location location) {
+		//Sunrise Hour Angle in radians.
+		Time t = new Time(Time.TIMEZONE_UTC);
+		Time t2 = new Time(Time.TIMEZONE_UTC);
+		t.setToNow();
+		double y = (2d*Math.PI/365d)*(t.yearDay + (t.hour-12d)/24d);
+		double eqtime = 229.18*(0.000075+0.001868*Math.cos(y)-0.032077*Math.sin(y)-0.014615*Math.cos(2*y)-0.040849*Math.sin(2*y));
+		double declin = 0.006918-0.399912*Math.cos(y)+0.070257*Math.sin(y)-0.006758*Math.cos(2*y)+0.000907*Math.sin(2*y)-0.002697*Math.cos(3*y)+0.00148*Math.sin(3*y);
+		double dSunriseHourAngle = Math.acos((Math.cos(1.58533492d) - (Math.sin(location.getLatitude()/ 180d*Math.PI)*Math.sin(declin)))/(Math.cos(location.getLatitude()/ 180d*Math.PI)*Math.cos(declin)))/Math.PI*180d;
+		double sunriseminutes = 720 + 4*(location.getLongitude()-dSunriseHourAngle) - eqtime;
+		double sunsetminutes = 720 + 4*(location.getLongitude()+dSunriseHourAngle) - eqtime;
+		System.out.println("Y: "+y); 
+		System.out.println("EQTIME: "+eqtime);
+		System.out.println("declin: "+declin* 180d/Math.PI);
+		System.out.println("sunrisehrangle: "+dSunriseHourAngle);
+		System.out.println("sunriseminutes: "+sunriseminutes);
+		System.out.println("sunsetminutes: "+sunsetminutes);
+		System.out.println("sunriseminutes: "+(int)(sunriseminutes/60));
+		System.out.println("sunriseminutes: "+(int)(sunriseminutes%60));
+
+		t.minute=(int)(sunriseminutes%60);
+		t.hour= (int)(sunriseminutes/60);
+		t.second = 0;
+		t.switchTimezone(Time.getCurrentTimezone());
+		System.out.println("Sunrise:" + t.format3339(false)); 
+		t2.switchTimezone(Time.getCurrentTimezone());
+		t2.minute=(int)(sunsetminutes%60);
+		t2.hour= (int)(sunsetminutes/60);
+		t2.second = 0;
+		System.out.println("Sunset:" + t2.format3339(false));
 	}
 	
 	static public void updateLocation(final Location location) {
