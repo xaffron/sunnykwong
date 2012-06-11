@@ -72,6 +72,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 			return;
 		} else if (sWeatherSetting.equals("specific")) {
 			// If weather is disabled (default), do nothing
+			GoogleWeatherXMLHandler.calculateSunriseSunset(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), OMC.jsonFIXEDLOCN.optDouble("longitude",0d));
 			GoogleWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
 					OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
 					OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
@@ -128,8 +129,8 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
             public void onLocationChanged(Location location) {
             	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Using Locn: " + location.getLongitude() + " + " + location.getLatitude());
             	OMC.LM.removeUpdates(OMC.LL);
-            	GoogleWeatherXMLHandler.calculateSunriseSunset(location);
-            	//GoogleWeatherXMLHandler.updateLocation(location);
+            	GoogleWeatherXMLHandler.calculateSunriseSunset(location.getLatitude(), location.getLongitude());
+            	GoogleWeatherXMLHandler.updateLocation(location);
             }
             public void onStatusChanged(String provider, int status, Bundle extras) {}
 		    public void onProviderEnabled(String provider) {}
@@ -165,7 +166,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		getLastBestLocation(System.currentTimeMillis()-5400000l);
 	}
 	
-	static public void calculateSunriseSunset(final Location location) {
+	static public void calculateSunriseSunset(final double latitude, final double longitude) {
 
 		Time t = new Time(Time.TIMEZONE_UTC);
 		t.setToNow();
@@ -173,28 +174,44 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		t.minute=0;
 		t.second=0;
 		t.switchTimezone(Time.getCurrentTimezone());
-		long lMidnight = t.toMillis(true);
-		System.out.println("Basis:" + new java.sql.Time(lMidnight).toLocaleString());
+		long lMidnight = t.toMillis(false);
+		if (OMC.DEBUG)
+			Log.i(OMC.OMCSHORT + "Weather",("Midnight UTC for this timezone:" + new java.sql.Time(lMidnight).toLocaleString()));
 
-		double radLatitude = location.getLatitude()/180d*Math.PI;
-
+		double radLatitude = latitude/180d*Math.PI;
 		double y = (2d*Math.PI/365d)*(t.yearDay + (t.hour)/24d);
 		double eqtime = 229.18*(0.000075+0.001868*Math.cos(y)-0.032077*Math.sin(y)-0.014615*Math.cos(2*y)-0.040849*Math.sin(2*y));
 		double declin = 0.006918-0.399912*Math.cos(y)+0.070257*Math.sin(y)-0.006758*Math.cos(2*y)+0.000907*Math.sin(2*y)-0.002697*Math.cos(3*y)+0.00148*Math.sin(3*y);
-		double dSunriseHourAngle = Math.acos(
+		double dSunriseHourAngle = (float)(Math.acos(
 				(Math.cos(1.58533492d) - (Math.sin(radLatitude)*Math.sin(declin))) /
 				(Math.cos(radLatitude)*Math.cos(declin)))
-				/Math.PI*180d;
-		long solarnoonMillis = lMidnight + (long)((720d - 4* location.getLongitude() - eqtime)*60000d);
-		System.out.println("Solar Noon:" + new java.sql.Time(solarnoonMillis).toLocaleString()); 
-
-		long sunriseMillis = solarnoonMillis - (long)(dSunriseHourAngle*4d*60000d);
+				/Math.PI*180d);
 		
-		System.out.println("Sunrise:" + new java.sql.Time(sunriseMillis).toLocaleString()); 
-
-		long sunsetMillis = solarnoonMillis + (long)(dSunriseHourAngle*4d*60000d);
+		// This workaround is required to ensure that the noon, sunset and sunrise times are 
+		// for this calendar date (today, not yesterday or tomorrow!)
+		Time today = new Time();
+		today.setToNow();
+		Time solarNoonTime = new Time();
+		solarNoonTime.set(lMidnight + (long)((720d - 4* longitude - eqtime)*60000d));
+		solarNoonTime.year = today.year;
+		solarNoonTime.month = today.month;
+		solarNoonTime.monthDay = today.monthDay;
+		solarNoonTime.normalize(false);
+		OMC.LSOLARNOONMILLIS = solarNoonTime.toMillis(false);
 		
-		System.out.println("Sunset:" + new java.sql.Time(sunsetMillis).toLocaleString()); 
+		if (OMC.DEBUG)
+			Log.i(OMC.OMCSHORT + "Weather",("Local Solar Noon today:" + new java.sql.Time(OMC.LSOLARNOONMILLIS).toLocaleString())); 
+
+		OMC.lSUNRISEMILLIS = OMC.LSOLARNOONMILLIS - (long)(dSunriseHourAngle*4d*60000d);
+		
+		if (OMC.DEBUG)
+			Log.i(OMC.OMCSHORT + "Weather",("Local Sunrise today:" + new java.sql.Time(OMC.lSUNRISEMILLIS).toLocaleString())); 
+
+		OMC.lSUNSETMILLIS = OMC.LSOLARNOONMILLIS + (long)(dSunriseHourAngle*4d*60000d);
+		
+		if (OMC.DEBUG)
+			Log.i(OMC.OMCSHORT + "Weather",("Local Sunset today:" + new java.sql.Time(OMC.lSUNSETMILLIS).toLocaleString())); 
+
 	}
 	
 	static public void updateLocation(final Location location) {

@@ -97,7 +97,7 @@ public class OMC extends Application {
 	static final Intent BGINTENT = new Intent(BGSTRING);
 	static final Intent WIDGETREFRESHINTENT = new Intent(FREEEDITION?"com.sunnykwong.freeomc.WIDGET_REFRESH":"com.sunnykwong.omc.WIDGET_REFRESH");
 	static final IntentFilter PREFSINTENTFILT = new IntentFilter(FREEEDITION?"com.sunnykwong.freeomc.WIDGET_CONFIG":"com.sunnykwong.omc.WIDGET_CONFIG");
-	static long lSUNRISEMILLIS, lSUNSETMILLIS;
+	static long lSUNRISEMILLIS, LSOLARNOONMILLIS, lSUNSETMILLIS;
 
 	
 	static int faqtoshow = 0;
@@ -300,6 +300,16 @@ public class OMC extends Application {
 		OMC.BATTSCALE = OMC.PREFS.getInt("ompc_battscale", 100);
 		OMC.BATTPERCENT = OMC.PREFS.getInt("ompc_battpercent", 0);
 		OMC.CHARGESTATUS = OMC.PREFS.getString("ompc_chargestatus", "Discharging");
+		
+		Time t = new Time();
+		t.setToNow();
+		t.hour=6;
+		t.minute=0;
+		t.second=0;
+		OMC.lSUNRISEMILLIS = t.toMillis(false);
+		OMC.LSOLARNOONMILLIS = OMC.lSUNRISEMILLIS+360*60000l;
+		OMC.lSUNSETMILLIS = OMC.LSOLARNOONMILLIS+360*60000l;
+		
 		
 		// If we're from a legacy version, then we need to wipe all settings clean to avoid issues.
 		if (OMC.PREFS.getString("version", "1.0.x").startsWith("1.0") || OMC.PREFS.getString("version", "1.0.x").startsWith("1.1")) {
@@ -1162,7 +1172,57 @@ public class OMC extends Application {
 
 		//Get the first element (command).
 		String sToken = st[iTokenNum++];
-		if (sToken.startsWith("shift")) {
+		if (sToken.startsWith("daylight")) {
+
+			// value that changes linearly from sunrise to sundown, then from sundown to sunup.
+			String sType = st[iTokenNum++];
+
+			// Where are we in time?  intGradientSeconds starts the count from either sunrise or sunset
+			long OMCTIMEMillis = OMC.TIME.toMillis(false);
+
+			int iIntervalSeconds;
+			int iGradientSeconds;
+
+			if (OMCTIMEMillis < OMC.lSUNRISEMILLIS) {
+				//pre-dawn
+				iIntervalSeconds = 86400-(int)((OMC.lSUNSETMILLIS-OMC.lSUNRISEMILLIS)/1000l);
+				iGradientSeconds = (int)((OMCTIMEMillis - (OMC.lSUNSETMILLIS-86400000l))/1000l);
+			} else if (OMCTIMEMillis < OMC.lSUNSETMILLIS) {
+				//day
+				iIntervalSeconds = (int)((OMC.lSUNSETMILLIS-OMC.lSUNRISEMILLIS)/1000l);
+				iGradientSeconds = (int)((OMCTIMEMillis - OMC.lSUNRISEMILLIS)/1000l);
+			} else {
+				//post-dusk
+				iIntervalSeconds = 86400-(int)((OMC.lSUNSETMILLIS-OMC.lSUNRISEMILLIS)/1000l);
+				iGradientSeconds = (int)((OMCTIMEMillis - OMC.lSUNSETMILLIS)/1000l);
+			}			
+			float gradient = (iGradientSeconds % iIntervalSeconds)/(float)iIntervalSeconds;
+			final String sLowVal = st[iTokenNum++];
+			final String sMidVal = st[iTokenNum++];
+			final String sHighVal = st[iTokenNum++];
+			if (sType.equals("number")) {
+				result = String.valueOf(OMC.numberInterpolate(
+						Integer.parseInt(sLowVal), 
+						Integer.parseInt(sMidVal), 
+						Integer.parseInt(sHighVal), 
+						gradient));
+			} else if (sType.equals("color")) {
+				int color = OMC.colorInterpolate(
+						sLowVal, 
+						sMidVal, 
+						sHighVal, 
+						gradient);
+				result = String.valueOf("#" + Integer.toHexString(color));
+			} else if (sType.equals("float")) {
+				result = String.valueOf(OMC.floatInterpolate(
+						Float.parseFloat(sLowVal), 
+						Float.parseFloat(sMidVal), 
+						Float.parseFloat(sHighVal), 
+						gradient));
+			} else {
+				//Unknown - do nothing
+			}
+		} else if (sToken.startsWith("shift")) {
 
 			// value that changes linearly and repeats every X seconds from 6am.
 			String sType = st[iTokenNum++];
@@ -1251,7 +1311,7 @@ public class OMC extends Application {
 								+ "; nextupd " + t2.format("%R");
 					} else if (sType.equals("icontext")) {
 						String sDay;
-						if (OMC.TIME.hour >= 6 && OMC.TIME.hour < 18) {
+						if (OMC.TIME.toMillis(true) >= OMC.lSUNRISEMILLIS && OMC.TIME.toMillis(true) < OMC.lSUNSETMILLIS) {
 							//Day
 							sDay="day";
 						} else {
@@ -1263,7 +1323,7 @@ public class OMC extends Application {
 					} else if (sType.equals("index")) {
 						String sTranslateType = st[iTokenNum++];
 						String sDay;
-						if (OMC.TIME.hour >= 6 && OMC.TIME.hour < 18) {
+						if (OMC.TIME.toMillis(true) >= OMC.lSUNRISEMILLIS && OMC.TIME.toMillis(true) < OMC.lSUNSETMILLIS) {
 							//Day
 							sDay="day";
 						} else {
@@ -1431,8 +1491,8 @@ public class OMC extends Application {
 			
 			
 		} else if (sToken.equals("day")){
-			// value that switches between two fixed symbols - day (6a-6p) and night (6p-6a).
-			if (OMC.TIME.hour >= 6 && OMC.TIME.hour < 18) {
+			// value that switches between two fixed symbols - day (betw sunrise/sunset) and night.
+			if (OMC.TIME.toMillis(true) >= OMC.lSUNRISEMILLIS && OMC.TIME.toMillis(true) < OMC.lSUNSETMILLIS) {
 				result = st[iTokenNum];
 				//Day
 			} else {
