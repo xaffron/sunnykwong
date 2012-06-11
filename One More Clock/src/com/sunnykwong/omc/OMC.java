@@ -97,7 +97,7 @@ public class OMC extends Application {
 	static final Intent BGINTENT = new Intent(BGSTRING);
 	static final Intent WIDGETREFRESHINTENT = new Intent(FREEEDITION?"com.sunnykwong.freeomc.WIDGET_REFRESH":"com.sunnykwong.omc.WIDGET_REFRESH");
 	static final IntentFilter PREFSINTENTFILT = new IntentFilter(FREEEDITION?"com.sunnykwong.freeomc.WIDGET_CONFIG":"com.sunnykwong.omc.WIDGET_CONFIG");
-	static long lSunrise, lSunset;
+	static long lSUNRISEMILLIS, lSUNSETMILLIS;
 
 	
 	static int faqtoshow = 0;
