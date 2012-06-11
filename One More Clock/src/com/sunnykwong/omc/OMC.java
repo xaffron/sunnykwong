@@ -1647,6 +1647,8 @@ public class OMC extends Application {
 					sb.append(OMC.FULLMONTHS[OMC.TIME.month]);
 				} else if (inputChars[i]=='b') {
 					sb.append(OMC.ABVMONTHS[OMC.TIME.month]);
+				} else if (inputChars[i]=='P') {
+					sb.append(OMC.TIME.hour<12?"AM":"PM");
 				} else if (inputChars[i]=='p') {
 					sb.append(OMC.APM[OMC.TIME.hour<12?0:1]);
 				} else {
