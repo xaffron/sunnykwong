@@ -24,7 +24,7 @@
             android:enabled="false"/>
 
         <Button
-            android:id="@+id/buttonNNPrv"
+            android:id="@+id/buttonNPrv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1" />
@@ -45,19 +45,19 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/buttonWWPrv"
+            android:id="@+id/buttonWPrv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/buttonCCPrv"
+            android:id="@+id/buttonCPrv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/buttonEEPrv"
+            android:id="@+id/buttonEPrv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1" />
@@ -78,7 +78,7 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/buttonSSPrv"
+            android:id="@+id/buttonSPrv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1" />

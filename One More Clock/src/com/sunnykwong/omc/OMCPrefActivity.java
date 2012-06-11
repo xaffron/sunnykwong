@@ -41,6 +41,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     static int appWidgetID;
     static AlertDialog mAD;
     AlertDialog mTTL;
+	Button[] btnCompass = new Button[9];
+
     final Time timeTemp = new Time(), timeTemp2 = new Time();
     Handler mHandler;
     CheckBox mCheckBox;
@@ -527,16 +529,20 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 				.setItems(items, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int item) {
 							if (values[item].equals("default")) {
-								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "").commit();
+								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "")
+									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], "Widget Prefs").commit();
 							}
 							if (values[item].equals("noop")) {
-								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "noop").commit();
+								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "noop")
+									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], "Nothing").commit();
 							}
 							if (values[item].equals("weather")) {
-								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "weather").commit();
+								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "weather")
+									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], "Forecast").commit();
 							}
 							if (values[item].equals("alarms")) {
-								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "alarms").commit();
+								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "alarms")
+									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], "View Alarms").commit();
 							}
 							if (values[item].equals("activity")) {
 					    		getPreferenceScreen().setEnabled(false);
@@ -551,85 +557,27 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 								mainIntent=null;
 								pickIntent=null;
 							}
+							for (int iCompass = 0; iCompass < 9; iCompass++) {
+								btnCompass[iCompass].setText(OMC.PREFS.getString("URIDesc"+OMC.COMPASSPOINTS[iCompass],"Widget Prefs"));
+							}
 						}
 				}).create();
 
 				LayoutInflater li = LayoutInflater.from(this);
 				LinearLayout ll = (LinearLayout)(li.inflate(getResources().getIdentifier("ttlpreview", "layout", OMC.PKGNAME), null));
 
-				Button bNW = (Button)ll.findViewById(getResources().getIdentifier("buttonNWPrv", "id", OMC.PKGNAME));
-				bNW.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						iTTLArea=0;
-						dlgTTL.show();
-					}
-				});
-				Button bNN = (Button)ll.findViewById(getResources().getIdentifier("buttonNNPrv", "id", OMC.PKGNAME));
-				bNN.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						iTTLArea=1;
-						dlgTTL.show();
-					}
-				});
-				Button bNE = (Button)ll.findViewById(getResources().getIdentifier("buttonNEPrv", "id", OMC.PKGNAME));
-				bNE.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						iTTLArea=2;
-						dlgTTL.show();
-					}
-				});
-				Button bWW = (Button)ll.findViewById(getResources().getIdentifier("buttonWWPrv", "id", OMC.PKGNAME));
-				bWW.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						iTTLArea=3;
-						dlgTTL.show();
-					}
-				});
-				Button bCC = (Button)ll.findViewById(getResources().getIdentifier("buttonCCPrv", "id", OMC.PKGNAME));
-				bCC.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						iTTLArea=4;
-						dlgTTL.show();
-					}
-				});
-				Button bEE = (Button)ll.findViewById(getResources().getIdentifier("buttonEEPrv", "id", OMC.PKGNAME));
-				bEE.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						iTTLArea=5;
-						dlgTTL.show();
-					}
-				});
-				Button bSW = (Button)ll.findViewById(getResources().getIdentifier("buttonSWPrv", "id", OMC.PKGNAME));
-				bSW.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						iTTLArea=6;
-						dlgTTL.show();
-					}
-				});
-				Button bSS = (Button)ll.findViewById(getResources().getIdentifier("buttonSSPrv", "id", OMC.PKGNAME));
-				bSS.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						iTTLArea=7;
-						dlgTTL.show();
-					}
-				});
-				Button bSE = (Button)ll.findViewById(getResources().getIdentifier("buttonSEPrv", "id", OMC.PKGNAME));
-				bSE.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						iTTLArea=8;
-						dlgTTL.show();
-					}
-				});
-				
+				for (int iCompass = 0; iCompass < 9; iCompass++) {
+					btnCompass[iCompass] = (Button)ll.findViewById(getResources().getIdentifier("button" + OMC.COMPASSPOINTS[iCompass] + "Prv", "id", OMC.PKGNAME));
+					btnCompass[iCompass].setText(OMC.PREFS.getString("URIDesc"+OMC.COMPASSPOINTS[iCompass],"Widget Prefs"));
+					final int iTTL = iCompass;
+					btnCompass[iCompass].setOnClickListener(new View.OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							iTTLArea=iTTL;
+							dlgTTL.show();
+						}
+					});
+				}
     			mTTL = new AlertDialog.Builder(this)
     					.setView(ll)
     					.setTitle("Area to customize:")
@@ -688,8 +636,10 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 		if (requestCode == 0) return;
 		if (data != null) {
 			String s = data.toUri(MODE_PRIVATE).toString();
+			System.out.println(s);
 			
-			OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[requestCode], s).commit();
+			OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[requestCode], s)
+				.putString("URIDesc"+OMC.COMPASSPOINTS[requestCode], "Custom Activity").commit();
 		}
 	}
     
