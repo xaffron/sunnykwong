@@ -53,7 +53,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 
 	static public void updateWeather() {
 		OMC.LASTWEATHERTRY=System.currentTimeMillis();
-		OMC.NEXTWEATHERREFRESH=OMC.LASTWEATHERTRY+15l*60000l;
+		OMC.NEXTWEATHERREFRESH=OMC.LASTWEATHERTRY+Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l;
 		OMC.PREFS.edit().putLong("weather_lastweathertry", OMC.LASTWEATHERTRY)
 		.putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH)
 		.commit();
@@ -439,11 +439,11 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		// If the weather information (international, mostly) doesn't have a timestamp, set next update to be
 		// 59 minutes from now
 		if (t.year<1980) {
-			OMC.NEXTWEATHERREFRESH = Math.max(OMC.LASTWEATHERREFRESH + 59l * 60000l, OMC.LASTWEATHERTRY+15l*60000l);
+			OMC.NEXTWEATHERREFRESH = Math.max(OMC.LASTWEATHERREFRESH + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")) * 60000l, OMC.LASTWEATHERTRY+Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l);
 		} else {
 		// If we get a weather station timestamp, we try to "catch" the update by setting next update to 89 minutes
 		// after the last station refresh.
-			OMC.NEXTWEATHERREFRESH = Math.max(t.toMillis(false) + 89l * 60000l, OMC.LASTWEATHERTRY+15l*60000l);
+			OMC.NEXTWEATHERREFRESH = Math.max(t.toMillis(false) + (29l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))) * 60000l, OMC.LASTWEATHERTRY+Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l);
 		}
 		OMC.PREFS.edit().putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH).commit();
 

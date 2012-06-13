@@ -103,13 +103,13 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// If we just set the clock or switched timezones, we definitely want to refresh weather right now.
 		if (action.equals(Intent.ACTION_TIME_CHANGED)
 				|| action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
-			GoogleWeatherXMLHandler.updateWeather();
+			if (Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))!=0)GoogleWeatherXMLHandler.updateWeather();
 		} else {
 			// Otherwise, we can be more polite about updating weather.
 			// First, are we due for a weather update?
-			if (omctime>OMC.NEXTWEATHERREFRESH) {
-				// If it has been less than 15 minutes after the last weather try, don't try yet
-				if (omctime-OMC.LASTWEATHERTRY < 15l * 60000l) {
+			if (omctime>OMC.NEXTWEATHERREFRESH && Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))!=0) {
+				// If the last weather try has been recent, don't try yet
+				if (omctime-OMC.LASTWEATHERTRY < Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l * 60000l) {
 					// do nothing
 				} else {
 					// Get weather updates

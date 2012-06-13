@@ -187,6 +187,25 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	prefsUpdateFreq.setOnPreferenceChangeListener(this);
         	prefsUpdateFreq.setSummary("Redraw every " + OMC.PREFS.getString("sUpdateFreq", "30") + " seconds.");
 
+        	findPreference("sWeatherFreq").setOnPreferenceChangeListener(this);
+        	switch (Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))/60) {
+        		case 0:
+        			findPreference("sWeatherFreq").setSummary("Manual weather updates only.");
+        			break;
+        		case 1:
+        			findPreference("sWeatherFreq").setSummary("Refresh weather every 1 hour.");
+        			break;
+        		case 4:
+        			findPreference("sWeatherFreq").setSummary("Refresh weather every 4 hours.");
+        			break;
+        		case 8:
+        			findPreference("sWeatherFreq").setSummary("Refresh weather every 8 hours.");
+        			break;
+        		default:
+        			findPreference("sWeatherFreq").setSummary("Refresh weather at default interval.");
+        	}
+        	
+        	
         	prefWeather = findPreference("weather");
         	prefWeatherDisplay = findPreference("weatherDisplay");
 			if (Build.VERSION.SDK_INT <  5) {
@@ -205,7 +224,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	}
 
     		((PreferenceScreen)findPreference("widgetPrefs")).removePreference(findPreference("bFourByTwo"));
-//    		findPreference("bFourByTwo").setEnabled(false);
 
     		if (OMC.SINGLETON) {
         		((PreferenceCategory)findPreference("thisClock")).removePreference(prefloadThemeFile);
@@ -683,7 +701,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 			OMC.setServiceAlarm(System.currentTimeMillis()+500l);
 		}
 		if (mRefresh!=null) mRefresh.interrupt();
-		
     }
 
     @Override
