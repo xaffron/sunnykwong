@@ -15,6 +15,9 @@ import android.widget.RemoteViews;
 public class OMCService extends Service {
 	// First, a few flags for the service.
 	static boolean RUNNING=false;	// Am I (already) running?
+	static boolean STOPNOW5x4=false;		// Should I stop now? from 5x4 widgets
+	static boolean STOPNOW5x2=false;		// Should I stop now? from 5x2 widgets
+	static boolean STOPNOW5x1=false;		// Should I stop now? from 5x1 widgets
 	static boolean STOPNOW4x4=false;		// Should I stop now? from 4x4 widgets
 	static boolean STOPNOW4x2=false;		// Should I stop now? from 4x2 widgets
 	static boolean STOPNOW4x1=false;		// Should I stop now? from 4x1 widgets

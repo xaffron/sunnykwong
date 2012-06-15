@@ -77,8 +77,8 @@ public class OMC extends Application {
 
 	static final String SINGLETONNAME = "One More Clock";
 	static final String STARTERPACKURL = "asset:pk133.omc";
-	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v130.omc";
-	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v130.omc";
+	static final String EXTENDEDPACKBACKUP = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v130.omc";
+	static final String EXTENDEDPACK = "https://s3.amazonaws.com/Xaffron/OMCThemes_v130.omc";
 	static final String DEFAULTTHEME = "IceLock";
 	static final String APPICON = "clockicon";
 	
@@ -169,6 +169,9 @@ public class OMC extends Application {
 	static final PorterDuffXfermode PORTERDUFF_DST_OUT = new PorterDuffXfermode(Mode.DST_OUT);
 	static final PorterDuffXfermode PORTERDUFF_SRC_OVER = new PorterDuffXfermode(Mode.SRC_OVER);
 	static final PorterDuffXfermode PORTERDUFF_DST_OVER = new PorterDuffXfermode(Mode.DST_OVER);
+	static ComponentName WIDGET5x4CNAME;
+	static ComponentName WIDGET5x2CNAME;
+	static ComponentName WIDGET5x1CNAME;
 	static ComponentName WIDGET4x4CNAME;
 	static ComponentName WIDGET4x2CNAME;
 	static ComponentName WIDGET4x1CNAME;
@@ -232,6 +235,9 @@ public class OMC extends Application {
 		OMC.SHAREDPREFNAME = OMC.PKGNAME + "_preferences";
 		OMC.PAIDURI = (OMC.SINGLETON? Uri.parse("market://details?id=" + OMC.PKGNAME +"donate"):Uri.parse("market://details?id=com.sunnykwong.omc"));
 
+		OMC.WIDGET5x2CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget5x2");
+		OMC.WIDGET5x4CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget5x4");
+		OMC.WIDGET5x1CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget5x1");
 		OMC.WIDGET4x2CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget4x2");
 		OMC.WIDGET4x4CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget4x4");
 		OMC.WIDGET4x1CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget4x1");
@@ -468,6 +474,21 @@ public class OMC extends Application {
     				.commit();
 	    	context.getPackageManager()
 			.setComponentEnabledSetting(
+					OMC.WIDGET5x4CNAME,
+					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
+					OMC.WIDGET5x2CNAME,
+					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
+					OMC.WIDGET5x1CNAME,
+					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
 					OMC.WIDGET4x4CNAME,
 					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
@@ -502,6 +523,24 @@ public class OMC extends Application {
 					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
     	} else {
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
+					OMC.WIDGET5x4CNAME,
+					OMC.PREFS.getBoolean("bFiveByFour", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
+					OMC.WIDGET5x2CNAME,
+					OMC.PREFS.getBoolean("bFiveByTwo", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
+	    	context.getPackageManager()
+			.setComponentEnabledSetting(
+					OMC.WIDGET5x1CNAME,
+					OMC.PREFS.getBoolean("bFiveByOne", true) ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+							: PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+					PackageManager.DONT_KILL_APP);
 	    	context.getPackageManager()
 			.setComponentEnabledSetting(
 					OMC.WIDGET4x4CNAME,

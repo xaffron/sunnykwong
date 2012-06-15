@@ -11,6 +11,7 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
@@ -148,45 +149,65 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     public void setupPrefs(final int appWidgetID) {
 		if (appWidgetID >= 0) {
+			// We are called by the user tapping on a widget - bring up prefs screen
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref"," Called by Widget " + appWidgetID);
-
 			if (OMC.SINGLETON) setTitle(OMC.SINGLETONNAME + " - Preferences");
 
+			// Load the proper prefs into the generic prefs set
 			OMC.getPrefs(appWidgetID);
-        	OMC.PREFS.edit().putBoolean("widgetPersistence", OMC.FG).commit();
-        	OMC.PREFS.edit().putBoolean("bFourByTwo", true).commit();
+
+			// Setting foreground options, and making sure we have at least one widget (4x2) enabled
+			Editor ed = OMC.PREFS.edit();
+			ed.putBoolean("widgetPersistence", OMC.FG);
+			ed.putBoolean("bFourByTwo", true);
         	
+			// Depending on free ed or not, enable/disable the widgets
         	if (OMC.FREEEDITION) {
-    			OMC.PREFS.edit().putBoolean("bFourByFour", false)
-    					.putBoolean("bFourByOne", false)
-    					.putBoolean("bThreeByThree", false)
-    					.putBoolean("bThreeByOne", false)
-    					.putBoolean("bTwoByTwo", false)
-    					.putBoolean("bTwoByOne", false)
-    					.putBoolean("bOneByThree", false)
-    					.commit();
+        		ed
+        		.putBoolean("bFiveByFour", false)
+        		.putBoolean("bFiveByTwo", false)
+        		.putBoolean("bFiveByOne", false)
+        		.putBoolean("bFourByFour", false)
+    			.putBoolean("bFourByOne", false)
+    			.putBoolean("bThreeByThree", false)
+    			.putBoolean("bThreeByOne", false)
+    			.putBoolean("bTwoByTwo", false)
+    			.putBoolean("bTwoByOne", false)
+    			.putBoolean("bOneByThree", false);
     		}
-        	
+        	ed.commit();
+
+        	// Load generic prefs into the prefscreen. 
     		this.getPreferenceManager().setSharedPreferencesName(OMC.SHAREDPREFNAME);
         	addPreferencesFromResource(getResources().getIdentifier("omcprefs", "xml", OMC.PKGNAME));
-        	prefemailMe = findPreference("emailMe");
+
+        	// ID specific preferences.
+        	// "Set Widget Theme".
         	prefloadThemeFile = findPreference("loadThemeFile");
-        	prefclearCache = findPreference("clearCache");
-        	prefbSkinner = findPreference("bSkinner");
+        	
+    		// "Personalize Clock".
+        	preftweakTheme = findPreference("tweakTheme");
+        	
+        	// "Change Time Zone".
         	prefTimeZone = findPreference("timeZone");
-    		if (OMC.PREFS.getString("sTimeZone", "default").equals("default")) {
+        	if (OMC.PREFS.getString("sTimeZone", "default").equals("default")) {
         		findPreference("timeZone").setSummary("(Following Device Time Zone)");
     		} else {
     			findPreference("timeZone").setSummary(OMC.PREFS.getString("sTimeZone", "default"));
     		}
 
-    		prefwidgetPersistence = findPreference("widgetPersistence");
-        	preftweakTheme = findPreference("tweakTheme");
-        	
+        	// "Weather: [Location] (status)".
+        	prefWeather = findPreference("weather");
+
+        	// "Weather Display Settings".
+        	prefWeatherDisplay = findPreference("weatherDisplay");
+
+    		// "Clock Update Interval"
         	prefsUpdateFreq = findPreference("sUpdateFreq");
         	prefsUpdateFreq.setOnPreferenceChangeListener(this);
         	prefsUpdateFreq.setSummary("Redraw every " + OMC.PREFS.getString("sUpdateFreq", "30") + " seconds.");
 
+        	// "Weather Update Interval"
         	findPreference("sWeatherFreq").setOnPreferenceChangeListener(this);
         	switch (Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))/60) {
         		case 0:
@@ -205,14 +226,24 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         			findPreference("sWeatherFreq").setSummary("Refresh weather at default interval.");
         	}
         	
-        	
-        	prefWeather = findPreference("weather");
-        	prefWeatherDisplay = findPreference("weatherDisplay");
-			if (Build.VERSION.SDK_INT <  5) {
+        	// "Set Foreground Mode".
+    		prefwidgetPersistence = findPreference("widgetPersistence");
+
+        	if (Build.VERSION.SDK_INT <  5) {
     			OMC.PREFS.edit().putBoolean("widgetPersistence", false).commit();
 				((PreferenceCategory)findPreference("allClocks")).removePreference(prefwidgetPersistence);
 			}
 				
+        	// "Enable Theme Tester".
+        	prefbSkinner = findPreference("bSkinner");
+
+        	// "Clear Render Caches".
+        	prefclearCache = findPreference("clearCache");
+
+        	// "Contact Xaffron".
+        	prefemailMe = findPreference("emailMe");
+
+        	// Version text.
         	if (OMC.FREEEDITION) {
         		findPreference("sVersion").setTitle("Version " + OMC.THISVERSION + " Free");
         		findPreference("sVersion").setSummary("Tap me to get the full version!");
@@ -223,15 +254,25 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         		findPreference("sVersion").setSelectable(false);
         	}
 
+        	// We really don't need this in the prefs screen since we don't allow users to disable the freeware widget size
     		((PreferenceScreen)findPreference("widgetPrefs")).removePreference(findPreference("bFourByTwo"));
 
+    		
+    		// If the app is in singleton mode, don't allow themes!
     		if (OMC.SINGLETON) {
         		((PreferenceCategory)findPreference("thisClock")).removePreference(prefloadThemeFile);
         		((PreferenceCategory)findPreference("allClocks")).removePreference(prefclearCache);
         		((PreferenceScreen)findPreference("widgetPrefs")).removePreference(prefbSkinner);
         	}
     		
+    		// If it's free, 
     		if (OMC.FREEEDITION) {
+        		findPreference("bFiveByFour").setEnabled(false);
+        		findPreference("bFiveByFour").setSelectable(false);
+        		findPreference("bFiveByTwo").setEnabled(false);
+        		findPreference("bFiveByTwo").setSelectable(false);
+        		findPreference("bFiveByOne").setEnabled(false);
+        		findPreference("bFiveByOne").setSelectable(false);
         		findPreference("bFourByFour").setEnabled(false);
         		findPreference("bFourByFour").setSelectable(false);
         		findPreference("bFourByOne").setEnabled(false);
@@ -490,8 +531,8 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 				.show();
     	}
     	if (preference == getPreferenceScreen().findPreference("widgetPrefs") && OMC.FREEEDITION) {
-    		final CharSequence TitleCS = "Why are the widgets so big?";
-    		final CharSequence MessageCS = "Actually, the paid version offers widget sizes of 4x4, 4x2, 4x1, 3x3, 3x1, 2x2, 2x1 and 1x3.\nPlease consider upgrading to get these sizes!";
+    		final CharSequence TitleCS = "Are there other widget sizes?";
+    		final CharSequence MessageCS = "Actually, the paid version offers widget sizes of 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 and 1x3.\nPlease consider upgrading to get these sizes!";
     		final CharSequence PosButtonCS = "Take me to the paid version!";
         	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
 			.setCancelable(true)
