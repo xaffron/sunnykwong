@@ -45,7 +45,7 @@ public class OMCThemeUnzipActivity extends Activity {
 	public boolean NOGO;
 	public ProgressBar pg;
 	static public boolean COMPLETE;
-	public Thread currentThread;
+	public Thread currentThread; 
 	
 	public URL downloadURL;
 
