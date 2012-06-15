@@ -6,6 +6,8 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
+import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.zip.ZipEntry;
@@ -19,6 +21,7 @@ import android.content.DialogInterface.OnCancelListener;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -156,7 +159,8 @@ public class OMCThemeUnzipActivity extends Activity {
 						if (sScheme.equals("")) sScheme = "http:";
 
 						if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","Scheme is " + sScheme);
-
+						
+						File tempFile = new File(omcRoot.getAbsolutePath()+"/temp.zip");
 						ZipInputStream zis;
 						if (sScheme.equals("asset:")) {
 							zis = new ZipInputStream(OMC.AM.open(uri.getSchemeSpecificPart()));
@@ -165,10 +169,29 @@ public class OMCThemeUnzipActivity extends Activity {
 						} else {
 							downloadURL = new URL(sScheme + uri.getSchemeSpecificPart());
 							URLConnection conn = downloadURL.openConnection();
-							zis = new ZipInputStream(conn.getInputStream());
-							pdMessage = "Streaming " + conn.getContentLength() + " bytes.";
+							pdMessage = "Downloading " + conn.getContentLength() + " bytes...";
 							mHandler.post(mUpdateStatus);
+
+							InputStream is = conn.getInputStream();
+							FileOutputStream oTGT = new FileOutputStream(tempFile);
+						    byte[] buffer = new byte[8192];
+						    int iBytesRead = 0, iByteCount=0, iCounter=0, iTotal=conn.getContentLength();
+						    while ((iBytesRead = is.read(buffer))!= -1){
+						    	oTGT.write(buffer,0,iBytesRead);
+						    	iByteCount+=iBytesRead;
+						    	iCounter++;
+						    	if (iCounter>10) {
+									pdMessage = "Got " + iByteCount + " of " + iTotal + " bytes...";
+									mHandler.post(mUpdateStatus);
+						    		iCounter=0;
+						    	}
+						    }
+						    oTGT.close();
+						    is.close();
+
+							zis = new ZipInputStream(new FileInputStream(tempFile));
 						}
+
 						BufferedInputStream bis = new BufferedInputStream(zis,8192);
 						ZipEntry ze;
 
@@ -237,6 +260,7 @@ public class OMCThemeUnzipActivity extends Activity {
 						try {Thread.sleep(3000);}
 						catch (Exception ee) {}
 						COMPLETE = true;
+						if (tempFile.exists())tempFile.delete();
 						mHandler.post(mResult);
 
 					} catch (java.net.SocketException e) {

@@ -108,11 +108,14 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			// Otherwise, we can be more polite about updating weather.
 			// First, are we due for a weather update?
 			if (omctime>OMC.NEXTWEATHERREFRESH && Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))!=0) {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","OMCTIME > NEXTWEATHER");
 				// If the last weather try has been recent, don't try yet
 				if (omctime-OMC.LASTWEATHERTRY < Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l * 60000l) {
+					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Too frequent, wait it out");
 					// do nothing
 				} else {
 					// Get weather updates
+					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Get Weather Udpates");
 					GoogleWeatherXMLHandler.updateWeather();
 				}
 			}

@@ -125,17 +125,6 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 	    }
 
 	    
-    	OMC.LL = new LocationListener() {
-            public void onLocationChanged(Location location) {
-            	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Using Locn: " + location.getLongitude() + " + " + location.getLatitude());
-            	OMC.LM.removeUpdates(OMC.LL);
-            	GoogleWeatherXMLHandler.calculateSunriseSunset(location.getLatitude(), location.getLongitude());
-            	GoogleWeatherXMLHandler.updateLocation(location);
-            }
-            public void onStatusChanged(String provider, int status, Bundle extras) {}
-		    public void onProviderEnabled(String provider) {}
-		    public void onProviderDisabled(String provider) {}
-		};
 
 		// If the best result is beyond the allowed time limit, or the accuracy of the
 	    // best result is wider than the acceptable maximum distance, request a single update.
@@ -145,11 +134,11 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 			// v134:  Start with network; if it fails, go GPS.
 			try {
             	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Passive failed; Requesting Network Locn.");
-				OMC.LM.requestLocationUpdates("network", 0, 0, OMC.LL);
+				OMC.LM.requestLocationUpdates("network", 999999, 0, OMC.LL);
 			} catch (IllegalArgumentException e) {
 				try {
 	            	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Network failed; Requesting GPS Locn.");
-					OMC.LM.requestLocationUpdates("gps", 0, 0, OMC.LL);
+					OMC.LM.requestLocationUpdates("gps", 999999, 0, OMC.LL);
 				} catch (IllegalArgumentException ee) {
 	            	Log.w(OMC.OMCSHORT + "Weather", "Cannot fix location.");
 					ee.printStackTrace();
@@ -437,16 +426,26 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Update Succeeded.  Phone Time:" + new java.sql.Time(OMC.LASTWEATHERREFRESH).toLocaleString());
 
 		Time t = new Time();
+		// If the weather station information (international, mostly) doesn't have a timestamp, set the timestamp to be jan 1st, 1970
 		t.parse(jsonWeather.optString("current_local_time","19700101T000000"));
-		// If the weather information (international, mostly) doesn't have a timestamp, set next update to be
-		// 59 minutes from now
-		if (t.year<1980) {
+		
+		// If the weather station info looks too stale (more than 2 hours old), it's because the phone's date/time is wrong.  
+		// Force the update to the default update period
+		if (System.currentTimeMillis()-t.toMillis(false)>7200000l) {
 			OMC.NEXTWEATHERREFRESH = Math.max(OMC.LASTWEATHERREFRESH + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")) * 60000l, OMC.LASTWEATHERTRY+Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l);
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Weather Station Time Missing.");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Weather Station Time:" + new java.sql.Time(t.toMillis(false)).toLocaleString());
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Weather Station Time Missing or Stale.  Using default interval.");
+		} else if (t.toMillis(false)>System.currentTimeMillis()) {
+		// If the weather station time is in the future, something is definitely wrong! 
+		// Force the update to the default update period
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Weather Station Time:" + new java.sql.Time(t.toMillis(false)).toLocaleString());
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Weather Station Time in the future -> phone time is wrong.  Using default interval.");
+			OMC.NEXTWEATHERREFRESH = Math.max(OMC.LASTWEATHERREFRESH + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")) * 60000l, OMC.LASTWEATHERTRY+Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l);
 		} else {
-		// If we get a weather station timestamp, we try to "catch" the update by setting next update to 89 minutes
+		// If we get a recent weather station timestamp, we try to "catch" the update by setting next update to 
+		// 29 minutes + default update period
 		// after the last station refresh.
-		// v134: 
+
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Weather Station Time:" + new java.sql.Time(t.toMillis(false)).toLocaleString());
 			OMC.NEXTWEATHERREFRESH = Math.max(t.toMillis(false) + (29l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))) * 60000l, OMC.LASTWEATHERTRY+Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l);
 		}

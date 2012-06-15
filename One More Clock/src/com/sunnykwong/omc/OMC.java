@@ -47,11 +47,13 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Typeface;
+import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.AlarmClock;
@@ -283,6 +285,17 @@ public class OMC extends Application {
     	OMC.AM = getAssets();
     	OMC.RES = getResources();
     	OMC.LM = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+    	OMC.LL = new LocationListener() {
+            public void onLocationChanged(Location location) {
+            	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Using Locn: " + location.getLongitude() + " + " + location.getLatitude());
+            	OMC.LM.removeUpdates(OMC.LL); 
+            	GoogleWeatherXMLHandler.calculateSunriseSunset(location.getLatitude(), location.getLongitude());
+            	GoogleWeatherXMLHandler.updateLocation(location);
+            }
+            public void onStatusChanged(String provider, int status, Bundle extras) {}
+		    public void onProviderEnabled(String provider) {}
+		    public void onProviderDisabled(String provider) {}
+		};
     	OMC.NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     	OMC.GEOFONT = Typeface.createFromAsset(OMC.AM, "GeosansLight.ttf");
     	OMC.WEATHERFONT = Typeface.createFromAsset(OMC.AM, "wef.ttf");
