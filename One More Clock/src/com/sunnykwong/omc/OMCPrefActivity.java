@@ -133,8 +133,11 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     	super.onCreate(savedInstanceState);
     	mHandler = new Handler();
-		// FIX FOR NOMEDIA
-		if (OMC.checkSDPresent()) ((OMC)(this.getApplication())).fixnomedia();
+		// FIX FOR NOMEDIA and BADTHEME
+		if (OMC.checkSDPresent()) {
+			((OMC)(this.getApplication())).fixnomedia();
+			((OMC)(this.getApplication())).fixKnownBadThemes();
+		}
 
     	// If action is null, we are coming from an existing widget - 
     	// we want both the home and back buttons to apply changes,

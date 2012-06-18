@@ -960,6 +960,34 @@ public class OMC extends Application {
 		}
 	}
 	
+	public boolean fixKnownBadThemes() {
+		Thread t = new Thread() {
+			public void run() {
+				String[] badThemes = new String[]{"iPhone"};
+				for (String theme:badThemes) {
+					final File badThemeFile = new File( Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + theme + "/00control.json");
+					if (!badThemeFile.exists()) continue;
+					final File fixFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + theme + "/fixed.txt");
+					if (fixFile.exists()) continue;
+					try {
+						FileWriter fw = new FileWriter(badThemeFile);
+						fw.write(OMC.FALLBACKTHEME);
+						fw.close();
+						fw = new FileWriter(fixFile);
+						fw.write("FIXED");
+						fw.close();
+						mMessage = "A corrupt theme (iPhone) was found and replaced.";
+						mHandler.post(mPopToast);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+		t.start();
+		return true;
+	}
+	
 	public boolean fixnomedia() {
 		File oldomcdir = new File( Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes");
 		if (!oldomcdir.exists()) return true;
