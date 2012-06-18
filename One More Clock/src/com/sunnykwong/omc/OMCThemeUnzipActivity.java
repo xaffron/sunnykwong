@@ -159,6 +159,12 @@ public class OMCThemeUnzipActivity extends Activity {
 						if (sScheme.equals("")) sScheme = "http:";
 
 						if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","Scheme is " + sScheme);
+						int counter=0;
+						for (StackTraceElement e: Thread.currentThread().getStackTrace()) {
+							if (counter++<2) continue;
+							if (OMC.DEBUG) Log.d(OMC.OMCSHORT + "App","   " + e);
+							if (counter>5) break;
+						}
 						
 						File tempFile = new File(omcRoot.getAbsolutePath()+"/temp.zip");
 						ZipInputStream zis;
@@ -180,7 +186,7 @@ public class OMCThemeUnzipActivity extends Activity {
 						    	oTGT.write(buffer,0,iBytesRead);
 						    	iByteCount+=iBytesRead;
 						    	iCounter++;
-						    	if (iCounter>10) {
+						    	if (iCounter>20) {
 									pdMessage = "Got " + iByteCount + " of " + iTotal + " bytes...";
 									mHandler.post(mUpdateStatus);
 						    		iCounter=0;
@@ -196,7 +202,7 @@ public class OMCThemeUnzipActivity extends Activity {
 						ZipEntry ze;
 
 						while ((ze = zis.getNextEntry())!= null) {
-							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","Looping - now " + ze.getName());
+							//if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","Looping - now " + ze.getName());
 							outputFile = new File(omcRoot.getAbsolutePath()+"/"+ze.getName());
 							if (ze.isDirectory()) {
 								pdTitleMessage = ze.getName();

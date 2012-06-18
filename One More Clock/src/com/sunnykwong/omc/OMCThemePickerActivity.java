@@ -24,6 +24,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -57,7 +58,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 	public Button btnReload,btnGetMore;
 	public Gallery gallery;
 	public TextView tvCredits;
-	
+	public AsyncTask<String, String, String> atLoading;
     static AlertDialog mAD;	
 
     /** Called when the activity is first created. */
@@ -119,10 +120,6 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     	// TODO Auto-generated method stub
     	if (v==btnReload) {
 			startActivity(OMC.GETSTARTERPACKINTENT);
-    		refreshThemeList();
-    	}
-    	if (v==btnGetMore) {
-			startActivity(OMC.GETEXTENDEDPACKINTENT);
     		refreshThemeList();
     	}
     	if (v==btnGetMore) {
@@ -419,17 +416,31 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
             gallery.requestLayout();
         }
 
-        for (File f:OMCThemePickerActivity.THEMEROOT.listFiles()) {
-        	if (!f.isDirectory()) continue;
-        	File ff = new File(f.getAbsolutePath()+"/00control.json");
-        	if (ff.exists()) {
-        		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Picker","Found theme: " + f.getName());
-        		OMCThemePickerActivity.THEMEARRAY.addItem(f.getName());
-        	}
-        }
-        topLevel.setEnabled(true);
-        gallery.setAdapter(OMCThemePickerActivity.THEMEARRAY);
-        gallery.setSelection(OMCThemePickerActivity.THEMEARRAY.getPosition(sDefaultTheme));
+        atLoading = new AsyncTask<String, String, String> () {
+			@Override
+			protected String doInBackground(String... params) {
+		        for (File f:OMCThemePickerActivity.THEMEROOT.listFiles()) {
+		        	if (isCancelled()) return null;
+		        	if (!f.isDirectory()) continue;
+		        	File ff = new File(f.getAbsolutePath()+"/00control.json");
+		        	if (ff.exists()) {
+		        		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Picker","Found theme: " + f.getName());
+		        		if (OMCThemePickerActivity.THEMEARRAY!=null) 
+		        			OMCThemePickerActivity.THEMEARRAY.addItem(f.getName());
+		        	}
+		        }
+		        
+				return null;
+			}
+			@Override
+			protected void onPostExecute(String result) {
+		        topLevel.setEnabled(true);
+        		if (OMCThemePickerActivity.THEMEARRAY!=null) {
+			        gallery.setAdapter(OMCThemePickerActivity.THEMEARRAY);
+			        gallery.setSelection(OMCThemePickerActivity.THEMEARRAY.getPosition(sDefaultTheme));
+        		}
+			};
+		}.execute("");
 	}
 
 	@Override
@@ -442,6 +453,9 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		if (atLoading!=null && !atLoading.isCancelled()) {
+			atLoading.cancel(true);
+		}
 		if (OMCThemePickerActivity.THEMEARRAY!=null) {
 			OMCThemePickerActivity.THEMEARRAY.dispose();
 			OMCThemePickerActivity.THEMEARRAY=null;
