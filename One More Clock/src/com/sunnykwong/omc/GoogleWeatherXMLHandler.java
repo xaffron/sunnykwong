@@ -230,6 +230,9 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 								if (jary2.optJSONObject(counterj).optJSONArray("types").optString(0).equals("locality")) {
 									city = jary2.optJSONObject(counterj).optString("long_name","Unknown");
 								}
+								if (jary2.optJSONObject(counterj).optJSONArray("types").optString(0).equals("sublocality")) {
+									city = jary2.optJSONObject(counterj).optString("long_name","Unknown");
+								}
 								if (jary2.optJSONObject(counterj).optJSONArray("types").optString(0).equals("country")) {
 									country = jary2.optJSONObject(counterj).optString("long_name","Unknown");
 								}
