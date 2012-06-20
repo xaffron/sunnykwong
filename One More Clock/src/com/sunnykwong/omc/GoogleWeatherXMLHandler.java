@@ -227,10 +227,10 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 							JSONObject jobj = jary.optJSONObject(counter);
 							JSONArray jary2 = jobj.optJSONArray("address_components");
 							for (int counterj = 0; counterj < jary2.length(); counterj++){
-								if (jary2.optJSONObject(counterj).optJSONArray("types").optString(0).equals("locality")) {
+								if (jary2.optJSONObject(counterj).optJSONArray("types").optString(0).equals("sublocality")) {
 									city = jary2.optJSONObject(counterj).optString("long_name","Unknown");
 								}
-								if (jary2.optJSONObject(counterj).optJSONArray("types").optString(0).equals("sublocality")) {
+								if (jary2.optJSONObject(counterj).optJSONArray("types").optString(0).equals("locality")) {
 									city = jary2.optJSONObject(counterj).optString("long_name","Unknown");
 								}
 								if (jary2.optJSONObject(counterj).optJSONArray("types").optString(0).equals("country")) {
