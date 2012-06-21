@@ -78,9 +78,9 @@ public class OMC extends Application {
 	static final boolean FREEEDITION = false;
 
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "asset:pk133.omc";
-	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v130.omc";
-	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v130.omc";
+	static final String STARTERPACKURL = "asset:pk134.omc";
+	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v134.omc";
+	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v134.omc";
 	static final String DEFAULTTHEME = "IceLock";
 	static final String APPICON = "clockicon";
 	
@@ -1467,6 +1467,12 @@ public class OMC extends Application {
 			if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
 				result = (st[iTokenNum+2]);
 			} else if (OMC.TIME.hour < 12) {
+				result = (st[iTokenNum]);
+			} else {
+				result = (st[iTokenNum+1]);
+			}
+		} else if (sToken.equals("apm")) {
+			if (OMC.TIME.hour < 12) {
 				result = (st[iTokenNum]);
 			} else {
 				result = (st[iTokenNum+1]);
