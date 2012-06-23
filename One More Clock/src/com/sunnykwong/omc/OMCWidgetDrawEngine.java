@@ -112,10 +112,10 @@ public class OMCWidgetDrawEngine {
 		//
 		int thisWidgetWidth = 480;
 		int thisWidgetHeight = 600;
-		if (sWidgetSize.equals("4x2")) {
+		if (sWidgetSize.equals("4x2") || sWidgetSize.equals("5x2")) {
 			thisWidgetWidth = 480;
 			thisWidgetHeight = 300;
-		} else if (sWidgetSize.equals("4x1")) {
+		} else if (sWidgetSize.equals("4x1") || sWidgetSize.equals("5x1")) {
 			thisWidgetWidth = 480;
 			thisWidgetHeight = 150;
 		} else if (sWidgetSize.equals("3x3")) {
@@ -142,7 +142,13 @@ public class OMCWidgetDrawEngine {
 		if (OMC.STRETCHINFO==null) {
 			bDefaultScaling=true;
 		} else {
-			OMC.STRETCHINFO = OMC.STRETCHINFO.optJSONObject(sWidgetSize);
+			String sUseWidgetSize="";
+			if (sWidgetSize.startsWith("5x")) {
+				sUseWidgetSize = "4"+ sWidgetSize.substring(1);
+			} else {
+				sUseWidgetSize = sWidgetSize;
+			}
+			OMC.STRETCHINFO = OMC.STRETCHINFO.optJSONObject(sUseWidgetSize);
 		}
 		if (OMC.STRETCHINFO==null) {
 			bDefaultScaling=true;
@@ -150,7 +156,7 @@ public class OMCWidgetDrawEngine {
 		if (bDefaultScaling) {
 			JSONObject oDefaultScaling = new JSONObject(); 
 			try {
-				if (sWidgetSize.equals("4x4")) {
+				if (sWidgetSize.equals("4x4") || sWidgetSize.equals("5x4")) {
 					oDefaultScaling.put("horizontal_stretch", 1);
 					oDefaultScaling.put("vertical_stretch", 1);
 					oDefaultScaling.put("top_crop", 0);
@@ -158,7 +164,7 @@ public class OMCWidgetDrawEngine {
 					oDefaultScaling.put("left_crop", 0);
 					oDefaultScaling.put("right_crop", 0);
 					oDefaultScaling.put("cw_rotate", 0);
-				} else if (sWidgetSize.equals("4x2")) {
+				} else if (sWidgetSize.equals("4x2") || sWidgetSize.equals("5x2")) {
 					oDefaultScaling.put("horizontal_stretch", 1);
 					oDefaultScaling.put("vertical_stretch", 1);
 					oDefaultScaling.put("top_crop", 0);
@@ -166,7 +172,7 @@ public class OMCWidgetDrawEngine {
 					oDefaultScaling.put("left_crop", 0);
 					oDefaultScaling.put("right_crop", 0);
 					oDefaultScaling.put("cw_rotate", 0);
-				} else if (sWidgetSize.equals("4x1")) {
+				} else if (sWidgetSize.equals("4x1") || sWidgetSize.equals("5x1")) {
 					oDefaultScaling.put("horizontal_stretch", 0.8);
 					oDefaultScaling.put("vertical_stretch", 0.7);
 					oDefaultScaling.put("top_crop", 15);
