@@ -129,7 +129,7 @@
 		</receiver> 
 	    <receiver android:name="com.sunnykwong.omc.ClockWidget5x4" android:label="@string/widget_name5x4" android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
-               android:resource="@xml/clockinfo4x4paid"/>
+               android:resource="@xml/clockinfo5x4paid"/>
 			<intent-filter>  
         		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -139,7 +139,7 @@
 		</receiver>
 	    <receiver android:name="com.sunnykwong.omc.ClockWidget5x2" android:label="@string/widget_name5x2" android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
-               android:resource="@xml/clockinfo4x4paid"/>
+               android:resource="@xml/clockinfo5x2paid"/>
 			<intent-filter>  
         		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -149,7 +149,7 @@
 		</receiver>
 	    	    <receiver android:name="com.sunnykwong.omc.ClockWidget5x1" android:label="@string/widget_name5x1" android:enabled="true">
      		<meta-data android:name="android.appwidget.provider"
-               android:resource="@xml/clockinfo4x1paid"/>
+               android:resource="@xml/clockinfo5x1paid"/>
 			<intent-filter>  
         		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
