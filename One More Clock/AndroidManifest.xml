@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.sunnykwong.omc" 
       android:installLocation="internalOnly"
-      android:versionCode="34" android:versionName="1.3.4">
+      android:versionCode="35" android:versionName="1.3.5">
     <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="14"/>
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
