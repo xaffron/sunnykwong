@@ -1602,6 +1602,11 @@ public class OMC extends Application {
 						sHigh, 
 						gradient);
 				result = String.valueOf("#" + Integer.toHexString(color));
+			} else if (sType.equals("float")) {
+				result = String.valueOf(OMC.floatInterpolate(
+						Float.parseFloat(sLow), 
+						Float.parseFloat(sHigh), 
+						gradient));
 			} else {
 				//Unknown - do nothing
 			}
@@ -1627,6 +1632,11 @@ public class OMC extends Application {
 				
 				result = "#"+Long.toHexString(0x300000000l + color).substring(1).toUpperCase();
 						
+			} else if (sType.equals("float")) {
+				result = String.valueOf(OMC.floatInterpolate(
+						Float.parseFloat(sMin), 
+						Float.parseFloat(sMax), 
+						gradient));
 			} else {
 				//Unknown - do nothing
 			}
@@ -1785,6 +1795,10 @@ public class OMC extends Application {
 	}
 	
 	static public int numberInterpolate (int n1, int n2, float gradient) {
+		return (int)(n1 + (n2-n1) * gradient);
+	}
+	
+	static public int floatInterpolate (float n1, float n2, float gradient) {
 		return (int)(n1 + (n2-n1) * gradient);
 	}
 	
