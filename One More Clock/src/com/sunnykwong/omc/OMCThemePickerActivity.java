@@ -141,7 +141,11 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
     		setResult(Activity.RESULT_OK, it);
     		it.putExtra("theme", OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()));
     		
-    		finish();
+        	OMC.PREFS.edit()
+        	.putString("widgetTheme", OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()))
+    		.commit();
+
+        	finish();
     	}
     }
 

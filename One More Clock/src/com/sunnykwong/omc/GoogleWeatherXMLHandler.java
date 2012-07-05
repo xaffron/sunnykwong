@@ -134,11 +134,11 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 			// v134:  Start with network; if it fails, go GPS.
 			try {
             	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Passive failed; Requesting Network Locn.");
-				OMC.LM.requestLocationUpdates("network", 999999, 0, OMC.LL);
+				OMC.LM.requestLocationUpdates("network", 0, 0, OMC.LL);
 			} catch (IllegalArgumentException e) {
 				try {
 	            	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Network failed; Requesting GPS Locn.");
-					OMC.LM.requestLocationUpdates("gps", 999999, 0, OMC.LL);
+					OMC.LM.requestLocationUpdates("gps", 0, 0, OMC.LL);
 				} catch (IllegalArgumentException ee) {
 	            	Log.w(OMC.OMCSHORT + "Weather", "Cannot fix location.");
 					ee.printStackTrace();

@@ -1,5 +1,8 @@
 package com.sunnykwong.omc;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.TimeZone;
 
 import org.json.JSONArray;
@@ -12,18 +15,21 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
 import android.text.Html;
 import android.text.SpannedString;
 import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -348,7 +354,11 @@ public class OMCWidgetDrawEngine {
 		RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
 		final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
 		rv.setImageViewBitmap(iViewID, finalbitmap);
-	
+		
+		//Bitmap test = BitmapFactory.decodeFile("/mnt/sdcard/test.jpg");
+		//try {
+		//test.compress(CompressFormat.PNG, 100, new FileOutputStream(new File("/mnt/sdcard/test.png")));
+		//} catch (IOException e ){e.printStackTrace();}
 		
 		// Do some fancy footwork here and adjust the average lag (so OMC's slowness is less apparent)
 		// Max the lagtime out at 5 seconds to avoid accumulating alarm intent
