@@ -24,6 +24,7 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.text.Html;
 import android.text.SpannedString;
 import android.text.style.StyleSpan;
@@ -351,7 +352,7 @@ public class OMCWidgetDrawEngine {
 		// Note that the final bitmap isn't actually sent until Step XX below.
 		//
 		
-		RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
+		final RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
 		final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
 		rv.setImageViewBitmap(iViewID, finalbitmap);
 		
@@ -432,7 +433,14 @@ public class OMCWidgetDrawEngine {
     	//Step XX:
     	// OK, the IPC instructions are done; send them over to the homescreen.
     	//
-    	appWidgetManager.updateAppWidget(appWidgetId, rv);
+        new AsyncTask<String, String, String> () {
+			@Override
+			protected String doInBackground(String... params) {
+				appWidgetManager.updateAppWidget(appWidgetId, rv);
+				return "";
+			}
+		}.execute("");
+    	
 
 	}
 	
