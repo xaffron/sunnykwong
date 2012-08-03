@@ -10,10 +10,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.StringTokenizer;
@@ -23,6 +29,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.app.Application;
 import android.app.Notification;
@@ -35,6 +42,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -101,6 +109,8 @@ public class OMC extends Application {
 	static final IntentFilter PREFSINTENTFILT = new IntentFilter(FREEEDITION?"com.sunnykwong.freeomc.WIDGET_CONFIG":"com.sunnykwong.omc.WIDGET_CONFIG");
 	static long lSUNRISEMILLIS, LSOLARNOONMILLIS, lSUNSETMILLIS;
 
+	static final Intent FINDLAUNCHERINTENT = new Intent("android.intent.action.MAIN");
+	static ArrayList<String> INSTALLEDLAUNCHERAPPS;
 	
 	static int faqtoshow = 0;
 	static String[] FAQS;
@@ -129,6 +139,7 @@ public class OMC extends Application {
 	static SharedPreferences PREFS;
 	static AlarmManager ALARMS;	// I only need one alarmmanager.
 	static AssetManager AM;
+	static ActivityManager ACTM;
     static NotificationManager NM;
 	static PackageManager PKM;
     static Resources RES;
@@ -297,6 +308,20 @@ public class OMC extends Application {
 		    public void onProviderDisabled(String provider) {}
 		};
     	OMC.NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+    	OMC.ACTM = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+
+		// Find the currently-installed launchers
+		OMC.FINDLAUNCHERINTENT.addCategory("android.intent.category.HOME");
+		
+		List<ResolveInfo> launcherlist = OMC.PKM.queryIntentActivities(OMC.FINDLAUNCHERINTENT, 0);
+		OMC.INSTALLEDLAUNCHERAPPS = new ArrayList<String>();
+		OMC.INSTALLEDLAUNCHERAPPS.add("com.teslacoilsw.widgetlocker");
+		OMC.INSTALLEDLAUNCHERAPPS.add("com.jiubang.goscreenlock");
+		
+		for (ResolveInfo info : launcherlist) {
+			OMC.INSTALLEDLAUNCHERAPPS.add(info.activityInfo.packageName);
+		}
+    	
     	OMC.GEOFONT = Typeface.createFromAsset(OMC.AM, "GeosansLight.ttf");
     	OMC.WEATHERFONT = Typeface.createFromAsset(OMC.AM, "wef.ttf");
     	OMC.PLACEHOLDERBMP = BitmapFactory.decodeResource(OMC.RES, OMC.RES.getIdentifier("transparent", "drawable", OMC.PKGNAME));
@@ -442,7 +467,7 @@ public class OMC extends Application {
 		OMC.toggleWidgets(this);
 
 		//v1.3.0 kickstart the widget!
-		OMC.setServiceAlarm(System.currentTimeMillis()+500l);
+		OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l);
 	}
 	
 	static public JSONObject streamToJSONObject(InputStream is) throws IOException {
@@ -599,10 +624,11 @@ public class OMC extends Application {
     	}
 	}
 
-	static void setServiceAlarm (long lTimeToRefresh) {
+	static void setServiceAlarm (long lTimeToRefresh, long lTargetTime) {
 		//We want the pending intent to be for this service, and 
 		// at the same FG/BG preference as the intent that woke us up
-		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","SERVICE ALARM SET for "+ new java.sql.Time(lTimeToRefresh).toLocaleString());
+		SimpleDateFormat mill = new SimpleDateFormat("HH:mm:ss.SSS");
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","ALARM SET: @"+ mill.format(new Date(lTimeToRefresh))+ " for " + mill.format(new Date(lTargetTime)));
 //		int counter=0;
 //		for (StackTraceElement e: Thread.currentThread().getStackTrace()) {
 //			if (counter++<2) continue;
@@ -611,10 +637,10 @@ public class OMC extends Application {
 //		}
 		//v1.3.1: Scaling back from RTC_WAKEUP to RTC for bettery battery life.  Hopefully reliability still holds.
 		if (OMC.FG) {
-//			OMC.ALARMS.set(AlarmManager.RTC_WAKEUP, lTimeToRefresh, OMC.FGPENDING);
+			OMC.FGINTENT.putExtra("target", lTargetTime);
 			OMC.ALARMS.set(AlarmManager.RTC, lTimeToRefresh, OMC.FGPENDING);
 		} else {
-//			OMC.ALARMS.set(AlarmManager.RTC_WAKEUP, lTimeToRefresh, OMC.BGPENDING);
+			OMC.BGINTENT.putExtra("target", lTargetTime);
 			OMC.ALARMS.set(AlarmManager.RTC, lTimeToRefresh, OMC.BGPENDING);
 		}
     }

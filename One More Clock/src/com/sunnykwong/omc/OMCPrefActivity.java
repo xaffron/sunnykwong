@@ -1,22 +1,30 @@
 package com.sunnykwong.omc;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningServiceInfo;
+import android.app.ActivityManager.RunningTaskInfo;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.appwidget.AppWidgetManager;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -133,7 +141,19 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     	super.onCreate(savedInstanceState);
     	mHandler = new Handler();
-		// FIX FOR NOMEDIA and BADTHEME
+
+    	// Refresh list of installed Launcher Apps.
+		List<ResolveInfo> launcherlist = OMC.PKM.queryIntentActivities(OMC.FINDLAUNCHERINTENT, 0);
+		OMC.INSTALLEDLAUNCHERAPPS = new ArrayList<String>();
+		OMC.INSTALLEDLAUNCHERAPPS.add("com.teslacoilsw.widgetlocker");
+		OMC.INSTALLEDLAUNCHERAPPS.add("com.jiubang.goscreenlock");
+		
+		for (ResolveInfo info : launcherlist) {
+			OMC.INSTALLEDLAUNCHERAPPS.add(info.activityInfo.packageName);
+		}
+
+    	
+    	// FIX FOR NOMEDIA and BADTHEME
 		if (OMC.checkSDPresent()) {
 			((OMC)(this.getApplication())).fixnomedia();
 			((OMC)(this.getApplication())).fixKnownBadThemes();
@@ -840,7 +860,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 	    	OMC.toggleWidgets(getApplicationContext());
 	
 			// Set the alarm for next tick first, so we don't lose sync
-			OMC.setServiceAlarm(System.currentTimeMillis()+500l);
+			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l);
 			System.out.println("WEATHER " + OMC.PREFS.getString("sWeatherFreq", "default"));
 		}
 		if (mRefresh!=null) mRefresh.interrupt();

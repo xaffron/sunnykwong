@@ -44,7 +44,7 @@ public class OMCWidgetDrawEngine {
 		OMC.TIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l);
 		
 		if (!OMCService.RUNNING) {
-			OMC.setServiceAlarm(System.currentTimeMillis() + 500);
+			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l);
 		}
 		AppWidgetManager aWM = AppWidgetManager.getInstance(context);
 

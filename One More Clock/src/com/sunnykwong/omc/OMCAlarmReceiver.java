@@ -1,5 +1,8 @@
 package com.sunnykwong.omc;
 
+import java.util.List;
+
+import android.app.ActivityManager.RunningTaskInfo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,10 +14,21 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// Set the alarm for next tick first, so we don't lose sync
-		long targettime = System.currentTimeMillis()+Math.max(1000l, OMC.LEASTLAGMILLIS);
-		targettime = targettime-targettime%OMC.UPDATEFREQ + OMC.UPDATEFREQ;
-		OMC.setServiceAlarm(targettime - OMC.LEASTLAGMILLIS);
-		long omctime = targettime-targettime%OMC.UPDATEFREQ;
+		// targettime = Time we are rendering for next tick
+		// omctime = Time we are rendering for this tick
+		long omctime, targettime;
+		if (intent!=null) {
+			omctime = intent.getLongExtra("target", (System.currentTimeMillis() + OMC.LEASTLAGMILLIS)/OMC.UPDATEFREQ * OMC.UPDATEFREQ);
+			if (omctime < System.currentTimeMillis()) {
+				omctime = System.currentTimeMillis()/OMC.UPDATEFREQ;
+			}
+			targettime = omctime + OMC.UPDATEFREQ;
+		} else {
+			omctime = (System.currentTimeMillis() + OMC.LEASTLAGMILLIS)/OMC.UPDATEFREQ * OMC.UPDATEFREQ;
+			targettime = omctime + OMC.UPDATEFREQ;
+		}
+
+		OMC.setServiceAlarm(targettime - OMC.LEASTLAGMILLIS, targettime);
 
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Rcvd " + intent.toString());
 		
@@ -123,26 +137,37 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		
 		if (action.equals(OMC.FGINTENT)) OMC.SVCSTARTINTENT.setAction(OMC.FGSTRING);
 		else OMC.SVCSTARTINTENT.setAction(OMC.BGSTRING);
-		
+
 		// Do nothing if the screen turns off, but
 		// Start working again if the screen turns on.
 		// This obviously saves CPU cycles (and battery).
 		// Thanks to ralfoide's code at http://code.google.com/p/24clock/ for the idea
+		
+		
 		if (action.equals(Intent.ACTION_SCREEN_ON)) {
 			OMC.SCREENON=true;
 			OMC.LASTUPDATEMILLIS=0l;
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Scrn on - Refreshing");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Scrn switched on - immediate refresh.");
 		}
 	
 		if (action.equals(Intent.ACTION_SCREEN_OFF)) {
 			OMC.SCREENON=false;
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Scrn off - not refreshing");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Scrn switched off - not refreshing");
 		}
 		
+		// Check if *a* homescreen is running.
+		// If not, treat like the screen is off.
+		boolean bRenderTick= true?
+				OMC.SCREENON && OMC.INSTALLEDLAUNCHERAPPS.contains(OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName()) :
+				OMC.SCREENON;
 		
 		// If the screen is on, honor the update frequency.
-		if (OMC.SCREENON) {
-			//v1.3.2:  With Alarms cleaned up, we no longer need this check.
+		if (bRenderTick) {
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Launcher "+ OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName() +" running.");
+			OMC.LASTRENDEREDTIME.set(omctime);
+			context.startService(OMC.SVCSTARTINTENT);
+
+				//v1.3.2:  With Alarms cleaned up, we no longer need this check.
 //			if ((action.equals(OMC.FGINTENT.getAction()) || action.equals(OMC.BGINTENT.getAction()))) {
 //				if (omctime==OMC.LASTRENDEREDTIME.toMillis(false)) {
 //					// Prevent abusive updates - we've already rendered this target time.
@@ -150,8 +175,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 //					return;
 //				}
 //			} 
-			OMC.LASTRENDEREDTIME.set(omctime);
-			context.startService(OMC.SVCSTARTINTENT);
+			
 		// If the screen is off, update bare minimum to mimic foreground mode.
 		} else if (action.equals(Intent.ACTION_TIME_CHANGED)
 				||action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
@@ -159,7 +183,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			context.startService(OMC.SVCSTARTINTENT);
 		} else {
 			OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","I think scrn is off... no refresh");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Skipping refresh due to inactive homescreen.");
 		}
 	}
 }
