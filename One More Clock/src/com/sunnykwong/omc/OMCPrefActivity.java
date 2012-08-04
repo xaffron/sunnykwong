@@ -860,7 +860,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 	    	OMC.toggleWidgets(getApplicationContext());
 	
 			// Set the alarm for next tick first, so we don't lose sync
-			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l);
+			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l*1000l);
 			System.out.println("WEATHER " + OMC.PREFS.getString("sWeatherFreq", "default"));
 		}
 		if (mRefresh!=null) mRefresh.interrupt();

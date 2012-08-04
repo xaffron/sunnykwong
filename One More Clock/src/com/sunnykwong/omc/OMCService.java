@@ -100,7 +100,7 @@ public class OMCService extends Service {
 		// Because of Android issue #26574, I cannot depend on START_FLAG_RETRY being accurate. 
 		if (intent==null) {
 			Log.w(OMC.OMCSHORT + "Svc","Null Intent - Reset Alarm.");
-			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l);
+			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l*1000l);
 		}
 	    if ((flags & START_FLAG_REDELIVERY)!=0) { 
 			Log.w(OMC.OMCSHORT + "Svc","Redelivery Flag - reregister Receivers.");
@@ -111,7 +111,7 @@ public class OMCService extends Service {
 			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_CONFIGURATION_CHANGED));
 			registerReceiver(OMC.aRC, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
-			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l);
+			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l*1000l);
 	    }
 		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
 

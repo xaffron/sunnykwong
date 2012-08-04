@@ -13,6 +13,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Rcvd " + intent.toString());
 		// Set the alarm for next tick first, so we don't lose sync
 		// targettime = Time we are rendering for next tick
 		// omctime = Time we are rendering for this tick
@@ -20,19 +21,15 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		if (intent!=null) {
 			omctime = intent.getLongExtra("target", (System.currentTimeMillis() + OMC.LEASTLAGMILLIS)/OMC.UPDATEFREQ * OMC.UPDATEFREQ);
 			if (omctime < System.currentTimeMillis()) {
-				omctime = System.currentTimeMillis()/OMC.UPDATEFREQ;
+				omctime = System.currentTimeMillis()/OMC.UPDATEFREQ * OMC.UPDATEFREQ;
 			}
 			targettime = omctime + OMC.UPDATEFREQ;
+			OMC.setServiceAlarm(targettime - OMC.LEASTLAGMILLIS, targettime);
 		} else {
 			omctime = (System.currentTimeMillis() + OMC.LEASTLAGMILLIS)/OMC.UPDATEFREQ * OMC.UPDATEFREQ;
 			targettime = omctime + OMC.UPDATEFREQ;
 		}
 
-		OMC.setServiceAlarm(targettime - OMC.LEASTLAGMILLIS, targettime);
-
-		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Rcvd " + intent.toString());
-		
-		
 		// If we come back from a low memory state, all sorts of screwy stuff might happen.
 		// If the Intent itself is null, let's create one.
 		if (intent == null) {

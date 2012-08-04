@@ -38,12 +38,13 @@ public class ClockWidget5x1 extends AppWidgetProvider {
 //	This gets called when the very first widget is instantiated.
 	public void onEnabled(Context context) {
 		if (!OMCService.RUNNING) {
-			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l);
+			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l*1000l);
 		}
 		//Unflag the STOP FLAG for OMCService.
 		OMCService.STOPNOW5x1=false;
 	}
 	
+	// This fires when the OMC Service broadcasts the WIDGET_REFRESH intent.
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		String action = intent.getAction();
@@ -63,18 +64,17 @@ public class ClockWidget5x1 extends AppWidgetProvider {
 		}
 	}
 
-	//	This should never fire since I implemented onReceive.
+	//	This fires when the homescreen requests an appwidget update.
+	//  This is the final fallback when the clock lags.
 	@Override
 	public void onUpdate(Context context, AppWidgetManager aWM, int[] appWidgetIds) {
+		
+		// Restart the service if stopped.
 		if (!OMCService.RUNNING) {
-			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l);
+			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l*1000l);
 		}
 
-		final int N = appWidgetIds.length;
-		for (int i=0; i<N; i++) {
-		  	OMC.initPrefs(appWidgetIds[i]);
-		  	OMCWidgetDrawEngine.updateAppWidget(context, aWM, appWidgetIds[i], OMC.WIDGET5x1CNAME);
-		}
+		OMCWidgetDrawEngine.updateAppWidget(context, OMC.WIDGET5x1CNAME);
 
 	}
 	

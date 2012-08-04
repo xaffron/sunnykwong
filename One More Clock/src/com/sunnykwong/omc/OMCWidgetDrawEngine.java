@@ -44,7 +44,7 @@ public class OMCWidgetDrawEngine {
 		OMC.TIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l);
 		
 		if (!OMCService.RUNNING) {
-			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l);
+			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l*1000l);
 		}
 		AppWidgetManager aWM = AppWidgetManager.getInstance(context);
 
@@ -75,6 +75,7 @@ public class OMCWidgetDrawEngine {
 	static synchronized void updateAppWidget(final Context context,
 			final AppWidgetManager appWidgetManager,
 			final int appWidgetId, ComponentName cName) { 
+		
 		long lStartTime = System.currentTimeMillis();
 
 		if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "Engine", "Redrawing widget" + appWidgetId + " (" + OMC.PREFS.getString("widgetTheme"+appWidgetId, "")+ ") at " + OMC.TIME.format("%T"));
@@ -362,8 +363,8 @@ public class OMCWidgetDrawEngine {
 		//} catch (IOException e ){e.printStackTrace();}
 		
 		// Do some fancy footwork here and adjust the average lag (so OMC's slowness is less apparent)
-		// Max the lagtime out at 5 seconds to avoid accumulating alarm intent
-		OMC.LEASTLAGMILLIS = Math.min(5000l, (OMC.LEASTLAGMILLIS + (System.currentTimeMillis() - lStartTime))/2l);
+
+		OMC.LEASTLAGMILLIS = (long)(OMC.LEASTLAGMILLIS * 0.8) + (long)((System.currentTimeMillis() - lStartTime) *0.2);
 
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Engine","Calc. lead time for next tick: " + OMC.LEASTLAGMILLIS + "ms");
 
