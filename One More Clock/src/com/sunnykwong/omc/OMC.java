@@ -78,7 +78,7 @@ import android.widget.Toast;
 public class OMC extends Application {
 	
 	static final boolean DEBUG = true;
-	static final String TESTVER = "Alpha 2";
+	static final String TESTVER = "Alpha 3";
 	static final boolean THEMESFROMCACHE = true;
 	static final String FALLBACKTHEME = "{ \"id\": \"Fallback\", \"name\": \"FB\", \"author\": \"\", \"date\": \"\", \"credits\": \"\", \"layers_bottomtotop\": [ { \"name\": \"T\", \"type\": \"text\", \"enabled\": true, \"text\": \"%H:%M\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 100, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 120, \"text_skew\": 0, \"text_stretch\": 1, \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 }, { \"name\": \"E\", \"type\": \"text\", \"enabled\": true, \"text\": \"! Theme Loading / No SD Card !\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 118, \"fgcolor\": \"#ffffcccc\", \"bgcolor\": \"#ff000000\", \"text_size\": 28, \"text_skew\": 0, \"text_stretch\": 0.9, \"text_align\": \"center\", \"render_style\": \"glow_3\", \"cw_rotate\": 0 }, { \"name\": \"S\", \"type\": \"text\", \"enabled\": true, \"text\": \"[%ompc_battlevel%]%% - [%weather_city%] - [%weather_temp%] - [%weather_condition%]\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 142, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 20, \"text_skew\": 0, \"text_stretch\": \"[%maxfit_1_300%]\", \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 } ] }";
 	static String THISVERSION; 
@@ -647,6 +647,7 @@ public class OMC extends Application {
     }
 
 	public static void setPrefs(int aWI) {
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Committing prefs for widget " + aWI);
 		final Editor e = OMC.PREFS.edit();
 		e.putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
@@ -659,6 +660,7 @@ public class OMC extends Application {
 	}
  
 	public static void initPrefs(int aWI) {
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Wiping out/Resetting prefs for widget " + aWI);
 		// For new clocks... just like setPrefs but leaves the URI empty.
 		final Editor e = OMC.PREFS.edit();
 		e.putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)))
@@ -672,6 +674,7 @@ public class OMC extends Application {
 	}
  
 	public static void getPrefs(int aWI) {
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Retrieving prefs for widget " + aWI);
 		final Editor e = OMC.PREFS.edit();
 		e.putString("widgetTheme", OMC.PREFS.getString("widgetTheme"+aWI, OMC.DEFAULTTHEME))
 		.putBoolean("widget24HrClock", OMC.PREFS.getBoolean("widget24HrClock"+aWI, true))
@@ -685,6 +688,7 @@ public class OMC extends Application {
 	}
 	
 	public static void removePrefs(int aWI) {
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Deleting prefs for widget " + aWI);
 		final Editor e = OMC.PREFS.edit();
 		e.remove("widgetTheme"+aWI) 
 			.remove("widget24HrClock"+aWI)

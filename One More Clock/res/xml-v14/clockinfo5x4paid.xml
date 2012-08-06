@@ -1,5 +1,5 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-	android:minWidth="368dp" android:minHeight="286dp"
+	android:minWidth="370dp" android:minHeight="286dp"
 	android:minResizeWidth="64dp" android:minResizeHeight="64dp" 
 	android:updatePeriodMillis="1800000" android:initialLayout="@layout/omcwidget" 
 	android:resizeMode="horizontal|vertical"/>
