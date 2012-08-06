@@ -74,7 +74,13 @@ public class ClockWidget2x2 extends AppWidgetProvider {
 			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l*1000l);
 		}
 
-		OMCWidgetDrawEngine.updateAppWidget(context, OMC.WIDGET2x2CNAME);
+        final int N = appWidgetIds.length;
+        for (int i=0; i<N; i++) {
+        		// For a brand new widget (but not established widgets), initialize the prefs
+        		if (OMC.PREFS.getString("widgetTheme"+i,"").equals("")) OMC.initPrefs(appWidgetIds[i]);
+        		// Redraw the widget.
+                OMCWidgetDrawEngine.updateAppWidget(context, aWM, appWidgetIds[i], OMC.WIDGET2x2CNAME);
+        }
 
 	}
 	
