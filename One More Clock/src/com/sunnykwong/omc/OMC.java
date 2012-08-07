@@ -237,6 +237,7 @@ public class OMC extends Application {
 	public void onCreate() {
 		super.onCreate();
 
+
 		System.setProperty ("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver");
 		try {
 			OMC.THISVERSION = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA).versionName + " " + OMC.TESTVER;
@@ -327,7 +328,7 @@ public class OMC extends Application {
     	OMC.WEATHERFONT = Typeface.createFromAsset(OMC.AM, "wef.ttf");
     	OMC.PLACEHOLDERBMP = BitmapFactory.decodeResource(OMC.RES, OMC.RES.getIdentifier("transparent", "drawable", OMC.PKGNAME));
     	
-    	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_PRIVATE);
+    	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_WORLD_READABLE);
 
 		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
 		if (!OMC.PREFS.contains("weathersetting")){
@@ -368,7 +369,7 @@ public class OMC extends Application {
 		} else {
 			OMC.PREFS.edit().putBoolean("starterpack", false).commit();
 			OMC.STARTERPACKDLED = false;
-			OMC.PREFS.edit().clear().putBoolean("showhelp", true).commit();
+			OMC.PREFS.edit().putBoolean("showhelp", true).commit();
 			OMC.SHOWHELP=true;
 		}
 
@@ -463,6 +464,7 @@ public class OMC extends Application {
 		}
 		OMC.BMPTOCVAS.put(OMC.ROTBUFFER, new Canvas(OMC.ROTBUFFER));
 		
+		Log.i(OMC.OMCSHORT + "App","Starting up1... default theme is " + OMC.PREFS.getString("widgetTheme", "MISSING"));
 		setupDefaultTheme();
 		this.widgetClicks();
 		OMC.toggleWidgets(this);

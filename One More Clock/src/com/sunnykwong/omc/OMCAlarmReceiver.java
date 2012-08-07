@@ -1,5 +1,7 @@
 package com.sunnykwong.omc;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import android.app.ActivityManager.RunningTaskInfo;
@@ -31,6 +33,11 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			targettime = omctime + OMC.UPDATEFREQ;
 		}
 
+		//If omctime is at the minute mark, force update.
+		if (new Date(omctime).getSeconds()==0) {
+			bForceUpdate=true;
+		}
+		
 		// If we come back from a low memory state, all sorts of screwy stuff might happen.
 		// If the Intent itself is null, let's create one.
 		if (intent == null) {
@@ -162,7 +169,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// If the screen is on, honor the update frequency.
 		if (bRenderTick) {
 			if (bForceUpdate) {
-				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm",OMC.OMCSHORT + "Forced Update.");
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Forced Update.");
 			} else {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Launcher "+ OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName() +" running.");
 			}
