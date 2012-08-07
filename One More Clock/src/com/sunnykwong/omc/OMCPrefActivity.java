@@ -456,7 +456,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     public boolean onPreferenceChange(Preference preference, Object newValue) {
     	if (preference==findPreference("sUpdateFreq")) {
     		preference.setSummary("Redraw every " + (String)newValue + " seconds.");
-    		OMC.WIDGETREFRESHINTENT.putExtra("force", true);
     		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
 
     		return true;
@@ -858,12 +857,13 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 	    		if (!OMC.WIDGETBMPMAP.get(OMCPrefActivity.appWidgetID).isRecycled()) OMC.WIDGETBMPMAP.get(OMCPrefActivity.appWidgetID).recycle();
 	        	OMC.WIDGETBMPMAP.remove(OMCPrefActivity.appWidgetID);
 	    	}
-			
 	
 	    	OMC.toggleWidgets(getApplicationContext());
 	
 			// Set the alarm for next tick first, so we don't lose sync
-			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l*1000l);
+    		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
+			OMC.setServiceAlarm(System.currentTimeMillis()+10500l, (System.currentTimeMillis()+10500l)/1000l*1000l);
+
 			System.out.println("WEATHER " + OMC.PREFS.getString("sWeatherFreq", "default"));
 		}
 		if (mRefresh!=null) mRefresh.interrupt();

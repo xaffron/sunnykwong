@@ -20,7 +20,6 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		boolean bForceUpdate=false;
 		long omctime, targettime;
 		if (intent!=null) {
-			bForceUpdate = intent.getBooleanExtra("force", false);
 			omctime = intent.getLongExtra("target", (System.currentTimeMillis() + OMC.LEASTLAGMILLIS)/OMC.UPDATEFREQ * OMC.UPDATEFREQ);
 			if (omctime < System.currentTimeMillis()) {
 				omctime = System.currentTimeMillis()/OMC.UPDATEFREQ * OMC.UPDATEFREQ;

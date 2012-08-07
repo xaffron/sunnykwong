@@ -58,10 +58,6 @@
                   android:theme="@android:style/Theme.Dialog"
                   android:label="OMC Fixed Location">
         </activity>
-        <activity android:name="com.sunnykwong.omc.OMCThemeImportActivity"
-                  android:screenOrientation="behind"
-                  android:label="Theme Picker">
-		</activity>
         <activity android:name="com.sunnykwong.omc.OMCThemeUnzipActivity"
                   android:screenOrientation="behind" 
                   android:theme="@android:style/Theme.Translucent">

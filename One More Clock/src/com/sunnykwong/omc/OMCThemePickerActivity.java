@@ -665,6 +665,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 					d.show();
 				}
 			});
+    		tagll.invalidate();
         	
         	
         	BitmapFactory.Options bo = new BitmapFactory.Options();
