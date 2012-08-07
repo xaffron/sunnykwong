@@ -215,7 +215,7 @@ public class OMC extends Application {
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
     static final Class<?>[] mSetForegroundSignature = new Class[] {boolean.class};
     static Intent SVCSTARTINTENT, CREDITSINTENT, PREFSINTENT, ALARMCLOCKINTENT;
-    static Intent GETSTARTERPACKINTENT, GETBACKUPPACKINTENT, GETEXTENDEDPACKINTENT, IMPORTTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT, OMCWEATHERFORECASTINTENT;
+    static Intent GETSTARTERPACKINTENT, GETBACKUPPACKINTENT, GETEXTENDEDPACKINTENT, PICKTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT, OMCWEATHERFORECASTINTENT;
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING, ALARMCLOCKPENDING, WEATHERFORECASTPENDING;
     static Notification FGNOTIFICIATION;
     
@@ -274,7 +274,7 @@ public class OMC extends Application {
 		OMC.SVCSTARTINTENT = new Intent(OMC.CONTEXT, OMCService.class);
 		OMC.CREDITSINTENT = new Intent(OMC.CONTEXT, OMCCreditsActivity.class);
 		OMC.PREFSINTENT = new Intent(OMC.CONTEXT, OMCPrefActivity.class);
-		OMC.IMPORTTHEMEINTENT = new Intent(OMC.CONTEXT, OMCThemeImportActivity.class);
+		OMC.PICKTHEMEINTENT = new Intent(OMC.CONTEXT, OMCThemePickerActivity.class);
 		OMC.PREFSPENDING = PendingIntent.getActivity(OMC.CONTEXT, 0, new Intent(OMC.CONTEXT, OMCPrefActivity.class), 0);
 		OMC.PREFSINTENTFILT.addDataScheme("omc");
 		OMC.DUMMYINTENT = new Intent(OMC.CONTEXT, DUMMY.class);

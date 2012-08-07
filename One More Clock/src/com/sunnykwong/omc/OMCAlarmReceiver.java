@@ -17,8 +17,10 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// Set the alarm for next tick first, so we don't lose sync
 		// targettime = Time we are rendering for next tick
 		// omctime = Time we are rendering for this tick
+		boolean bForceUpdate=false;
 		long omctime, targettime;
 		if (intent!=null) {
+			bForceUpdate = intent.getBooleanExtra("force", false);
 			omctime = intent.getLongExtra("target", (System.currentTimeMillis() + OMC.LEASTLAGMILLIS)/OMC.UPDATEFREQ * OMC.UPDATEFREQ);
 			if (omctime < System.currentTimeMillis()) {
 				omctime = System.currentTimeMillis()/OMC.UPDATEFREQ * OMC.UPDATEFREQ;
@@ -152,15 +154,19 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Scrn switched off - not refreshing");
 		}
 		
-		// Check if *a* homescreen is running.
+		// Check if *a* homescreen is running (or if this is a "forced update").
 		// If not, treat like the screen is off.
 		boolean bRenderTick= true?
-				OMC.SCREENON && OMC.INSTALLEDLAUNCHERAPPS.contains(OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName()) :
-				OMC.SCREENON;
+				bForceUpdate || (OMC.SCREENON && OMC.INSTALLEDLAUNCHERAPPS.contains(OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName())) :
+				bForceUpdate || OMC.SCREENON;
 		
 		// If the screen is on, honor the update frequency.
 		if (bRenderTick) {
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Launcher "+ OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName() +" running.");
+			if (bForceUpdate) {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm",OMC.OMCSHORT + "Forced Update.");
+			} else {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Launcher "+ OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName() +" running.");
+			}
 			OMC.LASTRENDEREDTIME.set(omctime);
 			context.startService(OMC.SVCSTARTINTENT);
 

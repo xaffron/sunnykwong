@@ -456,6 +456,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     public boolean onPreferenceChange(Preference preference, Object newValue) {
     	if (preference==findPreference("sUpdateFreq")) {
     		preference.setSummary("Redraw every " + (String)newValue + " seconds.");
+    		OMC.WIDGETREFRESHINTENT.putExtra("force", true);
     		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
 
     		return true;
@@ -680,7 +681,9 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     	}
     	if (preference == getPreferenceScreen().findPreference("loadThemeFile")) {
     		getPreferenceScreen().setEnabled(false);
-    		startActivityForResult(OMC.IMPORTTHEMEINTENT,0);
+    		OMC.PICKTHEMEINTENT.putExtra("appWidgetID", appWidgetID);
+    		OMC.PICKTHEMEINTENT.putExtra("default", OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME));
+    		startActivityForResult(OMC.PICKTHEMEINTENT,0);
     	}
     	if (preference == getPreferenceScreen().findPreference("oTTL")) {
     		if (OMC.SINGLETON && OMC.FREEEDITION) {

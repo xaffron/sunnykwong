@@ -53,6 +53,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 	public static String RAWCONTROLFILE;
 	
 	public String sDefaultTheme;
+	public int iAppWidgetID;
 	
 	public View topLevel;
 	public Button btnReload,btnGetMore;
@@ -71,6 +72,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
         getWindow().setFormat(PixelFormat.RGB_565);
 
         sDefaultTheme = getIntent().getStringExtra("default");
+        iAppWidgetID = getIntent().getIntExtra("appWidgetID", 0);
         
 		setResult(Activity.RESULT_CANCELED);
 
@@ -130,20 +132,33 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 
     @Override
     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-    	// TODO Auto-generated method stub
     	if (arg0==gallery) {
 
         	gallery.setVisibility(View.INVISIBLE);
     		btnReload.setVisibility(View.INVISIBLE);
     		btnGetMore.setVisibility(View.INVISIBLE);
     		
+    		final String sThemeName = OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition());
     		Intent it = new Intent();
-    		setResult(Activity.RESULT_OK, it);
-    		it.putExtra("theme", OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()));
     		
+    		it.putExtra("theme", sThemeName);
+    		setResult(Activity.RESULT_OK, it);
+
+       		JSONObject newTheme = OMC.getTheme(this, sThemeName, false);
+      		System.out.println("ThemePICKER: " + newTheme.optString("name") + " selected.");
+           	Toast.makeText(this, newTheme.optString("name") + " selected.", Toast.LENGTH_SHORT).show();
+            	
         	OMC.PREFS.edit()
+        	.putString("widgetTheme"+iAppWidgetID, OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()))
         	.putString("widgetTheme", OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()))
     		.commit();
+
+           	// Clear the cache for a clean slate
+           	OMC.purgeBitmapCache();
+           	OMC.purgeEmailCache();
+       		OMC.purgeTypefaceCache();
+           	OMC.THEMEMAP.clear();
+           	OMC.WIDGETBMPMAP.clear();
 
         	finish();
     	}
