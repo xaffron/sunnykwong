@@ -627,6 +627,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 	    					d.show();
 	    				}
 	    			});
+	        		iv.bringToFront();
 	        	}
         	} catch (NullPointerException e) {
         		//v1.2.8 fix issue where theme flag not set
@@ -665,7 +666,7 @@ public class OMCThemePickerActivity extends Activity implements OnClickListener,
 					d.show();
 				}
 			});
-    		tagll.invalidate();
+    		tagll.bringToFront();
         	
         	
         	BitmapFactory.Options bo = new BitmapFactory.Options();

@@ -5,7 +5,7 @@
         android:fadingEdge="horizontal" android:orientation="vertical">
         <Gallery xmlns:android="http://schemas.android.com/apk/res/android" android:layout_alignParentTop="true"
                 android:id="@+id/gallery" android:layout_width="fill_parent"
-                android:layout_height="fill_parent" android:spacing="5dp" android:unselectedAlpha="0.5">
+                android:layout_height="wrap_content" android:spacing="5dp" android:unselectedAlpha="0.5">
         </Gallery>
 <LinearLayout android:layout_alignParentBottom="true" android:id="@+id/LinearLayout02" android:layout_height="wrap_content" android:layout_width="fill_parent">
 <Button android:id="@+id/btnReload" android:layout_width="160dp" android:layout_height="wrap_content" android:text="Re-Extract Bundled Clocks"></Button>
