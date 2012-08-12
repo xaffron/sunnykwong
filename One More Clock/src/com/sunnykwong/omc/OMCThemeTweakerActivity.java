@@ -166,7 +166,12 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         spinnerLayers.setOnItemSelectedListener(this);
 
         vPreview = (ImageView)findViewById(getResources().getIdentifier("tweakerpreview", "id", OMC.PKGNAME));
-        vPreview.setImageBitmap(OMCWidgetDrawEngine.drawBitmapForWidget(this, -1));
+        Bitmap bmp = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1);
+        bmp.setDensity(Bitmap.DENSITY_NONE);
+        vPreview.setImageBitmap(bmp);
+        vPreview.invalidate();
+        System.out.println(vPreview.getWidth());
+        System.out.println(vPreview.getHeight());
         vPreview.setOnLongClickListener(this);
         vPreview.setOnClickListener(new View.OnClickListener() {
 			
@@ -186,6 +191,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         			OMC.WIDGETWIDTH-box.getInt("right_crop")-1,
         			OMC.WIDGETHEIGHT-box.getInt("bottom_crop")-1);
         } catch (JSONException e) {
+        	e.printStackTrace();
         	BoundingBox = new Rect(0,0,480,320);
         }
         Bitmap tempBmp = Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
