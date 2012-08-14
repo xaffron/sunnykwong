@@ -88,13 +88,16 @@ public class OMCFixedLocationActivity extends Activity {
 
 				Thread t = new Thread() {
 					public void run() {
+						HttpURLConnection huc=null;
 						try {
 							if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
 							    System.setProperty("http.keepAlive", "false");
 							}
 							URL url = new URL("http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address="+sSearchText);
 							
-							HttpURLConnection huc = (HttpURLConnection) url.openConnection();
+							huc = (HttpURLConnection) url.openConnection();
+							huc.setConnectTimeout(5000);
+							huc.setReadTimeout(5000);
 
 							jsonLocations = OMC.streamToJSONObject(huc.getInputStream());
 
@@ -107,6 +110,7 @@ public class OMCFixedLocationActivity extends Activity {
 								mHandler.post(mGOODRESULT);
 							}
 						} catch (Exception e) {
+							if (huc!=null) huc.disconnect();
 							e.printStackTrace();
 						}
 					};

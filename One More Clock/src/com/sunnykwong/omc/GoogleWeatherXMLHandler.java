@@ -209,13 +209,15 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		Thread t = new Thread() {
 			public void run() {
 				JSONObject result;			
-
+				HttpURLConnection huc = null;
 				try {
 					if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
 					    System.setProperty("http.keepAlive", "false");
 					}
 					URL url = new URL("http://maps.googleapis.com/maps/api/geocode/json?latlng="+location.getLatitude()+","+location.getLongitude()+"&sensor=false");
-					HttpURLConnection huc = (HttpURLConnection) url.openConnection();
+					huc = (HttpURLConnection) url.openConnection();
+					huc.setConnectTimeout(10000);
+					huc.setReadTimeout(10000);
 
 					result = OMC.streamToJSONObject(huc.getInputStream());
 					huc.disconnect();
@@ -251,6 +253,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), country, city, true);
 				} catch (Exception e) {
 					e.printStackTrace();
+					if (huc!=null) huc.disconnect();
 				}
 			};
 		};
@@ -261,6 +264,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		ELEMENTS = new ArrayList<HashMap<String, String>>();
 		Thread t = new Thread() {
 			public void run() {
+				HttpURLConnection huc = null; 
 				try {
 					if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
 					    System.setProperty("http.keepAlive", "false");
@@ -279,13 +283,16 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					} else {
 						url = new URL("http://www.google.com/ig/api?oe=utf-8&weather=,,,"+(long)(latitude*1000000)+","+(long)(longitude*1000000));
 					}
-					HttpURLConnection huc = (HttpURLConnection) url.openConnection();
+					huc = (HttpURLConnection) url.openConnection();
+					huc.setConnectTimeout(10000);
+					huc.setReadTimeout(10000);
 
 					xr.parse(new InputSource(huc.getInputStream())); 
 					huc.disconnect();
 
 				} catch (Exception e) { 
 					e.printStackTrace();
+					if (huc!=null) huc.disconnect();
 				}
 			};
 		};
