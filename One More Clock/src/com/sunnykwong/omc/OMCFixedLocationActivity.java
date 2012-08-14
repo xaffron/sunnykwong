@@ -1,17 +1,25 @@
 package com.sunnykwong.omc;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URI;
+import java.net.URL;
 import java.util.StringTokenizer;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -81,11 +89,16 @@ public class OMCFixedLocationActivity extends Activity {
 				Thread t = new Thread() {
 					public void run() {
 						try {
-							HttpClient client = new DefaultHttpClient();
-							HttpGet request = new HttpGet();
-							request.setURI(new URI("http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address="+sSearchText));
-							HttpResponse response = client.execute(request);
-							jsonLocations = OMC.streamToJSONObject(response.getEntity().getContent());
+							if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
+							    System.setProperty("http.keepAlive", "false");
+							}
+							URL url = new URL("http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address="+sSearchText);
+							
+							HttpURLConnection huc = (HttpURLConnection) url.openConnection();
+
+							jsonLocations = OMC.streamToJSONObject(huc.getInputStream());
+
+							huc.disconnect();
 							Log.i(OMC.OMCSHORT + "FixedLocn", jsonLocations.toString(5));
 							if (jsonLocations.optString("status").equals("ZERO_RESULTS")) {
 								// Not ok response - do nothing

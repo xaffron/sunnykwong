@@ -506,7 +506,6 @@ public class OMCThemePickerActivity extends Activity {
         		setResult(Activity.RESULT_OK, it);
 
            		JSONObject newTheme = OMC.getTheme(OMCThemePickerActivity.this, sThemeName, false);
-          		System.out.println("ThemePICKER: " + newTheme.optString("name") + " selected.");
                	Toast.makeText(OMCThemePickerActivity.this, newTheme.optString("name") + " selected.", Toast.LENGTH_SHORT).show();
                 	
             	OMC.PREFS.edit()

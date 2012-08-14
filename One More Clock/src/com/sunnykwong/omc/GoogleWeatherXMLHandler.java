@@ -1,6 +1,8 @@
 package com.sunnykwong.omc;
 
+import java.net.HttpURLConnection;
 import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +11,6 @@ import java.util.Stack;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,6 +23,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.util.Log;
@@ -209,11 +211,14 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 				JSONObject result;			
 
 				try {
-					HttpClient client = new DefaultHttpClient();
-					HttpGet request = new HttpGet();
-					request.setURI(new URI("http://maps.googleapis.com/maps/api/geocode/json?latlng="+location.getLatitude()+","+location.getLongitude()+"&sensor=false"));
-					HttpResponse response = client.execute(request);
-					result = OMC.streamToJSONObject(response.getEntity().getContent());
+					if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
+					    System.setProperty("http.keepAlive", "false");
+					}
+					URL url = new URL("http://maps.googleapis.com/maps/api/geocode/json?latlng="+location.getLatitude()+","+location.getLongitude()+"&sensor=false");
+					HttpURLConnection huc = (HttpURLConnection) url.openConnection();
+
+					result = OMC.streamToJSONObject(huc.getInputStream());
+					huc.disconnect();
 
 					String city = OMC.LASTKNOWNCITY, country = OMC.LASTKNOWNCOUNTRY;
 					if (!result.optString("status").equals("OK")) {
@@ -257,6 +262,9 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		Thread t = new Thread() {
 			public void run() {
 				try {
+					if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
+					    System.setProperty("http.keepAlive", "false");
+					}
 					XMLReader xr = XMLReaderFactory.createXMLReader();
 					GoogleWeatherXMLHandler GXhandler = new GoogleWeatherXMLHandler();
 					GXhandler.jsonWeather.putOpt("country2", country);
@@ -265,19 +273,18 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					xr.setContentHandler(GXhandler);
 					xr.setErrorHandler(GXhandler);
 
-					HttpClient client = new DefaultHttpClient();
-					HttpGet request = new HttpGet();
+					URL url=null;
 					if (!bylatlong) {
-						request.setURI(new URI(
-								"http://www.google.com/ig/api?oe=utf-8&weather="+city.replace(' ', '+') + "+" + country.replace(' ', '+')));
+						url = new URL("http://www.google.com/ig/api?oe=utf-8&weather="+city.replace(' ', '+') + "+" + country.replace(' ', '+'));
 					} else {
-						request.setURI(new URI(
-								"http://www.google.com/ig/api?oe=utf-8&weather=,,,"+(long)(latitude*1000000)+","+(long)(longitude*1000000)));
+						url = new URL("http://www.google.com/ig/api?oe=utf-8&weather=,,,"+(long)(latitude*1000000)+","+(long)(longitude*1000000));
 					}
-					HttpResponse response = client.execute(request);
+					HttpURLConnection huc = (HttpURLConnection) url.openConnection();
 
-					xr.parse(new InputSource(response.getEntity().getContent()));
-				} catch (Exception e) {
+					xr.parse(new InputSource(huc.getInputStream())); 
+					huc.disconnect();
+
+				} catch (Exception e) { 
 					e.printStackTrace();
 				}
 			};

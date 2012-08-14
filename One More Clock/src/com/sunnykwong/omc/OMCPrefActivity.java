@@ -818,7 +818,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 		if (requestCode == 0) return;
 		if (data != null) {
 			String s = data.toUri(MODE_PRIVATE).toString();
-			System.out.println(s);
 			
 			OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[requestCode], s)
 				.putString("URIDesc"+OMC.COMPASSPOINTS[requestCode], "Custom Activity").commit();
@@ -864,7 +863,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
 			OMC.setServiceAlarm(System.currentTimeMillis()+10500l, (System.currentTimeMillis()+10500l)/1000l*1000l);
 
-			System.out.println("WEATHER " + OMC.PREFS.getString("sWeatherFreq", "default"));
 		}
 		if (mRefresh!=null) mRefresh.interrupt();
     }

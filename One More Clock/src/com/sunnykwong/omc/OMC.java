@@ -61,6 +61,7 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -237,8 +238,13 @@ public class OMC extends Application {
 	public void onCreate() {
 		super.onCreate();
 
-
+		// Work around pre-Froyo bugs in HTTP connection reuse.
+		if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
+		    System.setProperty("http.keepAlive", "false");
+		}
+		// Define XML Parser.
 		System.setProperty ("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver");
+
 		try {
 			OMC.THISVERSION = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA).versionName + " " + OMC.TESTVER;
 		} catch (NameNotFoundException e) {
