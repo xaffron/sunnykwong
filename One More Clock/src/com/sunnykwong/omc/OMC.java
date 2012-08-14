@@ -76,7 +76,7 @@ import android.widget.Toast;
  * Thanks to the Open Font Library for a great resource.
  * 
  */ 
-public class OMC extends Application {
+public class OMC extends Application { 
 	
 	static final boolean DEBUG = true;
 	static final String TESTVER = "Alpha 3b";
