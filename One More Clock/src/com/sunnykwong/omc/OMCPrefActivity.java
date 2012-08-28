@@ -567,13 +567,13 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 									break;
 								case 1: //Follow Device
 									OMC.PREFS.edit().putString("weathersetting", "bylatlong").commit();
-						    		GoogleWeatherXMLHandler.updateWeather();
+						    		OMC.updateWeather();
 									break;
 								case 2: //Set Location
 									startActivityForResult(new Intent(OMCPrefActivity.this, OMCFixedLocationActivity.class), 0);
 									break;
 								case 3: //Update Now
-						    		GoogleWeatherXMLHandler.updateWeather();
+						    		OMC.updateWeather();
 									break;
 								default:
 									//do nothing

@@ -305,11 +305,21 @@ public class OMC extends Application {
     	OMC.RES = getResources();
     	OMC.LM = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
     	OMC.LL = new LocationListener() {
-            public void onLocationChanged(Location location) {
+            public void onLocationChanged(final Location location) {
             	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Using Locn: " + location.getLongitude() + " + " + location.getLatitude());
             	OMC.LM.removeUpdates(OMC.LL); 
-            	GoogleWeatherXMLHandler.calculateSunriseSunset(location.getLatitude(), location.getLongitude());
-            	GoogleWeatherXMLHandler.updateLocation(location);
+        		Thread t = new Thread() {
+        			public void run() {
+        				OMC.calculateSunriseSunset(location.getLatitude(), location.getLongitude());
+        				try {
+        					GoogleReverseGeocodeService.updateLocation(location);
+        					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+        				} catch (Exception e) {
+        					e.printStackTrace();
+        				}
+        			}
+        		};
+        		t.start();
             }
             public void onStatusChanged(String provider, int status, Bundle extras) {}
 		    public void onProviderEnabled(String provider) {}
@@ -1952,4 +1962,86 @@ public class OMC extends Application {
     	}
     }
    
+	static public void updateWeather() {
+		OMC.LASTWEATHERTRY=System.currentTimeMillis();
+		OMC.NEXTWEATHERREFRESH=OMC.LASTWEATHERTRY+Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l;
+		OMC.PREFS.edit().putLong("weather_lastweathertry", OMC.LASTWEATHERTRY)
+		.putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH)
+		.commit();
+		String sWeatherSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
+		if (sWeatherSetting.equals("disabled")) {
+        	Log.i(OMC.OMCSHORT + "Weather", "Weather Disabled, no weather update");
+			// If weather is disabled (default), do nothing
+			return;
+		} else if (!OMC.isConnected()) {
+			// If phone has no connectivity, do nothing
+        	Log.i(OMC.OMCSHORT + "Weather", "No connectivity - no weather update");
+			return;
+		} else if (sWeatherSetting.equals("bylatlong")) {
+			// If weather is by latitude/longitude, request lazy location.
+			// The location listener directs control to the updateweather function upon callback.
+			GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis()-5400000l);
+			return;
+		} else if (sWeatherSetting.equals("specific")) {
+			// If weather is for fixed location, calculate sunrise/sunset for the location, then
+			// update weather manually
+			OMC.calculateSunriseSunset(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), OMC.jsonFIXEDLOCN.optDouble("longitude",0d));
+			GoogleWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
+					OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
+					OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
+					OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
+			return;
+		}
+		
+	}
+	
+	
+	static public void calculateSunriseSunset(final double latitude, final double longitude) {
+
+		Time t = new Time(Time.TIMEZONE_UTC);
+		t.setToNow();
+		t.hour=0;
+		t.minute=0;
+		t.second=0;
+		t.switchTimezone(Time.getCurrentTimezone());
+		long lMidnight = t.toMillis(false);
+		if (OMC.DEBUG)
+			Log.i(OMC.OMCSHORT + "App",("Midnight UTC for this timezone:" + new java.sql.Time(lMidnight).toLocaleString()));
+
+		double radLatitude = latitude/180d*Math.PI;
+		double y = (2d*Math.PI/365d)*(t.yearDay + (t.hour)/24d);
+		double eqtime = 229.18*(0.000075+0.001868*Math.cos(y)-0.032077*Math.sin(y)-0.014615*Math.cos(2*y)-0.040849*Math.sin(2*y));
+		double declin = 0.006918-0.399912*Math.cos(y)+0.070257*Math.sin(y)-0.006758*Math.cos(2*y)+0.000907*Math.sin(2*y)-0.002697*Math.cos(3*y)+0.00148*Math.sin(3*y);
+		double dSunriseHourAngle = (float)(Math.acos(
+				(Math.cos(1.58533492d) - (Math.sin(radLatitude)*Math.sin(declin))) /
+				(Math.cos(radLatitude)*Math.cos(declin)))
+				/Math.PI*180d);
+		
+		// This workaround is required to ensure that the noon, sunset and sunrise times are 
+		// for this calendar date (today, not yesterday or tomorrow!)
+		Time today = new Time();
+		today.setToNow();
+		Time solarNoonTime = new Time();
+		solarNoonTime.set(lMidnight + (long)((720d - 4* longitude - eqtime)*60000d));
+		solarNoonTime.year = today.year;
+		solarNoonTime.month = today.month;
+		solarNoonTime.monthDay = today.monthDay;
+		solarNoonTime.normalize(false);
+		OMC.LSOLARNOONMILLIS = solarNoonTime.toMillis(false);
+		
+		if (OMC.DEBUG)
+			Log.i(OMC.OMCSHORT + "App",("Local Solar Noon today:" + new java.sql.Time(OMC.LSOLARNOONMILLIS).toLocaleString())); 
+
+		OMC.lSUNRISEMILLIS = OMC.LSOLARNOONMILLIS - (long)(dSunriseHourAngle*4d*60000d);
+		
+		if (OMC.DEBUG)
+			Log.i(OMC.OMCSHORT + "App",("Local Sunrise today:" + new java.sql.Time(OMC.lSUNRISEMILLIS).toLocaleString())); 
+
+		OMC.lSUNSETMILLIS = OMC.LSOLARNOONMILLIS + (long)(dSunriseHourAngle*4d*60000d);
+		
+		if (OMC.DEBUG)
+			Log.i(OMC.OMCSHORT + "App",("Local Sunset today:" + new java.sql.Time(OMC.lSUNSETMILLIS).toLocaleString())); 
+
+	}
+	
 }
