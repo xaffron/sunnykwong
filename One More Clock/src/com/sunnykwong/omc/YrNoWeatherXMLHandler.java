@@ -149,11 +149,11 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				
 				if (localName.equals("time")) {
 					if (atts.getValue("datatype").equals("forecast")) {
-						FROMTIME.parse(atts.getValue("from"));
+						FROMTIME.parse(atts.getValue("from").replace("-","").replace(":",""));
 						FROMTIME.switchTimezone(Time.getCurrentTimezone());
-						TOTIME.parse(atts.getValue("to"));
+						TOTIME.parse(atts.getValue("to").replace("-","").replace(":",""));
 						TOTIME.switchTimezone(Time.getCurrentTimezone());
-						LOWDATE.parse(atts.getValue("to"));
+						LOWDATE.parse(atts.getValue("to").replace("-","").replace(":",""));
 						LOWDATE.switchTimezone(Time.getCurrentTimezone());
 						LOWDATE.hour-=7;
 						LOWDATE.normalize(false);
@@ -172,48 +172,30 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 						HIGHTEMPS.put(sHTDay, tempc);
 						LOWTEMPS.put(sLDDay, tempc);
 					} else {
-						
+						if (tempc<LOWTEMPS.get(sLDDay)) LOWTEMPS.put(sLDDay, tempc);
+						if (tempc>HIGHTEMPS.get(sHTDay)) HIGHTEMPS.put(sHTDay, tempc);
 					}
-//						if (tempc<fMinTemp) fMinTemp=tempc;
-//						if (tempc>fMaxTemp) fMaxTemp=tempc;
 				}
-//
-//				
-//					} else if (localName.equals("condition")) {
-//						jsonWeather.putOpt("condition_lcase",
-//								sData.toLowerCase());
-//					} 
-//
-//				} else if (tree.peek()[0].equals("forecast_conditions")) {
-//					String sData = atts.getValue("data");
-//					if (OMC.DEBUG)
-//						Log.i(OMC.OMCSHORT + "YrNoWeather",
-//								"Reading " + tree.peek()[0] + " - " + localName + ": " + sData);
-//					if (jsonOneDayForecast == null)
-//						jsonOneDayForecast = new JSONObject();
-//					jsonOneDayForecast.putOpt(localName, sData);
-//					if (localName.equals("low") || localName.equals("high")) {
-//						int tempC = (int) ((Float.parseFloat(sData) - 32.2f) * 5f / 9f);
-//						jsonOneDayForecast.putOpt(localName + "_c", tempC);
-//					} else if (localName.equals("condition")) {
-//						jsonOneDayForecast.putOpt("condition_lcase", sData.toLowerCase());
-//					}
-//				} else if (localName.equals("problem_cause")) {
-//					if (OMC.DEBUG)
-//						Log.i(OMC.OMCSHORT + "YrNoWeather",
-//								"yr.no Weather returned error.");
-//					jsonWeather.putOpt(localName, "error");
-//				}
-//			} else {
-//				jsonWeather.putOpt(localName, atts.getValue("data"));
-//			}
-//			tree.push(new String[] { localName });
-//		} catch (JSONException e) {
-//			e.printStackTrace();
-//			try {
-//				jsonWeather.putOpt("problem_cause", "error");
-//			} catch (Exception ee) {}
-//		}
+
+				if (localName.equals("symbol")) {
+					String cond = atts.getValue("id");
+					if (jsonWeather.optString("condition","missing").equals("missing")) {
+						jsonWeather.putOpt("condition",cond);
+						jsonWeather.putOpt("condition_lcase",cond.toLowerCase());
+					}
+					String sCondDay =TOTIME.format("%Y%m%d");
+					CONDITIONS.put(sCondDay, cond);
+				}
+
+			}
+			tree.push(new String[] { localName });
+
+		} catch (JSONException e) {
+		e.printStackTrace();
+		try {
+			jsonWeather.putOpt("problem_cause", "error");
+		} catch (Exception ee) {}
+	}
 	}
 
 	public void endElement(String uri, String name, String qName) {
@@ -221,15 +203,6 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 			return;
 		if (OMC.DEBUG)
 			Log.i(OMC.OMCSHORT + "YrNoWeather", "EndElement." + name);
-		if (name.equals("forecast_conditions")) {
-			try {
-				jsonWeather.getJSONArray("zzforecast_conditions").put(
-						jsonOneDayForecast);
-				jsonOneDayForecast = null;
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
 		// Pop the stack.
 		tree.pop();
 
@@ -255,19 +228,43 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 		// - just basic cleanup.
 		tree.clear();
 		tree = null;
-		
-		// Check if the reply was valid.
-		if (jsonWeather.optString("condition",null)==null || jsonWeather.optString("problem_cause",null)!=null) {
-			//Google returned error - retry by city name, then abandon refresh
-			if (jsonWeather.optBoolean("bylatlong")) {
-				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YrNoWeather", "Error using Lat/Long, retrying using city name.");
-				YrNoWeatherXMLHandler.updateWeather(0d, 0d, jsonWeather.optString("country2"), jsonWeather.optString("city2"), false);
-				return;
-			} else {
-				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YrNoWeather", "Error using city name. No refresh.");
-				return;
+		// 
+		// Build out the forecast array.
+		Time day = new Time();
+		day.setToNow();
+		while (HIGHTEMPS.containsKey(day.format("%Y%m%d"))) {
+			try {
+				JSONObject jsonOneDayForecast = new JSONObject();
+				jsonOneDayForecast.put("day_of_week", day.format("%a"));
+				jsonOneDayForecast.put("condition", CONDITIONS.get(day.format("%Y%m%d")));
+				jsonOneDayForecast.put("condition_lcase", CONDITIONS.get(day.format("%Y%m%d")).toLowerCase());
+				float lowc = LOWTEMPS.get(day.format("%Y%m%d"));
+				float highc = HIGHTEMPS.get(day.format("%Y%m%d"));
+				float lowf = lowc/5f*9f+32.2f;
+				float highf = highc/5f*9f+32.2f;
+				jsonOneDayForecast.put("low_c", lowc);
+				jsonOneDayForecast.put("high_c", highc);
+				jsonOneDayForecast.put("low", lowf);
+				jsonOneDayForecast.put("high", highf);
+				jsonWeather.getJSONArray("zzforecast_conditions").put(
+						jsonOneDayForecast);
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
 		}
+
+		// Check if the reply was valid.
+//		if (jsonWeather.optString("condition",null)==null || jsonWeather.optString("problem_cause",null)!=null) {
+//			//Google returned error - retry by city name, then abandon refresh
+//			if (jsonWeather.optBoolean("bylatlong")) {
+//				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YrNoWeather", "Error using Lat/Long, retrying using city name.");
+//				YrNoWeatherXMLHandler.updateWeather(0d, 0d, jsonWeather.optString("country2"), jsonWeather.optString("city2"), false);
+//				return;
+//			} else {
+//				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YrNoWeather", "Error using city name. No refresh.");
+//				return;
+//			}
+//		}
 			
 		try {
 			if (jsonWeather.optString("city")==null || jsonWeather.optString("city").equals("")) {
