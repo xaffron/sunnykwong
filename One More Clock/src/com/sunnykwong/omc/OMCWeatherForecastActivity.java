@@ -56,7 +56,7 @@ public class OMCWeatherForecastActivity extends Activity {
 				}
 				((ImageView)findViewById(getResources().getIdentifier("ConditionImage", "id", OMC.PKGNAME))).setImageBitmap(OMC.getBitmap(OMC.DEFAULTTHEME, "w-"+weather.optString("condition_lcase","--")+"-"+sTimeOfDay+".png"));
 				JSONArray wary = weather.optJSONArray("zzforecast_conditions");
-				for (int i=0; i<wary.length(); i++) {
+				for (int i=0; i<Math.min(wary.length(),4); i++) {
 					JSONObject day = wary.optJSONObject(i);
 					setText(findViewById(getResources().getIdentifier("dayofweek"+i, "id", OMC.PKGNAME)),day.optString("day_of_week"));
 					((ImageView)findViewById(getResources().getIdentifier("ConditionImage"+i, "id", OMC.PKGNAME))).setImageBitmap(OMC.getBitmap(OMC.DEFAULTTHEME, "w-"+day.optString("condition_lcase","--")+"-day.png"));
@@ -85,9 +85,12 @@ public class OMCWeatherForecastActivity extends Activity {
 				tStation.parse(weather.optString("current_local_time","19700101T000000"));
 				if (tStation.year < 1980) {
 					tStation.set(OMC.LASTWEATHERREFRESH);
-					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather updated from Google API at " + tStation.format("%R")  );
+					
+//					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather updated from Google API at " + tStation.format("%R")  );
+					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK."  );
 				} else {
-					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather recorded by Google API at " + tStation.format("%R") );
+//					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather updated from Google API at " + tStation.format("%R")  );
+					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK." );
 					
 				}
 				TextView acculink = ((TextView)findViewById(getResources().getIdentifier("AccuLink", "id", OMC.PKGNAME)));

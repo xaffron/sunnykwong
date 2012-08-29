@@ -31,6 +31,32 @@ import android.util.Log;
 public class YrNoWeatherXMLHandler extends DefaultHandler {
 
 	public static final String URL_LOCATIONFORECASTLTS = "http://api.met.no/weatherapi/locationforecastlts/1.1/?lat=";
+	public static final String[] CONDITIONTRANSLATIONS = new String[] {
+		"Unknown", 									//0
+		"Clear",									//1 SUN
+ 		"Mostly Sunny",								//2 LIGHTCLOUD
+ 		"Partly Cloudy",							//3 PARTLYCLOUD
+ 		"Cloudy",									//4 CLOUD
+ 		"Scattered Showers",						//5 LIGHTRAINSUN
+		"Chance of Storm",							//6 LIGHTRAINTHUNDERSUN
+		"Sleet",									//7 SLEETSUN
+		"Snow",										//8 SNOWSUN
+		"Light Rain",								//9 LIGHTRAIN
+		"Rain",										//10 RAIN
+		"Scattered Thunderstorms",					//11 RAINTHUNDER
+		"Sleet",									//12 SLEET
+		"Snow",										//13 SNOW
+		"Scattered Thunderstorms",					//14 SNOWTHUNDER
+		"Fog",										//15 FOG
+		"Clear",									//16 SUN ( used for winter darkness )
+		"Cloudy",									//17 LIGHTCLOUD ( winter darkness )
+		"Light Rain",								//18 LIGHTRAINSUN ( used for winter darkness )
+		"Scattered Snow Showers",					//19 SNOWSUN ( used for winter darkness )
+		"Scattered Thunderstorms",					//20 SLEETSUNTHUNDER
+		"Scattered Thunderstorms",					//21 SNOWSUNTHUNDER
+		"Thunderstorm",								//22 LIGHTRAINTHUNDER
+		"Thunderstorm"								//23 SLEETTHUNDER2
+	};
 	
 	public Stack<String[]> tree;
 	public HashMap<String, String> element;
@@ -41,8 +67,8 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 	public static final Time LOWDATE= new Time(Time.TIMEZONE_UTC);
 	public static final Time HIGHDATE= new Time(Time.TIMEZONE_UTC);
 	public static final Time UPDATEDTIME= new Time(Time.TIMEZONE_UTC);
-	public static HashMap<String, Float> LOWTEMPS;
-	public static HashMap<String, Float> HIGHTEMPS;
+	public static HashMap<String, Double> LOWTEMPS;
+	public static HashMap<String, Double> HIGHTEMPS;
 	public static HashMap<String, String> CONDITIONS;
 
 	public YrNoWeatherXMLHandler() {
@@ -110,8 +136,8 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 		if (OMC.DEBUG)
 			Log.i(OMC.OMCSHORT + "YrNoWeather", "Start Building JSON.");
 		// We haven't accumulated current conditions yet
-		LOWTEMPS=new HashMap<String,Float>();
-		HIGHTEMPS=new HashMap<String,Float>();
+		LOWTEMPS=new HashMap<String,Double>();
+		HIGHTEMPS=new HashMap<String,Double>();
 		CONDITIONS = new HashMap<String,String>();
 
 		// yr.no does not return a timestamp in the XML, so default it to 1/1/1970
@@ -138,9 +164,6 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 			String qName, Attributes atts) {
 		try {
 			if (!tree.isEmpty()) {
-				if (OMC.DEBUG)
-					Log.i(OMC.OMCSHORT + "YrNoWeather",
-							"Reading " + tree.peek()[0] + " - " + localName + ":");
 
 				// First, parse the forecast time.
 				if (localName.equals("weatherdata")) {
@@ -161,30 +184,59 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				}
 				
 				if (localName.equals("temperature")) {
-					float tempc = Float.parseFloat(atts.getValue("value"));
+					double tempc = Double.parseDouble(atts.getValue("value"));
+					if (OMC.DEBUG)
+						Log.i(OMC.OMCSHORT + "YrNoWeather",
+								"Temp from " + FROMTIME.format2445() + " to " + TOTIME.format2445() + ":" + tempc);
 					if (jsonWeather.optString("temp_c","missing").equals("missing")) {
 						jsonWeather.putOpt("temp_c",tempc);
-						jsonWeather.putOpt("temp_f",tempc*9f/5f+32.2f);
+						jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.7f));
 					}
 					String sHTDay =TOTIME.format("%Y%m%d");
 					String sLDDay =LOWDATE.format("%Y%m%d");
+					if (OMC.DEBUG)
+						Log.i(OMC.OMCSHORT + "YrNoWeather",
+								"Day for High: " + sHTDay + "; Day for Low: " + sLDDay);
 					if (!HIGHTEMPS.containsKey(sHTDay)) {
 						HIGHTEMPS.put(sHTDay, tempc);
+					} else {
+						if (tempc>HIGHTEMPS.get(sHTDay)) HIGHTEMPS.put(sHTDay, tempc);
+					}
+					if (!LOWTEMPS.containsKey(sLDDay)) {
 						LOWTEMPS.put(sLDDay, tempc);
 					} else {
 						if (tempc<LOWTEMPS.get(sLDDay)) LOWTEMPS.put(sLDDay, tempc);
-						if (tempc>HIGHTEMPS.get(sHTDay)) HIGHTEMPS.put(sHTDay, tempc);
 					}
 				}
 
 				if (localName.equals("symbol")) {
-					String cond = atts.getValue("id");
+					String cond = CONDITIONTRANSLATIONS[Integer.parseInt(atts.getValue("number"))];
 					if (jsonWeather.optString("condition","missing").equals("missing")) {
 						jsonWeather.putOpt("condition",cond);
 						jsonWeather.putOpt("condition_lcase",cond.toLowerCase());
 					}
 					String sCondDay =TOTIME.format("%Y%m%d");
 					CONDITIONS.put(sCondDay, cond);
+				}
+
+				if (localName.equals("windDirection")) {
+					if (jsonWeather.optString("wind_direction","missing").equals("missing")) {
+						String cond = atts.getValue("name");
+						jsonWeather.putOpt("wind_direction",cond);
+					}
+				}
+				if (localName.equals("windSpeed")) {
+					if (jsonWeather.optString("wind_speed","missing").equals("missing")) {
+						int cond = (int)(Double.parseDouble(atts.getValue("mps"))*2.2369362920544f+0.5f);
+						jsonWeather.putOpt("wind_speed_mps",atts.getValue("mps"));
+						jsonWeather.putOpt("wind_speed_mph",cond);
+					}
+				}
+				if (localName.equals("humidity")) {
+					if (jsonWeather.optString("humidity_raw","missing").equals("missing")) {
+						String cond = atts.getValue("value");
+						jsonWeather.putOpt("humidity_raw",cond);
+					}
 				}
 
 			}
@@ -220,14 +272,26 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 
 	public void endDocument() {
 		if (OMC.DEBUG)
-			Log.i(OMC.OMCSHORT + "YrNoWeather", jsonWeather.toString());
-		if (OMC.DEBUG)
 			Log.i(OMC.OMCSHORT + "YrNoWeather", "End Document.");
 		// OK we're done parsing the whole document.
 		// Since the parse() method is synchronous, we don't need to do anything
 		// - just basic cleanup.
 		tree.clear();
 		tree = null;
+		
+		// Build out wind/humidity conditions.
+		String humidityString = OMC.RES.getString(OMC.RES.getIdentifier("humiditycondition", "string", OMC.PKGNAME)) +
+				jsonWeather.optString("humidity_raw") + "%";
+		String windString = OMC.RES.getString(OMC.RES.getIdentifier("windcondition", "string", OMC.PKGNAME)) +
+				jsonWeather.optString("wind_direction") + " @ " +
+				jsonWeather.optString("wind_speed_mph") + " mph";
+		try {
+			jsonWeather.putOpt("humidity", humidityString);
+			jsonWeather.putOpt("wind_condition", windString);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
 		// 
 		// Build out the forecast array.
 		Time day = new Time();
@@ -238,20 +302,24 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				jsonOneDayForecast.put("day_of_week", day.format("%a"));
 				jsonOneDayForecast.put("condition", CONDITIONS.get(day.format("%Y%m%d")));
 				jsonOneDayForecast.put("condition_lcase", CONDITIONS.get(day.format("%Y%m%d")).toLowerCase());
-				float lowc = LOWTEMPS.get(day.format("%Y%m%d"));
-				float highc = HIGHTEMPS.get(day.format("%Y%m%d"));
-				float lowf = lowc/5f*9f+32.2f;
-				float highf = highc/5f*9f+32.2f;
+				double lowc = OMC.roundToSignificantFigures(LOWTEMPS.get(day.format("%Y%m%d")),3);
+				double highc = OMC.roundToSignificantFigures(HIGHTEMPS.get(day.format("%Y%m%d")),3);
+				double lowf = (int)(lowc/5f*9f+32.7f);
+				double highf = (int)(highc/5f*9f+32.7f);
 				jsonOneDayForecast.put("low_c", lowc);
 				jsonOneDayForecast.put("high_c", highc);
 				jsonOneDayForecast.put("low", lowf);
 				jsonOneDayForecast.put("high", highf);
 				jsonWeather.getJSONArray("zzforecast_conditions").put(
 						jsonOneDayForecast);
+				day.hour+=24;
+				day.normalize(false);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
+		if (OMC.DEBUG)
+			Log.i(OMC.OMCSHORT + "YrNoWeather", jsonWeather.toString());
 
 		// Check if the reply was valid.
 //		if (jsonWeather.optString("condition",null)==null || jsonWeather.optString("problem_cause",null)!=null) {
