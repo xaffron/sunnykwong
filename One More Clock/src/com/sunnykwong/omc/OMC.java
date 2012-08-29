@@ -313,7 +313,8 @@ public class OMC extends Application {
         				OMC.calculateSunriseSunset(location.getLatitude(), location.getLongitude());
         				try {
         					GoogleReverseGeocodeService.updateLocation(location);
-        					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+//        					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+        					YrNoWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         				} catch (Exception e) {
         					e.printStackTrace();
         				}
@@ -1986,7 +1987,11 @@ public class OMC extends Application {
 			// If weather is for fixed location, calculate sunrise/sunset for the location, then
 			// update weather manually
 			OMC.calculateSunriseSunset(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), OMC.jsonFIXEDLOCN.optDouble("longitude",0d));
-			GoogleWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
+//			GoogleWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
+//					OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
+//					OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
+//					OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
+			YrNoWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
 					OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
 					OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
 					OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
