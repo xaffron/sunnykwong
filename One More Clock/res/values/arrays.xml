@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string-array name="interval_options">
-<item>1 sec (Extreme Batt Use)</item>	
+<!--  <item>1 sec (Extreme Batt Use)</item>	-->
 	<item>10 sec (Heavy Batt Use)</item>
 	<item>15 sec</item>
 	<item>20 sec</item>
@@ -10,7 +10,7 @@
 </string-array>
 
 <string-array name="interval_values">
-<item>1</item>
+<!-- <item>1</item> -->
 	<item>10</item>
 	<item>15</item>
 	<item>20</item>

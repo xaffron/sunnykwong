@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="faqs">
-		<item>Version 1.3.5 is an emergency release, replacing the defunct Google Weather API with weather information from yr.no (Norwegian Meteorological Institute & Norwegian Broadcasting Corporation).</item>,
-		<item>Launching with v.1.3.5 are Dice and Floating Focus.</item>,
+		<item>Version 1.3.5 is an emergency release, replacing the defunct Google Weather API with weather information from yr.no (Norwegian Meteorological Institute and Norwegian Broadcasting Corporation).</item>,
+        <item>Launching with v.1.3.5 are Dice and Floating Focus.</item>,
 		<item>Tap-to-Launch now includes 9 hotspots, 8 of which are customizable.</item>,
 		<item>In addition, some clocks have been rewritten and many have been updated.  Please download the \'full online collection\'!</item>,
 		<item>In version 1.3.0, clocks now have tags.  Tap on a tag to understand what it means!</item>,
