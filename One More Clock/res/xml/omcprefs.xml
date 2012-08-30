@@ -10,7 +10,7 @@
             android:enabled="true"
             android:key="loadThemeFile"
             android:selectable="true"
-            android:title="Set Widget Theme" />
+            android:title="Widget Theme" />
         <Preference
             android:enabled="true"
             android:key="tweakTheme"
@@ -57,14 +57,31 @@
             android:key="WeatherPrefs"
             android:title="Weather &amp; Widget Options" >
             <Preference
+                android:key="updweathernow"
+                android:title="Refresh Weather Now" />
+            <Preference
                 android:key="weather"
                 android:summary="Tap to enable"
                 android:title="Weather settings loading..." />
-            <Preference
+            <ListPreference
+                android:enabled="true"
+                android:entries="@array/wprovider_options"
+                android:entryValues="@array/wprovider_values"
+                android:key="weatherProvider"
+                android:selectable="true"
+                android:summary="Using OpenWeatherMap.org"
+                android:title="Weather Provider" >
+            </ListPreference>
+            <ListPreference
+                android:enabled="true"
+                android:entries="@array/wdisplay_options"
+                android:entryValues="@array/wdisplay_values"
                 android:key="weatherDisplay"
-                android:summary="C or F"
-                android:title="Weather display settings" />
-
+                android:selectable="true"
+                android:summary="Using Fahrenheit"
+                android:title="Weather Display Units" >
+            </ListPreference>
+            
             <ListPreference
                 android:enabled="true"
                 android:entries="@array/interval_options"
@@ -191,12 +208,28 @@
             android:key="clearCache"
             android:selectable="true"
             android:title="Clear Render Caches" />
-        <Preference
-            android:enabled="true"
-            android:key="deleteOMCThemes"
-            android:selectable="true"
-                  android:summary="For fixing theme selection app crashes."
-            android:title="Delete All Themes" />
+        <PreferenceScreen
+            android:key="Advanced"
+            android:title="Troubleshooting Options" >
+	        <Preference
+	            android:enabled="false"
+	            android:key="clockPriority"
+	            android:selectable="true"
+	                  android:summary="For fine-tuning responsiveness."
+	            android:title="Clock Priority" />
+	        <Preference
+	            android:enabled="false"
+	            android:key="weatherDebug"
+	            android:selectable="true"
+	                  android:summary="For fixing location/weather problems."
+	            android:title="Weather Diagnostics" />
+	        	        <Preference
+	            android:enabled="true"
+	            android:key="deleteOMCThemes"
+	            android:selectable="true"
+	                  android:summary="For fixing theme selection app crashes."
+	            android:title="Delete All Themes" />
+	        </PreferenceScreen>
         </PreferenceCategory>
     <PreferenceCategory
         android:key="Credits"

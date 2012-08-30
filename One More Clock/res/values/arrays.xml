@@ -18,6 +18,28 @@
 	<item>60</item>
 </string-array>
 
+<string-array name="wprovider_options">
+<!-- 	<item>OpenWeatherMap.org (default)</item> -->
+	<item>Yr.no</item>
+	<item>Google Weather (legacy/nonworking)</item>
+</string-array>
+
+<string-array name="wprovider_values">
+<!--  <item>owm</item> -->
+	<item>yrno</item>
+	<item>ig</item>
+</string-array>
+
+<string-array name="wdisplay_options">
+	<item>Use Fahrenheit (Default)</item>
+	<item>Use Celsius</item>
+</string-array>
+
+<string-array name="wdisplay_values">
+	<item>f</item>
+	<item>c</item>
+</string-array>
+
 <string-array name="winterval_options">
 	<item>Every Hour (default)</item>
 	<item>Every 4 Hrs</item>

@@ -31,6 +31,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
@@ -48,7 +49,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceChangeListener{ 
+public class OMCPrefActivity extends PreferenceActivity { 
     /** Called when the activity is first created. */
     static int appWidgetID;
     static AlertDialog mAD;
@@ -61,7 +62,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     TextView mTextView;
     Thread mRefresh;
     boolean isInitialConfig=false, mTempFlag=false;
-    Preference prefWeather, prefWeatherDisplay;
+    Preference prefUpdWeatherNow, prefWeather, prefWeatherDisplay, prefWeatherProvider;
     Preference prefloadThemeFile, prefclearCache, prefbSkinner, prefTimeZone;
     Preference prefsUpdateFreq, prefwidgetPersistence, prefemailMe, preftweakTheme;
     int iTTLArea=0;
@@ -76,31 +77,27 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     			timeTemp.set(OMC.NEXTWEATHERREFRESH);
     			timeTemp2.set(OMC.LASTWEATHERTRY);
         		if (sWSetting.equals("bylatlong")) {
-        			prefWeather.setTitle("Weather: " + sCity +" (Detected)");
+        			prefWeather.setTitle("Location: " + sCity +" (Detected)");
         			if (OMC.PREFS.getString("sWeatherFreq", "60").equals("0")) {
         				prefWeather.setSummary("Last try: "+timeTemp2.format("%R") + " (Manual Refresh Only)");
         			} else {
         				prefWeather.setSummary("Last try: "+timeTemp2.format("%R") + " Next Refresh: "+timeTemp.format("%R"));
         			}
-        			prefWeatherDisplay.setSummary("Now displaying in "+ OMC.PREFS.getString("weatherdisplay", "f").toUpperCase());
         		} else if (sWSetting.equals("specific")) {
-        			prefWeather.setTitle("Weather: "+OMC.jsonFIXEDLOCN.optString("city","Unknown")+" (Fixed)");
+        			prefWeather.setTitle("Location: "+OMC.jsonFIXEDLOCN.optString("city","Unknown")+" (Fixed)");
         			if (OMC.PREFS.getString("sWeatherFreq", "60").equals("0")) {
         				prefWeather.setSummary("Last try: "+timeTemp2.format("%R") + " (Manual Refresh Only)");
         			} else {
         				prefWeather.setSummary("Last try: "+timeTemp2.format("%R") + " Next Refresh: "+timeTemp.format("%R"));
         			}
-        			prefWeatherDisplay.setSummary("Now displaying in "+ OMC.PREFS.getString("weatherdisplay", "f").toUpperCase());
         		} else {
         			prefWeather.setTitle("Weather functionality disabled");
-        			prefWeatherDisplay.setSummary("Now displaying in "+ OMC.PREFS.getString("weatherdisplay", "f").toUpperCase());
         			prefWeather.setSummary("Tap to enable");
         		} 
     		} catch (JSONException e) {
     			e.printStackTrace();
     			prefWeather.setTitle("Weather updates disabled");
     			prefWeather.setSummary("Tap to enable");
-    			prefWeatherDisplay.setSummary("Now displaying in "+ OMC.PREFS.getString("weatherdisplay", "f").toUpperCase());
     		}
 			return;
     	}
@@ -218,6 +215,14 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
         	// ID specific preferences.
         	// "Set Widget Theme".
         	prefloadThemeFile = findPreference("loadThemeFile");
+        	prefloadThemeFile.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+		        	prefloadThemeFile.setSummary(newValue+ " selected.");
+					return true;
+				}
+			});
+        	prefloadThemeFile.setSummary(OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)+ " selected.");
         	
     		// "Personalize Clock".
         	preftweakTheme = findPreference("tweakTheme");
@@ -230,19 +235,119 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
     			findPreference("timeZone").setSummary(OMC.PREFS.getString("sTimeZone", "default"));
     		}
 
-        	// "Weather: [Location] (status)".
+        	// "Update Weather Now".
+        	prefUpdWeatherNow = findPreference("updweathernow");
+        	prefUpdWeatherNow.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+				@Override
+				public boolean onPreferenceClick(Preference preference) {
+		    		OMC.updateWeather();
+					return true;
+				}
+			});
+        	
+        	// "Location: [Location] (status)".
         	prefWeather = findPreference("weather");
 
-        	// "Weather Display Settings".
+        	// "Weather Provider".
+        	prefWeatherProvider = findPreference("weatherProvider");
+        	prefWeatherProvider.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+		    		if (newValue.equals("yrno")) {
+		        		preference.setSummary("Using yr.no");
+		    		} else if (newValue.equals("ig")) {
+		        		preference.setSummary("Using iGoogle Weather");
+		    		} else {
+		    			preference.setSummary("Using OpenWeatherMap.org");
+		    		}
+			    	return true;
+				}
+			});
+        	String sWProvider = OMC.PREFS.getString("weatherProvider", "yrno");
+    		if (sWProvider.equals("yrno")) {
+    			prefWeatherProvider.setSummary("Using yr.no");
+    		} else if (sWProvider.equals("ig")) {
+    			prefWeatherProvider.setSummary("Using iGoogle Weather");
+    		} else {
+    			prefWeatherProvider.setSummary("Using OpenWeatherMap.org");
+    		}
+
+        	
+        	// "Weather Display Units".
         	prefWeatherDisplay = findPreference("weatherDisplay");
+        	prefWeatherDisplay.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+		    		if (newValue.equals("c")) {
+		        		preference.setSummary("Using Celsius");
+		    		} else {
+		        		preference.setSummary("Using Fahrenheit");
+		    		}
+			    	return true;
+				}
+			});
+        	if (OMC.PREFS.getString("weatherDisplay", "f").equals("c"))
+        		prefWeatherDisplay.setSummary("Using Celsius");
+        	else prefWeatherDisplay.setSummary("Using Fahrenheit");
 
     		// "Clock Update Interval"
         	prefsUpdateFreq = findPreference("sUpdateFreq");
-        	prefsUpdateFreq.setOnPreferenceChangeListener(this);
+        	prefsUpdateFreq.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+		    		preference.setSummary("Redraw every " + (String)newValue + " seconds.");
+		    		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
+					return true;
+				}
+			});
         	prefsUpdateFreq.setSummary("Redraw every " + OMC.PREFS.getString("sUpdateFreq", "30") + " seconds.");
 
         	// "Weather Update Interval"
-        	findPreference("sWeatherFreq").setOnPreferenceChangeListener(this);
+        	findPreference("sWeatherFreq").setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+		    		int newHrs = Integer.parseInt((String)newValue)/60;
+		    		long newMillis = newHrs * 3600000l; 
+		        	switch (newHrs) {
+		    		case 0:
+		    			findPreference("sWeatherFreq").setSummary("Manual weather updates only.");
+		    			OMC.NEXTWEATHERREFRESH = Long.MAX_VALUE;
+		    			break;
+		    		case 1:
+		    			findPreference("sWeatherFreq").setSummary("Refresh weather every 1 hour.");
+		            	// if the last try was unsuccessful, reset the next weather
+		            	if (OMC.LASTWEATHERTRY > OMC.LASTWEATHERREFRESH) 
+		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERTRY + newMillis/4l;
+		            	else 
+		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERREFRESH + newMillis;
+		    			break;
+		    		case 4:
+		    			findPreference("sWeatherFreq").setSummary("Refresh weather every 4 hours.");
+		            	// if the last try was unsuccessful, reset the next weather
+		            	if (OMC.LASTWEATHERTRY > OMC.LASTWEATHERREFRESH) 
+		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERTRY + newMillis/4l;
+		            	else 
+		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERREFRESH + newMillis;
+		    			break;
+		    		case 8:
+		    			findPreference("sWeatherFreq").setSummary("Refresh weather every 8 hours.");
+		            	// if the last try was unsuccessful, reset the next weather
+		            	if (OMC.LASTWEATHERTRY > OMC.LASTWEATHERREFRESH) 
+		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERTRY + newMillis/4l;
+		            	else 
+		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERREFRESH + newMillis;
+		    			break;
+		    		default:
+		    			findPreference("sWeatherFreq").setSummary("Refresh weather at default interval.");
+		            	// if the last try was unsuccessful, reset the next weather
+		            	if (OMC.LASTWEATHERTRY > OMC.LASTWEATHERREFRESH) 
+		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERTRY + newMillis/4l;
+		            	else 
+		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERREFRESH + newMillis;
+		        	}
+		    		return true;
+				}
+			});
         	switch (Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))/60) {
         		case 0:
         			findPreference("sWeatherFreq").setSummary("Manual weather updates only.");
@@ -452,59 +557,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     }
 
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-    	if (preference==findPreference("sUpdateFreq")) {
-    		preference.setSummary("Redraw every " + (String)newValue + " seconds.");
-    		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
-
-    		return true;
-    	}
-    	if (preference==findPreference("sWeatherFreq")) {
-    		int newHrs = Integer.parseInt((String)newValue)/60;
-    		long newMillis = newHrs * 3600000l; 
-        	switch (newHrs) {
-    		case 0:
-    			findPreference("sWeatherFreq").setSummary("Manual weather updates only.");
-    			OMC.NEXTWEATHERREFRESH = Long.MAX_VALUE;
-    			break;
-    		case 1:
-    			findPreference("sWeatherFreq").setSummary("Refresh weather every 1 hour.");
-            	// if the last try was unsuccessful, reset the next weather
-            	if (OMC.LASTWEATHERTRY > OMC.LASTWEATHERREFRESH) 
-            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERTRY + newMillis/4l;
-            	else 
-            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERREFRESH + newMillis;
-    			break;
-    		case 4:
-    			findPreference("sWeatherFreq").setSummary("Refresh weather every 4 hours.");
-            	// if the last try was unsuccessful, reset the next weather
-            	if (OMC.LASTWEATHERTRY > OMC.LASTWEATHERREFRESH) 
-            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERTRY + newMillis/4l;
-            	else 
-            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERREFRESH + newMillis;
-    			break;
-    		case 8:
-    			findPreference("sWeatherFreq").setSummary("Refresh weather every 8 hours.");
-            	// if the last try was unsuccessful, reset the next weather
-            	if (OMC.LASTWEATHERTRY > OMC.LASTWEATHERREFRESH) 
-            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERTRY + newMillis/4l;
-            	else 
-            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERREFRESH + newMillis;
-    			break;
-    		default:
-    			findPreference("sWeatherFreq").setSummary("Refresh weather at default interval.");
-            	// if the last try was unsuccessful, reset the next weather
-            	if (OMC.LASTWEATHERTRY > OMC.LASTWEATHERREFRESH) 
-            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERTRY + newMillis/4l;
-            	else 
-            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERREFRESH + newMillis;
-    		}
-    		return true;
-    	}
-    	return false;
-    }
-    
     // If user clicks on a preference...
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
@@ -555,7 +607,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 				.show();
     	}
     	if (preference == findPreference("weather")){
-			final CharSequence[] items = {"Disabled", "Follow Device (default)", "Set Location", "Update Now"};
+			final CharSequence[] items = {"Disabled", "Follow Device (default)", "Set Fixed Location"};
 			new AlertDialog.Builder(this)
 				.setTitle("Experimental Feature\nTry at own risk!")
 				.setItems(items, new DialogInterface.OnClickListener() {
@@ -571,29 +623,6 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 									break;
 								case 2: //Set Location
 									startActivityForResult(new Intent(OMCPrefActivity.this, OMCFixedLocationActivity.class), 0);
-									break;
-								case 3: //Update Now
-						    		OMC.updateWeather();
-									break;
-								default:
-									//do nothing
-							}
-						}
-				})
-				.show();
-    	}
-    	if (preference == findPreference("weatherDisplay")){
-			final CharSequence[] items = {"Show Celsius", "Show Fahrenheit"};
-			new AlertDialog.Builder(this)
-				.setTitle("Experimental Feature\nTry at own risk!")
-				.setItems(items, new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int item) {
-							switch (item) {
-								case 0: //Celsius (default)
-									OMC.PREFS.edit().putString("weatherdisplay", "c").commit();
-									break;
-								case 1: //Fahrenheit
-									OMC.PREFS.edit().putString("weatherdisplay", "f").commit();
 									break;
 								default:
 									//do nothing
@@ -792,6 +821,7 @@ public class OMCPrefActivity extends PreferenceActivity implements OnPreferenceC
 
     // The result is obtained in onActivityResult:
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	prefloadThemeFile.setSummary(OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)+ " selected.");
 		if (OMC.PREFS.getString("sTimeZone", "default").equals("default")) {
 			getPreferenceScreen().findPreference("timeZone").setSummary("(Following Device Time Zone)");
 		} else {

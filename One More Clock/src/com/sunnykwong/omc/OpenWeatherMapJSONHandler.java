@@ -30,8 +30,8 @@ import android.util.Log;
 
 public class OpenWeatherMapJSONHandler {
 
-	public static final String URL_STATIONSEARCH = "http://openweathermap.org/data/2.0/find/station?cnt=1&lat=55&lon=";
-	public static final String URL_CITYSEARCH = "http://openweathermap.org/data/2.0/find/city?cnt=1&lat=55&lon=";
+	public static final String URL_STATIONSEARCH = "http://openweathermap.org/data/2.0/find/station?cnt=1&lat=";
+	public static final String URL_CITYSEARCH = "http://openweathermap.org/data/2.0/find/city?cnt=1&lat=";
 	public static final String URL_CITYFORECAST = "http://openweathermap.org/data/2.0/forecast/city/";
 
 	public static final String[] CONDITIONTRANSLATIONS = new String[] {
@@ -62,9 +62,11 @@ public class OpenWeatherMapJSONHandler {
 	};
 	
 	public JSONObject tempJson, jsonWeather, jsonOneDayForecast;
+	public String sNearestCityID;
 	public static final String DELIMITERS = " .,;-";
 
 	public OpenWeatherMapJSONHandler() {
+		sNearestCityID="";
 		jsonWeather = new JSONObject();
 		try {
 			jsonWeather.put("zzforecast_conditions", new JSONArray());
@@ -83,7 +85,6 @@ public class OpenWeatherMapJSONHandler {
 					if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
 					    System.setProperty("http.keepAlive", "false");
 					}
-					XMLReader xr = XMLReaderFactory.createXMLReader();
 					OpenWeatherMapJSONHandler OWMhandler = new OpenWeatherMapJSONHandler();
 					OWMhandler.jsonWeather.putOpt("country2", country);
 					OWMhandler.jsonWeather.putOpt("city2", city);
@@ -91,7 +92,7 @@ public class OpenWeatherMapJSONHandler {
 
 					URL url=null;
 					if (!bylatlong) {
-						Log.e(OMC.OMCSHORT + "OWMWeather", "OpenWeatherMap does not support weather by location name!");
+						Log.e(OMC.OMCSHORT + "OWMWeather", "OpenWeatherMap plugin does not support weather by location name!");
 						return;
 //						url = new URL("http://www.google.com/ig/api?oe=utf-8&weather="+city.replace(' ', '+') + "+" + country.replace(' ', '+'));
 					} else {
@@ -105,7 +106,52 @@ public class OpenWeatherMapJSONHandler {
 						huc.setReadTimeout(10000);
 
 						OWMhandler.tempJson = OMC.streamToJSONObject(huc.getInputStream());
+						JSONObject stationinfo = OWMhandler.tempJson.getJSONArray("list").getJSONObject(0);
+						JSONObject maininfo = stationinfo.getJSONObject("main");
+						// Translate temperature.
+						double tempc = maininfo.getDouble("temp")-273.15;
+						OWMhandler.jsonWeather.put("temp_c", tempc);
+						OWMhandler.jsonWeather.put("temp_f",(int)(tempc*9f/5f+32.7f));
+						// Translate humidity.
+						OWMhandler.jsonWeather.put("humidity_raw",maininfo.getDouble("humidity"));
+						OWMhandler.jsonWeather.put("humidity", OMC.RES.getString(OMC.RES.getIdentifier("humiditycondition", "string", OMC.PKGNAME)) +
+								maininfo.getDouble("humidity") + "%");
 						
+						maininfo=null;
+
+						// Translate windspeed.
+						JSONObject windinfo = stationinfo.getJSONObject("wind");
+						double windmps = windinfo.getDouble("speed");
+						OWMhandler.jsonWeather.put("wind_speed_mps", windmps);
+						OWMhandler.jsonWeather.put("wind_speed_mph", (int)(windmps*2.2369362920544+0.5));
+						// Translate wind direction.
+						double winddeg = windinfo.getDouble("deg");
+						if (winddeg>337.5)
+							OWMhandler.jsonWeather.put("wind_direction","N");
+						else if (winddeg>292.5)
+							OWMhandler.jsonWeather.put("wind_direction","NW");
+						else if (winddeg>247.5)
+							OWMhandler.jsonWeather.put("wind_direction","W");
+						else if (winddeg>202.5)
+							OWMhandler.jsonWeather.put("wind_direction","SW");
+						else if (winddeg>157.5)
+							OWMhandler.jsonWeather.put("wind_direction","S");
+						else if (winddeg>112.5)
+							OWMhandler.jsonWeather.put("wind_direction","SE");
+						else if (winddeg>67.5)
+							OWMhandler.jsonWeather.put("wind_direction","E");
+						else if (winddeg>22.5)
+							OWMhandler.jsonWeather.put("wind_direction","NE");
+						else 
+							OWMhandler.jsonWeather.put("wind_direction","N");
+
+						OWMhandler.jsonWeather.put("wind_condition", OMC.RES.getString(OMC.RES.getIdentifier("windcondition", "string", OMC.PKGNAME)) +
+								OWMhandler.jsonWeather.optString("wind_direction") + " @ " +
+								OWMhandler.jsonWeather.optString("wind_speed_mph") + " mph");
+
+						windinfo=null;
+
+						// Done with station info.
 						huc.disconnect();
 						
 						// Second, Find closest City.
@@ -117,6 +163,19 @@ public class OpenWeatherMapJSONHandler {
 						OWMhandler.tempJson = OMC.streamToJSONObject(huc.getInputStream());
 						huc.disconnect();
 
+						// Build weather condition.
+
+						//	Parse Cloud Cover:
+						//	Cloudy: 90-100%
+						//	Mostly cloudy: 70-80%
+						//	Partly cloudy or Partly sunny: 30-60%
+						//	Mostly clear or Mostly sunny:10-30%
+						//	Clear or sunny: 0-10%
+
+						//  Parse Storm/Rain:
+						
+						//  Parse Snow/Sleet:
+						
 						// Finally, Find forecast at closest City.
 						url = new URL(OpenWeatherMapJSONHandler.URL_CITYFORECAST+latitude+";lon="+longitude);
 						huc = (HttpURLConnection) url.openConnection();
@@ -249,18 +308,7 @@ public class OpenWeatherMapJSONHandler {
 			Log.i(OMC.OMCSHORT + "YrNoWeather", "End Document.");
 
 		
-		// Build out wind/humidity conditions.
-		String humidityString = OMC.RES.getString(OMC.RES.getIdentifier("humiditycondition", "string", OMC.PKGNAME)) +
-				jsonWeather.optString("humidity_raw") + "%";
-		String windString = OMC.RES.getString(OMC.RES.getIdentifier("windcondition", "string", OMC.PKGNAME)) +
-				jsonWeather.optString("wind_direction") + " @ " +
-				jsonWeather.optString("wind_speed_mph") + " mph";
-		try {
-			jsonWeather.putOpt("humidity", humidityString);
-			jsonWeather.putOpt("wind_condition", windString);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+
 		
 		// 
 		// Build out the forecast array.

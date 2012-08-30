@@ -313,11 +313,16 @@ public class OMC extends Application {
         				OMC.calculateSunriseSunset(location.getLatitude(), location.getLongitude());
         				try {
         					GoogleReverseGeocodeService.updateLocation(location);
-//        					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
-        					YrNoWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
-//        					OpenWeatherMapJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+        					String sWProvider = OMC.PREFS.getString("weatherProvider", "yrno");
+        					if (sWProvider.equals("ig")) {
+            					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+        					} else if (sWProvider.equals("yrno")) {
+        						YrNoWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+        					} else {
+        						OpenWeatherMapJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+        					}  
         					
-        					} catch (Exception e) {
+        				} catch (Exception e) {
         					e.printStackTrace();
         				}
         			}
@@ -1467,7 +1472,7 @@ public class OMC extends Application {
 					} else if (sType.equals("condition")) {
 						result = jsonWeather.optString("condition","Unknown");
 					} else if (sType.equals("temp")) {
-						result = jsonWeather.optString("temp_"+OMC.PREFS.getString("weatherdisplay", "f"),"--")+OMC.PREFS.getString("weatherdisplay", "f").toUpperCase();
+						result = jsonWeather.optString("temp_"+OMC.PREFS.getString("weatherDisplay", "f"),"--")+OMC.PREFS.getString("weatherDisplay", "f").toUpperCase();
 					} else if (sType.equals("tempc")) {
 						result = jsonWeather.optString("temp_c","--");
 					} else if (sType.equals("tempf")) {
@@ -1477,7 +1482,7 @@ public class OMC extends Application {
 					} else if (sType.equals("high")) {
 						int iDay = Integer.parseInt(st[iTokenNum++]);
 						String sFahrenheit = jsonWeather.getJSONArray("zzforecast_conditions").getJSONObject(iDay).optString("high","--");
-						if (OMC.PREFS.getString("weatherdisplay", "f").equals("c")) {
+						if (OMC.PREFS.getString("weatherDisplay", "f").equals("c")) {
 							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32.2f)*5f/9f+0.5f));
 						} else {
 							result = sFahrenheit;
@@ -1485,7 +1490,7 @@ public class OMC extends Application {
 					} else if (sType.equals("low")) {
 						int iDay = Integer.parseInt(st[iTokenNum++]);
 						String sFahrenheit = jsonWeather.getJSONArray("zzforecast_conditions").getJSONObject(iDay).optString("low","--");
-						if (OMC.PREFS.getString("weatherdisplay", "f").equals("c")) {
+						if (OMC.PREFS.getString("weatherDisplay", "f").equals("c")) {
 							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32.2f)*5f/9f+0.5f));
 						} else {
 							result = sFahrenheit;
@@ -1989,18 +1994,24 @@ public class OMC extends Application {
 			// If weather is for fixed location, calculate sunrise/sunset for the location, then
 			// update weather manually
 			OMC.calculateSunriseSunset(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), OMC.jsonFIXEDLOCN.optDouble("longitude",0d));
-//			GoogleWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
-//					OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
-//					OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
-//					OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
-			YrNoWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
-					OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
-					OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
-					OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
-//			OpenWeatherMapJSONHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
-//					OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
-//					OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
-//					OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
+			String sWProvider = OMC.PREFS.getString("weatherProvider", "yrno");
+			if (sWProvider.equals("ig")) {
+				GoogleWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
+				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
+				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
+				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
+			} else if (sWProvider.equals("yrno")) {
+				YrNoWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
+				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
+				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
+				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
+			} else {
+				OpenWeatherMapJSONHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
+				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
+				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
+				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
+			}  
+			
 			return;
 		}
 		

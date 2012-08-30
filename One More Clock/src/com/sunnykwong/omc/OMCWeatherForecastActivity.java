@@ -33,7 +33,7 @@ public class OMCWeatherForecastActivity extends Activity {
 			try {
 				final JSONObject weather = new JSONObject(OMC.PREFS.getString("weather", ""));
 				String sWeatherDigits = "--";
-				if (OMC.PREFS.getString("weatherdisplay", "f").equals("f")) {
+				if (OMC.PREFS.getString("weatherDisplay", "f").equals("f")) {
 					sWeatherDigits = weather.optString("temp_f", "--")+"°F";
 				} else {
 					sWeatherDigits = weather.optString("temp_c", "--")+"°C";
@@ -61,7 +61,7 @@ public class OMCWeatherForecastActivity extends Activity {
 					setText(findViewById(getResources().getIdentifier("dayofweek"+i, "id", OMC.PKGNAME)),day.optString("day_of_week"));
 					((ImageView)findViewById(getResources().getIdentifier("ConditionImage"+i, "id", OMC.PKGNAME))).setImageBitmap(OMC.getBitmap(OMC.DEFAULTTHEME, "w-"+day.optString("condition_lcase","--")+"-day.png"));
 					setText(findViewById(getResources().getIdentifier("ForecastCond"+i, "id", OMC.PKGNAME)),day.optString("condition"));
-					if (OMC.PREFS.getString("weatherdisplay", "f").equals("f")) {
+					if (OMC.PREFS.getString("weatherDisplay", "f").equals("f")) {
 						setText(findViewById(getResources().getIdentifier("HighTemp"+i, "id", OMC.PKGNAME)),day.optString("high")+"°F");
 						setText(findViewById(getResources().getIdentifier("LowTemp"+i, "id", OMC.PKGNAME)),day.optString("low")+"°F");
 					} else {
