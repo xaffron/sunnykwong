@@ -315,7 +315,9 @@ public class OMC extends Application {
         					GoogleReverseGeocodeService.updateLocation(location);
 //        					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					YrNoWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
-        				} catch (Exception e) {
+//        					OpenWeatherMapJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+        					
+        					} catch (Exception e) {
         					e.printStackTrace();
         				}
         			}
@@ -1995,6 +1997,10 @@ public class OMC extends Application {
 					OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
 					OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
 					OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
+//			OpenWeatherMapJSONHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
+//					OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
+//					OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
+//					OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
 			return;
 		}
 		

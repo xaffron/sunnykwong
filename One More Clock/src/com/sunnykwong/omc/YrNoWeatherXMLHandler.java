@@ -185,15 +185,21 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				
 				if (localName.equals("temperature")) {
 					double tempc = Double.parseDouble(atts.getValue("value"));
+					String sHTDay =TOTIME.format("%Y%m%d");
+					String sLDDay =LOWDATE.format("%Y%m%d");
+
 					if (OMC.DEBUG)
 						Log.i(OMC.OMCSHORT + "YrNoWeather",
 								"Temp from " + FROMTIME.format2445() + " to " + TOTIME.format2445() + ":" + tempc);
 					if (jsonWeather.optString("temp_c","missing").equals("missing")) {
 						jsonWeather.putOpt("temp_c",tempc);
 						jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.7f));
+						Time now = new Time();
+						now.setToNow();
+						HIGHTEMPS.put(now.format("%Y%m%d"), tempc);
+						LOWTEMPS.put(now.format("%Y%m%d"), tempc);
 					}
-					String sHTDay =TOTIME.format("%Y%m%d");
-					String sLDDay =LOWDATE.format("%Y%m%d");
+					
 					if (OMC.DEBUG)
 						Log.i(OMC.OMCSHORT + "YrNoWeather",
 								"Day for High: " + sHTDay + "; Day for Low: " + sLDDay);
@@ -214,6 +220,9 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 					if (jsonWeather.optString("condition","missing").equals("missing")) {
 						jsonWeather.putOpt("condition",cond);
 						jsonWeather.putOpt("condition_lcase",cond.toLowerCase());
+						Time now = new Time();
+						now.setToNow();
+						CONDITIONS.put(now.format("%Y%m%d"), cond);
 					}
 					String sCondDay =TOTIME.format("%Y%m%d");
 					CONDITIONS.put(sCondDay, cond);
