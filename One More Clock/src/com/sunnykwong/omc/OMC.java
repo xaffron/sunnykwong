@@ -318,8 +318,10 @@ public class OMC extends Application {
             					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					} else if (sWProvider.equals("yrno")) {
         						YrNoWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
-        					} else {
+        					} else if (sWProvider.equals("owm")) {
         						OpenWeatherMapJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+        					} else {
+        						SevenTimerJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					}  
         					
         				} catch (Exception e) {
@@ -2005,12 +2007,17 @@ public class OMC extends Application {
 				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
 				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
 				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
-			} else {
+			} else if (sWProvider.equals("owm")) {
 				OpenWeatherMapJSONHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
 				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
 				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
 				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
-			}  
+			} else {
+				SevenTimerJSONHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
+				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
+				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
+				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
+			} 
 			
 			return;
 		}

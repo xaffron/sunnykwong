@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string-array name="interval_options">
-<!--  <item>1 sec (Extreme Batt Use)</item>	-->
+  <item>1 sec (Extreme Batt Use)</item>	
 	<item>10 sec (Heavy Batt Use)</item>
 	<item>15 sec</item>
 	<item>20 sec</item>
@@ -10,7 +10,7 @@
 </string-array>
 
 <string-array name="interval_values">
-<!-- <item>1</item> -->
+ <item>1</item> 
 	<item>10</item>
 	<item>15</item>
 	<item>20</item>
@@ -20,12 +20,14 @@
 
 <string-array name="wprovider_options">
 <!-- 	<item>OpenWeatherMap.org (default)</item> -->
+ 	<item>7Timer.com (default)</item>
 	<item>Yr.no</item>
 	<item>Google Weather (legacy/nonworking)</item>
 </string-array>
 
 <string-array name="wprovider_values">
 <!--  <item>owm</item> -->
+	<item>7timer</item>
 	<item>yrno</item>
 	<item>ig</item>
 </string-array>

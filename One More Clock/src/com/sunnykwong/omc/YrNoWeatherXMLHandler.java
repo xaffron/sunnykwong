@@ -262,8 +262,8 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 	public void endElement(String uri, String name, String qName) {
 		if (tree.isEmpty())
 			return;
-		if (OMC.DEBUG)
-			Log.i(OMC.OMCSHORT + "YrNoWeather", "EndElement." + name);
+//		if (OMC.DEBUG)
+//			Log.i(OMC.OMCSHORT + "YrNoWeather", "EndElement." + name);
 		// Pop the stack.
 		tree.pop();
 
@@ -305,7 +305,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 		// Build out the forecast array.
 		Time day = new Time();
 		day.setToNow();
-		while (HIGHTEMPS.containsKey(day.format("%Y%m%d"))) {
+		while (HIGHTEMPS.containsKey(day.format("%Y%m%d")) && LOWTEMPS.containsKey(day.format("%Y%m%d"))) {
 			try {
 				JSONObject jsonOneDayForecast = new JSONObject();
 				jsonOneDayForecast.put("day_of_week", day.format("%a"));
