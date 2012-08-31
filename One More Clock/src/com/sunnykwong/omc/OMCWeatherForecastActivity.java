@@ -83,16 +83,17 @@ public class OMCWeatherForecastActivity extends Activity {
 				}
 				Time tStation = new Time();
 				tStation.parse(weather.optString("current_local_time","19700101T000000"));
-				if (tStation.year < 1980) {
-					tStation.set(OMC.LASTWEATHERREFRESH);
+				if (tStation.year < 1980) tStation.set(OMC.LASTWEATHERREFRESH);
 					
-//					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather updated from Google API at " + tStation.format("%R")  );
+				String sWProvider = OMC.PREFS.getString("weatherProvider", "yrno");
+				if (sWProvider.equals("ig")) {
+					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather updated from Google API at " + tStation.format("%R")  );
+				} else if (sWProvider.equals("yrno")) {
 					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK."  );
 				} else {
-//					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather updated from Google API at " + tStation.format("%R")  );
-					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK." );
-					
-				}
+					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK."  );
+				}  
+
 				TextView acculink = ((TextView)findViewById(getResources().getIdentifier("AccuLink", "id", OMC.PKGNAME)));
 				acculink.setText("Tap for Alternate Forecasts from AccuWeather®");
 				acculink.setOnClickListener(new View.OnClickListener() {
