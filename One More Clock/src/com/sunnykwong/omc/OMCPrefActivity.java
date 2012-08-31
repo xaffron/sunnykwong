@@ -263,7 +263,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 			    	return true;
 				}
 			});
-        	String sWProvider = OMC.PREFS.getString("weatherProvider", "yrno");
+        	String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
     		if (sWProvider.equals("yrno")) {
     			prefWeatherProvider.setSummary("Using yr.no");
     		} else if (sWProvider.equals("ig")) {

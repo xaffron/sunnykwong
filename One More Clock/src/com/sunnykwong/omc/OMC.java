@@ -313,7 +313,7 @@ public class OMC extends Application {
         				OMC.calculateSunriseSunset(location.getLatitude(), location.getLongitude());
         				try {
         					GoogleReverseGeocodeService.updateLocation(location);
-        					String sWProvider = OMC.PREFS.getString("weatherProvider", "yrno");
+        					String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
         					if (sWProvider.equals("ig")) {
             					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					} else if (sWProvider.equals("yrno")) {
@@ -1996,7 +1996,7 @@ public class OMC extends Application {
 			// If weather is for fixed location, calculate sunrise/sunset for the location, then
 			// update weather manually
 			OMC.calculateSunriseSunset(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), OMC.jsonFIXEDLOCN.optDouble("longitude",0d));
-			String sWProvider = OMC.PREFS.getString("weatherProvider", "yrno");
+			String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
 			if (sWProvider.equals("ig")) {
 				GoogleWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
 				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
