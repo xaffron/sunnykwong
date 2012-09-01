@@ -305,6 +305,18 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 		// Build out the forecast array.
 		Time day = new Time();
 		day.setToNow();
+
+		// Make sure today's data contains both high and low, too.
+		if (!LOWTEMPS.containsKey(day.format("%Y%m%d"))) {
+			Time nextday = new Time(day);
+			nextday.hour+=24;
+			nextday.normalize(false);
+			LOWTEMPS.put(day.format("%Y%m%d"), LOWTEMPS.get(nextday.format("%Y%m%d")));
+		}
+		if (!HIGHTEMPS.containsKey(day.format("%Y%m%d"))) {
+			HIGHTEMPS.put(day.format("%Y%m%d"), LOWTEMPS.get(day.format("%Y%m%d")));
+		}
+
 		while (HIGHTEMPS.containsKey(day.format("%Y%m%d")) && LOWTEMPS.containsKey(day.format("%Y%m%d"))) {
 			try {
 				JSONObject jsonOneDayForecast = new JSONObject();
@@ -330,19 +342,6 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 		if (OMC.DEBUG)
 			Log.i(OMC.OMCSHORT + "YrNoWeather", jsonWeather.toString());
 
-		// Check if the reply was valid.
-//		if (jsonWeather.optString("condition",null)==null || jsonWeather.optString("problem_cause",null)!=null) {
-//			//Google returned error - retry by city name, then abandon refresh
-//			if (jsonWeather.optBoolean("bylatlong")) {
-//				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YrNoWeather", "Error using Lat/Long, retrying using city name.");
-//				YrNoWeatherXMLHandler.updateWeather(0d, 0d, jsonWeather.optString("country2"), jsonWeather.optString("city2"), false);
-//				return;
-//			} else {
-//				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YrNoWeather", "Error using city name. No refresh.");
-//				return;
-//			}
-//		}
-			
 		try {
 			if (jsonWeather.optString("city")==null || jsonWeather.optString("city").equals("")) {
 				if (!jsonWeather.optString("city2").equals(""))
@@ -367,7 +366,8 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 		// If the weather station info looks too stale (more than 2 hours old), it's because the phone's date/time is wrong.  
 		// Force the update to the default update period
 		if (System.currentTimeMillis()-t.toMillis(false)>7200000l) {
-			OMC.NEXTWEATHERREFRESH = Math.max(OMC.LASTWEATHERREFRESH + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")) * 60000l, OMC.LASTWEATHERTRY+Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l);
+			OMC.NEXTWEATHERREFRESH = Math.max(OMC.LASTWEATHERREFRESH + (1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))) * 60000l, 
+					OMC.LASTWEATHERTRY+(1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")))/4l*60000l);
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YrNoWeather", "Weather Station Time:" + new java.sql.Time(t.toMillis(false)).toLocaleString());
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YrNoWeather", "Weather Station Time Missing or Stale.  Using default interval.");
 		} else if (t.toMillis(false)>System.currentTimeMillis()) {
@@ -375,14 +375,17 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 		// Force the update to the default update period
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YrNoWeather", "Weather Station Time:" + new java.sql.Time(t.toMillis(false)).toLocaleString());
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YrNoWeather", "Weather Station Time in the future -> phone time is wrong.  Using default interval.");
-			OMC.NEXTWEATHERREFRESH = Math.max(OMC.LASTWEATHERREFRESH + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")) * 60000l, OMC.LASTWEATHERTRY+Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l);
+			OMC.NEXTWEATHERREFRESH = Math.max(OMC.LASTWEATHERREFRESH + (1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))) * 60000l, 
+					OMC.LASTWEATHERTRY+(1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")))/4l*60000l);
 		} else {
 		// If we get a recent weather station timestamp, we try to "catch" the update by setting next update to 
 		// 29 minutes + default update period
 		// after the last station refresh.
 
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YrNoWeather", "Weather Station Time:" + new java.sql.Time(t.toMillis(false)).toLocaleString());
-			OMC.NEXTWEATHERREFRESH = Math.max(t.toMillis(false) + (29l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))) * 60000l, OMC.LASTWEATHERTRY+Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l);
+			OMC.NEXTWEATHERREFRESH = Math.max(t.toMillis(false) + 
+					(29l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))) * 60000l, 
+					OMC.LASTWEATHERTRY+Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l);
 		}
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YrNoWeather", "Next Refresh Time:" + new java.sql.Time(OMC.NEXTWEATHERREFRESH).toLocaleString());
 		OMC.PREFS.edit().putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH).commit();

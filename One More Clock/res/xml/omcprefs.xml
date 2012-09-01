@@ -69,7 +69,7 @@
                 android:entryValues="@array/wprovider_values"
                 android:key="weatherProvider"
                 android:selectable="true"
-                android:summary="Using OpenWeatherMap.org"
+                android:summary="Using 7Timer.com"
                 android:title="Weather Provider" >
             </ListPreference>
             <ListPreference

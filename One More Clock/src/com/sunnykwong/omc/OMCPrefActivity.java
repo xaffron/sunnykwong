@@ -253,10 +253,12 @@ public class OMCPrefActivity extends PreferenceActivity {
         	prefWeatherProvider.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
-		    		if (newValue.equals("yrno")) {
+		    		if (newValue.equals("yr")) {
 		        		preference.setSummary("Using yr.no");
 		    		} else if (newValue.equals("ig")) {
 		        		preference.setSummary("Using iGoogle Weather");
+		    		} else if (newValue.equals("7timer")) {
+		    			preference.setSummary("Using 7Timer.com");
 		    		} else {
 		    			preference.setSummary("Using OpenWeatherMap.org");
 		    		}
@@ -264,10 +266,12 @@ public class OMCPrefActivity extends PreferenceActivity {
 				}
 			});
         	String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
-    		if (sWProvider.equals("yrno")) {
+    		if (sWProvider.equals("yr")) {
     			prefWeatherProvider.setSummary("Using yr.no");
     		} else if (sWProvider.equals("ig")) {
     			prefWeatherProvider.setSummary("Using iGoogle Weather");
+    		} else if (sWProvider.equals("7timer")) {
+    			prefWeatherProvider.setSummary("Using 7Timer.com");
     		} else {
     			prefWeatherProvider.setSummary("Using OpenWeatherMap.org");
     		}

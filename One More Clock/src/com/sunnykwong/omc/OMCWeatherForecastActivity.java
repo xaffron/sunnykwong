@@ -88,8 +88,10 @@ public class OMCWeatherForecastActivity extends Activity {
 				String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
 				if (sWProvider.equals("ig")) {
 					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather updated from Google API at " + tStation.format("%R")  );
-				} else if (sWProvider.equals("yrno")) {
+				} else if (sWProvider.equals("yr")) {
 					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK."  );
+				} else if (sWProvider.equals("7timer")) {
+					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"7Timer! forecasts by Ye Quanzhi, supported by the Shanghai Astronomical Observatory, Chinese Academy of Sciences."  );
 				} else {
 					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK."  );
 				}  

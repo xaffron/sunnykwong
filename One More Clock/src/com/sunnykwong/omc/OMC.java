@@ -79,7 +79,7 @@ import android.widget.Toast;
 public class OMC extends Application { 
 	
 	static final boolean DEBUG = true;
-	static final String TESTVER = "";
+	static final String TESTVER = "Alpha 2";
 	static final boolean THEMESFROMCACHE = true;
 	static final String FALLBACKTHEME = "{ \"id\": \"Fallback\", \"name\": \"FB\", \"author\": \"\", \"date\": \"\", \"credits\": \"\", \"layers_bottomtotop\": [ { \"name\": \"T\", \"type\": \"text\", \"enabled\": true, \"text\": \"%H:%M\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 100, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 120, \"text_skew\": 0, \"text_stretch\": 1, \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 }, { \"name\": \"E\", \"type\": \"text\", \"enabled\": true, \"text\": \"! Theme Loading / No SD Card !\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 118, \"fgcolor\": \"#ffffcccc\", \"bgcolor\": \"#ff000000\", \"text_size\": 28, \"text_skew\": 0, \"text_stretch\": 0.9, \"text_align\": \"center\", \"render_style\": \"glow_3\", \"cw_rotate\": 0 }, { \"name\": \"S\", \"type\": \"text\", \"enabled\": true, \"text\": \"[%ompc_battlevel%]%% - [%weather_city%] - [%weather_temp%] - [%weather_condition%]\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 142, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 20, \"text_skew\": 0, \"text_stretch\": \"[%maxfit_1_300%]\", \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 } ] }";
 	static String THISVERSION; 
@@ -136,7 +136,7 @@ public class OMC extends Application {
 	static String WEATHERTRANSLATETYPE = "AccuWeather";
 	static String LASTKNOWNCITY, LASTKNOWNCOUNTRY;
 	static JSONObject jsonFIXEDLOCN;
-	static int UPDATEFREQ = 20000;
+	static int UPDATEFREQ = 30000;
 	static final Random RND = new Random();
 	static SharedPreferences PREFS;
 	static AlarmManager ALARMS;	// I only need one alarmmanager.
@@ -316,7 +316,7 @@ public class OMC extends Application {
         					String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
         					if (sWProvider.equals("ig")) {
             					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
-        					} else if (sWProvider.equals("yrno")) {
+        					} else if (sWProvider.equals("yr")) {
         						YrNoWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					} else if (sWProvider.equals("owm")) {
         						OpenWeatherMapJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
@@ -393,10 +393,15 @@ public class OMC extends Application {
 			OMC.STARTERPACKDLED = OMC.PREFS.getBoolean("starterpack", false);
 			OMC.SHOWHELP=OMC.PREFS.getBoolean("showhelp", true);
 		} else {
-			OMC.PREFS.edit().putBoolean("starterpack", false).commit();
 			OMC.STARTERPACKDLED = false;
-			OMC.PREFS.edit().putBoolean("showhelp", true).commit();
 			OMC.SHOWHELP=true;
+			Editor ed = OMC.PREFS.edit();
+			ed.putBoolean("showhelp", true)
+				.putBoolean("starterpack", false);
+			// Convert old yr.no default to new 7timer default, too
+			if (OMC.PREFS.getString("weatherProvider", "yrno").equals("yrno"))
+				ed.putString("weatherProvider", "7timer");
+			ed.commit();
 		}
 
 		// If paid and OMWPP installed, disable ads; otherwise, enable them
@@ -2002,7 +2007,7 @@ public class OMC extends Application {
 				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
 				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
 				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
-			} else if (sWProvider.equals("yrno")) {
+			} else if (sWProvider.equals("yr")) {
 				YrNoWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
 				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
 				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
