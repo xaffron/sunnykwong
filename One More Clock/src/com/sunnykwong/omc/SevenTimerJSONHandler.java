@@ -30,7 +30,7 @@ import android.util.Log;
 
 public class SevenTimerJSONHandler {
 
-	public static final String URL_V4CIVIL = "http://www.7timer.com/v4/bin/civil.php?output=json&unit=metric&lang=en&ac=0";
+	public static final String URL_V4CIVIL = "http://www.7timer.com/v4/bin/civil.php?output=json&tzshift=0&unit=metric&lang=en&ac=0";
 
 	public static JSONObject tempJson, jsonWeather, jsonOneDayForecast;
 	public static HashMap<String, Double> LOWTEMPS;
@@ -80,13 +80,8 @@ public class SevenTimerJSONHandler {
 					// Start building URL string.
 					String sURL = URL_V4CIVIL;
 					
-					// Check if we are in DST.
 					Time tNow = new Time();
 					tNow.setToNow();
-					if (tNow.isDst>0)
-						sURL+="&tzshift=1";
-					else
-						sURL+="&tzshift=0";
 					
 					if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
 					    System.setProperty("http.keepAlive", "false");
@@ -126,9 +121,10 @@ public class SevenTimerJSONHandler {
 						int monthDay = Integer.parseInt(sInitTime.substring(6,8));
 						int hour = Integer.parseInt(sInitTime.substring(8));
 
-						Time tInit = new Time();
+						Time tInit = new Time(Time.TIMEZONE_UTC);
 						tInit.set(0, 0, hour, monthDay, month, year);
 						tInit.normalize(false);
+						tInit.switchTimezone(Time.getCurrentTimezone());
 
 						// Next, loop over the time points and start building conditions.
 						int iSeriesLength = tempJson.getJSONArray("dataseries").length();
