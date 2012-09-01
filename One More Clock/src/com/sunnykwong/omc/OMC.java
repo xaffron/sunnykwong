@@ -123,6 +123,7 @@ public class OMC extends Application {
 	static final String OMCNAME = "com.sunnykwong.omc";
 	static String SHAREDPREFNAME;
 	static String PKGNAME;
+	static String[] VERBOSETIME;
 	static Context CONTEXT;
 	static boolean SHOWHELP = true;
 	static Uri PAIDURI;
@@ -419,7 +420,6 @@ public class OMC extends Application {
 	        	e.printStackTrace();
 	        }
 		}
-		
 		//Alarm Clock Intent - Thanks frusso for the shared code!
 		// http://stackoverflow.com/questions/3590955/intent-to-launch-the-clock-application-on-android/4281243#4281243
 	    boolean foundClockImpl = false;
@@ -484,6 +484,26 @@ public class OMC extends Application {
 				};
 
 		OMC.WORDNUMBERS = this.getResources().getStringArray(this.getResources().getIdentifier("WordNumbers", "array", OMC.PKGNAME));
+
+		//SUNNY
+		
+		OMC.VERBOSETIME = OMC.RES.getStringArray(OMC.RES.getIdentifier("verbosetime", "array", OMC.PKGNAME));
+
+		OMC.TIME.setToNow();
+		OMC.TIME.hour=0;
+		OMC.TIME.minute=0;
+		
+		Time tt = new Time();
+		tt.setToNow();
+		System.out.println("fullenglishtimetest");
+		while (OMC.TIME.monthDay == tt.monthDay) {
+			System.out.println(OMC.TIME.hour*60+OMC.TIME.minute + ":" + resolveOneToken("[%fullenglishtime_diary%]", 0, null));
+			OMC.TIME.minute++;
+			OMC.TIME.normalize(false);
+		}
+		System.out.println("fullenglishtimetest");
+		
+		//SUNNY
 
 		while (OMC.MATRIXPOOL.remainingCapacity() > 0 ) OMC.MATRIXPOOL.add(new Matrix());
 		while (OMC.PAINTPOOL.remainingCapacity() > 0 ) OMC.PAINTPOOL.add(new Paint());
@@ -1592,39 +1612,10 @@ public class OMC extends Application {
 		} else if (sToken.equals("fullenglishtime")){
 			// full english time
 			String sType = st[iTokenNum++];
-			String sTemp = "";
-			if (OMC.TIME.minute == 0) {
-				sTemp = OMC.WORDNUMBERS[OMC.TIME.hour%12] + " o'Clock.";
-			} else if (OMC.TIME.minute == 30) {
-				sTemp = "half past " + OMC.WORDNUMBERS[OMC.TIME.hour%12] + "."; 
-			} else if (OMC.TIME.minute == 15) {
-				sTemp = "A Quarter past " + OMC.WORDNUMBERS[OMC.TIME.hour%12] + "."; 
-			} else if (OMC.TIME.minute == 45) {
-				if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
-					sTemp = "A Quarter to Twelve.";
-				} else {
-					sTemp = "A Quarter to " 
-					+ OMC.WORDNUMBERS[OMC.TIME.hour%12+1] + ".";
-				}
-			} else if (OMC.TIME.minute > 30) {
-				if (OMC.TIME.hour == 11 || OMC.TIME.hour == 23) {
-					sTemp = OMC.WORDNUMBERS[60-OMC.TIME.minute] + " to Twelve.";
-				} else if (OMC.TIME.hour%12 == 0) {
-						sTemp = OMC.WORDNUMBERS[60-OMC.TIME.minute] + " to One.";
-				} else {
-					sTemp = OMC.WORDNUMBERS[60-OMC.TIME.minute] + " to " 
-					+ OMC.WORDNUMBERS[OMC.TIME.hour%12+1] + ".";
-				}
-			} else {
-				if (OMC.TIME.hour%12 == 0) {
-					sTemp = OMC.WORDNUMBERS[OMC.TIME.minute] + " past Twelve.";
-				} else {
-					sTemp = OMC.WORDNUMBERS[OMC.TIME.minute] + " past " 
-							+ OMC.WORDNUMBERS[OMC.TIME.hour%12] + ".";
-				}
-			}
+			int minuteindex = OMC.TIME.hour*60+OMC.TIME.minute;
+			String sTemp = OMC.VERBOSETIME[minuteindex];
 			if (sType.equals("diary")) result = (sTemp);
-			else if (sType.equals("upper")) result = (sTemp.toUpperCase());
+			else if (sType.equals("upper")) result = (sTemp.toUpperCase()); 
 			else if (sType.equals("lower")) result = (sTemp.toLowerCase());
 			else result = (sTemp);
 

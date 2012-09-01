@@ -211,12 +211,15 @@
         <PreferenceScreen
             android:key="Advanced"
             android:title="Troubleshooting Options" >
-	        <Preference
-	            android:enabled="false"
-	            android:key="clockPriority"
-	            android:selectable="true"
-	                  android:summary="For fine-tuning responsiveness."
-	            android:title="Clock Priority" />
+            <ListPreference
+                android:enabled="true"
+                android:entries="@array/aggressiveness_options"
+                android:entryValues="@array/aggressiveness_values"
+                android:key="clockPriority"
+                android:selectable="true"
+                android:summary="For fine-tuning responsiveness."
+                android:title="Clock Priority" >
+            </ListPreference>
 	        <Preference
 	            android:enabled="false"
 	            android:key="weatherDebug"

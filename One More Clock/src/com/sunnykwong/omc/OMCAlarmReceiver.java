@@ -21,30 +21,20 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// omctime = Time we are rendering for this tick
 		boolean bForceUpdate=false;
 		long omctime, targettime;
-		if (intent!=null) {
-			omctime = intent.getLongExtra("target", (System.currentTimeMillis() + OMC.LEASTLAGMILLIS)/OMC.UPDATEFREQ * OMC.UPDATEFREQ);
-			if (omctime < System.currentTimeMillis()) {
-				omctime = System.currentTimeMillis()/OMC.UPDATEFREQ * OMC.UPDATEFREQ;
-			}
-			targettime = omctime + OMC.UPDATEFREQ;
-			OMC.setServiceAlarm(targettime - OMC.LEASTLAGMILLIS, targettime);
-		} else {
-			omctime = (System.currentTimeMillis() + OMC.LEASTLAGMILLIS)/OMC.UPDATEFREQ * OMC.UPDATEFREQ;
-			targettime = omctime + OMC.UPDATEFREQ;
+		omctime = intent.getLongExtra("target", (System.currentTimeMillis() + OMC.LEASTLAGMILLIS)/OMC.UPDATEFREQ * OMC.UPDATEFREQ);
+		if (omctime < System.currentTimeMillis()) {
+			omctime = System.currentTimeMillis()/OMC.UPDATEFREQ * OMC.UPDATEFREQ;
 		}
+		targettime = omctime + OMC.UPDATEFREQ;
 
 		//If omctime is at the minute mark, force update.
 		if (new Date(omctime).getSeconds()==0) {
 			bForceUpdate=true;
 		}
+
+		OMC.setServiceAlarm(targettime - OMC.LEASTLAGMILLIS, targettime);
 		
 		// If we come back from a low memory state, all sorts of screwy stuff might happen.
-		// If the Intent itself is null, let's create one.
-		if (intent == null) {
-			OMC.FG=true;
-			OMC.SCREENON=true;
-			OMC.SVCSTARTINTENT.setAction(OMC.FGSTRING);
-		}
 
 		final String action = intent.getAction();
 

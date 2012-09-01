@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<string-array name="aggressiveness_options">
+    <item>Highest (Not recommended, aggressive redraws every tick)</item>	
+	<item>High (Aggressive redraws every minute, regardless of screen or launcher status)</item>
+	<item>Medium (Lazy redraws every minute when screen on, even when launcher is in background)</item>
+	<item>Low (Lazy redraws every minute when launcher inactive or screen off)</item>
+	<item>Lowest (Default, no redraws when launcher inactive or screen off)</item>
+</string-array>
+
+<string-array name="aggressiveness_values">
+	<item>5</item>
+	<item>4</item>
+	<item>3</item>
+	<item>2</item>
+	<item>1</item>
+</string-array>
+
 <string-array name="interval_options">
   <item>1 sec (Extreme Batt Use)</item>	
 	<item>10 sec (Heavy Batt Use)</item>
