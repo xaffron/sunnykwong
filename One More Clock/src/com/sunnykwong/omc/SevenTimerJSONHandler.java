@@ -95,6 +95,8 @@ public class SevenTimerJSONHandler {
 					jsonWeather.putOpt("country2", country);
 					jsonWeather.putOpt("city2", city);
 					jsonWeather.putOpt("bylatlong", bylatlong);
+					jsonWeather.putOpt("longitude_e6",longitude*1000000d);
+					jsonWeather.putOpt("latitude_e6",latitude*1000000d);
 
 					URL url=null;
 					if (!bylatlong) {
@@ -185,6 +187,16 @@ public class SevenTimerJSONHandler {
 							}
 						}
 						
+						// Build out wind/humidity conditions.
+						String humidityString = OMC.RES.getString(OMC.RES.getIdentifier("humiditycondition", "string", OMC.PKGNAME)) +
+								jsonWeather.optString("humidity_raw") + "%";
+						String windString = OMC.RES.getString(OMC.RES.getIdentifier("windcondition", "string", OMC.PKGNAME)) +
+								jsonWeather.optString("wind_direction") + " @ " +
+								jsonWeather.optString("wind_speed_mph") + " mph";
+						
+						jsonWeather.putOpt("humidity", humidityString);
+						jsonWeather.putOpt("wind_condition", windString);
+
 						// 
 						// Build out the forecast array.
 						Time day = new Time();

@@ -1977,7 +1977,7 @@ public class OMC extends Application {
     	}
     }
    
-	static public void updateWeather() {
+	static public void updateWeather(final boolean force) {
 		OMC.LASTWEATHERTRY=System.currentTimeMillis();
 		OMC.NEXTWEATHERREFRESH=OMC.LASTWEATHERTRY+Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l;
 		OMC.PREFS.edit().putLong("weather_lastweathertry", OMC.LASTWEATHERTRY)
@@ -1993,9 +1993,15 @@ public class OMC extends Application {
         	Log.i(OMC.OMCSHORT + "Weather", "No connectivity - no weather update");
 			return;
 		} else if (sWeatherSetting.equals("bylatlong")) {
-			// If weather is by latitude/longitude, request lazy location.
+			// If weather is by latitude/longitude, request lazy location (unless forced).
 			// The location listener directs control to the updateweather function upon callback.
-			GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis()-5400000l);
+			if (force) {
+				// Forced: Want current location only.
+				GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis());
+			} else{
+				// Lazy: Anything within the last 1.5 hours is ok
+				GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis()-5400000l);
+			}
 			return;
 		} else if (sWeatherSetting.equals("specific")) {
 			// If weather is for fixed location, calculate sunrise/sunset for the location, then

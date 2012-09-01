@@ -240,7 +240,7 @@ public class OMCPrefActivity extends PreferenceActivity {
         	prefUpdWeatherNow.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 				@Override
 				public boolean onPreferenceClick(Preference preference) {
-		    		OMC.updateWeather();
+		    		OMC.updateWeather(true);
 					return true;
 				}
 			});
@@ -623,7 +623,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 									break;
 								case 1: //Follow Device
 									OMC.PREFS.edit().putString("weathersetting", "bylatlong").commit();
-						    		OMC.updateWeather();
+						    		OMC.updateWeather(true);
 									break;
 								case 2: //Set Location
 									startActivityForResult(new Intent(OMCPrefActivity.this, OMCFixedLocationActivity.class), 0);

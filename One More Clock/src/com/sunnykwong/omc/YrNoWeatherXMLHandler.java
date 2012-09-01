@@ -102,6 +102,8 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 					GXhandler.jsonWeather.putOpt("country2", country);
 					GXhandler.jsonWeather.putOpt("city2", city);
 					GXhandler.jsonWeather.putOpt("bylatlong", bylatlong);
+					GXhandler.jsonWeather.putOpt("longitude_e6",longitude*1000000d);
+					GXhandler.jsonWeather.putOpt("latitude_e6",latitude*1000000d);
 					xr.setContentHandler(GXhandler);
 					xr.setErrorHandler(GXhandler);
 
