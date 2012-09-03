@@ -8,16 +8,17 @@
 
     <TextView
         android:id="@+id/dividerTop"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-    	android:background="@drawable/gradient_selector"
-        android:minHeight="95dp"
-        android:maxHeight="95dp"/>
-    
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/gradient_selector"
+        android:maxHeight="95dp"
+        android:minHeight="95dp" />
+
     <ImageView
         android:id="@+id/ConditionImage"
+        android:contentDescription="@string/themePreview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -42,7 +43,7 @@
         android:paddingTop="10dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="--"
+        android:text="@string/doubleDash"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="42dp" />
 
@@ -58,10 +59,10 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:paddingTop="5dp"
-        android:text="Unknown"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
+        android:text="@string/unknown"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="24dp" />
 
     <TextView
@@ -73,20 +74,20 @@
         android:gravity="bottom|right"
         android:paddingBottom="15dp"
         android:paddingRight="5dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="Unknown"
+        android:text="@string/unknown"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="10dp" />
 
     <TextView
         android:id="@+id/divider0"
-        android:layout_below="@+id/CurrTemp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-    	android:background="@drawable/gradient_selector"
-        android:minHeight="70dp"
-        android:maxHeight="70dp"/>
+        android:layout_below="@+id/CurrTemp"
+        android:background="@drawable/gradient_selector"
+        android:maxHeight="70dp"
+        android:minHeight="70dp" />
 
     <TextView
         android:id="@+id/dayofweek0"
@@ -100,12 +101,13 @@
         android:padding="7dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="--"
+        android:text="@string/doubleDash"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="24dp" />
 
     <ImageView
         android:id="@+id/ConditionImage0"
+        android:contentDescription="@string/themePreview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/dayofweek0"
@@ -129,7 +131,7 @@
         android:padding="10dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="Unknown"
+        android:text="@string/unknown"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="16dp" />
 
@@ -146,7 +148,7 @@
         android:padding="5dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="--"
+        android:text="@string/doubleDash"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="18dp" />
 
@@ -162,19 +164,19 @@
         android:padding="5dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="--"
+        android:text="@string/doubleDash"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="18dp" />
 
     <TextView
         android:id="@+id/divider1"
-        android:layout_below="@+id/dayofweek0"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-    	android:background="@drawable/gradient_selector"
-        android:minHeight="70dp"
-        android:maxHeight="70dp"/>
-    
+        android:layout_below="@+id/dayofweek0"
+        android:background="@drawable/gradient_selector"
+        android:maxHeight="70dp"
+        android:minHeight="70dp" />
+
     <TextView
         android:id="@+id/dayofweek1"
         android:layout_width="wrap_content"
@@ -187,12 +189,13 @@
         android:padding="7dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="--"
+        android:text="@string/doubleDash"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="24dp" />
 
     <ImageView
         android:id="@+id/ConditionImage1"
+        android:contentDescription="@string/themePreview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/dayofweek1"
@@ -216,7 +219,7 @@
         android:padding="10dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="Unknown"
+        android:text="@string/unknown"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="16dp" />
 
@@ -233,7 +236,7 @@
         android:padding="5dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="--"
+        android:text="@string/doubleDash"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="18dp" />
 
@@ -249,19 +252,19 @@
         android:padding="5dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="--"
+        android:text="@string/doubleDash"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="18dp" />
 
     <TextView
         android:id="@+id/divider2"
-        android:layout_below="@+id/dayofweek1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-    	android:background="@drawable/gradient_selector"
-        android:minHeight="70dp"
-        android:maxHeight="70dp"/>
-    
+        android:layout_below="@+id/dayofweek1"
+        android:background="@drawable/gradient_selector"
+        android:maxHeight="70dp"
+        android:minHeight="70dp" />
+
     <TextView
         android:id="@+id/dayofweek2"
         android:layout_width="wrap_content"
@@ -274,12 +277,13 @@
         android:padding="7dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="--"
+        android:text="@string/doubleDash"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="24dp" />
 
     <ImageView
         android:id="@+id/ConditionImage2"
+        android:contentDescription="@string/themePreview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/dayofweek2"
@@ -303,7 +307,7 @@
         android:padding="10dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="Unknown"
+        android:text="@string/unknown"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="16dp" />
 
@@ -320,7 +324,7 @@
         android:padding="5dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="--"
+        android:text="@string/doubleDash"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="18dp" />
 
@@ -336,19 +340,19 @@
         android:padding="5dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="--"
+        android:text="@string/doubleDash"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="18dp" />
 
     <TextView
         android:id="@+id/divider3"
-        android:layout_below="@+id/dayofweek2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-    	android:background="@drawable/gradient_selector"
-        android:minHeight="70dp"
-        android:maxHeight="70dp"/>
-    
+        android:layout_below="@+id/dayofweek2"
+        android:background="@drawable/gradient_selector"
+        android:maxHeight="70dp"
+        android:minHeight="70dp" />
+
     <TextView
         android:id="@+id/dayofweek3"
         android:layout_width="wrap_content"
@@ -361,12 +365,13 @@
         android:padding="7dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="--"
+        android:text="@string/doubleDash"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="24dp" />
 
     <ImageView
         android:id="@+id/ConditionImage3"
+        android:contentDescription="@string/themePreview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/dayofweek3"
@@ -390,7 +395,7 @@
         android:padding="10dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="Unknown"
+        android:text="@string/unknown"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="16dp" />
 
@@ -407,7 +412,7 @@
         android:padding="5dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="--"
+        android:text="@string/doubleDash"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="18dp" />
 
@@ -423,20 +428,19 @@
         android:padding="5dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:text="--"
+        android:text="@string/doubleDash"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="18dp" />
 
-
     <TextView
         android:id="@+id/divider4"
-        android:layout_below="@+id/dayofweek3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-    	android:background="@drawable/gradient_selector"
-        android:minHeight="70dp"
-        android:maxHeight="70dp"/>
-    
+        android:layout_below="@+id/dayofweek3"
+        android:background="@drawable/gradient_selector"
+        android:maxHeight="70dp"
+        android:minHeight="70dp" />
+
     <TextView
         android:id="@+id/LastUpdate"
         android:layout_width="wrap_content"
@@ -444,11 +448,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/dayofweek3"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Unknown"
-        android:textSize="10dp"
+        android:gravity="bottom|right"
         android:padding="5dp"
-         android:gravity="bottom|right"/>
+        android:text="@string/unknown"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="10dp" />
 
     <TextView
         android:id="@+id/AccuLink"
@@ -457,13 +461,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/LastUpdate"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Unknown"
-        android:textSize="16dp"
-        android:textColor="#FF79C3D4"
+        android:gravity="bottom|center"
+        android:padding="5dp"
         android:shadowColor="#FF000000"
         android:shadowRadius="5"
-        android:padding="5dp"
-        android:gravity="bottom|center"/>
+        android:text="@string/unknown"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FF79C3D4"
+        android:textSize="16dp" />
 
 </RelativeLayout>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <!-- General Buttons -->
+        <string name="nextTip">Next Tip</string>
+        <string name="ok">OK</string>
+        <string name="search">Search</string>
+        
+        <!-- Theme Picker Legend -->
+        <string name="batteryLegend">Shows Battery Charge</string>
+        <string name="weatherLegend">Shows Weather</string>
+        <string name="bkimageLegend">Includes Background Image</string>
+        <string name="ltbgLegend">Good on Light Backgrounds</string>
+        <string name="dkbgLegend">Good on Dark Backgrounds</string>
+        <string name="tweakLegend">Clock is User-Tweaked</string>
+        
+        <!-- Theme Skinner Tool (deprecated) -->
+        <string name="reloadThemeCatalog">Reload Theme Catalog</string>
+
+        <!-- Theme Import/Unzip -->
+        <string name="beginningDownload">Beginning download.</string>
+        
+        <!-- Forecast Screen -->
+        <string name="doubleDash">--</string>
+        <string name="unknown">Unknown</string>
+        
+        <!-- Clock Preferences -->
+    
+        <string name="useFulTip">Useful Tip</string>
+        <string name="doNotShowAgain">Do Not Show Again.</string>
+        
+    
+        <string name="forThisClock">FOR THIS CLOCK</string>
+        <string name="widgetTheme">Widget Theme</string>
+        <string name="themePreview">Theme Preview</string>
+        <string name="legend">Legend</string>
+        <string name="selected"> selcted.</string>
+        <string name="personalizeClock">Personalize Clock</string>
+        <string name="tweakColorsAndLayers">Tweak Colors and Layers.</string>
+        <string name="forAllClocks">FOR ALL CLOCKS</string>
+        <string name="weatherAndWidgetOptions">Weather Display Options</string>
+        <string name="clearRenderCaches">Clear Render Caches</string>
+        <string name="chachesCleared">Caches Cleared</string>
+        
+        <string name="troubleshootingOptions">Troubleshooting Options</string>
+        
+        <string name="credits">Credits</string>
+        <string name="contactXaffron">Contact Xaffron</string>
+        <string name="donateOrContact">Donate or Contact author for help.</string>
+        <string name="version">Version</string>
+        <string name="free">Free</string>
+        <string name="tapToGetFull">Tap me to get the full version!</string>
+        <string name="viewCredits">View Credits</string>
+        
+        <!-- Widget Theme -->
+        
+        <string name="widgetThemeTitle">Swipe to Pick; Tap &amp; hold for Options</string>
+        <string name="reextractBundledClocks">Re-Extract Bundled Clocks</string>
+        <string name="downloadAllClocks">Download All Clocks(7MB)</string>
+        
+        <!-- Widget Theme Long Press-->
+        
+        <string name="emailOrDeleteTheme">Email or Delete Theme</string>
+        <string name="emailTheme">Email Theme</string>
+        <string name="deleteTheme">Delete Theme</string>
+        <string name="submitThemeToDev">Submit Theme to Dev</string>
+        
+        <!-- Personalize Clock-->
+        
+        <string name="selectALayerForTweaking">Select a Layer for Tweaking</string>
+        <string name="tweakerDirections">Drag: Move    Menu: Tweak    Back: Cancel</string>
+        <string name="dayNightImage">Day-Night Image</string>
+        
+        <!-- Personalize Clock Menu-->
+        
+        <string name="toggleVisibility">Toggle Visibility</string>
+        <string name="color1">Color 1</string>
+        <string name="color2">Color 2</string>
+        
+        <!-- Personalize Clock Back-->
+        
+        <string name="keepChanges">Keep Changes?</string>
+        <string name="abandon">Abandon</string>
+        <string name="apply">Apply</string>
+        
+        <!-- Personalize Clock Back-->
+        
+        <string name="assignTapToLaunch">Assign Tap-to-Launch</string>
+        <string name="nwCornerReserved">NW corner reserved for prefs screen.</string>
+        <string name="use24HourClock">Use 24 Hour Clock</string>
+        <string name="showInstead">Show 23:59 instead of 11:59pm.</string>
+        <string name="showLeadingZero">Show Leading Zero</string>
+        <string name="showInstead2">Show 04:23 instead of 4:23</string>
+        <string name="changeTimeZone">Change Time Zone</string>
+        <string name="followingDeviceTimeZone">(Following Device Time Zone)</string>
+        
+        <!-- Weather & Widget Options-->
+        
+        <string name="refreshWeatherNow">Refresh Weather Now</string>
+        
+        <string name="location">Location:</string>
+        <string name="experimentalFeature">Experimental Feature Try at own risk!</string>
+        <string name="disabled">Disabled</string>
+        <string name="followDevice">Follow Device(default)</string>
+        <string name="setFixedLocation">Set Fixed Location</string>
+        <string name="enterCityAndStateCountry">Enter city state/country</string>
+        <string name="locationExamples">E.g. London UK</string>
+        
+        
+        <string name="lastTry">Last try:</string>
+        <string name="nextRefresh">Next Refresh:</string>
+        
+        <string name="weatherProvider">Weather Provider</string>
+        <string name="using">Using</string>
+        <string name="yrno">yr.no</string>
+        <string name="iGoogleWather">iGoogle Weather</string>
+        
+        <string name="weatherDisplayUnits">Weather Display Units</string>
+        <string name="fahrenheit">Fahrenheit</string>
+        <string name="celsius">Celsius</string>
+        <string name="useFahrenheit">Use Fahrenheit(Default)</string>
+        <string name="useCelsius">Use Celsius</string>
+        
+        <string name="clockUpdateInterval">Clock Update Interval</string>
+        <string name="redrawEvery">Redraw every</string>
+        <string name="seconds">seconds.</string>
+        <string name="r10sec">10 sec (Heavy Batt Use)</string>
+        <string name="r15sec">15 sec</string>
+        <string name="r20sec">20 sec</string>
+        <string name="r30sec">30 sec (Default)</string>
+        <string name="r60sec">60 sec (Light Batt Use)</string>
+        
+        
+        <string name="weatherUpdateInterval">Weather Update Interval</string>
+        <string name="refreshWeatherEvery">Refresh weather every</string>
+        <string name="hour">hour.</string>
+        <string name="hours">hours.</string>
+        <string name="everyHour">Every Hour(default)</string>
+        <string name="every4">Every 4 Hrs</string>
+        <string name="every8">Every 8 Hrs</string>
+        <string name="never">Never (Manual Only)</string>
+        
+        <string name="setForegroundMode">Set Foreground Mode</string>
+        <string name="keepOMCfromSleeping">Keep OMC from sleeping.</string>
+        <string name="atTheCostOf">(at the cost of a persistent notification)</string>
+        
+        <string name="forceEnglishDates">Force English Dates</string>
+        <string name="uncheckForSome">Uncheck for some non-English locales.(Experimental)</string>
+        
+        <string name="toggleWidgetSizes">Toggle Widget Sizes</string>
+        <string name="areThereOtherWidgetSizes">Are there other widget sizes?</string>
+        <string name="actuallyThePaid">Actually, the paid version offers widget sizes of 5x4//5x2//5x1, 4x4//4x2/4x1,3x3//3x1, 2x2//2x1 and 1x3.
+        \nPlease consider upgrading to get these sizes!</string>
+        <string name="takeMeToPaidVersion">Take me to the paid version!</string>
+        
+        <string name="reboorRequired">Reboot Required</string>
+        <string name="changesToTheseSettings">Changes to these setting will require a reboot of your phone to take effect.</string>
+        <string name="enable">Enable</string>
+        <string name="widget">Widget</string>
+        <string name="forGalaxyNote">For Galaxy Note or Similar.</string>
+        <string name="enableThemeTester">Enable Theme Tester</string>
+        <string name="developmentToolForSkinnersOnly">Development tool for skinners only.</string>
+        
+        <!-- Troubleshooting Options-->
+        
+        <string name="clockPriority">Clock Priority</string>
+        <string name="forFineTuning">For fine-tuning responsiveness.</string>
+        <string name="weatherDiagnostics">Weather Diagnostics</string>
+        <string name="forFixingLocation">For fixing location//weather problems.</string>
+        
+        <string name="deleteAllThemes">Delete All Themes</string>
+        <string name="forFixingThemeSelection">For fixing theme selection app crashes.</string>
+        <string name="deleteAllThemesFromSD">Delete all Themes from your SD Card/Memory?</string>
+        <string name="yesDelete">Yes, delete all</string>
+        <string name="yesRestore">Yes, restore defaults</string>
+        <string name="no">No</string>
+        
+        <!-- Contact Xaffron-->
+        
+        <string name="email">Email</string>
+        <string name="donate">Donate</string>
+        <string name="Facebook">Facebook</string>
+        
+        <!-- Credits-->
+        
+        <string name="team">TEAM</string>
+        <string name="programmer">Programmer</string>
+        <string name="sunny">Sunny Kwong</string>
+        <string name="Testers">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
+        <string name="specialThanks">Zehro for leading the way
+        \nre: in-sync clock widgets w//o notifications.
+        \nStefan Pledl for helping with the localization</string>
+        <string name="copyrights">COPYRIGHTS AND LICENSES</string>
+        <string name="applicationIcon">Application Icon: Signpost by Maroubal2</string>
+        <string name="adaptedFrom">Adapted from Maroubal2\'s excellent photo-turned-Ubuntu wallpaper.
+        \nCC BY-SA 2.0
+        \nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
+        <string name="codeColorPickerDialog">Code: ColorPickerDialog</string>
+        <string name="copiedFromCM">Copied from CyanogenMod source repo.</string>
+        <string name="codeSVG">Code: svg-android</string>
+        <string name="svgSupport">SVG support provided by sag-android library (Apache License).
+        \nhttp:////code.google.com//p//svg-android//</string>
+        <string name="font">Font: Weatherfont</string>
+        <string name="weatherfontIs">Weatherfont is fully licensed from Jonathan Macagba, available for $5 USD from jonathan.
+        \nmacagba/@gmail.com</string>
+        <string name="sourceCode">Source Code Available at
+        \nhttp:////code.google.com//p//sunnykwong//</string>
+        
+        
+    </resources>

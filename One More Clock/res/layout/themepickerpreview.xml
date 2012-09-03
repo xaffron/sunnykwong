@@ -14,7 +14,7 @@
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="2"
-        android:text="Theme Name"
+        android:text=""
         android:textColor="#ffffffff"
         android:textSize="30dp" />
 
@@ -30,6 +30,7 @@
 
     <ImageView
         android:id="@+id/ThemePreview"
+        android:contentDescription="@string/themePreview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/ThemePreview"
@@ -40,6 +41,7 @@
 
         <ImageView
             android:id="@+id/LikeFlag"
+        	android:contentDescription="@string/legend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignRight="@id/ThemePreview"
@@ -51,7 +53,7 @@
             android:id="@+id/tags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/ThemePreview"
+        	android:layout_alignLeft="@id/ThemePreview"
             android:layout_alignParentTop="true"
 		>
         </LinearLayout>
@@ -68,7 +70,7 @@
         android:minHeight="80dp"
         android:minWidth="280dp"
         android:paddingTop="11dp"
-        android:text="Theme Credits"
+        android:text=""
         android:textColor="#ffffffff"
         android:textSize="6dp" />
 

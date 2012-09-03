@@ -12,26 +12,16 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:padding="10dp"
-            android:text="Enter city and state/country"
+            android:text="@string/enterCityAndStateCountry"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/ExampleCity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/EnterCity"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:text="E.g.: &apos;London UK&apos; or &apos;Boston MA&apos;" />
 
         <EditText
             android:id="@+id/SearchBox"
+            android:hint="@string/locationExamples"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/ExampleCity"
+            android:layout_below="@+id/EnterCity"
             android:layout_margin="10dp"
             android:layout_toLeftOf="@+id/SearchButton" />
 
@@ -42,7 +32,7 @@
             android:layout_alignBaseline="@+id/SearchBox"
             android:layout_alignBottom="@+id/SearchBox"
             android:layout_alignParentRight="true"
-            android:text="Search" />
+            android:text="@string/search" />
 
         <ScrollView
             android:id="@+id/scrollView1"

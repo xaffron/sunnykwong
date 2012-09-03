@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/PickerTopLevel"
-        android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/PickerTopLevel"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fadingEdge="horizontal"
+    android:orientation="vertical" >
+
+    <Gallery
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:fadingEdge="horizontal" android:orientation="vertical">
-        <Gallery xmlns:android="http://schemas.android.com/apk/res/android" android:layout_alignParentTop="true"
-                android:id="@+id/gallery" android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:spacing="5dp" android:unselectedAlpha="0.5">
-        </Gallery>
-<LinearLayout android:layout_alignParentBottom="true" android:id="@+id/LinearLayout02" android:layout_height="wrap_content" android:layout_width="fill_parent">
-<Button android:id="@+id/btnReload" android:layout_width="160dp" android:layout_height="wrap_content" android:text="Re-Extract Bundled Clocks"></Button>
-<Button android:id="@+id/btnMore" android:layout_width="160dp" android:layout_height="wrap_content" android:text="Download All Clocks(7MB)"></Button>
-</LinearLayout>
+        android:id="@+id/gallery"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:spacing="5dp"
+        android:unselectedAlpha="0.5" >
+    </Gallery>
 
+    <LinearLayout
+        android:id="@+id/LinearLayout02"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
 
+        <Button
+            android:id="@+id/btnReload"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="@string/reextractBundledClocks" >
+        </Button>
+
+        <Button
+            android:id="@+id/btnMore"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="@string/downloadAllClocks" >
+        </Button>
+    </LinearLayout>
 
 </RelativeLayout>

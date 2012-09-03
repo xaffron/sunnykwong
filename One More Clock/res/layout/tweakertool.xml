@@ -1,69 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_height="wrap_content" android:orientation="vertical"
-	android:layout_margin="0dp" android:layout_width="fill_parent">
-	<TextView android:layout_height="wrap_content"
-		android:textColor="#FFFFFFFF" android:background="#FF888888"
-		android:layout_width="fill_parent" android:gravity="center"
-		android:id="@+id/TextView02" android:text="Select a Layer for Tweaking"
-		android:layout_margin="0dp"></TextView>
-	<Spinner android:layout_width="fill_parent" android:id="@+id/tweakerlayerspinner"
-		android:layout_margin="0dp" android:layout_height="40dp"
-		android:textColor="#FFFFFFFF" android:background="#FF444444"
-		android:padding="0dp"></Spinner>
-	<TextView android:id="@+id/TextView01" android:layout_height="wrap_content"
-		android:textColor="#FFFFFFFF" android:background="#FF888888"
-		android:layout_width="fill_parent" android:gravity="center"
-		android:layout_margin="0dp" android:text="Drag: Move    Menu: Tweak    Back: Cancel"></TextView>
-	<AbsoluteLayout android:id="@+id/toplevel"
-		android:layout_width="fill_parent" android:layout_height="fill_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    android:orientation="vertical" >
 
-		<ImageView
-		    android:id="@+id/tweakerbkgd"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_x="0dp"
-		    android:layout_y="0dp"
-		    android:adjustViewBounds="true"
-		    android:background="@drawable/gray_squares_narrow"
-		    android:scaleType="center" >
-</ImageView>
-
-		<ImageView
-		    android:id="@+id/tweakerpreview"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_x="0dp"
-		    android:layout_y="0dp"
-		    android:adjustViewBounds="true"
-		    android:scaleType="center" >
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:background="#FF888888"
+        android:gravity="center"
+        android:text="@string/selectALayerForTweaking"
+        android:textColor="#FFFFFFFF" >
+    </TextView>
 
-</ImageView>
+    <Spinner
+        android:id="@+id/tweakerlayerspinner"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_margin="0dp"
+        android:background="#FF444444"
+        android:padding="0dp"
+        android:textColor="#FFFFFFFF" >
+    </Spinner>
 
-		<ImageView
-		    android:id="@+id/tweakerbounds"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_x="0dp"
-		    android:layout_y="0dp"
-		    android:adjustViewBounds="true"
-		    android:scaleType="center" >
-</ImageView>
-
-		<ImageView
-		    android:id="@+id/tweakerdragpreview"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_gravity="center"
-		    android:layout_x="0dp"
-		    android:layout_y="0dp"
-		    android:adjustViewBounds="true"
-		    android:scaleType="center" >
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:background="#FF888888"
+        android:gravity="center"
+        android:text="@string/TweakerDirections"
+        android:textColor="#FFFFFFFF" >
+    </TextView>
 
-</ImageView>
+    <AbsoluteLayout
+        android:id="@+id/toplevel"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-	</AbsoluteLayout>
+        <ImageView
+            android:id="@+id/tweakerbkgd"
+            android:contentDescription="@string/themePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="0dp"
+            android:layout_y="0dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/gray_squares_narrow"
+            android:scaleType="center" >
+        </ImageView>
 
+        <ImageView
+            android:id="@+id/tweakerpreview"
+            android:contentDescription="@string/themePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="0dp"
+            android:layout_y="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="center" >
+        </ImageView>
 
+        <ImageView
+            android:id="@+id/tweakerbounds"
+            android:contentDescription="@string/themePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="0dp"
+            android:layout_y="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="center" >
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/tweakerdragpreview"
+            android:contentDescription="@string/themePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_x="0dp"
+            android:layout_y="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="center" >
+        </ImageView>
+    </AbsoluteLayout>
 
 </LinearLayout>
