@@ -506,11 +506,13 @@ public class OMCThemePickerActivity extends Activity {
         		setResult(Activity.RESULT_OK, it);
 
            		JSONObject newTheme = OMC.getTheme(OMCThemePickerActivity.this, sThemeName, false);
-               	Toast.makeText(OMCThemePickerActivity.this, newTheme.optString("name") + " selected.", Toast.LENGTH_SHORT).show();
+               	Toast.makeText(OMCThemePickerActivity.this, newTheme.optString("name") + OMC.RES.getString(R.string.selected), Toast.LENGTH_SHORT).show();
                 	
             	OMC.PREFS.edit()
             	.putString("widgetTheme"+iAppWidgetID, OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()))
             	.putString("widgetTheme", OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()))
+            	.putString("widgetThemeLong"+iAppWidgetID, newTheme.optString("name"))
+            	.putString("widgetThemeLong", newTheme.optString("name"))
         		.commit();
 
                	// Clear the cache for a clean slate

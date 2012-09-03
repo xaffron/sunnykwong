@@ -33,7 +33,7 @@
         android:layout_margin="0dp"
         android:background="#FF888888"
         android:gravity="center"
-        android:text="@string/TweakerDirections"
+        android:text="@string/tweakerDirections"
         android:textColor="#FFFFFFFF" >
     </TextView>
 

@@ -92,6 +92,7 @@ public class OMC extends Application {
 	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v134.omc";
 	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v134.omc";
 	static final String DEFAULTTHEME = "IceLock";
+	static final String DEFAULTTHEMELONG = "Ice Lock";
 	static final String APPICON = "clockicon";
 	
 	static final String[] FULLWEEKDAYS = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
@@ -164,6 +165,8 @@ public class OMC extends Application {
 
 	static boolean STARTERPACKDLED = false;
 
+	static Location LASTKNOWNLOCN = null;
+	
 	static final int WIDGETWIDTH=480;
 	static final int WIDGETHEIGHT=480;
 	static final String[] COMPASSPOINTS = {"NW","N","NE","W","C","E","SW","S","SE"};
@@ -309,6 +312,7 @@ public class OMC extends Application {
             public void onLocationChanged(final Location location) {
             	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Using Locn: " + location.getLongitude() + " + " + location.getLatitude());
             	OMC.LM.removeUpdates(OMC.LL); 
+            	OMC.LASTKNOWNLOCN=new Location(location);
         		Thread t = new Thread() {
         			public void run() {
         				OMC.calculateSunriseSunset(location.getLatitude(), location.getLongitude());
@@ -703,6 +707,7 @@ public class OMC extends Application {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Committing prefs for widget " + aWI);
 		final Editor e = OMC.PREFS.edit();
 		e.putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME))
+		.putString("widgetThemeLong"+aWI, OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
 		.putBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero", true))
 		.putString("sTimeZone"+aWI, OMC.PREFS.getString("sTimeZone", "default"));
@@ -717,6 +722,7 @@ public class OMC extends Application {
 		// For new clocks... just like setPrefs but leaves the URI empty.
 		final Editor e = OMC.PREFS.edit();
 		e.putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)))
+		.putString("widgetThemeLong"+aWI, OMC.PREFS.getString("widgetThemeLong"+aWI, OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG)))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true)))
 		.putBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero", true)))
 		.putString("sTimeZone"+aWI, OMC.PREFS.getString("sTimeZone"+aWI, "default"));
@@ -730,6 +736,7 @@ public class OMC extends Application {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Retrieving prefs for widget " + aWI);
 		final Editor e = OMC.PREFS.edit();
 		e.putString("widgetTheme", OMC.PREFS.getString("widgetTheme"+aWI, OMC.DEFAULTTHEME))
+		.putString("widgetThemeLong", OMC.PREFS.getString("widgetThemeLong"+aWI, OMC.DEFAULTTHEMELONG))
 		.putBoolean("widget24HrClock", OMC.PREFS.getBoolean("widget24HrClock"+aWI, true))
 		.putBoolean("widgetLeadingZero", OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, true))
 		.putString("URI", OMC.PREFS.getString("URI"+aWI, ""))
@@ -743,7 +750,8 @@ public class OMC extends Application {
 	public static void removePrefs(int aWI) {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Deleting prefs for widget " + aWI);
 		final Editor e = OMC.PREFS.edit();
-		e.remove("widgetTheme"+aWI) 
+		e.remove("widgetTheme"+aWI)
+			.remove("widgetThemeLong"+aWI)
 			.remove("widget24HrClock"+aWI)
 			.remove("widgetLeadingZero"+aWI)
 			.remove("URI"+aWI)

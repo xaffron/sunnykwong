@@ -5,6 +5,11 @@
         <string name="ok">OK</string>
         <string name="search">Search</string>
         
+        <!-- Bailout App Dialog -->
+        <string name="thanksForDownloading">Thanks for downloading!</string>
+        <string name="widgetDir1">To begin, hit the back button to go back to the home screen, then access the \'Widgets\' list to see\u0020</string>
+        <string name="widgetDir2">\u0020listed.  Have fun!</string>
+        
         <!-- Theme Picker Legend -->
         <string name="batteryLegend">Shows Battery Charge</string>
         <string name="weatherLegend">Shows Weather</string>
@@ -25,21 +30,36 @@
         
         <!-- Clock Preferences -->
     
-        <string name="useFulTip">Useful Tip</string>
+        <string name="usefulTip">Useful Tip</string>
         <string name="doNotShowAgain">Do Not Show Again.</string>
-        
     
-        <string name="forThisClock">FOR THIS CLOCK</string>
+        <string name="forThisClock">For this clock:</string>
         <string name="widgetTheme">Widget Theme</string>
         <string name="themePreview">Theme Preview</string>
         <string name="legend">Legend</string>
-        <string name="selected"> selcted.</string>
+        <string name="selected">\u0020selected.</string>
         <string name="personalizeClock">Personalize Clock</string>
         <string name="tweakColorsAndLayers">Tweak Colors and Layers.</string>
-        <string name="forAllClocks">FOR ALL CLOCKS</string>
-        <string name="weatherAndWidgetOptions">Weather Display Options</string>
+
+        <!-- Tap & Display Options --> 
+
+        <string name="tapAndDisplayOptions">Tap &amp; Display Options</string>
+        <string name="assignTapToLaunch">Assign Tap-to-Launch</string>
+        <string name="nwCornerReserved">NW corner reserved for prefs screen.</string>
+        <string name="use24HourClock">Use 24 Hour Clock</string>
+        <string name="use24HourTrue">23:59</string>
+        <string name="use24HourFalse">11:59pm</string>
+        <string name="showLeadingZero">Show Leading Zero</string>
+        <string name="showLeadingZTrue">04:23</string>
+        <string name="showLeadingZFalse">4:23</string>
+        <string name="changeTimeZone">Change Time Zone</string>
+        <string name="followingDeviceTimeZone">(Following Device Time Zone)</string>
+        
+        <!-- Weather & Widget Options -->
+        <string name="forAllClocks">For all clocks:</string>
+        <string name="weatherAndWidgetOptions">Weather &amp; Widget Options</string>
         <string name="clearRenderCaches">Clear Render Caches</string>
-        <string name="chachesCleared">Caches Cleared</string>
+        <string name="cachesCleared">Caches Cleared</string>
         
         <string name="troubleshootingOptions">Troubleshooting Options</string>
         
@@ -81,17 +101,6 @@
         <string name="keepChanges">Keep Changes?</string>
         <string name="abandon">Abandon</string>
         <string name="apply">Apply</string>
-        
-        <!-- Personalize Clock Back-->
-        
-        <string name="assignTapToLaunch">Assign Tap-to-Launch</string>
-        <string name="nwCornerReserved">NW corner reserved for prefs screen.</string>
-        <string name="use24HourClock">Use 24 Hour Clock</string>
-        <string name="showInstead">Show 23:59 instead of 11:59pm.</string>
-        <string name="showLeadingZero">Show Leading Zero</string>
-        <string name="showInstead2">Show 04:23 instead of 4:23</string>
-        <string name="changeTimeZone">Change Time Zone</string>
-        <string name="followingDeviceTimeZone">(Following Device Time Zone)</string>
         
         <!-- Weather & Widget Options-->
         
@@ -165,7 +174,7 @@
         <string name="clockPriority">Clock Priority</string>
         <string name="forFineTuning">For fine-tuning responsiveness.</string>
         <string name="weatherDiagnostics">Weather Diagnostics</string>
-        <string name="forFixingLocation">For fixing location//weather problems.</string>
+        <string name="submitLocationWeatherDebugData">Submit location/weather debug data.</string>
         
         <string name="deleteAllThemes">Delete All Themes</string>
         <string name="forFixingThemeSelection">For fixing theme selection app crashes.</string>

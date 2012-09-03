@@ -218,19 +218,57 @@ public class OMCPrefActivity extends PreferenceActivity {
         	prefloadThemeFile.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
-		        	prefloadThemeFile.setSummary(newValue+ " selected.");
+		        	prefloadThemeFile.setSummary(newValue+ OMC.RES.getString(R.string.selected));
 					return true;
 				}
 			});
-        	prefloadThemeFile.setSummary(OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)+ " selected.");
+        	prefloadThemeFile.setSummary(OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG)+ OMC.RES.getString(R.string.selected));
         	
     		// "Personalize Clock".
         	preftweakTheme = findPreference("tweakTheme");
         	
+        	// "Use 24 Hour Clock".
+        	findPreference("widget24HrClock").setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+					if ((Boolean)newValue==true) {
+						preference.setSummary(OMC.RES.getString(R.string.use24HourTrue));
+					} else {
+						preference.setSummary(OMC.RES.getString(R.string.use24HourFalse));
+					}
+					return true;
+				}
+			});
+			if (OMC.PREFS.getBoolean("widget24HrClock", true)) {
+	        	findPreference("widget24HrClock").setSummary(OMC.RES.getString(R.string.use24HourTrue));
+			} else {
+	        	findPreference("widget24HrClock").setSummary(OMC.RES.getString(R.string.use24HourFalse));
+			}
+        	
+        	// "Show Leading Zero".
+        	findPreference("widgetLeadingZero").setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+					if ((Boolean)newValue==true) {
+						preference.setSummary(OMC.RES.getString(R.string.showLeadingZTrue));
+					} else {
+						preference.setSummary(OMC.RES.getString(R.string.showLeadingZFalse));
+					}
+					return true;
+				}
+			});
+			if (OMC.PREFS.getBoolean("widgetLeadingZero", true)) {
+	        	findPreference("widgetLeadingZero").setSummary(OMC.RES.getString(R.string.showLeadingZTrue));
+			} else {
+	        	findPreference("widgetLeadingZero").setSummary(OMC.RES.getString(R.string.showLeadingZFalse));
+			}
+        	
         	// "Change Time Zone".
         	prefTimeZone = findPreference("timeZone");
         	if (OMC.PREFS.getString("sTimeZone", "default").equals("default")) {
-        		findPreference("timeZone").setSummary("(Following Device Time Zone)");
+        		findPreference("timeZone").setSummary(OMC.RES.getString(R.string.followingDeviceTimeZone));
     		} else {
     			findPreference("timeZone").setSummary(OMC.PREFS.getString("sTimeZone", "default"));
     		}
@@ -383,6 +421,37 @@ public class OMCPrefActivity extends PreferenceActivity {
         	// "Clear Render Caches".
         	prefclearCache = findPreference("clearCache");
 
+        	// "Weather Diagnostics".
+        	Preference prefWeatherDiag = findPreference("weatherDebug");
+        	prefWeatherDiag.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+				
+				@Override
+				public boolean onPreferenceClick(Preference preference) {
+					try {
+					// Build weather debug data.
+					String sBody = "";
+					sBody+="Location:\n";
+					sBody+="Lat: " + OMC.LASTKNOWNLOCN.getLatitude()+ "\n";
+					sBody+="Lon: " + OMC.LASTKNOWNLOCN.getLongitude()+ "\n";
+					sBody+="Reverse Geocode:\n";
+					sBody+=GoogleReverseGeocodeService.updateLocation(OMC.LASTKNOWNLOCN)+"\n";
+					sBody+="WeatherProvider: " + OMC.PREFS.getString("weatherProvider", "NONE")+ "\n";
+					sBody+="Weather:\n";
+					sBody+=OMC.PREFS.getString("weather", "Weather JSON Missing!")+"\n";
+					Intent it = new Intent(android.content.Intent.ACTION_SEND)
+		   					.setType("plain/text")
+		   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@sunnykwong.com"})
+		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME + " WeatherDebug v" + OMC.THISVERSION)
+							.putExtra(android.content.Intent.EXTRA_TEXT, sBody);
+					startActivity(Intent.createChooser(it, "Contact Xaffron for issues, help & support."));  
+					finish();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					return true;
+				}
+			});
+        	
         	// "Contact Xaffron".
         	prefemailMe = findPreference("emailMe");
 
@@ -519,7 +588,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 				});;
 				
 				mAD = new AlertDialog.Builder(this)
-				.setTitle("Useful Tip")
+				.setTitle(OMC.RES.getString(OMC.RES.getIdentifier("usefulTip", "string", OMC.PKGNAME)))
 			    .setCancelable(true)
 			    .setView(ll)
 			    .setOnKeyListener(new OnKeyListener() {
@@ -530,13 +599,13 @@ public class OMCPrefActivity extends PreferenceActivity {
 			    })
 			    .show();
     		}
-        	
-        } else {
+
+		} else {
             // If they gave us an intent without the widget id, just bail.
         	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Called by Launcher - do nothing");
         	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
-        		.setTitle("Thanks for downloading!")
-        		.setMessage("To begin, hit the back button to go back to the home screen, then access the 'Widgets' list to see " + OMC.APPNAME + " listed.  Have fun!")
+        		.setTitle(OMC.RES.getString(R.string.thanksForDownloading))
+        		.setMessage(OMC.RES.getString(R.string.widgetDir1) + OMC.APPNAME + OMC.RES.getString(R.string.widgetDir2))
         	    .setCancelable(true)
         	    .setIcon(getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME))
         	    .setOnKeyListener(new OnKeyListener() {
@@ -806,7 +875,7 @@ public class OMCPrefActivity extends PreferenceActivity {
     		OMC.purgeEmailCache();
     		OMC.THEMEMAP.clear();
         	OMC.WIDGETBMPMAP.clear();
-    		Toast.makeText(this, "Caches Cleared", Toast.LENGTH_SHORT).show();
+    		Toast.makeText(this, OMC.RES.getString(R.string.cachesCleared), Toast.LENGTH_SHORT).show();
     	}
     	if (preference == getPreferenceScreen().findPreference("timeZone")) {
     		getPreferenceScreen().setEnabled(false);
@@ -825,7 +894,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 
     // The result is obtained in onActivityResult:
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	prefloadThemeFile.setSummary(OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)+ " selected.");
+    	prefloadThemeFile.setSummary(OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG)+ " selected.");
 		if (OMC.PREFS.getString("sTimeZone", "default").equals("default")) {
 			getPreferenceScreen().findPreference("timeZone").setSummary("(Following Device Time Zone)");
 		} else {

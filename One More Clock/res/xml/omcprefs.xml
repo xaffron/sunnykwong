@@ -5,27 +5,27 @@
 
     <PreferenceCategory
         android:key="thisClock"
-        android:title="For this clock:" >
+        android:title="@string/forThisClock" >
         <Preference
             android:enabled="true"
             android:key="loadThemeFile"
             android:selectable="true"
-            android:title="Widget Theme" />
+            android:title="@string/widgetTheme" />
         <Preference
             android:enabled="true"
             android:key="tweakTheme"
             android:selectable="true"
-            android:summary="Tweak Colors and Layers."
-            android:title="Personalize Clock" >
+            android:summary="@string/tweakColorsAndLayers"
+            android:title="@string/personalizeClock" >
         </Preference>
 
         <PreferenceScreen
             android:key="DisplayPrefs"
-            android:title="Tap &amp; Display Options" >
+            android:title="@string/tapAndDisplayOptions" >
             <Preference
                 android:key="oTTL"
-                android:summary="NW corner reserved for prefs screen."
-                android:title="Assign Tap-to-Launch" >
+                android:summary="@string/nwCornerReserved"
+                android:title="@string/assignTapToLaunch" >
             </Preference>
 
             <CheckBoxPreference
@@ -33,29 +33,29 @@
                 android:enabled="true"
                 android:key="widget24HrClock"
                 android:selectable="true"
-                android:summary="Show 23:59 instead of 11:59pm."
-                android:title="Use 24 Hour Clock" />
+                android:summary=""
+                android:title="@string/use24HourClock" />
             <CheckBoxPreference
                 android:enabled="true"
                 android:key="widgetLeadingZero"
                 android:selectable="true"
-                android:summary="Show 04:23 instead of 4:23."
-                android:title="Show Leading Zero" />
+                android:summary=""
+                android:title="@string/showLeadingZero" />
 
             <Preference
                 android:enabled="true"
                 android:key="timeZone"
                 android:selectable="true"
-                android:title="Change Time Zone" >
+                android:title="@string/changeTimeZone" >
             </Preference>
         </PreferenceScreen>
     </PreferenceCategory>
     <PreferenceCategory
         android:key="allClocks"
-        android:title="For all clocks:" >
+        android:title="@string/forAllClocks" >
         <PreferenceScreen
             android:key="WeatherPrefs"
-            android:title="Weather &amp; Widget Options" >
+            android:title="@string/weatherAndWidgetOptions" >
             <Preference
                 android:key="updweathernow"
                 android:title="Refresh Weather Now" />
@@ -63,6 +63,7 @@
                 android:key="weather"
                 android:summary="Tap to enable"
                 android:title="Weather settings loading..." />
+
             <ListPreference
                 android:enabled="true"
                 android:entries="@array/wprovider_options"
@@ -81,7 +82,6 @@
                 android:summary="Using Fahrenheit"
                 android:title="Weather Display Units" >
             </ListPreference>
-            
             <ListPreference
                 android:enabled="true"
                 android:entries="@array/interval_options"
@@ -207,10 +207,11 @@
             android:enabled="true"
             android:key="clearCache"
             android:selectable="true"
-            android:title="Clear Render Caches" />
+            android:title="@string/clearRenderCaches" />
+
         <PreferenceScreen
             android:key="Advanced"
-            android:title="Troubleshooting Options" >
+            android:title="@string/troubleshootingOptions" >
             <ListPreference
                 android:enabled="true"
                 android:entries="@array/aggressiveness_options"
@@ -220,20 +221,23 @@
                 android:summary="For fine-tuning responsiveness."
                 android:title="Clock Priority" >
             </ListPreference>
-	        <Preference
-	            android:enabled="false"
-	            android:key="weatherDebug"
-	            android:selectable="true"
-	                  android:summary="For fixing location/weather problems."
-	            android:title="Weather Diagnostics" />
-	        	        <Preference
-	            android:enabled="true"
-	            android:key="deleteOMCThemes"
-	            android:selectable="true"
-	                  android:summary="For fixing theme selection app crashes."
-	            android:title="Delete All Themes" />
-	        </PreferenceScreen>
-        </PreferenceCategory>
+
+            <Preference
+                android:enabled="true"
+                android:key="weatherDebug"
+                android:selectable="true"
+                android:summary="@string/submitLocationWeatherDebugData"
+                android:title="@string/weatherDiagnostics" />
+            
+            <Preference
+                android:enabled="true"
+                android:key="deleteOMCThemes"
+                android:selectable="true"
+                android:summary="For fixing theme selection app crashes."
+                android:title="Delete All Themes" />
+            
+        </PreferenceScreen>
+    </PreferenceCategory>
     <PreferenceCategory
         android:key="Credits"
         android:title="Credits" >

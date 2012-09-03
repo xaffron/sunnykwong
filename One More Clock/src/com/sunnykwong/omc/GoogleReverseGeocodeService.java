@@ -94,11 +94,11 @@ public class GoogleReverseGeocodeService {
 			}
 	    } else {
         	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Using cached location from " + bestProvider + " as of " + new java.sql.Time(bestTime).toLocaleString());
-	    	OMC.LL.onLocationChanged(bestResult);
+       		OMC.LL.onLocationChanged(bestResult);
 	    }
 	  }
 
-	static public void updateLocation(final Location location) throws Exception {
+	static public String updateLocation(final Location location) throws Exception {
 		JSONObject result;			
 		HttpURLConnection huc = null;
 		
@@ -142,6 +142,7 @@ public class GoogleReverseGeocodeService {
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Reverse Geocode: " + city + ", " + country);
 			OMC.LASTKNOWNCITY=city;
 			OMC.LASTKNOWNCOUNTRY=country;
+			return result.toString();
 		} catch (Exception e) {
 			if (huc!=null) huc.disconnect();
 			throw e;
