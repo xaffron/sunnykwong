@@ -440,7 +440,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 					sBody+=OMC.PREFS.getString("weather", "Weather JSON Missing!")+"\n";
 					Intent it = new Intent(android.content.Intent.ACTION_SEND)
 		   					.setType("plain/text")
-		   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@sunnykwong.com"})
+		   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
 		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME + " WeatherDebug v" + OMC.THISVERSION)
 							.putExtra(android.content.Intent.EXTRA_TEXT, sBody);
 					startActivity(Intent.createChooser(it, "Contact Xaffron for issues, help & support."));  
