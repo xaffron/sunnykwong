@@ -6,17 +6,17 @@
         <string name="search">Search</string>
         
         <!-- Bailout App Dialog -->
-        <string name="thanksForDownloading">Thanks for downloading!</string>
-        <string name="widgetDir1">To begin, hit the back button to go back to the home screen, then access the \'Widgets\' list to see\u0020</string>
-        <string name="widgetDir2">\u0020listed.  Have fun!</string>
+        <string name="thanksForDownloading">歡迎!</string>
+        <string name="widgetDir1">請先輕按\'返回鍵\'返回到首頁畫面，然後從\'小工具\'列表中選擇\u0020</string>
+        <string name="widgetDir2">\u0020然後將其拖曳到首頁空白處。</string>
         
         <!-- Theme Picker Legend -->
-        <string name="batteryLegend">Shows Battery Charge</string>
-        <string name="weatherLegend">Shows Weather</string>
-        <string name="bkimageLegend">Includes Background Image</string>
-        <string name="ltbgLegend">Good on Light Backgrounds</string>
-        <string name="dkbgLegend">Good on Dark Backgrounds</string>
-        <string name="tweakLegend">Clock is User-Tweaked</string>
+        <string name="batteryLegend">有電池容量顯示</string>
+        <string name="weatherLegend">有天氣顯示</string>
+        <string name="bkimageLegend">有背景圖案</string>
+        <string name="ltbgLegend">適合淺色壁紙</string>
+        <string name="dkbgLegend">適合深色壁紙</string>
+        <string name="tweakLegend">此設計曾被用戶修改</string>
         
         <!-- Theme Skinner Tool (deprecated) -->
         <string name="reloadThemeCatalog">Reload Theme Catalog</string>
@@ -30,8 +30,8 @@
         
         <!-- Clock Preferences -->
     
-        <string name="usefulTip">Useful Tip</string>
-        <string name="doNotShowAgain">Do Not Show Again.</string>
+        <string name="usefulTip">技巧提示</string>
+        <string name="doNotShowAgain">不要再顯示.</string>
     
         <string name="forThisClock">For this clock:</string>
         <string name="widgetTheme">Widget Theme</string>
