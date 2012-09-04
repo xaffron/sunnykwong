@@ -7,8 +7,8 @@
         
         <!-- Bailout App Dialog -->
         <string name="thanksForDownloading">歡迎!</string>
-        <string name="widgetDir1">請先輕按\'返回鍵\'返回到首頁畫面，然後從\'小工具\'列表中選擇\u0020</string>
-        <string name="widgetDir2">\u0020然後將其拖曳到首頁空白處。</string>
+        <string name="widgetDir1">請先輕按\'返回鍵\'返回到首頁畫面，然後從\'小工具\'列表中將\u0020</string>
+        <string name="widgetDir2">\u0020拖曳到首頁空白處。</string>
         
         <!-- Theme Picker Legend -->
         <string name="batteryLegend">有電池容量顯示</string>
