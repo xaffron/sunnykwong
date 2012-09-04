@@ -69,27 +69,27 @@ public class OMCPrefActivity extends PreferenceActivity {
     			timeTemp.set(OMC.NEXTWEATHERREFRESH);
     			timeTemp2.set(OMC.LASTWEATHERTRY);
         		if (sWSetting.equals("bylatlong")) {
-        			prefWeather.setTitle("Location: " + sCity +" (Detected)");
+        			prefWeather.setTitle(OMC.RString("location") + sCity + OMC.RString("detected"));
         			if (OMC.PREFS.getString("sWeatherFreq", "60").equals("0")) {
-        				prefWeather.setSummary("Last try: "+timeTemp2.format("%R") + " (Manual Refresh Only)");
+        				prefWeather.setSummary(OMC.RString("lastTry")+timeTemp2.format("%R") + OMC.RString("manualRefreshOnly"));
         			} else {
-        				prefWeather.setSummary("Last try: "+timeTemp2.format("%R") + " Next Refresh: "+timeTemp.format("%R"));
+        				prefWeather.setSummary(OMC.RString("lastTry")+timeTemp2.format("%R") + OMC.RString("nextRefresh")+timeTemp.format("%R"));
         			}
         		} else if (sWSetting.equals("specific")) {
-        			prefWeather.setTitle("Location: "+OMC.jsonFIXEDLOCN.optString("city","Unknown")+" (Fixed)");
+        			prefWeather.setTitle("Location: "+OMC.jsonFIXEDLOCN.optString("city","Unknown")+OMC.RString("fixed"));
         			if (OMC.PREFS.getString("sWeatherFreq", "60").equals("0")) {
-        				prefWeather.setSummary("Last try: "+timeTemp2.format("%R") + " (Manual Refresh Only)");
+        				prefWeather.setSummary(OMC.RString("lastTry")+timeTemp2.format("%R") + OMC.RString("manualRefreshOnly"));
         			} else {
-        				prefWeather.setSummary("Last try: "+timeTemp2.format("%R") + " Next Refresh: "+timeTemp.format("%R"));
+        				prefWeather.setSummary(OMC.RString("lastTry")+timeTemp2.format("%R") + OMC.RString("nextRefresh")+timeTemp.format("%R"));
         			}
         		} else {
-        			prefWeather.setTitle("Weather functionality disabled");
-        			prefWeather.setSummary("Tap to enable");
+        			prefWeather.setTitle(OMC.RString("weatherFunctionalityDisabled"));
+        			prefWeather.setSummary(OMC.RString("tapToEnable"));
         		} 
     		} catch (JSONException e) {
     			e.printStackTrace();
-    			prefWeather.setTitle("Weather updates disabled");
-    			prefWeather.setSummary("Tap to enable");
+    			prefWeather.setTitle(OMC.RString("weatherFunctionalityDisabled"));
+    			prefWeather.setSummary(OMC.RString("tapToEnable"));
     		}
 			return;
     	}
@@ -174,7 +174,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 		if (appWidgetID >= 0) {
 			// We are called by the user tapping on a widget - bring up prefs screen
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref"," Called by Widget " + appWidgetID);
-			if (OMC.SINGLETON) setTitle(OMC.SINGLETONNAME + " - Preferences");
+			if (OMC.SINGLETON) setTitle(OMC.SINGLETONNAME + OMC.RString("dashPreferences"));
 
 			// Load the proper prefs into the generic prefs set
 			OMC.getPrefs(appWidgetID);
@@ -210,11 +210,11 @@ public class OMCPrefActivity extends PreferenceActivity {
         	prefloadThemeFile.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
-		        	prefloadThemeFile.setSummary(OMC.RString("preselected") + " " + newValue + " " + OMC.RString("postselected"));
+		        	prefloadThemeFile.setSummary(OMC.RString("preselected") + newValue + OMC.RString("postselected"));
 					return true;
 				}
 			});
-        	prefloadThemeFile.setSummary(OMC.RString("preselected") + " " + OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG) + " " + OMC.RString("postselected"));
+        	prefloadThemeFile.setSummary(OMC.RString("preselected") + OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG) + OMC.RString("postselected"));
         	
     		// "Personalize Clock".
         	preftweakTheme = findPreference("tweakTheme");
@@ -225,17 +225,17 @@ public class OMCPrefActivity extends PreferenceActivity {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
 					if ((Boolean)newValue==true) {
-						preference.setSummary(OMC.RES.getString(R.string.use24HourTrue));
+						preference.setSummary(OMC.RString("use24HourTrue"));
 					} else {
-						preference.setSummary(OMC.RES.getString(R.string.use24HourFalse));
+						preference.setSummary(OMC.RString("use24HourFalse"));
 					}
 					return true;
 				}
 			});
 			if (OMC.PREFS.getBoolean("widget24HrClock", true)) {
-	        	findPreference("widget24HrClock").setSummary(OMC.RES.getString(R.string.use24HourTrue));
+	        	findPreference("widget24HrClock").setSummary(OMC.RString("use24HourTrue"));
 			} else {
-	        	findPreference("widget24HrClock").setSummary(OMC.RES.getString(R.string.use24HourFalse));
+	        	findPreference("widget24HrClock").setSummary(OMC.RString("use24HourFalse"));
 			}
         	
         	// "Show Leading Zero".
@@ -244,23 +244,23 @@ public class OMCPrefActivity extends PreferenceActivity {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
 					if ((Boolean)newValue==true) {
-						preference.setSummary(OMC.RES.getString(R.string.showLeadingZTrue));
+						preference.setSummary(OMC.RString("showLeadingZTrue"));
 					} else {
-						preference.setSummary(OMC.RES.getString(R.string.showLeadingZFalse));
+						preference.setSummary(OMC.RString("showLeadingZFalse"));
 					}
 					return true;
 				}
 			});
 			if (OMC.PREFS.getBoolean("widgetLeadingZero", true)) {
-	        	findPreference("widgetLeadingZero").setSummary(OMC.RES.getString(R.string.showLeadingZTrue));
+	        	findPreference("widgetLeadingZero").setSummary(OMC.RString("showLeadingZTrue"));
 			} else {
-	        	findPreference("widgetLeadingZero").setSummary(OMC.RES.getString(R.string.showLeadingZFalse));
+	        	findPreference("widgetLeadingZero").setSummary(OMC.RString("showLeadingZFalse"));
 			}
         	
         	// "Change Time Zone".
         	prefTimeZone = findPreference("timeZone");
         	if (OMC.PREFS.getString("sTimeZone", "default").equals("default")) {
-        		findPreference("timeZone").setSummary(OMC.RES.getString(R.string.followingDeviceTimeZone));
+        		findPreference("timeZone").setSummary(OMC.RString("followingDeviceTimeZone"));
     		} else {
     			findPreference("timeZone").setSummary(OMC.PREFS.getString("sTimeZone", "default"));
     		}
@@ -284,26 +284,26 @@ public class OMCPrefActivity extends PreferenceActivity {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
 		    		if (newValue.equals("yr")) {
-		        		preference.setSummary("Using yr.no");
+		        		preference.setSummary(OMC.RString("wpyr"));
 		    		} else if (newValue.equals("ig")) {
-		        		preference.setSummary("Using iGoogle Weather");
+		        		preference.setSummary(OMC.RString("wpig"));
 		    		} else if (newValue.equals("7timer")) {
-		    			preference.setSummary("Using 7Timer.com");
+		    			preference.setSummary(OMC.RString("wp7timer"));
 		    		} else {
-		    			preference.setSummary("Using OpenWeatherMap.org");
+		    			preference.setSummary(OMC.RString("wpowm"));
 		    		}
 			    	return true;
 				}
 			});
         	String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
     		if (sWProvider.equals("yr")) {
-    			prefWeatherProvider.setSummary("Using yr.no");
+    			prefWeatherProvider.setSummary(OMC.RString("wpyr"));
     		} else if (sWProvider.equals("ig")) {
-    			prefWeatherProvider.setSummary("Using iGoogle Weather");
+    			prefWeatherProvider.setSummary(OMC.RString("wpig"));
     		} else if (sWProvider.equals("7timer")) {
-    			prefWeatherProvider.setSummary("Using 7Timer.com");
+    			prefWeatherProvider.setSummary(OMC.RString("wp7timer"));
     		} else {
-    			prefWeatherProvider.setSummary("Using OpenWeatherMap.org");
+    			prefWeatherProvider.setSummary(OMC.RString("wpowm"));
     		}
 
         	
@@ -313,28 +313,28 @@ public class OMCPrefActivity extends PreferenceActivity {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
 		    		if (newValue.equals("c")) {
-		        		preference.setSummary("Using Celsius");
+		        		preference.setSummary(OMC.RString("usingCelsius"));
 		    		} else {
-		        		preference.setSummary("Using Fahrenheit");
+		        		preference.setSummary(OMC.RString("usingFahrenheit"));
 		    		}
 			    	return true;
 				}
 			});
         	if (OMC.PREFS.getString("weatherDisplay", "f").equals("c"))
-        		prefWeatherDisplay.setSummary("Using Celsius");
-        	else prefWeatherDisplay.setSummary("Using Fahrenheit");
+        		prefWeatherDisplay.setSummary(OMC.RString("usingCelsius"));
+        	else prefWeatherDisplay.setSummary(OMC.RString("usingFahrenheit"));
 
     		// "Clock Update Interval"
         	prefsUpdateFreq = findPreference("sUpdateFreq");
         	prefsUpdateFreq.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
-		    		preference.setSummary("Redraw every " + (String)newValue + " seconds.");
+		    		preference.setSummary(OMC.RString("redrawEvery") + (String)newValue + OMC.RString("seconds"));
 		    		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
 					return true;
 				}
 			});
-        	prefsUpdateFreq.setSummary("Redraw every " + OMC.PREFS.getString("sUpdateFreq", "30") + " seconds.");
+        	prefsUpdateFreq.setSummary(OMC.RString("redrawEvery") + OMC.PREFS.getString("sUpdateFreq", "30") + OMC.RString("seconds"));
 
         	// "Weather Update Interval"
         	findPreference("sWeatherFreq").setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
@@ -344,11 +344,11 @@ public class OMCPrefActivity extends PreferenceActivity {
 		    		long newMillis = newHrs * 3600000l; 
 		        	switch (newHrs) {
 		    		case 0:
-		    			findPreference("sWeatherFreq").setSummary("Manual weather updates only.");
+		    			findPreference("sWeatherFreq").setSummary(OMC.RString("manualWeatherUpdatesOnly"));
 		    			OMC.NEXTWEATHERREFRESH = Long.MAX_VALUE;
 		    			break;
 		    		case 1:
-		    			findPreference("sWeatherFreq").setSummary("Refresh weather every 1 hour.");
+		    			findPreference("sWeatherFreq").setSummary(OMC.RString("refreshWeatherEveryHour"));
 		            	// if the last try was unsuccessful, reset the next weather
 		            	if (OMC.LASTWEATHERTRY > OMC.LASTWEATHERREFRESH) 
 		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERTRY + newMillis/4l;
@@ -356,7 +356,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERREFRESH + newMillis;
 		    			break;
 		    		case 4:
-		    			findPreference("sWeatherFreq").setSummary("Refresh weather every 4 hours.");
+		    			findPreference("sWeatherFreq").setSummary(OMC.RString("refreshWeatherEvery4Hours"));
 		            	// if the last try was unsuccessful, reset the next weather
 		            	if (OMC.LASTWEATHERTRY > OMC.LASTWEATHERREFRESH) 
 		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERTRY + newMillis/4l;
@@ -364,7 +364,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERREFRESH + newMillis;
 		    			break;
 		    		case 8:
-		    			findPreference("sWeatherFreq").setSummary("Refresh weather every 8 hours.");
+		    			findPreference("sWeatherFreq").setSummary(OMC.RString("refreshWeatherEvery8Hours"));
 		            	// if the last try was unsuccessful, reset the next weather
 		            	if (OMC.LASTWEATHERTRY > OMC.LASTWEATHERREFRESH) 
 		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERTRY + newMillis/4l;
@@ -372,7 +372,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERREFRESH + newMillis;
 		    			break;
 		    		default:
-		    			findPreference("sWeatherFreq").setSummary("Refresh weather at default interval.");
+		    			findPreference("sWeatherFreq").setSummary(OMC.RString("refreshWeatherEveryHour"));
 		            	// if the last try was unsuccessful, reset the next weather
 		            	if (OMC.LASTWEATHERTRY > OMC.LASTWEATHERREFRESH) 
 		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERTRY + newMillis/4l;
@@ -384,19 +384,19 @@ public class OMCPrefActivity extends PreferenceActivity {
 			});
         	switch (Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))/60) {
         		case 0:
-        			findPreference("sWeatherFreq").setSummary("Manual weather updates only.");
+        			findPreference("sWeatherFreq").setSummary(OMC.RString("manualWeatherUpdatesOnly"));
         			break;
         		case 1:
-        			findPreference("sWeatherFreq").setSummary("Refresh weather every 1 hour.");
+        			findPreference("sWeatherFreq").setSummary(OMC.RString("refreshWeatherEveryHour"));
         			break;
         		case 4:
-        			findPreference("sWeatherFreq").setSummary("Refresh weather every 4 hours.");
+        			findPreference("sWeatherFreq").setSummary(OMC.RString("refreshWeatherEvery4Hours"));
         			break;
         		case 8:
-        			findPreference("sWeatherFreq").setSummary("Refresh weather every 8 hours.");
+        			findPreference("sWeatherFreq").setSummary(OMC.RString("refreshWeatherEvery8Hours"));
         			break;
         		default:
-        			findPreference("sWeatherFreq").setSummary("Refresh weather at default interval.");
+        			findPreference("sWeatherFreq").setSummary(OMC.RString("refreshWeatherEveryHour"));
         	}
         	
         	// "Set Foreground Mode".
@@ -501,30 +501,53 @@ public class OMCPrefActivity extends PreferenceActivity {
 
     		// This is the free/paid version conflict dialog.
     		String sOtherEd = OMC.FREEEDITION? "com.sunnykwong.omc":"com.sunnykwong.freeomc";
-    		String sConflictEd = OMC.FREEEDITION? "paid":"free";
     		try {
     			OMC.PKM.getApplicationInfo(sOtherEd, PackageManager.GET_META_DATA);
-            	mAD = new AlertDialog.Builder(this)
-        		.setTitle("WARNING!\nConflict with " + sConflictEd + " edition")
-        		.setMessage("Theme customization and clock settings will not work properly.\nPlease uninstall the free edition at your earliest convenience!")
-        	    .setCancelable(true)
-        	    .setIcon(OMC.RDrawableId(OMC.APPICON))
-        	    .setOnKeyListener(new OnKeyListener() {
-        	    	@Override
-					public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
-        	    		dialogCancelled();
-        	    		return true;
-        	    	};
-        	    })
-        	    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-        	    		dialogCancelled();
-					}
-				})
-        	    .create();
-            	mAD.show();
+    			if (!OMC.FREEEDITION) {
+	            	mAD = new AlertDialog.Builder(this)
+	        		.setTitle(OMC.RString("warningConflictFree"))
+	        		.setMessage(OMC.RString("warningConflictText"))
+	        	    .setCancelable(true)
+	        	    .setIcon(OMC.RDrawableId(OMC.APPICON))
+	        	    .setOnKeyListener(new OnKeyListener() {
+	        	    	@Override
+						public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+	        	    		dialogCancelled();
+	        	    		return true;
+	        	    	};
+	        	    })
+	        	    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+	        	    		dialogCancelled();
+						}
+					})
+	        	    .create();
+	            	mAD.show();
+    			} else {
+	            	mAD = new AlertDialog.Builder(this)
+	        		.setTitle(OMC.RString("warningConflictPaid"))
+	        		.setMessage(OMC.RString("warningConflictText"))
+	        	    .setCancelable(true)
+	        	    .setIcon(OMC.RDrawableId(OMC.APPICON))
+	        	    .setOnKeyListener(new OnKeyListener() {
+	        	    	@Override
+						public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+	        	    		dialogCancelled();
+	        	    		return true;
+	        	    	};
+	        	    })
+	        	    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+	        	    		dialogCancelled();
+						}
+					})
+	        	    .create();
+	            	mAD.show();
+    			}
     		} catch (NameNotFoundException e) {
     			// If we can't find the conflicting package, we're all good - no need to show warning
     		}
@@ -604,8 +627,8 @@ public class OMCPrefActivity extends PreferenceActivity {
             // If they gave us an intent without the widget id, just bail.
         	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Called by Launcher - do nothing");
         	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
-        		.setTitle(OMC.RES.getString(R.string.thanksForDownloading))
-        		.setMessage(OMC.RES.getString(R.string.widgetDir1) + OMC.APPNAME + OMC.RES.getString(R.string.widgetDir2))
+        		.setTitle(OMC.RString("thanksForDownloading"))
+        		.setMessage(OMC.RString("widgetDir1") + OMC.APPNAME + OMC.RString("widgetDir2"))
         	    .setCancelable(true)
         	    .setIcon(OMC.RDrawableId(OMC.APPICON))
         	    .setOnKeyListener(new OnKeyListener() {
@@ -636,9 +659,9 @@ public class OMCPrefActivity extends PreferenceActivity {
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
     	if (preference == findPreference("deleteOMCThemes")){
-			final CharSequence[] items = {"Yes, delete all", "Yes, restore defaults", "No"};
+			final CharSequence[] items = {OMC.RString("yesDelete"), OMC.RString("yesRestore"), OMC.RString("no")};
 			new AlertDialog.Builder(this)
-				.setTitle("Delete all Themes from your SD Card/Memory?")
+				.setTitle(OMC.RString("deleteAllThemesFromSD"))
 				.setItems(items, new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int item) {
@@ -653,7 +676,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 						    		OMC.purgeEmailCache();
 						    		OMC.THEMEMAP.clear();
 						        	OMC.WIDGETBMPMAP.clear();
-						    		Toast.makeText(OMCPrefActivity.this, "OMCThemes folder deleted.", Toast.LENGTH_SHORT).show();
+						    		Toast.makeText(OMCPrefActivity.this, OMC.RString("omcThemesFolderDeleted"), Toast.LENGTH_SHORT).show();
 									break;
 								case 1: //Yes but restore
 									File omcroot = new File(
@@ -669,7 +692,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 						    		OMC.THEMEMAP.clear();
 						        	OMC.WIDGETBMPMAP.clear();
 						        	OMCThemePickerActivity.THEMEROOT.mkdir();
-						    		Toast.makeText(OMCPrefActivity.this, "Default Clock Pack restored.", Toast.LENGTH_SHORT).show();
+						    		Toast.makeText(OMCPrefActivity.this, OMC.RString("defaultClockPackRestored"), Toast.LENGTH_SHORT).show();
 									break;
 								case 2: //No
 									//do nothing
@@ -682,9 +705,9 @@ public class OMCPrefActivity extends PreferenceActivity {
 				.show();
     	}
     	if (preference == findPreference("weather")){
-			final CharSequence[] items = {"Disabled", "Follow Device (default)", "Set Fixed Location"};
+			final CharSequence[] items = {OMC.RString("disableLocationAndWeather"), OMC.RString("followDevice"), OMC.RString("setFixedLocation")};
 			new AlertDialog.Builder(this)
-				.setTitle("Experimental Feature\nTry at own risk!")
+				.setTitle(OMC.RString("weatherLocation"))
 				.setItems(items, new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int item) {
@@ -716,9 +739,9 @@ public class OMCPrefActivity extends PreferenceActivity {
     		startActivityForResult(tweakIntent,0);
     	}
     	if (preference == findPreference("emailMe")) {
-			final CharSequence[] items = {"Email", "Donate", "Facebook"};
+			final CharSequence[] items = {OMC.RString("email"), OMC.RString("donate"), OMC.RString("facebook")};
 			new AlertDialog.Builder(this)
-				.setTitle("Contact Xaffron")
+				.setTitle(OMC.RString("contactXaffron"))
 				.setItems(items, new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int item) {
@@ -728,7 +751,8 @@ public class OMCPrefActivity extends PreferenceActivity {
 		    		   					.setType("plain/text")
 		    		   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
 		    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME + " Feedback v" + OMC.THISVERSION);
-					    		   	startActivity(Intent.createChooser(it, "Contact Xaffron for issues, help & support."));  
+					    		   	startActivity(Intent.createChooser(it, OMC.RString("contactXaffronForIssues"))); 
+					    		   	
 					    		   	finish();
 					    		   	break;
 								case 1: //Donate
@@ -758,9 +782,9 @@ public class OMCPrefActivity extends PreferenceActivity {
 				.show();
     	}
     	if (preference == getPreferenceScreen().findPreference("widgetPrefs") && OMC.FREEEDITION) {
-    		final CharSequence TitleCS = "Are there other widget sizes?";
-    		final CharSequence MessageCS = "Actually, the paid version offers widget sizes of 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 and 1x3.\nPlease consider upgrading to get these sizes!";
-    		final CharSequence PosButtonCS = "Take me to the paid version!";
+    		final CharSequence TitleCS = OMC.RString("areThereOtherWidgetSizes");
+    		final CharSequence MessageCS = OMC.RString("actuallyThePaidVersion");
+    		final CharSequence PosButtonCS = OMC.RString("takeMeToPaid");
         	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
 			.setCancelable(true)
 			.setTitle(TitleCS)
@@ -794,9 +818,9 @@ public class OMCPrefActivity extends PreferenceActivity {
     		if (OMC.SINGLETON && OMC.FREEEDITION) {
             	OMCPrefActivity.mAD = new AlertDialog.Builder(this)
     			.setCancelable(true)
-    			.setTitle("Think of the possibilities!")
-    			.setMessage("The paid version lets you set " + OMC.APPNAME + " to launch any activity you want, plus it offers widget sizes of 4x2, 4x1, 3x1 and 2x1.\nPlease consider upgrading to get these sizes!")
-    			.setPositiveButton("Take me to the paid version!", new DialogInterface.OnClickListener() {
+    			.setTitle(OMC.RString("thinkOfThePossibilities"))
+    			.setMessage(OMC.RString("prePaidTTL") + OMC.APPNAME + OMC.RString("postPaidTTL"))
+    			.setPositiveButton(OMC.RString("takeMeToPaid"), new DialogInterface.OnClickListener() {
     					
     					@Override
     					public void onClick(DialogInterface dialog, int which) {
@@ -809,29 +833,39 @@ public class OMCPrefActivity extends PreferenceActivity {
     				}).create();
             	OMCPrefActivity.mAD.show();
     		} else {
-    			final CharSequence[] items = {"Open options (default)", "Do nothing", "Weather Forecast (Experimental)", "View alarms (Experimental)", "Other activity..."};
-    			final String[] values = {"default", "noop", "weather", "alarms", "activity"};
+    			final CharSequence[] items = {
+    					OMC.RString("openOptionsDefault"), 
+    					OMC.RString("doNothing"), 
+    					OMC.RString("weatherForecast"), 
+    					OMC.RString("viewAlarms"), 
+    					OMC.RString("otherActivity")};
+    			final String[] values = {
+    					"default", 
+    					"noop", 
+    					"weather", 
+    					"alarms", 
+    					"activity"};
 				
 				final AlertDialog dlgTTL  =  new AlertDialog.Builder(this)
-				.setTitle("Choose action")
+				.setTitle(OMC.RString("chooseAction"))
 				.setItems(items, new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int item) {
 							if (values[item].equals("default")) {
 								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "")
-									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], "Widget Prefs").commit();
+									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("widgetPrefsTTL")).commit();
 							}
 							if (values[item].equals("noop")) {
 								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "noop")
-									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], "Nothing").commit();
+									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("doNothingTTL")).commit();
 							}
 							if (values[item].equals("weather")) {
 								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "weather")
-									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], "Forecast").commit();
+									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("weatherForecastTTL")).commit();
 							}
 							if (values[item].equals("alarms")) {
 								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "alarms")
-									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], "View Alarms").commit();
+									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("viewAlarmsTTL")).commit();
 							}
 							if (values[item].equals("activity")) {
 					    		getPreferenceScreen().setEnabled(false);
@@ -847,7 +881,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 								pickIntent=null;
 							}
 							for (int iCompass = 0; iCompass < 9; iCompass++) {
-								btnCompass[iCompass].setText(OMC.PREFS.getString("URIDesc"+OMC.COMPASSPOINTS[iCompass],"Widget Prefs"));
+								btnCompass[iCompass].setText(OMC.PREFS.getString("URIDesc"+OMC.COMPASSPOINTS[iCompass],OMC.RString("widgetPrefsTTL")));
 							}
 						}
 				}).create();
@@ -857,7 +891,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 
 				for (int iCompass = 0; iCompass < 9; iCompass++) {
 					btnCompass[iCompass] = (Button)ll.findViewById(OMC.RId("button" + OMC.COMPASSPOINTS[iCompass] + "Prv"));
-					btnCompass[iCompass].setText(OMC.PREFS.getString("URIDesc"+OMC.COMPASSPOINTS[iCompass],"Widget Prefs"));
+					btnCompass[iCompass].setText(OMC.PREFS.getString("URIDesc"+OMC.COMPASSPOINTS[iCompass],OMC.RString("widgetPrefsTTL")));
 					final int iTTL = iCompass;
 					btnCompass[iCompass].setOnClickListener(new View.OnClickListener() {
 						@Override
@@ -869,7 +903,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 				}
     			mTTL = new AlertDialog.Builder(this)
     					.setView(ll)
-    					.setTitle("Area to customize:")
+    					.setTitle(OMC.RString("areaToCustomize"))
     					.show();
     		}
     	}
@@ -880,7 +914,7 @@ public class OMCPrefActivity extends PreferenceActivity {
     		OMC.purgeEmailCache();
     		OMC.THEMEMAP.clear();
         	OMC.WIDGETBMPMAP.clear();
-    		Toast.makeText(this, OMC.RES.getString(R.string.cachesCleared), Toast.LENGTH_SHORT).show();
+    		Toast.makeText(this, OMC.RString("cachesCleared"), Toast.LENGTH_SHORT).show();
     	}
     	if (preference == getPreferenceScreen().findPreference("timeZone")) {
     		getPreferenceScreen().setEnabled(false);
@@ -900,9 +934,9 @@ public class OMCPrefActivity extends PreferenceActivity {
     // The result is obtained in onActivityResult:
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	prefloadThemeFile.setSummary(OMC.RString("preselected") + " " +OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG)+ " " +OMC.RString("postselected"));
+    	prefloadThemeFile.setSummary(OMC.RString("preselected")  +OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG)+ OMC.RString("postselected"));
 		if (OMC.PREFS.getString("sTimeZone", "default").equals("default")) {
-			getPreferenceScreen().findPreference("timeZone").setSummary("(Following Device Time Zone)");
+			getPreferenceScreen().findPreference("timeZone").setSummary(OMC.RString("followingDeviceTimeZone"));
 		} else {
 			getPreferenceScreen().findPreference("timeZone").setSummary(OMC.PREFS.getString("sTimeZone", "default"));
 		}
@@ -929,7 +963,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 			String s = data.toUri(MODE_PRIVATE).toString();
 			
 			OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[requestCode], s)
-				.putString("URIDesc"+OMC.COMPASSPOINTS[requestCode], "Custom Activity").commit();
+				.putString("URIDesc"+OMC.COMPASSPOINTS[requestCode], OMC.RString("otherActivityTTL")).commit();
 		}
 	}
     

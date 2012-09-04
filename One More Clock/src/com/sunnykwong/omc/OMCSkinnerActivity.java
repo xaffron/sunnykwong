@@ -89,7 +89,7 @@ public class OMCSkinnerActivity extends Activity {
     	sTheme = (String)(data.getExtras().get("theme"));
     	bCustomStretch = true;
     	
-    	Toast.makeText(this, "Refreshing from SD card every " + OMCSkinnerActivity.REFRESHINTERVAL/1000 + " seconds.", Toast.LENGTH_SHORT).show();
+    	//Toast.makeText(this, "Refreshing from SD card every " + OMCSkinnerActivity.REFRESHINTERVAL/1000 + " seconds.", Toast.LENGTH_SHORT).show();
     	
     	FourByTwo = (ImageView)this.findViewById(OMC.RId("FourByTwo"));
     	FourByOne = (ImageView)this.findViewById(OMC.RId("FourByOne"));

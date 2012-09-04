@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:key="rootPrefs"
-    android:title="Clock Preferences" >
+    android:title="@string/clockPreferences" >
 
     <PreferenceCategory
         android:key="thisClock"
@@ -58,11 +58,11 @@
             android:title="@string/weatherAndWidgetOptions" >
             <Preference
                 android:key="updweathernow"
-                android:title="Refresh Weather Now" />
+                android:title="@string/refreshWeatherNow" />
             <Preference
                 android:key="weather"
-                android:summary="Tap to enable"
-                android:title="Weather settings loading..." />
+                android:summary="@string/tapToEnable"
+                android:title="@string/weatherFunctionalityDisabled" />
 
             <ListPreference
                 android:enabled="true"
@@ -70,8 +70,8 @@
                 android:entryValues="@array/wprovider_values"
                 android:key="weatherProvider"
                 android:selectable="true"
-                android:summary="Using 7Timer.com"
-                android:title="Weather Provider" >
+                android:summary="@string/wp7timer"
+                android:title="@string/weatherProvider" >
             </ListPreference>
             <ListPreference
                 android:enabled="true"
@@ -79,8 +79,8 @@
                 android:entryValues="@array/wdisplay_values"
                 android:key="weatherDisplay"
                 android:selectable="true"
-                android:summary="Using Fahrenheit"
-                android:title="Weather Display Units" >
+                android:summary="@string/useFahrenheit"
+                android:title="@string/weatherDisplayUnits" >
             </ListPreference>
             <ListPreference
                 android:enabled="true"
@@ -88,8 +88,8 @@
                 android:entryValues="@array/interval_values"
                 android:key="sUpdateFreq"
                 android:selectable="true"
-                android:summary="Redraw Every 30 Seconds."
-                android:title="Clock Update Interval" >
+                android:summary=""
+                android:title="@string/clockUpdateInterval" >
             </ListPreference>
             <ListPreference
                 android:enabled="true"
@@ -97,109 +97,109 @@
                 android:entryValues="@array/winterval_values"
                 android:key="sWeatherFreq"
                 android:selectable="true"
-                android:summary="Refresh Every Hour."
-                android:title="Weather Update Interval" >
+                android:summary="@string/refreshWeatherEveryHour"
+                android:title="@string/weatherUpdateInterval" >
             </ListPreference>
 
             <CheckBoxPreference
                 android:enabled="true"
                 android:key="widgetPersistence"
                 android:selectable="true"
-                android:summary="Keep OMC from sleeping.\n(at the cost of a persistent notification)"
-                android:title="Set Foreground Mode" />
+                android:summary="@string/keepOMCfromSleeping"
+                android:title="@string/setForegroundMode" />
             <CheckBoxPreference
                 android:defaultValue="true"
                 android:enabled="true"
                 android:key="widgetEnglishOnly"
                 android:selectable="true"
-                android:summary="Uncheck for some non-English locales. (Experimental)"
-                android:title="Force English Dates" />
+                android:summary="@string/uncheckForSome"
+                android:title="@string/forceEnglishDates" />
 
             <PreferenceScreen
                 android:key="widgetPrefs"
-                android:title="Toggle Widget Sizes" >
+                android:title="@string/toggleWidgetSizes" >
                 <Preference
                     android:enabled="true"
                     android:selectable="false"
-                    android:summary="Changes to these settings will require a reboot of your phone to take effect."
-                    android:title="Reboot Required" />
+                    android:summary="@string/changesToTheseSettings"
+                    android:title="@string/rebootRequired" />
 
                 <CheckBoxPreference
                     android:defaultValue="false"
                     android:enabled="true"
                     android:key="bFiveByFour"
                     android:selectable="true"
-                    android:summary="For Galaxy Note or Similar."
-                    android:title="Enable (5x4) Widget" />
+                    android:summary="@string/forGalaxyNote"
+                    android:title="@string/enable5x4Widget" />
                 <CheckBoxPreference
                     android:defaultValue="false"
                     android:enabled="true"
                     android:key="bFiveByTwo"
                     android:selectable="true"
-                    android:summary="For Galaxy Note or Similar."
-                    android:title="Enable (5x2) Widget" />
+                    android:summary="@string/forGalaxyNote"
+                    android:title="@string/enable5x2Widget" />
                 <CheckBoxPreference
                     android:defaultValue="false"
                     android:enabled="true"
                     android:key="bFiveByOne"
                     android:selectable="true"
-                    android:summary="For Galaxy Note or Similar."
-                    android:title="Enable (5x1) Widget" />
+                    android:summary="@string/forGalaxyNote"
+                    android:title="@string/enable5x1Widget" />
                 <CheckBoxPreference
                     android:defaultValue="true"
                     android:enabled="true"
                     android:key="bFourByFour"
                     android:selectable="true"
-                    android:title="Enable (4x4) Widget" />
+                    android:title="@string/enable4x4Widget" />
                 <CheckBoxPreference
                     android:defaultValue="true"
                     android:enabled="true"
                     android:key="bFourByTwo"
                     android:selectable="false"
-                    android:title="Enable (4x2) Widget" />
+                    android:title="@string/enable4x2Widget" />
                 <CheckBoxPreference
                     android:defaultValue="true"
                     android:enabled="true"
                     android:key="bFourByOne"
                     android:selectable="true"
-                    android:title="Enable (4x1) Widget" />
+                    android:title="@string/enable4x1Widget" />
                 <CheckBoxPreference
                     android:defaultValue="true"
                     android:enabled="true"
                     android:key="bThreeByThree"
                     android:selectable="true"
-                    android:title="Enable (3x3) Widget" />
+                    android:title="@string/enable3x3Widget" />
                 <CheckBoxPreference
                     android:defaultValue="true"
                     android:enabled="true"
                     android:key="bThreeByOne"
                     android:selectable="true"
-                    android:title="Enable (3x1) Widget" />
+                    android:title="@string/enable3x1Widget" />
                 <CheckBoxPreference
                     android:defaultValue="true"
                     android:enabled="true"
                     android:key="bTwoByTwo"
                     android:selectable="true"
-                    android:title="Enable (2x2) Widget" />
+                    android:title="@string/enable2x2Widget" />
                 <CheckBoxPreference
                     android:defaultValue="true"
                     android:enabled="true"
                     android:key="bTwoByOne"
                     android:selectable="true"
-                    android:title="Enable (2x1) Widget" />
+                    android:title="@string/enable2x1Widget" />
                 <CheckBoxPreference
                     android:defaultValue="true"
                     android:enabled="true"
                     android:key="bOneByThree"
                     android:selectable="true"
-                    android:title="Enable (1x3) Widget" />
+                    android:title="@string/enable1x3Widget" />
                 <CheckBoxPreference
                     android:defaultValue="false"
                     android:enabled="false"
                     android:key="bSkinner"
                     android:selectable="true"
-                    android:summary="Development tool for skinners only."
-                    android:title="Enable Theme Tester" />
+                    android:summary="@string/developmentToolForSkinnersOnly"
+                    android:title="@string/enableThemeTester" />
             </PreferenceScreen>
         </PreferenceScreen>
 
@@ -218,8 +218,8 @@
                 android:entryValues="@array/aggressiveness_values"
                 android:key="clockPriority"
                 android:selectable="true"
-                android:summary="For fine-tuning responsiveness."
-                android:title="Clock Priority" >
+                android:summary="@string/forFineTuning"
+                android:title="@string/clockPriority" >
             </ListPreference>
 
             <Preference
@@ -233,20 +233,20 @@
                 android:enabled="true"
                 android:key="deleteOMCThemes"
                 android:selectable="true"
-                android:summary="For fixing theme selection app crashes."
-                android:title="Delete All Themes" />
+                android:summary="@string/forFixingThemeSelection"
+                android:title="@string/deleteAllThemes" />
             
         </PreferenceScreen>
     </PreferenceCategory>
     <PreferenceCategory
         android:key="Credits"
-        android:title="Credits" >
+        android:title="@string/credits" >
         <Preference
             android:enabled="true"
             android:key="emailMe"
             android:selectable="true"
-            android:summary="Donate or Contact author for help."
-            android:title="Contact Xaffron" >
+            android:summary="@string/donateOrContact"
+            android:title="@string/contactXaffron" >
         </Preference>
         <Preference
             android:enabled="true"
@@ -257,7 +257,7 @@
             android:enabled="true"
             android:key="widgetCredits"
             android:selectable="true"
-            android:title="View Credits" />
+            android:title="@string/viewCredits" />
     </PreferenceCategory>
 
 </PreferenceScreen>

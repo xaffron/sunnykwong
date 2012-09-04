@@ -78,13 +78,13 @@ public class OMCThemePickerActivity extends Activity {
 		setResult(Activity.RESULT_CANCELED);
 
 		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-        	Toast.makeText(this, "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+        	Toast.makeText(this, OMC.RString("sdcardNotDetected"), Toast.LENGTH_LONG).show();
 			finish();
         	return;
         }
         OMCThemePickerActivity.SDROOT = Environment.getExternalStorageDirectory();
 		if (!OMCThemePickerActivity.SDROOT.canRead()) {
-        	Toast.makeText(this, "SD Card missing or corrupt.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+        	Toast.makeText(this, OMC.RString("sdcardMissingOrCorrupt"), Toast.LENGTH_LONG).show();
 			finish();
         	return;
         }
@@ -94,7 +94,7 @@ public class OMCThemePickerActivity extends Activity {
         topLevel = findViewById(OMC.RId("PickerTopLevel"));
         topLevel.setEnabled(false);
         
-        setTitle("Swipe to Pick; Tap & hold for Options");
+        setTitle(OMC.RString("widgetThemeTitle"));
 
         mListener = new OMCThemePickerListener();
         
@@ -126,7 +126,7 @@ public class OMCThemePickerActivity extends Activity {
 
 		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
 			try {
-				Toast.makeText(this, "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, OMC.RString("sdcardNotDetected"), Toast.LENGTH_LONG).show();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -138,7 +138,7 @@ public class OMCThemePickerActivity extends Activity {
         OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath()+"/.OMCThemes");
         if (!OMCThemePickerActivity.THEMEROOT.exists()) {
 			try {
-				Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, OMC.RString("extractingStarterClockPack"), Toast.LENGTH_LONG).show();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -149,7 +149,7 @@ public class OMCThemePickerActivity extends Activity {
 			refreshThemeList();
         } else if (OMCThemePickerActivity.THEMEROOT.listFiles().length == 0) {
 			try {
-				Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, OMC.RString("extractingStarterClockPack"), Toast.LENGTH_LONG).show();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -158,7 +158,7 @@ public class OMCThemePickerActivity extends Activity {
 			startActivity(OMC.GETSTARTERPACKINTENT);
         } else if (OMCThemePickerActivity.THEMEROOT.listFiles().length == 1 && OMCThemePickerActivity.THEMEROOT.list()[0].equals(OMC.DEFAULTTHEME)) {
 			try {
-				Toast.makeText(this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, OMC.RString("extractingStarterClockPack"), Toast.LENGTH_LONG).show();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -169,14 +169,14 @@ public class OMCThemePickerActivity extends Activity {
 
         	mAD = new AlertDialog.Builder(this)
 			.setCancelable(true)
-			.setTitle("Starter Clock Pack")
-			.setMessage("Files in your sdcard's .OMCThemes folder will be overwritten.  Are you sure?\n(If not sure, tap Yes)")
-			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			.setTitle(OMC.RString("starterClockPack"))
+			.setMessage(OMC.RString("starterClockPackText"))
+			.setPositiveButton(OMC.RString("yes"), new DialogInterface.OnClickListener() {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					try {
-						Toast.makeText(OMCThemePickerActivity.this, "Extracting starter clock pack...", Toast.LENGTH_LONG).show();
+						Toast.makeText(OMCThemePickerActivity.this, OMC.RString("extractingStarterClockPack"), Toast.LENGTH_LONG).show();
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -186,7 +186,7 @@ public class OMCThemePickerActivity extends Activity {
 					mAD.cancel();
 				}
 			})
-			.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			.setNegativeButton(OMC.RString("no"), new DialogInterface.OnClickListener() {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
@@ -322,7 +322,7 @@ public class OMCThemePickerActivity extends Activity {
         	if (mThemes.size()==0)return;
         	String sTheme = mThemes.get(pos);
         	if (sTheme.equals(OMC.DEFAULTTHEME)) {
-        		Toast.makeText(OMCThemePickerActivity.this, "The default theme is not removable!", Toast.LENGTH_LONG).show();
+        		Toast.makeText(OMCThemePickerActivity.this, OMC.RString("defaultThemeNotRemovable"), Toast.LENGTH_LONG).show();
         		return;
         	}
         	mThemes.remove(pos);
@@ -372,7 +372,7 @@ public class OMCThemePickerActivity extends Activity {
         	if (mNames.get(mThemes.get(position)) != null) {
         		((TextView)ll.findViewById(OMC.RId("ThemeName"))).setText(mNames.get(mThemes.get(position)));
         	} else {
-        		((TextView)ll.findViewById(OMC.RId("ThemeName"))).setText("[Corrupt - Pls Delete]");
+        		((TextView)ll.findViewById(OMC.RId("ThemeName"))).setText(OMC.RString("corruptPlsDelete"));
         	}
         	try {
 	        	if (mTweaked.get(mThemes.get(position)).booleanValue()) {
@@ -506,7 +506,7 @@ public class OMCThemePickerActivity extends Activity {
         		setResult(Activity.RESULT_OK, it);
 
            		JSONObject newTheme = OMC.getTheme(OMCThemePickerActivity.this, sThemeName, false);
-//               	Toast.makeText(OMCThemePickerActivity.this, newTheme.optString("name") + OMC.RES.getString(R.string.selected), Toast.LENGTH_SHORT).show();
+//               	Toast.makeText(OMCThemePickerActivity.this, newTheme.optString("name") + OMC.RString("postselected"), Toast.LENGTH_SHORT).show();
                 	
             	OMC.PREFS.edit()
             	.putString("widgetTheme"+iAppWidgetID, OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()))
@@ -530,23 +530,23 @@ public class OMCThemePickerActivity extends Activity {
     	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2,
     			long arg3) {
     		if (arg0==gallery) {
-    			final CharSequence[] items = {"Email Theme", "Delete Theme", "Submit Theme to Dev"};
+    			final CharSequence[] items = {OMC.RString("emailTheme"), OMC.RString("deleteTheme"), OMC.RString("submitThemeToDev")};
     			new AlertDialog.Builder(OMCThemePickerActivity.this)
-    				.setTitle("Email or Delete Theme")
+    				.setTitle(OMC.RString("emailOrDeleteTheme"))
     				.setItems(items, new DialogInterface.OnClickListener() {
     						@Override
     						public void onClick(DialogInterface dialog, int item) {
     							switch (item) {
     								case 0: //Email
     						        	String sTheme = OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition());
-    									String msg = "Package up this theme and email it to yourself, or a friend.\nDo you want to do this?";
+    									String msg = OMC.RString("emailThemeText");
     									AlertDialog ad = new AlertDialog.Builder(OMCThemePickerActivity.this)
     									.setCancelable(true)
-    									.setTitle("Email " + 
+    									.setTitle(OMC.RString("emailThemeConfirm1") + 
     											(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())) 
-    											+ "?")
+    											+ OMC.RString("emailThemeConfirm2"))
     									.setMessage(msg)
-    									.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+    									.setPositiveButton(OMC.RString("yes"), new DialogInterface.OnClickListener() {
     										
     										@Override
     										public void onClick(DialogInterface dialog, int which) {
@@ -581,8 +581,10 @@ public class OMCThemePickerActivity extends Activity {
     											        		Log.w(OMC.OMCSHORT + "Picker","cannot zip, zip error below");
     															e.printStackTrace();
     														}
+    														ffis.close();
     											        	
     												    }
+    								
     										        	zos.finish();
     										        	zos.close();
 
@@ -602,11 +604,11 @@ public class OMCThemePickerActivity extends Activity {
     					    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()) + " for " + OMC.APPNAME)
     											    	.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
 
-    											    startActivity(Intent.createChooser(it, "Packaging your theme files for email."));  
+    											    startActivity(Intent.createChooser(it, OMC.RString("emailThemeChooser")));  
     											    OMCThemePickerActivity.this.finish();
     										}
     									})
-    									.setNegativeButton("No", new DialogInterface.OnClickListener() {
+    									.setNegativeButton(OMC.RString("no"), new DialogInterface.OnClickListener() {
     										
     										@Override
     										public void onClick(DialogInterface dialog, int which) {
@@ -619,11 +621,11 @@ public class OMCThemePickerActivity extends Activity {
     								case 1: //Delete
     									ad = new AlertDialog.Builder(OMCThemePickerActivity.this)
     									.setCancelable(true)
-    									.setTitle("Delete " + 
+    									.setTitle(OMC.RString("deleteThemeConfirm1") + 
     											(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())) 
-    											+ " from SD card?")
-    									.setMessage("You'll have to download/extract the theme again to use it.  Are you sure?")
-    									.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+    											+ OMC.RString("deleteThemeConfirm2"))
+    									.setMessage(OMC.RString("deleteThemeConfirm3"))
+    									.setPositiveButton(OMC.RString("yes"), new DialogInterface.OnClickListener() {
     										
     										@Override
     										public void onClick(DialogInterface dialog, int which) {
@@ -640,7 +642,7 @@ public class OMCThemePickerActivity extends Activity {
     											OMCThemePickerActivity.this.refreshThemeList();
     										}
     									})
-    									.setNegativeButton("No", new DialogInterface.OnClickListener() {
+    									.setNegativeButton(OMC.RString("no"), new DialogInterface.OnClickListener() {
     										
     										@Override
     										public void onClick(DialogInterface dialog, int which) {
@@ -652,17 +654,17 @@ public class OMCThemePickerActivity extends Activity {
     									break;
     							case 2: //Submit to Dev
     					        	sTheme = OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition());
-    								msg = "Are you absolutely sure?";
+    								msg = OMC.RString("areYouAbsolutelySure");
     								if (!OMCThemePickerActivity.THEMEARRAY.mTweaked.get(sTheme)) {
-    									msg = "This theme does not have the 'Tweaked' flag set; it looks like a stock theme.\n"+msg;
+    									msg = OMC.RString("areYouAbsolutelySureText")+msg;
     								}
     								ad = new AlertDialog.Builder(OMCThemePickerActivity.this)
     								.setCancelable(true)
-    								.setTitle("Submit " + 
+    								.setTitle(OMC.RString("submitThemeToDevConfirm1") + 
     										(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())) 
-    										+ " to Xaffron as a new theme?")
+    										+ OMC.RString("submitThemeToDevConfirm2"))
     								.setMessage(msg)
-    								.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+    								.setPositiveButton(OMC.RString("yes"), new DialogInterface.OnClickListener() {
     									
     									@Override
     									public void onClick(DialogInterface dialog, int which) {
@@ -686,11 +688,11 @@ public class OMCThemePickerActivity extends Activity {
     				    		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME + " Theme submission")
     										    	.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
     	
-    										    startActivity(Intent.createChooser(it, "Packaging your theme files for email."));  
+    										    startActivity(Intent.createChooser(it, OMC.RString("emailThemeChooser")));  
     										    OMCThemePickerActivity.this.finish();
     									}
     								})
-    								.setNegativeButton("No", new DialogInterface.OnClickListener() {
+    								.setNegativeButton(OMC.RString("no"), new DialogInterface.OnClickListener() {
     									
     									@Override
     									public void onClick(DialogInterface dialog, int which) {

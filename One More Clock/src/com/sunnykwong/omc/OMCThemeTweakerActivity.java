@@ -102,13 +102,13 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 //      requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-        	Toast.makeText(this, "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+        	Toast.makeText(this, OMC.RString("sdcardNotDetected"), Toast.LENGTH_LONG).show();
 			finish();
         	return;
         }
         OMCThemePickerActivity.SDROOT = Environment.getExternalStorageDirectory();
 		if (!OMCThemePickerActivity.SDROOT.canRead()) {
-        	Toast.makeText(this, "SD Card missing or corrupt.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
+        	Toast.makeText(this, OMC.RString("sdcardMissingOrCorrupt"), Toast.LENGTH_LONG).show();
 			finish();
         	return;
         }
@@ -130,7 +130,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         	
         	baseTheme = OMC.getTheme(this, sTheme, true);
         	if (baseTheme==null) {
-        		Toast.makeText(this, "Theme not found!  Reverting to default look.", Toast.LENGTH_LONG).show();
+        		Toast.makeText(this, OMC.RString("themeNotFound"), Toast.LENGTH_LONG).show();
         		OMC.PREFS.edit().putString("widgettheme"+aWI, OMC.DEFAULTTHEME).commit();
         		finish();
         	}
@@ -213,8 +213,8 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     	
     	if (keyCode == android.view.KeyEvent.KEYCODE_BACK) {
     		mAD = new AlertDialog.Builder(this)
-    				.setTitle("Keep Changes?")
-    				.setPositiveButton("Apply", new DialogInterface.OnClickListener() {	
+    				.setTitle(OMC.RString("keepChanges"))
+    				.setPositiveButton(OMC.RString("apply"), new DialogInterface.OnClickListener() {	
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 				    		bApply=true;
@@ -248,7 +248,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				        	finish();
 						}
     				})
-    				.setNegativeButton("Abandon", new DialogInterface.OnClickListener() {	
+    				.setNegativeButton(OMC.RString("abandon"), new DialogInterface.OnClickListener() {	
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 				    		oTheme = null;
@@ -469,7 +469,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     	sTheme = (String)(data.getExtras().get("theme"));
     	bCustomStretch = true;
     	
-    	Toast.makeText(this, "Refreshing from SD card every " + OMCThemeTweakerActivity.REFRESHINTERVAL/1000 + " seconds.", Toast.LENGTH_SHORT).show();
+//    	Toast.makeText(this, "Refreshing from SD card every " + OMCThemeTweakerActivity.REFRESHINTERVAL/1000 + " seconds.", Toast.LENGTH_SHORT).show();
     	
     	FourByTwo = (ImageView)this.findViewById(OMC.RId("FourByTwo"));
     	FourByOne = (ImageView)this.findViewById(OMC.RId("FourByOne"));

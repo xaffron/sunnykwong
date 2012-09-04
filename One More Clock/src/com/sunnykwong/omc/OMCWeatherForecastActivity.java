@@ -27,7 +27,7 @@ public class OMCWeatherForecastActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(OMC.RLayoutId("weatherforecast"));
 		if (OMC.PREFS.getString("weathersetting", "bylatlong").equals("disabled")) {
-			Toast.makeText(this, "Weather Disabled, or No Weather Loaded!", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, OMC.RString("weatherDisabledOrNoWeatherLoaded"), Toast.LENGTH_LONG).show();
 			finish();
 		} else {
 			try {
@@ -87,17 +87,17 @@ public class OMCWeatherForecastActivity extends Activity {
 					
 				String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
 				if (sWProvider.equals("ig")) {
-					setText(findViewById(OMC.RId("LastUpdate")),"Weather updated from Google API at " + tStation.format("%R")  );
+					setText(findViewById(OMC.RId("LastUpdate")),OMC.RString("igWeatherCredit"));
 				} else if (sWProvider.equals("yr")) {
-					setText(findViewById(OMC.RId("LastUpdate")),"Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK."  );
+					setText(findViewById(OMC.RId("LastUpdate")),OMC.RString("yrWeatherCredit"));
 				} else if (sWProvider.equals("7timer")) {
-					setText(findViewById(OMC.RId("LastUpdate")),"7Timer! forecasts by Ye Quanzhi, supported by the Shanghai Astronomical Observatory, Chinese Academy of Sciences."  );
+					setText(findViewById(OMC.RId("LastUpdate")),OMC.RString("7timerWeatherCredit"));
 				} else {
-					setText(findViewById(OMC.RId("LastUpdate")),"Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK."  );
+					setText(findViewById(OMC.RId("LastUpdate")),OMC.RString("owmWeatherCredit"));
 				}  
 
 				TextView acculink = ((TextView)findViewById(OMC.RId("AccuLink")));
-				acculink.setText("Tap for Alternate Forecasts from AccuWeather®");
+				acculink.setText(OMC.RString("tapForAlternateForecast"));
 				acculink.setOnClickListener(new View.OnClickListener() {
 					
 					@Override
@@ -109,7 +109,7 @@ public class OMCWeatherForecastActivity extends Activity {
 					}
 				});
 			} catch (Exception e) {
-				Toast.makeText(this, "Weather Disabled, or No Weather Loaded!", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, OMC.RString("weatherDisabledOrNoWeatherLoaded"), Toast.LENGTH_LONG).show();
 				e.printStackTrace();
 				finish();
 			}

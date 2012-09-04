@@ -516,7 +516,7 @@ public class OMC extends Application {
 		}
 		OMC.BMPTOCVAS.put(OMC.ROTBUFFER, new Canvas(OMC.ROTBUFFER));
 		
-		Log.i(OMC.OMCSHORT + "App","Starting up1... default theme is " + OMC.PREFS.getString("widgetTheme", "MISSING"));
+		Log.i(OMC.OMCSHORT + "App","Starting up... default theme is " + OMC.PREFS.getString("widgetTheme", "MISSING"));
 		setupDefaultTheme();
 		this.widgetClicks();
 		OMC.toggleWidgets(this);
