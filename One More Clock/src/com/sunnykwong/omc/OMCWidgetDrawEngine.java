@@ -1,8 +1,5 @@
 package com.sunnykwong.omc;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.TimeZone;
 
 import org.json.JSONArray;
@@ -15,14 +12,12 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.text.Html;
@@ -30,7 +25,6 @@ import android.text.SpannedString;
 import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -53,8 +47,8 @@ public class OMCWidgetDrawEngine {
 		for (int i=0; i<N; i++) {
              if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i]) && OMC.LEASTLAGMILLIS > 500l) {
             	// If this clock takes more than 0.5 sec to render, then blit cached bitmap over first
-            	RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
-                rv.setImageViewBitmap(context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME),
+            	RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
+                rv.setImageViewBitmap(OMC.RId("omcIV"),
                 		OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
                 aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);                    
                 rv = null;
@@ -261,8 +255,8 @@ public class OMCWidgetDrawEngine {
 		double rotHeight = Math.abs(dScaledHeight* Math.cos(rotRad)) + Math.abs(dScaledWidth*Math.sin(rotRad)) ;
 
 		float fSqueezeFactor=1f;
-		if (rotWidth > thisWidgetWidth) fSqueezeFactor = (float)thisWidgetWidth/(float)rotWidth;
-		if (rotHeight > thisWidgetHeight) fSqueezeFactor = Math.min(fSqueezeFactor, (float)thisWidgetHeight/(float)rotHeight);
+		if (rotWidth > thisWidgetWidth) fSqueezeFactor = thisWidgetWidth/(float)rotWidth;
+		if (rotHeight > thisWidgetHeight) fSqueezeFactor = Math.min(fSqueezeFactor, thisWidgetHeight/(float)rotHeight);
 
 		hzStretch *= fSqueezeFactor;
 		vtStretch *= fSqueezeFactor;
@@ -334,8 +328,8 @@ public class OMCWidgetDrawEngine {
 		
 		finalcanvas.setMatrix(tempMatrix);
 		finalcanvas.drawBitmap(Bitmap.createBitmap(bitmap, 
-				(int)(OMC.STRETCHINFO.optInt("left_crop")),
-				(int)(OMC.STRETCHINFO.optInt("top_crop")),
+				(OMC.STRETCHINFO.optInt("left_crop")),
+				(OMC.STRETCHINFO.optInt("top_crop")),
 				width, height),0,0, pt);
 
 
@@ -353,8 +347,8 @@ public class OMCWidgetDrawEngine {
 		// Note that the final bitmap isn't actually sent until Step XX below.
 		//
 		
-		final RemoteViews rv = new RemoteViews(context.getPackageName(),context.getResources().getIdentifier("omcwidget", "layout", OMC.PKGNAME));
-		final int iViewID = context.getResources().getIdentifier("omcIV", "id", OMC.PKGNAME);
+		final RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
+		final int iViewID = OMC.RId("omcIV");
 		rv.setImageViewBitmap(iViewID, finalbitmap);
 		
 		//Bitmap test = BitmapFactory.decodeFile("/mnt/sdcard/test.jpg");
@@ -426,9 +420,9 @@ public class OMCWidgetDrawEngine {
     	//  If we're a new install or a new widget, add a "newbie ribbon" so the user knows how to get to options
     	if (OMC.PREFS.getBoolean("newbie" + appWidgetId, true)) {
     		if (OMC.DEBUG)Log.i(OMC.OMCSHORT+"Engine","Adding newbie ribbon to widget "+ appWidgetId + ".");
-    		rv.setImageViewResource(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), context.getResources().getIdentifier("tapme", "drawable", OMC.PKGNAME));
+    		rv.setImageViewResource(OMC.RId("omcNB"), OMC.RDrawableId("tapme"));
     	} else {
-    		rv.setImageViewResource(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), context.getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME));
+    		rv.setImageViewResource(OMC.RId("omcNB"), OMC.RDrawableId("transparent"));
     	}
 
     	//Step XX:
@@ -537,13 +531,6 @@ public class OMCWidgetDrawEngine {
 		for (int i = 0; i < layerlist.length(); i++) {
 			JSONObject layer = layerlist.optJSONObject(i);
 			if (!layer.optString("name").equals(sLayer)) continue;
-			if (layer==null) {
-				Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
-				OMC.PREFS.edit()
-						.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
-						.commit();
-				return null;
-			}
 			// Clear the text buffer first.
 			String sTextBuffer="";
 			
@@ -593,7 +580,7 @@ public class OMCWidgetDrawEngine {
 		float dist = -0.45f;
 		for (int i = 0; i < layer.optInt("number_circles"); i++) {
 			pt1.setColor(OMC.FLARECOLORS[i]);
-			dist += (float)(1.f/layer.optInt("number_circles")); 
+			dist += (1.f/layer.optInt("number_circles")); 
 			float x = (x2-x1) * dist + OMC.WIDGETWIDTH/2f;
 			float y = (y2-y1) * dist + OMC.WIDGETHEIGHT/2f;
 			cvas.drawCircle(x, y, OMC.FLARERADII[i], pt1);

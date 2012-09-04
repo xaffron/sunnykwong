@@ -12,14 +12,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.StringTokenizer;
@@ -65,7 +63,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.provider.AlarmClock;
 import android.text.format.Time;
 import android.util.Log;
 import android.widget.Toast;
@@ -357,7 +354,7 @@ public class OMC extends Application {
     	
     	OMC.GEOFONT = Typeface.createFromAsset(OMC.AM, "GeosansLight.ttf");
     	OMC.WEATHERFONT = Typeface.createFromAsset(OMC.AM, "wef.ttf");
-    	OMC.PLACEHOLDERBMP = BitmapFactory.decodeResource(OMC.RES, OMC.RES.getIdentifier("transparent", "drawable", OMC.PKGNAME));
+    	OMC.PLACEHOLDERBMP = BitmapFactory.decodeResource(OMC.RES, OMC.RDrawableId("transparent"));
     	
     	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_WORLD_READABLE);
 
@@ -366,7 +363,7 @@ public class OMC extends Application {
 			OMC.PREFS.edit().putString("weathersetting", "bylatlong").commit();
 		}
 		
-		OMC.FGNOTIFICIATION = new Notification(OMC.RES.getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME), 
+		OMC.FGNOTIFICIATION = new Notification(OMC.RDrawableId(OMC.APPICON), 
 				"", 
         		System.currentTimeMillis());
         OMC.FGNOTIFICIATION.flags = OMC.FGNOTIFICIATION.flags|Notification.FLAG_ONGOING_EVENT|Notification.FLAG_NO_CLEAR;
@@ -476,22 +473,22 @@ public class OMC extends Application {
 		}
 		OMC.OVERLAYURIS = null;
 		OMC.OVERLAYRESOURCES = new int[] {
-				this.getResources().getIdentifier("NW", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("N", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("NE", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("W", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("C", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("E", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("SW", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("S", "id", OMC.PKGNAME),
-				this.getResources().getIdentifier("SE", "id", OMC.PKGNAME)
-				};
+				OMC.RId("NW"),
+				OMC.RId("N"),
+				OMC.RId("NE"),
+				OMC.RId("W"),
+				OMC.RId("C"),
+				OMC.RId("E"),
+				OMC.RId("SW"),
+				OMC.RId("S"),
+				OMC.RId("SE")
+		};
 
-		OMC.WORDNUMBERS = this.getResources().getStringArray(this.getResources().getIdentifier("WordNumbers", "array", OMC.PKGNAME));
+		OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers");
 
 		//SUNNY
 		
-		OMC.VERBOSETIME = OMC.RES.getStringArray(OMC.RES.getIdentifier("verbosetime", "array", OMC.PKGNAME));
+		OMC.VERBOSETIME = OMC.RStringArray("verbosetime");
 
 		OMC.TIME.setToNow();
 		OMC.TIME.hour=0;
@@ -886,7 +883,7 @@ public class OMC extends Application {
 			}
 		}
 		// Bitmap can't be found anywhere; return a transparent png
-		return BitmapFactory.decodeResource(OMC.RES, OMC.RES.getIdentifier("transparent", "drawable", OMC.PKGNAME));
+		return BitmapFactory.decodeResource(OMC.RES, OMC.RDrawableId("transparent"));
 	}
 
 	public static void purgeTypefaceCache(){
@@ -2108,4 +2105,33 @@ public class OMC extends Application {
 	    final long shifted = Math.round(num*magnitude);
 	    return (float)(shifted/magnitude);
 	}
+	
+	public static String RString(final String key) {
+		return OMC.RES.getString(OMC.RES.getIdentifier(key, "string", OMC.PKGNAME));
+	}
+	
+	public static String[] RStringArray(final String key) {
+		return OMC.RES.getStringArray(OMC.RES.getIdentifier(key, "array", OMC.PKGNAME));
+	}
+	
+	public static int RId(final String key) {
+		return OMC.RES.getIdentifier(key, "id", OMC.PKGNAME);
+	}
+
+	public static int RDrawableId(final String key) {
+		return OMC.RES.getIdentifier(key, "drawable", OMC.PKGNAME);
+	}
+
+	public static int RXmlId(final String key) {
+		return OMC.RES.getIdentifier(key, "xml", OMC.PKGNAME);
+	}
+
+	public static int RLayoutId(final String key) {
+		return OMC.RES.getIdentifier(key, "layout", OMC.PKGNAME);
+	}
+
+	public static int RMenuId(final String key) {
+		return OMC.RES.getIdentifier(key, "menu", OMC.PKGNAME);
+	}
+
 }

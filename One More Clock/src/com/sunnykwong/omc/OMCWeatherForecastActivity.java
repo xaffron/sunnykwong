@@ -25,9 +25,9 @@ public class OMCWeatherForecastActivity extends Activity {
 
 		//Hide the title bar
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(getResources().getIdentifier("weatherforecast", "layout", OMC.PKGNAME));
+		setContentView(OMC.RLayoutId("weatherforecast"));
 		if (OMC.PREFS.getString("weathersetting", "bylatlong").equals("disabled")) {
-			Toast.makeText(this, "Weather Disabled, or No Weather Loaded!", Toast.LENGTH_LONG);
+			Toast.makeText(this, "Weather Disabled, or No Weather Loaded!", Toast.LENGTH_LONG).show();
 			finish();
 		} else {
 			try {
@@ -39,12 +39,12 @@ public class OMCWeatherForecastActivity extends Activity {
 					sWeatherDigits = weather.optString("temp_c", "--")+"°C";
 				}
 				float fStretch = Math.min(1f,120f/(sWeatherDigits.length()*40f));
-				setText(findViewById(getResources().getIdentifier("CurrTemp", "id", OMC.PKGNAME)),sWeatherDigits,fStretch);
+				setText(findViewById(OMC.RId("CurrTemp")),sWeatherDigits,fStretch);
 	
 				String sCity = weather.optString("city") + ",\n" + weather.optString("country2")+" ";
 				fStretch = Math.min(1f,800f/(sCity.length()*40f));
-				setText(findViewById(getResources().getIdentifier("City", "id", OMC.PKGNAME)),sCity,fStretch);
-				setText(findViewById(getResources().getIdentifier("Conditions", "id", OMC.PKGNAME)),weather.optString("condition") + " | " + weather.optString("wind_condition") + " " + weather.optString("humidity"));
+				setText(findViewById(OMC.RId("City")),sCity,fStretch);
+				setText(findViewById(OMC.RId("Conditions")),weather.optString("condition") + " | " + weather.optString("wind_condition") + " " + weather.optString("humidity"));
 				Time t = new Time();
 				t.set(System.currentTimeMillis());
 				String sTimeOfDay="day";
@@ -54,21 +54,21 @@ public class OMCWeatherForecastActivity extends Activity {
 					//Nighttime
 					sTimeOfDay="night";
 				}
-				((ImageView)findViewById(getResources().getIdentifier("ConditionImage", "id", OMC.PKGNAME))).setImageBitmap(OMC.getBitmap(OMC.DEFAULTTHEME, "w-"+weather.optString("condition_lcase","--")+"-"+sTimeOfDay+".png"));
+				((ImageView)findViewById(OMC.RId("ConditionImage"))).setImageBitmap(OMC.getBitmap(OMC.DEFAULTTHEME, "w-"+weather.optString("condition_lcase","--")+"-"+sTimeOfDay+".png"));
 				JSONArray wary = weather.optJSONArray("zzforecast_conditions");
 				for (int i=0; i<Math.min(wary.length(),4); i++) {
 					JSONObject day = wary.optJSONObject(i);
-					setText(findViewById(getResources().getIdentifier("dayofweek"+i, "id", OMC.PKGNAME)),day.optString("day_of_week"));
-					((ImageView)findViewById(getResources().getIdentifier("ConditionImage"+i, "id", OMC.PKGNAME))).setImageBitmap(OMC.getBitmap(OMC.DEFAULTTHEME, "w-"+day.optString("condition_lcase","--")+"-day.png"));
-					setText(findViewById(getResources().getIdentifier("ForecastCond"+i, "id", OMC.PKGNAME)),day.optString("condition"));
+					setText(findViewById(OMC.RId("dayofweek"+i)),day.optString("day_of_week"));
+					((ImageView)findViewById(OMC.RId("ConditionImage"+i))).setImageBitmap(OMC.getBitmap(OMC.DEFAULTTHEME, "w-"+day.optString("condition_lcase","--")+"-day.png"));
+					setText(findViewById(OMC.RId("ForecastCond"+i)),day.optString("condition"));
 					if (OMC.PREFS.getString("weatherDisplay", "f").equals("f")) {
-						setText(findViewById(getResources().getIdentifier("HighTemp"+i, "id", OMC.PKGNAME)),day.optString("high")+"°F");
-						setText(findViewById(getResources().getIdentifier("LowTemp"+i, "id", OMC.PKGNAME)),day.optString("low")+"°F");
+						setText(findViewById(OMC.RId("HighTemp"+i)),day.optString("high")+"°F");
+						setText(findViewById(OMC.RId("LowTemp"+i)),day.optString("low")+"°F");
 					} else {
-						setText(findViewById(getResources().getIdentifier("HighTemp"+i, "id", OMC.PKGNAME)),day.optString("high_c")+"°C");
-						setText(findViewById(getResources().getIdentifier("LowTemp"+i, "id", OMC.PKGNAME)),day.optString("low_c")+"°C");
+						setText(findViewById(OMC.RId("HighTemp"+i)),day.optString("high_c")+"°C");
+						setText(findViewById(OMC.RId("LowTemp"+i)),day.optString("low_c")+"°C");
 					}
-//				    TextView gradient = (TextView)findViewById(getResources().getIdentifier("divider"+i, "id", OMC.PKGNAME));
+//				    TextView gradient = (TextView)findViewById(getResources().OMC.RId("divider"+i));
 //				    final int iDay = i;
 //				    gradient.setOnClickListener(new View.OnClickListener() {
 //						
@@ -87,16 +87,16 @@ public class OMCWeatherForecastActivity extends Activity {
 					
 				String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
 				if (sWProvider.equals("ig")) {
-					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather updated from Google API at " + tStation.format("%R")  );
+					setText(findViewById(OMC.RId("LastUpdate")),"Weather updated from Google API at " + tStation.format("%R")  );
 				} else if (sWProvider.equals("yr")) {
-					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK."  );
+					setText(findViewById(OMC.RId("LastUpdate")),"Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK."  );
 				} else if (sWProvider.equals("7timer")) {
-					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"7Timer! forecasts by Ye Quanzhi, supported by the Shanghai Astronomical Observatory, Chinese Academy of Sciences."  );
+					setText(findViewById(OMC.RId("LastUpdate")),"7Timer! forecasts by Ye Quanzhi, supported by the Shanghai Astronomical Observatory, Chinese Academy of Sciences."  );
 				} else {
-					setText(findViewById(getResources().getIdentifier("LastUpdate", "id", OMC.PKGNAME)),"Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK."  );
+					setText(findViewById(OMC.RId("LastUpdate")),"Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK."  );
 				}  
 
-				TextView acculink = ((TextView)findViewById(getResources().getIdentifier("AccuLink", "id", OMC.PKGNAME)));
+				TextView acculink = ((TextView)findViewById(OMC.RId("AccuLink")));
 				acculink.setText("Tap for Alternate Forecasts from AccuWeather®");
 				acculink.setOnClickListener(new View.OnClickListener() {
 					
@@ -109,7 +109,7 @@ public class OMCWeatherForecastActivity extends Activity {
 					}
 				});
 			} catch (Exception e) {
-				Toast.makeText(this, "Weather Disabled, or No Weather Loaded!", Toast.LENGTH_LONG);
+				Toast.makeText(this, "Weather Disabled, or No Weather Loaded!", Toast.LENGTH_LONG).show();
 				e.printStackTrace();
 				finish();
 			}

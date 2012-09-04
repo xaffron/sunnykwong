@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.zip.ZipEntry;
@@ -21,7 +20,6 @@ import android.content.DialogInterface.OnCancelListener;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -51,8 +49,8 @@ public class OMCThemeUnzipActivity extends Activity {
 
 	final Runnable mResult = new Runnable() {
 		public void run() {
-			((TextView)pdWait.findViewById(getResources().getIdentifier("UnzipStatus", "id", OMC.PKGNAME))).setText(pdMessage);
-			((TextView)pdWait.findViewById(getResources().getIdentifier("UnzipStatus", "id", OMC.PKGNAME))).invalidate();
+			((TextView)pdWait.findViewById(OMC.RId("UnzipStatus"))).setText(pdMessage);
+			((TextView)pdWait.findViewById(OMC.RId("UnzipStatus"))).invalidate();
 			if (COMPLETE) {
 				Toast.makeText(getApplicationContext(), "Import Complete!", Toast.LENGTH_SHORT).show();
 				if (uri.toString().equals(OMC.STARTERPACKURL)) {
@@ -77,8 +75,8 @@ public class OMCThemeUnzipActivity extends Activity {
 
 	final Runnable mUpdateStatus = new Runnable() {
 		public void run() {
-			((TextView)(pdWait.findViewById(getResources().getIdentifier("UnzipStatus", "id", OMC.PKGNAME)))).setText(pdMessage);
-			((TextView)(pdWait.findViewById(getResources().getIdentifier("UnzipStatus", "id", OMC.PKGNAME)))).invalidate();
+			((TextView)(pdWait.findViewById(OMC.RId("UnzipStatus")))).setText(pdMessage);
+			((TextView)(pdWait.findViewById(OMC.RId("UnzipStatus")))).invalidate();
 		}
 	};
 
@@ -86,8 +84,8 @@ public class OMCThemeUnzipActivity extends Activity {
 		public void run() {
 			try {
 				Bitmap bmp = BitmapFactory.decodeFile(pdPreview);
-				((ImageView)pdWait.findViewById(getResources().getIdentifier("UnzipPreview", "id", OMC.PKGNAME))).setImageBitmap(bmp);
-				((ImageView)pdWait.findViewById(getResources().getIdentifier("UnzipPreview", "id", OMC.PKGNAME))).invalidate();
+				((ImageView)pdWait.findViewById(OMC.RId("UnzipPreview"))).setImageBitmap(bmp);
+				((ImageView)pdWait.findViewById(OMC.RId("UnzipPreview"))).invalidate();
 			} catch (Exception e) {
 				Log.e(OMC.OMCSHORT + "Unzip","Mark Invalidated!");
 			}
@@ -128,8 +126,8 @@ public class OMCThemeUnzipActivity extends Activity {
 		omcRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes");
 		mHandler = new Handler();
 		pdWait = new Dialog(this);
-		pdWait.setContentView(getResources().getIdentifier("themeunzippreview", "layout", OMC.PKGNAME));
-		pg = (ProgressBar) pdWait.findViewById(getResources().getIdentifier("UnzipProgress", "id", OMC.PKGNAME));
+		pdWait.setContentView(OMC.RLayoutId("themeunzippreview"));
+		pg = (ProgressBar) pdWait.findViewById(OMC.RId("UnzipProgress"));
 		pg.setVisibility(ProgressBar.VISIBLE);
 
 		pdWait.setTitle("Connecting...");

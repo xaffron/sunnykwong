@@ -65,7 +65,7 @@ public class OMCSkinnerActivity extends Activity {
         //Hide the title bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        setContentView(getResources().getIdentifier("skinnertool", "layout", OMC.PKGNAME));
+        setContentView(OMC.RLayoutId("skinnertool"));
 
         OMCSkinnerActivity.REFRESHINTERVAL = 3000;
         
@@ -91,9 +91,9 @@ public class OMCSkinnerActivity extends Activity {
     	
     	Toast.makeText(this, "Refreshing from SD card every " + OMCSkinnerActivity.REFRESHINTERVAL/1000 + " seconds.", Toast.LENGTH_SHORT).show();
     	
-    	FourByTwo = (ImageView)this.findViewById(getResources().getIdentifier("FourByTwo", "id", OMC.PKGNAME));
-    	FourByOne = (ImageView)this.findViewById(getResources().getIdentifier("FourByOne", "id", OMC.PKGNAME));
-    	ThreeByOne = (ImageView)this.findViewById(getResources().getIdentifier("ThreeByOne", "id", OMC.PKGNAME));
+    	FourByTwo = (ImageView)this.findViewById(OMC.RId("FourByTwo"));
+    	FourByOne = (ImageView)this.findViewById(OMC.RId("FourByOne"));
+    	ThreeByOne = (ImageView)this.findViewById(OMC.RId("ThreeByOne"));
 
 
     	OMC.PREFS.edit().putString("widgetTheme-1", (String)(data.getExtras().get("theme")))

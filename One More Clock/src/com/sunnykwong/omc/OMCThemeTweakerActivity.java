@@ -113,8 +113,8 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         	return;
         }
 
-		setContentView(getResources().getIdentifier("tweakertool", "layout", OMC.PKGNAME));
-        toplevel = (AbsoluteLayout)findViewById(getResources().getIdentifier("toplevel", "id", OMC.PKGNAME));
+		setContentView(OMC.RLayoutId("tweakertool"));
+        toplevel = (AbsoluteLayout)findViewById(OMC.RId("toplevel"));
 
         OMCThemeTweakerActivity.REFRESHINTERVAL = 1000;
 
@@ -159,13 +159,13 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         	layers[i]=oTheme.optJSONArray("layers_bottomtotop").optJSONObject(i).optString("name");
         }
 
-        ArrayAdapter<String> aa = new ArrayAdapter<String>(this, getResources().getIdentifier("tweakerlayer", "layout", OMC.PKGNAME),layers);
-        aa.setDropDownViewResource(getResources().getIdentifier("tweakerlayerdropdown", "layout", OMC.PKGNAME));
-        spinnerLayers = (Spinner)findViewById(getResources().getIdentifier("tweakerlayerspinner", "id", OMC.PKGNAME));
+        ArrayAdapter<String> aa = new ArrayAdapter<String>(this, OMC.RLayoutId("tweakerlayer"),layers);
+        aa.setDropDownViewResource(OMC.RLayoutId("tweakerlayerdropdown"));
+        spinnerLayers = (Spinner)findViewById(OMC.RId("tweakerlayerspinner"));
         spinnerLayers.setAdapter(aa);
         spinnerLayers.setOnItemSelectedListener(this);
 
-        vPreview = (ImageView)findViewById(getResources().getIdentifier("tweakerpreview", "id", OMC.PKGNAME));
+        vPreview = (ImageView)findViewById(OMC.RId("tweakerpreview"));
         Bitmap bmp = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1);
         bmp.setDensity(Bitmap.DENSITY_NONE);
         vPreview.setImageBitmap(bmp);
@@ -182,7 +182,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 		});
         vPreview.invalidate();
 
-        vBounds = (ImageView)findViewById(getResources().getIdentifier("tweakerbounds", "id", OMC.PKGNAME));
+        vBounds = (ImageView)findViewById(OMC.RId("tweakerbounds"));
         
         Rect BoundingBox ;
         try {
@@ -204,7 +204,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         vBounds.setImageBitmap(tempBmp);
         vBounds.invalidate();
         
-        vDrag = (ImageView)findViewById(getResources().getIdentifier("tweakerdragpreview", "id", OMC.PKGNAME));
+        vDrag = (ImageView)findViewById(OMC.RId("tweakerdragpreview"));
         
     }
 
@@ -264,7 +264,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(getResources().getIdentifier("tweakermenu", "menu", OMC.PKGNAME), menu);
+		getMenuInflater().inflate(OMC.RMenuId("tweakermenu"), menu);
 		return true;
 	}
 
@@ -286,29 +286,29 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     public boolean onPrepareOptionsMenu(Menu menu) {
     	// For Honeycomb and above, sometimes this gets called before active layer is initialized
     	if (oActiveLayer==null) {
-    		menu.findItem(getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)).setEnabled(false);
-    		menu.findItem(getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)).setEnabled(false);
-   			menu.findItem(getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)).setEnabled(false);
+    		menu.findItem(OMC.RId("tweakmenulayerenable")).setEnabled(false);
+    		menu.findItem(OMC.RId("tweakmenupickColor1")).setEnabled(false);
+   			menu.findItem(OMC.RId("tweakmenupickColor2")).setEnabled(false);
    			return super.onPrepareOptionsMenu(menu);
     	}
 
     	String sLayerType = oActiveLayer.optString("type");
     	if (sLayerType==null) {
-    		menu.findItem(getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)).setEnabled(false);
-    		menu.findItem(getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)).setEnabled(false);
-   			menu.findItem(getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)).setEnabled(false);
+    		menu.findItem(OMC.RId("tweakmenulayerenable")).setEnabled(false);
+    		menu.findItem(OMC.RId("tweakmenupickColor1")).setEnabled(false);
+   			menu.findItem(OMC.RId("tweakmenupickColor2")).setEnabled(false);
     	} else if (sLayerType.equals("image")) {
-    		menu.findItem(getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)).setEnabled(true);
-    		menu.findItem(getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)).setEnabled(false);
-    		menu.findItem(getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)).setEnabled(false);
+    		menu.findItem(OMC.RId("tweakmenulayerenable")).setEnabled(true);
+    		menu.findItem(OMC.RId("tweakmenupickColor1")).setEnabled(false);
+    		menu.findItem(OMC.RId("tweakmenupickColor2")).setEnabled(false);
     	} else if (sLayerType.equals("flare")) {
-    		menu.findItem(getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)).setEnabled(true);
-    		menu.findItem(getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)).setEnabled(false);
-    		menu.findItem(getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)).setEnabled(false);
+    		menu.findItem(OMC.RId("tweakmenulayerenable")).setEnabled(true);
+    		menu.findItem(OMC.RId("tweakmenupickColor1")).setEnabled(false);
+    		menu.findItem(OMC.RId("tweakmenupickColor2")).setEnabled(false);
     	} else {
-    		menu.findItem(getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)).setEnabled(true);
-    		menu.findItem(getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)).setEnabled(true);
-    		menu.findItem(getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)).setEnabled(true);
+    		menu.findItem(OMC.RId("tweakmenulayerenable")).setEnabled(true);
+    		menu.findItem(OMC.RId("tweakmenupickColor1")).setEnabled(true);
+    		menu.findItem(OMC.RId("tweakmenupickColor2")).setEnabled(true);
     	}
     	
     	return super.onPrepareOptionsMenu(menu);
@@ -316,7 +316,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-    	if (item.getItemId()==getResources().getIdentifier("tweakmenulayerenable", "id", OMC.PKGNAME)) {
+    	if (item.getItemId()==OMC.RId("tweakmenulayerenable")) {
 			try {
 				if (oActiveLayer.optBoolean("enabled")) oActiveLayer.put("enabled",false);
 				else oActiveLayer.put("enabled",true);
@@ -325,7 +325,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				e.printStackTrace();
 			}
     	}
-    	if (item.getItemId()==getResources().getIdentifier("tweakmenupickColor1", "id", OMC.PKGNAME)) {
+    	if (item.getItemId()==OMC.RId("tweakmenupickColor1")) {
     		int initialColor;
     		if (oActiveLayer.optString("fgcolor")==null) {
     			initialColor = Color.BLACK;
@@ -355,7 +355,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 			}, initialColor);
     		cpd.show();
     	}
-    	if (item.getItemId()==getResources().getIdentifier("tweakmenupickColor2", "id", OMC.PKGNAME)) {
+    	if (item.getItemId()==OMC.RId("tweakmenupickColor2")) {
     		int initialColor;
     		if (oActiveLayer.optString("bgcolor")==null) {
     			initialColor = Color.BLACK;
@@ -448,7 +448,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 			mHandler.post(mDrag);
     	}
     	if (event.getAction()==MotionEvent.ACTION_UP) {
-    		vDrag.setImageResource(getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME));
+    		vDrag.setImageResource(OMC.RDrawableId("transparent"));
     		refreshDrag();
     		refreshViews();
     		vPreview.setOnTouchListener(null);
@@ -471,9 +471,9 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     	
     	Toast.makeText(this, "Refreshing from SD card every " + OMCThemeTweakerActivity.REFRESHINTERVAL/1000 + " seconds.", Toast.LENGTH_SHORT).show();
     	
-    	FourByTwo = (ImageView)this.findViewById(getResources().getIdentifier("FourByTwo", "id", OMC.PKGNAME));
-    	FourByOne = (ImageView)this.findViewById(getResources().getIdentifier("FourByOne", "id", OMC.PKGNAME));
-    	ThreeByOne = (ImageView)this.findViewById(getResources().getIdentifier("ThreeByOne", "id", OMC.PKGNAME));
+    	FourByTwo = (ImageView)this.findViewById(OMC.RId("FourByTwo"));
+    	FourByOne = (ImageView)this.findViewById(OMC.RId("FourByOne"));
+    	ThreeByOne = (ImageView)this.findViewById(OMC.RId("ThreeByOne"));
 
 
     }

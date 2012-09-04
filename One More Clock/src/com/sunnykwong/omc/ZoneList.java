@@ -160,7 +160,7 @@ public class ZoneList extends ListActivity {
         List<HashMap> myData = new ArrayList<HashMap>();
         long date = Calendar.getInstance().getTimeInMillis();
         try {
-            XmlResourceParser xrp = getResources().getXml(getResources().getIdentifier("timezones", "xml", OMC.PKGNAME));
+            XmlResourceParser xrp = getResources().getXml(OMC.RXmlId("timezones"));
             while (xrp.next() != XmlResourceParser.START_TAG)
                 continue;
             xrp.next();

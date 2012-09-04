@@ -1,31 +1,13 @@
 package com.sunnykwong.omc;
 
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Stack;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.DefaultHandler;
-import org.xml.sax.helpers.XMLReaderFactory;
-
 import android.location.Location;
 import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Build;
-import android.os.Bundle;
-import android.text.format.Time;
 import android.util.Log;
 
 public class GoogleReverseGeocodeService {

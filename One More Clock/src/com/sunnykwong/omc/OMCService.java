@@ -145,10 +145,10 @@ public class OMCService extends Service {
 		if (OMC.FG) {
 
             // Set the info for the views that show in the notification panel.
-			OMC.FGNOTIFICIATION.icon = getResources().getIdentifier("transparent", "drawable", OMC.PKGNAME);
+			OMC.FGNOTIFICIATION.icon = OMC.RDrawableId("transparent");
 			
-	        RemoteViews contentView = new RemoteViews(getPackageName(), getResources().getIdentifier("omc_notification", "layout", OMC.PKGNAME));
-	        contentView.setTextViewText(getResources().getIdentifier("notf_text", "id", OMC.PKGNAME), OMC.APPNAME + " in Foreground - Tap to stop");
+	        RemoteViews contentView = new RemoteViews(getPackageName(), OMC.RLayoutId("omc_notification"));
+	        contentView.setTextViewText(OMC.RId("notf_text"), OMC.APPNAME + " in Foreground - Tap to stop");
 	        OMC.FGNOTIFICIATION.contentView = contentView;
 	        Intent it = new Intent(OMC.CANCELFGSTRING);
 			OMC.FGNOTIFICIATION.contentIntent = PendingIntent.getBroadcast(this, 0, it, 0);

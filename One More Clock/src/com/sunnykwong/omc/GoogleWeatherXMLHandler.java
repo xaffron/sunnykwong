@@ -1,16 +1,11 @@
 package com.sunnykwong.omc;
 
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Stack;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,11 +15,7 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Build;
-import android.os.Bundle;
 import android.text.format.Time;
 import android.util.Log;
 
@@ -56,6 +47,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 	static public void updateWeather(final double latitude, final double longitude, final String country, final String city, final boolean bylatlong) {
 		ELEMENTS = new ArrayList<HashMap<String, String>>();
 		Thread t = new Thread() {
+			@Override
 			public void run() {
 				HttpURLConnection huc = null; 
 				try {
@@ -93,15 +85,18 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 
 	}
 
+	@Override
 	public void startDocument() {
 		if (OMC.DEBUG)
 			Log.i(OMC.OMCSHORT + "Weather", "Start Building JSON.");
 	}
 
+	@Override
 	public void characters(char[] ch, int start, int length) {
 		// Google Weather doesn't return data between tags, so nothing here
 	}
 
+	@Override
 	public void startElement(String namespaceURI, String localName,
 			String qName, Attributes atts) {
 		try {
@@ -165,6 +160,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		}
 	}
 
+	@Override
 	public void endElement(String uri, String name, String qName) {
 		if (tree.isEmpty())
 			return;
@@ -194,6 +190,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 		return true;
 	}
 
+	@Override
 	public void endDocument() {
 		if (OMC.DEBUG)
 			Log.i(OMC.OMCSHORT + "Weather", jsonWeather.toString());

@@ -1,30 +1,11 @@
 package com.sunnykwong.omc;
 
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Stack;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.DefaultHandler;
-import org.xml.sax.helpers.XMLReaderFactory;
-
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Build;
-import android.os.Bundle;
 import android.text.format.Time;
 import android.util.Log;
 
@@ -79,6 +60,7 @@ public class OpenWeatherMapJSONHandler {
 	static public void updateWeather(final double latitude, final double longitude, final String country, final String city, final boolean bylatlong) {
 		
 		Thread t = new Thread() {
+			@Override
 			public void run() {
 				HttpURLConnection huc = null; 
 				try {
@@ -114,7 +96,7 @@ public class OpenWeatherMapJSONHandler {
 						OWMhandler.jsonWeather.put("temp_f",(int)(tempc*9f/5f+32.7f));
 						// Translate humidity.
 						OWMhandler.jsonWeather.put("humidity_raw",maininfo.getDouble("humidity"));
-						OWMhandler.jsonWeather.put("humidity", OMC.RES.getString(OMC.RES.getIdentifier("humiditycondition", "string", OMC.PKGNAME)) +
+						OWMhandler.jsonWeather.put("humidity", OMC.RString("humiditycondition") +
 								maininfo.getDouble("humidity") + "%");
 						
 						maininfo=null;
@@ -145,7 +127,7 @@ public class OpenWeatherMapJSONHandler {
 						else 
 							OWMhandler.jsonWeather.put("wind_direction","N");
 
-						OWMhandler.jsonWeather.put("wind_condition", OMC.RES.getString(OMC.RES.getIdentifier("windcondition", "string", OMC.PKGNAME)) +
+						OWMhandler.jsonWeather.put("wind_condition", OMC.RString("windcondition") +
 								OWMhandler.jsonWeather.optString("wind_direction") + " @ " +
 								OWMhandler.jsonWeather.optString("wind_speed_mph") + " mph");
 

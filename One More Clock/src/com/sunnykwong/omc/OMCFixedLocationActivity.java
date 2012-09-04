@@ -1,19 +1,9 @@
 package com.sunnykwong.omc;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
 import java.util.StringTokenizer;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -62,10 +52,10 @@ public class OMCFixedLocationActivity extends Activity {
 		mHandler= new Handler();
 		//Hide the title bar
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(getResources().getIdentifier("fixedlocation", "layout", OMC.PKGNAME));
-		btnSearch = (Button)findViewById(getResources().getIdentifier("SearchButton", "id", OMC.PKGNAME));
-		etSearchBox = (EditText)findViewById(getResources().getIdentifier("SearchBox", "id", OMC.PKGNAME));
-		llResults = (LinearLayout)findViewById(getResources().getIdentifier("SearchResults", "id", OMC.PKGNAME));
+		setContentView(OMC.RLayoutId("fixedlocation"));
+		btnSearch = (Button)findViewById(OMC.RId("SearchButton"));
+		etSearchBox = (EditText)findViewById(OMC.RId("SearchBox"));
+		llResults = (LinearLayout)findViewById(OMC.RId("SearchResults"));
 		
 		btnSearch.setOnClickListener(new View.OnClickListener() {
 			
@@ -87,6 +77,7 @@ public class OMCFixedLocationActivity extends Activity {
 				}
 
 				Thread t = new Thread() {
+					@Override
 					public void run() {
 						HttpURLConnection huc=null;
 						try {

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+	<!-- English -->
     <resources>
         <!-- General Buttons -->
         <string name="nextTip">Next Tip</string>
@@ -6,17 +7,21 @@
         <string name="search">Search</string>
         
         <!-- Bailout App Dialog -->
-        <string name="thanksForDownloading">歡迎!</string>
-        <string name="widgetDir1">請先輕按\'返回鍵\'返回到首頁畫面，然後從\'小工具\'列表中將\u0020</string>
-        <string name="widgetDir2">\u0020拖曳到首頁空白處。</string>
+        <string name="thanksForDownloading">Thanks for downloading!</string>
+        <string name="widgetDir1">To begin, hit the back button to go back to the home screen, then access the \'Widgets\' list to see\u0020</string>
+        <string name="widgetDir2">\u0020listed.  Have fun!</string>
+
+        <!-- Weather Forecast Screen -->
+    	<string name="humiditycondition">Humidity: </string>
+    	<string name="windcondition">Wind: </string>
         
         <!-- Theme Picker Legend -->
-        <string name="batteryLegend">有電池容量顯示</string>
-        <string name="weatherLegend">有天氣顯示</string>
-        <string name="bkimageLegend">有背景圖案</string>
-        <string name="ltbgLegend">適合淺色壁紙</string>
-        <string name="dkbgLegend">適合深色壁紙</string>
-        <string name="tweakLegend">此設計曾被用戶修改</string>
+        <string name="batteryLegend">Shows Battery Charge</string>
+        <string name="weatherLegend">Shows Weather</string>
+        <string name="bkimageLegend">Includes Background Image</string>
+        <string name="ltbgLegend">Good on Light Backgrounds</string>
+        <string name="dkbgLegend">Good on Dark Backgrounds</string>
+        <string name="tweakLegend">Clock is User-Tweaked</string>
         
         <!-- Theme Skinner Tool (deprecated) -->
         <string name="reloadThemeCatalog">Reload Theme Catalog</string>
@@ -30,16 +35,17 @@
         
         <!-- Clock Preferences -->
     
-        <string name="usefulTip">技巧提示</string>
-        <string name="doNotShowAgain">不要再顯示.</string>
+        <string name="usefulTip">Useful Tip</string>
+        <string name="doNotShowAgain">Do Not Show Again.</string>
     
         <string name="forThisClock">For this clock:</string>
         <string name="widgetTheme">Widget Theme</string>
         <string name="themePreview">Theme Preview</string>
         <string name="legend">Legend</string>
-        <string name="selected">\u0020selected.</string>
+        <string name="preselected"></string>
+        <string name="postselected">selected.</string>
         <string name="personalizeClock">Personalize Clock</string>
-        <string name="tweakColorsAndLayers">Tweak Colors and Layers.</string>
+        <string name="tweakColorsAndLayers">Tweak Colors and Layers</string>
 
         <!-- Tap & Display Options --> 
 
@@ -61,6 +67,7 @@
         <string name="clearRenderCaches">Clear Render Caches</string>
         <string name="cachesCleared">Caches Cleared</string>
         
+        <!-- Troubleshooting Options -->
         <string name="troubleshootingOptions">Troubleshooting Options</string>
         
         <string name="credits">Credits</string>

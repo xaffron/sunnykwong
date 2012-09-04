@@ -9,7 +9,7 @@ public class OMCCreditsActivity extends PreferenceActivity {
 
     	super.onCreate(savedInstanceState);
         
-       	addPreferencesFromResource(getResources().getIdentifier("credits", "xml", OMC.PKGNAME));
+       	addPreferencesFromResource(OMC.RXmlId("credits"));
 
     }
 

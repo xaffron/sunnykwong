@@ -8,14 +8,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningServiceInfo;
-import android.app.ActivityManager.RunningTaskInfo;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.appwidget.AppWidgetManager;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
@@ -24,7 +19,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -38,14 +32,12 @@ import android.preference.PreferenceScreen;
 import android.text.format.Time;
 import android.text.util.Linkify;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -210,7 +202,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 
         	// Load generic prefs into the prefscreen. 
     		this.getPreferenceManager().setSharedPreferencesName(OMC.SHAREDPREFNAME);
-        	addPreferencesFromResource(getResources().getIdentifier("omcprefs", "xml", OMC.PKGNAME));
+        	addPreferencesFromResource(OMC.RXmlId("omcprefs"));
 
         	// ID specific preferences.
         	// "Set Widget Theme".
@@ -218,11 +210,11 @@ public class OMCPrefActivity extends PreferenceActivity {
         	prefloadThemeFile.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
-		        	prefloadThemeFile.setSummary(newValue+ OMC.RES.getString(R.string.selected));
+		        	prefloadThemeFile.setSummary(OMC.RString("preselected") + " " + newValue + " " + OMC.RString("postselected"));
 					return true;
 				}
 			});
-        	prefloadThemeFile.setSummary(OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG)+ OMC.RES.getString(R.string.selected));
+        	prefloadThemeFile.setSummary(OMC.RString("preselected") + " " + OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG) + " " + OMC.RString("postselected"));
         	
     		// "Personalize Clock".
         	preftweakTheme = findPreference("tweakTheme");
@@ -427,27 +419,33 @@ public class OMCPrefActivity extends PreferenceActivity {
 				
 				@Override
 				public boolean onPreferenceClick(Preference preference) {
-					try {
-					// Build weather debug data.
-					String sBody = "";
-					sBody+="Location:\n";
-					sBody+="Lat: " + OMC.LASTKNOWNLOCN.getLatitude()+ "\n";
-					sBody+="Lon: " + OMC.LASTKNOWNLOCN.getLongitude()+ "\n";
-					sBody+="Reverse Geocode:\n";
-					sBody+=GoogleReverseGeocodeService.updateLocation(OMC.LASTKNOWNLOCN)+"\n";
-					sBody+="WeatherProvider: " + OMC.PREFS.getString("weatherProvider", "NONE")+ "\n";
-					sBody+="Weather:\n";
-					sBody+=OMC.PREFS.getString("weather", "Weather JSON Missing!")+"\n";
-					Intent it = new Intent(android.content.Intent.ACTION_SEND)
-		   					.setType("plain/text")
-		   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
-		   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME + " WeatherDebug v" + OMC.THISVERSION)
-							.putExtra(android.content.Intent.EXTRA_TEXT, sBody);
-					startActivity(Intent.createChooser(it, "Contact Xaffron for issues, help & support."));  
-					finish();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+					(new Thread() {
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							try {
+								// Build weather debug data.
+								String sBody = "";
+								sBody+="Location:\n";
+								sBody+="Lat: " + OMC.LASTKNOWNLOCN.getLatitude()+ "\n";
+								sBody+="Lon: " + OMC.LASTKNOWNLOCN.getLongitude()+ "\n";
+								sBody+="Reverse Geocode:\n";
+								sBody+=GoogleReverseGeocodeService.updateLocation(OMC.LASTKNOWNLOCN)+"\n";
+								sBody+="WeatherProvider: " + OMC.PREFS.getString("weatherProvider", "NONE")+ "\n";
+								sBody+="Weather:\n";
+								sBody+=OMC.PREFS.getString("weather", "Weather JSON Missing!")+"\n";
+								Intent it = new Intent(android.content.Intent.ACTION_SEND)
+					   					.setType("plain/text")
+					   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
+					   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME + " WeatherDebug v" + OMC.THISVERSION)
+										.putExtra(android.content.Intent.EXTRA_TEXT, sBody);
+								startActivity(Intent.createChooser(it, "Contact Xaffron for issues, help & support."));  
+								finish();
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					}).start();
 					return true;
 				}
 			});
@@ -510,9 +508,10 @@ public class OMCPrefActivity extends PreferenceActivity {
         		.setTitle("WARNING!\nConflict with " + sConflictEd + " edition")
         		.setMessage("Theme customization and clock settings will not work properly.\nPlease uninstall the free edition at your earliest convenience!")
         	    .setCancelable(true)
-        	    .setIcon(getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME))
+        	    .setIcon(OMC.RDrawableId(OMC.APPICON))
         	    .setOnKeyListener(new OnKeyListener() {
-        	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+        	    	@Override
+					public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
         	    		dialogCancelled();
         	    		return true;
         	    	};
@@ -549,16 +548,16 @@ public class OMCPrefActivity extends PreferenceActivity {
     		// This is the help/FAQ dialog.
     		
     		if (OMC.SHOWHELP) {
-    			OMC.FAQS = OMC.RES.getStringArray(getResources().getIdentifier("faqs", "array", OMC.PKGNAME));
+    			OMC.FAQS = OMC.RStringArray("faqs");
 				LayoutInflater li = LayoutInflater.from(this);
-				LinearLayout ll = (LinearLayout)(li.inflate(getResources().getIdentifier("faqdialog", "layout", OMC.PKGNAME), null));
-				mTextView = (TextView)ll.findViewById(getResources().getIdentifier("splashtext", "id", OMC.PKGNAME));
+				LinearLayout ll = (LinearLayout)(li.inflate(OMC.RLayoutId("faqdialog"), null));
+				mTextView = (TextView)ll.findViewById(OMC.RId("splashtext"));
 				mTextView.setAutoLinkMask(Linkify.ALL);
 				mTextView.setMinLines(8);
 				mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
 				OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
 				
-				mCheckBox = (CheckBox)ll.findViewById(getResources().getIdentifier("splashcheck", "id", OMC.PKGNAME));
+				mCheckBox = (CheckBox)ll.findViewById(OMC.RId("splashcheck"));
 				mCheckBox.setChecked(!OMC.SHOWHELP);
 				mCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 					
@@ -569,7 +568,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 					}
 				});
 	
-				((Button)ll.findViewById(getResources().getIdentifier("faqOK", "id", OMC.PKGNAME))).setOnClickListener(new Button.OnClickListener() {
+				((Button)ll.findViewById(OMC.RId("faqOK"))).setOnClickListener(new Button.OnClickListener() {
 					
 					@Override
 					public void onClick(android.view.View v) {
@@ -577,7 +576,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 						mAD.dismiss();
 					}
 				});
-				((Button)ll.findViewById(getResources().getIdentifier("faqNeutral", "id", OMC.PKGNAME))).setOnClickListener(new Button.OnClickListener() {
+				((Button)ll.findViewById(OMC.RId("faqNeutral"))).setOnClickListener(new Button.OnClickListener() {
 					
 					@Override
 					public void onClick(android.view.View v) {
@@ -588,11 +587,12 @@ public class OMCPrefActivity extends PreferenceActivity {
 				});;
 				
 				mAD = new AlertDialog.Builder(this)
-				.setTitle(OMC.RES.getString(OMC.RES.getIdentifier("usefulTip", "string", OMC.PKGNAME)))
+				.setTitle(OMC.RString("usefulTip"))
 			    .setCancelable(true)
 			    .setView(ll)
 			    .setOnKeyListener(new OnKeyListener() {
-			    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+			    	@Override
+					public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
 			    		if (arg2.getKeyCode()==android.view.KeyEvent.KEYCODE_BACK) mAD.cancel();
 			    		return true;
 			    	};
@@ -607,9 +607,10 @@ public class OMCPrefActivity extends PreferenceActivity {
         		.setTitle(OMC.RES.getString(R.string.thanksForDownloading))
         		.setMessage(OMC.RES.getString(R.string.widgetDir1) + OMC.APPNAME + OMC.RES.getString(R.string.widgetDir2))
         	    .setCancelable(true)
-        	    .setIcon(getResources().getIdentifier(OMC.APPICON, "drawable", OMC.PKGNAME))
+        	    .setIcon(OMC.RDrawableId(OMC.APPICON))
         	    .setOnKeyListener(new OnKeyListener() {
-        	    	public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+        	    	@Override
+					public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
         	    		dialogCancelled();
         	    		return true;
         	    	};
@@ -639,6 +640,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 			new AlertDialog.Builder(this)
 				.setTitle("Delete all Themes from your SD Card/Memory?")
 				.setItems(items, new DialogInterface.OnClickListener() {
+						@Override
 						public void onClick(DialogInterface dialog, int item) {
 							switch (item) {
 								case 0: //Yes
@@ -684,6 +686,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 			new AlertDialog.Builder(this)
 				.setTitle("Experimental Feature\nTry at own risk!")
 				.setItems(items, new DialogInterface.OnClickListener() {
+						@Override
 						public void onClick(DialogInterface dialog, int item) {
 
 							switch (item) {
@@ -717,6 +720,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 			new AlertDialog.Builder(this)
 				.setTitle("Contact Xaffron")
 				.setItems(items, new DialogInterface.OnClickListener() {
+						@Override
 						public void onClick(DialogInterface dialog, int item) {
 							switch (item) {
 								case 0: //Email
@@ -811,6 +815,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 				final AlertDialog dlgTTL  =  new AlertDialog.Builder(this)
 				.setTitle("Choose action")
 				.setItems(items, new DialogInterface.OnClickListener() {
+						@Override
 						public void onClick(DialogInterface dialog, int item) {
 							if (values[item].equals("default")) {
 								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "")
@@ -848,10 +853,10 @@ public class OMCPrefActivity extends PreferenceActivity {
 				}).create();
 
 				LayoutInflater li = LayoutInflater.from(this);
-				LinearLayout ll = (LinearLayout)(li.inflate(getResources().getIdentifier("ttlpreview", "layout", OMC.PKGNAME), null));
+				LinearLayout ll = (LinearLayout)(li.inflate(OMC.RLayoutId("ttlpreview"), null));
 
 				for (int iCompass = 0; iCompass < 9; iCompass++) {
-					btnCompass[iCompass] = (Button)ll.findViewById(getResources().getIdentifier("button" + OMC.COMPASSPOINTS[iCompass] + "Prv", "id", OMC.PKGNAME));
+					btnCompass[iCompass] = (Button)ll.findViewById(OMC.RId("button" + OMC.COMPASSPOINTS[iCompass] + "Prv"));
 					btnCompass[iCompass].setText(OMC.PREFS.getString("URIDesc"+OMC.COMPASSPOINTS[iCompass],"Widget Prefs"));
 					final int iTTL = iCompass;
 					btnCompass[iCompass].setOnClickListener(new View.OnClickListener() {
@@ -893,8 +898,9 @@ public class OMCPrefActivity extends PreferenceActivity {
     }
 
     // The result is obtained in onActivityResult:
+	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	prefloadThemeFile.setSummary(OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG)+ " selected.");
+    	prefloadThemeFile.setSummary(OMC.RString("preselected") + " " +OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG)+ " " +OMC.RString("postselected"));
 		if (OMC.PREFS.getString("sTimeZone", "default").equals("default")) {
 			getPreferenceScreen().findPreference("timeZone").setSummary("(Following Device Time Zone)");
 		} else {

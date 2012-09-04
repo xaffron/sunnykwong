@@ -89,22 +89,22 @@ public class OMCThemePickerActivity extends Activity {
         	return;
         }
 
-        setContentView(this.getResources().getIdentifier("themepickerlayout", "layout", OMC.PKGNAME));
+        setContentView(OMC.RLayoutId("themepickerlayout"));
 
-        topLevel = findViewById(this.getResources().getIdentifier("PickerTopLevel", "id", OMC.PKGNAME));
+        topLevel = findViewById(OMC.RId("PickerTopLevel"));
         topLevel.setEnabled(false);
         
         setTitle("Swipe to Pick; Tap & hold for Options");
 
         mListener = new OMCThemePickerListener();
         
-        btnReload = (Button)findViewById(this.getResources().getIdentifier("btnReload", "id", OMC.PKGNAME));
+        btnReload = (Button)findViewById(OMC.RId("btnReload"));
         btnReload.setOnClickListener(mListener);
 
-        btnGetMore = (Button)findViewById(this.getResources().getIdentifier("btnMore", "id", OMC.PKGNAME));
+        btnGetMore = (Button)findViewById(OMC.RId("btnMore"));
         btnGetMore.setOnClickListener(mListener);
         
-        gallery = (Gallery)this.findViewById(this.getResources().getIdentifier("gallery", "id", OMC.PKGNAME));
+        gallery = (Gallery)this.findViewById(OMC.RId("gallery"));
     }
     
     @Override
@@ -363,28 +363,28 @@ public class OMCThemePickerActivity extends Activity {
 
         @Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-        	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("themepickerpreview", "layout", OMC.PKGNAME), null);
-        	((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setTypeface(OMC.GEOFONT);
+        	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(OMC.RLayoutId("themepickerpreview"), null);
+        	((TextView)ll.findViewById(OMC.RId("ThemeName"))).setTypeface(OMC.GEOFONT);
         	
         	//  If the theme list isn't loaded yet, just return a blank screen!
         	if (position < 0 || position > mThemes.size()) return ll;
 
         	if (mNames.get(mThemes.get(position)) != null) {
-        		((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText(mNames.get(mThemes.get(position)));
+        		((TextView)ll.findViewById(OMC.RId("ThemeName"))).setText(mNames.get(mThemes.get(position)));
         	} else {
-        		((TextView)ll.findViewById(getResources().getIdentifier("ThemeName", "id", OMC.PKGNAME))).setText("[Corrupt - Pls Delete]");
+        		((TextView)ll.findViewById(OMC.RId("ThemeName"))).setText("[Corrupt - Pls Delete]");
         	}
         	try {
 	        	if (mTweaked.get(mThemes.get(position)).booleanValue()) {
-	        		ImageView iv = ((ImageView)ll.findViewById(getResources().getIdentifier("LikeFlag", "id", OMC.PKGNAME)));
-	        		iv.setImageResource(getResources().getIdentifier("tweaked", "drawable", OMC.PKGNAME));
+	        		ImageView iv = ((ImageView)ll.findViewById(OMC.RId("LikeFlag")));
+	        		iv.setImageResource(OMC.RDrawableId("tweaked"));
 	        		iv.setOnClickListener(new View.OnClickListener() {
 	    				
 	    				@Override
 	    				public void onClick(View v) {
 	    					
 	    					final Dialog d = new Dialog(OMCThemePickerActivity.this);
-	    					d.setContentView(getResources().getIdentifier("taglegend", "layout", OMC.PKGNAME));
+	    					d.setContentView(OMC.RLayoutId("taglegend"));
 	    					d.setTitle("Legend");
 	    					d.setOnKeyListener(new DialogInterface.OnKeyListener() {
 	    						
@@ -404,13 +404,13 @@ public class OMCThemePickerActivity extends Activity {
         	} catch (NullPointerException e) {
         		//v1.2.8 fix issue where theme flag not set
         	}
-        	LinearLayout tagll = ((LinearLayout)ll.findViewById(getResources().getIdentifier("tags", "id", OMC.PKGNAME)));
+        	LinearLayout tagll = ((LinearLayout)ll.findViewById(OMC.RId("tags")));
         	if (mTags.get(mThemes.get(position))!=null) {
 	        	for (String sTag: mTags.get(mThemes.get(position))) {
 	        		ImageView iv = new ImageView(OMCThemePickerActivity.this);
 	        		iv.setAdjustViewBounds(true);
 	        		try{
-	        			iv.setImageResource(getResources().getIdentifier(sTag, "drawable", OMC.PKGNAME));
+	        			iv.setImageResource(OMC.RDrawableId(sTag));
 	            		tagll.addView(iv);
 	        		} catch (Exception e) {
 	        			
@@ -423,7 +423,7 @@ public class OMCThemePickerActivity extends Activity {
 				public void onClick(View v) {
 					
 					final Dialog d = new Dialog(OMCThemePickerActivity.this);
-					d.setContentView(getResources().getIdentifier("taglegend", "layout", OMC.PKGNAME));
+					d.setContentView(OMC.RLayoutId("taglegend"));
 					d.setTitle("Legend");
 					d.setOnKeyListener(new DialogInterface.OnKeyListener() {
 						
@@ -447,9 +447,9 @@ public class OMCThemePickerActivity extends Activity {
         	Bitmap bmp = BitmapFactory.decodeFile(
     				OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + mThemes.get(position) +"/000preview.jpg",bo);
         	if (mBitmaps.size()>=position) mBitmaps.set(position, bmp);
-    		((ImageView)ll.findViewById(getResources().getIdentifier("ThemePreview", "id", OMC.PKGNAME)))
+    		((ImageView)ll.findViewById(OMC.RId("ThemePreview")))
     				.setImageBitmap(bmp);
-        	((TextView)ll.findViewById(getResources().getIdentifier("ThemeCredits", "id", OMC.PKGNAME))).setText(mCreds.get(mThemes.get(position)));
+        	((TextView)ll.findViewById(OMC.RId("ThemeCredits"))).setText(mCreds.get(mThemes.get(position)));
 
         	if (position>5 && mThemes.size()-position>5) {
 	        	int leftclear = position-5 >= 0 ? position-5 : 0;
@@ -506,7 +506,7 @@ public class OMCThemePickerActivity extends Activity {
         		setResult(Activity.RESULT_OK, it);
 
            		JSONObject newTheme = OMC.getTheme(OMCThemePickerActivity.this, sThemeName, false);
-               	Toast.makeText(OMCThemePickerActivity.this, newTheme.optString("name") + OMC.RES.getString(R.string.selected), Toast.LENGTH_SHORT).show();
+//               	Toast.makeText(OMCThemePickerActivity.this, newTheme.optString("name") + OMC.RES.getString(R.string.selected), Toast.LENGTH_SHORT).show();
                 	
             	OMC.PREFS.edit()
             	.putString("widgetTheme"+iAppWidgetID, OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()))
