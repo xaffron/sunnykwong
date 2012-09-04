@@ -91,7 +91,7 @@ public class OMCWeatherForecastActivity extends Activity {
 				} else if (sWProvider.equals("yr")) {
 					setText(findViewById(OMC.RId("LastUpdate")),OMC.RString("yrWeatherCredit"));
 				} else if (sWProvider.equals("7timer")) {
-					setText(findViewById(OMC.RId("LastUpdate")),OMC.RString("7timerWeatherCredit"));
+					setText(findViewById(OMC.RId("LastUpdate")),OMC.RString("seventimerWeatherCredit"));
 				} else {
 					setText(findViewById(OMC.RId("LastUpdate")),OMC.RString("owmWeatherCredit"));
 				}  

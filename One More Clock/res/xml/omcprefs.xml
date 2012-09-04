@@ -214,8 +214,8 @@
             android:title="@string/troubleshootingOptions" >
             <ListPreference
                 android:enabled="true"
-                android:entries="@array/aggressiveness_options"
-                android:entryValues="@array/aggressiveness_values"
+                android:entries="@array/clockPriority_options"
+                android:entryValues="@array/clockPriority_values"
                 android:key="clockPriority"
                 android:selectable="true"
                 android:summary="@string/forFineTuning"

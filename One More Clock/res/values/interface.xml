@@ -11,8 +11,8 @@
         <string name="no">No</string>
         
         <!-- General Errors -->
-        <string name="sdcardNotDetected">SD Card not detected.\nRemember to turn off USB storage if it's still connected!</string>
-        <string name="sdcardMissingOrCorrupt">SD Card missing or corrupt.\nRemember to turn off USB storage if it's still connected!</string>
+        <string name="sdcardNotDetected">SD Card not detected.\nRemember to turn off USB storage if it\'s still connected!</string>
+        <string name="sdcardMissingOrCorrupt">SD Card missing or corrupt.\nRemember to turn off USB storage if it\'s still connected!</string>
         <string name="themeNotFound">Theme not found!  Reverting to default look.</string>
         <string name="warningConflictPaid">WARNING!\nConflict with paid edition</string>
         <string name="warningConflictFree">WARNING!\nConflict with free edition</string>
@@ -37,7 +37,7 @@
         <string name="unknown">Unknown</string>
         <string name="igWeatherCredit">Weather updated from Google API.</string>
         <string name="yrWeatherCredit">Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK.</string>
-        <string name="7timerWeatherCredit">7Timer! forecasts by Ye Quanzhi, supported by the Shanghai Astronomical Observatory, Chinese Academy of Sciences.</string>
+        <string name="seventimerWeatherCredit">7Timer! forecasts by Ye Quanzhi, supported by the Shanghai Astronomical Observatory, Chinese Academy of Sciences.</string>
         <string name="owmWeatherCredit">Weather updated from openweathermaps.org.</string>
         <string name="tapForAlternateForecast">Tap for Alternate Forecasts from AccuWeather®</string>
         <string name="weatherDisabledOrNoWeatherLoaded">Weather Disabled, or No Weather Loaded!</string>
@@ -76,7 +76,7 @@
         <string name="beginningDownload">Beginning download.</string>
         <string name="extractingStarterClockPack">Extracting starter clock pack&#8230;</string>
         <string name="starterClockPack">Starter Clock Pack</string>
-        <string name="starterClockPackText">Files in your sdcard's .OMCThemes folder will be overwritten.  Are you sure?\n(If not sure, tap Yes)</string>
+        <string name="starterClockPackText">Files in your sdcard\'s .OMCThemes folder will be overwritten.  Are you sure?\n(If not sure, tap Yes)</string>
         
         <!-- Widget Theme Long Press-->
         
@@ -93,11 +93,8 @@
         <string name="submitThemeToDev">Submit Theme to Dev</string>
         <string name="submitThemeToDevConfirm1">Submit\u0020</string>
         <string name="submitThemeToDevConfirm2">\u0020to Xaffron as a new theme?</string>
-        <string name="deleteTheme">Delete Theme</string>
         <string name="areYouAbsolutelySure">Are you absolutely sure?</string>
-        <string name="areYouAbsolutelySureText">This theme does not have the 'Tweaked' flag set; it looks like a stock theme.\n</string>
-        <string name="deleteTheme">Delete Theme</string>
-        <string name="deleteTheme">Delete Theme</string>
+        <string name="areYouAbsolutelySureText">This theme does not have the \'Tweaked\' flag set; it looks like a stock theme.\n</string>
         
         		<!-- Personalize Clock -->        
         <string name="personalizeClock">Personalize Clock</string>
@@ -231,10 +228,6 @@
         <string name="uncheckForSome">Uncheck for some non-English locales.(Experimental)</string>
         
         <string name="toggleWidgetSizes">Toggle Widget Sizes</string>
-        <string name="areThereOtherWidgetSizes">Are there other widget sizes?</string>
-        <string name="actuallyThePaid">Actually, the paid version offers widget sizes of 5x4//5x2//5x1, 4x4//4x2/4x1,3x3//3x1, 2x2//2x1 and 1x3.
-        \nPlease consider upgrading to get these sizes!</string>
-        <string name="takeMeToPaidVersion">Take me to the paid version!</string>
         
         <string name="rebootRequired">Reboot Required</string>
         <string name="changesToTheseSettings">Changes to these setting will require a reboot of your phone to take effect.</string>
@@ -256,7 +249,6 @@
         <!-- Widget Sizes Sales Pitch -->
         <string name="areThereOtherWidgetSizes">Are there other widget sizes?</string>
         <string name="actuallyThePaidVersion">Actually, the paid version offers widget sizes of 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 and 1x3.\nPlease consider upgrading to get these sizes!</string>
-        <string name="takeMeToPaid">Take me to the paid version!</string>
                 
         
         
@@ -290,7 +282,7 @@
         
         <string name="contactXaffron">Contact Xaffron</string>
         <string name="donateOrContact">Donate or Contact author for help</string>
-        <string name="contactXaffronForIssues">Contact Xaffron for issues, help & support</string>
+        <string name="contactXaffronForIssues">Contact Xaffron for issues, help &amp; support</string>
         <string name="email">Email</string>
         <string name="donate">Donate</string>
         <string name="facebook">Facebook</string>
