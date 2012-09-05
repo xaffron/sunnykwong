@@ -43,7 +43,7 @@
             android:title="@string/weatherFont" >
         </Preference>
     </PreferenceCategory>
-    <PreferenceCategory android:title="Source Code" >
+    <PreferenceCategory android:title="@string/sourceCodeTitle" >
         <Preference
             android:enabled="true"
             android:key="99"

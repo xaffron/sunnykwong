@@ -312,6 +312,7 @@
         <string name="codeSVGText">SVG support provided by sag-android library (Apache License).\nhttp:////code.google.com//p//svg-android//</string>
         <string name="weatherFont">Font: Weatherfont</string>
         <string name="weatherFontText">Weatherfont is fully licensed from Jonathan Macagba, available for $5 USD from jonathan.macagba@gmail.com</string>
+        <string name="sourceCodeTitle">Source Code</string>
         <string name="sourceCode">Source Code Available at</string>
         
         

@@ -36,8 +36,8 @@
         <string name="doubleDash">--</string>
         <string name="unknown">Unbekannt</string>
         <string name="igWeatherCredit">Wetter Update ueber Google.</string>
-        <string name="yrWeatherCredit">Wettervorhersage ueber "yr.no", uebermittelt vom 'Norwegischen Meteologischen Institut' und dem NRK.</string>
-        <string name="seventimerWeatherCredit">7Timer! Aussichten von 'Ye Quanzhi', unterstuetzt vom Astronomischen Observatorium in Shanghai, der chineischen Akademie der Wissenschaften.</string>
+        <string name="yrWeatherCredit">Wettervorhersage ueber "yr.no", uebermittelt vom \'Norwegischen Meteologischen Institut\' und dem NRK.</string>
+        <string name="seventimerWeatherCredit">7Timer! Aussichten von \'Ye Quanzhi\', unterstuetzt vom Astronomischen Observatorium in Shanghai, der chineischen Akademie der Wissenschaften.</string>
         <string name="owmWeatherCredit">Wetter Update ueber "openweathermaps.org".</string>
         <string name="tapForAlternateForecast">Auswahl fuer Alternative Vorhersagen von "AccuWeather®"</string>
         <string name="weatherDisabledOrNoWeatherLoaded">Wetter ausser Funktion oder nicht vorhanden!</string>
@@ -76,7 +76,7 @@
         <string name="beginningDownload">Download-Beginn</string>
         <string name="extractingStarterClockPack">Entpacken des "Starter-Uhrenpakets"&#8230;</string>
         <string name="starterClockPack">Starter-Uhrenpaket</string>
-        <string name="starterClockPackText">Dateien auf Ihrer "SD Card"\'s .OMCThemes Ordner werden ueberschrieben. Sicher?\n(Wenn nicht, druecken Sie 'ja')</string>
+        <string name="starterClockPackText">Dateien auf Ihrer "SD Card"\'s .OMCThemes Ordner werden ueberschrieben. Sicher?\n(Wenn nicht, druecken Sie \'ja\')</string>
         
         <!-- Widget Theme Long Press-->
         
@@ -92,7 +92,7 @@
         <string name="deleteThemeConfirm3">Sie muessen dann das Theme nochmals downloaden/entpacken. Sind Sie sicher?</string>
         <string name="submitThemeToDev">Theme zum Entwickler schicken</string>
         <string name="submitThemeToDevConfirm1">Schicken\u0020</string>
-        <string name="submitThemeToDevConfirm2">\u0020des Themas zu Xaffron als 'neu'?</string>
+        <string name="submitThemeToDevConfirm2">\u0020des Themas zu Xaffron als \'neu\'?</string>
         <string name="areYouAbsolutelySure">Sind Sie sich wirklich sicher?</string>
         <string name="areYouAbsolutelySureText">Diese Theme hat kein \'Veraenderungs\' Flag gesetzt; es schaut nach einem Bestandstheme aus.\n</string>
         
@@ -175,7 +175,7 @@
         
         <!-- Fixed Locn subscreen -->
         <string name="enterCityAndStateCountry">Eingabe von Stadt, Staat, Land.</string>
-        <string name="locationExamples">z.B. 'London, UK'</string>
+        <string name="locationExamples">z.B. \'London, UK\'</string>
         
         <string name="weatherProvider">Wetterdienst:</string>
 		<string-array name="wprovider_options">
@@ -184,10 +184,10 @@
 			<item>Yr.no</item>
 			<item>Google Wetter (Altlast/ausser Funktion)</item>
 		</string-array>
-        <string name="wp7timer">Benutzen von '7Timer.com'</string>
-        <string name="wpowm">Benutzen von 'O0penWeatherMap.org'</string>
-        <string name="wpyr">Benutzen von 'yr.no'</string>
-        <string name="wpig">Benutzen von 'iGoogle Weather'</string>
+        <string name="wp7timer">Benutzen von \'7Timer.com\'</string>
+        <string name="wpowm">Benutzen von \'O0penWeatherMap.org\'</string>
+        <string name="wpyr">Benutzen von \'yr.no\'</string>
+        <string name="wpig">Benutzen von \'iGoogle Weather\'</string>
         
         <string name="weatherDisplayUnits">Wettereinheiten:</string>
 		<string-array name="wdisplay_options">
@@ -243,7 +243,7 @@
         <string name="enable2x1Widget">Aktivierung des (2x1) Widgets</string>
         <string name="enable1x3Widget">Aktivierung des (1x1) Widgets</string>
         <string name="forGalaxyNote">Fuer Galaxy Note oder Aehnliche</string>
-        <string name="enableThemeTester">Aktivierung des 'Theme Testers'</string>
+        <string name="enableThemeTester">Aktivierung des \'Theme Testers\'</string>
         <string name="developmentToolForSkinnersOnly">Entwwicklungstool nur fuer "Skinners"!</string>
         
         <!-- Widget Sizes Sales Pitch -->
@@ -260,11 +260,11 @@
         <string name="clockPriority">Uhren-Rangfolge</string>
         <string name="forFineTuning">Fuer die Feineinstellungs-Empfindlichkeit:</string>
 		<string-array name="clockPriority_options">
-		    <item>Hoechste (Nicht empfehlenswert, aggressive 'Neuzeichung' jeder Augenblick)</item>	
-			<item>Hoch (Aggressive 'Neuzeichung' jede Minute, ungeachtet des Anzeige- oder Launcher Statusses)</item>
-			<item>Mittel (Laessige 'Neuzeichung' jede Ninute, wenn Anzeige angschaltet, auch wenn launcher im Hintergrund)</item>
-			<item>Niedrig (Laessige 'Neuzeichung' jede Ninute, wenn Launcher nicht aktiv oder Anzeige ausgeschaltet)</item>
-			<item>Kleinstes (Standard, keine 'Neuzeichung', wenn Launcher nicht aktiv oder Anzeige ausgeschaltet)</item>
+		    <item>Hoechste (Nicht empfehlenswert, aggressive \'Neuzeichung\' jeder Augenblick)</item>	
+			<item>Hoch (Aggressive \'Neuzeichung\' jede Minute, ungeachtet des Anzeige- oder Launcher Statusses)</item>
+			<item>Mittel (Laessige \'Neuzeichung\' jede Ninute, wenn Anzeige angschaltet, auch wenn launcher im Hintergrund)</item>
+			<item>Niedrig (Laessige \'Neuzeichung\' jede Ninute, wenn Launcher nicht aktiv oder Anzeige ausgeschaltet)</item>
+			<item>Kleinstes (Standard, keine \'Neuzeichung\', wenn Launcher nicht aktiv oder Anzeige ausgeschaltet)</item>
 		</string-array>
 
         <string name="weatherDiagnostics">Wetter Diagnose</string>
@@ -313,7 +313,7 @@
 		
 		
 		<string name="specialThanks">Spezieller Dank:</string>
-        <string name="specialThanksText">'Zehro' fuers Zeigen des Pfades\nRE: in-sync Uhren-Widgets w//o Benachrichtigungen.\nStefan Pledl fuer die Hilfe mit den Ortszuweisungen.</string>
+        <string name="specialThanksText">\'Zehro\' fuers Zeigen des Pfades\nRE: in-sync Uhren-Widgets w//o Benachrichtigungen.\nStefan Pledl fuer die Hilfe mit den Ortszuweisungen.</string>
         <string name="copyrights">Rechte und Lizenzen:</string>
         <string name="applicationIcon">App Icon: Signpost durch Maroubal2</string>
         <string name="applicationIconText">Uebernommen von Maroubal2\'s exzellentem Photo-gewendetem-Ubuntu Wallpaper.\nCC BY-SA 2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
@@ -321,8 +321,9 @@
         <string name="codeColorPickerDialogText">Kopiert von CyanogenMods Quell-Repo.</string>
         <string name="codeSVG">Code: SVG-Android</string>
         <string name="codeSVGText">SVG Unterstuetzung bereitgestellt von "SAG-Android Bibliothek" (Apache Lizenz).\nhttp:////code.google.com//p//svg-android//</string>
-        <string name="weatherFont">Schrifttyp: 'Weatherfont'</string>
-        <string name="weatherFontText">'Weatherfont' als Voll-Lizenz von Jonathan Macagba, erhaeltlich fuer$5 USD per Email: jonathan.macagba@gmail.com</string>
+        <string name="weatherFont">Schrifttyp: \'Weatherfont\'</string>
+        <string name="weatherFontText">\'Weatherfont\' als Voll-Lizenz von Jonathan Macagba, erhaeltlich fuer$5 USD per Email: jonathan.macagba@gmail.com</string>
+        <string name="sourceCodeTitle">Quellcode</string>
         <string name="sourceCode">Quellcode verfuegbar durch:</string>
         
         
