@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="VerboseWeather">
+<item>Clear</item>
+<item>Partly Cloudy</item>
+<item>Mostly Cloudy</item>
+<item>Cloudy</item>
+<item>Foggy</item>
+<item>Light Rain</item>
+<item>Scattered Showers</item>
+<item>Isolated Showers</item>
+<item>Light Snow</item>
+<item>Rain</item>
+<item>Snow</item>
+<item>Wintry Mix</item>
+<item>Scattered Thunderstorms</item>
+<item>Thunderstorm</item>
+<item>Unknown</item>
+</string-array>
+</resources>
