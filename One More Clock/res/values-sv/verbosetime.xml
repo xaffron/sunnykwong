@@ -1,0 +1,1445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="verbosetime">
+<item>Tolv.</item>
+<item>En minut över tolv.</item>
+<item>Två minuter över tolv.</item>
+<item>Tre minuter över tolv.</item>
+<item>Fyra minuter över tolv.</item>
+<item>Fem över tolv.</item>
+<item>Sex minuter över tolv.</item>
+<item>Sju minuter över tolv.</item>
+<item>Åtta minuter över tolv.</item>
+<item>Nio minuter över tolv.</item>
+<item>Tio över tolv.</item>
+<item>Elva minuter över tolv.</item>
+<item>Tolv minuter över tolv.</item>
+<item>Tretton minuter över tolv.</item>
+<item>Fjorton minuter över tolv.</item>
+<item>Kvart över tolv.</item>
+<item>Sexton minuter över tolv.</item>
+<item>Sjutton minuter över tolv.</item>
+<item>Arton minuter över tolv.</item>
+<item>Nitton minuter över tolv.</item>
+<item>Tjugo över tolv.</item>
+<item>Tjugoen minuter över tolv.</item>
+<item>Tjugotvå minuter över tolv.</item>
+<item>Tjugotre minuter över tolv.</item>
+<item>Tjugofyra minuter över tolv.</item>
+<item>Fem i halv tolv.</item>
+<item>Tjugosex minuter över tolv.</item>
+<item>Tjugosju minuter över tolv.</item>
+<item>Tjugoåtta minuter över tolv.</item>
+<item>Tjugonio minuter över tolv.</item>
+<item>Halv ett.</item>
+<item>Tjugonio minuter i ett.</item>
+<item>Tjugoåtta minuter i ett.</item>
+<item>Tjugosju minuter i ett.</item>
+<item>Tjugosex minuter i ett.</item>
+<item>Fem över halv ett.</item>
+<item>Tjugofyra minuter i ett.</item>
+<item>Tjugotre minuter i ett.</item>
+<item>Tjugotvå minuter i ett.</item>
+<item>Tjugoen minuter i ett.</item>
+<item>Tjugo i ett.</item>
+<item>Nitton minuter i ett.</item>
+<item>Arton minuter i ett.</item>
+<item>Sjutton minuter i ett.</item>
+<item>Sexton minuter i ett.</item>
+<item>Kvart i ett.</item>
+<item>Fjorton minuter i ett.</item>
+<item>Tretton minuter i ett.</item>
+<item>Tolv minuter i ett.</item>
+<item>Elva minuter i ett.</item>
+<item>Tio i ett.</item>
+<item>Nio minuter i ett.</item>
+<item>Åtta minuter i ett.</item>
+<item>Sju minuter i ett.</item>
+<item>Sex minuter i ett.</item>
+<item>Fem i ett.</item>
+<item>Fyra minuter i ett.</item>
+<item>Tre minuter i ett.</item>
+<item>Två minuter i ett.</item>
+<item>En minut i ett.</item>
+<item>Ett.</item>
+<item>En minut över ett.</item>
+<item>Två minuter över ett.</item>
+<item>Tre minuter över ett.</item>
+<item>Fyra minuter över ett.</item>
+<item>Fem över ett.</item>
+<item>Sex minuter över ett.</item>
+<item>Sju minuter över ett.</item>
+<item>Åtta minuter över ett.</item>
+<item>Nio minuter över ett.</item>
+<item>Tio över ett.</item>
+<item>Elva minuter över ett.</item>
+<item>Tolv minuter över ett.</item>
+<item>Tretton minuter över ett.</item>
+<item>Fjorton minuter över ett.</item>
+<item>Kvart över ett.</item>
+<item>Sexton minuter över ett.</item>
+<item>Sjutton minuter över ett.</item>
+<item>Arton minuter över ett.</item>
+<item>Nitton minuter över ett.</item>
+<item>Tjugo över ett.</item>
+<item>Tjugoen minuter över ett.</item>
+<item>Tjugotvå minuter över ett.</item>
+<item>Tjugotre minuter över ett.</item>
+<item>Tjugofyra minuter över ett.</item>
+<item>Fem i halv två.</item>
+<item>Tjugosex minuter över ett.</item>
+<item>Tjugosju minuter över ett.</item>
+<item>Tjugoåtta minuter över ett.</item>
+<item>Tjugonio minuter över ett.</item>
+<item>Halv två.</item>
+<item>Tjugonio minuter i två.</item>
+<item>Tjugoåtta minuter i två.</item>
+<item>Tjugosju minuter i två.</item>
+<item>Tjugosex minuter i två.</item>
+<item>Fem över halv två.</item>
+<item>Tjugofyra minuter i två.</item>
+<item>Tjugotre minuter i två.</item>
+<item>Tjugotvå minuter i två.</item>
+<item>Tjugoett minuter i två.</item>
+<item>Tjugo i två.</item>
+<item>Nitton minuter i två.</item>
+<item>Arton minuter i två.</item>
+<item>Sjutton minuter i två.</item>
+<item>Sexton minuter i två.</item>
+<item>Kvart i två.</item>
+<item>Fjorton minuter i två.</item>
+<item>Tretton minuter i två.</item>
+<item>Tolv minuter i två.</item>
+<item>Elva minuter i två.</item>
+<item>Tio i två.</item>
+<item>Nio minuter i två.</item>
+<item>Åtta minuter i två.</item>
+<item>Sju minuter i två.</item>
+<item>Sex minuter i två.</item>
+<item>Fem i två.</item>
+<item>Fyra minuter i två.</item>
+<item>Tre minuter i två.</item>
+<item>Två minuter i två.</item>
+<item>En minut i två.</item>
+<item>Två.</item>
+<item>En minut över två.</item>
+<item>Två minuter över två.</item>
+<item>Tre minuter över två.</item>
+<item>Fyra minuter över två.</item>
+<item>Fem över två.</item>
+<item>Sex minuter över två.</item>
+<item>Sju minuter över två.</item>
+<item>Åtta minuter över två.</item>
+<item>Nio minuter över två.</item>
+<item>Tio över två.</item>
+<item>Elva minuter över två.</item>
+<item>Tolv minuter över två.</item>
+<item>Tretton minuter över två.</item>
+<item>Fjorton minuter över två.</item>
+<item>Kvart över två.</item>
+<item>Sexton minuter över två.</item>
+<item>Sjutton minuter över två.</item>
+<item>Arton minuter över två.</item>
+<item>Nitton minuter över två.</item>
+<item>Tjugo över två.</item>
+<item>Tjugoen minuter över två.</item>
+<item>Tjugotvå minuter över två.</item>
+<item>Tjugotre minuter över två.</item>
+<item>Tjugofyra minuter över två.</item>
+<item>Fem i halv tre.</item>
+<item>Tjugosex minuter över två.</item>
+<item>Tjugosju minuter över två.</item>
+<item>Tjugoåtta minuter över två.</item>
+<item>Tjugonio minuter över två.</item>
+<item>Halv tre.</item>
+<item>Tjugonio minuter i tre.</item>
+<item>Tjugoåtta minuter i tre.</item>
+<item>Tjugosju minuter i tre.</item>
+<item>Tjugosex minuter i tre.</item>
+<item>Fem över halv tre.</item>
+<item>Tjugofyra minuter i tre.</item>
+<item>Tjugotre minuter i tre.</item>
+<item>Tjugotvå minuter i tre.</item>
+<item>Tjugoett minuter i tre.</item>
+<item>Tjugo i tre.</item>
+<item>Nitton minuter i tre.</item>
+<item>Arton minuter i tre.</item>
+<item>Sjutton minuter i tre.</item>
+<item>Sexton minuter i tre.</item>
+<item>Kvart i tre.</item>
+<item>Fjorton minuter i tre.</item>
+<item>Tretton minuter i tre.</item>
+<item>Tolv minuter i tre.</item>
+<item>Elva minuter i tre.</item>
+<item>Tio i tre.</item>
+<item>Nio minuter i tre.</item>
+<item>Åtta minuter i tre.</item>
+<item>Sju minuter i tre.</item>
+<item>Sex minuter i tre.</item>
+<item>Fem i tre.</item>
+<item>Fyra minuter i tre.</item>
+<item>Tre minuter i tre.</item>
+<item>Två minuter i tre.</item>
+<item>En minut i tre.</item>
+<item>Tre.</item>
+<item>En minut över tre.</item>
+<item>Två minuter över tre.</item>
+<item>Tre minuter över tre.</item>
+<item>Fyra minuter över tre.</item>
+<item>Fem över tre.</item>
+<item>Sex minuter över tre.</item>
+<item>Sju minuter över tre.</item>
+<item>Åtta minuter över tre.</item>
+<item>Nio minuter över tre.</item>
+<item>Tio över tre.</item>
+<item>Elva minuter över tre.</item>
+<item>Tolv minuter över tre.</item>
+<item>Tretton minuter över tre.</item>
+<item>Fjorton minuter över tre.</item>
+<item>Kvart över tre.</item>
+<item>Sexton minuter över tre.</item>
+<item>Sjutton minuter över tre.</item>
+<item>Arton minuter över tre.</item>
+<item>Nitton minuter över tre.</item>
+<item>Tjugo över tre.</item>
+<item>Tjugoen minuter över tre.</item>
+<item>Tjugotvå minuter över tre.</item>
+<item>Tjugotre minuter över tre.</item>
+<item>Tjugofyra minuter över tre.</item>
+<item>Fem i halv fyra.</item>
+<item>Tjugosex minuter över tre.</item>
+<item>Tjugosju minuter över tre.</item>
+<item>Tjugoåtta minuter över tre.</item>
+<item>Tjugonio minuter över tre.</item>
+<item>Halv fyra.</item>
+<item>Tjugonio minuter i fyra.</item>
+<item>Tjugoåtta minuter i fyra.</item>
+<item>Tjugosju minuter i fyra.</item>
+<item>Tjugosex minuter i fyra.</item>
+<item>Fem över halv fyra.</item>
+<item>Tjugofyra minuter i fyra.</item>
+<item>Tjugotre minuter i fyra.</item>
+<item>Tjugotvå minuter i fyra.</item>
+<item>Tjugoen minuter i fyra.</item>
+<item>Tjugo i fyra.</item>
+<item>Nitton minuter i fyra.</item>
+<item>Arton minuter i fyra.</item>
+<item>Sjutton minuter i fyra.</item>
+<item>Sexton minuter i fyra.</item>
+<item>Kvart i fyra.</item>
+<item>Fjorton minuter i fyra.</item>
+<item>Tretton minuter i fyra.</item>
+<item>Tolv minuter i fyra.</item>
+<item>Elva minuter i fyra.</item>
+<item>Tio i fyra.</item>
+<item>Nio minuter i fyra.</item>
+<item>Åtta minuter i fyra.</item>
+<item>Sju minuter i fyra.</item>
+<item>Sex minuter i fyra.</item>
+<item>Fem i fyra.</item>
+<item>Fyra minuter i fyra.</item>
+<item>Tre minuter i fyra.</item>
+<item>Två minuter i fyra.</item>
+<item>En minut i fyra.</item>
+<item>Fyra.</item>
+<item>En minut över fyra.</item>
+<item>Två minuter över fyra.</item>
+<item>Tre minuter över fyra.</item>
+<item>Fyra minuter över fyra.</item>
+<item>Fem över fyra.</item>
+<item>Sex minuter över fyra.</item>
+<item>Sju minuter över fyra.</item>
+<item>Åtta minuter över fyra.</item>
+<item>Nio minuter över fyra.</item>
+<item>Tio över fyra.</item>
+<item>Elva minuter över fyra.</item>
+<item>Tolv minuter över fyra.</item>
+<item>Tretton minuter över fyra.</item>
+<item>Fjorton minuter över fyra.</item>
+<item>Kvart över fyra.</item>
+<item>Sexton minuter över fyra.</item>
+<item>Sjutton minuter över fyra.</item>
+<item>Arton minuter över fyra.</item>
+<item>Nitton minuter över fyra.</item>
+<item>Tjugo över fyra.</item>
+<item>Tjugoen minuter över fyra.</item>
+<item>Tjugotvå minuter över fyra.</item>
+<item>Tjugotre minuter över fyra.</item>
+<item>Tjugofyra minuter över fyra.</item>
+<item>Fem i halv fem.</item>
+<item>Tjugosex minuter över fyra.</item>
+<item>Tjugosju minuter över fyra.</item>
+<item>Tjugoåtta minuter över fyra.</item>
+<item>Tjugonio minuter över fyra.</item>
+<item>Halv fem.</item>
+<item>Tjugonio minuter i fem.</item>
+<item>Tjugoåtta minuter i fem.</item>
+<item>Tjugosju minuter i fem.</item>
+<item>Tjugosex minuter i fem.</item>
+<item>Fem över halv fem.</item>
+<item>Tjugofyra minuter i fem.</item>
+<item>Tjugotre minuter i fem.</item>
+<item>Tjugotvå minuter i fem.</item>
+<item>Tjugoett minuter i fem.</item>
+<item>Tjugo i fem.</item>
+<item>Nitton minuter i fem.</item>
+<item>Arton minuter i fem.</item>
+<item>Sjutton minuter i fem.</item>
+<item>Sexton minuter i fem.</item>
+<item>Kvart i fem.</item>
+<item>Fjorton minuter i fem.</item>
+<item>Tretton minuter i fem.</item>
+<item>Tolv minuter i fem.</item>
+<item>Elva minuter i fem.</item>
+<item>Tio i fem.</item>
+<item>Nio minuter i fem.</item>
+<item>Åtta minuter i fem.</item>
+<item>Sju minuter i fem.</item>
+<item>Sex minuter i fem.</item>
+<item>Fem i fem.</item>
+<item>Fyra minuter i fem.</item>
+<item>Tre minuter i fem.</item>
+<item>Två minuter i fem.</item>
+<item>En minut i fem.</item>
+<item>Fem.</item>
+<item>En minut över fem.</item>
+<item>Två minuter över fem.</item>
+<item>Tre minuter över fem.</item>
+<item>Fyra minuter över fem.</item>
+<item>Fem över fem.</item>
+<item>Sex minuter över fem.</item>
+<item>Sju minuter över fem.</item>
+<item>Åtta minuter över fem.</item>
+<item>Nio minuter över fem.</item>
+<item>Tio över fem.</item>
+<item>Elva minuter över fem.</item>
+<item>Tolv minuter över fem.</item>
+<item>Tretton minuter över fem.</item>
+<item>Fjorton minuter över fem.</item>
+<item>Kvart över fem.</item>
+<item>Sexton minuter över fem.</item>
+<item>Sjutton minuter över fem.</item>
+<item>Arton minuter över fem.</item>
+<item>Nitton minuter över fem.</item>
+<item>Tjugo över fem.</item>
+<item>Tjugoen minuter över fem.</item>
+<item>Tjugotvå minuter över fem.</item>
+<item>Tjugotre minuter över fem.</item>
+<item>Tjugofyra minuter över fem.</item>
+<item>Fem i halv sex.</item>
+<item>Tjugosex minuter över fem.</item>
+<item>Tjugosju minuter över fem.</item>
+<item>Tjugoåtta minuter över fem.</item>
+<item>Tjugonio minuter över fem.</item>
+<item>Halv sex.</item>
+<item>Tjugonio minuter i sex.</item>
+<item>Tjugoåtta minuter i sex.</item>
+<item>Tjugosju minuter i sex.</item>
+<item>Tjugosex minuter i sex.</item>
+<item>Fem över halv sex.</item>
+<item>Tjugofyra minuter i sex.</item>
+<item>Tjugotre minuter i sex.</item>
+<item>Tjugotvå minuter i sex.</item>
+<item>Tjugoen minuter i sex.</item>
+<item>Tjugo i sex.</item>
+<item>Nitton minuter i sex.</item>
+<item>Arton minuter i sex.</item>
+<item>Sjutton minuter i sex.</item>
+<item>Sexton minuter i sex.</item>
+<item>Kvart i sex.</item>
+<item>Fjorton minuter i sex.</item>
+<item>Tretton minuter i sex.</item>
+<item>Tolv minuter i sex.</item>
+<item>Elva minuter i sex.</item>
+<item>Tio i sex.</item>
+<item>Nio minuter i sex.</item>
+<item>Åtta minuter i sex.</item>
+<item>Sju minuter i sex.</item>
+<item>Sex minuter i sex.</item>
+<item>Fem i sex.</item>
+<item>Fyra minuter i sex.</item>
+<item>Tre minuter i sex.</item>
+<item>Två minuter i sex.</item>
+<item>En minut i sex.</item>
+<item>Sex.</item>
+<item>En minut över sex.</item>
+<item>Två minuter över sex.</item>
+<item>Tre minuter över sex.</item>
+<item>Fyra minuter över sex.</item>
+<item>Fem över sex.</item>
+<item>Sex minuter över sex.</item>
+<item>Sju minuter över sex.</item>
+<item>Åtta minuter över sex.</item>
+<item>Nio minuter över sex.</item>
+<item>Tio över sex.</item>
+<item>Elva minuter över sex.</item>
+<item>Tolv minuter över sex.</item>
+<item>Tretton minuter över sex.</item>
+<item>Fjorton minuter över sex.</item>
+<item>Kvart över sex.</item>
+<item>Sexton minuter över sex.</item>
+<item>Sjutton minuter över sex.</item>
+<item>Arton minuter över sex.</item>
+<item>Nitton minuter över sex.</item>
+<item>Tjugo över sex.</item>
+<item>Tjugoen minuter över sex.</item>
+<item>Tjugotvå minuter över sex.</item>
+<item>Tjugotre minuter över sex.</item>
+<item>Tjugofyra minuter över sex.</item>
+<item>Fem i halv sex.</item>
+<item>Tjugosex minuter över sex.</item>
+<item>Tjugosju minuter över sex.</item>
+<item>Tjugoåtta minuter över sex.</item>
+<item>Tjugonio minuter över sex.</item>
+<item>Halv sex.</item>
+<item>Tjugonio minuter i sju.</item>
+<item>Tjugoåtta minuter i sju.</item>
+<item>Tjugosju minuter i sju.</item>
+<item>Tjugosex minuter i sju.</item>
+<item>Fem över halv sju.</item>
+<item>Tjugofyra minuter i sju.</item>
+<item>Tjugotre minuter i sju.</item>
+<item>Tjugotvå minuter i sju.</item>
+<item>Tjugoett minuter i sju.</item>
+<item>Tjugo i sju.</item>
+<item>Nitton minuter i sju.</item>
+<item>Arton minuter i sju.</item>
+<item>Sjutton minuter i sju.</item>
+<item>Sexton minuter i sju.</item>
+<item>Kvart i sju.</item>
+<item>Fjorton minuter i sju.</item>
+<item>Tretton minuter i sju.</item>
+<item>Tolv minuter i sju.</item>
+<item>Elva minuter i sju.</item>
+<item>Tio i sju.</item>
+<item>Nio minuter i sju.</item>
+<item>Åtta minuter i sju.</item>
+<item>Sju minuter i sju.</item>
+<item>Sex minuter i sju.</item>
+<item>Fem i sju.</item>
+<item>Fyra minuter i sju.</item>
+<item>Tre minuter i sju.</item>
+<item>Två minuter i sju.</item>
+<item>En minut i sju.</item>
+<item>Sju.</item>
+<item>En minut över sju.</item>
+<item>Två minuter över sju.</item>
+<item>Tre minuter över sju.</item>
+<item>Fyra minuter över sju.</item>
+<item>Fem över sju.</item>
+<item>Sex minuter över sju.</item>
+<item>Sju minuter över sju.</item>
+<item>Åtta minuter över sju.</item>
+<item>Nio minuter över sju.</item>
+<item>Tio över sju.</item>
+<item>Elva minuter över sju.</item>
+<item>Tolv minuter över sju.</item>
+<item>Tretton minuter över sju.</item>
+<item>Fjorton minuter över sju.</item>
+<item>Kvart över sju.</item>
+<item>Sexton minuter över sju.</item>
+<item>Sjutton minuter över sju.</item>
+<item>Arton minuter över sju.</item>
+<item>Nitton minuter över sju.</item>
+<item>Tjugo över sju.</item>
+<item>Tjugoen minuter över sju.</item>
+<item>Tjugotvå minuter över sju.</item>
+<item>Tjugotre minuter över sju.</item>
+<item>Tjugofyra minuter över sju.</item>
+<item>Fem i halv sju.</item>
+<item>Tjugosex minuter över sju.</item>
+<item>Tjugosju minuter över sju.</item>
+<item>Tjugoåtta minuter över sju.</item>
+<item>Tjugonio minuter över sju.</item>
+<item>Halv sju.</item>
+<item>Tjugonio minuter i åtta.</item>
+<item>Tjugoåtta minuter i åtta.</item>
+<item>Tjugosju minuter i åtta.</item>
+<item>Tjugosex minuter i åtta.</item>
+<item>Fem över halv åtta.</item>
+<item>Tjugofyra minuter i åtta.</item>
+<item>Tjugotre minuter i åtta.</item>
+<item>Tjugotvå minuter i åtta.</item>
+<item>Tjugoett minuter i åtta.</item>
+<item>Tjugo i åtta.</item>
+<item>Nitton minuter i åtta.</item>
+<item>Arton minuter i åtta.</item>
+<item>Sjutton minuter i åtta.</item>
+<item>Sexton minuter i åtta.</item>
+<item>Kvart i åtta.</item>
+<item>Fjorton minuter i åtta.</item>
+<item>Tretton minuter i åtta.</item>
+<item>Tolv minuter i åtta.</item>
+<item>Elva minuter i åtta.</item>
+<item>Tio i åtta.</item>
+<item>Nio minuter i åtta.</item>
+<item>Åtta minuter i åtta.</item>
+<item>Sju minuter i åtta.</item>
+<item>Sex minuter i åtta.</item>
+<item>Fem i åtta.</item>
+<item>Fyra minuter i åtta.</item>
+<item>Tre minuter i åtta.</item>
+<item>Två minuter i åtta.</item>
+<item>En minut i åtta.</item>
+<item>Åtta.</item>
+<item>En minut över åtta.</item>
+<item>Två minuter över åtta.</item>
+<item>Tre minuter över åtta.</item>
+<item>Fyra minuter över åtta.</item>
+<item>Fem över åtta.</item>
+<item>Sex minuter över åtta.</item>
+<item>Sju minuter över åtta.</item>
+<item>Åtta minuter över åtta.</item>
+<item>Nio minuter över åtta.</item>
+<item>Tio över åtta.</item>
+<item>Elva minuter över åtta.</item>
+<item>Tolv minuter över åtta.</item>
+<item>Tretton minuter över åtta.</item>
+<item>Fjorton minuter över åtta.</item>
+<item>Kvart över åtta.</item>
+<item>Sexton minuter över åtta.</item>
+<item>Sjutton minuter över åtta.</item>
+<item>Arton minuter över åtta.</item>
+<item>Nitton minuter över åtta.</item>
+<item>Tjugo över åtta.</item>
+<item>Tjugoen minuter över åtta.</item>
+<item>Tjugotvå minuter över åtta.</item>
+<item>Tjugotre minuter över åtta.</item>
+<item>Tjugofyra minuter över åtta.</item>
+<item>Fem i halv åtta.</item>
+<item>Tjugosex minuter över åtta.</item>
+<item>Tjugosju minuter över åtta.</item>
+<item>Tjugoåtta minuter över åtta.</item>
+<item>Tjugonio minuter över åtta.</item>
+<item>Halv åtta.</item>
+<item>Tjugonio minuter i nio.</item>
+<item>Tjugoåtta minuter i nio.</item>
+<item>Tjugosju minuter i nio.</item>
+<item>Tjugosex minuter i nio.</item>
+<item>Fem över halv nio.</item>
+<item>Tjugofyra minuter i nio.</item>
+<item>Tjugotre minuter i nio.</item>
+<item>Tjugotvå minuter i nio.</item>
+<item>Tjugoett minuter i nio.</item>
+<item>Tjugo minuter i nio.</item>
+<item>Nitton minuter i nio.</item>
+<item>Arton minuter i nio.</item>
+<item>Sjutton minuter i nio.</item>
+<item>Sexton minuter i nio.</item>
+<item>Kvart i nio.</item>
+<item>Fjorton minuter i nio.</item>
+<item>Tretton minuter i nio.</item>
+<item>Tolv minuter i nio.</item>
+<item>Elva minuter i nio.</item>
+<item>Tio minuter i nio.</item>
+<item>Nio minuter i nio.</item>
+<item>Åtta minuter i nio.</item>
+<item>Sju minuter i nio.</item>
+<item>Sex minuter i nio.</item>
+<item>Fem minuter i nio.</item>
+<item>Fyra minuter i nio.</item>
+<item>Tre minuter i nio.</item>
+<item>Två minuter i nio.</item>
+<item>En minut i nio.</item>
+<item>Nio.</item>
+<item>En minut över nio.</item>
+<item>Två minuter över nio.</item>
+<item>Tre minuter över nio.</item>
+<item>Fyra minuter över nio.</item>
+<item>Fem över nio.</item>
+<item>Sex minuter över nio.</item>
+<item>Sju minuter över nio.</item>
+<item>Åtta minuter över nio.</item>
+<item>Nio minuter över nio.</item>
+<item>Tio över nio.</item>
+<item>Elva minuter över nio.</item>
+<item>Tolv minuter över nio.</item>
+<item>Tretton minuter över nio.</item>
+<item>Fjorton minuter över nio.</item>
+<item>Kvart över nio.</item>
+<item>Sexton minuter över nio.</item>
+<item>Sjutton minuter över nio.</item>
+<item>Arton minuter över nio.</item>
+<item>Nitton minuter över nio.</item>
+<item>Tjugo över nio.</item>
+<item>Tjugoen minuter över nio.</item>
+<item>Tjugotvå minuter över nio.</item>
+<item>Tjugotre minuter över nio.</item>
+<item>Tjugofyra minuter över nio.</item>
+<item>Fem i halv nio.</item>
+<item>Tjugosex minuter över nio.</item>
+<item>Tjugosju minuter över nio.</item>
+<item>Tjugoåtta minuter över nio.</item>
+<item>Tjugonio minuter över nio.</item>
+<item>Halv nio.</item>
+<item>Tjugonio minuter i tio.</item>
+<item>Tjugoåtta minuter i tio.</item>
+<item>Tjugosju minuter i tio.</item>
+<item>Tjugosex minuter i tio.</item>
+<item>Fem över halv minuter i tio.</item>
+<item>Tjugofyra minuter i tio.</item>
+<item>Tjugotre minuter i tio.</item>
+<item>Tjugotvå minuter i tio.</item>
+<item>Tjugoett minuter i tio.</item>
+<item>Tjugo minuter i tio.</item>
+<item>Nitton minuter i tio.</item>
+<item>Arton minuter i tio.</item>
+<item>Sjutton minuter i tio.</item>
+<item>Sexton minuter i tio.</item>
+<item>Kvart i Tio.</item>
+<item>Fjorton minuter över minuter i tio.</item>
+<item>Tretton minuter i tio.</item>
+<item>tolv minuter i tio.</item>
+<item>Elva minuter i tio.</item>
+<item>Tio minuter i tio.</item>
+<item>Nio minuter i tio.</item>
+<item>Åtta minuter i tio.</item>
+<item>Sju minuter i tio.</item>
+<item>Sex minuter i tio.</item>
+<item>Fem minuter i tio.</item>
+<item>Fyra minuter i tio.</item>
+<item>Tre minuter i tio.</item>
+<item>Två minuter i tio.</item>
+<item>En minuter i tio.</item>
+<item>Tio.</item>
+<item>En minut över tio.</item>
+<item>Två minuter över tio.</item>
+<item>Tre minuter över tio.</item>
+<item>Fyra minuter över tio.</item>
+<item>Fem över tio.</item>
+<item>Sex minuter över tio.</item>
+<item>Sju minuter över tio.</item>
+<item>Åtta minuter över tio.</item>
+<item>Nio minuter över tio.</item>
+<item>Tio över tio.</item>
+<item>Elva minuter över tio.</item>
+<item>Tolv minuter över tio.</item>
+<item>Tretton minuter över tio.</item>
+<item>Fjorton minuter över tio.</item>
+<item>Kvart över tio.</item>
+<item>Sexton minuter över tio.</item>
+<item>Sjutton minuter över tio.</item>
+<item>Arton minuter över tio.</item>
+<item>Nitton minuter över tio.</item>
+<item>Tjugo över tio.</item>
+<item>Tjugoen minuter över tio.</item>
+<item>Tjugotvå minuter över tio.</item>
+<item>Tjugotre minuter över tio.</item>
+<item>Tjugofyra minuter över tio.</item>
+<item>Fem i halv Tio.</item>
+<item>Tjugosex minuter över tio.</item>
+<item>Tjugosju minuter över tio.</item>
+<item>Tjugoåtta minuter över tio.</item>
+<item>Tjugonio minuter över tio.</item>
+<item>Halv Tio.</item>
+<item>Tjugonio minuter i elva.</item>
+<item>Tjugoåtta minuter i elva.</item>
+<item>Tjugosju minuter i elva.</item>
+<item>Tjugosex minuter i elva.</item>
+<item>Fem över halv minuter i elva.</item>
+<item>Tjugofyra minuter i elva.</item>
+<item>Tjugotre minuter i elva.</item>
+<item>Tjugotvå minuter i elva.</item>
+<item>Tjugoett minuter i elva.</item>
+<item>Tjugo minuter i elva.</item>
+<item>Nitton minuter i elva.</item>
+<item>Arton minuter i elva.</item>
+<item>Sjutton minuter i elva.</item>
+<item>Sexton minuter i elva.</item>
+<item>Kvart i Elva.</item>
+<item>Fjorton minuter över minuter i elva.</item>
+<item>Tretton minuter i elva.</item>
+<item>tolv minuter i elva.</item>
+<item>Elva minuter i elva.</item>
+<item>Tio minuter i elva.</item>
+<item>Nio minuter i elva.</item>
+<item>Åtta minuter i elva.</item>
+<item>Sju minuter i elva.</item>
+<item>Sex minuter i elva.</item>
+<item>Fem minuter i elva.</item>
+<item>Fyra minuter i elva.</item>
+<item>Tre minuter i elva.</item>
+<item>Två minuter i elva.</item>
+<item>En minuter i elva.</item>
+<item>Elva.</item>
+<item>En minut över elva.</item>
+<item>Två minuter över elva.</item>
+<item>Tre minuter över elva.</item>
+<item>Fyra minuter över elva.</item>
+<item>Fem över elva.</item>
+<item>Sex minuter över elva.</item>
+<item>Sju minuter över elva.</item>
+<item>Åtta minuter över elva.</item>
+<item>Nio minuter över elva.</item>
+<item>Tio över elva.</item>
+<item>Elva minuter över elva.</item>
+<item>Tolv minuter över elva.</item>
+<item>Tretton minuter över elva.</item>
+<item>Fjorton minuter över elva.</item>
+<item>Kvart över elva.</item>
+<item>Sexton minuter över elva.</item>
+<item>Sjutton minuter över elva.</item>
+<item>Arton minuter över elva.</item>
+<item>Nitton minuter över elva.</item>
+<item>Tjugo över elva.</item>
+<item>Tjugoen minuter över elva.</item>
+<item>Tjugotvå minuter över elva.</item>
+<item>Tjugotre minuter över elva.</item>
+<item>Tjugofyra minuter över elva.</item>
+<item>Fem i halv tolv.</item>
+<item>Tjugosex minuter över elva.</item>
+<item>Tjugosju minuter över elva.</item>
+<item>Tjugoåtta minuter över elva.</item>
+<item>Tjugonio minuter över elva.</item>
+<item>Halv tolv.</item>
+<item>Tjugonio minuter i tolv.</item>
+<item>Tjugoåtta minuter i tolv.</item>
+<item>Tjugosju minuter i tolv.</item>
+<item>Tjugosex minuter i tolv.</item>
+<item>Fem över halv tolv.</item>
+<item>Tjugofyra minuter i tolv.</item>
+<item>Tjugotre minuter i tolv.</item>
+<item>Tjugotvå minuter i tolv.</item>
+<item>Tjugoett minuter i tolv.</item>
+<item>Tjugo i tolv.</item>
+<item>Nitton minuter i tolv.</item>
+<item>Arton minuter i tolv.</item>
+<item>Sjutton minuter i tolv.</item>
+<item>Sexton minuter i tolv.</item>
+<item>Kvart i tolv.</item>
+<item>Fjorton minuter i tolv.</item>
+<item>Tretton minuter i tolv.</item>
+<item>Tolv minuter i tolv.</item>
+<item>Elva minuter i tolv.</item>
+<item>Tio minuter i tolv.</item>
+<item>Nio minuter i tolv.</item>
+<item>Åtta minuter i tolv.</item>
+<item>Sju minuter i tolv.</item>
+<item>Sex minuter i tolv.</item>
+<item>Fem i tolv.</item>
+<item>Fyra minuter i tolv.</item>
+<item>Tre minuter i tolv.</item>
+<item>Två minuter i tolv.</item>
+<item>En minut i tolv.</item>
+<item>Tolv.</item>
+<item>En minut över tolv.</item>
+<item>Två minuter över tolv.</item>
+<item>Tre minuter över tolv.</item>
+<item>Fyra minuter över tolv.</item>
+<item>Fem över tolv.</item>
+<item>Sex minuter över tolv.</item>
+<item>Sju minuter över tolv.</item>
+<item>Åtta minuter över tolv.</item>
+<item>Nio minuter över tolv.</item>
+<item>Tio över tolv.</item>
+<item>Elva minuter över tolv.</item>
+<item>Tolv minuter över tolv.</item>
+<item>Tretton minuter över tolv.</item>
+<item>Fjorton minuter över tolv.</item>
+<item>Kvart över tolv.</item>
+<item>Sexton minuter över tolv.</item>
+<item>Sjutton minuter över tolv.</item>
+<item>Arton minuter över tolv.</item>
+<item>Nitton minuter över tolv.</item>
+<item>Tjugo över tolv.</item>
+<item>Tjugoen minuter över tolv.</item>
+<item>Tjugotvå minuter över tolv.</item>
+<item>Tjugotre minuter över tolv.</item>
+<item>Tjugofyra minuter över tolv.</item>
+<item>Fem i halv ett.</item>
+<item>Tjugosex minuter över tolv.</item>
+<item>Tjugosju minuter över tolv.</item>
+<item>Tjugoåtta minuter över tolv.</item>
+<item>Tjugonio minuter över tolv.</item>
+<item>Halv ett.</item>
+<item>Tjugonio minuter i ett.</item>
+<item>Tjugoåtta minuter i ett.</item>
+<item>Tjugosju minuter i ett.</item>
+<item>Tjugosex minuter i ett.</item>
+<item>Fem över halv ett.</item>
+<item>Tjugofyra minuter i ett.</item>
+<item>Tjugotre minuter i ett.</item>
+<item>Tjugotvå minuter i ett.</item>
+<item>Tjugoett minuter i ett.</item>
+<item>Tjugo i ett.</item>
+<item>Nitton minuter i ett.</item>
+<item>Arton minuter i ett.</item>
+<item>Sjutton minuter i ett.</item>
+<item>Sexton minuter i ett.</item>
+<item>Kvart i ett.</item>
+<item>Fjorton minuter i ett.</item>
+<item>Tretton minuter i ett.</item>
+<item>Tolv minuter i ett.</item>
+<item>Elva minuter i ett.</item>
+<item>Tio i ett.</item>
+<item>Nio minuter i ett.</item>
+<item>Åtta minuter i ett.</item>
+<item>Sju minuter i ett.</item>
+<item>Sex minuter i ett.</item>
+<item>Fem i ett.</item>
+<item>Fyra minuter i ett.</item>
+<item>Tre minuter i ett.</item>
+<item>Två minuter i ett.</item>
+<item>En minut i ett.</item>
+<item>Ett.</item>
+<item>En minut över ett.</item>
+<item>Två minuter över ett.</item>
+<item>Tre minuter över ett.</item>
+<item>Fyra minuter över ett.</item>
+<item>Fem över ett.</item>
+<item>Sex minuter över ett.</item>
+<item>Sju minuter över ett.</item>
+<item>Åtta minuter över ett.</item>
+<item>Nio minuter över ett.</item>
+<item>Tio över ett.</item>
+<item>Elva minuter över ett.</item>
+<item>Tolv minuter över ett.</item>
+<item>Tretton minuter över ett.</item>
+<item>Fjorton minuter över ett.</item>
+<item>Kvart över ett.</item>
+<item>Sexton minuter över ett.</item>
+<item>Sjutton minuter över ett.</item>
+<item>Arton minuter över ett.</item>
+<item>Nitton minuter över ett.</item>
+<item>Tjugo över ett.</item>
+<item>Tjugoen minuter över ett.</item>
+<item>Tjugotvå minuter över ett.</item>
+<item>Tjugotre minuter över ett.</item>
+<item>Tjugofyra minuter över ett.</item>
+<item>Fem i halv två.</item>
+<item>Tjugosex minuter över ett.</item>
+<item>Tjugosju minuter över ett.</item>
+<item>Tjugoåtta minuter över ett.</item>
+<item>Tjugonio minuter över ett.</item>
+<item>Halv två.</item>
+<item>Tjugonio minuter i två.</item>
+<item>Tjugoåtta minuter i två.</item>
+<item>Tjugosju minuter i två.</item>
+<item>Tjugosex minuter i två.</item>
+<item>Fem över halv två.</item>
+<item>Tjugofyra minuter i två.</item>
+<item>Tjugotre minuter i två.</item>
+<item>Tjugotvå minuter i två.</item>
+<item>Tjugoett minuter i två.</item>
+<item>Tjugo i två.</item>
+<item>Nitton minuter i två.</item>
+<item>Arton minuter i två.</item>
+<item>Sjutton minuter i två.</item>
+<item>Sexton minuter i två.</item>
+<item>Kvart i två.</item>
+<item>Fjorton minuter i två.</item>
+<item>Tretton minuter i två.</item>
+<item>Tolv minuter i två.</item>
+<item>Elva minuter i två.</item>
+<item>Tio i två.</item>
+<item>Nio minuter i två.</item>
+<item>Åtta minuter i två.</item>
+<item>Sju minuter i två.</item>
+<item>Sex minuter i två.</item>
+<item>Fem i två.</item>
+<item>Fyra minuter i två.</item>
+<item>Tre minuter i två.</item>
+<item>Två minuter i två.</item>
+<item>En minut i två.</item>
+<item>Två.</item>
+<item>En minut över två.</item>
+<item>Två minuter över två.</item>
+<item>Tre minuter över två.</item>
+<item>Fyra minuter över två.</item>
+<item>Fem över två.</item>
+<item>Sex minuter över två.</item>
+<item>Sju minuter över två.</item>
+<item>Åtta minuter över två.</item>
+<item>Nio minuter över två.</item>
+<item>Tio över två.</item>
+<item>Elva minuter över två.</item>
+<item>Tolv minuter över två.</item>
+<item>Tretton minuter över två.</item>
+<item>Fjorton minuter över två.</item>
+<item>Kvart över två.</item>
+<item>Sexton minuter över två.</item>
+<item>Sjutton minuter över två.</item>
+<item>Arton minuter över två.</item>
+<item>Nitton minuter över två.</item>
+<item>Tjugo över två.</item>
+<item>Tjugoen minuter över två.</item>
+<item>Tjugotvå minuter över två.</item>
+<item>Tjugotre minuter över två.</item>
+<item>Tjugofyra minuter över två.</item>
+<item>Fem i halv tre.</item>
+<item>Tjugosex minuter över två.</item>
+<item>Tjugosju minuter över två.</item>
+<item>Tjugoåtta minuter över två.</item>
+<item>Tjugonio minuter över två.</item>
+<item>Halv tre.</item>
+<item>Tjugonio minuter i tre.</item>
+<item>Tjugoåtta minuter i tre.</item>
+<item>Tjugosju minuter i tre.</item>
+<item>Tjugosex minuter i tre.</item>
+<item>Fem över halv tre.</item>
+<item>Tjugofyra minuter i tre.</item>
+<item>Tjugotre minuter i tre.</item>
+<item>Tjugotvå minuter i tre.</item>
+<item>Tjugoett minuter i tre.</item>
+<item>Tjugo i tre.</item>
+<item>Nitton minuter i tre.</item>
+<item>Arton minuter i tre.</item>
+<item>Sjutton minuter i tre.</item>
+<item>Sexton minuter i tre.</item>
+<item>Kvart i tre.</item>
+<item>Fjorton minuter i tre.</item>
+<item>Tretton minuter i tre.</item>
+<item>Tolv minuter i tre.</item>
+<item>Elva minuter i tre.</item>
+<item>Tio i tre.</item>
+<item>Nio minuter i tre.</item>
+<item>Åtta minuter i tre.</item>
+<item>Sju minuter i tre.</item>
+<item>Sex minuter i tre.</item>
+<item>Fem i tre.</item>
+<item>Fyra minuter i tre.</item>
+<item>Tre minuter i tre.</item>
+<item>Två minuter i tre.</item>
+<item>En minut i tre.</item>
+<item>Tre.</item>
+<item>En minut över tre.</item>
+<item>Två minuter över tre.</item>
+<item>Tre minuter över tre.</item>
+<item>Fyra minuter över tre.</item>
+<item>Fem över tre.</item>
+<item>Sex minuter över tre.</item>
+<item>Sju minuter över tre.</item>
+<item>Åtta minuter över tre.</item>
+<item>Nio minuter över tre.</item>
+<item>Tio över tre.</item>
+<item>Elva minuter över tre.</item>
+<item>Tolv minuter över tre.</item>
+<item>Tretton minuter över tre.</item>
+<item>Fjorton minuter över tre.</item>
+<item>Kvart över tre.</item>
+<item>Sexton minuter över tre.</item>
+<item>Sjutton minuter över tre.</item>
+<item>Arton minuter över tre.</item>
+<item>Nitton minuter över tre.</item>
+<item>Tjugo över tre.</item>
+<item>Tjugoen minuter över tre.</item>
+<item>Tjugotvå minuter över tre.</item>
+<item>Tjugotre minuter över tre.</item>
+<item>Tjugofyra minuter över tre.</item>
+<item>Fem i halv fyra.</item>
+<item>Tjugosex minuter över tre.</item>
+<item>Tjugosju minuter över tre.</item>
+<item>Tjugoåtta minuter över tre.</item>
+<item>Tjugonio minuter över tre.</item>
+<item>Halv fyra.</item>
+<item>Tjugonio minuter i fyra.</item>
+<item>Tjugoåtta minuter i fyra.</item>
+<item>Tjugosju minuter i fyra.</item>
+<item>Tjugosex minuter i fyra.</item>
+<item>Fem över halv fyra.</item>
+<item>Tjugofyra minuter i fyra.</item>
+<item>Tjugotre minuter i fyra.</item>
+<item>Tjugotvå minuter i fyra.</item>
+<item>Tjugoett minuter i fyra.</item>
+<item>Tjugo i fyra.</item>
+<item>Nitton minuter i fyra.</item>
+<item>Arton minuter i fyra.</item>
+<item>Sjutton minuter i fyra.</item>
+<item>Sexton minuter i fyra.</item>
+<item>Kvart i fyra.</item>
+<item>Fjorton minuter i fyra.</item>
+<item>Tretton minuter i fyra.</item>
+<item>Tolv minuter i fyra.</item>
+<item>Elva minuter i fyra.</item>
+<item>Tio i fyra.</item>
+<item>Nio minuter i fyra.</item>
+<item>Åtta minuter i fyra.</item>
+<item>Sju minuter i fyra.</item>
+<item>Sex minuter i fyra.</item>
+<item>Fem i fyra.</item>
+<item>Fyra minuter i fyra.</item>
+<item>Tre minuter i fyra.</item>
+<item>Två minuter i fyra.</item>
+<item>En minut i fyra.</item>
+<item>Fyra.</item>
+<item>En minut över fyra.</item>
+<item>Två minuter över fyra.</item>
+<item>Tre minuter över fyra.</item>
+<item>Fyra minuter över fyra.</item>
+<item>Fem över fyra.</item>
+<item>Sex minuter över fyra.</item>
+<item>Sju minuter över fyra.</item>
+<item>Åtta minuter över fyra.</item>
+<item>Nio minuter över fyra.</item>
+<item>Tio över fyra.</item>
+<item>Elva minuter över fyra.</item>
+<item>Tolv minuter över fyra.</item>
+<item>Tretton minuter över fyra.</item>
+<item>Fjorton minuter över fyra.</item>
+<item>Kvart över fyra.</item>
+<item>Sexton minuter över fyra.</item>
+<item>Sjutton minuter över fyra.</item>
+<item>Arton minuter över fyra.</item>
+<item>Nitton minuter över fyra.</item>
+<item>Tjugo över fyra.</item>
+<item>Tjugoen minuter över fyra.</item>
+<item>Tjugotvå minuter över fyra.</item>
+<item>Tjugotre minuter över fyra.</item>
+<item>Tjugofyra minuter över fyra.</item>
+<item>Fem i halv fem.</item>
+<item>Tjugosex minuter över fyra.</item>
+<item>Tjugosju minuter över fyra.</item>
+<item>Tjugoåtta minuter över fyra.</item>
+<item>Tjugonio minuter över fyra.</item>
+<item>Halv fem.</item>
+<item>Tjugonio minuter i fem.</item>
+<item>Tjugoåtta minuter i fem.</item>
+<item>Tjugosju minuter i fem.</item>
+<item>Tjugosex minuter i fem.</item>
+<item>Fem över halv fem.</item>
+<item>Tjugofyra minuter i fem.</item>
+<item>Tjugotre minuter i fem.</item>
+<item>Tjugotvå minuter i fem.</item>
+<item>Tjugoett minuter i fem.</item>
+<item>Tjugo i fem.</item>
+<item>Nitton minuter i fem.</item>
+<item>Arton minuter i fem.</item>
+<item>Sjutton minuter i fem.</item>
+<item>Sexton minuter i fem.</item>
+<item>Kvart i fem.</item>
+<item>Fjorton minuter i fem.</item>
+<item>Tretton minuter i fem.</item>
+<item>Tolv minuter i fem.</item>
+<item>Elva minuter i fem.</item>
+<item>Tio i fem.</item>
+<item>Nio minuter i fem.</item>
+<item>Åtta minuter i fem.</item>
+<item>Sju minuter i fem.</item>
+<item>Sex minuter i fem.</item>
+<item>Fem i fem.</item>
+<item>Fyra minuter i fem.</item>
+<item>Tre minuter i fem.</item>
+<item>Två minuter i fem.</item>
+<item>En minut i fem.</item>
+<item>Fem.</item>
+<item>En minut över fem.</item>
+<item>Två minuter över fem.</item>
+<item>Tre minuter över fem.</item>
+<item>Fyra minuter över fem.</item>
+<item>Fem över fem.</item>
+<item>Sex minuter över fem.</item>
+<item>Sju minuter över fem.</item>
+<item>Åtta minuter över fem.</item>
+<item>Nio minuter över fem.</item>
+<item>Tio över fem.</item>
+<item>Elva minuter över fem.</item>
+<item>Tolv minuter över fem.</item>
+<item>Tretton minuter över fem.</item>
+<item>Fjorton minuter över fem.</item>
+<item>Kvart över fem.</item>
+<item>Sexton minuter över fem.</item>
+<item>Sjutton minuter över fem.</item>
+<item>Arton minuter över fem.</item>
+<item>Nitton minuter över fem.</item>
+<item>Tjugo över fem.</item>
+<item>Tjugoen minuter över fem.</item>
+<item>Tjugotvå minuter över fem.</item>
+<item>Tjugotre minuter över fem.</item>
+<item>Tjugofyra minuter över fem.</item>
+<item>Fem i halv sex.</item>
+<item>Tjugosex minuter över fem.</item>
+<item>Tjugosju minuter över fem.</item>
+<item>Tjugoåtta minuter över fem.</item>
+<item>Tjugonio minuter över fem.</item>
+<item>Halv sex.</item>
+<item>Tjugonio minuter i sex.</item>
+<item>Tjugoåtta minuter i sex.</item>
+<item>Tjugosju minuter i sex.</item>
+<item>Tjugosex minuter i sex.</item>
+<item>Fem över halv sex.</item>
+<item>Tjugofyra minuter i sex.</item>
+<item>Tjugotre minuter i sex.</item>
+<item>Tjugotvå minuter i sex.</item>
+<item>Tjugoett minuter i sex.</item>
+<item>Tjugo i sex.</item>
+<item>Nitton minuter i sex.</item>
+<item>Arton minuter i sex.</item>
+<item>Sjutton minuter i sex.</item>
+<item>Sexton minuter i sex.</item>
+<item>Kvart i sex.</item>
+<item>Fjorton minuter i sex.</item>
+<item>Tretton minuter i sex.</item>
+<item>Tolv minuter i sex.</item>
+<item>Elva minuter i sex.</item>
+<item>Tio i sex.</item>
+<item>Nio minuter i sex.</item>
+<item>Åtta minuter i sex.</item>
+<item>Sju minuter i sex.</item>
+<item>Sex minuter i sex.</item>
+<item>Fem i sex.</item>
+<item>Fyra minuter i sex.</item>
+<item>Tre minuter i sex.</item>
+<item>Två minuter i sex.</item>
+<item>En minut i sex.</item>
+<item>Sex.</item>
+<item>En minut över sex.</item>
+<item>Två minuter över sex.</item>
+<item>Tre minuter över sex.</item>
+<item>Fyra minuter över sex.</item>
+<item>Fem över sex.</item>
+<item>Sex minuter över sex.</item>
+<item>Sju minuter över sex.</item>
+<item>Åtta minuter över sex.</item>
+<item>Nio minuter över sex.</item>
+<item>Tio över sex.</item>
+<item>Elva minuter över sex.</item>
+<item>Tolv minuter över sex.</item>
+<item>Tretton minuter över sex.</item>
+<item>Fjorton minuter över sex.</item>
+<item>Kvart över sex.</item>
+<item>Sexton minuter över sex.</item>
+<item>Sjutton minuter över sex.</item>
+<item>Arton minuter över sex.</item>
+<item>Nitton minuter över sex.</item>
+<item>Tjugo över sex.</item>
+<item>Tjugoen minuter över sex.</item>
+<item>Tjugotvå minuter över sex.</item>
+<item>Tjugotre minuter över sex.</item>
+<item>Tjugofyra minuter över sex.</item>
+<item>Fem i halv sju.</item>
+<item>Tjugosex minuter över sex.</item>
+<item>Tjugosju minuter över sex.</item>
+<item>Tjugoåtta minuter över sex.</item>
+<item>Tjugonio minuter över sex.</item>
+<item>Halv sju.</item>
+<item>Tjugonio minuter i sju.</item>
+<item>Tjugoåtta minuter i sju.</item>
+<item>Tjugosju minuter i sju.</item>
+<item>Tjugosex minuter i sju.</item>
+<item>Fem över halv sju.</item>
+<item>Tjugofyra minuter i sju.</item>
+<item>Tjugotre minuter i sju.</item>
+<item>Tjugotvå minuter i sju.</item>
+<item>Tjugoett minuter i sju.</item>
+<item>Tjugo i sju.</item>
+<item>Nitton minuter i sju.</item>
+<item>Arton minuter i sju.</item>
+<item>Sjutton minuter i sju.</item>
+<item>Sexton minuter i sju.</item>
+<item>Kvart i sju.</item>
+<item>Fjorton minuter i sju.</item>
+<item>Tretton minuter i sju.</item>
+<item>Tolv minuter i sju.</item>
+<item>Elva minuter i sju.</item>
+<item>Tio i sju.</item>
+<item>Nio minuter i sju.</item>
+<item>Åtta minuter i sju.</item>
+<item>Sju minuter i sju.</item>
+<item>Sex minuter i sju.</item>
+<item>Fem i sju.</item>
+<item>Fyra minuter i sju.</item>
+<item>Tre minuter i sju.</item>
+<item>Två minuter i sju.</item>
+<item>En minut i sju.</item>
+<item>Sju.</item>
+<item>En minut över sju.</item>
+<item>Två minuter över sju.</item>
+<item>Tre minuter över sju.</item>
+<item>Fyra minuter över sju.</item>
+<item>Fem över sju.</item>
+<item>Sex minuter över sju.</item>
+<item>Sju minuter över sju.</item>
+<item>Åtta minuter över sju.</item>
+<item>Nio minuter över sju.</item>
+<item>Tio över sju.</item>
+<item>Elva minuter över sju.</item>
+<item>Tolv minuter över sju.</item>
+<item>Tretton minuter över sju.</item>
+<item>Fjorton minuter över sju.</item>
+<item>Kvart över sju.</item>
+<item>Sexton minuter över sju.</item>
+<item>Sjutton minuter över sju.</item>
+<item>Arton minuter över sju.</item>
+<item>Nitton minuter över sju.</item>
+<item>Tjugo över sju.</item>
+<item>Tjugoen minuter över sju.</item>
+<item>Tjugotvå minuter över sju.</item>
+<item>Tjugotre minuter över sju.</item>
+<item>Tjugofyra minuter över sju.</item>
+<item>Fem i halv åtta.</item>
+<item>Tjugosex minuter över sju.</item>
+<item>Tjugosju minuter över sju.</item>
+<item>Tjugoåtta minuter över sju.</item>
+<item>Tjugonio minuter över sju.</item>
+<item>Halv åtta.</item>
+<item>Tjugonio minuter i åtta.</item>
+<item>Tjugoåtta minuter i åtta.</item>
+<item>Tjugosju minuter i åtta.</item>
+<item>Tjugosex minuter i åtta.</item>
+<item>Fem över halv åtta.</item>
+<item>Tjugofyra minuter i åtta.</item>
+<item>Tjugotre minuter i åtta.</item>
+<item>Tjugotvå minuter i åtta.</item>
+<item>Tjugoett minuter i åtta.</item>
+<item>Tjugo i åtta.</item>
+<item>Nitton minuter i åtta.</item>
+<item>Arton minuter i åtta.</item>
+<item>Sjutton minuter i åtta.</item>
+<item>Sexton minuter i åtta.</item>
+<item>Kvart i åtta.</item>
+<item>Fjorton minuter i åtta.</item>
+<item>Tretton minuter i åtta.</item>
+<item>Tolv minuter i åtta.</item>
+<item>Elva minuter i åtta.</item>
+<item>Tio i åtta.</item>
+<item>Nio minuter i åtta.</item>
+<item>Åtta minuter i åtta.</item>
+<item>Sju minuter i åtta.</item>
+<item>Sex minuter i åtta.</item>
+<item>Fem i åtta.</item>
+<item>Fyra minuter i åtta.</item>
+<item>Tre minuter i åtta.</item>
+<item>Två minuter i åtta.</item>
+<item>En minut i åtta.</item>
+<item>Åtta.</item>
+<item>En minut över åtta.</item>
+<item>Två minuter över åtta.</item>
+<item>Tre minuter över åtta.</item>
+<item>Fyra minuter över åtta.</item>
+<item>Fem över åtta.</item>
+<item>Sex minuter över åtta.</item>
+<item>Sju minuter över åtta.</item>
+<item>Åtta minuter över åtta.</item>
+<item>Nio minuter över åtta.</item>
+<item>Tio över åtta.</item>
+<item>Elva minuter över åtta.</item>
+<item>Tolv minuter över åtta.</item>
+<item>Tretton minuter över åtta.</item>
+<item>Fjorton minuter över åtta.</item>
+<item>Kvart över åtta.</item>
+<item>Sexton minuter över åtta.</item>
+<item>Sjutton minuter över åtta.</item>
+<item>Arton minuter över åtta.</item>
+<item>Nitton minuter över åtta.</item>
+<item>Tjugo över åtta.</item>
+<item>Tjugoen minuter över åtta.</item>
+<item>Tjugotvå minuter över åtta.</item>
+<item>Tjugotre minuter över åtta.</item>
+<item>Tjugofyra minuter över åtta.</item>
+<item>Fem i halv åtta.</item>
+<item>Tjugosex minuter över åtta.</item>
+<item>Tjugosju minuter över åtta.</item>
+<item>Tjugoåtta minuter över åtta.</item>
+<item>Tjugonio minuter över åtta.</item>
+<item>Halv åtta.</item>
+<item>Tjugonio minuter i nio.</item>
+<item>Tjugoåtta minuter i nio.</item>
+<item>Tjugosju minuter i nio.</item>
+<item>Tjugosex minuter i nio.</item>
+<item>Fem i halv nio.</item>
+<item>Tjugofyra minuter i nio.</item>
+<item>Tjugotre minuter i nio.</item>
+<item>Tjugotvå minuter i nio.</item>
+<item>Tjugoett minuter i nio.</item>
+<item>Tjugo minuter i nio.</item>
+<item>Nitton minuter i nio.</item>
+<item>Arton minuter i nio.</item>
+<item>Sjutton minuter i nio.</item>
+<item>Sexton minuter i nio.</item>
+<item>Kvart i nio.</item>
+<item>Fjorton minuter i nio.</item>
+<item>Tretton minuter i nio.</item>
+<item>Tolv minuter i nio.</item>
+<item>Elva minuter i nio.</item>
+<item>Tio i nio.</item>
+<item>Nio minuter i nio.</item>
+<item>Åtta minuter i nio.</item>
+<item>Sju minuter i nio.</item>
+<item>Sex minuter i nio.</item>
+<item>Fem i nio.</item>
+<item>Fyra minuter i nio.</item>
+<item>Tre minuter i nio.</item>
+<item>Två minuter i nio.</item>
+<item>En minut i nio.</item>
+<item>Nio.</item>
+<item>En minut över nio.</item>
+<item>Två minuter över nio.</item>
+<item>Tre minuter över nio.</item>
+<item>Fyra minuter över nio.</item>
+<item>Fem över nio.</item>
+<item>Sex minuter över nio.</item>
+<item>Sju minuter över nio.</item>
+<item>Åtta minuter över nio.</item>
+<item>Nio minuter över nio.</item>
+<item>Tio över nio.</item>
+<item>Elva minuter över nio.</item>
+<item>Tolv minuter över nio.</item>
+<item>Tretton minuter över nio.</item>
+<item>Fjorton minuter över nio.</item>
+<item>Kvart över nio.</item>
+<item>Sexton minuter över nio.</item>
+<item>Sjutton minuter över nio.</item>
+<item>Arton minuter över nio.</item>
+<item>Nitton minuter över nio.</item>
+<item>Tjugo över nio.</item>
+<item>Tjugoen minuter över nio.</item>
+<item>Tjugotvå minuter över nio.</item>
+<item>Tjugotre minuter över nio.</item>
+<item>Tjugofyra minuter över nio.</item>
+<item>Fem i halv tio.</item>
+<item>Tjugosex minuter över nio.</item>
+<item>Tjugosju minuter över nio.</item>
+<item>Tjugoåtta minuter över nio.</item>
+<item>Tjugonio minuter över nio.</item>
+<item>Halv tio.</item>
+<item>Tjugonio minuter i tio.</item>
+<item>Tjugoåtta minuter i tio.</item>
+<item>Tjugosju minuter i tio.</item>
+<item>Tjugosex minuter i tio.</item>
+<item>Fem över halv tio.</item>
+<item>Tjugofyra minuter i tio.</item>
+<item>Tjugotre minuter i tio.</item>
+<item>Tjugotvå minuter i tio.</item>
+<item>Tjugoett minuter i tio.</item>
+<item>Tjugo i tio.</item>
+<item>Nitton minuter i tio.</item>
+<item>Arton minuter i tio.</item>
+<item>Sjutton minuter i tio.</item>
+<item>Sexton minuter i tio.</item>
+<item>Kvart i tio.</item>
+<item>Fjorton minuter i tio.</item>
+<item>Tretton minuter i tio.</item>
+<item>Tolv minuter i tio.</item>
+<item>Elva minuter i tio.</item>
+<item>Tio i tio.</item>
+<item>Nio minuter i tio.</item>
+<item>Åtta minuter i tio.</item>
+<item>Sju minuter i tio.</item>
+<item>Sex minuter i tio.</item>
+<item>Fem i tio.</item>
+<item>Fyra minuter i tio.</item>
+<item>Tre minuter i tio.</item>
+<item>Två minuter i tio.</item>
+<item>En minut i tio.</item>
+<item>Tio.</item>
+<item>En minut över tio.</item>
+<item>Två minuter över tio.</item>
+<item>Tre minuter över tio.</item>
+<item>Fyra minuter över tio.</item>
+<item>Fem över tio.</item>
+<item>Sex minuter över tio.</item>
+<item>Sju minuter över tio.</item>
+<item>Åtta minuter över tio.</item>
+<item>Nio minuter över tio.</item>
+<item>Tio över tio.</item>
+<item>Elva minuter över tio.</item>
+<item>Tolv minuter över tio.</item>
+<item>Tretton minuter över tio.</item>
+<item>Fjorton minuter över tio.</item>
+<item>Kvart över tio.</item>
+<item>Sexton minuter över tio.</item>
+<item>Sjutton minuter över tio.</item>
+<item>Arton minuter över tio.</item>
+<item>Nitton minuter över tio.</item>
+<item>Tjugo över tio.</item>
+<item>Tjugoen minuter över tio.</item>
+<item>Tjugotvå minuter över tio.</item>
+<item>Tjugotre minuter över tio.</item>
+<item>Tjugofyra minuter över tio.</item>
+<item>Fem i halv elva.</item>
+<item>Tjugosex minuter över tio.</item>
+<item>Tjugosju minuter över tio.</item>
+<item>Tjugoåtta minuter över tio.</item>
+<item>Tjugonio minuter över tio.</item>
+<item>Halv elva.</item>
+<item>Tjugonio minuter i elva.</item>
+<item>Tjugoåtta minuter i elva.</item>
+<item>Tjugosju minuter i elva.</item>
+<item>Tjugosex minuter i elva.</item>
+<item>Fem över halv elva.</item>
+<item>Tjugofyra minuter i elva.</item>
+<item>Tjugotre minuter i elva.</item>
+<item>Tjugotvå minuter i elva.</item>
+<item>Tjugoett minuter i elva.</item>
+<item>Tjugo i elva.</item>
+<item>Nitton minuter i elva.</item>
+<item>Arton minuter i elva.</item>
+<item>Sjutton minuter i elva.</item>
+<item>Sexton minuter i elva.</item>
+<item>Kvart i elva.</item>
+<item>Fjorton minuter i elva.</item>
+<item>Tretton minuter i elva.</item>
+<item>Tolv minuter i elva.</item>
+<item>Elva minuter i elva.</item>
+<item>Tio i elva.</item>
+<item>Nio minuter i elva.</item>
+<item>Åtta minuter i elva.</item>
+<item>Sju minuter i elva.</item>
+<item>Sex minuter i elva.</item>
+<item>Fem i elva.</item>
+<item>Fyra minuter i elva.</item>
+<item>Tre minuter i elva.</item>
+<item>Två minuter i elva.</item>
+<item>En minut i elva.</item>
+<item>Elva.</item>
+<item>En minut över elva.</item>
+<item>Två minuter över elva.</item>
+<item>Tre minuter över elva.</item>
+<item>Fyra minuter över elva.</item>
+<item>Fem över elva.</item>
+<item>Sex minuter över elva.</item>
+<item>Sju minuter över elva.</item>
+<item>Åtta minuter över elva.</item>
+<item>Nio minuter över elva.</item>
+<item>Tio över elva.</item>
+<item>Elva minuter över elva.</item>
+<item>Tolv minuter över elva.</item>
+<item>Tretton minuter över elva.</item>
+<item>Fjorton minuter över elva.</item>
+<item>Kvart över elva.</item>
+<item>Sexton minuter över elva.</item>
+<item>Sjutton minuter över elva.</item>
+<item>Arton minuter över elva.</item>
+<item>Nitton minuter över elva.</item>
+<item>Tjugo över elva.</item>
+<item>Tjugoen minuter över elva.</item>
+<item>Tjugotvå minuter över elva.</item>
+<item>Tjugotre minuter över elva.</item>
+<item>Tjugofyra minuter över elva.</item>
+<item>Fem i halv tolv.</item>
+<item>Tjugosex minuter över elva.</item>
+<item>Tjugosju minuter över elva.</item>
+<item>Tjugoåtta minuter över elva.</item>
+<item>Tjugonio minuter över elva.</item>
+<item>Halv tolv.</item>
+<item>Tjugonio minuter i tolv.</item>
+<item>Tjugoåtta minuter i tolv.</item>
+<item>Tjugosju minuter i tolv.</item>
+<item>Tjugosex minuter i tolv.</item>
+<item>Fem över halv tolv.</item>
+<item>Tjugofyra minuter i tolv.</item>
+<item>Tjugotre minuter i tolv.</item>
+<item>Tjugotvå minuter i tolv.</item>
+<item>Tjugoett minuter i tolv.</item>
+<item>Tjugo minuter i tolv.</item>
+<item>Nitton minuter i tolv.</item>
+<item>Arton minuter i tolv.</item>
+<item>Sjutton minuter i tolv.</item>
+<item>Sexton minuter i tolv.</item>
+<item>Kvart i tolv.</item>
+<item>Fjorton minuter i tolv.</item>
+<item>Tretton minuter i tolv.</item>
+<item>tolv minuter i tolv.</item>
+<item>Elva minuter i tolv.</item>
+<item>Tio i tolv.</item>
+<item>Nio minuter i tolv.</item>
+<item>Åtta minuter i tolv.</item>
+<item>Sju minuter i tolv.</item>
+<item>Sex minuter i tolv.</item>
+<item>Fem i tolv.</item>
+<item>Fyra minuter i tolv.</item>
+<item>Tre minuter i tolv.</item>
+<item>Två minuter i tolv.</item>
+<item>En minut i tolv.</item>
+</string-array>
+</resources>
