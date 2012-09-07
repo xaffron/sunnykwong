@@ -285,16 +285,15 @@ public class OMCPrefActivity extends PreferenceActivity {
 											.putString("appLocaleName", OMC.LOCALENAMES[item])
 											.commit();
 
-									System.out.println("pressed " + selectedLocale.toString());
-									
 									// Determine locale.
 									Configuration config = new Configuration();
 									config.locale=selectedLocale;
 									OMC.RES.updateConfiguration(config, 
 											OMC.RES.getDisplayMetrics());
 									preference.setSummary(items[item]);
-//									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 									OMCPrefActivity.this.finish();
 								}
 						})

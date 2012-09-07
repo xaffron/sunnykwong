@@ -112,7 +112,6 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 
 					xr.parse(new InputSource(huc.getInputStream()));
 					UPDATEDTIME.set(huc.getDate());
-					System.out.println("REsponse date:" + UPDATEDTIME.format3339(true));
 					huc.disconnect();
 
 				} catch (Exception e) { 

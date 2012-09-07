@@ -244,7 +244,7 @@ public class OMC extends Application {
 	public void onConfigurationChanged(Configuration newConfig) {
 		for (int i =0 ; i < OMC.LOCALES.length; i++) {
 			if (OMC.PREFS.getString("appLocaleName", "English (US)").equals(OMC.LOCALENAMES[i])) {
-				System.out.println("NEW LOCALE DETECTED: " + OMC.LOCALENAMES[i]);
+				Log.i(OMC.OMCSHORT + "App","Using locale: " + OMC.LOCALENAMES[i]);
 				Configuration config = new Configuration();
 				config.locale=OMC.LOCALES[i];
 				OMC.RES.updateConfiguration(config, 
