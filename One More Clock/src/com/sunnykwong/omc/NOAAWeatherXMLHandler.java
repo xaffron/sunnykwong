@@ -18,6 +18,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import android.os.Build;
 import android.text.format.Time;
 import android.util.Log;
+import android.util.Pair;
 
 public class NOAAWeatherXMLHandler extends DefaultHandler {
 
@@ -61,6 +62,8 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 	public static ArrayList<Double> HIGHTEMPS;
 	public static ArrayList<Double> LOWTEMPS;
 	public static ArrayList<String> CONDITIONS;
+	public static ArrayList<Double> TEMPTOUPDATE;
+	public static String VALUETYPE;
 
 	public NOAAWeatherXMLHandler() {
 		super();
@@ -108,8 +111,8 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 						url = new URL(NOAAWeatherXMLHandler.URL_NOAAFORECAST+latitude+"&lon="+longitude);
 					}
 					huc = (HttpURLConnection) url.openConnection();
-					huc.setConnectTimeout(10000);
-					huc.setReadTimeout(10000);
+					huc.setConnectTimeout(30000);
+					huc.setReadTimeout(30000);
 
 					xr.parse(new InputSource(huc.getInputStream()));
 					UPDATEDTIME.set(huc.getDate());
@@ -133,6 +136,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 		LOWTEMPS=new ArrayList<Double>();
 		HIGHTEMPS=new ArrayList<Double>();
 		CONDITIONS = new ArrayList<String>();
+		VALUETYPE = new String();
 		
 		// yr.no does not return a timestamp in the XML, so default it to 1/1/1970
 		Time t = new Time();
@@ -152,98 +156,54 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 
 	@Override
 	public void characters(char[] ch, int start, int length) {
-		// yr.no Weather doesn't return data between tags, so nothing here
+		String value = new String(ch);
+		System.out.println (tree.peek()[0] + "-" + value);
+		if (tree.peek()[0].equals("temperature")) {
+			NOAAWeatherXMLHandler.TEMPTOUPDATE.add(Double.parseDouble(value));
+			return;
+		}
+		if (tree.peek()[0].equals("weather")) {
+			NOAAWeatherXMLHandler.CONDITIONS.add(value);
+			return;
+		}
+		if (tree.peek()[0].equals("value")){
+			if (VALUETYPE.equals("")) return;
+			try {
+				jsonWeather.put(VALUETYPE, value);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
 	public void startElement(String namespaceURI, String localName,
 			String qName, Attributes atts) {
 		try {
+			VALUETYPE="";
 			if (!tree.isEmpty()) {
-
-//				// First, parse the forecast time.
-//				if (localName.equals("weatherdata")) {
-//					UPDATEDTIME.parse(atts.getValue("created"));
-//				}
-//				
-//				if (localName.equals("time")) {
-//					if (atts.getValue("datatype").equals("forecast")) {
-//						FROMTIME.parse(atts.getValue("from").replace("-","").replace(":",""));
-//						FROMTIME.switchTimezone(Time.getCurrentTimezone());
-//						TOTIME.parse(atts.getValue("to").replace("-","").replace(":",""));
-//						TOTIME.switchTimezone(Time.getCurrentTimezone());
-//						LOWDATE.parse(atts.getValue("to").replace("-","").replace(":",""));
-//						LOWDATE.switchTimezone(Time.getCurrentTimezone());
-//						LOWDATE.hour-=7;
-//						LOWDATE.normalize(false);
-//					}
-//				}
-//				
-//				if (localName.equals("temperature")) {
-//					double tempc = Double.parseDouble(atts.getValue("value"));
-//					String sHTDay =TOTIME.format("%Y%m%d");
-//					String sLDDay =LOWDATE.format("%Y%m%d");
-//
-//					if (OMC.DEBUG)
-//						Log.i(OMC.OMCSHORT + "NOAAWeather",
-//								"Temp from " + FROMTIME.format2445() + " to " + TOTIME.format2445() + ":" + tempc);
-//					if (jsonWeather.optString("temp_c","missing").equals("missing")) {
-//						jsonWeather.putOpt("temp_c",tempc);
-//						jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.7f));
-//						Time now = new Time();
-//						now.setToNow();
-//						HIGHTEMPS.put(now.format("%Y%m%d"), tempc);
-//						LOWTEMPS.put(now.format("%Y%m%d"), tempc);
-//					}
-//					
-//					if (OMC.DEBUG)
-//						Log.i(OMC.OMCSHORT + "NOAAWeather",
-//								"Day for High: " + sHTDay + "; Day for Low: " + sLDDay);
-//					if (!HIGHTEMPS.containsKey(sHTDay)) {
-//						HIGHTEMPS.put(sHTDay, tempc);
-//					} else {
-//						if (tempc>HIGHTEMPS.get(sHTDay)) HIGHTEMPS.put(sHTDay, tempc);
-//					}
-//					if (!LOWTEMPS.containsKey(sLDDay)) {
-//						LOWTEMPS.put(sLDDay, tempc);
-//					} else {
-//						if (tempc<LOWTEMPS.get(sLDDay)) LOWTEMPS.put(sLDDay, tempc);
-//					}
-//				}
-//
-//				if (localName.equals("symbol")) {
-//					String cond = CONDITIONTRANSLATIONS[Integer.parseInt(atts.getValue("number"))];
-//					if (jsonWeather.optString("condition","missing").equals("missing")) {
-//						jsonWeather.putOpt("condition",cond);
-//						jsonWeather.putOpt("condition_lcase",cond.toLowerCase());
-//						Time now = new Time();
-//						now.setToNow();
-//						CONDITIONS.put(now.format("%Y%m%d"), cond);
-//					}
-//					String sCondDay =TOTIME.format("%Y%m%d");
-//					CONDITIONS.put(sCondDay, cond);
-//				}
-//
-//				if (localName.equals("windDirection")) {
-//					if (jsonWeather.optString("wind_direction","missing").equals("missing")) {
-//						String cond = atts.getValue("name");
-//						jsonWeather.putOpt("wind_direction",cond);
-//					}
-//				}
-//				if (localName.equals("windSpeed")) {
-//					if (jsonWeather.optString("wind_speed","missing").equals("missing")) {
-//						int cond = (int)(Double.parseDouble(atts.getValue("mps"))*2.2369362920544f+0.5f);
-//						jsonWeather.putOpt("wind_speed_mps",atts.getValue("mps"));
-//						jsonWeather.putOpt("wind_speed_mph",cond);
-//					}
-//				}
-//				if (localName.equals("humidity")) {
-//					if (jsonWeather.optString("humidity_raw","missing").equals("missing")) {
-//						String cond = atts.getValue("value");
-//						jsonWeather.putOpt("humidity_raw",cond);
-//					}
-//				}
-//
+				if (localName.equals("temperature")) {
+					if (atts.getValue("type").equals("maximum"))
+						NOAAWeatherXMLHandler.TEMPTOUPDATE = HIGHTEMPS;
+					else if (atts.getValue("type").equals("minimum"))
+						NOAAWeatherXMLHandler.TEMPTOUPDATE = LOWTEMPS;
+					else if (atts.getValue("type").equals("apparent"))
+						VALUETYPE="temp_f";
+				}
+				if (localName.equals("humidity")) {
+					if (atts.getValue("type").equals("relative"))
+						VALUETYPE="humidity_raw";
+				}
+				if (localName.equals("direction") && atts.getValue("type").equals("wind")) {
+					VALUETYPE="wind_direction";
+				}
+				if (localName.equals("wind-speed") && atts.getValue("type").equals("sustained")) {
+					VALUETYPE="wind_speed_knots";
+				}
+				if (localName.equals("weather-conditions") && atts.getValue("weather-summary")!=null) {
+					jsonWeather.put("condition", atts.getValue("weather-summary"));
+					jsonWeather.put("condition_lcase", atts.getValue("weather-summary").toLowerCase());
+				}
 			}
 			tree.push(new String[] { localName });
 
@@ -259,15 +219,12 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 	public void endElement(String uri, String name, String qName) {
 		if (tree.isEmpty())
 			return;
-//		if (OMC.DEBUG)
-//			Log.i(OMC.OMCSHORT + "NOAAWeather", "EndElement." + name);
 		// Pop the stack.
 		tree.pop();
 
 	}
 
 	public boolean isNumber(String s) {
-		System.out.println (tree.peek()[0] + "-" + s);
 		for (int i = 0; i < s.length(); i++) {
 
 			// If we find a non-digit character we return false.
@@ -290,12 +247,18 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 		// Build out wind/humidity conditions.
 		String humidityString = OMC.RString("humiditycondition") +
 				jsonWeather.optString("humidity_raw") + "%";
+		
+		double dWindSpeedKnots = jsonWeather.optDouble("wind_speed_knots");
+		int iWindSpeedMps = (int)(dWindSpeedKnots*0.514+0.5);
+		int iWindSpeedMph = (int)(dWindSpeedKnots*1.151+0.5);
 		String windString = OMC.RString("windcondition") +
 				jsonWeather.optString("wind_direction") + " @ " +
-				jsonWeather.optString("wind_speed_mph") + " mph";
+				iWindSpeedMph + " mph";
 		try {
 			jsonWeather.putOpt("humidity", humidityString);
 			jsonWeather.putOpt("wind_condition", windString);
+			jsonWeather.putOpt("wind_speed_mph", iWindSpeedMph);
+			jsonWeather.putOpt("wind_speed_mps", iWindSpeedMps);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -305,6 +268,33 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 		Time day = new Time();
 		day.setToNow();
 
+		int iLowInit=0, iHighInit=0;
+//		if (LOWTEMPS.size()==HIGHTEMPS.size()) {
+//			try {
+//				JSONObject jsonOneDayForecast = new JSONObject();
+//				jsonOneDayForecast.put("day_of_week", day.format("%a"));
+//				jsonOneDayForecast.put("condition",
+//						CONDITIONS[0];
+//				jsonOneDayForecast.put("condition_lcase",
+//						CONDITIONS.get(day.format("%Y%m%d")).toLowerCase());
+//				double lowc = OMC.roundToSignificantFigures(
+//						LOWTEMPS.get(day.format("%Y%m%d")), 3);
+//				double highc = OMC.roundToSignificantFigures(
+//						HIGHTEMPS.get(day.format("%Y%m%d")), 3);
+//				double lowf = (int) (lowc / 5f * 9f + 32.7f);
+//				double highf = (int) (highc / 5f * 9f + 32.7f);
+//				jsonOneDayForecast.put("low_c", lowc);
+//				jsonOneDayForecast.put("high_c", highc);
+//				jsonOneDayForecast.put("low", lowf);
+//				jsonOneDayForecast.put("high", highf);
+//				jsonWeather.getJSONArray("zzforecast_conditions").put(
+//						jsonOneDayForecast);
+//				day.hour += 24;
+//				day.normalize(false);
+//			} catch (JSONException e) {
+//				e.printStackTrace();
+//			}
+//		}
 		// Make sure today's data contains both high and low, too.
 //		if (!LOWTEMPS.containsKey(day.format("%Y%m%d"))) {
 //			Time nextday = new Time(day);
