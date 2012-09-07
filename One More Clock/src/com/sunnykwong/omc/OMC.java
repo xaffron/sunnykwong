@@ -101,9 +101,10 @@ public class OMC extends Application {
 	static final String[] ABVMONTHS = {"Jan","Feb","Mar","Apr","May","Jun",
 		"Jul","Aug","Sep","Oct","Nov","Dec"};
 	static final String[] APM = {"Ante Meridiem","Post Meridiem"};	
-	static final String[] LOCALES = {"zh-rTW","de","es-rES","en","sv"};
-	static final String[] LOCALENAMES = {"繁體中文","Deutsch","Castellano","English(US)","Svenska"};
-//  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
+	static final Locale[] LOCALES = {new Locale("zh","TW",""),new Locale("es","ES",""),new Locale("de","",""),new Locale("en","US",""),new Locale("sv","","")};
+	static final String[] LOCALENAMES = {"繁體中文","Castellano","Deutsch","English (US)","Svenska"};
+
+	//  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	
 	static final String FGSTRING = FREEEDITION?"com.sunnykwong.omc.FGSERVICEFREE":"com.sunnykwong.omc.FGSERVICEPAID";
 	static final String BGSTRING = FREEEDITION?"com.sunnykwong.omc.BGSERVICEFREE":"com.sunnykwong.omc.BGSERVICEPAID";
@@ -241,7 +242,17 @@ public class OMC extends Application {
 	};
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
-		System.out.println("NEW LOCALE:" + newConfig.locale.getLanguage());
+		for (int i =0 ; i < OMC.LOCALES.length; i++) {
+			if (OMC.PREFS.getString("appLocaleName", "English (US)").equals(OMC.LOCALENAMES[i])) {
+				System.out.println("NEW LOCALE DETECTED: " + OMC.LOCALENAMES[i]);
+				Configuration config = new Configuration();
+				config.locale=OMC.LOCALES[i];
+				OMC.RES.updateConfiguration(config, 
+						OMC.RES.getDisplayMetrics());
+				break;
+			}
+		}
+
 		// Load locale-specific resources.
 		
 		OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers");
@@ -256,13 +267,6 @@ public class OMC extends Application {
 		OMC.PKGNAME = getPackageName();
 		OMC.SHAREDPREFNAME = OMC.PKGNAME + "_preferences";
     	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_WORLD_READABLE);
-    	System.out.println("AppLocale from Prefs: "+ OMC.PREFS.getString("appLocale", Locale.getDefault().getLanguage()));
-		Locale locale = new Locale(OMC.PREFS.getString("appLocale", Locale.getDefault().getLanguage()));
-		Locale.setDefault(locale);
-		Configuration config = new Configuration();
-		config.locale=locale;
-		getBaseContext().getResources().updateConfiguration(config, 
-		getBaseContext().getResources().getDisplayMetrics());
 
 		// Work around pre-Froyo bugs in HTTP connection reuse.
 		if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {

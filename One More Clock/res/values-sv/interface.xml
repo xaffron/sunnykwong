@@ -11,8 +11,8 @@
         <string name="no">Nej</string>
         
         <!-- General Errors -->
-        <string name="sdcardNotDetected">Kunde inte hitta minneskortet.\nKom ihåg att stänga av USB-lagring om den fortfarande är påslagen!</string>
-        <string name="sdcardMissingOrCorrupt">Minneskortet saknas eller är trasigt.\nKom ihåg att stänga av USB-lagring om den fortfarande är påslagen!</string>
+        <string name="sdcardNotDetected">Kunde inte hitta minneskortet.\nKom ihåg att stänga av USB-lagring om den är påslagen!</string>
+        <string name="sdcardMissingOrCorrupt">Minneskortet saknas eller är trasigt.\nKom ihåg att stänga av USB-lagring om den är påslagen!</string>
         <string name="themeNotFound">Kunde inte hitta tema! Återställer till ursprungligt utseende.</string>
         <string name="warningConflictPaid">VARNING!\nKonflikt med betald version</string>
         <string name="warningConflictFree">VARNING!\nKonflikt med gratis version</string>
@@ -21,25 +21,25 @@
         
         <!-- Bailout App Dialog -->
         <string name="thanksForDownloading">Tack för nedladdningen!</string>
-        <string name="widgetDir1">För att starta, tryck på tillbaka-knappen för att återgå till hemskärmen. Välj sedan "Widgetar" från menyn för att\u0020</string>
-        <string name="widgetDir2">\u0020lista. Ha så skoj!</string>
+        <string name="widgetDir1">För att starta, tryck på tillbaka-knappen för att återgå till hemskärmen. Välj sedan \u0020</string>
+        <string name="widgetDir2">\u0020från widget-listan. Ha så skoj!</string>
 
         <!-- Useful Tips -->
         <string name="usefulTip">Användbara tips</string>
-        <string name="doNotShowAgain">Visa inte igen.</string>
+        <string name="doNotShowAgain">Visa inte igen</string>
         
         <!-- Weather Forecast Screen -->
-    	<string name="humiditycondition">Fuktighet: </string>
-    	<string name="windcondition">Vind: </string>
+    	<string name="humiditycondition">Luftfuktighet: </string>
+    	<string name="windcondition">Vindstyrka: </string>
         
         <!-- Forecast Screen -->
         <string name="doubleDash">--</string>
         <string name="unknown">Okänd</string>
         <string name="igWeatherCredit">Väder uppdaterat från Google API.</string>
-        <string name="yrWeatherCredit">Väderprognos av yr.no, levererat av Meteorologisk institutt i Norge och NRK.</string>
+        <string name="yrWeatherCredit">Väderprognos av yr.no, levererat av Meteorologisk Institutt i Norge och NRK.</string>
         <string name="seventimerWeatherCredit">7Timer!-prognoser av Ye Quanzhi, med stöd från Shanghai Astronomical Observatory (SHAO) och Chinese Academy of Sciences (CAS).</string>
         <string name="owmWeatherCredit">Väder uppdaterat från openweathermaps.org.</string>
-        <string name="tapForAlternateForecast">Knacka för att alternativa prognoser från AccuWeather®</string>
+        <string name="tapForAlternateForecast">Tryck för att alternativa prognoser från AccuWeather®</string>
         <string name="weatherDisabledOrNoWeatherLoaded">Vädretfunktionen avstängt, ingen prognos laddad!</string>
         
         <!-- Clock Preferences -->
@@ -47,15 +47,15 @@
         <string name="clockPreferences">Klockegenskaper</string>
         <string name="dashPreferences">\u0020-egenskaper</string>
     
-        <string name="forThisClock">För denna klocka:</string>
-        <string name="widgetTheme">Widgettema</string>
+        <string name="forThisClock">Aktuell klocka:</string>
+        <string name="widgetTheme">Tema</string>
 
         <!-- Widget Theme -->
         
-        <string name="widgetThemeTitle">Svep för att välja, tryck och håll för inställningar</string>
+        <string name="widgetThemeTitle">Bläddra med svep, tryck för val, håll för meny</string>
         <string name="corruptPlsDelete">[Korrupt - vänligen radera]</string>
         <string name="reextractBundledClocks">Återextrahera medföljande klockor</string>
-        <string name="downloadAllClocks">Ladda ned alla klockor(7MB)</string>
+        <string name="downloadAllClocks">Ladda ned alla klockor (7MB)</string>
         <string name="preselected"></string>
         <string name="postselected">\u0020valt.</string>
         
@@ -66,14 +66,14 @@
         <string name="bkimageLegend">Inkluderar bakgrundsbild</string>
         <string name="ltbgLegend">Bra mot ljusa bakgrunder</string>
         <string name="dkbgLegend">Bra mot mörka bakgrunder</string>
-        <string name="tweakLegend">Klocka är användarjusterad</string>
+        <string name="tweakLegend">Klocka är användaranpassad</string>
         
         <!-- Theme Skinner Tool (deprecated) -->
         <string name="reloadThemeCatalog">Ladda om temakatalog</string>
 
         <!-- Theme Import/Unzip -->
         <string name="themePreview">Förhandsgranskning av tema</string>
-        <string name="beginningDownload">Startar nedladdning.</string>
+        <string name="beginningDownload">Startar nedladdning&#8230;</string>
         <string name="extractingStarterClockPack">Extraherar startpaket av klockor&#8230;</string>
         <string name="starterClockPack">Startpaket av klockor</string>
         <string name="starterClockPackText">Filerna i din .OMCThemes-katalog på minneskortet kommer skrivas över. Är du säker?\n(Om osäker, välj "Ja")</string>
@@ -85,25 +85,25 @@
         <string name="emailThemeText">Paketera temat och skicka till dig själv eller en vän.\nVill du göra detta?</string>
         <string name="emailThemeConfirm1">E-maila\u0020</string>
         <string name="emailThemeConfirm2">\u0020?</string>
-        <string name="emailThemeChooser">Paketera dina temafiler för sändning via e-mail.</string>
+        <string name="emailThemeChooser">Paketera dina temafiler för sändning via e-mail</string>
         <string name="deleteTheme">Radera tema</string>
         <string name="deleteThemeConfirm1">Radera\u0020</string>
         <string name="deleteThemeConfirm2">\u0020från minneskortet?</string>
         <string name="deleteThemeConfirm3">Du måste ladda ned och extrahera temat på nytt för att använda det. Är du säker?</string>
-        <string name="submitThemeToDev">Skicka tema till utvecklarna</string>
+        <string name="submitThemeToDev">Skicka till utvecklarna</string>
         <string name="submitThemeToDevConfirm1">Skicka\u0020</string>
         <string name="submitThemeToDevConfirm2">\u0020till Xaffron som förslag till nytt tema?</string>
         <string name="areYouAbsolutelySure">Är du helt säker?</string>
-        <string name="areYouAbsolutelySureText">Detta tema är inte flaggad som justerat, det verkar vara ett standardtema.\n</string>
+        <string name="areYouAbsolutelySureText">Detta tema är inte användaranpassad, det verkar vara ett standardtema.\n</string>
         
         		<!-- Personalize Clock -->        
-        <string name="personalizeClock">Justera klocka</string>
-        <string name="tweakColorsAndLayers">Justera färger och lager</string>
+        <string name="personalizeClock">Anpassa klocka</string>
+        <string name="tweakColorsAndLayers">Anpassa färger och lager</string>
 
         <!-- Personalize Clock subscreen -->
         
-        <string name="selectALayerForTweaking">Välj ett lager för justering</string>
-        <string name="tweakerDirections">Dra: Flytta    Meny: Justera    Tillbaka: Avbryt</string>
+        <string name="selectALayerForTweaking">Välj ett lager att anpassa</string>
+        <string name="tweakerDirections">Dra: Flytta - Meny: Justera - Tillbaka: Avbryt</string>
         
         <!-- Personalize Clock Menu-->
         
@@ -117,15 +117,15 @@
 
         <!-- Tap & Display Options --> 
 
-        <string name="tapAndDisplayOptions">Knacka och visa inställningar</string>
-        <string name="assignTapToLaunch">Välj app att starta vid knackning</string>
-        <string name="nwCornerReserved">Nordvästra hörnet reserverat för inställningar</string>
+        <string name="tapAndDisplayOptions">Inställningar</string>
+        <string name="assignTapToLaunch">App att starta vid tryck</string>
+        <string name="nwCornerReserved">Översta vänstra hörnet reserverat för inställningar</string>
         
         <!-- TTL Popup -->
         <string name="areaToCustomize">Område att konfigurera:</string>
         <string name="chooseAction">Välj åtgärd</string>
         <string name="openOptionsDefault">Öppna inställningar (standard)</string>
-        <string name="widgetPrefsTTL">Widgetinställningar</string>
+        <string name="widgetPrefsTTL">Inställningar</string>
         <string name="doNothing">Gör ingenting</string>
         <string name="doNothingTTL">Gör ingenting</string>
         <string name="weatherForecast">Väderprognos</string>
@@ -135,10 +135,10 @@
         <string name="otherActivity">Annan aktivitet&#8230;</string>
         <string name="otherActivityTTL">Anpassad aktivitet</string>
         
-        <string name="use24HourClock">Använd 24-timmarsklocka</string>
+        <string name="use24HourClock">24-timmarsklocka</string>
         <string name="use24HourTrue">23:59</string>
         <string name="use24HourFalse">11:59pm</string>
-        <string name="showLeadingZero">Börja med nolla</string>
+        <string name="showLeadingZero">Inled med noll</string>
         <string name="showLeadingZTrue">04:23</string>
         <string name="showLeadingZFalse">4:23</string>
         <string name="changeTimeZone">Ändra tidszon</string>
@@ -151,7 +151,7 @@
         <string name="takeMeToPaid">Ta mig till betalversionen!</string>
                 
         <!-- Weather & Widget Options -->
-        <string name="forAllClocks">För alla klockor:</string>
+        <string name="forAllClocks">Övriga inställningar:</string>
         <string name="weatherAndWidgetOptions">Väder- och widgetinställningar</string>
         <string name="clearRenderCaches">Rensa renderingscacheminne</string>
         <string name="cachesCleared">Cacheminne raderat</string>
@@ -164,18 +164,18 @@
         <string name="fixed">\u0020(Fixerad)</string>
         <string name="detected">\u0020(Hittad)</string>
         <string name="lastTry">Senaste försök:\u0020</string>
-        <string name="manualRefreshOnly">\u0020(Manuell uppdatering endast)</string>
+        <string name="manualRefreshOnly">\u0020(Endast manuell uppdatering)</string>
         <string name="nextRefresh">\u0020Nästa uppdatering:\u0020</string>
         <string name="weatherLocation">Plats för väder:</string>
         <string name="disableLocationAndWeather">Stäng av plats och väder</string>
-        <string name="followDevice">Använd enhetsinställningar(standard)</string>
+        <string name="followDevice">Använd enhetsinställningar (standard)</string>
         <string name="setFixedLocation">Ställ in fixerad plats</string>
         <string name="weatherFunctionalityDisabled">Väderfunktioner avstängda</string>
-        <string name="tapToEnable">Knacka för att sätta igång</string>
+        <string name="tapToEnable">Tryck för att aktivera</string>
         
         <!-- Fixed Locn subscreen -->
         <string name="enterCityAndStateCountry">Mata in stad och stat/land</string>
-        <string name="locationExamples">Till exempel Stockholm Sverige</string>
+        <string name="locationExamples">Till exempel: "Stockholm Sverige"</string>
         
         <string name="weatherProvider">Väderleverantör</string>
 		<string-array name="wprovider_options">
@@ -197,19 +197,19 @@
         <string name="usingFahrenheit">Använder Fahrenheit</string>
         <string name="usingCelsius">Använder Celsius</string>
         
-        <string name="clockUpdateInterval">Uppdateringsintervall för klockan</string>
+        <string name="clockUpdateInterval">Uppdat.intervall klocka</string>
 		<string-array name="interval_options">
-		  <item>1 sek (Extremt batterikrävande)</item>	
-			<item>10 sek (mycket batterikrävande)</item>
+		    <item>1 sek (extremt batterikrav)</item>	
+			<item>10 sek (mycket batterikrav)</item>
 			<item>15 sek</item>
 			<item>20 sek</item>
 			<item>30 sek (standard)</item>
-			<item>60 sek (väldigt lite batterikrävande)</item>
+			<item>60 sek (minimal batterikrav)</item>
 		</string-array>
         <string name="redrawEvery">Rita om var\u0020</string>
-        <string name="seconds">\u0020 sekund.</string>
+        <string name="seconds">\u0020:e sekund.</string>
 		
-        <string name="weatherUpdateInterval">Uppdateringsintervall för väder</string>
+        <string name="weatherUpdateInterval">Uppdat.intervall väder</string>
         <string-array name="winterval_options">
 			<item>Varje timme (standard)</item>
 			<item>Var 4:e timme</item>
@@ -221,10 +221,10 @@
         <string name="refreshWeatherEvery4Hours">Uppdatera vädret var 4:e timme</string>
         <string name="refreshWeatherEvery8Hours">Uppdatera vädret var 8:e timme</string>
         
-        <string name="setForegroundMode">Ställ in körläge</string>
+        <string name="setForegroundMode">Körläge</string>
         <string name="keepOMCfromSleeping">Hindra OMC från att somna\n(på bekostnad av en permanent notifiering)</string>
         
-        <string name="forceEnglishDates">Tvinga engelskt datum</string>
+        <string name="forceEnglishDates">Tvinga engelska datum</string>
         <string name="uncheckForSome">Avkryssa för att visa enhetens datum (experimentiell funktion)</string>
         
         <string name="toggleWidgetSizes">Växla mellan widgetstorlekar</string>
@@ -260,21 +260,21 @@
         <string name="clockPriority">Klockprioritering</string>
         <string name="forFineTuning">För att finjustera respons</string>
 		<string-array name="clockPriority_options">
-		    <item>Högsta (Rekommenderas ej, renderar aggressivt varje sekundslag)</item>	
-			<item>Hög (Renderar aggressivt varje minut oavsett status på skärm eller programstartare)</item>
-			<item>Medium (Lata omrenderingar varje minut när skärmen är påslagen, även om programstartaren ligger i bakgrunden)</item>
-			<item>Låg (Lata omrenderingar varje minut när programstartaren är inaktiv eller skärmen avslagen)</item>
-			<item>Lägsta (Standard, ingen omrendering när programstartaren är inaktiv eller skärmen avslagen)</item>
+		    <item>Högsta - Rekommenderas ej, ritar varje sekund</item>	
+			<item>Hög - Ritar varje minut, oavsett skärmstatus</item>
+			<item>Medium - Ritar varje minut med påslagen skärm, även om startaren ligger i bakgrunden</item>
+			<item>Låg - Ritar varje minut när startaren är inaktiv eller skärmen avslagen</item>
+			<item>Lägsta - Standard, ingen rendering med inaktiv startare eller skärm</item>
 		</string-array>
 
         <string name="weatherDiagnostics">Väderdiagnostik</string>
-        <string name="submitLocationWeatherDebugData">Skicka debuginformation med plats-/väderdata</string>
+        <string name="submitLocationWeatherDebugData">Skicka information med plats- och väderdata till utvecklarna</string>
         
         <string name="deleteAllThemes">Radera samtliga teman</string>
         <string name="forFixingThemeSelection">För att åtgärda krascher av temaväljaren</string>
-        <string name="deleteAllThemesFromSD">Radera samtliga teman från minneskortet?</string>
+        <string name="deleteAllThemesFromSD">Radera teman från SD-kortet?</string>
         <string name="yesDelete">Ja, radera alla</string>
-        <string name="yesRestore">Ja, återställ standardteman</string>
+        <string name="yesRestore">Ja, återställ standard</string>
         <string name="omcThemesFolderDeleted">OMCThemes-katalogen raderad</string>
         <string name="defaultClockPackRestored">Standard klockpaket återställd</string>
         
@@ -292,29 +292,37 @@
         <string name="credits">Om utvecklarna</string>
         <string name="version">Version</string>
         <string name="free">Gratis</string>
-        <string name="tapToGetFull">Knacka här för att köpa fullversionen!</string>
-        <string name="viewCredits">Se fullständig lista av medarbetare</string>
+        <string name="tapToGetFull">Tryck här för att köpa fullversionen!</string>
+        <string name="viewCredits">Medarbetare och licenser</string>
 
         <!-- Credits subscreen -->
         
         <string name="team">Team</string>
         <string name="programmer">Programmerare</string>
         <string name="sunny">Sunny Kwong</string>
-        <string name="testers">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
+		<string name="testers1">Testare</string>
+        <string name="testers">ibawanzingee, C. Bizon, Cjsnet, Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
         <string name="specialThanks">Tack till</string>
-        <string name="specialThanksText">Zehro som banade väg för\n synkroniserade klockwidgets utan notifiering.\nStefan Pledl som hjälpte till med översättning.</string>
-		<string name="swedishTranslation">Svensk översättning av Tobias Hellgren</string>
+        <string name="specialThanksText">- Zehro för synkroniserade klockwidgets utan notifiering.\n- Stefan Pledl för hjälp med översättning.</string>
+		<string name="sweTranslation">- Svensk översättning av Tobias Hellgren (hellgren.tobias@gmail.com)</string>
         <string name="copyrights">Copyright och licenser</string>
-        <string name="applicationIcon">Appikon: Signpost av Maroubal2</string>
-        <string name="applicationIconText">Adapterad från Maroubal2:s utmärkta foto och sedermera Ubuntu bakgrundsbild.\nCC BY-SA 2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
+        <string name="applicationIcon">Ikon: Signpost av Maroubal2</string>
+        <string name="applicationIconText">Adapterad från Maroubal2:s utmärkta foto och sedermera en Ubuntu bakgrundsbild.\nCC BY-SA 2.0\nhttp://qr.net/signpost</string>
         <string name="codeColorPickerDialog">Kod: ColorPickerDialog</string>
         <string name="codeColorPickerDialogText">Kopierad från CyanogenMods källkodsarkiv.</string>
         <string name="codeSVG">Kod: svg-android</string>
-        <string name="codeSVGText">SVG support tillhandahålls av sag-android-biblioteket under Apache License.\nhttp:////code.google.com//p//svg-android//</string>
+        <string name="codeSVGText">SVG support tillhandahålls av sag-android-biblioteket under Apache License.\nhttp://code.google.com/p/svg-android/</string>
         <string name="weatherFont">Typsnitt: Weatherfont</string>
         <string name="weatherFontText">Weatherfont är helt licensierat från Jonathan Macagba, tillgängligt för $5 USD från jonathan.macagba@gmail.com</string>
         <string name="sourceCodeTitle">Källkod</string>
         <string name="sourceCode">Källkoden är tillgänglig från</string>
+		
+		<!-- Missing strings
+		
+		<string name="importComplete">Importering klar!</string>
+		<string name="storingFile">Sparar fil: </string>
+		
+		-->
         
         
     </resources>

@@ -3,6 +3,10 @@
     android:key="rootPrefs"
     android:title="@string/clockPreferences" >
 
+            <Preference
+                android:key="appLocale"
+                android:title="@string/changeAppLocale" />
+    
     <PreferenceCategory
         android:key="thisClock"
         android:title="@string/forThisClock" >
@@ -114,10 +118,10 @@
                 android:selectable="true"
                 android:summary="@string/uncheckForSome"
                 android:title="@string/forceEnglishDates" />
-            <Preference
+<!--              <Preference
                 android:key="appLocale"
                 android:title="@string/changeAppLocale" />
-            
+-->            
             <PreferenceScreen
                 android:key="widgetPrefs"
                 android:title="@string/toggleWidgetSizes" >

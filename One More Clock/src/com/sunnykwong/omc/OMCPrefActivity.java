@@ -274,30 +274,27 @@ public class OMCPrefActivity extends PreferenceActivity {
 				
 				@Override
 				public boolean onPreferenceClick(final Preference preference) {
-										final CharSequence[] items = OMC.LOCALENAMES;
+					final CharSequence[] items = OMC.LOCALENAMES;
 					new AlertDialog.Builder(OMCPrefActivity.this)
 						.setTitle(OMC.RString("changeAppLocale"))
 						.setItems(items, new DialogInterface.OnClickListener() {
 								@Override
 								public void onClick(DialogInterface dialog, int item) {
+									Locale selectedLocale = OMC.LOCALES[item];
 									OMC.PREFS.edit()
-											.putString("appLocale", OMC.LOCALES[item])
 											.putString("appLocaleName", OMC.LOCALENAMES[item])
 											.commit();
 
-									System.out.println("pressed " + OMC.LOCALES[item]);
-									System.out.println("pressed " + OMC.LOCALENAMES[item]);
+									System.out.println("pressed " + selectedLocale.toString());
 									
 									// Determine locale.
-									Locale locale = new Locale(OMC.LOCALES[item]);
-									Locale.setDefault(locale);
 									Configuration config = new Configuration();
-									config.locale=locale;
-									OMCPrefActivity.this.getBaseContext().getResources().updateConfiguration(config, 
-											OMCPrefActivity.this.getBaseContext().getResources().getDisplayMetrics());
-									preference.setSummary(OMC.LOCALENAMES[item]);
-									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+									config.locale=selectedLocale;
+									OMC.RES.updateConfiguration(config, 
+											OMC.RES.getDisplayMetrics());
+									preference.setSummary(items[item]);
+//									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 									OMCPrefActivity.this.finish();
 								}
 						})
@@ -305,7 +302,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 					return true;
 				}
 			});
-        	prefLocale.setSummary(OMC.PREFS.getString("appLocale", "en"));
+        	prefLocale.setSummary(OMC.PREFS.getString("appLocaleName", "English (US)"));
         	
         	// "Update Weather Now".
         	prefUpdWeatherNow = findPreference("updweathernow");

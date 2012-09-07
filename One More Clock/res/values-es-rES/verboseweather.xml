@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="VerboseWeather">
+<item>Despejado</item>
+<item>Parcialmente Nuboso</item>
+<item>Nubes</item>
+<item>Nublado</item>
+<item>Brumas</item>
+<item>Llovizna</item>
+<item>Chubascos</item>
+<item>Chubascos dispersos</item>
+<item>Débil nevada</item>
+<item>LLuvia</item>
+<item>Nieve</item>
+<item>Combinado invernal</item>
+<item>Tormentas dispersas</item>
+<item>Tormenta</item>
+<item>Desconocido</item>
+</string-array>
+</resources>

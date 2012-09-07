@@ -57,7 +57,7 @@
         <string name="reextractBundledClocks">Volver a extraer Pack de relojes</string>
         <string name="downloadAllClocks">Descargar todos(7MB)</string>
         <string name="preselected"></string>
-        <string name="postselected">Tema \u0020seleccionado.</string>
+        <string name="postselected">\u0020está seleccionado.</string>
         
         <!-- Theme Picker Legend -->
         <string name="legend">Leyenda</string>
@@ -268,7 +268,7 @@
 		</string-array>
 
         <string name="weatherDiagnostics">Diagnóstico de Tiempo</string>
-        <string name="submitLocationWeatherDebugData">Enviar datos debug de localizacion/tiempo</string>
+        <string name="submitLocationWeatherDebugData">Enviar datos debug de localización/tiempo</string>
         
         <string name="deleteAllThemes">Borrar todos los temas</string>
         <string name="forFixingThemeSelection">Para arreglar la sección de selección de tema si la aplicación falla</string>
