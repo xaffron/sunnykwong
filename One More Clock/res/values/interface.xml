@@ -226,6 +226,7 @@
         
         <string name="forceEnglishDates">Force English Dates</string>
         <string name="uncheckForSome">Uncheck for some non-English locales.(Experimental)</string>
+        <string name="changeAppLocale">Language</string>
         
         <string name="toggleWidgetSizes">Toggle Widget Sizes</string>
         

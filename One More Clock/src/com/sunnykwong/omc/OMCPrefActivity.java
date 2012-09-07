@@ -3,6 +3,7 @@ package com.sunnykwong.omc;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,9 +16,11 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -265,6 +268,45 @@ public class OMCPrefActivity extends PreferenceActivity {
     			findPreference("timeZone").setSummary(OMC.PREFS.getString("sTimeZone", "default"));
     		}
 
+        	// "Language".
+        	Preference prefLocale = findPreference("appLocale"); 
+        	prefLocale.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+				
+				@Override
+				public boolean onPreferenceClick(final Preference preference) {
+										final CharSequence[] items = OMC.LOCALENAMES;
+					new AlertDialog.Builder(OMCPrefActivity.this)
+						.setTitle(OMC.RString("changeAppLocale"))
+						.setItems(items, new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog, int item) {
+									OMC.PREFS.edit()
+											.putString("appLocale", OMC.LOCALES[item])
+											.putString("appLocaleName", OMC.LOCALENAMES[item])
+											.commit();
+
+									System.out.println("pressed " + OMC.LOCALES[item]);
+									System.out.println("pressed " + OMC.LOCALENAMES[item]);
+									
+									// Determine locale.
+									Locale locale = new Locale(OMC.LOCALES[item]);
+									Locale.setDefault(locale);
+									Configuration config = new Configuration();
+									config.locale=locale;
+									OMCPrefActivity.this.getBaseContext().getResources().updateConfiguration(config, 
+											OMCPrefActivity.this.getBaseContext().getResources().getDisplayMetrics());
+									preference.setSummary(OMC.LOCALENAMES[item]);
+									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+									OMCPrefActivity.this.finish();
+								}
+						})
+						.show();					
+					return true;
+				}
+			});
+        	prefLocale.setSummary(OMC.PREFS.getString("appLocale", "en"));
+        	
         	// "Update Weather Now".
         	prefUpdWeatherNow = findPreference("updweathernow");
         	prefUpdWeatherNow.setOnPreferenceClickListener(new OnPreferenceClickListener() {

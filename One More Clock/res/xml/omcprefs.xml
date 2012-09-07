@@ -114,7 +114,10 @@
                 android:selectable="true"
                 android:summary="@string/uncheckForSome"
                 android:title="@string/forceEnglishDates" />
-
+            <Preference
+                android:key="appLocale"
+                android:title="@string/changeAppLocale" />
+            
             <PreferenceScreen
                 android:key="widgetPrefs"
                 android:title="@string/toggleWidgetSizes" >

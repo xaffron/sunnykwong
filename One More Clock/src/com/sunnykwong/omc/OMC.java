@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
@@ -43,6 +44,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -99,7 +101,10 @@ public class OMC extends Application {
 	static final String[] ABVMONTHS = {"Jan","Feb","Mar","Apr","May","Jun",
 		"Jul","Aug","Sep","Oct","Nov","Dec"};
 	static final String[] APM = {"Ante Meridiem","Post Meridiem"};	
+	static final String[] LOCALES = {"zh-rTW","de","es-rES","en","sv"};
+	static final String[] LOCALENAMES = {"繁體中文","Deutsch","Castellano","English(US)","Svenska"};
 //  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
+	
 	static final String FGSTRING = FREEEDITION?"com.sunnykwong.omc.FGSERVICEFREE":"com.sunnykwong.omc.FGSERVICEPAID";
 	static final String BGSTRING = FREEEDITION?"com.sunnykwong.omc.BGSERVICEFREE":"com.sunnykwong.omc.BGSERVICEPAID";
 	static final String CANCELFGSTRING = FREEEDITION?"com.sunnykwong.omc.CANCEL_FGFREE":"com.sunnykwong.omc.CANCEL_FGPAID";
@@ -234,10 +239,30 @@ public class OMC extends Application {
 			Toast.makeText(OMC.this, mMessage, Toast.LENGTH_LONG).show();
 		}
 	};
-    
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		System.out.println("NEW LOCALE:" + newConfig.locale.getLanguage());
+		// Load locale-specific resources.
+		
+		OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers");
+		OMC.VERBOSETIME = OMC.RStringArray("verbosetime");
+	}
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		
+		OMC.CONTEXT = getApplicationContext();
+		OMC.PKGNAME = getPackageName();
+		OMC.SHAREDPREFNAME = OMC.PKGNAME + "_preferences";
+    	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_WORLD_READABLE);
+    	System.out.println("AppLocale from Prefs: "+ OMC.PREFS.getString("appLocale", Locale.getDefault().getLanguage()));
+		Locale locale = new Locale(OMC.PREFS.getString("appLocale", Locale.getDefault().getLanguage()));
+		Locale.setDefault(locale);
+		Configuration config = new Configuration();
+		config.locale=locale;
+		getBaseContext().getResources().updateConfiguration(config, 
+		getBaseContext().getResources().getDisplayMetrics());
 
 		// Work around pre-Froyo bugs in HTTP connection reuse.
 		if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
@@ -251,10 +276,7 @@ public class OMC extends Application {
 		} catch (NameNotFoundException e) {
 			OMC.THISVERSION = "1.0.0";
 		}
-		OMC.CONTEXT = getApplicationContext();
-		
-		OMC.PKGNAME = getPackageName();
-		OMC.SHAREDPREFNAME = OMC.PKGNAME + "_preferences";
+
 		OMC.PAIDURI = (OMC.SINGLETON? Uri.parse("market://details?id=" + OMC.PKGNAME +"donate"):Uri.parse("market://details?id=com.sunnykwong.omc"));
 
 		OMC.WIDGET5x2CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget5x2");
@@ -356,8 +378,7 @@ public class OMC extends Application {
     	OMC.WEATHERFONT = Typeface.createFromAsset(OMC.AM, "wef.ttf");
     	OMC.PLACEHOLDERBMP = BitmapFactory.decodeResource(OMC.RES, OMC.RDrawableId("transparent"));
     	
-    	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_WORLD_READABLE);
-
+    	
 		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
 		if (!OMC.PREFS.contains("weathersetting")){
 			OMC.PREFS.edit().putString("weathersetting", "bylatlong").commit();
@@ -484,25 +505,25 @@ public class OMC extends Application {
 				OMC.RId("SE")
 		};
 
-		OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers");
 
-		//SUNNY
+		// Load locale-specific resources.
 		
+		OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers");
 		OMC.VERBOSETIME = OMC.RStringArray("verbosetime");
 
 		OMC.TIME.setToNow();
 		OMC.TIME.hour=0;
 		OMC.TIME.minute=0;
 		
-		Time tt = new Time();
-		tt.setToNow();
-		System.out.println("fullenglishtimetest");
-		while (OMC.TIME.monthDay == tt.monthDay) {
-			System.out.println(OMC.TIME.hour*60+OMC.TIME.minute + ":" + resolveOneToken("[%fullenglishtime_diary%]", 0, null));
-			OMC.TIME.minute++;
-			OMC.TIME.normalize(false);
-		}
-		System.out.println("fullenglishtimetest");
+//		Time tt = new Time();
+//		tt.setToNow();
+//		System.out.println("fullenglishtimetest");
+//		while (OMC.TIME.monthDay == tt.monthDay) {
+//			System.out.println(OMC.TIME.hour*60+OMC.TIME.minute + ":" + resolveOneToken("[%fullenglishtime_diary%]", 0, null));
+//			OMC.TIME.minute++;
+//			OMC.TIME.normalize(false);
+//		}
+//		System.out.println("fullenglishtimetest");
 		
 		//SUNNY
 
