@@ -327,6 +327,8 @@ public class OMCPrefActivity extends PreferenceActivity {
 		        		preference.setSummary(OMC.RString("wpig"));
 		    		} else if (newValue.equals("7timer")) {
 		    			preference.setSummary(OMC.RString("wp7timer"));
+		    		} else if (newValue.equals("noaa")) {
+		    			preference.setSummary(OMC.RString("wpnoaa"));
 		    		} else {
 		    			preference.setSummary(OMC.RString("wpowm"));
 		    		}
@@ -340,6 +342,8 @@ public class OMCPrefActivity extends PreferenceActivity {
     			prefWeatherProvider.setSummary(OMC.RString("wpig"));
     		} else if (sWProvider.equals("7timer")) {
     			prefWeatherProvider.setSummary(OMC.RString("wp7timer"));
+    		} else if (sWProvider.equals("noaa")) {
+    			prefWeatherProvider.setSummary(OMC.RString("wpnoaa"));
     		} else {
     			prefWeatherProvider.setSummary(OMC.RString("wpowm"));
     		}

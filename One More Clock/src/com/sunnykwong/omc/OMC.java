@@ -101,8 +101,8 @@ public class OMC extends Application {
 	static final String[] ABVMONTHS = {"Jan","Feb","Mar","Apr","May","Jun",
 		"Jul","Aug","Sep","Oct","Nov","Dec"};
 	static final String[] APM = {"Ante Meridiem","Post Meridiem"};	
-	static final Locale[] LOCALES = {new Locale("zh","TW",""),new Locale("es","ES",""),new Locale("de","",""),new Locale("en","US",""),new Locale("sv","","")};
-	static final String[] LOCALENAMES = {"繁體中文","Castellano","Deutsch","English (US)","Svenska"};
+	static final Locale[] LOCALES = {new Locale("zh","TW",""),new Locale("es","ES",""),new Locale("de","",""),new Locale("en","US",""),new Locale("pl","",""),new Locale("sv","","")};
+	static final String[] LOCALENAMES = {"繁體中文","Castellano","Deutsch","English (US)","język Polski","Svenska"};
 
 	//  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	
@@ -348,6 +348,8 @@ public class OMC extends Application {
         						YrNoWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					} else if (sWProvider.equals("owm")) {
         						OpenWeatherMapJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+        					} else if (sWProvider.equals("noaa")) {
+        						NOAAWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					} else {
         						SevenTimerJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					}  
@@ -2041,6 +2043,11 @@ public class OMC extends Application {
 				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
 			} else if (sWProvider.equals("owm")) {
 				OpenWeatherMapJSONHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
+				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
+				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
+				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
+			} else if (sWProvider.equals("noaa")) {
+				NOAAWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
 				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
 				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
 				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);

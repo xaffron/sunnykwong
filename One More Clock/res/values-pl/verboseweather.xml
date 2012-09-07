@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="VerboseWeather">
+<item>Pogodnie</item>
+<item>Częściowe Zachmurzenie</item>
+<item>Przewaga Chmur</item>
+<item>Pochmurno</item>
+<item>Mgliście</item>
+<item>Lekki Deszcz</item>
+<item>Przelotne Opady</item>
+<item>Miejscowe Opady</item>
+<item>Lekki Śnieg</item>
+<item>Deszcz</item>
+<item>Śnieg</item>
+<item>Zmiennie Zimno</item>
+<item>Przelotne Burze</item>
+<item>Burza Z Piorunami</item>
+<item>Nieznana</item>
+</string-array>
+</resources>

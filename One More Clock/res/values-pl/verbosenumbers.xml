@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="WordNumbers">
+<item>Zero</item>
+<item>Jeden</item>
+<item>Dwa</item>
+<item>Trzy</item>
+<item>Cztery</item>
+<item>Pięć</item>
+<item>Sześć</item>
+<item>Siedem</item>
+<item>Osiem</item>
+<item>Dziewięć</item>
+<item>Dziesięć</item>
+<item>Jedenaście</item>
+<item>Dwanaście</item>
+<item>Trzynaście</item>
+<item>Czternaście</item>
+<item>Piętnaście</item>
+<item>Szesnaście</item>
+<item>Siedemnaście</item>
+<item>Osiemnaście</item>
+<item>Dziewiętnaście</item>
+<item>Dwadzieścia</item>
+<item>Dwadzieścia Jeden</item>
+<item>Dwadzieścia Dwa</item>
+<item>Dwadzieścia Trzy</item>
+<item>Dwadzieścia Cztery</item>
+<item>Dwadzieścia Pięć</item>
+<item>Dwadzieścia Sześć</item>
+<item>Dwadzieścia Siedem</item>
+<item>Dwadzieścia Osiem</item>
+<item>Dwadzieścia Dziewięć</item>
+<item>Trzydzieści</item>
+<item>Trzydzieści Jeden</item>
+<item>Trzydzieści Dwa</item>
+<item>Trzydzieści Trzy</item>
+<item>Trzydzieści Cztery</item>
+<item>Trzydzieści Pięć</item>
+<item>Trzydzieści Sześć</item>
+<item>Trzydzieści Siedem</item>
+<item>Trzydzieści Osiem</item>
+<item>Trzydzieści Dziewięć</item>
+<item>Czterdzieści</item>
+<item>Czterdzieści Jeden</item>
+<item>Czterdzieści Dwa</item>
+<item>Czterdzieści Trzy</item>
+<item>Czterdzieści Cztery</item>
+<item>Czterdzieści Pięć</item>
+<item>Czterdzieści Sześc</item>
+<item>Czterdzieści Siedem</item>
+<item>Czterdzieści Osiem</item>
+<item>Czterdzieści Dziewięć</item>
+<item>Pięćdziesiąt</item>
+<item>Pięćdziesiąt Jeden</item>
+<item>Pięćdziesiąt Dwa</item>
+<item>Pięćdziesiąt Trzy</item>
+<item>Pięćdziesiąt Cztery</item>
+<item>Pięćdziesiąt Pięć</item>
+<item>Pięćdziesiąt Sześć</item>
+<item>Pięćdziesiąt Siedem</item>
+<item>Pięćdziesiąt Osiem</item>
+<item>Pięćdziesiąt Dziewięć</item>
+<item>Sześćdziesiąt</item>
+<item>Sześćdziesiąt Jeden</item>
+<item>Sześćdziesiąt Dwa</item>
+<item>Sześćdziesiąt Trzy</item>
+<item>Sześćdziesiąt Cztery</item>
+<item>Sześćdziesiąt Pięć</item>
+<item>Sześćdziesiąt Sześć</item>
+<item>Sześćdziesiąt Siedem</item>
+<item>Sześćdziesiąt Osiem</item>
+<item>Sześćdziesiąt Dziewięć</item>
+<item>Siedemdziesiąt</item>
+<item>Siedemdziesiąt Jeden</item>
+<item>Siedemdziesiąt Dwa</item>
+<item>Siedemdziesiąt Trzy</item>
+<item>Siedemdziesiąt Cztery</item>
+<item>Siedemdziesiąt Pięć</item>
+<item>Siedemdziesiąt Sześć</item>
+<item>Siedemdziesiąt Siedem</item>
+<item>Siedemdziesiąt Osiem</item>
+<item>Siedemdziesiąt Dziewięć</item>
+<item>Osiemdziesiąt</item>
+<item>Osiemdziesiąt Jeden</item>
+<item>Osiemdziesiąt Dwa</item>
+<item>Osiemdziesiąt Trzy</item>
+<item>Osiemdziesiąt Cztery</item>
+<item>Osiemdziesiąt Pięć</item>
+<item>Osiemdziesiąt Sześć</item>
+<item>Osiemdziesiąt Siedem</item>
+<item>Osiemdziesiąt Osiem</item>
+<item>Osiemdziesiąt Dziewięć</item>
+<item>Dziewięćdziesiąt</item>
+<item>Dziewięćdziesiąt Jeden</item>
+<item>Dziewięćdziesiąt Dwa</item>
+<item>Dziewięćdziesiąt Trzy</item>
+<item>Dziewięćdziesiąt Cztery</item>
+<item>Dziewięćdziesiąt Pięć</item>
+<item>Dziewięćdziesiąt Sześć</item>
+<item>Dziewięćdziesiąt Siedem</item>
+<item>Dziewięćdziesiąt Osiem</item>
+<item>Dziewięćdziesiąt Dziewięć</item>
+</string-array>
+</resources>
