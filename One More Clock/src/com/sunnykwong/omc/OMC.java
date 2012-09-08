@@ -242,6 +242,7 @@ public class OMC extends Application {
 	};
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
+		System.out.println("NEW LOCALE:" + newConfig.locale.getLanguage());
 		for (int i =0 ; i < OMC.LOCALES.length; i++) {
 			if (OMC.PREFS.getString("appLocaleName", "English (US)").equals(OMC.LOCALENAMES[i])) {
 				Log.i(OMC.OMCSHORT + "App","Using locale: " + OMC.LOCALENAMES[i]);
@@ -253,10 +254,6 @@ public class OMC extends Application {
 			}
 		}
 
-		// Load locale-specific resources.
-		
-		OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers");
-		OMC.VERBOSETIME = OMC.RStringArray("verbosetime");
 	}
 
 	@Override

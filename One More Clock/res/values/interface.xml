@@ -132,7 +132,7 @@
         <string name="weatherForecast">Weather forecast</string>
         <string name="weatherForecastTTL">Forecast</string>
         <string name="viewAlarms">View alarms (Experimental)</string>
-        <string name="viewAlarmsTTL">Forecast</string>
+        <string name="viewAlarmsTTL">View Alarms</string>
         <string name="otherActivity">Other activity&#8230;</string>
         <string name="otherActivityTTL">Custom Activity</string>
         

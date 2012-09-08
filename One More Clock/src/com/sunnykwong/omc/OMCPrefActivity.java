@@ -290,10 +290,15 @@ public class OMCPrefActivity extends PreferenceActivity {
 									config.locale=selectedLocale;
 									OMC.RES.updateConfiguration(config, 
 											OMC.RES.getDisplayMetrics());
+									// Load locale-specific resources.
+									
+									OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers");
+									OMC.VERBOSETIME = OMC.RStringArray("verbosetime");
+
 									preference.setSummary(items[item]);
-									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+//									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 									OMCPrefActivity.this.finish();
 								}
 						})
