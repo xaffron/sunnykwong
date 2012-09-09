@@ -79,7 +79,7 @@
                 android:entryValues="@array/wdisplay_values"
                 android:key="weatherDisplay"
                 android:selectable="true"
-                android:summary="@string/useFahrenheit"
+                android:summary="@string/usingFahrenheit"
                 android:title="@string/weatherDisplayUnits" >
             </ListPreference>
             <ListPreference
