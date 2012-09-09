@@ -1,21 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-	<!-- 繁體中文 -->
+	<!-- English -->
     <resources>
         <!-- General Buttons -->
         <string name="nextTip">下一則</string>
         <string name="ok">確定</string>
         <string name="search">搜索</string>
+        <string name="abandon">取消</string>
+        <string name="apply">完成</string>
+        <string name="yes">是</string>
+        <string name="no">否</string>
+        
+        <!-- General Errors -->
+        <string name="sdcardNotDetected">未檢測到SD卡。\n請留意終止USB存儲模式！</string>
+        <string name="sdcardMissingOrCorrupt">SD卡讀取出現故障。\n請留意終止USB存儲模式！</string>
+        <string name="themeNotFound">找不到此時鐘款式！暫時採用默認款式。</string>
+        <string name="warningConflictPaid">請注意！\n此版本與付費版並不兼容</string>
+        <string name="warningConflictFree">請注意！\n此版本與免費版並不兼容</string>
+        <string name="warningConflictText">微調時鐘與輕按選項均會出現問題。\n敬請盡早將免費版卸載！</string>
+        <string name="defaultThemeNotRemovable">不能刪除默認款式！</string>
         
         <!-- Bailout App Dialog -->
         <string name="thanksForDownloading">歡迎!</string>
         <string name="widgetDir1">請先輕按\'返回鍵\'返回到首頁畫面，然後從\'小工具\'列表中將\u0020</string>
         <string name="widgetDir2">\u0020拖曳到首頁空白處。</string>
-        
+
+        <!-- Useful Tips -->
+    	<string name="usefulTip">技巧提示</string>
+        <string name="doNotShowAgain">不要再顯示。</string>
+            
         <!-- Weather Forecast Screen -->
-    	<string name="humiditycondition">相對濕度：\u0020</string>
-    	<string name="windcondition">風向：\u0020</string>
+    	<string name="humiditycondition">相對濕度：</string>
+    	<string name="windcondition">風向：</string>
+        
+        <!-- Forecast Screen -->
+        <string name="doubleDash">--</string>
+        <string name="unknown">不詳</string>
+        <string name="noaaWeatherCredit">天氣資料由 National Oceanic and Atmospheric Administration (NOAA)提供，特此鳴謝。</string>
+        <string name="igWeatherCredit">天氣資料由iGoogle API提供，特此鳴謝。</string>
+        <string name="yrWeatherCredit">yr.no天氣資料由Norwegian Meteorological Institute與NRK提供，特此鳴謝。</string>
+        <string name="seventimerWeatherCredit">「晴天鐘」天氣預測由葉泉志兄提供，中國科學院上海天文台贊助。特此鳴謝！</string>
+        <string name="owmWeatherCredit">天氣資料由openweathermaps.org提供，特此鳴謝。</string>
+        <string name="tapForAlternateForecast">輕按接駁AccuWeather®比較天氣資料</string>
+        <string name="weatherDisabledOrNoWeatherLoaded">天氣功能未啟動或出現讀取故障！</string>
+        
+        <!-- Clock Preferences -->
+        
+        <string name="clockPreferences">程式選項</string>
+        <string name="dashPreferences">\u0020- 選項</string>
+    
+        <string name="forThisClock">此時鐘之選項：</string>
+        <string name="widgetTheme">時鐘款式</string>
+
+        <!-- Widget Theme -->
+        
+        <string name="widgetThemeTitle">左右滑動選擇款式 - 長按圖則可選項</string>
+        <string name="corruptPlsDelete">[不能讀取此款式 - 請刪除]</string>
+        <string name="reextractBundledClocks">重載預裝之時鐘</string>
+        <string name="downloadAllClocks">下載其他時鐘(約7MB)</string>
+        <string name="preselected">正使用</string>
+        <string name="postselected">款式。</string>
         
         <!-- Theme Picker Legend -->
+        <string name="legend">圖例</string>
         <string name="batteryLegend">有電池容量顯示</string>
         <string name="weatherLegend">有天氣顯示</string>
         <string name="bkimageLegend">有背景圖案</string>
@@ -27,31 +73,69 @@
         <string name="reloadThemeCatalog">重載時鐘目錄</string>
 
         <!-- Theme Import/Unzip -->
-        <string name="beginningDownload">下載開始。</string>
-        
-        <!-- Forecast Screen -->
-        <string name="doubleDash">--</string>
-        <string name="unknown">不詳</string>
-        
-        <!-- Clock Preferences -->
-    
-        <string name="usefulTip">技巧提示</string>
-        <string name="doNotShowAgain">不要再顯示.</string>
-    
-        <string name="forThisClock">此時鐘之選項：</string>
-        <string name="widgetTheme">時鐘款式</string>
         <string name="themePreview">預覽</string>
-        <string name="legend">圖例</string>
-        <string name="preselected">正使用</string>
-        <string name="postselected">款式。</string>
+        <string name="beginningDownload">下載開始。</string>
+        <string name="extractingStarterClockPack">預裝時鐘解壓中&#8230;</string>
+        <string name="starterClockPack">安裝預裝時鐘</string>
+        <string name="starterClockPackText">SD卡之.OMCThemes資料夾可能改寫或刪除。請確認！\n(不肯定可選\'是\')</string>
+        
+        <!-- Widget Theme Long Press-->
+        
+        <string name="emailOrDeleteTheme">選項</string>
+        <string name="emailTheme">通過電郵發送此款式</string>
+        <string name="emailThemeText">將此款式電郵發送給自己或朋友。\n請確認！</string>
+        <string name="emailThemeConfirm1">確認發送</string>
+        <string name="emailThemeConfirm2">嗎？</string>
+        <string name="emailThemeChooser">通過電郵發送此款式。</string>
+        <string name="deleteTheme">刪除此款式</string>
+        <string name="deleteThemeConfirm1">確認刪除</string>
+        <string name="deleteThemeConfirm2">嗎？</string>
+        <string name="deleteThemeConfirm3">刪除後必須重新下載此款式才能再使用。請確認！</string>
+        <string name="submitThemeToDev">將此款式傳送至Xaffron</string>
+        <string name="submitThemeToDevConfirm1">確認發送</string>
+        <string name="submitThemeToDevConfirm2">款式給Xaffron嗎？</string>
+        <string name="areYouAbsolutelySure">請確認！</string>
+        <string name="areYouAbsolutelySureText">此款式沒有被修改跡象。\n確認發送給Xaffron嗎？</string>
+        
+        		<!-- Personalize Clock -->        
         <string name="personalizeClock">微調時鐘顯示</string>
         <string name="tweakColorsAndLayers">可更改顏色或圖層</string>
+
+        <!-- Personalize Clock subscreen -->
+        
+        <string name="selectALayerForTweaking">請選擇圖層</string>
+        <string name="tweakerDirections">拖曳移動圖層    \'菜單鍵\'微調    \'返回鍵\'保存或取消</string>
+        
+        <!-- Personalize Clock Menu-->
+        
+        <string name="toggleVisibility">隱藏或顯示圖層</string>
+        <string name="color1">顏色1</string>
+        <string name="color2">顏色2</string>
+        
+        <!-- Personalize Clock Back-->
+        
+        <string name="keepChanges">保存新款式嗎？</string>
 
         <!-- Tap & Display Options --> 
 
         <string name="tapAndDisplayOptions">輕按及顯示選項</string>
         <string name="assignTapToLaunch">設定輕按功能</string>
         <string name="nwCornerReserved">輕按左上角可隨時回到選項畫面</string>
+        
+        <!-- TTL Popup -->
+        <string name="areaToCustomize">Area to Customize:</string>
+        <string name="chooseAction">Choose Action</string>
+        <string name="openOptionsDefault">Open options (default)</string>
+        <string name="widgetPrefsTTL">Widget Prefs</string>
+        <string name="doNothing">Do nothing</string>
+        <string name="doNothingTTL">Do Nothing</string>
+        <string name="weatherForecast">Weather forecast</string>
+        <string name="weatherForecastTTL">Forecast</string>
+        <string name="viewAlarms">View alarms (Experimental)</string>
+        <string name="viewAlarmsTTL">View Alarms</string>
+        <string name="otherActivity">Other activity&#8230;</string>
+        <string name="otherActivityTTL">Custom Activity</string>
+        
         <string name="use24HourClock">用24小時方式顯示</string>
         <string name="use24HourTrue">23:59</string>
         <string name="use24HourFalse">11:59pm</string>
@@ -61,165 +145,179 @@
         <string name="changeTimeZone">設定時區</string>
         <string name="followingDeviceTimeZone">(沿用本安卓電腦之時區)</string>
         
+        <!-- TTL Sales Pitch -->
+        <string name="thinkOfThePossibilities">Think of the possibilities!</string>
+        <string name="prePaidTTL">The paid version lets you set\u0020</string>
+        <string name="postPaidTTL">\u0020to launch any activity you want, plus it offers widget sizes of 4x2, 4x1, 3x1 and 2x1.\nPlease consider upgrading to get these sizes!</string>
+        <string name="takeMeToPaid">Take me to the paid version!</string>
+                
         <!-- Weather & Widget Options -->
         <string name="forAllClocks">所有OMC時鐘之選項：</string>
         <string name="weatherAndWidgetOptions">天氣及小工具選項</string>
         <string name="clearRenderCaches">清除緩存記憶</string>
         <string name="cachesCleared">清除完成</string>
         
-        <!-- Troubleshooting Options -->
-        <string name="troubleshootingOptions">疑難排解</string>
+        <!-- Weather & Widget Subscreen -->
         
-        <string name="credits">關於本程式</string>
-        <string name="contactXaffron">聯絡Xaffron</string>
-        <string name="donateOrContact">捐助或聯繫作者</string>
-        <string name="version">版本</string>
-        <string name="free">免費版</string>
-        <string name="tapToGetFull">請輕按此購買完整版</string>
-        <string name="viewCredits">衷心致謝</string>
+        <string name="refreshWeatherNow">立即刷新天氣</string>
         
-        <!-- Widget Theme -->
+        <string name="location">位置：</string>
+        <string name="fixed">(自訂定位)</string>
+        <string name="detected">(自動定位)</string>
+        <string name="lastTry">上次刷新：</string>
+        <string name="manualRefreshOnly">(不自動刷新)</string>
+        <string name="nextRefresh">下次刷新：</string>
+        <string name="weatherLocation">天氣定位:</string>
+        <string name="disableLocationAndWeather">停用定位及天氣功能</string>
+        <string name="followDevice">自動定位(默認功能)</string>
+        <string name="setFixedLocation">自訂定位</string>
+        <string name="weatherFunctionalityDisabled">定位及天氣現正停用</string>
+        <string name="tapToEnable">輕按啟動功能</string>
         
-        <string name="widgetThemeTitle">左右滑動選擇款式 - 長按圖則可選項</string>
-        <string name="reextractBundledClocks">重載預裝之時鐘</string>
-        <string name="downloadAllClocks">下載其他時鐘(約7MB)</string>
+        <!-- Fixed Locn subscreen -->
+        <string name="enterCityAndStateCountry">請輸入城市及國家</string>
+        <string name="locationExamples">例:London UK</string>
         
-        <!-- Widget Theme Long Press-->
+        <string name="weatherProvider">天氣資料來源選項</string>
+		<string-array name="wprovider_options">
+		<!-- 	<item>OpenWeatherMap.org (default)</item> -->
+		 	<item>晴天鐘 (默認)</item>
+		 	<item>NOAA (僅供美國天氣)</item>
+			<item>Yr.no</item>
+			<item>谷歌天氣 (已無法運作)</item>
+		</string-array>
+        <string name="wp7timer">資料源自「晴天鐘」</string>
+        <string name="wpnoaa">資料源自NOAA</string>
+        <string name="wpowm">資料源自OpenWeatherMap.org</string>
+        <string name="wpyr">資料源自yr.no</string>
+        <string name="wpig">資料源自谷歌天氣</string>
         
-        <string name="emailOrDeleteTheme">選項</string>
-        <string name="emailTheme">通過電郵發送此款式</string>
-        <string name="deleteTheme">刪除此款式</string>
-        <string name="submitThemeToDev">將此款式傳送至Xaffron</string>
+        <string name="weatherDisplayUnits">天氣單位</string>
+		<string-array name="wdisplay_options">
+			<item>華氏(默認)</item>
+			<item>攝氏</item>
+		</string-array>
+        <string name="usingFahrenheit">華氏</string>
+        <string name="usingCelsius">攝氏</string>
         
-        <!-- Personalize Clock-->
-        
-        <string name="selectALayerForTweaking">Select a Layer for Tweaking</string>
-        <string name="tweakerDirections">Drag: Move    Menu: Tweak    Back: Cancel</string>
-        <string name="dayNightImage">Day-Night Image</string>
-        
-        <!-- Personalize Clock Menu-->
-        
-        <string name="toggleVisibility">Toggle Visibility</string>
-        <string name="color1">Color 1</string>
-        <string name="color2">Color 2</string>
-        
-        <!-- Personalize Clock Back-->
-        
-        <string name="keepChanges">Keep Changes?</string>
-        <string name="abandon">Abandon</string>
-        <string name="apply">Apply</string>
-        
-        <!-- Weather & Widget Options-->
-        
-        <string name="refreshWeatherNow">Refresh Weather Now</string>
-        
-        <string name="location">Location:</string>
-        <string name="experimentalFeature">Experimental Feature Try at own risk!</string>
-        <string name="disabled">Disabled</string>
-        <string name="followDevice">Follow Device(default)</string>
-        <string name="setFixedLocation">Set Fixed Location</string>
-        <string name="enterCityAndStateCountry">Enter city state/country</string>
-        <string name="locationExamples">E.g. London UK</string>
-        
-        
-        <string name="lastTry">Last try:</string>
-        <string name="nextRefresh">Next Refresh:</string>
-        
-        <string name="weatherProvider">Weather Provider</string>
-        <string name="using">Using</string>
-        <string name="yrno">yr.no</string>
-        <string name="iGoogleWather">iGoogle Weather</string>
-        
-        <string name="weatherDisplayUnits">Weather Display Units</string>
-        <string name="fahrenheit">Fahrenheit</string>
-        <string name="celsius">Celsius</string>
-        <string name="useFahrenheit">Use Fahrenheit(Default)</string>
-        <string name="useCelsius">Use Celsius</string>
-        
-        <string name="clockUpdateInterval">Clock Update Interval</string>
-        <string name="redrawEvery">Redraw every</string>
-        <string name="seconds">seconds.</string>
-        <string name="r10sec">10 sec (Heavy Batt Use)</string>
-        <string name="r15sec">15 sec</string>
-        <string name="r20sec">20 sec</string>
-        <string name="r30sec">30 sec (Default)</string>
-        <string name="r60sec">60 sec (Light Batt Use)</string>
-        
-        
-        <string name="weatherUpdateInterval">Weather Update Interval</string>
-        <string name="refreshWeatherEvery">Refresh weather every</string>
-        <string name="hour">hour.</string>
-        <string name="hours">hours.</string>
-        <string name="everyHour">Every Hour(default)</string>
-        <string name="every4">Every 4 Hrs</string>
-        <string name="every8">Every 8 Hrs</string>
-        <string name="never">Never (Manual Only)</string>
+        <string name="clockUpdateInterval">時鐘刷新時間</string>
+		<string-array name="interval_options">
+		    <item>每一秒(耗電極高)</item>	
+			<item>每十秒(耗電頗高)</item>
+			<item>每十五秒</item>
+			<item>每二十秒</item>
+			<item>每三十秒(默認)</item>
+			<item>每六十秒(耗電低)</item>
+		</string-array>
+        <string name="redrawEvery">每</string>
+        <string name="seconds">秒刷新一次</string>
+		
+        <string name="weatherUpdateInterval">Weather天氣刷新時間</string>
+        <string-array name="winterval_options">
+			<item>每小時(默認)</item>
+			<item>每四小時</item>
+			<item>每八小時</item>
+			<item>不自動刷新</item>
+		</string-array>
+        <string name="manualWeatherUpdatesOnly">不自動更新</string>
+        <string name="refreshWeatherEveryHour">每小時更新</string>
+        <string name="refreshWeatherEvery4Hours">每四小時更新</string>
+        <string name="refreshWeatherEvery8Hours">每八小時更新</string>
         
         <string name="setForegroundMode">Set Foreground Mode</string>
-        <string name="keepOMCfromSleeping">Keep OMC from sleeping.</string>
-        <string name="atTheCostOf">(at the cost of a persistent notification)</string>
+        <string name="keepOMCfromSleeping">Keep OMC from sleeping\n(at the cost of a persistent notification)</string>
         
         <string name="forceEnglishDates">Force English Dates</string>
         <string name="uncheckForSome">Uncheck for some non-English locales.(Experimental)</string>
+        <string name="changeAppLocale">Language</string>
         
         <string name="toggleWidgetSizes">Toggle Widget Sizes</string>
-        <string name="areThereOtherWidgetSizes">Are there other widget sizes?</string>
-        <string name="actuallyThePaid">Actually, the paid version offers widget sizes of 5x4//5x2//5x1, 4x4//4x2/4x1,3x3//3x1, 2x2//2x1 and 1x3.
-        \nPlease consider upgrading to get these sizes!</string>
-        <string name="takeMeToPaidVersion">Take me to the paid version!</string>
         
-        <string name="reboorRequired">Reboot Required</string>
+        <string name="rebootRequired">Reboot Required</string>
         <string name="changesToTheseSettings">Changes to these setting will require a reboot of your phone to take effect.</string>
-        <string name="enable">Enable</string>
-        <string name="widget">Widget</string>
-        <string name="forGalaxyNote">For Galaxy Note or Similar.</string>
+        <string name="enable5x4Widget">啟動(5x4) Widget</string>
+        <string name="enable5x2Widget">啟動(5x2) Widget</string>
+        <string name="enable5x1Widget">啟動(5x1) Widget</string>
+        <string name="enable4x4Widget">啟動(4x4) Widget</string>
+        <string name="enable4x2Widget">啟動(4x2) Widget</string>
+        <string name="enable4x1Widget">啟動(4x1) Widget</string>
+        <string name="enable3x3Widget">啟動(3x3) Widget</string>
+        <string name="enable3x1Widget">啟動(3x1) Widget</string>
+        <string name="enable2x2Widget">啟動(2x2) Widget</string>
+        <string name="enable2x1Widget">啟動(2x1) Widget</string>
+        <string name="enable1x3Widget">啟動(1x3) Widget</string>
+        <string name="forGalaxyNote">For Galaxy Note or similar</string>
         <string name="enableThemeTester">Enable Theme Tester</string>
-        <string name="developmentToolForSkinnersOnly">Development tool for skinners only.</string>
+        <string name="developmentToolForSkinnersOnly">Development tool for skinners only</string>
+        
+        <!-- Widget Sizes Sales Pitch -->
+        <string name="areThereOtherWidgetSizes">Are there other widget sizes?</string>
+        <string name="actuallyThePaidVersion">Actually, the paid version offers widget sizes of 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 and 1x3.\nPlease consider upgrading to get these sizes!</string>
+                
+        
+        
+        <!-- Troubleshooting Options -->
+        <string name="troubleshootingOptions">疑難排解</string>
         
         <!-- Troubleshooting Options-->
         
         <string name="clockPriority">Clock Priority</string>
-        <string name="forFineTuning">For fine-tuning responsiveness.</string>
+        <string name="forFineTuning">For fine-tuning responsiveness</string>
+		<string-array name="clockPriority_options">
+		    <item>Highest (Not recommended, aggressive redraws every tick)</item>	
+			<item>High (Aggressive redraws every minute, regardless of screen or launcher status)</item>
+			<item>Medium (Lazy redraws every minute when screen on, even when launcher is in background)</item>
+			<item>Low (Lazy redraws every minute when launcher inactive or screen off)</item>
+			<item>Lowest (Default, no redraws when launcher inactive or screen off)</item>
+		</string-array>
+
         <string name="weatherDiagnostics">Weather Diagnostics</string>
-        <string name="submitLocationWeatherDebugData">Submit location/weather debug data.</string>
+        <string name="submitLocationWeatherDebugData">Submit location/weather debug data</string>
         
         <string name="deleteAllThemes">Delete All Themes</string>
-        <string name="forFixingThemeSelection">For fixing theme selection app crashes.</string>
+        <string name="forFixingThemeSelection">For fixing theme selection app crashes</string>
         <string name="deleteAllThemesFromSD">Delete all Themes from your SD Card/Memory?</string>
         <string name="yesDelete">Yes, delete all</string>
         <string name="yesRestore">Yes, restore defaults</string>
-        <string name="no">No</string>
+        <string name="omcThemesFolderDeleted">OMCThemes folder deleted</string>
+        <string name="defaultClockPackRestored">Default Clock Pack restored</string>
         
         <!-- Contact Xaffron-->
         
-        <string name="email">Email</string>
-        <string name="donate">Donate</string>
-        <string name="Facebook">Facebook</string>
+        <string name="contactXaffron">聯絡Xaffron</string>
+        <string name="donateOrContact">捐助或聯繫作者</string>
+        <string name="contactXaffronForIssues">捐助或聯繫Xaffron</string>
+        <string name="email">撰寫電郵</string>
+        <string name="donate">捐助</string>
+        <string name="facebook">Facebook</string>
         
         <!-- Credits-->
         
-        <string name="team">TEAM</string>
+        <string name="credits">關於本程式</string>
+        <string name="version">版本</string>
+        <string name="free">免費版</string>
+        <string name="tapToGetFull">請輕按此購買完整版</string>
+        <string name="viewCredits">衷心致謝</string>
+
+        <!-- Credits subscreen -->
+        
+        <string name="team">Team</string>
         <string name="programmer">Programmer</string>
         <string name="sunny">Sunny Kwong</string>
-        <string name="Testers">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
-        <string name="specialThanks">Zehro for leading the way
-        \nre: in-sync clock widgets w//o notifications.
-        \nStefan Pledl for helping with the localization</string>
-        <string name="copyrights">COPYRIGHTS AND LICENSES</string>
+        <string name="testers">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
+        <string name="specialThanks">Special Thanks</string>
+        <string name="specialThanksText">Zehro for leading the way\nre: in-sync clock widgets w//o notifications.\nStefan Pledl for helping with the localization.</string>
+        <string name="copyrights">Copyrights and Licenses</string>
         <string name="applicationIcon">Application Icon: Signpost by Maroubal2</string>
-        <string name="adaptedFrom">Adapted from Maroubal2\'s excellent photo-turned-Ubuntu wallpaper.
-        \nCC BY-SA 2.0
-        \nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
+        <string name="applicationIconText">Adapted from Maroubal2\'s excellent photo-turned-Ubuntu wallpaper.\nCC BY-SA 2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
         <string name="codeColorPickerDialog">Code: ColorPickerDialog</string>
-        <string name="copiedFromCM">Copied from CyanogenMod source repo.</string>
+        <string name="codeColorPickerDialogText">Copied from CyanogenMod source repo.</string>
         <string name="codeSVG">Code: svg-android</string>
-        <string name="svgSupport">SVG support provided by sag-android library (Apache License).
-        \nhttp:////code.google.com//p//svg-android//</string>
-        <string name="font">Font: Weatherfont</string>
-        <string name="weatherfontIs">Weatherfont is fully licensed from Jonathan Macagba, available for $5 USD from jonathan.
-        \nmacagba/@gmail.com</string>
-        <string name="sourceCode">Source Code Available at
-        \nhttp:////code.google.com//p//sunnykwong//</string>
+        <string name="codeSVGText">SVG support provided by sag-android library (Apache License).\nhttp:////code.google.com//p//svg-android//</string>
+        <string name="weatherFont">Font: Weatherfont</string>
+        <string name="weatherFontText">Weatherfont is fully licensed from Jonathan Macagba, available for $5 USD from jonathan.macagba@gmail.com</string>
+        <string name="sourceCodeTitle">Source Code</string>
+        <string name="sourceCode">Source Code Available at</string>
         
         
     </resources>
