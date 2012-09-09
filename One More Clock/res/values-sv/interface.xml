@@ -35,6 +35,7 @@
         <!-- Forecast Screen -->
         <string name="doubleDash">--</string>
         <string name="unknown">Okänd</string>
+        <string name="noaaWeatherCredit">Weather observations and forecasts updated from the National Oceanic and Atmospheric Administration (NOAA).</string>
         <string name="igWeatherCredit">Väder uppdaterat från Google API.</string>
         <string name="yrWeatherCredit">Väderprognos av yr.no, levererat av Meteorologisk Institutt i Norge och NRK.</string>
         <string name="seventimerWeatherCredit">7Timer!-prognoser av Ye Quanzhi, med stöd från Shanghai Astronomical Observatory (SHAO) och Chinese Academy of Sciences (CAS).</string>
@@ -181,10 +182,12 @@
 		<string-array name="wprovider_options">
 		<!-- 	<item>OpenWeatherMap.org (standard)</item> -->
 		 	<item>7Timer.com (standard)</item>
-			<item>Yr.no</item>
+		 	<item>NOAA (US Only)</item>
+		 				<item>Yr.no</item>
 			<item>Google Weather (förlegat, fungerar ej)</item>
 		</string-array>
         <string name="wp7timer">Använder 7Timer.com</string>
+        <string name="wpnoaa">Använder NOAA</string>
         <string name="wpowm">Använder OpenWeatherMap.org</string>
         <string name="wpyr">Använder yr.no</string>
         <string name="wpig">Använder iGoogle väder</string>
@@ -226,6 +229,7 @@
         
         <string name="forceEnglishDates">Tvinga engelska datum</string>
         <string name="uncheckForSome">Avkryssa för att visa enhetens datum (experimentiell funktion)</string>
+        <string name="changeAppLocale">Language</string>
         
         <string name="toggleWidgetSizes">Växla mellan widgetstorlekar</string>
         
