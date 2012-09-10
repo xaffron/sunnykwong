@@ -44,7 +44,7 @@ public class OMCWeatherForecastActivity extends Activity {
 				String sCity = weather.optString("city") + ",\n" + weather.optString("country2")+" ";
 				fStretch = Math.min(1f,800f/(sCity.length()*40f));
 				setText(findViewById(OMC.RId("City")),sCity,fStretch);
-				setText(findViewById(OMC.RId("Conditions")),weather.optString("condition") + " | " + weather.optString("wind_condition") + " " + weather.optString("humidity"));
+				setText(findViewById(OMC.RId("Conditions")),OMC.VERBOSEWEATHER[weather.optInt("condition_code")] + " | " + weather.optString("wind_condition") + " " + weather.optString("humidity"));
 				Time t = new Time();
 				t.set(System.currentTimeMillis());
 				String sTimeOfDay="day";
@@ -54,13 +54,13 @@ public class OMCWeatherForecastActivity extends Activity {
 					//Nighttime
 					sTimeOfDay="night";
 				}
-				((ImageView)findViewById(OMC.RId("ConditionImage"))).setImageBitmap(OMC.getBitmap(OMC.DEFAULTTHEME, "w-"+weather.optString("condition_lcase","--")+"-"+sTimeOfDay+".png"));
+				((ImageView)findViewById(OMC.RId("ConditionImage"))).setImageBitmap(OMC.getBitmap(OMC.DEFAULTTHEME, "w-"+OMC.VERBOSEWEATHERENG[weather.optInt("condition_code")]+"-"+sTimeOfDay+".png"));
 				JSONArray wary = weather.optJSONArray("zzforecast_conditions");
 				for (int i=0; i<Math.min(wary.length(),4); i++) {
 					JSONObject day = wary.optJSONObject(i);
 					setText(findViewById(OMC.RId("dayofweek"+i)),day.optString("day_of_week"));
-					((ImageView)findViewById(OMC.RId("ConditionImage"+i))).setImageBitmap(OMC.getBitmap(OMC.DEFAULTTHEME, "w-"+day.optString("condition_lcase","--")+"-day.png"));
-					setText(findViewById(OMC.RId("ForecastCond"+i)),day.optString("condition"));
+					((ImageView)findViewById(OMC.RId("ConditionImage"+i))).setImageBitmap(OMC.getBitmap(OMC.DEFAULTTHEME, "w-"+OMC.VERBOSEWEATHERENG[day.optInt("condition_code")]+"-day.png"));
+					setText(findViewById(OMC.RId("ForecastCond"+i)),OMC.VERBOSEWEATHER[day.optInt("condition_code")]);
 					if (OMC.PREFS.getString("weatherDisplay", "f").equals("f")) {
 						setText(findViewById(OMC.RId("HighTemp"+i)),day.optString("high")+"°F");
 						setText(findViewById(OMC.RId("LowTemp"+i)),day.optString("low")+"°F");

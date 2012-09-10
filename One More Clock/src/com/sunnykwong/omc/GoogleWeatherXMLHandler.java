@@ -26,6 +26,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 	public JSONObject jsonWeather, jsonOneDayForecast;
 	public static final String DELIMITERS = " .,;-";
 	public static ArrayList<HashMap<String, String>> ELEMENTS;
+	public static HashMap<String,Integer> CONDITIONTRANSLATIONS;
 
 	public GoogleWeatherXMLHandler() {
 		super();
@@ -45,6 +46,49 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 	}
 
 	static public void updateWeather(final double latitude, final double longitude, final String country, final String city, final boolean bylatlong) {
+
+		// Populating the condition translations
+		CONDITIONTRANSLATIONS = new HashMap<String,Integer>();
+		CONDITIONTRANSLATIONS.put("clear",1);
+		CONDITIONTRANSLATIONS.put("sunny",2);
+		CONDITIONTRANSLATIONS.put("mostly sunny",3);
+		CONDITIONTRANSLATIONS.put("partly sunny",4);
+		CONDITIONTRANSLATIONS.put("partly cloudy",5);
+		CONDITIONTRANSLATIONS.put("dust",6);
+		CONDITIONTRANSLATIONS.put("haze",7);
+		CONDITIONTRANSLATIONS.put("mist",8);
+		CONDITIONTRANSLATIONS.put("smoke",9);
+		CONDITIONTRANSLATIONS.put("mostly cloudy",10);
+		CONDITIONTRANSLATIONS.put("overcast",11);
+		CONDITIONTRANSLATIONS.put("cloudy",12);
+		CONDITIONTRANSLATIONS.put("fog",13);
+		CONDITIONTRANSLATIONS.put("light rain",14);
+		CONDITIONTRANSLATIONS.put("rain showers",15);
+		CONDITIONTRANSLATIONS.put("drizzle",16);
+		CONDITIONTRANSLATIONS.put("showers",17);
+		CONDITIONTRANSLATIONS.put("chance of rain",18);
+		CONDITIONTRANSLATIONS.put("chance of showers",19);
+		CONDITIONTRANSLATIONS.put("scattered showers",20);
+		CONDITIONTRANSLATIONS.put("thunderstorm",21);
+		CONDITIONTRANSLATIONS.put("chance of tstorm",22);
+		CONDITIONTRANSLATIONS.put("scattered thunderstorms",23);
+		CONDITIONTRANSLATIONS.put("chance of storm",24);
+		CONDITIONTRANSLATIONS.put("storm",25);
+		CONDITIONTRANSLATIONS.put("heavy rain",26);
+		CONDITIONTRANSLATIONS.put("rain",27);
+		CONDITIONTRANSLATIONS.put("flurries",28);
+		CONDITIONTRANSLATIONS.put("light snow",29);
+		CONDITIONTRANSLATIONS.put("chance of snow",30);
+		CONDITIONTRANSLATIONS.put("snow showers",31);
+		CONDITIONTRANSLATIONS.put("scattered snow showers",32);
+		CONDITIONTRANSLATIONS.put("snow",33);
+		CONDITIONTRANSLATIONS.put("icy",34);
+		CONDITIONTRANSLATIONS.put("ice/snow",35);
+		CONDITIONTRANSLATIONS.put("sleet",36);
+		CONDITIONTRANSLATIONS.put("freezing drizzle",37);
+		CONDITIONTRANSLATIONS.put("rain and snow",38);
+		CONDITIONTRANSLATIONS.put("windy",39);
+		
 		ELEMENTS = new ArrayList<HashMap<String, String>>();
 		Thread t = new Thread() {
 			@Override
@@ -126,6 +170,10 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					} else if (localName.equals("condition")) {
 						jsonWeather.putOpt("condition_lcase",
 								sData.toLowerCase());
+						int iConditionCode=0;
+						if (CONDITIONTRANSLATIONS.containsKey(sData.toLowerCase()))
+								iConditionCode = CONDITIONTRANSLATIONS.get(sData.toLowerCase());
+						jsonWeather.putOpt("condition_code", iConditionCode);
 					} 
 
 				} else if (tree.peek()[0].equals("forecast_conditions")) {
@@ -141,6 +189,10 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 						jsonOneDayForecast.putOpt(localName + "_c", tempC);
 					} else if (localName.equals("condition")) {
 						jsonOneDayForecast.putOpt("condition_lcase", sData.toLowerCase());
+						int iConditionCode=0;
+						if (CONDITIONTRANSLATIONS.containsKey(sData.toLowerCase()))
+								iConditionCode = CONDITIONTRANSLATIONS.get(sData.toLowerCase());
+						jsonOneDayForecast.putOpt("condition_code", iConditionCode);
 					}
 				} else if (localName.equals("problem_cause")) {
 					if (OMC.DEBUG)

@@ -178,7 +178,7 @@
         <string name="enterCityAndStateCountry">請輸入城市及國家</string>
         <string name="locationExamples">例:London UK</string>
         
-        <string name="weatherProvider">天氣資料來源選項</string>
+        <string name="weatherProvider">天氣資料來源</string>
 		<string-array name="wprovider_options">
 		<!-- 	<item>OpenWeatherMap.org (default)</item> -->
 		 	<item>晴天鐘 (默認)</item>
@@ -200,7 +200,7 @@
         <string name="usingFahrenheit">華氏</string>
         <string name="usingCelsius">攝氏</string>
         
-        <string name="clockUpdateInterval">時鐘刷新時間</string>
+        <string name="clockUpdateInterval">時鐘更新時間</string>
 		<string-array name="interval_options">
 		    <item>每一秒(耗電極高)</item>	
 			<item>每十秒(耗電頗高)</item>
@@ -210,14 +210,14 @@
 			<item>每六十秒(耗電低)</item>
 		</string-array>
         <string name="redrawEvery">每</string>
-        <string name="seconds">秒刷新一次</string>
+        <string name="seconds">秒更新一次</string>
 		
-        <string name="weatherUpdateInterval">Weather天氣刷新時間</string>
+        <string name="weatherUpdateInterval">天氣刷新時間</string>
         <string-array name="winterval_options">
 			<item>每小時(默認)</item>
 			<item>每四小時</item>
 			<item>每八小時</item>
-			<item>不自動刷新</item>
+			<item>不自動更新</item>
 		</string-array>
         <string name="manualWeatherUpdatesOnly">不自動更新</string>
         <string name="refreshWeatherEveryHour">每小時更新</string>
@@ -236,17 +236,17 @@
         
         <string name="rebootRequired">Reboot Required</string>
         <string name="changesToTheseSettings">Changes to these setting will require a reboot of your phone to take effect.</string>
-        <string name="enable5x4Widget">啟動(5x4) Widget</string>
-        <string name="enable5x2Widget">啟動(5x2) Widget</string>
-        <string name="enable5x1Widget">啟動(5x1) Widget</string>
-        <string name="enable4x4Widget">啟動(4x4) Widget</string>
-        <string name="enable4x2Widget">啟動(4x2) Widget</string>
-        <string name="enable4x1Widget">啟動(4x1) Widget</string>
-        <string name="enable3x3Widget">啟動(3x3) Widget</string>
-        <string name="enable3x1Widget">啟動(3x1) Widget</string>
-        <string name="enable2x2Widget">啟動(2x2) Widget</string>
-        <string name="enable2x1Widget">啟動(2x1) Widget</string>
-        <string name="enable1x3Widget">啟動(1x3) Widget</string>
+        <string name="enable5x4Widget">啟動(5x4)小工具</string>
+        <string name="enable5x2Widget">啟動(5x2)小工具</string>
+        <string name="enable5x1Widget">啟動(5x1)小工具</string>
+        <string name="enable4x4Widget">啟動(4x4)小工具</string>
+        <string name="enable4x2Widget">啟動(4x2)小工具</string>
+        <string name="enable4x1Widget">啟動(4x1)小工具</string>
+        <string name="enable3x3Widget">啟動(3x3)小工具</string>
+        <string name="enable3x1Widget">啟動(3x1)小工具</string>
+        <string name="enable2x2Widget">啟動(2x2)小工具</string>
+        <string name="enable2x1Widget">啟動(2x1)小工具</string>
+        <string name="enable1x3Widget">啟動(1x3)小工具</string>
         <string name="forGalaxyNote">For Galaxy Note or similar</string>
         <string name="enableThemeTester">Enable Theme Tester</string>
         <string name="developmentToolForSkinnersOnly">Development tool for skinners only</string>

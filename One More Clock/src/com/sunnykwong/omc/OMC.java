@@ -129,6 +129,9 @@ public class OMC extends Application {
 	static String SHAREDPREFNAME;
 	static String PKGNAME;
 	static String[] VERBOSETIME;
+	static String[] VERBOSEWEATHER;
+	static String[] VERBOSEWEATHERENG;
+	static String[] VERBOSENUMBERS;
 	static Context CONTEXT;
 	static boolean SHOWHELP = true;
 	static Uri PAIDURI;
@@ -243,7 +246,6 @@ public class OMC extends Application {
 	};
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
-		System.out.println("NEW LOCALE:" + newConfig.locale.getLanguage());
 		for (int i =0 ; i < OMC.LOCALES.length; i++) {
 			if (OMC.PREFS.getString("appLocaleName", "English (US)").equals(OMC.LOCALENAMES[i])) {
 				Log.i(OMC.OMCSHORT + "App","Using app locale: " + OMC.LOCALENAMES[i]);
@@ -518,8 +520,12 @@ public class OMC extends Application {
 
 				OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers", OMC.LOCALES[i]);
 				OMC.VERBOSETIME = OMC.RStringArray("verbosetime", OMC.LOCALES[i]);
+				OMC.VERBOSEWEATHER = OMC.RStringArray("VerboseWeather", OMC.LOCALES[i]);
+				OMC.VERBOSENUMBERS = OMC.RStringArray("WordNumbers", OMC.LOCALES[i]);
 
-				break;
+			}  
+			if (OMC.LOCALENAMES[i].equals("English (US)")){
+				OMC.VERBOSEWEATHERENG = OMC.RStringArray("VerboseWeather", OMC.LOCALES[i]);
 			}
 		}
 
@@ -860,18 +866,23 @@ public class OMC extends Application {
 			// Translate from condition to filename
 			final String[] sTokens = src.split("[-.]");
 
-			final String condition = sTokens[1], daynight=sTokens[2];
-			String src2;
-			if (condition.equals("")) {
-				src2="Unk";
-			} else {
-				try {
-					src2 = OMC.WEATHERCONVERSIONS.getJSONObject(OMC.WEATHERTRANSLATETYPE)
-								.getJSONObject(daynight).optString(condition,"Unk");
-				} catch (JSONException e) {
-					e.printStackTrace();
-					src2 = "Unk";
+			String condition = sTokens[1].toLowerCase(), daynight=sTokens[2];;
+			int iTarget = 0;
+			for (int idx=0;idx<OMC.VERBOSEWEATHERENG.length;idx++) {
+
+				String tempTarget = OMC.VERBOSEWEATHERENG[idx].toLowerCase();
+				if (tempTarget.equals(condition)) {
+					iTarget=idx;
+					break;
 				}
+			}
+			String src2;
+			try {
+				src2 = OMC.WEATHERCONVERSIONS.getJSONObject(OMC.WEATHERTRANSLATETYPE)
+							.getJSONArray(daynight).optString(iTarget,"Unk").toLowerCase();
+			} catch (JSONException e) {
+				e.printStackTrace();
+				src2 = "Unk";
 			}
 			src2+=".png";
 			return getBitmap(sTheme, src2);
@@ -1521,7 +1532,7 @@ public class OMC extends Application {
 							sDay="night";
 						}
 						result = OMC.WEATHERCONVERSIONS.getJSONObject("WeatherFont")
-								.getJSONObject(sDay).optString(jsonWeather.optString("condition","Unknown").toLowerCase(),"E");
+								.getJSONArray(sDay).optString(jsonWeather.optInt("condition_code",0),"E");
 					} else if (sType.equals("index")) {
 						String sTranslateType = st[iTokenNum++];
 						String sDay;
@@ -1533,9 +1544,11 @@ public class OMC extends Application {
 							sDay="night";
 						}
 						result = OMC.WEATHERCONVERSIONS.getJSONObject(sTranslateType)
-								.getJSONObject(sDay).optString(jsonWeather.optString("condition","Unknown").toLowerCase(),"00");
+								.getJSONArray(sDay).optString(jsonWeather.optInt("condition_code",0),"00");
 					} else if (sType.equals("condition")) {
-						result = jsonWeather.optString("condition","Unknown");
+						result = OMC.VERBOSEWEATHER[jsonWeather.optInt("condition_code",0)];
+					} else if (sType.equals("condition_lcase")) {
+						result = OMC.VERBOSEWEATHER[jsonWeather.optInt("condition_code",0)].toLowerCase();
 					} else if (sType.equals("temp")) {
 						result = jsonWeather.optString("temp_"+OMC.PREFS.getString("weatherDisplay", "f"),"--")+OMC.PREFS.getString("weatherDisplay", "f").toUpperCase();
 					} else if (sType.equals("tempc")) {

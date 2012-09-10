@@ -21,31 +21,31 @@ import android.util.Log;
 public class YrNoWeatherXMLHandler extends DefaultHandler {
 
 	public static final String URL_LOCATIONFORECASTLTS = "http://api.met.no/weatherapi/locationforecastlts/1.1/?lat=";
-	public static final String[] CONDITIONTRANSLATIONS = new String[] {
-		"Unknown", 									//0
-		"Clear",									//1 SUN
- 		"Mostly Sunny",								//2 LIGHTCLOUD
- 		"Partly Cloudy",							//3 PARTLYCLOUD
- 		"Cloudy",									//4 CLOUD
- 		"Scattered Showers",						//5 LIGHTRAINSUN
-		"Chance of Storm",							//6 LIGHTRAINTHUNDERSUN
-		"Sleet",									//7 SLEETSUN
-		"Snow",										//8 SNOWSUN
-		"Light Rain",								//9 LIGHTRAIN
-		"Rain",										//10 RAIN
-		"Scattered Thunderstorms",					//11 RAINTHUNDER
-		"Sleet",									//12 SLEET
-		"Snow",										//13 SNOW
-		"Scattered Thunderstorms",					//14 SNOWTHUNDER
-		"Fog",										//15 FOG
-		"Clear",									//16 SUN ( used for winter darkness )
-		"Cloudy",									//17 LIGHTCLOUD ( winter darkness )
-		"Light Rain",								//18 LIGHTRAINSUN ( used for winter darkness )
-		"Scattered Snow Showers",					//19 SNOWSUN ( used for winter darkness )
-		"Scattered Thunderstorms",					//20 SLEETSUNTHUNDER
-		"Scattered Thunderstorms",					//21 SNOWSUNTHUNDER
-		"Thunderstorm",								//22 LIGHTRAINTHUNDER
-		"Thunderstorm"								//23 SLEETTHUNDER2
+	public static final int[] CONDITIONTRANSLATIONS = new int[] {
+		0, 									//0
+		1,									//1 SUN
+ 		3,								//2 LIGHTCLOUD
+ 		5,							//3 PARTLYCLOUD
+ 		12,									//4 CLOUD
+ 		20,						//5 LIGHTRAINSUN
+		24,							//6 LIGHTRAINTHUNDERSUN
+		36,									//7 SLEETSUN
+		33,										//8 SNOWSUN
+		14,								//9 LIGHTRAIN
+		27,										//10 RAIN
+		23,					//11 RAINTHUNDER
+		36,									//12 SLEET
+		33,										//13 SNOW
+		23,					//14 SNOWTHUNDER
+		13,										//15 FOG
+		1,									//16 SUN ( used for winter darkness )
+		12,									//17 LIGHTCLOUD ( winter darkness )
+		14,								//18 LIGHTRAINSUN ( used for winter darkness )
+		32,					//19 SNOWSUN ( used for winter darkness )
+		23,					//20 SLEETSUNTHUNDER
+		23,					//21 SNOWSUNTHUNDER
+		21,								//22 LIGHTRAINTHUNDER
+		21								//23 SLEETTHUNDER2
 	};
 	
 	public Stack<String[]> tree;
@@ -59,7 +59,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 	public static final Time UPDATEDTIME= new Time(Time.TIMEZONE_UTC);
 	public static HashMap<String, Double> LOWTEMPS;
 	public static HashMap<String, Double> HIGHTEMPS;
-	public static HashMap<String, String> CONDITIONS;
+	public static HashMap<String, Integer> CONDITIONS;
 
 	public YrNoWeatherXMLHandler() {
 		super();
@@ -131,7 +131,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 		// We haven't accumulated current conditions yet
 		LOWTEMPS=new HashMap<String,Double>();
 		HIGHTEMPS=new HashMap<String,Double>();
-		CONDITIONS = new HashMap<String,String>();
+		CONDITIONS = new HashMap<String,Integer>();
 
 		// yr.no does not return a timestamp in the XML, so default it to 1/1/1970
 		Time t = new Time();
@@ -211,16 +211,15 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				}
 
 				if (localName.equals("symbol")) {
-					String cond = CONDITIONTRANSLATIONS[Integer.parseInt(atts.getValue("number"))];
-					if (jsonWeather.optString("condition","missing").equals("missing")) {
-						jsonWeather.putOpt("condition",cond);
-						jsonWeather.putOpt("condition_lcase",cond.toLowerCase());
+					int iConditionCode = CONDITIONTRANSLATIONS[Integer.parseInt(atts.getValue("number"))];
+					if (jsonWeather.optString("condition_code","missing").equals("missing")) {
+						jsonWeather.putOpt("condition_code",iConditionCode);
 						Time now = new Time();
 						now.setToNow();
-						CONDITIONS.put(now.format("%Y%m%d"), cond);
+						CONDITIONS.put(now.format("%Y%m%d"), iConditionCode);
 					}
 					String sCondDay =TOTIME.format("%Y%m%d");
-					CONDITIONS.put(sCondDay, cond);
+					CONDITIONS.put(sCondDay, iConditionCode);
 				}
 
 				if (localName.equals("windDirection")) {
@@ -318,8 +317,9 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 			try {
 				JSONObject jsonOneDayForecast = new JSONObject();
 				jsonOneDayForecast.put("day_of_week", day.format("%a"));
-				jsonOneDayForecast.put("condition", CONDITIONS.get(day.format("%Y%m%d")));
-				jsonOneDayForecast.put("condition_lcase", CONDITIONS.get(day.format("%Y%m%d")).toLowerCase());
+				final int iConditionCode = CONDITIONS.get(day.format("%Y%m%d"));
+				jsonOneDayForecast.put("condition", OMC.VERBOSEWEATHER[iConditionCode]);
+				jsonOneDayForecast.put("condition_lcase", OMC.VERBOSEWEATHER[iConditionCode].toLowerCase());
 				double lowc = OMC.roundToSignificantFigures(LOWTEMPS.get(day.format("%Y%m%d")),3);
 				double highc = OMC.roundToSignificantFigures(HIGHTEMPS.get(day.format("%Y%m%d")),3);
 				double lowf = (int)(lowc/5f*9f+32.7f);

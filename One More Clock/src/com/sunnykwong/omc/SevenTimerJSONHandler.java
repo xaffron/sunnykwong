@@ -17,8 +17,8 @@ public class SevenTimerJSONHandler {
 	public static JSONObject tempJson, jsonWeather, jsonOneDayForecast;
 	public static HashMap<String, Double> LOWTEMPS;
 	public static HashMap<String, Double> HIGHTEMPS;
-	public static HashMap<String, String> CONDITIONS;
-	public static HashMap<String, String> CONDITIONTRANSLATIONS;
+	public static HashMap<String, Integer> CONDITIONS;
+	public static HashMap<String, Integer> CONDITIONTRANSLATIONS;
 
 	public SevenTimerJSONHandler() {
 	}
@@ -26,22 +26,22 @@ public class SevenTimerJSONHandler {
 	static public void updateWeather(final double latitude, final double longitude, final String country, final String city, final boolean bylatlong) {
 
 		// Populating the condition translations
-		CONDITIONTRANSLATIONS = new HashMap<String,String>();
-		CONDITIONTRANSLATIONS.put("clear", "Clear");
-		CONDITIONTRANSLATIONS.put("pcloudy", "Partly Cloudy");
-		CONDITIONTRANSLATIONS.put("mcloudy", "Mostly Cloudy");
-		CONDITIONTRANSLATIONS.put("cloudy", "Cloudy");
-		CONDITIONTRANSLATIONS.put("humid", "Fog");
-		CONDITIONTRANSLATIONS.put("lightrain", "Light Rain");
-		CONDITIONTRANSLATIONS.put("oshower", "Chance of Showers");
-		CONDITIONTRANSLATIONS.put("ishower", "Scattered Showers");
-		CONDITIONTRANSLATIONS.put("lightsnow", "Light Snow");
-		CONDITIONTRANSLATIONS.put("rain", "Rain");
-		CONDITIONTRANSLATIONS.put("snow", "Snow");
-		CONDITIONTRANSLATIONS.put("rainsnow", "Rain and Snow");
-		CONDITIONTRANSLATIONS.put("ts", "Thunderstorm");
-		CONDITIONTRANSLATIONS.put("tsrain", "Chance of TStorm");
-		CONDITIONTRANSLATIONS.put("undefined", "Unknown");
+		CONDITIONTRANSLATIONS = new HashMap<String,Integer>();
+		CONDITIONTRANSLATIONS.put("clear", 1);
+		CONDITIONTRANSLATIONS.put("pcloudy", 4);
+		CONDITIONTRANSLATIONS.put("mcloudy", 10);
+		CONDITIONTRANSLATIONS.put("cloudy", 12);
+		CONDITIONTRANSLATIONS.put("humid", 13);
+		CONDITIONTRANSLATIONS.put("lightrain", 14);
+		CONDITIONTRANSLATIONS.put("oshower", 19);
+		CONDITIONTRANSLATIONS.put("ishower", 20);
+		CONDITIONTRANSLATIONS.put("lightsnow", 29);
+		CONDITIONTRANSLATIONS.put("rain", 27);
+		CONDITIONTRANSLATIONS.put("snow", 33);
+		CONDITIONTRANSLATIONS.put("rainsnow", 38);
+		CONDITIONTRANSLATIONS.put("ts", 21);
+		CONDITIONTRANSLATIONS.put("tsrain", 22);
+		CONDITIONTRANSLATIONS.put("undefined", 0);
 		
 		Thread t = new Thread() {
 			@Override
@@ -56,7 +56,7 @@ public class SevenTimerJSONHandler {
 				jsonOneDayForecast = null;
 				LOWTEMPS = new HashMap<String, Double>();
 				HIGHTEMPS = new HashMap<String, Double>();
-				CONDITIONS = new HashMap<String, String>();
+				CONDITIONS = new HashMap<String, Integer>();
 
 				HttpURLConnection huc = null; 
 				try {
@@ -143,11 +143,10 @@ public class SevenTimerJSONHandler {
 								double windmps = jsDataPoint.getJSONObject("wind10m").getDouble("speed");
 								jsonWeather.putOpt("wind_direction_mps",windmps);
 								jsonWeather.putOpt("wind_speed_mph", (int)(windmps*2.2369362920544+0.5));
-								String cond = CONDITIONTRANSLATIONS.get(jsDataPoint.optString("weather","unknown")
+								int iConditionCode = CONDITIONTRANSLATIONS.get(jsDataPoint.optString("weather","unknown")
 									.replace("day", "")
 									.replace("night", ""));
-								jsonWeather.putOpt("condition", cond);
-								jsonWeather.putOpt("condition_lcase", cond.toLowerCase());
+								jsonWeather.putOpt("condition_code", iConditionCode);
 							}
 							
 							// Compare/write the high and low temps.  Low temps are counted from 7pm to 7am next day.
@@ -202,8 +201,7 @@ public class SevenTimerJSONHandler {
 							try {
 								JSONObject jsonOneDayForecast = new JSONObject();
 								jsonOneDayForecast.put("day_of_week", day.format("%a"));
-								jsonOneDayForecast.put("condition", CONDITIONS.get(day.format("%Y%m%d")));
-								jsonOneDayForecast.put("condition_lcase", CONDITIONS.get(day.format("%Y%m%d")).toLowerCase());
+								jsonOneDayForecast.put("condition_code", CONDITIONS.get(day.format("%Y%m%d")));
 								double lowc = OMC.roundToSignificantFigures(LOWTEMPS.get(day.format("%Y%m%d")),3);
 								double highc = OMC.roundToSignificantFigures(HIGHTEMPS.get(day.format("%Y%m%d")),3);
 								double lowf = (int)(lowc/5f*9f+32.7f);
