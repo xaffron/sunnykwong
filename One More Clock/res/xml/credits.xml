@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="Credits" >
+    android:title="@string/credits" >
     <PreferenceCategory android:title="@string/team" >
         <Preference
             android:enabled="true"
@@ -13,8 +13,8 @@
             android:enabled="true"
             android:key="2"
             android:selectable="false"
-            android:summary="@string/testers"
-            android:title="Testers" >
+            android:summary="@string/testersText"
+            android:title="@string/testers" >
         </Preference>
         <Preference
             android:summary="@string/specialThanksText"

@@ -230,6 +230,7 @@
         <string name="forceEnglishDates">Englisches Datum.</string>
         <string name="uncheckForSome">Abwahl für einige Nicht-Englische Regionsschemata.(Experimentell).</string>
         <string name="changeAppLocale">Language</string>
+        <string name="changeClockLocale">Clock Language</string>
         
         <string name="toggleWidgetSizes">Auswahl der Widget-Größen.</string>
         
@@ -304,7 +305,8 @@
         <string name="team">Team</string>
         <string name="programmer">Programmierer.</string>
         <string name="sunny">Sunny Kwong</string>
-        <string name="testers">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
+        <string name="testers">Testers</string>
+        <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
 		
 		<!-- FILLED IN by Andy --> 
 		

@@ -230,6 +230,7 @@
         <string name="forceEnglishDates">Tvinga engelska datum</string>
         <string name="uncheckForSome">Avkryssa för att visa enhetens datum (experimentiell funktion)</string>
         <string name="changeAppLocale">Language</string>
+        <string name="changeClockLocale">Clock Language</string>
         
         <string name="toggleWidgetSizes">Växla mellan widgetstorlekar</string>
         
@@ -304,8 +305,8 @@
         <string name="team">Team</string>
         <string name="programmer">Programmerare</string>
         <string name="sunny">Sunny Kwong</string>
-		<string name="testers1">Testare</string>
-        <string name="testers">ibawanzingee, C. Bizon, Cjsnet, Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
+		<string name="testers">Testare</string>
+        <string name="testersText">ibawanzingee, C. Bizon, Cjsnet, Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
         <string name="specialThanks">Tack till</string>
         <string name="specialThanksText">- Zehro för synkroniserade klockwidgets utan notifiering.\n- Stefan Pledl för hjälp med översättning.</string>
 		<string name="sweTranslation">- Svensk översättning av Tobias Hellgren (hellgren.tobias@gmail.com)</string>

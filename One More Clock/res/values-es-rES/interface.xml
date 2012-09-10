@@ -230,6 +230,7 @@
         <string name="forceEnglishDates">Forzar fecha en inglés</string>
         <string name="uncheckForSome">Desactivar para no ingleses.(Experimental)</string>
         <string name="changeAppLocale">Language</string>
+        <string name="changeClockLocale">Clock Language</string>
         
         <string name="toggleWidgetSizes">Tamaños Widget activados</string>
         
@@ -304,7 +305,8 @@
         <string name="team">Equipo</string>
         <string name="programmer">Programador</string>
         <string name="sunny">Sunny Kwong</string>
-        <string name="testers">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
+        <string name="testers">Testers</string>
+        <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
         <string name="specialThanks">Agradecimientos especiales</string>
         <string name="specialThanksText">Zehro por marcar el camino\nre: in-sync clock widgets w//o notificaciones.\nStefan Pledl por ayudar con la localización.</string>
         <string name="copyrights">Copyrights y Licencias</string>
