@@ -66,6 +66,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.format.Time;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -245,7 +246,7 @@ public class OMC extends Application {
 		System.out.println("NEW LOCALE:" + newConfig.locale.getLanguage());
 		for (int i =0 ; i < OMC.LOCALES.length; i++) {
 			if (OMC.PREFS.getString("appLocaleName", "English (US)").equals(OMC.LOCALENAMES[i])) {
-				Log.i(OMC.OMCSHORT + "App","Using locale: " + OMC.LOCALENAMES[i]);
+				Log.i(OMC.OMCSHORT + "App","Using app locale: " + OMC.LOCALENAMES[i]);
 				Configuration config = new Configuration();
 				config.locale=OMC.LOCALES[i];
 				OMC.RES.updateConfiguration(config, 
@@ -511,8 +512,16 @@ public class OMC extends Application {
 
 		// Load locale-specific resources.
 		
-		OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers");
-		OMC.VERBOSETIME = OMC.RStringArray("verbosetime");
+		for (int i =0 ; i < OMC.LOCALES.length; i++) {
+			if (OMC.PREFS.getString("clockLocaleName", "English (US)").equals(OMC.LOCALENAMES[i])) {
+				Log.i(OMC.OMCSHORT + "App","Using clock locale: " + OMC.LOCALENAMES[i]);
+
+				OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers", OMC.LOCALES[i]);
+				OMC.VERBOSETIME = OMC.RStringArray("verbosetime", OMC.LOCALES[i]);
+
+				break;
+			}
+		}
 
 		OMC.TIME.setToNow();
 		OMC.TIME.hour=0;
@@ -2141,6 +2150,13 @@ public class OMC extends Application {
 	
 	public static String[] RStringArray(final String key) {
 		return OMC.RES.getStringArray(OMC.RES.getIdentifier(key, "array", OMC.PKGNAME));
+	}
+	
+	public static String[] RStringArray(final String key, final Locale foreignLocale) {
+		Configuration configTemp = new Configuration(OMC.RES.getConfiguration());
+		configTemp.locale=foreignLocale;
+		Resources res = new Resources(OMC.AM,OMC.RES.getDisplayMetrics(),configTemp);
+		return res.getStringArray(res.getIdentifier(key, "array", OMC.PKGNAME));
 	}
 	
 	public static int RId(final String key) {

@@ -268,7 +268,7 @@ public class OMCPrefActivity extends PreferenceActivity {
     			findPreference("timeZone").setSummary(OMC.PREFS.getString("sTimeZone", "default"));
     		}
 
-        	// "Language".
+        	// "App UI Language".
         	Preference prefLocale = findPreference("appLocale"); 
         	prefLocale.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 				
@@ -290,10 +290,6 @@ public class OMCPrefActivity extends PreferenceActivity {
 									config.locale=selectedLocale;
 									OMC.RES.updateConfiguration(config, 
 											OMC.RES.getDisplayMetrics());
-									// Load locale-specific resources.
-									
-									OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers");
-									OMC.VERBOSETIME = OMC.RStringArray("verbosetime");
 
 									preference.setSummary(items[item]);
 //									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -308,6 +304,37 @@ public class OMCPrefActivity extends PreferenceActivity {
 			});
         	prefLocale.setSummary(OMC.PREFS.getString("appLocaleName", "English (US)"));
         	
+        	// "Clock Language".
+        	Preference prefClockLocale = findPreference("clockLocale"); 
+        	prefClockLocale.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+				
+				@Override
+				public boolean onPreferenceClick(final Preference preference) {
+					final CharSequence[] items = OMC.LOCALENAMES;
+					new AlertDialog.Builder(OMCPrefActivity.this)
+						.setTitle(OMC.RString("changeClockLocale"))
+						.setItems(items, new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog, int item) {
+									Locale selectedLocale = OMC.LOCALES[item];
+									OMC.PREFS.edit()
+											.putString("clockLocaleName", OMC.LOCALENAMES[item])
+											.commit();
+
+									OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers", selectedLocale);
+									OMC.VERBOSETIME = OMC.RStringArray("verbosetime", selectedLocale);
+
+									preference.setSummary(items[item]);
+
+									OMCPrefActivity.this.finish();
+								}
+						})
+						.show();					
+					return true;
+				}
+			});
+        	prefClockLocale.setSummary(OMC.PREFS.getString("clockLocaleName", "English (US)"));
+
         	// "Update Weather Now".
         	prefUpdWeatherNow = findPreference("updweathernow");
         	prefUpdWeatherNow.setOnPreferenceClickListener(new OnPreferenceClickListener() {

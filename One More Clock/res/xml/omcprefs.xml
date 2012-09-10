@@ -117,6 +117,9 @@
             <Preference
                 android:key="appLocale"
                 android:title="@string/changeAppLocale" />
+            <Preference
+                android:key="clockLocale"
+                android:title="@string/changeClockLocale" />
             
             <PreferenceScreen
                 android:key="widgetPrefs"
