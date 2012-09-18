@@ -358,7 +358,6 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 					if (!bylatlong) {
 						Log.e(OMC.OMCSHORT + "NOAAWeather", "NOAA handler does not support weather by location name!");
 						return;
-//						url = new URL("http://www.google.com/ig/api?oe=utf-8&weather="+city.replace(' ', '+') + "+" + country.replace(' ', '+'));
 					} else {
 						url = new URL(NOAAWeatherXMLHandler.URL_NOAAFORECAST+latitude+"&lon="+longitude);
 					}
@@ -408,18 +407,23 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 
 	@Override
 	public void characters(char[] ch, int start, int length) {
-		String value = new String(ch);
+		String value = new String(ch,start,length);
+		if (tree.isEmpty()) return;
+		if (tree.size()<2) return;
 		System.out.println (tree.peek()[0] + "-" + value);
-		if (tree.peek()[0].equals("temperature")) {
+		if (tree.peek()[1].equals("temperature")) {
+			System.out.println (tree.peek()[1] + "-" + value);
 			NOAAWeatherXMLHandler.TEMPTOUPDATE.add(Double.parseDouble(value));
 			return;
 		}
-		if (tree.peek()[0].equals("weather")) {
+		if (tree.peek()[1].equals("weather-conditions")) {
+			System.out.println (tree.peek()[1] + "-" + value);
 			NOAAWeatherXMLHandler.CONDITIONS.add(value);
 			return;
 		}
 		if (tree.peek()[0].equals("value")){
 			if (VALUETYPE.equals("")) return;
+			System.out.println (tree.peek()[0] + "-" + value);
 			try {
 				jsonWeather.put(VALUETYPE, value);
 			} catch (JSONException e) {

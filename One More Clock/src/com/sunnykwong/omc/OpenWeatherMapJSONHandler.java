@@ -84,8 +84,8 @@ public class OpenWeatherMapJSONHandler {
 						// First, Find current conditions from the closest Weather Station.
 						url = new URL(OpenWeatherMapJSONHandler.URL_STATIONSEARCH+latitude+";lon="+longitude);
 						huc = (HttpURLConnection) url.openConnection();
-						huc.setConnectTimeout(10000);
-						huc.setReadTimeout(10000);
+						huc.setConnectTimeout(30000);
+						huc.setReadTimeout(30000);
 
 						OWMhandler.tempJson = OMC.streamToJSONObject(huc.getInputStream());
 						JSONObject stationinfo = OWMhandler.tempJson.getJSONArray("list").getJSONObject(0);

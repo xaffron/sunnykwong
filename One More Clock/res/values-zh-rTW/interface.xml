@@ -14,14 +14,14 @@
         <string name="sdcardNotDetected">未檢測到SD卡。\n請留意終止USB存儲模式！</string>
         <string name="sdcardMissingOrCorrupt">SD卡讀取出現故障。\n請留意終止USB存儲模式！</string>
         <string name="themeNotFound">找不到此時鐘款式！暫時採用默認款式。</string>
-        <string name="warningConflictPaid">請注意！\n此版本與付費版並不兼容</string>
+        <string name="warningConflictPaid">請注意！\n此版本與完整版並不兼容</string>
         <string name="warningConflictFree">請注意！\n此版本與免費版並不兼容</string>
         <string name="warningConflictText">微調時鐘與輕按選項均會出現問題。\n敬請盡早將免費版卸載！</string>
         <string name="defaultThemeNotRemovable">不能刪除默認款式！</string>
         
         <!-- Bailout App Dialog -->
         <string name="thanksForDownloading">歡迎!</string>
-        <string name="widgetDir1">請先輕按\'返回鍵\'返回到首頁畫面，然後從\'小工具\'列表中將\u0020</string>
+        <string name="widgetDir1">請先輕按\'返回鍵\'返回到首頁畫面，再從\'小工具\'列表中將\u0020</string>
         <string name="widgetDir2">\u0020拖曳到首頁空白處。</string>
 
         <!-- Useful Tips -->
@@ -123,18 +123,18 @@
         <string name="nwCornerReserved">輕按左上角可隨時回到選項畫面</string>
         
         <!-- TTL Popup -->
-        <string name="areaToCustomize">Area to Customize:</string>
-        <string name="chooseAction">Choose Action</string>
-        <string name="openOptionsDefault">Open options (default)</string>
-        <string name="widgetPrefsTTL">Widget Prefs</string>
-        <string name="doNothing">Do nothing</string>
-        <string name="doNothingTTL">Do Nothing</string>
-        <string name="weatherForecast">Weather forecast</string>
-        <string name="weatherForecastTTL">Forecast</string>
-        <string name="viewAlarms">View alarms (Experimental)</string>
-        <string name="viewAlarmsTTL">View Alarms</string>
-        <string name="otherActivity">Other activity&#8230;</string>
-        <string name="otherActivityTTL">Custom Activity</string>
+        <string name="areaToCustomize">輕按區域:</string>
+        <string name="chooseAction">請選擇輕按反應</string>
+        <string name="openOptionsDefault">選項畫面(默認)</string>
+        <string name="widgetPrefsTTL">選項</string>
+        <string name="doNothing">無輕按反應</string>
+        <string name="doNothingTTL">無反應</string>
+        <string name="weatherForecast">天氣預測</string>
+        <string name="weatherForecastTTL">天氣預測</string>
+        <string name="viewAlarms">檢視鬧鐘設定 (試驗中)</string>
+        <string name="viewAlarmsTTL">檢視鬧鐘</string>
+        <string name="otherActivity">其他&#8230;</string>
+        <string name="otherActivityTTL">自訂行為</string>
         
         <string name="use24HourClock">用24小時方式顯示</string>
         <string name="use24HourTrue">23:59</string>
@@ -146,10 +146,10 @@
         <string name="followingDeviceTimeZone">(沿用本安卓電腦之時區)</string>
         
         <!-- TTL Sales Pitch -->
-        <string name="thinkOfThePossibilities">Think of the possibilities!</string>
-        <string name="prePaidTTL">The paid version lets you set\u0020</string>
-        <string name="postPaidTTL">\u0020to launch any activity you want, plus it offers widget sizes of 4x2, 4x1, 3x1 and 2x1.\nPlease consider upgrading to get these sizes!</string>
-        <string name="takeMeToPaid">Take me to the paid version!</string>
+        <string name="thinkOfThePossibilities">還有更多功能!</string>
+        <string name="prePaidTTL">完整版可以自訂輕按反應,\u0020</string>
+        <string name="postPaidTTL">\u0020更有齊5x4,5x2,5x1,4x4,4x2,4x1,3x3,3x1,2x2,2x1與1x3大小的小工具。</string>
+        <string name="takeMeToPaid">到Play Store購買!</string>
                 
         <!-- Weather & Widget Options -->
         <string name="forAllClocks">所有OMC時鐘之選項：</string>
@@ -181,10 +181,10 @@
         <string name="weatherProvider">天氣資料來源</string>
 		<string-array name="wprovider_options">
 		<!-- 	<item>OpenWeatherMap.org (default)</item> -->
-		 	<item>晴天鐘 (默認)</item>
-		 	<item>NOAA (僅供美國天氣)</item>
+		 	<item>晴天鐘(默認)</item>
+		 	<item>NOAA(僅供美國天氣)</item>
 			<item>Yr.no</item>
-			<item>谷歌天氣 (已無法運作)</item>
+			<item>谷歌天氣(已無法運作)</item>
 		</string-array>
         <string name="wp7timer">資料源自「晴天鐘」</string>
         <string name="wpnoaa">資料源自NOAA</string>
@@ -228,14 +228,14 @@
         <string name="keepOMCfromSleeping">Keep OMC from sleeping\n(at the cost of a persistent notification)</string>
         
         <string name="forceEnglishDates">Force English Dates</string>
-        <string name="uncheckForSome">Uncheck for some non-English locales.(Experimental)</string>
-        <string name="changeAppLocale">Language</string>
-        <string name="changeClockLocale">Clock Language</string>
+        <string name="uncheckForSome">Uncheck for some non-English locales.(試驗中)</string>
+        <string name="changeAppLocale">轉換界面語言</string>
+        <string name="changeClockLocale">轉換時鐘語言</string>
         
-        <string name="toggleWidgetSizes">Toggle Widget Sizes</string>
+        <string name="toggleWidgetSizes">自訂小工具尺碼</string>
         
-        <string name="rebootRequired">Reboot Required</string>
-        <string name="changesToTheseSettings">Changes to these setting will require a reboot of your phone to take effect.</string>
+        <string name="rebootRequired">須重新啟動電腦</string>
+        <string name="changesToTheseSettings">自訂後請重新啟動電話或平板電腦</string>
         <string name="enable5x4Widget">啟動(5x4)小工具</string>
         <string name="enable5x2Widget">啟動(5x2)小工具</string>
         <string name="enable5x1Widget">啟動(5x1)小工具</string>
@@ -247,13 +247,13 @@
         <string name="enable2x2Widget">啟動(2x2)小工具</string>
         <string name="enable2x1Widget">啟動(2x1)小工具</string>
         <string name="enable1x3Widget">啟動(1x3)小工具</string>
-        <string name="forGalaxyNote">For Galaxy Note or similar</string>
-        <string name="enableThemeTester">Enable Theme Tester</string>
-        <string name="developmentToolForSkinnersOnly">Development tool for skinners only</string>
+        <string name="forGalaxyNote">Galaxy Note等大畫面電話適用</string>
+        <string name="enableThemeTester">啟動Theme Tester</string>
+        <string name="developmentToolForSkinnersOnly">僅供Skin開發者</string>
         
         <!-- Widget Sizes Sales Pitch -->
-        <string name="areThereOtherWidgetSizes">Are there other widget sizes?</string>
-        <string name="actuallyThePaidVersion">Actually, the paid version offers widget sizes of 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 and 1x3.\nPlease consider upgrading to get these sizes!</string>
+        <string name="areThereOtherWidgetSizes">還有更多功能!</string>
+        <string name="actuallyThePaidVersion">完整版有齊5x4,5x2,5x1,4x4,4x2,4x1,3x3,3x1,2x2,2x1與1x3大小的小工具。</string>
                 
         
         
@@ -262,26 +262,26 @@
         
         <!-- Troubleshooting Options-->
         
-        <string name="clockPriority">Clock Priority</string>
-        <string name="forFineTuning">For fine-tuning responsiveness</string>
+        <string name="clockPriority">程式優先順序</string>
+        <string name="forFineTuning">在時鐘耗電量與精確度之間取平衡</string>
 		<string-array name="clockPriority_options">
-		    <item>Highest (Not recommended, aggressive redraws every tick)</item>	
-			<item>High (Aggressive redraws every minute, regardless of screen or launcher status)</item>
-			<item>Medium (Lazy redraws every minute when screen on, even when launcher is in background)</item>
-			<item>Low (Lazy redraws every minute when launcher inactive or screen off)</item>
-			<item>Lowest (Default, no redraws when launcher inactive or screen off)</item>
+		    <item>極高 (不建議, aggressive redraws every tick)</item>	
+			<item>高 (Aggressive redraws every minute, regardless of screen or launcher status)</item>
+			<item>中 (Lazy redraws every minute when screen on, even when launcher is in background)</item>
+			<item>低 (Lazy redraws every minute when launcher inactive or screen off)</item>
+			<item>極低 (默認, no redraws when launcher inactive or screen off)</item>
 		</string-array>
 
-        <string name="weatherDiagnostics">Weather Diagnostics</string>
-        <string name="submitLocationWeatherDebugData">Submit location/weather debug data</string>
+        <string name="weatherDiagnostics">診斷天氣下載問題</string>
+        <string name="submitLocationWeatherDebugData">通過電郵發送此款式Submit location/weather debug data</string>
         
-        <string name="deleteAllThemes">Delete All Themes</string>
-        <string name="forFixingThemeSelection">For fixing theme selection app crashes</string>
-        <string name="deleteAllThemesFromSD">Delete all Themes from your SD Card/Memory?</string>
-        <string name="yesDelete">Yes, delete all</string>
-        <string name="yesRestore">Yes, restore defaults</string>
-        <string name="omcThemesFolderDeleted">OMCThemes folder deleted</string>
-        <string name="defaultClockPackRestored">Default Clock Pack restored</string>
+        <string name="deleteAllThemes">刪除所有款式</string>
+        <string name="forFixingThemeSelection">有助解決程式強制關閉問題</string>
+        <string name="deleteAllThemesFromSD">刪除所有電腦/SD卡的款式嗎？</string>
+        <string name="yesDelete">確定,全部刪除</string>
+        <string name="yesRestore">確定,刪除後重載預裝時鐘</string>
+        <string name="omcThemesFolderDeleted">OMCThemes資料夾刪除完成</string>
+        <string name="defaultClockPackRestored">預裝時鐘重載完成</string>
         
         <!-- Contact Xaffron-->
         

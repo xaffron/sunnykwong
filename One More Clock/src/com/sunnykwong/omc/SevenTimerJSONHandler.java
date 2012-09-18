@@ -88,8 +88,8 @@ public class SevenTimerJSONHandler {
 						// Get forecast JSON.
 						url = new URL(sURL + "&lat="+latitude+"&lon="+longitude);
 						huc = (HttpURLConnection) url.openConnection();
-						huc.setConnectTimeout(20000);
-						huc.setReadTimeout(20000);
+						huc.setConnectTimeout(30000);
+						huc.setReadTimeout(30000);
 
 						tempJson = OMC.streamToJSONObject(huc.getInputStream());
 						

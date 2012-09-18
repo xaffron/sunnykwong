@@ -107,8 +107,8 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 						url = new URL(YrNoWeatherXMLHandler.URL_LOCATIONFORECASTLTS+latitude+";lon="+longitude);
 					}
 					huc = (HttpURLConnection) url.openConnection();
-					huc.setConnectTimeout(10000);
-					huc.setReadTimeout(10000);
+					huc.setConnectTimeout(30000);
+					huc.setReadTimeout(30000);
 
 					xr.parse(new InputSource(huc.getInputStream()));
 					UPDATEDTIME.set(huc.getDate());

@@ -113,8 +113,8 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 						url = new URL("http://www.google.com/ig/api?oe=utf-8&weather=,,,"+(long)(latitude*1000000)+","+(long)(longitude*1000000));
 					}
 					huc = (HttpURLConnection) url.openConnection();
-					huc.setConnectTimeout(10000);
-					huc.setReadTimeout(10000);
+					huc.setConnectTimeout(30000);
+					huc.setReadTimeout(30000);
 
 					xr.parse(new InputSource(huc.getInputStream())); 
 					huc.disconnect();

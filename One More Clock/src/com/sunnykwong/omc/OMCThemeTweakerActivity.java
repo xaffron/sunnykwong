@@ -210,8 +210,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-    	
-    	if (keyCode == android.view.KeyEvent.KEYCODE_BACK) {
+    	if (keyCode == android.view.KeyEvent.KEYCODE_BACK || keyCode == android.view.KeyEvent.KEYCODE_HOME) {
     		mAD = new AlertDialog.Builder(this)
     				.setTitle(OMC.RString("keepChanges"))
     				.setPositiveButton(OMC.RString("apply"), new DialogInterface.OnClickListener() {	

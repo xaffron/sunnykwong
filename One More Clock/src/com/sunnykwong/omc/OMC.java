@@ -2041,8 +2041,8 @@ public class OMC extends Application {
 				// Forced: Want current location only.
 				GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis());
 			} else{
-				// Lazy: Anything within the last 1.5 hours is ok
-				GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis()-5400000l);
+				// Lazy: Anything within the last 8 hours (28800000 ms) is ok
+				GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis()-28800000l);
 			}
 			return;
 		} else if (sWeatherSetting.equals("specific")) {
