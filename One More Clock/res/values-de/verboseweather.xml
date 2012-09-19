@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string-array name="VerboseWeather">
-<item>Desconocido</item>
-<item>Despejado</item>
-<item>Sunny</item>
+<item>Unbekannt</item>
+<item>Klar</item>
+<item>Sonnig</item>
 <item>Mostly Sunny</item>
-<item>Partly Sunny</item>
-<item>Parcialmente Nuboso</item>
+<item>Teilweise Sonnig</item>
+<item>Teilweise Bewölkt</item>
 <item>Dust</item>
 <item>Haze</item>
-<item>Brumas</item>
+<item>Mist</item>
 <item>Smoke</item>
-<item>Mostly Cloudy</item>
-<item>Nublado</item>
-<item>Nubes</item>
-<item>Fog</item>
-<item>Light Rain</item>
+<item>Stark Bewölkt</item>
+<item>Overcast</item>
+<item>Bewölkt</item>
+<item>Neblig</item>
+<item>Leichter Regen</item>
 <item>Rain Showers</item>
-<item>Llovizna</item>
-<item>Chubascos</item>
+<item>Nieselregen</item>
+<item>Einzelne Schauer</item>
 <item>Chance of Rain</item>
 <item>Chance of Showers</item>
-<item>Chubascos dispersos</item>
-<item>Tormenta</item>
+<item>Örtliche Schauer</item>
+<item>Thunderstorm</item>
 <item>Chance of Thunderstorm</item>
-<item>Tormentas dispersas</item>
+<item>Örtliche Gewitter</item>
 <item>Chance of Storm</item>
-<item>Storm</item>
-<item>Heavy Rain</item>
-<item>Lluvia</item>
+<item>Gewitter</item>
+<item>Starkregen</item>
+<item>Regen</item>
 <item>Flurries</item>
-<item>Débil nevada</item>
+<item>Leichter Schneefall</item>
 <item>Chance of Snow</item>
 <item>Snow Showers</item>
 <item>Scattered Snow Showers</item>
-<item>Nieve</item>
+<item>Schneefall</item>
 <item>Icy</item>
 <item>Ice or Snow</item>
 <item>Sleet</item>
 <item>Freezing Drizzle</item>
-<item>Combinado invernal</item>
+<item>Gemischter Niederschlag</item>
 <item>Windy</item>
 </string-array>
 </resources>

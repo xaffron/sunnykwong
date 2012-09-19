@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string-array name="VerboseWeather">
-<item>Desconocido</item>
-<item>Despejado</item>
-<item>Sunny</item>
-<item>Mostly Sunny</item>
-<item>Partly Sunny</item>
-<item>Parcialmente Nuboso</item>
+<item>不明</item>
+<item>晴朗</item>
+<item>天晴</item>
+<item>大致天晴</item>
+<item>部分天晴</item>
+<item>Partly Cloudy</item>
 <item>Dust</item>
 <item>Haze</item>
-<item>Brumas</item>
+<item>Mist</item>
 <item>Smoke</item>
 <item>Mostly Cloudy</item>
-<item>Nublado</item>
-<item>Nubes</item>
+<item>Overcast</item>
+<item>Cloudy</item>
 <item>Fog</item>
 <item>Light Rain</item>
 <item>Rain Showers</item>
-<item>Llovizna</item>
-<item>Chubascos</item>
+<item>Drizzle</item>
+<item>Showers</item>
 <item>Chance of Rain</item>
 <item>Chance of Showers</item>
-<item>Chubascos dispersos</item>
-<item>Tormenta</item>
+<item>Scattered Showers</item>
+<item>Thunderstorm</item>
 <item>Chance of Thunderstorm</item>
-<item>Tormentas dispersas</item>
+<item>Scattered Thunderstorms</item>
 <item>Chance of Storm</item>
 <item>Storm</item>
 <item>Heavy Rain</item>
-<item>Lluvia</item>
+<item>Rain</item>
 <item>Flurries</item>
-<item>Débil nevada</item>
+<item>Light Snow</item>
 <item>Chance of Snow</item>
 <item>Snow Showers</item>
 <item>Scattered Snow Showers</item>
-<item>Nieve</item>
+<item>Snow</item>
 <item>Icy</item>
 <item>Ice or Snow</item>
 <item>Sleet</item>
 <item>Freezing Drizzle</item>
-<item>Combinado invernal</item>
+<item>Rain and Snow</item>
 <item>Windy</item>
 </string-array>
 </resources>
