@@ -104,6 +104,8 @@ public class OMC extends Application {
 	static final String[] APM = {"Ante Meridiem","Post Meridiem"};	
 	static final Locale[] LOCALES = {new Locale("zh","TW",""),new Locale("es","ES",""),new Locale("de","",""),new Locale("en","US",""),new Locale("pl","",""),new Locale("sv","","")};
 	static final String[] LOCALENAMES = {"繁體中文","Castellano","Deutsch","English (US)","język Polski","Svenska"};
+	static SimpleDateFormat LOCALESDF;
+	static Locale CURRENTLOCALE;
 
 	//  NO NEED TO CHANGE BELOW THIS LINE FOR VERSIONING
 	
@@ -178,6 +180,7 @@ public class OMC extends Application {
 	static final int WIDGETHEIGHT=480;
 	static final String[] COMPASSPOINTS = {"NW","N","NE","W","C","E","SW","S","SE"};
 	static final Time TIME = new Time();
+	static Date DATE = new Date(); 
 	static final Time LASTRENDEREDTIME = new Time();
 	static String CACHEPATH;
 	static String[] WORDNUMBERS;
@@ -250,12 +253,15 @@ public class OMC extends Application {
 			if (OMC.PREFS.getString("appLocaleName", "English (US)").equals(OMC.LOCALENAMES[i])) {
 				Log.i(OMC.OMCSHORT + "App","Using app locale: " + OMC.LOCALENAMES[i]);
 				Configuration config = new Configuration();
-				config.locale=OMC.LOCALES[i];
+				OMC.CURRENTLOCALE = OMC.LOCALES[i];
+				config.locale=OMC.CURRENTLOCALE;
+				
 				OMC.RES.updateConfiguration(config, 
 						OMC.RES.getDisplayMetrics());
 				break;
 			}
 		}
+		OMC.CURRENTLOCALE = Locale.getDefault();
 
 	}
 
@@ -852,6 +858,7 @@ public class OMC extends Application {
 
 	public static Bitmap getBitmap(String sTheme, String src) {
 		if (src.startsWith("w-")) {
+			System.out.println("looking for " + src);
 			if (checkSDPresent()) {
 				OMC.WEATHERTRANSLATETYPE="AccuWeather";
 				File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/zz_WeatherSkin/accuweather.type");
@@ -1545,6 +1552,8 @@ public class OMC extends Application {
 						}
 						result = OMC.WEATHERCONVERSIONS.getJSONObject(sTranslateType)
 								.getJSONArray(sDay).optString(jsonWeather.optInt("condition_code",0),"00");
+					} else if (sType.equals("engcondition")) {
+						result = OMC.VERBOSEWEATHERENG[jsonWeather.optInt("condition_code",0)];
 					} else if (sType.equals("condition")) {
 						result = OMC.VERBOSEWEATHER[jsonWeather.optInt("condition_code",0)];
 					} else if (sType.equals("condition_lcase")) {
@@ -1857,9 +1866,31 @@ public class OMC extends Application {
 					sb.append(OMC.TIME.format("%"+inputChars[i]));
 				}
 				bIsTag=false;
-			} else if (bIsTag) {
-				sb.append(OMC.TIME.format("%"+inputChars[i]));
-				bIsTag=false;
+//			if (bIsTag) {
+//				OMC.CURRENTLOCALE = Locale.getDefault();
+//				OMC.DATE = new Date(OMC.TIME.toMillis(false));
+//				if (inputChars[i]=='A') {
+//					LOCALESDF = new SimpleDateFormat("E", OMC.CURRENTLOCALE);
+//					sb.append(LOCALESDF.format(OMC.DATE));
+//				} else if (inputChars[i]=='a') {
+//					LOCALESDF = new SimpleDateFormat("E", OMC.CURRENTLOCALE);
+//					sb.append(LOCALESDF.format(OMC.DATE));
+//				} else if (inputChars[i]=='B') {
+//					LOCALESDF = new SimpleDateFormat("L", OMC.CURRENTLOCALE);
+//					sb.append(LOCALESDF.format(OMC.DATE));
+//				} else if (inputChars[i]=='b') {
+//					LOCALESDF = new SimpleDateFormat("L", OMC.CURRENTLOCALE);
+//					sb.append(LOCALESDF.format(OMC.DATE));
+//				} else if (inputChars[i]=='P') {
+//					LOCALESDF = new SimpleDateFormat("a", OMC.CURRENTLOCALE);
+//					sb.append(LOCALESDF.format(OMC.DATE).toLowerCase());
+//				} else if (inputChars[i]=='p') {
+//					LOCALESDF = new SimpleDateFormat("a", OMC.CURRENTLOCALE);
+//					sb.append(LOCALESDF.format(OMC.DATE).toUpperCase());
+//				} else {
+//					sb.append(OMC.TIME.format("%"+inputChars[i]));
+//				}
+//				bIsTag=false;
 			} else if (inputChars[i]=='%'){
 				bIsTag=true;
 			} else {
