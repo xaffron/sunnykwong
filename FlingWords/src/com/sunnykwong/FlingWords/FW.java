@@ -86,7 +86,8 @@ public class FW extends Application {
 			    in.close();
 			    VOCABBATCHES = new JSONObject(sb.toString());
 			}
-			VOCABINDEX = VOCABBATCHES.getJSONArray("00index");
+			
+			VOCABINDEX = VOCABBATCHES.names();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
