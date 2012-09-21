@@ -164,6 +164,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 		CONDITIONTRANSLATIONS.put("a few clouds",5);
 		CONDITIONTRANSLATIONS.put("a few clouds with haze",5);
 		CONDITIONTRANSLATIONS.put("a few clouds and breezy",5);
+		CONDITIONTRANSLATIONS.put("increasing clouds",5);
 		CONDITIONTRANSLATIONS.put("partly cloudy",5);
 		CONDITIONTRANSLATIONS.put("partly cloudy with haze",5);
 		CONDITIONTRANSLATIONS.put("partly cloudy and breezy",5);

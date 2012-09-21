@@ -93,8 +93,10 @@ public class GoogleReverseGeocodeService {
 			huc.setConnectTimeout(10000);
 			huc.setReadTimeout(10000);
 
-			result = OMC.streamToJSONObject(huc.getInputStream());
+//			result = OMC.streamToJSONObject(huc.getInputStream());
 			huc.disconnect();
+			
+			result = new JSONObject("{\"results\":[{\"types\":[\"route\"],\"formatted_address\":\"Nikesite Walkway, Chalfont, PA 18914, USA\",\"address_components\":[{\"types\":[\"route\"],\"short_name\":\"Nikesite Walkway\",\"long_name\":\"Nikesite Walkway\"},{\"types\":[\"locality\",\"political\"],\"short_name\":\"Chalfont\",\"long_name\":\"Chalfont\"},{\"types\":[\"administrative_area_level_3\",\"political\"],\"short_name\":\"Warrington\",\"long_name\":\"Warrington\"},{\"types\":[\"administrative_area_level_2\",\"political\"],\"short_name\":\"Bucks\",\"long_name\":\"Bucks\"},{\"types\":[\"administrative_area_level_1\",\"political\"],\"short_name\":\"PA\",\"long_name\":\"Pennsylvania\"},{\"types\":[\"country\",\"political\"],\"short_name\":\"US\",\"long_name\":\"United States\"},{\"types\":[\"postal_code\"],\"short_name\":\"18914\",\"long_name\":\"18914\"}],\"geometry\":{\"bounds\":{\"southwest\":{\"lng\":-75.1771528,\"lat\":40.2429553},\"northeast\":{\"lng\":-75.1732984,\"lat\":40.246704}},\"viewport\":{\"southwest\":{\"lng\":-75.1771528,\"lat\":40.2429553},\"northeast\":{\"lng\":-75.1732984,\"lat\":40.246704}},\"location\":{\"lng\":-75.1748858,\"lat\":40.2433947},\"location_type\":\"APPROXIMATE\"}},{\"types\":[\"administrative_area_level_3\",\"political\"],\"formatted_address\":\"Warrington, PA, USA\",\"address_components\":[{\"types\":[\"administrative_area_level_3\",\"political\"],\"short_name\":\"Warrington\",\"long_name\":\"Warrington\"},{\"types\":[\"administrative_area_level_2\",\"political\"],\"short_name\":\"Bucks\",\"long_name\":\"Bucks\"},{\"types\":[\"administrative_area_level_1\",\"political\"],\"short_name\":\"PA\",\"long_name\":\"Pennsylvania\"},{\"types\":[\"country\",\"political\"],\"short_name\":\"US\",\"long_name\":\"United States\"}],\"geometry\":{\"bounds\":{\"southwest\":{\"lng\":-75.2141328,\"lat\":40.210886},\"northeast\":{\"lng\":-75.11099279999999,\"lat\":40.2831289}},\"viewport\":{\"southwest\":{\"lng\":-75.2141328,\"lat\":40.210886},\"northeast\":{\"lng\":-75.11099279999999,\"lat\":40.2831289}},\"location\":{\"lng\":-75.1662121,\"lat\":40.250319},\"location_type\":\"APPROXIMATE\"}},{\"types\":[\"postal_code\"],\"formatted_address\":\"Chalfont, PA 18914, USA\",\"address_components\":[{\"types\":[\"postal_code\"],\"short_name\":\"18914\",\"long_name\":\"18914\"},{\"types\":[\"locality\",\"political\"],\"short_name\":\"Chalfont\",\"long_name\":\"Chalfont\"},{\"types\":[\"administrative_area_level_1\",\"political\"],\"short_name\":\"PA\",\"long_name\":\"Pennsylvania\"},{\"types\":[\"country\",\"political\"],\"short_name\":\"US\",\"long_name\":\"United States\"}],\"geometry\":{\"bounds\":{\"southwest\":{\"lng\":-75.26018599999999,\"lat\":40.2286608},\"northeast\":{\"lng\":-75.1513329,\"lat\":40.348218}},\"viewport\":{\"southwest\":{\"lng\":-75.26018599999999,\"lat\":40.2286608},\"northeast\":{\"lng\":-75.1513329,\"lat\":40.348218}},\"location\":{\"lng\":-75.2128996,\"lat\":40.2764064},\"location_type\":\"APPROXIMATE\"}},{\"types\":[\"administrative_area_level_2\",\"political\"],\"formatted_address\":\"Bucks, PA, USA\",\"address_components\":[{\"types\":[\"administrative_area_level_2\",\"political\"],\"short_name\":\"Bucks\",\"long_name\":\"Bucks\"},{\"types\":[\"administrative_area_level_1\",\"political\"],\"short_name\":\"PA\",\"long_name\":\"Pennsylvania\"},{\"types\":[\"country\",\"political\"],\"short_name\":\"US\",\"long_name\":\"United States\"}],\"geometry\":{\"bounds\":{\"southwest\":{\"lng\":-75.48405679999999,\"lat\":40.0526851},\"northeast\":{\"lng\":-74.7236799,\"lat\":40.6085799}},\"viewport\":{\"southwest\":{\"lng\":-75.48405679999999,\"lat\":40.0526851},\"northeast\":{\"lng\":-74.7236799,\"lat\":40.6085799}},\"location\":{\"lng\":-75.2479061,\"lat\":40.4107964},\"location_type\":\"APPROXIMATE\"}},{\"types\":[\"administrative_area_level_1\",\"political\"],\"formatted_address\":\"Pennsylvania, USA\",\"address_components\":[{\"types\":[\"administrative_area_level_1\",\"political\"],\"short_name\":\"PA\",\"long_name\":\"Pennsylvania\"},{\"types\":[\"country\",\"political\"],\"short_name\":\"US\",\"long_name\":\"United States\"}],\"geometry\":{\"bounds\":{\"southwest\":{\"lng\":-80.51989499999999,\"lat\":39.7197989},\"northeast\":{\"lng\":-74.6895018,\"lat\":42.26936509999999}},\"viewport\":{\"southwest\":{\"lng\":-80.51989499999999,\"lat\":39.7197989},\"northeast\":{\"lng\":-74.6895018,\"lat\":42.26936509999999}},\"location\":{\"lng\":-77.1945247,\"lat\":41.2033216},\"location_type\":\"APPROXIMATE\"}},{\"types\":[\"country\",\"political\"],\"formatted_address\":\"United States\",\"address_components\":[{\"types\":[\"country\",\"political\"],\"short_name\":\"US\",\"long_name\":\"United States\"}],\"geometry\":{\"bounds\":{\"southwest\":{\"lng\":172.4546966,\"lat\":18.9110642},\"northeast\":{\"lng\":-66.94976079999999,\"lat\":71.389888}},\"viewport\":{\"southwest\":{\"lng\":-124.39,\"lat\":25.82},\"northeast\":{\"lng\":-66.94,\"lat\":49.38}},\"location\":{\"lng\":-95.712891,\"lat\":37.09024},\"location_type\":\"APPROXIMATE\"}}],\"status\":\"OK\"}");
 
 			String city = OMC.LASTKNOWNCITY, country = OMC.LASTKNOWNCOUNTRY;
 			if (!result.optString("status").equals("OK")) {
@@ -108,16 +110,17 @@ public class GoogleReverseGeocodeService {
 					JSONObject jobj = jary.optJSONObject(counter);
 					JSONArray jary2 = jobj.optJSONArray("address_components");
 					for (int counterj = 0; counterj < jary2.length(); counterj++){
-						if (jary2.optJSONObject(counterj).optJSONArray("types").optString(0).equals("sublocality")) {
-							city = jary2.optJSONObject(counterj).optString("long_name","Unknown");
+						for (int iType=0;iType<jary2.optJSONObject(counterj).optJSONArray("types").length();iType++) {
+							if (jary2.optJSONObject(counterj).optJSONArray("types").optString(iType).equals("sublocality")) {
+								city = jary2.optJSONObject(counterj).optString("long_name","Unknown");
+							}
+							if (jary2.optJSONObject(counterj).optJSONArray("types").optString(iType).equals("locality")) {
+								city = jary2.optJSONObject(counterj).optString("long_name","Unknown");
+							}
+							if (jary2.optJSONObject(counterj).optJSONArray("types").optString(iType).equals("country")) {
+								country = jary2.optJSONObject(counterj).optString("long_name","Unknown");
+							}
 						}
-						if (jary2.optJSONObject(counterj).optJSONArray("types").optString(0).equals("locality")) {
-							city = jary2.optJSONObject(counterj).optString("long_name","Unknown");
-						}
-						if (jary2.optJSONObject(counterj).optJSONArray("types").optString(0).equals("country")) {
-							country = jary2.optJSONObject(counterj).optString("long_name","Unknown");
-						}
-						counterj++;
 					}
 				}
 			}
