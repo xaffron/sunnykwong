@@ -115,9 +115,11 @@
                 android:summary="@string/uncheckForSome"
                 android:title="@string/forceEnglishDates" />
             <Preference
+                android:enabled="false"
                 android:key="appLocale"
                 android:title="@string/changeAppLocale" />
             <Preference
+                android:enabled="false"
                 android:key="clockLocale"
                 android:title="@string/changeClockLocale" />
             

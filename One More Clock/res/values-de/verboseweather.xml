@@ -4,42 +4,42 @@
 <item>Unbekannt</item>
 <item>Klar</item>
 <item>Sonnig</item>
-<item>Mostly Sunny</item>
+<item>Meist Sonnig</item>
 <item>Teilweise Sonnig</item>
 <item>Teilweise Bewölkt</item>
-<item>Dust</item>
-<item>Haze</item>
-<item>Mist</item>
-<item>Smoke</item>
-<item>Stark Bewölkt</item>
-<item>Overcast</item>
-<item>Bewölkt</item>
-<item>Neblig</item>
+<item>Staub</item>
+<item>Dunst</item>
+<item>Leichter Nebel</item>
+<item>Dampfig</item>
+<item>Meist Bewölkt</item>
+<item>Bedeckt</item>
+<item>Wolkig</item>
+<item>Nebel</item>
 <item>Leichter Regen</item>
-<item>Rain Showers</item>
-<item>Nieselregen</item>
-<item>Einzelne Schauer</item>
-<item>Chance of Rain</item>
-<item>Chance of Showers</item>
-<item>Örtliche Schauer</item>
-<item>Thunderstorm</item>
-<item>Chance of Thunderstorm</item>
-<item>Örtliche Gewitter</item>
-<item>Chance of Storm</item>
+<item>Regenschauer</item>
+<item>Niesel</item>
+<item>Schauer</item>
+<item>Regenmöglichkeit</item>
+<item>Schauermöglichkeit</item>
+<item>Vereinzelt Schauer</item>
 <item>Gewitter</item>
+<item>Gewittermöglichkeit</item>
+<item>Vereinzelt Gewitter </item>
+<item>Sturmmöglichkeit</item>
+<item>Sturm</item>
 <item>Starkregen</item>
 <item>Regen</item>
-<item>Flurries</item>
+<item>Schneetreiben</item>
 <item>Leichter Schneefall</item>
-<item>Chance of Snow</item>
-<item>Snow Showers</item>
-<item>Scattered Snow Showers</item>
-<item>Schneefall</item>
-<item>Icy</item>
-<item>Ice or Snow</item>
-<item>Sleet</item>
-<item>Freezing Drizzle</item>
-<item>Gemischter Niederschlag</item>
-<item>Windy</item>
+<item>Schneemöglichkeit</item>
+<item>Schneeschauer</item>
+<item>Vereinzelt Schneeschauer</item>
+<item>Schnee</item>
+<item>Eisglätte</item>
+<item>Eis oder Schnee</item>
+<item>Graupelschauer</item>
+<item>Gefrierender Sprühregen</item>
+<item>Graupel</item>
+<item>Windig</item>
 </string-array>
 </resources>

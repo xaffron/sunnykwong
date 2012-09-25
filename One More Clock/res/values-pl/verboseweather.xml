@@ -1,20 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string-array name="VerboseWeather">
-<item>Pogodnie</item>
-<item>Częściowe Zachmurzenie</item>
-<item>Przewaga Chmur</item>
-<item>Pochmurno</item>
-<item>Mgliście</item>
-<item>Lekki Deszcz</item>
-<item>Przelotne Opady</item>
-<item>Miejscowe Opady</item>
-<item>Lekki Śnieg</item>
-<item>Deszcz</item>
-<item>Śnieg</item>
-<item>Zmiennie Zimno</item>
-<item>Przelotne Burze</item>
-<item>Burza Z Piorunami</item>
 <item>Nieznana</item>
+<item>Pogodnie</item>
+<item>Sunny</item>
+<item>Mostly Sunny</item>
+<item>Partly Sunny</item>
+<item>Przewaga Chmur</item>
+<item>Dust</item>
+<item>Haze</item>
+<item>Mgliście</item>
+<item>Smoke</item>
+<item>Częściowe Zachmurzenie</item>
+<item>Overcast</item>
+<item>Pochmurno</item>
+<item>Fog</item>
+<item>Lekki Deszcz</item>
+<item>Rain Showers</item>
+<item>Drizzle</item>
+<item>Przelotne Opady</item>
+<item>Chance of Rain</item>
+<item>Chance of Showers</item>
+<item>Miejscowe Opady</item>
+<item>Burza Z Piorunami</item>
+<item>Chance of Thunderstorm</item>
+<item>Scattered Thunderstorms</item>
+<item>Przelotne Burze</item>
+<item>Storm</item>
+<item>Heavy Rain</item>
+<item>Deszcz</item>
+<item>Flurries</item>
+<item>Lekki Śnieg</item>
+<item>Chance of Snow</item>
+<item>Snow Showers</item>
+<item>Scattered Snow Showers</item>
+<item>Śnieg</item>
+<item>Icy</item>
+<item>Ice or Snow</item>
+<item>Sleet</item>
+<item>Freezing Drizzle</item>
+<item>Zmiennie Zimno</item>
+<item>Windy</item>
 </string-array>
 </resources>
+

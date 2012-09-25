@@ -79,7 +79,7 @@ import android.widget.Toast;
 public class OMC extends Application { 
 	
 	static final boolean DEBUG = true;
-	static final String TESTVER = "Alpha 4";
+	static final String TESTVER = "RC1";
 	static final boolean THEMESFROMCACHE = true;
 	static final String FALLBACKTHEME = "{ \"id\": \"Fallback\", \"name\": \"FB\", \"author\": \"\", \"date\": \"\", \"credits\": \"\", \"layers_bottomtotop\": [ { \"name\": \"T\", \"type\": \"text\", \"enabled\": true, \"text\": \"%H:%M\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 100, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 120, \"text_skew\": 0, \"text_stretch\": 1, \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 }, { \"name\": \"E\", \"type\": \"text\", \"enabled\": true, \"text\": \"! Theme Loading / No SD Card !\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 118, \"fgcolor\": \"#ffffcccc\", \"bgcolor\": \"#ff000000\", \"text_size\": 28, \"text_skew\": 0, \"text_stretch\": 0.9, \"text_align\": \"center\", \"render_style\": \"glow_3\", \"cw_rotate\": 0 }, { \"name\": \"S\", \"type\": \"text\", \"enabled\": true, \"text\": \"[%ompc_battlevel%]%% - [%weather_city%] - [%weather_temp%] - [%weather_condition%]\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 142, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 20, \"text_skew\": 0, \"text_stretch\": \"[%maxfit_1_300%]\", \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 } ] }";
 	static String THISVERSION; 
@@ -88,19 +88,13 @@ public class OMC extends Application {
 	static final boolean FREEEDITION = false;
 
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "asset:pk135.omc";
-	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v134.omc";
-	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v134.omc";
+	static final String STARTERPACKURL = "asset:pk136.omc";
+	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v136.omc";
+	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v136.omc";
 	static final String DEFAULTTHEME = "IceLock";
 	static final String DEFAULTTHEMELONG = "Ice Lock";
 	static final String APPICON = "clockicon";
 	
-	static final String[] FULLWEEKDAYS = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
-	static final String[] ABVWEEKDAYS = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
-	static final String[] FULLMONTHS = {"January","February","March","April","May","June",
-		"July","August","September","October","November","December"};
-	static final String[] ABVMONTHS = {"Jan","Feb","Mar","Apr","May","Jun",
-		"Jul","Aug","Sep","Oct","Nov","Dec"};
 	static final String[] APM = {"Ante Meridiem","Post Meridiem"};	
 	static final Locale[] LOCALES = {new Locale("zh","TW",""),new Locale("es","ES",""),new Locale("de","",""),new Locale("en","US",""),new Locale("pl","",""),new Locale("sv","","")};
 	static final String[] LOCALENAMES = {"繁體中文","Castellano","Deutsch","English (US)","język Polski","Svenska"};
@@ -131,6 +125,7 @@ public class OMC extends Application {
 	static String SHAREDPREFNAME;
 	static String PKGNAME;
 	static String[] VERBOSETIME;
+	static String[] VERBOSEDOW, SHORTDOW, VERBOSEMONTH, SHORTMONTH;
 	static String[] VERBOSEWEATHER;
 	static String[] VERBOSEWEATHERENG;
 	static String[] VERBOSENUMBERS;
@@ -528,6 +523,10 @@ public class OMC extends Application {
 				OMC.VERBOSETIME = OMC.RStringArray("verbosetime", OMC.LOCALES[i]);
 				OMC.VERBOSEWEATHER = OMC.RStringArray("VerboseWeather", OMC.LOCALES[i]);
 				OMC.VERBOSENUMBERS = OMC.RStringArray("WordNumbers", OMC.LOCALES[i]);
+				OMC.VERBOSEDOW = OMC.RStringArray("verbosedow", OMC.LOCALES[i]);
+				OMC.SHORTDOW = OMC.RStringArray("shortdow", OMC.LOCALES[i]);
+				OMC.VERBOSEMONTH = OMC.RStringArray("verbosemonth", OMC.LOCALES[i]);
+				OMC.SHORTMONTH = OMC.RStringArray("shortmonth", OMC.LOCALES[i]);
 
 			}  
 			if (OMC.LOCALENAMES[i].equals("English (US)")){
@@ -857,6 +856,36 @@ public class OMC extends Application {
 	}
 
 	public static Bitmap getBitmap(String sTheme, String src) {
+		if (src.startsWith("ww-")) {
+			System.out.println("looking for " + src);
+			if (checkSDPresent()) {
+				OMC.WEATHERTRANSLATETYPE="AccuWeather";
+				File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/zz_WeatherSkin/accuweather.type");
+				if (f.exists()) {
+					OMC.WEATHERTRANSLATETYPE = "AccuWeather";
+				}
+				f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/zz_WeatherSkin/weatherdotcom.type");
+				if (f.exists()) {
+					OMC.WEATHERTRANSLATETYPE = "WeatherDotCom";
+				}
+			}
+			// Translate from condition to filename
+			final String[] sTokens = src.split("[-.]");
+
+			int iConditionCode = Integer.parseInt(sTokens[1]); 
+			String daynight=sTokens[2];;
+			String src2;
+			try {
+				src2 = OMC.WEATHERCONVERSIONS.getJSONObject(OMC.WEATHERTRANSLATETYPE)
+							.getJSONArray(daynight).optString(iConditionCode,"Unk").toLowerCase();
+			} catch (JSONException e) {
+				e.printStackTrace();
+				src2 = "Unk";
+			}
+			src2+=".png";
+			return getBitmap(sTheme, src2);
+		}
+
 		if (src.startsWith("w-")) {
 			System.out.println("looking for " + src);
 			if (checkSDPresent()) {
@@ -1556,6 +1585,8 @@ public class OMC extends Application {
 						result = OMC.VERBOSEWEATHERENG[jsonWeather.optInt("condition_code",0)];
 					} else if (sType.equals("condition")) {
 						result = OMC.VERBOSEWEATHER[jsonWeather.optInt("condition_code",0)];
+					} else if (sType.equals("conditioncode")) {
+						result = jsonWeather.optInt("condition_code",0)+"";
 					} else if (sType.equals("condition_lcase")) {
 						result = OMC.VERBOSEWEATHER[jsonWeather.optInt("condition_code",0)].toLowerCase();
 					} else if (sType.equals("temp")) {
@@ -1768,6 +1799,12 @@ public class OMC extends Application {
 			} catch (java.lang.ArrayIndexOutOfBoundsException e) {
 				result = "";
 			}
+		} else if (sToken.equals("verbosenumber")){
+			try {
+				result = OMC.VERBOSENUMBERS[Integer.parseInt(st[iTokenNum++])];
+			} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+				result = "";
+			}
 		} else {
 			//unrecognized macro - ignore
 		}
@@ -1851,13 +1888,13 @@ public class OMC extends Application {
 		for (int i = 0; i < inputChars.length; i++) {
 			if (bIsTag && OMC.PREFS.getBoolean("widgetEnglishOnly", true)) {
 				if (inputChars[i]=='A') {
-					sb.append(OMC.FULLWEEKDAYS[OMC.TIME.weekDay]);
+					sb.append(OMC.VERBOSEDOW[OMC.TIME.weekDay]);
 				} else if (inputChars[i]=='a') {
-					sb.append(OMC.ABVWEEKDAYS[OMC.TIME.weekDay]);
+					sb.append(OMC.SHORTDOW[OMC.TIME.weekDay]);
 				} else if (inputChars[i]=='B') {
-					sb.append(OMC.FULLMONTHS[OMC.TIME.month]);
+					sb.append(OMC.VERBOSEMONTH[OMC.TIME.month]);
 				} else if (inputChars[i]=='b') {
-					sb.append(OMC.ABVMONTHS[OMC.TIME.month]);
+					sb.append(OMC.SHORTMONTH[OMC.TIME.month]);
 				} else if (inputChars[i]=='P') {
 					sb.append(OMC.TIME.hour<12?"AM":"PM");
 				} else if (inputChars[i]=='p') {
@@ -1866,31 +1903,9 @@ public class OMC extends Application {
 					sb.append(OMC.TIME.format("%"+inputChars[i]));
 				}
 				bIsTag=false;
-//			if (bIsTag) {
-//				OMC.CURRENTLOCALE = Locale.getDefault();
-//				OMC.DATE = new Date(OMC.TIME.toMillis(false));
-//				if (inputChars[i]=='A') {
-//					LOCALESDF = new SimpleDateFormat("E", OMC.CURRENTLOCALE);
-//					sb.append(LOCALESDF.format(OMC.DATE));
-//				} else if (inputChars[i]=='a') {
-//					LOCALESDF = new SimpleDateFormat("E", OMC.CURRENTLOCALE);
-//					sb.append(LOCALESDF.format(OMC.DATE));
-//				} else if (inputChars[i]=='B') {
-//					LOCALESDF = new SimpleDateFormat("L", OMC.CURRENTLOCALE);
-//					sb.append(LOCALESDF.format(OMC.DATE));
-//				} else if (inputChars[i]=='b') {
-//					LOCALESDF = new SimpleDateFormat("L", OMC.CURRENTLOCALE);
-//					sb.append(LOCALESDF.format(OMC.DATE));
-//				} else if (inputChars[i]=='P') {
-//					LOCALESDF = new SimpleDateFormat("a", OMC.CURRENTLOCALE);
-//					sb.append(LOCALESDF.format(OMC.DATE).toLowerCase());
-//				} else if (inputChars[i]=='p') {
-//					LOCALESDF = new SimpleDateFormat("a", OMC.CURRENTLOCALE);
-//					sb.append(LOCALESDF.format(OMC.DATE).toUpperCase());
-//				} else {
-//					sb.append(OMC.TIME.format("%"+inputChars[i]));
-//				}
-//				bIsTag=false;
+			} else if (bIsTag){
+				sb.append(OMC.TIME.format("%"+inputChars[i]));
+				bIsTag=false;
 			} else if (inputChars[i]=='%'){
 				bIsTag=true;
 			} else {

@@ -325,6 +325,10 @@ public class OMCPrefActivity extends PreferenceActivity {
 									OMC.VERBOSETIME = OMC.RStringArray("verbosetime", selectedLocale);
 									OMC.VERBOSEWEATHER = OMC.RStringArray("VerboseWeather", selectedLocale);
 									OMC.VERBOSENUMBERS = OMC.RStringArray("WordNumbers", selectedLocale);
+									OMC.VERBOSEDOW = OMC.RStringArray("verbosedow", selectedLocale);
+									OMC.SHORTDOW = OMC.RStringArray("shortdow", selectedLocale);
+									OMC.VERBOSEMONTH = OMC.RStringArray("verbosemonth", selectedLocale);
+									OMC.SHORTMONTH = OMC.RStringArray("shortmonth", selectedLocale);
 
 									preference.setSummary(items[item]);
 
