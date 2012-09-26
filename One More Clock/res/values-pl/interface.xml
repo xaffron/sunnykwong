@@ -265,13 +265,20 @@
         <string name="clockPriority">Priorytet zagara</string>
         <string name="forFineTuning">W celu zwiększenia dokładności</string>
 		<string-array name="clockPriority_options">
-		    <item>Najwyższy (Nie polecany, odświeżanie z każdą sekundą)</item>	
-			<item>Wysoki (Agresywny, odświeżanie co minutę, bez względu na zachowanie ekranu)</item>
-			<item>Średni (Odświeżanie co minutę tylko przy wlączonym ekranie, nawet kiedy aplikacja jest uruchomiona w tle)</item>
-			<item>Niski (Odświeżanie co minutę, kiedy ekran jest wyłączony, a aplikacja jest nieaktywna)</item>
-			<item>Najniższy (Domyślny, bez odświeżania przy wyłączonym ekranie i nieaktywnej aplikacji)</item>
+		    <item>Najwyższy</item>	
+			<item>Wysoki</item>
+			<item>Średni</item>
+			<item>Niski</item>
+			<item>Najniższy (Domyślny)</item>
 		</string-array>
-
+		<string-array name="clockPriority_legend">
+		    <item>Odświeżanie z każdą sekundą (Nie polecany).  Czy jesteś absolutnie pewnien?</item>	
+			<item>Agresywny, odświeżanie co minutę, bez względu na zachowanie ekranu.  Czy jesteś absolutnie pewnien?</item>
+			<item>Odświeżanie co minutę tylko przy wlączonym ekranie, nawet kiedy aplikacja jest uruchomiona w tle.  Czy jesteś absolutnie pewnien?</item>
+			<item>Odświeżanie co minutę, kiedy ekran jest wyłączony, a aplikacja jest nieaktywna.  Czy jesteś absolutnie pewnien?</item>
+			<item>Bez odświeżania przy wyłączonym ekranie i nieaktywnej aplikacji.  Czy jesteś absolutnie pewnien?</item>
+		</string-array>
+		
         <string name="weatherDiagnostics">Diagnostyka pogody</string>
         <string name="submitLocationWeatherDebugData">Potwierdź lokalizację/debugowanie danych pogody</string>
         

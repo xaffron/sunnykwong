@@ -27,11 +27,6 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		}
 		targettime = omctime + OMC.UPDATEFREQ;
 
-		//If omctime is at the minute mark, force update.
-		if (new Date(omctime).getSeconds()==0) {
-			bForceUpdate=true;
-		}
-
 		OMC.setServiceAlarm(targettime - OMC.LEASTLAGMILLIS, targettime);
 		
 		// If we come back from a low memory state, all sorts of screwy stuff might happen.
@@ -134,6 +129,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		if (action.equals(OMC.FGINTENT)) OMC.SVCSTARTINTENT.setAction(OMC.FGSTRING);
 		else OMC.SVCSTARTINTENT.setAction(OMC.BGSTRING);
 
+		// When Clock Priority is Medium or above:
 		// Do nothing if the screen turns off, but
 		// Start working again if the screen turns on.
 		// This obviously saves CPU cycles (and battery).
@@ -143,47 +139,63 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		if (action.equals(Intent.ACTION_SCREEN_ON)) {
 			OMC.SCREENON=true;
 			OMC.LASTUPDATEMILLIS=0l;
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Scrn switched on - immediate refresh.");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Scrn switched on.");
 		}
 	
 		if (action.equals(Intent.ACTION_SCREEN_OFF)) {
 			OMC.SCREENON=false;
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Scrn switched off - not refreshing");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Scrn switched off.");
+		}
+
+		//If OMC is set to highest priority, every tick is a forced update.
+		if (OMC.CURRENTCLOCKPRIORITY==0) {
+			bForceUpdate=true;
+		//If OMC is set to high priority, every minute mark is a forced update.
+		} else if (OMC.CURRENTCLOCKPRIORITY==1
+				 && new Date(omctime).getSeconds()==0) {
+			bForceUpdate=true;
+		//If OMC is set to medium priority, lazy draw/minute when screen on OR at minute mark when in BG.
+		} else if (OMC.CURRENTCLOCKPRIORITY==2
+				 && (new Date(omctime).getSeconds()==0
+				 	|| OMC.SCREENON)) {
+			bForceUpdate=true;
+		// If at low clock priority, lazy draw/minute when (screen on & launcher in FG) OR at minute mark when in BG.
+		} else if (OMC.CURRENTCLOCKPRIORITY==3 && (
+				new Date(omctime).getSeconds()==0 || (
+					OMC.SCREENON &&
+					OMC.INSTALLEDLAUNCHERAPPS.contains(
+						OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName()
+					)
+				)
+			)) {
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Launcher "+ OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName() +" running.");
+			bForceUpdate=true;
+		// If at lowest clock priority, lazy draw when screen on & launcher in FG.  No draw otherwise, period.
+		} else if (OMC.CURRENTCLOCKPRIORITY==4 && (
+				OMC.SCREENON &&
+				OMC.INSTALLEDLAUNCHERAPPS.contains(
+					OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName()
+				)
+			)) {
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Launcher "+ OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName() +" running.");
+			bForceUpdate=true;
 		}
 		
-		// Check if *a* homescreen is running (or if this is a "forced update").
-		// If not, treat like the screen is off.
-		boolean bRenderTick= true?
-				bForceUpdate || (OMC.SCREENON && OMC.INSTALLEDLAUNCHERAPPS.contains(OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName())) :
-				bForceUpdate || OMC.SCREENON;
-		
-		// If the screen is on, honor the update frequency.
-		if (bRenderTick) {
-			if (bForceUpdate) {
-				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Forced Update.");
-			} else {
-				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Launcher "+ OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName() +" running.");
-			}
+		// If it is a forced update, update.
+		if (bForceUpdate) {
 			OMC.LASTRENDEREDTIME.set(omctime);
 			context.startService(OMC.SVCSTARTINTENT);
 
-				//v1.3.2:  With Alarms cleaned up, we no longer need this check.
-//			if ((action.equals(OMC.FGINTENT.getAction()) || action.equals(OMC.BGINTENT.getAction()))) {
-//				if (omctime==OMC.LASTRENDEREDTIME.toMillis(false)) {
-//					// Prevent abusive updates - we've already rendered this target time.
-//					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm",OMC.LASTRENDEREDTIME.format2445() + " already rendered! Not redrawing clocks again.");
-//					return;
-//				}
-//			} 
-			
-		// If the screen is off, update bare minimum to mimic foreground mode.
+		// If time/zone changed, also force update.
 		} else if (action.equals(Intent.ACTION_TIME_CHANGED)
 				||action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
 			OMC.LASTRENDEREDTIME.set(omctime);
 			context.startService(OMC.SVCSTARTINTENT);
+
+		// Otherwise, skip the redraw.
 		} else {
 			OMC.LASTUPDATEMILLIS = System.currentTimeMillis();
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Skipping refresh due to inactive homescreen.");
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Skipping refresh.");
 		}
 	}
 }

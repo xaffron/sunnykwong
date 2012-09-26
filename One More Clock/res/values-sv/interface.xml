@@ -265,13 +265,20 @@
         <string name="clockPriority">Klockprioritering</string>
         <string name="forFineTuning">För att finjustera respons</string>
 		<string-array name="clockPriority_options">
-		    <item>Högsta - Rekommenderas ej, ritar varje sekund</item>	
-			<item>Hög - Ritar varje minut, oavsett skärmstatus</item>
-			<item>Medium - Ritar varje minut med påslagen skärm, även om startaren ligger i bakgrunden</item>
-			<item>Låg - Ritar varje minut när startaren är inaktiv eller skärmen avslagen</item>
-			<item>Lägsta - Standard, ingen rendering med inaktiv startare eller skärm</item>
+		    <item>Högsta</item>	
+			<item>Hög</item>
+			<item>Medium</item>
+			<item>Låg</item>
+			<item>Lägsta (Standard)</item>
 		</string-array>
-
+		<string-array name="clockPriority_legend">
+		    <item>Ritar varje sekund (Rekommenderas ej).  Är du helt säker?</item>	
+			<item>Ritar varje minut, oavsett skärmstatus.  Är du helt säker?</item>
+			<item>Ritar varje minut med påslagen skärm, även om startaren ligger i bakgrunden.  Är du helt säker?</item>
+			<item>Ritar varje minut när startaren är inaktiv eller skärmen avslagen.  Är du helt säker?</item>
+			<item>Ingen rendering med inaktiv startare eller skärm.  Är du helt säker?</item>
+		</string-array>
+		
         <string name="weatherDiagnostics">Väderdiagnostik</string>
         <string name="submitLocationWeatherDebugData">Skicka information med plats- och väderdata till utvecklarna</string>
         

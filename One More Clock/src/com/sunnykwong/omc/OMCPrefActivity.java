@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.appwidget.AppWidgetManager;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
@@ -292,9 +293,6 @@ public class OMCPrefActivity extends PreferenceActivity {
 											OMC.RES.getDisplayMetrics());
 
 									preference.setSummary(items[item]);
-//									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//									OMCPrefActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 									OMCPrefActivity.this.finish();
 								}
 						})
@@ -493,6 +491,38 @@ public class OMCPrefActivity extends PreferenceActivity {
         	// "Clear Render Caches".
         	prefclearCache = findPreference("clearCache");
 
+        	
+        	// "Clock Priority".
+        	Preference prefClockPriority = findPreference("clockPriority");
+        	prefClockPriority.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				
+				@Override
+				public boolean onPreferenceChange(final Preference preference, final Object newValue) {
+					final int iPriority = Integer.parseInt((String)newValue);
+					String sExplanation = OMC.RStringArray("clockPriority_legend")[iPriority];
+					new AlertDialog.Builder(OMCPrefActivity.this)
+						.setTitle(OMC.RString("clockPriority"))
+						.setMessage(sExplanation)
+						.setPositiveButton(OMC.RString("yes"), new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int item) {
+								OMC.PREFS.edit().putString("clockPriority", (String)newValue).commit();
+					        	preference.setSummary(OMC.RStringArray("clockPriority_options")[Integer.parseInt(OMC.PREFS.getString("clockPriority", "4"))]);
+					        	OMC.CURRENTCLOCKPRIORITY = Integer.parseInt(OMC.PREFS.getString("clockPriority", "4"));
+							}
+						})
+						.setNegativeButton(OMC.RString("no"), new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int item) {
+							}
+						})
+						.show();					
+					return false;
+				}
+			});
+        	prefClockPriority.setSummary(OMC.RStringArray("clockPriority_options")
+        			[Integer.parseInt(OMC.PREFS.getString("clockPriority", "4"))]);
+        	
         	// "Weather Diagnostics".
         	Preference prefWeatherDiag = findPreference("weatherDebug");
         	prefWeatherDiag.setOnPreferenceClickListener(new OnPreferenceClickListener() {

@@ -265,14 +265,21 @@
         <string name="clockPriority">Uhren-Rangfolge.</string>
         <string name="forFineTuning">Für die Feineinstellungs-Empfindlichkeit.</string>
 		<string-array name="clockPriority_options">
-		    <item>Höchste (Nicht empfehlenswert, aggressive \'Erneuerung\' jeder Augenblick).</item>	
-			<item>Hoch (Aggressive \'Erneuerung\' jede Minute, ungeachtet des Anzeige- oder Launcher Statusses).</item>
-			<item>Mittel (Lässige \'Erneuerung\' jede Ninute, wenn Anzeige angschaltet, auch wenn launcher im Hintergrund).</item>
-			<item>Niedrig (Lässige \'Erneuerung\' jede Ninute, wenn Launcher nicht aktiv oder Anzeige ausgeschaltet).</item>
-			<item>Kleinstes (Standard, keine \'Erneuerung\', wenn Launcher nicht aktiv oder Anzeige ausgeschaltet).</item>
+		    <item>Höchste</item>	
+			<item>Hoch</item>
+			<item>Mittel</item>
+			<item>Niedrig</item>
+			<item>Kleinstes (Standard).</item>
+		</string-array>
+		<string-array name="clockPriority_legend">
+		    <item>Aggressive \'Erneuerung\' jeder Augenblick (Nicht empfehlenswert).  Sind Sie sich wirklich sicher?</item>	
+			<item>Aggressive \'Erneuerung\' jede Minute, ungeachtet des Anzeige- oder Launcher Statusses.  Sind Sie sich wirklich sicher?</item>
+			<item>Lässige \'Erneuerung\' jede Ninute, wenn Anzeige angschaltet, auch wenn launcher im Hintergrund.  Sind Sie sich wirklich sicher?</item>
+			<item>Lässige \'Erneuerung\' jede Ninute, wenn Launcher nicht aktiv oder Anzeige ausgeschaltet.  Sind Sie sich wirklich sicher?</item>
+			<item>Keine \'Erneuerung\', wenn Launcher nicht aktiv oder Anzeige ausgeschaltet.  Sind Sie sich wirklich sicher?</item>
 		</string-array>
 
-        <string name="weatherDiagnostics">Wetter Diagnose.</string>
+		<string name="weatherDiagnostics">Wetter Diagnose.</string>
         <string name="submitLocationWeatherDebugData">Ort/Wetter Debug Daten verschicken.</string>
         
         <string name="deleteAllThemes">Alle Theme(n) löschen.</string>

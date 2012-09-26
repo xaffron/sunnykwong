@@ -265,13 +265,20 @@
         <string name="clockPriority">Prioridad del Reloj</string>
         <string name="forFineTuning">Para ajuste fino de respuesta</string>
 		<string-array name="clockPriority_options">
-		    <item>Muy Alto (No recomendado, redibujos agresivos cada tick)</item>	
-			<item>Alto (Redibujos agresivos cada minuto, independientemente de la pantalla o el estado del launcher)</item>
-			<item>Medio (Bajos redibujos cada minuto cuando la pantalla esta activa, incluso cuando el launcher está en segundo plano)</item>
-			<item>Bajo (Bajos redibujos cada minuto cuando el launcher o la pantalla están inactivas)</item>
-			<item>Muy bajo (Por defecto, no hay redibujos cuando el launcher o la pantalla están inactivas)</item>
+		    <item>Muy Alto</item>	
+			<item>Alto</item>
+			<item>Medio</item>
+			<item>Bajo</item>
+			<item>Muy bajo (Por defecto)</item>
 		</string-array>
-
+		<string-array name="clockPriority_legend">
+		    <item>Redibujos agresivos cada tick (No recomendado).  Estas seguro?</item>	
+			<item>Redibujos agresivos cada minuto, independientemente de la pantalla o el estado del launcher.  Estas seguro?</item>
+			<item>Bajos redibujos cada minuto cuando la pantalla esta activa, incluso cuando el launcher está en segundo plano.  Estas seguro?</item>
+			<item>Bajos redibujos cada minuto cuando el launcher o la pantalla están inactivas.  Estas seguro?</item>
+			<item>No hay redibujos cuando el launcher o la pantalla están inactivas.  Estas seguro?</item>
+		</string-array>
+		
         <string name="weatherDiagnostics">Diagnóstico de Tiempo</string>
         <string name="submitLocationWeatherDebugData">Enviar datos debug de localización/tiempo</string>
         

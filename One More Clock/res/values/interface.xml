@@ -265,13 +265,20 @@
         <string name="clockPriority">Clock Priority</string>
         <string name="forFineTuning">For fine-tuning responsiveness</string>
 		<string-array name="clockPriority_options">
-		    <item>Highest (Not recommended, aggressive redraws every tick)</item>	
-			<item>High (Aggressive redraws every minute, regardless of screen or launcher status)</item>
-			<item>Medium (Lazy redraws every minute when screen on, even when launcher is in background)</item>
-			<item>Low (Lazy redraws every minute when launcher inactive or screen off)</item>
-			<item>Lowest (Default, no redraws when launcher inactive or screen off)</item>
+		    <item>Highest</item>	
+			<item>High</item>
+			<item>Medium</item>
+			<item>Low</item>
+			<item>Lowest (Default)</item>
 		</string-array>
-
+		<string-array name="clockPriority_legend">
+		    <item>Aggressive redraws every tick (Not recommended).  Are you sure?</item>	
+			<item>Aggressive redraws every minute, regardless of screen or launcher status.  Are you sure?</item>
+			<item>Lazy redraws every minute when screen on, even when launcher is in background.  Are you sure?</item>
+			<item>Lazy redraws every minute when launcher inactive or screen off.  Are you sure?</item>
+			<item>No redraws when launcher inactive or screen off.  Are you sure?</item>
+		</string-array>
+		
         <string name="weatherDiagnostics">Weather Diagnostics</string>
         <string name="submitLocationWeatherDebugData">Submit location/weather debug data</string>
         

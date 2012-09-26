@@ -86,7 +86,7 @@ public class OMC extends Application {
 	static final boolean SINGLETON = false;
 	static Bitmap PLACEHOLDERBMP;
 	static final boolean FREEEDITION = false;
-
+	
 	static final String SINGLETONNAME = "One More Clock";
 	static final String STARTERPACKURL = "asset:pk136.omc";
 	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v136.omc";
@@ -133,6 +133,7 @@ public class OMC extends Application {
 	static boolean SHOWHELP = true;
 	static Uri PAIDURI;
 	
+	static int CURRENTCLOCKPRIORITY;
 	static long LASTUPDATEMILLIS, LEASTLAGMILLIS=200;
 	static long LASTWEATHERTRY=0l,LASTWEATHERREFRESH=0l,NEXTWEATHERREFRESH=0l;
 	static int LASTBATTERYPLUGGEDSTATUS=0;
@@ -268,7 +269,7 @@ public class OMC extends Application {
 		OMC.PKGNAME = getPackageName();
 		OMC.SHAREDPREFNAME = OMC.PKGNAME + "_preferences";
     	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_WORLD_READABLE);
-
+    	OMC.CURRENTCLOCKPRIORITY = OMC.PREFS.getInt("clockPriority", 4);
 		// Work around pre-Froyo bugs in HTTP connection reuse.
 		if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
 		    System.setProperty("http.keepAlive", "false");
@@ -734,13 +735,14 @@ public class OMC extends Application {
 //			if (OMC.DEBUG) Log.d(OMC.OMCSHORT + "App","   " + e);
 //			if (counter>5) break;
 //		}
-		//v1.3.1: Scaling back from RTC_WAKEUP to RTC for bettery battery life.  Hopefully reliability still holds.
+
+		int iAlarmSetting = OMC.CURRENTCLOCKPRIORITY>1?AlarmManager.RTC:AlarmManager.RTC_WAKEUP;
 		if (OMC.FG) {
 			OMC.FGINTENT.putExtra("target", lTargetTime);
-			OMC.ALARMS.set(AlarmManager.RTC, lTimeToRefresh, OMC.FGPENDING);
+			OMC.ALARMS.set(iAlarmSetting, lTimeToRefresh, OMC.FGPENDING);
 		} else {
 			OMC.BGINTENT.putExtra("target", lTargetTime);
-			OMC.ALARMS.set(AlarmManager.RTC, lTimeToRefresh, OMC.BGPENDING);
+			OMC.ALARMS.set(iAlarmSetting, lTimeToRefresh, OMC.BGPENDING);
 		}
     }
 
@@ -2087,8 +2089,8 @@ public class OMC extends Application {
 				// Forced: Want current location only.
 				GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis());
 			} else{
-				// Lazy: Anything within the last 8 hours (28800000 ms) is ok
-				GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis()-28800000l);
+				// Lazy: Anything within the last 24 hours (86400000 ms) is ok
+				GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis()-86400000l);
 			}
 			return;
 		} else if (sWeatherSetting.equals("specific")) {

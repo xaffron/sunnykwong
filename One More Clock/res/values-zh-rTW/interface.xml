@@ -265,13 +265,20 @@
         <string name="clockPriority">程式優先順序</string>
         <string name="forFineTuning">在時鐘耗電量與精確度之間取平衡</string>
 		<string-array name="clockPriority_options">
-		    <item>極高 (不建議, aggressive redraws every tick)</item>	
-			<item>高 (Aggressive redraws every minute, regardless of screen or launcher status)</item>
-			<item>中 (Lazy redraws every minute when screen on, even when launcher is in background)</item>
-			<item>低 (Lazy redraws every minute when launcher inactive or screen off)</item>
-			<item>極低 (默認, no redraws when launcher inactive or screen off)</item>
+		    <item>極高</item>	
+			<item>高</item>
+			<item>中</item>
+			<item>低</item>
+			<item>極低 (默認)</item>
 		</string-array>
-
+		<string-array name="clockPriority_legend">
+		    <item>Aggressive redraws every tick (不建議).  Are you sure?</item>	
+			<item>Aggressive redraws every minute, regardless of screen or launcher status.  Are you sure?</item>
+			<item>Lazy redraws every minute when screen on, even when launcher is in background.  Are you sure?</item>
+			<item>Lazy redraws every minute when launcher inactive or screen off.  Are you sure?</item>
+			<item>No redraws when launcher inactive or screen off.  Are you sure?</item>
+		</string-array>
+		
         <string name="weatherDiagnostics">診斷天氣下載問題</string>
         <string name="submitLocationWeatherDebugData">通過電郵發送此款式Submit location/weather debug data</string>
         
