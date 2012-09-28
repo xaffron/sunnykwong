@@ -52,7 +52,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 	public static LocationListener LL;
 	public static String TRAFFICRESULTS;
 	public static HashMap<String,String[]> ELEMENTS;
-	public static HashMap<String,File> THEMES;
+	public static HashMap<String,File> THEMES; 
 	public static String tempText = "";
 	public static File SDROOT, THEMEROOT;
 	public static ArrayAdapter<String> THEMEARRAY;

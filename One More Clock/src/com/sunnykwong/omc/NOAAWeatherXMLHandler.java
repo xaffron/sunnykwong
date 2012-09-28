@@ -34,7 +34,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 	public static final Time LOWDATE= new Time(Time.TIMEZONE_UTC);
 	public static final Time HIGHDATE= new Time(Time.TIMEZONE_UTC);
 	public static final Time UPDATEDTIME= new Time(Time.TIMEZONE_UTC);
-	public static ArrayList<Double> HIGHTEMPS;
+	public static ArrayList<Double> HIGHTEMPS; 
 	public static ArrayList<Double> LOWTEMPS;
 	public static double dCurrentTemp;
 	public static int iCurrentCondition;
