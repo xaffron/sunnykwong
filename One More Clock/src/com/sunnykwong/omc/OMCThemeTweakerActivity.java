@@ -170,8 +170,8 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         bmp.setDensity(Bitmap.DENSITY_NONE);
         vPreview.setImageBitmap(bmp);
         vPreview.invalidate();
-        System.out.println(vPreview.getWidth());
-        System.out.println(vPreview.getHeight());
+//        System.out.println(vPreview.getWidth());
+//        System.out.println(vPreview.getHeight());
         vPreview.setOnLongClickListener(this);
         vPreview.setOnClickListener(new View.OnClickListener() {
 			

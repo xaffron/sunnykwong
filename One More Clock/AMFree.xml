@@ -17,6 +17,7 @@
 	<uses-feature android:name="android.hardware.location.gps" android:required="false" />
 		<application android:name="com.sunnykwong.omc.OMC" 
     android:icon="@drawable/clockicon" 
+    android:configChanges="locale"
     android:label="@string/app_name_free"> 
         <activity android:name="com.sunnykwong.omc.OMCPrefActivity"
                   android:screenOrientation="behind"
