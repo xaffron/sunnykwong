@@ -107,19 +107,20 @@
                 android:selectable="true"
                 android:summary="@string/keepOMCfromSleeping"
                 android:title="@string/setForegroundMode" />
-            <CheckBoxPreference
+<!--            <CheckBoxPreference
                 android:defaultValue="true"
-                android:enabled="true"
+                android:enabled="false"
                 android:key="widgetEnglishOnly"
-                android:selectable="true"
+                android:selectable="false"
                 android:summary="@string/uncheckForSome"
                 android:title="@string/forceEnglishDates" />
+-->
             <Preference
-                android:enabled="false"
+                android:enabled="true"
                 android:key="appLocale"
                 android:title="@string/changeAppLocale" />
             <Preference
-                android:enabled="false"
+                android:enabled="true"
                 android:key="clockLocale"
                 android:title="@string/changeClockLocale" />
             

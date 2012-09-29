@@ -74,7 +74,7 @@ public class ZoneList extends ListActivity {
         super.onCreate(icicle);
 
         oDefaultChoice.put(KEY_ID, "default");
-        oDefaultChoice.put(KEY_DISPLAYNAME, "(Follow Device Time Zone)");
+        oDefaultChoice.put(KEY_DISPLAYNAME, OMC.RString("followingDeviceTimeZone"));
 
         String[] from = new String[] {KEY_DISPLAYNAME, KEY_GMT};
         int[] to = new int[] {android.R.id.text1, android.R.id.text2};

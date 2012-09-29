@@ -146,9 +146,8 @@ public class OMCPrefActivity extends PreferenceActivity {
 		}
 
     	
-    	// FIX FOR NOMEDIA and BADTHEME
+    	// FIX FOR BADTHEME
 		if (OMC.checkSDPresent()) {
-			((OMC)(this.getApplication())).fixnomedia();
 			((OMC)(this.getApplication())).fixKnownBadThemes();
 		}
 
@@ -565,12 +564,12 @@ public class OMCPrefActivity extends PreferenceActivity {
 
         	// Version text.
         	if (OMC.FREEEDITION) {
-        		findPreference("sVersion").setTitle("Version " + OMC.THISVERSION + " Free");
-        		findPreference("sVersion").setSummary("Tap me to get the full version!");
+        		findPreference("sVersion").setTitle(OMC.RString("version")+ " " + OMC.THISVERSION + " Free");
+        		findPreference("sVersion").setSummary(OMC.RString("tapToGetFull"));
         		findPreference("sVersion").setSelectable(true);
         	} else {
-        		findPreference("sVersion").setTitle("Version " + OMC.THISVERSION);
-        		findPreference("sVersion").setSummary("Thanks for your support!");
+        		findPreference("sVersion").setTitle(OMC.RString("version")+ " " + OMC.THISVERSION);
+        		findPreference("sVersion").setSummary(OMC.RString("thanksForYourSupport"));
         		findPreference("sVersion").setSelectable(false);
         	}
 

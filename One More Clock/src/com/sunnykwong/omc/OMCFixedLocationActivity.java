@@ -40,7 +40,7 @@ public class OMCFixedLocationActivity extends Activity {
 		
 		@Override
 		public void run() {
-			Toast.makeText(OMCFixedLocationActivity.this,  "No Results Found.\nPlease Try Again.", Toast.LENGTH_LONG).show();
+			Toast.makeText(OMCFixedLocationActivity.this, OMC.RString("locationError"), Toast.LENGTH_LONG).show();
 			btnSearch.setEnabled(true);
 		}
 	}; 
@@ -62,7 +62,7 @@ public class OMCFixedLocationActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				if (!OMC.isConnected()) {
-					Toast.makeText(OMCFixedLocationActivity.this,  "No Network Connection.\nPlease Try Again.", Toast.LENGTH_LONG).show();
+					Toast.makeText(OMCFixedLocationActivity.this,  OMC.RString("networkError"), Toast.LENGTH_LONG).show();
 					mHandler.post(mBADRESULT);
 					return;
 				}
@@ -162,7 +162,7 @@ public class OMCFixedLocationActivity extends Activity {
 						finish();
 					} catch (Exception e) {
 						e.printStackTrace();
-						Toast.makeText(OMCFixedLocationActivity.this, "Unknown Error Occurred.\nPlease Try Again.", Toast.LENGTH_LONG).show();
+						Toast.makeText(OMCFixedLocationActivity.this, OMC.RString("unknownError"), Toast.LENGTH_LONG).show();
 						tv.setBackgroundColor(Color.DKGRAY);
 					}
 				}

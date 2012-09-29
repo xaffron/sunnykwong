@@ -74,10 +74,28 @@
 
         <!-- Theme Import/Unzip -->
         <string name="themePreview">Theme Preview</string>
+        <string name="openingConnection">Opening connection.</string>
         <string name="beginningDownload">Beginning download.</string>
+        <string name="downloading">Downloading</string>
+        <string name="downloaded">Downloaded</string>
+        <string name="of">of</string>
+        <string name="bytes">bytes</string>
+        <string name="existsOverwriting">exists; overwriting</string>
+        <string name="createThemeFolder1">Theme folder \'</string>
+        <string name="createThemeFolder2">\'created.</string>
+        <string name="detectedWeatherskin">Detected WeatherSkin </string>
         <string name="extractingStarterClockPack">Extracting starter clock pack&#8230;</string>
         <string name="starterClockPack">Starter Clock Pack</string>
         <string name="starterClockPackText">Files in your sdcard\'s .OMCThemes folder will be overwritten.  Are you sure?\n(If not sure, tap Yes)</string>
+        <string name="importComplete">Import Complete!</string>
+        <string name="importAborted">Import Aborted!</string>
+        <string name="useDownloadInsteadOfPreview">Please use Download instead of Preview to import an OMC clock!</string>
+        <string name="importWorksWithOMCFiles">Clock import works with .omc files.\nWere you opening the wrong file?</string>
+        <string name="nothingToExtract">Nothing to extract!</string>
+        <string name="downloadInterrupted">Download Interrupted!</string>
+        <string name="poorReceptionArea">Is your phone in a poor reception area?\nPlease try again later.</string>
+        <string name="connectionTimedOut">Connection timed out!</string>
+        <string name="serverNotFound">Server not found!</string>
         
         <!-- Widget Theme Long Press-->
         
@@ -177,6 +195,9 @@
         <!-- Fixed Locn subscreen -->
         <string name="enterCityAndStateCountry">Enter city state/country</string>
         <string name="locationExamples">E.g. London UK</string>
+        <string name="locationError">No Results Found.\nPlease Try Again.</string>
+        <string name="networkError">No Network Connection.\nPlease Try Again.</string>
+        <string name="unknownError">Unknown Error Occurred.\nPlease Try Again.</string>
         
         <string name="weatherProvider">Weather Provider</string>
 		<string-array name="wprovider_options">
@@ -305,6 +326,7 @@
         <string name="version">Version</string>
         <string name="free">Free</string>
         <string name="tapToGetFull">Tap me to get the full version!</string>
+        <string name="thanksForYourSupport">Thanks for your support!</string>
         <string name="viewCredits">View Credits</string>
 
         <!-- Credits subscreen -->

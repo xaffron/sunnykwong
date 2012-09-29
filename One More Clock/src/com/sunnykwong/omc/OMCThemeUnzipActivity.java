@@ -52,7 +52,7 @@ public class OMCThemeUnzipActivity extends Activity {
 			((TextView)pdWait.findViewById(OMC.RId("UnzipStatus"))).setText(pdMessage);
 			((TextView)pdWait.findViewById(OMC.RId("UnzipStatus"))).invalidate();
 			if (COMPLETE) {
-				Toast.makeText(getApplicationContext(), "Import Complete!", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), OMC.RString("importComplete"), Toast.LENGTH_SHORT).show();
 				if (uri.toString().equals(OMC.STARTERPACKURL)) {
 					OMC.STARTERPACKDLED = true;
 					OMC.PREFS.edit().putBoolean("starterpack", true).commit();
@@ -60,7 +60,7 @@ public class OMCThemeUnzipActivity extends Activity {
 			} else if (!COMPLETE && uri.toString().equals(OMC.EXTENDEDPACK)) {
 				startActivity(OMC.GETBACKUPPACKINTENT);
 			} else {
-				Toast.makeText(getApplicationContext(), "Import Aborted!", Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), OMC.RString("importAborted"), Toast.LENGTH_LONG).show();
 			}
 			if (pdWait.isShowing()) pdWait.dismiss();
 			finish();
@@ -106,13 +106,13 @@ public class OMCThemeUnzipActivity extends Activity {
 		uri = getIntent().getData();
 		// Check file scheme first... we don't want to support Preview!
 		if (uri.getScheme().equals("content")) {
-			Toast.makeText(getApplicationContext(), "Please use Download instead of Preview to import an OMC clock!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), OMC.RString("useDownloadInsteadOfPreview"), Toast.LENGTH_SHORT).show();
 			finish();
 			return;
 		}
 		if (!uri.getScheme().equals("asset")) {
 			if (!uri.getLastPathSegment().matches(".*.omc")) {
-				Toast.makeText(getApplicationContext(), "Clock import works with .omc files.\nWere you opening the wrong file?", Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), OMC.RString("importWorksWithOMCFiles"), Toast.LENGTH_LONG).show();
 				finish();
 				return;
 			}
@@ -146,12 +146,12 @@ public class OMCThemeUnzipActivity extends Activity {
 			public void run() {
 				uri = getIntent().getData();
 				if (uri == null) {
-					Toast.makeText(getApplicationContext(), "Nothing to extract!", Toast.LENGTH_LONG).show();
+					Toast.makeText(getApplicationContext(), OMC.RString("nothingToExtract"), Toast.LENGTH_LONG).show();
 					finish();
 					return;
 				} else { 
 					try {
-						pdMessage = "Opening connection";
+						pdMessage = OMC.RString("openingConnection");
 						mHandler.post(mUpdateStatus);
 						String sScheme = uri.getScheme()+":";
 						if (sScheme.equals("")) sScheme = "http:";
@@ -173,7 +173,7 @@ public class OMCThemeUnzipActivity extends Activity {
 						} else {
 							downloadURL = new URL(sScheme + uri.getSchemeSpecificPart());
 							URLConnection conn = downloadURL.openConnection();
-							pdMessage = "Downloading " + conn.getContentLength() + " bytes...";
+							pdMessage = OMC.RString("downloading") + conn.getContentLength() + OMC.RString("bytes");
 							mHandler.post(mUpdateStatus);
 
 							InputStream is = conn.getInputStream();
@@ -185,7 +185,7 @@ public class OMCThemeUnzipActivity extends Activity {
 						    	iByteCount+=iBytesRead;
 						    	iCounter++;
 						    	if (iCounter>20) {
-									pdMessage = "Got " + iByteCount + " of " + iTotal + " bytes...";
+									pdMessage = OMC.RString("downloaded") + iByteCount + OMC.RString("of") + iTotal + OMC.RString("bytes");
 									mHandler.post(mUpdateStatus);
 						    		iCounter=0;
 						    	}
@@ -206,21 +206,21 @@ public class OMCThemeUnzipActivity extends Activity {
 								pdTitleMessage = ze.getName();
 								mHandler.post(mUpdateTitle);
 								if (outputFile.exists()) {
-									pdMessage = ze.getName() + " exists; overwriting";
+									pdMessage = ze.getName() + OMC.RString("existsOverwriting");
 									mHandler.post(mUpdateStatus);
 								} else if (outputFile.mkdir()==false) {
 									//ERROR CREATING DIRECTORY - crap out
-									pdMessage = ze.getName() + " exists; overwriting";
+									pdMessage = ze.getName() + OMC.RString("existsOverwriting");
 									mHandler.post(mUpdateStatus);
 									break;
 								} else {
-									pdMessage = "Theme folder '" + ze.getName() + "'created.";
+									pdMessage = OMC.RString("createThemeFolder1") + ze.getName() + OMC.RString("createThemeFolder2");
 									mHandler.post(mUpdateStatus);
 								}
 							} else {
 								if (ze.getName().contains("weatherdotcom.type") ||
 										ze.getName().contains("accuweather.type")) {
-									if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","Detected WeatherSkin " + ze.getName());
+									if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip",OMC.RString("detectedWeatherskin") + ze.getName());
 									OMC.removeFile(new File(omcRoot.getAbsolutePath()+"/zz_WeatherSkin/weatherdotcom.type"));
 									OMC.removeFile(new File(omcRoot.getAbsolutePath()+"/zz_WeatherSkin/accuweather.type"));
 								}
@@ -238,11 +238,11 @@ public class OMCThemeUnzipActivity extends Activity {
 									fos.flush();
 									fos.close();
 								} catch (java.io.IOException e) {
-									pdTitleMessage = "Download Interrupted!";
+									pdTitleMessage = OMC.RString("downloadInterrupted");
 									mHandler.post(mUpdateTitle);
 									try {Thread.sleep(500);}
 									catch (Exception ee) {ee.printStackTrace();}
-									pdMessage = "Is your phone in a poor reception area?\nPlease try again later.";
+									pdMessage = OMC.RString("poorReceptionArea");
 									mHandler.post(mUpdateStatus);
 									try {Thread.sleep(3000);}
 									catch (Exception ee) {ee.printStackTrace();}
@@ -259,7 +259,7 @@ public class OMCThemeUnzipActivity extends Activity {
 
 						}
 						zis.close();
-						pdTitleMessage = "Import complete!";
+						pdTitleMessage = OMC.RString("importComplete");
 						mHandler.post(mUpdateTitle);
 						try {Thread.sleep(3000);}
 						catch (Exception ee) {}
@@ -268,21 +268,21 @@ public class OMCThemeUnzipActivity extends Activity {
 						mHandler.post(mResult);
 
 					} catch (java.net.SocketException e) {
-						pdTitleMessage = "Connection timed out!";
+						pdTitleMessage = OMC.RString("connectionTimedOut");
 						mHandler.post(mUpdateTitle);
 						try {Thread.sleep(500);}
 						catch (Exception ee) {ee.printStackTrace();}
-						pdMessage = "Is your phone in a poor reception area?\nPlease try again later.";
+						pdMessage = OMC.RString("poorReceptionArea");
 						mHandler.post(mUpdateStatus);
 						try {Thread.sleep(3000);}
 						catch (Exception ee) {ee.printStackTrace();}
 						mHandler.post(mResult);
 					} catch (java.net.UnknownHostException e) {
-						pdTitleMessage = "Server not found!";
+						pdTitleMessage = OMC.RString("serverNotFound");
 						mHandler.post(mUpdateTitle);
 						try {Thread.sleep(500);}
 						catch (Exception ee) {ee.printStackTrace();}
-						pdMessage = "Is your phone in a poor reception area?\nPlease try again later.";
+						pdMessage = OMC.RString("poorReceptionArea");
 						mHandler.post(mUpdateStatus);
 						try {Thread.sleep(3000);}
 						catch (Exception ee) {ee.printStackTrace();}

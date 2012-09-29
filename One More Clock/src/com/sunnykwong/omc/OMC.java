@@ -79,7 +79,7 @@ import android.widget.Toast;
 public class OMC extends Application { 
 	
 	static final boolean DEBUG = false; 
-	static final String TESTVER = "";
+	static final String TESTVER = "Alpha1";
 	static final boolean THEMESFROMCACHE = true;
 	static final String FALLBACKTHEME = "{ \"id\": \"Fallback\", \"name\": \"FB\", \"author\": \"\", \"date\": \"\", \"credits\": \"\", \"layers_bottomtotop\": [ { \"name\": \"T\", \"type\": \"text\", \"enabled\": true, \"text\": \"%H:%M\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 100, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 120, \"text_skew\": 0, \"text_stretch\": 1, \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 }, { \"name\": \"E\", \"type\": \"text\", \"enabled\": true, \"text\": \"! Theme Loading / No SD Card !\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 118, \"fgcolor\": \"#ffffcccc\", \"bgcolor\": \"#ff000000\", \"text_size\": 28, \"text_skew\": 0, \"text_stretch\": 0.9, \"text_align\": \"center\", \"render_style\": \"glow_3\", \"cw_rotate\": 0 }, { \"name\": \"S\", \"type\": \"text\", \"enabled\": true, \"text\": \"[%ompc_battlevel%]%% - [%weather_city%] - [%weather_temp%] - [%weather_condition%]\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 142, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 20, \"text_skew\": 0, \"text_stretch\": \"[%maxfit_1_300%]\", \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 } ] }";
 	static String THISVERSION; 
@@ -97,7 +97,7 @@ public class OMC extends Application {
 	
 	static final String[] APM = {"Ante Meridiem","Post Meridiem"};	
 	static final Locale[] LOCALES = {new Locale("zh","TW",""),new Locale("es","ES",""),new Locale("de","",""),new Locale("en","US",""),new Locale("pl","",""),new Locale("sv","","")};
-	static final String[] LOCALENAMES = {"繁體中文","Castellano","Deutsch","English (US)","język Polski","Svenska"};
+	static final String[] LOCALENAMES = {"繁體中文","Castellano","Deutsch","English (US)","Język Polski","Svenska"};
 	static SimpleDateFormat LOCALESDF;
 	static Locale CURRENTLOCALE;
 
@@ -1145,28 +1145,6 @@ public class OMC extends Application {
 		return true;
 	}
 	
-	public boolean fixnomedia() {
-		File oldomcdir = new File( Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes");
-		if (!oldomcdir.exists()) return true;
-		Thread t = new Thread() {
-			public void run() {
-				mMessage = "Moving your themes to the new .OMCThemes directory from the Gallery.  Please do not mount or remove your SD card while this fix is in progress...";
-				mHandler.post(mPopToast);
-				File srcDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/OMCThemes");
-				File tgtDir=new File( Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes");
-				tgtDir.mkdirs();
-				OMC.copyDirectory(srcDir, tgtDir);
-				mMessage = "Almost There...";
-				mHandler.post(mPopToast);
-				OMC.removeDirectory(srcDir);
-				mMessage = "Your OMC themes are now hidden from media scans.  You can now use your phone normally.";
-				mHandler.post(mPopToast);
-			}
-		};
-		t.start();
-		return true;
-	}
-	
 	public static void copyDirectory(File src, File tgt) {
 		if (!tgt.exists()) tgt.mkdirs();
 		if (!tgt.isDirectory()) return;
@@ -1293,17 +1271,14 @@ public class OMC extends Application {
 	public static boolean checkSDPresent() {
     	
 		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-//        	Toast.makeText(getApplicationContext(), "SD Card not detected.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
 			return false;
         }
 
         File sdRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes");
         if (!sdRoot.exists()) {
-//        	Toast.makeText(this, "OMCThemes folder not found in your SD Card.\nCreating folder...", Toast.LENGTH_LONG).show();
         	sdRoot.mkdir();
         }
 		if (!sdRoot.canRead()) {
-//        	Toast.makeText(this, "SD Card missing or corrupt.\nRemember to turn off USB storage if it's still connected!", Toast.LENGTH_LONG).show();
         	return false;
         }
 		return true;
@@ -1874,7 +1849,7 @@ public class OMC extends Application {
 		final StringBuilder sb = new StringBuilder(inputChars.length);
 		boolean bIsTag = false;
 		for (int i = 0; i < inputChars.length; i++) {
-			if (bIsTag && OMC.PREFS.getBoolean("widgetEnglishOnly", true)) {
+			if (bIsTag) {
 				if (inputChars[i]=='A') {
 					sb.append(OMC.VERBOSEDOW[OMC.TIME.weekDay]);
 				} else if (inputChars[i]=='a') {
@@ -1890,9 +1865,6 @@ public class OMC extends Application {
 				} else {
 					sb.append(OMC.TIME.format("%"+inputChars[i]));
 				}
-				bIsTag=false;
-			} else if (bIsTag){
-				sb.append(OMC.TIME.format("%"+inputChars[i]));
 				bIsTag=false;
 			} else if (inputChars[i]=='%'){
 				bIsTag=true;
