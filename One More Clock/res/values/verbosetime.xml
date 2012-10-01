@@ -1,1445 +1,1453 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string-array name="verbosetime">
-<item>Twelve o\'Clock.</item>
-<item>one past Twelve.</item>
-<item>Two past Twelve.</item>
-<item>Three past Twelve.</item>
-<item>Four past Twelve.</item>
-<item>Five past Twelve.</item>
-<item>Six past Twelve.</item>
-<item>Seven past Twelve.</item>
-<item>Eight past Twelve.</item>
-<item>Nine past Twelve.</item>
-<item>Ten past Twelve.</item>
-<item>Eleven past Twelve.</item>
-<item>Twelve past Twelve.</item>
-<item>Thirteen past Twelve.</item>
-<item>Fourteen past Twelve.</item>
-<item>A Quarter past Twelve.</item>
-<item>Sixteen past Twelve.</item>
-<item>Seventeen past Twelve.</item>
-<item>Eighteen past Twelve.</item>
-<item>nineteen past Twelve.</item>
-<item>Twenty past Twelve.</item>
-<item>Twenty one past Twelve.</item>
-<item>Twenty Two past Twelve.</item>
-<item>Twenty Three past Twelve.</item>
-<item>Twenty Four past Twelve.</item>
-<item>Twenty Five past Twelve.</item>
-<item>Twenty Six past Twelve.</item>
-<item>Twenty Seven past Twelve.</item>
-<item>Twenty Eight past Twelve.</item>
-<item>Twenty Nine past Twelve.</item>
-<item>half past Twelve.</item>
-<item>Twenty Nine to One.</item>
-<item>Twenty Eight to One.</item>
-<item>Twenty Seven to One.</item>
-<item>Twenty Six to One.</item>
-<item>Twenty Five to One.</item>
-<item>Twenty Four to One.</item>
-<item>Twenty Three to One.</item>
-<item>Twenty Two to One.</item>
-<item>Twenty one to One.</item>
-<item>Twenty to One.</item>
-<item>nineteen to One.</item>
-<item>Eighteen to One.</item>
-<item>Seventeen to One.</item>
-<item>Sixteen to One.</item>
-<item>A Quarter to one.</item>
-<item>Fourteen to One.</item>
-<item>Thirteen to One.</item>
-<item>Twelve to One.</item>
-<item>Eleven to One.</item>
-<item>Ten to One.</item>
-<item>Nine to One.</item>
-<item>Eight to One.</item>
-<item>Seven to One.</item>
-<item>Six to One.</item>
-<item>Five to One.</item>
-<item>Four to One.</item>
-<item>Three to One.</item>
-<item>Two to One.</item>
-<item>one to One.</item>
-<item>one o\'Clock.</item>
-<item>one past one.</item>
-<item>Two past one.</item>
-<item>Three past one.</item>
-<item>Four past one.</item>
-<item>Five past one.</item>
-<item>Six past one.</item>
-<item>Seven past one.</item>
-<item>Eight past one.</item>
-<item>Nine past one.</item>
-<item>Ten past one.</item>
-<item>Eleven past one.</item>
-<item>Twelve past one.</item>
-<item>Thirteen past one.</item>
-<item>Fourteen past one.</item>
-<item>A Quarter past one.</item>
-<item>Sixteen past one.</item>
-<item>Seventeen past one.</item>
-<item>Eighteen past one.</item>
-<item>nineteen past one.</item>
-<item>Twenty past one.</item>
-<item>Twenty one past one.</item>
-<item>Twenty Two past one.</item>
-<item>Twenty Three past one.</item>
-<item>Twenty Four past one.</item>
-<item>Twenty Five past one.</item>
-<item>Twenty Six past one.</item>
-<item>Twenty Seven past one.</item>
-<item>Twenty Eight past one.</item>
-<item>Twenty Nine past one.</item>
-<item>half past one.</item>
-<item>Twenty Nine to Two.</item>
-<item>Twenty Eight to Two.</item>
-<item>Twenty Seven to Two.</item>
-<item>Twenty Six to Two.</item>
-<item>Twenty Five to Two.</item>
-<item>Twenty Four to Two.</item>
-<item>Twenty Three to Two.</item>
-<item>Twenty Two to Two.</item>
-<item>Twenty one to Two.</item>
-<item>Twenty to Two.</item>
-<item>nineteen to Two.</item>
-<item>Eighteen to Two.</item>
-<item>Seventeen to Two.</item>
-<item>Sixteen to Two.</item>
-<item>A Quarter to Two.</item>
-<item>Fourteen to Two.</item>
-<item>Thirteen to Two.</item>
-<item>Twelve to Two.</item>
-<item>Eleven to Two.</item>
-<item>Ten to Two.</item>
-<item>Nine to Two.</item>
-<item>Eight to Two.</item>
-<item>Seven to Two.</item>
-<item>Six to Two.</item>
-<item>Five to Two.</item>
-<item>Four to Two.</item>
-<item>Three to Two.</item>
-<item>Two to Two.</item>
-<item>one to Two.</item>
-<item>Two o\'Clock.</item>
-<item>one past Two.</item>
-<item>Two past Two.</item>
-<item>Three past Two.</item>
-<item>Four past Two.</item>
-<item>Five past Two.</item>
-<item>Six past Two.</item>
-<item>Seven past Two.</item>
-<item>Eight past Two.</item>
-<item>Nine past Two.</item>
-<item>Ten past Two.</item>
-<item>Eleven past Two.</item>
-<item>Twelve past Two.</item>
-<item>Thirteen past Two.</item>
-<item>Fourteen past Two.</item>
-<item>A Quarter past Two.</item>
-<item>Sixteen past Two.</item>
-<item>Seventeen past Two.</item>
-<item>Eighteen past Two.</item>
-<item>nineteen past Two.</item>
-<item>Twenty past Two.</item>
-<item>Twenty one past Two.</item>
-<item>Twenty Two past Two.</item>
-<item>Twenty Three past Two.</item>
-<item>Twenty Four past Two.</item>
-<item>Twenty Five past Two.</item>
-<item>Twenty Six past Two.</item>
-<item>Twenty Seven past Two.</item>
-<item>Twenty Eight past Two.</item>
-<item>Twenty Nine past Two.</item>
-<item>half past Two.</item>
-<item>Twenty Nine to Three.</item>
-<item>Twenty Eight to Three.</item>
-<item>Twenty Seven to Three.</item>
-<item>Twenty Six to Three.</item>
-<item>Twenty Five to Three.</item>
-<item>Twenty Four to Three.</item>
-<item>Twenty Three to Three.</item>
-<item>Twenty Two to Three.</item>
-<item>Twenty one to Three.</item>
-<item>Twenty to Three.</item>
-<item>nineteen to Three.</item>
-<item>Eighteen to Three.</item>
-<item>Seventeen to Three.</item>
-<item>Sixteen to Three.</item>
-<item>A Quarter to Three.</item>
-<item>Fourteen to Three.</item>
-<item>Thirteen to Three.</item>
-<item>Twelve to Three.</item>
-<item>Eleven to Three.</item>
-<item>Ten to Three.</item>
-<item>Nine to Three.</item>
-<item>Eight to Three.</item>
-<item>Seven to Three.</item>
-<item>Six to Three.</item>
-<item>Five to Three.</item>
-<item>Four to Three.</item>
-<item>Three to Three.</item>
-<item>Two to Three.</item>
-<item>one to Three.</item>
-<item>Three o\'Clock.</item>
-<item>one past Three.</item>
-<item>Two past Three.</item>
-<item>Three past Three.</item>
-<item>Four past Three.</item>
-<item>Five past Three.</item>
-<item>Six past Three.</item>
-<item>Seven past Three.</item>
-<item>Eight past Three.</item>
-<item>Nine past Three.</item>
-<item>Ten past Three.</item>
-<item>Eleven past Three.</item>
-<item>Twelve past Three.</item>
-<item>Thirteen past Three.</item>
-<item>Fourteen past Three.</item>
-<item>A Quarter past Three.</item>
-<item>Sixteen past Three.</item>
-<item>Seventeen past Three.</item>
-<item>Eighteen past Three.</item>
-<item>nineteen past Three.</item>
-<item>Twenty past Three.</item>
-<item>Twenty one past Three.</item>
-<item>Twenty Two past Three.</item>
-<item>Twenty Three past Three.</item>
-<item>Twenty Four past Three.</item>
-<item>Twenty Five past Three.</item>
-<item>Twenty Six past Three.</item>
-<item>Twenty Seven past Three.</item>
-<item>Twenty Eight past Three.</item>
-<item>Twenty Nine past Three.</item>
-<item>half past Three.</item>
-<item>Twenty Nine to Four.</item>
-<item>Twenty Eight to Four.</item>
-<item>Twenty Seven to Four.</item>
-<item>Twenty Six to Four.</item>
-<item>Twenty Five to Four.</item>
-<item>Twenty Four to Four.</item>
-<item>Twenty Three to Four.</item>
-<item>Twenty Two to Four.</item>
-<item>Twenty one to Four.</item>
-<item>Twenty to Four.</item>
-<item>nineteen to Four.</item>
-<item>Eighteen to Four.</item>
-<item>Seventeen to Four.</item>
-<item>Sixteen to Four.</item>
-<item>A Quarter to Four.</item>
-<item>Fourteen to Four.</item>
-<item>Thirteen to Four.</item>
-<item>Twelve to Four.</item>
-<item>Eleven to Four.</item>
-<item>Ten to Four.</item>
-<item>Nine to Four.</item>
-<item>Eight to Four.</item>
-<item>Seven to Four.</item>
-<item>Six to Four.</item>
-<item>Five to Four.</item>
-<item>Four to Four.</item>
-<item>Three to Four.</item>
-<item>Two to Four.</item>
-<item>one to Four.</item>
-<item>Four o\'Clock.</item>
-<item>one past Four.</item>
-<item>Two past Four.</item>
-<item>Three past Four.</item>
-<item>Four past Four.</item>
-<item>Five past Four.</item>
-<item>Six past Four.</item>
-<item>Seven past Four.</item>
-<item>Eight past Four.</item>
-<item>Nine past Four.</item>
-<item>Ten past Four.</item>
-<item>Eleven past Four.</item>
-<item>Twelve past Four.</item>
-<item>Thirteen past Four.</item>
-<item>Fourteen past Four.</item>
-<item>A Quarter past Four.</item>
-<item>Sixteen past Four.</item>
-<item>Seventeen past Four.</item>
-<item>Eighteen past Four.</item>
-<item>nineteen past Four.</item>
-<item>Twenty past Four.</item>
-<item>Twenty one past Four.</item>
-<item>Twenty Two past Four.</item>
-<item>Twenty Three past Four.</item>
-<item>Twenty Four past Four.</item>
-<item>Twenty Five past Four.</item>
-<item>Twenty Six past Four.</item>
-<item>Twenty Seven past Four.</item>
-<item>Twenty Eight past Four.</item>
-<item>Twenty Nine past Four.</item>
-<item>half past Four.</item>
-<item>Twenty Nine to Five.</item>
-<item>Twenty Eight to Five.</item>
-<item>Twenty Seven to Five.</item>
-<item>Twenty Six to Five.</item>
-<item>Twenty Five to Five.</item>
-<item>Twenty Four to Five.</item>
-<item>Twenty Three to Five.</item>
-<item>Twenty Two to Five.</item>
-<item>Twenty one to Five.</item>
-<item>Twenty to Five.</item>
-<item>nineteen to Five.</item>
-<item>Eighteen to Five.</item>
-<item>Seventeen to Five.</item>
-<item>Sixteen to Five.</item>
-<item>A Quarter to Five.</item>
-<item>Fourteen to Five.</item>
-<item>Thirteen to Five.</item>
-<item>Twelve to Five.</item>
-<item>Eleven to Five.</item>
-<item>Ten to Five.</item>
-<item>Nine to Five.</item>
-<item>Eight to Five.</item>
-<item>Seven to Five.</item>
-<item>Six to Five.</item>
-<item>Five to Five.</item>
-<item>Four to Five.</item>
-<item>Three to Five.</item>
-<item>Two to Five.</item>
-<item>one to Five.</item>
-<item>Five o\'Clock.</item>
-<item>one past Five.</item>
-<item>Two past Five.</item>
-<item>Three past Five.</item>
-<item>Four past Five.</item>
-<item>Five past Five.</item>
-<item>Six past Five.</item>
-<item>Seven past Five.</item>
-<item>Eight past Five.</item>
-<item>Nine past Five.</item>
-<item>Ten past Five.</item>
-<item>Eleven past Five.</item>
-<item>Twelve past Five.</item>
-<item>Thirteen past Five.</item>
-<item>Fourteen past Five.</item>
-<item>A Quarter past Five.</item>
-<item>Sixteen past Five.</item>
-<item>Seventeen past Five.</item>
-<item>Eighteen past Five.</item>
-<item>nineteen past Five.</item>
-<item>Twenty past Five.</item>
-<item>Twenty one past Five.</item>
-<item>Twenty Two past Five.</item>
-<item>Twenty Three past Five.</item>
-<item>Twenty Four past Five.</item>
-<item>Twenty Five past Five.</item>
-<item>Twenty Six past Five.</item>
-<item>Twenty Seven past Five.</item>
-<item>Twenty Eight past Five.</item>
-<item>Twenty Nine past Five.</item>
-<item>half past Five.</item>
-<item>Twenty Nine to Six.</item>
-<item>Twenty Eight to Six.</item>
-<item>Twenty Seven to Six.</item>
-<item>Twenty Six to Six.</item>
-<item>Twenty Five to Six.</item>
-<item>Twenty Four to Six.</item>
-<item>Twenty Three to Six.</item>
-<item>Twenty Two to Six.</item>
-<item>Twenty one to Six.</item>
-<item>Twenty to Six.</item>
-<item>nineteen to Six.</item>
-<item>Eighteen to Six.</item>
-<item>Seventeen to Six.</item>
-<item>Sixteen to Six.</item>
-<item>A Quarter to Six.</item>
-<item>Fourteen to Six.</item>
-<item>Thirteen to Six.</item>
-<item>Twelve to Six.</item>
-<item>Eleven to Six.</item>
-<item>Ten to Six.</item>
-<item>Nine to Six.</item>
-<item>Eight to Six.</item>
-<item>Seven to Six.</item>
-<item>Six to Six.</item>
-<item>Five to Six.</item>
-<item>Four to Six.</item>
-<item>Three to Six.</item>
-<item>Two to Six.</item>
-<item>one to Six.</item>
-<item>Six o\'Clock.</item>
-<item>one past Six.</item>
-<item>Two past Six.</item>
-<item>Three past Six.</item>
-<item>Four past Six.</item>
-<item>Five past Six.</item>
-<item>Six past Six.</item>
-<item>Seven past Six.</item>
-<item>Eight past Six.</item>
-<item>Nine past Six.</item>
-<item>Ten past Six.</item>
-<item>Eleven past Six.</item>
-<item>Twelve past Six.</item>
-<item>Thirteen past Six.</item>
-<item>Fourteen past Six.</item>
-<item>A Quarter past Six.</item>
-<item>Sixteen past Six.</item>
-<item>Seventeen past Six.</item>
-<item>Eighteen past Six.</item>
-<item>nineteen past Six.</item>
-<item>Twenty past Six.</item>
-<item>Twenty one past Six.</item>
-<item>Twenty Two past Six.</item>
-<item>Twenty Three past Six.</item>
-<item>Twenty Four past Six.</item>
-<item>Twenty Five past Six.</item>
-<item>Twenty Six past Six.</item>
-<item>Twenty Seven past Six.</item>
-<item>Twenty Eight past Six.</item>
-<item>Twenty Nine past Six.</item>
-<item>half past Six.</item>
-<item>Twenty Nine to Seven.</item>
-<item>Twenty Eight to Seven.</item>
-<item>Twenty Seven to Seven.</item>
-<item>Twenty Six to Seven.</item>
-<item>Twenty Five to Seven.</item>
-<item>Twenty Four to Seven.</item>
-<item>Twenty Three to Seven.</item>
-<item>Twenty Two to Seven.</item>
-<item>Twenty one to Seven.</item>
-<item>Twenty to Seven.</item>
-<item>nineteen to Seven.</item>
-<item>Eighteen to Seven.</item>
-<item>Seventeen to Seven.</item>
-<item>Sixteen to Seven.</item>
-<item>A Quarter to Seven.</item>
-<item>Fourteen to Seven.</item>
-<item>Thirteen to Seven.</item>
-<item>Twelve to Seven.</item>
-<item>Eleven to Seven.</item>
-<item>Ten to Seven.</item>
-<item>Nine to Seven.</item>
-<item>Eight to Seven.</item>
-<item>Seven to Seven.</item>
-<item>Six to Seven.</item>
-<item>Five to Seven.</item>
-<item>Four to Seven.</item>
-<item>Three to Seven.</item>
-<item>Two to Seven.</item>
-<item>one to Seven.</item>
-<item>Seven o\'Clock.</item>
-<item>one past Seven.</item>
-<item>Two past Seven.</item>
-<item>Three past Seven.</item>
-<item>Four past Seven.</item>
-<item>Five past Seven.</item>
-<item>Six past Seven.</item>
-<item>Seven past Seven.</item>
-<item>Eight past Seven.</item>
-<item>Nine past Seven.</item>
-<item>Ten past Seven.</item>
-<item>Eleven past Seven.</item>
-<item>Twelve past Seven.</item>
-<item>Thirteen past Seven.</item>
-<item>Fourteen past Seven.</item>
-<item>A Quarter past Seven.</item>
-<item>Sixteen past Seven.</item>
-<item>Seventeen past Seven.</item>
-<item>Eighteen past Seven.</item>
-<item>nineteen past Seven.</item>
-<item>Twenty past Seven.</item>
-<item>Twenty one past Seven.</item>
-<item>Twenty Two past Seven.</item>
-<item>Twenty Three past Seven.</item>
-<item>Twenty Four past Seven.</item>
-<item>Twenty Five past Seven.</item>
-<item>Twenty Six past Seven.</item>
-<item>Twenty Seven past Seven.</item>
-<item>Twenty Eight past Seven.</item>
-<item>Twenty Nine past Seven.</item>
-<item>half past Seven.</item>
-<item>Twenty Nine to Eight.</item>
-<item>Twenty Eight to Eight.</item>
-<item>Twenty Seven to Eight.</item>
-<item>Twenty Six to Eight.</item>
-<item>Twenty Five to Eight.</item>
-<item>Twenty Four to Eight.</item>
-<item>Twenty Three to Eight.</item>
-<item>Twenty Two to Eight.</item>
-<item>Twenty one to Eight.</item>
-<item>Twenty to Eight.</item>
-<item>nineteen to Eight.</item>
-<item>Eighteen to Eight.</item>
-<item>Seventeen to Eight.</item>
-<item>Sixteen to Eight.</item>
-<item>A Quarter to Eight.</item>
-<item>Fourteen to Eight.</item>
-<item>Thirteen to Eight.</item>
-<item>Twelve to Eight.</item>
-<item>Eleven to Eight.</item>
-<item>Ten to Eight.</item>
-<item>Nine to Eight.</item>
-<item>Eight to Eight.</item>
-<item>Seven to Eight.</item>
-<item>Six to Eight.</item>
-<item>Five to Eight.</item>
-<item>Four to Eight.</item>
-<item>Three to Eight.</item>
-<item>Two to Eight.</item>
-<item>one to Eight.</item>
-<item>Eight o\'Clock.</item>
-<item>one past Eight.</item>
-<item>Two past Eight.</item>
-<item>Three past Eight.</item>
-<item>Four past Eight.</item>
-<item>Five past Eight.</item>
-<item>Six past Eight.</item>
-<item>Seven past Eight.</item>
-<item>Eight past Eight.</item>
-<item>Nine past Eight.</item>
-<item>Ten past Eight.</item>
-<item>Eleven past Eight.</item>
-<item>Twelve past Eight.</item>
-<item>Thirteen past Eight.</item>
-<item>Fourteen past Eight.</item>
-<item>A Quarter past Eight.</item>
-<item>Sixteen past Eight.</item>
-<item>Seventeen past Eight.</item>
-<item>Eighteen past Eight.</item>
-<item>nineteen past Eight.</item>
-<item>Twenty past Eight.</item>
-<item>Twenty one past Eight.</item>
-<item>Twenty Two past Eight.</item>
-<item>Twenty Three past Eight.</item>
-<item>Twenty Four past Eight.</item>
-<item>Twenty Five past Eight.</item>
-<item>Twenty Six past Eight.</item>
-<item>Twenty Seven past Eight.</item>
-<item>Twenty Eight past Eight.</item>
-<item>Twenty Nine past Eight.</item>
-<item>half past Eight.</item>
-<item>Twenty Nine to Nine.</item>
-<item>Twenty Eight to Nine.</item>
-<item>Twenty Seven to Nine.</item>
-<item>Twenty Six to Nine.</item>
-<item>Twenty Five to Nine.</item>
-<item>Twenty Four to Nine.</item>
-<item>Twenty Three to Nine.</item>
-<item>Twenty Two to Nine.</item>
-<item>Twenty one to Nine.</item>
-<item>Twenty to Nine.</item>
-<item>nineteen to Nine.</item>
-<item>Eighteen to Nine.</item>
-<item>Seventeen to Nine.</item>
-<item>Sixteen to Nine.</item>
-<item>A Quarter to Nine.</item>
-<item>Fourteen to Nine.</item>
-<item>Thirteen to Nine.</item>
-<item>Twelve to Nine.</item>
-<item>Eleven to Nine.</item>
-<item>Ten to Nine.</item>
-<item>Nine to Nine.</item>
-<item>Eight to Nine.</item>
-<item>Seven to Nine.</item>
-<item>Six to Nine.</item>
-<item>Five to Nine.</item>
-<item>Four to Nine.</item>
-<item>Three to Nine.</item>
-<item>Two to Nine.</item>
-<item>one to Nine.</item>
-<item>Nine o\'Clock.</item>
-<item>one past Nine.</item>
-<item>Two past Nine.</item>
-<item>Three past Nine.</item>
-<item>Four past Nine.</item>
-<item>Five past Nine.</item>
-<item>Six past Nine.</item>
-<item>Seven past Nine.</item>
-<item>Eight past Nine.</item>
-<item>Nine past Nine.</item>
-<item>Ten past Nine.</item>
-<item>Eleven past Nine.</item>
-<item>Twelve past Nine.</item>
-<item>Thirteen past Nine.</item>
-<item>Fourteen past Nine.</item>
-<item>A Quarter past Nine.</item>
-<item>Sixteen past Nine.</item>
-<item>Seventeen past Nine.</item>
-<item>Eighteen past Nine.</item>
-<item>nineteen past Nine.</item>
-<item>Twenty past Nine.</item>
-<item>Twenty one past Nine.</item>
-<item>Twenty Two past Nine.</item>
-<item>Twenty Three past Nine.</item>
-<item>Twenty Four past Nine.</item>
-<item>Twenty Five past Nine.</item>
-<item>Twenty Six past Nine.</item>
-<item>Twenty Seven past Nine.</item>
-<item>Twenty Eight past Nine.</item>
-<item>Twenty Nine past Nine.</item>
-<item>half past Nine.</item>
-<item>Twenty Nine to Ten.</item>
-<item>Twenty Eight to Ten.</item>
-<item>Twenty Seven to Ten.</item>
-<item>Twenty Six to Ten.</item>
-<item>Twenty Five to Ten.</item>
-<item>Twenty Four to Ten.</item>
-<item>Twenty Three to Ten.</item>
-<item>Twenty Two to Ten.</item>
-<item>Twenty one to Ten.</item>
-<item>Twenty to Ten.</item>
-<item>nineteen to Ten.</item>
-<item>Eighteen to Ten.</item>
-<item>Seventeen to Ten.</item>
-<item>Sixteen to Ten.</item>
-<item>A Quarter to Ten.</item>
-<item>Fourteen to Ten.</item>
-<item>Thirteen to Ten.</item>
-<item>Twelve to Ten.</item>
-<item>Eleven to Ten.</item>
-<item>Ten to Ten.</item>
-<item>Nine to Ten.</item>
-<item>Eight to Ten.</item>
-<item>Seven to Ten.</item>
-<item>Six to Ten.</item>
-<item>Five to Ten.</item>
-<item>Four to Ten.</item>
-<item>Three to Ten.</item>
-<item>Two to Ten.</item>
-<item>one to Ten.</item>
-<item>Ten o\'Clock.</item>
-<item>one past Ten.</item>
-<item>Two past Ten.</item>
-<item>Three past Ten.</item>
-<item>Four past Ten.</item>
-<item>Five past Ten.</item>
-<item>Six past Ten.</item>
-<item>Seven past Ten.</item>
-<item>Eight past Ten.</item>
-<item>Nine past Ten.</item>
-<item>Ten past Ten.</item>
-<item>Eleven past Ten.</item>
-<item>Twelve past Ten.</item>
-<item>Thirteen past Ten.</item>
-<item>Fourteen past Ten.</item>
-<item>A Quarter past Ten.</item>
-<item>Sixteen past Ten.</item>
-<item>Seventeen past Ten.</item>
-<item>Eighteen past Ten.</item>
-<item>nineteen past Ten.</item>
-<item>Twenty past Ten.</item>
-<item>Twenty one past Ten.</item>
-<item>Twenty Two past Ten.</item>
-<item>Twenty Three past Ten.</item>
-<item>Twenty Four past Ten.</item>
-<item>Twenty Five past Ten.</item>
-<item>Twenty Six past Ten.</item>
-<item>Twenty Seven past Ten.</item>
-<item>Twenty Eight past Ten.</item>
-<item>Twenty Nine past Ten.</item>
-<item>half past Ten.</item>
-<item>Twenty Nine to Eleven.</item>
-<item>Twenty Eight to Eleven.</item>
-<item>Twenty Seven to Eleven.</item>
-<item>Twenty Six to Eleven.</item>
-<item>Twenty Five to Eleven.</item>
-<item>Twenty Four to Eleven.</item>
-<item>Twenty Three to Eleven.</item>
-<item>Twenty Two to Eleven.</item>
-<item>Twenty one to Eleven.</item>
-<item>Twenty to Eleven.</item>
-<item>nineteen to Eleven.</item>
-<item>Eighteen to Eleven.</item>
-<item>Seventeen to Eleven.</item>
-<item>Sixteen to Eleven.</item>
-<item>A Quarter to Eleven.</item>
-<item>Fourteen to Eleven.</item>
-<item>Thirteen to Eleven.</item>
-<item>Twelve to Eleven.</item>
-<item>Eleven to Eleven.</item>
-<item>Ten to Eleven.</item>
-<item>Nine to Eleven.</item>
-<item>Eight to Eleven.</item>
-<item>Seven to Eleven.</item>
-<item>Six to Eleven.</item>
-<item>Five to Eleven.</item>
-<item>Four to Eleven.</item>
-<item>Three to Eleven.</item>
-<item>Two to Eleven.</item>
-<item>one to Eleven.</item>
-<item>Eleven o\'Clock.</item>
-<item>one past Eleven.</item>
-<item>Two past Eleven.</item>
-<item>Three past Eleven.</item>
-<item>Four past Eleven.</item>
-<item>Five past Eleven.</item>
-<item>Six past Eleven.</item>
-<item>Seven past Eleven.</item>
-<item>Eight past Eleven.</item>
-<item>Nine past Eleven.</item>
-<item>Ten past Eleven.</item>
-<item>Eleven past Eleven.</item>
-<item>Twelve past Eleven.</item>
-<item>Thirteen past Eleven.</item>
-<item>Fourteen past Eleven.</item>
-<item>A Quarter past Eleven.</item>
-<item>Sixteen past Eleven.</item>
-<item>Seventeen past Eleven.</item>
-<item>Eighteen past Eleven.</item>
-<item>nineteen past Eleven.</item>
-<item>Twenty past Eleven.</item>
-<item>Twenty one past Eleven.</item>
-<item>Twenty Two past Eleven.</item>
-<item>Twenty Three past Eleven.</item>
-<item>Twenty Four past Eleven.</item>
-<item>Twenty Five past Eleven.</item>
-<item>Twenty Six past Eleven.</item>
-<item>Twenty Seven past Eleven.</item>
-<item>Twenty Eight past Eleven.</item>
-<item>Twenty Nine past Eleven.</item>
-<item>half past Eleven.</item>
-<item>Twenty Nine to Twelve.</item>
-<item>Twenty Eight to Twelve.</item>
-<item>Twenty Seven to Twelve.</item>
-<item>Twenty Six to Twelve.</item>
-<item>Twenty Five to Twelve.</item>
-<item>Twenty Four to Twelve.</item>
-<item>Twenty Three to Twelve.</item>
-<item>Twenty Two to Twelve.</item>
-<item>Twenty one to Twelve.</item>
-<item>Twenty to Twelve.</item>
-<item>nineteen to Twelve.</item>
-<item>Eighteen to Twelve.</item>
-<item>Seventeen to Twelve.</item>
-<item>Sixteen to Twelve.</item>
-<item>A Quarter to Twelve.</item>
-<item>Fourteen to Twelve.</item>
-<item>Thirteen to Twelve.</item>
-<item>Twelve to Twelve.</item>
-<item>Eleven to Twelve.</item>
-<item>Ten to Twelve.</item>
-<item>Nine to Twelve.</item>
-<item>Eight to Twelve.</item>
-<item>Seven to Twelve.</item>
-<item>Six to Twelve.</item>
-<item>Five to Twelve.</item>
-<item>Four to Twelve.</item>
-<item>Three to Twelve.</item>
-<item>Two to Twelve.</item>
-<item>one to Twelve.</item>
-<item>Twelve o\'Clock.</item>
-<item>one past Twelve.</item>
-<item>Two past Twelve.</item>
-<item>Three past Twelve.</item>
-<item>Four past Twelve.</item>
-<item>Five past Twelve.</item>
-<item>Six past Twelve.</item>
-<item>Seven past Twelve.</item>
-<item>Eight past Twelve.</item>
-<item>Nine past Twelve.</item>
-<item>Ten past Twelve.</item>
-<item>Eleven past Twelve.</item>
-<item>Twelve past Twelve.</item>
-<item>Thirteen past Twelve.</item>
-<item>Fourteen past Twelve.</item>
-<item>A Quarter past Twelve.</item>
-<item>Sixteen past Twelve.</item>
-<item>Seventeen past Twelve.</item>
-<item>Eighteen past Twelve.</item>
-<item>nineteen past Twelve.</item>
-<item>Twenty past Twelve.</item>
-<item>Twenty one past Twelve.</item>
-<item>Twenty Two past Twelve.</item>
-<item>Twenty Three past Twelve.</item>
-<item>Twenty Four past Twelve.</item>
-<item>Twenty Five past Twelve.</item>
-<item>Twenty Six past Twelve.</item>
-<item>Twenty Seven past Twelve.</item>
-<item>Twenty Eight past Twelve.</item>
-<item>Twenty Nine past Twelve.</item>
-<item>half past Twelve.</item>
-<item>Twenty Nine to One.</item>
-<item>Twenty Eight to One.</item>
-<item>Twenty Seven to One.</item>
-<item>Twenty Six to One.</item>
-<item>Twenty Five to One.</item>
-<item>Twenty Four to One.</item>
-<item>Twenty Three to One.</item>
-<item>Twenty Two to One.</item>
-<item>Twenty one to One.</item>
-<item>Twenty to One.</item>
-<item>nineteen to One.</item>
-<item>Eighteen to One.</item>
-<item>Seventeen to One.</item>
-<item>Sixteen to One.</item>
-<item>A Quarter to one.</item>
-<item>Fourteen to One.</item>
-<item>Thirteen to One.</item>
-<item>Twelve to One.</item>
-<item>Eleven to One.</item>
-<item>Ten to One.</item>
-<item>Nine to One.</item>
-<item>Eight to One.</item>
-<item>Seven to One.</item>
-<item>Six to One.</item>
-<item>Five to One.</item>
-<item>Four to One.</item>
-<item>Three to One.</item>
-<item>Two to One.</item>
-<item>one to One.</item>
-<item>one o\'Clock.</item>
-<item>one past one.</item>
-<item>Two past one.</item>
-<item>Three past one.</item>
-<item>Four past one.</item>
-<item>Five past one.</item>
-<item>Six past one.</item>
-<item>Seven past one.</item>
-<item>Eight past one.</item>
-<item>Nine past one.</item>
-<item>Ten past one.</item>
-<item>Eleven past one.</item>
-<item>Twelve past one.</item>
-<item>Thirteen past one.</item>
-<item>Fourteen past one.</item>
-<item>A Quarter past one.</item>
-<item>Sixteen past one.</item>
-<item>Seventeen past one.</item>
-<item>Eighteen past one.</item>
-<item>nineteen past one.</item>
-<item>Twenty past one.</item>
-<item>Twenty one past one.</item>
-<item>Twenty Two past one.</item>
-<item>Twenty Three past one.</item>
-<item>Twenty Four past one.</item>
-<item>Twenty Five past one.</item>
-<item>Twenty Six past one.</item>
-<item>Twenty Seven past one.</item>
-<item>Twenty Eight past one.</item>
-<item>Twenty Nine past one.</item>
-<item>half past one.</item>
-<item>Twenty Nine to Two.</item>
-<item>Twenty Eight to Two.</item>
-<item>Twenty Seven to Two.</item>
-<item>Twenty Six to Two.</item>
-<item>Twenty Five to Two.</item>
-<item>Twenty Four to Two.</item>
-<item>Twenty Three to Two.</item>
-<item>Twenty Two to Two.</item>
-<item>Twenty one to Two.</item>
-<item>Twenty to Two.</item>
-<item>nineteen to Two.</item>
-<item>Eighteen to Two.</item>
-<item>Seventeen to Two.</item>
-<item>Sixteen to Two.</item>
-<item>A Quarter to Two.</item>
-<item>Fourteen to Two.</item>
-<item>Thirteen to Two.</item>
-<item>Twelve to Two.</item>
-<item>Eleven to Two.</item>
-<item>Ten to Two.</item>
-<item>Nine to Two.</item>
-<item>Eight to Two.</item>
-<item>Seven to Two.</item>
-<item>Six to Two.</item>
-<item>Five to Two.</item>
-<item>Four to Two.</item>
-<item>Three to Two.</item>
-<item>Two to Two.</item>
-<item>one to Two.</item>
-<item>Two o\'Clock.</item>
-<item>one past Two.</item>
-<item>Two past Two.</item>
-<item>Three past Two.</item>
-<item>Four past Two.</item>
-<item>Five past Two.</item>
-<item>Six past Two.</item>
-<item>Seven past Two.</item>
-<item>Eight past Two.</item>
-<item>Nine past Two.</item>
-<item>Ten past Two.</item>
-<item>Eleven past Two.</item>
-<item>Twelve past Two.</item>
-<item>Thirteen past Two.</item>
-<item>Fourteen past Two.</item>
-<item>A Quarter past Two.</item>
-<item>Sixteen past Two.</item>
-<item>Seventeen past Two.</item>
-<item>Eighteen past Two.</item>
-<item>nineteen past Two.</item>
-<item>Twenty past Two.</item>
-<item>Twenty one past Two.</item>
-<item>Twenty Two past Two.</item>
-<item>Twenty Three past Two.</item>
-<item>Twenty Four past Two.</item>
-<item>Twenty Five past Two.</item>
-<item>Twenty Six past Two.</item>
-<item>Twenty Seven past Two.</item>
-<item>Twenty Eight past Two.</item>
-<item>Twenty Nine past Two.</item>
-<item>half past Two.</item>
-<item>Twenty Nine to Three.</item>
-<item>Twenty Eight to Three.</item>
-<item>Twenty Seven to Three.</item>
-<item>Twenty Six to Three.</item>
-<item>Twenty Five to Three.</item>
-<item>Twenty Four to Three.</item>
-<item>Twenty Three to Three.</item>
-<item>Twenty Two to Three.</item>
-<item>Twenty one to Three.</item>
-<item>Twenty to Three.</item>
-<item>nineteen to Three.</item>
-<item>Eighteen to Three.</item>
-<item>Seventeen to Three.</item>
-<item>Sixteen to Three.</item>
-<item>A Quarter to Three.</item>
-<item>Fourteen to Three.</item>
-<item>Thirteen to Three.</item>
-<item>Twelve to Three.</item>
-<item>Eleven to Three.</item>
-<item>Ten to Three.</item>
-<item>Nine to Three.</item>
-<item>Eight to Three.</item>
-<item>Seven to Three.</item>
-<item>Six to Three.</item>
-<item>Five to Three.</item>
-<item>Four to Three.</item>
-<item>Three to Three.</item>
-<item>Two to Three.</item>
-<item>one to Three.</item>
-<item>Three o\'Clock.</item>
-<item>one past Three.</item>
-<item>Two past Three.</item>
-<item>Three past Three.</item>
-<item>Four past Three.</item>
-<item>Five past Three.</item>
-<item>Six past Three.</item>
-<item>Seven past Three.</item>
-<item>Eight past Three.</item>
-<item>Nine past Three.</item>
-<item>Ten past Three.</item>
-<item>Eleven past Three.</item>
-<item>Twelve past Three.</item>
-<item>Thirteen past Three.</item>
-<item>Fourteen past Three.</item>
-<item>A Quarter past Three.</item>
-<item>Sixteen past Three.</item>
-<item>Seventeen past Three.</item>
-<item>Eighteen past Three.</item>
-<item>nineteen past Three.</item>
-<item>Twenty past Three.</item>
-<item>Twenty one past Three.</item>
-<item>Twenty Two past Three.</item>
-<item>Twenty Three past Three.</item>
-<item>Twenty Four past Three.</item>
-<item>Twenty Five past Three.</item>
-<item>Twenty Six past Three.</item>
-<item>Twenty Seven past Three.</item>
-<item>Twenty Eight past Three.</item>
-<item>Twenty Nine past Three.</item>
-<item>half past Three.</item>
-<item>Twenty Nine to Four.</item>
-<item>Twenty Eight to Four.</item>
-<item>Twenty Seven to Four.</item>
-<item>Twenty Six to Four.</item>
-<item>Twenty Five to Four.</item>
-<item>Twenty Four to Four.</item>
-<item>Twenty Three to Four.</item>
-<item>Twenty Two to Four.</item>
-<item>Twenty one to Four.</item>
-<item>Twenty to Four.</item>
-<item>nineteen to Four.</item>
-<item>Eighteen to Four.</item>
-<item>Seventeen to Four.</item>
-<item>Sixteen to Four.</item>
-<item>A Quarter to Four.</item>
-<item>Fourteen to Four.</item>
-<item>Thirteen to Four.</item>
-<item>Twelve to Four.</item>
-<item>Eleven to Four.</item>
-<item>Ten to Four.</item>
-<item>Nine to Four.</item>
-<item>Eight to Four.</item>
-<item>Seven to Four.</item>
-<item>Six to Four.</item>
-<item>Five to Four.</item>
-<item>Four to Four.</item>
-<item>Three to Four.</item>
-<item>Two to Four.</item>
-<item>one to Four.</item>
-<item>Four o\'Clock.</item>
-<item>one past Four.</item>
-<item>Two past Four.</item>
-<item>Three past Four.</item>
-<item>Four past Four.</item>
-<item>Five past Four.</item>
-<item>Six past Four.</item>
-<item>Seven past Four.</item>
-<item>Eight past Four.</item>
-<item>Nine past Four.</item>
-<item>Ten past Four.</item>
-<item>Eleven past Four.</item>
-<item>Twelve past Four.</item>
-<item>Thirteen past Four.</item>
-<item>Fourteen past Four.</item>
-<item>A Quarter past Four.</item>
-<item>Sixteen past Four.</item>
-<item>Seventeen past Four.</item>
-<item>Eighteen past Four.</item>
-<item>nineteen past Four.</item>
-<item>Twenty past Four.</item>
-<item>Twenty one past Four.</item>
-<item>Twenty Two past Four.</item>
-<item>Twenty Three past Four.</item>
-<item>Twenty Four past Four.</item>
-<item>Twenty Five past Four.</item>
-<item>Twenty Six past Four.</item>
-<item>Twenty Seven past Four.</item>
-<item>Twenty Eight past Four.</item>
-<item>Twenty Nine past Four.</item>
-<item>half past Four.</item>
-<item>Twenty Nine to Five.</item>
-<item>Twenty Eight to Five.</item>
-<item>Twenty Seven to Five.</item>
-<item>Twenty Six to Five.</item>
-<item>Twenty Five to Five.</item>
-<item>Twenty Four to Five.</item>
-<item>Twenty Three to Five.</item>
-<item>Twenty Two to Five.</item>
-<item>Twenty one to Five.</item>
-<item>Twenty to Five.</item>
-<item>nineteen to Five.</item>
-<item>Eighteen to Five.</item>
-<item>Seventeen to Five.</item>
-<item>Sixteen to Five.</item>
-<item>A Quarter to Five.</item>
-<item>Fourteen to Five.</item>
-<item>Thirteen to Five.</item>
-<item>Twelve to Five.</item>
-<item>Eleven to Five.</item>
-<item>Ten to Five.</item>
-<item>Nine to Five.</item>
-<item>Eight to Five.</item>
-<item>Seven to Five.</item>
-<item>Six to Five.</item>
-<item>Five to Five.</item>
-<item>Four to Five.</item>
-<item>Three to Five.</item>
-<item>Two to Five.</item>
-<item>one to Five.</item>
-<item>Five o\'Clock.</item>
-<item>one past Five.</item>
-<item>Two past Five.</item>
-<item>Three past Five.</item>
-<item>Four past Five.</item>
-<item>Five past Five.</item>
-<item>Six past Five.</item>
-<item>Seven past Five.</item>
-<item>Eight past Five.</item>
-<item>Nine past Five.</item>
-<item>Ten past Five.</item>
-<item>Eleven past Five.</item>
-<item>Twelve past Five.</item>
-<item>Thirteen past Five.</item>
-<item>Fourteen past Five.</item>
-<item>A Quarter past Five.</item>
-<item>Sixteen past Five.</item>
-<item>Seventeen past Five.</item>
-<item>Eighteen past Five.</item>
-<item>nineteen past Five.</item>
-<item>Twenty past Five.</item>
-<item>Twenty one past Five.</item>
-<item>Twenty Two past Five.</item>
-<item>Twenty Three past Five.</item>
-<item>Twenty Four past Five.</item>
-<item>Twenty Five past Five.</item>
-<item>Twenty Six past Five.</item>
-<item>Twenty Seven past Five.</item>
-<item>Twenty Eight past Five.</item>
-<item>Twenty Nine past Five.</item>
-<item>half past Five.</item>
-<item>Twenty Nine to Six.</item>
-<item>Twenty Eight to Six.</item>
-<item>Twenty Seven to Six.</item>
-<item>Twenty Six to Six.</item>
-<item>Twenty Five to Six.</item>
-<item>Twenty Four to Six.</item>
-<item>Twenty Three to Six.</item>
-<item>Twenty Two to Six.</item>
-<item>Twenty one to Six.</item>
-<item>Twenty to Six.</item>
-<item>nineteen to Six.</item>
-<item>Eighteen to Six.</item>
-<item>Seventeen to Six.</item>
-<item>Sixteen to Six.</item>
-<item>A Quarter to Six.</item>
-<item>Fourteen to Six.</item>
-<item>Thirteen to Six.</item>
-<item>Twelve to Six.</item>
-<item>Eleven to Six.</item>
-<item>Ten to Six.</item>
-<item>Nine to Six.</item>
-<item>Eight to Six.</item>
-<item>Seven to Six.</item>
-<item>Six to Six.</item>
-<item>Five to Six.</item>
-<item>Four to Six.</item>
-<item>Three to Six.</item>
-<item>Two to Six.</item>
-<item>one to Six.</item>
-<item>Six o\'Clock.</item>
-<item>one past Six.</item>
-<item>Two past Six.</item>
-<item>Three past Six.</item>
-<item>Four past Six.</item>
-<item>Five past Six.</item>
-<item>Six past Six.</item>
-<item>Seven past Six.</item>
-<item>Eight past Six.</item>
-<item>Nine past Six.</item>
-<item>Ten past Six.</item>
-<item>Eleven past Six.</item>
-<item>Twelve past Six.</item>
-<item>Thirteen past Six.</item>
-<item>Fourteen past Six.</item>
-<item>A Quarter past Six.</item>
-<item>Sixteen past Six.</item>
-<item>Seventeen past Six.</item>
-<item>Eighteen past Six.</item>
-<item>nineteen past Six.</item>
-<item>Twenty past Six.</item>
-<item>Twenty one past Six.</item>
-<item>Twenty Two past Six.</item>
-<item>Twenty Three past Six.</item>
-<item>Twenty Four past Six.</item>
-<item>Twenty Five past Six.</item>
-<item>Twenty Six past Six.</item>
-<item>Twenty Seven past Six.</item>
-<item>Twenty Eight past Six.</item>
-<item>Twenty Nine past Six.</item>
-<item>half past Six.</item>
-<item>Twenty Nine to Seven.</item>
-<item>Twenty Eight to Seven.</item>
-<item>Twenty Seven to Seven.</item>
-<item>Twenty Six to Seven.</item>
-<item>Twenty Five to Seven.</item>
-<item>Twenty Four to Seven.</item>
-<item>Twenty Three to Seven.</item>
-<item>Twenty Two to Seven.</item>
-<item>Twenty one to Seven.</item>
-<item>Twenty to Seven.</item>
-<item>nineteen to Seven.</item>
-<item>Eighteen to Seven.</item>
-<item>Seventeen to Seven.</item>
-<item>Sixteen to Seven.</item>
-<item>A Quarter to Seven.</item>
-<item>Fourteen to Seven.</item>
-<item>Thirteen to Seven.</item>
-<item>Twelve to Seven.</item>
-<item>Eleven to Seven.</item>
-<item>Ten to Seven.</item>
-<item>Nine to Seven.</item>
-<item>Eight to Seven.</item>
-<item>Seven to Seven.</item>
-<item>Six to Seven.</item>
-<item>Five to Seven.</item>
-<item>Four to Seven.</item>
-<item>Three to Seven.</item>
-<item>Two to Seven.</item>
-<item>one to Seven.</item>
-<item>Seven o\'Clock.</item>
-<item>one past Seven.</item>
-<item>Two past Seven.</item>
-<item>Three past Seven.</item>
-<item>Four past Seven.</item>
-<item>Five past Seven.</item>
-<item>Six past Seven.</item>
-<item>Seven past Seven.</item>
-<item>Eight past Seven.</item>
-<item>Nine past Seven.</item>
-<item>Ten past Seven.</item>
-<item>Eleven past Seven.</item>
-<item>Twelve past Seven.</item>
-<item>Thirteen past Seven.</item>
-<item>Fourteen past Seven.</item>
-<item>A Quarter past Seven.</item>
-<item>Sixteen past Seven.</item>
-<item>Seventeen past Seven.</item>
-<item>Eighteen past Seven.</item>
-<item>nineteen past Seven.</item>
-<item>Twenty past Seven.</item>
-<item>Twenty one past Seven.</item>
-<item>Twenty Two past Seven.</item>
-<item>Twenty Three past Seven.</item>
-<item>Twenty Four past Seven.</item>
-<item>Twenty Five past Seven.</item>
-<item>Twenty Six past Seven.</item>
-<item>Twenty Seven past Seven.</item>
-<item>Twenty Eight past Seven.</item>
-<item>Twenty Nine past Seven.</item>
-<item>half past Seven.</item>
-<item>Twenty Nine to Eight.</item>
-<item>Twenty Eight to Eight.</item>
-<item>Twenty Seven to Eight.</item>
-<item>Twenty Six to Eight.</item>
-<item>Twenty Five to Eight.</item>
-<item>Twenty Four to Eight.</item>
-<item>Twenty Three to Eight.</item>
-<item>Twenty Two to Eight.</item>
-<item>Twenty one to Eight.</item>
-<item>Twenty to Eight.</item>
-<item>nineteen to Eight.</item>
-<item>Eighteen to Eight.</item>
-<item>Seventeen to Eight.</item>
-<item>Sixteen to Eight.</item>
-<item>A Quarter to Eight.</item>
-<item>Fourteen to Eight.</item>
-<item>Thirteen to Eight.</item>
-<item>Twelve to Eight.</item>
-<item>Eleven to Eight.</item>
-<item>Ten to Eight.</item>
-<item>Nine to Eight.</item>
-<item>Eight to Eight.</item>
-<item>Seven to Eight.</item>
-<item>Six to Eight.</item>
-<item>Five to Eight.</item>
-<item>Four to Eight.</item>
-<item>Three to Eight.</item>
-<item>Two to Eight.</item>
-<item>one to Eight.</item>
-<item>Eight o\'Clock.</item>
-<item>one past Eight.</item>
-<item>Two past Eight.</item>
-<item>Three past Eight.</item>
-<item>Four past Eight.</item>
-<item>Five past Eight.</item>
-<item>Six past Eight.</item>
-<item>Seven past Eight.</item>
-<item>Eight past Eight.</item>
-<item>Nine past Eight.</item>
-<item>Ten past Eight.</item>
-<item>Eleven past Eight.</item>
-<item>Twelve past Eight.</item>
-<item>Thirteen past Eight.</item>
-<item>Fourteen past Eight.</item>
-<item>A Quarter past Eight.</item>
-<item>Sixteen past Eight.</item>
-<item>Seventeen past Eight.</item>
-<item>Eighteen past Eight.</item>
-<item>nineteen past Eight.</item>
-<item>Twenty past Eight.</item>
-<item>Twenty one past Eight.</item>
-<item>Twenty Two past Eight.</item>
-<item>Twenty Three past Eight.</item>
-<item>Twenty Four past Eight.</item>
-<item>Twenty Five past Eight.</item>
-<item>Twenty Six past Eight.</item>
-<item>Twenty Seven past Eight.</item>
-<item>Twenty Eight past Eight.</item>
-<item>Twenty Nine past Eight.</item>
-<item>half past Eight.</item>
-<item>Twenty Nine to Nine.</item>
-<item>Twenty Eight to Nine.</item>
-<item>Twenty Seven to Nine.</item>
-<item>Twenty Six to Nine.</item>
-<item>Twenty Five to Nine.</item>
-<item>Twenty Four to Nine.</item>
-<item>Twenty Three to Nine.</item>
-<item>Twenty Two to Nine.</item>
-<item>Twenty one to Nine.</item>
-<item>Twenty to Nine.</item>
-<item>nineteen to Nine.</item>
-<item>Eighteen to Nine.</item>
-<item>Seventeen to Nine.</item>
-<item>Sixteen to Nine.</item>
-<item>A Quarter to Nine.</item>
-<item>Fourteen to Nine.</item>
-<item>Thirteen to Nine.</item>
-<item>Twelve to Nine.</item>
-<item>Eleven to Nine.</item>
-<item>Ten to Nine.</item>
-<item>Nine to Nine.</item>
-<item>Eight to Nine.</item>
-<item>Seven to Nine.</item>
-<item>Six to Nine.</item>
-<item>Five to Nine.</item>
-<item>Four to Nine.</item>
-<item>Three to Nine.</item>
-<item>Two to Nine.</item>
-<item>one to Nine.</item>
-<item>Nine o\'Clock.</item>
-<item>one past Nine.</item>
-<item>Two past Nine.</item>
-<item>Three past Nine.</item>
-<item>Four past Nine.</item>
-<item>Five past Nine.</item>
-<item>Six past Nine.</item>
-<item>Seven past Nine.</item>
-<item>Eight past Nine.</item>
-<item>Nine past Nine.</item>
-<item>Ten past Nine.</item>
-<item>Eleven past Nine.</item>
-<item>Twelve past Nine.</item>
-<item>Thirteen past Nine.</item>
-<item>Fourteen past Nine.</item>
-<item>A Quarter past Nine.</item>
-<item>Sixteen past Nine.</item>
-<item>Seventeen past Nine.</item>
-<item>Eighteen past Nine.</item>
-<item>nineteen past Nine.</item>
-<item>Twenty past Nine.</item>
-<item>Twenty one past Nine.</item>
-<item>Twenty Two past Nine.</item>
-<item>Twenty Three past Nine.</item>
-<item>Twenty Four past Nine.</item>
-<item>Twenty Five past Nine.</item>
-<item>Twenty Six past Nine.</item>
-<item>Twenty Seven past Nine.</item>
-<item>Twenty Eight past Nine.</item>
-<item>Twenty Nine past Nine.</item>
-<item>half past Nine.</item>
-<item>Twenty Nine to Ten.</item>
-<item>Twenty Eight to Ten.</item>
-<item>Twenty Seven to Ten.</item>
-<item>Twenty Six to Ten.</item>
-<item>Twenty Five to Ten.</item>
-<item>Twenty Four to Ten.</item>
-<item>Twenty Three to Ten.</item>
-<item>Twenty Two to Ten.</item>
-<item>Twenty one to Ten.</item>
-<item>Twenty to Ten.</item>
-<item>nineteen to Ten.</item>
-<item>Eighteen to Ten.</item>
-<item>Seventeen to Ten.</item>
-<item>Sixteen to Ten.</item>
-<item>A Quarter to Ten.</item>
-<item>Fourteen to Ten.</item>
-<item>Thirteen to Ten.</item>
-<item>Twelve to Ten.</item>
-<item>Eleven to Ten.</item>
-<item>Ten to Ten.</item>
-<item>Nine to Ten.</item>
-<item>Eight to Ten.</item>
-<item>Seven to Ten.</item>
-<item>Six to Ten.</item>
-<item>Five to Ten.</item>
-<item>Four to Ten.</item>
-<item>Three to Ten.</item>
-<item>Two to Ten.</item>
-<item>one to Ten.</item>
-<item>Ten o\'Clock.</item>
-<item>one past Ten.</item>
-<item>Two past Ten.</item>
-<item>Three past Ten.</item>
-<item>Four past Ten.</item>
-<item>Five past Ten.</item>
-<item>Six past Ten.</item>
-<item>Seven past Ten.</item>
-<item>Eight past Ten.</item>
-<item>Nine past Ten.</item>
-<item>Ten past Ten.</item>
-<item>Eleven past Ten.</item>
-<item>Twelve past Ten.</item>
-<item>Thirteen past Ten.</item>
-<item>Fourteen past Ten.</item>
-<item>A Quarter past Ten.</item>
-<item>Sixteen past Ten.</item>
-<item>Seventeen past Ten.</item>
-<item>Eighteen past Ten.</item>
-<item>nineteen past Ten.</item>
-<item>Twenty past Ten.</item>
-<item>Twenty one past Ten.</item>
-<item>Twenty Two past Ten.</item>
-<item>Twenty Three past Ten.</item>
-<item>Twenty Four past Ten.</item>
-<item>Twenty Five past Ten.</item>
-<item>Twenty Six past Ten.</item>
-<item>Twenty Seven past Ten.</item>
-<item>Twenty Eight past Ten.</item>
-<item>Twenty Nine past Ten.</item>
-<item>half past Ten.</item>
-<item>Twenty Nine to Eleven.</item>
-<item>Twenty Eight to Eleven.</item>
-<item>Twenty Seven to Eleven.</item>
-<item>Twenty Six to Eleven.</item>
-<item>Twenty Five to Eleven.</item>
-<item>Twenty Four to Eleven.</item>
-<item>Twenty Three to Eleven.</item>
-<item>Twenty Two to Eleven.</item>
-<item>Twenty one to Eleven.</item>
-<item>Twenty to Eleven.</item>
-<item>nineteen to Eleven.</item>
-<item>Eighteen to Eleven.</item>
-<item>Seventeen to Eleven.</item>
-<item>Sixteen to Eleven.</item>
-<item>A Quarter to Eleven.</item>
-<item>Fourteen to Eleven.</item>
-<item>Thirteen to Eleven.</item>
-<item>Twelve to Eleven.</item>
-<item>Eleven to Eleven.</item>
-<item>Ten to Eleven.</item>
-<item>Nine to Eleven.</item>
-<item>Eight to Eleven.</item>
-<item>Seven to Eleven.</item>
-<item>Six to Eleven.</item>
-<item>Five to Eleven.</item>
-<item>Four to Eleven.</item>
-<item>Three to Eleven.</item>
-<item>Two to Eleven.</item>
-<item>one to Eleven.</item>
-<item>Eleven o\'Clock.</item>
-<item>one past Eleven.</item>
-<item>Two past Eleven.</item>
-<item>Three past Eleven.</item>
-<item>Four past Eleven.</item>
-<item>Five past Eleven.</item>
-<item>Six past Eleven.</item>
-<item>Seven past Eleven.</item>
-<item>Eight past Eleven.</item>
-<item>Nine past Eleven.</item>
-<item>Ten past Eleven.</item>
-<item>Eleven past Eleven.</item>
-<item>Twelve past Eleven.</item>
-<item>Thirteen past Eleven.</item>
-<item>Fourteen past Eleven.</item>
-<item>A Quarter past Eleven.</item>
-<item>Sixteen past Eleven.</item>
-<item>Seventeen past Eleven.</item>
-<item>Eighteen past Eleven.</item>
-<item>nineteen past Eleven.</item>
-<item>Twenty past Eleven.</item>
-<item>Twenty one past Eleven.</item>
-<item>Twenty Two past Eleven.</item>
-<item>Twenty Three past Eleven.</item>
-<item>Twenty Four past Eleven.</item>
-<item>Twenty Five past Eleven.</item>
-<item>Twenty Six past Eleven.</item>
-<item>Twenty Seven past Eleven.</item>
-<item>Twenty Eight past Eleven.</item>
-<item>Twenty Nine past Eleven.</item>
-<item>half past Eleven.</item>
-<item>Twenty Nine to Twelve.</item>
-<item>Twenty Eight to Twelve.</item>
-<item>Twenty Seven to Twelve.</item>
-<item>Twenty Six to Twelve.</item>
-<item>Twenty Five to Twelve.</item>
-<item>Twenty Four to Twelve.</item>
-<item>Twenty Three to Twelve.</item>
-<item>Twenty Two to Twelve.</item>
-<item>Twenty one to Twelve.</item>
-<item>Twenty to Twelve.</item>
-<item>nineteen to Twelve.</item>
-<item>Eighteen to Twelve.</item>
-<item>Seventeen to Twelve.</item>
-<item>Sixteen to Twelve.</item>
-<item>A Quarter to Twelve.</item>
-<item>Fourteen to Twelve.</item>
-<item>Thirteen to Twelve.</item>
-<item>Twelve to Twelve.</item>
-<item>Eleven to Twelve.</item>
-<item>Ten to Twelve.</item>
-<item>Nine to Twelve.</item>
-<item>Eight to Twelve.</item>
-<item>Seven to Twelve.</item>
-<item>Six to Twelve.</item>
-<item>Five to Twelve.</item>
-<item>Four to Twelve.</item>
-<item>Three to Twelve.</item>
-<item>Two to Twelve.</item>
-<item>one to Twelve.</item>
-</string-array>
+
+    <string-array name="verbosetime1">
+        <item>Twelve o\'Clock.</item>
+        <item>one past Twelve.</item>
+        <item>Two past Twelve.</item>
+        <item>Three past Twelve.</item>
+        <item>Four past Twelve.</item>
+        <item>Five past Twelve.</item>
+        <item>Six past Twelve.</item>
+        <item>Seven past Twelve.</item>
+        <item>Eight past Twelve.</item>
+        <item>Nine past Twelve.</item>
+        <item>Ten past Twelve.</item>
+        <item>Eleven past Twelve.</item>
+        <item>Twelve past Twelve.</item>
+        <item>Thirteen past Twelve.</item>
+        <item>Fourteen past Twelve.</item>
+        <item>A Quarter past Twelve.</item>
+        <item>Sixteen past Twelve.</item>
+        <item>Seventeen past Twelve.</item>
+        <item>Eighteen past Twelve.</item>
+        <item>nineteen past Twelve.</item>
+        <item>Twenty past Twelve.</item>
+        <item>Twenty one past Twelve.</item>
+        <item>Twenty Two past Twelve.</item>
+        <item>Twenty Three past Twelve.</item>
+        <item>Twenty Four past Twelve.</item>
+        <item>Twenty Five past Twelve.</item>
+        <item>Twenty Six past Twelve.</item>
+        <item>Twenty Seven past Twelve.</item>
+        <item>Twenty Eight past Twelve.</item>
+        <item>Twenty Nine past Twelve.</item>
+        <item>half past Twelve.</item>
+        <item>Twenty Nine to One.</item>
+        <item>Twenty Eight to One.</item>
+        <item>Twenty Seven to One.</item>
+        <item>Twenty Six to One.</item>
+        <item>Twenty Five to One.</item>
+        <item>Twenty Four to One.</item>
+        <item>Twenty Three to One.</item>
+        <item>Twenty Two to One.</item>
+        <item>Twenty one to One.</item>
+        <item>Twenty to One.</item>
+        <item>nineteen to One.</item>
+        <item>Eighteen to One.</item>
+        <item>Seventeen to One.</item>
+        <item>Sixteen to One.</item>
+        <item>A Quarter to one.</item>
+        <item>Fourteen to One.</item>
+        <item>Thirteen to One.</item>
+        <item>Twelve to One.</item>
+        <item>Eleven to One.</item>
+        <item>Ten to One.</item>
+        <item>Nine to One.</item>
+        <item>Eight to One.</item>
+        <item>Seven to One.</item>
+        <item>Six to One.</item>
+        <item>Five to One.</item>
+        <item>Four to One.</item>
+        <item>Three to One.</item>
+        <item>Two to One.</item>
+        <item>one to One.</item>
+        <item>one o\'Clock.</item>
+        <item>one past one.</item>
+        <item>Two past one.</item>
+        <item>Three past one.</item>
+        <item>Four past one.</item>
+        <item>Five past one.</item>
+        <item>Six past one.</item>
+        <item>Seven past one.</item>
+        <item>Eight past one.</item>
+        <item>Nine past one.</item>
+        <item>Ten past one.</item>
+        <item>Eleven past one.</item>
+        <item>Twelve past one.</item>
+        <item>Thirteen past one.</item>
+        <item>Fourteen past one.</item>
+        <item>A Quarter past one.</item>
+        <item>Sixteen past one.</item>
+        <item>Seventeen past one.</item>
+        <item>Eighteen past one.</item>
+        <item>nineteen past one.</item>
+        <item>Twenty past one.</item>
+        <item>Twenty one past one.</item>
+        <item>Twenty Two past one.</item>
+        <item>Twenty Three past one.</item>
+        <item>Twenty Four past one.</item>
+        <item>Twenty Five past one.</item>
+        <item>Twenty Six past one.</item>
+        <item>Twenty Seven past one.</item>
+        <item>Twenty Eight past one.</item>
+        <item>Twenty Nine past one.</item>
+        <item>half past one.</item>
+        <item>Twenty Nine to Two.</item>
+        <item>Twenty Eight to Two.</item>
+        <item>Twenty Seven to Two.</item>
+        <item>Twenty Six to Two.</item>
+        <item>Twenty Five to Two.</item>
+        <item>Twenty Four to Two.</item>
+        <item>Twenty Three to Two.</item>
+        <item>Twenty Two to Two.</item>
+        <item>Twenty one to Two.</item>
+        <item>Twenty to Two.</item>
+        <item>nineteen to Two.</item>
+        <item>Eighteen to Two.</item>
+        <item>Seventeen to Two.</item>
+        <item>Sixteen to Two.</item>
+        <item>A Quarter to Two.</item>
+        <item>Fourteen to Two.</item>
+        <item>Thirteen to Two.</item>
+        <item>Twelve to Two.</item>
+        <item>Eleven to Two.</item>
+        <item>Ten to Two.</item>
+        <item>Nine to Two.</item>
+        <item>Eight to Two.</item>
+        <item>Seven to Two.</item>
+        <item>Six to Two.</item>
+        <item>Five to Two.</item>
+        <item>Four to Two.</item>
+        <item>Three to Two.</item>
+        <item>Two to Two.</item>
+        <item>one to Two.</item>
+        <item>Two o\'Clock.</item>
+        <item>one past Two.</item>
+        <item>Two past Two.</item>
+        <item>Three past Two.</item>
+        <item>Four past Two.</item>
+        <item>Five past Two.</item>
+        <item>Six past Two.</item>
+        <item>Seven past Two.</item>
+        <item>Eight past Two.</item>
+        <item>Nine past Two.</item>
+        <item>Ten past Two.</item>
+        <item>Eleven past Two.</item>
+        <item>Twelve past Two.</item>
+        <item>Thirteen past Two.</item>
+        <item>Fourteen past Two.</item>
+        <item>A Quarter past Two.</item>
+        <item>Sixteen past Two.</item>
+        <item>Seventeen past Two.</item>
+        <item>Eighteen past Two.</item>
+        <item>nineteen past Two.</item>
+        <item>Twenty past Two.</item>
+        <item>Twenty one past Two.</item>
+        <item>Twenty Two past Two.</item>
+        <item>Twenty Three past Two.</item>
+        <item>Twenty Four past Two.</item>
+        <item>Twenty Five past Two.</item>
+        <item>Twenty Six past Two.</item>
+        <item>Twenty Seven past Two.</item>
+        <item>Twenty Eight past Two.</item>
+        <item>Twenty Nine past Two.</item>
+        <item>half past Two.</item>
+        <item>Twenty Nine to Three.</item>
+        <item>Twenty Eight to Three.</item>
+        <item>Twenty Seven to Three.</item>
+        <item>Twenty Six to Three.</item>
+        <item>Twenty Five to Three.</item>
+        <item>Twenty Four to Three.</item>
+        <item>Twenty Three to Three.</item>
+        <item>Twenty Two to Three.</item>
+        <item>Twenty one to Three.</item>
+        <item>Twenty to Three.</item>
+        <item>nineteen to Three.</item>
+        <item>Eighteen to Three.</item>
+        <item>Seventeen to Three.</item>
+        <item>Sixteen to Three.</item>
+        <item>A Quarter to Three.</item>
+        <item>Fourteen to Three.</item>
+        <item>Thirteen to Three.</item>
+        <item>Twelve to Three.</item>
+        <item>Eleven to Three.</item>
+        <item>Ten to Three.</item>
+        <item>Nine to Three.</item>
+        <item>Eight to Three.</item>
+        <item>Seven to Three.</item>
+        <item>Six to Three.</item>
+        <item>Five to Three.</item>
+        <item>Four to Three.</item>
+        <item>Three to Three.</item>
+        <item>Two to Three.</item>
+        <item>one to Three.</item>
+        <item>Three o\'Clock.</item>
+        <item>one past Three.</item>
+        <item>Two past Three.</item>
+        <item>Three past Three.</item>
+        <item>Four past Three.</item>
+        <item>Five past Three.</item>
+        <item>Six past Three.</item>
+        <item>Seven past Three.</item>
+        <item>Eight past Three.</item>
+        <item>Nine past Three.</item>
+        <item>Ten past Three.</item>
+        <item>Eleven past Three.</item>
+        <item>Twelve past Three.</item>
+        <item>Thirteen past Three.</item>
+        <item>Fourteen past Three.</item>
+        <item>A Quarter past Three.</item>
+        <item>Sixteen past Three.</item>
+        <item>Seventeen past Three.</item>
+        <item>Eighteen past Three.</item>
+        <item>nineteen past Three.</item>
+        <item>Twenty past Three.</item>
+        <item>Twenty one past Three.</item>
+        <item>Twenty Two past Three.</item>
+        <item>Twenty Three past Three.</item>
+        <item>Twenty Four past Three.</item>
+        <item>Twenty Five past Three.</item>
+        <item>Twenty Six past Three.</item>
+        <item>Twenty Seven past Three.</item>
+        <item>Twenty Eight past Three.</item>
+        <item>Twenty Nine past Three.</item>
+        <item>half past Three.</item>
+        <item>Twenty Nine to Four.</item>
+        <item>Twenty Eight to Four.</item>
+        <item>Twenty Seven to Four.</item>
+        <item>Twenty Six to Four.</item>
+        <item>Twenty Five to Four.</item>
+        <item>Twenty Four to Four.</item>
+        <item>Twenty Three to Four.</item>
+        <item>Twenty Two to Four.</item>
+        <item>Twenty one to Four.</item>
+        <item>Twenty to Four.</item>
+        <item>nineteen to Four.</item>
+        <item>Eighteen to Four.</item>
+        <item>Seventeen to Four.</item>
+        <item>Sixteen to Four.</item>
+        <item>A Quarter to Four.</item>
+        <item>Fourteen to Four.</item>
+        <item>Thirteen to Four.</item>
+        <item>Twelve to Four.</item>
+        <item>Eleven to Four.</item>
+        <item>Ten to Four.</item>
+        <item>Nine to Four.</item>
+        <item>Eight to Four.</item>
+        <item>Seven to Four.</item>
+        <item>Six to Four.</item>
+        <item>Five to Four.</item>
+        <item>Four to Four.</item>
+        <item>Three to Four.</item>
+        <item>Two to Four.</item>
+        <item>one to Four.</item>
+        <item>Four o\'Clock.</item>
+        <item>one past Four.</item>
+        <item>Two past Four.</item>
+        <item>Three past Four.</item>
+        <item>Four past Four.</item>
+        <item>Five past Four.</item>
+        <item>Six past Four.</item>
+        <item>Seven past Four.</item>
+        <item>Eight past Four.</item>
+        <item>Nine past Four.</item>
+        <item>Ten past Four.</item>
+        <item>Eleven past Four.</item>
+        <item>Twelve past Four.</item>
+        <item>Thirteen past Four.</item>
+        <item>Fourteen past Four.</item>
+        <item>A Quarter past Four.</item>
+        <item>Sixteen past Four.</item>
+        <item>Seventeen past Four.</item>
+        <item>Eighteen past Four.</item>
+        <item>nineteen past Four.</item>
+        <item>Twenty past Four.</item>
+        <item>Twenty one past Four.</item>
+        <item>Twenty Two past Four.</item>
+        <item>Twenty Three past Four.</item>
+        <item>Twenty Four past Four.</item>
+        <item>Twenty Five past Four.</item>
+        <item>Twenty Six past Four.</item>
+        <item>Twenty Seven past Four.</item>
+        <item>Twenty Eight past Four.</item>
+        <item>Twenty Nine past Four.</item>
+        <item>half past Four.</item>
+        <item>Twenty Nine to Five.</item>
+        <item>Twenty Eight to Five.</item>
+        <item>Twenty Seven to Five.</item>
+        <item>Twenty Six to Five.</item>
+        <item>Twenty Five to Five.</item>
+        <item>Twenty Four to Five.</item>
+        <item>Twenty Three to Five.</item>
+        <item>Twenty Two to Five.</item>
+        <item>Twenty one to Five.</item>
+        <item>Twenty to Five.</item>
+        <item>nineteen to Five.</item>
+        <item>Eighteen to Five.</item>
+        <item>Seventeen to Five.</item>
+        <item>Sixteen to Five.</item>
+        <item>A Quarter to Five.</item>
+        <item>Fourteen to Five.</item>
+        <item>Thirteen to Five.</item>
+        <item>Twelve to Five.</item>
+        <item>Eleven to Five.</item>
+        <item>Ten to Five.</item>
+        <item>Nine to Five.</item>
+        <item>Eight to Five.</item>
+        <item>Seven to Five.</item>
+        <item>Six to Five.</item>
+        <item>Five to Five.</item>
+        <item>Four to Five.</item>
+        <item>Three to Five.</item>
+        <item>Two to Five.</item>
+        <item>one to Five.</item>
+        <item>Five o\'Clock.</item>
+        <item>one past Five.</item>
+        <item>Two past Five.</item>
+        <item>Three past Five.</item>
+        <item>Four past Five.</item>
+        <item>Five past Five.</item>
+        <item>Six past Five.</item>
+        <item>Seven past Five.</item>
+        <item>Eight past Five.</item>
+        <item>Nine past Five.</item>
+        <item>Ten past Five.</item>
+        <item>Eleven past Five.</item>
+        <item>Twelve past Five.</item>
+        <item>Thirteen past Five.</item>
+        <item>Fourteen past Five.</item>
+        <item>A Quarter past Five.</item>
+        <item>Sixteen past Five.</item>
+        <item>Seventeen past Five.</item>
+        <item>Eighteen past Five.</item>
+        <item>nineteen past Five.</item>
+        <item>Twenty past Five.</item>
+        <item>Twenty one past Five.</item>
+        <item>Twenty Two past Five.</item>
+        <item>Twenty Three past Five.</item>
+        <item>Twenty Four past Five.</item>
+        <item>Twenty Five past Five.</item>
+        <item>Twenty Six past Five.</item>
+        <item>Twenty Seven past Five.</item>
+        <item>Twenty Eight past Five.</item>
+        <item>Twenty Nine past Five.</item>
+        <item>half past Five.</item>
+        <item>Twenty Nine to Six.</item>
+        <item>Twenty Eight to Six.</item>
+        <item>Twenty Seven to Six.</item>
+        <item>Twenty Six to Six.</item>
+        <item>Twenty Five to Six.</item>
+        <item>Twenty Four to Six.</item>
+        <item>Twenty Three to Six.</item>
+        <item>Twenty Two to Six.</item>
+        <item>Twenty one to Six.</item>
+        <item>Twenty to Six.</item>
+        <item>nineteen to Six.</item>
+        <item>Eighteen to Six.</item>
+        <item>Seventeen to Six.</item>
+        <item>Sixteen to Six.</item>
+        <item>A Quarter to Six.</item>
+        <item>Fourteen to Six.</item>
+        <item>Thirteen to Six.</item>
+        <item>Twelve to Six.</item>
+        <item>Eleven to Six.</item>
+        <item>Ten to Six.</item>
+        <item>Nine to Six.</item>
+        <item>Eight to Six.</item>
+        <item>Seven to Six.</item>
+        <item>Six to Six.</item>
+        <item>Five to Six.</item>
+        <item>Four to Six.</item>
+        <item>Three to Six.</item>
+        <item>Two to Six.</item>
+        <item>one to Six.</item>
+    </string-array>
+    <string-array name="verbosetime2">
+        <item>Six o\'Clock.</item>
+        <item>one past Six.</item>
+        <item>Two past Six.</item>
+        <item>Three past Six.</item>
+        <item>Four past Six.</item>
+        <item>Five past Six.</item>
+        <item>Six past Six.</item>
+        <item>Seven past Six.</item>
+        <item>Eight past Six.</item>
+        <item>Nine past Six.</item>
+        <item>Ten past Six.</item>
+        <item>Eleven past Six.</item>
+        <item>Twelve past Six.</item>
+        <item>Thirteen past Six.</item>
+        <item>Fourteen past Six.</item>
+        <item>A Quarter past Six.</item>
+        <item>Sixteen past Six.</item>
+        <item>Seventeen past Six.</item>
+        <item>Eighteen past Six.</item>
+        <item>nineteen past Six.</item>
+        <item>Twenty past Six.</item>
+        <item>Twenty one past Six.</item>
+        <item>Twenty Two past Six.</item>
+        <item>Twenty Three past Six.</item>
+        <item>Twenty Four past Six.</item>
+        <item>Twenty Five past Six.</item>
+        <item>Twenty Six past Six.</item>
+        <item>Twenty Seven past Six.</item>
+        <item>Twenty Eight past Six.</item>
+        <item>Twenty Nine past Six.</item>
+        <item>half past Six.</item>
+        <item>Twenty Nine to Seven.</item>
+        <item>Twenty Eight to Seven.</item>
+        <item>Twenty Seven to Seven.</item>
+        <item>Twenty Six to Seven.</item>
+        <item>Twenty Five to Seven.</item>
+        <item>Twenty Four to Seven.</item>
+        <item>Twenty Three to Seven.</item>
+        <item>Twenty Two to Seven.</item>
+        <item>Twenty one to Seven.</item>
+        <item>Twenty to Seven.</item>
+        <item>nineteen to Seven.</item>
+        <item>Eighteen to Seven.</item>
+        <item>Seventeen to Seven.</item>
+        <item>Sixteen to Seven.</item>
+        <item>A Quarter to Seven.</item>
+        <item>Fourteen to Seven.</item>
+        <item>Thirteen to Seven.</item>
+        <item>Twelve to Seven.</item>
+        <item>Eleven to Seven.</item>
+        <item>Ten to Seven.</item>
+        <item>Nine to Seven.</item>
+        <item>Eight to Seven.</item>
+        <item>Seven to Seven.</item>
+        <item>Six to Seven.</item>
+        <item>Five to Seven.</item>
+        <item>Four to Seven.</item>
+        <item>Three to Seven.</item>
+        <item>Two to Seven.</item>
+        <item>one to Seven.</item>
+        <item>Seven o\'Clock.</item>
+        <item>one past Seven.</item>
+        <item>Two past Seven.</item>
+        <item>Three past Seven.</item>
+        <item>Four past Seven.</item>
+        <item>Five past Seven.</item>
+        <item>Six past Seven.</item>
+        <item>Seven past Seven.</item>
+        <item>Eight past Seven.</item>
+        <item>Nine past Seven.</item>
+        <item>Ten past Seven.</item>
+        <item>Eleven past Seven.</item>
+        <item>Twelve past Seven.</item>
+        <item>Thirteen past Seven.</item>
+        <item>Fourteen past Seven.</item>
+        <item>A Quarter past Seven.</item>
+        <item>Sixteen past Seven.</item>
+        <item>Seventeen past Seven.</item>
+        <item>Eighteen past Seven.</item>
+        <item>nineteen past Seven.</item>
+        <item>Twenty past Seven.</item>
+        <item>Twenty one past Seven.</item>
+        <item>Twenty Two past Seven.</item>
+        <item>Twenty Three past Seven.</item>
+        <item>Twenty Four past Seven.</item>
+        <item>Twenty Five past Seven.</item>
+        <item>Twenty Six past Seven.</item>
+        <item>Twenty Seven past Seven.</item>
+        <item>Twenty Eight past Seven.</item>
+        <item>Twenty Nine past Seven.</item>
+        <item>half past Seven.</item>
+        <item>Twenty Nine to Eight.</item>
+        <item>Twenty Eight to Eight.</item>
+        <item>Twenty Seven to Eight.</item>
+        <item>Twenty Six to Eight.</item>
+        <item>Twenty Five to Eight.</item>
+        <item>Twenty Four to Eight.</item>
+        <item>Twenty Three to Eight.</item>
+        <item>Twenty Two to Eight.</item>
+        <item>Twenty one to Eight.</item>
+        <item>Twenty to Eight.</item>
+        <item>nineteen to Eight.</item>
+        <item>Eighteen to Eight.</item>
+        <item>Seventeen to Eight.</item>
+        <item>Sixteen to Eight.</item>
+        <item>A Quarter to Eight.</item>
+        <item>Fourteen to Eight.</item>
+        <item>Thirteen to Eight.</item>
+        <item>Twelve to Eight.</item>
+        <item>Eleven to Eight.</item>
+        <item>Ten to Eight.</item>
+        <item>Nine to Eight.</item>
+        <item>Eight to Eight.</item>
+        <item>Seven to Eight.</item>
+        <item>Six to Eight.</item>
+        <item>Five to Eight.</item>
+        <item>Four to Eight.</item>
+        <item>Three to Eight.</item>
+        <item>Two to Eight.</item>
+        <item>one to Eight.</item>
+        <item>Eight o\'Clock.</item>
+        <item>one past Eight.</item>
+        <item>Two past Eight.</item>
+        <item>Three past Eight.</item>
+        <item>Four past Eight.</item>
+        <item>Five past Eight.</item>
+        <item>Six past Eight.</item>
+        <item>Seven past Eight.</item>
+        <item>Eight past Eight.</item>
+        <item>Nine past Eight.</item>
+        <item>Ten past Eight.</item>
+        <item>Eleven past Eight.</item>
+        <item>Twelve past Eight.</item>
+        <item>Thirteen past Eight.</item>
+        <item>Fourteen past Eight.</item>
+        <item>A Quarter past Eight.</item>
+        <item>Sixteen past Eight.</item>
+        <item>Seventeen past Eight.</item>
+        <item>Eighteen past Eight.</item>
+        <item>nineteen past Eight.</item>
+        <item>Twenty past Eight.</item>
+        <item>Twenty one past Eight.</item>
+        <item>Twenty Two past Eight.</item>
+        <item>Twenty Three past Eight.</item>
+        <item>Twenty Four past Eight.</item>
+        <item>Twenty Five past Eight.</item>
+        <item>Twenty Six past Eight.</item>
+        <item>Twenty Seven past Eight.</item>
+        <item>Twenty Eight past Eight.</item>
+        <item>Twenty Nine past Eight.</item>
+        <item>half past Eight.</item>
+        <item>Twenty Nine to Nine.</item>
+        <item>Twenty Eight to Nine.</item>
+        <item>Twenty Seven to Nine.</item>
+        <item>Twenty Six to Nine.</item>
+        <item>Twenty Five to Nine.</item>
+        <item>Twenty Four to Nine.</item>
+        <item>Twenty Three to Nine.</item>
+        <item>Twenty Two to Nine.</item>
+        <item>Twenty one to Nine.</item>
+        <item>Twenty to Nine.</item>
+        <item>nineteen to Nine.</item>
+        <item>Eighteen to Nine.</item>
+        <item>Seventeen to Nine.</item>
+        <item>Sixteen to Nine.</item>
+        <item>A Quarter to Nine.</item>
+        <item>Fourteen to Nine.</item>
+        <item>Thirteen to Nine.</item>
+        <item>Twelve to Nine.</item>
+        <item>Eleven to Nine.</item>
+        <item>Ten to Nine.</item>
+        <item>Nine to Nine.</item>
+        <item>Eight to Nine.</item>
+        <item>Seven to Nine.</item>
+        <item>Six to Nine.</item>
+        <item>Five to Nine.</item>
+        <item>Four to Nine.</item>
+        <item>Three to Nine.</item>
+        <item>Two to Nine.</item>
+        <item>one to Nine.</item>
+        <item>Nine o\'Clock.</item>
+        <item>one past Nine.</item>
+        <item>Two past Nine.</item>
+        <item>Three past Nine.</item>
+        <item>Four past Nine.</item>
+        <item>Five past Nine.</item>
+        <item>Six past Nine.</item>
+        <item>Seven past Nine.</item>
+        <item>Eight past Nine.</item>
+        <item>Nine past Nine.</item>
+        <item>Ten past Nine.</item>
+        <item>Eleven past Nine.</item>
+        <item>Twelve past Nine.</item>
+        <item>Thirteen past Nine.</item>
+        <item>Fourteen past Nine.</item>
+        <item>A Quarter past Nine.</item>
+        <item>Sixteen past Nine.</item>
+        <item>Seventeen past Nine.</item>
+        <item>Eighteen past Nine.</item>
+        <item>nineteen past Nine.</item>
+        <item>Twenty past Nine.</item>
+        <item>Twenty one past Nine.</item>
+        <item>Twenty Two past Nine.</item>
+        <item>Twenty Three past Nine.</item>
+        <item>Twenty Four past Nine.</item>
+        <item>Twenty Five past Nine.</item>
+        <item>Twenty Six past Nine.</item>
+        <item>Twenty Seven past Nine.</item>
+        <item>Twenty Eight past Nine.</item>
+        <item>Twenty Nine past Nine.</item>
+        <item>half past Nine.</item>
+        <item>Twenty Nine to Ten.</item>
+        <item>Twenty Eight to Ten.</item>
+        <item>Twenty Seven to Ten.</item>
+        <item>Twenty Six to Ten.</item>
+        <item>Twenty Five to Ten.</item>
+        <item>Twenty Four to Ten.</item>
+        <item>Twenty Three to Ten.</item>
+        <item>Twenty Two to Ten.</item>
+        <item>Twenty one to Ten.</item>
+        <item>Twenty to Ten.</item>
+        <item>nineteen to Ten.</item>
+        <item>Eighteen to Ten.</item>
+        <item>Seventeen to Ten.</item>
+        <item>Sixteen to Ten.</item>
+        <item>A Quarter to Ten.</item>
+        <item>Fourteen to Ten.</item>
+        <item>Thirteen to Ten.</item>
+        <item>Twelve to Ten.</item>
+        <item>Eleven to Ten.</item>
+        <item>Ten to Ten.</item>
+        <item>Nine to Ten.</item>
+        <item>Eight to Ten.</item>
+        <item>Seven to Ten.</item>
+        <item>Six to Ten.</item>
+        <item>Five to Ten.</item>
+        <item>Four to Ten.</item>
+        <item>Three to Ten.</item>
+        <item>Two to Ten.</item>
+        <item>one to Ten.</item>
+        <item>Ten o\'Clock.</item>
+        <item>one past Ten.</item>
+        <item>Two past Ten.</item>
+        <item>Three past Ten.</item>
+        <item>Four past Ten.</item>
+        <item>Five past Ten.</item>
+        <item>Six past Ten.</item>
+        <item>Seven past Ten.</item>
+        <item>Eight past Ten.</item>
+        <item>Nine past Ten.</item>
+        <item>Ten past Ten.</item>
+        <item>Eleven past Ten.</item>
+        <item>Twelve past Ten.</item>
+        <item>Thirteen past Ten.</item>
+        <item>Fourteen past Ten.</item>
+        <item>A Quarter past Ten.</item>
+        <item>Sixteen past Ten.</item>
+        <item>Seventeen past Ten.</item>
+        <item>Eighteen past Ten.</item>
+        <item>nineteen past Ten.</item>
+        <item>Twenty past Ten.</item>
+        <item>Twenty one past Ten.</item>
+        <item>Twenty Two past Ten.</item>
+        <item>Twenty Three past Ten.</item>
+        <item>Twenty Four past Ten.</item>
+        <item>Twenty Five past Ten.</item>
+        <item>Twenty Six past Ten.</item>
+        <item>Twenty Seven past Ten.</item>
+        <item>Twenty Eight past Ten.</item>
+        <item>Twenty Nine past Ten.</item>
+        <item>half past Ten.</item>
+        <item>Twenty Nine to Eleven.</item>
+        <item>Twenty Eight to Eleven.</item>
+        <item>Twenty Seven to Eleven.</item>
+        <item>Twenty Six to Eleven.</item>
+        <item>Twenty Five to Eleven.</item>
+        <item>Twenty Four to Eleven.</item>
+        <item>Twenty Three to Eleven.</item>
+        <item>Twenty Two to Eleven.</item>
+        <item>Twenty one to Eleven.</item>
+        <item>Twenty to Eleven.</item>
+        <item>nineteen to Eleven.</item>
+        <item>Eighteen to Eleven.</item>
+        <item>Seventeen to Eleven.</item>
+        <item>Sixteen to Eleven.</item>
+        <item>A Quarter to Eleven.</item>
+        <item>Fourteen to Eleven.</item>
+        <item>Thirteen to Eleven.</item>
+        <item>Twelve to Eleven.</item>
+        <item>Eleven to Eleven.</item>
+        <item>Ten to Eleven.</item>
+        <item>Nine to Eleven.</item>
+        <item>Eight to Eleven.</item>
+        <item>Seven to Eleven.</item>
+        <item>Six to Eleven.</item>
+        <item>Five to Eleven.</item>
+        <item>Four to Eleven.</item>
+        <item>Three to Eleven.</item>
+        <item>Two to Eleven.</item>
+        <item>one to Eleven.</item>
+        <item>Eleven o\'Clock.</item>
+        <item>one past Eleven.</item>
+        <item>Two past Eleven.</item>
+        <item>Three past Eleven.</item>
+        <item>Four past Eleven.</item>
+        <item>Five past Eleven.</item>
+        <item>Six past Eleven.</item>
+        <item>Seven past Eleven.</item>
+        <item>Eight past Eleven.</item>
+        <item>Nine past Eleven.</item>
+        <item>Ten past Eleven.</item>
+        <item>Eleven past Eleven.</item>
+        <item>Twelve past Eleven.</item>
+        <item>Thirteen past Eleven.</item>
+        <item>Fourteen past Eleven.</item>
+        <item>A Quarter past Eleven.</item>
+        <item>Sixteen past Eleven.</item>
+        <item>Seventeen past Eleven.</item>
+        <item>Eighteen past Eleven.</item>
+        <item>nineteen past Eleven.</item>
+        <item>Twenty past Eleven.</item>
+        <item>Twenty one past Eleven.</item>
+        <item>Twenty Two past Eleven.</item>
+        <item>Twenty Three past Eleven.</item>
+        <item>Twenty Four past Eleven.</item>
+        <item>Twenty Five past Eleven.</item>
+        <item>Twenty Six past Eleven.</item>
+        <item>Twenty Seven past Eleven.</item>
+        <item>Twenty Eight past Eleven.</item>
+        <item>Twenty Nine past Eleven.</item>
+        <item>half past Eleven.</item>
+        <item>Twenty Nine to Twelve.</item>
+        <item>Twenty Eight to Twelve.</item>
+        <item>Twenty Seven to Twelve.</item>
+        <item>Twenty Six to Twelve.</item>
+        <item>Twenty Five to Twelve.</item>
+        <item>Twenty Four to Twelve.</item>
+        <item>Twenty Three to Twelve.</item>
+        <item>Twenty Two to Twelve.</item>
+        <item>Twenty one to Twelve.</item>
+        <item>Twenty to Twelve.</item>
+        <item>nineteen to Twelve.</item>
+        <item>Eighteen to Twelve.</item>
+        <item>Seventeen to Twelve.</item>
+        <item>Sixteen to Twelve.</item>
+        <item>A Quarter to Twelve.</item>
+        <item>Fourteen to Twelve.</item>
+        <item>Thirteen to Twelve.</item>
+        <item>Twelve to Twelve.</item>
+        <item>Eleven to Twelve.</item>
+        <item>Ten to Twelve.</item>
+        <item>Nine to Twelve.</item>
+        <item>Eight to Twelve.</item>
+        <item>Seven to Twelve.</item>
+        <item>Six to Twelve.</item>
+        <item>Five to Twelve.</item>
+        <item>Four to Twelve.</item>
+        <item>Three to Twelve.</item>
+        <item>Two to Twelve.</item>
+        <item>one to Twelve.</item>
+    </string-array>
+    <string-array name="verbosetime3">
+        <item>Twelve o\'Clock.</item>
+        <item>one past Twelve.</item>
+        <item>Two past Twelve.</item>
+        <item>Three past Twelve.</item>
+        <item>Four past Twelve.</item>
+        <item>Five past Twelve.</item>
+        <item>Six past Twelve.</item>
+        <item>Seven past Twelve.</item>
+        <item>Eight past Twelve.</item>
+        <item>Nine past Twelve.</item>
+        <item>Ten past Twelve.</item>
+        <item>Eleven past Twelve.</item>
+        <item>Twelve past Twelve.</item>
+        <item>Thirteen past Twelve.</item>
+        <item>Fourteen past Twelve.</item>
+        <item>A Quarter past Twelve.</item>
+        <item>Sixteen past Twelve.</item>
+        <item>Seventeen past Twelve.</item>
+        <item>Eighteen past Twelve.</item>
+        <item>nineteen past Twelve.</item>
+        <item>Twenty past Twelve.</item>
+        <item>Twenty one past Twelve.</item>
+        <item>Twenty Two past Twelve.</item>
+        <item>Twenty Three past Twelve.</item>
+        <item>Twenty Four past Twelve.</item>
+        <item>Twenty Five past Twelve.</item>
+        <item>Twenty Six past Twelve.</item>
+        <item>Twenty Seven past Twelve.</item>
+        <item>Twenty Eight past Twelve.</item>
+        <item>Twenty Nine past Twelve.</item>
+        <item>half past Twelve.</item>
+        <item>Twenty Nine to One.</item>
+        <item>Twenty Eight to One.</item>
+        <item>Twenty Seven to One.</item>
+        <item>Twenty Six to One.</item>
+        <item>Twenty Five to One.</item>
+        <item>Twenty Four to One.</item>
+        <item>Twenty Three to One.</item>
+        <item>Twenty Two to One.</item>
+        <item>Twenty one to One.</item>
+        <item>Twenty to One.</item>
+        <item>nineteen to One.</item>
+        <item>Eighteen to One.</item>
+        <item>Seventeen to One.</item>
+        <item>Sixteen to One.</item>
+        <item>A Quarter to one.</item>
+        <item>Fourteen to One.</item>
+        <item>Thirteen to One.</item>
+        <item>Twelve to One.</item>
+        <item>Eleven to One.</item>
+        <item>Ten to One.</item>
+        <item>Nine to One.</item>
+        <item>Eight to One.</item>
+        <item>Seven to One.</item>
+        <item>Six to One.</item>
+        <item>Five to One.</item>
+        <item>Four to One.</item>
+        <item>Three to One.</item>
+        <item>Two to One.</item>
+        <item>one to One.</item>
+        <item>one o\'Clock.</item>
+        <item>one past one.</item>
+        <item>Two past one.</item>
+        <item>Three past one.</item>
+        <item>Four past one.</item>
+        <item>Five past one.</item>
+        <item>Six past one.</item>
+        <item>Seven past one.</item>
+        <item>Eight past one.</item>
+        <item>Nine past one.</item>
+        <item>Ten past one.</item>
+        <item>Eleven past one.</item>
+        <item>Twelve past one.</item>
+        <item>Thirteen past one.</item>
+        <item>Fourteen past one.</item>
+        <item>A Quarter past one.</item>
+        <item>Sixteen past one.</item>
+        <item>Seventeen past one.</item>
+        <item>Eighteen past one.</item>
+        <item>nineteen past one.</item>
+        <item>Twenty past one.</item>
+        <item>Twenty one past one.</item>
+        <item>Twenty Two past one.</item>
+        <item>Twenty Three past one.</item>
+        <item>Twenty Four past one.</item>
+        <item>Twenty Five past one.</item>
+        <item>Twenty Six past one.</item>
+        <item>Twenty Seven past one.</item>
+        <item>Twenty Eight past one.</item>
+        <item>Twenty Nine past one.</item>
+        <item>half past one.</item>
+        <item>Twenty Nine to Two.</item>
+        <item>Twenty Eight to Two.</item>
+        <item>Twenty Seven to Two.</item>
+        <item>Twenty Six to Two.</item>
+        <item>Twenty Five to Two.</item>
+        <item>Twenty Four to Two.</item>
+        <item>Twenty Three to Two.</item>
+        <item>Twenty Two to Two.</item>
+        <item>Twenty one to Two.</item>
+        <item>Twenty to Two.</item>
+        <item>nineteen to Two.</item>
+        <item>Eighteen to Two.</item>
+        <item>Seventeen to Two.</item>
+        <item>Sixteen to Two.</item>
+        <item>A Quarter to Two.</item>
+        <item>Fourteen to Two.</item>
+        <item>Thirteen to Two.</item>
+        <item>Twelve to Two.</item>
+        <item>Eleven to Two.</item>
+        <item>Ten to Two.</item>
+        <item>Nine to Two.</item>
+        <item>Eight to Two.</item>
+        <item>Seven to Two.</item>
+        <item>Six to Two.</item>
+        <item>Five to Two.</item>
+        <item>Four to Two.</item>
+        <item>Three to Two.</item>
+        <item>Two to Two.</item>
+        <item>one to Two.</item>
+        <item>Two o\'Clock.</item>
+        <item>one past Two.</item>
+        <item>Two past Two.</item>
+        <item>Three past Two.</item>
+        <item>Four past Two.</item>
+        <item>Five past Two.</item>
+        <item>Six past Two.</item>
+        <item>Seven past Two.</item>
+        <item>Eight past Two.</item>
+        <item>Nine past Two.</item>
+        <item>Ten past Two.</item>
+        <item>Eleven past Two.</item>
+        <item>Twelve past Two.</item>
+        <item>Thirteen past Two.</item>
+        <item>Fourteen past Two.</item>
+        <item>A Quarter past Two.</item>
+        <item>Sixteen past Two.</item>
+        <item>Seventeen past Two.</item>
+        <item>Eighteen past Two.</item>
+        <item>nineteen past Two.</item>
+        <item>Twenty past Two.</item>
+        <item>Twenty one past Two.</item>
+        <item>Twenty Two past Two.</item>
+        <item>Twenty Three past Two.</item>
+        <item>Twenty Four past Two.</item>
+        <item>Twenty Five past Two.</item>
+        <item>Twenty Six past Two.</item>
+        <item>Twenty Seven past Two.</item>
+        <item>Twenty Eight past Two.</item>
+        <item>Twenty Nine past Two.</item>
+        <item>half past Two.</item>
+        <item>Twenty Nine to Three.</item>
+        <item>Twenty Eight to Three.</item>
+        <item>Twenty Seven to Three.</item>
+        <item>Twenty Six to Three.</item>
+        <item>Twenty Five to Three.</item>
+        <item>Twenty Four to Three.</item>
+        <item>Twenty Three to Three.</item>
+        <item>Twenty Two to Three.</item>
+        <item>Twenty one to Three.</item>
+        <item>Twenty to Three.</item>
+        <item>nineteen to Three.</item>
+        <item>Eighteen to Three.</item>
+        <item>Seventeen to Three.</item>
+        <item>Sixteen to Three.</item>
+        <item>A Quarter to Three.</item>
+        <item>Fourteen to Three.</item>
+        <item>Thirteen to Three.</item>
+        <item>Twelve to Three.</item>
+        <item>Eleven to Three.</item>
+        <item>Ten to Three.</item>
+        <item>Nine to Three.</item>
+        <item>Eight to Three.</item>
+        <item>Seven to Three.</item>
+        <item>Six to Three.</item>
+        <item>Five to Three.</item>
+        <item>Four to Three.</item>
+        <item>Three to Three.</item>
+        <item>Two to Three.</item>
+        <item>one to Three.</item>
+        <item>Three o\'Clock.</item>
+        <item>one past Three.</item>
+        <item>Two past Three.</item>
+        <item>Three past Three.</item>
+        <item>Four past Three.</item>
+        <item>Five past Three.</item>
+        <item>Six past Three.</item>
+        <item>Seven past Three.</item>
+        <item>Eight past Three.</item>
+        <item>Nine past Three.</item>
+        <item>Ten past Three.</item>
+        <item>Eleven past Three.</item>
+        <item>Twelve past Three.</item>
+        <item>Thirteen past Three.</item>
+        <item>Fourteen past Three.</item>
+        <item>A Quarter past Three.</item>
+        <item>Sixteen past Three.</item>
+        <item>Seventeen past Three.</item>
+        <item>Eighteen past Three.</item>
+        <item>nineteen past Three.</item>
+        <item>Twenty past Three.</item>
+        <item>Twenty one past Three.</item>
+        <item>Twenty Two past Three.</item>
+        <item>Twenty Three past Three.</item>
+        <item>Twenty Four past Three.</item>
+        <item>Twenty Five past Three.</item>
+        <item>Twenty Six past Three.</item>
+        <item>Twenty Seven past Three.</item>
+        <item>Twenty Eight past Three.</item>
+        <item>Twenty Nine past Three.</item>
+        <item>half past Three.</item>
+        <item>Twenty Nine to Four.</item>
+        <item>Twenty Eight to Four.</item>
+        <item>Twenty Seven to Four.</item>
+        <item>Twenty Six to Four.</item>
+        <item>Twenty Five to Four.</item>
+        <item>Twenty Four to Four.</item>
+        <item>Twenty Three to Four.</item>
+        <item>Twenty Two to Four.</item>
+        <item>Twenty one to Four.</item>
+        <item>Twenty to Four.</item>
+        <item>nineteen to Four.</item>
+        <item>Eighteen to Four.</item>
+        <item>Seventeen to Four.</item>
+        <item>Sixteen to Four.</item>
+        <item>A Quarter to Four.</item>
+        <item>Fourteen to Four.</item>
+        <item>Thirteen to Four.</item>
+        <item>Twelve to Four.</item>
+        <item>Eleven to Four.</item>
+        <item>Ten to Four.</item>
+        <item>Nine to Four.</item>
+        <item>Eight to Four.</item>
+        <item>Seven to Four.</item>
+        <item>Six to Four.</item>
+        <item>Five to Four.</item>
+        <item>Four to Four.</item>
+        <item>Three to Four.</item>
+        <item>Two to Four.</item>
+        <item>one to Four.</item>
+        <item>Four o\'Clock.</item>
+        <item>one past Four.</item>
+        <item>Two past Four.</item>
+        <item>Three past Four.</item>
+        <item>Four past Four.</item>
+        <item>Five past Four.</item>
+        <item>Six past Four.</item>
+        <item>Seven past Four.</item>
+        <item>Eight past Four.</item>
+        <item>Nine past Four.</item>
+        <item>Ten past Four.</item>
+        <item>Eleven past Four.</item>
+        <item>Twelve past Four.</item>
+        <item>Thirteen past Four.</item>
+        <item>Fourteen past Four.</item>
+        <item>A Quarter past Four.</item>
+        <item>Sixteen past Four.</item>
+        <item>Seventeen past Four.</item>
+        <item>Eighteen past Four.</item>
+        <item>nineteen past Four.</item>
+        <item>Twenty past Four.</item>
+        <item>Twenty one past Four.</item>
+        <item>Twenty Two past Four.</item>
+        <item>Twenty Three past Four.</item>
+        <item>Twenty Four past Four.</item>
+        <item>Twenty Five past Four.</item>
+        <item>Twenty Six past Four.</item>
+        <item>Twenty Seven past Four.</item>
+        <item>Twenty Eight past Four.</item>
+        <item>Twenty Nine past Four.</item>
+        <item>half past Four.</item>
+        <item>Twenty Nine to Five.</item>
+        <item>Twenty Eight to Five.</item>
+        <item>Twenty Seven to Five.</item>
+        <item>Twenty Six to Five.</item>
+        <item>Twenty Five to Five.</item>
+        <item>Twenty Four to Five.</item>
+        <item>Twenty Three to Five.</item>
+        <item>Twenty Two to Five.</item>
+        <item>Twenty one to Five.</item>
+        <item>Twenty to Five.</item>
+        <item>nineteen to Five.</item>
+        <item>Eighteen to Five.</item>
+        <item>Seventeen to Five.</item>
+        <item>Sixteen to Five.</item>
+        <item>A Quarter to Five.</item>
+        <item>Fourteen to Five.</item>
+        <item>Thirteen to Five.</item>
+        <item>Twelve to Five.</item>
+        <item>Eleven to Five.</item>
+        <item>Ten to Five.</item>
+        <item>Nine to Five.</item>
+        <item>Eight to Five.</item>
+        <item>Seven to Five.</item>
+        <item>Six to Five.</item>
+        <item>Five to Five.</item>
+        <item>Four to Five.</item>
+        <item>Three to Five.</item>
+        <item>Two to Five.</item>
+        <item>one to Five.</item>
+        <item>Five o\'Clock.</item>
+        <item>one past Five.</item>
+        <item>Two past Five.</item>
+        <item>Three past Five.</item>
+        <item>Four past Five.</item>
+        <item>Five past Five.</item>
+        <item>Six past Five.</item>
+        <item>Seven past Five.</item>
+        <item>Eight past Five.</item>
+        <item>Nine past Five.</item>
+        <item>Ten past Five.</item>
+        <item>Eleven past Five.</item>
+        <item>Twelve past Five.</item>
+        <item>Thirteen past Five.</item>
+        <item>Fourteen past Five.</item>
+        <item>A Quarter past Five.</item>
+        <item>Sixteen past Five.</item>
+        <item>Seventeen past Five.</item>
+        <item>Eighteen past Five.</item>
+        <item>nineteen past Five.</item>
+        <item>Twenty past Five.</item>
+        <item>Twenty one past Five.</item>
+        <item>Twenty Two past Five.</item>
+        <item>Twenty Three past Five.</item>
+        <item>Twenty Four past Five.</item>
+        <item>Twenty Five past Five.</item>
+        <item>Twenty Six past Five.</item>
+        <item>Twenty Seven past Five.</item>
+        <item>Twenty Eight past Five.</item>
+        <item>Twenty Nine past Five.</item>
+        <item>half past Five.</item>
+        <item>Twenty Nine to Six.</item>
+        <item>Twenty Eight to Six.</item>
+        <item>Twenty Seven to Six.</item>
+        <item>Twenty Six to Six.</item>
+        <item>Twenty Five to Six.</item>
+        <item>Twenty Four to Six.</item>
+        <item>Twenty Three to Six.</item>
+        <item>Twenty Two to Six.</item>
+        <item>Twenty one to Six.</item>
+        <item>Twenty to Six.</item>
+        <item>nineteen to Six.</item>
+        <item>Eighteen to Six.</item>
+        <item>Seventeen to Six.</item>
+        <item>Sixteen to Six.</item>
+        <item>A Quarter to Six.</item>
+        <item>Fourteen to Six.</item>
+        <item>Thirteen to Six.</item>
+        <item>Twelve to Six.</item>
+        <item>Eleven to Six.</item>
+        <item>Ten to Six.</item>
+        <item>Nine to Six.</item>
+        <item>Eight to Six.</item>
+        <item>Seven to Six.</item>
+        <item>Six to Six.</item>
+        <item>Five to Six.</item>
+        <item>Four to Six.</item>
+        <item>Three to Six.</item>
+        <item>Two to Six.</item>
+        <item>one to Six.</item>
+    </string-array>
+    <string-array name="verbosetime4">
+        <item>Six o\'Clock.</item>
+        <item>one past Six.</item>
+        <item>Two past Six.</item>
+        <item>Three past Six.</item>
+        <item>Four past Six.</item>
+        <item>Five past Six.</item>
+        <item>Six past Six.</item>
+        <item>Seven past Six.</item>
+        <item>Eight past Six.</item>
+        <item>Nine past Six.</item>
+        <item>Ten past Six.</item>
+        <item>Eleven past Six.</item>
+        <item>Twelve past Six.</item>
+        <item>Thirteen past Six.</item>
+        <item>Fourteen past Six.</item>
+        <item>A Quarter past Six.</item>
+        <item>Sixteen past Six.</item>
+        <item>Seventeen past Six.</item>
+        <item>Eighteen past Six.</item>
+        <item>nineteen past Six.</item>
+        <item>Twenty past Six.</item>
+        <item>Twenty one past Six.</item>
+        <item>Twenty Two past Six.</item>
+        <item>Twenty Three past Six.</item>
+        <item>Twenty Four past Six.</item>
+        <item>Twenty Five past Six.</item>
+        <item>Twenty Six past Six.</item>
+        <item>Twenty Seven past Six.</item>
+        <item>Twenty Eight past Six.</item>
+        <item>Twenty Nine past Six.</item>
+        <item>half past Six.</item>
+        <item>Twenty Nine to Seven.</item>
+        <item>Twenty Eight to Seven.</item>
+        <item>Twenty Seven to Seven.</item>
+        <item>Twenty Six to Seven.</item>
+        <item>Twenty Five to Seven.</item>
+        <item>Twenty Four to Seven.</item>
+        <item>Twenty Three to Seven.</item>
+        <item>Twenty Two to Seven.</item>
+        <item>Twenty one to Seven.</item>
+        <item>Twenty to Seven.</item>
+        <item>nineteen to Seven.</item>
+        <item>Eighteen to Seven.</item>
+        <item>Seventeen to Seven.</item>
+        <item>Sixteen to Seven.</item>
+        <item>A Quarter to Seven.</item>
+        <item>Fourteen to Seven.</item>
+        <item>Thirteen to Seven.</item>
+        <item>Twelve to Seven.</item>
+        <item>Eleven to Seven.</item>
+        <item>Ten to Seven.</item>
+        <item>Nine to Seven.</item>
+        <item>Eight to Seven.</item>
+        <item>Seven to Seven.</item>
+        <item>Six to Seven.</item>
+        <item>Five to Seven.</item>
+        <item>Four to Seven.</item>
+        <item>Three to Seven.</item>
+        <item>Two to Seven.</item>
+        <item>one to Seven.</item>
+        <item>Seven o\'Clock.</item>
+        <item>one past Seven.</item>
+        <item>Two past Seven.</item>
+        <item>Three past Seven.</item>
+        <item>Four past Seven.</item>
+        <item>Five past Seven.</item>
+        <item>Six past Seven.</item>
+        <item>Seven past Seven.</item>
+        <item>Eight past Seven.</item>
+        <item>Nine past Seven.</item>
+        <item>Ten past Seven.</item>
+        <item>Eleven past Seven.</item>
+        <item>Twelve past Seven.</item>
+        <item>Thirteen past Seven.</item>
+        <item>Fourteen past Seven.</item>
+        <item>A Quarter past Seven.</item>
+        <item>Sixteen past Seven.</item>
+        <item>Seventeen past Seven.</item>
+        <item>Eighteen past Seven.</item>
+        <item>nineteen past Seven.</item>
+        <item>Twenty past Seven.</item>
+        <item>Twenty one past Seven.</item>
+        <item>Twenty Two past Seven.</item>
+        <item>Twenty Three past Seven.</item>
+        <item>Twenty Four past Seven.</item>
+        <item>Twenty Five past Seven.</item>
+        <item>Twenty Six past Seven.</item>
+        <item>Twenty Seven past Seven.</item>
+        <item>Twenty Eight past Seven.</item>
+        <item>Twenty Nine past Seven.</item>
+        <item>half past Seven.</item>
+        <item>Twenty Nine to Eight.</item>
+        <item>Twenty Eight to Eight.</item>
+        <item>Twenty Seven to Eight.</item>
+        <item>Twenty Six to Eight.</item>
+        <item>Twenty Five to Eight.</item>
+        <item>Twenty Four to Eight.</item>
+        <item>Twenty Three to Eight.</item>
+        <item>Twenty Two to Eight.</item>
+        <item>Twenty one to Eight.</item>
+        <item>Twenty to Eight.</item>
+        <item>nineteen to Eight.</item>
+        <item>Eighteen to Eight.</item>
+        <item>Seventeen to Eight.</item>
+        <item>Sixteen to Eight.</item>
+        <item>A Quarter to Eight.</item>
+        <item>Fourteen to Eight.</item>
+        <item>Thirteen to Eight.</item>
+        <item>Twelve to Eight.</item>
+        <item>Eleven to Eight.</item>
+        <item>Ten to Eight.</item>
+        <item>Nine to Eight.</item>
+        <item>Eight to Eight.</item>
+        <item>Seven to Eight.</item>
+        <item>Six to Eight.</item>
+        <item>Five to Eight.</item>
+        <item>Four to Eight.</item>
+        <item>Three to Eight.</item>
+        <item>Two to Eight.</item>
+        <item>one to Eight.</item>
+        <item>Eight o\'Clock.</item>
+        <item>one past Eight.</item>
+        <item>Two past Eight.</item>
+        <item>Three past Eight.</item>
+        <item>Four past Eight.</item>
+        <item>Five past Eight.</item>
+        <item>Six past Eight.</item>
+        <item>Seven past Eight.</item>
+        <item>Eight past Eight.</item>
+        <item>Nine past Eight.</item>
+        <item>Ten past Eight.</item>
+        <item>Eleven past Eight.</item>
+        <item>Twelve past Eight.</item>
+        <item>Thirteen past Eight.</item>
+        <item>Fourteen past Eight.</item>
+        <item>A Quarter past Eight.</item>
+        <item>Sixteen past Eight.</item>
+        <item>Seventeen past Eight.</item>
+        <item>Eighteen past Eight.</item>
+        <item>nineteen past Eight.</item>
+        <item>Twenty past Eight.</item>
+        <item>Twenty one past Eight.</item>
+        <item>Twenty Two past Eight.</item>
+        <item>Twenty Three past Eight.</item>
+        <item>Twenty Four past Eight.</item>
+        <item>Twenty Five past Eight.</item>
+        <item>Twenty Six past Eight.</item>
+        <item>Twenty Seven past Eight.</item>
+        <item>Twenty Eight past Eight.</item>
+        <item>Twenty Nine past Eight.</item>
+        <item>half past Eight.</item>
+        <item>Twenty Nine to Nine.</item>
+        <item>Twenty Eight to Nine.</item>
+        <item>Twenty Seven to Nine.</item>
+        <item>Twenty Six to Nine.</item>
+        <item>Twenty Five to Nine.</item>
+        <item>Twenty Four to Nine.</item>
+        <item>Twenty Three to Nine.</item>
+        <item>Twenty Two to Nine.</item>
+        <item>Twenty one to Nine.</item>
+        <item>Twenty to Nine.</item>
+        <item>nineteen to Nine.</item>
+        <item>Eighteen to Nine.</item>
+        <item>Seventeen to Nine.</item>
+        <item>Sixteen to Nine.</item>
+        <item>A Quarter to Nine.</item>
+        <item>Fourteen to Nine.</item>
+        <item>Thirteen to Nine.</item>
+        <item>Twelve to Nine.</item>
+        <item>Eleven to Nine.</item>
+        <item>Ten to Nine.</item>
+        <item>Nine to Nine.</item>
+        <item>Eight to Nine.</item>
+        <item>Seven to Nine.</item>
+        <item>Six to Nine.</item>
+        <item>Five to Nine.</item>
+        <item>Four to Nine.</item>
+        <item>Three to Nine.</item>
+        <item>Two to Nine.</item>
+        <item>one to Nine.</item>
+        <item>Nine o\'Clock.</item>
+        <item>one past Nine.</item>
+        <item>Two past Nine.</item>
+        <item>Three past Nine.</item>
+        <item>Four past Nine.</item>
+        <item>Five past Nine.</item>
+        <item>Six past Nine.</item>
+        <item>Seven past Nine.</item>
+        <item>Eight past Nine.</item>
+        <item>Nine past Nine.</item>
+        <item>Ten past Nine.</item>
+        <item>Eleven past Nine.</item>
+        <item>Twelve past Nine.</item>
+        <item>Thirteen past Nine.</item>
+        <item>Fourteen past Nine.</item>
+        <item>A Quarter past Nine.</item>
+        <item>Sixteen past Nine.</item>
+        <item>Seventeen past Nine.</item>
+        <item>Eighteen past Nine.</item>
+        <item>nineteen past Nine.</item>
+        <item>Twenty past Nine.</item>
+        <item>Twenty one past Nine.</item>
+        <item>Twenty Two past Nine.</item>
+        <item>Twenty Three past Nine.</item>
+        <item>Twenty Four past Nine.</item>
+        <item>Twenty Five past Nine.</item>
+        <item>Twenty Six past Nine.</item>
+        <item>Twenty Seven past Nine.</item>
+        <item>Twenty Eight past Nine.</item>
+        <item>Twenty Nine past Nine.</item>
+        <item>half past Nine.</item>
+        <item>Twenty Nine to Ten.</item>
+        <item>Twenty Eight to Ten.</item>
+        <item>Twenty Seven to Ten.</item>
+        <item>Twenty Six to Ten.</item>
+        <item>Twenty Five to Ten.</item>
+        <item>Twenty Four to Ten.</item>
+        <item>Twenty Three to Ten.</item>
+        <item>Twenty Two to Ten.</item>
+        <item>Twenty one to Ten.</item>
+        <item>Twenty to Ten.</item>
+        <item>nineteen to Ten.</item>
+        <item>Eighteen to Ten.</item>
+        <item>Seventeen to Ten.</item>
+        <item>Sixteen to Ten.</item>
+        <item>A Quarter to Ten.</item>
+        <item>Fourteen to Ten.</item>
+        <item>Thirteen to Ten.</item>
+        <item>Twelve to Ten.</item>
+        <item>Eleven to Ten.</item>
+        <item>Ten to Ten.</item>
+        <item>Nine to Ten.</item>
+        <item>Eight to Ten.</item>
+        <item>Seven to Ten.</item>
+        <item>Six to Ten.</item>
+        <item>Five to Ten.</item>
+        <item>Four to Ten.</item>
+        <item>Three to Ten.</item>
+        <item>Two to Ten.</item>
+        <item>one to Ten.</item>
+        <item>Ten o\'Clock.</item>
+        <item>one past Ten.</item>
+        <item>Two past Ten.</item>
+        <item>Three past Ten.</item>
+        <item>Four past Ten.</item>
+        <item>Five past Ten.</item>
+        <item>Six past Ten.</item>
+        <item>Seven past Ten.</item>
+        <item>Eight past Ten.</item>
+        <item>Nine past Ten.</item>
+        <item>Ten past Ten.</item>
+        <item>Eleven past Ten.</item>
+        <item>Twelve past Ten.</item>
+        <item>Thirteen past Ten.</item>
+        <item>Fourteen past Ten.</item>
+        <item>A Quarter past Ten.</item>
+        <item>Sixteen past Ten.</item>
+        <item>Seventeen past Ten.</item>
+        <item>Eighteen past Ten.</item>
+        <item>nineteen past Ten.</item>
+        <item>Twenty past Ten.</item>
+        <item>Twenty one past Ten.</item>
+        <item>Twenty Two past Ten.</item>
+        <item>Twenty Three past Ten.</item>
+        <item>Twenty Four past Ten.</item>
+        <item>Twenty Five past Ten.</item>
+        <item>Twenty Six past Ten.</item>
+        <item>Twenty Seven past Ten.</item>
+        <item>Twenty Eight past Ten.</item>
+        <item>Twenty Nine past Ten.</item>
+        <item>half past Ten.</item>
+        <item>Twenty Nine to Eleven.</item>
+        <item>Twenty Eight to Eleven.</item>
+        <item>Twenty Seven to Eleven.</item>
+        <item>Twenty Six to Eleven.</item>
+        <item>Twenty Five to Eleven.</item>
+        <item>Twenty Four to Eleven.</item>
+        <item>Twenty Three to Eleven.</item>
+        <item>Twenty Two to Eleven.</item>
+        <item>Twenty one to Eleven.</item>
+        <item>Twenty to Eleven.</item>
+        <item>nineteen to Eleven.</item>
+        <item>Eighteen to Eleven.</item>
+        <item>Seventeen to Eleven.</item>
+        <item>Sixteen to Eleven.</item>
+        <item>A Quarter to Eleven.</item>
+        <item>Fourteen to Eleven.</item>
+        <item>Thirteen to Eleven.</item>
+        <item>Twelve to Eleven.</item>
+        <item>Eleven to Eleven.</item>
+        <item>Ten to Eleven.</item>
+        <item>Nine to Eleven.</item>
+        <item>Eight to Eleven.</item>
+        <item>Seven to Eleven.</item>
+        <item>Six to Eleven.</item>
+        <item>Five to Eleven.</item>
+        <item>Four to Eleven.</item>
+        <item>Three to Eleven.</item>
+        <item>Two to Eleven.</item>
+        <item>one to Eleven.</item>
+        <item>Eleven o\'Clock.</item>
+        <item>one past Eleven.</item>
+        <item>Two past Eleven.</item>
+        <item>Three past Eleven.</item>
+        <item>Four past Eleven.</item>
+        <item>Five past Eleven.</item>
+        <item>Six past Eleven.</item>
+        <item>Seven past Eleven.</item>
+        <item>Eight past Eleven.</item>
+        <item>Nine past Eleven.</item>
+        <item>Ten past Eleven.</item>
+        <item>Eleven past Eleven.</item>
+        <item>Twelve past Eleven.</item>
+        <item>Thirteen past Eleven.</item>
+        <item>Fourteen past Eleven.</item>
+        <item>A Quarter past Eleven.</item>
+        <item>Sixteen past Eleven.</item>
+        <item>Seventeen past Eleven.</item>
+        <item>Eighteen past Eleven.</item>
+        <item>nineteen past Eleven.</item>
+        <item>Twenty past Eleven.</item>
+        <item>Twenty one past Eleven.</item>
+        <item>Twenty Two past Eleven.</item>
+        <item>Twenty Three past Eleven.</item>
+        <item>Twenty Four past Eleven.</item>
+        <item>Twenty Five past Eleven.</item>
+        <item>Twenty Six past Eleven.</item>
+        <item>Twenty Seven past Eleven.</item>
+        <item>Twenty Eight past Eleven.</item>
+        <item>Twenty Nine past Eleven.</item>
+        <item>half past Eleven.</item>
+        <item>Twenty Nine to Twelve.</item>
+        <item>Twenty Eight to Twelve.</item>
+        <item>Twenty Seven to Twelve.</item>
+        <item>Twenty Six to Twelve.</item>
+        <item>Twenty Five to Twelve.</item>
+        <item>Twenty Four to Twelve.</item>
+        <item>Twenty Three to Twelve.</item>
+        <item>Twenty Two to Twelve.</item>
+        <item>Twenty one to Twelve.</item>
+        <item>Twenty to Twelve.</item>
+        <item>nineteen to Twelve.</item>
+        <item>Eighteen to Twelve.</item>
+        <item>Seventeen to Twelve.</item>
+        <item>Sixteen to Twelve.</item>
+        <item>A Quarter to Twelve.</item>
+        <item>Fourteen to Twelve.</item>
+        <item>Thirteen to Twelve.</item>
+        <item>Twelve to Twelve.</item>
+        <item>Eleven to Twelve.</item>
+        <item>Ten to Twelve.</item>
+        <item>Nine to Twelve.</item>
+        <item>Eight to Twelve.</item>
+        <item>Seven to Twelve.</item>
+        <item>Six to Twelve.</item>
+        <item>Five to Twelve.</item>
+        <item>Four to Twelve.</item>
+        <item>Three to Twelve.</item>
+        <item>Two to Twelve.</item>
+        <item>one to Twelve.</item>
+    </string-array>
+
 </resources>

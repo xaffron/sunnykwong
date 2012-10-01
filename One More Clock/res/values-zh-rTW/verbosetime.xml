@@ -1,1445 +1,1453 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string-array name="verbosetime">
-<item>十二時正</item>
-<item>十二時零一分</item>
-<item>十二時零二分</item>
-<item>十二時零三分</item>
-<item>十二時零四分</item>
-<item>十二時零五分</item>
-<item>十二時零六分</item>
-<item>十二時零七分</item>
-<item>十二時零八分</item>
-<item>十二時零九分</item>
-<item>十二時十分</item>
-<item>十二時十一分</item>
-<item>十二時十二分</item>
-<item>十二時十三分</item>
-<item>十二時十四分</item>
-<item>十二時十五分</item>
-<item>十二時十六分</item>
-<item>十二時十七分</item>
-<item>十二時十八分</item>
-<item>十二時十九分</item>
-<item>十二時二十分</item>
-<item>十二時二十一分</item>
-<item>十二時二十二分</item>
-<item>十二時二十三分</item>
-<item>十二時二十四分</item>
-<item>十二時二十五分</item>
-<item>十二時二十六分</item>
-<item>十二時二十七分</item>
-<item>十二時二十八分</item>
-<item>十二時二十九分</item>
-<item>十二時半</item>
-<item>十二時三十一分</item>
-<item>十二時三十二分</item>
-<item>十二時三十三分</item>
-<item>十二時三十四分</item>
-<item>十二時三十五分</item>
-<item>十二時三十六分</item>
-<item>十二時三十七分</item>
-<item>十二時三十八分</item>
-<item>十二時三十九分</item>
-<item>十二時四十分</item>
-<item>十二時四十一分</item>
-<item>十二時四十二分</item>
-<item>十二時四十三分</item>
-<item>十二時四十四分</item>
-<item>十二時四十五分</item>
-<item>十二時四十六分</item>
-<item>十二時四十七分</item>
-<item>十二時四十八分</item>
-<item>十二時四十九分</item>
-<item>十二時五十分</item>
-<item>十二時五十一分</item>
-<item>十二時五十二分</item>
-<item>十二時五十三分</item>
-<item>十二時五十四分</item>
-<item>十二時五十五分</item>
-<item>十二時五十六分</item>
-<item>十二時五十七分</item>
-<item>十二時五十八分</item>
-<item>十二時五十九分</item>
-<item>一時正</item>
-<item>一時零一分</item>
-<item>一時零二分</item>
-<item>一時零三分</item>
-<item>一時零四分</item>
-<item>一時零五分</item>
-<item>一時零六分</item>
-<item>一時零七分</item>
-<item>一時零八分</item>
-<item>一時零九分</item>
-<item>一時十分</item>
-<item>一時十一分</item>
-<item>一時十二分</item>
-<item>一時十三分</item>
-<item>一時十四分</item>
-<item>一時十五分</item>
-<item>一時十六分</item>
-<item>一時十七分</item>
-<item>一時十八分</item>
-<item>一時十九分</item>
-<item>一時二十分</item>
-<item>一時二十一分</item>
-<item>一時二十二分</item>
-<item>一時二十三分</item>
-<item>一時二十四分</item>
-<item>一時二十五分</item>
-<item>一時二十六分</item>
-<item>一時二十七分</item>
-<item>一時二十八分</item>
-<item>一時二十九分</item>
-<item>一時半</item>
-<item>一時三十一分</item>
-<item>一時三十二分</item>
-<item>一時三十三分</item>
-<item>一時三十四分</item>
-<item>一時三十五分</item>
-<item>一時三十六分</item>
-<item>一時三十七分</item>
-<item>一時三十八分</item>
-<item>一時三十九分</item>
-<item>一時四十分</item>
-<item>一時四十一分</item>
-<item>一時四十二分</item>
-<item>一時四十三分</item>
-<item>一時四十四分</item>
-<item>一時四十五分</item>
-<item>一時四十六分</item>
-<item>一時四十七分</item>
-<item>一時四十八分</item>
-<item>一時四十九分</item>
-<item>一時五十分</item>
-<item>一時五十一分</item>
-<item>一時五十二分</item>
-<item>一時五十三分</item>
-<item>一時五十四分</item>
-<item>一時五十五分</item>
-<item>一時五十六分</item>
-<item>一時五十七分</item>
-<item>一時五十八分</item>
-<item>一時五十九分</item>
-<item>二時正</item>
-<item>二時零一分</item>
-<item>二時零二分</item>
-<item>二時零三分</item>
-<item>二時零四分</item>
-<item>二時零五分</item>
-<item>二時零六分</item>
-<item>二時零七分</item>
-<item>二時零八分</item>
-<item>二時零九分</item>
-<item>二時十分</item>
-<item>二時十一分</item>
-<item>二時十二分</item>
-<item>二時十三分</item>
-<item>二時十四分</item>
-<item>二時十五分</item>
-<item>二時十六分</item>
-<item>二時十七分</item>
-<item>二時十八分</item>
-<item>二時十九分</item>
-<item>二時二十分</item>
-<item>二時二十一分</item>
-<item>二時二十二分</item>
-<item>二時二十三分</item>
-<item>二時二十四分</item>
-<item>二時二十五分</item>
-<item>二時二十六分</item>
-<item>二時二十七分</item>
-<item>二時二十八分</item>
-<item>二時二十九分</item>
-<item>二時半</item>
-<item>二時三十一分</item>
-<item>二時三十二分</item>
-<item>二時三十三分</item>
-<item>二時三十四分</item>
-<item>二時三十五分</item>
-<item>二時三十六分</item>
-<item>二時三十七分</item>
-<item>二時三十八分</item>
-<item>二時三十九分</item>
-<item>二時四十分</item>
-<item>二時四十一分</item>
-<item>二時四十二分</item>
-<item>二時四十三分</item>
-<item>二時四十四分</item>
-<item>二時四十五分</item>
-<item>二時四十六分</item>
-<item>二時四十七分</item>
-<item>二時四十八分</item>
-<item>二時四十九分</item>
-<item>二時五十分</item>
-<item>二時五十一分</item>
-<item>二時五十二分</item>
-<item>二時五十三分</item>
-<item>二時五十四分</item>
-<item>二時五十五分</item>
-<item>二時五十六分</item>
-<item>二時五十七分</item>
-<item>二時五十八分</item>
-<item>二時五十九分</item>
-<item>三時正</item>
-<item>三時零一分</item>
-<item>三時零二分</item>
-<item>三時零三分</item>
-<item>三時零四分</item>
-<item>三時零五分</item>
-<item>三時零六分</item>
-<item>三時零七分</item>
-<item>三時零八分</item>
-<item>三時零九分</item>
-<item>三時十分</item>
-<item>三時十一分</item>
-<item>三時十二分</item>
-<item>三時十三分</item>
-<item>三時十四分</item>
-<item>三時十五分</item>
-<item>三時十六分</item>
-<item>三時十七分</item>
-<item>三時十八分</item>
-<item>三時十九分</item>
-<item>三時二十分</item>
-<item>三時二十一分</item>
-<item>三時二十二分</item>
-<item>三時二十三分</item>
-<item>三時二十四分</item>
-<item>三時二十五分</item>
-<item>三時二十六分</item>
-<item>三時二十七分</item>
-<item>三時二十八分</item>
-<item>三時二十九分</item>
-<item>三時半</item>
-<item>三時三十一分</item>
-<item>三時三十二分</item>
-<item>三時三十三分</item>
-<item>三時三十四分</item>
-<item>三時三十五分</item>
-<item>三時三十六分</item>
-<item>三時三十七分</item>
-<item>三時三十八分</item>
-<item>三時三十九分</item>
-<item>三時四十分</item>
-<item>三時四十一分</item>
-<item>三時四十二分</item>
-<item>三時四十三分</item>
-<item>三時四十四分</item>
-<item>三時四十五分</item>
-<item>三時四十六分</item>
-<item>三時四十七分</item>
-<item>三時四十八分</item>
-<item>三時四十九分</item>
-<item>三時五十分</item>
-<item>三時五十一分</item>
-<item>三時五十二分</item>
-<item>三時五十三分</item>
-<item>三時五十四分</item>
-<item>三時五十五分</item>
-<item>三時五十六分</item>
-<item>三時五十七分</item>
-<item>三時五十八分</item>
-<item>三時五十九分</item>
-<item>四時正</item>
-<item>四時零一分</item>
-<item>四時零二分</item>
-<item>四時零三分</item>
-<item>四時零四分</item>
-<item>四時零五分</item>
-<item>四時零六分</item>
-<item>四時零七分</item>
-<item>四時零八分</item>
-<item>四時零九分</item>
-<item>四時十分</item>
-<item>四時十一分</item>
-<item>四時十二分</item>
-<item>四時十三分</item>
-<item>四時十四分</item>
-<item>四時十五分</item>
-<item>四時十六分</item>
-<item>四時十七分</item>
-<item>四時十八分</item>
-<item>四時十九分</item>
-<item>四時二十分</item>
-<item>四時二十一分</item>
-<item>四時二十二分</item>
-<item>四時二十三分</item>
-<item>四時二十四分</item>
-<item>四時二十五分</item>
-<item>四時二十六分</item>
-<item>四時二十七分</item>
-<item>四時二十八分</item>
-<item>四時二十九分</item>
-<item>四時半</item>
-<item>四時三十一分</item>
-<item>四時三十二分</item>
-<item>四時三十三分</item>
-<item>四時三十四分</item>
-<item>四時三十五分</item>
-<item>四時三十六分</item>
-<item>四時三十七分</item>
-<item>四時三十八分</item>
-<item>四時三十九分</item>
-<item>四時四十分</item>
-<item>四時四十一分</item>
-<item>四時四十二分</item>
-<item>四時四十三分</item>
-<item>四時四十四分</item>
-<item>四時四十五分</item>
-<item>四時四十六分</item>
-<item>四時四十七分</item>
-<item>四時四十八分</item>
-<item>四時四十九分</item>
-<item>四時五十分</item>
-<item>四時五十一分</item>
-<item>四時五十二分</item>
-<item>四時五十三分</item>
-<item>四時五十四分</item>
-<item>四時五十五分</item>
-<item>四時五十六分</item>
-<item>四時五十七分</item>
-<item>四時五十八分</item>
-<item>四時五十九分</item>
-<item>五時正</item>
-<item>五時零一分</item>
-<item>五時零二分</item>
-<item>五時零三分</item>
-<item>五時零四分</item>
-<item>五時零五分</item>
-<item>五時零六分</item>
-<item>五時零七分</item>
-<item>五時零八分</item>
-<item>五時零九分</item>
-<item>五時十分</item>
-<item>五時十一分</item>
-<item>五時十二分</item>
-<item>五時十三分</item>
-<item>五時十四分</item>
-<item>五時十五分</item>
-<item>五時十六分</item>
-<item>五時十七分</item>
-<item>五時十八分</item>
-<item>五時十九分</item>
-<item>五時二十分</item>
-<item>五時二十一分</item>
-<item>五時二十二分</item>
-<item>五時二十三分</item>
-<item>五時二十四分</item>
-<item>五時二十五分</item>
-<item>五時二十六分</item>
-<item>五時二十七分</item>
-<item>五時二十八分</item>
-<item>五時二十九分</item>
-<item>五時半</item>
-<item>五時三十一分</item>
-<item>五時三十二分</item>
-<item>五時三十三分</item>
-<item>五時三十四分</item>
-<item>五時三十五分</item>
-<item>五時三十六分</item>
-<item>五時三十七分</item>
-<item>五時三十八分</item>
-<item>五時三十九分</item>
-<item>五時四十分</item>
-<item>五時四十一分</item>
-<item>五時四十二分</item>
-<item>五時四十三分</item>
-<item>五時四十四分</item>
-<item>五時四十五分</item>
-<item>五時四十六分</item>
-<item>五時四十七分</item>
-<item>五時四十八分</item>
-<item>五時四十九分</item>
-<item>五時五十分</item>
-<item>五時五十一分</item>
-<item>五時五十二分</item>
-<item>五時五十三分</item>
-<item>五時五十四分</item>
-<item>五時五十五分</item>
-<item>五時五十六分</item>
-<item>五時五十七分</item>
-<item>五時五十八分</item>
-<item>五時五十九分</item>
-<item>六時正</item>
-<item>六時零一分</item>
-<item>六時零二分</item>
-<item>六時零三分</item>
-<item>六時零四分</item>
-<item>六時零五分</item>
-<item>六時零六分</item>
-<item>六時零七分</item>
-<item>六時零八分</item>
-<item>六時零九分</item>
-<item>六時十分</item>
-<item>六時十一分</item>
-<item>六時十二分</item>
-<item>六時十三分</item>
-<item>六時十四分</item>
-<item>六時十五分</item>
-<item>六時十六分</item>
-<item>六時十七分</item>
-<item>六時十八分</item>
-<item>六時十九分</item>
-<item>六時二十分</item>
-<item>六時二十一分</item>
-<item>六時二十二分</item>
-<item>六時二十三分</item>
-<item>六時二十四分</item>
-<item>六時二十五分</item>
-<item>六時二十六分</item>
-<item>六時二十七分</item>
-<item>六時二十八分</item>
-<item>六時二十九分</item>
-<item>六時半</item>
-<item>六時三十一分</item>
-<item>六時三十二分</item>
-<item>六時三十三分</item>
-<item>六時三十四分</item>
-<item>六時三十五分</item>
-<item>六時三十六分</item>
-<item>六時三十七分</item>
-<item>六時三十八分</item>
-<item>六時三十九分</item>
-<item>六時四十分</item>
-<item>六時四十一分</item>
-<item>六時四十二分</item>
-<item>六時四十三分</item>
-<item>六時四十四分</item>
-<item>六時四十五分</item>
-<item>六時四十六分</item>
-<item>六時四十七分</item>
-<item>六時四十八分</item>
-<item>六時四十九分</item>
-<item>六時五十分</item>
-<item>六時五十一分</item>
-<item>六時五十二分</item>
-<item>六時五十三分</item>
-<item>六時五十四分</item>
-<item>六時五十五分</item>
-<item>六時五十六分</item>
-<item>六時五十七分</item>
-<item>六時五十八分</item>
-<item>六時五十九分</item>
-<item>七時正</item>
-<item>七時零一分</item>
-<item>七時零二分</item>
-<item>七時零三分</item>
-<item>七時零四分</item>
-<item>七時零五分</item>
-<item>七時零六分</item>
-<item>七時零七分</item>
-<item>七時零八分</item>
-<item>七時零九分</item>
-<item>七時十分</item>
-<item>七時十一分</item>
-<item>七時十二分</item>
-<item>七時十三分</item>
-<item>七時十四分</item>
-<item>七時十五分</item>
-<item>七時十六分</item>
-<item>七時十七分</item>
-<item>七時十八分</item>
-<item>七時十九分</item>
-<item>七時二十分</item>
-<item>七時二十一分</item>
-<item>七時二十二分</item>
-<item>七時二十三分</item>
-<item>七時二十四分</item>
-<item>七時二十五分</item>
-<item>七時二十六分</item>
-<item>七時二十七分</item>
-<item>七時二十八分</item>
-<item>七時二十九分</item>
-<item>七時半</item>
-<item>七時三十一分</item>
-<item>七時三十二分</item>
-<item>七時三十三分</item>
-<item>七時三十四分</item>
-<item>七時三十五分</item>
-<item>七時三十六分</item>
-<item>七時三十七分</item>
-<item>七時三十八分</item>
-<item>七時三十九分</item>
-<item>七時四十分</item>
-<item>七時四十一分</item>
-<item>七時四十二分</item>
-<item>七時四十三分</item>
-<item>七時四十四分</item>
-<item>七時四十五分</item>
-<item>七時四十六分</item>
-<item>七時四十七分</item>
-<item>七時四十八分</item>
-<item>七時四十九分</item>
-<item>七時五十分</item>
-<item>七時五十一分</item>
-<item>七時五十二分</item>
-<item>七時五十三分</item>
-<item>七時五十四分</item>
-<item>七時五十五分</item>
-<item>七時五十六分</item>
-<item>七時五十七分</item>
-<item>七時五十八分</item>
-<item>七時五十九分</item>
-<item>八時正</item>
-<item>八時零一分</item>
-<item>八時零二分</item>
-<item>八時零三分</item>
-<item>八時零四分</item>
-<item>八時零五分</item>
-<item>八時零六分</item>
-<item>八時零七分</item>
-<item>八時零八分</item>
-<item>八時零九分</item>
-<item>八時十分</item>
-<item>八時十一分</item>
-<item>八時十二分</item>
-<item>八時十三分</item>
-<item>八時十四分</item>
-<item>八時十五分</item>
-<item>八時十六分</item>
-<item>八時十七分</item>
-<item>八時十八分</item>
-<item>八時十九分</item>
-<item>八時二十分</item>
-<item>八時二十一分</item>
-<item>八時二十二分</item>
-<item>八時二十三分</item>
-<item>八時二十四分</item>
-<item>八時二十五分</item>
-<item>八時二十六分</item>
-<item>八時二十七分</item>
-<item>八時二十八分</item>
-<item>八時二十九分</item>
-<item>八時半</item>
-<item>八時三十一分</item>
-<item>八時三十二分</item>
-<item>八時三十三分</item>
-<item>八時三十四分</item>
-<item>八時三十五分</item>
-<item>八時三十六分</item>
-<item>八時三十七分</item>
-<item>八時三十八分</item>
-<item>八時三十九分</item>
-<item>八時四十分</item>
-<item>八時四十一分</item>
-<item>八時四十二分</item>
-<item>八時四十三分</item>
-<item>八時四十四分</item>
-<item>八時四十五分</item>
-<item>八時四十六分</item>
-<item>八時四十七分</item>
-<item>八時四十八分</item>
-<item>八時四十九分</item>
-<item>八時五十分</item>
-<item>八時五十一分</item>
-<item>八時五十二分</item>
-<item>八時五十三分</item>
-<item>八時五十四分</item>
-<item>八時五十五分</item>
-<item>八時五十六分</item>
-<item>八時五十七分</item>
-<item>八時五十八分</item>
-<item>八時五十九分</item>
-<item>九時正</item>
-<item>九時零一分</item>
-<item>九時零二分</item>
-<item>九時零三分</item>
-<item>九時零四分</item>
-<item>九時零五分</item>
-<item>九時零六分</item>
-<item>九時零七分</item>
-<item>九時零八分</item>
-<item>九時零九分</item>
-<item>九時十分</item>
-<item>九時十一分</item>
-<item>九時十二分</item>
-<item>九時十三分</item>
-<item>九時十四分</item>
-<item>九時十五分</item>
-<item>九時十六分</item>
-<item>九時十七分</item>
-<item>九時十八分</item>
-<item>九時十九分</item>
-<item>九時二十分</item>
-<item>九時二十一分</item>
-<item>九時二十二分</item>
-<item>九時二十三分</item>
-<item>九時二十四分</item>
-<item>九時二十五分</item>
-<item>九時二十六分</item>
-<item>九時二十七分</item>
-<item>九時二十八分</item>
-<item>九時二十九分</item>
-<item>九時半</item>
-<item>九時三十一分</item>
-<item>九時三十二分</item>
-<item>九時三十三分</item>
-<item>九時三十四分</item>
-<item>九時三十五分</item>
-<item>九時三十六分</item>
-<item>九時三十七分</item>
-<item>九時三十八分</item>
-<item>九時三十九分</item>
-<item>九時四十分</item>
-<item>九時四十一分</item>
-<item>九時四十二分</item>
-<item>九時四十三分</item>
-<item>九時四十四分</item>
-<item>九時四十五分</item>
-<item>九時四十六分</item>
-<item>九時四十七分</item>
-<item>九時四十八分</item>
-<item>九時四十九分</item>
-<item>九時五十分</item>
-<item>九時五十一分</item>
-<item>九時五十二分</item>
-<item>九時五十三分</item>
-<item>九時五十四分</item>
-<item>九時五十五分</item>
-<item>九時五十六分</item>
-<item>九時五十七分</item>
-<item>九時五十八分</item>
-<item>九時五十九分</item>
-<item>十時正</item>
-<item>十時零一分</item>
-<item>十時零二分</item>
-<item>十時零三分</item>
-<item>十時零四分</item>
-<item>十時零五分</item>
-<item>十時零六分</item>
-<item>十時零七分</item>
-<item>十時零八分</item>
-<item>十時零九分</item>
-<item>十時十分</item>
-<item>十時十一分</item>
-<item>十時十二分</item>
-<item>十時十三分</item>
-<item>十時十四分</item>
-<item>十時十五分</item>
-<item>十時十六分</item>
-<item>十時十七分</item>
-<item>十時十八分</item>
-<item>十時十九分</item>
-<item>十時二十分</item>
-<item>十時二十一分</item>
-<item>十時二十二分</item>
-<item>十時二十三分</item>
-<item>十時二十四分</item>
-<item>十時二十五分</item>
-<item>十時二十六分</item>
-<item>十時二十七分</item>
-<item>十時二十八分</item>
-<item>十時二十九分</item>
-<item>十時半</item>
-<item>十時三十一分</item>
-<item>十時三十二分</item>
-<item>十時三十三分</item>
-<item>十時三十四分</item>
-<item>十時三十五分</item>
-<item>十時三十六分</item>
-<item>十時三十七分</item>
-<item>十時三十八分</item>
-<item>十時三十九分</item>
-<item>十時四十分</item>
-<item>十時四十一分</item>
-<item>十時四十二分</item>
-<item>十時四十三分</item>
-<item>十時四十四分</item>
-<item>十時四十五分</item>
-<item>十時四十六分</item>
-<item>十時四十七分</item>
-<item>十時四十八分</item>
-<item>十時四十九分</item>
-<item>十時五十分</item>
-<item>十時五十一分</item>
-<item>十時五十二分</item>
-<item>十時五十三分</item>
-<item>十時五十四分</item>
-<item>十時五十五分</item>
-<item>十時五十六分</item>
-<item>十時五十七分</item>
-<item>十時五十八分</item>
-<item>十時五十九分</item>
-<item>十一時正</item>
-<item>十一時零一分</item>
-<item>十一時零二分</item>
-<item>十一時零三分</item>
-<item>十一時零四分</item>
-<item>十一時零五分</item>
-<item>十一時零六分</item>
-<item>十一時零七分</item>
-<item>十一時零八分</item>
-<item>十一時零九分</item>
-<item>十一時十分</item>
-<item>十一時十一分</item>
-<item>十一時十二分</item>
-<item>十一時十三分</item>
-<item>十一時十四分</item>
-<item>十一時十五分</item>
-<item>十一時十六分</item>
-<item>十一時十七分</item>
-<item>十一時十八分</item>
-<item>十一時十九分</item>
-<item>十一時二十分</item>
-<item>十一時二十一分</item>
-<item>十一時二十二分</item>
-<item>十一時二十三分</item>
-<item>十一時二十四分</item>
-<item>十一時二十五分</item>
-<item>十一時二十六分</item>
-<item>十一時二十七分</item>
-<item>十一時二十八分</item>
-<item>十一時二十九分</item>
-<item>十一時半</item>
-<item>十一時三十一分</item>
-<item>十一時三十二分</item>
-<item>十一時三十三分</item>
-<item>十一時三十四分</item>
-<item>十一時三十五分</item>
-<item>十一時三十六分</item>
-<item>十一時三十七分</item>
-<item>十一時三十八分</item>
-<item>十一時三十九分</item>
-<item>十一時四十分</item>
-<item>十一時四十一分</item>
-<item>十一時四十二分</item>
-<item>十一時四十三分</item>
-<item>十一時四十四分</item>
-<item>十一時四十五分</item>
-<item>十一時四十六分</item>
-<item>十一時四十七分</item>
-<item>十一時四十八分</item>
-<item>十一時四十九分</item>
-<item>十一時五十分</item>
-<item>十一時五十一分</item>
-<item>十一時五十二分</item>
-<item>十一時五十三分</item>
-<item>十一時五十四分</item>
-<item>十一時五十五分</item>
-<item>十一時五十六分</item>
-<item>十一時五十七分</item>
-<item>十一時五十八分</item>
-<item>十一時五十九分</item>
-<item>十二時正</item>
-<item>十二時零一分</item>
-<item>十二時零二分</item>
-<item>十二時零三分</item>
-<item>十二時零四分</item>
-<item>十二時零五分</item>
-<item>十二時零六分</item>
-<item>十二時零七分</item>
-<item>十二時零八分</item>
-<item>十二時零九分</item>
-<item>十二時十分</item>
-<item>十二時十一分</item>
-<item>十二時十二分</item>
-<item>十二時十三分</item>
-<item>十二時十四分</item>
-<item>十二時十五分</item>
-<item>十二時十六分</item>
-<item>十二時十七分</item>
-<item>十二時十八分</item>
-<item>十二時十九分</item>
-<item>十二時二十分</item>
-<item>十二時二十一分</item>
-<item>十二時二十二分</item>
-<item>十二時二十三分</item>
-<item>十二時二十四分</item>
-<item>十二時二十五分</item>
-<item>十二時二十六分</item>
-<item>十二時二十七分</item>
-<item>十二時二十八分</item>
-<item>十二時二十九分</item>
-<item>十二時半</item>
-<item>十二時三十一分</item>
-<item>十二時三十二分</item>
-<item>十二時三十三分</item>
-<item>十二時三十四分</item>
-<item>十二時三十五分</item>
-<item>十二時三十六分</item>
-<item>十二時三十七分</item>
-<item>十二時三十八分</item>
-<item>十二時三十九分</item>
-<item>十二時四十分</item>
-<item>十二時四十一分</item>
-<item>十二時四十二分</item>
-<item>十二時四十三分</item>
-<item>十二時四十四分</item>
-<item>十二時四十五分</item>
-<item>十二時四十六分</item>
-<item>十二時四十七分</item>
-<item>十二時四十八分</item>
-<item>十二時四十九分</item>
-<item>十二時五十分</item>
-<item>十二時五十一分</item>
-<item>十二時五十二分</item>
-<item>十二時五十三分</item>
-<item>十二時五十四分</item>
-<item>十二時五十五分</item>
-<item>十二時五十六分</item>
-<item>十二時五十七分</item>
-<item>十二時五十八分</item>
-<item>十二時五十九分</item>
-<item>一時正</item>
-<item>一時零一分</item>
-<item>一時零二分</item>
-<item>一時零三分</item>
-<item>一時零四分</item>
-<item>一時零五分</item>
-<item>一時零六分</item>
-<item>一時零七分</item>
-<item>一時零八分</item>
-<item>一時零九分</item>
-<item>一時十分</item>
-<item>一時十一分</item>
-<item>一時十二分</item>
-<item>一時十三分</item>
-<item>一時十四分</item>
-<item>一時十五分</item>
-<item>一時十六分</item>
-<item>一時十七分</item>
-<item>一時十八分</item>
-<item>一時十九分</item>
-<item>一時二十分</item>
-<item>一時二十一分</item>
-<item>一時二十二分</item>
-<item>一時二十三分</item>
-<item>一時二十四分</item>
-<item>一時二十五分</item>
-<item>一時二十六分</item>
-<item>一時二十七分</item>
-<item>一時二十八分</item>
-<item>一時二十九分</item>
-<item>一時半</item>
-<item>一時三十一分</item>
-<item>一時三十二分</item>
-<item>一時三十三分</item>
-<item>一時三十四分</item>
-<item>一時三十五分</item>
-<item>一時三十六分</item>
-<item>一時三十七分</item>
-<item>一時三十八分</item>
-<item>一時三十九分</item>
-<item>一時四十分</item>
-<item>一時四十一分</item>
-<item>一時四十二分</item>
-<item>一時四十三分</item>
-<item>一時四十四分</item>
-<item>一時四十五分</item>
-<item>一時四十六分</item>
-<item>一時四十七分</item>
-<item>一時四十八分</item>
-<item>一時四十九分</item>
-<item>一時五十分</item>
-<item>一時五十一分</item>
-<item>一時五十二分</item>
-<item>一時五十三分</item>
-<item>一時五十四分</item>
-<item>一時五十五分</item>
-<item>一時五十六分</item>
-<item>一時五十七分</item>
-<item>一時五十八分</item>
-<item>一時五十九分</item>
-<item>二時正</item>
-<item>二時零一分</item>
-<item>二時零二分</item>
-<item>二時零三分</item>
-<item>二時零四分</item>
-<item>二時零五分</item>
-<item>二時零六分</item>
-<item>二時零七分</item>
-<item>二時零八分</item>
-<item>二時零九分</item>
-<item>二時十分</item>
-<item>二時十一分</item>
-<item>二時十二分</item>
-<item>二時十三分</item>
-<item>二時十四分</item>
-<item>二時十五分</item>
-<item>二時十六分</item>
-<item>二時十七分</item>
-<item>二時十八分</item>
-<item>二時十九分</item>
-<item>二時二十分</item>
-<item>二時二十一分</item>
-<item>二時二十二分</item>
-<item>二時二十三分</item>
-<item>二時二十四分</item>
-<item>二時二十五分</item>
-<item>二時二十六分</item>
-<item>二時二十七分</item>
-<item>二時二十八分</item>
-<item>二時二十九分</item>
-<item>二時半</item>
-<item>二時三十一分</item>
-<item>二時三十二分</item>
-<item>二時三十三分</item>
-<item>二時三十四分</item>
-<item>二時三十五分</item>
-<item>二時三十六分</item>
-<item>二時三十七分</item>
-<item>二時三十八分</item>
-<item>二時三十九分</item>
-<item>二時四十分</item>
-<item>二時四十一分</item>
-<item>二時四十二分</item>
-<item>二時四十三分</item>
-<item>二時四十四分</item>
-<item>二時四十五分</item>
-<item>二時四十六分</item>
-<item>二時四十七分</item>
-<item>二時四十八分</item>
-<item>二時四十九分</item>
-<item>二時五十分</item>
-<item>二時五十一分</item>
-<item>二時五十二分</item>
-<item>二時五十三分</item>
-<item>二時五十四分</item>
-<item>二時五十五分</item>
-<item>二時五十六分</item>
-<item>二時五十七分</item>
-<item>二時五十八分</item>
-<item>二時五十九分</item>
-<item>三時正</item>
-<item>三時零一分</item>
-<item>三時零二分</item>
-<item>三時零三分</item>
-<item>三時零四分</item>
-<item>三時零五分</item>
-<item>三時零六分</item>
-<item>三時零七分</item>
-<item>三時零八分</item>
-<item>三時零九分</item>
-<item>三時十分</item>
-<item>三時十一分</item>
-<item>三時十二分</item>
-<item>三時十三分</item>
-<item>三時十四分</item>
-<item>三時十五分</item>
-<item>三時十六分</item>
-<item>三時十七分</item>
-<item>三時十八分</item>
-<item>三時十九分</item>
-<item>三時二十分</item>
-<item>三時二十一分</item>
-<item>三時二十二分</item>
-<item>三時二十三分</item>
-<item>三時二十四分</item>
-<item>三時二十五分</item>
-<item>三時二十六分</item>
-<item>三時二十七分</item>
-<item>三時二十八分</item>
-<item>三時二十九分</item>
-<item>三時半</item>
-<item>三時三十一分</item>
-<item>三時三十二分</item>
-<item>三時三十三分</item>
-<item>三時三十四分</item>
-<item>三時三十五分</item>
-<item>三時三十六分</item>
-<item>三時三十七分</item>
-<item>三時三十八分</item>
-<item>三時三十九分</item>
-<item>三時四十分</item>
-<item>三時四十一分</item>
-<item>三時四十二分</item>
-<item>三時四十三分</item>
-<item>三時四十四分</item>
-<item>三時四十五分</item>
-<item>三時四十六分</item>
-<item>三時四十七分</item>
-<item>三時四十八分</item>
-<item>三時四十九分</item>
-<item>三時五十分</item>
-<item>三時五十一分</item>
-<item>三時五十二分</item>
-<item>三時五十三分</item>
-<item>三時五十四分</item>
-<item>三時五十五分</item>
-<item>三時五十六分</item>
-<item>三時五十七分</item>
-<item>三時五十八分</item>
-<item>三時五十九分</item>
-<item>四時正</item>
-<item>四時零一分</item>
-<item>四時零二分</item>
-<item>四時零三分</item>
-<item>四時零四分</item>
-<item>四時零五分</item>
-<item>四時零六分</item>
-<item>四時零七分</item>
-<item>四時零八分</item>
-<item>四時零九分</item>
-<item>四時十分</item>
-<item>四時十一分</item>
-<item>四時十二分</item>
-<item>四時十三分</item>
-<item>四時十四分</item>
-<item>四時十五分</item>
-<item>四時十六分</item>
-<item>四時十七分</item>
-<item>四時十八分</item>
-<item>四時十九分</item>
-<item>四時二十分</item>
-<item>四時二十一分</item>
-<item>四時二十二分</item>
-<item>四時二十三分</item>
-<item>四時二十四分</item>
-<item>四時二十五分</item>
-<item>四時二十六分</item>
-<item>四時二十七分</item>
-<item>四時二十八分</item>
-<item>四時二十九分</item>
-<item>四時半</item>
-<item>四時三十一分</item>
-<item>四時三十二分</item>
-<item>四時三十三分</item>
-<item>四時三十四分</item>
-<item>四時三十五分</item>
-<item>四時三十六分</item>
-<item>四時三十七分</item>
-<item>四時三十八分</item>
-<item>四時三十九分</item>
-<item>四時四十分</item>
-<item>四時四十一分</item>
-<item>四時四十二分</item>
-<item>四時四十三分</item>
-<item>四時四十四分</item>
-<item>四時四十五分</item>
-<item>四時四十六分</item>
-<item>四時四十七分</item>
-<item>四時四十八分</item>
-<item>四時四十九分</item>
-<item>四時五十分</item>
-<item>四時五十一分</item>
-<item>四時五十二分</item>
-<item>四時五十三分</item>
-<item>四時五十四分</item>
-<item>四時五十五分</item>
-<item>四時五十六分</item>
-<item>四時五十七分</item>
-<item>四時五十八分</item>
-<item>四時五十九分</item>
-<item>五時正</item>
-<item>五時零一分</item>
-<item>五時零二分</item>
-<item>五時零三分</item>
-<item>五時零四分</item>
-<item>五時零五分</item>
-<item>五時零六分</item>
-<item>五時零七分</item>
-<item>五時零八分</item>
-<item>五時零九分</item>
-<item>五時十分</item>
-<item>五時十一分</item>
-<item>五時十二分</item>
-<item>五時十三分</item>
-<item>五時十四分</item>
-<item>五時十五分</item>
-<item>五時十六分</item>
-<item>五時十七分</item>
-<item>五時十八分</item>
-<item>五時十九分</item>
-<item>五時二十分</item>
-<item>五時二十一分</item>
-<item>五時二十二分</item>
-<item>五時二十三分</item>
-<item>五時二十四分</item>
-<item>五時二十五分</item>
-<item>五時二十六分</item>
-<item>五時二十七分</item>
-<item>五時二十八分</item>
-<item>五時二十九分</item>
-<item>五時半</item>
-<item>五時三十一分</item>
-<item>五時三十二分</item>
-<item>五時三十三分</item>
-<item>五時三十四分</item>
-<item>五時三十五分</item>
-<item>五時三十六分</item>
-<item>五時三十七分</item>
-<item>五時三十八分</item>
-<item>五時三十九分</item>
-<item>五時四十分</item>
-<item>五時四十一分</item>
-<item>五時四十二分</item>
-<item>五時四十三分</item>
-<item>五時四十四分</item>
-<item>五時四十五分</item>
-<item>五時四十六分</item>
-<item>五時四十七分</item>
-<item>五時四十八分</item>
-<item>五時四十九分</item>
-<item>五時五十分</item>
-<item>五時五十一分</item>
-<item>五時五十二分</item>
-<item>五時五十三分</item>
-<item>五時五十四分</item>
-<item>五時五十五分</item>
-<item>五時五十六分</item>
-<item>五時五十七分</item>
-<item>五時五十八分</item>
-<item>五時五十九分</item>
-<item>六時正</item>
-<item>六時零一分</item>
-<item>六時零二分</item>
-<item>六時零三分</item>
-<item>六時零四分</item>
-<item>六時零五分</item>
-<item>六時零六分</item>
-<item>六時零七分</item>
-<item>六時零八分</item>
-<item>六時零九分</item>
-<item>六時十分</item>
-<item>六時十一分</item>
-<item>六時十二分</item>
-<item>六時十三分</item>
-<item>六時十四分</item>
-<item>六時十五分</item>
-<item>六時十六分</item>
-<item>六時十七分</item>
-<item>六時十八分</item>
-<item>六時十九分</item>
-<item>六時二十分</item>
-<item>六時二十一分</item>
-<item>六時二十二分</item>
-<item>六時二十三分</item>
-<item>六時二十四分</item>
-<item>六時二十五分</item>
-<item>六時二十六分</item>
-<item>六時二十七分</item>
-<item>六時二十八分</item>
-<item>六時二十九分</item>
-<item>六時半</item>
-<item>六時三十一分</item>
-<item>六時三十二分</item>
-<item>六時三十三分</item>
-<item>六時三十四分</item>
-<item>六時三十五分</item>
-<item>六時三十六分</item>
-<item>六時三十七分</item>
-<item>六時三十八分</item>
-<item>六時三十九分</item>
-<item>六時四十分</item>
-<item>六時四十一分</item>
-<item>六時四十二分</item>
-<item>六時四十三分</item>
-<item>六時四十四分</item>
-<item>六時四十五分</item>
-<item>六時四十六分</item>
-<item>六時四十七分</item>
-<item>六時四十八分</item>
-<item>六時四十九分</item>
-<item>六時五十分</item>
-<item>六時五十一分</item>
-<item>六時五十二分</item>
-<item>六時五十三分</item>
-<item>六時五十四分</item>
-<item>六時五十五分</item>
-<item>六時五十六分</item>
-<item>六時五十七分</item>
-<item>六時五十八分</item>
-<item>六時五十九分</item>
-<item>七時正</item>
-<item>七時零一分</item>
-<item>七時零二分</item>
-<item>七時零三分</item>
-<item>七時零四分</item>
-<item>七時零五分</item>
-<item>七時零六分</item>
-<item>七時零七分</item>
-<item>七時零八分</item>
-<item>七時零九分</item>
-<item>七時十分</item>
-<item>七時十一分</item>
-<item>七時十二分</item>
-<item>七時十三分</item>
-<item>七時十四分</item>
-<item>七時十五分</item>
-<item>七時十六分</item>
-<item>七時十七分</item>
-<item>七時十八分</item>
-<item>七時十九分</item>
-<item>七時二十分</item>
-<item>七時二十一分</item>
-<item>七時二十二分</item>
-<item>七時二十三分</item>
-<item>七時二十四分</item>
-<item>七時二十五分</item>
-<item>七時二十六分</item>
-<item>七時二十七分</item>
-<item>七時二十八分</item>
-<item>七時二十九分</item>
-<item>七時半</item>
-<item>七時三十一分</item>
-<item>七時三十二分</item>
-<item>七時三十三分</item>
-<item>七時三十四分</item>
-<item>七時三十五分</item>
-<item>七時三十六分</item>
-<item>七時三十七分</item>
-<item>七時三十八分</item>
-<item>七時三十九分</item>
-<item>七時四十分</item>
-<item>七時四十一分</item>
-<item>七時四十二分</item>
-<item>七時四十三分</item>
-<item>七時四十四分</item>
-<item>七時四十五分</item>
-<item>七時四十六分</item>
-<item>七時四十七分</item>
-<item>七時四十八分</item>
-<item>七時四十九分</item>
-<item>七時五十分</item>
-<item>七時五十一分</item>
-<item>七時五十二分</item>
-<item>七時五十三分</item>
-<item>七時五十四分</item>
-<item>七時五十五分</item>
-<item>七時五十六分</item>
-<item>七時五十七分</item>
-<item>七時五十八分</item>
-<item>七時五十九分</item>
-<item>八時正</item>
-<item>八時零一分</item>
-<item>八時零二分</item>
-<item>八時零三分</item>
-<item>八時零四分</item>
-<item>八時零五分</item>
-<item>八時零六分</item>
-<item>八時零七分</item>
-<item>八時零八分</item>
-<item>八時零九分</item>
-<item>八時十分</item>
-<item>八時十一分</item>
-<item>八時十二分</item>
-<item>八時十三分</item>
-<item>八時十四分</item>
-<item>八時十五分</item>
-<item>八時十六分</item>
-<item>八時十七分</item>
-<item>八時十八分</item>
-<item>八時十九分</item>
-<item>八時二十分</item>
-<item>八時二十一分</item>
-<item>八時二十二分</item>
-<item>八時二十三分</item>
-<item>八時二十四分</item>
-<item>八時二十五分</item>
-<item>八時二十六分</item>
-<item>八時二十七分</item>
-<item>八時二十八分</item>
-<item>八時二十九分</item>
-<item>八時半</item>
-<item>八時三十一分</item>
-<item>八時三十二分</item>
-<item>八時三十三分</item>
-<item>八時三十四分</item>
-<item>八時三十五分</item>
-<item>八時三十六分</item>
-<item>八時三十七分</item>
-<item>八時三十八分</item>
-<item>八時三十九分</item>
-<item>八時四十分</item>
-<item>八時四十一分</item>
-<item>八時四十二分</item>
-<item>八時四十三分</item>
-<item>八時四十四分</item>
-<item>八時四十五分</item>
-<item>八時四十六分</item>
-<item>八時四十七分</item>
-<item>八時四十八分</item>
-<item>八時四十九分</item>
-<item>八時五十分</item>
-<item>八時五十一分</item>
-<item>八時五十二分</item>
-<item>八時五十三分</item>
-<item>八時五十四分</item>
-<item>八時五十五分</item>
-<item>八時五十六分</item>
-<item>八時五十七分</item>
-<item>八時五十八分</item>
-<item>八時五十九分</item>
-<item>九時正</item>
-<item>九時零一分</item>
-<item>九時零二分</item>
-<item>九時零三分</item>
-<item>九時零四分</item>
-<item>九時零五分</item>
-<item>九時零六分</item>
-<item>九時零七分</item>
-<item>九時零八分</item>
-<item>九時零九分</item>
-<item>九時十分</item>
-<item>九時十一分</item>
-<item>九時十二分</item>
-<item>九時十三分</item>
-<item>九時十四分</item>
-<item>九時十五分</item>
-<item>九時十六分</item>
-<item>九時十七分</item>
-<item>九時十八分</item>
-<item>九時十九分</item>
-<item>九時二十分</item>
-<item>九時二十一分</item>
-<item>九時二十二分</item>
-<item>九時二十三分</item>
-<item>九時二十四分</item>
-<item>九時二十五分</item>
-<item>九時二十六分</item>
-<item>九時二十七分</item>
-<item>九時二十八分</item>
-<item>九時二十九分</item>
-<item>九時半</item>
-<item>九時三十一分</item>
-<item>九時三十二分</item>
-<item>九時三十三分</item>
-<item>九時三十四分</item>
-<item>九時三十五分</item>
-<item>九時三十六分</item>
-<item>九時三十七分</item>
-<item>九時三十八分</item>
-<item>九時三十九分</item>
-<item>九時四十分</item>
-<item>九時四十一分</item>
-<item>九時四十二分</item>
-<item>九時四十三分</item>
-<item>九時四十四分</item>
-<item>九時四十五分</item>
-<item>九時四十六分</item>
-<item>九時四十七分</item>
-<item>九時四十八分</item>
-<item>九時四十九分</item>
-<item>九時五十分</item>
-<item>九時五十一分</item>
-<item>九時五十二分</item>
-<item>九時五十三分</item>
-<item>九時五十四分</item>
-<item>九時五十五分</item>
-<item>九時五十六分</item>
-<item>九時五十七分</item>
-<item>九時五十八分</item>
-<item>九時五十九分</item>
-<item>十時正</item>
-<item>十時零一分</item>
-<item>十時零二分</item>
-<item>十時零三分</item>
-<item>十時零四分</item>
-<item>十時零五分</item>
-<item>十時零六分</item>
-<item>十時零七分</item>
-<item>十時零八分</item>
-<item>十時零九分</item>
-<item>十時十分</item>
-<item>十時十一分</item>
-<item>十時十二分</item>
-<item>十時十三分</item>
-<item>十時十四分</item>
-<item>十時十五分</item>
-<item>十時十六分</item>
-<item>十時十七分</item>
-<item>十時十八分</item>
-<item>十時十九分</item>
-<item>十時二十分</item>
-<item>十時二十一分</item>
-<item>十時二十二分</item>
-<item>十時二十三分</item>
-<item>十時二十四分</item>
-<item>十時二十五分</item>
-<item>十時二十六分</item>
-<item>十時二十七分</item>
-<item>十時二十八分</item>
-<item>十時二十九分</item>
-<item>十時半</item>
-<item>十時三十一分</item>
-<item>十時三十二分</item>
-<item>十時三十三分</item>
-<item>十時三十四分</item>
-<item>十時三十五分</item>
-<item>十時三十六分</item>
-<item>十時三十七分</item>
-<item>十時三十八分</item>
-<item>十時三十九分</item>
-<item>十時四十分</item>
-<item>十時四十一分</item>
-<item>十時四十二分</item>
-<item>十時四十三分</item>
-<item>十時四十四分</item>
-<item>十時四十五分</item>
-<item>十時四十六分</item>
-<item>十時四十七分</item>
-<item>十時四十八分</item>
-<item>十時四十九分</item>
-<item>十時五十分</item>
-<item>十時五十一分</item>
-<item>十時五十二分</item>
-<item>十時五十三分</item>
-<item>十時五十四分</item>
-<item>十時五十五分</item>
-<item>十時五十六分</item>
-<item>十時五十七分</item>
-<item>十時五十八分</item>
-<item>十時五十九分</item>
-<item>十一時正</item>
-<item>十一時零一分</item>
-<item>十一時零二分</item>
-<item>十一時零三分</item>
-<item>十一時零四分</item>
-<item>十一時零五分</item>
-<item>十一時零六分</item>
-<item>十一時零七分</item>
-<item>十一時零八分</item>
-<item>十一時零九分</item>
-<item>十一時十分</item>
-<item>十一時十一分</item>
-<item>十一時十二分</item>
-<item>十一時十三分</item>
-<item>十一時十四分</item>
-<item>十一時十五分</item>
-<item>十一時十六分</item>
-<item>十一時十七分</item>
-<item>十一時十八分</item>
-<item>十一時十九分</item>
-<item>十一時二十分</item>
-<item>十一時二十一分</item>
-<item>十一時二十二分</item>
-<item>十一時二十三分</item>
-<item>十一時二十四分</item>
-<item>十一時二十五分</item>
-<item>十一時二十六分</item>
-<item>十一時二十七分</item>
-<item>十一時二十八分</item>
-<item>十一時二十九分</item>
-<item>十一時半</item>
-<item>十一時三十一分</item>
-<item>十一時三十二分</item>
-<item>十一時三十三分</item>
-<item>十一時三十四分</item>
-<item>十一時三十五分</item>
-<item>十一時三十六分</item>
-<item>十一時三十七分</item>
-<item>十一時三十八分</item>
-<item>十一時三十九分</item>
-<item>十一時四十分</item>
-<item>十一時四十一分</item>
-<item>十一時四十二分</item>
-<item>十一時四十三分</item>
-<item>十一時四十四分</item>
-<item>十一時四十五分</item>
-<item>十一時四十六分</item>
-<item>十一時四十七分</item>
-<item>十一時四十八分</item>
-<item>十一時四十九分</item>
-<item>十一時五十分</item>
-<item>十一時五十一分</item>
-<item>十一時五十二分</item>
-<item>十一時五十三分</item>
-<item>十一時五十四分</item>
-<item>十一時五十五分</item>
-<item>十一時五十六分</item>
-<item>十一時五十七分</item>
-<item>十一時五十八分</item>
-<item>十一時五十九分</item>
-</string-array>
+
+    <string-array name="verbosetime1">
+        <item>十二時正</item>
+        <item>十二時零一分</item>
+        <item>十二時零二分</item>
+        <item>十二時零三分</item>
+        <item>十二時零四分</item>
+        <item>十二時零五分</item>
+        <item>十二時零六分</item>
+        <item>十二時零七分</item>
+        <item>十二時零八分</item>
+        <item>十二時零九分</item>
+        <item>十二時十分</item>
+        <item>十二時十一分</item>
+        <item>十二時十二分</item>
+        <item>十二時十三分</item>
+        <item>十二時十四分</item>
+        <item>十二時十五分</item>
+        <item>十二時十六分</item>
+        <item>十二時十七分</item>
+        <item>十二時十八分</item>
+        <item>十二時十九分</item>
+        <item>十二時二十分</item>
+        <item>十二時二十一分</item>
+        <item>十二時二十二分</item>
+        <item>十二時二十三分</item>
+        <item>十二時二十四分</item>
+        <item>十二時二十五分</item>
+        <item>十二時二十六分</item>
+        <item>十二時二十七分</item>
+        <item>十二時二十八分</item>
+        <item>十二時二十九分</item>
+        <item>十二時半</item>
+        <item>十二時三十一分</item>
+        <item>十二時三十二分</item>
+        <item>十二時三十三分</item>
+        <item>十二時三十四分</item>
+        <item>十二時三十五分</item>
+        <item>十二時三十六分</item>
+        <item>十二時三十七分</item>
+        <item>十二時三十八分</item>
+        <item>十二時三十九分</item>
+        <item>十二時四十分</item>
+        <item>十二時四十一分</item>
+        <item>十二時四十二分</item>
+        <item>十二時四十三分</item>
+        <item>十二時四十四分</item>
+        <item>十二時四十五分</item>
+        <item>十二時四十六分</item>
+        <item>十二時四十七分</item>
+        <item>十二時四十八分</item>
+        <item>十二時四十九分</item>
+        <item>十二時五十分</item>
+        <item>十二時五十一分</item>
+        <item>十二時五十二分</item>
+        <item>十二時五十三分</item>
+        <item>十二時五十四分</item>
+        <item>十二時五十五分</item>
+        <item>十二時五十六分</item>
+        <item>十二時五十七分</item>
+        <item>十二時五十八分</item>
+        <item>十二時五十九分</item>
+        <item>一時正</item>
+        <item>一時零一分</item>
+        <item>一時零二分</item>
+        <item>一時零三分</item>
+        <item>一時零四分</item>
+        <item>一時零五分</item>
+        <item>一時零六分</item>
+        <item>一時零七分</item>
+        <item>一時零八分</item>
+        <item>一時零九分</item>
+        <item>一時十分</item>
+        <item>一時十一分</item>
+        <item>一時十二分</item>
+        <item>一時十三分</item>
+        <item>一時十四分</item>
+        <item>一時十五分</item>
+        <item>一時十六分</item>
+        <item>一時十七分</item>
+        <item>一時十八分</item>
+        <item>一時十九分</item>
+        <item>一時二十分</item>
+        <item>一時二十一分</item>
+        <item>一時二十二分</item>
+        <item>一時二十三分</item>
+        <item>一時二十四分</item>
+        <item>一時二十五分</item>
+        <item>一時二十六分</item>
+        <item>一時二十七分</item>
+        <item>一時二十八分</item>
+        <item>一時二十九分</item>
+        <item>一時半</item>
+        <item>一時三十一分</item>
+        <item>一時三十二分</item>
+        <item>一時三十三分</item>
+        <item>一時三十四分</item>
+        <item>一時三十五分</item>
+        <item>一時三十六分</item>
+        <item>一時三十七分</item>
+        <item>一時三十八分</item>
+        <item>一時三十九分</item>
+        <item>一時四十分</item>
+        <item>一時四十一分</item>
+        <item>一時四十二分</item>
+        <item>一時四十三分</item>
+        <item>一時四十四分</item>
+        <item>一時四十五分</item>
+        <item>一時四十六分</item>
+        <item>一時四十七分</item>
+        <item>一時四十八分</item>
+        <item>一時四十九分</item>
+        <item>一時五十分</item>
+        <item>一時五十一分</item>
+        <item>一時五十二分</item>
+        <item>一時五十三分</item>
+        <item>一時五十四分</item>
+        <item>一時五十五分</item>
+        <item>一時五十六分</item>
+        <item>一時五十七分</item>
+        <item>一時五十八分</item>
+        <item>一時五十九分</item>
+        <item>二時正</item>
+        <item>二時零一分</item>
+        <item>二時零二分</item>
+        <item>二時零三分</item>
+        <item>二時零四分</item>
+        <item>二時零五分</item>
+        <item>二時零六分</item>
+        <item>二時零七分</item>
+        <item>二時零八分</item>
+        <item>二時零九分</item>
+        <item>二時十分</item>
+        <item>二時十一分</item>
+        <item>二時十二分</item>
+        <item>二時十三分</item>
+        <item>二時十四分</item>
+        <item>二時十五分</item>
+        <item>二時十六分</item>
+        <item>二時十七分</item>
+        <item>二時十八分</item>
+        <item>二時十九分</item>
+        <item>二時二十分</item>
+        <item>二時二十一分</item>
+        <item>二時二十二分</item>
+        <item>二時二十三分</item>
+        <item>二時二十四分</item>
+        <item>二時二十五分</item>
+        <item>二時二十六分</item>
+        <item>二時二十七分</item>
+        <item>二時二十八分</item>
+        <item>二時二十九分</item>
+        <item>二時半</item>
+        <item>二時三十一分</item>
+        <item>二時三十二分</item>
+        <item>二時三十三分</item>
+        <item>二時三十四分</item>
+        <item>二時三十五分</item>
+        <item>二時三十六分</item>
+        <item>二時三十七分</item>
+        <item>二時三十八分</item>
+        <item>二時三十九分</item>
+        <item>二時四十分</item>
+        <item>二時四十一分</item>
+        <item>二時四十二分</item>
+        <item>二時四十三分</item>
+        <item>二時四十四分</item>
+        <item>二時四十五分</item>
+        <item>二時四十六分</item>
+        <item>二時四十七分</item>
+        <item>二時四十八分</item>
+        <item>二時四十九分</item>
+        <item>二時五十分</item>
+        <item>二時五十一分</item>
+        <item>二時五十二分</item>
+        <item>二時五十三分</item>
+        <item>二時五十四分</item>
+        <item>二時五十五分</item>
+        <item>二時五十六分</item>
+        <item>二時五十七分</item>
+        <item>二時五十八分</item>
+        <item>二時五十九分</item>
+        <item>三時正</item>
+        <item>三時零一分</item>
+        <item>三時零二分</item>
+        <item>三時零三分</item>
+        <item>三時零四分</item>
+        <item>三時零五分</item>
+        <item>三時零六分</item>
+        <item>三時零七分</item>
+        <item>三時零八分</item>
+        <item>三時零九分</item>
+        <item>三時十分</item>
+        <item>三時十一分</item>
+        <item>三時十二分</item>
+        <item>三時十三分</item>
+        <item>三時十四分</item>
+        <item>三時十五分</item>
+        <item>三時十六分</item>
+        <item>三時十七分</item>
+        <item>三時十八分</item>
+        <item>三時十九分</item>
+        <item>三時二十分</item>
+        <item>三時二十一分</item>
+        <item>三時二十二分</item>
+        <item>三時二十三分</item>
+        <item>三時二十四分</item>
+        <item>三時二十五分</item>
+        <item>三時二十六分</item>
+        <item>三時二十七分</item>
+        <item>三時二十八分</item>
+        <item>三時二十九分</item>
+        <item>三時半</item>
+        <item>三時三十一分</item>
+        <item>三時三十二分</item>
+        <item>三時三十三分</item>
+        <item>三時三十四分</item>
+        <item>三時三十五分</item>
+        <item>三時三十六分</item>
+        <item>三時三十七分</item>
+        <item>三時三十八分</item>
+        <item>三時三十九分</item>
+        <item>三時四十分</item>
+        <item>三時四十一分</item>
+        <item>三時四十二分</item>
+        <item>三時四十三分</item>
+        <item>三時四十四分</item>
+        <item>三時四十五分</item>
+        <item>三時四十六分</item>
+        <item>三時四十七分</item>
+        <item>三時四十八分</item>
+        <item>三時四十九分</item>
+        <item>三時五十分</item>
+        <item>三時五十一分</item>
+        <item>三時五十二分</item>
+        <item>三時五十三分</item>
+        <item>三時五十四分</item>
+        <item>三時五十五分</item>
+        <item>三時五十六分</item>
+        <item>三時五十七分</item>
+        <item>三時五十八分</item>
+        <item>三時五十九分</item>
+        <item>四時正</item>
+        <item>四時零一分</item>
+        <item>四時零二分</item>
+        <item>四時零三分</item>
+        <item>四時零四分</item>
+        <item>四時零五分</item>
+        <item>四時零六分</item>
+        <item>四時零七分</item>
+        <item>四時零八分</item>
+        <item>四時零九分</item>
+        <item>四時十分</item>
+        <item>四時十一分</item>
+        <item>四時十二分</item>
+        <item>四時十三分</item>
+        <item>四時十四分</item>
+        <item>四時十五分</item>
+        <item>四時十六分</item>
+        <item>四時十七分</item>
+        <item>四時十八分</item>
+        <item>四時十九分</item>
+        <item>四時二十分</item>
+        <item>四時二十一分</item>
+        <item>四時二十二分</item>
+        <item>四時二十三分</item>
+        <item>四時二十四分</item>
+        <item>四時二十五分</item>
+        <item>四時二十六分</item>
+        <item>四時二十七分</item>
+        <item>四時二十八分</item>
+        <item>四時二十九分</item>
+        <item>四時半</item>
+        <item>四時三十一分</item>
+        <item>四時三十二分</item>
+        <item>四時三十三分</item>
+        <item>四時三十四分</item>
+        <item>四時三十五分</item>
+        <item>四時三十六分</item>
+        <item>四時三十七分</item>
+        <item>四時三十八分</item>
+        <item>四時三十九分</item>
+        <item>四時四十分</item>
+        <item>四時四十一分</item>
+        <item>四時四十二分</item>
+        <item>四時四十三分</item>
+        <item>四時四十四分</item>
+        <item>四時四十五分</item>
+        <item>四時四十六分</item>
+        <item>四時四十七分</item>
+        <item>四時四十八分</item>
+        <item>四時四十九分</item>
+        <item>四時五十分</item>
+        <item>四時五十一分</item>
+        <item>四時五十二分</item>
+        <item>四時五十三分</item>
+        <item>四時五十四分</item>
+        <item>四時五十五分</item>
+        <item>四時五十六分</item>
+        <item>四時五十七分</item>
+        <item>四時五十八分</item>
+        <item>四時五十九分</item>
+        <item>五時正</item>
+        <item>五時零一分</item>
+        <item>五時零二分</item>
+        <item>五時零三分</item>
+        <item>五時零四分</item>
+        <item>五時零五分</item>
+        <item>五時零六分</item>
+        <item>五時零七分</item>
+        <item>五時零八分</item>
+        <item>五時零九分</item>
+        <item>五時十分</item>
+        <item>五時十一分</item>
+        <item>五時十二分</item>
+        <item>五時十三分</item>
+        <item>五時十四分</item>
+        <item>五時十五分</item>
+        <item>五時十六分</item>
+        <item>五時十七分</item>
+        <item>五時十八分</item>
+        <item>五時十九分</item>
+        <item>五時二十分</item>
+        <item>五時二十一分</item>
+        <item>五時二十二分</item>
+        <item>五時二十三分</item>
+        <item>五時二十四分</item>
+        <item>五時二十五分</item>
+        <item>五時二十六分</item>
+        <item>五時二十七分</item>
+        <item>五時二十八分</item>
+        <item>五時二十九分</item>
+        <item>五時半</item>
+        <item>五時三十一分</item>
+        <item>五時三十二分</item>
+        <item>五時三十三分</item>
+        <item>五時三十四分</item>
+        <item>五時三十五分</item>
+        <item>五時三十六分</item>
+        <item>五時三十七分</item>
+        <item>五時三十八分</item>
+        <item>五時三十九分</item>
+        <item>五時四十分</item>
+        <item>五時四十一分</item>
+        <item>五時四十二分</item>
+        <item>五時四十三分</item>
+        <item>五時四十四分</item>
+        <item>五時四十五分</item>
+        <item>五時四十六分</item>
+        <item>五時四十七分</item>
+        <item>五時四十八分</item>
+        <item>五時四十九分</item>
+        <item>五時五十分</item>
+        <item>五時五十一分</item>
+        <item>五時五十二分</item>
+        <item>五時五十三分</item>
+        <item>五時五十四分</item>
+        <item>五時五十五分</item>
+        <item>五時五十六分</item>
+        <item>五時五十七分</item>
+        <item>五時五十八分</item>
+        <item>五時五十九分</item>
+    </string-array>
+    <string-array name="verbosetime2">
+        <item>六時正</item>
+        <item>六時零一分</item>
+        <item>六時零二分</item>
+        <item>六時零三分</item>
+        <item>六時零四分</item>
+        <item>六時零五分</item>
+        <item>六時零六分</item>
+        <item>六時零七分</item>
+        <item>六時零八分</item>
+        <item>六時零九分</item>
+        <item>六時十分</item>
+        <item>六時十一分</item>
+        <item>六時十二分</item>
+        <item>六時十三分</item>
+        <item>六時十四分</item>
+        <item>六時十五分</item>
+        <item>六時十六分</item>
+        <item>六時十七分</item>
+        <item>六時十八分</item>
+        <item>六時十九分</item>
+        <item>六時二十分</item>
+        <item>六時二十一分</item>
+        <item>六時二十二分</item>
+        <item>六時二十三分</item>
+        <item>六時二十四分</item>
+        <item>六時二十五分</item>
+        <item>六時二十六分</item>
+        <item>六時二十七分</item>
+        <item>六時二十八分</item>
+        <item>六時二十九分</item>
+        <item>六時半</item>
+        <item>六時三十一分</item>
+        <item>六時三十二分</item>
+        <item>六時三十三分</item>
+        <item>六時三十四分</item>
+        <item>六時三十五分</item>
+        <item>六時三十六分</item>
+        <item>六時三十七分</item>
+        <item>六時三十八分</item>
+        <item>六時三十九分</item>
+        <item>六時四十分</item>
+        <item>六時四十一分</item>
+        <item>六時四十二分</item>
+        <item>六時四十三分</item>
+        <item>六時四十四分</item>
+        <item>六時四十五分</item>
+        <item>六時四十六分</item>
+        <item>六時四十七分</item>
+        <item>六時四十八分</item>
+        <item>六時四十九分</item>
+        <item>六時五十分</item>
+        <item>六時五十一分</item>
+        <item>六時五十二分</item>
+        <item>六時五十三分</item>
+        <item>六時五十四分</item>
+        <item>六時五十五分</item>
+        <item>六時五十六分</item>
+        <item>六時五十七分</item>
+        <item>六時五十八分</item>
+        <item>六時五十九分</item>
+        <item>七時正</item>
+        <item>七時零一分</item>
+        <item>七時零二分</item>
+        <item>七時零三分</item>
+        <item>七時零四分</item>
+        <item>七時零五分</item>
+        <item>七時零六分</item>
+        <item>七時零七分</item>
+        <item>七時零八分</item>
+        <item>七時零九分</item>
+        <item>七時十分</item>
+        <item>七時十一分</item>
+        <item>七時十二分</item>
+        <item>七時十三分</item>
+        <item>七時十四分</item>
+        <item>七時十五分</item>
+        <item>七時十六分</item>
+        <item>七時十七分</item>
+        <item>七時十八分</item>
+        <item>七時十九分</item>
+        <item>七時二十分</item>
+        <item>七時二十一分</item>
+        <item>七時二十二分</item>
+        <item>七時二十三分</item>
+        <item>七時二十四分</item>
+        <item>七時二十五分</item>
+        <item>七時二十六分</item>
+        <item>七時二十七分</item>
+        <item>七時二十八分</item>
+        <item>七時二十九分</item>
+        <item>七時半</item>
+        <item>七時三十一分</item>
+        <item>七時三十二分</item>
+        <item>七時三十三分</item>
+        <item>七時三十四分</item>
+        <item>七時三十五分</item>
+        <item>七時三十六分</item>
+        <item>七時三十七分</item>
+        <item>七時三十八分</item>
+        <item>七時三十九分</item>
+        <item>七時四十分</item>
+        <item>七時四十一分</item>
+        <item>七時四十二分</item>
+        <item>七時四十三分</item>
+        <item>七時四十四分</item>
+        <item>七時四十五分</item>
+        <item>七時四十六分</item>
+        <item>七時四十七分</item>
+        <item>七時四十八分</item>
+        <item>七時四十九分</item>
+        <item>七時五十分</item>
+        <item>七時五十一分</item>
+        <item>七時五十二分</item>
+        <item>七時五十三分</item>
+        <item>七時五十四分</item>
+        <item>七時五十五分</item>
+        <item>七時五十六分</item>
+        <item>七時五十七分</item>
+        <item>七時五十八分</item>
+        <item>七時五十九分</item>
+        <item>八時正</item>
+        <item>八時零一分</item>
+        <item>八時零二分</item>
+        <item>八時零三分</item>
+        <item>八時零四分</item>
+        <item>八時零五分</item>
+        <item>八時零六分</item>
+        <item>八時零七分</item>
+        <item>八時零八分</item>
+        <item>八時零九分</item>
+        <item>八時十分</item>
+        <item>八時十一分</item>
+        <item>八時十二分</item>
+        <item>八時十三分</item>
+        <item>八時十四分</item>
+        <item>八時十五分</item>
+        <item>八時十六分</item>
+        <item>八時十七分</item>
+        <item>八時十八分</item>
+        <item>八時十九分</item>
+        <item>八時二十分</item>
+        <item>八時二十一分</item>
+        <item>八時二十二分</item>
+        <item>八時二十三分</item>
+        <item>八時二十四分</item>
+        <item>八時二十五分</item>
+        <item>八時二十六分</item>
+        <item>八時二十七分</item>
+        <item>八時二十八分</item>
+        <item>八時二十九分</item>
+        <item>八時半</item>
+        <item>八時三十一分</item>
+        <item>八時三十二分</item>
+        <item>八時三十三分</item>
+        <item>八時三十四分</item>
+        <item>八時三十五分</item>
+        <item>八時三十六分</item>
+        <item>八時三十七分</item>
+        <item>八時三十八分</item>
+        <item>八時三十九分</item>
+        <item>八時四十分</item>
+        <item>八時四十一分</item>
+        <item>八時四十二分</item>
+        <item>八時四十三分</item>
+        <item>八時四十四分</item>
+        <item>八時四十五分</item>
+        <item>八時四十六分</item>
+        <item>八時四十七分</item>
+        <item>八時四十八分</item>
+        <item>八時四十九分</item>
+        <item>八時五十分</item>
+        <item>八時五十一分</item>
+        <item>八時五十二分</item>
+        <item>八時五十三分</item>
+        <item>八時五十四分</item>
+        <item>八時五十五分</item>
+        <item>八時五十六分</item>
+        <item>八時五十七分</item>
+        <item>八時五十八分</item>
+        <item>八時五十九分</item>
+        <item>九時正</item>
+        <item>九時零一分</item>
+        <item>九時零二分</item>
+        <item>九時零三分</item>
+        <item>九時零四分</item>
+        <item>九時零五分</item>
+        <item>九時零六分</item>
+        <item>九時零七分</item>
+        <item>九時零八分</item>
+        <item>九時零九分</item>
+        <item>九時十分</item>
+        <item>九時十一分</item>
+        <item>九時十二分</item>
+        <item>九時十三分</item>
+        <item>九時十四分</item>
+        <item>九時十五分</item>
+        <item>九時十六分</item>
+        <item>九時十七分</item>
+        <item>九時十八分</item>
+        <item>九時十九分</item>
+        <item>九時二十分</item>
+        <item>九時二十一分</item>
+        <item>九時二十二分</item>
+        <item>九時二十三分</item>
+        <item>九時二十四分</item>
+        <item>九時二十五分</item>
+        <item>九時二十六分</item>
+        <item>九時二十七分</item>
+        <item>九時二十八分</item>
+        <item>九時二十九分</item>
+        <item>九時半</item>
+        <item>九時三十一分</item>
+        <item>九時三十二分</item>
+        <item>九時三十三分</item>
+        <item>九時三十四分</item>
+        <item>九時三十五分</item>
+        <item>九時三十六分</item>
+        <item>九時三十七分</item>
+        <item>九時三十八分</item>
+        <item>九時三十九分</item>
+        <item>九時四十分</item>
+        <item>九時四十一分</item>
+        <item>九時四十二分</item>
+        <item>九時四十三分</item>
+        <item>九時四十四分</item>
+        <item>九時四十五分</item>
+        <item>九時四十六分</item>
+        <item>九時四十七分</item>
+        <item>九時四十八分</item>
+        <item>九時四十九分</item>
+        <item>九時五十分</item>
+        <item>九時五十一分</item>
+        <item>九時五十二分</item>
+        <item>九時五十三分</item>
+        <item>九時五十四分</item>
+        <item>九時五十五分</item>
+        <item>九時五十六分</item>
+        <item>九時五十七分</item>
+        <item>九時五十八分</item>
+        <item>九時五十九分</item>
+        <item>十時正</item>
+        <item>十時零一分</item>
+        <item>十時零二分</item>
+        <item>十時零三分</item>
+        <item>十時零四分</item>
+        <item>十時零五分</item>
+        <item>十時零六分</item>
+        <item>十時零七分</item>
+        <item>十時零八分</item>
+        <item>十時零九分</item>
+        <item>十時十分</item>
+        <item>十時十一分</item>
+        <item>十時十二分</item>
+        <item>十時十三分</item>
+        <item>十時十四分</item>
+        <item>十時十五分</item>
+        <item>十時十六分</item>
+        <item>十時十七分</item>
+        <item>十時十八分</item>
+        <item>十時十九分</item>
+        <item>十時二十分</item>
+        <item>十時二十一分</item>
+        <item>十時二十二分</item>
+        <item>十時二十三分</item>
+        <item>十時二十四分</item>
+        <item>十時二十五分</item>
+        <item>十時二十六分</item>
+        <item>十時二十七分</item>
+        <item>十時二十八分</item>
+        <item>十時二十九分</item>
+        <item>十時半</item>
+        <item>十時三十一分</item>
+        <item>十時三十二分</item>
+        <item>十時三十三分</item>
+        <item>十時三十四分</item>
+        <item>十時三十五分</item>
+        <item>十時三十六分</item>
+        <item>十時三十七分</item>
+        <item>十時三十八分</item>
+        <item>十時三十九分</item>
+        <item>十時四十分</item>
+        <item>十時四十一分</item>
+        <item>十時四十二分</item>
+        <item>十時四十三分</item>
+        <item>十時四十四分</item>
+        <item>十時四十五分</item>
+        <item>十時四十六分</item>
+        <item>十時四十七分</item>
+        <item>十時四十八分</item>
+        <item>十時四十九分</item>
+        <item>十時五十分</item>
+        <item>十時五十一分</item>
+        <item>十時五十二分</item>
+        <item>十時五十三分</item>
+        <item>十時五十四分</item>
+        <item>十時五十五分</item>
+        <item>十時五十六分</item>
+        <item>十時五十七分</item>
+        <item>十時五十八分</item>
+        <item>十時五十九分</item>
+        <item>十一時正</item>
+        <item>十一時零一分</item>
+        <item>十一時零二分</item>
+        <item>十一時零三分</item>
+        <item>十一時零四分</item>
+        <item>十一時零五分</item>
+        <item>十一時零六分</item>
+        <item>十一時零七分</item>
+        <item>十一時零八分</item>
+        <item>十一時零九分</item>
+        <item>十一時十分</item>
+        <item>十一時十一分</item>
+        <item>十一時十二分</item>
+        <item>十一時十三分</item>
+        <item>十一時十四分</item>
+        <item>十一時十五分</item>
+        <item>十一時十六分</item>
+        <item>十一時十七分</item>
+        <item>十一時十八分</item>
+        <item>十一時十九分</item>
+        <item>十一時二十分</item>
+        <item>十一時二十一分</item>
+        <item>十一時二十二分</item>
+        <item>十一時二十三分</item>
+        <item>十一時二十四分</item>
+        <item>十一時二十五分</item>
+        <item>十一時二十六分</item>
+        <item>十一時二十七分</item>
+        <item>十一時二十八分</item>
+        <item>十一時二十九分</item>
+        <item>十一時半</item>
+        <item>十一時三十一分</item>
+        <item>十一時三十二分</item>
+        <item>十一時三十三分</item>
+        <item>十一時三十四分</item>
+        <item>十一時三十五分</item>
+        <item>十一時三十六分</item>
+        <item>十一時三十七分</item>
+        <item>十一時三十八分</item>
+        <item>十一時三十九分</item>
+        <item>十一時四十分</item>
+        <item>十一時四十一分</item>
+        <item>十一時四十二分</item>
+        <item>十一時四十三分</item>
+        <item>十一時四十四分</item>
+        <item>十一時四十五分</item>
+        <item>十一時四十六分</item>
+        <item>十一時四十七分</item>
+        <item>十一時四十八分</item>
+        <item>十一時四十九分</item>
+        <item>十一時五十分</item>
+        <item>十一時五十一分</item>
+        <item>十一時五十二分</item>
+        <item>十一時五十三分</item>
+        <item>十一時五十四分</item>
+        <item>十一時五十五分</item>
+        <item>十一時五十六分</item>
+        <item>十一時五十七分</item>
+        <item>十一時五十八分</item>
+        <item>十一時五十九分</item>
+    </string-array>
+    <string-array name="verbosetime3">
+        <item>十二時正</item>
+        <item>十二時零一分</item>
+        <item>十二時零二分</item>
+        <item>十二時零三分</item>
+        <item>十二時零四分</item>
+        <item>十二時零五分</item>
+        <item>十二時零六分</item>
+        <item>十二時零七分</item>
+        <item>十二時零八分</item>
+        <item>十二時零九分</item>
+        <item>十二時十分</item>
+        <item>十二時十一分</item>
+        <item>十二時十二分</item>
+        <item>十二時十三分</item>
+        <item>十二時十四分</item>
+        <item>十二時十五分</item>
+        <item>十二時十六分</item>
+        <item>十二時十七分</item>
+        <item>十二時十八分</item>
+        <item>十二時十九分</item>
+        <item>十二時二十分</item>
+        <item>十二時二十一分</item>
+        <item>十二時二十二分</item>
+        <item>十二時二十三分</item>
+        <item>十二時二十四分</item>
+        <item>十二時二十五分</item>
+        <item>十二時二十六分</item>
+        <item>十二時二十七分</item>
+        <item>十二時二十八分</item>
+        <item>十二時二十九分</item>
+        <item>十二時半</item>
+        <item>十二時三十一分</item>
+        <item>十二時三十二分</item>
+        <item>十二時三十三分</item>
+        <item>十二時三十四分</item>
+        <item>十二時三十五分</item>
+        <item>十二時三十六分</item>
+        <item>十二時三十七分</item>
+        <item>十二時三十八分</item>
+        <item>十二時三十九分</item>
+        <item>十二時四十分</item>
+        <item>十二時四十一分</item>
+        <item>十二時四十二分</item>
+        <item>十二時四十三分</item>
+        <item>十二時四十四分</item>
+        <item>十二時四十五分</item>
+        <item>十二時四十六分</item>
+        <item>十二時四十七分</item>
+        <item>十二時四十八分</item>
+        <item>十二時四十九分</item>
+        <item>十二時五十分</item>
+        <item>十二時五十一分</item>
+        <item>十二時五十二分</item>
+        <item>十二時五十三分</item>
+        <item>十二時五十四分</item>
+        <item>十二時五十五分</item>
+        <item>十二時五十六分</item>
+        <item>十二時五十七分</item>
+        <item>十二時五十八分</item>
+        <item>十二時五十九分</item>
+        <item>一時正</item>
+        <item>一時零一分</item>
+        <item>一時零二分</item>
+        <item>一時零三分</item>
+        <item>一時零四分</item>
+        <item>一時零五分</item>
+        <item>一時零六分</item>
+        <item>一時零七分</item>
+        <item>一時零八分</item>
+        <item>一時零九分</item>
+        <item>一時十分</item>
+        <item>一時十一分</item>
+        <item>一時十二分</item>
+        <item>一時十三分</item>
+        <item>一時十四分</item>
+        <item>一時十五分</item>
+        <item>一時十六分</item>
+        <item>一時十七分</item>
+        <item>一時十八分</item>
+        <item>一時十九分</item>
+        <item>一時二十分</item>
+        <item>一時二十一分</item>
+        <item>一時二十二分</item>
+        <item>一時二十三分</item>
+        <item>一時二十四分</item>
+        <item>一時二十五分</item>
+        <item>一時二十六分</item>
+        <item>一時二十七分</item>
+        <item>一時二十八分</item>
+        <item>一時二十九分</item>
+        <item>一時半</item>
+        <item>一時三十一分</item>
+        <item>一時三十二分</item>
+        <item>一時三十三分</item>
+        <item>一時三十四分</item>
+        <item>一時三十五分</item>
+        <item>一時三十六分</item>
+        <item>一時三十七分</item>
+        <item>一時三十八分</item>
+        <item>一時三十九分</item>
+        <item>一時四十分</item>
+        <item>一時四十一分</item>
+        <item>一時四十二分</item>
+        <item>一時四十三分</item>
+        <item>一時四十四分</item>
+        <item>一時四十五分</item>
+        <item>一時四十六分</item>
+        <item>一時四十七分</item>
+        <item>一時四十八分</item>
+        <item>一時四十九分</item>
+        <item>一時五十分</item>
+        <item>一時五十一分</item>
+        <item>一時五十二分</item>
+        <item>一時五十三分</item>
+        <item>一時五十四分</item>
+        <item>一時五十五分</item>
+        <item>一時五十六分</item>
+        <item>一時五十七分</item>
+        <item>一時五十八分</item>
+        <item>一時五十九分</item>
+        <item>二時正</item>
+        <item>二時零一分</item>
+        <item>二時零二分</item>
+        <item>二時零三分</item>
+        <item>二時零四分</item>
+        <item>二時零五分</item>
+        <item>二時零六分</item>
+        <item>二時零七分</item>
+        <item>二時零八分</item>
+        <item>二時零九分</item>
+        <item>二時十分</item>
+        <item>二時十一分</item>
+        <item>二時十二分</item>
+        <item>二時十三分</item>
+        <item>二時十四分</item>
+        <item>二時十五分</item>
+        <item>二時十六分</item>
+        <item>二時十七分</item>
+        <item>二時十八分</item>
+        <item>二時十九分</item>
+        <item>二時二十分</item>
+        <item>二時二十一分</item>
+        <item>二時二十二分</item>
+        <item>二時二十三分</item>
+        <item>二時二十四分</item>
+        <item>二時二十五分</item>
+        <item>二時二十六分</item>
+        <item>二時二十七分</item>
+        <item>二時二十八分</item>
+        <item>二時二十九分</item>
+        <item>二時半</item>
+        <item>二時三十一分</item>
+        <item>二時三十二分</item>
+        <item>二時三十三分</item>
+        <item>二時三十四分</item>
+        <item>二時三十五分</item>
+        <item>二時三十六分</item>
+        <item>二時三十七分</item>
+        <item>二時三十八分</item>
+        <item>二時三十九分</item>
+        <item>二時四十分</item>
+        <item>二時四十一分</item>
+        <item>二時四十二分</item>
+        <item>二時四十三分</item>
+        <item>二時四十四分</item>
+        <item>二時四十五分</item>
+        <item>二時四十六分</item>
+        <item>二時四十七分</item>
+        <item>二時四十八分</item>
+        <item>二時四十九分</item>
+        <item>二時五十分</item>
+        <item>二時五十一分</item>
+        <item>二時五十二分</item>
+        <item>二時五十三分</item>
+        <item>二時五十四分</item>
+        <item>二時五十五分</item>
+        <item>二時五十六分</item>
+        <item>二時五十七分</item>
+        <item>二時五十八分</item>
+        <item>二時五十九分</item>
+        <item>三時正</item>
+        <item>三時零一分</item>
+        <item>三時零二分</item>
+        <item>三時零三分</item>
+        <item>三時零四分</item>
+        <item>三時零五分</item>
+        <item>三時零六分</item>
+        <item>三時零七分</item>
+        <item>三時零八分</item>
+        <item>三時零九分</item>
+        <item>三時十分</item>
+        <item>三時十一分</item>
+        <item>三時十二分</item>
+        <item>三時十三分</item>
+        <item>三時十四分</item>
+        <item>三時十五分</item>
+        <item>三時十六分</item>
+        <item>三時十七分</item>
+        <item>三時十八分</item>
+        <item>三時十九分</item>
+        <item>三時二十分</item>
+        <item>三時二十一分</item>
+        <item>三時二十二分</item>
+        <item>三時二十三分</item>
+        <item>三時二十四分</item>
+        <item>三時二十五分</item>
+        <item>三時二十六分</item>
+        <item>三時二十七分</item>
+        <item>三時二十八分</item>
+        <item>三時二十九分</item>
+        <item>三時半</item>
+        <item>三時三十一分</item>
+        <item>三時三十二分</item>
+        <item>三時三十三分</item>
+        <item>三時三十四分</item>
+        <item>三時三十五分</item>
+        <item>三時三十六分</item>
+        <item>三時三十七分</item>
+        <item>三時三十八分</item>
+        <item>三時三十九分</item>
+        <item>三時四十分</item>
+        <item>三時四十一分</item>
+        <item>三時四十二分</item>
+        <item>三時四十三分</item>
+        <item>三時四十四分</item>
+        <item>三時四十五分</item>
+        <item>三時四十六分</item>
+        <item>三時四十七分</item>
+        <item>三時四十八分</item>
+        <item>三時四十九分</item>
+        <item>三時五十分</item>
+        <item>三時五十一分</item>
+        <item>三時五十二分</item>
+        <item>三時五十三分</item>
+        <item>三時五十四分</item>
+        <item>三時五十五分</item>
+        <item>三時五十六分</item>
+        <item>三時五十七分</item>
+        <item>三時五十八分</item>
+        <item>三時五十九分</item>
+        <item>四時正</item>
+        <item>四時零一分</item>
+        <item>四時零二分</item>
+        <item>四時零三分</item>
+        <item>四時零四分</item>
+        <item>四時零五分</item>
+        <item>四時零六分</item>
+        <item>四時零七分</item>
+        <item>四時零八分</item>
+        <item>四時零九分</item>
+        <item>四時十分</item>
+        <item>四時十一分</item>
+        <item>四時十二分</item>
+        <item>四時十三分</item>
+        <item>四時十四分</item>
+        <item>四時十五分</item>
+        <item>四時十六分</item>
+        <item>四時十七分</item>
+        <item>四時十八分</item>
+        <item>四時十九分</item>
+        <item>四時二十分</item>
+        <item>四時二十一分</item>
+        <item>四時二十二分</item>
+        <item>四時二十三分</item>
+        <item>四時二十四分</item>
+        <item>四時二十五分</item>
+        <item>四時二十六分</item>
+        <item>四時二十七分</item>
+        <item>四時二十八分</item>
+        <item>四時二十九分</item>
+        <item>四時半</item>
+        <item>四時三十一分</item>
+        <item>四時三十二分</item>
+        <item>四時三十三分</item>
+        <item>四時三十四分</item>
+        <item>四時三十五分</item>
+        <item>四時三十六分</item>
+        <item>四時三十七分</item>
+        <item>四時三十八分</item>
+        <item>四時三十九分</item>
+        <item>四時四十分</item>
+        <item>四時四十一分</item>
+        <item>四時四十二分</item>
+        <item>四時四十三分</item>
+        <item>四時四十四分</item>
+        <item>四時四十五分</item>
+        <item>四時四十六分</item>
+        <item>四時四十七分</item>
+        <item>四時四十八分</item>
+        <item>四時四十九分</item>
+        <item>四時五十分</item>
+        <item>四時五十一分</item>
+        <item>四時五十二分</item>
+        <item>四時五十三分</item>
+        <item>四時五十四分</item>
+        <item>四時五十五分</item>
+        <item>四時五十六分</item>
+        <item>四時五十七分</item>
+        <item>四時五十八分</item>
+        <item>四時五十九分</item>
+        <item>五時正</item>
+        <item>五時零一分</item>
+        <item>五時零二分</item>
+        <item>五時零三分</item>
+        <item>五時零四分</item>
+        <item>五時零五分</item>
+        <item>五時零六分</item>
+        <item>五時零七分</item>
+        <item>五時零八分</item>
+        <item>五時零九分</item>
+        <item>五時十分</item>
+        <item>五時十一分</item>
+        <item>五時十二分</item>
+        <item>五時十三分</item>
+        <item>五時十四分</item>
+        <item>五時十五分</item>
+        <item>五時十六分</item>
+        <item>五時十七分</item>
+        <item>五時十八分</item>
+        <item>五時十九分</item>
+        <item>五時二十分</item>
+        <item>五時二十一分</item>
+        <item>五時二十二分</item>
+        <item>五時二十三分</item>
+        <item>五時二十四分</item>
+        <item>五時二十五分</item>
+        <item>五時二十六分</item>
+        <item>五時二十七分</item>
+        <item>五時二十八分</item>
+        <item>五時二十九分</item>
+        <item>五時半</item>
+        <item>五時三十一分</item>
+        <item>五時三十二分</item>
+        <item>五時三十三分</item>
+        <item>五時三十四分</item>
+        <item>五時三十五分</item>
+        <item>五時三十六分</item>
+        <item>五時三十七分</item>
+        <item>五時三十八分</item>
+        <item>五時三十九分</item>
+        <item>五時四十分</item>
+        <item>五時四十一分</item>
+        <item>五時四十二分</item>
+        <item>五時四十三分</item>
+        <item>五時四十四分</item>
+        <item>五時四十五分</item>
+        <item>五時四十六分</item>
+        <item>五時四十七分</item>
+        <item>五時四十八分</item>
+        <item>五時四十九分</item>
+        <item>五時五十分</item>
+        <item>五時五十一分</item>
+        <item>五時五十二分</item>
+        <item>五時五十三分</item>
+        <item>五時五十四分</item>
+        <item>五時五十五分</item>
+        <item>五時五十六分</item>
+        <item>五時五十七分</item>
+        <item>五時五十八分</item>
+        <item>五時五十九分</item>
+    </string-array>
+    <string-array name="verbosetime4">
+        <item>六時正</item>
+        <item>六時零一分</item>
+        <item>六時零二分</item>
+        <item>六時零三分</item>
+        <item>六時零四分</item>
+        <item>六時零五分</item>
+        <item>六時零六分</item>
+        <item>六時零七分</item>
+        <item>六時零八分</item>
+        <item>六時零九分</item>
+        <item>六時十分</item>
+        <item>六時十一分</item>
+        <item>六時十二分</item>
+        <item>六時十三分</item>
+        <item>六時十四分</item>
+        <item>六時十五分</item>
+        <item>六時十六分</item>
+        <item>六時十七分</item>
+        <item>六時十八分</item>
+        <item>六時十九分</item>
+        <item>六時二十分</item>
+        <item>六時二十一分</item>
+        <item>六時二十二分</item>
+        <item>六時二十三分</item>
+        <item>六時二十四分</item>
+        <item>六時二十五分</item>
+        <item>六時二十六分</item>
+        <item>六時二十七分</item>
+        <item>六時二十八分</item>
+        <item>六時二十九分</item>
+        <item>六時半</item>
+        <item>六時三十一分</item>
+        <item>六時三十二分</item>
+        <item>六時三十三分</item>
+        <item>六時三十四分</item>
+        <item>六時三十五分</item>
+        <item>六時三十六分</item>
+        <item>六時三十七分</item>
+        <item>六時三十八分</item>
+        <item>六時三十九分</item>
+        <item>六時四十分</item>
+        <item>六時四十一分</item>
+        <item>六時四十二分</item>
+        <item>六時四十三分</item>
+        <item>六時四十四分</item>
+        <item>六時四十五分</item>
+        <item>六時四十六分</item>
+        <item>六時四十七分</item>
+        <item>六時四十八分</item>
+        <item>六時四十九分</item>
+        <item>六時五十分</item>
+        <item>六時五十一分</item>
+        <item>六時五十二分</item>
+        <item>六時五十三分</item>
+        <item>六時五十四分</item>
+        <item>六時五十五分</item>
+        <item>六時五十六分</item>
+        <item>六時五十七分</item>
+        <item>六時五十八分</item>
+        <item>六時五十九分</item>
+        <item>七時正</item>
+        <item>七時零一分</item>
+        <item>七時零二分</item>
+        <item>七時零三分</item>
+        <item>七時零四分</item>
+        <item>七時零五分</item>
+        <item>七時零六分</item>
+        <item>七時零七分</item>
+        <item>七時零八分</item>
+        <item>七時零九分</item>
+        <item>七時十分</item>
+        <item>七時十一分</item>
+        <item>七時十二分</item>
+        <item>七時十三分</item>
+        <item>七時十四分</item>
+        <item>七時十五分</item>
+        <item>七時十六分</item>
+        <item>七時十七分</item>
+        <item>七時十八分</item>
+        <item>七時十九分</item>
+        <item>七時二十分</item>
+        <item>七時二十一分</item>
+        <item>七時二十二分</item>
+        <item>七時二十三分</item>
+        <item>七時二十四分</item>
+        <item>七時二十五分</item>
+        <item>七時二十六分</item>
+        <item>七時二十七分</item>
+        <item>七時二十八分</item>
+        <item>七時二十九分</item>
+        <item>七時半</item>
+        <item>七時三十一分</item>
+        <item>七時三十二分</item>
+        <item>七時三十三分</item>
+        <item>七時三十四分</item>
+        <item>七時三十五分</item>
+        <item>七時三十六分</item>
+        <item>七時三十七分</item>
+        <item>七時三十八分</item>
+        <item>七時三十九分</item>
+        <item>七時四十分</item>
+        <item>七時四十一分</item>
+        <item>七時四十二分</item>
+        <item>七時四十三分</item>
+        <item>七時四十四分</item>
+        <item>七時四十五分</item>
+        <item>七時四十六分</item>
+        <item>七時四十七分</item>
+        <item>七時四十八分</item>
+        <item>七時四十九分</item>
+        <item>七時五十分</item>
+        <item>七時五十一分</item>
+        <item>七時五十二分</item>
+        <item>七時五十三分</item>
+        <item>七時五十四分</item>
+        <item>七時五十五分</item>
+        <item>七時五十六分</item>
+        <item>七時五十七分</item>
+        <item>七時五十八分</item>
+        <item>七時五十九分</item>
+        <item>八時正</item>
+        <item>八時零一分</item>
+        <item>八時零二分</item>
+        <item>八時零三分</item>
+        <item>八時零四分</item>
+        <item>八時零五分</item>
+        <item>八時零六分</item>
+        <item>八時零七分</item>
+        <item>八時零八分</item>
+        <item>八時零九分</item>
+        <item>八時十分</item>
+        <item>八時十一分</item>
+        <item>八時十二分</item>
+        <item>八時十三分</item>
+        <item>八時十四分</item>
+        <item>八時十五分</item>
+        <item>八時十六分</item>
+        <item>八時十七分</item>
+        <item>八時十八分</item>
+        <item>八時十九分</item>
+        <item>八時二十分</item>
+        <item>八時二十一分</item>
+        <item>八時二十二分</item>
+        <item>八時二十三分</item>
+        <item>八時二十四分</item>
+        <item>八時二十五分</item>
+        <item>八時二十六分</item>
+        <item>八時二十七分</item>
+        <item>八時二十八分</item>
+        <item>八時二十九分</item>
+        <item>八時半</item>
+        <item>八時三十一分</item>
+        <item>八時三十二分</item>
+        <item>八時三十三分</item>
+        <item>八時三十四分</item>
+        <item>八時三十五分</item>
+        <item>八時三十六分</item>
+        <item>八時三十七分</item>
+        <item>八時三十八分</item>
+        <item>八時三十九分</item>
+        <item>八時四十分</item>
+        <item>八時四十一分</item>
+        <item>八時四十二分</item>
+        <item>八時四十三分</item>
+        <item>八時四十四分</item>
+        <item>八時四十五分</item>
+        <item>八時四十六分</item>
+        <item>八時四十七分</item>
+        <item>八時四十八分</item>
+        <item>八時四十九分</item>
+        <item>八時五十分</item>
+        <item>八時五十一分</item>
+        <item>八時五十二分</item>
+        <item>八時五十三分</item>
+        <item>八時五十四分</item>
+        <item>八時五十五分</item>
+        <item>八時五十六分</item>
+        <item>八時五十七分</item>
+        <item>八時五十八分</item>
+        <item>八時五十九分</item>
+        <item>九時正</item>
+        <item>九時零一分</item>
+        <item>九時零二分</item>
+        <item>九時零三分</item>
+        <item>九時零四分</item>
+        <item>九時零五分</item>
+        <item>九時零六分</item>
+        <item>九時零七分</item>
+        <item>九時零八分</item>
+        <item>九時零九分</item>
+        <item>九時十分</item>
+        <item>九時十一分</item>
+        <item>九時十二分</item>
+        <item>九時十三分</item>
+        <item>九時十四分</item>
+        <item>九時十五分</item>
+        <item>九時十六分</item>
+        <item>九時十七分</item>
+        <item>九時十八分</item>
+        <item>九時十九分</item>
+        <item>九時二十分</item>
+        <item>九時二十一分</item>
+        <item>九時二十二分</item>
+        <item>九時二十三分</item>
+        <item>九時二十四分</item>
+        <item>九時二十五分</item>
+        <item>九時二十六分</item>
+        <item>九時二十七分</item>
+        <item>九時二十八分</item>
+        <item>九時二十九分</item>
+        <item>九時半</item>
+        <item>九時三十一分</item>
+        <item>九時三十二分</item>
+        <item>九時三十三分</item>
+        <item>九時三十四分</item>
+        <item>九時三十五分</item>
+        <item>九時三十六分</item>
+        <item>九時三十七分</item>
+        <item>九時三十八分</item>
+        <item>九時三十九分</item>
+        <item>九時四十分</item>
+        <item>九時四十一分</item>
+        <item>九時四十二分</item>
+        <item>九時四十三分</item>
+        <item>九時四十四分</item>
+        <item>九時四十五分</item>
+        <item>九時四十六分</item>
+        <item>九時四十七分</item>
+        <item>九時四十八分</item>
+        <item>九時四十九分</item>
+        <item>九時五十分</item>
+        <item>九時五十一分</item>
+        <item>九時五十二分</item>
+        <item>九時五十三分</item>
+        <item>九時五十四分</item>
+        <item>九時五十五分</item>
+        <item>九時五十六分</item>
+        <item>九時五十七分</item>
+        <item>九時五十八分</item>
+        <item>九時五十九分</item>
+        <item>十時正</item>
+        <item>十時零一分</item>
+        <item>十時零二分</item>
+        <item>十時零三分</item>
+        <item>十時零四分</item>
+        <item>十時零五分</item>
+        <item>十時零六分</item>
+        <item>十時零七分</item>
+        <item>十時零八分</item>
+        <item>十時零九分</item>
+        <item>十時十分</item>
+        <item>十時十一分</item>
+        <item>十時十二分</item>
+        <item>十時十三分</item>
+        <item>十時十四分</item>
+        <item>十時十五分</item>
+        <item>十時十六分</item>
+        <item>十時十七分</item>
+        <item>十時十八分</item>
+        <item>十時十九分</item>
+        <item>十時二十分</item>
+        <item>十時二十一分</item>
+        <item>十時二十二分</item>
+        <item>十時二十三分</item>
+        <item>十時二十四分</item>
+        <item>十時二十五分</item>
+        <item>十時二十六分</item>
+        <item>十時二十七分</item>
+        <item>十時二十八分</item>
+        <item>十時二十九分</item>
+        <item>十時半</item>
+        <item>十時三十一分</item>
+        <item>十時三十二分</item>
+        <item>十時三十三分</item>
+        <item>十時三十四分</item>
+        <item>十時三十五分</item>
+        <item>十時三十六分</item>
+        <item>十時三十七分</item>
+        <item>十時三十八分</item>
+        <item>十時三十九分</item>
+        <item>十時四十分</item>
+        <item>十時四十一分</item>
+        <item>十時四十二分</item>
+        <item>十時四十三分</item>
+        <item>十時四十四分</item>
+        <item>十時四十五分</item>
+        <item>十時四十六分</item>
+        <item>十時四十七分</item>
+        <item>十時四十八分</item>
+        <item>十時四十九分</item>
+        <item>十時五十分</item>
+        <item>十時五十一分</item>
+        <item>十時五十二分</item>
+        <item>十時五十三分</item>
+        <item>十時五十四分</item>
+        <item>十時五十五分</item>
+        <item>十時五十六分</item>
+        <item>十時五十七分</item>
+        <item>十時五十八分</item>
+        <item>十時五十九分</item>
+        <item>十一時正</item>
+        <item>十一時零一分</item>
+        <item>十一時零二分</item>
+        <item>十一時零三分</item>
+        <item>十一時零四分</item>
+        <item>十一時零五分</item>
+        <item>十一時零六分</item>
+        <item>十一時零七分</item>
+        <item>十一時零八分</item>
+        <item>十一時零九分</item>
+        <item>十一時十分</item>
+        <item>十一時十一分</item>
+        <item>十一時十二分</item>
+        <item>十一時十三分</item>
+        <item>十一時十四分</item>
+        <item>十一時十五分</item>
+        <item>十一時十六分</item>
+        <item>十一時十七分</item>
+        <item>十一時十八分</item>
+        <item>十一時十九分</item>
+        <item>十一時二十分</item>
+        <item>十一時二十一分</item>
+        <item>十一時二十二分</item>
+        <item>十一時二十三分</item>
+        <item>十一時二十四分</item>
+        <item>十一時二十五分</item>
+        <item>十一時二十六分</item>
+        <item>十一時二十七分</item>
+        <item>十一時二十八分</item>
+        <item>十一時二十九分</item>
+        <item>十一時半</item>
+        <item>十一時三十一分</item>
+        <item>十一時三十二分</item>
+        <item>十一時三十三分</item>
+        <item>十一時三十四分</item>
+        <item>十一時三十五分</item>
+        <item>十一時三十六分</item>
+        <item>十一時三十七分</item>
+        <item>十一時三十八分</item>
+        <item>十一時三十九分</item>
+        <item>十一時四十分</item>
+        <item>十一時四十一分</item>
+        <item>十一時四十二分</item>
+        <item>十一時四十三分</item>
+        <item>十一時四十四分</item>
+        <item>十一時四十五分</item>
+        <item>十一時四十六分</item>
+        <item>十一時四十七分</item>
+        <item>十一時四十八分</item>
+        <item>十一時四十九分</item>
+        <item>十一時五十分</item>
+        <item>十一時五十一分</item>
+        <item>十一時五十二分</item>
+        <item>十一時五十三分</item>
+        <item>十一時五十四分</item>
+        <item>十一時五十五分</item>
+        <item>十一時五十六分</item>
+        <item>十一時五十七分</item>
+        <item>十一時五十八分</item>
+        <item>十一時五十九分</item>
+    </string-array>
+
 </resources>

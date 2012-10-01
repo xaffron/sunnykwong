@@ -10,8 +10,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -78,8 +80,8 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 	
-	static final boolean DEBUG = false; 
-	static final String TESTVER = "Alpha1";
+	static final boolean DEBUG = true; 
+	static final String TESTVER = "Alpha2";
 	static final boolean THEMESFROMCACHE = true;
 	static final String FALLBACKTHEME = "{ \"id\": \"Fallback\", \"name\": \"FB\", \"author\": \"\", \"date\": \"\", \"credits\": \"\", \"layers_bottomtotop\": [ { \"name\": \"T\", \"type\": \"text\", \"enabled\": true, \"text\": \"%H:%M\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 100, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 120, \"text_skew\": 0, \"text_stretch\": 1, \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 }, { \"name\": \"E\", \"type\": \"text\", \"enabled\": true, \"text\": \"! Theme Loading / No SD Card !\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 118, \"fgcolor\": \"#ffffcccc\", \"bgcolor\": \"#ff000000\", \"text_size\": 28, \"text_skew\": 0, \"text_stretch\": 0.9, \"text_align\": \"center\", \"render_style\": \"glow_3\", \"cw_rotate\": 0 }, { \"name\": \"S\", \"type\": \"text\", \"enabled\": true, \"text\": \"[%ompc_battlevel%]%% - [%weather_city%] - [%weather_temp%] - [%weather_condition%]\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 142, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 20, \"text_skew\": 0, \"text_stretch\": \"[%maxfit_1_300%]\", \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 } ] }";
 	static String THISVERSION; 
@@ -521,7 +523,13 @@ public class OMC extends Application {
 				Log.i(OMC.OMCSHORT + "App","Using clock locale: " + OMC.LOCALENAMES[i]);
 
 				OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers", OMC.LOCALES[i]);
-				OMC.VERBOSETIME = OMC.RStringArray("verbosetime", OMC.LOCALES[i]);
+				ArrayList<String> tempTime = new ArrayList<String>(1500);
+				tempTime.addAll(Arrays.asList(OMC.RStringArray("verbosetime1", OMC.LOCALES[i])));
+				tempTime.addAll(Arrays.asList(OMC.RStringArray("verbosetime2", OMC.LOCALES[i])));
+				tempTime.addAll(Arrays.asList(OMC.RStringArray("verbosetime3", OMC.LOCALES[i])));
+				tempTime.addAll(Arrays.asList(OMC.RStringArray("verbosetime4", OMC.LOCALES[i])));
+				OMC.VERBOSETIME = new String[1440];
+				OMC.VERBOSETIME = tempTime.toArray(OMC.VERBOSETIME);
 				OMC.VERBOSEWEATHER = OMC.RStringArray("VerboseWeather", OMC.LOCALES[i]);
 				OMC.VERBOSENUMBERS = OMC.RStringArray("WordNumbers", OMC.LOCALES[i]);
 				OMC.VERBOSEDOW = OMC.RStringArray("verbosedow", OMC.LOCALES[i]);
