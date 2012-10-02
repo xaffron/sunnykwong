@@ -81,7 +81,7 @@ import android.widget.Toast;
 public class OMC extends Application { 
 	
 	static final boolean DEBUG = true; 
-	static final String TESTVER = "Alpha2";
+	static final String TESTVER = "Alpha3";
 	static final boolean THEMESFROMCACHE = true;
 	static final String FALLBACKTHEME = "{ \"id\": \"Fallback\", \"name\": \"FB\", \"author\": \"\", \"date\": \"\", \"credits\": \"\", \"layers_bottomtotop\": [ { \"name\": \"T\", \"type\": \"text\", \"enabled\": true, \"text\": \"%H:%M\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 100, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 120, \"text_skew\": 0, \"text_stretch\": 1, \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 }, { \"name\": \"E\", \"type\": \"text\", \"enabled\": true, \"text\": \"! Theme Loading / No SD Card !\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 118, \"fgcolor\": \"#ffffcccc\", \"bgcolor\": \"#ff000000\", \"text_size\": 28, \"text_skew\": 0, \"text_stretch\": 0.9, \"text_align\": \"center\", \"render_style\": \"glow_3\", \"cw_rotate\": 0 }, { \"name\": \"S\", \"type\": \"text\", \"enabled\": true, \"text\": \"[%ompc_battlevel%]%% - [%weather_city%] - [%weather_temp%] - [%weather_condition%]\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 142, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 20, \"text_skew\": 0, \"text_stretch\": \"[%maxfit_1_300%]\", \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 } ] }";
 	static String THISVERSION; 
@@ -126,7 +126,7 @@ public class OMC extends Application {
 	static final String OMCNAME = "com.sunnykwong.omc";
 	static String SHAREDPREFNAME;
 	static String PKGNAME;
-	static String[] VERBOSETIME;
+	static String[] VERBOSETIME1, VERBOSETIME2, VERBOSETIME3, VERBOSETIME4;
 	static String[] VERBOSEDOW, SHORTDOW, VERBOSEMONTH, SHORTMONTH;
 	static String[] VERBOSEWEATHER;
 	static String[] VERBOSEWEATHERENG;
@@ -523,13 +523,10 @@ public class OMC extends Application {
 				Log.i(OMC.OMCSHORT + "App","Using clock locale: " + OMC.LOCALENAMES[i]);
 
 				OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers", OMC.LOCALES[i]);
-				ArrayList<String> tempTime = new ArrayList<String>(1500);
-				tempTime.addAll(Arrays.asList(OMC.RStringArray("verbosetime1", OMC.LOCALES[i])));
-				tempTime.addAll(Arrays.asList(OMC.RStringArray("verbosetime2", OMC.LOCALES[i])));
-				tempTime.addAll(Arrays.asList(OMC.RStringArray("verbosetime3", OMC.LOCALES[i])));
-				tempTime.addAll(Arrays.asList(OMC.RStringArray("verbosetime4", OMC.LOCALES[i])));
-				OMC.VERBOSETIME = new String[1440];
-				OMC.VERBOSETIME = tempTime.toArray(OMC.VERBOSETIME);
+				OMC.VERBOSETIME1 = OMC.RStringArray("verbosetime1", OMC.LOCALES[i]);
+				OMC.VERBOSETIME2 = OMC.RStringArray("verbosetime2", OMC.LOCALES[i]);
+				OMC.VERBOSETIME3 = OMC.RStringArray("verbosetime3", OMC.LOCALES[i]);
+				OMC.VERBOSETIME4 = OMC.RStringArray("verbosetime4", OMC.LOCALES[i]);
 				OMC.VERBOSEWEATHER = OMC.RStringArray("VerboseWeather", OMC.LOCALES[i]);
 				OMC.VERBOSENUMBERS = OMC.RStringArray("WordNumbers", OMC.LOCALES[i]);
 				OMC.VERBOSEDOW = OMC.RStringArray("verbosedow", OMC.LOCALES[i]);
@@ -1675,7 +1672,7 @@ public class OMC extends Application {
 			// full english time
 			String sType = st[iTokenNum++];
 			int minuteindex = OMC.TIME.hour*60+OMC.TIME.minute;
-			String sTemp = OMC.VERBOSETIME[minuteindex];
+			String sTemp = OMC.getVerboseTime(minuteindex);
 			if (sType.equals("diary")) result = (sTemp);
 			else if (sType.equals("upper")) result = (sTemp.toUpperCase()); 
 			else if (sType.equals("lower")) result = (sTemp.toLowerCase());
@@ -2206,4 +2203,20 @@ public class OMC extends Application {
 		return OMC.RES.getIdentifier(key, "menu", OMC.PKGNAME);
 	}
 
+	public static String getVerboseTime(final int minuteindex){
+		final int index = minuteindex/4;
+		final int subindex = minuteindex%360;
+		switch (index) {
+			case 0:
+				return OMC.VERBOSETIME1[subindex];
+			case 1:
+				return OMC.VERBOSETIME2[subindex];
+			case 2:
+				return OMC.VERBOSETIME3[subindex];
+			case 3:
+			default:
+				return OMC.VERBOSETIME4[subindex];
+			
+		}
+	}
 }

@@ -320,13 +320,10 @@ public class OMCPrefActivity extends PreferenceActivity {
 											.commit();
 
 									OMC.WORDNUMBERS = OMC.RStringArray("WordNumbers", selectedLocale);
-									ArrayList<String> tempTime = new ArrayList<String>(1500);
-									tempTime.addAll(Arrays.asList(OMC.RStringArray("verbosetime1", selectedLocale)));
-									tempTime.addAll(Arrays.asList(OMC.RStringArray("verbosetime2", selectedLocale)));
-									tempTime.addAll(Arrays.asList(OMC.RStringArray("verbosetime3", selectedLocale)));
-									tempTime.addAll(Arrays.asList(OMC.RStringArray("verbosetime4", selectedLocale)));
-									OMC.VERBOSETIME = new String[1440];
-									OMC.VERBOSETIME = tempTime.toArray(OMC.VERBOSETIME);
+									OMC.VERBOSETIME1 = OMC.RStringArray("verbosetime1", selectedLocale);
+									OMC.VERBOSETIME2 = OMC.RStringArray("verbosetime2", selectedLocale);
+									OMC.VERBOSETIME3 = OMC.RStringArray("verbosetime3", selectedLocale);
+									OMC.VERBOSETIME4 = OMC.RStringArray("verbosetime4", selectedLocale);
 									OMC.VERBOSEWEATHER = OMC.RStringArray("VerboseWeather", selectedLocale);
 									OMC.VERBOSENUMBERS = OMC.RStringArray("WordNumbers", selectedLocale);
 									OMC.VERBOSEDOW = OMC.RStringArray("verbosedow", selectedLocale);
