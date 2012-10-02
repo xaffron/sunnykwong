@@ -35,7 +35,7 @@
         <!-- Forecast Screen -->
         <string name="doubleDash">--</string>
         <string name="unknown">Unbekannt.</string>
-        <string name="noaaWeatherCredit">Weather observations and forecasts updated from the National Oceanic and Atmospheric Administration (NOAA).</string>
+        <string name="noaaWeatherCredit">Wetterschau und -vorhersage der \'Nationalen Meeres- und Luftverwaltung Amerika (NOAA)\'.</string>
         <string name="igWeatherCredit">Wetter Update über Google.</string>
         <string name="yrWeatherCredit">Wettervorhersage über "yr.no", übermittelt vom \'Norwegischen Meteologischen Institut\' und dem NRK.</string>
         <string name="seventimerWeatherCredit">7Timer! Aussichten von \'Ye Quanzhi\', unterstützt vom Astronomischen Observatorium in Shanghai, der chineischen Akademie der Wissenschaften.</string>
@@ -53,8 +53,8 @@
 
         <!-- Widget Theme -->
         
-        <string name="widgetThemeTitle">Wischen - Berühren - Halten - Einstellung wählen.</string>
-        <string name="corruptPlsDelete">[beschädigt - bitte löschen!]</string>
+        <string name="widgetThemeTitle">Wischen, Berühren, Halten, Einstellung wählen.</string>
+        <string name="corruptPlsDelete">Beschädigt - bitte löschen!</string>
         <string name="reextractBundledClocks">Nochmaliges Entpacken der \'Bundled\'-Uhren.</string>
         <string name="downloadAllClocks">Download aller Uhren (~7MB).</string>
         <string name="preselected"></string>
@@ -73,11 +73,29 @@
         <string name="reloadThemeCatalog">Nochmaliges Laden der "Themen-Auswahl"</string>
 
         <!-- Theme Import/Unzip -->
-        <string name="themePreview">Themen Voranzeige.</string>
-        <string name="beginningDownload">Download-Beginn.</string>
-        <string name="extractingStarterClockPack">Entpacken des "Starter-Uhrenpakets"&#8230;.</string>
-        <string name="starterClockPack">Starter-Uhrenpaket</string>
-        <string name="starterClockPackText">Dateien im .OMCThemes Ordner auf ihrer SD Card werden überschrieben. Sicher?\n(Wenn nicht, drücken Sie \'ja\')</string>
+        <string newname="" name="themePreview">Theme Vorschau.</string>
+        <string newname="" name="openingConnection">Öffnen der Verbindung.</string>
+        <string newname="" name="beginningDownload">Beginn des Downloads.</string>
+        <string newname="" name="downloading">Downloading&#8230;</string>
+        <string newname="" name="downloaded">Download abgeschlossen.</string>
+        <string newname="" name="of">von</string>
+        <string newname="" name="bytes">Bytes</string>
+        <string newname="" name="existsOverwriting">existiert; wird überschrieben.</string>
+        <string newname="" name="createThemeFolder1">Theme Ordner \'</string>
+        <string newname="" name="createThemeFolder2">\'angelegt.</string>
+        <string newname="" name="detectedWeatherskin">Wetter-Skin gefunden.</string>
+        <string newname="" name="extractingStarterClockPack">Entpacken des Starter-Uhren-Packs&#8230;</string>
+        <string newname="" name="starterClockPack">Starter-Uhren-Pack</string>
+        <string newname="" name="starterClockPackText">Dateien in Ihrem .OMCThemes Ordner auf der internen SD Card werden überschrieben. Sicher?\n(Wenn nicht, auf \'ja\' tippen!)</string>
+        <string newname="" name="importComplete">Import vollständig!</string>
+        <string newname="" name="importAborted">Import abgebrochen!</string>
+        <string newname="" name="useDownloadInsteadOfPreview">Bitte nutzen Sie die Downloadfunktion anstelle der Vorschau für den Import der OMC-Uhren!</string>
+        <string newname="" name="importWorksWithOMCFiles">Uhrenimport arbeitet nur mit .omc-Dateien.\nWurde ein falscher Dateityp ausgewählt?</string>
+        <string newname="" name="nothingToExtract">Nichts zu entpacken!</string>
+        <string newname="" name="downloadInterrupted">Download abgebrochen!</string>
+        <string newname="" name="poorReceptionArea">Ist Ihr Smartphone in einer unterversorgten Gegend?\nBitte später nochmals versuchen.</string>
+        <string newname="" name="connectionTimedOut">Verbindungszeitüberschreitung!</string>
+        <string newname="" name="serverNotFound">Server nicht gefunden!</string>
         
         <!-- Widget Theme Long Press-->
         
@@ -175,20 +193,23 @@
         <string name="tapToEnable">Tippen zum Anschalten.</string>
         
         <!-- Fixed Locn subscreen -->
-        <string name="enterCityAndStateCountry">Eingabe von Stadt, Staat, Land.</string>
-        <string name="locationExamples">z.B. \'London, UK\'</string>
+        <string name="enterCityAndStateCountry">Eingabe von Stadt, Staat/Land.</string>
+        <string name="locationExamples">Z.B. "London UK"</string>
+        <string newname="" name="locationError">Keine Ergebnisse gefunden.\nBitte nochmals probieren.</string>
+        <string newname="" name="networkError">Keine Verbindung gefunden.\nBitte nochmals probieren.</string>
+        <string newname="" name="unknownError">Ein unbekannter Fehler ist aufgetreten.\nBitte nochmals probieren.</string>
         
         <string name="weatherProvider">Wetterdienst.</string>
 		<string-array name="wprovider_options">
 		<!-- 	<item>OpenWeatherMap.org (default)</item> -->
 		 	<item>7Timer.com (Standard).</item>
-		 	<item>NOAA (US Only)</item>
+		 	<item>NOAA (Nur Nordamerika!)</item>
 		 				<item>Yr.no</item>
 			<item>Google Wetter (Altlast/außer Funktion)</item>
 		</string-array>
         <string name="wp7timer">Benutzen von \'7Timer.com\'.</string>
         <string name="wpnoaa">Benutzen von \'NOAA\'.</string>
-        <string name="wpowm">Benutzen von \'O0penWeatherMap.org\'.</string>
+        <string name="wpowm">Benutzen von \'OpenWeatherMap.org\'.</string>
         <string name="wpyr">Benutzen von \'yr.no\'.</string>
         <string name="wpig">Benutzen von \'iGoogle Weather\'.</string>
         
@@ -229,8 +250,8 @@
         
         <string name="forceEnglishDates">Englisches Datum.</string>
         <string name="uncheckForSome">Abwahl für einige Nicht-Englische Regionsschemata.(Experimentell).</string>
-        <string name="changeAppLocale">Language</string>
-        <string name="changeClockLocale">Clock Language</string>
+        <string newname="" name="changeAppLocale">Sprachwahl.</string>
+        <string newname="" name="changeClockLocale">Sprache der Uhrenanzeige.</string>
         
         <string name="toggleWidgetSizes">Auswahl der Widget-Größen.</string>
         
@@ -309,10 +330,10 @@
 
         <!-- Credits subscreen -->
         
-        <string name="team">Team</string>
+        <string name="team">Team.</string>
         <string name="programmer">Programmierer.</string>
         <string name="sunny">Sunny Kwong</string>
-        <string name="testers">Testers</string>
+        <string name="testers">Tester.</string>
         <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
 		
 		<!-- FILLED IN by Andy --> 

@@ -35,7 +35,7 @@
         <!-- Forecast Screen -->
         <string name="doubleDash">--</string>
         <string name="unknown">Desconocido</string>
-        <string name="noaaWeatherCredit">Weather observations and forecasts updated from the National Oceanic and Atmospheric Administration (NOAA).</string>
+        <string newname="" name="noaaWeatherCredit">Tiempo y pronóstico actualizado por el National Oceanic and Atmospheric Administration (NOAA).</string>
         <string name="igWeatherCredit">Tiempo actualizado por Google API.</string>
         <string name="yrWeatherCredit">Tiempo y pronóstico actualizado por yr.no, gracias al Instituto Noruego de Metereología y el NRK.</string>
         <string name="seventimerWeatherCredit">7Timer! pronostico por Ye Quanzhi, gracias al Observatorio Astronómico Shanghai, Academia China de Ciencias.</string>
@@ -73,11 +73,29 @@
         <string name="reloadThemeCatalog">Recargar catálogo de temas</string>
 
         <!-- Theme Import/Unzip -->
-        <string name="themePreview">Vista previa Tema</string>
-        <string name="beginningDownload">Comenzando descarga.</string>
-        <string name="extractingStarterClockPack">Extrayendo el pack de relojes de inicio&#8230;</string>
-        <string name="starterClockPack">Pack de relojes de inicio</string>
-        <string name="starterClockPackText">Archivos en tu tarjeta SD .OMCLa carpeta de temas será sobreescrita.  Estas seguro?\n(Si no estas seguro, pulsa Si)</string>
+        <string newname="" name="themePreview">Vista preliminar de Tema</string>
+        <string newname="" name="openingConnection">Abriendo conexión.</string>
+        <string newname="" name="beginningDownload">Comenzando descarga.</string>
+        <string newname="" name="downloading">Descargando</string>
+        <string newname="" name="downloaded">Descargado</string>
+        <string newname="" name="of">de</string>
+        <string newname="" name="bytes">bytes</string>
+        <string newname="" name="existsOverwriting">existe; sobreescribiendo</string>
+        <string newname="" name="createThemeFolder1">Carpeta tema \'</string>
+        <string newname="" name="createThemeFolder2">\'creada.</string>
+        <string newname="" name="detectedWeatherskin">Detectado Skin de Tiempo</string>
+        <string newname="" name="extractingStarterClockPack">Extrayendo pack de relojes por defecto&#8230;</string>
+        <string newname="" name="starterClockPack">Pack de relojes por defecto</string>
+        <string newname="" name="starterClockPackText">Archivos en tu tarjeta SD. La carpeta OMCThemes será sobreescrita.  ¿Estas seguro?\n(Si no pulsa SI)</string>
+        <string newname="" name="importComplete">Importación completa!</string>
+        <string newname="" name="importAborted">Importación cancelada!</string>
+        <string newname="" name="useDownloadInsteadOfPreview">Usa Descarga en vez de Vista Previa para importar un reloj OMC!</string>
+        <string newname="" name="importWorksWithOMCFiles">La importacion de reloj funciona con archivos .omc.\n¿Estás abriendo el archivo equivocado?</string>
+        <string newname="" name="nothingToExtract">Nada que extraer!</string>
+        <string newname="" name="downloadInterrupted">Descarga interrumpida!</string>
+        <string newname="" name="poorReceptionArea">¿Tiene problemas de conexión?\nIntétalo de nuevo más tarde.</string>
+        <string newname="" name="connectionTimedOut">Límite de tiempo de conexión!</string>
+        <string newname="" name="serverNotFound">Servidor no encontrado!</string>
         
         <!-- Widget Theme Long Press-->
         
@@ -175,14 +193,17 @@
         <string name="tapToEnable">Pulsa para activar</string>
         
         <!-- Fixed Locn subscreen -->
-        <string name="enterCityAndStateCountry">Introduce Ciudad/Estado</string>
-        <string name="locationExamples">Ejemplo Murcia, SPAIN</string>
+        <string name="enterCityAndStateCountry">Introduce la ciudad/estado</string>
+        <string name="locationExamples">E.j. Murcia SPA</string>
+        <string newname="" name="locationError">Sin resultados.\nInténtalo de nuevo.</string>
+        <string newname="" name="networkError">Sin conexión.\nInténtalo de nuevo.</string>
+        <string newname="" name="unknownError">Error desconocido.\nInténtalo de nuevo.</string>
         
         <string name="weatherProvider">Proveedor Tiempo</string>
 		<string-array name="wprovider_options">
 		<!-- 	<item>OpenWeatherMap.org (default)</item> -->
 		 	<item>7Timer.com (por defecto)</item>
-		 	<item>NOAA (US Only)</item>
+		 	<item newname="" >NOAA (EEUU sólo)</item>
 		 				<item>Yr.no</item>
 			<item>Google Weather (antiguo/no funciona)</item>
 		</string-array>
@@ -229,8 +250,8 @@
         
         <string name="forceEnglishDates">Forzar fecha en inglés</string>
         <string name="uncheckForSome">Desactivar para no ingleses.(Experimental)</string>
-        <string name="changeAppLocale">Language</string>
-        <string name="changeClockLocale">Clock Language</string>
+        <string newname="" name="changeAppLocale">Lenguaje</string>
+        <string newname="" name="changeClockLocale">Lenguaje del Reloj</string>
         
         <string name="toggleWidgetSizes">Tamaños Widget activados</string>
         
