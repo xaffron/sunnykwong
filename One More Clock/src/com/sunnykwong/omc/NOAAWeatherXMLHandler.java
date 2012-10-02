@@ -536,7 +536,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 					VALUETYPE="wind_speed_knots";
 				}
 				if (localName.equals("weather-conditions") && atts.getValue("weather-summary")!=null) {
-					String sCondition = atts.getValue("weather-summary").toLowerCase();
+					String sCondition = atts.getValue("weather-summary").trim().toLowerCase();
 					if (bCurrentObservations) {
 						iCurrentCondition = NOAAWeatherXMLHandler.getTranslation(sCondition);
 						jsonWeather.put("condition_raw", sCondition);
