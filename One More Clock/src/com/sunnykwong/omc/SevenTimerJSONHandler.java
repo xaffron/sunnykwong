@@ -23,29 +23,34 @@ public class SevenTimerJSONHandler {
 	public static HashMap<String, Integer> CONDITIONS;
 	public static HashMap<String, Integer> CONDITIONTRANSLATIONS;
 	public static String CACHEDFORECAST;
+	public static long CACHEDFORECASTMILLIS=0l;
 
 	public SevenTimerJSONHandler() {
 	}
 
 	static public void updateWeather(final double latitude, final double longitude, final String country, final String city, final boolean bylatlong) {
 		// If the city or country is empty, it's the first time this is run - location has changed.
-		// Also consider location changed if weather is older than 6 hours
-		if (LASTUSEDCITY==null || LASTUSEDCOUNTRY==null || System.currentTimeMillis()-OMC.LASTWEATHERREFRESH>21600000) {
+		if (LASTUSEDCITY==null || LASTUSEDCOUNTRY==null) {
 			LASTUSEDCITY = city;
 			LASTUSEDCOUNTRY = country;
 			LOCATIONCHANGED=true;
-		// If the city and country have not changed, set the location change flag to false.
-		} else if (LASTUSEDCITY.equals(city) && LASTUSEDCOUNTRY.equals(country)) {
-			if (CACHEDFORECAST!=null) {
-				LOCATIONCHANGED=false;
-			} else {
-				LOCATIONCHANGED=true;
-			}
-		// Otherwise, location has changed.
-		} else {
+		// If either city and country have changed, 
+		// set the location change flag to true.
+		} else if (!LASTUSEDCITY.equals(city) || !LASTUSEDCOUNTRY.equals(country)) {
 			LASTUSEDCITY = city;
 			LASTUSEDCOUNTRY = country;
 			LOCATIONCHANGED=true;
+		// If city and country have not changed, 
+		// but we've lost the cached forecast or the 
+		// cached weather is older than 6 hours
+		// set the location change flag to true.
+		} else if (CACHEDFORECAST==null || System.currentTimeMillis()-CACHEDFORECASTMILLIS>21600000) {
+			LASTUSEDCITY = city;
+			LASTUSEDCOUNTRY = country;
+			LOCATIONCHANGED=true;
+		// otherwise, the location didn't change - let's use the cached forecast.
+		} else  {
+			LOCATIONCHANGED=false;
 		}
 
 		// Populating the condition translations
@@ -271,6 +276,8 @@ public class SevenTimerJSONHandler {
 							}
 							OMC.PREFS.edit().putString("weather", jsonWeather.toString()).commit();
 							OMC.LASTWEATHERREFRESH = System.currentTimeMillis();
+							CACHEDFORECASTMILLIS = System.currentTimeMillis();
+
 							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Update Succeeded.  Phone Time:" + new java.sql.Time(OMC.LASTWEATHERREFRESH).toLocaleString());
 		
 							Time t = new Time();
@@ -281,7 +288,7 @@ public class SevenTimerJSONHandler {
 							// Force the update to the default update period
 							if (System.currentTimeMillis()-t.toMillis(false)>7200000l) {
 								OMC.NEXTWEATHERREFRESH = Math.max(OMC.LASTWEATHERREFRESH + (1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))) * 60000l, 
-										OMC.LASTWEATHERTRY+(1l + 240l*60000l));
+										OMC.LASTWEATHERTRY+(1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")))/4l*60000l);
 								if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Weather Station Time:" + new java.sql.Time(t.toMillis(false)).toLocaleString());
 								if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Weather Station Time Missing or Stale.  Using default interval.");
 							} else if (t.toMillis(false)>System.currentTimeMillis()) {
@@ -290,7 +297,7 @@ public class SevenTimerJSONHandler {
 								if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Weather Station Time:" + new java.sql.Time(t.toMillis(false)).toLocaleString());
 								if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Weather Station Time in the future -> phone time is wrong.  Using default interval.");
 								OMC.NEXTWEATHERREFRESH = Math.max(OMC.LASTWEATHERREFRESH + (1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))) * 60000l, 
-										OMC.LASTWEATHERTRY+(1l + 240l*60000l));
+										OMC.LASTWEATHERTRY+(1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")))/4l*60000l);
 							} else {
 							// If we get a recent weather station timestamp, we try to "catch" the update by setting next update to 
 							// 29 minutes + default update period
@@ -298,7 +305,7 @@ public class SevenTimerJSONHandler {
 		
 								if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Weather Station Time:" + new java.sql.Time(t.toMillis(false)).toLocaleString());
 								OMC.NEXTWEATHERREFRESH = Math.max(t.toMillis(false) + (29l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))) * 60000l, 
-										OMC.LASTWEATHERTRY+(1l + 240l*60000l));
+										OMC.LASTWEATHERTRY+(1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")))/4l*60000l);
 							}
 							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Next Refresh Time:" + new java.sql.Time(OMC.NEXTWEATHERREFRESH).toLocaleString());
 							OMC.PREFS.edit().putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH).commit();
@@ -313,6 +320,7 @@ public class SevenTimerJSONHandler {
 			};
 			t.start();
 		} else {
+			// Update weather from cached forecast.
 			Thread t = new Thread() {
 				@Override
 				public void run() {
@@ -499,7 +507,7 @@ public class SevenTimerJSONHandler {
 						// Force the update to the default update period
 						if (System.currentTimeMillis()-t.toMillis(false)>7200000l) {
 							OMC.NEXTWEATHERREFRESH = Math.max(OMC.LASTWEATHERREFRESH + (1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))) * 60000l, 
-									OMC.LASTWEATHERTRY+(1l + 240l*60000l));
+									OMC.LASTWEATHERTRY+(1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")))/4l*60000l);
 							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Weather Station Time:" + new java.sql.Time(t.toMillis(false)).toLocaleString());
 							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Weather Station Time Missing or Stale.  Using default interval.");
 						} else if (t.toMillis(false)>System.currentTimeMillis()) {
@@ -508,7 +516,7 @@ public class SevenTimerJSONHandler {
 							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Weather Station Time:" + new java.sql.Time(t.toMillis(false)).toLocaleString());
 							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Weather Station Time in the future -> phone time is wrong.  Using default interval.");
 							OMC.NEXTWEATHERREFRESH = Math.max(OMC.LASTWEATHERREFRESH + (1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))) * 60000l, 
-									OMC.LASTWEATHERTRY+(1l + 240l*60000l));
+									OMC.LASTWEATHERTRY+(1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")))/4l*60000l);
 						} else {
 						// If we get a recent weather station timestamp, we try to "catch" the update by setting next update to 
 						// 29 minutes + default update period
@@ -516,10 +524,11 @@ public class SevenTimerJSONHandler {
 	
 							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Weather Station Time:" + new java.sql.Time(t.toMillis(false)).toLocaleString());
 							OMC.NEXTWEATHERREFRESH = Math.max(t.toMillis(false) + (29l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))) * 60000l, 
-									OMC.LASTWEATHERTRY+(1l + 240l*60000l));
+									OMC.LASTWEATHERTRY+(1l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")))/4l*60000l);
 						}
 						if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Next Refresh Time:" + new java.sql.Time(OMC.NEXTWEATHERREFRESH).toLocaleString());
 						OMC.PREFS.edit().putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH).commit();
+						
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
