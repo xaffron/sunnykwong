@@ -11,13 +11,13 @@
 </string-array>
 
 <string-array name="shortdow">
-<item>週日</item>
-<item>週一</item>
-<item>週二</item>
-<item>週三</item>
-<item>週四</item>
-<item>週五</item>
-<item>週六</item>
+<item>周日</item>
+<item>周一</item>
+<item>周二</item>
+<item>周三</item>
+<item>周四</item>
+<item>周五</item>
+<item>周六</item>
 </string-array>
 
 <string-array name="verbosemonth">

@@ -74,10 +74,31 @@
 
         <!-- Theme Import/Unzip -->
         <string name="themePreview">預覽</string>
+        <string name="openingConnection">連接中&#8230;</string>
         <string name="beginningDownload">下載開始。</string>
+        <string name="downloading">下載中&#8230;</string>
+        <string name="downloaded">已下載</string>
+        <string name="of">/</string>
+        <string name="bytes">字節。</string>
+        <string name="existsOverwriting">已存在; 此時鐘將被覆寫。</string>
+        <string name="createThemeFolder1">創建 \'</string>
+        <string name="createThemeFolder2">\' 資料夾.</string>
+        <string name="detectedWeatherskin">檢測到天氣圖標款式&#8230;</string>
         <string name="extractingStarterClockPack">預裝時鐘解壓中&#8230;</string>
         <string name="starterClockPack">安裝預裝時鐘</string>
         <string name="starterClockPackText">SD卡之.OMCThemes資料夾可能改寫或刪除。請確認！\n(不肯定可選\'是\')</string>
+        <string name="importComplete">完成導入!</string>
+        <string name="importAborted">取消導入!</string>
+        <string name="useDownloadInsteadOfPreview">導入OMC款式,請輕按下載鍵!</string>
+        <string name="importWorksWithOMCFiles">檔案擴展名並非.omc。\n檔案錯誤嗎?</string>
+        <string name="nothingToExtract">檔案中並無時鐘款式!</string>
+        <string name="downloadInterrupted">下載中斷了!</string>
+        <string name="poorReceptionArea">您的手機信號微弱嗎?\n請稍後再試。</string>
+        <string name="connectionTimedOut">連接失敗!</string>
+        <string name="serverNotFound">找不到伺服器!</string>        
+        
+        
+        
         
         <!-- Widget Theme Long Press-->
         
@@ -177,6 +198,9 @@
         <!-- Fixed Locn subscreen -->
         <string name="enterCityAndStateCountry">請輸入城市及國家</string>
         <string name="locationExamples">例:London UK</string>
+        <string name="locationError">找不到相關城市、請再試。</string>
+        <string name="networkError">手機信號微弱、請再試。</string>
+        <string name="unknownError">出現不明錯誤、請再試。</string>
         
         <string name="weatherProvider">天氣資料來源</string>
 		<string-array name="wprovider_options">
@@ -224,11 +248,11 @@
         <string name="refreshWeatherEvery4Hours">每四小時更新</string>
         <string name="refreshWeatherEvery8Hours">每八小時更新</string>
         
-        <string name="setForegroundMode">Set Foreground Mode</string>
-        <string name="keepOMCfromSleeping">Keep OMC from sleeping\n(at the cost of a persistent notification)</string>
+        <string name="setForegroundMode">前台模式</string>
+        <string name="keepOMCfromSleeping">不准OMC進入睡眠狀態\n(會出現固定狀態欄訊息)</string>
         
-        <string name="forceEnglishDates">Force English Dates</string>
-        <string name="uncheckForSome">Uncheck for some non-English locales.(試驗中)</string>
+        <string name="forceEnglishDates">日期強制以英語顯示</string>
+        <string name="uncheckForSome">在非英語地區,可考慮取消勾選(試驗中)</string>
         <string name="changeAppLocale">轉換界面語言</string>
         <string name="changeClockLocale">轉換時鐘語言</string>
         
@@ -268,19 +292,19 @@
 		    <item>極高</item>	
 			<item>高</item>
 			<item>中</item>
-			<item>低</item>
-			<item>極低 (默認)</item>
+			<item>低 (默認)</item>
+			<item>極低</item>
 		</string-array>
 		<string-array name="clockPriority_legend">
-		    <item>Aggressive redraws every tick (不建議).  Are you sure?</item>	
-			<item>Aggressive redraws every minute, regardless of screen or launcher status.  Are you sure?</item>
-			<item>Lazy redraws every minute when screen on, even when launcher is in background.  Are you sure?</item>
-			<item>Lazy redraws every minute when launcher inactive or screen off.  Are you sure?</item>
-			<item>No redraws when launcher inactive or screen off.  Are you sure?</item>
+		    <item>每次重繪均使用最高優先級處理(不建議)。請確認!</item>	
+			<item>不論屏幕狀態或顯示畫面,每分鐘均使用最高優先級處理重繪一次。請確認!</item>
+			<item>不論顯示畫面,只要屏幕呈開啟狀態,每分鐘均會用低優先級處理重繪一次。請確認!</item>
+			<item>屏幕呈關閉狀態或並非顯示首頁畫面時,每分鐘用低優先級處理重繪一次。請確認!</item>
+			<item>屏幕呈關閉狀態或並非顯示首頁畫面時完全終止重繪。請確認!</item>
 		</string-array>
 		
         <string name="weatherDiagnostics">診斷天氣下載問題</string>
-        <string name="submitLocationWeatherDebugData">通過電郵發送此款式Submit location/weather debug data</string>
+        <string name="submitLocationWeatherDebugData">通過電郵發送位置與天氣偵錯資料</string>
         
         <string name="deleteAllThemes">刪除所有款式</string>
         <string name="forFixingThemeSelection">有助解決程式強制關閉問題</string>
@@ -309,24 +333,24 @@
 
         <!-- Credits subscreen -->
         
-        <string name="team">Team</string>
-        <string name="programmer">Programmer</string>
-        <string name="sunny">Sunny Kwong</string>
-        <string name="testers">Testers</string>
+        <string name="team">班組</string>
+        <string name="programmer">編程</string>
+        <string name="sunny">鄺宇恆</string>
+        <string name="testers">測試</string>
         <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
-        <string name="specialThanks">Special Thanks</string>
+        <string name="specialThanks">特別鳴謝</string>
         <string name="specialThanksText">Zehro for leading the way\nre: in-sync clock widgets w//o notifications.\nStefan Pledl for helping with the localization.</string>
-        <string name="copyrights">Copyrights and Licenses</string>
-        <string name="applicationIcon">Application Icon: Signpost by Maroubal2</string>
+        <string name="copyrights">版權及牌照</string>
+        <string name="applicationIcon">程式圖標: Signpost by Maroubal2</string>
         <string name="applicationIconText">Adapted from Maroubal2\'s excellent photo-turned-Ubuntu wallpaper.\nCC BY-SA 2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
-        <string name="codeColorPickerDialog">Code: ColorPickerDialog</string>
+        <string name="codeColorPickerDialog">代碼: ColorPickerDialog</string>
         <string name="codeColorPickerDialogText">Copied from CyanogenMod source repo.</string>
-        <string name="codeSVG">Code: svg-android</string>
+        <string name="codeSVG">代碼: svg-android</string>
         <string name="codeSVGText">SVG support provided by sag-android library (Apache License).\nhttp:////code.google.com//p//svg-android//</string>
-        <string name="weatherFont">Font: Weatherfont</string>
+        <string name="weatherFont">字形: Weatherfont</string>
         <string name="weatherFontText">Weatherfont is fully licensed from Jonathan Macagba, available for $5 USD from jonathan.macagba@gmail.com</string>
-        <string name="sourceCodeTitle">Source Code</string>
-        <string name="sourceCode">Source Code Available at</string>
+        <string name="sourceCodeTitle">源代碼</string>
+        <string name="sourceCode">可於以下網站瀏覽</string>
         
         
     </resources>
