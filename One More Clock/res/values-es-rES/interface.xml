@@ -289,8 +289,8 @@
 		    <item>Muy Alto</item>	
 			<item>Alto</item>
 			<item>Medio</item>
-			<item>Bajo</item>
-			<item>Muy bajo (Por defecto)</item>
+			<item>Bajo (Por defecto)</item>
+			<item>Muy bajo</item>
 		</string-array>
 		<string-array name="clockPriority_legend">
 		    <item>Redibujos agresivos cada tick (No recomendado).  Estas seguro?</item>	

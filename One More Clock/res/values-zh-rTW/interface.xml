@@ -286,7 +286,7 @@
         
         <!-- Troubleshooting Options-->
         
-        <string name="clockPriority">程式優先順序</string>
+        <string name="clockPriority">重繪優先順序</string>
         <string name="forFineTuning">在時鐘耗電量與精確度之間取平衡</string>
 		<string-array name="clockPriority_options">
 		    <item>極高</item>	
@@ -326,7 +326,7 @@
         <!-- Credits-->
         
         <string name="credits">關於本程式</string>
-        <string name="version">版本</string>
+        <string name="version">版本:</string>
         <string name="free">免費版</string>
         <string name="tapToGetFull">請輕按此購買完整版</string>
         <string name="viewCredits">衷心致謝</string>

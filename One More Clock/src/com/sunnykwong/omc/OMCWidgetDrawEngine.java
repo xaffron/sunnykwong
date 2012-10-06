@@ -404,6 +404,8 @@ public class OMCWidgetDrawEngine {
 	            		    PendingIntent.FLAG_UPDATE_CURRENT);
 	    		} else if (sPrefString.equals("alarms")) {
 		        	pi = OMC.ALARMCLOCKPENDING;
+	    		} else if (sPrefString.equals("batt")) {
+		        	pi = OMC.BATTUSAGEPENDING;
 	    		} else if (sPrefString.equals("weather")) {
 		        	pi = OMC.WEATHERFORECASTPENDING;
 	    		} else {

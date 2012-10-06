@@ -268,8 +268,8 @@
 		    <item>Högsta</item>	
 			<item>Hög</item>
 			<item>Medium</item>
-			<item>Låg</item>
-			<item>Lägsta (Standard)</item>
+			<item>Låg (Standard)</item>
+			<item>Lägsta</item>
 		</string-array>
 		<string-array name="clockPriority_legend">
 		    <item>Ritar varje sekund (Rekommenderas ej).  Är du helt säker?</item>	

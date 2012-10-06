@@ -289,8 +289,8 @@
 		    <item>Höchste</item>	
 			<item>Hoch</item>
 			<item>Mittel</item>
-			<item>Niedrig</item>
-			<item>Kleinstes (Standard).</item>
+			<item>Niedrig (Standard).</item>
+			<item>Kleinstes</item>
 		</string-array>
 		<string-array name="clockPriority_legend">
 		    <item>Aggressive \'Erneuerung\' jeder Augenblick (Nicht empfehlenswert).  Sind Sie sich wirklich sicher?</item>	

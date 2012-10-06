@@ -18,7 +18,7 @@
     <string name="warningConflictPaid">请注意！ \n此版本与完整版并不兼容</string>
     <string name="warningConflictFree">请注意！ \n此版本与免费版并不兼容</string>
     <string name="warningConflictText">微调时钟与轻按选项均会出现问题。 \n敬请尽早将免费版卸载！ </string>
-    <string name="d​​efaultThemeNotRemovable">不能删除默认款式！ </string>
+    <string name="defaultThemeNotRemovable">不能删除默认款式！ </string>
 
     <!-- Bailout App Dialog -->
     <string name="thanksForDownloading">欢迎!</string>
@@ -27,14 +27,14 @@
 
     <!-- Useful Tips -->
     <string name="usefulTip">技巧提示</string>
-    <string name="d​​oNotShowAgain">不要再显示。 </string>
+    <string name="doNotShowAgain">不要再显示。 </string>
 
     <!-- Weather Forecast Screen -->
     <string name="humiditycondition">相对湿度：</string>
-    <string name="win​​dcondition">风向：</string>
+    <string name="windcondition">风向：</string>
 
     <!-- Forecast Screen -->
-    <string name="d​​oubleDash">--</string>
+    <string name="doubleDash">--</string>
     <string name="unknown">不详</string>
     <string name="noaaWeatherCredit">天气资料由National Oceanic and Atmospheric Administration (NOAA)提供，特此鸣谢。 </string>
     <string name="igWeatherCredit">天气资料由iGoogle API提供，特此鸣谢。 </string>
@@ -47,7 +47,7 @@
     <!-- Clock Preferences -->
 
     <string name="clockPreferences">程式选项</string>
-    <string name="d​​ashPreferences">\u0020- 选项</string>
+    <string name="dashPreferences">\u0020- 选项</string>
     <string name="forThisClock">此时钟之选项：</string>
     <string name="widgetTheme">时钟款式</string>
 
@@ -56,7 +56,7 @@
     <string name="widgetThemeTitle">左右滑动选择款式- 长按图则可选项</string>
     <string name="corruptPlsDelete">[不能读取此款式- 请删除]</string>
     <string name="reextractBundledClocks">重载预装之时钟</string>
-    <string name="d​​ownloadAllClocks">下载其他时钟(约7MB)</string>
+    <string name="downloadAllClocks">下载其他时钟(约7MB)</string>
     <string name="preselected">正使用</string>
     <string name="postselected">款式。 </string>
 
@@ -66,7 +66,7 @@
     <string name="weatherLegend">有天气显示</string>
     <string name="bkimageLegend">有背景图案</string>
     <string name="ltbgLegend">适合浅色壁纸</string>
-    <string name="d​​kbgLegend">适合深色壁纸</string>
+    <string name="dkbgLegend">适合深色壁纸</string>
     <string name="tweakLegend">此设计曾被用户修改</string>
 
     <!-- Theme Skinner Tool (deprecated) -->
@@ -76,14 +76,14 @@
     <string name="themePreview">预览</string>
     <string name="openingConnection">连接中…</string>
     <string name="beginningDownload">下载开始。 </string>
-    <string name="d​​ownloading">下载中…</string>
-    <string name="d​​ownloaded">已下载</string>
+    <string name="downloading">下载中…</string>
+    <string name="downloaded">已下载</string>
     <string name="of">/</string>
     <string name="bytes">字节。 </string>
     <string name="existsOverwriting">已存在; 此时钟将被覆写。 </string>
     <string name="createThemeFolder1">创建\'</string>
     <string name="createThemeFolder2">\' 资料夹.</string>
-    <string name="d​​etectedWeatherskin">检测到天气图标款式…</string>
+    <string name="detectedWeatherskin">检测到天气图标款式…</string>
     <string name="extractingStarterClockPack">预装时钟解压中…</string>
     <string name="starterClockPack">安装预装时钟</string>
     <string name="starterClockPackText">SD卡之.OMCThemes资料夹可能改写或删除。请确认！ \n(不肯定可选\'是\')</string>
@@ -92,7 +92,7 @@
     <string name="useDownloadInsteadOfPreview">导入OMC款式,请轻按下载键!</string>
     <string name="importWorksWithOMCFiles">档案扩展名并非.omc。 \n档案错误吗?</string>
     <string name="nothingToExtract">档案中并无时钟款式!</string>
-    <string name="d​​ownloadInterrupted">下载中断了!</string>
+    <string name="downloadInterrupted">下载中断了!</string>
     <string name="poorReceptionArea">您的手机信号微弱吗?\n请稍后再试。 </string>
     <string name="connectionTimedOut">连接失败!</string>
     <string name="serverNotFound">​​找不到伺服器!</string>
@@ -105,10 +105,10 @@
     <string name="emailThemeConfirm1">确认发送</string>
     <string name="emailThemeConfirm2">吗？ </string>
     <string name="emailThemeChooser">通过电邮发送此款式。 </string>
-    <string name="d​​eleteTheme">删除此款式</string>
-    <string name="d​​eleteThemeConfirm1">确认删除</string>
-    <string name="d​​eleteThemeConfirm2">吗？ </string>
-    <string name="d​​eleteThemeConfirm3">删除后必须重新下载此款式才能再使用。请确认！ </string>
+    <string name="deleteTheme">删除此款式</string>
+    <string name="deleteThemeConfirm1">确认删除</string>
+    <string name="deleteThemeConfirm2">吗？ </string>
+    <string name="deleteThemeConfirm3">删除后必须重新下载此款式才能再使用。请确认！ </string>
     <string name="submitThemeToDev">将此款式传送至Xaffron</string>
     <string name="submitThemeToDevConfirm1">确认发送</string>
     <string name="submitThemeToDevConfirm2">款式给Xaffron吗？ </string>
@@ -145,8 +145,8 @@
     <string name="chooseAction">请选择轻按反应</string>
     <string name="openOptionsDefault">选项画面(默认)</string>
     <string name="widgetPrefsTTL">选项</string>
-    <string name="d​​oNothing">无轻按反应</string>
-    <string name="d​​oNothingTTL">无反应</string>
+    <string name="doNothing">无轻按反应</string>
+    <string name="doNothingTTL">无反应</string>
     <string name="weatherForecast">天气预测</string>
     <string name="weatherForecastTTL">天气预测</string>
     <string name="viewAlarms">检视闹钟设定(试验中)</string>
@@ -179,12 +179,12 @@
     <string name="refreshWeatherNow">立即刷新天气</string>
     <string name="location">位置：</string>
     <string name="fixed">(自订定位)</string>
-    <string name="d​​etected">(自动定位)</string>
+    <string name="detected">(自动定位)</string>
     <string name="lastTry">上次刷新：</string>
     <string name="manualRefreshOnly">(不自动刷新)</string>
     <string name="nextRefresh">下次刷新：</string>
     <string name="weatherLocation">天气定位:</string>
-    <string name="d​​isableLocationAndWeather">停用定位及天气功能</string>
+    <string name="disableLocationAndWeather">停用定位及天气功能</string>
     <string name="followDevice">自动定位(默认功能)</string>
     <string name="setFixedLocation">自订定位</string>
     <string name="weatherFunctionalityDisabled">定位及天气现正停用</string>
@@ -236,7 +236,7 @@
     <string name="seconds">秒更新一次</string>
     <string name="weatherUpdateInterval">天气刷新时间</string>
 
-    <string-array name="win​​terval_options">
+    <string-array name="winterval_options">
         <item>每小时(默认)</item>
         <item>每四小时</item>
         <item>每八小时</item>
@@ -269,7 +269,7 @@
     <string name="enable1x3Widget">启动(1x3)小工具</string>
     <string name="forGalaxyNote">Galaxy Note等大画面电话适用</string>
     <string name="enableThemeTester">启动Theme Tester</string>
-    <string name="d​​evelopmentToolForSkinnersOnly">仅供Skin开发者</string>
+    <string name="developmentToolForSkinnersOnly">仅供Skin开发者</string>
 
     <!-- Widget Sizes Sales Pitch -->
     <string name="areThereOtherWidgetSizes">还有更多功能!</string>
@@ -280,7 +280,7 @@
 
     <!-- Troubleshooting Options -->
 
-    <string name="clockPriority">程式优先顺序</string>
+    <string name="clockPriority">重绘优先顺序</string>
     <string name="forFineTuning">在时钟耗电量与精确度之间取平衡</string>
 
     <string-array name="clockPriority_options">
@@ -300,27 +300,27 @@
 
     <string name="weatherDiagnostics">诊断天气下载问题</string>
     <string name="submitLocationWeatherDebugData">通过电邮发送位置与天气侦错资料</string>
-    <string name="d​​eleteAllThemes">删除所有款式</string>
+    <string name="deleteAllThemes">删除所有款式</string>
     <string name="forFixingThemeSelection">有助解决程式强制关闭问题</string>
-    <string name="d​​eleteAllThemesFromSD">删除所有电脑/SD卡的款式吗？ </string>
+    <string name="deleteAllThemesFromSD">删除所有电脑/SD卡的款式吗？ </string>
     <string name="yesDelete">确定,全部删除</string>
     <string name="yesRestore">确定,删除后重载预装时钟</string>
     <string name="omcThemesFolderDeleted">OMCThemes资料夹删除完成</string>
-    <string name="d​​efaultClockPackRestored">预装时钟重载完成</string>
+    <string name="defaultClockPackRestored">预装时钟重载完成</string>
 
     <!-- Contact Xaffron -->
 
     <string name="contactXaffron">联络Xaffron</string>
-    <string name="d​​onateOrContact">捐助或联系作者</string>
+    <string name="donateOrContact">捐助或联系作者</string>
     <string name="contactXaffronForIssues">捐助或联系Xaffron</string>
     <string name="email">撰写电邮</string>
-    <string name="d​​onate">捐助</string>
+    <string name="donate">捐助</string>
     <string name="facebook">Facebook</string>
 
     <!-- Credits -->
 
     <string name="credits">关于本程式</string>
-    <string name="version">版本</string>
+    <string name="version">版本:</string>
     <string name="free">免费版</string>
     <string name="tapToGetFull">请轻按此购买完整版</string>
     <string name="viewCredits">衷心致谢</string>

@@ -261,6 +261,25 @@ public class OMCPrefActivity extends PreferenceActivity {
 	        	findPreference("widgetLeadingZero").setSummary(OMC.RString("showLeadingZFalse"));
 			}
         	
+        	// "M/D/Y Date Format".
+        	findPreference("mmddDateFormat").setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+					if ((Boolean)newValue==true) {
+						preference.setSummary(OMC.RString("mmddDateFormatTrue"));
+					} else {
+						preference.setSummary(OMC.RString("mmddDateFormatFalse"));
+					}
+					return true;
+				}
+			});
+			if (OMC.PREFS.getBoolean("mmddDateFormat", true)) {
+	        	findPreference("mmddDateFormat").setSummary(OMC.RString("mmddDateFormatTrue"));
+			} else {
+	        	findPreference("mmddDateFormat").setSummary(OMC.RString("mmddDateFormatFalse"));
+			}
+        	
         	// "Change Time Zone".
         	prefTimeZone = findPreference("timeZone");
         	if (OMC.PREFS.getString("sTimeZone", "default").equals("default")) {
@@ -510,8 +529,8 @@ public class OMCPrefActivity extends PreferenceActivity {
 							@Override
 							public void onClick(DialogInterface dialog, int item) {
 								OMC.PREFS.edit().putString("clockPriority", (String)newValue).commit();
-					        	preference.setSummary(OMC.RStringArray("clockPriority_options")[Integer.parseInt(OMC.PREFS.getString("clockPriority", "4"))]);
-					        	OMC.CURRENTCLOCKPRIORITY = Integer.parseInt(OMC.PREFS.getString("clockPriority", "4"));
+					        	preference.setSummary(OMC.RStringArray("clockPriority_options")[Integer.parseInt(OMC.PREFS.getString("clockPriority", "3"))]);
+					        	OMC.CURRENTCLOCKPRIORITY = Integer.parseInt(OMC.PREFS.getString("clockPriority", "3"));
 							}
 						})
 						.setNegativeButton(OMC.RString("no"), new DialogInterface.OnClickListener() {
@@ -524,7 +543,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 				}
 			});
         	prefClockPriority.setSummary(OMC.RStringArray("clockPriority_options")
-        			[Integer.parseInt(OMC.PREFS.getString("clockPriority", "4"))]);
+        			[Integer.parseInt(OMC.PREFS.getString("clockPriority", "3"))]);
         	
         	// "Weather Diagnostics".
         	Preference prefWeatherDiag = findPreference("weatherDebug");
@@ -950,13 +969,15 @@ public class OMCPrefActivity extends PreferenceActivity {
     					OMC.RString("openOptionsDefault"), 
     					OMC.RString("doNothing"), 
     					OMC.RString("weatherForecast"), 
-    					OMC.RString("viewAlarms"), 
+    					OMC.RString("viewAlarms"),
+    					OMC.RString("battUsage"),
     					OMC.RString("otherActivity")};
     			final String[] values = {
     					"default", 
     					"noop", 
     					"weather", 
     					"alarms", 
+    					"batt",
     					"activity"};
 				
 				final AlertDialog dlgTTL  =  new AlertDialog.Builder(this)
@@ -979,6 +1000,10 @@ public class OMCPrefActivity extends PreferenceActivity {
 							if (values[item].equals("alarms")) {
 								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "alarms")
 									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("viewAlarmsTTL")).commit();
+							}
+							if (values[item].equals("batt")) {
+								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "batt")
+									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("battUsageTTL")).commit();
 							}
 							if (values[item].equals("activity")) {
 					    		getPreferenceScreen().setEnabled(false);

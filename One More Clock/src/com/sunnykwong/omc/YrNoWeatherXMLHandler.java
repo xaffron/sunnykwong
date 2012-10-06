@@ -1,10 +1,14 @@
 package com.sunnykwong.omc;
 
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 
+import org.apache.commons.math.analysis.SplineInterpolator;
+import org.apache.commons.math.analysis.UnivariateRealFunction;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,6 +55,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 	public Stack<String[]> tree;
 	public HashMap<String, String> element;
 	public JSONObject jsonWeather, jsonOneDayForecast;
+	public ArrayList<Double> x, y;
 	public static final String DELIMITERS = " .,;-";
 	public static final Time FROMTIME=new Time(Time.TIMEZONE_UTC);
 	public static final Time TOTIME=new Time(Time.TIMEZONE_UTC);
@@ -60,6 +65,11 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 	public static HashMap<String, Double> LOWTEMPS;
 	public static HashMap<String, Double> HIGHTEMPS;
 	public static HashMap<String, Integer> CONDITIONS;
+	public static String CACHEDFORECAST;
+	public static long CACHEDFORECASTMILLIS=0l;
+	public static boolean LOCATIONCHANGED;
+	public static String LASTUSEDCITY, LASTUSEDCOUNTRY;
+	public static double[] FCSTCURVEX, FCSTCURVEY;
 
 	public YrNoWeatherXMLHandler() {
 		super();
@@ -76,52 +86,112 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 			e.printStackTrace();
 		}
 		jsonOneDayForecast = null;
+		x = new ArrayList<Double>();
+		y = new ArrayList<Double>();
 	}
 
 	static public void updateWeather(final double latitude, final double longitude, final String country, final String city, final boolean bylatlong) {
-		
-		Thread t = new Thread() {
-			@Override
-			public void run() {
-				HttpURLConnection huc = null; 
-				try {
-					if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
-					    System.setProperty("http.keepAlive", "false");
+		// If the city or country is empty, it's the first time this is run - location has changed.
+		if (LASTUSEDCITY==null || LASTUSEDCOUNTRY==null) {
+			LASTUSEDCITY = city;
+			LASTUSEDCOUNTRY = country;
+			LOCATIONCHANGED=true;
+			FCSTCURVEX=null;
+			FCSTCURVEY=null;
+		// If either city and country have changed, 
+		// set the location change flag to true.
+		} else if (!LASTUSEDCITY.equals(city) || !LASTUSEDCOUNTRY.equals(country)) {
+			LASTUSEDCITY = city;
+			LASTUSEDCOUNTRY = country;
+			LOCATIONCHANGED=true;
+			FCSTCURVEX=null;
+			FCSTCURVEY=null;
+		// If city and country have not changed, 
+		// but we've lost the cached forecast or the 
+		// cached weather is older than 8 hours
+		// set the location change flag to true.
+		} else if (CACHEDFORECAST==null || System.currentTimeMillis()-CACHEDFORECASTMILLIS>28800000) {
+			LASTUSEDCITY = city;
+			LASTUSEDCOUNTRY = country;
+			LOCATIONCHANGED=true;
+			FCSTCURVEX=null;
+			FCSTCURVEY=null;
+		// otherwise, the location didn't change - let's use the cached forecast.
+		} else  {
+			LOCATIONCHANGED=false;
+		}
+
+		if (LOCATIONCHANGED) {
+			// Update weather from provider.
+
+			Thread t = new Thread() {
+				@Override
+				public void run() {
+					HttpURLConnection huc = null; 
+					try {
+						if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
+						    System.setProperty("http.keepAlive", "false");
+						}
+						XMLReader xr = XMLReaderFactory.createXMLReader();
+						YrNoWeatherXMLHandler GXhandler = new YrNoWeatherXMLHandler();
+						GXhandler.jsonWeather.putOpt("country2", country);
+						GXhandler.jsonWeather.putOpt("city2", city);
+						GXhandler.jsonWeather.putOpt("bylatlong", bylatlong);
+						GXhandler.jsonWeather.putOpt("longitude_e6",longitude*1000000d);
+						GXhandler.jsonWeather.putOpt("latitude_e6",latitude*1000000d);
+						xr.setContentHandler(GXhandler);
+						xr.setErrorHandler(GXhandler);
+	
+						URL url=null;
+						if (!bylatlong) {
+							Log.e(OMC.OMCSHORT + "YrNoWeather", "yr.no does not support weather by location name!");
+							return;
+	//						url = new URL("http://www.google.com/ig/api?oe=utf-8&weather="+city.replace(' ', '+') + "+" + country.replace(' ', '+'));
+						} else {
+							url = new URL(YrNoWeatherXMLHandler.URL_LOCATIONFORECASTLTS+latitude+";lon="+longitude);
+						}
+						huc = (HttpURLConnection) url.openConnection();
+						huc.setConnectTimeout(30000);
+						huc.setReadTimeout(30000);
+						
+						CACHEDFORECAST = OMC.streamToString(huc.getInputStream());
+						System.out.println(CACHEDFORECAST);
+						xr.parse(new InputSource(new StringReader(CACHEDFORECAST)));
+						UPDATEDTIME.set(huc.getDate());
+						huc.disconnect();
+	
+					} catch (Exception e) { 
+						e.printStackTrace();
+						if (huc!=null) huc.disconnect();
 					}
-					XMLReader xr = XMLReaderFactory.createXMLReader();
-					YrNoWeatherXMLHandler GXhandler = new YrNoWeatherXMLHandler();
-					GXhandler.jsonWeather.putOpt("country2", country);
-					GXhandler.jsonWeather.putOpt("city2", city);
-					GXhandler.jsonWeather.putOpt("bylatlong", bylatlong);
-					GXhandler.jsonWeather.putOpt("longitude_e6",longitude*1000000d);
-					GXhandler.jsonWeather.putOpt("latitude_e6",latitude*1000000d);
-					xr.setContentHandler(GXhandler);
-					xr.setErrorHandler(GXhandler);
-
-					URL url=null;
-					if (!bylatlong) {
-						Log.e(OMC.OMCSHORT + "YrNoWeather", "yr.no does not support weather by location name!");
-						return;
-//						url = new URL("http://www.google.com/ig/api?oe=utf-8&weather="+city.replace(' ', '+') + "+" + country.replace(' ', '+'));
-					} else {
-						url = new URL(YrNoWeatherXMLHandler.URL_LOCATIONFORECASTLTS+latitude+";lon="+longitude);
-					}
-					huc = (HttpURLConnection) url.openConnection();
-					huc.setConnectTimeout(30000);
-					huc.setReadTimeout(30000);
-
-					xr.parse(new InputSource(huc.getInputStream()));
-					UPDATEDTIME.set(huc.getDate());
-					huc.disconnect();
-
-				} catch (Exception e) { 
-					e.printStackTrace();
-					if (huc!=null) huc.disconnect();
-				}
+				};
 			};
-		};
-		t.start();
-
+			t.start();
+		} else {
+			// Update weather from cached forecast.
+			Thread t = new Thread() {
+				@Override
+				public void run() {
+					try {
+						XMLReader xr = XMLReaderFactory.createXMLReader();
+						YrNoWeatherXMLHandler GXhandler = new YrNoWeatherXMLHandler();
+						GXhandler.jsonWeather.putOpt("country2", country);
+						GXhandler.jsonWeather.putOpt("city2", city);
+						GXhandler.jsonWeather.putOpt("bylatlong", bylatlong);
+						GXhandler.jsonWeather.putOpt("longitude_e6",longitude*1000000d);
+						GXhandler.jsonWeather.putOpt("latitude_e6",latitude*1000000d);
+						xr.setContentHandler(GXhandler);
+						xr.setErrorHandler(GXhandler);
+	
+						if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YWeather", "Interpolating weather from previously-cached forecast.");
+						xr.parse(new InputSource(new StringReader(CACHEDFORECAST)));
+					} catch (Exception e) { 
+						e.printStackTrace();
+					}
+				};
+			};
+			t.start();
+		}
 	}
 
 	@Override
@@ -180,6 +250,8 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				
 				if (localName.equals("temperature")) {
 					double tempc = Double.parseDouble(atts.getValue("value"));
+					x.add((double)(TOTIME.toMillis(false)));
+					y.add(tempc);
 					String sHTDay =TOTIME.format("%Y%m%d");
 					String sLDDay =LOWDATE.format("%Y%m%d");
 
@@ -336,6 +408,65 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				e.printStackTrace();
 			}
 		}
+		// Check if newest curve covers current timestamp, if so, cache this curve
+		
+		if (System.currentTimeMillis()>x.get(0)) {
+			if (OMC.DEBUG)
+				Log.i(OMC.OMCSHORT + "YrNoWeather", "caching a fresh curve");
+			double[] ex = new double[x.size()];
+			double[] ey = new double[y.size()];
+			for (int i=0;i<x.size();i++) {
+				ex[i] = x.get(i);
+				ey[i] = y.get(i);
+			}
+			FCSTCURVEX=ex;
+			FCSTCURVEY=ey;
+
+			// If not, and there is no previously cached forecast curve, cache the curve anyway
+		} else if (FCSTCURVEX==null) {
+			if (OMC.DEBUG)
+				Log.i(OMC.OMCSHORT + "YrNoWeather", "caching a fresh curve");
+			double[] ex = new double[x.size()];
+			double[] ey = new double[y.size()];
+			for (int i=0;i<x.size();i++) {
+				ex[i] = x.get(i);
+				ey[i] = y.get(i);
+			}
+			FCSTCURVEX=ex;
+			FCSTCURVEY=ey;
+		} else if (FCSTCURVEX.length==0) {
+			if (OMC.DEBUG)
+				Log.i(OMC.OMCSHORT + "YrNoWeather", "caching a fresh curve");
+			double[] ex = new double[x.size()];
+			double[] ey = new double[y.size()];
+			for (int i=0;i<x.size();i++) {
+				ex[i] = x.get(i);
+				ey[i] = y.get(i);
+			}
+			FCSTCURVEX=ex;
+			FCSTCURVEY=ey;
+		} else {
+			if (OMC.DEBUG)
+				Log.i(OMC.OMCSHORT + "YrNoWeather", "reusing cached curve");
+		}
+		// Finally, try to use the best curve available, falling back on the first datapoint
+		// if no curves can be used
+		if (System.currentTimeMillis()>FCSTCURVEX[0]) {
+			if (OMC.DEBUG)
+				Log.i(OMC.OMCSHORT + "YrNoWeather", "Interpolating from curve");
+			UnivariateRealFunction fn = new SplineInterpolator().interpolate(FCSTCURVEX,FCSTCURVEY);
+			try {
+				double tempc = fn.value(System.currentTimeMillis());
+				jsonWeather.putOpt("temp_c",(int)(tempc+0.5d));
+				jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.7f));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			if (OMC.DEBUG)
+				Log.i(OMC.OMCSHORT + "YrNoWeather", "no interpolation");
+		}
+		
 		if (OMC.DEBUG)
 			Log.i(OMC.OMCSHORT + "YrNoWeather", jsonWeather.toString());
 
@@ -354,6 +485,9 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 		}
 		OMC.PREFS.edit().putString("weather", jsonWeather.toString()).commit();
 		OMC.LASTWEATHERREFRESH = System.currentTimeMillis();
+
+		if (LOCATIONCHANGED) CACHEDFORECASTMILLIS = OMC.LASTWEATHERREFRESH;
+		
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "YrNoWeather", "Update Succeeded.  Phone Time:" + new java.sql.Time(OMC.LASTWEATHERREFRESH).toLocaleString());
 
 		Time t = new Time();

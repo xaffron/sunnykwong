@@ -268,8 +268,8 @@
 		    <item>Najwyższy</item>	
 			<item>Wysoki</item>
 			<item>Średni</item>
-			<item>Niski</item>
-			<item>Najniższy (Domyślny)</item>
+			<item>Niski (Domyślny)</item>
+			<item>Najniższy</item>
 		</string-array>
 		<string-array name="clockPriority_legend">
 		    <item>Odświeżanie z każdą sekundą (Nie polecany).  Czy jesteś absolutnie pewnien?</item>	

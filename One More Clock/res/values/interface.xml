@@ -76,13 +76,13 @@
         <string name="themePreview">Theme Preview</string>
         <string name="openingConnection">Opening connection.</string>
         <string name="beginningDownload">Beginning download.</string>
-        <string name="downloading">Downloading</string>
-        <string name="downloaded">Downloaded</string>
-        <string name="of">of</string>
-        <string name="bytes">bytes</string>
-        <string name="existsOverwriting">exists; overwriting</string>
+        <string name="downloading">Downloading\u0020</string>
+        <string name="downloaded">Downloaded\u0020</string>
+        <string name="of">\u0020of\u0020</string>
+        <string name="bytes">\u0020bytes</string>
+        <string name="existsOverwriting">\u0020exists; overwriting</string>
         <string name="createThemeFolder1">Theme folder \'</string>
-        <string name="createThemeFolder2">\'created.</string>
+        <string name="createThemeFolder2">\'\u0020created.</string>
         <string name="detectedWeatherskin">Detected WeatherSkin </string>
         <string name="extractingStarterClockPack">Extracting starter clock pack&#8230;</string>
         <string name="starterClockPack">Starter Clock Pack</string>
@@ -151,6 +151,8 @@
         <string name="weatherForecastTTL">Forecast</string>
         <string name="viewAlarms">View alarms (Experimental)</string>
         <string name="viewAlarmsTTL">View Alarms</string>
+        <string name="battUsage">View Battery Usage</string>
+        <string name="battUsageTTL">Battery Usage</string>
         <string name="otherActivity">Other activity&#8230;</string>
         <string name="otherActivityTTL">Custom Activity</string>
         
@@ -160,6 +162,9 @@
         <string name="showLeadingZero">Show Leading Zero</string>
         <string name="showLeadingZTrue">04:23</string>
         <string name="showLeadingZFalse">4:23</string>
+        <string name="mmddDateFormat">M/D/Y Date Format</string>
+        <string name="mmddDateFormatTrue">12/31/2012</string>
+        <string name="mmddDateFormatFalse">31/12/2012</string>
         <string name="changeTimeZone">Change Time Zone</string>
         <string name="followingDeviceTimeZone">(Following Device Time Zone)</string>
         
@@ -289,8 +294,8 @@
 		    <item>Highest</item>	
 			<item>High</item>
 			<item>Medium</item>
-			<item>Low</item>
-			<item>Lowest (Default)</item>
+			<item>Low (Default)</item>
+			<item>Lowest</item>
 		</string-array>
 		<string-array name="clockPriority_legend">
 		    <item>Aggressive redraws every tick (Not recommended).  Are you sure?</item>	

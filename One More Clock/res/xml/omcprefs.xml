@@ -41,7 +41,13 @@
                 android:selectable="true"
                 android:summary=""
                 android:title="@string/showLeadingZero" />
-
+            <CheckBoxPreference
+                android:enabled="true"
+                android:key="mmddDateFormat"
+                android:selectable="true"
+                android:summary=""
+                android:title="@string/mmddDateFormat" />
+            
             <Preference
                 android:enabled="true"
                 android:key="timeZone"
