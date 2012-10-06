@@ -621,6 +621,8 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 			e.printStackTrace();
 		}
 
+		
+		
 		String windString = OMC.RString("windcondition") +
 				jsonWeather.optString("wind_direction") + " @ " +
 				iWindSpeedMph + " mph";
@@ -629,6 +631,11 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 			jsonWeather.putOpt("wind_condition", windString);
 			jsonWeather.putOpt("wind_speed_mph", iWindSpeedMph);
 			jsonWeather.putOpt("wind_speed_mps", iWindSpeedMps);
+
+			// Convert current temp and dewpoint from f to c.
+			jsonWeather.putOpt("temp_c",(int)((jsonWeather.optDouble("temp_f")-32.2)/9d*5d+0.5d));
+			jsonWeather.putOpt("dewpoint_c",(int)((jsonWeather.optDouble("dewpoint_f")-32.2)/9d*5d+0.5d));
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
