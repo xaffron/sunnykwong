@@ -155,7 +155,6 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 						huc.setReadTimeout(30000);
 						
 						CACHEDFORECAST = OMC.streamToString(huc.getInputStream());
-						System.out.println(CACHEDFORECAST);
 						xr.parse(new InputSource(new StringReader(CACHEDFORECAST)));
 						UPDATEDTIME.set(huc.getDate());
 						huc.disconnect();
