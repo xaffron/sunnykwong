@@ -2257,7 +2257,7 @@ public class OMC extends Application {
 	}
 
 	public static String getVerboseTime(final int minuteindex){
-		final int index = minuteindex/4;
+		final int index = minuteindex/360;
 		final int subindex = minuteindex%360;
 		switch (index) {
 			case 0:
