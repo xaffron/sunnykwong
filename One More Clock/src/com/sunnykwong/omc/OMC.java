@@ -885,8 +885,12 @@ public class OMC extends Application {
 			}
 			// Translate from condition to filename
 			final String[] sTokens = src.split("[-.]");
-
-			int iConditionCode = Integer.parseInt(sTokens[1]); 
+			int iConditionCode = 0;
+			if (sTokens[1]==null) iConditionCode = 0;
+			else if (sTokens[1].equals("")) iConditionCode = 0;
+			else {
+				iConditionCode = Integer.parseInt(sTokens[1].trim()); 
+			}
 			String daynight=sTokens[2];;
 			String src2;
 			try {
@@ -1788,10 +1792,15 @@ public class OMC extends Application {
 				result = "";
 			}
 		} else if (sToken.equals("verbosenumber")){
-			try {
-				result = OMC.VERBOSENUMBERS[Integer.parseInt(st[iTokenNum++])];
-			} catch (java.lang.ArrayIndexOutOfBoundsException e) {
-				result = "";
+			String sRawValue = st[iTokenNum++].trim();
+			if (sRawValue.equals("")) {
+				result="";
+			} else {
+				try {
+					result = OMC.VERBOSENUMBERS[Integer.parseInt(sRawValue)];
+				} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+					result = "";
+				}
 			}
 		} else {
 			//unrecognized macro - ignore
