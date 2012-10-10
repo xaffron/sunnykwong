@@ -652,6 +652,14 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 			HIGHTEMPS.add(0,dCurrentTemp);
 			CONDITIONS.add(0,iCurrentCondition);
 		}
+		//  If current condition code is missing or NA, use nearest forecast condition instead
+		if (jsonWeather.optString("condition_raw", "na").equals("na")) {
+			try {
+				jsonWeather.put("condition_code",CONDITIONS.get(0));
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
 		for (int i = 0; i< 4; i++) {
 			try {
 				jsonOneDayForecast = new JSONObject();

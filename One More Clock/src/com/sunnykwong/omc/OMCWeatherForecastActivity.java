@@ -60,7 +60,7 @@ public class OMCWeatherForecastActivity extends Activity {
 					JSONObject day = wary.optJSONObject(i);
 					setText(findViewById(OMC.RId("dayofweek"+i)),day.optString("day_of_week"));
 					((ImageView)findViewById(OMC.RId("ConditionImage"+i))).setImageBitmap(OMC.getBitmap(OMC.DEFAULTTHEME, "w-"+OMC.VERBOSEWEATHERENG[day.optInt("condition_code")]+"-day.png"));
-					fStretch = Math.min(1f,600f/(sCity.length()*40f));
+					fStretch = Math.min(1f,600f/(OMC.VERBOSEWEATHER[day.optInt("condition_code")].length()*40f));
 					setText(findViewById(OMC.RId("ForecastCond"+i)),OMC.VERBOSEWEATHER[day.optInt("condition_code")],fStretch);
 					if (OMC.PREFS.getString("weatherDisplay", "f").equals("f")) {
 						setText(findViewById(OMC.RId("HighTemp"+i)),day.optString("high")+"°F");
