@@ -60,7 +60,8 @@ public class OMCWeatherForecastActivity extends Activity {
 					JSONObject day = wary.optJSONObject(i);
 					setText(findViewById(OMC.RId("dayofweek"+i)),day.optString("day_of_week"));
 					((ImageView)findViewById(OMC.RId("ConditionImage"+i))).setImageBitmap(OMC.getBitmap(OMC.DEFAULTTHEME, "w-"+OMC.VERBOSEWEATHERENG[day.optInt("condition_code")]+"-day.png"));
-					setText(findViewById(OMC.RId("ForecastCond"+i)),OMC.VERBOSEWEATHER[day.optInt("condition_code")]);
+					fStretch = Math.min(1f,600f/(sCity.length()*40f));
+					setText(findViewById(OMC.RId("ForecastCond"+i)),OMC.VERBOSEWEATHER[day.optInt("condition_code")],fStretch);
 					if (OMC.PREFS.getString("weatherDisplay", "f").equals("f")) {
 						setText(findViewById(OMC.RId("HighTemp"+i)),day.optString("high")+"°F");
 						setText(findViewById(OMC.RId("LowTemp"+i)),day.optString("low")+"°F");
@@ -68,18 +69,6 @@ public class OMCWeatherForecastActivity extends Activity {
 						setText(findViewById(OMC.RId("HighTemp"+i)),day.optString("high_c")+"°C");
 						setText(findViewById(OMC.RId("LowTemp"+i)),day.optString("low_c")+"°C");
 					}
-//				    TextView gradient = (TextView)findViewById(getResources().OMC.RId("divider"+i));
-//				    final int iDay = i;
-//				    gradient.setOnClickListener(new View.OnClickListener() {
-//						
-//						@Override
-//						public void onClick(View v) {
-//							Intent accu = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.accuweather.com/m/Details"+iDay+".aspx?lat="+weather.optLong("latitude_e6",0l)/1000000d
-//									+ "&lon=" + weather.optLong("longitude_e6",0l)/1000000d));
-//							startActivity(accu);
-//							finish();
-//						}
-//					});
 				}
 				Time tStation = new Time();
 				tStation.parse(weather.optString("current_local_time","19700101T000000"));

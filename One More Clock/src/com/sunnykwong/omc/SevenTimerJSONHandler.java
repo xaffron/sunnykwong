@@ -71,7 +71,6 @@ public class SevenTimerJSONHandler {
 		CONDITIONTRANSLATIONS.put("tsrain", 22);
 		CONDITIONTRANSLATIONS.put("undefined", 0);
 		
-		
 		if (LOCATIONCHANGED) {
 			// Update weather from provider.
 			Thread t = new Thread() {
@@ -160,13 +159,19 @@ public class SevenTimerJSONHandler {
 								tNight.normalize(true);
 								String sHTDay = tCurrent.format("%Y%m%d");
 								String sLDDay = tNight.format("%Y%m%d");
-								// Overwrite the previous conditions.  We'll end up with the conditions around midnight for each day.
-	
-								CONDITIONS.put(sHTDay, 
-										CONDITIONTRANSLATIONS.get(jsDataPoint.optString("weather","unknown")
-											.replace("day", "")
-											.replace("night", "")));
-	
+								// Overwrite the previous conditions.  We'll end up with the conditions around daybreak for each day.
+								// v138: Write only if it's daytime (raw condition contains "day").
+								if (jsDataPoint.optString("weather","unknown").contains("day")){
+//									if (OMC.DEBUG)
+//										Log.i(OMC.OMCSHORT + "7TWeather",
+//												"Conditions @ phone time" + tCurrent.format("%Y%m%d%H") + "(timepoint " + jsDataPoint.optInt("timepoint", 0) + "): " + OMC.VERBOSEWEATHER[CONDITIONTRANSLATIONS.get(jsDataPoint.optString("weather","unknown")
+//														.replace("day", "")
+//														.replace("night", ""))]);
+									CONDITIONS.put(sHTDay, 
+											CONDITIONTRANSLATIONS.get(jsDataPoint.optString("weather","unknown")
+												.replace("day", "")
+												.replace("night", "")));
+								}	
 								// Compare/write the current conditions.  The conditions with the nearest timestamp will be used as current time.
 								double tempc = jsDataPoint.optDouble("temp2m");
 								y[i] = tempc;
@@ -381,13 +386,19 @@ public class SevenTimerJSONHandler {
 							tNight.normalize(true);
 							String sHTDay = tCurrent.format("%Y%m%d");
 							String sLDDay = tNight.format("%Y%m%d");
-							// Overwrite the previous conditions.  We'll end up with the conditions around midnight for each day.
-	
-							CONDITIONS.put(sHTDay, 
-									CONDITIONTRANSLATIONS.get(jsDataPoint.optString("weather","unknown")
-										.replace("day", "")
-										.replace("night", "")));
-	
+							// Overwrite the previous conditions.  We'll end up with the conditions around daybreak for each day.
+							// v138: Write only if it's daytime (raw condition contains "day").
+							if (jsDataPoint.optString("weather","unknown").contains("day")){
+//								if (OMC.DEBUG)
+//									Log.i(OMC.OMCSHORT + "7TWeather",
+//											"Conditions @ phone time" + tCurrent.format("%Y%m%d%H") + "(timepoint " + jsDataPoint.optInt("timepoint", 0) + "): " + OMC.VERBOSEWEATHER[CONDITIONTRANSLATIONS.get(jsDataPoint.optString("weather","unknown")
+//													.replace("day", "")
+//													.replace("night", ""))]);
+								CONDITIONS.put(sHTDay, 
+										CONDITIONTRANSLATIONS.get(jsDataPoint.optString("weather","unknown")
+											.replace("day", "")
+											.replace("night", "")));
+							}	
 							// Compare/write the current conditions.  The conditions with the nearest timestamp will be used as current time.
 							double tempc = jsDataPoint.optDouble("temp2m");
 							y[i] = tempc;
@@ -406,9 +417,6 @@ public class SevenTimerJSONHandler {
 							}
 							
 							// Compare/write the high and low temps.  Low temps are counted from 7pm to 7am next day.
-							if (OMC.DEBUG)
-								Log.i(OMC.OMCSHORT + "7TWeather",
-										"Day for High: " + sHTDay + "; Day for Low: " + sLDDay);
 							if (!HIGHTEMPS.containsKey(sHTDay)) {
 								HIGHTEMPS.put(sHTDay, tempc);
 							} else {
