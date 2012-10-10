@@ -110,7 +110,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 		// but we've lost the cached forecast or the 
 		// cached weather is older than 8 hours
 		// set the location change flag to true.
-		} else if (CACHEDFORECAST==null || System.currentTimeMillis()-CACHEDFORECASTMILLIS>28800000) {
+		} else if (CACHEDFORECAST==null || System.currentTimeMillis()-CACHEDFORECASTMILLIS>28900000) {
 			LASTUSEDCITY = city;
 			LASTUSEDCOUNTRY = country;
 			LOCATIONCHANGED=true;
