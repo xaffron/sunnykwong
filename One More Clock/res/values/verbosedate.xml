@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<string name="daysuffix"></string>
+
 <string-array name="verbosedow">
 <item>Sunday</item>
 <item>Monday</item>

@@ -1925,6 +1925,10 @@ public class OMC extends Application {
 					sb.append(OMC.VERBOSEMONTH[OMC.TIME.month]);
 				} else if (inputChars[i]=='b') {
 					sb.append(OMC.SHORTMONTH[OMC.TIME.month]);
+				} else if (inputChars[i]=='d') {
+					sb.append(OMC.TIME.format("%d")+OMC.RString("daysuffix"));
+				} else if (inputChars[i]=='e') {
+					sb.append(OMC.TIME.format("%e")+OMC.RString("daysuffix"));
 				} else if (inputChars[i]=='P') {
 					sb.append(OMC.TIME.hour<12?"AM":"PM");
 				} else if (inputChars[i]=='p') {
