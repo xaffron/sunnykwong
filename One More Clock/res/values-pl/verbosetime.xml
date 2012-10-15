@@ -1,0 +1,1453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="verbosetime1">
+        <item>Godzina północ</item>
+        <item>Jeden po północ</item>
+        <item>Dwa po północ</item>
+        <item>Trzy po północ</item>
+        <item>Cztery po północ</item>
+        <item>Pięć po północ</item>
+        <item>Sześć po północ</item>
+        <item>Siedem po północ</item>
+        <item>Osiem po północ</item>
+        <item>Dziewięć po północ</item>
+        <item>Dziesięć po północ</item>
+        <item>Jedenaście po północ</item>
+        <item>Dwanaście po północ</item>
+        <item>Trzynaście po północ</item>
+        <item>Czternaście po północ</item>
+        <item>Kwadrans po północ</item>
+        <item>Szesnaście po północ</item>
+        <item>Siedemnaście po północ</item>
+        <item>Osiemnaście po północ</item>
+        <item>Dziewiętnaście po północ</item>
+        <item>Dwadzieścia po północ</item>
+        <item>Dwadzieścia jeden po północ</item>
+        <item>Dwadzieścia dwa po północ</item>
+        <item>Dwadzieścia trzy po północ</item>
+        <item>Dwadzieścia cztery po północ</item>
+        <item>Dwadzieścia pięć po północ</item>
+        <item>Dwadzieścia sześć po północ</item>
+        <item>Dwadzieścia siedem po północ</item>
+        <item>Dwadzieścia osiem po północ</item>
+        <item>Dwadzieścia dziewięć po północ</item>
+        <item>W pół do pierwsza</item>
+        <item>Za dwadzieścia dziewięć pierwsza</item>
+        <item>Za dwadzieścia osiem pierwsza</item>
+        <item>Za dwadzieścia siedem pierwsza</item>
+        <item>Za dwadzieścia sześć pierwsza</item>
+        <item>Za dwadzieścia pięć pierwsza</item>
+        <item>Za dwadzieścia cztery pierwsza</item>
+        <item>Za dwadzieścia trzy pierwsza</item>
+        <item>Za dwadzieścia dwa pierwsza</item>
+        <item>Za dwadzieścia jeden pierwsza</item>
+        <item>Za dwadzieścia pierwsza</item>
+        <item>Za dziewiętnaście pierwsza</item>
+        <item>Za osiemnaście pierwsza</item>
+        <item>Za siedemnaście pierwsza</item>
+        <item>Za szesnaście pierwsza</item>
+        <item>Za kwadrans pierwsza</item>
+        <item>Za czternaście pierwsza</item>
+        <item>Za trzynaście pierwsza</item>
+        <item>Za dwanaście pierwsza</item>
+        <item>Za jedenaście pierwsza</item>
+        <item>Za dziesięć pierwsza</item>
+        <item>Za dziewięć pierwsza</item>
+        <item>Za osiem pierwsza</item>
+        <item>Za siedem pierwsza</item>
+        <item>Za sześć pierwsza</item>
+        <item>Za pięć pierwsza</item>
+        <item>Za cztery pierwsza</item>
+        <item>Za trzy pierwsza</item>
+        <item>Za dwa pierwsza</item>
+        <item>Za jeden pierwsza</item>
+        <item>Godzina pierwsza</item>
+        <item>Jeden po pierwsza</item>
+        <item>Dwa po pierwsza</item>
+        <item>Trzy po pierwsza</item>
+        <item>Cztery po pierwsza</item>
+        <item>Pięć po pierwsza</item>
+        <item>Sześć po pierwsza</item>
+        <item>Siedem po pierwsza</item>
+        <item>Osiem po pierwsza</item>
+        <item>Dziewięć po pierwsza</item>
+        <item>Dziesięć po pierwsza</item>
+        <item>Jedenaście po pierwsza</item>
+        <item>Dwanaście po pierwsza</item>
+        <item>Trzynaście po pierwsza</item>
+        <item>Czternaście po pierwsza</item>
+        <item>Kwadrans po pierwsza</item>
+        <item>Szesnaście po pierwsza</item>
+        <item>Siedemnaście po pierwsza</item>
+        <item>Osiemnaście po pierwsza</item>
+        <item>Dziewiętnaście po pierwsza</item>
+        <item>Dwadzieścia po pierwsza</item>
+        <item>Dwadzieścia jeden po pierwsza</item>
+        <item>Dwadzieścia dwa po pierwsza</item>
+        <item>Dwadzieścia trzy po pierwsza</item>
+        <item>Dwadzieścia cztery po pierwsza</item>
+        <item>Dwadzieścia pięć po pierwsza</item>
+        <item>Dwadzieścia sześć po pierwsza</item>
+        <item>Dwadzieścia siedem po pierwsza</item>
+        <item>Dwadzieścia osiem po pierwsza</item>
+        <item>Dwadzieścia dziewięć po pierwsza</item>
+        <item>W pół do druga</item>
+        <item>Za dwadzieścia dziewięć druga</item>
+        <item>Za dwadzieścia osiem druga</item>
+        <item>Za dwadzieścia siedem druga</item>
+        <item>Za dwadzieścia sześć druga</item>
+        <item>Za dwadzieścia pięć druga</item>
+        <item>Za dwadzieścia cztery druga</item>
+        <item>Za dwadzieścia trzy druga</item>
+        <item>Za dwadzieścia dwa druga</item>
+        <item>Za dwadzieścia jeden druga</item>
+        <item>Za dwadzieścia druga</item>
+        <item>Za dziewiętnaście druga</item>
+        <item>Za osiemnaście druga</item>
+        <item>Za siedemnaście druga</item>
+        <item>Za szesnaście druga</item>
+        <item>Za kwadrans druga</item>
+        <item>Za czternaście druga</item>
+        <item>Za trzynaście druga</item>
+        <item>Za dwanaście druga</item>
+        <item>Za jedenaście druga</item>
+        <item>Za dziesięć druga</item>
+        <item>Za dziewięć druga</item>
+        <item>Za osiem druga</item>
+        <item>Za siedem druga</item>
+        <item>Za sześć druga</item>
+        <item>Za pięć druga</item>
+        <item>Za cztery druga</item>
+        <item>Za trzy druga</item>
+        <item>Za dwa druga</item>
+        <item>Za jeden druga</item>
+        <item>Godzina druga</item>
+        <item>Jeden po druga</item>
+        <item>Dwa po druga</item>
+        <item>Trzy po druga</item>
+        <item>Cztery po druga</item>
+        <item>Pięć po druga</item>
+        <item>Sześć po druga</item>
+        <item>Siedem po druga</item>
+        <item>Osiem po druga</item>
+        <item>Dziewięć po druga</item>
+        <item>Dziesięć po druga</item>
+        <item>Jedenaście po druga</item>
+        <item>Dwanaście po druga</item>
+        <item>Trzynaście po druga</item>
+        <item>Czternaście po druga</item>
+        <item>Kwadrans po druga</item>
+        <item>Szesnaście po druga</item>
+        <item>Siedemnaście po druga</item>
+        <item>Osiemnaście po druga</item>
+        <item>Dziewiętnaście po druga</item>
+        <item>Dwadzieścia po druga</item>
+        <item>Dwadzieścia jeden po druga</item>
+        <item>Dwadzieścia dwa po druga</item>
+        <item>Dwadzieścia trzy po druga</item>
+        <item>Dwadzieścia cztery po druga</item>
+        <item>Dwadzieścia pięć po druga</item>
+        <item>Dwadzieścia sześć po druga</item>
+        <item>Dwadzieścia siedem po druga</item>
+        <item>Dwadzieścia osiem po druga</item>
+        <item>Dwadzieścia dziewięć po druga</item>
+        <item>W pół do trzecia</item>
+        <item>Za dwadzieścia dziewięć trzecia</item>
+        <item>Za dwadzieścia osiem trzecia</item>
+        <item>Za dwadzieścia siedem trzecia</item>
+        <item>Za dwadzieścia sześć trzecia</item>
+        <item>Za dwadzieścia pięć trzecia</item>
+        <item>Za dwadzieścia cztery trzecia</item>
+        <item>Za dwadzieścia trzy trzecia</item>
+        <item>Za dwadzieścia dwa trzecia</item>
+        <item>Za dwadzieścia jeden trzecia</item>
+        <item>Za dwadzieścia trzecia</item>
+        <item>Za dziewiętnaście trzecia</item>
+        <item>Za osiemnaście trzecia</item>
+        <item>Za siedemnaście trzecia</item>
+        <item>Za szesnaście trzecia</item>
+        <item>Za kwadrans trzecia</item>
+        <item>Za czternaście trzecia</item>
+        <item>Za trzynaście trzecia</item>
+        <item>Za dwanaście trzecia</item>
+        <item>Za jedenaście trzecia</item>
+        <item>Za dziesięć trzecia</item>
+        <item>Za dziewięć trzecia</item>
+        <item>Za osiem trzecia</item>
+        <item>Za siedem trzecia</item>
+        <item>Za sześć trzecia</item>
+        <item>Za pięć trzecia</item>
+        <item>Za cztery trzecia</item>
+        <item>Za trzy trzecia</item>
+        <item>Za dwa trzecia</item>
+        <item>Za jeden trzecia</item>
+        <item>Godzina trzecia</item>
+        <item>Jeden po trzecia</item>
+        <item>Dwa po trzecia</item>
+        <item>Trzy po trzecia</item>
+        <item>Cztery po trzecia</item>
+        <item>Pięć po trzecia</item>
+        <item>Sześć po trzecia</item>
+        <item>Siedem po trzecia</item>
+        <item>Osiem po trzecia</item>
+        <item>Dziewięć po trzecia</item>
+        <item>Dziesięć po trzecia</item>
+        <item>Jedenaście po trzecia</item>
+        <item>Dwanaście po trzecia</item>
+        <item>Trzynaście po trzecia</item>
+        <item>Czternaście po trzecia</item>
+        <item>Kwadrans po trzecia</item>
+        <item>Szesnaście po trzecia</item>
+        <item>Siedemnaście po trzecia</item>
+        <item>Osiemnaście po trzecia</item>
+        <item>Dziewiętnaście po trzecia</item>
+        <item>Dwadzieścia po trzecia</item>
+        <item>Dwadzieścia jeden po trzecia</item>
+        <item>Dwadzieścia dwa po trzecia</item>
+        <item>Dwadzieścia trzy po trzecia</item>
+        <item>Dwadzieścia cztery po trzecia</item>
+        <item>Dwadzieścia pięć po trzecia</item>
+        <item>Dwadzieścia sześć po trzecia</item>
+        <item>Dwadzieścia siedem po trzecia</item>
+        <item>Dwadzieścia osiem po trzecia</item>
+        <item>Dwadzieścia dziewięć po trzecia</item>
+        <item>W pół do czwarta</item>
+        <item>Za dwadzieścia dziewięć czwarta</item>
+        <item>Za dwadzieścia osiem czwarta</item>
+        <item>Za dwadzieścia siedem czwarta</item>
+        <item>Za dwadzieścia sześć czwarta</item>
+        <item>Za dwadzieścia pięć czwarta</item>
+        <item>Za dwadzieścia cztery czwarta</item>
+        <item>Za dwadzieścia trzy czwarta</item>
+        <item>Za dwadzieścia dwa czwarta</item>
+        <item>Za dwadzieścia jeden czwarta</item>
+        <item>Za dwadzieścia czwarta</item>
+        <item>Za dziewiętnaście czwarta</item>
+        <item>Za osiemnaście czwarta</item>
+        <item>Za siedemnaście czwarta</item>
+        <item>Za szesnaście czwarta</item>
+        <item>Za kwadrans czwarta</item>
+        <item>Za czternaście czwarta</item>
+        <item>Za trzynaście czwarta</item>
+        <item>Za dwanaście czwarta</item>
+        <item>Za jedenaście czwarta</item>
+        <item>Za dziesięć czwarta</item>
+        <item>Za dziewięć czwarta</item>
+        <item>Za osiem czwarta</item>
+        <item>Za siedem czwarta</item>
+        <item>Za sześć czwarta</item>
+        <item>Za pięć czwarta</item>
+        <item>Za cztery czwarta</item>
+        <item>Za trzy czwarta</item>
+        <item>Za dwa czwarta</item>
+        <item>Za jeden czwarta</item>
+        <item>Godzina czwarta</item>
+        <item>Jeden po czwarta</item>
+        <item>Dwa po czwarta</item>
+        <item>Trzy po czwarta</item>
+        <item>Cztery po czwarta</item>
+        <item>Pięć po czwarta</item>
+        <item>Sześć po czwarta</item>
+        <item>Siedem po czwarta</item>
+        <item>Osiem po czwarta</item>
+        <item>Dziewięć po czwarta</item>
+        <item>Dziesięć po czwarta</item>
+        <item>Jedenaście po czwarta</item>
+        <item>Dwanaście po czwarta</item>
+        <item>Trzynaście po czwarta</item>
+        <item>Czternaście po czwarta</item>
+        <item>Kwadrans po czwarta</item>
+        <item>Szesnaście po czwarta</item>
+        <item>Siedemnaście po czwarta</item>
+        <item>Osiemnaście po czwarta</item>
+        <item>Dziewiętnaście po czwarta</item>
+        <item>Dwadzieścia po czwarta</item>
+        <item>Dwadzieścia jeden po czwarta</item>
+        <item>Dwadzieścia dwa po czwarta</item>
+        <item>Dwadzieścia trzy po czwarta</item>
+        <item>Dwadzieścia cztery po czwarta</item>
+        <item>Dwadzieścia pięć po czwarta</item>
+        <item>Dwadzieścia sześć po czwarta</item>
+        <item>Dwadzieścia siedem po czwarta</item>
+        <item>Dwadzieścia osiem po czwarta</item>
+        <item>Dwadzieścia dziewięć po czwarta</item>
+        <item>W pół do piąta</item>
+        <item>Za dwadzieścia dziewięć piąta</item>
+        <item>Za dwadzieścia osiem piąta</item>
+        <item>Za dwadzieścia siedem piąta</item>
+        <item>Za dwadzieścia sześć piąta</item>
+        <item>Za dwadzieścia pięć piąta</item>
+        <item>Za dwadzieścia cztery piąta</item>
+        <item>Za dwadzieścia trzy piąta</item>
+        <item>Za dwadzieścia dwa piąta</item>
+        <item>Za dwadzieścia jeden piąta</item>
+        <item>Za dwadzieścia piąta</item>
+        <item>Za dziewiętnaście piąta</item>
+        <item>Za osiemnaście piąta</item>
+        <item>Za siedemnaście piąta</item>
+        <item>Za szesnaście piąta</item>
+        <item>Za kwadrans piąta</item>
+        <item>Za czternaście piąta</item>
+        <item>Za trzynaście piąta</item>
+        <item>Za dwanaście piąta</item>
+        <item>Za jedenaście piąta</item>
+        <item>Za dziesięć piąta</item>
+        <item>Za dziewięć piąta</item>
+        <item>Za osiem piąta</item>
+        <item>Za siedem piąta</item>
+        <item>Za sześć piąta</item>
+        <item>Za pięć piąta</item>
+        <item>Za cztery piąta</item>
+        <item>Za trzy piąta</item>
+        <item>Za dwa piąta</item>
+        <item>Za jeden piąta</item>
+        <item>Godzina piąta</item>
+        <item>Jeden po piąta</item>
+        <item>Dwa po piąta</item>
+        <item>Trzy po piąta</item>
+        <item>Cztery po piąta</item>
+        <item>Pięć po piąta</item>
+        <item>Sześć po piąta</item>
+        <item>Siedem po piąta</item>
+        <item>Osiem po piąta</item>
+        <item>Dziewięć po piąta</item>
+        <item>Dziesięć po piąta</item>
+        <item>Jedenaście po piąta</item>
+        <item>Dwanaście po piąta</item>
+        <item>Trzynaście po piąta</item>
+        <item>Czternaście po piąta</item>
+        <item>Kwadrans po piąta</item>
+        <item>Szesnaście po piąta</item>
+        <item>Siedemnaście po piąta</item>
+        <item>Osiemnaście po piąta</item>
+        <item>Dziewiętnaście po piąta</item>
+        <item>Dwadzieścia po piąta</item>
+        <item>Dwadzieścia jeden po piąta</item>
+        <item>Dwadzieścia dwa po piąta</item>
+        <item>Dwadzieścia trzy po piąta</item>
+        <item>Dwadzieścia cztery po piąta</item>
+        <item>Dwadzieścia pięć po piąta</item>
+        <item>Dwadzieścia sześć po piąta</item>
+        <item>Dwadzieścia siedem po piąta</item>
+        <item>Dwadzieścia osiem po piąta</item>
+        <item>Dwadzieścia dziewięć po piąta</item>
+        <item>W pół do szósta</item>
+        <item>Za dwadzieścia dziewięć szósta</item>
+        <item>Za dwadzieścia osiem szósta</item>
+        <item>Za dwadzieścia siedem szósta</item>
+        <item>Za dwadzieścia sześć szósta</item>
+        <item>Za dwadzieścia pięć szósta</item>
+        <item>Za dwadzieścia cztery szósta</item>
+        <item>Za dwadzieścia trzy szósta</item>
+        <item>Za dwadzieścia dwa szósta</item>
+        <item>Za dwadzieścia jeden szósta</item>
+        <item>Za dwadzieścia szósta</item>
+        <item>Za dziewiętnaście szósta</item>
+        <item>Za osiemnaście szósta</item>
+        <item>Za siedemnaście szósta</item>
+        <item>Za szesnaście szósta</item>
+        <item>Za kwadrans szósta</item>
+        <item>Za czternaście szósta</item>
+        <item>Za trzynaście szósta</item>
+        <item>Za dwanaście szósta</item>
+        <item>Za jedenaście szósta</item>
+        <item>Za dziesięć szósta</item>
+        <item>Za dziewięć szósta</item>
+        <item>Za osiem szósta</item>
+        <item>Za siedem szósta</item>
+        <item>Za sześć szósta</item>
+        <item>Za pięć szósta</item>
+        <item>Za cztery szósta</item>
+        <item>Za trzy szósta</item>
+        <item>Za dwa szósta</item>
+        <item>Za jeden szósta</item>
+    </string-array>
+    <string-array name="verbosetime2">
+        <item>Godzina szósta</item>
+        <item>Jeden po szósta</item>
+        <item>Dwa po szósta</item>
+        <item>Trzy po szósta</item>
+        <item>Cztery po szósta</item>
+        <item>Pięć po szósta</item>
+        <item>Sześć po szósta</item>
+        <item>Siedem po szósta</item>
+        <item>Osiem po szósta</item>
+        <item>Dziewięć po szósta</item>
+        <item>Dziesięć po szósta</item>
+        <item>Jedenaście po szósta</item>
+        <item>Dwanaście po szósta</item>
+        <item>Trzynaście po szósta</item>
+        <item>Czternaście po szósta</item>
+        <item>Kwadrans po szósta</item>
+        <item>Szesnaście po szósta</item>
+        <item>Siedemnaście po szósta</item>
+        <item>Osiemnaście po szósta</item>
+        <item>Dziewiętnaście po szósta</item>
+        <item>Dwadzieścia po szósta</item>
+        <item>Dwadzieścia jeden po szósta</item>
+        <item>Dwadzieścia dwa po szósta</item>
+        <item>Dwadzieścia trzy po szósta</item>
+        <item>Dwadzieścia cztery po szósta</item>
+        <item>Dwadzieścia pięć po szósta</item>
+        <item>Dwadzieścia sześć po szósta</item>
+        <item>Dwadzieścia siedem po szósta</item>
+        <item>Dwadzieścia osiem po szósta</item>
+        <item>Dwadzieścia dziewięć po szósta</item>
+        <item>W pół do siódma</item>
+        <item>Za dwadzieścia dziewięć siódma</item>
+        <item>Za dwadzieścia osiem siódma</item>
+        <item>Za dwadzieścia siedem siódma</item>
+        <item>Za dwadzieścia sześć siódma</item>
+        <item>Za dwadzieścia pięć siódma</item>
+        <item>Za dwadzieścia cztery siódma</item>
+        <item>Za dwadzieścia trzy siódma</item>
+        <item>Za dwadzieścia dwa siódma</item>
+        <item>Za dwadzieścia jeden siódma</item>
+        <item>Za dwadzieścia siódma</item>
+        <item>Za dziewiętnaście siódma</item>
+        <item>Za osiemnaście siódma</item>
+        <item>Za siedemnaście siódma</item>
+        <item>Za szesnaście siódma</item>
+        <item>Za kwadrans siódma</item>
+        <item>Za czternaście siódma</item>
+        <item>Za trzynaście siódma</item>
+        <item>Za dwanaście siódma</item>
+        <item>Za jedenaście siódma</item>
+        <item>Za dziesięć siódma</item>
+        <item>Za dziewięć siódma</item>
+        <item>Za osiem siódma</item>
+        <item>Za siedem siódma</item>
+        <item>Za sześć siódma</item>
+        <item>Za pięć siódma</item>
+        <item>Za cztery siódma</item>
+        <item>Za trzy siódma</item>
+        <item>Za dwa siódma</item>
+        <item>Za jeden siódma</item>
+        <item>Godzina siódma</item>
+        <item>Jeden po siódma</item>
+        <item>Dwa po siódma</item>
+        <item>Trzy po siódma</item>
+        <item>Cztery po siódma</item>
+        <item>Pięć po siódma</item>
+        <item>Sześć po siódma</item>
+        <item>Siedem po siódma</item>
+        <item>Osiem po siódma</item>
+        <item>Dziewięć po siódma</item>
+        <item>Dziesięć po siódma</item>
+        <item>Jedenaście po siódma</item>
+        <item>Dwanaście po siódma</item>
+        <item>Trzynaście po siódma</item>
+        <item>Czternaście po siódma</item>
+        <item>Kwadrans po siódma</item>
+        <item>Szesnaście po siódma</item>
+        <item>Siedemnaście po siódma</item>
+        <item>Osiemnaście po siódma</item>
+        <item>Dziewiętnaście po siódma</item>
+        <item>Dwadzieścia po siódma</item>
+        <item>Dwadzieścia jeden po siódma</item>
+        <item>Dwadzieścia dwa po siódma</item>
+        <item>Dwadzieścia trzy po siódma</item>
+        <item>Dwadzieścia cztery po siódma</item>
+        <item>Dwadzieścia pięć po siódma</item>
+        <item>Dwadzieścia sześć po siódma</item>
+        <item>Dwadzieścia siedem po siódma</item>
+        <item>Dwadzieścia osiem po siódma</item>
+        <item>Dwadzieścia dziewięć po siódma</item>
+        <item>W pół do ósma</item>
+        <item>Za dwadzieścia dziewięć ósma</item>
+        <item>Za dwadzieścia osiem ósma</item>
+        <item>Za dwadzieścia siedem ósma</item>
+        <item>Za dwadzieścia sześć ósma</item>
+        <item>Za dwadzieścia pięć ósma</item>
+        <item>Za dwadzieścia cztery ósma</item>
+        <item>Za dwadzieścia trzy ósma</item>
+        <item>Za dwadzieścia dwa ósma</item>
+        <item>Za dwadzieścia jeden ósma</item>
+        <item>Za dwadzieścia ósma</item>
+        <item>Za dziewiętnaście ósma</item>
+        <item>Za osiemnaście ósma</item>
+        <item>Za siedemnaście ósma</item>
+        <item>Za szesnaście ósma</item>
+        <item>Za kwadrans ósma</item>
+        <item>Za czternaście ósma</item>
+        <item>Za trzynaście ósma</item>
+        <item>Za dwanaście ósma</item>
+        <item>Za jedenaście ósma</item>
+        <item>Za dziesięć ósma</item>
+        <item>Za dziewięć ósma</item>
+        <item>Za osiem ósma</item>
+        <item>Za siedem ósma</item>
+        <item>Za sześć ósma</item>
+        <item>Za pięć ósma</item>
+        <item>Za cztery ósma</item>
+        <item>Za trzy ósma</item>
+        <item>Za dwa ósma</item>
+        <item>Za jeden ósma</item>
+        <item>Godzina ósma</item>
+        <item>Jeden po ósma</item>
+        <item>Dwa po ósma</item>
+        <item>Trzy po ósma</item>
+        <item>Cztery po ósma</item>
+        <item>Pięć po ósma</item>
+        <item>Sześć po ósma</item>
+        <item>Siedem po ósma</item>
+        <item>Osiem po ósma</item>
+        <item>Dziewięć po ósma</item>
+        <item>Dziesięć po ósma</item>
+        <item>Jedenaście po ósma</item>
+        <item>Dwanaście po ósma</item>
+        <item>Trzynaście po ósma</item>
+        <item>Czternaście po ósma</item>
+        <item>Kwadrans po ósma</item>
+        <item>Szesnaście po ósma</item>
+        <item>Siedemnaście po ósma</item>
+        <item>Osiemnaście po ósma</item>
+        <item>Dziewiętnaście po ósma</item>
+        <item>Dwadzieścia po ósma</item>
+        <item>Dwadzieścia jeden po ósma</item>
+        <item>Dwadzieścia dwa po ósma</item>
+        <item>Dwadzieścia trzy po ósma</item>
+        <item>Dwadzieścia cztery po ósma</item>
+        <item>Dwadzieścia pięć po ósma</item>
+        <item>Dwadzieścia sześć po ósma</item>
+        <item>Dwadzieścia siedem po ósma</item>
+        <item>Dwadzieścia osiem po ósma</item>
+        <item>Dwadzieścia dziewięć po ósma</item>
+        <item>W pół do dziewiąta</item>
+        <item>Za dwadzieścia dziewięć dziewiąta</item>
+        <item>Za dwadzieścia osiem dziewiąta</item>
+        <item>Za dwadzieścia siedem dziewiąta</item>
+        <item>Za dwadzieścia sześć dziewiąta</item>
+        <item>Za dwadzieścia pięć dziewiąta</item>
+        <item>Za dwadzieścia cztery dziewiąta</item>
+        <item>Za dwadzieścia trzy dziewiąta</item>
+        <item>Za dwadzieścia dwa dziewiąta</item>
+        <item>Za dwadzieścia jeden dziewiąta</item>
+        <item>Za dwadzieścia dziewiąta</item>
+        <item>Za dziewiętnaście dziewiąta</item>
+        <item>Za osiemnaście dziewiąta</item>
+        <item>Za siedemnaście dziewiąta</item>
+        <item>Za szesnaście dziewiąta</item>
+        <item>Za kwadrans dziewiąta</item>
+        <item>Za czternaście dziewiąta</item>
+        <item>Za trzynaście dziewiąta</item>
+        <item>Za dwanaście dziewiąta</item>
+        <item>Za jedenaście dziewiąta</item>
+        <item>Za dziesięć dziewiąta</item>
+        <item>Za dziewięć dziewiąta</item>
+        <item>Za osiem dziewiąta</item>
+        <item>Za siedem dziewiąta</item>
+        <item>Za sześć dziewiąta</item>
+        <item>Za pięć dziewiąta</item>
+        <item>Za cztery dziewiąta</item>
+        <item>Za trzy dziewiąta</item>
+        <item>Za dwa dziewiąta</item>
+        <item>Za jeden dziewiąta</item>
+        <item>Godzina dziewiąta</item>
+        <item>Jeden po dziewiąta</item>
+        <item>Dwa po dziewiąta</item>
+        <item>Trzy po dziewiąta</item>
+        <item>Cztery po dziewiąta</item>
+        <item>Pięć po dziewiąta</item>
+        <item>Sześć po dziewiąta</item>
+        <item>Siedem po dziewiąta</item>
+        <item>Osiem po dziewiąta</item>
+        <item>Dziewięć po dziewiąta</item>
+        <item>Dziesięć po dziewiąta</item>
+        <item>Jedenaście po dziewiąta</item>
+        <item>Dwanaście po dziewiąta</item>
+        <item>Trzynaście po dziewiąta</item>
+        <item>Czternaście po dziewiąta</item>
+        <item>Kwadrans po dziewiąta</item>
+        <item>Szesnaście po dziewiąta</item>
+        <item>Siedemnaście po dziewiąta</item>
+        <item>Osiemnaście po dziewiąta</item>
+        <item>Dziewiętnaście po dziewiąta</item>
+        <item>Dwadzieścia po dziewiąta</item>
+        <item>Dwadzieścia jeden po dziewiąta</item>
+        <item>Dwadzieścia dwa po dziewiąta</item>
+        <item>Dwadzieścia trzy po dziewiąta</item>
+        <item>Dwadzieścia cztery po dziewiąta</item>
+        <item>Dwadzieścia pięć po dziewiąta</item>
+        <item>Dwadzieścia sześć po dziewiąta</item>
+        <item>Dwadzieścia siedem po dziewiąta</item>
+        <item>Dwadzieścia osiem po dziewiąta</item>
+        <item>Dwadzieścia dziewięć po dziewiąta</item>
+        <item>W pół do dziesiąta</item>
+        <item>Za dwadzieścia dziewięć dziesiąta</item>
+        <item>Za dwadzieścia osiem dziesiąta</item>
+        <item>Za dwadzieścia siedem dziesiąta</item>
+        <item>Za dwadzieścia sześć dziesiąta</item>
+        <item>Za dwadzieścia pięć dziesiąta</item>
+        <item>Za dwadzieścia cztery dziesiąta</item>
+        <item>Za dwadzieścia trzy dziesiąta</item>
+        <item>Za dwadzieścia dwa dziesiąta</item>
+        <item>Za dwadzieścia jeden dziesiąta</item>
+        <item>Za dwadzieścia dziesiąta</item>
+        <item>Za dziewiętnaście dziesiąta</item>
+        <item>Za osiemnaście dziesiąta</item>
+        <item>Za siedemnaście dziesiąta</item>
+        <item>Za szesnaście dziesiąta</item>
+        <item>Za kwadrans dziesiąta</item>
+        <item>Za czternaście dziesiąta</item>
+        <item>Za trzynaście dziesiąta</item>
+        <item>Za dwanaście dziesiąta</item>
+        <item>Za jedenaście dziesiąta</item>
+        <item>Za dziesięć dziesiąta</item>
+        <item>Za dziewięć dziesiąta</item>
+        <item>Za osiem dziesiąta</item>
+        <item>Za siedem dziesiąta</item>
+        <item>Za sześć dziesiąta</item>
+        <item>Za pięć dziesiąta</item>
+        <item>Za cztery dziesiąta</item>
+        <item>Za trzy dziesiąta</item>
+        <item>Za dwa dziesiąta</item>
+        <item>Za jeden dziesiąta</item>
+        <item>Godzina dziesiąta</item>
+        <item>Jeden po dziesiąta</item>
+        <item>Dwa po dziesiąta</item>
+        <item>Trzy po dziesiąta</item>
+        <item>Cztery po dziesiąta</item>
+        <item>Pięć po dziesiąta</item>
+        <item>Sześć po dziesiąta</item>
+        <item>Siedem po dziesiąta</item>
+        <item>Osiem po dziesiąta</item>
+        <item>Dziewięć po dziesiąta</item>
+        <item>Dziesięć po dziesiąta</item>
+        <item>Jedenaście po dziesiąta</item>
+        <item>Dwanaście po dziesiąta</item>
+        <item>Trzynaście po dziesiąta</item>
+        <item>Czternaście po dziesiąta</item>
+        <item>Kwadrans po dziesiąta</item>
+        <item>Szesnaście po dziesiąta</item>
+        <item>Siedemnaście po dziesiąta</item>
+        <item>Osiemnaście po dziesiąta</item>
+        <item>Dziewiętnaście po dziesiąta</item>
+        <item>Dwadzieścia po dziesiąta</item>
+        <item>Dwadzieścia jeden po dziesiąta</item>
+        <item>Dwadzieścia dwa po dziesiąta</item>
+        <item>Dwadzieścia trzy po dziesiąta</item>
+        <item>Dwadzieścia cztery po dziesiąta</item>
+        <item>Dwadzieścia pięć po dziesiąta</item>
+        <item>Dwadzieścia sześć po dziesiąta</item>
+        <item>Dwadzieścia siedem po dziesiąta</item>
+        <item>Dwadzieścia osiem po dziesiąta</item>
+        <item>Dwadzieścia dziewięć po dziesiąta</item>
+        <item>W pół do jedenasta</item>
+        <item>Za dwadzieścia dziewięć jedenasta</item>
+        <item>Za dwadzieścia osiem jedenasta</item>
+        <item>Za dwadzieścia siedem jedenasta</item>
+        <item>Za dwadzieścia sześć jedenasta</item>
+        <item>Za dwadzieścia pięć jedenasta</item>
+        <item>Za dwadzieścia cztery jedenasta</item>
+        <item>Za dwadzieścia trzy jedenasta</item>
+        <item>Za dwadzieścia dwa jedenasta</item>
+        <item>Za dwadzieścia jeden jedenasta</item>
+        <item>Za dwadzieścia jedenasta</item>
+        <item>Za dziewiętnaście jedenasta</item>
+        <item>Za osiemnaście jedenasta</item>
+        <item>Za siedemnaście jedenasta</item>
+        <item>Za szesnaście jedenasta</item>
+        <item>Za kwadrans jedenasta</item>
+        <item>Za czternaście jedenasta</item>
+        <item>Za trzynaście jedenasta</item>
+        <item>Za dwanaście jedenasta</item>
+        <item>Za jedenaście jedenasta</item>
+        <item>Za dziesięć jedenasta</item>
+        <item>Za dziewięć jedenasta</item>
+        <item>Za osiem jedenasta</item>
+        <item>Za siedem jedenasta</item>
+        <item>Za sześć jedenasta</item>
+        <item>Za pięć jedenasta</item>
+        <item>Za cztery jedenasta</item>
+        <item>Za trzy jedenasta</item>
+        <item>Za dwa jedenasta</item>
+        <item>Za jeden jedenasta</item>
+        <item>Godzina jedenasta</item>
+        <item>Jeden po jedenasta</item>
+        <item>Dwa po jedenasta</item>
+        <item>Trzy po jedenasta</item>
+        <item>Cztery po jedenasta</item>
+        <item>Pięć po jedenasta</item>
+        <item>Sześć po jedenasta</item>
+        <item>Siedem po jedenasta</item>
+        <item>Osiem po jedenasta</item>
+        <item>Dziewięć po jedenasta</item>
+        <item>Dziesięć po jedenasta</item>
+        <item>Jedenaście po jedenasta</item>
+        <item>Dwanaście po jedenasta</item>
+        <item>Trzynaście po jedenasta</item>
+        <item>Czternaście po jedenasta</item>
+        <item>Kwadrans po jedenasta</item>
+        <item>Szesnaście po jedenasta</item>
+        <item>Siedemnaście po jedenasta</item>
+        <item>Osiemnaście po jedenasta</item>
+        <item>Dziewiętnaście po jedenasta</item>
+        <item>Dwadzieścia po jedenasta</item>
+        <item>Dwadzieścia jeden po jedenasta</item>
+        <item>Dwadzieścia dwa po jedenasta</item>
+        <item>Dwadzieścia trzy po jedenasta</item>
+        <item>Dwadzieścia cztery po jedenasta</item>
+        <item>Dwadzieścia pięć po jedenasta</item>
+        <item>Dwadzieścia sześć po jedenasta</item>
+        <item>Dwadzieścia siedem po jedenasta</item>
+        <item>Dwadzieścia osiem po jedenasta</item>
+        <item>Dwadzieścia dziewięć po jedenasta</item>
+        <item>W pół do dwunasta</item>
+        <item>Za dwadzieścia dziewięć dwunasta</item>
+        <item>Za dwadzieścia osiem dwunasta</item>
+        <item>Za dwadzieścia siedem dwunasta</item>
+        <item>Za dwadzieścia sześć dwunasta</item>
+        <item>Za dwadzieścia pięć dwunasta</item>
+        <item>Za dwadzieścia cztery dwunasta</item>
+        <item>Za dwadzieścia trzy dwunasta</item>
+        <item>Za dwadzieścia dwa dwunasta</item>
+        <item>Za dwadzieścia jeden dwunasta</item>
+        <item>Za dwadzieścia dwunasta</item>
+        <item>Za dziewiętnaście dwunasta</item>
+        <item>Za osiemnaście dwunasta</item>
+        <item>Za siedemnaście dwunasta</item>
+        <item>Za szesnaście dwunasta</item>
+        <item>Za kwadrans dwunasta</item>
+        <item>Za czternaście dwunasta</item>
+        <item>Za trzynaście dwunasta</item>
+        <item>Za dwanaście dwunasta</item>
+        <item>Za jedenaście dwunasta</item>
+        <item>Za dziesięć dwunasta</item>
+        <item>Za dziewięć dwunasta</item>
+        <item>Za osiem dwunasta</item>
+        <item>Za siedem dwunasta</item>
+        <item>Za sześć dwunasta</item>
+        <item>Za pięć dwunasta</item>
+        <item>Za cztery dwunasta</item>
+        <item>Za trzy dwunasta</item>
+        <item>Za dwa dwunasta</item>
+        <item>Za jeden dwunasta</item>
+    </string-array>
+    <string-array name="verbosetime3">
+        <item>Godzina dwunasta</item>
+        <item>Jeden po dwunasta</item>
+        <item>Dwa po dwunasta</item>
+        <item>Trzy po dwunasta</item>
+        <item>Cztery po dwunasta</item>
+        <item>Pięć po dwunasta</item>
+        <item>Sześć po dwunasta</item>
+        <item>Siedem po dwunasta</item>
+        <item>Osiem po dwunasta</item>
+        <item>Dziewięć po dwunasta</item>
+        <item>Dziesięć po dwunasta</item>
+        <item>Jedenaście po dwunasta</item>
+        <item>Dwanaście po dwunasta</item>
+        <item>Trzynaście po dwunasta</item>
+        <item>Czternaście po dwunasta</item>
+        <item>Kwadrans po dwunasta</item>
+        <item>Szesnaście po dwunasta</item>
+        <item>Siedemnaście po dwunasta</item>
+        <item>Osiemnaście po dwunasta</item>
+        <item>Dziewiętnaście po dwunasta</item>
+        <item>Dwadzieścia po dwunasta</item>
+        <item>Dwadzieścia jeden po dwunasta</item>
+        <item>Dwadzieścia dwa po dwunasta</item>
+        <item>Dwadzieścia trzy po dwunasta</item>
+        <item>Dwadzieścia cztery po dwunasta</item>
+        <item>Dwadzieścia pięć po dwunasta</item>
+        <item>Dwadzieścia sześć po dwunasta</item>
+        <item>Dwadzieścia siedem po dwunasta</item>
+        <item>Dwadzieścia osiem po dwunasta</item>
+        <item>Dwadzieścia dziewięć po dwunasta</item>
+        <item>W pół do trzynasta</item>
+        <item>Za dwadzieścia dziewięć trzynasta</item>
+        <item>Za dwadzieścia osiem trzynasta</item>
+        <item>Za dwadzieścia siedem trzynasta</item>
+        <item>Za dwadzieścia sześć trzynasta</item>
+        <item>Za dwadzieścia pięć trzynasta</item>
+        <item>Za dwadzieścia cztery trzynasta</item>
+        <item>Za dwadzieścia trzy trzynasta</item>
+        <item>Za dwadzieścia dwa trzynasta</item>
+        <item>Za dwadzieścia jeden trzynasta</item>
+        <item>Za dwadzieścia trzynasta</item>
+        <item>Za dziewiętnaście trzynasta</item>
+        <item>Za osiemnaście trzynasta</item>
+        <item>Za siedemnaście trzynasta</item>
+        <item>Za szesnaście trzynasta</item>
+        <item>Za kwadrans trzynasta</item>
+        <item>Za czternaście trzynasta</item>
+        <item>Za trzynaście trzynasta</item>
+        <item>Za dwanaście trzynasta</item>
+        <item>Za jedenaście trzynasta</item>
+        <item>Za dziesięć trzynasta</item>
+        <item>Za dziewięć trzynasta</item>
+        <item>Za osiem trzynasta</item>
+        <item>Za siedem trzynasta</item>
+        <item>Za sześć trzynasta</item>
+        <item>Za pięć trzynasta</item>
+        <item>Za cztery trzynasta</item>
+        <item>Za trzy trzynasta</item>
+        <item>Za dwa trzynasta</item>
+        <item>Za jeden trzynasta</item>
+        <item>Godzina trzynasta</item>
+        <item>Jeden po trzynasta</item>
+        <item>Dwa po trzynasta</item>
+        <item>Trzy po trzynasta</item>
+        <item>Cztery po trzynasta</item>
+        <item>Pięć po trzynasta</item>
+        <item>Sześć po trzynasta</item>
+        <item>Siedem po trzynasta</item>
+        <item>Osiem po trzynasta</item>
+        <item>Dziewięć po trzynasta</item>
+        <item>Dziesięć po trzynasta</item>
+        <item>Jedenaście po trzynasta</item>
+        <item>Dwanaście po trzynasta</item>
+        <item>Trzynaście po trzynasta</item>
+        <item>Czternaście po trzynasta</item>
+        <item>Kwadrans po trzynasta</item>
+        <item>Szesnaście po trzynasta</item>
+        <item>Siedemnaście po trzynasta</item>
+        <item>Osiemnaście po trzynasta</item>
+        <item>Dziewiętnaście po trzynasta</item>
+        <item>Dwadzieścia po trzynasta</item>
+        <item>Dwadzieścia jeden po trzynasta</item>
+        <item>Dwadzieścia dwa po trzynasta</item>
+        <item>Dwadzieścia trzy po trzynasta</item>
+        <item>Dwadzieścia cztery po trzynasta</item>
+        <item>Dwadzieścia pięć po trzynasta</item>
+        <item>Dwadzieścia sześć po trzynasta</item>
+        <item>Dwadzieścia siedem po trzynasta</item>
+        <item>Dwadzieścia osiem po trzynasta</item>
+        <item>Dwadzieścia dziewięć po trzynasta</item>
+        <item>W pół do czternasta</item>
+        <item>Za dwadzieścia dziewięć czternasta</item>
+        <item>Za dwadzieścia osiem czternasta</item>
+        <item>Za dwadzieścia siedem czternasta</item>
+        <item>Za dwadzieścia sześć czternasta</item>
+        <item>Za dwadzieścia pięć czternasta</item>
+        <item>Za dwadzieścia cztery czternasta</item>
+        <item>Za dwadzieścia trzy czternasta</item>
+        <item>Za dwadzieścia dwa czternasta</item>
+        <item>Za dwadzieścia jeden czternasta</item>
+        <item>Za dwadzieścia czternasta</item>
+        <item>Za dziewiętnaście czternasta</item>
+        <item>Za osiemnaście czternasta</item>
+        <item>Za siedemnaście czternasta</item>
+        <item>Za szesnaście czternasta</item>
+        <item>Za kwadrans czternasta</item>
+        <item>Za czternaście czternasta</item>
+        <item>Za trzynaście czternasta</item>
+        <item>Za dwanaście czternasta</item>
+        <item>Za jedenaście czternasta</item>
+        <item>Za dziesięć czternasta</item>
+        <item>Za dziewięć czternasta</item>
+        <item>Za osiem czternasta</item>
+        <item>Za siedem czternasta</item>
+        <item>Za sześć czternasta</item>
+        <item>Za pięć czternasta</item>
+        <item>Za cztery czternasta</item>
+        <item>Za trzy czternasta</item>
+        <item>Za dwa czternasta</item>
+        <item>Za jeden czternasta</item>
+        <item>Godzina czternasta</item>
+        <item>Jeden po czternasta</item>
+        <item>Dwa po czternasta</item>
+        <item>Trzy po czternasta</item>
+        <item>Cztery po czternasta</item>
+        <item>Pięć po czternasta</item>
+        <item>Sześć po czternasta</item>
+        <item>Siedem po czternasta</item>
+        <item>Osiem po czternasta</item>
+        <item>Dziewięć po czternasta</item>
+        <item>Dziesięć po czternasta</item>
+        <item>Jedenaście po czternasta</item>
+        <item>Dwanaście po czternasta</item>
+        <item>Trzynaście po czternasta</item>
+        <item>Czternaście po czternasta</item>
+        <item>Kwadrans po czternasta</item>
+        <item>Szesnaście po czternasta</item>
+        <item>Siedemnaście po czternasta</item>
+        <item>Osiemnaście po czternasta</item>
+        <item>Dziewiętnaście po czternasta</item>
+        <item>Dwadzieścia po czternasta</item>
+        <item>Dwadzieścia jeden po czternasta</item>
+        <item>Dwadzieścia dwa po czternasta</item>
+        <item>Dwadzieścia trzy po czternasta</item>
+        <item>Dwadzieścia cztery po czternasta</item>
+        <item>Dwadzieścia pięć po czternasta</item>
+        <item>Dwadzieścia sześć po czternasta</item>
+        <item>Dwadzieścia siedem po czternasta</item>
+        <item>Dwadzieścia osiem po czternasta</item>
+        <item>Dwadzieścia dziewięć po czternasta</item>
+        <item>W pół do piętnasta</item>
+        <item>Za dwadzieścia dziewięć piętnasta</item>
+        <item>Za dwadzieścia osiem piętnasta</item>
+        <item>Za dwadzieścia siedem piętnasta</item>
+        <item>Za dwadzieścia sześć piętnasta</item>
+        <item>Za dwadzieścia pięć piętnasta</item>
+        <item>Za dwadzieścia cztery piętnasta</item>
+        <item>Za dwadzieścia trzy piętnasta</item>
+        <item>Za dwadzieścia dwa piętnasta</item>
+        <item>Za dwadzieścia jeden piętnasta</item>
+        <item>Za dwadzieścia piętnasta</item>
+        <item>Za dziewiętnaście piętnasta</item>
+        <item>Za osiemnaście piętnasta</item>
+        <item>Za siedemnaście piętnasta</item>
+        <item>Za szesnaście piętnasta</item>
+        <item>Za kwadrans piętnasta</item>
+        <item>Za czternaście piętnasta</item>
+        <item>Za trzynaście piętnasta</item>
+        <item>Za dwanaście piętnasta</item>
+        <item>Za jedenaście piętnasta</item>
+        <item>Za dziesięć piętnasta</item>
+        <item>Za dziewięć piętnasta</item>
+        <item>Za osiem piętnasta</item>
+        <item>Za siedem piętnasta</item>
+        <item>Za sześć piętnasta</item>
+        <item>Za pięć piętnasta</item>
+        <item>Za cztery piętnasta</item>
+        <item>Za trzy piętnasta</item>
+        <item>Za dwa piętnasta</item>
+        <item>Za jeden piętnasta</item>
+        <item>Godzina piętnasta</item>
+        <item>Jeden po piętnasta</item>
+        <item>Dwa po piętnasta</item>
+        <item>Trzy po piętnasta</item>
+        <item>Cztery po piętnasta</item>
+        <item>Pięć po piętnasta</item>
+        <item>Sześć po piętnasta</item>
+        <item>Siedem po piętnasta</item>
+        <item>Osiem po piętnasta</item>
+        <item>Dziewięć po piętnasta</item>
+        <item>Dziesięć po piętnasta</item>
+        <item>Jedenaście po piętnasta</item>
+        <item>Dwanaście po piętnasta</item>
+        <item>Trzynaście po piętnasta</item>
+        <item>Czternaście po piętnasta</item>
+        <item>Kwadrans po piętnasta</item>
+        <item>Szesnaście po piętnasta</item>
+        <item>Siedemnaście po piętnasta</item>
+        <item>Osiemnaście po piętnasta</item>
+        <item>Dziewiętnaście po piętnasta</item>
+        <item>Dwadzieścia po piętnasta</item>
+        <item>Dwadzieścia jeden po piętnasta</item>
+        <item>Dwadzieścia dwa po piętnasta</item>
+        <item>Dwadzieścia trzy po piętnasta</item>
+        <item>Dwadzieścia cztery po piętnasta</item>
+        <item>Dwadzieścia pięć po piętnasta</item>
+        <item>Dwadzieścia sześć po piętnasta</item>
+        <item>Dwadzieścia siedem po piętnasta</item>
+        <item>Dwadzieścia osiem po piętnasta</item>
+        <item>Dwadzieścia dziewięć po piętnasta</item>
+        <item>W pół do szesnasta</item>
+        <item>Za dwadzieścia dziewięć szesnasta</item>
+        <item>Za dwadzieścia osiem szesnasta</item>
+        <item>Za dwadzieścia siedem szesnasta</item>
+        <item>Za dwadzieścia sześć szesnasta</item>
+        <item>Za dwadzieścia pięć szesnasta</item>
+        <item>Za dwadzieścia cztery szesnasta</item>
+        <item>Za dwadzieścia trzy szesnasta</item>
+        <item>Za dwadzieścia dwa szesnasta</item>
+        <item>Za dwadzieścia jeden szesnasta</item>
+        <item>Za dwadzieścia szesnasta</item>
+        <item>Za dziewiętnaście szesnasta</item>
+        <item>Za osiemnaście szesnasta</item>
+        <item>Za siedemnaście szesnasta</item>
+        <item>Za szesnaście szesnasta</item>
+        <item>Za kwadrans szesnasta</item>
+        <item>Za czternaście szesnasta</item>
+        <item>Za trzynaście szesnasta</item>
+        <item>Za dwanaście szesnasta</item>
+        <item>Za jedenaście szesnasta</item>
+        <item>Za dziesięć szesnasta</item>
+        <item>Za dziewięć szesnasta</item>
+        <item>Za osiem szesnasta</item>
+        <item>Za siedem szesnasta</item>
+        <item>Za sześć szesnasta</item>
+        <item>Za pięć szesnasta</item>
+        <item>Za cztery szesnasta</item>
+        <item>Za trzy szesnasta</item>
+        <item>Za dwa szesnasta</item>
+        <item>Za jeden szesnasta</item>
+        <item>Godzina szesnasta</item>
+        <item>Jeden po szesnasta</item>
+        <item>Dwa po szesnasta</item>
+        <item>Trzy po szesnasta</item>
+        <item>Cztery po szesnasta</item>
+        <item>Pięć po szesnasta</item>
+        <item>Sześć po szesnasta</item>
+        <item>Siedem po szesnasta</item>
+        <item>Osiem po szesnasta</item>
+        <item>Dziewięć po szesnasta</item>
+        <item>Dziesięć po szesnasta</item>
+        <item>Jedenaście po szesnasta</item>
+        <item>Dwanaście po szesnasta</item>
+        <item>Trzynaście po szesnasta</item>
+        <item>Czternaście po szesnasta</item>
+        <item>Kwadrans po szesnasta</item>
+        <item>Szesnaście po szesnasta</item>
+        <item>Siedemnaście po szesnasta</item>
+        <item>Osiemnaście po szesnasta</item>
+        <item>Dziewiętnaście po szesnasta</item>
+        <item>Dwadzieścia po szesnasta</item>
+        <item>Dwadzieścia jeden po szesnasta</item>
+        <item>Dwadzieścia dwa po szesnasta</item>
+        <item>Dwadzieścia trzy po szesnasta</item>
+        <item>Dwadzieścia cztery po szesnasta</item>
+        <item>Dwadzieścia pięć po szesnasta</item>
+        <item>Dwadzieścia sześć po szesnasta</item>
+        <item>Dwadzieścia siedem po szesnasta</item>
+        <item>Dwadzieścia osiem po szesnasta</item>
+        <item>Dwadzieścia dziewięć po szesnasta</item>
+        <item>W pół do siedemnasta</item>
+        <item>Za dwadzieścia dziewięć siedemnasta</item>
+        <item>Za dwadzieścia osiem siedemnasta</item>
+        <item>Za dwadzieścia siedem siedemnasta</item>
+        <item>Za dwadzieścia sześć siedemnasta</item>
+        <item>Za dwadzieścia pięć siedemnasta</item>
+        <item>Za dwadzieścia cztery siedemnasta</item>
+        <item>Za dwadzieścia trzy siedemnasta</item>
+        <item>Za dwadzieścia dwa siedemnasta</item>
+        <item>Za dwadzieścia jeden siedemnasta</item>
+        <item>Za dwadzieścia siedemnasta</item>
+        <item>Za dziewiętnaście siedemnasta</item>
+        <item>Za osiemnaście siedemnasta</item>
+        <item>Za siedemnaście siedemnasta</item>
+        <item>Za szesnaście siedemnasta</item>
+        <item>Za kwadrans siedemnasta</item>
+        <item>Za czternaście siedemnasta</item>
+        <item>Za trzynaście siedemnasta</item>
+        <item>Za dwanaście siedemnasta</item>
+        <item>Za jedenaście siedemnasta</item>
+        <item>Za dziesięć siedemnasta</item>
+        <item>Za dziewięć siedemnasta</item>
+        <item>Za osiem siedemnasta</item>
+        <item>Za siedem siedemnasta</item>
+        <item>Za sześć siedemnasta</item>
+        <item>Za pięć siedemnasta</item>
+        <item>Za cztery siedemnasta</item>
+        <item>Za trzy siedemnasta</item>
+        <item>Za dwa siedemnasta</item>
+        <item>Za jeden siedemnasta</item>
+        <item>Godzina siedemnasta</item>
+        <item>Jeden po siedemnasta</item>
+        <item>Dwa po siedemnasta</item>
+        <item>Trzy po siedemnasta</item>
+        <item>Cztery po siedemnasta</item>
+        <item>Pięć po siedemnasta</item>
+        <item>Sześć po siedemnasta</item>
+        <item>Siedem po siedemnasta</item>
+        <item>Osiem po siedemnasta</item>
+        <item>Dziewięć po siedemnasta</item>
+        <item>Dziesięć po siedemnasta</item>
+        <item>Jedenaście po siedemnasta</item>
+        <item>Dwanaście po siedemnasta</item>
+        <item>Trzynaście po siedemnasta</item>
+        <item>Czternaście po siedemnasta</item>
+        <item>Kwadrans po siedemnasta</item>
+        <item>Szesnaście po siedemnasta</item>
+        <item>Siedemnaście po siedemnasta</item>
+        <item>Osiemnaście po siedemnasta</item>
+        <item>Dziewiętnaście po siedemnasta</item>
+        <item>Dwadzieścia po siedemnasta</item>
+        <item>Dwadzieścia jeden po siedemnasta</item>
+        <item>Dwadzieścia dwa po siedemnasta</item>
+        <item>Dwadzieścia trzy po siedemnasta</item>
+        <item>Dwadzieścia cztery po siedemnasta</item>
+        <item>Dwadzieścia pięć po siedemnasta</item>
+        <item>Dwadzieścia sześć po siedemnasta</item>
+        <item>Dwadzieścia siedem po siedemnasta</item>
+        <item>Dwadzieścia osiem po siedemnasta</item>
+        <item>Dwadzieścia dziewięć po siedemnasta</item>
+        <item>W pół do osiemnasta</item>
+        <item>Za dwadzieścia dziewięć osiemnasta</item>
+        <item>Za dwadzieścia osiem osiemnasta</item>
+        <item>Za dwadzieścia siedem osiemnasta</item>
+        <item>Za dwadzieścia sześć osiemnasta</item>
+        <item>Za dwadzieścia pięć osiemnasta</item>
+        <item>Za dwadzieścia cztery osiemnasta</item>
+        <item>Za dwadzieścia trzy osiemnasta</item>
+        <item>Za dwadzieścia dwa osiemnasta</item>
+        <item>Za dwadzieścia jeden osiemnasta</item>
+        <item>Za dwadzieścia osiemnasta</item>
+        <item>Za dziewiętnaście osiemnasta</item>
+        <item>Za osiemnaście osiemnasta</item>
+        <item>Za siedemnaście osiemnasta</item>
+        <item>Za szesnaście osiemnasta</item>
+        <item>Za kwadrans osiemnasta</item>
+        <item>Za czternaście osiemnasta</item>
+        <item>Za trzynaście osiemnasta</item>
+        <item>Za dwanaście osiemnasta</item>
+        <item>Za jedenaście osiemnasta</item>
+        <item>Za dziesięć osiemnasta</item>
+        <item>Za dziewięć osiemnasta</item>
+        <item>Za osiem osiemnasta</item>
+        <item>Za siedem osiemnasta</item>
+        <item>Za sześć osiemnasta</item>
+        <item>Za pięć osiemnasta</item>
+        <item>Za cztery osiemnasta</item>
+        <item>Za trzy osiemnasta</item>
+        <item>Za dwa osiemnasta</item>
+        <item>Za jeden osiemnasta</item>
+    </string-array>
+    <string-array name="verbosetime4">
+        <item>Godzina osiemnasta</item>
+        <item>Jeden po osiemnasta</item>
+        <item>Dwa po osiemnasta</item>
+        <item>Trzy po osiemnasta</item>
+        <item>Cztery po osiemnasta</item>
+        <item>Pięć po osiemnasta</item>
+        <item>Sześć po osiemnasta</item>
+        <item>Siedem po osiemnasta</item>
+        <item>Osiem po osiemnasta</item>
+        <item>Dziewięć po osiemnasta</item>
+        <item>Dziesięć po osiemnasta</item>
+        <item>Jedenaście po osiemnasta</item>
+        <item>Dwanaście po osiemnasta</item>
+        <item>Trzynaście po osiemnasta</item>
+        <item>Czternaście po osiemnasta</item>
+        <item>Kwadrans po osiemnasta</item>
+        <item>Szesnaście po osiemnasta</item>
+        <item>Siedemnaście po osiemnasta</item>
+        <item>Osiemnaście po osiemnasta</item>
+        <item>Dziewiętnaście po osiemnasta</item>
+        <item>Dwadzieścia po osiemnasta</item>
+        <item>Dwadzieścia jeden po osiemnasta</item>
+        <item>Dwadzieścia dwa po osiemnasta</item>
+        <item>Dwadzieścia trzy po osiemnasta</item>
+        <item>Dwadzieścia cztery po osiemnasta</item>
+        <item>Dwadzieścia pięć po osiemnasta</item>
+        <item>Dwadzieścia sześć po osiemnasta</item>
+        <item>Dwadzieścia siedem po osiemnasta</item>
+        <item>Dwadzieścia osiem po osiemnasta</item>
+        <item>Dwadzieścia dziewięć po osiemnasta</item>
+        <item>W pół do dziewiętnasta</item>
+        <item>Za dwadzieścia dziewięć dziewiętnasta</item>
+        <item>Za dwadzieścia osiem dziewiętnasta</item>
+        <item>Za dwadzieścia siedem dziewiętnasta</item>
+        <item>Za dwadzieścia sześć dziewiętnasta</item>
+        <item>Za dwadzieścia pięć dziewiętnasta</item>
+        <item>Za dwadzieścia cztery dziewiętnasta</item>
+        <item>Za dwadzieścia trzy dziewiętnasta</item>
+        <item>Za dwadzieścia dwa dziewiętnasta</item>
+        <item>Za dwadzieścia jeden dziewiętnasta</item>
+        <item>Za dwadzieścia dziewiętnasta</item>
+        <item>Za dziewiętnaście dziewiętnasta</item>
+        <item>Za osiemnaście dziewiętnasta</item>
+        <item>Za siedemnaście dziewiętnasta</item>
+        <item>Za szesnaście dziewiętnasta</item>
+        <item>Za kwadrans dziewiętnasta</item>
+        <item>Za czternaście dziewiętnasta</item>
+        <item>Za trzynaście dziewiętnasta</item>
+        <item>Za dwanaście dziewiętnasta</item>
+        <item>Za jedenaście dziewiętnasta</item>
+        <item>Za dziesięć dziewiętnasta</item>
+        <item>Za dziewięć dziewiętnasta</item>
+        <item>Za osiem dziewiętnasta</item>
+        <item>Za siedem dziewiętnasta</item>
+        <item>Za sześć dziewiętnasta</item>
+        <item>Za pięć dziewiętnasta</item>
+        <item>Za cztery dziewiętnasta</item>
+        <item>Za trzy dziewiętnasta</item>
+        <item>Za dwa dziewiętnasta</item>
+        <item>Za jeden dziewiętnasta</item>
+        <item>Godzina dziewiętnasta</item>
+        <item>Jeden po dziewiętnasta</item>
+        <item>Dwa po dziewiętnasta</item>
+        <item>Trzy po dziewiętnasta</item>
+        <item>Cztery po dziewiętnasta</item>
+        <item>Pięć po dziewiętnasta</item>
+        <item>Sześć po dziewiętnasta</item>
+        <item>Siedem po dziewiętnasta</item>
+        <item>Osiem po dziewiętnasta</item>
+        <item>Dziewięć po dziewiętnasta</item>
+        <item>Dziesięć po dziewiętnasta</item>
+        <item>Jedenaście po dziewiętnasta</item>
+        <item>Dwanaście po dziewiętnasta</item>
+        <item>Trzynaście po dziewiętnasta</item>
+        <item>Czternaście po dziewiętnasta</item>
+        <item>Kwadrans po dziewiętnasta</item>
+        <item>Szesnaście po dziewiętnasta</item>
+        <item>Siedemnaście po dziewiętnasta</item>
+        <item>Osiemnaście po dziewiętnasta</item>
+        <item>Dziewiętnaście po dziewiętnasta</item>
+        <item>Dwadzieścia po dziewiętnasta</item>
+        <item>Dwadzieścia jeden po dziewiętnasta</item>
+        <item>Dwadzieścia dwa po dziewiętnasta</item>
+        <item>Dwadzieścia trzy po dziewiętnasta</item>
+        <item>Dwadzieścia cztery po dziewiętnasta</item>
+        <item>Dwadzieścia pięć po dziewiętnasta</item>
+        <item>Dwadzieścia sześć po dziewiętnasta</item>
+        <item>Dwadzieścia siedem po dziewiętnasta</item>
+        <item>Dwadzieścia osiem po dziewiętnasta</item>
+        <item>Dwadzieścia dziewięć po dziewiętnasta</item>
+        <item>W pół do dwudziesta</item>
+        <item>Za dwadzieścia dziewięć dwudziesta</item>
+        <item>Za dwadzieścia osiem dwudziesta</item>
+        <item>Za dwadzieścia siedem dwudziesta</item>
+        <item>Za dwadzieścia sześć dwudziesta</item>
+        <item>Za dwadzieścia pięć dwudziesta</item>
+        <item>Za dwadzieścia cztery dwudziesta</item>
+        <item>Za dwadzieścia trzy dwudziesta</item>
+        <item>Za dwadzieścia dwa dwudziesta</item>
+        <item>Za dwadzieścia jeden dwudziesta</item>
+        <item>Za dwadzieścia dwudziesta</item>
+        <item>Za dziewiętnaście dwudziesta</item>
+        <item>Za osiemnaście dwudziesta</item>
+        <item>Za siedemnaście dwudziesta</item>
+        <item>Za szesnaście dwudziesta</item>
+        <item>Za kwadrans dwudziesta</item>
+        <item>Za czternaście dwudziesta</item>
+        <item>Za trzynaście dwudziesta</item>
+        <item>Za dwanaście dwudziesta</item>
+        <item>Za jedenaście dwudziesta</item>
+        <item>Za dziesięć dwudziesta</item>
+        <item>Za dziewięć dwudziesta</item>
+        <item>Za osiem dwudziesta</item>
+        <item>Za siedem dwudziesta</item>
+        <item>Za sześć dwudziesta</item>
+        <item>Za pięć dwudziesta</item>
+        <item>Za cztery dwudziesta</item>
+        <item>Za trzy dwudziesta</item>
+        <item>Za dwa dwudziesta</item>
+        <item>Za jeden dwudziesta</item>
+        <item>Godzina dwudziesta</item>
+        <item>Jeden po dwudziesta</item>
+        <item>Dwa po dwudziesta</item>
+        <item>Trzy po dwudziesta</item>
+        <item>Cztery po dwudziesta</item>
+        <item>Pięć po dwudziesta</item>
+        <item>Sześć po dwudziesta</item>
+        <item>Siedem po dwudziesta</item>
+        <item>Osiem po dwudziesta</item>
+        <item>Dziewięć po dwudziesta</item>
+        <item>Dziesięć po dwudziesta</item>
+        <item>Jedenaście po dwudziesta</item>
+        <item>Dwanaście po dwudziesta</item>
+        <item>Trzynaście po dwudziesta</item>
+        <item>Czternaście po dwudziesta</item>
+        <item>Kwadrans po dwudziesta</item>
+        <item>Szesnaście po dwudziesta</item>
+        <item>Siedemnaście po dwudziesta</item>
+        <item>Osiemnaście po dwudziesta</item>
+        <item>Dziewiętnaście po dwudziesta</item>
+        <item>Dwadzieścia po dwudziesta</item>
+        <item>Dwadzieścia jeden po dwudziesta</item>
+        <item>Dwadzieścia dwa po dwudziesta</item>
+        <item>Dwadzieścia trzy po dwudziesta</item>
+        <item>Dwadzieścia cztery po dwudziesta</item>
+        <item>Dwadzieścia pięć po dwudziesta</item>
+        <item>Dwadzieścia sześć po dwudziesta</item>
+        <item>Dwadzieścia siedem po dwudziesta</item>
+        <item>Dwadzieścia osiem po dwudziesta</item>
+        <item>Dwadzieścia dziewięć po dwudziesta</item>
+        <item>W pół do dwudziesta pierwsza</item>
+        <item>Za dwadzieścia dziewięć dwudziesta pierwsza</item>
+        <item>Za dwadzieścia osiem dwudziesta pierwsza</item>
+        <item>Za dwadzieścia siedem dwudziesta pierwsza</item>
+        <item>Za dwadzieścia sześć dwudziesta pierwsza</item>
+        <item>Za dwadzieścia pięć dwudziesta pierwsza</item>
+        <item>Za dwadzieścia cztery dwudziesta pierwsza</item>
+        <item>Za dwadzieścia trzy dwudziesta pierwsza</item>
+        <item>Za dwadzieścia dwa dwudziesta pierwsza</item>
+        <item>Za dwadzieścia jeden dwudziesta pierwsza</item>
+        <item>Za dwadzieścia dwudziesta pierwsza</item>
+        <item>Za dziewiętnaście dwudziesta pierwsza</item>
+        <item>Za osiemnaście dwudziesta pierwsza</item>
+        <item>Za siedemnaście dwudziesta pierwsza</item>
+        <item>Za szesnaście dwudziesta pierwsza</item>
+        <item>Za kwadrans dwudziesta pierwsza</item>
+        <item>Za czternaście dwudziesta pierwsza</item>
+        <item>Za trzynaście dwudziesta pierwsza</item>
+        <item>Za dwanaście dwudziesta pierwsza</item>
+        <item>Za jedenaście dwudziesta pierwsza</item>
+        <item>Za dziesięć dwudziesta pierwsza</item>
+        <item>Za dziewięć dwudziesta pierwsza</item>
+        <item>Za osiem dwudziesta pierwsza</item>
+        <item>Za siedem dwudziesta pierwsza</item>
+        <item>Za sześć dwudziesta pierwsza</item>
+        <item>Za pięć dwudziesta pierwsza</item>
+        <item>Za cztery dwudziesta pierwsza</item>
+        <item>Za trzy dwudziesta pierwsza</item>
+        <item>Za dwa dwudziesta pierwsza</item>
+        <item>Za jeden dwudziesta pierwsza</item>
+        <item>Godzina dwudziesta pierwsza</item>
+        <item>Jeden po dwudziesta pierwsza</item>
+        <item>Dwa po dwudziesta pierwsza</item>
+        <item>Trzy po dwudziesta pierwsza</item>
+        <item>Cztery po dwudziesta pierwsza</item>
+        <item>Pięć po dwudziesta pierwsza</item>
+        <item>Sześć po dwudziesta pierwsza</item>
+        <item>Siedem po dwudziesta pierwsza</item>
+        <item>Osiem po dwudziesta pierwsza</item>
+        <item>Dziewięć po dwudziesta pierwsza</item>
+        <item>Dziesięć po dwudziesta pierwsza</item>
+        <item>Jedenaście po dwudziesta pierwsza</item>
+        <item>Dwanaście po dwudziesta pierwsza</item>
+        <item>Trzynaście po dwudziesta pierwsza</item>
+        <item>Czternaście po dwudziesta pierwsza</item>
+        <item>Kwadrans po dwudziesta pierwsza</item>
+        <item>Szesnaście po dwudziesta pierwsza</item>
+        <item>Siedemnaście po dwudziesta pierwsza</item>
+        <item>Osiemnaście po dwudziesta pierwsza</item>
+        <item>Dziewiętnaście po dwudziesta pierwsza</item>
+        <item>Dwadzieścia po dwudziesta pierwsza</item>
+        <item>Dwadzieścia jeden po dwudziesta pierwsza</item>
+        <item>Dwadzieścia dwa po dwudziesta pierwsza</item>
+        <item>Dwadzieścia trzy po dwudziesta pierwsza</item>
+        <item>Dwadzieścia cztery po dwudziesta pierwsza</item>
+        <item>Dwadzieścia pięć po dwudziesta pierwsza</item>
+        <item>Dwadzieścia sześć po dwudziesta pierwsza</item>
+        <item>Dwadzieścia siedem po dwudziesta pierwsza</item>
+        <item>Dwadzieścia osiem po dwudziesta pierwsza</item>
+        <item>Dwadzieścia dziewięć po dwudziesta pierwsza</item>
+        <item>W pół do dwudziesta druga</item>
+        <item>Za dwadzieścia dziewięć dwudziesta druga</item>
+        <item>Za dwadzieścia osiem dwudziesta druga</item>
+        <item>Za dwadzieścia siedem dwudziesta druga</item>
+        <item>Za dwadzieścia sześć dwudziesta druga</item>
+        <item>Za dwadzieścia pięć dwudziesta druga</item>
+        <item>Za dwadzieścia cztery dwudziesta druga</item>
+        <item>Za dwadzieścia trzy dwudziesta druga</item>
+        <item>Za dwadzieścia dwa dwudziesta druga</item>
+        <item>Za dwadzieścia jeden dwudziesta druga</item>
+        <item>Za dwadzieścia dwudziesta druga</item>
+        <item>Za dziewiętnaście dwudziesta druga</item>
+        <item>Za osiemnaście dwudziesta druga</item>
+        <item>Za siedemnaście dwudziesta druga</item>
+        <item>Za szesnaście dwudziesta druga</item>
+        <item>Za kwadrans dwudziesta druga</item>
+        <item>Za czternaście dwudziesta druga</item>
+        <item>Za trzynaście dwudziesta druga</item>
+        <item>Za dwanaście dwudziesta druga</item>
+        <item>Za jedenaście dwudziesta druga</item>
+        <item>Za dziesięć dwudziesta druga</item>
+        <item>Za dziewięć dwudziesta druga</item>
+        <item>Za osiem dwudziesta druga</item>
+        <item>Za siedem dwudziesta druga</item>
+        <item>Za sześć dwudziesta druga</item>
+        <item>Za pięć dwudziesta druga</item>
+        <item>Za cztery dwudziesta druga</item>
+        <item>Za trzy dwudziesta druga</item>
+        <item>Za dwa dwudziesta druga</item>
+        <item>Za jeden dwudziesta druga</item>
+        <item>Godzina dwudziesta druga</item>
+        <item>Jeden po dwudziesta druga</item>
+        <item>Dwa po dwudziesta druga</item>
+        <item>Trzy po dwudziesta druga</item>
+        <item>Cztery po dwudziesta druga</item>
+        <item>Pięć po dwudziesta druga</item>
+        <item>Sześć po dwudziesta druga</item>
+        <item>Siedem po dwudziesta druga</item>
+        <item>Osiem po dwudziesta druga</item>
+        <item>Dziewięć po dwudziesta druga</item>
+        <item>Dziesięć po dwudziesta druga</item>
+        <item>Jedenaście po dwudziesta druga</item>
+        <item>Dwanaście po dwudziesta druga</item>
+        <item>Trzynaście po dwudziesta druga</item>
+        <item>Czternaście po dwudziesta druga</item>
+        <item>Kwadrans po dwudziesta druga</item>
+        <item>Szesnaście po dwudziesta druga</item>
+        <item>Siedemnaście po dwudziesta druga</item>
+        <item>Osiemnaście po dwudziesta druga</item>
+        <item>Dziewiętnaście po dwudziesta druga</item>
+        <item>Dwadzieścia po dwudziesta druga</item>
+        <item>Dwadzieścia jeden po dwudziesta druga</item>
+        <item>Dwadzieścia dwa po dwudziesta druga</item>
+        <item>Dwadzieścia trzy po dwudziesta druga</item>
+        <item>Dwadzieścia cztery po dwudziesta druga</item>
+        <item>Dwadzieścia pięć po dwudziesta druga</item>
+        <item>Dwadzieścia sześć po dwudziesta druga</item>
+        <item>Dwadzieścia siedem po dwudziesta druga</item>
+        <item>Dwadzieścia osiem po dwudziesta druga</item>
+        <item>Dwadzieścia dziewięć po dwudziesta druga</item>
+        <item>W pół do dwudziesta trzecia</item>
+        <item>Za dwadzieścia dziewięć dwudziesta trzecia</item>
+        <item>Za dwadzieścia osiem dwudziesta trzecia</item>
+        <item>Za dwadzieścia siedem dwudziesta trzecia</item>
+        <item>Za dwadzieścia sześć dwudziesta trzecia</item>
+        <item>Za dwadzieścia pięć dwudziesta trzecia</item>
+        <item>Za dwadzieścia cztery dwudziesta trzecia</item>
+        <item>Za dwadzieścia trzy dwudziesta trzecia</item>
+        <item>Za dwadzieścia dwa dwudziesta trzecia</item>
+        <item>Za dwadzieścia jeden dwudziesta trzecia</item>
+        <item>Za dwadzieścia dwudziesta trzecia</item>
+        <item>Za dziewiętnaście dwudziesta trzecia</item>
+        <item>Za osiemnaście dwudziesta trzecia</item>
+        <item>Za siedemnaście dwudziesta trzecia</item>
+        <item>Za szesnaście dwudziesta trzecia</item>
+        <item>Za kwadrans dwudziesta trzecia</item>
+        <item>Za czternaście dwudziesta trzecia</item>
+        <item>Za trzynaście dwudziesta trzecia</item>
+        <item>Za dwanaście dwudziesta trzecia</item>
+        <item>Za jedenaście dwudziesta trzecia</item>
+        <item>Za dziesięć dwudziesta trzecia</item>
+        <item>Za dziewięć dwudziesta trzecia</item>
+        <item>Za osiem dwudziesta trzecia</item>
+        <item>Za siedem dwudziesta trzecia</item>
+        <item>Za sześć dwudziesta trzecia</item>
+        <item>Za pięć dwudziesta trzecia</item>
+        <item>Za cztery dwudziesta trzecia</item>
+        <item>Za trzy dwudziesta trzecia</item>
+        <item>Za dwa dwudziesta trzecia</item>
+        <item>Za jeden dwudziesta trzecia</item>
+        <item>Godzina dwudziesta trzecia</item>
+        <item>Jeden po dwudziesta trzecia</item>
+        <item>Dwa po dwudziesta trzecia</item>
+        <item>Trzy po dwudziesta trzecia</item>
+        <item>Cztery po dwudziesta trzecia</item>
+        <item>Pięć po dwudziesta trzecia</item>
+        <item>Sześć po dwudziesta trzecia</item>
+        <item>Siedem po dwudziesta trzecia</item>
+        <item>Osiem po dwudziesta trzecia</item>
+        <item>Dziewięć po dwudziesta trzecia</item>
+        <item>Dziesięć po dwudziesta trzecia</item>
+        <item>Jedenaście po dwudziesta trzecia</item>
+        <item>Dwanaście po dwudziesta trzecia</item>
+        <item>Trzynaście po dwudziesta trzecia</item>
+        <item>Czternaście po dwudziesta trzecia</item>
+        <item>Kwadrans po dwudziesta trzecia</item>
+        <item>Szesnaście po dwudziesta trzecia</item>
+        <item>Siedemnaście po dwudziesta trzecia</item>
+        <item>Osiemnaście po dwudziesta trzecia</item>
+        <item>Dziewiętnaście po dwudziesta trzecia</item>
+        <item>Dwadzieścia po dwudziesta trzecia</item>
+        <item>Dwadzieścia jeden po dwudziesta trzecia</item>
+        <item>Dwadzieścia dwa po dwudziesta trzecia</item>
+        <item>Dwadzieścia trzy po dwudziesta trzecia</item>
+        <item>Dwadzieścia cztery po dwudziesta trzecia</item>
+        <item>Dwadzieścia pięć po dwudziesta trzecia</item>
+        <item>Dwadzieścia sześć po dwudziesta trzecia</item>
+        <item>Dwadzieścia siedem po dwudziesta trzecia</item>
+        <item>Dwadzieścia osiem po dwudziesta trzecia</item>
+        <item>Dwadzieścia dziewięć po dwudziesta trzecia</item>
+        <item>W pół do północ</item>
+        <item>Za dwadzieścia dziewięć północ</item>
+        <item>Za dwadzieścia osiem północ</item>
+        <item>Za dwadzieścia siedem północ</item>
+        <item>Za dwadzieścia sześć północ</item>
+        <item>Za dwadzieścia pięć północ</item>
+        <item>Za dwadzieścia cztery północ</item>
+        <item>Za dwadzieścia trzy północ</item>
+        <item>Za dwadzieścia dwa północ</item>
+        <item>Za dwadzieścia jeden północ</item>
+        <item>Za dwadzieścia północ</item>
+        <item>Za dziewiętnaście północ</item>
+        <item>Za osiemnaście północ</item>
+        <item>Za siedemnaście północ</item>
+        <item>Za szesnaście północ</item>
+        <item>Za kwadrans północ</item>
+        <item>Za czternaście północ</item>
+        <item>Za trzynaście północ</item>
+        <item>Za dwanaście północ</item>
+        <item>Za jedenaście północ</item>
+        <item>Za dziesięć północ</item>
+        <item>Za dziewięć północ</item>
+        <item>Za osiem północ</item>
+        <item>Za siedem północ</item>
+        <item>Za sześć północ</item>
+        <item>Za pięć północ</item>
+        <item>Za cztery północ</item>
+        <item>Za trzy północ</item>
+        <item>Za dwa północ</item>
+        <item>Za jeden północ</item>
+    </string-array>
+
+</resources>

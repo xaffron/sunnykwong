@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="verbosedow">
+<item>Niedziela</item>
+<item>Poniedziałek</item>
+<item>Wtorek</item>
+<item>Środa</item>
+<item>Czwartek</item>
+<item>Piątek</item>
+<item>Sobota</item>
+</string-array>
+
+<string-array name="shortdow">
+<item>Nd</item>
+<item>Pn</item>
+<item>Wt</item>
+<item>Śr</item>
+<item>Cz</item>
+<item>Pt</item>
+<item>So</item>
+</string-array>
+
+<string-array name="verbosemonth">
+<item>Styczeń</item>
+<item>Luty</item>
+<item>Marzec</item>
+<item>Kwiecień</item>
+<item>Maj</item>
+<item>Czerwiec</item>
+<item>Lipiec</item>
+<item>Sierpień</item>
+<item>Wrzesień</item>
+<item>Październik</item>
+<item>Listopad</item>
+<item>Grudzień</item>
+</string-array>
+
+<string-array name="shortmonth">
+<item>stycz</item>
+<item>luty</item>
+<item>mar</item>
+<item>kwiec</item>
+<item>maj</item>
+<item>czerw</item>
+<item>lip</item>
+<item>sierp</item>
+<item>wrzes</item>
+<item>paźdz</item>
+<item>listop</item>
+<item>grudz</item>
+</string-array>
+
+</resources>
