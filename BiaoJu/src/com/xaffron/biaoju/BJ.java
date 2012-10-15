@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,7 +20,7 @@ import android.widget.Toast;
 public class BJ extends Application {
 	
 	static GM MASTER;
-	static TurnActivity TACT;
+	static BaseActivity TACT;
 	static Combat CURRENTFIGHT;
 	static Bitmap bmpCOMPERE;
 	static JSONObject jsonMONSTERS, jsonITEMS, jsonTOWNES, jsonEQUIPMENT, jsonPROTAG;
@@ -31,7 +32,15 @@ public class BJ extends Application {
 	public void onCreate() {
 		super.onCreate();
 		initFromJSON();
+		MASTER = new GM();
+	    loadResources(MASTER);
 	} 
+	
+	public void loadResources(GM gameMaster) {
+	    String[] tempStr = getResources().getStringArray(R.array.goods);
+	    gameMaster.goods = new String[5];
+	    gameMaster.carry = new int[5];
+	}
 	
 	public boolean initFromJSON() {
 		try {

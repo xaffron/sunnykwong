@@ -7,63 +7,48 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ListView;
 
-
 public class GM {
 
 	static int ACTION;
 	static final int PENDING=0, ATTACK=1, RECRUIT=2, RUN=3, ITEM=4;
+	BaseActivity mBaseView;
 	WorldMap map;
 	Character protag;
 	PartyList party;
 	int location;
-	String[] goods;
-	int[][] rawPrices;
-	int[] mktPrices;
+	String[] goods={"Rice","Wine","Wood","Gunpowder","Tea"};
+	int[] rawPrices={5,10,10,100,15};
+	int[] mktPrices=new int[5];
 	int[] basePrices;
 	int[] carry;
-	static MugToast mt;
+	static MugToast mMugToast;
 	int cash;
 	Combat currentFight;
 	
-	public GM(TurnActivity ta) {
-		
-		int i,j;
-		String[] tempStr;
-		StringTokenizer tk;
-		
+	public GM() {
 		Random rnd = new Random();
 		map	= new WorldMap();
 	    party = new PartyList();
 	    protag = party.addToParty(Character.chooseProtag());
 	    location = rnd.nextInt(5);
 	    cash = 1000;
-
-	    mt = new MugToast(BJ.TACT);
-	    
-	    tempStr = BJ.TACT.getResources().getStringArray(R.array.goods);
-	    goods = new String[tempStr.length];
-	    rawPrices = new int[tempStr.length][5];
-	    mktPrices = new int[tempStr.length];
-	    basePrices = new int[tempStr.length];
-	    carry = new int[tempStr.length];
-	    for (i=0;i<tempStr.length;i++) {
-	    	tk = new StringTokenizer(tempStr[i]);
-	    	goods[i]=(String) tk.nextElement();
-	    	carry[i]=0;
-	    	for (j=0;j<5;j++) {
-	    		rawPrices[i][j]=Integer.parseInt((String)tk.nextElement());
-	    	}
-	    }
-	    
+	    System.out.println(rawPrices.length);
+	    System.out.println(mktPrices.length);
 	}
 	
-	public Village getLocation() {
+	public void setView(BaseActivity ta) {
+		mBaseView = ta;
+	    mMugToast = new MugToast(ta);
+	}
+	
+	public Landmark getLocation() {
 		return map.poi[location];
 	}
 	
+	
 	public void nextTurn(){
 		// Refresh Market Prices.
-//		marketRefresh(turnLuck);
+		marketRefresh();
 
 		// Where are we now?
 		if (currentFight!=null && currentFight.inProgress) {
@@ -123,22 +108,17 @@ public class GM {
 		int iResult = ((int)(Math.random()*10))*10 + (int)(Math.random()*10) + iMod;
 		return iResult==0?100:iResult;
 	}
-//	public void marketRefresh(double turnLuck) {
-//		int i,j,k;
-//		//TextView tempTV;
-//		
-//		ListView lv = (ListView)tact.findViewById(R.id.shoplist);
-//		lv.setAdapter(new IconTextButtonAdapter(tact));
-//		LinearLayout ll = (LinearLayout)tact.findViewById(R.id.leftscreen);
-//		ll.setClickable(false);
-//
-////		lv.setOnItemClickListener(New OnItemClickListener l )
-//		for (i=0;i<goods.length;i++){
-//			for (j=0;j<5;j++){
-//				mktPrices[i] = (int) Math.round(rawPrices[i][0] * turnLuck);
-//			}
-//		}
-//		
-//	}
+
+	public void marketRefresh() {
+		int i;
+		
+		for (i=0;i<goods.length;i++){
+			System.out.println(rawPrices.length);
+			System.out.println(goods.length);
+			System.out.println(mktPrices.length);
+			mktPrices[i] = (int) Math.round(rawPrices[i] * Math.random());
+		}
+		
+	}
 	
 }

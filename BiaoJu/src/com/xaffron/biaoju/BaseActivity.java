@@ -40,7 +40,7 @@ import android.view.ViewGroup;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.animation.Animation;
 
-public class TurnActivity extends Activity implements OnItemSelectedListener {
+public class BaseActivity extends Activity {
 
 	
 	public static ScreenAdapter SCREENADAPTER;
@@ -51,11 +51,11 @@ public class TurnActivity extends Activity implements OnItemSelectedListener {
 	public SpannableStringBuilder sBlow;
 	public View mAction, mStats, mMap;
 	public Gallery mGallery;
-@Override
-protected void onRestart() {
-	// TODO Auto-generated method stub
-	super.onRestart();
-}
+	@Override
+	protected void onRestart() {
+		// TODO Auto-generated method stub
+		super.onRestart();
+	}
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,9 +64,9 @@ protected void onRestart() {
 
     	//		Game Setup
     	BJ.TACT = this;
-    	BJ.MASTER = new GM(this);
-
+    	BJ.MASTER.setView(this);
     }
+    
     protected void onStart() {
     	super.onStart();
     	
@@ -104,7 +104,7 @@ protected void onRestart() {
 				s.delete(0, s.toString().indexOf("\n")+1);
 			}
 		});
-    	mAttack = (Button)mAction.findViewById(R.id.btAttack);
+    	mAttack = (Button)(mAction.findViewById(R.id.btAttack));
     	mAttack.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
@@ -161,20 +161,22 @@ protected void onRestart() {
 			}
 		});
         mGallery = (Gallery)findViewById(R.id.details);
-        if (TurnActivity.SCREENADAPTER==null) TurnActivity.SCREENADAPTER = new ScreenAdapter(mStats,mAction,mMap); 
-        mGallery.setAdapter(TurnActivity.SCREENADAPTER);
+        if (BaseActivity.SCREENADAPTER==null) BaseActivity.SCREENADAPTER = new ScreenAdapter(mStats,mAction,mMap); 
+        mGallery.setAdapter(BaseActivity.SCREENADAPTER);
+        mGallery.setCallbackDuringFling(false);
         mGallery.setSelection(1);
-        mGallery.setOnItemSelectedListener(this);
+//        mGallery.setOnItemSelectedListener(this);
     	if (DEBUG) writeConsole("Gui Setup Complete");
 
        	BJ.MASTER.nextTurn();
         
     }
     
-    public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-    		long arg3) {
-    	
-    }
+//    public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
+//    		long arg3) {
+//    	System.out.println("itemselected");
+//    }
+    
     public void onNothingSelected(android.widget.AdapterView<?> arg0) {};
     
     public void writeBlow(String comment) {
