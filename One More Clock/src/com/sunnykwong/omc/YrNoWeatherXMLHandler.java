@@ -389,6 +389,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				JSONObject jsonOneDayForecast = new JSONObject();
 				jsonOneDayForecast.put("day_of_week", day.format("%a"));
 				final int iConditionCode = CONDITIONS.get(day.format("%Y%m%d"));
+				jsonOneDayForecast.put("condition_code", iConditionCode);
 				jsonOneDayForecast.put("condition", OMC.VERBOSEWEATHER[iConditionCode]);
 				jsonOneDayForecast.put("condition_lcase", OMC.VERBOSEWEATHER[iConditionCode].toLowerCase());
 				double lowc = OMC.roundToSignificantFigures(LOWTEMPS.get(day.format("%Y%m%d")),3);
