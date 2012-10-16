@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="WordNumbers">
+<item>Zero</item>
+<item>Um</item>
+<item>Dois</item>
+<item>Três</item>
+<item>Quatro</item>
+<item>Cinco</item>
+<item>Seis</item>
+<item>Sete</item>
+<item>Oito</item>
+<item>Nove</item>
+<item>Dez</item>
+<item>Onze</item>
+<item>Doze</item>
+<item>Treze</item>
+<item>Quatorze</item>
+<item>Quinze</item>
+<item>Dezesseis</item>
+<item>Dezessete</item>
+<item>Dezoito</item>
+<item>Dezenove</item>
+<item>Vinte</item>
+<item>Vinte e Um</item>
+<item>Vinte e Dois</item>
+<item>Vinte e Três</item>
+<item>Vinte e Quatro</item>
+<item>Vinte e Cinco</item>
+<item>Vinte e Seis</item>
+<item>Vinte e Sete</item>
+<item>Vinte e Oito</item>
+<item>Vinte e Nove</item>
+<item>Trinta</item>
+<item>Trinta e Um</item>
+<item>Trinta e Dois</item>
+<item>Tinta e Três</item>
+<item>Trinta e Quatro</item>
+<item>Trinta e Cinco</item>
+<item>Trinta e Seis</item>
+<item>Trinta e Sete</item>
+<item>Trinta e Oito</item>
+<item>Trinta e Nove</item>
+<item>Quarenta</item>
+<item>Quarenta e Um</item>
+<item>Quarenta e Dois</item>
+<item>Quarenta e Três</item>
+<item>Quarenta e Quatro</item>
+<item>Quarenta e Cinco</item>
+<item>Quarenta e Seis</item>
+<item>Quarenta e Sete</item>
+<item>Quarenta e Oito</item>
+<item>Quarenta e Nove</item>
+<item>Cinquenta</item>
+<item>Cinquenta e Um</item>
+<item>Cinquenta e Dois</item>
+<item>Cinquenta e Três</item>
+<item>Cinquenta e Quatro</item>
+<item>Cinquenta e Cinco</item>
+<item>Cinquenta e Seis</item>
+<item>Cinquenta e Sete</item>
+<item>Cinquenta e Oito</item>
+<item>Cinquenta e Nove</item>
+<item>Sessenta</item>
+<item>Sessenta e Um</item>
+<item>Sessenta e Dois</item>
+<item>Sessenta e Três</item>
+<item>Sessenta e Quatro</item>
+<item>Sessenta e Cinco</item>
+<item>Sessenta e Seis</item>
+<item>Sessenta e Sete</item>
+<item>Sessenta e Oito</item>
+<item>Sessenta e Nove</item>
+<item>Setenta</item>
+<item>Setenta e Um</item>
+<item>Setenta e Dois</item>
+<item>Setenta e Três</item>
+<item>Setenta e Quatro</item>
+<item>Setenta e Cinco</item>
+<item>Setenta e Seis</item>
+<item>Setenta e Sete</item>
+<item>Setenta e Oito</item>
+<item>Setenta e Nove</item>
+<item>Oitenta</item>
+<item>Oitenta e Um</item>
+<item>Oitenta e Dois</item>
+<item>Oitenta e Três</item>
+<item>Oitenta e Quatro</item>
+<item>Oitenta e Cinco</item>
+<item>Oitenta e Seis</item>
+<item>Oitenta e Sete</item>
+<item>Oitenta e Oito</item>
+<item>Oitenta e Nove</item>
+<item>Noventa</item>
+<item>Noventa e Um</item>
+<item>Noventa e Dois</item>
+<item>Noventa e Três</item>
+<item>Noventa e Quatro</item>
+<item>Noventa e Cinco</item>
+<item>Noventa e Seis</item>
+<item>Noventa e Sete</item>
+<item>Noventa e Oito</item>
+<item>Noventa e Nove</item>
+</string-array>
+</resources>

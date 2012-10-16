@@ -349,6 +349,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 									OMC.SHORTDOW = OMC.RStringArray("shortdow", selectedLocale);
 									OMC.VERBOSEMONTH = OMC.RStringArray("verbosemonth", selectedLocale);
 									OMC.SHORTMONTH = OMC.RStringArray("shortmonth", selectedLocale);
+									OMC.DAYSUFFIX = OMC.RString("daysuffix", selectedLocale);
 
 									preference.setSummary(items[item]);
 
@@ -513,6 +514,9 @@ public class OMCPrefActivity extends PreferenceActivity {
         	// "Clear Render Caches".
         	prefclearCache = findPreference("clearCache");
 
+        	// "Translator".
+        	findPreference("sTranslator").setTitle(OMC.RString("translator"));
+        	findPreference("sTranslator").setSummary(OMC.RString("languageWord") + ": " + OMC.RString("languageName"));
         	
         	// "Clock Priority".
         	Preference prefClockPriority = findPreference("clockPriority");

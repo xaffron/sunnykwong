@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-	<!-- English -->
     <resources>
+    	
+        <string name="languageWord">Language</string>
+        <string name="languageName">English (US)</string>
+    	<string name="translator">Sunny Kwong</string>
+    		
         <!-- General Buttons -->
         <string name="nextTip">Next Tip</string>
         <string name="ok">OK</string>

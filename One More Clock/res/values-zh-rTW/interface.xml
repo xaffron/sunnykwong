@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-	<!-- English -->
     <resources>
-        <!-- General Buttons -->
+    	
+	   	<string name="languageWord">語言</string>
+   		<string name="languageName">繁體中文</string>
+	  	<string name="translator">鄺宇恆</string>
+    		
+    	<!-- General Buttons -->
         <string name="nextTip">下一則</string>
         <string name="ok">確定</string>
         <string name="search">搜索</string>

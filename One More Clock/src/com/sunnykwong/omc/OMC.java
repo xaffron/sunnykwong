@@ -99,8 +99,8 @@ public class OMC extends Application {
 	static final String APPICON = "clockicon";
 	
 	static final String[] APM = {"Ante Meridiem","Post Meridiem"};	
-	static final Locale[] LOCALES = {new Locale("zh","TW",""),new Locale("zh","CN",""),new Locale("es","ES",""),new Locale("de","",""),new Locale("en","US",""),new Locale("pl","",""),new Locale("sv","","")};
-	static final String[] LOCALENAMES = {"繁體中文","简体中文","Castellano","Deutsch","English (US)","Język Polski","Svenska"};
+	static final Locale[] LOCALES = {new Locale("zh","TW",""),new Locale("zh","CN",""),new Locale("es","ES",""),new Locale("de","",""),new Locale("en","US",""),new Locale("fr","",""),new Locale("pl","",""),new Locale("pt","",""),new Locale("sv","","")};
+	static final String[] LOCALENAMES = {"繁體中文","简体中文","Castellano","Deutsch","English (US)","Le Français","Język Polski","Português","Svenska"};
 	static SimpleDateFormat LOCALESDF;
 	static Locale CURRENTLOCALE;
 
@@ -132,6 +132,7 @@ public class OMC extends Application {
 	static String[] VERBOSEWEATHER;
 	static String[] VERBOSEWEATHERENG;
 	static String[] VERBOSENUMBERS;
+	static String DAYSUFFIX;
 	static Context CONTEXT;
 	static boolean SHOWHELP = true;
 	static Uri PAIDURI;
@@ -535,7 +536,8 @@ public class OMC extends Application {
 				OMC.SHORTDOW = OMC.RStringArray("shortdow", OMC.LOCALES[i]);
 				OMC.VERBOSEMONTH = OMC.RStringArray("verbosemonth", OMC.LOCALES[i]);
 				OMC.SHORTMONTH = OMC.RStringArray("shortmonth", OMC.LOCALES[i]);
-
+				OMC.DAYSUFFIX = OMC.RString("daysuffix", OMC.LOCALES[i]);
+				
 			}  
 			if (OMC.LOCALENAMES[i].equals("English (US)")){
 				OMC.VERBOSEWEATHERENG = OMC.RStringArray("VerboseWeather", OMC.LOCALES[i]);
@@ -1926,9 +1928,9 @@ public class OMC extends Application {
 				} else if (inputChars[i]=='b') {
 					sb.append(OMC.SHORTMONTH[OMC.TIME.month]);
 				} else if (inputChars[i]=='d') {
-					sb.append(OMC.TIME.format("%d")+OMC.RString("daysuffix"));
+					sb.append(OMC.TIME.format("%d")+OMC.DAYSUFFIX);
 				} else if (inputChars[i]=='e') {
-					sb.append(OMC.TIME.format("%e")+OMC.RString("daysuffix"));
+					sb.append(OMC.TIME.format("%e")+OMC.DAYSUFFIX);
 				} else if (inputChars[i]=='P') {
 					sb.append(OMC.TIME.hour<12?"AM":"PM");
 				} else if (inputChars[i]=='p') {
@@ -2236,6 +2238,13 @@ public class OMC extends Application {
 	
 	public static String RString(final String key) {
 		return OMC.RES.getString(OMC.RES.getIdentifier(key, "string", OMC.PKGNAME));
+	}
+	
+	public static String RString(final String key, final Locale foreignLocale) {
+		Configuration configTemp = new Configuration(OMC.RES.getConfiguration());
+		configTemp.locale=foreignLocale;
+		Resources res = new Resources(OMC.AM,OMC.RES.getDisplayMetrics(),configTemp);
+		return res.getString(OMC.RES.getIdentifier(key, "string", OMC.PKGNAME));
 	}
 	
 	public static String[] RStringArray(final String key) {

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-	<!-- Swedish -->
     <resources>
-        <!-- General Buttons -->
+    	
+        <string name="languageWord">Språk</string>
+        <string name="languageName">Svenska</string>
+    	<string name="translator">Tobias Hellgren</string>
+    		
+    	<!-- General Buttons -->
         <string name="nextTip">Nästa tips</string>
         <string name="ok">OK</string>
         <string name="search">Sök</string>

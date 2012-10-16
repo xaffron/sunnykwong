@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-	<!-- Polish -->
     <resources>
-        <!-- General Buttons -->
+    	
+        <string name="languageWord">Język</string>
+        <string name="languageName">Polski</string>
+    	<string name="translator">Michał Michalski</string>
+    		
+    	<!-- General Buttons -->
         <string name="nextTip">Następna Porada</string>
         <string name="ok">OK</string>
         <string name="search">Szukaj</string>

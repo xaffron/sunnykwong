@@ -1,0 +1,1453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="verbosetime1">
+        <item>Doze Horas.</item>
+        <item>Doze e Um.</item>
+        <item>Doze e Dois.</item>
+        <item>Doze e Três.</item>
+        <item>Doze e Quatro.</item>
+        <item>Doze e Cinco.</item>
+        <item>Doze e Seis.</item>
+        <item>Doze e Sete.</item>
+        <item>Doze e Oito.</item>
+        <item>Doze e Nove.</item>
+        <item>Doze e Dez.</item>
+        <item>Doze e Onze.</item>
+        <item>Doze e Doze.</item>
+        <item>Doze e Treze.</item>
+        <item>Doze e Quatorze.</item>
+        <item>Doze e Quinze.</item>
+        <item>Doze e Dezesseis.</item>
+        <item>Doze e Dezessete.</item>
+        <item>Doze e Dezoito.</item>
+        <item>Doze e Dezenove.</item>
+        <item>Doze e Vinte.</item>
+        <item>Doze e Vinte Um.</item>
+        <item>Doze e Vinte Dois.</item>
+        <item>Doze e Vinte Três.</item>
+        <item>Doze e Vinte Quatro.</item>
+        <item>Doze e Vinte Cinco.</item>
+        <item>Doze e Vinte Seis.</item>
+        <item>Doze e Vinte Sete.</item>
+        <item>Doze e Vinte Oito.</item>
+        <item>Doze e Vinte Nove.</item>
+        <item>Doze e Trinta.</item>
+        <item>Vinte Nove pra Uma.</item>
+        <item>Vinte Oito pra Um.</item>
+        <item>Vinte Sete pra Um.</item>
+        <item>Vinte Seis pra Um.</item>
+        <item>Vinte Cinco pra Um.</item>
+        <item>Vinte Quatro pra Uma.</item>
+        <item>Vinte Três pra Uma.</item>
+        <item>Vinte Dois pra Uma.</item>
+        <item>Vinte Um pra Uma.</item>
+        <item>Vinte pra Uma.</item>
+        <item>Dezenove pra Uma.</item>
+        <item>Dezoito pra Uma.</item>
+        <item>Dezessete pra Uma.</item>
+        <item>Dezesseis pra Uma.</item>
+        <item>Quinze pra Uma.</item>
+        <item>Quatorze pra Uma.</item>
+        <item>Treze pra Uma.</item>
+        <item>Doze pra Uma.</item>
+        <item>Onze pra Uma.</item>
+        <item>Dez pra Uma.</item>
+        <item>Nove pra Uma.</item>
+        <item>Oito pra Uma.</item>
+        <item>Sete pra Uma.</item>
+        <item>Seis pra Uma.</item>
+        <item>Cinco pra Uma.</item>
+        <item>Quatro pra Uma.</item>
+        <item>Três pra Uma.</item>
+        <item>Dois pra Uma.</item>
+        <item>Um pra Uma.</item>
+        <item>Uma Hora.</item>
+        <item>Uma e Um.</item>
+        <item>Uma e Dois.</item>
+        <item>Uma e Três.</item>
+        <item>Uma e Quatro.</item>
+        <item>Uma e Cinco.</item>
+        <item>Uma e Seis.</item>
+        <item>Uma e Sete.</item>
+        <item>Uma e Oito.</item>
+        <item>Uma e Nove.</item>
+        <item>Uma e Dez.</item>
+        <item>Uma e Onze.</item>
+        <item>Uma e Doze.</item>
+        <item>Uma e Treze.</item>
+        <item>Uma e Quatorze.</item>
+        <item>Uma e Quinze.</item>
+        <item>Uma e Dezesseis.</item>
+        <item>Uma e Dezessete.</item>
+        <item>Uma e Dezoito.</item>
+        <item>Uma e Dezenove.</item>
+        <item>Uma e Vinte.</item>
+        <item>Uma e Vinte Um.</item>
+        <item>Uma e Vinte Dois.</item>
+        <item>Uma e Vinte Três.</item>
+        <item>Uma e Vinte Quatro.</item>
+        <item>Uma e Vinte Cinco.</item>
+        <item>Uma e Vinte Seis.</item>
+        <item>Uma e Vinte Sete.</item>
+        <item>Uma e Vinte Oito.</item>
+        <item>Uma e Vinte Nove.</item>
+        <item>Uma e Trinta.</item>
+        <item>Vinte Nove pras Duas.</item>
+        <item>Vinte Oito pras Duas.</item>
+        <item>Vinte Sete pras Duas.</item>
+        <item>Vinte Seis pras Duas.</item>
+        <item>Vinte Cinco pras Duas.</item>
+        <item>Vinte Quatro pras Duas.</item>
+        <item>Vinte Três pras Duas.</item>
+        <item>Vinte Dois pras Duas.</item>
+        <item>Vinte Um pras Duas.</item>
+        <item>Vinte pras Duas.</item>
+        <item>Dezenove pras Duas.</item>
+        <item>Dezoito pras Duas.</item>
+        <item>Dezessete pras Duas.</item>
+        <item>Dezesseis pras Duas.</item>
+        <item>Quinze pras Duas.</item>
+        <item>Quatorze pras Duas.</item>
+        <item>Treze pras Duas.</item>
+        <item>Doze pras Duas.</item>
+        <item>Onze pras Duas.</item>
+        <item>Dez pras Duas.</item>
+        <item>Nove pras Duas.</item>
+        <item>Oito pras Duas.</item>
+        <item>Sete pras Duas.</item>
+        <item>Seis pras Duas.</item>
+        <item>Cinco pras Duas.</item>
+        <item>Quatro pras Duas.</item>
+        <item>Três pras Duas.</item>
+        <item>Dois pras Duas.</item>
+        <item>Um pras Duas.</item>
+        <item>Duas Horas.</item>
+        <item>Duas e Um.</item>
+        <item>Duas e Dois.</item>
+        <item>Duas e Três.</item>
+        <item>Quatro Duas e.</item>
+        <item>Duas e Cinco.</item>
+        <item>Duas e Seis.</item>
+        <item>Duas e Sete.</item>
+        <item>Duas e Oito.</item>
+        <item>Duas e Nove.</item>
+        <item>Duas e Dez.</item>
+        <item>Duas e Onze.</item>
+        <item>Duas e Doze.</item>
+        <item>Duas e Treze.</item>
+        <item>Duas e Quatorze.</item>
+        <item>Duas e Quinze.</item>
+        <item>Duas e Dezesseis.</item>
+        <item>Duas e Dezessete.</item>
+        <item>Duas e Dezoito.</item>
+        <item>Duas e Dezenove.</item>
+        <item>Duas e Vinte.</item>
+        <item>Duas e Vinte Um.</item>
+        <item>Duas e Vinte Dois.</item>
+        <item>Duas e Vinte Três.</item>
+        <item>Duas e Vinte Quatro.</item>
+        <item>Duas e Vinte Cinco.</item>
+        <item>Duas e Vinte Seis.</item>
+        <item>Duas e Vinte Sete.</item>
+        <item>Duas e Vinte Oito.</item>
+        <item>Duas e Vinte Nove.</item>
+        <item>Duas e Trinta.</item>
+        <item>Vinte Nove pras Três.</item>
+        <item>Vinte Oito pras Três.</item>
+        <item>Vinte Sete pras Três.</item>
+        <item>Vinte Seis pras Três.</item>
+        <item>Vinte Cinco pras Três.</item>
+        <item>Vinte Quatro pras Três.</item>
+        <item>Vinte Três pras Três.</item>
+        <item>Vinte Dois pras Três.</item>
+        <item>Vinte Um pras Três.</item>
+        <item>Vinte pras Três.</item>
+        <item>Dezenove pras Três.</item>
+        <item>Dezoito pras Três.</item>
+        <item>Dezessete pras Três.</item>
+        <item>Dezesseis pras Três.</item>
+        <item>Quinze pras Três.</item>
+        <item>Quatorze pras Três.</item>
+        <item>Treze pras Três.</item>
+        <item>Doze pras Três.</item>
+        <item>Onze pras Três.</item>
+        <item>Dez pras Três.</item>
+        <item>Nove pras Três.</item>
+        <item>Oito pras Três.</item>
+        <item>Sete pras Três.</item>
+        <item>Seis pras Três.</item>
+        <item>Cinco pras Três.</item>
+        <item>Quatro pras Três.</item>
+        <item>Três pras Três.</item>
+        <item>Dois pras Três.</item>
+        <item>Um pras Três.</item>
+        <item>Três Horas.</item>
+        <item>Três e Um.</item>
+        <item>Três e Dois.</item>
+        <item>Três e Três.</item>
+        <item>Três e Quatro.</item>
+        <item>Três e Cinco.</item>
+        <item>Três e Seis.</item>
+        <item>Três e Sete.</item>
+        <item>Três e Oito.</item>
+        <item>Três e Nove.</item>
+        <item>Três e Dez.</item>
+        <item>Três e Onze.</item>
+        <item>Três e Doze.</item>
+        <item>Três e Treze.</item>
+        <item>Três e Quatorze.</item>
+        <item>Três e Quinze.</item>
+        <item>Três e Dezesseis.</item>
+        <item>Três e Dezessete.</item>
+        <item>Três e Dezoito.</item>
+        <item>Três e Dezenove.</item>
+        <item>Três e Vinte.</item>
+        <item>Três e Vinte Um.</item>
+        <item>Três e Vinte Dois.</item>
+        <item>Três e Vinte Três.</item>
+        <item>Três e Vinte Quatro.</item>
+        <item>Três e Vinte Cinco.</item>
+        <item>Três e Vinte Seis.</item>
+        <item>Três e Vinte Sete.</item>
+        <item>Três e Vinte Oito.</item>
+        <item>Três e Vinte Nove.</item>
+        <item>Três e Trinta.</item>
+        <item>Vinte Nove pras Quatro.</item>
+        <item>Vinte Oito pras Quatro.</item>
+        <item>Vinte Sete pras Quatro.</item>
+        <item>Vinte Seis pras Quatro.</item>
+        <item>Vinte Cinco pras Quatro.</item>
+        <item>Vinte Quatro pras Quatro.</item>
+        <item>Vinte Três pras Quatro.</item>
+        <item>Vinte Dois pras Quatro.</item>
+        <item>Vinte Um pras Quatro.</item>
+        <item>Vinte pras Quatro.</item>
+        <item>Dezenove pras Quatro.</item>
+        <item>Dezoito pras Quatro.</item>
+        <item>Dezessete pras Quatro.</item>
+        <item>Dezesseis pras Quatro.</item>
+        <item>Quinze pras Quatro.</item>
+        <item>Quatorze pras Quatro.</item>
+        <item>Treze pras Quatro.</item>
+        <item>Doze pras Quatro.</item>
+        <item>Onze pras Quatro.</item>
+        <item>Dez pras Quatro.</item>
+        <item>Nove pras Quatro.</item>
+        <item>Oito pras Quatro.</item>
+        <item>Sete pras Quatro.</item>
+        <item>Seis pras Quatro.</item>
+        <item>Cinco pras Quatro.</item>
+        <item>Quatro pras Quatro.</item>
+        <item>Três pras Quatro.</item>
+        <item>Dois pras Quatro.</item>
+        <item>Um pras Quatro.</item>
+        <item>Quatro Horas.</item>
+        <item>Quatro e Um.</item>
+        <item>Quatro e Dois.</item>
+        <item>Quatro e Três.</item>
+        <item>Quatro e Quatro.</item>
+        <item>Quatro e Cinco.</item>
+        <item>Quatro e Seis.</item>
+        <item>Quatro e Sete.</item>
+        <item>Quatro e Oito.</item>
+        <item>Quatro e Nove.</item>
+        <item>Quatro e Dez.</item>
+        <item>Quatro e Onze.</item>
+        <item>Quatro e Doze.</item>
+        <item>Quatro e Treze.</item>
+        <item>Quatro e Quatorze.</item>
+        <item>Quatro e Quinze.</item>
+        <item>Quatro e Dezesseis.</item>
+        <item>Quatro e Dezessete.</item>
+        <item>Quatro e Dezoito.</item>
+        <item>Quatro e Dezenove.</item>
+        <item>Quatro e Vinte.</item>
+        <item>Quatro e Vinte Um.</item>
+        <item>Quatro e Vinte Dois.</item>
+        <item>Quatro e Vinte Três.</item>
+        <item>Quatro e Vinte Quatro.</item>
+        <item>Quatro e Vinte Cinco.</item>
+        <item>Quatro e Vinte Seis.</item>
+        <item>Quatro e Vinte Sete.</item>
+        <item>Quatro e Vinte Oito.</item>
+        <item>Quatro e Vinte Nove.</item>
+        <item>Quatro e Trinta.</item>
+        <item>Vinte Nove pras Cinco.</item>
+        <item>Vinte Oito pras Cinco.</item>
+        <item>Vinte Sete pras Cinco.</item>
+        <item>Vinte Seis pras Cinco.</item>
+        <item>Vinte Cinco pras Cinco.</item>
+        <item>Vinte Quatro pras Cinco.</item>
+        <item>Vinte Três pras Cinco.</item>
+        <item>Vinte Dois pras Cinco.</item>
+        <item>Vinte Um pras Cinco.</item>
+        <item>Vinte pras Cinco.</item>
+        <item>Dezenove pras Cinco.</item>
+        <item>Dezoito pras Cinco.</item>
+        <item>Dezessete pras Cinco.</item>
+        <item>Dezesseis pras Cinco.</item>
+        <item>Quinze pras Cinco.</item>
+        <item>Quatorze pras Cinco.</item>
+        <item>Treze pras Cinco.</item>
+        <item>Doze pras Cinco.</item>
+        <item>Onze pras Cinco.</item>
+        <item>Dez pras Cinco.</item>
+        <item>Nove pras Cinco.</item>
+        <item>Oito pras Cinco.</item>
+        <item>Sete pras Cinco.</item>
+        <item>Seis pras Cinco.</item>
+        <item>Cinco pras Cinco.</item>
+        <item>Quatro pras Cinco.</item>
+        <item>Três pras Cinco.</item>
+        <item>Dois pras Cinco.</item>
+        <item>Um pras Cinco.</item>
+        <item>Cinco Horas.</item>
+        <item>Cinco e Um.</item>
+        <item>Cinco e Dois.</item>
+        <item>Cinco e Três.</item>
+        <item>Cinco e Quatro.</item>
+        <item>Cinco e Cinco.</item>
+        <item>Cinco e Seis.</item>
+        <item>Cinco e Sete.</item>
+        <item>Cinco e Oito.</item>
+        <item>Cinco e Nove.</item>
+        <item>Cinco e Dez.</item>
+        <item>Cinco e Onze.</item>
+        <item>Cinco e Doze.</item>
+        <item>Cinco e Treze.</item>
+        <item>Cinco e Quatorze.</item>
+        <item>Cinco e Quinze.</item>
+        <item>Cinco e Dezesseis.</item>
+        <item>Cinco e Dezessete.</item>
+        <item>Cinco e Dezoito.</item>
+        <item>Cinco e Dezenove.</item>
+        <item>Cinco e Vinte.</item>
+        <item>Cinco e Vinte Um.</item>
+        <item>Cinco e Vinte Dois.</item>
+        <item>Cinco e Vinte Três.</item>
+        <item>Cinco e Vinte Quatro.</item>
+        <item>Cinco e Vinte Cinco.</item>
+        <item>Cinco e Vinte Seis.</item>
+        <item>Cinco e Vinte Sete.</item>
+        <item>Cinco e Vinte Oito.</item>
+        <item>Cinco e Vinte Nove.</item>
+        <item>Cinco e Trinta.</item>
+        <item>Vinte Nove pras Seis.</item>
+        <item>Vinte Oito pras Seis.</item>
+        <item>Vinte Sete pras Seis.</item>
+        <item>Vinte Seis pras Seis.</item>
+        <item>Vinte Cinco pras Seis.</item>
+        <item>Vinte Quatro pras Seis.</item>
+        <item>Vinte Três pras Seis.</item>
+        <item>Vinte Dois pras Seis.</item>
+        <item>Vinte Um pras Seis.</item>
+        <item>Vinte pras Seis.</item>
+        <item>Dezenove pras Seis.</item>
+        <item>Dezoito pras Seis.</item>
+        <item>Dezessete pras Seis.</item>
+        <item>Dezesseis pras Seis.</item>
+        <item>Quinze pras Seis.</item>
+        <item>Quatorze pras Seis.</item>
+        <item>Treze pras Seis.</item>
+        <item>Doze pras Seis.</item>
+        <item>Onze pras Seis.</item>
+        <item>Dez pras Seis.</item>
+        <item>Nove pras Seis.</item>
+        <item>Oito pras Seis.</item>
+        <item>Sete pras Seis.</item>
+        <item>Seis pras Seis.</item>
+        <item>Cinco pras Seis.</item>
+        <item>Quatro pras Seis.</item>
+        <item>Três pras Seis.</item>
+        <item>Dois pras Seis.</item>
+        <item>Um pras Seis.</item>
+    </string-array>
+    <string-array name="verbosetime2">
+        <item>Seis Horas.</item>
+        <item>Seis e Um.</item>
+        <item>Seis e Dois.</item>
+        <item>Seis e Três.</item>
+        <item>Seis e Quatro.</item>
+        <item>Seis e Cinco.</item>
+        <item>Seis e Seis.</item>
+        <item>Seis e Sete.</item>
+        <item>Seis e Oito.</item>
+        <item>Seis e Nove.</item>
+        <item>Seis e Dez.</item>
+        <item>Seis e Onze.</item>
+        <item>Seis e Doze.</item>
+        <item>Seis e Treze.</item>
+        <item>Seis e Quatorze.</item>
+        <item>Seis e Quinze.</item>
+        <item>Seis e Dezesseis.</item>
+        <item>Seis e Dezessete.</item>
+        <item>Seis e Dezoito.</item>
+        <item>Seis e Dezenove.</item>
+        <item>Seis e Vinte.</item>
+        <item>Seis e Vinte Um.</item>
+        <item>Seis e Vinte Dois.</item>
+        <item>Seis e Vinte Três.</item>
+        <item>Seis e Vinte Quatro.</item>
+        <item>Seis e Vinte Cinco.</item>
+        <item>Seis e Vinte Seis.</item>
+        <item>Seis e Vinte Sete.</item>
+        <item>Seis e Vinte Oito.</item>
+        <item>Seis e Vinte Nove.</item>
+        <item>Seis e Trinta.</item>
+        <item>Vinte Nove pras Sete.</item>
+        <item>Vinte Oito pras Sete.</item>
+        <item>Vinte Sete pras Sete.</item>
+        <item>Vinte Seis pras Sete.</item>
+        <item>Vinte Cinco pras Sete.</item>
+        <item>Vinte Quatro pras Sete.</item>
+        <item>Vinte Três pras Sete.</item>
+        <item>Vinte Dois pras Sete.</item>
+        <item>Vinte Um pras Sete.</item>
+        <item>Vinte pras Sete.</item>
+        <item>Dezenove pras Sete.</item>
+        <item>Dezoito pras Sete.</item>
+        <item>Dezessete pras Sete.</item>
+        <item>Dezesseis pras Sete.</item>
+        <item>Quinze pras Sete.</item>
+        <item>Quatorze pras Sete.</item>
+        <item>Treze pras Sete.</item>
+        <item>Doze pras Sete.</item>
+        <item>Onze pras Sete.</item>
+        <item>Dez pras Sete.</item>
+        <item>Nove pras Sete.</item>
+        <item>Oito pras Sete.</item>
+        <item>Sete pras Sete.</item>
+        <item>Seis pras Sete.</item>
+        <item>Cinco pras Sete.</item>
+        <item>Quatro pras Sete.</item>
+        <item>Três pras Sete.</item>
+        <item>Dois pras Sete.</item>
+        <item>Um pras Sete.</item>
+        <item>Sete Horas.</item>
+        <item>Sete e Um.</item>
+        <item>Sete e Dois.</item>
+        <item>Sete e Três.</item>
+        <item>Sete e Quatro.</item>
+        <item>Sete e Cinco.</item>
+        <item>Sete e Seis.</item>
+        <item>Sete e Sete.</item>
+        <item>Sete e Oito.</item>
+        <item>Sete e Nove.</item>
+        <item>Sete e Dez.</item>
+        <item>Sete e Onze.</item>
+        <item>Sete e Doze.</item>
+        <item>Sete e Treze.</item>
+        <item>Sete e Quatorze.</item>
+        <item>Sete e Quinze.</item>
+        <item>Sete e Dezesseis.</item>
+        <item>Sete e Dezessete.</item>
+        <item>Sete e Dezoito.</item>
+        <item>Sete e Dezenove.</item>
+        <item>Sete e Vinte.</item>
+        <item>Sete e Vinte Um.</item>
+        <item>Sete e Vinte Dois.</item>
+        <item>Sete e Vinte Três.</item>
+        <item>Sete e Vinte Quatro.</item>
+        <item>Sete e Vinte Cinco.</item>
+        <item>Sete e Vinte Seis.</item>
+        <item>Sete e Vinte Sete.</item>
+        <item>Sete e Vinte Oito.</item>
+        <item>Sete e Vinte Nove.</item>
+        <item>Sete e Trinta.</item>
+        <item>Vinte Nove pras Oito.</item>
+        <item>Vinte Oito pras Oito.</item>
+        <item>Vinte Sete pras Oito.</item>
+        <item>Vinte Seis pras Oito.</item>
+        <item>Vinte Cinco pras Oito.</item>
+        <item>Vinte Quatro pras Oito.</item>
+        <item>Vinte Três pras Oito.</item>
+        <item>Vinte Dois pras Oito.</item>
+        <item>Vinte Um pras Oito.</item>
+        <item>Vinte pras Oito.</item>
+        <item>Dezenove pras Oito.</item>
+        <item>Dezoito pras Oito.</item>
+        <item>Dezessete pras Oito.</item>
+        <item>Dezesseis pras Oito.</item>
+        <item>Quinze pras Oito.</item>
+        <item>Quatorze pras Oito.</item>
+        <item>Treze pras Oito.</item>
+        <item>Doze pras Oito.</item>
+        <item>Onze pras Oito.</item>
+        <item>Dez pras Oito.</item>
+        <item>Nove pras Oito.</item>
+        <item>Oito pras Oito.</item>
+        <item>Sete pras Oito.</item>
+        <item>Seis pras Oito.</item>
+        <item>Cinco pras Oito.</item>
+        <item>Quatro pras Oito.</item>
+        <item>Três pras Oito.</item>
+        <item>Dois pras Oito.</item>
+        <item>Um pras Oito.</item>
+        <item>Oito Horas.</item>
+        <item>Oito e Um.</item>
+        <item>Oito e Dois.</item>
+        <item>Oito e Três.</item>
+        <item>Oito e Quatro.</item>
+        <item>Oito e Cinco.</item>
+        <item>Oito e Seis.</item>
+        <item>Oito e Sete.</item>
+        <item>Oito e Oito.</item>
+        <item>Oito e Nove.</item>
+        <item>Oito e Dez.</item>
+        <item>Oito e Onze.</item>
+        <item>Oito e Doze.</item>
+        <item>Oito e Treze.</item>
+        <item>Oito e Quatorze.</item>
+        <item>Oito e Quinze.</item>
+        <item>Oito e Dezesseis.</item>
+        <item>Oito e Dezessete.</item>
+        <item>Oito e Dezoito.</item>
+        <item>Oito e Dezenove.</item>
+        <item>Oito e Vinte.</item>
+        <item>Oito e Vinte Um.</item>
+        <item>Oito e Vinte Dois.</item>
+        <item>Oito e Vinte Três.</item>
+        <item>Oito e Vinte Quatro.</item>
+        <item>Oito e Vinte Cinco.</item>
+        <item>Oito e Vinte Seis.</item>
+        <item>Oito e Vinte Sete.</item>
+        <item>Oito e Vinte Oito.</item>
+        <item>Oito e Vinte Nove.</item>
+        <item>Oito e Trinta.</item>
+        <item>Vinte Nove pras Nove.</item>
+        <item>Vinte Oito pras Nove.</item>
+        <item>Vinte Sete pras Nove.</item>
+        <item>Vinte Seis pras Nove.</item>
+        <item>Vinte Cinco pras Nove.</item>
+        <item>Vinte Quatro pras Nove.</item>
+        <item>Vinte Três pras Nove.</item>
+        <item>Vinte Dois pras Nove.</item>
+        <item>Vinte Um pras Nove.</item>
+        <item>Vinte pras Nove.</item>
+        <item>Dezenove pras Nove.</item>
+        <item>Dezoito pras Nove.</item>
+        <item>Dezessete pras Nove.</item>
+        <item>Dezesseis pras Nove.</item>
+        <item>Quinze pras Nove.</item>
+        <item>Quatorze pras Nove.</item>
+        <item>Treze pras Nove.</item>
+        <item>Doze pras Nove.</item>
+        <item>Onze pras Nove.</item>
+        <item>Dez pras Nove.</item>
+        <item>Nove pras Nove.</item>
+        <item>Oito pras Nove.</item>
+        <item>Sete pras Nove.</item>
+        <item>Seis pras Nove.</item>
+        <item>Cinco pras Nove.</item>
+        <item>Quatro pras Nove.</item>
+        <item>Três pras Nove.</item>
+        <item>Dois pras Nove.</item>
+        <item>Um pras Nove.</item>
+        <item>Nove Horas.</item>
+        <item>Nove e Um.</item>
+        <item>Nove e Dois.</item>
+        <item>Nove e Três.</item>
+        <item>Nove e Quatro.</item>
+        <item>Nove e Cinco.</item>
+        <item>Nove e Seis.</item>
+        <item>Nove e Sete.</item>
+        <item>Nove e Oito.</item>
+        <item>Nove e Nove.</item>
+        <item>Nove e Dez.</item>
+        <item>Nove e Onze.</item>
+        <item>Nove e Doze.</item>
+        <item>Nove e Treze.</item>
+        <item>Nove e Quatorze.</item>
+        <item>Nove e Quinze.</item>
+        <item>Nove e Dezesseis.</item>
+        <item>Nove e Dezessete.</item>
+        <item>Nove e Dezoito.</item>
+        <item>Nove e Dezenove.</item>
+        <item>Nove e Vinte.</item>
+        <item>Nove e Vinte Um.</item>
+        <item>Nove e Vinte Dois.</item>
+        <item>Nove e Vinte Três.</item>
+        <item>Nove e Vinte Quatro.</item>
+        <item>Nove e Vinte Cinco.</item>
+        <item>Nove e Vinte Seis.</item>
+        <item>Nove e Vinte Sete.</item>
+        <item>Nove e Vinte Oito.</item>
+        <item>Nove e Vinte Nove.</item>
+        <item>Nove e Trinta.</item>
+        <item>Vinte Nove pras Dez.</item>
+        <item>Vinte Oito pras Dez.</item>
+        <item>Vinte Sete pras Dez.</item>
+        <item>Vinte Seis pras Dez.</item>
+        <item>Vinte Cinco pras Dez.</item>
+        <item>Vinte Quatro pras Dez.</item>
+        <item>Vinte Três pras Dez.</item>
+        <item>Vinte Dois pras Dez.</item>
+        <item>Vinte Um pras Dez.</item>
+        <item>Vinte pras Dez.</item>
+        <item>Dezenove pras Dez.</item>
+        <item>Dezoito pras Dez.</item>
+        <item>Dezessete pras Dez.</item>
+        <item>Dezesseis pras Dez.</item>
+        <item>Quinze pras Dez.</item>
+        <item>Quatorze pras Dez.</item>
+        <item>Treze pras Dez.</item>
+        <item>Doze pras Dez.</item>
+        <item>Onze pras Dez.</item>
+        <item>Dez pras Dez.</item>
+        <item>Nove pras Dez.</item>
+        <item>Oito pras Dez.</item>
+        <item>Sete pras Dez.</item>
+        <item>Seis pras Dez.</item>
+        <item>Cinco pras Dez.</item>
+        <item>Quatro pras Dez.</item>
+        <item>Três pras Dez.</item>
+        <item>Dois pras Dez.</item>
+        <item>Um pras Dez.</item>
+        <item>Dez Horas.</item>
+        <item>Dez e Um.</item>
+        <item>Dez e Dois.</item>
+        <item>Dez e Três.</item>
+        <item>Dez e Quatro.</item>
+        <item>Dez e Cinco.</item>
+        <item>Dez e Seis.</item>
+        <item>Dez e Sete.</item>
+        <item>Dez e Oito.</item>
+        <item>Dez e Nove.</item>
+        <item>Dez e Dez.</item>
+        <item>Dez e Onze.</item>
+        <item>Dez e Doze.</item>
+        <item>Dez e Treze.</item>
+        <item>Dez e Quatorze.</item>
+        <item>Dez e Quinze.</item>
+        <item>Dez e Dezesseis.</item>
+        <item>Dez e Dezessete.</item>
+        <item>Dez e Dezoito.</item>
+        <item>Dez e Dezenove.</item>
+        <item>Dez e Vinte.</item>
+        <item>Dez e Vinte Um.</item>
+        <item>Dez e Vinte Dois.</item>
+        <item>Dez e Vinte Três.</item>
+        <item>Dez e Vinte Quatro.</item>
+        <item>Dez e Vinte Cinco.</item>
+        <item>Dez e Vinte Seis.</item>
+        <item>Dez e Vinte Sete.</item>
+        <item>Dez e Vinte Oito.</item>
+        <item>Dez e Vinte Nove.</item>
+        <item>Dez e Trinta.</item>
+        <item>Vinte Nove pras Onze.</item>
+        <item>Vinte Oito pras Onze.</item>
+        <item>Vinte Sete pras Onze.</item>
+        <item>Vinte Seis pras Onze.</item>
+        <item>Vinte Cinco pras Onze.</item>
+        <item>Vinte Quatro pras Onze.</item>
+        <item>Vinte Três pras Onze.</item>
+        <item>Vinte Dois pras Onze.</item>
+        <item>Vinte Um pras Onze.</item>
+        <item>Vinte pras Onze.</item>
+        <item>Dezenove pras Onze.</item>
+        <item>Dezoito pras Onze.</item>
+        <item>Dezessete pras Onze.</item>
+        <item>Dezesseis pras Onze.</item>
+        <item>Quinze pras Onze.</item>
+        <item>Quatorze pras Onze.</item>
+        <item>Treze pras Onze.</item>
+        <item>Doze pras Onze.</item>
+        <item>Onze pras Onze.</item>
+        <item>Dez pras Onze.</item>
+        <item>Nove pras Onze.</item>
+        <item>Oito pras Onze.</item>
+        <item>Sete pras Onze.</item>
+        <item>Seis pras Onze.</item>
+        <item>Cinco pras Onze.</item>
+        <item>Quatro pras Onze.</item>
+        <item>Três pras Onze.</item>
+        <item>Dois pras Onze.</item>
+        <item>Um pras Onze.</item>
+        <item>Onze Horas.</item>
+        <item>Onze e Um.</item>
+        <item>Onze e Dois.</item>
+        <item>Onze e Três.</item>
+        <item>Onze e Quatro.</item>
+        <item>Onze e Cinco.</item>
+        <item>Onze e Seis.</item>
+        <item>Onze e Sete.</item>
+        <item>Onze e Oito.</item>
+        <item>Onze e Nove.</item>
+        <item>Onze e Dez.</item>
+        <item>Onze e Onze.</item>
+        <item>Onze e Doze.</item>
+        <item>Onze e Treze.</item>
+        <item>Onze e Quatorze.</item>
+        <item>Onze e Quinze.</item>
+        <item>Onze e Dezesseis.</item>
+        <item>Onze e Dezessete.</item>
+        <item>Onze e Dezoito.</item>
+        <item>Onze e Dezenove.</item>
+        <item>Onze e Vinte.</item>
+        <item>Onze e Vinte Um.</item>
+        <item>Onze e Vinte Dois.</item>
+        <item>Onze e Vinte Três.</item>
+        <item>Onze e Vinte Quatro.</item>
+        <item>Onze e Vinte Cinco.</item>
+        <item>Onze e Vinte Seis.</item>
+        <item>Onze e Vinte Sete.</item>
+        <item>Onze e Vinte Oito.</item>
+        <item>Onze e Vinte Nove.</item>
+        <item>Onze e Trinta.</item>
+        <item>Vinte Nove pras Doze.</item>
+        <item>Vinte Oito pras Doze.</item>
+        <item>Vinte Sete pras Doze.</item>
+        <item>Vinte Seis pras Doze.</item>
+        <item>Vinte Cinco pras Doze.</item>
+        <item>Vinte Quatro pras Doze.</item>
+        <item>Vinte Três pras Doze.</item>
+        <item>Vinte Dois pras Doze.</item>
+        <item>Vinte Um pras Doze.</item>
+        <item>Vinte pras Doze.</item>
+        <item>Dezenove pras Doze.</item>
+        <item>Dezoito pras Doze.</item>
+        <item>Dezessete pras Doze.</item>
+        <item>Dezesseis pras Doze.</item>
+        <item>Quinze pras Doze.</item>
+        <item>Quatorze pras Doze.</item>
+        <item>Treze pras Doze.</item>
+        <item>Doze pras Doze.</item>
+        <item>Onze pras Doze.</item>
+        <item>Dez pras Doze.</item>
+        <item>Nove pras Doze.</item>
+        <item>Oito pras Doze.</item>
+        <item>Sete pras Doze.</item>
+        <item>Seis pras Doze.</item>
+        <item>Cinco pras Doze.</item>
+        <item>Quatro pras Doze.</item>
+        <item>Três pras Doze.</item>
+        <item>Dois pras Doze.</item>
+        <item>Um pras Doze.</item>
+    </string-array>
+    <string-array name="verbosetime3">
+        <item>Doze Horas.</item>
+        <item>Doze e Um.</item>
+        <item>Doze e Dois.</item>
+        <item>Doze e Três.</item>
+        <item>Doze e Quatro.</item>
+        <item>Doze e Cinco.</item>
+        <item>Doze e Seis.</item>
+        <item>Doze e Sete.</item>
+        <item>Doze e Oito.</item>
+        <item>Doze e Nove.</item>
+        <item>Doze e Dez.</item>
+        <item>Doze e Onze.</item>
+        <item>Doze e Doze.</item>
+        <item>Doze e Treze.</item>
+        <item>Doze e Quatorze.</item>
+        <item>Doze e Quinze.</item>
+        <item>Doze e Dezesseis.</item>
+        <item>Doze e Dezessete.</item>
+        <item>Doze e Dezoito.</item>
+        <item>Doze e Dezenove.</item>
+        <item>Doze e Vinte.</item>
+        <item>Doze e Vinte Um.</item>
+        <item>Doze e Vinte Dois.</item>
+        <item>Doze e Vinte Três.</item>
+        <item>Doze e Vinte Quatro.</item>
+        <item>Doze e Vinte Cinco.</item>
+        <item>Doze e Vinte Seis.</item>
+        <item>Doze e Vinte Sete.</item>
+        <item>Doze e Vinte Oito.</item>
+        <item>Doze e Vinte Nove.</item>
+        <item>Doze e Trinta.</item>
+        <item>Vinte Nove pra Uma.</item>
+        <item>Vinte Oito pra Um.</item>
+        <item>Vinte Sete pra Um.</item>
+        <item>Vinte Seis pra Um.</item>
+        <item>Vinte Cinco pra Um.</item>
+        <item>Vinte Quatro pra Uma.</item>
+        <item>Vinte Três pra Uma.</item>
+        <item>Vinte Dois pra Uma.</item>
+        <item>Vinte Um pra Uma.</item>
+        <item>Vinte pra Uma.</item>
+        <item>Dezenove pra Uma.</item>
+        <item>Dezoito pra Uma.</item>
+        <item>Dezessete pra Uma.</item>
+        <item>Dezesseis pra Uma.</item>
+        <item>Quinze pra Uma.</item>
+        <item>Quatorze pra Uma.</item>
+        <item>Treze pra Uma.</item>
+        <item>Doze pra Uma.</item>
+        <item>Onze pra Uma.</item>
+        <item>Dez pra Uma.</item>
+        <item>Nove pra Uma.</item>
+        <item>Oito pra Uma.</item>
+        <item>Sete pra Uma.</item>
+        <item>Seis pra Uma.</item>
+        <item>Cinco pra Uma.</item>
+        <item>Quatro pra Uma.</item>
+        <item>Três pra Uma.</item>
+        <item>Dois pra Uma.</item>
+        <item>Um pra Uma.</item>
+        <item>Uma Hora.</item>
+        <item>Uma e Um.</item>
+        <item>Uma e Dois.</item>
+        <item>Uma e Três.</item>
+        <item>Uma e Quatro.</item>
+        <item>Uma e Cinco.</item>
+        <item>Uma e Seis.</item>
+        <item>Uma e Sete.</item>
+        <item>Uma e Oito.</item>
+        <item>Uma e Nove.</item>
+        <item>Uma e Dez.</item>
+        <item>Uma e Onze.</item>
+        <item>Uma e Doze.</item>
+        <item>Uma e Treze.</item>
+        <item>Uma e Quatorze.</item>
+        <item>Uma e Quinze.</item>
+        <item>Uma e Dezesseis.</item>
+        <item>Uma e Dezessete.</item>
+        <item>Uma e Dezoito.</item>
+        <item>Uma e Dezenove.</item>
+        <item>Uma e Vinte.</item>
+        <item>Uma e Vinte Um.</item>
+        <item>Uma e Vinte Dois.</item>
+        <item>Uma e Vinte Três.</item>
+        <item>Uma e Vinte Quatro.</item>
+        <item>Uma e Vinte Cinco.</item>
+        <item>Uma e Vinte Seis.</item>
+        <item>Uma e Vinte Sete.</item>
+        <item>Uma e Vinte Oito.</item>
+        <item>Uma e Vinte Nove.</item>
+        <item>Uma e Trinta.</item>
+        <item>Vinte Nove pras Duas.</item>
+        <item>Vinte Oito pras Duas.</item>
+        <item>Vinte Sete pras Duas.</item>
+        <item>Vinte Seis pras Duas.</item>
+        <item>Vinte Cinco pras Duas.</item>
+        <item>Vinte Quatro pras Duas.</item>
+        <item>Vinte Três pras Duas.</item>
+        <item>Vinte Dois pras Duas.</item>
+        <item>Vinte Um pras Duas.</item>
+        <item>Vinte pras Duas.</item>
+        <item>Dezenove pras Duas.</item>
+        <item>Dezoito pras Duas.</item>
+        <item>Dezessete pras Duas.</item>
+        <item>Dezesseis pras Duas.</item>
+        <item>Quinze pras Duas.</item>
+        <item>Quatorze pras Duas.</item>
+        <item>Treze pras Duas.</item>
+        <item>Doze pras Duas.</item>
+        <item>Onze pras Duas.</item>
+        <item>Dez pras Duas.</item>
+        <item>Nove pras Duas.</item>
+        <item>Oito pras Duas.</item>
+        <item>Sete pras Duas.</item>
+        <item>Seis pras Duas.</item>
+        <item>Cinco pras Duas.</item>
+        <item>Quatro pras Duas.</item>
+        <item>Três pras Duas.</item>
+        <item>Dois pras Duas.</item>
+        <item>Um pras Duas.</item>
+        <item>Duas Horas.</item>
+        <item>Duas e Um.</item>
+        <item>Duas e Dois.</item>
+        <item>Duas e Três.</item>
+        <item>Quatro Duas e.</item>
+        <item>Duas e Cinco.</item>
+        <item>Duas e Seis.</item>
+        <item>Duas e Sete.</item>
+        <item>Duas e Oito.</item>
+        <item>Duas e Nove.</item>
+        <item>Duas e Dez.</item>
+        <item>Duas e Onze.</item>
+        <item>Duas e Doze.</item>
+        <item>Duas e Treze.</item>
+        <item>Duas e Quatorze.</item>
+        <item>Duas e Quinze.</item>
+        <item>Duas e Dezesseis.</item>
+        <item>Duas e Dezessete.</item>
+        <item>Duas e Dezoito.</item>
+        <item>Duas e Dezenove.</item>
+        <item>Duas e Vinte.</item>
+        <item>Duas e Vinte Um.</item>
+        <item>Duas e Vinte Dois.</item>
+        <item>Duas e Vinte Três.</item>
+        <item>Duas e Vinte Quatro.</item>
+        <item>Duas e Vinte Cinco.</item>
+        <item>Duas e Vinte Seis.</item>
+        <item>Duas e Vinte Sete.</item>
+        <item>Duas e Vinte Oito.</item>
+        <item>Duas e Vinte Nove.</item>
+        <item>Duas e Trinta.</item>
+        <item>Vinte Nove pras Três.</item>
+        <item>Vinte Oito pras Três.</item>
+        <item>Vinte Sete pras Três.</item>
+        <item>Vinte Seis pras Três.</item>
+        <item>Vinte Cinco pras Três.</item>
+        <item>Vinte Quatro pras Três.</item>
+        <item>Vinte Três pras Três.</item>
+        <item>Vinte Dois pras Três.</item>
+        <item>Vinte Um pras Três.</item>
+        <item>Vinte pras Três.</item>
+        <item>Dezenove pras Três.</item>
+        <item>Dezoito pras Três.</item>
+        <item>Dezessete pras Três.</item>
+        <item>Dezesseis pras Três.</item>
+        <item>Quinze pras Três.</item>
+        <item>Quatorze pras Três.</item>
+        <item>Treze pras Três.</item>
+        <item>Doze pras Três.</item>
+        <item>Onze pras Três.</item>
+        <item>Dez pras Três.</item>
+        <item>Nove pras Três.</item>
+        <item>Oito pras Três.</item>
+        <item>Sete pras Três.</item>
+        <item>Seis pras Três.</item>
+        <item>Cinco pras Três.</item>
+        <item>Quatro pras Três.</item>
+        <item>Três pras Três.</item>
+        <item>Dois pras Três.</item>
+        <item>Um pras Três.</item>
+        <item>Três Horas.</item>
+        <item>Três e Um.</item>
+        <item>Três e Dois.</item>
+        <item>Três e Três.</item>
+        <item>Três e Quatro.</item>
+        <item>Três e Cinco.</item>
+        <item>Três e Seis.</item>
+        <item>Três e Sete.</item>
+        <item>Três e Oito.</item>
+        <item>Três e Nove.</item>
+        <item>Três e Dez.</item>
+        <item>Três e Onze.</item>
+        <item>Três e Doze.</item>
+        <item>Três e Treze.</item>
+        <item>Três e Quatorze.</item>
+        <item>Três e Quinze.</item>
+        <item>Três e Dezesseis.</item>
+        <item>Três e Dezessete.</item>
+        <item>Três e Dezoito.</item>
+        <item>Três e Dezenove.</item>
+        <item>Três e Vinte.</item>
+        <item>Três e Vinte Um.</item>
+        <item>Três e Vinte Dois.</item>
+        <item>Três e Vinte Três.</item>
+        <item>Três e Vinte Quatro.</item>
+        <item>Três e Vinte Cinco.</item>
+        <item>Três e Vinte Seis.</item>
+        <item>Três e Vinte Sete.</item>
+        <item>Três e Vinte Oito.</item>
+        <item>Três e Vinte Nove.</item>
+        <item>Três e Trinta.</item>
+        <item>Vinte Nove pras Quatro.</item>
+        <item>Vinte Oito pras Quatro.</item>
+        <item>Vinte Sete pras Quatro.</item>
+        <item>Vinte Seis pras Quatro.</item>
+        <item>Vinte Cinco pras Quatro.</item>
+        <item>Vinte Quatro pras Quatro.</item>
+        <item>Vinte Três pras Quatro.</item>
+        <item>Vinte Dois pras Quatro.</item>
+        <item>Vinte Um pras Quatro.</item>
+        <item>Vinte pras Quatro.</item>
+        <item>Dezenove pras Quatro.</item>
+        <item>Dezoito pras Quatro.</item>
+        <item>Dezessete pras Quatro.</item>
+        <item>Dezesseis pras Quatro.</item>
+        <item>Quinze pras Quatro.</item>
+        <item>Quatorze pras Quatro.</item>
+        <item>Treze pras Quatro.</item>
+        <item>Doze pras Quatro.</item>
+        <item>Onze pras Quatro.</item>
+        <item>Dez pras Quatro.</item>
+        <item>Nove pras Quatro.</item>
+        <item>Oito pras Quatro.</item>
+        <item>Sete pras Quatro.</item>
+        <item>Seis pras Quatro.</item>
+        <item>Cinco pras Quatro.</item>
+        <item>Quatro pras Quatro.</item>
+        <item>Três pras Quatro.</item>
+        <item>Dois pras Quatro.</item>
+        <item>Um pras Quatro.</item>
+        <item>Quatro Horas.</item>
+        <item>Quatro e Um.</item>
+        <item>Quatro e Dois.</item>
+        <item>Quatro e Três.</item>
+        <item>Quatro e Quatro.</item>
+        <item>Quatro e Cinco.</item>
+        <item>Quatro e Seis.</item>
+        <item>Quatro e Sete.</item>
+        <item>Quatro e Oito.</item>
+        <item>Quatro e Nove.</item>
+        <item>Quatro e Dez.</item>
+        <item>Quatro e Onze.</item>
+        <item>Quatro e Doze.</item>
+        <item>Quatro e Treze.</item>
+        <item>Quatro e Quatorze.</item>
+        <item>Quatro e Quinze.</item>
+        <item>Quatro e Dezesseis.</item>
+        <item>Quatro e Dezessete.</item>
+        <item>Quatro e Dezoito.</item>
+        <item>Quatro e Dezenove.</item>
+        <item>Quatro e Vinte.</item>
+        <item>Quatro e Vinte Um.</item>
+        <item>Quatro e Vinte Dois.</item>
+        <item>Quatro e Vinte Três.</item>
+        <item>Quatro e Vinte Quatro.</item>
+        <item>Quatro e Vinte Cinco.</item>
+        <item>Quatro e Vinte Seis.</item>
+        <item>Quatro e Vinte Sete.</item>
+        <item>Quatro e Vinte Oito.</item>
+        <item>Quatro e Vinte Nove.</item>
+        <item>Quatro e Trinta.</item>
+        <item>Vinte Nove pras Cinco.</item>
+        <item>Vinte Oito pras Cinco.</item>
+        <item>Vinte Sete pras Cinco.</item>
+        <item>Vinte Seis pras Cinco.</item>
+        <item>Vinte Cinco pras Cinco.</item>
+        <item>Vinte Quatro pras Cinco.</item>
+        <item>Vinte Três pras Cinco.</item>
+        <item>Vinte Dois pras Cinco.</item>
+        <item>Vinte Um pras Cinco.</item>
+        <item>Vinte pras Cinco.</item>
+        <item>Dezenove pras Cinco.</item>
+        <item>Dezoito pras Cinco.</item>
+        <item>Dezessete pras Cinco.</item>
+        <item>Dezesseis pras Cinco.</item>
+        <item>Quinze pras Cinco.</item>
+        <item>Quatorze pras Cinco.</item>
+        <item>Treze pras Cinco.</item>
+        <item>Doze pras Cinco.</item>
+        <item>Onze pras Cinco.</item>
+        <item>Dez pras Cinco.</item>
+        <item>Nove pras Cinco.</item>
+        <item>Oito pras Cinco.</item>
+        <item>Sete pras Cinco.</item>
+        <item>Seis pras Cinco.</item>
+        <item>Cinco pras Cinco.</item>
+        <item>Quatro pras Cinco.</item>
+        <item>Três pras Cinco.</item>
+        <item>Dois pras Cinco.</item>
+        <item>Um pras Cinco.</item>
+        <item>Cinco Horas.</item>
+        <item>Cinco e Um.</item>
+        <item>Cinco e Dois.</item>
+        <item>Cinco e Três.</item>
+        <item>Cinco e Quatro.</item>
+        <item>Cinco e Cinco.</item>
+        <item>Cinco e Seis.</item>
+        <item>Cinco e Sete.</item>
+        <item>Cinco e Oito.</item>
+        <item>Cinco e Nove.</item>
+        <item>Cinco e Dez.</item>
+        <item>Cinco e Onze.</item>
+        <item>Cinco e Doze.</item>
+        <item>Cinco e Treze.</item>
+        <item>Cinco e Quatorze.</item>
+        <item>Cinco e Quinze.</item>
+        <item>Cinco e Dezesseis.</item>
+        <item>Cinco e Dezessete.</item>
+        <item>Cinco e Dezoito.</item>
+        <item>Cinco e Dezenove.</item>
+        <item>Cinco e Vinte.</item>
+        <item>Cinco e Vinte Um.</item>
+        <item>Cinco e Vinte Dois.</item>
+        <item>Cinco e Vinte Três.</item>
+        <item>Cinco e Vinte Quatro.</item>
+        <item>Cinco e Vinte Cinco.</item>
+        <item>Cinco e Vinte Seis.</item>
+        <item>Cinco e Vinte Sete.</item>
+        <item>Cinco e Vinte Oito.</item>
+        <item>Cinco e Vinte Nove.</item>
+        <item>Cinco e Trinta.</item>
+        <item>Vinte Nove pras Seis.</item>
+        <item>Vinte Oito pras Seis.</item>
+        <item>Vinte Sete pras Seis.</item>
+        <item>Vinte Seis pras Seis.</item>
+        <item>Vinte Cinco pras Seis.</item>
+        <item>Vinte Quatro pras Seis.</item>
+        <item>Vinte Três pras Seis.</item>
+        <item>Vinte Dois pras Seis.</item>
+        <item>Vinte Um pras Seis.</item>
+        <item>Vinte pras Seis.</item>
+        <item>Dezenove pras Seis.</item>
+        <item>Dezoito pras Seis.</item>
+        <item>Dezessete pras Seis.</item>
+        <item>Dezesseis pras Seis.</item>
+        <item>Quinze pras Seis.</item>
+        <item>Quatorze pras Seis.</item>
+        <item>Treze pras Seis.</item>
+        <item>Doze pras Seis.</item>
+        <item>Onze pras Seis.</item>
+        <item>Dez pras Seis.</item>
+        <item>Nove pras Seis.</item>
+        <item>Oito pras Seis.</item>
+        <item>Sete pras Seis.</item>
+        <item>Seis pras Seis.</item>
+        <item>Cinco pras Seis.</item>
+        <item>Quatro pras Seis.</item>
+        <item>Três pras Seis.</item>
+        <item>Dois pras Seis.</item>
+        <item>Um pras Seis.</item>
+    </string-array>
+    <string-array name="verbosetime4">
+        <item>Seis Horas.</item>
+        <item>Seis e Um.</item>
+        <item>Seis e Dois.</item>
+        <item>Seis e Três.</item>
+        <item>Seis e Quatro.</item>
+        <item>Seis e Cinco.</item>
+        <item>Seis e Seis.</item>
+        <item>Seis e Sete.</item>
+        <item>Seis e Oito.</item>
+        <item>Seis e Nove.</item>
+        <item>Seis e Dez.</item>
+        <item>Seis e Onze.</item>
+        <item>Seis e Doze.</item>
+        <item>Seis e Treze.</item>
+        <item>Seis e Quatorze.</item>
+        <item>Seis e Quinze.</item>
+        <item>Seis e Dezesseis.</item>
+        <item>Seis e Dezessete.</item>
+        <item>Seis e Dezoito.</item>
+        <item>Seis e Dezenove.</item>
+        <item>Seis e Vinte.</item>
+        <item>Seis e Vinte Um.</item>
+        <item>Seis e Vinte Dois.</item>
+        <item>Seis e Vinte Três.</item>
+        <item>Seis e Vinte Quatro.</item>
+        <item>Seis e Vinte Cinco.</item>
+        <item>Seis e Vinte Seis.</item>
+        <item>Seis e Vinte Sete.</item>
+        <item>Seis e Vinte Oito.</item>
+        <item>Seis e Vinte Nove.</item>
+        <item>Seis e Trinta.</item>
+        <item>Vinte Nove pras Sete.</item>
+        <item>Vinte Oito pras Sete.</item>
+        <item>Vinte Sete pras Sete.</item>
+        <item>Vinte Seis pras Sete.</item>
+        <item>Vinte Cinco pras Sete.</item>
+        <item>Vinte Quatro pras Sete.</item>
+        <item>Vinte Três pras Sete.</item>
+        <item>Vinte Dois pras Sete.</item>
+        <item>Vinte Um pras Sete.</item>
+        <item>Vinte pras Sete.</item>
+        <item>Dezenove pras Sete.</item>
+        <item>Dezoito pras Sete.</item>
+        <item>Dezessete pras Sete.</item>
+        <item>Dezesseis pras Sete.</item>
+        <item>Quinze pras Sete.</item>
+        <item>Quatorze pras Sete.</item>
+        <item>Treze pras Sete.</item>
+        <item>Doze pras Sete.</item>
+        <item>Onze pras Sete.</item>
+        <item>Dez pras Sete.</item>
+        <item>Nove pras Sete.</item>
+        <item>Oito pras Sete.</item>
+        <item>Sete pras Sete.</item>
+        <item>Seis pras Sete.</item>
+        <item>Cinco pras Sete.</item>
+        <item>Quatro pras Sete.</item>
+        <item>Três pras Sete.</item>
+        <item>Dois pras Sete.</item>
+        <item>Um pras Sete.</item>
+        <item>Sete Horas.</item>
+        <item>Sete e Um.</item>
+        <item>Sete e Dois.</item>
+        <item>Sete e Três.</item>
+        <item>Sete e Quatro.</item>
+        <item>Sete e Cinco.</item>
+        <item>Sete e Seis.</item>
+        <item>Sete e Sete.</item>
+        <item>Sete e Oito.</item>
+        <item>Sete e Nove.</item>
+        <item>Sete e Dez.</item>
+        <item>Sete e Onze.</item>
+        <item>Sete e Doze.</item>
+        <item>Sete e Treze.</item>
+        <item>Sete e Quatorze.</item>
+        <item>Sete e Quinze.</item>
+        <item>Sete e Dezesseis.</item>
+        <item>Sete e Dezessete.</item>
+        <item>Sete e Dezoito.</item>
+        <item>Sete e Dezenove.</item>
+        <item>Sete e Vinte.</item>
+        <item>Sete e Vinte Um.</item>
+        <item>Sete e Vinte Dois.</item>
+        <item>Sete e Vinte Três.</item>
+        <item>Sete e Vinte Quatro.</item>
+        <item>Sete e Vinte Cinco.</item>
+        <item>Sete e Vinte Seis.</item>
+        <item>Sete e Vinte Sete.</item>
+        <item>Sete e Vinte Oito.</item>
+        <item>Sete e Vinte Nove.</item>
+        <item>Sete e Trinta.</item>
+        <item>Vinte Nove pras Oito.</item>
+        <item>Vinte Oito pras Oito.</item>
+        <item>Vinte Sete pras Oito.</item>
+        <item>Vinte Seis pras Oito.</item>
+        <item>Vinte Cinco pras Oito.</item>
+        <item>Vinte Quatro pras Oito.</item>
+        <item>Vinte Três pras Oito.</item>
+        <item>Vinte Dois pras Oito.</item>
+        <item>Vinte Um pras Oito.</item>
+        <item>Vinte pras Oito.</item>
+        <item>Dezenove pras Oito.</item>
+        <item>Dezoito pras Oito.</item>
+        <item>Dezessete pras Oito.</item>
+        <item>Dezesseis pras Oito.</item>
+        <item>Quinze pras Oito.</item>
+        <item>Quatorze pras Oito.</item>
+        <item>Treze pras Oito.</item>
+        <item>Doze pras Oito.</item>
+        <item>Onze pras Oito.</item>
+        <item>Dez pras Oito.</item>
+        <item>Nove pras Oito.</item>
+        <item>Oito pras Oito.</item>
+        <item>Sete pras Oito.</item>
+        <item>Seis pras Oito.</item>
+        <item>Cinco pras Oito.</item>
+        <item>Quatro pras Oito.</item>
+        <item>Três pras Oito.</item>
+        <item>Dois pras Oito.</item>
+        <item>Um pras Oito.</item>
+        <item>Oito Horas.</item>
+        <item>Oito e Um.</item>
+        <item>Oito e Dois.</item>
+        <item>Oito e Três.</item>
+        <item>Oito e Quatro.</item>
+        <item>Oito e Cinco.</item>
+        <item>Oito e Seis.</item>
+        <item>Oito e Sete.</item>
+        <item>Oito e Oito.</item>
+        <item>Oito e Nove.</item>
+        <item>Oito e Dez.</item>
+        <item>Oito e Onze.</item>
+        <item>Oito e Doze.</item>
+        <item>Oito e Treze.</item>
+        <item>Oito e Quatorze.</item>
+        <item>Oito e Quinze.</item>
+        <item>Oito e Dezesseis.</item>
+        <item>Oito e Dezessete.</item>
+        <item>Oito e Dezoito.</item>
+        <item>Oito e Dezenove.</item>
+        <item>Oito e Vinte.</item>
+        <item>Oito e Vinte Um.</item>
+        <item>Oito e Vinte Dois.</item>
+        <item>Oito e Vinte Três.</item>
+        <item>Oito e Vinte Quatro.</item>
+        <item>Oito e Vinte Cinco.</item>
+        <item>Oito e Vinte Seis.</item>
+        <item>Oito e Vinte Sete.</item>
+        <item>Oito e Vinte Oito.</item>
+        <item>Oito e Vinte Nove.</item>
+        <item>Oito e Trinta.</item>
+        <item>Vinte Nove pras Nove.</item>
+        <item>Vinte Oito pras Nove.</item>
+        <item>Vinte Sete pras Nove.</item>
+        <item>Vinte Seis pras Nove.</item>
+        <item>Vinte Cinco pras Nove.</item>
+        <item>Vinte Quatro pras Nove.</item>
+        <item>Vinte Três pras Nove.</item>
+        <item>Vinte Dois pras Nove.</item>
+        <item>Vinte Um pras Nove.</item>
+        <item>Vinte pras Nove.</item>
+        <item>Dezenove pras Nove.</item>
+        <item>Dezoito pras Nove.</item>
+        <item>Dezessete pras Nove.</item>
+        <item>Dezesseis pras Nove.</item>
+        <item>Quinze pras Nove.</item>
+        <item>Quatorze pras Nove.</item>
+        <item>Treze pras Nove.</item>
+        <item>Doze pras Nove.</item>
+        <item>Onze pras Nove.</item>
+        <item>Dez pras Nove.</item>
+        <item>Nove pras Nove.</item>
+        <item>Oito pras Nove.</item>
+        <item>Sete pras Nove.</item>
+        <item>Seis pras Nove.</item>
+        <item>Cinco pras Nove.</item>
+        <item>Quatro pras Nove.</item>
+        <item>Três pras Nove.</item>
+        <item>Dois pras Nove.</item>
+        <item>Um pras Nove.</item>
+        <item>Nove Horas.</item>
+        <item>Nove e Um.</item>
+        <item>Nove e Dois.</item>
+        <item>Nove e Três.</item>
+        <item>Nove e Quatro.</item>
+        <item>Nove e Cinco.</item>
+        <item>Nove e Seis.</item>
+        <item>Nove e Sete.</item>
+        <item>Nove e Oito.</item>
+        <item>Nove e Nove.</item>
+        <item>Nove e Dez.</item>
+        <item>Nove e Onze.</item>
+        <item>Nove e Doze.</item>
+        <item>Nove e Treze.</item>
+        <item>Nove e Quatorze.</item>
+        <item>Nove e Quinze.</item>
+        <item>Nove e Dezesseis.</item>
+        <item>Nove e Dezessete.</item>
+        <item>Nove e Dezoito.</item>
+        <item>Nove e Dezenove.</item>
+        <item>Nove e Vinte.</item>
+        <item>Nove e Vinte Um.</item>
+        <item>Nove e Vinte Dois.</item>
+        <item>Nove e Vinte Três.</item>
+        <item>Nove e Vinte Quatro.</item>
+        <item>Nove e Vinte Cinco.</item>
+        <item>Nove e Vinte Seis.</item>
+        <item>Nove e Vinte Sete.</item>
+        <item>Nove e Vinte Oito.</item>
+        <item>Nove e Vinte Nove.</item>
+        <item>Nove e Trinta.</item>
+        <item>Vinte Nove pras Dez.</item>
+        <item>Vinte Oito pras Dez.</item>
+        <item>Vinte Sete pras Dez.</item>
+        <item>Vinte Seis pras Dez.</item>
+        <item>Vinte Cinco pras Dez.</item>
+        <item>Vinte Quatro pras Dez.</item>
+        <item>Vinte Três pras Dez.</item>
+        <item>Vinte Dois pras Dez.</item>
+        <item>Vinte Um pras Dez.</item>
+        <item>Vinte pras Dez.</item>
+        <item>Dezenove pras Dez.</item>
+        <item>Dezoito pras Dez.</item>
+        <item>Dezessete pras Dez.</item>
+        <item>Dezesseis pras Dez.</item>
+        <item>Quinze pras Dez.</item>
+        <item>Quatorze pras Dez.</item>
+        <item>Treze pras Dez.</item>
+        <item>Doze pras Dez.</item>
+        <item>Onze pras Dez.</item>
+        <item>Dez pras Dez.</item>
+        <item>Nove pras Dez.</item>
+        <item>Oito pras Dez.</item>
+        <item>Sete pras Dez.</item>
+        <item>Seis pras Dez.</item>
+        <item>Cinco pras Dez.</item>
+        <item>Quatro pras Dez.</item>
+        <item>Três pras Dez.</item>
+        <item>Dois pras Dez.</item>
+        <item>Um pras Dez.</item>
+        <item>Dez Horas.</item>
+        <item>Dez e Um.</item>
+        <item>Dez e Dois.</item>
+        <item>Dez e Três.</item>
+        <item>Dez e Quatro.</item>
+        <item>Dez e Cinco.</item>
+        <item>Dez e Seis.</item>
+        <item>Dez e Sete.</item>
+        <item>Dez e Oito.</item>
+        <item>Dez e Nove.</item>
+        <item>Dez e Dez.</item>
+        <item>Dez e Onze.</item>
+        <item>Dez e Doze.</item>
+        <item>Dez e Treze.</item>
+        <item>Dez e Quatorze.</item>
+        <item>Dez e Quinze.</item>
+        <item>Dez e Dezesseis.</item>
+        <item>Dez e Dezessete.</item>
+        <item>Dez e Dezoito.</item>
+        <item>Dez e Dezenove.</item>
+        <item>Dez e Vinte.</item>
+        <item>Dez e Vinte Um.</item>
+        <item>Dez e Vinte Dois.</item>
+        <item>Dez e Vinte Três.</item>
+        <item>Dez e Vinte Quatro.</item>
+        <item>Dez e Vinte Cinco.</item>
+        <item>Dez e Vinte Seis.</item>
+        <item>Dez e Vinte Sete.</item>
+        <item>Dez e Vinte Oito.</item>
+        <item>Dez e Vinte Nove.</item>
+        <item>Dez e Trinta.</item>
+        <item>Vinte Nove pras Onze.</item>
+        <item>Vinte Oito pras Onze.</item>
+        <item>Vinte Sete pras Onze.</item>
+        <item>Vinte Seis pras Onze.</item>
+        <item>Vinte Cinco pras Onze.</item>
+        <item>Vinte Quatro pras Onze.</item>
+        <item>Vinte Três pras Onze.</item>
+        <item>Vinte Dois pras Onze.</item>
+        <item>Vinte Um pras Onze.</item>
+        <item>Vinte pras Onze.</item>
+        <item>Dezenove pras Onze.</item>
+        <item>Dezoito pras Onze.</item>
+        <item>Dezessete pras Onze.</item>
+        <item>Dezesseis pras Onze.</item>
+        <item>Quinze pras Onze.</item>
+        <item>Quatorze pras Onze.</item>
+        <item>Treze pras Onze.</item>
+        <item>Doze pras Onze.</item>
+        <item>Onze pras Onze.</item>
+        <item>Dez pras Onze.</item>
+        <item>Nove pras Onze.</item>
+        <item>Oito pras Onze.</item>
+        <item>Sete pras Onze.</item>
+        <item>Seis pras Onze.</item>
+        <item>Cinco pras Onze.</item>
+        <item>Quatro pras Onze.</item>
+        <item>Três pras Onze.</item>
+        <item>Dois pras Onze.</item>
+        <item>Um pras Onze.</item>
+        <item>Onze Horas.</item>
+        <item>Onze e Um.</item>
+        <item>Onze e Dois.</item>
+        <item>Onze e Três.</item>
+        <item>Onze e Quatro.</item>
+        <item>Onze e Cinco.</item>
+        <item>Onze e Seis.</item>
+        <item>Onze e Sete.</item>
+        <item>Onze e Oito.</item>
+        <item>Onze e Nove.</item>
+        <item>Onze e Dez.</item>
+        <item>Onze e Onze.</item>
+        <item>Onze e Doze.</item>
+        <item>Onze e Treze.</item>
+        <item>Onze e Quatorze.</item>
+        <item>Onze e Quinze.</item>
+        <item>Onze e Dezesseis.</item>
+        <item>Onze e Dezessete.</item>
+        <item>Onze e Dezoito.</item>
+        <item>Onze e Dezenove.</item>
+        <item>Onze e Vinte.</item>
+        <item>Onze e Vinte Um.</item>
+        <item>Onze e Vinte Dois.</item>
+        <item>Onze e Vinte Três.</item>
+        <item>Onze e Vinte Quatro.</item>
+        <item>Onze e Vinte Cinco.</item>
+        <item>Onze e Vinte Seis.</item>
+        <item>Onze e Vinte Sete.</item>
+        <item>Onze e Vinte Oito.</item>
+        <item>Onze e Vinte Nove.</item>
+        <item>Onze e Trinta.</item>
+        <item>Vinte Nove pras Doze.</item>
+        <item>Vinte Oito pras Doze.</item>
+        <item>Vinte Sete pras Doze.</item>
+        <item>Vinte Seis pras Doze.</item>
+        <item>Vinte Cinco pras Doze.</item>
+        <item>Vinte Quatro pras Doze.</item>
+        <item>Vinte Três pras Doze.</item>
+        <item>Vinte Dois pras Doze.</item>
+        <item>Vinte Um pras Doze.</item>
+        <item>Vinte pras Doze.</item>
+        <item>Dezenove pras Doze.</item>
+        <item>Dezoito pras Doze.</item>
+        <item>Dezessete pras Doze.</item>
+        <item>Dezesseis pras Doze.</item>
+        <item>Quinze pras Doze.</item>
+        <item>Quatorze pras Doze.</item>
+        <item>Treze pras Doze.</item>
+        <item>Doze pras Doze.</item>
+        <item>Onze pras Doze.</item>
+        <item>Dez pras Doze.</item>
+        <item>Nove pras Doze.</item>
+        <item>Oito pras Doze.</item>
+        <item>Sete pras Doze.</item>
+        <item>Seis pras Doze.</item>
+        <item>Cinco pras Doze.</item>
+        <item>Quatro pras Doze.</item>
+        <item>Três pras Doze.</item>
+        <item>Dois pras Doze.</item>
+        <item>Um pras Doze.</item>
+    </string-array>
+
+</resources>

@@ -270,6 +270,12 @@
             android:title="1.0.0" />
         <Preference
             android:enabled="true"
+            android:key="sTranslator"
+            android:selectable="false"
+            android:title="Sunny Kwong" 
+            android:summary="Language: English(US)"/>
+        <Preference
+            android:enabled="true"
             android:key="widgetCredits"
             android:selectable="true"
             android:title="@string/viewCredits" />

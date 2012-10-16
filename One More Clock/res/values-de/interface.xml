@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 	<!-- German -->
     <resources>
-        <!-- General Buttons -->
+
+        <string name="languageWord">Sprache</string>
+        <string name="languageName">Deutsch</string>
+    	<string name="translator">SavanTorian (Andy)</string>
+    		
+    	<!-- General Buttons -->
         <string name="nextTip">Nächster Tip.</string>
         <string name="ok">OK.</string>
         <string name="search">Suche.</string>
@@ -73,29 +78,29 @@
         <string name="reloadThemeCatalog">Nochmaliges Laden der "Themen-Auswahl"</string>
 
         <!-- Theme Import/Unzip -->
-        <string newname="" name="themePreview">Theme Vorschau.</string>
-        <string newname="" name="openingConnection">Öffnen der Verbindung.</string>
-        <string newname="" name="beginningDownload">Beginn des Downloads.</string>
-        <string newname="" name="downloading">Downloading&#8230;</string>
-        <string newname="" name="downloaded">Download abgeschlossen.</string>
-        <string newname="" name="of">von</string>
-        <string newname="" name="bytes">Bytes</string>
-        <string newname="" name="existsOverwriting">existiert; wird überschrieben.</string>
-        <string newname="" name="createThemeFolder1">Theme Ordner \'</string>
-        <string newname="" name="createThemeFolder2">\'angelegt.</string>
-        <string newname="" name="detectedWeatherskin">Wetter-Skin gefunden.</string>
-        <string newname="" name="extractingStarterClockPack">Entpacken des Starter-Uhren-Packs&#8230;</string>
-        <string newname="" name="starterClockPack">Starter-Uhren-Pack</string>
-        <string newname="" name="starterClockPackText">Dateien in Ihrem .OMCThemes Ordner auf der internen SD Card werden überschrieben. Sicher?\n(Wenn nicht, auf \'ja\' tippen!)</string>
-        <string newname="" name="importComplete">Import vollständig!</string>
-        <string newname="" name="importAborted">Import abgebrochen!</string>
-        <string newname="" name="useDownloadInsteadOfPreview">Bitte nutzen Sie die Downloadfunktion anstelle der Vorschau für den Import der OMC-Uhren!</string>
-        <string newname="" name="importWorksWithOMCFiles">Uhrenimport arbeitet nur mit .omc-Dateien.\nWurde ein falscher Dateityp ausgewählt?</string>
-        <string newname="" name="nothingToExtract">Nichts zu entpacken!</string>
-        <string newname="" name="downloadInterrupted">Download abgebrochen!</string>
-        <string newname="" name="poorReceptionArea">Ist Ihr Smartphone in einer unterversorgten Gegend?\nBitte später nochmals versuchen.</string>
-        <string newname="" name="connectionTimedOut">Verbindungszeitüberschreitung!</string>
-        <string newname="" name="serverNotFound">Server nicht gefunden!</string>
+        <string name="themePreview">Theme Vorschau.</string>
+        <string name="openingConnection">Öffnen der Verbindung.</string>
+        <string name="beginningDownload">Beginn des Downloads.</string>
+        <string name="downloading">Downloading&#8230;</string>
+        <string name="downloaded">Download abgeschlossen.</string>
+        <string name="of">von</string>
+        <string name="bytes">Bytes</string>
+        <string name="existsOverwriting">existiert; wird überschrieben.</string>
+        <string name="createThemeFolder1">Theme Ordner \'</string>
+        <string name="createThemeFolder2">\'angelegt.</string>
+        <string name="detectedWeatherskin">Wetter-Skin gefunden.</string>
+        <string name="extractingStarterClockPack">Entpacken des Starter-Uhren-Packs&#8230;</string>
+        <string name="starterClockPack">Starter-Uhren-Pack</string>
+        <string name="starterClockPackText">Dateien in Ihrem .OMCThemes Ordner auf der internen SD Card werden überschrieben. Sicher?\n(Wenn nicht, auf \'ja\' tippen!)</string>
+        <string name="importComplete">Import vollständig!</string>
+        <string name="importAborted">Import abgebrochen!</string>
+        <string name="useDownloadInsteadOfPreview">Bitte nutzen Sie die Downloadfunktion anstelle der Vorschau für den Import der OMC-Uhren!</string>
+        <string name="importWorksWithOMCFiles">Uhrenimport arbeitet nur mit .omc-Dateien.\nWurde ein falscher Dateityp ausgewählt?</string>
+        <string name="nothingToExtract">Nichts zu entpacken!</string>
+        <string name="downloadInterrupted">Download abgebrochen!</string>
+        <string name="poorReceptionArea">Ist Ihr Smartphone in einer unterversorgten Gegend?\nBitte später nochmals versuchen.</string>
+        <string name="connectionTimedOut">Verbindungszeitüberschreitung!</string>
+        <string name="serverNotFound">Server nicht gefunden!</string>
         
         <!-- Widget Theme Long Press-->
         
@@ -195,9 +200,9 @@
         <!-- Fixed Locn subscreen -->
         <string name="enterCityAndStateCountry">Eingabe von Stadt, Staat/Land.</string>
         <string name="locationExamples">Z.B. "London UK"</string>
-        <string newname="" name="locationError">Keine Ergebnisse gefunden.\nBitte nochmals probieren.</string>
-        <string newname="" name="networkError">Keine Verbindung gefunden.\nBitte nochmals probieren.</string>
-        <string newname="" name="unknownError">Ein unbekannter Fehler ist aufgetreten.\nBitte nochmals probieren.</string>
+        <string name="locationError">Keine Ergebnisse gefunden.\nBitte nochmals probieren.</string>
+        <string name="networkError">Keine Verbindung gefunden.\nBitte nochmals probieren.</string>
+        <string name="unknownError">Ein unbekannter Fehler ist aufgetreten.\nBitte nochmals probieren.</string>
         
         <string name="weatherProvider">Wetterdienst.</string>
 		<string-array name="wprovider_options">
@@ -250,8 +255,8 @@
         
         <string name="forceEnglishDates">Englisches Datum.</string>
         <string name="uncheckForSome">Abwahl für einige Nicht-Englische Regionsschemata.(Experimentell).</string>
-        <string newname="" name="changeAppLocale">Sprachwahl.</string>
-        <string newname="" name="changeClockLocale">Sprache der Uhrenanzeige.</string>
+        <string name="changeAppLocale">Sprachwahl.</string>
+        <string name="changeClockLocale">Sprache der Uhrenanzeige.</string>
         
         <string name="toggleWidgetSizes">Auswahl der Widget-Größen.</string>
         
