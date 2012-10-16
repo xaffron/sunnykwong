@@ -302,7 +302,7 @@ public class OMC extends Application {
 		OMC.SKINNERCNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".OMCSkinnerActivity");
 
 		
-		OMC.LASTUPDATEMILLIS = 0l;
+		OMC.LASTUPDATEMILLIS = 0l; 
 		OMC.LEASTLAGMILLIS = 0l;
 		
 		OMC.aRC = new OMCAlarmReceiver();

@@ -35,7 +35,7 @@
         <!-- Forecast Screen -->
         <string name="doubleDash">--</string>
         <string name="unknown">Okänd</string>
-        <string name="noaaWeatherCredit">Weather observations and forecasts updated from the National Oceanic and Atmospheric Administration (NOAA).</string>
+        <string newname="" name="noaaWeatherCredit">Weather observations and forecasts updated from the National Oceanic and Atmospheric Administration (NOAA).</string>
         <string name="igWeatherCredit">Väder uppdaterat från Google API.</string>
         <string name="yrWeatherCredit">Väderprognos av yr.no, levererat av Meteorologisk Institutt i Norge och NRK.</string>
         <string name="seventimerWeatherCredit">7Timer!-prognoser av Ye Quanzhi, med stöd från Shanghai Astronomical Observatory (SHAO) och Chinese Academy of Sciences (CAS).</string>
@@ -74,10 +74,29 @@
 
         <!-- Theme Import/Unzip -->
         <string name="themePreview">Förhandsgranskning av tema</string>
+        <string newname="" name="openingConnection">Opening connection.</string>
         <string name="beginningDownload">Startar nedladdning&#8230;</string>
+        <string newname="" name="downloading">Downloading\u0020</string>
+        <string newname="" name="downloaded">Downloaded\u0020</string>
+        <string newname="" name="of">\u0020of\u0020</string>
+        <string newname="" name="bytes">\u0020bytes</string>
+        <string name="storingFile">Sparar fil: </string>
+        <string newname="" name="existsOverwriting">\u0020exists; overwriting</string>
+        <string newname="" name="createThemeFolder1">Theme folder \'</string>
+        <string newname="" name="createThemeFolder2">\'\u0020created.</string>
+        <string newname="" name="detectedWeatherskin">Detected WeatherSkin </string>
         <string name="extractingStarterClockPack">Extraherar startpaket av klockor&#8230;</string>
         <string name="starterClockPack">Startpaket av klockor</string>
         <string name="starterClockPackText">Filerna i din .OMCThemes-katalog på minneskortet kommer skrivas över. Är du säker?\n(Om osäker, välj "Ja")</string>
+        <string name="importComplete">Importering klar!</string>
+        <string newname="" name="importAborted">Import Aborted!</string>
+        <string newname="" name="useDownloadInsteadOfPreview">Please use Download instead of Preview to import an OMC clock!</string>
+        <string newname="" name="importWorksWithOMCFiles">Clock import works with .omc files.\nWere you opening the wrong file?</string>
+        <string newname="" name="nothingToExtract">Nothing to extract!</string>
+        <string newname="" name="downloadInterrupted">Download Interrupted!</string>
+        <string newname="" name="poorReceptionArea">Is your phone in a poor reception area?\nPlease try again later.</string>
+        <string newname="" name="connectionTimedOut">Connection timed out!</string>
+        <string newname="" name="serverNotFound">Server not found!</string>
         
         <!-- Widget Theme Long Press-->
         
@@ -123,18 +142,20 @@
         <string name="nwCornerReserved">Översta vänstra hörnet reserverat för inställningar</string>
         
         <!-- TTL Popup -->
-        <string name="areaToCustomize">Område att konfigurera:</string>
-        <string name="chooseAction">Välj åtgärd</string>
-        <string name="openOptionsDefault">Öppna inställningar (standard)</string>
-        <string name="widgetPrefsTTL">Inställningar</string>
-        <string name="doNothing">Gör ingenting</string>
-        <string name="doNothingTTL">Gör ingenting</string>
-        <string name="weatherForecast">Väderprognos</string>
-        <string name="weatherForecastTTL">Prognos</string>
-        <string name="viewAlarms">Visa alarm (experimentiell funktion)</string>
-        <string name="viewAlarmsTTL">Alarm</string>
-        <string name="otherActivity">Annan aktivitet&#8230;</string>
-        <string name="otherActivityTTL">Anpassad aktivitet</string>
+        <string newname="" name="areaToCustomize">Area to Customize:</string>
+        <string newname="" name="chooseAction">Choose Action</string>
+        <string newname="" name="openOptionsDefault">Open options (default)</string>
+        <string newname="" name="widgetPrefsTTL">Widget Prefs</string>
+        <string newname="" name="doNothing">Do nothing</string>
+        <string newname="" name="doNothingTTL">Do Nothing</string>
+        <string newname="" name="weatherForecast">Weather forecast</string>
+        <string newname="" name="weatherForecastTTL">Forecast</string>
+        <string newname="" name="viewAlarms">View alarms (Experimental)</string>
+        <string newname="" name="viewAlarmsTTL">View Alarms</string>
+        <string newname="" name="battUsage">View Battery Usage</string>
+        <string newname="" name="battUsageTTL">Battery Usage</string>
+        <string newname="" name="otherActivity">Other activity&#8230;</string>
+        <string newname="" name="otherActivityTTL">Custom Activity</string>
         
         <string name="use24HourClock">24-timmarsklocka</string>
         <string name="use24HourTrue">23:59</string>
@@ -142,6 +163,9 @@
         <string name="showLeadingZero">Inled med noll</string>
         <string name="showLeadingZTrue">04:23</string>
         <string name="showLeadingZFalse">4:23</string>
+        <string newname="" name="mmddDateFormat">M/D/Y Date Format</string>
+        <string newname="" name="mmddDateFormatTrue">12/31/2012</string>
+        <string newname="" name="mmddDateFormatFalse">31/12/2012</string>
         <string name="changeTimeZone">Ändra tidszon</string>
         <string name="followingDeviceTimeZone">(Använder enhetens tidszon)</string>
         
@@ -177,12 +201,15 @@
         <!-- Fixed Locn subscreen -->
         <string name="enterCityAndStateCountry">Mata in stad och stat/land</string>
         <string name="locationExamples">Till exempel: "Stockholm Sverige"</string>
+        <string newname="" name="locationError">No Results Found.\nPlease Try Again.</string>
+        <string newname="" name="networkError">No Network Connection.\nPlease Try Again.</string>
+        <string newname="" name="unknownError">Unknown Error Occurred.\nPlease Try Again.</string>
         
         <string name="weatherProvider">Väderleverantör</string>
 		<string-array name="wprovider_options">
 		<!-- 	<item>OpenWeatherMap.org (standard)</item> -->
 		 	<item>7Timer.com (standard)</item>
-		 	<item>NOAA (US Only)</item>
+		 	<item newname="" >NOAA (US Only)</item>
 		 				<item>Yr.no</item>
 			<item>Google Weather (förlegat, fungerar ej)</item>
 		</string-array>
@@ -328,13 +355,6 @@
         <string name="weatherFontText">Weatherfont är helt licensierat från Jonathan Macagba, tillgängligt för $5 USD från jonathan.macagba@gmail.com</string>
         <string name="sourceCodeTitle">Källkod</string>
         <string name="sourceCode">Källkoden är tillgänglig från</string>
-		
-		<!-- Missing strings
-		
-		<string name="importComplete">Importering klar!</string>
-		<string name="storingFile">Sparar fil: </string>
-		
-		-->
         
         
     </resources>

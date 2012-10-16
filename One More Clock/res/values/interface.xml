@@ -80,6 +80,7 @@
         <string name="downloaded">Downloaded\u0020</string>
         <string name="of">\u0020of\u0020</string>
         <string name="bytes">\u0020bytes</string>
+		<string name="storingFile">Storing file:\u0020</string>
         <string name="existsOverwriting">\u0020exists; overwriting</string>
         <string name="createThemeFolder1">Theme folder \'</string>
         <string name="createThemeFolder2">\'\u0020created.</string>
