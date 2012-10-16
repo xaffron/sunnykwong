@@ -225,7 +225,7 @@ public class OMCThemeUnzipActivity extends Activity {
 									OMC.removeFile(new File(omcRoot.getAbsolutePath()+"/zz_WeatherSkin/accuweather.type"));
 								}
 								FileOutputStream fos = new FileOutputStream(outputFile);
-								pdMessage = "Storing file " + ze.getName();
+								pdMessage = OMC.RString("storingFile") + ze.getName();
 
 								mHandler.post(mUpdateStatus);
 								try {
