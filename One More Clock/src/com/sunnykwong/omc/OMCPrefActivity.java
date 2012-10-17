@@ -23,11 +23,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -61,7 +63,8 @@ public class OMCPrefActivity extends PreferenceActivity {
     boolean isInitialConfig=false, mTempFlag=false;
     Preference prefUpdWeatherNow, prefWeather, prefWeatherDisplay, prefWeatherProvider;
     Preference prefloadThemeFile, prefclearCache, prefbSkinner, prefTimeZone;
-    Preference prefsUpdateFreq, prefwidgetPersistence, prefemailMe, preftweakTheme;
+    ListPreference prefsUpdateFreq; 
+    Preference prefwidgetPersistence, prefemailMe, preftweakTheme;
     int iTTLArea=0;
 
     final Runnable mUpdatePrefs = new Runnable() {
@@ -425,8 +428,18 @@ public class OMCPrefActivity extends PreferenceActivity {
         		prefWeatherDisplay.setSummary(OMC.RString("usingCelsius"));
         	else prefWeatherDisplay.setSummary(OMC.RString("usingFahrenheit"));
 
-    		// "Clock Update Interval"
-        	prefsUpdateFreq = findPreference("sUpdateFreq");
+        	prefsUpdateFreq = (ListPreference)findPreference("sUpdateFreq");
+
+        	// "Clock Update Interval"
+        	// Allow one-sec updates only on paid edition
+        	int size = OMC.FREEEDITION? OMC.RStringArray("interval_values").length-1: OMC.RStringArray("interval_values").length;
+        	String[] options= new String[size], values= new String[size];
+           	for (int i = 1; i<= size; i++) {
+        		options[size-i] = OMC.RStringArray("interval_options")[OMC.RStringArray("interval_options").length-i];
+        		values[size-i] = OMC.RStringArray("interval_values")[OMC.RStringArray("interval_values").length-i];
+        	}
+        	prefsUpdateFreq.setEntries(options);
+        	prefsUpdateFreq.setEntryValues(values);
         	prefsUpdateFreq.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -546,8 +559,56 @@ public class OMCPrefActivity extends PreferenceActivity {
 					return false;
 				}
 			});
-        	prefClockPriority.setSummary(OMC.RStringArray("clockPriority_options")
-        			[Integer.parseInt(OMC.PREFS.getString("clockPriority", "3"))]);
+        	prefClockPriority.setSummary(OMC.RStringArray("locationPriority_options")
+        			[Integer.parseInt(OMC.PREFS.getString("locationPriority", "4"))]);
+        	
+        	// "Location Priority".
+        	Preference prefLocnPriority = findPreference("locationPriority");
+        	prefLocnPriority.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				
+				@Override
+				public boolean onPreferenceChange(final Preference preference, final Object newValue) {
+					final int iPriority = Integer.parseInt((String)newValue);
+					String sExplanation = OMC.RStringArray("locationPriority_legend")[iPriority];
+					new AlertDialog.Builder(OMCPrefActivity.this)
+						.setTitle(OMC.RString("locationPriority"))
+						.setMessage(sExplanation)
+						.setPositiveButton(OMC.RString("yes"), new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int item) {
+								OMC.PREFS.edit().putString("locationPriority", (String)newValue).commit();
+					        	preference.setSummary(OMC.RStringArray("locationPriority_options")[Integer.parseInt(OMC.PREFS.getString("locationPriority", "4"))]);
+					        	OMC.CURRENTLOCATIONPRIORITY = Integer.parseInt(OMC.PREFS.getString("locationPriority", "4"));
+					        	switch (OMC.CURRENTLOCATIONPRIORITY) {
+					        		// Use GPS location only.
+					        		case 0:
+					        		case 2:
+					        		case 4:
+					        			OMC.LOCNPROVIDERLIST.remove(LocationManager.NETWORK_PROVIDER);
+					        			OMC.LOCNPROVIDERLIST.remove("passive");
+					        			break;
+					        		// Use GPS or network location.
+					        		case 1:
+					        		case 3:
+					        		case 5:
+					        		case 6:
+					        		default:
+					        			OMC.LOCNPROVIDERLIST = OMC.LM.getAllProviders();
+					        			break;
+					        	}
+							}
+						})
+						.setNegativeButton(OMC.RString("no"), new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int item) {
+							}
+						})
+						.show();					
+					return false;
+				}
+			});
+        	prefLocnPriority.setSummary(OMC.RStringArray("locationPriority_options")
+        			[Integer.parseInt(OMC.PREFS.getString("locationPriority", "4"))]);
         	
         	// "Weather Diagnostics".
         	Preference prefWeatherDiag = findPreference("weatherDebug");

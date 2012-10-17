@@ -36,18 +36,33 @@
 </string-array>
 
 <string-array name="shortmonth">
-<item>stycz</item>
-<item>luty</item>
+<item>sty</item>
+<item>lut</item>
 <item>mar</item>
-<item>kwiec</item>
+<item>kwi</item>
 <item>maj</item>
-<item>czerw</item>
+<item>cze</item>
 <item>lip</item>
-<item>sierp</item>
-<item>wrzes</item>
-<item>paźdz</item>
-<item>listop</item>
-<item>grudz</item>
+<item>sie</item>
+<item>wrze</item>
+<item>paź</item>
+<item>lis</item>
+<item>gru</item>
 </string-array>
 
 </resources>
+#but in Polish (yeah I know it's strange language:-)) should be (for 1th, 2th , 3th... January, February, March, etc.):
+1 Stcznia, 2 Stcznia, 3 Stycznia, etc.
+1 Lutego, 2 Lutego, 3 Lutego, etc.
+1 Marca, 2 Marca, 3 Marca, etc.
+1 Kwietnia, 2 Kwietnia, 3 Kwietnia, etc.
+1 Maja, 2 Maja, 3 Maja, etc.
+1 Czerwca, 2 Czerwca, 3 Czerwca, etc.
+1 Lipca, 2 Lipca, 3 Lipca, etc.
+1 Sierpnia, 2 Sierpnia, 3 Sierpnia, etc.
+1 Września, 2 Września, 3 Września, etc.
+1 Października, 2 Października, 3 Października, etc.
+1 Listopada, 2 Listopada, 3 Listopada, etc.
+1 Grudnia, 2 Grudnia, 3 Grudnia
+
+

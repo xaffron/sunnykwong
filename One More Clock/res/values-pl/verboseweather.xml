@@ -3,44 +3,44 @@
 <string-array name="VerboseWeather">
 <item>Nieznana</item>
 <item>Pogodnie</item>
-<item newname="">Sunny</item>
-<item newname="">Mostly Sunny</item>
-<item newname="">Partly Sunny</item>
+<item newname="">Słonecznie</item>
+<item newname="">Przeważnie Słonecznie</item>
+<item newname="">Częściowe Przejaśnienia</item>
 <item>Przewaga Chmur</item>
-<item newname="">Dust</item>
-<item newname="">Haze</item>
+<item newname="">Pył</item>
+<item newname="">Mgiełka</item>
 <item>Mgliście</item>
-<item newname="">Smoke</item>
+<item newname="">Dym</item>
 <item>Częściowe Zachmurzenie</item>
-<item newname="">Overcast</item>
+<item newname="">Pochmurny</item>
 <item>Pochmurno</item>
-<item newname="">Fog</item>
+<item newname="">Mgła</item>
 <item>Lekki Deszcz</item>
-<item newname="">Rain Showers</item>
-<item newname="">Drizzle</item>
+<item newname="">Przelotne Opady</item>
+<item newname="">Mżawka</item>
 <item>Przelotne Opady</item>
-<item newname="">Chance of Rain</item>
-<item newname="">Chance of Showers</item>
+<item newname="">Możliwe Opady</item>
+<item newname="">Możliwe Deszcze</item>
 <item>Miejscowe Opady</item>
 <item>Burza Z Piorunami</item>
-<item newname="">Chance of Thunderstorm</item>
-<item newname="">Scattered Thunderstorms</item>
+<item newname="">Możliwe Burze</item>
+<item newname="">Miejscowe Burze</item>
 <item>Przelotne Burze</item>
-<item newname="">Storm</item>
-<item newname="">Heavy Rain</item>
+<item newname="">Burza</item>
+<item newname="">Ulewa</item>
 <item>Deszcz</item>
-<item newname="">Flurries</item>
+<item newname="">Przelotne Opady Śniegu</item>
 <item>Lekki Śnieg</item>
-<item newname="">Chance of Snow</item>
-<item newname="">Snow Showers</item>
-<item newname="">Scattered Snow Showers</item>
+<item newname="">Możliwe Opady Śniegu</item>
+<item newname="">Opady Śniegu</item>
+<item newname="">Przelotne Opady Śniegu</item>
 <item>Śnieg</item>
-<item newname="">Icy</item>
-<item newname="">Ice or Snow</item>
-<item newname="">Sleet</item>
-<item newname="">Freezing Drizzle</item>
+<item newname="">Mroźnie</item>
+<item newname="">Lód Lub Śnieg</item>
+<item newname="">Deszcz Ze Śniegiem</item>
+<item newname="">Mrzawka</item>
 <item>Zmiennie Zimno</item>
-<item newname="">Windy</item>
+<item newname="">Wietrznie</item>
 </string-array>
 </resources>
 

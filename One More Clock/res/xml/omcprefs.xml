@@ -237,6 +237,16 @@
                 android:title="@string/clockPriority" >
             </ListPreference>
 
+            <ListPreference
+                android:enabled="true"
+                android:entries="@array/locationPriority_options"
+                android:entryValues="@array/locationPriority_values"
+                android:key="locationPriority"
+                android:selectable="true"
+                android:summary=""
+                android:title="@string/locationPriority" >
+            </ListPreference>
+
             <Preference
                 android:enabled="true"
                 android:key="weatherDebug"

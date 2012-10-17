@@ -5,7 +5,7 @@
         <string name="languageName">Polski</string>
     	<string name="translator">Michał Michalski</string>
     		
-    	<!-- General Buttons -->
+        <!-- General Buttons -->
         <string name="nextTip">Następna Porada</string>
         <string name="ok">OK</string>
         <string name="search">Szukaj</string>
@@ -25,7 +25,7 @@
         
         <!-- Bailout App Dialog -->
         <string name="thanksForDownloading">Dziękuję za pobranie!</string>
-        <string name="widgetDir1">Aby zacząć, naciśnij przycisk powrotu aby powrócić do ekranu domowego, następnie dostęp do \'Widgety\' lista\u0020</string>
+        <string name="widgetDir1">W celu rozpoczęcia, naciśnij przycisk "wstecz", aby powrócić do ekranu głównego. Następnie wybierz widget z listy widgetów\u0020</string>
         <string name="widgetDir2">\u0020listed.  Miłej zabawy!</string>
 
         <!-- Useful Tips -->
@@ -39,7 +39,7 @@
         <!-- Forecast Screen -->
         <string name="doubleDash">--</string>
         <string name="unknown">Nieznany</string>
-        <string newname="" name="noaaWeatherCredit">Weather observations and forecasts updated from the National Oceanic and Atmospheric Administration (NOAA).</string>
+        <string newname="" name="noaaWeatherCredit">Prognoza pogody udostępniona przez National Oceanic and Atmospheric Administration (NOAA).</string>
         <string name="igWeatherCredit">Prognoza pogody udostepniona przez Google API.</string>
         <string name="yrWeatherCredit">Prognoza pogody udostępniona przez yr.no, z pomocą Norweskiego Instytutu Meteorologii</string>
         <string name="seventimerWeatherCredit">7Timer! prognoza pogody udostępniona przez Ye Quanzhi, wspierana przez Obserwatorium Astronomiczne w Szanghaju oraz Chińską Akademię Nauk</string>
@@ -57,7 +57,7 @@
 
         <!-- Widget Theme -->
         
-        <string name="widgetThemeTitle">Przesuń, aby wybrać; Dotknij &amp; Przytrzymaj w celu wyświetlenia opcji</string>
+        <string name="widgetThemeTitle">Przesuń, aby wybrać; Dotknij i przytrzymaj w celu wyświetlenia opcji</string>
         <string name="corruptPlsDelete">[Uszkodzone - Proszę Usunąć]</string>
         <string name="reextractBundledClocks">Wypakuj ponownie pakiety zegarów</string>
         <string name="downloadAllClocks">Pobierz wszystkie zegary(7MB)</string>
@@ -78,28 +78,28 @@
 
         <!-- Theme Import/Unzip -->
         <string name="themePreview">Podgląd motywu</string>
-        <string newname="" name="openingConnection">Opening connection.</string>
+        <string newname="" name="openingConnection">Ustanawianie połączenia</string>
         <string name="beginningDownload">Rozpoczęcie pobierania.</string>
-        <string newname="" name="downloading">Downloading\u0020</string>
-        <string newname="" name="downloaded">Downloaded\u0020</string>
-        <string newname="" name="of">\u0020of\u0020</string>
-        <string newname="" name="bytes">\u0020bytes</string>
-        <string newname="" name="existsOverwriting">\u0020exists; overwriting</string>
-        <string newname="" name="createThemeFolder1">Theme folder \'</string>
-        <string newname="" name="createThemeFolder2">\'\u0020created.</string>
-        <string newname="" name="detectedWeatherskin">Detected WeatherSkin </string>
+        <string newname="" name="downloading">Pobieranie\u0020</string>
+        <string newname="" name="downloaded">Pobrano\u0020</string>
+        <string newname="" name="of">z\u0020of\u0020</string>
+        <string newname="" name="bytes">bajtów\u0020bytes</string>
+        <string newname="" name="existsOverwriting">Nadpisywanie</string>
+        <string newname="" name="createThemeFolder1">Utwórz Folder Motywu1 \'</string>
+        <string newname="" name="createThemeFolder2">Utwórz Folder Motywu2\'\u0020created.</string>
+        <string newname="" name="detectedWeatherskin">Wykryto skórkę pogody</string>
         <string name="extractingStarterClockPack">Rozpakowywanie pakietu startowego zegara&#8230;</string>
         <string name="starterClockPack">Pakiet startowy zegara</string>
-        <string name="starterClockPackText">Pliki na Twojej karcie SD\'s .OMC Folder motywów zostanie nadpisany.  Czy jesteś pewien?\(Jeżeli nie, wybierz Tak)</string>
-        <string newname="" name="importComplete">Import Complete!</string>
-        <string newname="" name="importAborted">Import Aborted!</string>
-        <string newname="" name="useDownloadInsteadOfPreview">Please use Download instead of Preview to import an OMC clock!</string>
-        <string newname="" name="importWorksWithOMCFiles">Clock import works with .omc files.\nWere you opening the wrong file?</string>
-        <string newname="" name="nothingToExtract">Nothing to extract!</string>
-        <string newname="" name="downloadInterrupted">Download Interrupted!</string>
-        <string newname="" name="poorReceptionArea">Is your phone in a poor reception area?\nPlease try again later.</string>
-        <string newname="" name="connectionTimedOut">Connection timed out!</string>
-        <string newname="" name="serverNotFound">Server not found!</string>
+        <string name="starterClockPackText">Pliki na Twojej karcie SD\'s .OMC Folder motywów zostanie nadpisany. Czy jesteś pewien?\(Jeżeli nie, wybierz Tak)</string>
+        <string newname="" name="importComplete">Importowanie zakończone!</string>
+        <string newname="" name="importAborted">Importowanie zaniechane!</string>
+        <string newname="" name="useDownloadInsteadOfPreview">Proszę używać Pobierz zamiast Podgląd, aby zaimportować zegar OMC!</string>
+        <string newname="" name="importWorksWithOMCFiles">Import działa wyłącznie z plikami .omc\nOtworzyłeś nieprawidłowy plik?</string>
+        <string newname="" name="nothingToExtract">Nie ma niczego do wypakowania!</string>
+        <string newname="" name="downloadInterrupted">Pobieranie przerwane!</string>
+        <string newname="" name="poorReceptionArea">Czy Twój telefon znajduje się w obszarze o słabym zasięgu?\nProszę spróbować później.</string>
+        <string newname="" name="connectionTimedOut">Przekroczono limit połączenia!</string>
+        <string newname="" name="serverNotFound">Nie odnaleziono serwera!</string>
         
         <!-- Widget Theme Long Press-->
         
@@ -111,7 +111,7 @@
         <string name="emailThemeChooser">Kompresowanie plików motywu do wysyłki email.</string>
         <string name="deleteTheme">Usuń motyw</string>
         <string name="deleteThemeConfirm1">Usuń\u0020</string>
-        <string name="deleteThemeConfirm2">\u0020z karty SD?</string>
+        <string name="deleteThemeConfirm2">\Usuń z karty SD?</string>
         <string name="deleteThemeConfirm3">Musisz pobrać/rozpakować motyw ponownie, aby móc go używać.  Czy jesteś pewien?</string>
         <string name="submitThemeToDev">Zgłoś do programisty</string>
         <string name="submitThemeToDevConfirm1">Zgłoś\u0020</string>
@@ -140,7 +140,7 @@
 
         <!-- Tap & Display Options --> 
 
-        <string name="tapAndDisplayOptions">Dotknij &amp; Wyświetl opcje</string>
+        <string name="tapAndDisplayOptions">Dotknij i wyświetl opcje</string>
         <string name="assignTapToLaunch">Przypisz funkcje do uruchomienia</string>
         <string name="nwCornerReserved">NW narożnik zarezerwowany dla ustawień widgetu .</string>
         
@@ -155,8 +155,8 @@
         <string name="weatherForecastTTL">Prognoza</string>
         <string name="viewAlarms">Wyświetl alarmy (opcja eksperymentalna)</string>
         <string name="viewAlarmsTTL">Prognoza</string>
-        <string newname="" name="battUsage">View Battery Usage</string>
-        <string newname="" name="battUsageTTL">Battery Usage</string>
+        <string newname="" name="battUsage">Użycie baterii</string>
+        <string newname="" name="battUsageTTL">Użycie baterii</string>
         <string name="otherActivity">Inna czynność&#8230;</string>
         <string name="otherActivityTTL">Dostosuj czynnnosć</string>
         
@@ -166,7 +166,7 @@
         <string name="showLeadingZero">Wyświetl godzinę poprzedzoną 0</string>
         <string name="showLeadingZTrue">04:23</string>
         <string name="showLeadingZFalse">4:23</string>
-        <string newname="" name="mmddDateFormat">M/D/Y Date Format</string>
+        <string newname="" name="mmddDateFormat">M/D/R Format Daty</string>
         <string newname="" name="mmddDateFormatTrue">12/31/2012</string>
         <string newname="" name="mmddDateFormatFalse">31/12/2012</string>
         <string name="changeTimeZone">Zmień strefę czasową</string>
@@ -180,7 +180,7 @@
                 
         <!-- Weather & Widget Options -->
         <string name="forAllClocks">Dla wszystkich zegarów:</string>
-        <string name="weatherAndWidgetOptions">Pogoda &amp; Opcje widgetu</string>
+        <string name="weatherAndWidgetOptions">Pogoda oraz Opcje widgetu</string>
         <string name="clearRenderCaches">Wyczyść zasoby renderowania</string>
         <string name="cachesCleared">Zasoby renderowania wyczyszczone</string>
         
@@ -195,7 +195,7 @@
         <string name="manualRefreshOnly">\u0020(Tylko odświeżanie ręczne)</string>
         <string name="nextRefresh">\u0020Następne odświeżanie :\u0020</string>
         <string name="weatherLocation">Lokalizacja dla pogody:</string>
-        <string name="disableLocationAndWeather">Wyłącz lokalizację &amp; Pogoda</string>
+        <string name="disableLocationAndWeather">Wyłącz lokalizację Pogody</string>
         <string name="followDevice">Podążaj za urządzeniem(domyślnie)</string>
         <string name="setFixedLocation">Ustaw prawidłową lokalizację</string>
         <string name="weatherFunctionalityDisabled">Opcje pogodowe wyłączone</string>
@@ -204,15 +204,15 @@
         <!-- Fixed Locn subscreen -->
         <string name="enterCityAndStateCountry">Wybierz miasto/kraj</string>
         <string name="locationExamples">Np. Warszawa PL</string>
-        <string newname="" name="locationError">No Results Found.\nPlease Try Again.</string>
-        <string newname="" name="networkError">No Network Connection.\nPlease Try Again.</string>
-        <string newname="" name="unknownError">Unknown Error Occurred.\nPlease Try Again.</string>
+        <string newname="" name="locationError">Nie odnaleziono wyników.\nProszę spróbować ponownie.</string>
+        <string newname="" name="networkError">Brak połączenia internetowego.\nProszę spróbować ponownie.</string>
+        <string newname="" name="unknownError">Nieznany błąd.\nProszę spróbować ponownie.</string>
         
         <string name="weatherProvider">Dostawca pogody</string>
 		<string-array name="wprovider_options">
 		<!-- 	<item>OpenWeatherMap.org (default)</item> -->
 		 	<item>7Timer.com (domyślnie)</item>
-		 	<item newname="" >NOAA (US Only)</item>
+		 	<item newname="" >NOAA (Tylko Usa)</item>
 		 				<item>Yr.no</item>
 			<item newname="" >Google Weather (legacy/nonworking)</item>
 		</string-array>
@@ -260,7 +260,7 @@
         <string name="forceEnglishDates">Wymuś daty w języku angielskim</string>
         <string name="uncheckForSome">Odznacz dla innych języków.(Opcja eksperymentalna)</string>
         <string name="changeAppLocale">Język</string>
-        <string newname="" name="changeClockLocale">Clock Language</string>
+        <string newname="" name="changeClockLocale">Zmień język zegara</string>
         
         <string name="toggleWidgetSizes">Przełącz rozmiary widgetu</string>
         
@@ -302,11 +302,11 @@
 			<item>Najniższy</item>
 		</string-array>
 		<string-array name="clockPriority_legend">
-		    <item>Odświeżanie z każdą sekundą (Nie polecany).  Czy jesteś absolutnie pewnien?</item>	
-			<item>Agresywny, odświeżanie co minutę, bez względu na zachowanie ekranu.  Czy jesteś absolutnie pewnien?</item>
-			<item>Odświeżanie co minutę tylko przy wlączonym ekranie, nawet kiedy aplikacja jest uruchomiona w tle.  Czy jesteś absolutnie pewnien?</item>
-			<item>Odświeżanie co minutę, kiedy ekran jest wyłączony, a aplikacja jest nieaktywna.  Czy jesteś absolutnie pewnien?</item>
-			<item>Bez odświeżania przy wyłączonym ekranie i nieaktywnej aplikacji.  Czy jesteś absolutnie pewnien?</item>
+		    <item>Odświeżanie z każdą sekundą (Nie polecany). Czy jesteś absolutnie pewnien?</item>	
+			<item>Agresywny, odświeżanie co minutę, bez względu na zachowanie ekranu. Czy jesteś absolutnie pewnien?</item>
+			<item>Odświeżanie co minutę tylko przy wlączonym ekranie, nawet kiedy aplikacja jest uruchomiona w tle. Czy jesteś absolutnie pewnien?</item>
+			<item>Odświeżanie co minutę, kiedy ekran jest wyłączony, a aplikacja jest nieaktywna. Czy jesteś absolutnie pewnien?</item>
+			<item>Bez odświeżania przy wyłączonym ekranie i nieaktywnej aplikacji. Czy jesteś absolutnie pewnien?</item>
 		</string-array>
 		
         <string name="weatherDiagnostics">Diagnostyka pogody</string>
@@ -324,7 +324,7 @@
         
         <string name="contactXaffron">Skontaktuj się z Xaffron</string>
         <string name="donateOrContact">Wesprzyj autora lub skontaktuj się z nim w razie problemów</string>
-        <string name="contactXaffronForIssues">Zgłoś problem do Xaffron &amp; wsparcie</string>
+        <string name="contactXaffronForIssues">Zgłoś problem do Xaffron oraz wsparcie</string>
         <string name="email">Email</string>
         <string name="donate">Wesprzyj</string>
         <string name="facebook">Facebook</string>
@@ -342,12 +342,12 @@
         <string name="team">Zespół</string>
         <string name="programmer">Programista</string>
         <string name="sunny">Sunny Kwong</string>
-        <string name="testers">Testers</string>
+        <string name="testers">Testerzy</string>
         <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
         <string name="specialThanks">Specjalne podziękowania</string>
         <string name="specialThanksText">Zehro for leading the way\nre: in-sync clock widgets w//o notifications.\nStefan Pledl for helping with the localization.</string>
-        <string name="copyrights">Copyrights and Licenses</string>
-        <string name="applicationIcon">Application Icon: Signpost by Maroubal2</string>
+        <string name="copyrights">Prawa autorskie i licencje</string>
+        <string name="applicationIcon">Ikona aplikacji: Signpost by Maroubal2</string>
         <string name="applicationIconText">Adapted from Maroubal2\'s excellent photo-turned-Ubuntu wallpaper.\nCC BY-SA 2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
         <string name="codeColorPickerDialog">Code: ColorPickerDialog</string>
         <string name="codeColorPickerDialogText">Copied from CyanogenMod source repo.</string>
