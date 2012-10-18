@@ -82,12 +82,20 @@ public class GoogleReverseGeocodeService {
 				if (location != null) {
 					float accuracy = location.getAccuracy();
 					long time = location.getTime();
-
-					if ((time > minTime && accuracy < bestAccuracy)) {
+					// We want to place much higher emphasis on timeliness rather than accuracy
+					if ((time > bestTime)) {
 						bestResult = location;
 						bestAccuracy = accuracy;
 						bestTime = time;
 						bestProvider = provider;
+					// But if the GPS lock is within 5 minutes of the most recent and have more accuracy, we'll take 
+					// the more-accurate
+					} else if (Math.abs(time-bestTime)< 30000l && accuracy < bestAccuracy) {
+						bestResult = location;
+						bestAccuracy = accuracy;
+						bestTime = time;
+						bestProvider = provider;
+
 					} else if (time < minTime
 							&& bestAccuracy == Float.MAX_VALUE
 							&& time > bestTime) {
@@ -109,13 +117,13 @@ public class GoogleReverseGeocodeService {
 				try {
 					if (OMC.DEBUG)
 						Log.i(OMC.OMCSHORT + "Weather",
-								"Passive failed; Requesting Network Locn.");
+								"Requesting Network Locn.");
 					OMC.LM.requestLocationUpdates("network", 0, 0, OMC.LL);
 				} catch (IllegalArgumentException e) {
 					try {
 						if (OMC.DEBUG)
 							Log.i(OMC.OMCSHORT + "Weather",
-									"Network failed; Requesting GPS Locn.");
+									"Requesting GPS Locn.");
 						OMC.LM.requestLocationUpdates("gps", 0, 0, OMC.LL);
 					} catch (IllegalArgumentException ee) {
 						Log.w(OMC.OMCSHORT + "Weather", "Cannot fix location.");
@@ -130,7 +138,9 @@ public class GoogleReverseGeocodeService {
 									+ " as of "
 									+ new java.sql.Time(bestTime)
 											.toLocaleString());
+				bestResult.setProvider("passive");
 				OMC.LL.onLocationChanged(bestResult);
+				
 			}
 		}
 
@@ -140,7 +150,7 @@ public class GoogleReverseGeocodeService {
 			throws Exception {
 		JSONObject result;
 		HttpURLConnection huc = null;
-
+		
 		try {
 			if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
 				System.setProperty("http.keepAlive", "false");

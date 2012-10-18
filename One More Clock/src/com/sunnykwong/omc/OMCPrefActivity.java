@@ -55,12 +55,11 @@ public class OMCPrefActivity extends PreferenceActivity {
     static AlertDialog mAD;
     AlertDialog mTTL;
 	Button[] btnCompass = new Button[9];
-
     final Time tLastTry = new Time();
     final Time tLastRefresh = new Time();
     final Time tNextRefresh = new Time();
     final Time tNextRequest = new Time();
-    Handler mHandler;
+
     CheckBox mCheckBox;
     TextView mTextView;
     Thread mRefresh;
@@ -71,46 +70,48 @@ public class OMCPrefActivity extends PreferenceActivity {
     Preference prefwidgetPersistence, prefemailMe, preftweakTheme;
     int iTTLArea=0;
 
-//    final Runnable mUpdatePrefs = new Runnable() {
-//    	@Override
-//    	public void run() {								
-//    		try {
-//        		String sWSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
-//    			JSONObject jsonWeather = new JSONObject(OMC.PREFS.getString("weather", "{}"));
-//    			String sCity = jsonWeather.optString("city","Unknown");
-//    			tLastTry.set(OMC.LASTWEATHERTRY);
-//    			tLastRefresh.set(OMC.LASTWEATHERREFRESH);
-//    			tNextRefresh.set(OMC.NEXTWEATHERREFRESH);
-//    			tNextRequest.set(OMC.NEXTWEATHERREQUEST);
-//        		if (sWSetting.equals("bylatlong")) {
-//        			prefWeather.setTitle(OMC.RString("location") + sCity + OMC.RString("detected"));
-//        			if (OMC.PREFS.getString("sWeatherFreq", "60").equals("0")) {
-//        				prefWeather.setSummary(OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("manualRefreshOnly"));
-//        			} else {
-//        				prefWeather.setSummary(OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("nextRefresh")+tNextRefresh.format("%R") 
-//        						+ "\nLastRefresh:"+ tLastRefresh.format("%R") + " Next Request:" + tNextRefresh.format("%R"));
-//        			}
-//        		} else if (sWSetting.equals("specific")) {
-//        			prefWeather.setTitle("Location: "+OMC.jsonFIXEDLOCN.optString("city","Unknown")+OMC.RString("fixed"));
-//        			if (OMC.PREFS.getString("sWeatherFreq", "60").equals("0")) {
-//           				prefWeather.setSummary(OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("manualRefreshOnly"));
-//           			        			} else {
-//           				prefWeather.setSummary(OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("nextRefresh")+tNextRefresh.format("%R") 
-//        						+ "\nLastRefresh:"+ tLastRefresh.format("%R") + " Next Request:" + tNextRefresh.format("%R"));
-//        			}
-//        		} else {
-//        			prefWeather.setTitle(OMC.RString("weatherFunctionalityDisabled"));
-//        			prefWeather.setSummary(OMC.RString("tapToEnable"));
-//        		} 
-//    		} catch (JSONException e) {
-//    			e.printStackTrace();
-//    			prefWeather.setTitle(OMC.RString("weatherFunctionalityDisabled"));
-//    			prefWeather.setSummary(OMC.RString("tapToEnable"));
-//    		}
-//			return;
-//    	}
-//    };
-    
+    AsyncTask<String,String,String> mWeatherRefresh;
+	
+	//SUNNY REMOVE THIS
+    final Runnable mUpdatePrefs = new Runnable() {
+    	@Override
+    	public void run() {								
+    		try {
+        		String sWSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
+    			JSONObject jsonWeather = new JSONObject(OMC.PREFS.getString("weather", "{}"));
+    			String sCity = jsonWeather.optString("city","Unknown");
+    			tLastTry.set(OMC.LASTWEATHERTRY);
+    			tLastRefresh.set(OMC.LASTWEATHERREFRESH);
+    			tNextRefresh.set(OMC.NEXTWEATHERREFRESH);
+    			tNextRequest.set(OMC.NEXTWEATHERREQUEST);
+        		if (sWSetting.equals("bylatlong")) {
+        			prefWeather.setTitle(OMC.RString("location") + sCity + OMC.RString("detected"));
+        			if (OMC.PREFS.getString("sWeatherFreq", "60").equals("0")) {
+        				prefWeather.setSummary(OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("manualRefreshOnly"));
+        			} else {
+        				prefWeather.setSummary(OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("nextRefresh")+tNextRefresh.format("%R") 
+        						+ "\nLastRefresh:"+ tLastRefresh.format("%R") + " Next Request:" + tNextRefresh.format("%R"));
+        			}
+        		} else if (sWSetting.equals("specific")) {
+        			prefWeather.setTitle("Location: "+OMC.jsonFIXEDLOCN.optString("city","Unknown")+OMC.RString("fixed"));
+        			if (OMC.PREFS.getString("sWeatherFreq", "60").equals("0")) {
+           				prefWeather.setSummary(OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("manualRefreshOnly"));
+           			        			} else {
+           				prefWeather.setSummary(OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("nextRefresh")+tNextRefresh.format("%R") 
+        						+ "\nLastRefresh:"+ tLastRefresh.format("%R") + " Next Request:" + tNextRefresh.format("%R"));
+        			}
+        		} else {
+        			prefWeather.setTitle(OMC.RString("weatherFunctionalityDisabled"));
+        			prefWeather.setSummary(OMC.RString("tapToEnable"));
+        		} 
+    		} catch (JSONException e) {
+    			e.printStackTrace();
+    			prefWeather.setTitle(OMC.RString("weatherFunctionalityDisabled"));
+    			prefWeather.setSummary(OMC.RString("tapToEnable"));
+    		}
+			return;
+    	}
+    };
     
     @Override
     protected void onNewIntent(Intent intent) {
@@ -145,7 +146,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","OnCreate");
 
     	super.onCreate(savedInstanceState);
-    	mHandler = new Handler();
+    	
 
     	// Refresh list of installed Launcher Apps.
 		List<ResolveInfo> launcherlist = OMC.PKM.queryIntentActivities(OMC.FINDLAUNCHERINTENT, 0);
@@ -375,32 +376,33 @@ public class OMCPrefActivity extends PreferenceActivity {
 
         	// "Update Weather Now".
         	prefUpdWeatherNow = findPreference("updweathernow");
+        	
         	// "Location: [Location] (status)".
         	prefWeather = findPreference("weather");
+    		try {
+        		String sWSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
+    			JSONObject jsonWeather = new JSONObject(OMC.PREFS.getString("weather", "{}"));
+    			String sCity = jsonWeather.optString("city","Unknown");
+        		if (sWSetting.equals("bylatlong")) {
+        			prefWeather.setTitle(OMC.RString("location") + sCity + OMC.RString("detected"));
+        		} else if (sWSetting.equals("specific")) {
+        			prefWeather.setTitle("Location: "+OMC.jsonFIXEDLOCN.optString("city","Unknown")+OMC.RString("fixed"));
+        		} else {
+        			prefWeather.setTitle(OMC.RString("weatherFunctionalityDisabled"));
+        		} 
+    		} catch (JSONException e) {
+    			e.printStackTrace();
+    			prefWeather.setTitle(OMC.RString("weatherFunctionalityDisabled"));
+    		}
+        	prefWeather.setSummary(formatWeatherSummary());
 
         	prefUpdWeatherNow.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 				@Override
 				public boolean onPreferenceClick(Preference preference) {
-		    		AsyncTask<String, String, String> at = new AsyncTask<String, String, String>() {
-						@Override
-						protected void onPreExecute() {
-							prefUpdWeatherNow.setSummary("hello");
-		    				OMC.updateWeather(true);
-						}
-		    			@Override
-						protected String doInBackground(String... params) {
-		    				return null;
-						}
-		    			@Override
-		    			protected void onProgressUpdate(String... values) {
-		    				// TODO Auto-generated method stub
-		    				super.onProgressUpdate(values);
-		    			}
-						@Override
-						protected void onPostExecute(String result) {
-						};
-		    		};
-		    		at.execute("");
+					prefUpdWeatherNow.setEnabled(false);
+			    	getNewWeatherRefreshTask();
+
+		    		mWeatherRefresh.execute("");
 					return true;
 				}
 			});
@@ -608,21 +610,20 @@ public class OMCPrefActivity extends PreferenceActivity {
 					        	preference.setSummary(OMC.RStringArray("locationPriority_options")[Integer.parseInt(OMC.PREFS.getString("locationPriority", "4"))]);
 					        	OMC.CURRENTLOCATIONPRIORITY = Integer.parseInt(OMC.PREFS.getString("locationPriority", "4"));
 					        	switch (OMC.CURRENTLOCATIONPRIORITY) {
-					        		// Use GPS location only.
-					        		case 0:
-					        		case 2:
-					        		case 4:
-					        			OMC.LOCNPROVIDERLIST.remove(LocationManager.NETWORK_PROVIDER);
-					        			OMC.LOCNPROVIDERLIST.remove("passive");
-					        			break;
-					        		// Use GPS or network location.
-					        		case 1:
-					        		case 3:
-					        		case 5:
-					        		case 6:
-					        		default:
-					        			OMC.LOCNPROVIDERLIST = OMC.LM.getAllProviders();
-					        			break;
+								// Highest: Use real-time GPS location only.
+					    		// Ignore network and passive providers.
+								case 0:
+									OMC.LOCNPROVIDERLIST.remove(LocationManager.NETWORK_PROVIDER);
+								// High: Use real-time network or GPS location.
+								// Ignore passive provider.
+								case 1:
+					    			OMC.LOCNPROVIDERLIST.remove("passive");
+								// Medium to Law: Use any provider available.
+								case 2:
+								case 3:
+								case 4:
+								default:
+				        			OMC.LOCNPROVIDERLIST = OMC.LM.getAllProviders();
 					        	}
 							}
 						})
@@ -927,7 +928,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 									break;
 								case 1: //Follow Device
 									OMC.PREFS.edit().putString("weathersetting", "bylatlong").commit();
-						    		OMC.updateWeather(true);
+						    		OMC.updateWeather();
 									break;
 								case 2: //Set Location
 									startActivityForResult(new Intent(OMCPrefActivity.this, OMCFixedLocationActivity.class), 0);
@@ -1174,6 +1175,134 @@ public class OMCPrefActivity extends PreferenceActivity {
        	}
 	}
 	
+	public void getNewWeatherRefreshTask() {
+		boolean bNeedNewTask=false;
+		// If we've never requested a task before, we need a new one
+		if (mWeatherRefresh==null) {
+			bNeedNewTask=true;
+		// If there's one that is running, abort it and create a new one
+		} else if (mWeatherRefresh.getStatus()!=AsyncTask.Status.PENDING && !mWeatherRefresh.isCancelled()) {
+			mWeatherRefresh.cancel(true);
+			bNeedNewTask=true;
+		}
+		
+    	if (bNeedNewTask) {
+    		mWeatherRefresh = new AsyncTask<String, String, String>() {
+    		int currentStatus = OMC.WRS_IDLE;
+
+    		@Override
+    		protected void onPreExecute() {
+    			OMC.WEATHERREFRESHSTATUS = OMC.WRS_LOCATION;
+    			OMC.updateWeather();
+    		}
+    		@Override
+    		protected String doInBackground(String... params) {
+    			try {
+    				while (!isCancelled()) {
+    					Thread.sleep(500l);
+    					if (currentStatus==OMC.WEATHERREFRESHSTATUS) {
+    						if (System.currentTimeMillis()-OMC.WEATHERREFRESHTIMESTAMP>30000l) {
+    							publishProgress(OMC.RString("refreshWeatherNow"),"Operation timed out!",
+        								OMC.RString("location") + OMC.RString("unknown"));
+    							break;
+    						} else {
+    							continue;
+    						}
+    					}
+    					currentStatus = OMC.WEATHERREFRESHSTATUS;
+    					OMC.WEATHERREFRESHTIMESTAMP=System.currentTimeMillis();
+
+    					switch (OMC.WEATHERREFRESHSTATUS) {
+    					case OMC.WRS_LOCATION:
+    						publishProgress("Requesting Location","Please wait...",OMC.RString("location") + OMC.RString("unknown"));
+    						break;
+    					case OMC.WRS_FIXED:
+    						publishProgress("In Progress...",
+    								"Using fixed coordinates.",
+    								OMC.RString("location") + OMC.LASTKNOWNCITY + OMC.RString("fixed")
+    								);
+    						break;
+    					case OMC.WRS_FORCED:
+    						publishProgress("In Progress...","Obtained real-time location.  Reverse-Geocoding...",
+    								OMC.RString("location") +OMC.LASTKNOWNCITY+ OMC.RString("detected"));
+    						break;
+    					case OMC.WRS_GPS:
+    						publishProgress("In Progress...","Got GPS lock.  Reverse-Geocoding...",
+    								OMC.RString("location") + OMC.LASTKNOWNCITY+ OMC.RString("detected"));
+    						break;
+    					case OMC.WRS_NETWORK:
+    						publishProgress("In Progress...","Got WiFi/Network lock.  Reverse-Geocoding...",
+    								OMC.RString("location") +OMC.LASTKNOWNCITY+ OMC.RString("detected"));
+    						break;
+    					case OMC.WRS_CACHED:
+    						publishProgress("In Progress...","Reusing recent location.  Reverse-Geocoding...",
+    								OMC.RString("location") +OMC.LASTKNOWNCITY+ OMC.RString("detected"));
+    						break;
+    					case OMC.WRS_GEOCODE:
+    						publishProgress("In Progress...","Requesting Weather...",
+    								OMC.RString("location") + OMC.LASTKNOWNCITY + OMC.RString("detected"),
+    								OMC.RString("location") +OMC.LASTKNOWNCITY+ OMC.RString("detected"));
+    						break;
+    					case OMC.WRS_PROVIDER:
+    						publishProgress("In Progress...","Weather Received.  Processing...",
+    								OMC.RString("location") +OMC.LASTKNOWNCITY+ OMC.RString("detected"));
+    						break;
+    					case OMC.WRS_SUCCESS:
+    						publishProgress(OMC.RString("refreshWeatherNow"),"Weather successfully updated.",
+    								OMC.RString("location") +OMC.LASTKNOWNCITY+ OMC.RString("detected"));
+    						return("SUCCESS");
+    					case OMC.WRS_FAILURE:
+    						publishProgress(OMC.RString("refreshWeatherNow"),"Weather update unsuccessful.",
+    								OMC.RString("location") +OMC.LASTKNOWNCITY+ OMC.RString("detected"));
+    						return("ERROR");
+    					case OMC.WRS_IDLE:
+    					default:
+    						return("ERROR");
+    					}
+    				}
+    				OMC.abortWeatherUpdate();
+					prefUpdWeatherNow.setEnabled(true);
+
+    			} catch (InterruptedException e) {
+    				e.printStackTrace();
+    			}
+    			return null;
+    			
+    		}
+    		@Override
+    		protected void onProgressUpdate(String... values) {
+    			prefUpdWeatherNow.setTitle(values[0]);
+    			prefUpdWeatherNow.setSummary(values[1]);
+    			prefWeather.setTitle(values[2]);
+    			prefWeather.setSummary(formatWeatherSummary());
+    		}
+    		@Override
+    		protected void onPostExecute(String result) {
+				prefUpdWeatherNow.setEnabled(true);
+    		};
+    	};
+    	}
+	
+	}
+
+	
+    public String formatWeatherSummary() {
+		final String sWSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
+		tLastTry.set(OMC.LASTWEATHERTRY);
+		tLastRefresh.set(OMC.LASTWEATHERREFRESH);
+		tNextRefresh.set(OMC.NEXTWEATHERREFRESH);
+		tNextRequest.set(OMC.NEXTWEATHERREQUEST);
+		if (sWSetting.equals("disabled")) {
+			return (OMC.RString("tapToEnable"));
+		}
+		if (OMC.PREFS.getString("sWeatherFreq", "60").equals("0")) {
+			return (OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("manualRefreshOnly"));
+		} else {
+			return (OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("nextRefresh")+tNextRefresh.format("%R") 
+						+ "\nLast Refresh:"+ tLastRefresh.format("%R") + " Next Request:" + tNextRefresh.format("%R"));
+		}
+    }
+
     public void dialogCancelled() {
        	if (OMCPrefActivity.mAD!=null) { // && mAD.isShowing()
        		OMCPrefActivity.mAD.dismiss();
@@ -1189,6 +1318,14 @@ public class OMCPrefActivity extends PreferenceActivity {
     @Override
     public void onPause() {
     	super.onPause();
+    	
+    	// Shut down any in-progress weather updates
+    	if (mWeatherRefresh!=null) {
+    		if (!mWeatherRefresh.isCancelled()) mWeatherRefresh.cancel(true);
+    	}
+    	OMC.abortWeatherUpdate();
+    	OMC.WEATHERREFRESHSTATUS=OMC.WRS_IDLE;
+    	
 		if (appWidgetID >= 0) {
 
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Saving Prefs for Widget " + OMCPrefActivity.appWidgetID);

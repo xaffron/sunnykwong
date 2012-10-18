@@ -122,6 +122,8 @@ public class SevenTimerJSONHandler {
 	
 							tempJson = OMC.streamToJSONObject(huc.getInputStream());
 
+							OMC.WEATHERREFRESHSTATUS = OMC.WRS_PROVIDER;
+							
 							// Cache the forecast for future use.
 							CACHEDFORECAST = tempJson.toString();
 							
@@ -315,6 +317,9 @@ public class SevenTimerJSONHandler {
 							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Next Refresh Time:" + new java.sql.Time(OMC.NEXTWEATHERREFRESH).toLocaleString());
 							OMC.PREFS.edit().putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH).commit();
 
+
+							OMC.WEATHERREFRESHSTATUS = OMC.WRS_SUCCESS;
+							
 						}
 	
 					} catch (Exception e) { 
@@ -351,7 +356,9 @@ public class SevenTimerJSONHandler {
 	
 						if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Interpolating weather from previously-cached forecast.");
 						tempJson = new JSONObject(CACHEDFORECAST);
-	
+
+						OMC.WEATHERREFRESHSTATUS = OMC.WRS_PROVIDER;
+						
 						if (OMC.DEBUG)
 							Log.i(OMC.OMCSHORT + "7TWeather", tempJson.toString());
 	
@@ -536,6 +543,9 @@ public class SevenTimerJSONHandler {
 						}
 						if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Next Refresh Time:" + new java.sql.Time(OMC.NEXTWEATHERREFRESH).toLocaleString());
 						OMC.PREFS.edit().putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH).commit();
+
+						OMC.WEATHERREFRESHSTATUS = OMC.WRS_SUCCESS;
+						
 						
 					} catch (Exception e) {
 						e.printStackTrace();

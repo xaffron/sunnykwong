@@ -140,6 +140,11 @@ public class OMC extends Application {
 	static int CURRENTCLOCKPRIORITY, CURRENTLOCATIONPRIORITY;
 	static long LASTUPDATEMILLIS, LEASTLAGMILLIS=200;
 	static long LASTWEATHERTRY=0l,LASTWEATHERREFRESH=0l,NEXTWEATHERREFRESH=0l,NEXTWEATHERREQUEST=0l;
+	static int WEATHERREFRESHSTATUS;
+	static long WEATHERREFRESHTIMESTAMP;
+	static final int WRS_IDLE=0, WRS_LOCATION=1, WRS_GPS=2, WRS_NETWORK=3, WRS_FORCED=4;
+	static final int WRS_GEOCODE=5, WRS_PROVIDER=6, WRS_SUCCESS=7, WRS_FAILURE=8, WRS_CACHED=9, WRS_FIXED=10;
+	
 	static int LASTBATTERYPLUGGEDSTATUS=0;
 	static long NEXTBATTSAVEMILLIS=0l;
 	static int BATTLEVEL=0, BATTSCALE=100, BATTPERCENT=0;
@@ -159,7 +164,6 @@ public class OMC extends Application {
     static LocationManager LM;
     static LocationListener LL;
     static List<String> LOCNPROVIDERLIST;
-    static boolean FINELOCNRCVD, COARSELOCNRCVD;
 
     static Typeface GEOFONT,WEATHERFONT;
     
@@ -344,33 +348,40 @@ public class OMC extends Application {
     	OMC.LM = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
     	OMC.LOCNPROVIDERLIST = OMC.LM.getAllProviders();
     	switch (OMC.CURRENTLOCATIONPRIORITY) {
-			// Use GPS location only.
+			// Highest: Use real-time GPS location only.
+    		// Ignore network and passive providers.
 			case 0:
-			case 2:
-			case 4:
 				OMC.LOCNPROVIDERLIST.remove(LocationManager.NETWORK_PROVIDER);
-    			OMC.LOCNPROVIDERLIST.remove("passive");
-				break;
-			// Use GPS or network location.
+			// High: Use real-time network or GPS location.
+			// Ignore passive provider.
 			case 1:
+    			OMC.LOCNPROVIDERLIST.remove("passive");
+			// Medium to Lowest: Use any provider available.
+			case 2:
 			case 3:
-			case 5:
-			case 6:
+			case 4:
 			default:
 		}
     	
     	OMC.LL = new LocationListener() {
             public void onLocationChanged(final Location location) {
             	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Using Locn: " + location.getLongitude() + " + " + location.getLatitude());
-            	if (location.getProvider().equals("gps")) FINELOCNRCVD=true;
-            	if (location.getProvider().equals("network")) COARSELOCNRCVD=true;
+            	if (location.getProvider().equals("gps")) {
+            		OMC.WEATHERREFRESHSTATUS=OMC.WRS_GPS;
+            	} else if (location.getProvider().equals("network")) {
+            		OMC.WEATHERREFRESHSTATUS=OMC.WRS_NETWORK;
+            	} else if (location.getProvider().equals("passive")) {
+            		OMC.WEATHERREFRESHSTATUS=OMC.WRS_CACHED;
+            	}
             	OMC.LM.removeUpdates(OMC.LL); 
             	OMC.LASTKNOWNLOCN=new Location(location);
         		Thread t = new Thread() {
         			public void run() {
         				OMC.calculateSunriseSunset(location.getLatitude(), location.getLongitude());
         				try {
+        					OMC.WEATHERREFRESHSTATUS=OMC.WRS_NETWORK;
         					GoogleReverseGeocodeService.updateLocation(location);
+        	        		OMC.WEATHERREFRESHSTATUS=OMC.WRS_GEOCODE;
         					String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
         					if (sWProvider.equals("ig")) {
             					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
@@ -2123,8 +2134,12 @@ public class OMC extends Application {
     		e.printStackTrace();
     	}
     }
-   
-	static public void updateWeather(final boolean force) {
+
+    static public void abortWeatherUpdate() {
+ 	    OMC.LM.removeUpdates(OMC.LL);
+    }
+    
+	static public void updateWeather() {
 		// When we want a weather update, first we set the "try" timestamp.
 		OMC.LASTWEATHERTRY=System.currentTimeMillis();
 		// Temporarily set the "next refresh" timestamp to the default retry period
@@ -2154,10 +2169,6 @@ public class OMC extends Application {
 		// If weather is by latitude/longitude, request lazy location (unless forced).
 		// The location listener directs control to the updateweather function upon callback.
 		} else if (sWeatherSetting.equals("bylatlong")) {
-			if (force) {
-				// Forced: Want current location only.
-				GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis(), OMC.LOCNPROVIDERLIST);
-			} else {
 	        	switch (OMC.CURRENTLOCATIONPRIORITY) {
 	        		// High:  Only real-time will do. (providerlist is pre-adjusted in OMCPrefActivity.)
 	        		case 0:
@@ -2178,12 +2189,15 @@ public class OMC extends Application {
 	        		case 6:
 	        		default:
 	    				GoogleReverseGeocodeService.getLastBestLocation(0l, OMC.LOCNPROVIDERLIST);
-	        	}
+	        	
         	}
 			return;
 		} else if (sWeatherSetting.equals("specific")) {
 			// If weather is for fixed location, calculate sunrise/sunset for the location, then
 			// update weather manually
+			OMC.LASTKNOWNCITY=OMC.jsonFIXEDLOCN.optString("city","Unknown");
+			OMC.LASTKNOWNCOUNTRY=OMC.jsonFIXEDLOCN.optString("country","Unknown");
+			
 			OMC.calculateSunriseSunset(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), OMC.jsonFIXEDLOCN.optDouble("longitude",0d));
 			String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
 			if (sWProvider.equals("ig")) {

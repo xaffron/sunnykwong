@@ -108,7 +108,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		if (action.equals(Intent.ACTION_TIME_CHANGED)
 				|| action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
 			if (Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))!=0)
-				OMC.updateWeather(true);
+				OMC.updateWeather();
 		} else {
 			// Otherwise, we can be more polite about updating weather.
 			// First, are we due for a weather update?
@@ -121,7 +121,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 				} else {
 					// Get weather updates
 					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Get Weather Udpates");
-					OMC.updateWeather(false);
+					OMC.updateWeather();
 				}
 			}
 		}

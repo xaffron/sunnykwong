@@ -319,11 +319,11 @@
 			<item>Lowest (Default)</item>
 		</string-array>
 		<string-array name="locationPriority_legend">
-		    <item>Use instant GPS location only during weather updates (Not recommended).  Weather updates will stop if you are indoors.  Are you sure?</item>	
-			<item>Use instant GPS or network location during weather updates.  Weather updates may stop if you are indoors.  Are you sure?</item>
-			<item>Use any GPS or network location less than 2 hours old.  Weather updates may stop if you are indoors for more than 24 hours.  Are you sure?</item>
-			<item>Use any GPS or network location less than 24 hours old.  Weather updates may stop if you are indoors for more than 24 hours.  Are you sure?</item>
-			<item>Use the most recent GPS or network location, regardless of staleness.  Weather accuracy will depend on location accuracy and staleness.  Are you sure?</item>
+		    <item>WARNING: Using instant GPS location only may cause large battery drain.  Weather updates will stop if you are indoors.  Are you sure?</item>	
+			<item>Use instant network or GPS location during weather updates.  Weather updates may stop if you are indoors.  Are you sure?</item>
+			<item>Use any network or GPS location less than 2 hours old.  Weather updates may stop if you are indoors for more than 24 hours.  Are you sure?</item>
+			<item>Use any network or GPS location less than 24 hours old.  Weather updates may stop if you are indoors for more than 24 hours.  Are you sure?</item>
+			<item>Use the most recent network or GPS location, regardless of staleness.  Weather accuracy will depend on location accuracy and staleness.  Are you sure?</item>
 		</string-array>
 		
 		<string name="weatherDiagnostics">Weather Diagnostics</string>
