@@ -21,18 +21,18 @@
 </string-array>
 
 <string-array name="verbosemonth">
-<item>Styczeń</item>
-<item>Luty</item>
-<item>Marzec</item>
-<item>Kwiecień</item>
-<item>Maj</item>
-<item>Czerwiec</item>
-<item>Lipiec</item>
-<item>Sierpień</item>
-<item>Wrzesień</item>
-<item>Październik</item>
-<item>Listopad</item>
-<item>Grudzień</item>
+<item>Stycznia</item>
+<item>Lutego</item>
+<item>Marca</item>
+<item>Kwietnia</item>
+<item>Maja</item>
+<item>Czerwca</item>
+<item>Lipca</item>
+<item>Sierpnia</item>
+<item>Września</item>
+<item>Października</item>
+<item>Listopada</item>
+<item>Grudnia</item>
 </string-array>
 
 <string-array name="shortmonth">
@@ -51,18 +51,6 @@
 </string-array>
 
 </resources>
-#but in Polish (yeah I know it's strange language:-)) should be (for 1th, 2th , 3th... January, February, March, etc.):
-1 Stcznia, 2 Stcznia, 3 Stycznia, etc.
-1 Lutego, 2 Lutego, 3 Lutego, etc.
-1 Marca, 2 Marca, 3 Marca, etc.
-1 Kwietnia, 2 Kwietnia, 3 Kwietnia, etc.
-1 Maja, 2 Maja, 3 Maja, etc.
-1 Czerwca, 2 Czerwca, 3 Czerwca, etc.
-1 Lipca, 2 Lipca, 3 Lipca, etc.
-1 Sierpnia, 2 Sierpnia, 3 Sierpnia, etc.
-1 Września, 2 Września, 3 Września, etc.
-1 Października, 2 Października, 3 Października, etc.
-1 Listopada, 2 Listopada, 3 Listopada, etc.
-1 Grudnia, 2 Grudnia, 3 Grudnia
+
 
 

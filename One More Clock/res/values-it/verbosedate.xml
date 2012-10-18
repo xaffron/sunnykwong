@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="daysuffix"></string>
+
+<string-array name="verbosedow">
+<item>domenica</item>
+<item>lunedì</item>
+<item>martedì</item>
+<item>mercoledì</item>
+<item>giovedì</item>
+<item>venerdì</item>
+<item>sabato</item>
+</string-array>
+
+<string-array name="shortdow">
+<item>dom</item>
+<item>lun</item>
+<item>mar</item>
+<item>mer</item>
+<item>gio</item>
+<item>ven</item>
+<item>sab</item>
+</string-array>
+
+<string-array name="verbosemonth">
+<item>gennaio</item>
+<item>febbraio</item>
+<item>marzo</item>
+<item>aprile</item>
+<item>maggio</item>
+<item>giugno</item>
+<item>luglio</item>
+<item>agosto</item>
+<item>settembre</item>
+<item>ottobre</item>
+<item>novembre</item>
+<item>dicembre</item>
+</string-array>
+
+<string-array name="shortmonth">
+<item>gen</item>
+<item>feb</item>
+<item>mar</item>
+<item>apr</item>
+<item>mag</item>
+<item>giu</item>
+<item>lug</item>
+<item>ago</item>
+<item>sett</item>
+<item>ott</item>
+<item>nov</item>
+<item>dic</item>
+</string-array>
+
+</resources>

@@ -99,8 +99,8 @@ public class OMC extends Application {
 	static final String APPICON = "clockicon";
 	
 	static final String[] APM = {"Ante Meridiem","Post Meridiem"};	
-	static final Locale[] LOCALES = {new Locale("zh","TW",""),new Locale("zh","CN",""),new Locale("es","ES",""),new Locale("de","",""),new Locale("en","US",""),new Locale("fr","",""),new Locale("pl","",""),new Locale("pt","",""),new Locale("sv","","")};
-	static final String[] LOCALENAMES = {"繁體中文","简体中文","Castellano","Deutsch","English (US)","Le Français","Język Polski","Português","Svenska"};
+	static final Locale[] LOCALES = {new Locale("zh","TW",""),new Locale("zh","CN",""),new Locale("es","ES",""),new Locale("de","",""),new Locale("en","US",""),new Locale("fr","",""),new Locale("it","",""),new Locale("pl","",""),new Locale("pt","",""),new Locale("sv","","")};
+	static final String[] LOCALENAMES = {"繁體中文","简体中文","Castellano","Deutsch","English (US)","Le Français","Italiano","Język Polski","Português","Svenska"};
 	static SimpleDateFormat LOCALESDF;
 	static Locale CURRENTLOCALE;
 
