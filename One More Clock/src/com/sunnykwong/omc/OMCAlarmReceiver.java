@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.BatteryManager;
 import android.util.Log;
+import android.widget.Toast;
 
 public class OMCAlarmReceiver extends BroadcastReceiver {
 	
@@ -102,10 +103,14 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			.commit();
 			OMC.NEXTBATTSAVEMILLIS=omctime+900000l;
 		}
-
+		
 		// Weather-related responses.
+		// If user taps on hotspot for refresh weather, refresh weather.
+		if (action.equals(OMC.WEATHERREFRESHSTRING)) {
+			Toast.makeText(OMC.CONTEXT, OMC.RString("refreshWeatherNow"), Toast.LENGTH_LONG).show();
+			OMC.updateWeather();
 		// If we just set the clock or switched timezones, we definitely want to refresh weather right now.
-		if (action.equals(Intent.ACTION_TIME_CHANGED)
+		} else if (action.equals(Intent.ACTION_TIME_CHANGED)
 				|| action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
 			if (Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))!=0)
 				OMC.updateWeather();

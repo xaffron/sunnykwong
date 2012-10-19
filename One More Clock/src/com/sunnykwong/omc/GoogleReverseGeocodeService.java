@@ -7,7 +7,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import android.location.Location;
 import android.location.LocationListener;
+import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.os.Build;
+import android.text.format.Time;
 import android.util.Log;
 
 public class GoogleReverseGeocodeService {
@@ -27,130 +30,154 @@ public class GoogleReverseGeocodeService {
 	 * 
 	 * 
 	 */
-	static public void getLastBestLocation(long minTime,
-			List<String> locnProviders) {
+	static public void getLastBestLocation(int iLocationPriority) {
+		long minTime;
+		List<String> locnProviders = OMC.LM.getAllProviders();
+		// Determine minimum acceptable time
+		// via location priority.
+		switch (iLocationPriority) {
+		// Strict (fine) - 2 hours
+		case 0:
+		case 1:
+			minTime = System.currentTimeMillis() - 3600000l * 2;
+			break;
+		// Medium - 10 hours
+		case 2:
+		case 3:
+			minTime = System.currentTimeMillis() - 3600000l * 10;
+			break;
+		// Flexible - any
+		case 4:
+		default:
+			minTime = 0l;
+		}
+
 		Location bestResult = null;
 		float bestAccuracy = Float.MAX_VALUE;
 		long bestTime = Long.MIN_VALUE;
 		String bestProvider = "";
 
-		// If location priority is high-fine or high-coarse, just skip the
-		// passive stuff.
-		switch (OMC.CURRENTLOCATIONPRIORITY) {
-		case 0:
-			// GPS Only.
-			try {
-				if (OMC.DEBUG)
-					Log.i(OMC.OMCSHORT + "Weather",
-							"Network failed; Requesting GPS Locn.");
-				OMC.LM.requestLocationUpdates("gps", 0, 0, OMC.LL);
-			} catch (IllegalArgumentException ee) {
-				Log.w(OMC.OMCSHORT + "Weather", "Cannot fix location.");
-				ee.printStackTrace();
-			}
-			break;
-		case 1:
-			// Start with network; if it fails, go GPS.
-			try {
-				if (OMC.DEBUG)
-					Log.i(OMC.OMCSHORT + "Weather",
-							"Passive failed; Requesting Network Locn.");
-				OMC.LM.requestLocationUpdates("network", 0, 0, OMC.LL);
-			} catch (IllegalArgumentException e) {
-				try {
-					if (OMC.DEBUG)
-						Log.i(OMC.OMCSHORT + "Weather",
-								"Network failed; Requesting GPS Locn.");
-					OMC.LM.requestLocationUpdates("gps", 0, 0, OMC.LL);
-				} catch (IllegalArgumentException ee) {
-					Log.w(OMC.OMCSHORT + "Weather", "Cannot fix location.");
-					ee.printStackTrace();
-				}
-			}
-			break;
-		case 2:
-		case 3:
-		case 4:
-		default:
-			// Iterate through all the providers on the system, keeping
-			// note of the most accurate result within the acceptable time
-			// limit.
-			// If no result is found within maxTime, return the newest Location.
+		// Iterate through all the providers on the system, keeping
+		// note of the most accurate result within the acceptable time
+		// limit.
+		// If no result is found within maxTime, return the newest Location.
 
-			for (String provider : locnProviders) {
-				Location location = OMC.LM.getLastKnownLocation(provider);
-				if (location != null) {
-					float accuracy = location.getAccuracy();
-					long time = location.getTime();
-					// We want to place much higher emphasis on timeliness rather than accuracy
-					if ((time > bestTime)) {
-						bestResult = location;
-						bestAccuracy = accuracy;
-						bestTime = time;
-						bestProvider = provider;
-					// But if the GPS lock is within 5 minutes of the most recent and have more accuracy, we'll take 
+		for (String provider : locnProviders) {
+			boolean bSkipProvider;
+
+			// Ignore certain providers according to location priority.
+			switch (iLocationPriority) {
+			// Fine - GPS only.
+			case 0:
+			case 2:
+				if (!provider.equals(LocationManager.GPS_PROVIDER)) bSkipProvider=true;
+				else bSkipProvider=false;
+				break;
+			// Otherwise - GPS/network/passive.
+			case 1:
+			case 3:
+			case 4:
+			default:
+				bSkipProvider=false;
+			}
+			if (bSkipProvider) continue;
+			
+			Location location = OMC.LM.getLastKnownLocation(provider);
+			if (location != null) {
+				float accuracy = location.getAccuracy();
+				long time = location.getTime();
+				Time t = new Time();
+				t.set(time);
+				if (OMC.DEBUG)
+					Log.i(OMC.OMCSHORT + "Locn", "Last Known " + provider +" @" + t.format("%R") + " : " + accuracy);
+				
+				// We want to place much higher emphasis on timeliness rather
+				// than accuracy
+				
+				if ((time > bestTime)) {
+					bestResult = location;
+					bestAccuracy = accuracy;
+					bestTime = time;
+					bestProvider = provider;
+					// But if the lock is within 5 minutes of the most
+					// recent and has more accuracy, we'll take
 					// the more-accurate
-					} else if (Math.abs(time-bestTime)< 30000l && accuracy < bestAccuracy) {
-						bestResult = location;
-						bestAccuracy = accuracy;
-						bestTime = time;
-						bestProvider = provider;
+				
+				} else if (Math.abs(time - bestTime) < 30000l
+						&& accuracy < bestAccuracy) {
+					bestResult = location;
+					bestAccuracy = accuracy;
+					bestTime = time;
+					bestProvider = provider;
 
-					} else if (time < minTime
-							&& bestAccuracy == Float.MAX_VALUE
-							&& time > bestTime) {
-						bestResult = location;
-						bestTime = time;
-						bestProvider = provider;
-					}
+				} else if (time < minTime && bestAccuracy == Float.MAX_VALUE
+						&& time > bestTime) {
+					bestResult = location;
+					bestTime = time;
+					bestProvider = provider;
 				}
 			}
-			// If the best result is beyond the allowed time limit, or the
-			// accuracy of the
-			// best result is wider than the acceptable maximum distance,
-			// request a single update.
-			// This check simply implements the same conditions we set when
-			// requesting regular
-			// location updates every [minTime] and [minDistance].
-			if (bestTime < minTime) {
-				// v134: Start with network; if it fails, go GPS.
+		}
+		// If the best result is beyond the allowed time limit, or the
+		// accuracy of the
+		// best result is wider than the acceptable maximum distance,
+		// request a single update.
+		// This check simply implements the same conditions we set when
+		// requesting regular
+		// location updates every [minTime] and [minDistance].
+
+		if (bestTime < minTime) {
+			// According to location priority...
+			switch (iLocationPriority) {
+
+			// Fine - GPS only.
+			case 0:
+			case 2:
+					try {
+						if (OMC.DEBUG)
+							Log.i(OMC.OMCSHORT + "Weather", "Requesting GPS Locn.");
+						OMC.LM.requestLocationUpdates("gps", 0, 0, OMC.LL);
+					} catch (IllegalArgumentException ee) {
+						Log.w(OMC.OMCSHORT + "Weather", "Cannot fix location.");
+						ee.printStackTrace();
+					}
+				break;
+				
+			// Otherwise - Start with network; if it fails, go GPS.
+			case 1:
+			case 3:
+			case 4:
+			default:
 				try {
 					if (OMC.DEBUG)
-						Log.i(OMC.OMCSHORT + "Weather",
-								"Requesting Network Locn.");
+						Log.i(OMC.OMCSHORT + "Weather", "Requesting Network Locn.");
 					OMC.LM.requestLocationUpdates("network", 0, 0, OMC.LL);
 				} catch (IllegalArgumentException e) {
 					try {
 						if (OMC.DEBUG)
-							Log.i(OMC.OMCSHORT + "Weather",
-									"Requesting GPS Locn.");
+							Log.i(OMC.OMCSHORT + "Weather", "Requesting GPS Locn.");
 						OMC.LM.requestLocationUpdates("gps", 0, 0, OMC.LL);
 					} catch (IllegalArgumentException ee) {
 						Log.w(OMC.OMCSHORT + "Weather", "Cannot fix location.");
 						ee.printStackTrace();
 					}
 				}
-			} else {
-				if (OMC.DEBUG)
-					Log.i(OMC.OMCSHORT + "Weather",
-							"Using cached location from "
-									+ bestProvider
-									+ " as of "
-									+ new java.sql.Time(bestTime)
-											.toLocaleString());
-				bestResult.setProvider("passive");
-				OMC.LL.onLocationChanged(bestResult);
-				
 			}
+		} else {
+			if (OMC.DEBUG)
+				Log.i(OMC.OMCSHORT + "Weather", "Using cached location from "
+						+ bestProvider + " as of "
+						+ new java.sql.Time(bestTime).toLocaleString());
+//			bestResult.setProvider("passive");
+			OMC.LL.onLocationChanged(bestResult);
 		}
-
 	}
 
 	static public String updateLocation(final Location location)
 			throws Exception {
 		JSONObject result;
 		HttpURLConnection huc = null;
-		
+
 		try {
 			if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
 				System.setProperty("http.keepAlive", "false");

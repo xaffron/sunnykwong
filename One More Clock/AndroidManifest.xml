@@ -104,7 +104,8 @@
     		    <action android:name="com.sunnykwong.omc.BGSERVICEPAID" />
         		<action android:name="com.sunnykwong.omc.FGSERVICEPAID" />
   				<action android:name="com.sunnykwong.omc.CANCEL_FGPAID" />
-    			<category android:name="android.intent.category.DEFAULT" />
+  				<action android:name="com.sunnykwong.omc.WEATHERREFRESHPAID" />
+  				<category android:name="android.intent.category.DEFAULT" />
         	</intent-filter>
         </receiver>
         <receiver android:name="com.sunnykwong.omc.OMCConfigReceiver">

@@ -43,330 +43,6 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 	public static String VALUETYPE;
 	public static boolean bCurrentObservations;
 
-	static {
-		// Populating the condition translations
-		CONDITIONTRANSLATIONS = new HashMap<String,Integer>();
-		CONDITIONTRANSLATIONS.put("fair",1);
-		CONDITIONTRANSLATIONS.put("becoming sunny",1);
-		CONDITIONTRANSLATIONS.put("sunny",1);
-		CONDITIONTRANSLATIONS.put("clear",1);
-		CONDITIONTRANSLATIONS.put("fair with haze",1);
-		CONDITIONTRANSLATIONS.put("clear with haze",1);
-		CONDITIONTRANSLATIONS.put("fair and breezy",1);
-		CONDITIONTRANSLATIONS.put("clear and breezy",1);
-		CONDITIONTRANSLATIONS.put("partly sunny",4);
-		CONDITIONTRANSLATIONS.put("drizzle",16);
-		CONDITIONTRANSLATIONS.put("light drizzle",16);
-		CONDITIONTRANSLATIONS.put("heavy drizzle",16);
-		CONDITIONTRANSLATIONS.put("drizzle fog\u00E9/mist",16);
-		CONDITIONTRANSLATIONS.put("light drizzle fog\u00E9/mist",16);
-		CONDITIONTRANSLATIONS.put("heavy drizzle fog\u00E9/mist",16);
-		CONDITIONTRANSLATIONS.put("drizzle fog",16);
-		CONDITIONTRANSLATIONS.put("light drizzle fog",16);
-		CONDITIONTRANSLATIONS.put("heavy drizzle fog",16);
-		CONDITIONTRANSLATIONS.put("dust",6);
-		CONDITIONTRANSLATIONS.put("low drifting dust",6);
-		CONDITIONTRANSLATIONS.put("blowing dust",6);
-		CONDITIONTRANSLATIONS.put("sand",6);
-		CONDITIONTRANSLATIONS.put("blowing sand",6);
-		CONDITIONTRANSLATIONS.put("low drifting sand",6);
-		CONDITIONTRANSLATIONS.put("dust\u00E9/sand whirls",6);
-		CONDITIONTRANSLATIONS.put("dust\u00E9/sand whirls in vicinity",6);
-		CONDITIONTRANSLATIONS.put("dust storm",6);
-		CONDITIONTRANSLATIONS.put("heavy dust storm",6);
-		CONDITIONTRANSLATIONS.put("dust storm in vicinity",6);
-		CONDITIONTRANSLATIONS.put("sand storm",6);
-		CONDITIONTRANSLATIONS.put("heavy sand storm",6);
-		CONDITIONTRANSLATIONS.put("sand storm in vicinity",6);
-		CONDITIONTRANSLATIONS.put("low drifting snow",28);
-		CONDITIONTRANSLATIONS.put("areas frost",28);
-		CONDITIONTRANSLATIONS.put("morning frost",28);
-		CONDITIONTRANSLATIONS.put("fog\u00E9/mist",13);
-		CONDITIONTRANSLATIONS.put("fog",13);
-		CONDITIONTRANSLATIONS.put("freezing fog",13);
-		CONDITIONTRANSLATIONS.put("shallow fog",13);
-		CONDITIONTRANSLATIONS.put("partial fog",13);
-		CONDITIONTRANSLATIONS.put("areas fog",13);
-		CONDITIONTRANSLATIONS.put("patchy fog",13);
-		CONDITIONTRANSLATIONS.put("patches of fog",13);
-		CONDITIONTRANSLATIONS.put("fog in vicinity",13);
-		CONDITIONTRANSLATIONS.put("freezing fog in vicinity",13);
-		CONDITIONTRANSLATIONS.put("shallow fog in vicinity",13);
-		CONDITIONTRANSLATIONS.put("partial fog in vicinity",13);
-		CONDITIONTRANSLATIONS.put("patches of fog in vicinity",13);
-		CONDITIONTRANSLATIONS.put("showers in vicinity fog",13);
-		CONDITIONTRANSLATIONS.put("light freezing fog",13);
-		CONDITIONTRANSLATIONS.put("heavy freezing fog",13);
-		CONDITIONTRANSLATIONS.put("freezing rain",37);
-		CONDITIONTRANSLATIONS.put("freezing drizzle",37);
-		CONDITIONTRANSLATIONS.put("light freezing rain",37);
-		CONDITIONTRANSLATIONS.put("light freezing drizzle",37);
-		CONDITIONTRANSLATIONS.put("heavy freezing rain",37);
-		CONDITIONTRANSLATIONS.put("heavy freezing drizzle",37);
-		CONDITIONTRANSLATIONS.put("freezing rain in vicinity",37);
-		CONDITIONTRANSLATIONS.put("freezing drizzle in vicinity",37);
-		CONDITIONTRANSLATIONS.put("freezing rain rain",37);
-		CONDITIONTRANSLATIONS.put("light freezing rain rain",37);
-		CONDITIONTRANSLATIONS.put("heavy freezing rain rain",37);
-		CONDITIONTRANSLATIONS.put("rain freezing rain",37);
-		CONDITIONTRANSLATIONS.put("light rain freezing rain",37);
-		CONDITIONTRANSLATIONS.put("heavy rain freezing rain",37);
-		CONDITIONTRANSLATIONS.put("freezing drizzle rain",37);
-		CONDITIONTRANSLATIONS.put("light freezing drizzle rain",37);
-		CONDITIONTRANSLATIONS.put("heavy freezing drizzle rain",37);
-		CONDITIONTRANSLATIONS.put("rain freezing drizzle",37);
-		CONDITIONTRANSLATIONS.put("light rain freezing drizzle",37);
-		CONDITIONTRANSLATIONS.put("heavy rain freezing drizzle",37);
-		CONDITIONTRANSLATIONS.put("haze",7);
-		CONDITIONTRANSLATIONS.put("heavy rain showers",26);
-		CONDITIONTRANSLATIONS.put("heavy showers rain",26);
-		CONDITIONTRANSLATIONS.put("heavy rain showers fog\u00E9/mist",26);
-		CONDITIONTRANSLATIONS.put("heavy showers rain fog\u00E9/mist",26);
-		CONDITIONTRANSLATIONS.put("heavy rain",26);
-		CONDITIONTRANSLATIONS.put("heavy rain fog\u00E9/mist",26);
-		CONDITIONTRANSLATIONS.put("heavy rain fog",26);
-		CONDITIONTRANSLATIONS.put("freezing rain snow",35);
-		CONDITIONTRANSLATIONS.put("light freezing rain snow",35);
-		CONDITIONTRANSLATIONS.put("heavy freezing rain snow",35);
-		CONDITIONTRANSLATIONS.put("freezing drizzle snow",35);
-		CONDITIONTRANSLATIONS.put("light freezing drizzle snow",35);
-		CONDITIONTRANSLATIONS.put("heavy freezing drizzle snow",35);
-		CONDITIONTRANSLATIONS.put("snow freezing rain",35);
-		CONDITIONTRANSLATIONS.put("light snow freezing rain",35);
-		CONDITIONTRANSLATIONS.put("heavy snow freezing rain",35);
-		CONDITIONTRANSLATIONS.put("snow freezing drizzle",35);
-		CONDITIONTRANSLATIONS.put("light snow freezing drizzle",35);
-		CONDITIONTRANSLATIONS.put("heavy snow freezing drizzle",35);
-		CONDITIONTRANSLATIONS.put("light rain showers",14);
-		CONDITIONTRANSLATIONS.put("light rain and breezy",14);
-		CONDITIONTRANSLATIONS.put("light showers rain",14);
-		CONDITIONTRANSLATIONS.put("light rain showers fog\u00E9/mist",14);
-		CONDITIONTRANSLATIONS.put("light showers rain fog\u00E9/mist",14);
-		CONDITIONTRANSLATIONS.put("light rain",14);
-		CONDITIONTRANSLATIONS.put("light rain fog\u00E9/mist",14);
-		CONDITIONTRANSLATIONS.put("light rain fog",14);
-		CONDITIONTRANSLATIONS.put("light snow",29);
-		CONDITIONTRANSLATIONS.put("light snow fog\u00E9/mist",29);
-		CONDITIONTRANSLATIONS.put("light snow fog",29);
-		CONDITIONTRANSLATIONS.put("blowing snow",29);
-		CONDITIONTRANSLATIONS.put("snow low drifting snow",29);
-		CONDITIONTRANSLATIONS.put("light snow low drifting snow",29);
-		CONDITIONTRANSLATIONS.put("light snow blowing snow",29);
-		CONDITIONTRANSLATIONS.put("light snow blowing snow fog\u00E9/mist",29);
-		CONDITIONTRANSLATIONS.put("mostly cloudy",10);
-		CONDITIONTRANSLATIONS.put("mostly cloudy with haze",10);
-		CONDITIONTRANSLATIONS.put("mostly cloudy and breezy",10);
-		CONDITIONTRANSLATIONS.put("overcast",11);
-		CONDITIONTRANSLATIONS.put("cloudy",11);
-		CONDITIONTRANSLATIONS.put("overcast with haze",11);
-		CONDITIONTRANSLATIONS.put("overcast and breezy",11);
-		CONDITIONTRANSLATIONS.put("mostly sunny",3);
-		CONDITIONTRANSLATIONS.put("mostly clear",3);
-		CONDITIONTRANSLATIONS.put("a few clouds",5);
-		CONDITIONTRANSLATIONS.put("a few clouds with haze",5);
-		CONDITIONTRANSLATIONS.put("a few clouds and breezy",5);
-		CONDITIONTRANSLATIONS.put("increasing clouds",5);
-		CONDITIONTRANSLATIONS.put("partly cloudy",5);
-		CONDITIONTRANSLATIONS.put("partly cloudy with haze",5);
-		CONDITIONTRANSLATIONS.put("partly cloudy and breezy",5);
-		CONDITIONTRANSLATIONS.put("rain showers",27);
-		CONDITIONTRANSLATIONS.put("showers rain",27);
-		CONDITIONTRANSLATIONS.put("rain showers in vicinity fog\u00E9/mist",27);
-		CONDITIONTRANSLATIONS.put("showers rain fog\u00E9/mist",27);
-		CONDITIONTRANSLATIONS.put("showers rain in vicinity fog\u00E9/mist",27);
-		CONDITIONTRANSLATIONS.put("rain",27);
-		CONDITIONTRANSLATIONS.put("showers",27);
-		CONDITIONTRANSLATIONS.put("rain fog\u00E9/mist",27);
-		CONDITIONTRANSLATIONS.put("rain fog",27);
-		CONDITIONTRANSLATIONS.put("rain ice pellets",38);
-		CONDITIONTRANSLATIONS.put("light rain ice pellets",38);
-		CONDITIONTRANSLATIONS.put("heavy rain ice pellets",38);
-		CONDITIONTRANSLATIONS.put("drizzle ice pellets",38);
-		CONDITIONTRANSLATIONS.put("light drizzle ice pellets",38);
-		CONDITIONTRANSLATIONS.put("heavy drizzle ice pellets",38);
-		CONDITIONTRANSLATIONS.put("ice pellets rain",38);
-		CONDITIONTRANSLATIONS.put("light ice pellets rain",38);
-		CONDITIONTRANSLATIONS.put("heavy ice pellets rain",38);
-		CONDITIONTRANSLATIONS.put("ice pellets drizzle",38);
-		CONDITIONTRANSLATIONS.put("light ice pellets drizzle",38);
-		CONDITIONTRANSLATIONS.put("heavy ice pellets drizzle",38);
-		CONDITIONTRANSLATIONS.put("chance rain\u00E9/snow",38);
-		CONDITIONTRANSLATIONS.put("slight chc rain\u00E9/snow",38);
-		CONDITIONTRANSLATIONS.put("isolated rain\u00E9/snow",38);
-		CONDITIONTRANSLATIONS.put("scattered rain\u00E9/snow",38);
-		CONDITIONTRANSLATIONS.put("snow likely",38);
-		CONDITIONTRANSLATIONS.put("chance snow\u00E9/rain",38);
-		CONDITIONTRANSLATIONS.put("slight chc snow\u00E9/rain",38);
-		CONDITIONTRANSLATIONS.put("isolated snow\u00E9/rain",38);
-		CONDITIONTRANSLATIONS.put("scattered snow\u00E9/rain",38);
-		CONDITIONTRANSLATIONS.put("snow\u00E9/rain likely",38);
-		CONDITIONTRANSLATIONS.put("rain snow",38);
-		CONDITIONTRANSLATIONS.put("light rain snow",38);
-		CONDITIONTRANSLATIONS.put("heavy rain snow",38);
-		CONDITIONTRANSLATIONS.put("snow rain",38);
-		CONDITIONTRANSLATIONS.put("light snow rain",38);
-		CONDITIONTRANSLATIONS.put("heavy snow rain",38);
-		CONDITIONTRANSLATIONS.put("drizzle snow",38);
-		CONDITIONTRANSLATIONS.put("light drizzle snow",38);
-		CONDITIONTRANSLATIONS.put("heavy drizzle snow",38);
-		CONDITIONTRANSLATIONS.put("snow drizzle",38);
-		CONDITIONTRANSLATIONS.put("light snow drizzle",38);
-		CONDITIONTRANSLATIONS.put("heavy drizzle snow",38);
-		CONDITIONTRANSLATIONS.put("chance showers",15);
-		CONDITIONTRANSLATIONS.put("chance rain",15);
-		CONDITIONTRANSLATIONS.put("slight chc showers",15);
-		CONDITIONTRANSLATIONS.put("slight chc rain",15);
-		CONDITIONTRANSLATIONS.put("isolated showers",15);
-		CONDITIONTRANSLATIONS.put("isolated rain",15);
-		CONDITIONTRANSLATIONS.put("scattered showers",15);
-		CONDITIONTRANSLATIONS.put("scattered rain",15);
-		CONDITIONTRANSLATIONS.put("rain likely",15);
-		CONDITIONTRANSLATIONS.put("showers likely",15);
-		CONDITIONTRANSLATIONS.put("rain showers in vicinity",15);
-		CONDITIONTRANSLATIONS.put("showers rain in vicinity",15);
-		CONDITIONTRANSLATIONS.put("rain showers fog\u00E9/mist",15);
-		CONDITIONTRANSLATIONS.put("chance thunderstorms",23);
-		CONDITIONTRANSLATIONS.put("slight chc thunderstorms",23);
-		CONDITIONTRANSLATIONS.put("isolated thunderstorms",23);
-		CONDITIONTRANSLATIONS.put("scattered thunderstorms",23);
-		CONDITIONTRANSLATIONS.put("thunderstorms likely",23);
-		CONDITIONTRANSLATIONS.put("thunderstorm in vicinity",23);
-		CONDITIONTRANSLATIONS.put("thunderstorm in vicinity fog",23);
-		CONDITIONTRANSLATIONS.put("thunderstorm in vicinity haze",23);
-		CONDITIONTRANSLATIONS.put("showers in vicinity",17);
-		CONDITIONTRANSLATIONS.put("showers in vicinity fog\u00E9/mist",17);
-		CONDITIONTRANSLATIONS.put("showers in vicinity fog",17);
-		CONDITIONTRANSLATIONS.put("showers in vicinity haze",17);
-		CONDITIONTRANSLATIONS.put("ice pellets",36);
-		CONDITIONTRANSLATIONS.put("light ice pellets",36);
-		CONDITIONTRANSLATIONS.put("heavy ice pellets",36);
-		CONDITIONTRANSLATIONS.put("ice pellets in vicinity",36);
-		CONDITIONTRANSLATIONS.put("showers ice pellets",36);
-		CONDITIONTRANSLATIONS.put("thunderstorm ice pellets",36);
-		CONDITIONTRANSLATIONS.put("ice crystals",36);
-		CONDITIONTRANSLATIONS.put("hail",36);
-		CONDITIONTRANSLATIONS.put("small hail\u00E9/snow pellets",36);
-		CONDITIONTRANSLATIONS.put("light small hail\u00E9/snow pellets",36);
-		CONDITIONTRANSLATIONS.put("heavy small hail\u00E9/snow pellets",36);
-		CONDITIONTRANSLATIONS.put("showers hail",36);
-		CONDITIONTRANSLATIONS.put("hail showers",36);
-		CONDITIONTRANSLATIONS.put("smoke",9);
-		CONDITIONTRANSLATIONS.put("areas smoke",9);
-		CONDITIONTRANSLATIONS.put("snow",33);
-		CONDITIONTRANSLATIONS.put("chance snow",33);
-		CONDITIONTRANSLATIONS.put("slight chc snow",33);
-		CONDITIONTRANSLATIONS.put("isolated snow",33);
-		CONDITIONTRANSLATIONS.put("scattered snow",33);
-		CONDITIONTRANSLATIONS.put("snow likely",33);
-		CONDITIONTRANSLATIONS.put("heavy snow",33);
-		CONDITIONTRANSLATIONS.put("snow fog\u00E9/mist",33);
-		CONDITIONTRANSLATIONS.put("heavy snow fog\u00E9/mist",33);
-		CONDITIONTRANSLATIONS.put("snow fog",33);
-		CONDITIONTRANSLATIONS.put("heavy snow fog",33);
-		CONDITIONTRANSLATIONS.put("snow blowing snow",33);
-		CONDITIONTRANSLATIONS.put("heavy snow low drifting snow",33);
-		CONDITIONTRANSLATIONS.put("heavy snow blowing snow",33);
-		CONDITIONTRANSLATIONS.put("thunderstorm snow",33);
-		CONDITIONTRANSLATIONS.put("light thunderstorm snow",33);
-		CONDITIONTRANSLATIONS.put("heavy thunderstorm snow",33);
-		CONDITIONTRANSLATIONS.put("snow grains",33);
-		CONDITIONTRANSLATIONS.put("light snow grains",33);
-		CONDITIONTRANSLATIONS.put("heavy snow grains",33);
-		CONDITIONTRANSLATIONS.put("heavy blowing snow",33);
-		CONDITIONTRANSLATIONS.put("blowing snow in vicinity",33);
-		CONDITIONTRANSLATIONS.put("snow showers",31);
-		CONDITIONTRANSLATIONS.put("light snow showers",31);
-		CONDITIONTRANSLATIONS.put("heavy snow showers",31);
-		CONDITIONTRANSLATIONS.put("showers snow",31);
-		CONDITIONTRANSLATIONS.put("light showers snow",31);
-		CONDITIONTRANSLATIONS.put("heavy showers snow",31);
-		CONDITIONTRANSLATIONS.put("snow showers fog\u00E9/mist",31);
-		CONDITIONTRANSLATIONS.put("light snow showers fog\u00E9/mist",31);
-		CONDITIONTRANSLATIONS.put("heavy snow showers fog\u00E9/mist",31);
-		CONDITIONTRANSLATIONS.put("showers snow fog\u00E9/mist",31);
-		CONDITIONTRANSLATIONS.put("light showers snow fog\u00E9/mist",31);
-		CONDITIONTRANSLATIONS.put("heavy showers snow fog\u00E9/mist",31);
-		CONDITIONTRANSLATIONS.put("snow showers fog",31);
-		CONDITIONTRANSLATIONS.put("light snow showers fog",31);
-		CONDITIONTRANSLATIONS.put("heavy snow showers fog",31);
-		CONDITIONTRANSLATIONS.put("showers snow fog",31);
-		CONDITIONTRANSLATIONS.put("light showers snow fog",31);
-		CONDITIONTRANSLATIONS.put("heavy showers snow fog",31);
-		CONDITIONTRANSLATIONS.put("showers in vicinity snow",31);
-		CONDITIONTRANSLATIONS.put("snow showers in vicinity",31);
-		CONDITIONTRANSLATIONS.put("snow showers in vicinity fog\u00E9/mist",31);
-		CONDITIONTRANSLATIONS.put("snow showers in vicinity fog",31);
-		CONDITIONTRANSLATIONS.put("thunderstorm",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm rain",21);
-		CONDITIONTRANSLATIONS.put("light thunderstorm rain",21);
-		CONDITIONTRANSLATIONS.put("heavy thunderstorm rain",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm rain fog\u00E9/mist",21);
-		CONDITIONTRANSLATIONS.put("light thunderstorm rain fog\u00E9/mist",21);
-		CONDITIONTRANSLATIONS.put("heavy thunderstorm rain fog and windy",21);
-		CONDITIONTRANSLATIONS.put("heavy thunderstorm rain fog\u00E9/mist",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm showers in vicinity",21);
-		CONDITIONTRANSLATIONS.put("light thunderstorm rain haze",21);
-		CONDITIONTRANSLATIONS.put("heavy thunderstorm rain haze",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm fog",21);
-		CONDITIONTRANSLATIONS.put("light thunderstorm rain fog",21);
-		CONDITIONTRANSLATIONS.put("heavy thunderstorm rain fog",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm light rain",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm heavy rain",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm rain fog\u00E9/mist",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm light rain fog\u00E9/mist",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm heavy rain fog\u00E9/mist",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm in vicinity fog\u00E9/mist",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm showers in vicinity",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm in vicinity haze",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm haze in vicinity",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm light rain haze",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm heavy rain haze",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm fog",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm light rain fog",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm heavy rain fog",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm hail",21);
-		CONDITIONTRANSLATIONS.put("light thunderstorm rain hail",21);
-		CONDITIONTRANSLATIONS.put("heavy thunderstorm rain hail",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm rain hail fog\u00E9/mist",21);
-		CONDITIONTRANSLATIONS.put("light thunderstorm rain hail fog\u00E9/mist",21);
-		CONDITIONTRANSLATIONS.put("heavy thunderstorm rain hail fog\u00E9/hail",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm showers in vicinity hail",21);
-		CONDITIONTRANSLATIONS.put("light thunderstorm rain hail haze",21);
-		CONDITIONTRANSLATIONS.put("heavy thunderstorm rain hail haze",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm hail fog",21);
-		CONDITIONTRANSLATIONS.put("light thunderstorm rain hail fog",21);
-		CONDITIONTRANSLATIONS.put("heavy thunderstorm rain hail fog",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm light rain hail",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm heavy rain hail",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm rain hail fog\u00E9/mist",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm light rain hail fog\u00E9/mist",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm heavy rain hail fog\u00E9/mist",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm in vicinity hail",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm in vicinity hail haze",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm haze in vicinity hail",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm light rain hail haze",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm heavy rain hail haze",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm hail fog",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm light rain hail fog",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm heavy rain hail fog",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm small hail\u00E9/snow pellets",21);
-		CONDITIONTRANSLATIONS.put("thunderstorm rain small hail\u00E9/snow pellets",21);
-		CONDITIONTRANSLATIONS.put("light thunderstorm rain small hail\u00E9/snow pellets",21);
-		CONDITIONTRANSLATIONS.put("heavy thunderstorm rain small hail\u00E9/snow pellets",21);
-		CONDITIONTRANSLATIONS.put("windy",39);
-		CONDITIONTRANSLATIONS.put("breezy",39);
-		CONDITIONTRANSLATIONS.put("fair and windy",39);
-		CONDITIONTRANSLATIONS.put("a few clouds and windy",39);
-		CONDITIONTRANSLATIONS.put("partly cloudy and windy",39);
-		CONDITIONTRANSLATIONS.put("mostly cloudy and windy",39);
-		CONDITIONTRANSLATIONS.put("Mostly Cloudy and Breezy",39);
-		CONDITIONTRANSLATIONS.put("overcast and windy",39);
-		CONDITIONTRANSLATIONS.put("funnel cloud",39);
-		CONDITIONTRANSLATIONS.put("funnel cloud in vicinity",39);
-		CONDITIONTRANSLATIONS.put("tornado\u00E9/water spout",39);
-		CONDITIONTRANSLATIONS.put("NA",0);
-		CONDITIONTRANSLATIONS.put("",0);
-	}
 	
 	public NOAAWeatherXMLHandler() {
 		super();
@@ -417,13 +93,16 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 					huc.setConnectTimeout(30000);
 					huc.setReadTimeout(30000);
 
+					OMC.WEATHERREFRESHSTATUS = OMC.WRS_PROVIDER;
 					xr.parse(new InputSource(huc.getInputStream()));
 					UPDATEDTIME.set(huc.getDate());
+					
 					huc.disconnect();
 
 				} catch (Exception e) { 
 					e.printStackTrace();
 					if (huc!=null) huc.disconnect();
+					OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 				}
 			};
 		};
@@ -454,6 +133,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 				t.format2445());
 		} catch (Exception e ) {
 			e.printStackTrace();
+			OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 		}
 	}
 
@@ -475,6 +155,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 						creationTime.format2445());
 				} catch (Exception e ) {
 					e.printStackTrace();
+					OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 				}
 			return;
 		}
@@ -501,6 +182,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 			VALUETYPE="";
 		} catch (JSONException e) {
 			e.printStackTrace();
+			OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 		}
 		
 	}
@@ -555,6 +237,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 		try {
 			jsonWeather.putOpt("problem_cause", "error");
 		} catch (Exception ee) {}
+		OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 	}
 	}
 
@@ -619,6 +302,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 				jsonWeather.put("wind_direction","N");
 		} catch (JSONException e) {
 			e.printStackTrace();
+			OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 		}
 
 		
@@ -638,6 +322,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 
 		} catch (JSONException e) {
 			e.printStackTrace();
+			OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 		}
 
 		// 
@@ -658,6 +343,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 				jsonWeather.put("condition_code",CONDITIONS.get(0));
 			} catch (JSONException e) {
 				e.printStackTrace();
+				OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 			}
 		}
 		for (int i = 0; i< 4; i++) {
@@ -687,6 +373,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 				day.normalize(false);
 			} catch (JSONException e) {
 				e.printStackTrace();
+				OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 			}
 		}
 // Make sure today's data contains both high and low, too.
@@ -714,10 +401,13 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
+			OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 			return;
 		}
 		OMC.PREFS.edit().putString("weather", jsonWeather.toString()).commit();
 		OMC.LASTWEATHERREFRESH = System.currentTimeMillis();
+		OMC.WEATHERREFRESHSTATUS = OMC.WRS_SUCCESS;
+
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "NOAAWeather", "Update Succeeded.  Phone Time:" + new java.sql.Time(OMC.LASTWEATHERREFRESH).toLocaleString());
 
 		Time t = new Time();
@@ -748,15 +438,343 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 					(29l + Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))) * 60000l, 
 					OMC.LASTWEATHERTRY+Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l);
 		}
+
+		OMC.NEXTWEATHERREQUEST = OMC.NEXTWEATHERREFRESH;
+		
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "NOAAWeather", "Next Refresh Time:" + new java.sql.Time(OMC.NEXTWEATHERREFRESH).toLocaleString());
 		OMC.PREFS.edit().putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH).commit();
 
+		CONDITIONTRANSLATIONS=null;
 		
 	}
 	
+	static void putCombos(final String condition, final int code) {
+		CONDITIONTRANSLATIONS.put(condition,code);
+		CONDITIONTRANSLATIONS.put("chance "+condition,code);
+		CONDITIONTRANSLATIONS.put("slight chc "+condition,code);
+		CONDITIONTRANSLATIONS.put("isolated "+condition,code);
+		CONDITIONTRANSLATIONS.put("scattered "+condition,code);
+		CONDITIONTRANSLATIONS.put(condition + " in vicinity",code);
+		CONDITIONTRANSLATIONS.put(condition + " likely",code);
+		CONDITIONTRANSLATIONS.put("areas "+condition,code);
+		CONDITIONTRANSLATIONS.put("light "+condition,code);
+		CONDITIONTRANSLATIONS.put("heavy "+condition,code);
+	}
+	
 	static int getTranslation(final String input) {
+		if (CONDITIONTRANSLATIONS==null) {
+			// Populating the condition translations
+			CONDITIONTRANSLATIONS = new HashMap<String,Integer>();
+			CONDITIONTRANSLATIONS.put("fair",1);
+			CONDITIONTRANSLATIONS.put("becoming sunny",1);
+			CONDITIONTRANSLATIONS.put("sunny",1);
+			CONDITIONTRANSLATIONS.put("clear",1);
+			CONDITIONTRANSLATIONS.put("fair with haze",1);
+			CONDITIONTRANSLATIONS.put("clear with haze",1);
+			CONDITIONTRANSLATIONS.put("fair and breezy",1);
+			CONDITIONTRANSLATIONS.put("clear and breezy",1);
+			CONDITIONTRANSLATIONS.put("partly sunny",4);
+			putCombos("drizzle",16);
+			putCombos("showers",15);
+			putCombos("rain",15);
+			putCombos("rain showers",15);
+			putCombos("showers rain",15);
+			putCombos("thunderstorms",23);
+			putCombos("snow",33);
+			putCombos("rain\u00E9/snow",38);
+			putCombos("snow\u00E9/rain",38);
+			CONDITIONTRANSLATIONS.put("thunderstorm in vicinity fog",23);
+			CONDITIONTRANSLATIONS.put("thunderstorm in vicinity haze",23);
+			CONDITIONTRANSLATIONS.put("showers in vicinity fog\u00E9/mist",17);
+			CONDITIONTRANSLATIONS.put("showers in vicinity fog",17);
+			CONDITIONTRANSLATIONS.put("showers in vicinity haze",17);
+			CONDITIONTRANSLATIONS.put("rain showers fog\u00E9/mist",15);
+			CONDITIONTRANSLATIONS.put("drizzle fog\u00E9/mist",16);
+			CONDITIONTRANSLATIONS.put("light drizzle fog\u00E9/mist",16);
+			CONDITIONTRANSLATIONS.put("heavy drizzle fog\u00E9/mist",16);
+			CONDITIONTRANSLATIONS.put("drizzle fog",16);
+			CONDITIONTRANSLATIONS.put("light drizzle fog",16);
+			CONDITIONTRANSLATIONS.put("heavy drizzle fog",16);
+			CONDITIONTRANSLATIONS.put("dust",6);
+			CONDITIONTRANSLATIONS.put("low drifting dust",6);
+			CONDITIONTRANSLATIONS.put("blowing dust",6);
+			CONDITIONTRANSLATIONS.put("sand",6);
+			CONDITIONTRANSLATIONS.put("blowing sand",6);
+			CONDITIONTRANSLATIONS.put("low drifting sand",6);
+			CONDITIONTRANSLATIONS.put("dust\u00E9/sand whirls",6);
+			CONDITIONTRANSLATIONS.put("dust\u00E9/sand whirls in vicinity",6);
+			CONDITIONTRANSLATIONS.put("dust storm",6);
+			CONDITIONTRANSLATIONS.put("heavy dust storm",6);
+			CONDITIONTRANSLATIONS.put("dust storm in vicinity",6);
+			CONDITIONTRANSLATIONS.put("sand storm",6);
+			CONDITIONTRANSLATIONS.put("heavy sand storm",6);
+			CONDITIONTRANSLATIONS.put("sand storm in vicinity",6);
+			CONDITIONTRANSLATIONS.put("low drifting snow",28);
+			CONDITIONTRANSLATIONS.put("areas frost",28);
+			CONDITIONTRANSLATIONS.put("morning frost",28);
+			CONDITIONTRANSLATIONS.put("fog\u00E9/mist",13);
+			CONDITIONTRANSLATIONS.put("fog",13);
+			CONDITIONTRANSLATIONS.put("freezing fog",13);
+			CONDITIONTRANSLATIONS.put("shallow fog",13);
+			CONDITIONTRANSLATIONS.put("partial fog",13);
+			CONDITIONTRANSLATIONS.put("areas fog",13);
+			CONDITIONTRANSLATIONS.put("patchy fog",13);
+			CONDITIONTRANSLATIONS.put("patches of fog",13);
+			CONDITIONTRANSLATIONS.put("fog in vicinity",13);
+			CONDITIONTRANSLATIONS.put("freezing fog in vicinity",13);
+			CONDITIONTRANSLATIONS.put("shallow fog in vicinity",13);
+			CONDITIONTRANSLATIONS.put("partial fog in vicinity",13);
+			CONDITIONTRANSLATIONS.put("patches of fog in vicinity",13);
+			CONDITIONTRANSLATIONS.put("showers in vicinity fog",13);
+			CONDITIONTRANSLATIONS.put("light freezing fog",13);
+			CONDITIONTRANSLATIONS.put("heavy freezing fog",13);
+			CONDITIONTRANSLATIONS.put("freezing rain",37);
+			CONDITIONTRANSLATIONS.put("freezing drizzle",37);
+			CONDITIONTRANSLATIONS.put("light freezing rain",37);
+			CONDITIONTRANSLATIONS.put("light freezing drizzle",37);
+			CONDITIONTRANSLATIONS.put("heavy freezing rain",37);
+			CONDITIONTRANSLATIONS.put("heavy freezing drizzle",37);
+			CONDITIONTRANSLATIONS.put("freezing rain in vicinity",37);
+			CONDITIONTRANSLATIONS.put("freezing drizzle in vicinity",37);
+			CONDITIONTRANSLATIONS.put("freezing rain rain",37);
+			CONDITIONTRANSLATIONS.put("light freezing rain rain",37);
+			CONDITIONTRANSLATIONS.put("heavy freezing rain rain",37);
+			CONDITIONTRANSLATIONS.put("rain freezing rain",37);
+			CONDITIONTRANSLATIONS.put("light rain freezing rain",37);
+			CONDITIONTRANSLATIONS.put("heavy rain freezing rain",37);
+			CONDITIONTRANSLATIONS.put("freezing drizzle rain",37);
+			CONDITIONTRANSLATIONS.put("light freezing drizzle rain",37);
+			CONDITIONTRANSLATIONS.put("heavy freezing drizzle rain",37);
+			CONDITIONTRANSLATIONS.put("rain freezing drizzle",37);
+			CONDITIONTRANSLATIONS.put("light rain freezing drizzle",37);
+			CONDITIONTRANSLATIONS.put("heavy rain freezing drizzle",37);
+			CONDITIONTRANSLATIONS.put("haze",7);
+			CONDITIONTRANSLATIONS.put("heavy rain showers",26);
+			CONDITIONTRANSLATIONS.put("heavy showers rain",26);
+			CONDITIONTRANSLATIONS.put("heavy rain showers fog\u00E9/mist",26);
+			CONDITIONTRANSLATIONS.put("heavy showers rain fog\u00E9/mist",26);
+			CONDITIONTRANSLATIONS.put("heavy rain",26);
+			CONDITIONTRANSLATIONS.put("heavy rain fog\u00E9/mist",26);
+			CONDITIONTRANSLATIONS.put("heavy rain fog",26);
+			CONDITIONTRANSLATIONS.put("freezing rain snow",35);
+			CONDITIONTRANSLATIONS.put("light freezing rain snow",35);
+			CONDITIONTRANSLATIONS.put("heavy freezing rain snow",35);
+			CONDITIONTRANSLATIONS.put("freezing drizzle snow",35);
+			CONDITIONTRANSLATIONS.put("light freezing drizzle snow",35);
+			CONDITIONTRANSLATIONS.put("heavy freezing drizzle snow",35);
+			CONDITIONTRANSLATIONS.put("snow freezing rain",35);
+			CONDITIONTRANSLATIONS.put("light snow freezing rain",35);
+			CONDITIONTRANSLATIONS.put("heavy snow freezing rain",35);
+			CONDITIONTRANSLATIONS.put("snow freezing drizzle",35);
+			CONDITIONTRANSLATIONS.put("light snow freezing drizzle",35);
+			CONDITIONTRANSLATIONS.put("heavy snow freezing drizzle",35);
+			CONDITIONTRANSLATIONS.put("light rain showers",14);
+			CONDITIONTRANSLATIONS.put("light rain and breezy",14);
+			CONDITIONTRANSLATIONS.put("light showers rain",14);
+			CONDITIONTRANSLATIONS.put("light rain showers fog\u00E9/mist",14);
+			CONDITIONTRANSLATIONS.put("light showers rain fog\u00E9/mist",14);
+			CONDITIONTRANSLATIONS.put("light rain",14);
+			CONDITIONTRANSLATIONS.put("light rain fog\u00E9/mist",14);
+			CONDITIONTRANSLATIONS.put("light rain fog",14);
+			CONDITIONTRANSLATIONS.put("light snow",29);
+			CONDITIONTRANSLATIONS.put("light snow fog\u00E9/mist",29);
+			CONDITIONTRANSLATIONS.put("light snow fog",29);
+			CONDITIONTRANSLATIONS.put("blowing snow",29);
+			CONDITIONTRANSLATIONS.put("snow low drifting snow",29);
+			CONDITIONTRANSLATIONS.put("light snow low drifting snow",29);
+			CONDITIONTRANSLATIONS.put("light snow blowing snow",29);
+			CONDITIONTRANSLATIONS.put("light snow blowing snow fog\u00E9/mist",29);
+			CONDITIONTRANSLATIONS.put("mostly cloudy",10);
+			CONDITIONTRANSLATIONS.put("mostly cloudy with haze",10);
+			CONDITIONTRANSLATIONS.put("mostly cloudy and breezy",10);
+			CONDITIONTRANSLATIONS.put("overcast",11);
+			CONDITIONTRANSLATIONS.put("cloudy",11);
+			CONDITIONTRANSLATIONS.put("overcast with haze",11);
+			CONDITIONTRANSLATIONS.put("overcast and breezy",11);
+			CONDITIONTRANSLATIONS.put("mostly sunny",3);
+			CONDITIONTRANSLATIONS.put("mostly clear",3);
+			CONDITIONTRANSLATIONS.put("a few clouds",5);
+			CONDITIONTRANSLATIONS.put("a few clouds with haze",5);
+			CONDITIONTRANSLATIONS.put("a few clouds and breezy",5);
+			CONDITIONTRANSLATIONS.put("increasing clouds",5);
+			CONDITIONTRANSLATIONS.put("partly cloudy",5);
+			CONDITIONTRANSLATIONS.put("partly cloudy with haze",5);
+			CONDITIONTRANSLATIONS.put("partly cloudy and breezy",5);
+			CONDITIONTRANSLATIONS.put("rain showers",27);
+			CONDITIONTRANSLATIONS.put("showers rain",27);
+			CONDITIONTRANSLATIONS.put("rain showers in vicinity fog\u00E9/mist",27);
+			CONDITIONTRANSLATIONS.put("showers rain fog\u00E9/mist",27);
+			CONDITIONTRANSLATIONS.put("showers rain in vicinity fog\u00E9/mist",27);
+			CONDITIONTRANSLATIONS.put("rain",27);
+			CONDITIONTRANSLATIONS.put("showers",27);
+			CONDITIONTRANSLATIONS.put("rain fog\u00E9/mist",27);
+			CONDITIONTRANSLATIONS.put("rain fog",27);
+			CONDITIONTRANSLATIONS.put("rain ice pellets",38);
+			CONDITIONTRANSLATIONS.put("light rain ice pellets",38);
+			CONDITIONTRANSLATIONS.put("heavy rain ice pellets",38);
+			CONDITIONTRANSLATIONS.put("drizzle ice pellets",38);
+			CONDITIONTRANSLATIONS.put("light drizzle ice pellets",38);
+			CONDITIONTRANSLATIONS.put("heavy drizzle ice pellets",38);
+			CONDITIONTRANSLATIONS.put("ice pellets rain",38);
+			CONDITIONTRANSLATIONS.put("light ice pellets rain",38);
+			CONDITIONTRANSLATIONS.put("heavy ice pellets rain",38);
+			CONDITIONTRANSLATIONS.put("ice pellets drizzle",38);
+			CONDITIONTRANSLATIONS.put("light ice pellets drizzle",38);
+			CONDITIONTRANSLATIONS.put("heavy ice pellets drizzle",38);
+			CONDITIONTRANSLATIONS.put("rain snow",38);
+			CONDITIONTRANSLATIONS.put("light rain snow",38);
+			CONDITIONTRANSLATIONS.put("heavy rain snow",38);
+			CONDITIONTRANSLATIONS.put("snow rain",38);
+			CONDITIONTRANSLATIONS.put("light snow rain",38);
+			CONDITIONTRANSLATIONS.put("heavy snow rain",38);
+			CONDITIONTRANSLATIONS.put("drizzle snow",38);
+			CONDITIONTRANSLATIONS.put("light drizzle snow",38);
+			CONDITIONTRANSLATIONS.put("heavy drizzle snow",38);
+			CONDITIONTRANSLATIONS.put("snow drizzle",38);
+			CONDITIONTRANSLATIONS.put("light snow drizzle",38);
+			CONDITIONTRANSLATIONS.put("heavy drizzle snow",38);
+			CONDITIONTRANSLATIONS.put("ice pellets",36);
+			CONDITIONTRANSLATIONS.put("light ice pellets",36);
+			CONDITIONTRANSLATIONS.put("heavy ice pellets",36);
+			CONDITIONTRANSLATIONS.put("ice pellets in vicinity",36);
+			CONDITIONTRANSLATIONS.put("showers ice pellets",36);
+			CONDITIONTRANSLATIONS.put("thunderstorm ice pellets",36);
+			CONDITIONTRANSLATIONS.put("ice crystals",36);
+			CONDITIONTRANSLATIONS.put("hail",36);
+			CONDITIONTRANSLATIONS.put("small hail\u00E9/snow pellets",36);
+			CONDITIONTRANSLATIONS.put("light small hail\u00E9/snow pellets",36);
+			CONDITIONTRANSLATIONS.put("heavy small hail\u00E9/snow pellets",36);
+			CONDITIONTRANSLATIONS.put("showers hail",36);
+			CONDITIONTRANSLATIONS.put("hail showers",36);
+			CONDITIONTRANSLATIONS.put("smoke",9);
+			CONDITIONTRANSLATIONS.put("areas smoke",9);
+			CONDITIONTRANSLATIONS.put("heavy snow",33);
+			CONDITIONTRANSLATIONS.put("snow fog\u00E9/mist",33);
+			CONDITIONTRANSLATIONS.put("heavy snow fog\u00E9/mist",33);
+			CONDITIONTRANSLATIONS.put("snow fog",33);
+			CONDITIONTRANSLATIONS.put("heavy snow fog",33);
+			CONDITIONTRANSLATIONS.put("snow blowing snow",33);
+			CONDITIONTRANSLATIONS.put("heavy snow low drifting snow",33);
+			CONDITIONTRANSLATIONS.put("heavy snow blowing snow",33);
+			CONDITIONTRANSLATIONS.put("thunderstorm snow",33);
+			CONDITIONTRANSLATIONS.put("light thunderstorm snow",33);
+			CONDITIONTRANSLATIONS.put("heavy thunderstorm snow",33);
+			CONDITIONTRANSLATIONS.put("snow grains",33);
+			CONDITIONTRANSLATIONS.put("light snow grains",33);
+			CONDITIONTRANSLATIONS.put("heavy snow grains",33);
+			CONDITIONTRANSLATIONS.put("heavy blowing snow",33);
+			CONDITIONTRANSLATIONS.put("blowing snow in vicinity",33);
+			CONDITIONTRANSLATIONS.put("snow showers",31);
+			CONDITIONTRANSLATIONS.put("light snow showers",31);
+			CONDITIONTRANSLATIONS.put("heavy snow showers",31);
+			CONDITIONTRANSLATIONS.put("showers snow",31);
+			CONDITIONTRANSLATIONS.put("light showers snow",31);
+			CONDITIONTRANSLATIONS.put("heavy showers snow",31);
+			CONDITIONTRANSLATIONS.put("snow showers fog\u00E9/mist",31);
+			CONDITIONTRANSLATIONS.put("light snow showers fog\u00E9/mist",31);
+			CONDITIONTRANSLATIONS.put("heavy snow showers fog\u00E9/mist",31);
+			CONDITIONTRANSLATIONS.put("showers snow fog\u00E9/mist",31);
+			CONDITIONTRANSLATIONS.put("light showers snow fog\u00E9/mist",31);
+			CONDITIONTRANSLATIONS.put("heavy showers snow fog\u00E9/mist",31);
+			CONDITIONTRANSLATIONS.put("snow showers fog",31);
+			CONDITIONTRANSLATIONS.put("light snow showers fog",31);
+			CONDITIONTRANSLATIONS.put("heavy snow showers fog",31);
+			CONDITIONTRANSLATIONS.put("showers snow fog",31);
+			CONDITIONTRANSLATIONS.put("light showers snow fog",31);
+			CONDITIONTRANSLATIONS.put("heavy showers snow fog",31);
+			CONDITIONTRANSLATIONS.put("showers in vicinity snow",31);
+			CONDITIONTRANSLATIONS.put("snow showers in vicinity",31);
+			CONDITIONTRANSLATIONS.put("snow showers in vicinity fog\u00E9/mist",31);
+			CONDITIONTRANSLATIONS.put("snow showers in vicinity fog",31);
+			CONDITIONTRANSLATIONS.put("thunderstorm",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm rain",21);
+			CONDITIONTRANSLATIONS.put("light thunderstorm rain",21);
+			CONDITIONTRANSLATIONS.put("heavy thunderstorm rain",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm rain fog\u00E9/mist",21);
+			CONDITIONTRANSLATIONS.put("light thunderstorm rain fog\u00E9/mist",21);
+			CONDITIONTRANSLATIONS.put("heavy thunderstorm rain fog and windy",21);
+			CONDITIONTRANSLATIONS.put("heavy thunderstorm rain fog\u00E9/mist",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm showers in vicinity",21);
+			CONDITIONTRANSLATIONS.put("light thunderstorm rain haze",21);
+			CONDITIONTRANSLATIONS.put("heavy thunderstorm rain haze",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm fog",21);
+			CONDITIONTRANSLATIONS.put("light thunderstorm rain fog",21);
+			CONDITIONTRANSLATIONS.put("heavy thunderstorm rain fog",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm light rain",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm heavy rain",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm rain fog\u00E9/mist",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm light rain fog\u00E9/mist",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm heavy rain fog\u00E9/mist",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm in vicinity fog\u00E9/mist",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm showers in vicinity",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm in vicinity haze",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm haze in vicinity",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm light rain haze",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm heavy rain haze",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm fog",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm light rain fog",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm heavy rain fog",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm hail",21);
+			CONDITIONTRANSLATIONS.put("light thunderstorm rain hail",21);
+			CONDITIONTRANSLATIONS.put("heavy thunderstorm rain hail",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm rain hail fog\u00E9/mist",21);
+			CONDITIONTRANSLATIONS.put("light thunderstorm rain hail fog\u00E9/mist",21);
+			CONDITIONTRANSLATIONS.put("heavy thunderstorm rain hail fog\u00E9/hail",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm showers in vicinity hail",21);
+			CONDITIONTRANSLATIONS.put("light thunderstorm rain hail haze",21);
+			CONDITIONTRANSLATIONS.put("heavy thunderstorm rain hail haze",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm hail fog",21);
+			CONDITIONTRANSLATIONS.put("light thunderstorm rain hail fog",21);
+			CONDITIONTRANSLATIONS.put("heavy thunderstorm rain hail fog",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm light rain hail",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm heavy rain hail",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm rain hail fog\u00E9/mist",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm light rain hail fog\u00E9/mist",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm heavy rain hail fog\u00E9/mist",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm in vicinity hail",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm in vicinity hail haze",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm haze in vicinity hail",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm light rain hail haze",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm heavy rain hail haze",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm hail fog",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm light rain hail fog",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm heavy rain hail fog",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm small hail\u00E9/snow pellets",21);
+			CONDITIONTRANSLATIONS.put("thunderstorm rain small hail\u00E9/snow pellets",21);
+			CONDITIONTRANSLATIONS.put("light thunderstorm rain small hail\u00E9/snow pellets",21);
+			CONDITIONTRANSLATIONS.put("heavy thunderstorm rain small hail\u00E9/snow pellets",21);
+			CONDITIONTRANSLATIONS.put("windy",39);
+			CONDITIONTRANSLATIONS.put("breezy",39);
+			CONDITIONTRANSLATIONS.put("fair and windy",39);
+			CONDITIONTRANSLATIONS.put("a few clouds and windy",39);
+			CONDITIONTRANSLATIONS.put("partly cloudy and windy",39);
+			CONDITIONTRANSLATIONS.put("mostly cloudy and windy",39);
+			CONDITIONTRANSLATIONS.put("mostly cloudy and breezy",39);
+			CONDITIONTRANSLATIONS.put("overcast and windy",39);
+			CONDITIONTRANSLATIONS.put("funnel cloud",39);
+			CONDITIONTRANSLATIONS.put("funnel cloud in vicinity",39);
+			CONDITIONTRANSLATIONS.put("tornado\u00E9/water spout",39);
+			CONDITIONTRANSLATIONS.put("NA",0);
+			CONDITIONTRANSLATIONS.put("",0);
+		}
 		final Object result = CONDITIONTRANSLATIONS.get(input);
-		if (result==null) return 0;
+		if (result==null) {
+			if (input.contains("thunderstorm"))
+				return 21;
+			if (input.contains("wind"))
+				return 39;
+			if (input.contains("breezy"))
+				return 39;
+			if (input.contains("freezing"))
+				return 35;
+			if (input.contains("drizzle"))
+				return 16;
+			if (input.contains("showers"))
+				return 15;
+			if (input.contains("rain"))
+				return 15;
+			return 0;
+		}
 		else return (Integer)result;
 	}
 	

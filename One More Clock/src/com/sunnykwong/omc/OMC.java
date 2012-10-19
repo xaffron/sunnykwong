@@ -109,6 +109,8 @@ public class OMC extends Application {
 	static final String FGSTRING = FREEEDITION?"com.sunnykwong.omc.FGSERVICEFREE":"com.sunnykwong.omc.FGSERVICEPAID";
 	static final String BGSTRING = FREEEDITION?"com.sunnykwong.omc.BGSERVICEFREE":"com.sunnykwong.omc.BGSERVICEPAID";
 	static final String CANCELFGSTRING = FREEEDITION?"com.sunnykwong.omc.CANCEL_FGFREE":"com.sunnykwong.omc.CANCEL_FGPAID";
+	static final String WEATHERREFRESHSTRING = FREEEDITION?"com.sunnykwong.omc.WEATHERREFRESHFREE":"com.sunnykwong.omc.WEATHERREFRESHPAID";
+	static final Intent WRINTENT = new Intent(WEATHERREFRESHSTRING);
 	static final Intent FGINTENT = new Intent(FGSTRING);
 	static final Intent BGINTENT = new Intent(BGSTRING);
 	static final Intent WIDGETREFRESHINTENT = new Intent(FREEEDITION?"com.sunnykwong.freeomc.WIDGET_REFRESH":"com.sunnykwong.omc.WIDGET_REFRESH");
@@ -142,7 +144,7 @@ public class OMC extends Application {
 	static long LASTWEATHERTRY=0l,LASTWEATHERREFRESH=0l,NEXTWEATHERREFRESH=0l,NEXTWEATHERREQUEST=0l;
 	static int WEATHERREFRESHSTATUS;
 	static long WEATHERREFRESHTIMESTAMP;
-	static final int WRS_IDLE=0, WRS_LOCATION=1, WRS_GPS=2, WRS_NETWORK=3, WRS_FORCED=4;
+	static final int WRS_IDLE=0, WRS_LOCATION=1, WRS_GPS=2, WRS_NETWORK=3, WRS_DISABLED=4;
 	static final int WRS_GEOCODE=5, WRS_PROVIDER=6, WRS_SUCCESS=7, WRS_FAILURE=8, WRS_CACHED=9, WRS_FIXED=10;
 	
 	static int LASTBATTERYPLUGGEDSTATUS=0;
@@ -163,7 +165,6 @@ public class OMC extends Application {
     static Resources RES;
     static LocationManager LM;
     static LocationListener LL;
-    static List<String> LOCNPROVIDERLIST;
 
     static Typeface GEOFONT,WEATHERFONT;
     
@@ -237,7 +238,7 @@ public class OMC extends Application {
     static final Class<?>[] mSetForegroundSignature = new Class[] {boolean.class};
     static Intent SVCSTARTINTENT, CREDITSINTENT, PREFSINTENT, ALARMCLOCKINTENT, BATTUSAGEINTENT;
     static Intent GETSTARTERPACKINTENT, GETBACKUPPACKINTENT, GETEXTENDEDPACKINTENT, PICKTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT, OMCWEATHERFORECASTINTENT;
-    static PendingIntent FGPENDING, BGPENDING, PREFSPENDING, ALARMCLOCKPENDING, WEATHERFORECASTPENDING, BATTUSAGEPENDING;
+    static PendingIntent FGPENDING, BGPENDING, PREFSPENDING, ALARMCLOCKPENDING, WEATHERFORECASTPENDING, BATTUSAGEPENDING, WEATHERREFRESHPENDING;
     static Notification FGNOTIFICIATION;
     
     static final ArrayBlockingQueue<Matrix> MATRIXPOOL = new ArrayBlockingQueue<Matrix>(2);
@@ -338,7 +339,8 @@ public class OMC extends Application {
         OMC.BATTUSAGEINTENT = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY);
         OMC.BATTUSAGEPENDING = PendingIntent.getActivity(OMC.CONTEXT, 0, OMC.BATTUSAGEINTENT, 0);
 		OMC.ALARMCLOCKINTENT = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER);
-		
+		OMC.WEATHERREFRESHPENDING = PendingIntent.getBroadcast(OMC.CONTEXT, 0, OMC.WRINTENT, 0);
+				
 		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/"; 
 		
     	OMC.ALARMS = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
@@ -346,22 +348,6 @@ public class OMC extends Application {
     	OMC.AM = getAssets();
     	OMC.RES = getResources();
     	OMC.LM = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-    	OMC.LOCNPROVIDERLIST = OMC.LM.getAllProviders();
-    	switch (OMC.CURRENTLOCATIONPRIORITY) {
-			// Highest: Use real-time GPS location only.
-    		// Ignore network and passive providers.
-			case 0:
-				OMC.LOCNPROVIDERLIST.remove(LocationManager.NETWORK_PROVIDER);
-			// High: Use real-time network or GPS location.
-			// Ignore passive provider.
-			case 1:
-    			OMC.LOCNPROVIDERLIST.remove("passive");
-			// Medium to Lowest: Use any provider available.
-			case 2:
-			case 3:
-			case 4:
-			default:
-		}
     	
     	OMC.LL = new LocationListener() {
             public void onLocationChanged(final Location location) {
@@ -379,7 +365,6 @@ public class OMC extends Application {
         			public void run() {
         				OMC.calculateSunriseSunset(location.getLatitude(), location.getLongitude());
         				try {
-        					OMC.WEATHERREFRESHSTATUS=OMC.WRS_NETWORK;
         					GoogleReverseGeocodeService.updateLocation(location);
         	        		OMC.WEATHERREFRESHSTATUS=OMC.WRS_GEOCODE;
         					String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
@@ -2169,34 +2154,14 @@ public class OMC extends Application {
 		// If weather is by latitude/longitude, request lazy location (unless forced).
 		// The location listener directs control to the updateweather function upon callback.
 		} else if (sWeatherSetting.equals("bylatlong")) {
-	        	switch (OMC.CURRENTLOCATIONPRIORITY) {
-	        		// High:  Only real-time will do. (providerlist is pre-adjusted in OMCPrefActivity.)
-	        		case 0:
-	        		case 1:
-	    				GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis(), OMC.LOCNPROVIDERLIST);
-	    				break;
-	    			// Medium:  2-hour old locks ok.
-	        		case 2:
-	        		case 3:
-	    				GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis()-7200000l, OMC.LOCNPROVIDERLIST);
-	        			break;
-	        		// Low: 24-hour old locks ok.
-	        		case 4:
-	        		case 5:
-	    				GoogleReverseGeocodeService.getLastBestLocation(System.currentTimeMillis()-86400000l, OMC.LOCNPROVIDERLIST);
-	    				break;
-	        		// Lowest: Any historical lock is ok.
-	        		case 6:
-	        		default:
-	    				GoogleReverseGeocodeService.getLastBestLocation(0l, OMC.LOCNPROVIDERLIST);
-	        	
-        	}
+			GoogleReverseGeocodeService.getLastBestLocation(Integer.parseInt(OMC.PREFS.getString("locationPriority", "4")));
 			return;
 		} else if (sWeatherSetting.equals("specific")) {
 			// If weather is for fixed location, calculate sunrise/sunset for the location, then
 			// update weather manually
 			OMC.LASTKNOWNCITY=OMC.jsonFIXEDLOCN.optString("city","Unknown");
 			OMC.LASTKNOWNCOUNTRY=OMC.jsonFIXEDLOCN.optString("country","Unknown");
+			OMC.WEATHERREFRESHSTATUS=OMC.WRS_FIXED;	
 			
 			OMC.calculateSunriseSunset(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), OMC.jsonFIXEDLOCN.optDouble("longitude",0d));
 			String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");

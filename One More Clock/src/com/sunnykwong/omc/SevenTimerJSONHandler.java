@@ -290,7 +290,7 @@ public class SevenTimerJSONHandler {
 							Time t = new Time();
 							// If the weather station information (international, mostly) doesn't have a timestamp, set the timestamp to be jan 1st, 1970
 							t.parse(jsonWeather.optString("current_local_time","19700101T000000"));
-							long lNextWeatherRetryIfFailed = OMC.LASTWEATHERTRY+(1l + Math.max(3660000l, Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")))/4l*60000l);
+							long lNextWeatherRetryIfFailed = OMC.LASTWEATHERTRY+(1l + Math.max(3660000l, Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l));
 							// If the weather station info looks too stale (more than 2 hours old), it's because the phone's date/time is wrong.  
 							// Force the update to the default update period
 							if (System.currentTimeMillis()-t.toMillis(false)>7200000l) {
@@ -317,7 +317,8 @@ public class SevenTimerJSONHandler {
 							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "7TWeather", "Next Refresh Time:" + new java.sql.Time(OMC.NEXTWEATHERREFRESH).toLocaleString());
 							OMC.PREFS.edit().putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH).commit();
 
-
+							//Set next online request to be 7 hours in the future.
+							OMC.NEXTWEATHERREQUEST = OMC.NEXTWEATHERREFRESH + 25200000l;
 							OMC.WEATHERREFRESHSTATUS = OMC.WRS_SUCCESS;
 							
 						}
@@ -325,6 +326,7 @@ public class SevenTimerJSONHandler {
 					} catch (Exception e) { 
 						e.printStackTrace();
 						if (huc!=null) huc.disconnect();
+						OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 					}
 				};
 			};
@@ -517,7 +519,8 @@ public class SevenTimerJSONHandler {
 						Time t = new Time();
 						// If the weather station information (international, mostly) doesn't have a timestamp, set the timestamp to be jan 1st, 1970
 						t.parse(jsonWeather.optString("current_local_time","19700101T000000"));
-						long lNextWeatherRetryIfFailed = OMC.LASTWEATHERTRY+(1l + Math.max(3660000l, Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60")))/4l*60000l);
+						
+						long lNextWeatherRetryIfFailed = OMC.LASTWEATHERTRY+(1l + Math.max(3660000l, Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l));
 						// If the weather station info looks too stale (more than 2 hours old), it's because the phone's date/time is wrong.  
 						// Force the update to the default update period
 						if (System.currentTimeMillis()-t.toMillis(false)>7200000l) {
@@ -549,6 +552,7 @@ public class SevenTimerJSONHandler {
 						
 					} catch (Exception e) {
 						e.printStackTrace();
+						OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 					}
 					
 				}

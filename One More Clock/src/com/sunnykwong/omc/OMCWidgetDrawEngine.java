@@ -406,6 +406,8 @@ public class OMCWidgetDrawEngine {
 		        	pi = OMC.ALARMCLOCKPENDING;
 	    		} else if (sPrefString.equals("batt")) {
 		        	pi = OMC.BATTUSAGEPENDING;
+	    		} else if (sPrefString.equals("wrefresh")) {
+		        	pi = OMC.WEATHERREFRESHPENDING;
 	    		} else if (sPrefString.equals("weather")) {
 		        	pi = OMC.WEATHERFORECASTPENDING;
 	    		} else {

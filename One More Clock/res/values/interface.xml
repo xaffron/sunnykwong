@@ -312,17 +312,17 @@
 		
         <string name="locationPriority">Location Priority</string>
 		<string-array name="locationPriority_options">
-		    <item>Highest</item>
-			<item>High</item>
-			<item>Medium</item>
-			<item>Low</item>
-			<item>Lowest (Default)</item>
+		    <item>Strict - Fine Only</item>
+			<item>Strict - Fine/Coarse</item>
+			<item>Medium - Fine Only</item>
+			<item>Medium - Fine/Coarse</item>
+			<item>Flexible (Default)</item>
 		</string-array>
 		<string-array name="locationPriority_legend">
-		    <item>WARNING: Using instant GPS location only may cause large battery drain.  Weather updates will stop if you are indoors.  Are you sure?</item>	
-			<item>Use instant network or GPS location during weather updates.  Weather updates may stop if you are indoors.  Are you sure?</item>
-			<item>Use any network or GPS location less than 2 hours old.  Weather updates may stop if you are indoors for more than 24 hours.  Are you sure?</item>
-			<item>Use any network or GPS location less than 24 hours old.  Weather updates may stop if you are indoors for more than 24 hours.  Are you sure?</item>
+		    <item>Use only GPS location fixes less than 2 hours old.  WARNING: Weather updates may stop if you are indoors.  Are you sure?</item>	
+			<item>Use network/GPS fixes less than 2 hours old.  WARNING: Weather updates may stop if you are indoors.  Are you sure?</item>
+			<item>Use only GPS location fixes less than 10 hours old.  Weather updates may stop if you are indoors for more than 10 hours.  Are you sure?</item>
+			<item>Use any network or GPS location less than 10 hours old.  Weather updates may stop if you are indoors for more than 10 hours.  Are you sure?</item>
 			<item>Use the most recent network or GPS location, regardless of staleness.  Weather accuracy will depend on location accuracy and staleness.  Are you sure?</item>
 		</string-array>
 		
