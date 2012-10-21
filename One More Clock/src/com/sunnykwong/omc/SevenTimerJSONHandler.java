@@ -24,11 +24,12 @@ public class SevenTimerJSONHandler {
 	public static HashMap<String, Integer> CONDITIONTRANSLATIONS;
 	public static String CACHEDFORECAST;
 	public static long CACHEDFORECASTMILLIS=0l;
-
+ 
 	public SevenTimerJSONHandler() {
 	}
 
 	static public void updateWeather(final double latitude, final double longitude, final String country, final String city, final boolean bylatlong) {
+
 		// If the city or country is empty, it's the first time this is run - location has changed.
 		if (LASTUSEDCITY==null || LASTUSEDCOUNTRY==null) {
 			LASTUSEDCITY = city;

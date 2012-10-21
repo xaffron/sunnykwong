@@ -157,8 +157,9 @@ public class OMCFixedLocationActivity extends Activity {
 						OMC.PREFS.edit().putString("weathersetting", "specific").commit();
 						
 						OMC.PREFS.edit().putString("weather_fixedlocation", OMC.jsonFIXEDLOCN.toString()).commit();
+
 						OMC.WEATHERREFRESHSTATUS=OMC.WRS_FIXED;
-						OMC.updateWeather();
+						
 						finish();
 					} catch (Exception e) {
 						e.printStackTrace();

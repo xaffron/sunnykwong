@@ -1187,7 +1187,7 @@ public class OMCPrefActivity extends PreferenceActivity {
     					case OMC.WRS_FIXED:
     						publishProgress(OMC.RString("inProgress"),
     								OMC.RString("usingFixedCoordinates"),
-    								OMC.RString("location") + OMC.LASTKNOWNCITY + sAutoLocation
+    								OMC.RString("location") + OMC.jsonFIXEDLOCN.optString("city","Unknown") + sAutoLocation
     								);
     						break;
     					case OMC.WRS_GPS:
