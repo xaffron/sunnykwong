@@ -52,6 +52,7 @@
 
     <string name="clockPreferences">程式选项</string>
     <string name="dashPreferences">\u0020- 选项</string>
+
     <string name="forThisClock">此时钟之选项：</string>
     <string name="widgetTheme">时钟款式</string>
 
@@ -84,6 +85,7 @@
     <string name="downloaded">已下载</string>
     <string name="of">/</string>
     <string name="bytes">字节。 </string>
+		<string name="storingFile">存储中：\u0020</string>
     <string name="existsOverwriting">已存在; 此时钟将被覆写。 </string>
     <string name="createThemeFolder1">创建\'</string>
     <string name="createThemeFolder2">\' 资料夹.</string>
@@ -151,18 +153,26 @@
     <string name="widgetPrefsTTL">选项</string>
     <string name="doNothing">无轻按反应</string>
     <string name="doNothingTTL">无反应</string>
+    <string name="refreshWeather">立即刷新天气</string>
+    <string name="refreshWeatherTTL">立即刷新天气</string>
     <string name="weatherForecast">天气预测</string>
     <string name="weatherForecastTTL">天气预测</string>
     <string name="viewAlarms">检视闹钟设定(试验中)</string>
     <string name="viewAlarmsTTL">检视闹钟</string>
+    <string name="battUsage">查看电池状况</string>
+    <string name="battUsageTTL">查看电池状况</string>
     <string name="otherActivity">其他…</string>
     <string name="otherActivityTTL">自订行为</string>
+
     <string name="use24HourClock">用24小时方式显示</string>
     <string name="use24HourTrue">23:59</string>
     <string name="use24HourFalse">11:59pm</string>
     <string name="showLeadingZero">用两数位小时显示</string>
     <string name="showLeadingZTrue">04:23</string>
     <string name="showLeadingZFalse">4:23</string>
+        <string name="mmddDateFormat">日期格式</string>
+        <string name="mmddDateFormatTrue">12/31/2012</string>
+        <string name="mmddDateFormatFalse">31/12/2012</string>
     <string name="changeTimeZone">设定时区</string>
     <string name="followingDeviceTimeZone">(沿用本安卓电脑之时区)</string>
 
@@ -181,6 +191,19 @@
     <!-- Weather & Widget Subscreen -->
 
     <string name="refreshWeatherNow">立即刷新天气</string>
+        <string name="operationTimedOut">操作超时!</string>
+        <string name="requestingLocation">定位中</string>
+        <string name="pleaseWait">请稍候&#8230;</string>
+        <string name="inProgress">进行中&#8230;</string>
+        <string name="usingFixedCoordinates">自订定位</string>
+        <string name="gotGPSLock">完成GPS定位。地理编码中&#8230;</string>
+        <string name="gotNetworkLock">完成WiFi/网络定位。地理编码中&#8230;</string>
+        <string name="reusingCachedLocation">沿用缓存定位。地理编码中&#8230;</string>
+        <string name="requestingWeather">现正刷新天气&#8230;</string>
+        <string name="weatherReceived">天气接收完成。数据处理中&#8230;</string>
+        <string name="weatherSuccess">天气刷新完成。</string>
+        <string name="weatherFailure">天气刷新失败。</string>
+        
     <string name="location">位置：</string>
     <string name="fixed">(自订定位)</string>
     <string name="detected">(自动定位)</string>
@@ -200,33 +223,30 @@
     <string name="locationError">找不到相关城市、请再试。 </string>
     <string name="networkError">手机信号微弱、请再试。 </string>
     <string name="unknownError">出现不明错误、请再试。 </string>
+
     <string name="weatherProvider">天气资料来源</string>
-
     <string-array name="wprovider_options">
-
         <!-- <item>OpenWeatherMap.org (default)</item> -->
         <item>晴天钟(默认)</item>
         <item>NOAA(仅供美国天气)</item>
         <item>Yr.no</item>
         <item>谷歌天气(已无法运作)</item>
     </string-array>
-
     <string name="wp7timer">资料源自「晴天钟」</string>
     <string name="wpnoaa">资料源自NOAA</string>
     <string name="wpowm">资​​料源自OpenWeatherMap.org</string>
     <string name="wpyr">资料源自yr.no</string>
     <string name="wpig">资料源自谷歌天气</string>
-    <string name="weatherDisplayUnits">天气单位</string>
 
+    <string name="weatherDisplayUnits">天气单位</string>
     <string-array name="wdisplay_options">
         <item>华氏(默认)</item>
         <item>摄氏</item>
     </string-array>
-
     <string name="usingFahrenheit">华氏</string>
     <string name="usingCelsius">摄氏</string>
-    <string name="clockUpdateInterval">时钟更新时间</string>
 
+    <string name="clockUpdateInterval">时钟更新时间</string>
     <string-array name="interval_options">
         <item>每一秒(耗电极高)</item>
         <item>每十秒(耗电颇高)</item>
@@ -235,29 +255,31 @@
         <item>每三十秒(默认)</item>
         <item>每六十秒(耗电低)</item>
     </string-array>
-
     <string name="redrawEvery">每</string>
     <string name="seconds">秒更新一次</string>
-    <string name="weatherUpdateInterval">天气刷新时间</string>
 
+    <string name="weatherUpdateInterval">天气刷新时间</string>
     <string-array name="winterval_options">
         <item>每小时(默认)</item>
         <item>每四小时</item>
         <item>每八小时</item>
         <item>不自动更新</item>
     </string-array>
-
     <string name="manualWeatherUpdatesOnly">不自​​动更新</string>
     <string name="refreshWeatherEveryHour">每小时更新</string>
     <string name="refreshWeatherEvery4Hours">每四小时更新</string>
     <string name="refreshWeatherEvery8Hours">每八小时更新</string>
+
     <string name="setForegroundMode">前台模式​​</string>
     <string name="keepOMCfromSleeping">不准OMC进入睡眠状态\n(会出现固定状态栏讯息)</string>
+
     <string name="forceEnglishDates">日期强制以英语显示</string>
     <string name="uncheckForSome">在非英语地区,可考虑取消勾选(试验中)</string>
     <string name="changeAppLocale">转换界面语言</string>
     <string name="changeClockLocale">转换时钟语言</string>
+
     <string name="toggleWidgetSizes">自订小工具尺码</string>
+
     <string name="rebootRequired">须重新启动电脑</string>
     <string name="changesToTheseSettings">自订后请重新启动电话或平板电脑</string>
     <string name="enable5x4Widget">启动(5x4)小工具</string>
@@ -302,7 +324,22 @@
         <item>屏幕呈关闭状态或并非显示首页画面时完全终止重绘。请确认!</item>
     </string-array>
 
-    <string name="weatherDiagnostics">诊断天气下载问题</string>
+        <string name="locationPriority">定位优先顺序</string>
+		<string-array name="locationPriority_options">
+		    <item>严- GPS</item>
+			<item>严- WiFi/网络</item>
+			<item>中- GPS</item>
+			<item>中- WiFi/网络</item>
+			<item>宽(默认)</item>
+		</string-array>
+		<string-array name="locationPriority_legend">
+		    <item>只可用近两小时之GPS定位。注意: 室内操作情况下将无法刷新天气。请确认!</item>	
+			<item>只可用近两小时之WiFi/网络定位。注意: 室内操作情况下将无法刷新天气。请确认!</item>
+			<item>只可用近十小时之GPS定位。注意: 长期室内操作可能无法刷新天气。请确认!</item>
+			<item>只可用近十小时之WiFi/网络定位。注意: 长期室内操作可能无法刷新天气。请确认!</item>
+			<item>沿用缓存定位。天气精确度视乎缓存定位之及时性。请确认!</item>
+		</string-array>
+		    <string name="weatherDiagnostics">诊断天气下载问题</string>
     <string name="submitLocationWeatherDebugData">通过电邮发送位置与天气侦错资料</string>
     <string name="deleteAllThemes">删除所有款式</string>
     <string name="forFixingThemeSelection">有助解决程式强制关闭问题</string>
@@ -327,6 +364,7 @@
     <string name="version">版本:</string>
     <string name="free">免费版</string>
     <string name="tapToGetFull">请轻按此购买完整版</string>
+        <string name="thanksForYourSupport">谢谢支持!</string>
     <string name="viewCredits">衷心致谢</string>
 
     <!-- Credits subscreen -->

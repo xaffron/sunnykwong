@@ -152,10 +152,14 @@
         <string name="widgetPrefsTTL">Widget Einstellungen.</string>
         <string name="doNothing">Nichts machen.</string>
         <string name="doNothingTTL">Nichts machen.</string>
+        <string newname="" name="refreshWeather">Refresh Weather Now</string>
+        <string newname="" name="refreshWeatherTTL">Refresh Weather Now</string>
         <string name="weatherForecast">Wettervorhersage.</string>
         <string name="weatherForecastTTL">Wettervorhersage.</string>
         <string name="viewAlarms">Alarme ansehen (Experimentell).</string>
         <string name="viewAlarmsTTL">Alarme ansehen.</string>
+        <string newname="" name="battUsage">View Battery Usage</string>
+        <string newname="" name="battUsageTTL">Battery Usage</string>
         <string name="otherActivity">Andere Aktion&#8230;.</string>
         <string name="otherActivityTTL">Benutzerdefinierte Aktion.</string>
         
@@ -165,6 +169,9 @@
         <string name="showLeadingZero">Vorgestellte Null.</string>
         <string name="showLeadingZTrue">04:23.</string>
         <string name="showLeadingZFalse">4:23.</string>
+        <string newname="" name="mmddDateFormat">M/D/Y Date Format</string>
+        <string newname="" name="mmddDateFormatTrue">12/31/2012</string>
+        <string newname="" name="mmddDateFormatFalse">31/12/2012</string>
         <string name="changeTimeZone">Ändern der Zeitzone.</string>
         <string name="followingDeviceTimeZone">(Nutzen der Zeitzone des Gerätes).</string>
         
@@ -183,6 +190,18 @@
         <!-- Weather & Widget Subscreen -->
         
         <string name="refreshWeatherNow">Erneuern des Wetters.</string>
+        <string newname="" name="operationTimedOut">Operation timed out!</string>
+        <string newname="" name="requestingLocation">Requesting Location</string>
+        <string newname="" name="pleaseWait">Please wait&#8230;</string>
+        <string newname="" name="inProgress">In Progress&#8230;</string>
+        <string newname="" name="usingFixedCoordinates">Using fixed coordinates</string>
+        <string newname="" name="gotGPSLock">Got GPS lock.  Reverse-Geocoding&#8230;</string>
+        <string newname="" name="gotNetworkLock">Got WiFi/Network lock.  Reverse-Geocoding&#8230;</string>
+        <string newname="" name="reusingCachedLocation">Reusing recent location.  Reverse-Geocoding&#8230;</string>
+        <string newname="" name="requestingWeather">Requesting Weather&#8230;</string>
+        <string newname="" name="weatherReceived">Weather Received.  Processing&#8230;</string>
+        <string newname="" name="weatherSuccess">Weather successfully updated.</string>
+        <string newname="" name="weatherFailure">Weather update unsuccessful.</string>
         
         <string name="location">Ort:\u0020</string>
         <string name="fixed">\u0020(Fest)</string>
@@ -209,7 +228,7 @@
 		<!-- 	<item>OpenWeatherMap.org (default)</item> -->
 		 	<item>7Timer.com (Standard).</item>
 		 	<item>NOAA (Nur Nordamerika!)</item>
-		 				<item>Yr.no</item>
+		 		<item>Yr.no</item>
 			<item>Google Wetter (Altlast/außer Funktion)</item>
 		</string-array>
         <string name="wp7timer">Benutzen von \'7Timer.com\'.</string>
@@ -303,6 +322,22 @@
 			<item>Lässige \'Erneuerung\' jede Ninute, wenn Anzeige angschaltet, auch wenn launcher im Hintergrund.  Sind Sie sich wirklich sicher?</item>
 			<item>Lässige \'Erneuerung\' jede Ninute, wenn Launcher nicht aktiv oder Anzeige ausgeschaltet.  Sind Sie sich wirklich sicher?</item>
 			<item>Keine \'Erneuerung\', wenn Launcher nicht aktiv oder Anzeige ausgeschaltet.  Sind Sie sich wirklich sicher?</item>
+		</string-array>
+		
+        <string newname="" name="locationPriority">Location Priority</string>
+		<string-array name="locationPriority_options">
+		    <item newname="">Strict - Fine Only</item>
+			<item newname="">Strict - Fine/Coarse</item>
+			<item newname="">Medium - Fine Only</item>
+			<item newname="">Medium - Fine/Coarse</item>
+			<item newname="">Flexible (Default)</item>
+		</string-array>
+		<string-array newname="" name="locationPriority_legend">
+		    <item newname="">Use only GPS location fixes less than 2 hours old.  WARNING: Weather updates may stop if you are indoors.  Are you sure?</item>	
+			<item newname="">Use network/GPS fixes less than 2 hours old.  WARNING: Weather updates may stop if you are indoors.  Are you sure?</item>
+			<item newname="">Use only GPS location fixes less than 10 hours old.  Weather updates may stop if you are indoors for more than 10 hours.  Are you sure?</item>
+			<item newname="">Use any network or GPS location less than 10 hours old.  Weather updates may stop if you are indoors for more than 10 hours.  Are you sure?</item>
+			<item newname="">Use the most recent network or GPS location, regardless of staleness.  Weather accuracy will depend on location accuracy and staleness.  Are you sure?</item>
 		</string-array>
 
 		<string name="weatherDiagnostics">Wetter Diagnose.</string>

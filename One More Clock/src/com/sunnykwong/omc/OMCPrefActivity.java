@@ -607,7 +607,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 					   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
 					   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME + " WeatherDebug v" + OMC.THISVERSION)
 										.putExtra(android.content.Intent.EXTRA_TEXT, sBody);
-								startActivity(Intent.createChooser(it, "Contact Xaffron for issues, help & support."));  
+								startActivity(Intent.createChooser(it, OMC.RString("contactXaffronForIssues")));  
 								finish();
 							} catch (Exception e) {
 								e.printStackTrace();
@@ -991,7 +991,7 @@ public class OMCPrefActivity extends PreferenceActivity {
     			final CharSequence[] items = {
     					OMC.RString("openOptionsDefault"), 
     					OMC.RString("doNothing"), 
-    					OMC.RString("refreshWeatherNow"), 
+    					OMC.RString("refreshWeather"), 
     					OMC.RString("weatherForecast"), 
     					OMC.RString("viewAlarms"),
     					OMC.RString("battUsage"),
@@ -1020,7 +1020,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 							}
 							if (values[item].equals("wrefresh")) {
 								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "wrefresh")
-									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("refreshWeatherNow")).commit();
+									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("refreshWeatherTTL")).commit();
 							}
 							if (values[item].equals("weather")) {
 								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "weather")
@@ -1080,7 +1080,7 @@ public class OMCPrefActivity extends PreferenceActivity {
     		OMC.purgeImportCache();
     		OMC.purgeEmailCache();
     		OMC.THEMEMAP.clear();
-        	OMC.WIDGETBMPMAP.clear();
+        	OMC.WIDGETBMPMAP.clear(); 
     		Toast.makeText(this, OMC.RString("cachesCleared"), Toast.LENGTH_SHORT).show();
     	}
     	if (preference == getPreferenceScreen().findPreference("timeZone")) {
@@ -1169,7 +1169,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 
     					if (currentStatus==OMC.WEATHERREFRESHSTATUS) {
     						if (System.currentTimeMillis()-OMC.WEATHERREFRESHTIMESTAMP>30000l) {
-    							publishProgress(OMC.RString("refreshWeatherNow"),"Operation timed out!",
+    							publishProgress(OMC.RString("refreshWeatherNow"),OMC.RString("operationTimedOut"),
         								OMC.RString("location") + OMC.RString("unknown"));
     							break;
     						} else {
@@ -1181,45 +1181,46 @@ public class OMCPrefActivity extends PreferenceActivity {
 
     					switch (OMC.WEATHERREFRESHSTATUS) {
     					case OMC.WRS_LOCATION:
-    						publishProgress("Requesting Location","Please wait...",OMC.RString("location") + OMC.RString("unknown"));
+    						publishProgress(OMC.RString("requestingLocation"),OMC.RString("pleaseWait"),
+    								OMC.RString("location") + OMC.RString("unknown"));
     						break;
     					case OMC.WRS_FIXED:
-    						publishProgress("In Progress...",
-    								"Using fixed coordinates.",
+    						publishProgress(OMC.RString("inProgress"),
+    								OMC.RString("usingFixedCoordinates"),
     								OMC.RString("location") + OMC.LASTKNOWNCITY + sAutoLocation
     								);
     						break;
     					case OMC.WRS_GPS:
-    						publishProgress("In Progress...","Got GPS lock.  Reverse-Geocoding...",
+    						publishProgress(OMC.RString("inProgress"),OMC.RString("gotGPSLock"),
     								OMC.RString("location") + OMC.LASTKNOWNCITY+ sAutoLocation);
     						break;
     					case OMC.WRS_NETWORK:
-    						publishProgress("In Progress...","Got WiFi/Network lock.  Reverse-Geocoding...",
+    						publishProgress(OMC.RString("inProgress"),OMC.RString("gotNetworkLock"),
     								OMC.RString("location") +OMC.LASTKNOWNCITY+ sAutoLocation);
     						break;
     					case OMC.WRS_CACHED:
-    						publishProgress("In Progress...","Reusing recent location.  Reverse-Geocoding...",
+    						publishProgress(OMC.RString("inProgress"),OMC.RString("reusingCachedLocation"),
     								OMC.RString("location") +OMC.LASTKNOWNCITY+ sAutoLocation);
     						break;
     					case OMC.WRS_GEOCODE:
-    						publishProgress("In Progress...","Requesting Weather...",
+    						publishProgress(OMC.RString("inProgress"),OMC.RString("requestingWeather"),
     								OMC.RString("location") + OMC.LASTKNOWNCITY + sAutoLocation,
     								OMC.RString("location") +OMC.LASTKNOWNCITY+ sAutoLocation);
     						break;
     					case OMC.WRS_PROVIDER:
-    						publishProgress("In Progress...","Weather Received.  Processing...",
+    						publishProgress(OMC.RString("inProgress"),OMC.RString("weatherReceived"),
     								OMC.RString("location") +OMC.LASTKNOWNCITY+ sAutoLocation);
     						break;
     					case OMC.WRS_SUCCESS:
-    						publishProgress(OMC.RString("refreshWeatherNow"),"Weather successfully updated.",
+    						publishProgress(OMC.RString("refreshWeatherNow"),OMC.RString("weatherSuccess"),
     								OMC.RString("location") +OMC.LASTKNOWNCITY+ sAutoLocation);
     						return("SUCCESS");
     					case OMC.WRS_FAILURE:
-    						publishProgress(OMC.RString("refreshWeatherNow"),"Weather update unsuccessful.",
+    						publishProgress(OMC.RString("refreshWeatherNow"),OMC.RString("weatherFailure"),
     								OMC.RString("location") +OMC.LASTKNOWNCITY+ sAutoLocation);
     						return("ERROR");
     					case OMC.WRS_DISABLED:
-    						publishProgress(OMC.RString("refreshWeatherNow"),"Weather is disabled!",
+    						publishProgress(OMC.RString("refreshWeatherNow"),OMC.RString("weatherFunctionalityDisabled"),
     								OMC.RString("weatherFunctionalityDisabled"));
     						return("ERROR");
     					case OMC.WRS_IDLE:

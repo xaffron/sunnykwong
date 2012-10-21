@@ -84,6 +84,7 @@
         <string name="downloaded">已下載</string>
         <string name="of">/</string>
         <string name="bytes">字節。</string>
+		<string name="storingFile">存儲中：\u0020</string>
         <string name="existsOverwriting">已存在; 此時鐘將被覆寫。</string>
         <string name="createThemeFolder1">創建 \'</string>
         <string name="createThemeFolder2">\' 資料夾.</string>
@@ -100,9 +101,6 @@
         <string name="poorReceptionArea">您的手機信號微弱嗎?\n請稍後再試。</string>
         <string name="connectionTimedOut">連接失敗!</string>
         <string name="serverNotFound">找不到伺服器!</string>        
-        
-        
-        
         
         <!-- Widget Theme Long Press-->
         
@@ -154,10 +152,14 @@
         <string name="widgetPrefsTTL">選項</string>
         <string name="doNothing">無輕按反應</string>
         <string name="doNothingTTL">無反應</string>
+        <string name="refreshWeather">立即刷新天氣</string>
+        <string name="refreshWeatherTTL">立即刷新天氣</string>
         <string name="weatherForecast">天氣預測</string>
         <string name="weatherForecastTTL">天氣預測</string>
         <string name="viewAlarms">檢視鬧鐘設定 (試驗中)</string>
         <string name="viewAlarmsTTL">檢視鬧鐘</string>
+        <string name="battUsage">查看電池狀況</string>
+        <string name="battUsageTTL">查看電池狀況</string>
         <string name="otherActivity">其他&#8230;</string>
         <string name="otherActivityTTL">自訂行為</string>
         
@@ -167,6 +169,9 @@
         <string name="showLeadingZero">用兩數位小時顯示</string>
         <string name="showLeadingZTrue">04:23</string>
         <string name="showLeadingZFalse">4:23</string>
+        <string name="mmddDateFormat">日期格式</string>
+        <string name="mmddDateFormatTrue">12/31/2012</string>
+        <string name="mmddDateFormatFalse">31/12/2012</string>
         <string name="changeTimeZone">設定時區</string>
         <string name="followingDeviceTimeZone">(沿用本安卓電腦之時區)</string>
         
@@ -185,6 +190,18 @@
         <!-- Weather & Widget Subscreen -->
         
         <string name="refreshWeatherNow">立即刷新天氣</string>
+        <string name="operationTimedOut">操作超時!</string>
+        <string name="requestingLocation">定位中</string>
+        <string name="pleaseWait">請稍候&#8230;</string>
+        <string name="inProgress">進行中&#8230;</string>
+        <string name="usingFixedCoordinates">自訂定位</string>
+        <string name="gotGPSLock">完成GPS定位。地理編碼中&#8230;</string>
+        <string name="gotNetworkLock">完成WiFi/網絡定位。地理編碼中&#8230;</string>
+        <string name="reusingCachedLocation">沿用緩存定位。地理編碼中&#8230;</string>
+        <string name="requestingWeather">現正刷新天氣&#8230;</string>
+        <string name="weatherReceived">天氣接收完成。數據處理中&#8230;</string>
+        <string name="weatherSuccess">天氣刷新完成。</string>
+        <string name="weatherFailure">天氣刷新失敗。</string>
         
         <string name="location">位置：</string>
         <string name="fixed">(自訂定位)</string>
@@ -282,8 +299,6 @@
         <!-- Widget Sizes Sales Pitch -->
         <string name="areThereOtherWidgetSizes">還有更多功能!</string>
         <string name="actuallyThePaidVersion">完整版有齊5x4,5x2,5x1,4x4,4x2,4x1,3x3,3x1,2x2,2x1與1x3大小的小工具。</string>
-                
-        
         
         <!-- Troubleshooting Options -->
         <string name="troubleshootingOptions">疑難排解</string>
@@ -305,6 +320,22 @@
 			<item>不論顯示畫面,只要屏幕呈開啟狀態,每分鐘均會用低優先級處理重繪一次。請確認!</item>
 			<item>屏幕呈關閉狀態或並非顯示首頁畫面時,每分鐘用低優先級處理重繪一次。請確認!</item>
 			<item>屏幕呈關閉狀態或並非顯示首頁畫面時完全終止重繪。請確認!</item>
+		</string-array>
+		
+        <string name="locationPriority">定位優先順序</string>
+		<string-array name="locationPriority_options">
+		    <item>嚴- GPS</item>
+			<item>嚴- WiFi/網絡</item>
+			<item>中- GPS</item>
+			<item>中- WiFi/網絡</item>
+			<item>寬(默認)</item>
+		</string-array>
+		<string-array name="locationPriority_legend">
+		    <item>只可用近兩小時之GPS定位。注意: 室內操作情況下將無法刷新天氣。請確認!</item>	
+			<item>只可用近兩小時之WiFi/網絡定位。注意: 室內操作情況下將無法刷新天氣。請確認!</item>
+			<item>只可用近十小時之GPS定位。注意: 長期室內操作可能無法刷新天氣。請確認!</item>
+			<item>只可用近十小時之WiFi/網絡定位。注意: 長期室內操作可能無法刷新天氣。請確認!</item>
+			<item>沿用緩存定位。天氣精確度視乎緩存定位之及時性。請確認!</item>
 		</string-array>
 		
         <string name="weatherDiagnostics">診斷天氣下載問題</string>
@@ -333,6 +364,7 @@
         <string name="version">版本:</string>
         <string name="free">免費版</string>
         <string name="tapToGetFull">請輕按此購買完整版</string>
+        <string name="thanksForYourSupport">謝謝支持!</string>
         <string name="viewCredits">衷心致謝</string>
 
         <!-- Credits subscreen -->

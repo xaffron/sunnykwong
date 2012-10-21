@@ -152,6 +152,8 @@
         <string name="widgetPrefsTTL">Widget Prefs</string>
         <string name="doNothing">Do nothing</string>
         <string name="doNothingTTL">Do Nothing</string>
+        <string name="refreshWeather">Refresh Weather Now</string>
+        <string name="refreshWeatherTTL">Refresh Weather Now</string>
         <string name="weatherForecast">Weather forecast</string>
         <string name="weatherForecastTTL">Forecast</string>
         <string name="viewAlarms">View alarms (Experimental)</string>
@@ -188,6 +190,18 @@
         <!-- Weather & Widget Subscreen -->
         
         <string name="refreshWeatherNow">Refresh Weather Now</string>
+        <string name="operationTimedOut">Operation timed out!</string>
+        <string name="requestingLocation">Requesting Location</string>
+        <string name="pleaseWait">Please wait&#8230;</string>
+        <string name="inProgress">In Progress&#8230;</string>
+        <string name="usingFixedCoordinates">Using fixed coordinates</string>
+        <string name="gotGPSLock">Got GPS lock.  Reverse-Geocoding&#8230;</string>
+        <string name="gotNetworkLock">Got WiFi/Network lock.  Reverse-Geocoding&#8230;</string>
+        <string name="reusingCachedLocation">Reusing recent location.  Reverse-Geocoding&#8230;</string>
+        <string name="requestingWeather">Requesting Weather&#8230;</string>
+        <string name="weatherReceived">Weather Received.  Processing&#8230;</string>
+        <string name="weatherSuccess">Weather successfully updated.</string>
+        <string name="weatherFailure">Weather update unsuccessful.</string>
         
         <string name="location">Location:\u0020</string>
         <string name="fixed">\u0020(Fixed)</string>
