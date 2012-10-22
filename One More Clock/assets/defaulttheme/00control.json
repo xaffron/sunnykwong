@@ -55,7 +55,7 @@
 		"name":"Charge",
 		"type":"text",
 		"enabled":"true",
-		"text":"[%ompc_battlevel%]%% remaining",
+		"text":"[%ompc_battlevel%]%% [%translate_remaining%]",
 		"filename":"Roboto-Regular.ttf",
 		"x":"420","y":"195",
 		"fgcolor":"#ffffffff","bgcolor":"#ff000000",
@@ -93,6 +93,21 @@
 		}
 
 	],
+
+	"translations":{
+		"remaining":{
+			"Deutsch":"verbleibenden",
+			"English (US)":"remaining",
+			"Le Français":"restant",
+			"Castellano":"restante",
+			"Italiano":"rimanente",
+			"Język Polski":"pozostałe",
+			"Português":"restantes",
+			"Svenska":"kvarvarande",
+			"繁體中文":"剩餘",
+			"简体中文":"剩余"
+		}
+	},
 
 	"arrays":{
 	},

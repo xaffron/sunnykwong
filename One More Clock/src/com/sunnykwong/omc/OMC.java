@@ -1350,6 +1350,9 @@ public class OMC extends Application {
 		if (theme.has("arrays")) {
 			JSONObject resultArrays = new JSONObject();
 			result.put("arrays", resultArrays);
+			if (theme.has("translations")) {
+				result.put("translations", theme.optJSONObject("translations"));
+			}
 			
 			@SuppressWarnings("unchecked")
 			Iterator<String> i = theme.optJSONObject("arrays").keys();
@@ -1803,6 +1806,19 @@ public class OMC extends Application {
 				//Unknown - do nothing
 			}
 			
+		} else if (sToken.equals("translate")) {
+			String sWord = st[iTokenNum++];
+			JSONObject entry = tempResult.optJSONObject("translations");
+			if (entry==null) {
+				result=sWord;
+			} else {
+				JSONObject subentry = entry.optJSONObject(sWord);
+				if (subentry==null) {
+					result = sWord;
+				} else {
+					result = subentry.optString(OMC.PREFS.getString("clockLocaleName", "English (US)"), sWord);
+				}
+			}
 		} else if (sToken.equals("uppercase")){
 			try {
 				result = st[iTokenNum++].toUpperCase();
@@ -1817,11 +1833,18 @@ public class OMC extends Application {
 			}
 		} else if (sToken.equals("verbosenumber")){
 			String sRawValue = st[iTokenNum++].trim();
+			if (OMC.DAYSUFFIX.length()!=0) {
+				sRawValue = sRawValue.replace(OMC.DAYSUFFIX,"");
+			}
 			if (sRawValue.equals("")) {
 				result="";
 			} else {
 				try {
-					result = OMC.VERBOSENUMBERS[Integer.parseInt(sRawValue)];
+					if (OMC.DAYSUFFIX.length()!=0) {
+						result = OMC.VERBOSENUMBERS[Integer.parseInt(sRawValue)]+OMC.DAYSUFFIX;
+					} else {
+						result = OMC.VERBOSENUMBERS[Integer.parseInt(sRawValue)];
+					}
 				} catch (java.lang.ArrayIndexOutOfBoundsException e) {
 					result = "";
 				}
