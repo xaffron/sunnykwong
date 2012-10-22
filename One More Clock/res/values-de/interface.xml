@@ -63,7 +63,7 @@
         <string name="reextractBundledClocks">Nochmaliges Entpacken der \'Bundled\'-Uhren.</string>
         <string name="downloadAllClocks">Download aller Uhren (~7MB).</string>
         <string name="preselected"></string>
-        <string name="postselected">&#8195;ausgewählt.</string>
+        <string name="postselected">&#8194;ausgewählt.</string>
         
         <!-- Theme Picker Legend -->
         <string name="legend">Legende.</string>
@@ -152,14 +152,14 @@
         <string name="widgetPrefsTTL">Widget Einstellungen.</string>
         <string name="doNothing">Nichts machen.</string>
         <string name="doNothingTTL">Nichts machen.</string>
-        <string newname="" name="refreshWeather">Refresh Weather Now</string>
-        <string newname="" name="refreshWeatherTTL">Refresh Weather Now</string>
+        <string newname="" name="refreshWeather">Wetter jetzt erneuern.</string>
+        <string newname="" name="refreshWeatherTTL">Wetter jetzt erneuern.</string>
         <string name="weatherForecast">Wettervorhersage.</string>
         <string name="weatherForecastTTL">Wettervorhersage.</string>
         <string name="viewAlarms">Alarme ansehen (Experimentell).</string>
         <string name="viewAlarmsTTL">Alarme ansehen.</string>
-        <string newname="" name="battUsage">View Battery Usage</string>
-        <string newname="" name="battUsageTTL">Battery Usage</string>
+        <string newname="" name="battUsage">Akkuverbrauch ansehen.</string>
+        <string newname="" name="battUsageTTL">Akkuverbrauch.</string>
         <string name="otherActivity">Andere Aktion&#8230;.</string>
         <string name="otherActivityTTL">Benutzerdefinierte Aktion.</string>
         
@@ -169,9 +169,9 @@
         <string name="showLeadingZero">Vorgestellte Null.</string>
         <string name="showLeadingZTrue">04:23.</string>
         <string name="showLeadingZFalse">4:23.</string>
-        <string newname="" name="mmddDateFormat">M/D/Y Date Format</string>
-        <string newname="" name="mmddDateFormatTrue">12/31/2012</string>
-        <string newname="" name="mmddDateFormatFalse">31/12/2012</string>
+        <string newname="" name="mmddDateFormat">M/D/Y Datumsformat.</string>
+        <string newname="" name="mmddDateFormatTrue">12/31/2012.</string>
+        <string newname="" name="mmddDateFormatFalse">31/12/2012.</string>
         <string name="changeTimeZone">Ändern der Zeitzone.</string>
         <string name="followingDeviceTimeZone">(Nutzen der Zeitzone des Gerätes).</string>
         
@@ -190,18 +190,18 @@
         <!-- Weather & Widget Subscreen -->
         
         <string name="refreshWeatherNow">Erneuern des Wetters.</string>
-        <string newname="" name="operationTimedOut">Operation timed out!</string>
-        <string newname="" name="requestingLocation">Requesting Location</string>
-        <string newname="" name="pleaseWait">Please wait&#8230;</string>
-        <string newname="" name="inProgress">In Progress&#8230;</string>
-        <string newname="" name="usingFixedCoordinates">Using fixed coordinates</string>
-        <string newname="" name="gotGPSLock">Got GPS lock.  Reverse-Geocoding&#8230;</string>
-        <string newname="" name="gotNetworkLock">Got WiFi/Network lock.  Reverse-Geocoding&#8230;</string>
-        <string newname="" name="reusingCachedLocation">Reusing recent location.  Reverse-Geocoding&#8230;</string>
-        <string newname="" name="requestingWeather">Requesting Weather&#8230;</string>
-        <string newname="" name="weatherReceived">Weather Received.  Processing&#8230;</string>
-        <string newname="" name="weatherSuccess">Weather successfully updated.</string>
-        <string newname="" name="weatherFailure">Weather update unsuccessful.</string>
+        <string newname="" name="operationTimedOut">Vorgang wg. Zeitüberschreitung abgebrochen!</string>
+        <string newname="" name="requestingLocation">Ortsanfrage.</string>
+        <string newname="" name="pleaseWait">Bitte warten.&#8230;</string>
+        <string newname="" name="inProgress">In Arbeit.&#8230;</string>
+        <string newname="" name="usingFixedCoordinates">Benutzen der gesichterten Koordinaten.</string>
+        <string newname="" name="gotGPSLock">\'GPS Arretierung\' gefunden. Reverse-Geocoding&#8230;</string>
+        <string newname="" name="gotNetworkLock">\'WiFi/Netzwerk Arretierung\' gefunden.  Reverse-Geocoding&#8230;</string>
+        <string newname="" name="reusingCachedLocation">Wiederbenutzen des aktuellen Ortes. Reverse-Geocoding&#8230;</string>
+        <string newname="" name="requestingWeather">Wetteranfrage.&#8230;</string>
+        <string newname="" name="weatherReceived">Wetter empfangen. In Arbeit.&#8230;</string>
+        <string newname="" name="weatherSuccess">Wetter erfolgreich ge-updatet.</string>
+        <string newname="" name="weatherFailure">Wetterupdate NICHT erfolgreich.</string>
         
         <string name="location">Ort:\u0020</string>
         <string name="fixed">\u0020(Fest)</string>
@@ -211,7 +211,7 @@
         <string name="nextRefresh">\u0020Nächste Erneuerung:\u0020</string>
         <string name="weatherLocation">Ort des Wetters:</string>
         <string name="disableLocationAndWeather">Ort und Wetter abschalten.</string>
-        <string name="followDevice">Den Geräteeinstellungen folgen (Standard)</string>
+        <string name="followDevice">Den Geräteeinstellungen folgen (Standard).</string>
         <string name="setFixedLocation">Definierten Ort benutzen.</string>
         <string name="weatherFunctionalityDisabled">Wetterfunktion abgeschaltet.</string>
         <string name="tapToEnable">Tippen zum Anschalten.</string>
@@ -324,20 +324,20 @@
 			<item>Keine \'Erneuerung\', wenn Launcher nicht aktiv oder Anzeige ausgeschaltet.  Sind Sie sich wirklich sicher?</item>
 		</string-array>
 		
-        <string newname="" name="locationPriority">Location Priority</string>
+        <string newname="" name="locationPriority">Ortspriorität.</string>
 		<string-array name="locationPriority_options">
-		    <item newname="">Strict - Fine Only</item>
-			<item newname="">Strict - Fine/Coarse</item>
-			<item newname="">Medium - Fine Only</item>
-			<item newname="">Medium - Fine/Coarse</item>
-			<item newname="">Flexible (Default)</item>
+		    <item newname="">Genau - Nur fein.</item>
+			<item newname="">Genau - Fein/Grob.</item>
+			<item newname="">Mittel - Nur fein.</item>
+			<item newname="">Mittel - Fein/Grob.</item>
+			<item newname="">Variabel (Default).</item>
 		</string-array>
 		<string-array newname="" name="locationPriority_legend">
-		    <item newname="">Use only GPS location fixes less than 2 hours old.  WARNING: Weather updates may stop if you are indoors.  Are you sure?</item>	
-			<item newname="">Use network/GPS fixes less than 2 hours old.  WARNING: Weather updates may stop if you are indoors.  Are you sure?</item>
-			<item newname="">Use only GPS location fixes less than 10 hours old.  Weather updates may stop if you are indoors for more than 10 hours.  Are you sure?</item>
-			<item newname="">Use any network or GPS location less than 10 hours old.  Weather updates may stop if you are indoors for more than 10 hours.  Are you sure?</item>
-			<item newname="">Use the most recent network or GPS location, regardless of staleness.  Weather accuracy will depend on location accuracy and staleness.  Are you sure?</item>
+		    <item newname="">Benutzt nur GPS Orts-Fix, jünger als 2 Std.  ACHTUNG: Wetter-Updates stoppen eventuell, wenn Aufenthalt innerhalb. Sind Sie sicher?</item>	
+			<item newname="">Benutzt nur GPS/Netzwerk-Fix, jünger als 2 Std.  ACHTUNG: Wetter-Updates stoppen eventuell, wenn Aufenthalt innerhalb. Sind Sie sicher?</item>
+			<item newname="">Benutzt nur GPS Orts-Fix, jünger als 10 Std.  Wetter-Updates stoppen eventuell, wenn Aufenthalt innerhalb für mehr als 10 Stunden. Sind Sie sicher?</item>
+			<item newname="">Benutzt beliebige Netzwerk- oder GPS-Standorte, jünger als 10 Std.  Wetter-Updates stoppen eventuell, wenn Aufenthalt innerhalb für mehr als 10 Stunden. Sind Sie sicher?</item>
+			<item newname="">Benutzt die letzten Netzwerk- oder GPS-Standorte, ungeachtet der Standfestigkeit.  Wettergenauigkeit beruht auf Ortsgenauigkeit und Standfestigkeit. Sind Sie sicher?</item>
 		</string-array>
 
 		<string name="weatherDiagnostics">Wetter Diagnose.</string>
@@ -364,9 +364,9 @@
         
         <string name="credits">Credits.</string>
         <string name="version">Version.</string>
-        <string name="free">Free.</string>
+        <string name="free">Kostenlos.</string>
         <string name="tapToGetFull">Drücken Sie hier für die Vollversion!</string>
-        <string name="viewCredits">Credits anzeigen</string>
+        <string name="viewCredits">Credits anzeigen..</string>
 
         <!-- Credits subscreen -->
         
