@@ -3,9 +3,9 @@
 <string-array name="VerboseWeather">
 <item>Unbekannt</item>
 <item>Klar</item>
-<item>Sonnig</item>
-<item>Meist Sonnig</item>
-<item>Teilweise Sonnig</item>
+<item>Klar</item>
+<item>Meist Klar</item>
+<item>Teilweise Klar</item>
 <item>Teilweise Bewölkt</item>
 <item>Staub</item>
 <item>Dunst</item>

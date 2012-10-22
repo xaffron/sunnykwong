@@ -3,7 +3,7 @@
 
     <string-array name="VerboseWeather">
         <item>不明</item>
-        <item>晴朗</item>
+        <item>天晴</item>
         <item>天晴</item>
         <item>大致天晴</item>
         <item>部分天晴</item>

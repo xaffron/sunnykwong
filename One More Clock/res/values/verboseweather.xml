@@ -4,9 +4,9 @@
 	<string-array name="VerboseWeather">
 		<item>Unknown</item>
 		<item>Clear</item>
-		<item>Sunny</item>
-		<item>Mostly Sunny</item>
-		<item>Partly Sunny</item>
+		<item>Clear</item>
+		<item>Mostly Clear</item>
+		<item>Partly Clear</item>
 		<item>Partly Cloudy</item>
 		<item>Dust</item>
 		<item>Haze</item>

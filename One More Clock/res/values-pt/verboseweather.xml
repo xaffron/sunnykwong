@@ -3,9 +3,9 @@
 <string-array name="VerboseWeather">
 <item>Desconhecido</item>
 <item>Limpo</item>
-<item>Ensolarado</item>
-<item>Sol Predominante</item>
-<item>Sol Encoberto</item>
+<item>Limpo</item>
+<item>Limpo Predominante</item>
+<item>Limpo Encoberto</item>
 <item>Pouco Nublado</item>
 <item>Poeira</item>
 <item>Nevoeiro</item>

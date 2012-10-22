@@ -3,8 +3,8 @@
 <string-array name="VerboseWeather">
 <item>Nieznana</item>
 <item>Pogodnie</item>
-<item newname="">Słonecznie</item>
-<item newname="">Przeważnie Słonecznie</item>
+<item newname="">Pogodnie</item>
+<item newname="">Przeważnie Pogodnie</item>
 <item newname="">Częściowe Przejaśnienia</item>
 <item>Przewaga Chmur</item>
 <item newname="">Pył</item>

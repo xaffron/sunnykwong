@@ -4,9 +4,9 @@
 	<string-array name="VerboseWeather">
 		<item>Inconnu</item>
 		<item>Clair</item>
-		<item>Ensoleillé</item>
-		<item>Ensoleillé la plupart du temps</item>
-		<item>Partiellement ensoleillé</item>
+		<item>Clair</item>
+		<item>Clair la plupart du temps</item>
+		<item>Partiellement clair</item>
 		<item>Partiellement nuageux</item>
 		<item>Rosée</item>
 		<item>Légère brume</item>
