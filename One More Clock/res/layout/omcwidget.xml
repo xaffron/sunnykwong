@@ -17,7 +17,8 @@
         android:id="@+id/omcNB"
         android:contentDescription="@string/themePreview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:src="@drawable/tapme">
     </ImageView>
 
     <LinearLayout
@@ -37,7 +38,7 @@
 
             <ImageView
                 android:id="@+id/NW"
-        android:contentDescription="@string/themePreview"
+        		android:contentDescription="@string/themePreview"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1" />
