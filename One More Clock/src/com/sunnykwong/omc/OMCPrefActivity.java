@@ -1268,7 +1268,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 			return (OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("manualRefreshOnly"));
 		} else {
 			return (OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("nextRefresh")+tNextRefresh.format("%R") 
-						+ "\n" + "Last Refresh: "+ tLastRefresh.format("%R") + " " + "Next Request: " + tNextRequest.format("%R"));
+						+ "\n" + OMC.RString("lastRefresh")+ tLastRefresh.format("%R") + OMC.RString("nextRequest") + tNextRequest.format("%R"));
 		}
     }
 

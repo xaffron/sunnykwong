@@ -209,6 +209,8 @@
         <string name="lastTry">Last Try:\u0020</string>
         <string name="manualRefreshOnly">\u0020(Manual Refresh Only)</string>
         <string name="nextRefresh">\u0020Next Refresh:\u0020</string>
+        <string name="lastRefresh">Last Refresh:\u0020</string>
+        <string name="nextRequest">\u0020Next Request:\u0020</string>
         <string name="weatherLocation">Location for Weather:</string>
         <string name="disableLocationAndWeather">Disable Location &amp; Weather</string>
         <string name="followDevice">Follow Device(default)</string>

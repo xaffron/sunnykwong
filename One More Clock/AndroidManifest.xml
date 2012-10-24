@@ -46,7 +46,7 @@
 		</activity>
         <activity android:name="com.sunnykwong.omc.ZoneList"
                   android:screenOrientation="behind"
-                  android:label="Choose Time Zone">
+                  android:label="@string/changeTimeZone">
 		</activity>
         <activity android:name="com.sunnykwong.omc.OMCWeatherForecastActivity"
                   android:screenOrientation="behind"
