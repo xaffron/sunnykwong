@@ -42,9 +42,11 @@ public class OMCWidgetDrawEngine {
 		}
 		AppWidgetManager aWM = AppWidgetManager.getInstance(context);
 
-		final int N = aWM.getAppWidgetIds(cName)==null? 0: aWM.getAppWidgetIds(cName).length;
+		for (int i=0; i<(aWM.getAppWidgetIds(cName)==null? 0: aWM.getAppWidgetIds(cName).length); i++) {
 
-		for (int i=0; i<N; i++) {
+			 // v139: Fix strange arrayoutofboundsexception (race condition?)
+			 if (i >= aWM.getAppWidgetIds(cName).length) break;
+			 
              if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i]) && OMC.LEASTLAGMILLIS > 500l) {
             	// If this clock takes more than 0.5 sec to render, then blit cached bitmap over first
             	RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
@@ -53,11 +55,17 @@ public class OMCWidgetDrawEngine {
                 aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);                    
                 rv = null;
               }
+			 // v139: Fix strange arrayoutofboundsexception (race condition?)
+			 if (i >= aWM.getAppWidgetIds(cName).length) break;
+			 
      		if (!OMC.PREFS.getString("sTimeZone"+aWM.getAppWidgetIds(cName)[i],"default").equals("default")) {
      			OMC.TIME.switchTimezone(OMC.PREFS.getString("sTimeZone"+aWM.getAppWidgetIds(cName)[i],TimeZone.getDefault().getID()));
      		} else {
      			OMC.TIME.switchTimezone(TimeZone.getDefault().getID());
      		}
+			 // v139: Fix strange arrayoutofboundsexception (race condition?)
+			 if (i >= aWM.getAppWidgetIds(cName).length) break;
+			 
 			OMCWidgetDrawEngine.updateAppWidget(context, aWM, aWM.getAppWidgetIds(cName)[i], cName);
 		}
 
