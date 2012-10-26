@@ -1,6 +1,8 @@
 package com.sunnykwong.omc;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import android.util.Log;
 
 import android.content.ContentProvider;
@@ -57,16 +59,18 @@ public class OMCProvider extends ContentProvider {
         @Override
         public AssetFileDescriptor openAssetFile(Uri uri, String mode)
                         throws FileNotFoundException {
-                int aWI = Integer.parseInt(uri.getQueryParameter("awi"));
-                File f = new File(OMC.CACHEPATH + aWI +"cache.png");
-                if (f.exists()){
-                        if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Provider","Reading png for widget"+aWI);
-                        return new AssetFileDescriptor(ParcelFileDescriptor.open(f,
-                                ParcelFileDescriptor.MODE_READ_ONLY), 0, AssetFileDescriptor.UNKNOWN_LENGTH);
-                } else {
-                        if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Provider","widget png missing - return transparent png");
-                        return getContext().getResources().openRawResourceFd(OMC.RES.getIdentifier("transparent", "drawable", OMC.PKGNAME));
-                }
-
+//                int aWI = Integer.parseInt(uri.getQueryParameter("awi"));
+        	
+				return new AssetFileDescriptor(MemoryFileUtil.getParcelFileDescriptor(OMC.MEMFILE), 0, AssetFileDescriptor.UNKNOWN_LENGTH);
+//                File f = new File(OMC.CACHEPATH + aWI +"cache.png");
+//                if (f.exists()){
+//                        if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Provider","Reading png for widget"+aWI);
+//                        return new AssetFileDescriptor(ParcelFileDescriptor.open(f,
+//                                ParcelFileDescriptor.MODE_READ_ONLY), 0, AssetFileDescriptor.UNKNOWN_LENGTH);
+//                } else {
+//                        if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Provider","widget png missing - return transparent png");
+//                        return getContext().getResources().openRawResourceFd(OMC.RES.getIdentifier("transparent", "drawable", OMC.PKGNAME));
+//                }
+//
         }
 }

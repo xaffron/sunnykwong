@@ -1,5 +1,13 @@
 package com.sunnykwong.omc;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Arrays;
 import java.util.TimeZone;
 
 import org.json.JSONArray;
@@ -12,6 +20,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -20,6 +30,7 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.MemoryFile;
 import android.text.Html;
 import android.text.SpannedString;
 import android.text.style.StyleSpan;
@@ -49,11 +60,11 @@ public class OMCWidgetDrawEngine {
 			 
              if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i]) && OMC.LEASTLAGMILLIS > 500l) {
             	// If this clock takes more than 0.5 sec to render, then blit cached bitmap over first
-            	RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
-                rv.setImageViewBitmap(OMC.RId("omcIV"),
-                		OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
-                aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);                    
-                rv = null;
+//            	RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
+//                rv.setImageViewBitmap(OMC.RId("omcIV"),
+//                		OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
+//                aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);                    
+//                rv = null;
               }
 			 // v139: Fix strange arrayoutofboundsexception (race condition?)
 			 if (i >= aWM.getAppWidgetIds(cName).length) break;
@@ -350,16 +361,6 @@ public class OMCWidgetDrawEngine {
 		OMC.returnMatrix(tempMatrix);
 		OMC.returnPaint(pt);
 
-//
-//        try {
-//        FileOutputStream fos = new FileOutputStream(OMC.CACHEPATH + appWidgetId +"cache.png");
-//        finalBitmap.compress(CompressFormat.PNG, 100, fos);
-//        fos.close();
-//       
-//        bitmap.recycle();
-//        croppedScaledBmp.recycle();
-//        finalBitmap.recycle();
-
         //Step 10:
 		// Instructing the final bitmap to be sent over to the remote view (specifically, the homescreen).
 		// Note that the final bitmap isn't actually sent until Step XX below.
@@ -367,14 +368,37 @@ public class OMCWidgetDrawEngine {
 		
 		final RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
 		final int iViewID = OMC.RId("omcIV");
-		rv.setImageViewBitmap(iViewID, finalbitmap);
-//        rv.setImageViewResource(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), context.getResources().getIdentifier("tapme", "drawable", OMC.PKGNAME));
 
-		//Bitmap test = BitmapFactory.decodeFile("/mnt/sdcard/test.jpg");
-		//try {
-		//test.compress(CompressFormat.PNG, 100, new FileOutputStream(new File("/mnt/sdcard/test.png")));
-		//} catch (IOException e ){e.printStackTrace();}
-		
+		if (OMC.MEMFILERENDERING) {
+
+	        try {
+	        	ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	        	Bitmap bmp = BitmapFactory.decodeFile("/sdcard/10000650.bmp");
+	        			bmp.compress(CompressFormat.PNG, 100, baos);
+		        baos.close();
+		        byte[] temp = baos.toByteArray();
+//		        System.out.println("Byte size: " + temp.length);
+		        OMC.MEMFILE.writeBytes(temp, 0, 0, temp.length);
+//		        System.out.println("before");
+		        byte[] temp2 = new byte[temp.length];
+		        OMC.MEMFILE.readBytes(temp2, 0, 0, temp2.length);
+		        ByteArrayInputStream bios = new ByteArrayInputStream(temp2);
+		        if (Arrays.equals(temp,temp2)) System.out.println("IDENTICAL");
+		        bmp = BitmapFactory.decodeStream(bios);
+		        System.out.println (bmp.getWidth());
+		        System.out.println (bmp.getHeight());
+//				rv.setImageViewBitmap(iViewID, bmp);
+//				rv.setImageViewBitmap(iViewID, BitmapFactory.decodeStream(new FileInputStream("/mnt/sdcard/test.jpg")));
+
+				
+		        rv.setImageViewUri(iViewID, Uri.parse("content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+appWidgetId));
+	        } catch (IOException e) {
+	        	e.printStackTrace();
+	        }
+		} else {
+			rv.setImageViewBitmap(iViewID, finalbitmap);
+		}
+
 		// Do some fancy footwork here and adjust the average lag (so OMC's slowness is less apparent)
 
 		OMC.LEASTLAGMILLIS = (long)(OMC.LEASTLAGMILLIS * 0.8) + (long)((System.currentTimeMillis() - lStartTime) *0.2);
@@ -451,14 +475,7 @@ public class OMCWidgetDrawEngine {
     	//Step XX:
     	// OK, the IPC instructions are done; send them over to the homescreen.
     	//
-        new AsyncTask<String, String, String> () {
-			@Override
-			protected String doInBackground(String... params) {
-				appWidgetManager.updateAppWidget(appWidgetId, rv);
-				return "";
-			}
-		}.execute("");
-    	
+		appWidgetManager.updateAppWidget(appWidgetId, rv);
 
 	}
 	

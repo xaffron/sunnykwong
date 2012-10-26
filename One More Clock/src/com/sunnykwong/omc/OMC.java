@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -67,6 +68,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.MemoryFile;
 import android.text.format.Time;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -79,8 +81,9 @@ import android.widget.Toast;
  * 
  */ 
 public class OMC extends Application { 
-	
+	static final boolean MEMFILERENDERING = true;
 	static final boolean DEBUG = true; 
+	static MemoryFile MEMFILE;
 	
 	static final String TESTVER = "Alpha 2";
 	static final boolean THEMESFROMCACHE = true;
@@ -282,6 +285,11 @@ public class OMC extends Application {
     	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_WORLD_READABLE);
     	OMC.CURRENTCLOCKPRIORITY = Integer.parseInt(OMC.PREFS.getString("clockPriority", "3"));
     	OMC.CURRENTLOCATIONPRIORITY = Integer.parseInt(OMC.PREFS.getString("locationPriority", "4"));
+    	try {
+    		OMC.MEMFILE = new MemoryFile("TEMP",1000000);
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
     	
 		// Work around pre-Froyo bugs in HTTP connection reuse.
 		if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
@@ -1219,6 +1227,24 @@ public class OMC extends Application {
 		    int iBytesRead = 0;
 		    while ((iBytesRead = oSRC.read(buffer))!= -1){
 		    	oTGT.write(buffer,0,iBytesRead);
+		    }
+		    oTGT.close();
+		    oSRC.close();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean copyFile(final InputStream oSRC, final OutputStream oTGT) {
+		try {
+		    byte[] buffer = new byte[8192];
+		    int iBytesRead = 0, iByteCount=0;
+		    while ((iBytesRead = oSRC.read(buffer))!= -1){
+		    	iByteCount+=iBytesRead;
+		    	oTGT.write(buffer,0,iBytesRead);
+			    System.out.println(buffer.toString() + " copied to memfile.");
 		    }
 		    oTGT.close();
 		    oSRC.close();
