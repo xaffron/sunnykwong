@@ -350,7 +350,17 @@ public class OMCWidgetDrawEngine {
 		OMC.returnMatrix(tempMatrix);
 		OMC.returnPaint(pt);
 
-		//Step 10:
+//
+//        try {
+//        FileOutputStream fos = new FileOutputStream(OMC.CACHEPATH + appWidgetId +"cache.png");
+//        finalBitmap.compress(CompressFormat.PNG, 100, fos);
+//        fos.close();
+//       
+//        bitmap.recycle();
+//        croppedScaledBmp.recycle();
+//        finalBitmap.recycle();
+
+        //Step 10:
 		// Instructing the final bitmap to be sent over to the remote view (specifically, the homescreen).
 		// Note that the final bitmap isn't actually sent until Step XX below.
 		//
@@ -358,7 +368,8 @@ public class OMCWidgetDrawEngine {
 		final RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
 		final int iViewID = OMC.RId("omcIV");
 		rv.setImageViewBitmap(iViewID, finalbitmap);
-		
+//        rv.setImageViewResource(context.getResources().getIdentifier("omcNB", "id", OMC.PKGNAME), context.getResources().getIdentifier("tapme", "drawable", OMC.PKGNAME));
+
 		//Bitmap test = BitmapFactory.decodeFile("/mnt/sdcard/test.jpg");
 		//try {
 		//test.compress(CompressFormat.PNG, 100, new FileOutputStream(new File("/mnt/sdcard/test.png")));

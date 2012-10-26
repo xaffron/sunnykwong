@@ -450,20 +450,22 @@ public class OMCThemePickerActivity extends Activity {
     		((ImageView)ll.findViewById(OMC.RId("ThemePreview")))
     				.setImageBitmap(bmp);
         	((TextView)ll.findViewById(OMC.RId("ThemeCredits"))).setText(mCreds.get(mThemes.get(position)));
-
-        	if (position>5 && mThemes.size()-position>5) {
-	        	int leftclear = position-5 >= 0 ? position-5 : 0;
-	        	if (mBitmaps.get(leftclear)!=OMC.PLACEHOLDERBMP) {
-	        		if (mBitmaps.get(leftclear)!=null)	mBitmaps.get(leftclear).recycle();
-	        		mBitmaps.set(leftclear, OMC.PLACEHOLDERBMP);
-	        	}
-	        	int rightclear = position+5 < mThemes.size() ? position+5 : mThemes.size();
-	        	if (mBitmaps.get(rightclear)!=OMC.PLACEHOLDERBMP) {
-	        		if (mBitmaps.get(rightclear)!=null)	mBitmaps.get(rightclear).recycle();
-	        		mBitmaps.set(rightclear, OMC.PLACEHOLDERBMP);
-	        	}
-        	}
-
+        	// v140:  Was assuming that the user can't fling faster than the system can reload bitmaps -
+        	// This is no longer true in newer faster phones, and we've been getting "bitmap already recycled" errors.
+        	// So we're removing this assumption/optimization, and will let Android take care of cleaning up.
+//        	if (position>5 && mThemes.size()-position>5) {
+//	        	int leftclear = position-5 >= 0 ? position-5 : 0;
+//	        	if (mBitmaps.get(leftclear)!=OMC.PLACEHOLDERBMP) {
+//	        		if (mBitmaps.get(leftclear)!=null)	mBitmaps.get(leftclear).recycle();
+//	        		mBitmaps.set(leftclear, OMC.PLACEHOLDERBMP);
+//	        	}
+//	        	int rightclear = position+5 < mThemes.size() ? position+5 : mThemes.size();
+//	        	if (mBitmaps.get(rightclear)!=OMC.PLACEHOLDERBMP) {
+//	        		if (mBitmaps.get(rightclear)!=null)	mBitmaps.get(rightclear).recycle();
+//	        		mBitmaps.set(rightclear, OMC.PLACEHOLDERBMP);
+//	        	}
+//        	}
+//
             return ll;
         }
         
