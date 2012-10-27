@@ -194,7 +194,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         	e.printStackTrace();
         	BoundingBox = new Rect(0,0,480,320);
         }
-        Bitmap tempBmp = Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
+        Bitmap tempBmp = Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,OMC.HDRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
         Canvas tempCvas = new Canvas(tempBmp);
         Paint tempPaint = new Paint();
         tempPaint.setStyle(Style.STROKE);

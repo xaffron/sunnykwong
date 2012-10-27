@@ -55,18 +55,19 @@ public class OMCWidgetDrawEngine {
 
 		for (int i=0; i<(aWM.getAppWidgetIds(cName)==null? 0: aWM.getAppWidgetIds(cName).length); i++) {
 
-			 // v139: Fix strange arrayoutofboundsexception (race condition?)
-			 if (i >= aWM.getAppWidgetIds(cName).length) break;
-			 
-             if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i]) && OMC.LEASTLAGMILLIS > 500l) {
-            	// If this clock takes more than 0.5 sec to render, then blit cached bitmap over first
+// v139: Fix strange arrayoutofboundsexception (race condition?)
+//			 if (i >= aWM.getAppWidgetIds(cName).length) break;
+//			 
+//             if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i]) && OMC.LEASTLAGMILLIS > 500l) {
+//            	// If this clock takes more than 0.5 sec to render, then blit cached bitmap over first
 //            	RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
 //                rv.setImageViewBitmap(OMC.RId("omcIV"),
 //                		OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
 //                aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);                    
 //                rv = null;
-              }
-			 // v139: Fix strange arrayoutofboundsexception (race condition?)
+//              }
+
+			// v139: Fix strange arrayoutofboundsexception (race condition?)
 			 if (i >= aWM.getAppWidgetIds(cName).length) break;
 			 
      		if (!OMC.PREFS.getString("sTimeZone"+aWM.getAppWidgetIds(cName)[i],"default").equals("default")) {
@@ -305,14 +306,15 @@ public class OMCWidgetDrawEngine {
 		//
 		final Bitmap finalbitmap;
 		if (!OMC.WIDGETBMPMAP.containsKey(appWidgetId)) {
-			finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,Bitmap.Config.ARGB_4444);
+			
+			finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,OMC.HDRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
 			OMC.WIDGETBMPMAP.put(appWidgetId, finalbitmap);
 					} else {
 			if (OMC.WIDGETBMPMAP.get(appWidgetId).getWidth() != thisWidgetWidth ||
 					OMC.WIDGETBMPMAP.get(appWidgetId).getHeight() != thisWidgetHeight) {
 	    		if (!OMC.WIDGETBMPMAP.get(appWidgetId).isRecycled()) OMC.WIDGETBMPMAP.get(appWidgetId).recycle();
 	    		OMC.WIDGETBMPMAP.remove(appWidgetId);
-				finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,Bitmap.Config.ARGB_4444);
+				finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,OMC.HDRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
 				OMC.WIDGETBMPMAP.put(appWidgetId, finalbitmap);				
 			} else {
 				finalbitmap=OMC.WIDGETBMPMAP.get(appWidgetId);
@@ -369,28 +371,14 @@ public class OMCWidgetDrawEngine {
 		final RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
 		final int iViewID = OMC.RId("omcIV");
 
-		if (OMC.MEMFILERENDERING) {
+		if (OMC.HDRENDERING) {
 
 	        try {
-	        	ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	        	Bitmap bmp = BitmapFactory.decodeFile("/sdcard/10000650.bmp");
-	        			bmp.compress(CompressFormat.PNG, 100, baos);
-		        baos.close();
-		        byte[] temp = baos.toByteArray();
-//		        System.out.println("Byte size: " + temp.length);
-		        OMC.MEMFILE.writeBytes(temp, 0, 0, temp.length);
-//		        System.out.println("before");
-		        byte[] temp2 = new byte[temp.length];
-		        OMC.MEMFILE.readBytes(temp2, 0, 0, temp2.length);
-		        ByteArrayInputStream bios = new ByteArrayInputStream(temp2);
-		        if (Arrays.equals(temp,temp2)) System.out.println("IDENTICAL");
-		        bmp = BitmapFactory.decodeStream(bios);
-		        System.out.println (bmp.getWidth());
-		        System.out.println (bmp.getHeight());
-//				rv.setImageViewBitmap(iViewID, bmp);
-//				rv.setImageViewBitmap(iViewID, BitmapFactory.decodeStream(new FileInputStream("/mnt/sdcard/test.jpg")));
+                FileOutputStream fos = new FileOutputStream(OMC.CACHEPATH + appWidgetId +"cache.png");
+	        	finalbitmap.compress(CompressFormat.PNG, 100, fos);
+		        fos.close();
 
-				
+		        
 		        rv.setImageViewUri(iViewID, Uri.parse("content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+appWidgetId));
 	        } catch (IOException e) {
 	        	e.printStackTrace();
@@ -482,7 +470,7 @@ public class OMCWidgetDrawEngine {
 	static Bitmap drawBitmapForWidget(final Context context, final int aWI) {
 		final Bitmap resultBitmap;
 		if (OMC.SCREENON) {
-			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_8888);
+			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,OMC.HDRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
 		} else {
 			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
 		}
@@ -546,7 +534,7 @@ public class OMCWidgetDrawEngine {
 	static Bitmap drawLayerForWidget(final Context context, final int aWI, final JSONObject oTheme, final String sLayer) {
 		final Bitmap resultBitmap;
 		if (OMC.SCREENON) {
-			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_8888);
+			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,OMC.HDRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
 		} else {
 			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
 		}

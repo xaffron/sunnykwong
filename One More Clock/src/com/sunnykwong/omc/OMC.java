@@ -11,10 +11,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -68,9 +66,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.os.MemoryFile;
 import android.text.format.Time;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -81,9 +77,8 @@ import android.widget.Toast;
  * 
  */ 
 public class OMC extends Application { 
-	static final boolean MEMFILERENDERING = true;
+	static final boolean HDRENDERING = true;
 	static final boolean DEBUG = true; 
-	static MemoryFile MEMFILE;
 	
 	static final String TESTVER = "Alpha 2";
 	static final boolean THEMESFROMCACHE = true;
@@ -253,16 +248,17 @@ public class OMC extends Application {
     final Handler mHandler = new Handler();
     static String mMessage;
 	final Runnable mPopToast = new Runnable() {
+		@Override
 		public void run() {
 			Toast.makeText(OMC.this, mMessage, Toast.LENGTH_LONG).show();
 		}
 	};
 	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
+	public void onConfigurationChanged(final Configuration newConfig) {
 		for (int i =0 ; i < OMC.LOCALES.length; i++) {
 			if (OMC.PREFS.getString("appLocaleName", "English (US)").equals(OMC.LOCALENAMES[i])) {
 				Log.i(OMC.OMCSHORT + "App","Using app locale: " + OMC.LOCALENAMES[i]);
-				Configuration config = new Configuration();
+				final Configuration config = new Configuration();
 				OMC.CURRENTLOCALE = OMC.LOCALES[i];
 				config.locale=OMC.CURRENTLOCALE;
 				
@@ -285,11 +281,6 @@ public class OMC extends Application {
     	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_WORLD_READABLE);
     	OMC.CURRENTCLOCKPRIORITY = Integer.parseInt(OMC.PREFS.getString("clockPriority", "3"));
     	OMC.CURRENTLOCATIONPRIORITY = Integer.parseInt(OMC.PREFS.getString("locationPriority", "4"));
-    	try {
-    		OMC.MEMFILE = new MemoryFile("TEMP",1000000);
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}
     	
 		// Work around pre-Froyo bugs in HTTP connection reuse.
 		if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
@@ -300,7 +291,7 @@ public class OMC extends Application {
 
 		try {
 			OMC.THISVERSION = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA).versionName + " " + OMC.TESTVER;
-		} catch (NameNotFoundException e) {
+		} catch (final NameNotFoundException e) {
 			OMC.THISVERSION = "1.0.0";
 		}
 
@@ -358,7 +349,8 @@ public class OMC extends Application {
     	OMC.LM = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
     	
     	OMC.LL = new LocationListener() {
-            public void onLocationChanged(final Location location) {
+            @Override
+			public void onLocationChanged(final Location location) {
             	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Weather", "Using Locn: " + location.getLongitude() + " + " + location.getLatitude());
             	if (location.getProvider().equals("gps")) {
             		OMC.WEATHERREFRESHSTATUS=OMC.WRS_GPS;
@@ -369,13 +361,14 @@ public class OMC extends Application {
             	}
             	OMC.LM.removeUpdates(OMC.LL); 
             	OMC.LASTKNOWNLOCN=new Location(location);
-        		Thread t = new Thread() {
-        			public void run() {
+        		final Thread t = new Thread() {
+        			@Override
+					public void run() {
         				OMC.calculateSunriseSunset(location.getLatitude(), location.getLongitude());
         				try {
         					GoogleReverseGeocodeService.updateLocation(location);
         	        		OMC.WEATHERREFRESHSTATUS=OMC.WRS_GEOCODE;
-        					String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
+        					final String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
         					if (sWProvider.equals("ig")) {
             					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					} else if (sWProvider.equals("yr")) {
@@ -388,16 +381,19 @@ public class OMC extends Application {
         						SevenTimerJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					}  
         					
-        				} catch (Exception e) {
+        				} catch (final Exception e) {
         					e.printStackTrace();
         				}
         			}
         		};
         		t.start();
             }
-            public void onStatusChanged(String provider, int status, Bundle extras) {}
-		    public void onProviderEnabled(String provider) {}
-		    public void onProviderDisabled(String provider) {}
+            @Override
+			public void onStatusChanged(final String provider, final int status, final Bundle extras) {}
+		    @Override
+			public void onProviderEnabled(final String provider) {}
+		    @Override
+			public void onProviderDisabled(final String provider) {}
 		};
 
     	OMC.NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -406,12 +402,12 @@ public class OMC extends Application {
 		// Find the currently-installed launchers
 		OMC.FINDLAUNCHERINTENT.addCategory("android.intent.category.HOME");
 		
-		List<ResolveInfo> launcherlist = OMC.PKM.queryIntentActivities(OMC.FINDLAUNCHERINTENT, 0);
+		final List<ResolveInfo> launcherlist = OMC.PKM.queryIntentActivities(OMC.FINDLAUNCHERINTENT, 0);
 		OMC.INSTALLEDLAUNCHERAPPS = new ArrayList<String>();
 		OMC.INSTALLEDLAUNCHERAPPS.add("com.teslacoilsw.widgetlocker");
 		OMC.INSTALLEDLAUNCHERAPPS.add("com.jiubang.goscreenlock");
 		
-		for (ResolveInfo info : launcherlist) {
+		for (final ResolveInfo info : launcherlist) {
 			OMC.INSTALLEDLAUNCHERAPPS.add(info.activityInfo.packageName);
 		}
     	
@@ -439,7 +435,7 @@ public class OMC extends Application {
 		OMC.BATTPERCENT = OMC.PREFS.getInt("ompc_battpercent", 0);
 		OMC.CHARGESTATUS = OMC.PREFS.getString("ompc_chargestatus", "Discharging");
 		
-		Time t = new Time();
+		final Time t = new Time();
 		t.setToNow();
 		t.hour=6;
 		t.minute=0;
@@ -461,7 +457,7 @@ public class OMC extends Application {
 		} else {
 			OMC.STARTERPACKDLED = false;
 			OMC.SHOWHELP=true;
-			Editor ed = OMC.PREFS.edit();
+			final Editor ed = OMC.PREFS.edit();
 			ed.putBoolean("showhelp", true)
 				.putBoolean("starterpack", false);
 			// Convert old yr.no default to new 7timer default, too
@@ -471,17 +467,17 @@ public class OMC extends Application {
 		}
 
 		// If paid and OMWPP installed, disable ads; otherwise, enable them
-		File noads = new File("/sdcard/Android/data/com.sunnykwong.omwpp/files/.noads");
+		final File noads = new File("/sdcard/Android/data/com.sunnykwong.omwpp/files/.noads");
 		if (!OMC.FREEEDITION) {
 	        try {
 	        	if (!noads.exists()) noads.createNewFile();
-	        } catch (Exception e) {
+	        } catch (final Exception e) {
 	        	e.printStackTrace();
 	        }
 		} else {
 	        try {
 	        	if (noads.exists()) noads.delete();
-	        } catch (Exception e) {
+	        } catch (final Exception e) {
 	        	e.printStackTrace();
 	        }
 		}
@@ -490,18 +486,18 @@ public class OMC extends Application {
 	    boolean foundClockImpl = false;
 
 	    for(int i=0; i<clockImpls.length; i++) {
-	        String vendor = clockImpls[i][0];
-	        String packageName = clockImpls[i][1];
-	        String className = clockImpls[i][2];
+	        final String vendor = clockImpls[i][0];
+	        final String packageName = clockImpls[i][1];
+	        final String className = clockImpls[i][2];
 	        try {
-	            ComponentName cn = new ComponentName(packageName, className);
+	            final ComponentName cn = new ComponentName(packageName, className);
 	            PKM.getActivityInfo(cn, PackageManager.GET_META_DATA);
 	            OMC.ALARMCLOCKINTENT.setComponent(cn);
 	            OMC.ALARMCLOCKINTENT.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	            if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Found " + vendor + " --> " + packageName + "/" + className);
 	            foundClockImpl = true; 
 	            break;
-	        } catch (NameNotFoundException e) {
+	        } catch (final NameNotFoundException e) {
 	        	Log.w(OMC.OMCSHORT + "App",vendor + " does not exist");
 	        }
 	    }
@@ -532,7 +528,7 @@ public class OMC extends Application {
 		try {
 			OMC.jsonFIXEDLOCN = new JSONObject(OMC.PREFS.getString("weather_fixedlocation", "{}"));
 			OMC.WEATHERCONVERSIONS = streamToJSONObject(OMC.AM.open("weathericons/weathertranslation.json"));
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 		}
 		OMC.OVERLAYURIS = null;
@@ -581,8 +577,8 @@ public class OMC extends Application {
 		while (OMC.MATRIXPOOL.remainingCapacity() > 0 ) OMC.MATRIXPOOL.add(new Matrix());
 		while (OMC.PAINTPOOL.remainingCapacity() > 0 ) OMC.PAINTPOOL.add(new Paint());
 		while (OMC.WIDGETPOOL.remainingCapacity() > 0 ) {
-			Bitmap bmp = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
-			Canvas cvas = new Canvas(bmp);
+			final Bitmap bmp = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
+			final Canvas cvas = new Canvas(bmp);
 			OMC.WIDGETPOOL.add(bmp);
 			OMC.BMPTOCVAS.put(bmp, cvas);
 		}
@@ -597,10 +593,10 @@ public class OMC extends Application {
 		OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l*1000l);
 	}
 	
-	static public JSONObject streamToJSONObject(InputStream is) throws IOException {
-		InputStreamReader isr = new InputStreamReader(is);
-		BufferedReader br = new BufferedReader(isr,8192);
-		StringBuilder sb = new StringBuilder();
+	static public JSONObject streamToJSONObject(final InputStream is) throws IOException {
+		final InputStreamReader isr = new InputStreamReader(is);
+		final BufferedReader br = new BufferedReader(isr,8192);
+		final StringBuilder sb = new StringBuilder();
 		String line;
 		while ((line = br.readLine()) != null){
 			sb.append(line+"\n");
@@ -609,16 +605,16 @@ public class OMC extends Application {
 		br.close();
 		try {
 			return new JSONObject(sb.toString());
-		} catch (JSONException e) {
+		} catch (final JSONException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	static public String streamToString(InputStream is) throws IOException {
-		InputStreamReader isr = new InputStreamReader(is);
-		BufferedReader br = new BufferedReader(isr,8192);
-		StringBuilder sb = new StringBuilder();
+	static public String streamToString(final InputStream is) throws IOException {
+		final InputStreamReader isr = new InputStreamReader(is);
+		final BufferedReader br = new BufferedReader(isr,8192);
+		final StringBuilder sb = new StringBuilder();
 		String line;
 		while ((line = br.readLine()) != null){
 			sb.append(line+"\n");
@@ -628,7 +624,7 @@ public class OMC extends Application {
 		return sb.toString();
 	}
 
-	static public void toggleWidgets(Context context) {
+	static public void toggleWidgets(final Context context) {
 			
     	// Enable/Disable the various size widgets
     	context.getPackageManager()
@@ -764,10 +760,10 @@ public class OMC extends Application {
     	}
 	}
 
-	static void setServiceAlarm (long lTimeToRefresh, long lTargetTime) {
+	static void setServiceAlarm (final long lTimeToRefresh, final long lTargetTime) {
 		//We want the pending intent to be for this service, and 
 		// at the same FG/BG preference as the intent that woke us up
-		SimpleDateFormat mill = new SimpleDateFormat("HH:mm:ss.SSS");
+		final SimpleDateFormat mill = new SimpleDateFormat("HH:mm:ss.SSS");
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","ALARM SET: @"+ mill.format(new Date(lTimeToRefresh))+ " for " + mill.format(new Date(lTargetTime)));
 //		int counter=0;
 //		for (StackTraceElement e: Thread.currentThread().getStackTrace()) {
@@ -776,7 +772,7 @@ public class OMC extends Application {
 //			if (counter>5) break;
 //		}
 
-		int iAlarmSetting = OMC.CURRENTCLOCKPRIORITY>1?AlarmManager.RTC:AlarmManager.RTC_WAKEUP;
+		final int iAlarmSetting = OMC.CURRENTCLOCKPRIORITY>1?AlarmManager.RTC:AlarmManager.RTC_WAKEUP;
 		if (OMC.FG) {
 			OMC.FGINTENT.putExtra("target", lTargetTime);
 			OMC.ALARMS.set(iAlarmSetting, lTimeToRefresh, OMC.FGPENDING);
@@ -786,7 +782,7 @@ public class OMC extends Application {
 		}
     }
 
-	public static void setPrefs(int aWI) {
+	public static void setPrefs(final int aWI) {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Committing prefs for widget " + aWI);
 		final Editor e = OMC.PREFS.edit();
 		e.putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME))
@@ -801,7 +797,7 @@ public class OMC extends Application {
 		e.commit();
 	}
 	 
-	public static void initPrefs(int aWI) {
+	public static void initPrefs(final int aWI) {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Wiping out/Resetting prefs for widget " + aWI);
 		// For new clocks... just like setPrefs but leaves the URI empty.
 		final Editor e = OMC.PREFS.edit();
@@ -818,7 +814,7 @@ public class OMC extends Application {
 	}
  
 	
-	public static void getPrefs(int aWI) {
+	public static void getPrefs(final int aWI) {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Retrieving prefs for widget " + aWI);
 		final Editor e = OMC.PREFS.edit();
 		e.putString("widgetTheme", OMC.PREFS.getString("widgetTheme"+aWI, OMC.DEFAULTTHEME))
@@ -834,7 +830,7 @@ public class OMC extends Application {
 		e.commit();
 	}
 	
-	public static void removePrefs(int aWI) {
+	public static void removePrefs(final int aWI) {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Deleting prefs for widget " + aWI);
 		final Editor e = OMC.PREFS.edit();
 		e.remove("widgetTheme"+aWI)
@@ -848,11 +844,11 @@ public class OMC extends Application {
 			e.remove("URI"+OMC.COMPASSPOINTS[i]+aWI);
 		}
 		e.commit();
-		File f = new File(OMC.CACHEPATH + aWI +"cache.png");
+		final File f = new File(OMC.CACHEPATH + aWI +"cache.png");
 		if (f.exists())f.delete();
 	}
 	
-	public static Typeface getTypeface(String sTheme, String src) {
+	public static Typeface getTypeface(final String sTheme, final String src) {
 		if (src.equals("wef.ttf")) return OMC.WEATHERFONT;
 		if (OMC.THEMESFROMCACHE) {
 			//Look in memory cache;
@@ -864,7 +860,7 @@ public class OMC extends Application {
 					try {
 						OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(OMC.CACHEPATH + sTheme + src));
 						return OMC.TYPEFACEMAP.get(src);
-					} catch (RuntimeException e) {
+					} catch (final RuntimeException e) {
 						// if Cache is invalid, do nothing; we'll let this flow through to the full FS case.
 					}
 			}
@@ -874,20 +870,20 @@ public class OMC extends Application {
 				try {
 					OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(src));
 					return OMC.TYPEFACEMAP.get(src);
-				} catch (RuntimeException e) {
+				} catch (final RuntimeException e) {
 					// if Cache is invalid, do nothing; we'll let this flow through to the full SD case.
 				}
 		}
 		//Look in sd card;
 		if (OMC.checkSDPresent()) {
-			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+sTheme+"/"+src);
+			final File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+sTheme+"/"+src);
 			try {
 				if (f.exists()) {
 					copyFile(f.getAbsolutePath(),OMC.CACHEPATH +"/"+sTheme+f.getName());
 					OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(f));
 					return OMC.TYPEFACEMAP.get(src);
 				}
-			} catch (RuntimeException e) {
+			} catch (final RuntimeException e) {
 				// if Cache is invalid, do nothing; we'll let this flow through to the fallback case.
 			}
 		}
@@ -896,13 +892,13 @@ public class OMC extends Application {
 		// New fix 1.2.8:  For phones without the DroidSans.ttf in /system/fonts, we return the system fallback font.
 		try {
 			tf = Typeface.createFromAsset(OMC.AM, "defaulttheme/"+src);
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			tf = Typeface.DEFAULT;
 		}
 		return tf;
 	}
 
-	public static Bitmap getBitmap(String sTheme, String src) {
+	public static Bitmap getBitmap(final String sTheme, final String src) {
 		if (src.startsWith("ww-")) {
 			if (checkSDPresent()) {
 				OMC.WEATHERTRANSLATETYPE="AccuWeather";
@@ -923,12 +919,12 @@ public class OMC extends Application {
 			else {
 				iConditionCode = Integer.parseInt(sTokens[1].trim()); 
 			}
-			String daynight=sTokens[2];;
+			final String daynight=sTokens[2];;
 			String src2;
 			try {
 				src2 = OMC.WEATHERCONVERSIONS.getJSONObject(OMC.WEATHERTRANSLATETYPE)
 							.getJSONArray(daynight).optString(iConditionCode,"Unk").toLowerCase();
-			} catch (JSONException e) {
+			} catch (final JSONException e) {
 				e.printStackTrace();
 				src2 = "Unk";
 			}
@@ -951,11 +947,11 @@ public class OMC extends Application {
 			// Translate from condition to filename
 			final String[] sTokens = src.split("[-.]");
 
-			String condition = sTokens[1].toLowerCase(), daynight=sTokens[2];;
+			final String condition = sTokens[1].toLowerCase(), daynight=sTokens[2];;
 			int iTarget = 0;
 			for (int idx=0;idx<OMC.VERBOSEWEATHERENG.length;idx++) {
 
-				String tempTarget = OMC.VERBOSEWEATHERENG[idx].toLowerCase();
+				final String tempTarget = OMC.VERBOSEWEATHERENG[idx].toLowerCase();
 				if (tempTarget.equals(condition)) {
 					iTarget=idx;
 					break;
@@ -965,7 +961,7 @@ public class OMC extends Application {
 			try {
 				src2 = OMC.WEATHERCONVERSIONS.getJSONObject(OMC.WEATHERTRANSLATETYPE)
 							.getJSONArray(daynight).optString(iTarget,"Unk").toLowerCase();
-			} catch (JSONException e) {
+			} catch (final JSONException e) {
 				e.printStackTrace();
 				src2 = "Unk";
 			}
@@ -1003,11 +999,11 @@ public class OMC extends Application {
 		// Look in assets
 		try {
 			return BitmapFactory.decodeStream(OMC.AM.open("defaulttheme/"+src));
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			// Asset not found - do nothing
 			try {
 				return BitmapFactory.decodeStream(OMC.AM.open("weathericons/"+src));
-			} catch (Exception ee) {
+			} catch (final Exception ee) {
 				
 			}
 		}
@@ -1016,18 +1012,18 @@ public class OMC extends Application {
 	}
 
 	public static void purgeTypefaceCache(){
-		Iterator<Entry<String,Typeface>> i = OMC.TYPEFACEMAP.entrySet().iterator();
+		final Iterator<Entry<String,Typeface>> i = OMC.TYPEFACEMAP.entrySet().iterator();
 		while (i.hasNext()) {
-			Entry<String,Typeface> entry = i.next();
+			final Entry<String,Typeface> entry = i.next();
 			entry.setValue(null);
 		}
 		OMC.TYPEFACEMAP.clear();
 	}
 	
 	public static void purgeBitmapCache(){
-		Iterator<Entry<String,Bitmap>> i = OMC.BMPMAP.entrySet().iterator();
+		final Iterator<Entry<String,Bitmap>> i = OMC.BMPMAP.entrySet().iterator();
 		while (i.hasNext()) {
-			Entry<String,Bitmap> entry = i.next();
+			final Entry<String,Bitmap> entry = i.next();
 			if (entry.getValue()!=null)	entry.getValue().recycle();
 			entry.setValue(null);
 		}
@@ -1043,21 +1039,21 @@ public class OMC extends Application {
 		// Look in cache dir
 		if (new File(OMC.CACHEPATH + nm + "00control.json").exists() && bFromCache) {
 			try {
-				BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + nm + "00control.json"),8192);
-				StringBuilder sb = new StringBuilder();
-			    char[] buffer = new char[8192];
+				final BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + nm + "00control.json"),8192);
+				final StringBuilder sb = new StringBuilder();
+			    final char[] buffer = new char[8192];
 			    int iCharsRead = 0;
 			    while ((iCharsRead=in.read(buffer))!= -1){
 			    	sb.append(buffer, 0, iCharsRead);
 			    }
 			    in.close();
 			    
-				JSONObject oResult = new JSONObject(sb.toString());
+				final JSONObject oResult = new JSONObject(sb.toString());
 				sb.setLength(0);
 				OMC.THEMEMAP.put(nm, oResult);
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " loaded from cachedir.");
 				return oResult;
-			} catch (Exception e) {
+			} catch (final Exception e) {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error reloading " + nm + " from cachedir.");
 				e.printStackTrace();
 			} finally {
@@ -1066,28 +1062,28 @@ public class OMC extends Application {
 		}
 		// Look in SD path
 		if (OMC.checkSDPresent()) {
-			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+nm);
+			final File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+nm);
 			if (f.exists() && f.isDirectory()) {
-				for (File ff:f.listFiles()) {
+				for (final File ff:f.listFiles()) {
 					copyFile(ff.getAbsolutePath(),OMC.CACHEPATH + nm + ff.getName());
 				}
 			}
 			try {
-				BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + nm + "00control.json"),8192);
-				StringBuilder sb = new StringBuilder();
-			    char[] buffer = new char[8192];
+				final BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + nm + "00control.json"),8192);
+				final StringBuilder sb = new StringBuilder();
+			    final char[] buffer = new char[8192];
 			    int iCharsRead = 0;
 			    while ((iCharsRead=in.read(buffer))!= -1){
 			    	sb.append(buffer, 0, iCharsRead);
 			    }
 			    in.close();
-				JSONObject oResult = new JSONObject(sb.toString());
+				final JSONObject oResult = new JSONObject(sb.toString());
 				sb.setLength(0);
 				if (!OMC.validateTheme(oResult)) throw new Exception();
 				OMC.THEMEMAP.put(nm, oResult);
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " loaded from SD.");
 				return oResult;
-			} catch (Exception e) {
+			} catch (final Exception e) {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error loading " + nm + " from SD.");
 			} finally {
 				//System.gc();
@@ -1097,20 +1093,20 @@ public class OMC extends Application {
 		// If default theme, look in assets
 		if (nm.equals(OMC.DEFAULTTHEME)) {
 			try {
-				InputStreamReader in = new InputStreamReader(OMC.AM.open("defaulttheme/00control.json"));
-				StringBuilder sb = new StringBuilder();
-			    char[] buffer = new char[8192];
+				final InputStreamReader in = new InputStreamReader(OMC.AM.open("defaulttheme/00control.json"));
+				final StringBuilder sb = new StringBuilder();
+			    final char[] buffer = new char[8192];
 			    int iCharsRead = 0;
 			    while ((iCharsRead=in.read(buffer))!= -1){
 			    	sb.append(buffer, 0, iCharsRead);
 			    }
 			    in.close();
 			    
-				JSONObject oResult = new JSONObject(sb.toString());
+				final JSONObject oResult = new JSONObject(sb.toString());
 				sb.setLength(0);
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " loaded from assets.");
 				return oResult;
-			} catch (Exception e) {
+			} catch (final Exception e) {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","error reloading " + nm + " from assets.");
 				e.printStackTrace();
 			} finally {
@@ -1122,49 +1118,49 @@ public class OMC extends Application {
 		try {
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App",nm + " not available; drop to fallback.");
 			fb = new JSONObject(FALLBACKTHEME);
-		} catch (JSONException e) {
+		} catch (final JSONException e) {
 			e.printStackTrace();
 		}
 		return fb;
 	}
 
-	public static void themeToFile(JSONObject obj, File tgt) {
+	public static void themeToFile(final JSONObject obj, final File tgt) {
 		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter(tgt),8192);
+			final BufferedWriter out = new BufferedWriter(new FileWriter(tgt),8192);
 			out.write(obj.toString(5));
 			out.close();
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 		}
 	}
-	public static void bmpToJPEG(Bitmap bmp, File tgt) {
+	public static void bmpToJPEG(final Bitmap bmp, final File tgt) {
 		try {
-		       FileOutputStream out = new FileOutputStream(tgt);
+		       final FileOutputStream out = new FileOutputStream(tgt);
 		       Bitmap.createScaledBitmap(Bitmap.createBitmap(bmp,0,0,480,300),320,200,true).compress(Bitmap.CompressFormat.JPEG, 85, out);
 		       out.close();
-		} catch (Exception e) {
+		} catch (final Exception e) {
 		       e.printStackTrace();
 		}
 	}	
 	public static void purgeImportCache() {
-		for (File f:(new File(OMC.CACHEPATH).listFiles())) {
+		for (final File f:(new File(OMC.CACHEPATH).listFiles())) {
 			f.delete();
 		}
 		//System.gc();
 	}
 	public static void purgeEmailCache() {
-		File tempDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/tmp/");
+		final File tempDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/tmp/");
 		if (!tempDir.exists()) return;
 		else {
-			for (File f:(tempDir.listFiles())) {
+			for (final File f:(tempDir.listFiles())) {
 				f.delete();
 			}
 		}
 		//System.gc();
 	}
 			
-	public static void removeDirectory(File f) {
-		for (File ff:f.listFiles()) {
+	public static void removeDirectory(final File f) {
+		for (final File ff:f.listFiles()) {
 			if (ff.equals(f)) continue;
 	    	if (!ff.isDirectory()) ff.delete();
 	    	else removeDirectory(ff);
@@ -1172,17 +1168,18 @@ public class OMC extends Application {
 		f.delete();
 	}
 
-	public static void removeFile(File f) {
+	public static void removeFile(final File f) {
 		if (f.exists()) {
 			if (!f.isDirectory()) f.delete();
 		}
 	}
 	
 	public boolean fixKnownBadThemes() {
-		Thread t = new Thread() {
+		final Thread t = new Thread() {
+			@Override
 			public void run() {
-				String[] badThemes = new String[]{"iPhone"};
-				for (String theme:badThemes) {
+				final String[] badThemes = new String[]{"iPhone"};
+				for (final String theme:badThemes) {
 					final File badThemeFile = new File( Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + theme + "/00control.json");
 					if (!badThemeFile.exists()) continue;
 					final File fixFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + theme + "/fixed.txt");
@@ -1196,7 +1193,7 @@ public class OMC extends Application {
 						fw.close();
 						mMessage = "A corrupt theme (iPhone) was found and replaced.";
 						mHandler.post(mPopToast);
-					} catch (Exception e) {
+					} catch (final Exception e) {
 						e.printStackTrace();
 					}
 				}
@@ -1206,11 +1203,11 @@ public class OMC extends Application {
 		return true;
 	}
 	
-	public static void copyDirectory(File src, File tgt) {
+	public static void copyDirectory(final File src, final File tgt) {
 		if (!tgt.exists()) tgt.mkdirs();
 		if (!tgt.isDirectory()) return;
 
-		for (File ff:src.listFiles()) {
+		for (final File ff:src.listFiles()) {
 			if (ff.isDirectory()) {
 				copyDirectory(ff,new File(tgt.getAbsolutePath()+"/"+ff.getName()));
 			} else {
@@ -1219,11 +1216,11 @@ public class OMC extends Application {
 		}
 	}
 	
-	public static boolean copyFile(String src, String tgt) {
+	public static boolean copyFile(final String src, final String tgt) {
 		try {
-			FileOutputStream oTGT = new FileOutputStream(tgt);
-			FileInputStream oSRC = new FileInputStream(src);
-		    byte[] buffer = new byte[8192];
+			final FileOutputStream oTGT = new FileOutputStream(tgt);
+			final FileInputStream oSRC = new FileInputStream(src);
+		    final byte[] buffer = new byte[8192];
 		    int iBytesRead = 0;
 		    while ((iBytesRead = oSRC.read(buffer))!= -1){
 		    	oTGT.write(buffer,0,iBytesRead);
@@ -1231,7 +1228,7 @@ public class OMC extends Application {
 		    oTGT.close();
 		    oSRC.close();
 			return true;
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -1239,7 +1236,7 @@ public class OMC extends Application {
 	
 	public static boolean copyFile(final InputStream oSRC, final OutputStream oTGT) {
 		try {
-		    byte[] buffer = new byte[8192];
+		    final byte[] buffer = new byte[8192];
 		    int iBytesRead = 0, iByteCount=0;
 		    while ((iBytesRead = oSRC.read(buffer))!= -1){
 		    	iByteCount+=iBytesRead;
@@ -1249,18 +1246,18 @@ public class OMC extends Application {
 		    oTGT.close();
 		    oSRC.close();
 			return true;
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
 	
-	public static boolean copyAssetToCache(String src, String filename, String sTheme) {
+	public static boolean copyAssetToCache(final String src, final String filename, final String sTheme) {
 		try {
-			FileOutputStream oTGT = new FileOutputStream(OMC.CACHEPATH + sTheme + filename);
-			InputStream oSRC = OMC.AM.open(src);
+			final FileOutputStream oTGT = new FileOutputStream(OMC.CACHEPATH + sTheme + filename);
+			final InputStream oSRC = OMC.AM.open(src);
 			
-		    byte[] buffer = new byte[8192];
+		    final byte[] buffer = new byte[8192];
 		    int iBytesRead = 0;
 		    while ((iBytesRead = oSRC.read(buffer))!= -1){
 		    	oTGT.write(buffer,0,iBytesRead);
@@ -1268,18 +1265,18 @@ public class OMC extends Application {
 		    oTGT.close();
 		    oSRC.close();
 			return true;
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
 	
-	public static JSONArray loadStringArray(String sTheme, int aWI, String sKey) {	
+	public static JSONArray loadStringArray(final String sTheme, final int aWI, final String sKey) {	
 		try {
-			JSONObject oTheme = OMC.THEMEMAP.get(sTheme);
+			final JSONObject oTheme = OMC.THEMEMAP.get(sTheme);
 			return oTheme.getJSONObject("arrays").getJSONArray(sKey);
 
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			if (OMC.DEBUG) Log.i ("OMCApp","Can't find array " + sKey + " in resources!");
 			e.printStackTrace();
 			return null;
@@ -1292,17 +1289,17 @@ public class OMC extends Application {
 			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "App","OMPC installed, let OMPC handle onclick");
 			try {
 				unregisterReceiver(OMC.cRC);
-			} catch (java.lang.IllegalArgumentException e) {
+			} catch (final java.lang.IllegalArgumentException e) {
     			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "App","OMC's receiver already unregistered - doing nothing");
 				//no need to do anything if receiver not registered
 			}
-		} catch (Exception e) {
+		} catch (final Exception e) {
 
 			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "App","OMPC not installed, register self to handle widget clicks");
 			//e.printStackTrace();
 			try {
 				this.registerReceiver(OMC.cRC,OMC.PREFSINTENTFILT);
-			} catch (Exception ee) {
+			} catch (final Exception ee) {
     			if (OMC.DEBUG)Log.i(OMC.OMCSHORT + "App","Failed to register self");
 				ee.printStackTrace();
 			}
@@ -1312,20 +1309,20 @@ public class OMC extends Application {
 	}
 	
 	public static void setupDefaultTheme() {
-		String sDefaultThemeAssetDir = "defaulttheme/";
+		final String sDefaultThemeAssetDir = "defaulttheme/";
 		try {
 			if (new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME + "/00control.json").exists()) return;
 			(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME)).mkdirs();
-			for (String sFile : OMC.AM.list("defaulttheme")) {
+			for (final String sFile : OMC.AM.list("defaulttheme")) {
 				copyAssetToCache(sDefaultThemeAssetDir+sFile,sFile, OMC.DEFAULTTHEME);
 				copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + sFile, Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/" + sFile);
 			}
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static boolean validateTheme(JSONObject theme) {	
+	public static boolean validateTheme(final JSONObject theme) {	
 		
 		//Innocent until proven guilty.
 		boolean valid = true;
@@ -1339,7 +1336,7 @@ public class OMC extends Application {
 			theme.getString("id");
 			theme.getString("name");
 			theme.getJSONArray("layers_bottomtotop");
-		} catch (JSONException e) {
+		} catch (final JSONException e) {
 			valid = false;
 		}
 		
@@ -1353,7 +1350,7 @@ public class OMC extends Application {
 			return false;
         }
 
-        File sdRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes");
+        final File sdRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes");
         if (!sdRoot.exists()) {
         	sdRoot.mkdir();
         }
@@ -1363,7 +1360,7 @@ public class OMC extends Application {
 		return true;
     }
 
-	static public JSONObject renderThemeObject(JSONObject theme, int aWI) throws JSONException {
+	static public JSONObject renderThemeObject(final JSONObject theme, final int aWI) throws JSONException {
 		JSONObject result;
 		
 		result = new JSONObject();
@@ -1374,20 +1371,21 @@ public class OMC extends Application {
 		// First, render the dynamic elements in arrays
 		
 		if (theme.has("arrays")) {
-			JSONObject resultArrays = new JSONObject();
+			final JSONObject resultArrays = new JSONObject();
 			result.put("arrays", resultArrays);
 			if (theme.has("translations")) {
 				result.put("translations", theme.optJSONObject("translations"));
 			}
 			
 			@SuppressWarnings("unchecked")
+			final
 			Iterator<String> i = theme.optJSONObject("arrays").keys();
 			while (i.hasNext()) {
-				String sKey = i.next();
-				JSONArray tempResultArray = new JSONArray();
+				final String sKey = i.next();
+				final JSONArray tempResultArray = new JSONArray();
 				resultArrays.put(sKey, tempResultArray);
 
-				JSONArray tempArray = theme.optJSONObject("arrays").optJSONArray(sKey);
+				final JSONArray tempArray = theme.optJSONObject("arrays").optJSONArray(sKey);
 				for (int j=0;j<tempArray.length();j++) {
 					tempResultArray.put(OMC.resolveTokens(tempArray.getString(j), aWI, result));
 				}
@@ -1396,35 +1394,36 @@ public class OMC extends Application {
 
 		// Then, render all the dynamic elements in each layer...
 		
-		JSONArray layerJSONArray = theme.optJSONArray("layers_bottomtotop");
+		final JSONArray layerJSONArray = theme.optJSONArray("layers_bottomtotop");
 		if (layerJSONArray==null) return null; //ERR: A theme cannot have no layers
-		JSONArray tempLayerArray = new JSONArray();
+		final JSONArray tempLayerArray = new JSONArray();
 		result.put("layers_bottomtotop", tempLayerArray);
 		
 		for (int j = 0 ; j < layerJSONArray.length(); j++) {
-			JSONObject layer = layerJSONArray.optJSONObject(j);
-			JSONObject renderedLayer = new JSONObject();
+			final JSONObject layer = layerJSONArray.optJSONObject(j);
+			final JSONObject renderedLayer = new JSONObject();
 			tempLayerArray.put(renderedLayer);
 			
 			//v1.3.1: If Layer is null, it's a corrupt layer in a corrupt theme.  
 			// Try to make the best of it and move to the next layer.
 			if (layer==null) continue;
 			@SuppressWarnings("unchecked")
+			final
 			Iterator<String> i = layer.keys();
 			while (i.hasNext()) {
-				String sKey = i.next();
+				final String sKey = i.next();
 				if (sKey.equals("text_stretch")) continue;
 
-				renderedLayer.put(sKey, OMC.resolveTokens((String)(layer.optString(sKey)), aWI, result));
+				renderedLayer.put(sKey, OMC.resolveTokens((layer.optString(sKey)), aWI, result));
 
 			}
 			
 			// before tweaking the max/maxfit stretch factors.
-			String sStretch = layer.optString("text_stretch");
+			final String sStretch = layer.optString("text_stretch");
 			if (sStretch==null) {
 				renderedLayer.put("text_stretch", "1");
 			} else {
-				renderedLayer.put("text_stretch", OMC.resolveTokens((String)(layer.optString("text_stretch")), aWI, result));
+				renderedLayer.put("text_stretch", OMC.resolveTokens((layer.optString("text_stretch")), aWI, result));
 			}
 		}
 
@@ -1434,7 +1433,7 @@ public class OMC extends Application {
 		return result;
 	}
 	
-	static public String resolveOneToken(String sRawString, int aWI, JSONObject tempResult) {
+	static public String resolveOneToken(final String sRawString, final int aWI, final JSONObject tempResult) {
 		boolean isDynamic = false;
 		if (sRawString.contains("[%")) isDynamic = true;
 		// Strip brackets.
@@ -1461,18 +1460,18 @@ public class OMC extends Application {
 		// By default, 
 		String result = "";
 
-		String[] st = sBuffer.split("_");
+		final String[] st = sBuffer.split("_");
 		int iTokenNum=0;
 
 		//Get the first element (command).
-		String sToken = st[iTokenNum++];
+		final String sToken = st[iTokenNum++];
 		if (sToken.startsWith("daylight")) {
 
 			// value that changes linearly from sunrise to sundown, then from sundown to sunup.
-			String sType = st[iTokenNum++];
+			final String sType = st[iTokenNum++];
 
 			// Where are we in time?  intGradientSeconds starts the count from either sunrise or sunset
-			long OMCTIMEMillis = OMC.TIME.toMillis(false);
+			final long OMCTIMEMillis = OMC.TIME.toMillis(false);
 
 			int iIntervalSeconds;
 			int iGradientSeconds;
@@ -1490,7 +1489,7 @@ public class OMC extends Application {
 				iIntervalSeconds = 86400-(int)((OMC.lSUNSETMILLIS-OMC.lSUNRISEMILLIS)/1000l);
 				iGradientSeconds = (int)((OMCTIMEMillis - OMC.lSUNSETMILLIS)/1000l);
 			}			
-			float gradient = (iGradientSeconds % iIntervalSeconds)/(float)iIntervalSeconds;
+			final float gradient = (iGradientSeconds % iIntervalSeconds)/(float)iIntervalSeconds;
 			final String sLowVal = st[iTokenNum++];
 			final String sMidVal = st[iTokenNum++];
 			final String sHighVal = st[iTokenNum++];
@@ -1501,7 +1500,7 @@ public class OMC extends Application {
 						Integer.parseInt(sHighVal), 
 						gradient));
 			} else if (sType.equals("color")) {
-				int color = OMC.colorInterpolate(
+				final int color = OMC.colorInterpolate(
 						sLowVal, 
 						sMidVal, 
 						sHighVal, 
@@ -1519,8 +1518,8 @@ public class OMC extends Application {
 		} else if (sToken.startsWith("shift")) {
 
 			// value that changes linearly and repeats every X seconds from 6am.
-			String sType = st[iTokenNum++];
-			int iIntervalSeconds =  Integer.parseInt(st[iTokenNum++]);
+			final String sType = st[iTokenNum++];
+			final int iIntervalSeconds =  Integer.parseInt(st[iTokenNum++]);
 			int iGradientSeconds = 0;
 
 			// Where are we in time?  intGradientSeconds starts the count from either 12am or 6am
@@ -1531,7 +1530,7 @@ public class OMC extends Application {
 				iGradientSeconds = OMC.TIME.second + OMC.TIME.minute*60 + ((OMC.TIME.hour+18)%24)*3600;
 			} 
 
-			float gradient = (iGradientSeconds % iIntervalSeconds)/(float)iIntervalSeconds;
+			final float gradient = (iGradientSeconds % iIntervalSeconds)/(float)iIntervalSeconds;
 			final String sLowVal = st[iTokenNum++];
 			final String sMidVal = st[iTokenNum++];
 			final String sHighVal = st[iTokenNum++];
@@ -1542,7 +1541,7 @@ public class OMC extends Application {
 						Integer.parseInt(sHighVal), 
 						gradient));
 			} else if (sType.equals("color")) {
-				int color = OMC.colorInterpolate(
+				final int color = OMC.colorInterpolate(
 						sLowVal, 
 						sMidVal, 
 						sHighVal, 
@@ -1570,9 +1569,9 @@ public class OMC extends Application {
 				result = sNeg;
 			}
 		} else if (sToken.equals("ompc")) {
-			String sType = st[iTokenNum++];
+			final String sType = st[iTokenNum++];
 			if (sType.equals("battpercent")) {
-				result = String.valueOf((int)(1000+OMC.BATTPERCENT)).substring(1);
+				result = String.valueOf(1000+OMC.BATTPERCENT).substring(1);
 			} else if (sType.equals("battscale")) {
 				result = String.valueOf(OMC.BATTSCALE);
 			} else if (sType.equals("battdecimal")) {
@@ -1593,13 +1592,13 @@ public class OMC extends Application {
 				JSONObject jsonWeather = new JSONObject();
 				try {
 					jsonWeather = new JSONObject(OMC.PREFS.getString("weather", "{}"));
-					String sType = st[iTokenNum++];
+					final String sType = st[iTokenNum++];
 					if (sType.equals("debug")) {
-						Time t = new Time();
+						final Time t = new Time();
 						t.parse(jsonWeather.optString("current_local_time"));
-						Time t2 = new Time();
+						final Time t2 = new Time();
 						t2.set(OMC.NEXTWEATHERREFRESH);
-						Time t3 = new Time();
+						final Time t3 = new Time();
 						t3.set(OMC.LASTWEATHERTRY);
 						result = "Weather as of " + t.format("%R") + "; lastry " + t3.format("%R")
 								+ "; nextupd " + t2.format("%R");
@@ -1615,7 +1614,7 @@ public class OMC extends Application {
 						result = OMC.WEATHERCONVERSIONS.getJSONObject("WeatherFont")
 								.getJSONArray(sDay).optString(jsonWeather.optInt("condition_code",0),"E");
 					} else if (sType.equals("index")) {
-						String sTranslateType = st[iTokenNum++];
+						final String sTranslateType = st[iTokenNum++];
 						String sDay;
 						if (OMC.TIME.toMillis(true) >= OMC.lSUNRISEMILLIS && OMC.TIME.toMillis(true) < OMC.lSUNSETMILLIS) {
 							//Day
@@ -1643,16 +1642,16 @@ public class OMC extends Application {
 					} else if (sType.equals("city")) {
 						result = jsonWeather.optString("city","Unknown");
 					} else if (sType.equals("high")) {
-						int iDay = Integer.parseInt(st[iTokenNum++]);
-						String sFahrenheit = jsonWeather.getJSONArray("zzforecast_conditions").getJSONObject(iDay).optString("high","--");
+						final int iDay = Integer.parseInt(st[iTokenNum++]);
+						final String sFahrenheit = jsonWeather.getJSONArray("zzforecast_conditions").getJSONObject(iDay).optString("high","--");
 						if (OMC.PREFS.getString("weatherDisplay", "f").equals("c")) {
 							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32.2f)*5f/9f+0.5f));
 						} else {
 							result = sFahrenheit;
 						}
 					} else if (sType.equals("low")) {
-						int iDay = Integer.parseInt(st[iTokenNum++]);
-						String sFahrenheit = jsonWeather.getJSONArray("zzforecast_conditions").getJSONObject(iDay).optString("low","--");
+						final int iDay = Integer.parseInt(st[iTokenNum++]);
+						final String sFahrenheit = jsonWeather.getJSONArray("zzforecast_conditions").getJSONObject(iDay).optString("low","--");
 						if (OMC.PREFS.getString("weatherDisplay", "f").equals("c")) {
 							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32.2f)*5f/9f+0.5f));
 						} else {
@@ -1662,7 +1661,7 @@ public class OMC extends Application {
 						// JSON parse error - probably uknown weather. Do nothing
 						result = "--";
 					}
-				} catch (JSONException e) {
+				} catch (final JSONException e) {
 					e.printStackTrace();
 					// JSON parse error - probably uknown weather. Do nothing
 					result = "--";
@@ -1670,10 +1669,10 @@ public class OMC extends Application {
 			}
 		} else if (sToken.equals("circle")) {
 			// Specifies a point at angle/radius from point.
-			double dOriginVal = Double.parseDouble(st[iTokenNum++]);
-			String sType = st[iTokenNum++];
-			double dAngle = Double.parseDouble(st[iTokenNum++]);
-			double dRadius =  Double.parseDouble(st[iTokenNum++]);
+			final double dOriginVal = Double.parseDouble(st[iTokenNum++]);
+			final String sType = st[iTokenNum++];
+			final double dAngle = Double.parseDouble(st[iTokenNum++]);
+			final double dRadius =  Double.parseDouble(st[iTokenNum++]);
 
 			if (sType.equals("cos")) {
 				result = String.valueOf(dOriginVal + dRadius * Math.cos(dAngle*Math.PI/180d));
@@ -1698,24 +1697,24 @@ public class OMC extends Application {
 				result = (st[iTokenNum+1]);
 			}
 		} else if (sToken.equals("array")) {
-			String sArrayName = st[iTokenNum++];
-			String sIndex = st[iTokenNum++];
+			final String sArrayName = st[iTokenNum++];
+			final String sIndex = st[iTokenNum++];
 			if (sIndex.equals("--") || sIndex.equals("Unk")) {
 				result = "";
 			} else {
 				result = tempResult.optJSONObject("arrays").optJSONArray(sArrayName).optString(Integer.parseInt(sIndex.replace(" ","")));
 			}
-			String sCase = st[iTokenNum++];
+			final String sCase = st[iTokenNum++];
 			if (result == null) result = "ERROR";
 			if (sCase.equals("lower")) result = result.toLowerCase();
 			else if (sCase.equals("upper")) result = result.toUpperCase();
 
 		} else if (sToken.equals("flipformat")) {
 			int iApply = Integer.parseInt(st[iTokenNum++]);
-			String sType = st[iTokenNum++];
-			StringTokenizer stt = new StringTokenizer(st[iTokenNum++]," ");
+			final String sType = st[iTokenNum++];
+			final StringTokenizer stt = new StringTokenizer(st[iTokenNum++]," ");
 			if (sType.equals("bold")) {
-				StringBuilder sb = new StringBuilder();
+				final StringBuilder sb = new StringBuilder();
 				while (stt.hasMoreElements()){
 					if (iApply==1) sb.append("<B>"+stt.nextToken()+"</B> ");
 					else sb.append(stt.nextToken()+" ");
@@ -1723,7 +1722,7 @@ public class OMC extends Application {
 				}
 				result = sb.toString();
 			} else if (sType.equals("case")) {
-				StringBuilder sb = new StringBuilder();
+				final StringBuilder sb = new StringBuilder();
 				while (stt.hasMoreElements()){
 					if (iApply==1) sb.append(stt.nextToken().toUpperCase()+" ");
 					else sb.append(stt.nextToken().toLowerCase()+" ");
@@ -1731,7 +1730,7 @@ public class OMC extends Application {
 				}
 				result = sb.toString();
 			} else if (sType.equals("italics")) {
-				StringBuilder sb = new StringBuilder();
+				final StringBuilder sb = new StringBuilder();
 				while (stt.hasMoreElements()){
 					if (iApply==1) sb.append("<I>"+stt.nextToken()+"</I> ");
 					else sb.append(stt.nextToken()+" ");
@@ -1747,21 +1746,21 @@ public class OMC extends Application {
 			result = st[iTokenNum++]+"m"+st[iTokenNum++];
 		} else if (sToken.equals("fullenglishtime")){
 			// full english time
-			String sType = st[iTokenNum++];
-			int minuteindex = OMC.TIME.hour*60+OMC.TIME.minute;
-			String sTemp = OMC.getVerboseTime(minuteindex);
+			final String sType = st[iTokenNum++];
+			final int minuteindex = OMC.TIME.hour*60+OMC.TIME.minute;
+			final String sTemp = OMC.getVerboseTime(minuteindex);
 			if (sType.equals("diary")) result = (sTemp);
 			else if (sType.equals("upper")) result = (sTemp.toUpperCase()); 
 			else if (sType.equals("lower")) result = (sTemp.toLowerCase());
 			else result = (sTemp);
 
 		} else if (sToken.equals("digit")) {
-			String sTemp = st[iTokenNum++];
+			final String sTemp = st[iTokenNum++];
 
-    		int iOffset = Integer.parseInt(st[iTokenNum++]);
+    		final int iOffset = Integer.parseInt(st[iTokenNum++]);
     		try {
     			result = (sTemp.substring(iOffset-1,iOffset));
-    		} catch (StringIndexOutOfBoundsException e) {
+    		} catch (final StringIndexOutOfBoundsException e) {
     			e.printStackTrace();
     			result="";
     		}
@@ -1778,17 +1777,17 @@ public class OMC extends Application {
 			}
 		} else if (sToken.equals("random")){
 			// value that randomly jumps between two values.
-			String sType = st[iTokenNum++];
-			String sLow = st[iTokenNum++];
-			String sHigh = st[iTokenNum++];
-			float gradient = OMC.RND.nextFloat();
+			final String sType = st[iTokenNum++];
+			final String sLow = st[iTokenNum++];
+			final String sHigh = st[iTokenNum++];
+			final float gradient = OMC.RND.nextFloat();
 			if (sType.equals("number")) {
 				result = String.valueOf(OMC.numberInterpolate(
 						Integer.parseInt(sLow), 
 						Integer.parseInt(sHigh), 
 						gradient));
 			} else if (sType.equals("color")) { // must be color
-				int color = OMC.colorInterpolate(
+				final int color = OMC.colorInterpolate(
 						sLow, 
 						sHigh, 
 						gradient);
@@ -1805,18 +1804,18 @@ public class OMC extends Application {
 
 		} else if (sToken.equals("gradient")){
 			// value that randomly jumps between two values.
-			String sType = st[iTokenNum++];
-			String sMin = st[iTokenNum++];
-			String sVal = st[iTokenNum++];
-			String sMax = st[iTokenNum++];
-			float gradient = Float.parseFloat(sVal);
+			final String sType = st[iTokenNum++];
+			final String sMin = st[iTokenNum++];
+			final String sVal = st[iTokenNum++];
+			final String sMax = st[iTokenNum++];
+			final float gradient = Float.parseFloat(sVal);
 			if (sType.equals("number")) {
 				result = String.valueOf(OMC.numberInterpolate(
 						Integer.parseInt(sMin), 
 						Integer.parseInt(sMax), 
 						gradient));
 			} else if (sType.equals("color")) { // must be color
-				int color = OMC.colorInterpolate(
+				final int color = OMC.colorInterpolate(
 						sMin, 
 						sMax, 
 						gradient);
@@ -1833,12 +1832,12 @@ public class OMC extends Application {
 			}
 			
 		} else if (sToken.equals("translate")) {
-			String sWord = st[iTokenNum++];
-			JSONObject entry = tempResult.optJSONObject("translations");
+			final String sWord = st[iTokenNum++];
+			final JSONObject entry = tempResult.optJSONObject("translations");
 			if (entry==null) {
 				result=sWord;
 			} else {
-				JSONObject subentry = entry.optJSONObject(sWord);
+				final JSONObject subentry = entry.optJSONObject(sWord);
 				if (subentry==null) {
 					result = sWord;
 				} else {
@@ -1848,13 +1847,13 @@ public class OMC extends Application {
 		} else if (sToken.equals("uppercase")){
 			try {
 				result = st[iTokenNum++].toUpperCase();
-			} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+			} catch (final java.lang.ArrayIndexOutOfBoundsException e) {
 				result = "";
 			}
 		} else if (sToken.equals("lowercase")){
 			try {
 				result = st[iTokenNum++].toLowerCase();
-			} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+			} catch (final java.lang.ArrayIndexOutOfBoundsException e) {
 				result = "";
 			}
 		} else if (sToken.equals("verbosenumber")){
@@ -1871,7 +1870,7 @@ public class OMC extends Application {
 					} else {
 						result = OMC.VERBOSENUMBERS[Integer.parseInt(sRawValue)];
 					}
-				} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+				} catch (final java.lang.ArrayIndexOutOfBoundsException e) {
 					result = "";
 				}
 			}
@@ -1883,9 +1882,9 @@ public class OMC extends Application {
 		
 	}
 
-	static public String resolveTokens(String sRawString, int aWI, JSONObject tempResult) {
+	static public String resolveTokens(final String sRawString, final int aWI, final JSONObject tempResult) {
 //		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Parsing "+sRawString);
-		StringBuilder result = new StringBuilder();
+		final StringBuilder result = new StringBuilder();
 
 		// If token contains dynamic elements, recursively resolve them
 		
@@ -2020,17 +2019,17 @@ public class OMC extends Application {
 		return sb.toString();
 	}
 	
-	static public int numberInterpolate (int n1, int n2, int n3, float gradient) {
+	static public int numberInterpolate (final int n1, final int n2, final int n3, final float gradient) {
 		if (gradient > 0.5f) return (int)(n2+ (n3-n2)*(gradient-0.5f) * 2);
 		else return (int)(n1 + (n2-n1) * gradient * 2);
 	}
 	
-	static public float floatInterpolate (float n1, float n2, float n3, float gradient) {
+	static public float floatInterpolate (final float n1, final float n2, final float n3, final float gradient) {
 		if (gradient > 0.5f) return (n2+ (n3-n2)*(gradient-0.5f) * 2);
 		else return (n1 + (n2-n1) * gradient * 2);
 	}
 	
-	static public int colorInterpolate (String c1, String c2, String c3, float gradient) {
+	static public int colorInterpolate (final String c1, final String c2, final String c3, float gradient) {
 		int a, r, g, b;
 		int maxval, minval;
 		if (gradient > 0.5f) {
@@ -2050,17 +2049,17 @@ public class OMC extends Application {
 		return Color.argb(a,r,g,b);
 	}
 	
-	static public int numberInterpolate (int n1, int n2, float gradient) {
+	static public int numberInterpolate (final int n1, final int n2, final float gradient) {
 		return (int)(n1 + (n2-n1) * gradient);
 	}
 	
-	static public int floatInterpolate (float n1, float n2, float gradient) {
+	static public int floatInterpolate (final float n1, final float n2, final float gradient) {
 		return (int)(n1 + (n2-n1) * gradient);
 	}
 	
-	static public int colorInterpolate (String c1, String c2, float gradient) {
-		int minval = Color.parseColor(c1);
-		int maxval = Color.parseColor(c2);
+	static public int colorInterpolate (final String c1, final String c2, final float gradient) {
+		final int minval = Color.parseColor(c1);
+		final int maxval = Color.parseColor(c2);
 		return Color.argb(numberInterpolate(minval >>> 24, maxval >>> 24, gradient),
 				numberInterpolate((minval >> 16) & 0xFF, (maxval >> 16) & 0xFF, gradient),
 				numberInterpolate((minval >> 8) & 0xFF, (maxval >> 8) & 0xFF, gradient),
@@ -2106,17 +2105,17 @@ public class OMC extends Application {
     static public Matrix getMatrix() {
     	try {
     		return OMC.MATRIXPOOL.take();
-    	} catch (InterruptedException e) {
+    	} catch (final InterruptedException e) {
     		e.printStackTrace();
     		return null;
     	}
     }
     
-    static public void returnMatrix(Matrix m) {
+    static public void returnMatrix(final Matrix m) {
     	try {
     		m.reset();
         	OMC.MATRIXPOOL.put(m);
-    	} catch (InterruptedException e) {
+    	} catch (final InterruptedException e) {
     		e.printStackTrace();
     	}
     }
@@ -2124,17 +2123,17 @@ public class OMC extends Application {
     static public Paint getPaint() {
     	try {
     		return OMC.PAINTPOOL.take();
-    	} catch (InterruptedException e) {
+    	} catch (final InterruptedException e) {
     		e.printStackTrace();
     		return null;
     	}
     }
     
-    static public void returnPaint(Paint pt) {
+    static public void returnPaint(final Paint pt) {
     	try {
     		pt.reset();
         	OMC.PAINTPOOL.put(pt);
-    	} catch (InterruptedException e) {
+    	} catch (final InterruptedException e) {
     		e.printStackTrace();
     	}
     }
@@ -2142,16 +2141,16 @@ public class OMC extends Application {
     static public Bitmap getWidgetBMP() {
     	try {
     		return OMC.WIDGETPOOL.take();
-    	} catch (InterruptedException e) {
+    	} catch (final InterruptedException e) {
     		e.printStackTrace();
     		return null;
     	}
     }
 
     static public boolean isConnected() {
-    	ConnectivityManager conMgr =  (ConnectivityManager)OMC.CONTEXT.getSystemService(Context.CONNECTIVITY_SERVICE);
+    	final ConnectivityManager conMgr =  (ConnectivityManager)OMC.CONTEXT.getSystemService(Context.CONNECTIVITY_SERVICE);
     	boolean result = false;
-    	for (NetworkInfo ni: conMgr.getAllNetworkInfo()) {
+    	for (final NetworkInfo ni: conMgr.getAllNetworkInfo()) {
     		if (ni.isConnected()) {
     			result = true;
     			break;
@@ -2160,11 +2159,11 @@ public class OMC extends Application {
     	return result;
     }
     
-    static public void returnWidgetBMP(Bitmap bmp) {
+    static public void returnWidgetBMP(final Bitmap bmp) {
     	try {
     		bmp.eraseColor(Color.TRANSPARENT);
         	OMC.WIDGETPOOL.put(bmp);
-    	} catch (InterruptedException e) {
+    	} catch (final InterruptedException e) {
     		e.printStackTrace();
     	}
     }
@@ -2189,7 +2188,7 @@ public class OMC extends Application {
 		.commit();
 		
 		// Find out what the user preference is.
-		String sWeatherSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
+		final String sWeatherSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
 
 		// If weather is disabled (default), do nothing
 		if (sWeatherSetting.equals("disabled")) {
@@ -2213,7 +2212,7 @@ public class OMC extends Application {
 			OMC.WEATHERREFRESHSTATUS=OMC.WRS_FIXED;	
 			
 			OMC.calculateSunriseSunset(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), OMC.jsonFIXEDLOCN.optDouble("longitude",0d));
-			String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
+			final String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
 			if (sWProvider.equals("ig")) {
 				GoogleWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
 				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
@@ -2249,30 +2248,30 @@ public class OMC extends Application {
 	
 	static public void calculateSunriseSunset(final double latitude, final double longitude) {
 
-		Time t = new Time(Time.TIMEZONE_UTC);
+		final Time t = new Time(Time.TIMEZONE_UTC);
 		t.setToNow();
 		t.hour=0;
 		t.minute=0;
 		t.second=0;
 		t.switchTimezone(Time.getCurrentTimezone());
-		long lMidnight = t.toMillis(false);
+		final long lMidnight = t.toMillis(false);
 		if (OMC.DEBUG)
 			Log.i(OMC.OMCSHORT + "App",("Midnight UTC for this timezone:" + new java.sql.Time(lMidnight).toLocaleString()));
 
-		double radLatitude = latitude/180d*Math.PI;
-		double y = (2d*Math.PI/365d)*(t.yearDay + (t.hour)/24d);
-		double eqtime = 229.18*(0.000075+0.001868*Math.cos(y)-0.032077*Math.sin(y)-0.014615*Math.cos(2*y)-0.040849*Math.sin(2*y));
-		double declin = 0.006918-0.399912*Math.cos(y)+0.070257*Math.sin(y)-0.006758*Math.cos(2*y)+0.000907*Math.sin(2*y)-0.002697*Math.cos(3*y)+0.00148*Math.sin(3*y);
-		double dSunriseHourAngle = (float)(Math.acos(
+		final double radLatitude = latitude/180d*Math.PI;
+		final double y = (2d*Math.PI/365d)*(t.yearDay + (t.hour)/24d);
+		final double eqtime = 229.18*(0.000075+0.001868*Math.cos(y)-0.032077*Math.sin(y)-0.014615*Math.cos(2*y)-0.040849*Math.sin(2*y));
+		final double declin = 0.006918-0.399912*Math.cos(y)+0.070257*Math.sin(y)-0.006758*Math.cos(2*y)+0.000907*Math.sin(2*y)-0.002697*Math.cos(3*y)+0.00148*Math.sin(3*y);
+		final double dSunriseHourAngle = (float)(Math.acos(
 				(Math.cos(1.58533492d) - (Math.sin(radLatitude)*Math.sin(declin))) /
 				(Math.cos(radLatitude)*Math.cos(declin)))
 				/Math.PI*180d);
 		
 		// This workaround is required to ensure that the noon, sunset and sunrise times are 
 		// for this calendar date (today, not yesterday or tomorrow!)
-		Time today = new Time();
+		final Time today = new Time();
 		today.setToNow();
-		Time solarNoonTime = new Time();
+		final Time solarNoonTime = new Time();
 		solarNoonTime.set(lMidnight + (long)((720d - 4* longitude - eqtime)*60000d));
 		solarNoonTime.year = today.year;
 		solarNoonTime.month = today.month;
@@ -2295,7 +2294,7 @@ public class OMC extends Application {
 
 	}
 	
-	public static double roundToSignificantFigures(double num, int n) {
+	public static double roundToSignificantFigures(final double num, final int n) {
 	    if(num == 0) {
 	        return 0;
 	    }
@@ -2308,7 +2307,7 @@ public class OMC extends Application {
 	    return shifted/magnitude;
 	}
 	
-	public static float roundToSignificantFigures(float num, int n) {
+	public static float roundToSignificantFigures(final float num, final int n) {
 	    if(num == 0) {
 	        return 0;
 	    }
@@ -2326,9 +2325,9 @@ public class OMC extends Application {
 	}
 	
 	public static String RString(final String key, final Locale foreignLocale) {
-		Configuration configTemp = new Configuration(OMC.RES.getConfiguration());
+		final Configuration configTemp = new Configuration(OMC.RES.getConfiguration());
 		configTemp.locale=foreignLocale;
-		Resources res = new Resources(OMC.AM,OMC.RES.getDisplayMetrics(),configTemp);
+		final Resources res = new Resources(OMC.AM,OMC.RES.getDisplayMetrics(),configTemp);
 		return res.getString(OMC.RES.getIdentifier(key, "string", OMC.PKGNAME));
 	}
 	
@@ -2337,9 +2336,9 @@ public class OMC extends Application {
 	}
 	
 	public static String[] RStringArray(final String key, final Locale foreignLocale) {
-		Configuration configTemp = new Configuration(OMC.RES.getConfiguration());
+		final Configuration configTemp = new Configuration(OMC.RES.getConfiguration());
 		configTemp.locale=foreignLocale;
-		Resources res = new Resources(OMC.AM,OMC.RES.getDisplayMetrics(),configTemp);
+		final Resources res = new Resources(OMC.AM,OMC.RES.getDisplayMetrics(),configTemp);
 		return res.getStringArray(res.getIdentifier(key, "array", OMC.PKGNAME));
 	}
 	
