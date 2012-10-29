@@ -11,7 +11,7 @@ import android.util.Log;
 
 public class OpenWeatherMapJSONHandler {
 
-	public static final String URL_STATIONSEARCH = "http://openweathermap.org/data/2.0/find/station?cnt=1&lat=";
+	public static final String URL_STATIONSEARCH = "http://openweathermap.org/data/2.0/find/station?cnt=1&APPID=1682aff497aac9cbdff8652a1b87cda2&lat=";
 	public static final String URL_CITYSEARCH = "http://openweathermap.org/data/2.0/find/city?cnt=1&lat=";
 	public static final String URL_CITYFORECAST = "http://openweathermap.org/data/2.0/forecast/city/";
 
