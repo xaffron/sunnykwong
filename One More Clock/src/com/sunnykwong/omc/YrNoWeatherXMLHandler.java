@@ -24,6 +24,7 @@ import android.util.Log;
 
 public class YrNoWeatherXMLHandler extends DefaultHandler {
 
+	public static final long MINTIMEBETWEENREQUESTS = 46800000l;
 	public static final String URL_LOCATIONFORECASTLTS = "http://api.met.no/weatherapi/locationforecastlts/1.1/?lat=";
 	public static final int[] CONDITIONTRANSLATIONS = new int[] { 0, // 0
 			1, // 1 SUN
@@ -114,7 +115,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 			// cached weather is older than 8 hours
 			// set the location change flag to true.
 		} else if (CACHEDFORECAST == null
-				|| System.currentTimeMillis() - CACHEDFORECASTMILLIS > 28900000) {
+				|| System.currentTimeMillis() - CACHEDFORECASTMILLIS > MINTIMEBETWEENREQUESTS) {
 			LASTUSEDCITY = city;
 			LASTUSEDCOUNTRY = country;
 			LOCATIONCHANGED = true;
@@ -606,7 +607,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 					"Next Refresh Time:"
 							+ new java.sql.Time(OMC.NEXTWEATHERREFRESH)
 									.toLocaleString());
-		if (LOCATIONCHANGED) OMC.NEXTWEATHERREQUEST = OMC.NEXTWEATHERREFRESH+28900000;
+		if (LOCATIONCHANGED) OMC.NEXTWEATHERREQUEST = OMC.NEXTWEATHERREFRESH+MINTIMEBETWEENREQUESTS;
 		OMC.PREFS.edit()
 				.putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH)
 				.commit();

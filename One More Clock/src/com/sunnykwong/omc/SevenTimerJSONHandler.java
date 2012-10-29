@@ -14,6 +14,7 @@ import android.util.Log;
 
 public class SevenTimerJSONHandler {
 
+	public static final long MINTIMEBETWEENREQUESTS = 46800000l;
 	public static final String URL_V4CIVIL = "http://www.7timer.com/v4/bin/civil.php?app=omc&output=json&tzshift=0&unit=metric&lang=en&ac=0";
 	public static boolean LOCATIONCHANGED;
 	public static String LASTUSEDCITY, LASTUSEDCOUNTRY;
@@ -45,7 +46,7 @@ public class SevenTimerJSONHandler {
 		// but we've lost the cached forecast or the 
 		// cached weather is older than 7 hours
 		// set the location change flag to true.
-		} else if (CACHEDFORECAST==null || System.currentTimeMillis()-CACHEDFORECASTMILLIS>25200000) {
+		} else if (CACHEDFORECAST==null || System.currentTimeMillis()-CACHEDFORECASTMILLIS>MINTIMEBETWEENREQUESTS) {
 			LASTUSEDCITY = city;
 			LASTUSEDCOUNTRY = country;
 			LOCATIONCHANGED=true;
@@ -319,7 +320,7 @@ public class SevenTimerJSONHandler {
 							OMC.PREFS.edit().putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH).commit();
 
 							//Set next online request to be 7 hours in the future.
-							OMC.NEXTWEATHERREQUEST = OMC.NEXTWEATHERREFRESH + 25200000l;
+							OMC.NEXTWEATHERREQUEST = OMC.NEXTWEATHERREFRESH + MINTIMEBETWEENREQUESTS;
 							OMC.WEATHERREFRESHSTATUS = OMC.WRS_SUCCESS;
 							
 						}
