@@ -470,7 +470,7 @@ public class OMCWidgetDrawEngine {
 	static Bitmap drawBitmapForWidget(final Context context, final int aWI) {
 		final Bitmap resultBitmap;
 		if (OMC.SCREENON) {
-			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,OMC.HDRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
+			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_8888);
 		} else {
 			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
 		}
@@ -534,7 +534,7 @@ public class OMCWidgetDrawEngine {
 	static Bitmap drawLayerForWidget(final Context context, final int aWI, final JSONObject oTheme, final String sLayer) {
 		final Bitmap resultBitmap;
 		if (OMC.SCREENON) {
-			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,OMC.HDRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
+			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_8888);
 		} else {
 			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
 		}
