@@ -24,7 +24,9 @@ import android.util.Log;
 
 public class YrNoWeatherXMLHandler extends DefaultHandler {
 
-	public static final long MINTIMEBETWEENREQUESTS = 46800000l;
+	public static final long MINTIMEBETWEENREQUESTS = 46800000l; //13 hours
+	public static final long MINRETRYPERIOD = 3660000l; //One hour + change
+	
 	public static final String URL_LOCATIONFORECASTLTS = "http://api.met.no/weatherapi/locationforecastlts/1.1/?lat=";
 	public static final int[] CONDITIONTRANSLATIONS = new int[] { 0, // 0
 			1, // 1 SUN
@@ -551,6 +553,8 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 		// have a timestamp, set the timestamp to be jan 1st, 1970
 		t.parse(jsonWeather.optString("current_local_time", "19700101T000000"));
 
+		long lNextWeatherRetryIfFailed = OMC.LASTWEATHERTRY+MINRETRYPERIOD;
+		
 		// If the weather station info looks too stale (more than 2 hours old),
 		// it's because the phone's date/time is wrong.
 		// Force the update to the default update period
@@ -559,9 +563,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 					OMC.LASTWEATHERREFRESH
 							+ (1l + Long.parseLong(OMC.PREFS.getString(
 									"sWeatherFreq", "60"))) * 60000l,
-					OMC.LASTWEATHERTRY
-							+ (1l + Long.parseLong(OMC.PREFS.getString(
-									"sWeatherFreq", "60"))) / 4l * 60000l);
+									lNextWeatherRetryIfFailed);
 			if (OMC.DEBUG)
 				Log.i(OMC.OMCSHORT + "YrNoWeather", "Weather Station Time:"
 						+ new java.sql.Time(t.toMillis(false)).toLocaleString());
@@ -582,9 +584,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 					OMC.LASTWEATHERREFRESH
 							+ (1l + Long.parseLong(OMC.PREFS.getString(
 									"sWeatherFreq", "60"))) * 60000l,
-					OMC.LASTWEATHERTRY
-							+ (1l + Long.parseLong(OMC.PREFS.getString(
-									"sWeatherFreq", "60"))) / 4l * 60000l);
+									lNextWeatherRetryIfFailed);
 		} else {
 			// If we get a recent weather station timestamp, we try to "catch"
 			// the update by setting next update to
@@ -598,9 +598,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 					t.toMillis(false)
 							+ (29l + Long.parseLong(OMC.PREFS.getString(
 									"sWeatherFreq", "60"))) * 60000l,
-					OMC.LASTWEATHERTRY
-							+ Long.parseLong(OMC.PREFS.getString(
-									"sWeatherFreq", "60")) / 4l * 60000l);
+									lNextWeatherRetryIfFailed);
 		}
 		if (OMC.DEBUG)
 			Log.i(OMC.OMCSHORT + "YrNoWeather",

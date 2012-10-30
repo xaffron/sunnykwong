@@ -14,7 +14,9 @@ import android.util.Log;
 
 public class SevenTimerJSONHandler {
 
-	public static final long MINTIMEBETWEENREQUESTS = 46800000l;
+	public static final long MINTIMEBETWEENREQUESTS = 46800000l; //13 hours
+	public static final long MINRETRYPERIOD = 3660000l; //One hour + change
+	
 	public static final String URL_V4CIVIL = "http://www.7timer.com/v4/bin/civil.php?app=omc&output=json&tzshift=0&unit=metric&lang=en&ac=0";
 	public static boolean LOCATIONCHANGED;
 	public static String LASTUSEDCITY, LASTUSEDCOUNTRY;
@@ -292,7 +294,7 @@ public class SevenTimerJSONHandler {
 							Time t = new Time();
 							// If the weather station information (international, mostly) doesn't have a timestamp, set the timestamp to be jan 1st, 1970
 							t.parse(jsonWeather.optString("current_local_time","19700101T000000"));
-							long lNextWeatherRetryIfFailed = OMC.LASTWEATHERTRY+(1l + Math.max(3660000l, Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l));
+							long lNextWeatherRetryIfFailed = OMC.LASTWEATHERTRY+(1l + Math.max(MINRETRYPERIOD, Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l));
 							// If the weather station info looks too stale (more than 2 hours old), it's because the phone's date/time is wrong.  
 							// Force the update to the default update period
 							if (System.currentTimeMillis()-t.toMillis(false)>7200000l) {
@@ -522,7 +524,7 @@ public class SevenTimerJSONHandler {
 						// If the weather station information (international, mostly) doesn't have a timestamp, set the timestamp to be jan 1st, 1970
 						t.parse(jsonWeather.optString("current_local_time","19700101T000000"));
 						
-						long lNextWeatherRetryIfFailed = OMC.LASTWEATHERTRY+(1l + Math.max(3660000l, Long.parseLong(OMC.PREFS.getString("sWeatherFreq", "60"))/4l*60000l));
+						long lNextWeatherRetryIfFailed = OMC.LASTWEATHERTRY+MINRETRYPERIOD;
 						// If the weather station info looks too stale (more than 2 hours old), it's because the phone's date/time is wrong.  
 						// Force the update to the default update period
 						if (System.currentTimeMillis()-t.toMillis(false)>7200000l) {
