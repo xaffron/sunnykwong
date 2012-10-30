@@ -24,7 +24,7 @@ import android.util.Log;
 
 public class YrNoWeatherXMLHandler extends DefaultHandler {
 
-	public static final long MINTIMEBETWEENREQUESTS = 46800000l; //13 hours
+	public static final long MINTIMEBETWEENREQUESTS = 82800000l; //23 hours
 	public static final long MINRETRYPERIOD = 3660000l; //One hour + change
 	
 	public static final String URL_LOCATIONFORECASTLTS = "http://api.met.no/weatherapi/locationforecastlts/1.1/?lat=";

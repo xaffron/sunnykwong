@@ -14,7 +14,7 @@ import android.util.Log;
 
 public class SevenTimerJSONHandler {
 
-	public static final long MINTIMEBETWEENREQUESTS = 46800000l; //13 hours
+	public static final long MINTIMEBETWEENREQUESTS = 82800000l; //23 hours
 	public static final long MINRETRYPERIOD = 3660000l; //One hour + change
 	
 	public static final String URL_V4CIVIL = "http://www.7timer.com/v4/bin/civil.php?app=omc&output=json&tzshift=0&unit=metric&lang=en&ac=0";
