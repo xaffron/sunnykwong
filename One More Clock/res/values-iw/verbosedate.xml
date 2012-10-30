@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="daysuffix"></string>
+
+<string-array name="verbosedow">
+<item>ראשון</item>
+<item>שני</item>
+<item>שלישי</item>
+<item>רביעי</item>
+<item>חמישי</item>
+<item>שישי</item>
+<item>שבת</item>
+</string-array>
+
+<string-array name="shortdow">
+<item>א'</item>
+<item>ב'</item>
+<item>ג'</item>
+<item>ד'</item>
+<item>ה'</item>
+<item>ו'</item>
+<item>ש'</item>
+</string-array>
+
+<string-array name="verbosemonth">
+<item>ינואר</item>
+<item>פברואר</item>
+<item>מרץ</item>
+<item>אפריל</item>
+<item>מאי</item>
+<item>יוני</item>
+<item>יולי</item>
+<item>אוגוסט</item>
+<item>ספטמבר</item>
+<item>אוקטובר</item>
+<item>נובמבר</item>
+<item>דצמבר</item>
+</string-array>
+
+<string-array name="shortmonth">
+<item>ינו'</item>
+<item>פבר'</item>
+<item>מרץ</item>
+<item>אפר'</item>
+<item>מאי</item>
+<item>יוני</item>
+<item>יולי</item>
+<item>אוג'</item>
+<item>ספט'</item>
+<item>אוק'</item>
+<item>נוב'</item>
+<item>דצמ'</item>
+</string-array>
+
+</resources>

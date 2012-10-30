@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string-array name="VerboseWeather">
+		<item>לא ידוע</item>
+		<item>בהיר</item>
+		<item>בהיר</item>
+		<item>בהיר למדי</item>
+		<item>בהיר חלקית</item>
+		<item>מעונן חלקית</item>
+		<item>מאובק</item>
+		<item>אביך</item>
+		<item>מעורפל</item>
+		<item>עשן</item>
+		<item>מעונן למדי</item>
+		<item>עננות גבוהה</item>
+		<item>מעונן</item>
+		<item>ערפל</item>
+		<item>גשם קל</item>
+		<item>ממטרי גשם</item>
+		<item>גשם דק</item>
+		<item>ממטרים</item>
+		<item>סיכוי לגשם</item>
+		<item>סיכוי לממטרים</item>
+		<item>מטטרים פזורים</item>
+		<item>סופת רעמים</item>
+		<item>סיכוי לסופת רעמים</item>
+		<item>סופות רעמים פזורות</item>
+		<item>סיכוי לסערה</item>
+		<item>סערה</item>
+		<item>גשם כבד</item>
+		<item>גשם</item>
+		<item>משבי שלג</item>
+		<item>שלג קל</item>
+		<item>סיכוי לשלג</item>
+		<item>שלג לסירוגין</item>
+		<item>שלג פזור לסירוגין</item>
+		<item>שלג</item>
+		<item>קרח</item>
+		<item>קרח או שלג</item>
+		<item>גשם מעורם בשלג</item>
+		<item>גשם דק קפוא</item>
+		<item>גשם ושלג</item>
+		<item>רוח</item>
+	</string-array>
+
+</resources>

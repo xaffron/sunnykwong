@@ -1,380 +1,320 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <resources>
-    	
-        <string name="languageWord">Lingua</string>
-        <string name="languageName">Italiano</string>
-    	<string name="translator">Matteo Lo Russo</string>
-    		
-        <!-- General Buttons -->
-        <string name="nextTip">Next Tip</string>
-        <string name="ok">OK</string>
-        <string name="search">Search</string>
-        <string name="abandon">Abandon</string>
-        <string name="apply">Apply</string>
-        <string name="yes">Yes</string>
-        <string name="no">No</string>
-        
-        <!-- General Errors -->
-        <string name="sdcardNotDetected">SD Card not detected.\nRemember to turn off USB storage if it\'s still connected!</string>
-        <string name="sdcardMissingOrCorrupt">SD Card missing or corrupt.\nRemember to turn off USB storage if it\'s still connected!</string>
-        <string name="themeNotFound">Theme not found!  Reverting to default look.</string>
-        <string name="warningConflictPaid">WARNING!\nConflict with paid edition</string>
-        <string name="warningConflictFree">WARNING!\nConflict with free edition</string>
-        <string name="warningConflictText">Theme customization and clock settings will not work properly.\nPlease uninstall the free edition at your earliest convenience!</string>
-        <string name="defaultThemeNotRemovable">The default theme is not removable!</string>
-        
-        <!-- Bailout App Dialog -->
-        <string name="thanksForDownloading">Thanks for downloading!</string>
-        <string name="widgetDir1">To begin, hit the back button to go back to the home screen, then access the \'Widgets\' list to see\u0020</string>
-        <string name="widgetDir2">\u0020listed.  Have fun!</string>
+<resources>
 
-        <!-- Useful Tips -->
-        <string name="usefulTip">Useful Tip</string>
-        <string name="doNotShowAgain">Do Not Show Again.</string>
-        
-        <!-- Weather Forecast Screen -->
-    	<string name="humiditycondition">Humidity: </string>
-    	<string name="windcondition">Wind: </string>
-        
-        <!-- Forecast Screen -->
-        <string name="doubleDash">--</string>
-        <string name="unknown">Unknown</string>
-        <string name="noaaWeatherCredit">Weather observations and forecasts updated from the National Oceanic and Atmospheric Administration (NOAA).</string>
-        <string name="igWeatherCredit">Weather updated from Google API.</string>
-        <string name="yrWeatherCredit">Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK.</string>
-        <string name="seventimerWeatherCredit">7Timer! forecasts by Ye Quanzhi, supported by the Shanghai Astronomical Observatory, Chinese Academy of Sciences.</string>
-        <string name="owmWeatherCredit">Weather updated from openweathermaps.org.</string>
-        <string name="tapForAlternateForecast">Tap for Alternate Forecasts from AccuWeather®</string>
-        <string name="weatherDisabledOrNoWeatherLoaded">Weather Disabled, or No Weather Loaded!</string>
-        
-        <!-- Clock Preferences -->
-        
-        <string name="clockPreferences">Clock Preferences</string>
-        <string name="dashPreferences">\u0020- Preferences</string>
-    
-        <string name="forThisClock">For this clock:</string>
-        <string name="widgetTheme">Widget Theme</string>
+	<string name="languageWord">Lingua</string>
+	<string name="languageName">Italiano</string>
+	<string name="translator">Matteo Lo Russo</string>
+	<!-- Pulsanti generali -->
+	<string name="nextTip">Prossimo Suggerimento</string>
+	<string name="ok">OK</string>
+	<string name="search">Cerca</string>
+	<string name="abandon">Esci</string>
+	<string name="apply">Applica</string>
+	<string name="yes">Sì</string>
+	<string name="no">No</string>
+	<!-- Errori generali -->
+	<string name="sdcardNotDetected">Scheda SD non rilevata.\nRemember disattivare la memorizzazione USB se\'s ancora in contatto!</string>
+	<string name="sdcardMissingOrCorrupt">a SD mancante o danneggiato.\nRemember disattivare la memorizzazione USB se\'s ancora in contatto!</string>
+	<string name="themeNotFound">Tema a non trovato! Ripristino per difetto.</string>
+	<string name="warningConflictPaid">ATTENZIONE!\nConflict con la versione a pagamento</string>
+	<string name="warningConflictFree">ATTENZIONE!\nConflict con versione gratuita</string>
+	<string name="warningConflictText">Personalizzazione a tema e le impostazioni dell\'orologio non funzionano correttamente.\nSi prega di disinstallare la versione gratuita al più presto!</string>
+	<string name="defaultThemeNotRemovable">Il tema predefinito non è rimovibile!</string>
+	<!-- App dialogo Bailout -->
+	<string name="thanksForDownloading">Grazie per il download!</string>
+	<string name="widgetDir1">Per iniziare, premere il pulsante Indietro per tornare alla schermata iniziale, quindi accedere al \'Widget \' elenco per visualizzare \ u0020</string>
+	<string name="widgetDir2">\u0020listed. Buon divertimento!</string>
+	<!-- Consigli utili -->
+	<string name="usefulTip">Suggerimento utili</string>
+	<string name="doNotShowAgain"> Non mostrare di nuovo.</string>
+	<!-- Previsioni Meteo Schermo -->
+	<string name="humiditycondition">Umidità:</string>
+	<string name="windcondition">Vento:</string>
+	<!-- Schermo Previsione -->
+	<string name="doubleDash">--</string>
+	<string name="unknown">Sconosciuto</string>
+	<string name="noaaWeatherCredit">Meteo aggiornati dal National Oceanic and Atmospheric Administration (NOAA).</string>
+	<string name="igWeatherCredit">Meteo aggiornato da Google API.</string>
+	<string name="yrWeatherCredit">Previsioni Meteo per yr.no, consegnato dal Norwegian Meteorological Institute e la NRK.</string>
+	<string name="seventimerWeatherCredit">7Timer! previsioni di Ye Quanzhi, supportati dal Astronomico Osservatorio di Shanghai, Accademia Cinese delle Scienze.</string>
+	<string name="owmWeatherCredit">Meteo aggiornato da openweathermaps.org.</string>
+	<string name="tapForAlternateForecast">Tap per le previsioni alternative da AccuWeather®</string>
+	<string name="weatherDisabledOrNoWeatherLoaded">Meteo disabili, o No info Meteo!</string>
+	<!-- Preferenze Orologio -->
+	<string name="clockPreferences">Preferenze Orologio</string>
+	<string name="dashPreferences">\u0020- Preferenze</string>
+	<string name="forThisClock">Per questo orologio:</string>
+	<string name="widgetTheme">Tema del widget</string>
+	<!-- Tema Widget -->
+	<string name="widgetThemeTitle">Swipe per selezionare; Toccare e tenere premuto per le opzioni</string>
+	<string name="corruptPlsDelete">[Corrotto - Pls Elimina]</string>
+	<string name="reextractBundledClocks">Re-Estrarre Orologi combinati</string>
+	<string name="downloadAllClocks">Download Tutti Orologi (7 MB)</string>
+	<string name="preselected"></string>
+	<string name="postselected">\u0020selected.</string>
+	<!-- Picker Legenda Tema -->
+	<string name="legend">leggenda</string>
+	<string name="batteryLegend">Mostra livello di carica della batteria</string>
+	<string name="weatherLegend">Mostra Meteo</string>
+	<string name="bkimageLegend">Include immagine di sfondo</string>
+	<string name="ltbgLegend">Buone su sfondo chiaro</string>
+	<string name="dkbgLegend">Buona su fondi scuri</string>
+	<string name="tweakLegend">Orologio è User-Ottimizzato</string>
+	<!-- Tema Strumento di Skinner (sconsigliato) -->
+	<string name="reloadThemeCatalog">Catalogo tema Ricarica</string>
+	<!-- Tema Import / Unzip -->
+	<string name="themePreview">Anteprima Tema </string>
+	<string name="openingConnection">collegamento di apertura.</string>
+	<string name="beginningDownload">Scaricare inizio.</string>
+	<string name="downloading">Downloading \ u0020</string>
+	<string name="downloaded">Scaricato \ u0020</string>
+	<string name="of">\ u0020of \ u0020</string>
+	<string name="bytes">\ u0020bytes</string>
+	<string name="existsOverwriting">\ u0020exists; sovrascrittura</string>
+	<string name="createThemeFolder1">cartella Theme  \'</string>
+	<string name="createThemeFolder2">\'\u0020created.</string>
+	<string name="detectedWeatherskin">rilevato WeatherSkin</string>
+	<string name="extractingStarterClockPack">Estrazione starter pack orologio ...</string>
+	<string name="starterClockPack">Clock Pack Starter</string>
+	<string name="starterClockPackText">file nella sdcard \'s. cartella OMCThemes verrà sovrascritto. Sei sicuro? \ N (se non è sicuro, toccare Sì)</string>
+	<string name="importComplete">Import Completo!</string>
+	<string name="importAborted">Import Interrotto!</string>
+	<string name="useDownloadInsteadOfPreview">Clicca Scarica invece di anteprima per importare un orologio OMC!</string>
+	<string name="importWorksWithOMCFiles">importazione orologio funziona con i file. omc. \ Nwere è aprire il file sbagliato?</string>
+	<string name="nothingToExtract">Niente per estrarre!</string>
+	<string name="downloadInterrupted">download interrotto!</string>
+	<string name="poorReceptionArea">Il tuo telefono è in una zona di scarsa ricezione? \ nSi prega di riprovare più tardi.</string>
+	<string name="connectionTimedOut">Connessione scaduta!</string>
+	<string name="serverNotFound">Server non trovato</string>
+	<!-- Premere a lungo Widget Theme -->
+	<string name="emailOrDeleteTheme">Email o Cancella il tema</string>
+	<string name="emailTheme">Tema Email</string>
+	<string name="emailThemeText">pacchetto questo tema e-mail a te stesso, o un amico. \ nSi desidera fare questo?</string>
+	<string name="emailThemeConfirm1">Email \ u0020</string>
+	<string name="emailThemeConfirm2">\ u0020?</string>
+	<string name="emailThemeChooser">Packaging dei file del tema per la posta elettronica.</string>
+	<string name="deleteTheme">Elimina tema</string>
+	<string name="deleteThemeConfirm1">Elimina \ u0020</string>
+	<string name="deleteThemeConfirm2">\ u0020from scheda SD?</string>
+	<string name="deleteThemeConfirm3">Si \'ll devono scaricare / estrarre il tema di nuovo per usarlo. Sei sicuro?</string>
+	<string name="submitThemeToDev">Theme Inviare a Dev</string>
+	<string name="submitThemeToDevConfirm1">Invia \ u0020</string>
+	<string name="submitThemeToDevConfirm2">\ Xaffron u0020to come nuovo tema?</string>
+	<string name="areYouAbsolutelySure">Sei assolutamente sicuro?</string>
+	<string name="areYouAbsolutelySureText">Questo tema non ha la \'Tweaked\' insieme di bandiera; sembra un tema magazzino\n</string>
+	<!-- Personalizza Orologio -->
+	<string name="personalizeClock">Personalizza Orologio</string>
+	<string name="tweakColorsAndLayers">Tweak Colori e livelli</string>
+	<!-- Personalizza subscreen Orologio -->
+	<string name="selectALayerForTweaking">Selezionare un livello per Tweaking</string>
+	<string name="tweakerDirections">Trascinare : menu Sposta: Tweak Indietro: Annulla</string>
+	<!-- Personalizza Menu Clock -->
+	<string name="toggleVisibility">Visibilità Toggle</string>
+	<string name="color1">Colore 1</string>
+	<string name="color2">Colore 2</string>
+	<!-- Indietro Personalizza Orologio -->
+	<string name="keepChanges">Mantieni modifiche?</string>
+	<!-- Toccare Opzioni & Display -->
+	<string name="tapAndDisplayOptions">Toccare e Opzioni di visualizzazione</string>
+	<string name="assignTapToLaunch">Assegnare Tap-per lanciare-</string>
+	<string name="nwCornerReserved">NW angolo riservato per lo schermo prefs.</string>
+	<!-- TTL Popup -->
+	<string name="areaToCustomize">Area personalizzare:</string>
+	<string name="chooseAction">Scegliere Azione</string>
+	<string name="openOptionsDefault">opzioni aperte (default)</string>
+	<string name="widgetPrefsTTL">Widget Preferenze</string>
+	<string name="doNothing">Non fare nulla</string>
+	<string name="doNothingTTL">Nessuna operazione</string>
+	<string name="weatherForecast">Previsioni meteo</string>
+	<string name="weatherForecastTTL">Previsioni meteo</string>
+	<string name="viewAlarms">di visualizzare gli allarmi (Sperimentale)</string>
+	<string name="viewAlarmsTTL">Allarmi Visualizza</string>
+	<string name="battUsage">Utilizzo della batteria Visualizza</string>
+	<string name="battUsageTTL">Utilizzo della batteria</string>
+	<string name="otherActivity">attività  Altro ...</string>
+	<string name="otherActivityTTL">attività personalizzata</string>
+	<string name="use24HourClock">USARE LE 24 ORE</string>
+	<string name="use24HourTrue">23:59</string>
+	<string name="use24HourFalse">11:59</string>
+	<string name="showLeadingZero">Mostra Leading Zero</string>
+	<string name="showLeadingZTrue">04:23</string>
+	<string name="showLeadingZFalse">04:23</string>
+	<string name="mmddDateFormat">M / D / Y formato della data</string>
+	<string name="mmddDateFormatTrue">2012/12/31</string>
+	<string name="mmddDateFormatFalse">31/12/2012</string>
+	<string name="changeTimeZone">Cambia fuso orario</string>
+	<string name="followingDeviceTimeZone">(segue fuso orario del dispositivo)</string>
+	<!-- TTL Passo Vendite -->
+	<string name="thinkOfThePossibilities">Pensate alle possibilità!</string>
+	<string name="prePaidTTL">La versione a pagamento consente di impostare \ u0020</string>
+	<string name="postPaidTTL">\ u0020to avviare qualsiasi attività che si desidera, in più offre dimensioni esser di 4x2, 4x1, 3x1 e 2x1. \ nSi prega di aggiornare il browser per ottenere queste dimensioni!</string>
+	<string name="takeMeToPaid">Portami alla versione a pagamento!</string>
+	<!-- Meteo Widget Opzioni -->
+	<string name="forAllClocks">Per tutti gli orologi:</string>
+	<string name="weatherAndWidgetOptions">Meteo e Opzioni Widget</string>
+	<string name="clearRenderCaches">Render  cache Cancella</string>
+	<string name="cachesCleared">cache Azzerato</string>
+	<!-- Meteo Widget Sottoschermata -->
+	<string name="refreshWeatherNow">Meteo AGGIORNA ADESSO</string>
+	<string name="location">Località:\u0020</string>
+	<string name="fixed">\ u0020 (fisso)</string>
+	<string name="detected">\ u0020 (Rilevato)</string>
+	<string name="lastTry">Ultima Prova: \ u0020</string>
+	<string name="manualRefreshOnly">\ u0020 (Manuale Refresh solo)</string>
+	<string name="nextRefresh">\ u0020Next Refresh: \ u0020</string>
+	<string name="weatherLocation">Posizione per tempo:</string>
+	<string name="disableLocationAndWeather">Disattiva Location e Meteo</string>
+	<string name="followDevice">dispositivo seguire (default)</string>
+	<string name="setFixedLocation">Imposta posizione fissa</string>
+	<string name="weatherFunctionalityDisabled">funzionalità Meteo disattivato</string>
+	<string name="tapToEnable">Toccare per attivare</string>
+	<!-- Subscreen fisso Locn -->
+	<string name="enterCityAndStateCountry">Inserisci la città stato / paese</string>
+	<string name="locationExamples">Ad es Londra, Regno Unito</string>
+	<string name="locationError">Nessun risultato trovato. \ nRiprovare.</string>
+	<string name="networkError">Nessuna connessione di rete. \ nRiprovare.</string>
+	<string name="unknownError">Errore sconosciuto. \nRiprovare.</string>
+    <string name="weatherProvider">Provider Meteo </string>
 
-        <!-- Widget Theme -->
-        
-        <string name="widgetThemeTitle">Swipe to Pick; Tap &amp; hold for Options</string>
-        <string name="corruptPlsDelete">[Corrupt - Pls Delete]</string>
-        <string name="reextractBundledClocks">Re-Extract Bundled Clocks</string>
-        <string name="downloadAllClocks">Download All Clocks(7MB)</string>
-        <string name="preselected"></string>
-        <string name="postselected">\u0020selected.</string>
-        
-        <!-- Theme Picker Legend -->
-        <string name="legend">Legend</string>
-        <string name="batteryLegend">Shows Battery Charge</string>
-        <string name="weatherLegend">Shows Weather</string>
-        <string name="bkimageLegend">Includes Background Image</string>
-        <string name="ltbgLegend">Good on Light Backgrounds</string>
-        <string name="dkbgLegend">Good on Dark Backgrounds</string>
-        <string name="tweakLegend">Clock is User-Tweaked</string>
-        
-        <!-- Theme Skinner Tool (deprecated) -->
-        <string name="reloadThemeCatalog">Reload Theme Catalog</string>
+	<string-array name="wprovider_options">
 
-        <!-- Theme Import/Unzip -->
-        <string name="themePreview">Theme Preview</string>
-        <string name="openingConnection">Opening connection.</string>
-        <string name="beginningDownload">Beginning download.</string>
-        <string name="downloading">Downloading\u0020</string>
-        <string name="downloaded">Downloaded\u0020</string>
-        <string name="of">\u0020of\u0020</string>
-        <string name="bytes">\u0020bytes</string>
-		<string name="storingFile">Storing file:\u0020</string>
-        <string name="existsOverwriting">\u0020exists; overwriting</string>
-        <string name="createThemeFolder1">Theme folder \'</string>
-        <string name="createThemeFolder2">\'\u0020created.</string>
-        <string name="detectedWeatherskin">Detected WeatherSkin </string>
-        <string name="extractingStarterClockPack">Extracting starter clock pack&#8230;</string>
-        <string name="starterClockPack">Starter Clock Pack</string>
-        <string name="starterClockPackText">Files in your sdcard\'s .OMCThemes folder will be overwritten.  Are you sure?\n(If not sure, tap Yes)</string>
-        <string name="importComplete">Import Complete!</string>
-        <string name="importAborted">Import Aborted!</string>
-        <string name="useDownloadInsteadOfPreview">Please use Download instead of Preview to import an OMC clock!</string>
-        <string name="importWorksWithOMCFiles">Clock import works with .omc files.\nWere you opening the wrong file?</string>
-        <string name="nothingToExtract">Nothing to extract!</string>
-        <string name="downloadInterrupted">Download Interrupted!</string>
-        <string name="poorReceptionArea">Is your phone in a poor reception area?\nPlease try again later.</string>
-        <string name="connectionTimedOut">Connection timed out!</string>
-        <string name="serverNotFound">Server not found!</string>
-        
-        <!-- Widget Theme Long Press-->
-        
-        <string name="emailOrDeleteTheme">Email or Delete Theme</string>
-        <string name="emailTheme">Email Theme</string>
-        <string name="emailThemeText">Package up this theme and email it to yourself, or a friend.\nDo you want to do this?</string>
-        <string name="emailThemeConfirm1">Email\u0020</string>
-        <string name="emailThemeConfirm2">\u0020?</string>
-        <string name="emailThemeChooser">Packaging your theme files for email.</string>
-        <string name="deleteTheme">Delete Theme</string>
-        <string name="deleteThemeConfirm1">Delete\u0020</string>
-        <string name="deleteThemeConfirm2">\u0020from SD card?</string>
-        <string name="deleteThemeConfirm3">You\'ll have to download/extract the theme again to use it.  Are you sure?</string>
-        <string name="submitThemeToDev">Submit Theme to Dev</string>
-        <string name="submitThemeToDevConfirm1">Submit\u0020</string>
-        <string name="submitThemeToDevConfirm2">\u0020to Xaffron as a new theme?</string>
-        <string name="areYouAbsolutelySure">Are you absolutely sure?</string>
-        <string name="areYouAbsolutelySureText">This theme does not have the \'Tweaked\' flag set; it looks like a stock theme.\n</string>
-        
-        <!-- Personalize Clock -->        
-        <string name="personalizeClock">Personalize Clock</string>
-        <string name="tweakColorsAndLayers">Tweak Colors and Layers</string>
+		<!-- <item>OpenWeatherMap.org (default)</item> -->
+		<!-- <item>7Timer.com (default)</item> -->
+		<item>NOAA (solo USA)</item>
+		<item>Yr.no</item>
+		<item>Google Meteo (legacy / non lavorativo)</item>
+	</string-array>
 
-        <!-- Personalize Clock subscreen -->
-        
-        <string name="selectALayerForTweaking">Select a Layer for Tweaking</string>
-        <string name="tweakerDirections">Drag: Move    Menu: Tweak    Back: Cancel</string>
-        
-        <!-- Personalize Clock Menu-->
-        
-        <string name="toggleVisibility">Toggle Visibility</string>
-        <string name="color1">Color 1</string>
-        <string name="color2">Color 2</string>
-        
-        <!-- Personalize Clock Back-->
-        
-        <string name="keepChanges">Keep Changes?</string>
+	<string name="wp7timer">Utilizzo 7Timer.com</string>
+	<string name="wpnoaa">Utilizzo NOAA</string>
+	<string name="wpowm">Utilizzo OpenWeatherMap.org</string>
+	<string name="wpyr">Utilizzo yr.no</string>
+	<string name="wpig">Utilizzando Meteo iGoogle</string>
+	<string name="weatherDisplayUnits">Weather Display Unità</string>
 
-        <!-- Tap & Display Options --> 
+	<string-array name="wdisplay_options">
+		<item>usare Fahrenheit (Default)</item>
+		<item>uso Celsius</item>
+	</string-array>
 
-        <string name="tapAndDisplayOptions">Tap &amp; Display Options</string>
-        <string name="assignTapToLaunch">Assign Tap-to-Launch</string>
-        <string name="nwCornerReserved">NW corner reserved for prefs screen.</string>
-        
-        <!-- TTL Popup -->
-        <string name="areaToCustomize">Area to Customize:</string>
-        <string name="chooseAction">Choose Action</string>
-        <string name="openOptionsDefault">Open options (default)</string>
-        <string name="widgetPrefsTTL">Widget Prefs</string>
-        <string name="doNothing">Do nothing</string>
-        <string name="doNothingTTL">Do Nothing</string>
-        <string name="weatherForecast">Weather forecast</string>
-        <string name="weatherForecastTTL">Forecast</string>
-        <string name="viewAlarms">View alarms (Experimental)</string>
-        <string name="viewAlarmsTTL">View Alarms</string>
-        <string name="battUsage">View Battery Usage</string>
-        <string name="battUsageTTL">Battery Usage</string>
-        <string name="otherActivity">Other activity&#8230;</string>
-        <string name="otherActivityTTL">Custom Activity</string>
-        
-        <string name="use24HourClock">Use 24 Hour Clock</string>
-        <string name="use24HourTrue">23:59</string>
-        <string name="use24HourFalse">11:59pm</string>
-        <string name="showLeadingZero">Show Leading Zero</string>
-        <string name="showLeadingZTrue">04:23</string>
-        <string name="showLeadingZFalse">4:23</string>
-        <string name="mmddDateFormat">M/D/Y Date Format</string>
-        <string name="mmddDateFormatTrue">12/31/2012</string>
-        <string name="mmddDateFormatFalse">31/12/2012</string>
-        <string name="changeTimeZone">Change Time Zone</string>
-        <string name="followingDeviceTimeZone">(Following Device Time Zone)</string>
-        
-        <!-- TTL Sales Pitch -->
-        <string name="thinkOfThePossibilities">Think of the possibilities!</string>
-        <string name="prePaidTTL">The paid version lets you set\u0020</string>
-        <string name="postPaidTTL">\u0020to launch any activity you want, plus it offers widget sizes of 4x2, 4x1, 3x1 and 2x1.\nPlease consider upgrading to get these sizes!</string>
-        <string name="takeMeToPaid">Take me to the paid version!</string>
-                
-        <!-- Weather & Widget Options -->
-        <string name="forAllClocks">For all clocks:</string>
-        <string name="weatherAndWidgetOptions">Weather &amp; Widget Options</string>
-        <string name="clearRenderCaches">Clear Render Caches</string>
-        <string name="cachesCleared">Caches Cleared</string>
-        
-        <!-- Weather & Widget Subscreen -->
-        
-        <string name="refreshWeatherNow">Refresh Weather Now</string>
-        
-        <string name="location">Location:\u0020</string>
-        <string name="fixed">\u0020(Fixed)</string>
-        <string name="detected">\u0020(Detected)</string>
-        <string name="lastTry">Last Try:\u0020</string>
-        <string name="manualRefreshOnly">\u0020(Manual Refresh Only)</string>
-        <string name="nextRefresh">\u0020Next Refresh:\u0020</string>
-        <string name="weatherLocation">Location for Weather:</string>
-        <string name="disableLocationAndWeather">Disable Location &amp; Weather</string>
-        <string name="followDevice">Follow Device(default)</string>
-        <string name="setFixedLocation">Set Fixed Location</string>
-        <string name="weatherFunctionalityDisabled">Weather functionality disabled</string>
-        <string name="tapToEnable">Tap to enable</string>
-        
-        <!-- Fixed Locn subscreen -->
-        <string name="enterCityAndStateCountry">Enter city state/country</string>
-        <string name="locationExamples">E.g. London UK</string>
-        <string name="locationError">No Results Found.\nPlease Try Again.</string>
-        <string name="networkError">No Network Connection.\nPlease Try Again.</string>
-        <string name="unknownError">Unknown Error Occurred.\nPlease Try Again.</string>
-        
-        <string name="weatherProvider">Weather Provider</string>
-		<string-array name="wprovider_options">
-		<!-- 	<item>OpenWeatherMap.org (default)</item> -->
-<!-- 		 	<item>7Timer.com (default)</item> -->
-		 	<item>NOAA (US Only)</item>
-			<item>Yr.no</item>
-			<item>Google Weather (legacy/nonworking)</item>
-		</string-array>
-        <string name="wp7timer">Using 7Timer.com</string>
-        <string name="wpnoaa">Using NOAA</string>
-        <string name="wpowm">Using OpenWeatherMap.org</string>
-        <string name="wpyr">Using yr.no</string>
-        <string name="wpig">Using iGoogle Weather</string>
-        
-        <string name="weatherDisplayUnits">Weather Display Units</string>
-		<string-array name="wdisplay_options">
-			<item>Use Fahrenheit (Default)</item>
-			<item>Use Celsius</item>
-		</string-array>
-        <string name="usingFahrenheit">Using Fahrenheit</string>
-        <string name="usingCelsius">Using Celsius</string>
-        
-        <string name="clockUpdateInterval">Clock Update Interval</string>
-		<string-array name="interval_options">
-		  <item>1 sec (Extreme Batt Use)</item>	
-			<item>10 sec (Heavy Batt Use)</item>
-			<item>15 sec</item>
-			<item>20 sec</item>
-			<item>30 sec (Default)</item>
-			<item>60 sec (Light Batt Use)</item>
-		</string-array>
-        <string name="redrawEvery">Redraw every\u0020</string>
-        <string name="seconds">\u0020seconds.</string>
-		
-        <string name="weatherUpdateInterval">Weather Update Interval</string>
-        <string-array name="winterval_options">
-			<item>Every Hour (default)</item>
-			<item>Every 4 Hrs</item>
-			<item>Every 8 Hrs</item>
-			<item>Never (Manual Only)</item>
-		</string-array>
-        <string name="manualWeatherUpdatesOnly">Manual weather updates only</string>
-        <string name="refreshWeatherEveryHour">Refresh weather every 1 hour</string>
-        <string name="refreshWeatherEvery4Hours">Refresh weather every 4 hours</string>
-        <string name="refreshWeatherEvery8Hours">Refresh weather every 8 hours</string>
-        
-        <string name="setForegroundMode">Set Foreground Mode</string>
-        <string name="keepOMCfromSleeping">Keep OMC from sleeping\n(at the cost of a persistent notification)</string>
-        
-        <string name="forceEnglishDates">Force English Dates</string>
-        <string name="uncheckForSome">Uncheck for some non-English locales.(Experimental)</string>
-        <string name="changeAppLocale">App UI Language</string>
-        <string name="changeClockLocale">Clock Language</string>
-        
-        <string name="toggleWidgetSizes">Toggle Widget Sizes</string>
-        
-        <string name="rebootRequired">Reboot Required</string>
-        <string name="changesToTheseSettings">Changes to these setting will require a reboot of your phone to take effect.</string>
-        <string name="enable5x4Widget">Enable (5x4) Widget</string>
-        <string name="enable5x2Widget">Enable (5x2) Widget</string>
-        <string name="enable5x1Widget">Enable (5x1) Widget</string>
-        <string name="enable4x4Widget">Enable (4x4) Widget</string>
-        <string name="enable4x2Widget">Enable (4x2) Widget</string>
-        <string name="enable4x1Widget">Enable (4x1) Widget</string>
-        <string name="enable3x3Widget">Enable (3x3) Widget</string>
-        <string name="enable3x1Widget">Enable (3x1) Widget</string>
-        <string name="enable2x2Widget">Enable (2x2) Widget</string>
-        <string name="enable2x1Widget">Enable (2x1) Widget</string>
-        <string name="enable1x3Widget">Enable (1x3) Widget</string>
-        <string name="forGalaxyNote">For Galaxy Note or similar</string>
-        <string name="enableThemeTester">Enable Theme Tester</string>
-        <string name="developmentToolForSkinnersOnly">Development tool for skinners only</string>
-        
-        <!-- Widget Sizes Sales Pitch -->
-        <string name="areThereOtherWidgetSizes">Are there other widget sizes?</string>
-        <string name="actuallyThePaidVersion">Actually, the paid version offers widget sizes of 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 and 1x3.\nPlease consider upgrading to get these sizes!</string>
-                
-        
-        
-        <!-- Troubleshooting Options -->
-        <string name="troubleshootingOptions">Troubleshooting Options</string>
-        
-        <!-- Troubleshooting Options-->
-        
-        <string name="clockPriority">Clock Priority</string>
-        <string name="forFineTuning">For fine-tuning responsiveness</string>
-		<string-array name="clockPriority_options">
-		    <item>Highest</item>	
-			<item>High</item>
-			<item>Medium</item>
-			<item>Low (Default)</item>
-			<item>Lowest</item>
-		</string-array>
-		<string-array name="clockPriority_legend">
-		    <item>Aggressive redraws every tick (Not recommended).  Are you sure?</item>	
-			<item>Aggressive redraws every minute, regardless of screen or launcher status.  Are you sure?</item>
-			<item>Lazy redraws every minute when screen on, even when launcher is in background.  Are you sure?</item>
-			<item>Lazy redraws every minute when launcher inactive or screen off.  Are you sure?</item>
-			<item>No redraws when launcher inactive or screen off.  Are you sure?</item>
-		</string-array>
-		
-        <string name="locationPriority">Location Priority</string>
-		<string-array name="locationPriority_options">
-		    <item>Highest</item>
-			<item>High</item>
-			<item>Medium</item>
-			<item>Low</item>
-			<item>Lowest (Default)</item>
-		</string-array>
-		<string-array name="locationPriority_legend">
-		    <item>Use instant GPS location only during weather updates (Not recommended).  Weather updates will stop if you are indoors.  Are you sure?</item>	
-			<item>Use instant GPS or network location during weather updates.  Weather updates may stop if you are indoors.  Are you sure?</item>
-			<item>Use any GPS or network location less than 2 hours old.  Weather updates may stop if you are indoors for more than 24 hours.  Are you sure?</item>
-			<item>Use any GPS or network location less than 24 hours old.  Weather updates may stop if you are indoors for more than 24 hours.  Are you sure?</item>
-			<item>Use the most recent GPS or network location, regardless of staleness.  Weather accuracy will depend on location accuracy and staleness.  Are you sure?</item>
-		</string-array>
-		
-		<string name="weatherDiagnostics">Weather Diagnostics</string>
-        <string name="submitLocationWeatherDebugData">Submit location/weather debug data</string>
-        
-        <string name="deleteAllThemes">Delete All Themes</string>
-        <string name="forFixingThemeSelection">For fixing theme selection app crashes</string>
-        <string name="deleteAllThemesFromSD">Delete all Themes from your SD Card/Memory?</string>
-        <string name="yesDelete">Yes, delete all</string>
-        <string name="yesRestore">Yes, restore defaults</string>
-        <string name="omcThemesFolderDeleted">OMCThemes folder deleted</string>
-        <string name="defaultClockPackRestored">Default Clock Pack restored</string>
-        
-        <!-- Contact Xaffron-->
-        
-        <string name="contactXaffron">Contact Xaffron</string>
-        <string name="donateOrContact">Donate or Contact author for help</string>
-        <string name="contactXaffronForIssues">Contact Xaffron for issues, help &amp; support</string>
-        <string name="email">Email</string>
-        <string name="donate">Donate</string>
-        <string name="facebook">Facebook</string>
-        
-        <!-- Credits-->
-        
-        <string name="credits">Credits</string>
-        <string name="version">Version</string>
-        <string name="free">Free</string>
-        <string name="tapToGetFull">Tap me to get the full version!</string>
-        <string name="thanksForYourSupport">Thanks for your support!</string>
-        <string name="viewCredits">View Credits</string>
+	<string name="usingFahrenheit">Utilizzo Fahrenheit</string>
+	<string name="usingCelsius">Utilizzo Celsius</string>
+	<string name="clockUpdateInterval" clock="" di="" intervallo="">aggiornamento</string>
 
-        <!-- Credits subscreen -->
-        
-        <string name="team">Team</string>
-        <string name="programmer">Programmer</string>
-        <string name="sunny">Sunny Kwong</string>
-        <string name="testers">Testers</string>
-        <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
-        <string name="specialThanks">Special Thanks</string>
-        <string name="specialThanksText">Zehro for leading the way\nre: in-sync clock widgets w//o notifications.\nStefan Pledl for helping with the localization.</string>
-        <string name="copyrights">Copyrights and Licenses</string>
-        <string name="applicationIcon">Application Icon: Signpost by Maroubal2</string>
-        <string name="applicationIconText">Adapted from Maroubal2\'s excellent photo-turned-Ubuntu wallpaper.\nCC BY-SA 2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
-        <string name="codeColorPickerDialog">Code: ColorPickerDialog</string>
-        <string name="codeColorPickerDialogText">Copied from CyanogenMod source repo.</string>
-        <string name="codeSVG">Code: svg-android</string>
-        <string name="codeSVGText">SVG support provided by sag-android library (Apache License).\nhttp:////code.google.com//p//svg-android//</string>
-        <string name="weatherFont">Font: Weatherfont</string>
-        <string name="weatherFontText">Weatherfont is fully licensed from Jonathan Macagba, available for $5 USD from jonathan.macagba@gmail.com</string>
-        <string name="sourceCodeTitle">Source Code</string>
-        <string name="sourceCode">Source Code Available at</string>
-        
-        
-    </resources>
+	<string-array name="interval_options">
+		<item>1 sec (Extreme uso Batt)</item>
+		<item>10 sec (pesante uso Batt)</item>
+		<item>15 sec</item>
+		<item>20 sec</item>
+		<item>30 sec (default)</item>
+		<item>60 sec (Usa luce Batt)</item>
+	</string-array>
+
+	<string name="redrawEvery">Ridisegna ogni \ u0020</string>
+	<string name="seconds">\ u0020seconds.</string>
+	<string name="weatherUpdateInterval">Meteo Intervallo di aggiornamento</string>
+
+	<string-array name="winterval_options">
+		<item>ogni ora (default)</item>
+		<item>Ogni 4 ore</item>
+		<item>Ogni 8 ore</item>
+		<item>Mai (solo manuale)</item>
+	</string-array>
+
+	<string name="manualWeatherUpdatesOnly">aggiornamenti meteo manuali solo</string>
+	<string name="refreshWeatherEveryHour">tempo di aggiornamento ogni 1 ora</string>
+	<string name="refreshWeatherEvery4Hours">tempo di aggiornamento ogni 4 ore</string>
+	<string name="refreshWeatherEvery8Hours">tempo di aggiornamento ogni 8 ore</string>
+	<string name="setForegroundMode">Set Mode primo piano</string>
+	<string name="keepOMCfromSleeping">Tenere OMC di dormire \ n (al costo di una notifica persistente)</string>
+	<string name="forceEnglishDates">Forza Inglese Date</string>
+	<string name="uncheckForSome">Deselezionare per alcune versioni locali non inglesi. (Sperimentale)</string>
+	<string name="changeAppLocale">App UI Lingua</string>
+	<string name="changeClockLocale">Lingua Orologio</string>
+	<string name="toggleWidgetSizes">Toggle Widget Dimensioni</string>
+	<string name="rebootRequired">riavvio obbligatorio</string>
+	<string name="changesToTheseSettings">Modifiche a queste impostazioni richiede il riavvio del telefono per avere effetto.</string>
+	<string name="enable5x4Widget">Enable (5x4) Widget</string>
+	<string name="enable5x2Widget">Enable (5x2) Widget</string>
+	<string name="enable5x1Widget">Enable (5x1) Widget</string>
+	<string name="enable4x4Widget">Enable (4x4) Widget</string>
+	<string name="enable4x2Widget">Enable (4x2) Widget</string>
+	<string name="enable4x1Widget">Enable (4x1) Widget</string>
+	<string name="enable3x3Widget">Enable (3x3) Widget</string>
+	<string name="enable3x1Widget">Enable (3x1) Widget</string>
+	<string name="enable2x2Widget">Enable (2x2) Widget</string>
+	<string name="enable2x1Widget">Enable (2x1) Widget</string>
+	<string name="enable1x3Widget">Enable (1x3) Widget</string>
+	<string name="forGalaxyNote">Per Galaxy Note o simili</string>
+	<string name="enableThemeTester">Abilita Tester a tema</string>
+	<string name="developmentToolForSkinnersOnly">strumento di sviluppo per skinners solo</string>
+	<!-- Widget Dimensioni Passo Vendite -->
+	<string name="areThereOtherWidgetSizes">Ci sono dimensioni esser altri?</string>
+	<string name="actuallyThePaidVersion">In realtà, la versione a pagamento offre dimensioni di esser 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 e 1x3. \ nSi prega di aggiornare il browser per ottenere queste dimensioni!</string>
+	<!-- Risoluzione dei problemi Opzioni -->
+	<string name="troubleshootingOptions">Risoluzione dei problemi Opzioni</string>
+	<!-- Risoluzione dei problemi Opzioni -->
+	<string name="clockPriority">Priorità Clock</string>
+	<string name="forFineTuning">Per la messa a punto di risposta</string>
+
+	<string-array name="clockPriority_options">
+		<item>più alto</item>
+		<item>Alta</item>
+		<item>Medio</item>
+		<item>Basso (impostazione predefinita)</item>
+		<item>più basso</item>
+	</string-array>
+	<string-array name="clockPriority_legend">
+		<item>ridisegna aggressivi ogni tick (non consigliato). Sei sicuro?</item>
+		<item>ridisegna aggressivi ogni minuto, a prescindere dalla schermata di avvio o di status. Sei sicuro?</item>
+		<item>ridisegna pigri ogni minuto quando lo schermo acceso, anche quando avvio è in background. Sei sicuro?</item>
+		<item>ridisegna pigri ogni minuto quando fuori di avvio inattivo o schermo. Sei sicuro?</item>
+		<item>No ridisegna quando fuori di avvio inattivo o schermo. Sei sicuro?</item>
+	</string-array>
+
+	<string name="weatherDiagnostics">Meteo Diagnostica</string>
+	<string name="submitLocationWeatherDebugData">Invia posizione / tempo i dati di debug</string>
+	<string name="deleteAllThemes">Elimina tutti i temi</string>
+	<string name="forFixingThemeSelection">Per il fissaggio si blocca app tema di selezione</string>
+	<string name="deleteAllThemesFromSD">Elimina tutti i temi dalla scheda SD / memoria?</string>
+	<string name="yesDelete">Sì, elimina tutto</string>
+	<string name="yesRestore">Sì, ripristinare le impostazioni predefinite</string>
+	<string name="omcThemesFolderDeleted">OMCThemes cartella Posta eliminata</string>
+	<string name="defaultClockPackRestored">Confezione predefinita Orologio ristrutturata</string>
+
+	<!-- Xaffron Contatto -->
+
+	<string name="contactXaffron">Xaffron Contatto</string>
+	<string name="donateOrContact">Donare o contattare l\'autore aiuto</string>
+	<string name="contactXaffronForIssues">Xaffron di contatto per le questioni, aiuto e supporto</string>
+	<string name="email">Email</string>
+	<string name="donate">Donazione</string>
+	<string name="facebook">Facebook</string>
+	<!-- Credits -->
+	<string name="credits">Credits</string>
+	<string name="version">Versione</string>
+	<string name="free">gratuito</string>
+	<string name="tapToGetFull">Toccare me per ottenere la versione completa!</string>
+	<string name="thanksForYourSupport">Grazie per il vostro sostegno!</string>
+	<string name="viewCredits">Visualizza i crediti</string>
+	<!-- Subscreen Credits -->
+	<string name="team">squadra</string>
+	<string name="programmer">programmatore</string>
+	<string name="sunny">Sunny Kwong</string>
+	<string name="testers">Testers</string>
+	<string name="testersText">ibawanzingee, C. Bizon, Cjsnet, Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra \', R. Dickenson, T. Wiedemann</string>
+	<string name="specialThanks">Grazie speciali</string>
+	<string name="specialThanksText">Zehro per aprendo la strada \ NRE:.. nella sincronizzazione clock widgets w / / o notifiche \ nStefan Pledl per aiutare con la localizzazione</string>
+	<string name="copyrights">Copyrights e licenze</string>
+	<string name="applicationIcon">Icona applicazione: Signpost da Maroubal2</string>
+	<string name="applicationIconText">Adattato da Maroubal2\'s eccellente foto-gir-Ubuntu carta da parati. \ nCC BY-SA 2.0 \ nhttp :/ / / / www.flickr.com//photos//maroubal2//5412017784/</string>
+	<string name="codeColorPickerDialog">Codice: ColorPickerDialog</string>
+	<string name="codeColorPickerDialogText">Copiato da repo fonte CyanogenMod.</string>
+	<string name="codeSVG">Codice: svg-android</string>
+	<string name="codeSVGText">supporto SVG fornito da sag-android biblioteca (Apache License). \ nhttp :/ / / / code.google.com / / p / / svg-android / /</string>
+	<string name="weatherFont">Font: Weatherfont</string>
+	<string name="weatherFontText">Weatherfont è completamente autorizzata da Jonathan Macagba, disponibile per $ 5 USD da jonathan.macagba @ gmail.com</string>
+	<string name="sourceCodeTitle">Source Code </string>
+	<string name="sourceCode">codice sorgente Disponibile a</string>
+
+</resources>
