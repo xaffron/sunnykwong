@@ -1,5 +1,6 @@
 package com.sunnykwong.omc;
 
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,6 +22,13 @@ import android.util.Log;
 import android.util.Pair;
 
 public class NOAAWeatherXMLHandler extends DefaultHandler {
+
+	public static final long MINTIMEBETWEENREQUESTS = 3660000l; //One hour + change
+	public static final long MINRETRYPERIOD = 3660000l; //One hour + change
+	public static String CACHEDFORECAST;
+	public static long CACHEDFORECASTMILLIS=0l;
+	public static boolean LOCATIONCHANGED;
+	public static String LASTUSEDCITY, LASTUSEDCOUNTRY;
 
 	public static final String URL_NOAAFORECAST = "http://forecast.weather.gov/MapClick.php?unit=0&lg=english&FcstType=dwml&lat=";
 	public static HashMap<String, Integer> CONDITIONTRANSLATIONS;
@@ -61,53 +69,116 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 		jsonOneDayForecast = null;
 	}
 
-	static public void updateWeather(final double latitude, final double longitude, final String country, final String city, final boolean bylatlong) {
-		
-		
-		Thread t = new Thread() {
-			@Override
-			public void run() {
-				HttpURLConnection huc = null; 
-				try {
-					if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
-					    System.setProperty("http.keepAlive", "false");
+	static public void updateWeather(final double latitude,
+			final double longitude, final String country, final String city,
+			final boolean bylatlong) {
+		// If the city or country is empty, it's the first time this is run -
+		// location has changed.
+		if (LASTUSEDCITY == null || LASTUSEDCOUNTRY == null) {
+			LASTUSEDCITY = city;
+			LASTUSEDCOUNTRY = country;
+			LOCATIONCHANGED = true;
+			// If either city and country have changed,
+			// set the location change flag to true.
+		} else if (!LASTUSEDCITY.equals(city)
+				|| !LASTUSEDCOUNTRY.equals(country)) {
+			LASTUSEDCITY = city;
+			LASTUSEDCOUNTRY = country;
+			LOCATIONCHANGED = true;
+			// If city and country have not changed,
+			// but we've lost the cached forecast or the
+			// cached weather is old
+			// set the location change flag to true.
+		} else if (CACHEDFORECAST == null
+				|| System.currentTimeMillis() - CACHEDFORECASTMILLIS > MINTIMEBETWEENREQUESTS) {
+			LASTUSEDCITY = city;
+			LASTUSEDCOUNTRY = country;
+			LOCATIONCHANGED = true;
+			// otherwise, the location didn't change - let's use the cached
+			// forecast.
+		} else {
+			LOCATIONCHANGED = false;
+		}
+
+		if (LOCATIONCHANGED) {
+			// Update weather from provider.
+
+			Thread t = new Thread() {
+				@Override
+				public void run() {
+					HttpURLConnection huc = null; 
+					try {
+						if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
+						    System.setProperty("http.keepAlive", "false");
+						}
+						XMLReader xr = XMLReaderFactory.createXMLReader();
+						NOAAWeatherXMLHandler GXhandler = new NOAAWeatherXMLHandler();
+						GXhandler.jsonWeather.putOpt("country2", country);
+						GXhandler.jsonWeather.putOpt("city2", city);
+						GXhandler.jsonWeather.putOpt("bylatlong", bylatlong);
+						GXhandler.jsonWeather.putOpt("longitude_e6",longitude*1000000d);
+						GXhandler.jsonWeather.putOpt("latitude_e6",latitude*1000000d);
+						xr.setContentHandler(GXhandler);
+						xr.setErrorHandler(GXhandler);
+
+						URL url=null;
+						if (!bylatlong) {
+							Log.e(OMC.OMCSHORT + "NOAAWeather", "NOAA handler does not support weather by location name!");
+							return;
+						} else {
+							url = new URL(NOAAWeatherXMLHandler.URL_NOAAFORECAST+latitude+"&lon="+longitude);
+						}
+						huc = (HttpURLConnection) url.openConnection();
+						huc.setConnectTimeout(30000);
+						huc.setReadTimeout(30000);
+
+						CACHEDFORECAST = OMC.streamToString(huc
+								.getInputStream());
+						OMC.WEATHERREFRESHSTATUS = OMC.WRS_PROVIDER;
+						xr.parse(new InputSource(new StringReader(
+								CACHEDFORECAST)));
+						UPDATEDTIME.set(huc.getDate());
+						huc.disconnect();
+
+					} catch (Exception e) { 
+						e.printStackTrace();
+						if (huc!=null) huc.disconnect();
+						OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 					}
-					XMLReader xr = XMLReaderFactory.createXMLReader();
-					NOAAWeatherXMLHandler GXhandler = new NOAAWeatherXMLHandler();
-					GXhandler.jsonWeather.putOpt("country2", country);
-					GXhandler.jsonWeather.putOpt("city2", city);
-					GXhandler.jsonWeather.putOpt("bylatlong", bylatlong);
-					GXhandler.jsonWeather.putOpt("longitude_e6",longitude*1000000d);
-					GXhandler.jsonWeather.putOpt("latitude_e6",latitude*1000000d);
-					xr.setContentHandler(GXhandler);
-					xr.setErrorHandler(GXhandler);
-
-					URL url=null;
-					if (!bylatlong) {
-						Log.e(OMC.OMCSHORT + "NOAAWeather", "NOAA handler does not support weather by location name!");
-						return;
-					} else {
-						url = new URL(NOAAWeatherXMLHandler.URL_NOAAFORECAST+latitude+"&lon="+longitude);
-					}
-					huc = (HttpURLConnection) url.openConnection();
-					huc.setConnectTimeout(30000);
-					huc.setReadTimeout(30000);
-
-					OMC.WEATHERREFRESHSTATUS = OMC.WRS_PROVIDER;
-					xr.parse(new InputSource(huc.getInputStream()));
-					UPDATEDTIME.set(huc.getDate());
-					
-					huc.disconnect();
-
-				} catch (Exception e) { 
-					e.printStackTrace();
-					if (huc!=null) huc.disconnect();
-					OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
-				}
+				};
 			};
-		};
-		t.start();
+			t.start();
+		} else {
+			// Update weather from cached forecast.
+			Thread t = new Thread() {
+				@Override
+				public void run() {
+					try {
+						XMLReader xr = XMLReaderFactory.createXMLReader();
+						NOAAWeatherXMLHandler GXhandler = new NOAAWeatherXMLHandler();
+						GXhandler.jsonWeather.putOpt("country2", country);
+						GXhandler.jsonWeather.putOpt("city2", city);
+						GXhandler.jsonWeather.putOpt("bylatlong", bylatlong);
+						GXhandler.jsonWeather.putOpt("longitude_e6",
+								longitude * 1000000d);
+						GXhandler.jsonWeather.putOpt("latitude_e6",
+								latitude * 1000000d);
+						xr.setContentHandler(GXhandler);
+						xr.setErrorHandler(GXhandler);
 
+						if (OMC.DEBUG)
+							Log.i(OMC.OMCSHORT + "NOAAWeather",
+									"Reusing previously-cached forecast.");
+						OMC.WEATHERREFRESHSTATUS = OMC.WRS_PROVIDER;
+						xr.parse(new InputSource(new StringReader(
+								CACHEDFORECAST)));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				};
+			};
+			t.start();
+		}
 	}
 
 	@Override
@@ -407,6 +478,9 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 		OMC.PREFS.edit().putString("weather", jsonWeather.toString()).commit();
 		OMC.LASTWEATHERREFRESH = System.currentTimeMillis();
 		OMC.WEATHERREFRESHSTATUS = OMC.WRS_SUCCESS;
+
+		if (LOCATIONCHANGED)
+			CACHEDFORECASTMILLIS = OMC.LASTWEATHERREFRESH;
 
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "NOAAWeather", "Update Succeeded.  Phone Time:" + new java.sql.Time(OMC.LASTWEATHERREFRESH).toLocaleString());
 

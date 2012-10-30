@@ -78,7 +78,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "";
+	static final String TESTVER = "test";
 	static final boolean FREEEDITION = false;
 	static final boolean HDRENDERING = false;
 

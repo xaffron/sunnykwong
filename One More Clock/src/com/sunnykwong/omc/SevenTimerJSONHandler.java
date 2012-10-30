@@ -16,17 +16,17 @@ public class SevenTimerJSONHandler {
 
 	public static final long MINTIMEBETWEENREQUESTS = 82800000l; //23 hours
 	public static final long MINRETRYPERIOD = 3660000l; //One hour + change
-	
-	public static final String URL_V4CIVIL = "http://www.7timer.com/v4/bin/civil.php?app=omc&output=json&tzshift=0&unit=metric&lang=en&ac=0";
+	public static String CACHEDFORECAST;
+	public static long CACHEDFORECASTMILLIS=0l;
 	public static boolean LOCATIONCHANGED;
 	public static String LASTUSEDCITY, LASTUSEDCOUNTRY;
+	
+	public static final String URL_V4CIVIL = "http://www.7timer.com/v4/bin/civil.php?app=omc&output=json&tzshift=0&unit=metric&lang=en&ac=0";
 	public static JSONObject tempJson, jsonWeather, jsonOneDayForecast;
 	public static HashMap<String, Double> LOWTEMPS;
 	public static HashMap<String, Double> HIGHTEMPS;
 	public static HashMap<String, Integer> CONDITIONS;
 	public static HashMap<String, Integer> CONDITIONTRANSLATIONS;
-	public static String CACHEDFORECAST;
-	public static long CACHEDFORECASTMILLIS=0l;
  
 	public SevenTimerJSONHandler() {
 	}
