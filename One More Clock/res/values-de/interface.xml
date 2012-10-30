@@ -226,7 +226,7 @@
     <string-array name="wprovider_options">
 
         <!-- <item>OpenWeatherMap.org (default)</item> -->
-        <item>7Timer.com (Standard).</item>
+<!--         <item>7Timer.com (Standard).</item> -->
         <item>NOAA (Nur Nordamerika!)</item>
         <item>Yr.no</item>
         <item>Google Wetter (Altlast/außer Funktion)</item>

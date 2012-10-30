@@ -212,7 +212,7 @@
         <string name="weatherProvider">Väderleverantör</string>
 		<string-array name="wprovider_options">
 		<!-- 	<item>OpenWeatherMap.org (standard)</item> -->
-		 	<item>7Timer.com (standard)</item>
+<!-- 		 	<item>7Timer.com (standard)</item> -->
 		 	<item newname="" >NOAA (US Only)</item>
 		 				<item>Yr.no</item>
 			<item>Google Weather (förlegat, fungerar ej)</item>

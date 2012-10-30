@@ -152,6 +152,8 @@ public class OMC extends Application {
 	static String WEATHERTRANSLATETYPE = "AccuWeather";
 	static String LASTKNOWNCITY, LASTKNOWNCOUNTRY;
 	static JSONObject jsonFIXEDLOCN;
+	static JSONObject GEOLOCNCACHE;
+	
 	static int UPDATEFREQ = 30000;
 	static final Random RND = new Random();
 	static SharedPreferences PREFS;
@@ -466,7 +468,7 @@ public class OMC extends Application {
 			ed.putBoolean("showhelp", true)
 				.putBoolean("starterpack", false);
 			
-			// Convert all yr.no or 7timer users over to half OWM and half YR
+			// Convert all yr.no or 7timer users over to YR
 			if (OMC.PREFS.getString("weatherProvider", "yrno").equals("yrno") ||
 					OMC.PREFS.getString("weatherProvider", "yrno").equals("7timer"))
 					ed.putString("weatherProvider", "yr");
@@ -536,6 +538,7 @@ public class OMC extends Application {
 		try {
 			OMC.jsonFIXEDLOCN = new JSONObject(OMC.PREFS.getString("weather_fixedlocation", "{}"));
 			OMC.WEATHERCONVERSIONS = streamToJSONObject(OMC.AM.open("weathericons/weathertranslation.json"));
+	    	OMC.GEOLOCNCACHE = new JSONObject(OMC.PREFS.getString("geoLocnCache", "{}"));
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}

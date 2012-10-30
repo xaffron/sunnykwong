@@ -27,7 +27,7 @@
 
 <string-array name="wprovider_values">
 <!--  <item>owm</item> -->
-	<item>7timer</item>
+<!-- 	<item>7timer</item> -->
 	<item>noaa</item>
 	<item>yr</item>
 	<item>ig</item>

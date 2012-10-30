@@ -226,7 +226,7 @@
         <string name="weatherProvider">ספק מזג אוויר</string>
 		<string-array name="wprovider_options">
 		<!-- 	<item>OpenWeatherMap.org (default)</item> -->
-		 	<item>7Timer.com (default)</item>
+<!-- 		 	<item>7Timer.com (default)</item> -->
 		 	<item>NOAA (US Only)</item>
 			<item>Yr.no</item>
 			<item>Google Weather (מיושן/לא פעיל)</item>

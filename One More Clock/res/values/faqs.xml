@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="faqs">
-		<item>Version 1.3.9 provides many fixes for weather providers and location accuracy.</item>,
-        <item>Launching with v.1.3.6 are Firmament and Iris.</item>,
+		<item>Version 1.4.0 removed support for the 7Timer weather provider.  Many thanks to 7Timer for providing weather information to OMC when I needed help the most!</item>,
+        <item>Launching with v.1.3.6 are Firmament and Iris.  New clocks are on the way, but please be patient as I sort through weather stability issues!</item>,
 		<item>New in version 1.3.6 is one-second refresh.  While the one-second refresh results in higher battery drain, it adds a nice dynamic quality to clocks with a second hand.</item>,
 		<item>As of version 1.3.0, clocks now have tags.  Tap on a tag to understand what it means!</item>,
 		<item>Not finding your favorite clock?  OMC comes with just a few initially.  To get the full clock collection, tap on \'Download Full Online Collection\' when you\'re in the theme picker screen.</item>,

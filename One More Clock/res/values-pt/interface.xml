@@ -211,7 +211,7 @@
         <string name="weatherProvider">Provedor do tempo</string>
 		<string-array name="wprovider_options">
 		<!-- 	<item>OpenWeatherMap.org (Padrão)</item> -->
-		 	<item>7Timer.com (Padrão)</item>
+<!-- 		 	<item>7Timer.com (Padrão)</item> -->
 		 	<item>NOAA (Somente EUA)</item>
 			<item>Yr.no</item>
 			<item>Google Weather (Não funciona)</item>

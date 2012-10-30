@@ -227,7 +227,7 @@
     <string name="weatherProvider">天气资料来源</string>
     <string-array name="wprovider_options">
         <!-- <item>OpenWeatherMap.org (default)</item> -->
-        <item>晴天钟(默认)</item>
+<!--         <item>晴天钟(默认)</item> -->
         <item>NOAA(仅供美国天气)</item>
         <item>Yr.no</item>
         <item>谷歌天气(已无法运作)</item>
