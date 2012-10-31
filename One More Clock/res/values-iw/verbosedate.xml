@@ -13,13 +13,13 @@
 </string-array>
 
 <string-array name="shortdow">
-<item>א'</item>
-<item>ב'</item>
-<item>ג'</item>
-<item>ד'</item>
-<item>ה'</item>
-<item>ו'</item>
-<item>ש'</item>
+<item>א\'</item>
+<item>ב\'</item>
+<item>ג\'</item>
+<item>ד\'</item>
+<item>ה\'</item>
+<item>ו\'</item>
+<item>ש\'</item>
 </string-array>
 
 <string-array name="verbosemonth">
@@ -38,18 +38,18 @@
 </string-array>
 
 <string-array name="shortmonth">
-<item>ינו'</item>
-<item>פבר'</item>
+<item>ינו\'</item>
+<item>פבר\'</item>
 <item>מרץ</item>
-<item>אפר'</item>
+<item>אפר\'</item>
 <item>מאי</item>
 <item>יוני</item>
 <item>יולי</item>
-<item>אוג'</item>
-<item>ספט'</item>
-<item>אוק'</item>
-<item>נוב'</item>
-<item>דצמ'</item>
+<item>אוג\'</item>
+<item>ספט\'</item>
+<item>אוק\'</item>
+<item>נוב\'</item>
+<item>דצמ\'</item>
 </string-array>
 
 </resources>

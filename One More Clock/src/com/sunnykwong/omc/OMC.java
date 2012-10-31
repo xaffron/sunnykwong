@@ -1,5 +1,6 @@
 package com.sunnykwong.omc;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -68,6 +69,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.text.format.Time;
 import android.util.Log;
+import android.util.Pair;
 import android.widget.Toast;
 
 /**
@@ -81,6 +83,7 @@ public class OMC extends Application {
 	static final String TESTVER = "Alpha 1";
 	static final boolean FREEEDITION = false;
 	static final boolean HDRENDERING = true;
+	static final HashMap<String, Pair<Double, Double>> ICAOMAP = new HashMap<String, Pair<Double, Double>>();
 
 	static final boolean DEBUG = TESTVER.equals("")?false:true; 
 	
@@ -358,6 +361,8 @@ public class OMC extends Application {
     	OMC.PKM = getPackageManager();
     	OMC.AM = getAssets();
     	OMC.RES = getResources();
+    	
+    	
     	OMC.LM = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
     	
     	OMC.LL = new LocationListener() {
@@ -549,6 +554,7 @@ public class OMC extends Application {
 			OMC.jsonFIXEDLOCN = new JSONObject(OMC.PREFS.getString("weather_fixedlocation", "{}"));
 			OMC.WEATHERCONVERSIONS = streamToJSONObject(OMC.AM.open("weathericons/weathertranslation.json"));
 	    	OMC.GEOLOCNCACHE = new JSONObject(OMC.PREFS.getString("geoLocnCache", "{}"));
+	    	OMC.parseICAOMap();
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}
@@ -2402,5 +2408,15 @@ public class OMC extends Application {
 				return OMC.VERBOSETIME4[subindex];
 			
 		}
+	}
+	
+	public static void parseICAOMap() throws IOException {
+		final int ICAOCOLUMN = 30;
+		BufferedReader r = new BufferedReader(new InputStreamReader(OMC.AM.open("stations.txt")));
+		String sLine=null;
+		while ((sLine = r.readLine())!=null) {
+			if (sLine.substring(ICAOCOLUMN, ICAOCOLUMN+3).equals("ICAO")) System.out.println("ICAO");
+		}
+		r.close();
 	}
 }

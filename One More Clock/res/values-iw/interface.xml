@@ -53,7 +53,7 @@
         <string name="dashPreferences">\u0020- העדפות</string>
     
         <string name="forThisClock">עבור שעון זה:</string>
-        <string name="widgetTheme">ערכת נושא של הווידג'ט</string>
+        <string name="widgetTheme">ערכת נושא של הווידג\'ט</string>
 
         <!-- Widget Theme -->
         
@@ -149,7 +149,7 @@
         <string name="areaToCustomize">אזור להתאמה אישית:</string>
         <string name="chooseAction">בחר פעולה</string>
         <string name="openOptionsDefault">פתח אפשרויות (ברירת מחדל)</string>
-        <string name="widgetPrefsTTL">העדפות ווידג'ט</string>
+        <string name="widgetPrefsTTL">העדפות ווידג\'ט</string>
         <string name="doNothing">לא לעשות דבר</string>
         <string name="doNothingTTL">לא לעשות דבר</string>
         <string name="refreshWeather">רענן מזג אוויר כאת</string>
@@ -178,12 +178,12 @@
         <!-- TTL Sales Pitch -->
         <string name="thinkOfThePossibilities">חשוב על האפשרויות!</string>
         <string name="prePaidTTL">הגירסה בתשלום מאפשרת לכוון את\u0020</string>
-        <string name="postPaidTTL">\u0020להפעיל כל פעולה שתרצה, ובנוסף, היא מאפשרת גדלי ווידג'טים של 4x2, 4x1, 3x1 and 2x1.\nאנא שיקלו לשדרג על מנת לקבל גדלים אלה. </string>
+        <string name="postPaidTTL">\u0020להפעיל כל פעולה שתרצה, ובנוסף, היא מאפשרת גדלי ווידג\'טים של 4x2, 4x1, 3x1 and 2x1.\nאנא שיקלו לשדרג על מנת לקבל גדלים אלה. </string>
         <string name="takeMeToPaid">קח אותי לגירסה בתשלום!</string>
                 
         <!-- Weather & Widget Options -->
         <string name="forAllClocks">לכל השעונים:</string>
-        <string name="weatherAndWidgetOptions">אפשרויות מזג אוויר ווידג'ט</string>
+        <string name="weatherAndWidgetOptions">אפשרויות מזג אוויר ווידג\'ט</string>
         <string name="clearRenderCaches">אפס מטמון ציור</string>
         <string name="cachesCleared">מטמונים אופסו</string>
         
@@ -277,28 +277,28 @@
         <string name="changeAppLocale">שפת ממשק אפליקציה</string>
         <string name="changeClockLocale">שפת שעון</string>
         
-        <string name="toggleWidgetSizes">שנה גודל ווידג'ט</string>
+        <string name="toggleWidgetSizes">שנה גודל ווידג\'ט</string>
         
         <string name="rebootRequired">נדרשת הפעלה מחדש</string>
         <string name="changesToTheseSettings">שינוי קביעות אלה ידרוש הפעלה מחדש של המכשיר.</string>
-        <string name="enable5x4Widget">הפעל ווידג'ט (4x5)</string>
-        <string name="enable5x2Widget">הפעל ווידג'ט (2x5)</string>
-        <string name="enable5x1Widget">הפעל ווידג'ט (1x5)</string>
-        <string name="enable4x4Widget">הפעל ווידג'ט (4x4)</string>
-        <string name="enable4x2Widget">הפעל ווידג'ט (2x4)</string>
-        <string name="enable4x1Widget">הפעל ווידג'ט (1x4)</string>
-        <string name="enable3x3Widget">הפעל ווידג'ט (3x3)</string>
-        <string name="enable3x1Widget">הפעל ווידג'ט (1x3)</string>
-        <string name="enable2x2Widget">הפעל ווידג'ט (2x2)</string>
-        <string name="enable2x1Widget">הפעל ווידג'ט (1x2)</string>
-        <string name="enable1x3Widget">הפעל ווידג'ט (3x1)</string>
+        <string name="enable5x4Widget">הפעל ווידג\'ט (4x5)</string>
+        <string name="enable5x2Widget">הפעל ווידג\'ט (2x5)</string>
+        <string name="enable5x1Widget">הפעל ווידג\'ט (1x5)</string>
+        <string name="enable4x4Widget">הפעל ווידג\'ט (4x4)</string>
+        <string name="enable4x2Widget">הפעל ווידג\'ט (2x4)</string>
+        <string name="enable4x1Widget">הפעל ווידג\'ט (1x4)</string>
+        <string name="enable3x3Widget">הפעל ווידג\'ט (3x3)</string>
+        <string name="enable3x1Widget">הפעל ווידג\'ט (1x3)</string>
+        <string name="enable2x2Widget">הפעל ווידג\'ט (2x2)</string>
+        <string name="enable2x1Widget">הפעל ווידג\'ט (1x2)</string>
+        <string name="enable1x3Widget">הפעל ווידג\'ט (3x1)</string>
         <string name="forGalaxyNote">עבור גלאקסי נוט או דומה</string>
         <string name="enableThemeTester">הפעל בוחן ערכת נושא</string>
         <string name="developmentToolForSkinnersOnly">כלי פיתוח למפתחי סקינים בלבד</string>
         
         <!-- Widget Sizes Sales Pitch -->
-        <string name="areThereOtherWidgetSizes">האם ישנם גדלי ווידג'ט נוספים?</string>
-        <string name="actuallyThePaidVersion">הגירסה בתשלום מאפשרת גדלי ווידג'טים של 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 וגם 1x3.\nאנא שקול שדרוג על מנת להנות מגדלים אלה.</string>
+        <string name="areThereOtherWidgetSizes">האם ישנם גדלי ווידג\'ט נוספים?</string>
+        <string name="actuallyThePaidVersion">הגירסה בתשלום מאפשרת גדלי ווידג\'טים של 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 וגם 1x3.\nאנא שקול שדרוג על מנת להנות מגדלים אלה.</string>
                 
         
         
@@ -377,7 +377,7 @@
         <string name="testers">בוחנים</string>
         <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
         <string name="specialThanks">תודה מיוחדת</string>
-        <string name="specialThanksText">ל-Zehro על שהוביל את הדרך \n בהקשר לווידג'טים מעודכנים ללא הודעות.\n ל-Stefan Pledl על עזרה בהתאמה מקומית.</string>
+        <string name="specialThanksText">ל-Zehro על שהוביל את הדרך \n בהקשר לווידג\'טים מעודכנים ללא הודעות.\n ל-Stefan Pledl על עזרה בהתאמה מקומית.</string>
         <string name="copyrights">זכויות יוצרים ורשיונות</string>
         <string name="applicationIcon">צלמית אפליקציה: Signpost by Maroubal2</string>
         <string name="applicationIconText">הותאם מתוך התמונה שהפכה לרקע באובונטו של Maroubal2.\nCC BY-SA 2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
