@@ -83,7 +83,7 @@ public class OMC extends Application {
 	static final String TESTVER = "Alpha 1";
 	static final boolean FREEEDITION = false;
 	static final boolean HDRENDERING = true;
-	static final HashMap<String, Pair<Double, Double>> ICAOMAP = new HashMap<String, Pair<Double, Double>>();
+	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
 
 	static final boolean DEBUG = TESTVER.equals("")?false:true; 
 	
@@ -554,7 +554,7 @@ public class OMC extends Application {
 			OMC.jsonFIXEDLOCN = new JSONObject(OMC.PREFS.getString("weather_fixedlocation", "{}"));
 			OMC.WEATHERCONVERSIONS = streamToJSONObject(OMC.AM.open("weathericons/weathertranslation.json"));
 	    	OMC.GEOLOCNCACHE = new JSONObject(OMC.PREFS.getString("geoLocnCache", "{}"));
-	    	OMC.parseICAOMap();
+	    	parseICAOMap();
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}
@@ -2410,13 +2410,53 @@ public class OMC extends Application {
 		}
 	}
 	
-	public static void parseICAOMap() throws IOException {
-		final int ICAOCOLUMN = 30;
+	public class ICAOLatLon {
+		public String icao;
+		public double lat;
+		public double lon;
+		public ICAOLatLon(String ic, double lt, double ln){
+			this.icao= ic;
+			this.lat = lt;
+			this.lon = ln;
+		}
+	}
+	
+	public void parseICAOMap() throws IOException {
+		final int ICAOCOLUMN = 20;
+		final int LATCOLUMN = 39;
+		final int LONCOLUMN = 47;
+		final int NSCOLUMN = 44;
+		final int EWCOLUMN = 53;
+		
 		BufferedReader r = new BufferedReader(new InputStreamReader(OMC.AM.open("stations.txt")));
 		String sLine=null;
+		boolean bStartParsing=false;
 		while ((sLine = r.readLine())!=null) {
-			if (sLine.substring(ICAOCOLUMN, ICAOCOLUMN+3).equals("ICAO")) System.out.println("ICAO");
+//			System.out.println("LINE");
+//			System.out.println(sLine);
+			if (sLine.length()<ICAOCOLUMN+4) continue;
+			if (sLine.substring(ICAOCOLUMN, ICAOCOLUMN+4).equals("ICAO")) {
+				bStartParsing=true;
+				continue;
+			}
+			if (bStartParsing) {
+				final String sICAO = sLine.substring(ICAOCOLUMN, ICAOCOLUMN+4);
+				final double lat = Double.parseDouble(sLine.substring(LATCOLUMN, LATCOLUMN+5).replace(" ", ".")) * (sLine.charAt(NSCOLUMN)=='N'?1d:-1d);
+				final double lon = Double.parseDouble(sLine.substring(LONCOLUMN, LONCOLUMN+6).replace(" ", ".")) * (sLine.charAt(EWCOLUMN)=='E'?1d:-1d);
+				if (sICAO.equals("    ")) continue;
+				System.out.println(sICAO+" @ lat:"+lat + " lon:"+lon + " RAW: "+sLine.substring(LATCOLUMN, LATCOLUMN+5).replace(" ", "."));
+				OMC.ICAOLIST.add(new ICAOLatLon(sICAO, lat, lon));
+			}
 		}
 		r.close();
+	}
+	
+	public String findClosestICAO(final double lat, final double lon) {
+		double bestDistance = Double.MAX_VALUE;
+		Iterator i = OMC.ICAOLIST.iterator();
+		while (i.hasNext()) {
+			
+		}
+		return "KQVF";
 	}
 }
