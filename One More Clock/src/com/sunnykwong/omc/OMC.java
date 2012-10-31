@@ -555,6 +555,7 @@ public class OMC extends Application {
 			OMC.WEATHERCONVERSIONS = streamToJSONObject(OMC.AM.open("weathericons/weathertranslation.json"));
 	    	OMC.GEOLOCNCACHE = new JSONObject(OMC.PREFS.getString("geoLocnCache", "{}"));
 	    	parseICAOMap();
+	    	System.out.println(findClosestICAO(9.074976, 7.475281));
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}
@@ -2430,33 +2431,45 @@ public class OMC extends Application {
 		
 		BufferedReader r = new BufferedReader(new InputStreamReader(OMC.AM.open("stations.txt")));
 		String sLine=null;
-		boolean bStartParsing=false;
 		while ((sLine = r.readLine())!=null) {
-//			System.out.println("LINE");
-//			System.out.println(sLine);
-			if (sLine.length()<ICAOCOLUMN+4) continue;
-			if (sLine.substring(ICAOCOLUMN, ICAOCOLUMN+4).equals("ICAO")) {
-				bStartParsing=true;
+			if (sLine.length()<EWCOLUMN+4) {
 				continue;
 			}
-			if (bStartParsing) {
+			try {
 				final String sICAO = sLine.substring(ICAOCOLUMN, ICAOCOLUMN+4);
 				final double lat = Double.parseDouble(sLine.substring(LATCOLUMN, LATCOLUMN+5).replace(" ", ".")) * (sLine.charAt(NSCOLUMN)=='N'?1d:-1d);
 				final double lon = Double.parseDouble(sLine.substring(LONCOLUMN, LONCOLUMN+6).replace(" ", ".")) * (sLine.charAt(EWCOLUMN)=='E'?1d:-1d);
-				if (sICAO.equals("    ")) continue;
-				System.out.println(sICAO+" @ lat:"+lat + " lon:"+lon + " RAW: "+sLine.substring(LATCOLUMN, LATCOLUMN+5).replace(" ", "."));
+				if (sICAO.equals("    ") || sICAO.equals("ICAO")) continue;
 				OMC.ICAOLIST.add(new ICAOLatLon(sICAO, lat, lon));
+			} catch (NumberFormatException e) {
+				
 			}
 		}
 		r.close();
 	}
 	
-	public String findClosestICAO(final double lat, final double lon) {
+	public String findClosestICAO(final double lat1, final double lon1) {
+		final double R = 6371; //km
 		double bestDistance = Double.MAX_VALUE;
-		Iterator i = OMC.ICAOLIST.iterator();
+		String bestICAO = null;
+		
+		Iterator<ICAOLatLon> i = OMC.ICAOLIST.iterator();
 		while (i.hasNext()) {
+			ICAOLatLon station = i.next();
+			double dLat = Math.toRadians(station.lat-lat1);
+			double dLon = Math.toRadians(station.lon-lon1);
+			double latR1 = Math.toRadians(lat1);
+			double latR2 = Math.toRadians(station.lat);
 			
+			double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+			        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(latR1) * Math.cos(latR2); 
+			double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+			double dist = R * c;
+			if (dist<=bestDistance) {
+				bestDistance = dist;
+				bestICAO = station.icao;
+			}
 		}
-		return "KQVF";
+		return bestICAO;
 	}
 }
