@@ -2177,15 +2177,12 @@ public class OMC extends Application {
 
     static public boolean isConnected() {
     	final ConnectivityManager conMgr =  (ConnectivityManager)OMC.CONTEXT.getSystemService(Context.CONNECTIVITY_SERVICE);
-    	boolean result = false;
     	final NetworkInfo ni= conMgr.getActiveNetworkInfo();
-//    	for (final NetworkInfo ni: conMgr.get.getActiveNetworkInfo()) {
-    		if (ni.isConnectedOrConnecting()) {
-    			result = true;
-//    			break;
-    		}
-//    	}
-    	return result;
+    	if (ni==null) return false;
+		if (ni.isConnectedOrConnecting()) {
+			return true;
+		}
+		return false;
     }
     
     static public void returnWidgetBMP(final Bitmap bmp) {
