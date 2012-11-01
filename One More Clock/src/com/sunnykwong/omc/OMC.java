@@ -398,7 +398,8 @@ public class OMC extends Application {
         					} else if (sWProvider.equals("owm")) {
         						OpenWeatherMapJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					} else if (sWProvider.equals("noaa")) {
-        						NOAAWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+        						ComboJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+//        						NOAAWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					} else {
         						SevenTimerJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					}  
@@ -555,7 +556,6 @@ public class OMC extends Application {
 			OMC.WEATHERCONVERSIONS = streamToJSONObject(OMC.AM.open("weathericons/weathertranslation.json"));
 	    	OMC.GEOLOCNCACHE = new JSONObject(OMC.PREFS.getString("geoLocnCache", "{}"));
 	    	parseICAOMap();
-	    	System.out.println(findClosestICAO(9.074976, 7.475281));
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}
@@ -2178,12 +2178,13 @@ public class OMC extends Application {
     static public boolean isConnected() {
     	final ConnectivityManager conMgr =  (ConnectivityManager)OMC.CONTEXT.getSystemService(Context.CONNECTIVITY_SERVICE);
     	boolean result = false;
-    	for (final NetworkInfo ni: conMgr.getAllNetworkInfo()) {
-    		if (ni.isConnected()) {
+    	final NetworkInfo ni= conMgr.getActiveNetworkInfo();
+//    	for (final NetworkInfo ni: conMgr.get.getActiveNetworkInfo()) {
+    		if (ni.isConnectedOrConnecting()) {
     			result = true;
-    			break;
+//    			break;
     		}
-    	}
+//    	}
     	return result;
     }
     
@@ -2261,7 +2262,8 @@ public class OMC extends Application {
 				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
 				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
 			} else if (sWProvider.equals("noaa")) {
-				NOAAWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
+				ComboJSONHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
+//				NOAAWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
 				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
 				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
 				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
@@ -2448,7 +2450,7 @@ public class OMC extends Application {
 		r.close();
 	}
 	
-	public String findClosestICAO(final double lat1, final double lon1) {
+	public static String findClosestICAO(final double lat1, final double lon1) {
 		final double R = 6371; //km
 		double bestDistance = Double.MAX_VALUE;
 		String bestICAO = null;
