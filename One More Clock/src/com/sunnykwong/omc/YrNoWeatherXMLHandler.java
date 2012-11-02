@@ -289,7 +289,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 							"missing")) {
 						jsonWeather.putOpt("temp_c", tempc);
 						jsonWeather.putOpt("temp_f",
-								(int) (tempc * 9f / 5f + 32.7f));
+								(int) (tempc * 9f / 5f + 32.5f));
 						Time now = new Time();
 						now.setToNow();
 						HIGHTEMPS.put(now.format("%Y%m%d"), tempc);
@@ -441,8 +441,8 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 						LOWTEMPS.get(day.format("%Y%m%d")), 3);
 				double highc = OMC.roundToSignificantFigures(
 						HIGHTEMPS.get(day.format("%Y%m%d")), 3);
-				double lowf = (int) (lowc / 5f * 9f + 32.7f);
-				double highf = (int) (highc / 5f * 9f + 32.7f);
+				double lowf = (int) (lowc / 5f * 9f + 32.5f);
+				double highf = (int) (highc / 5f * 9f + 32.5f);
 				jsonOneDayForecast.put("low_c", lowc);
 				jsonOneDayForecast.put("high_c", highc);
 				jsonOneDayForecast.put("low", lowf);
@@ -509,7 +509,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 			try {
 				double tempc = fn.value(System.currentTimeMillis());
 				jsonWeather.putOpt("temp_c", (int) (tempc + 0.5d));
-				jsonWeather.putOpt("temp_f", (int) (tempc * 9f / 5f + 32.7f));
+				jsonWeather.putOpt("temp_f", (int) (tempc * 9f / 5f + 32.5f));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

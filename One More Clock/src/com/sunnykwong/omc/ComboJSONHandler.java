@@ -2,6 +2,7 @@ package com.sunnykwong.omc;
 
 import net.sf.jweather.metar.*;
 
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URLConnection;
 
@@ -114,27 +115,53 @@ public class ComboJSONHandler {
 	
 						URL url=null;
 						if (!bylatlong) {
-							Log.e(OMC.OMCSHORT + "7TWeather", "OpenWeatherMap plugin does not support weather by location name!");
+							Log.e(OMC.OMCSHORT + "NOAAMETAR", "NOAA-METAR plugin does not support weather by location name!");
 							return;
 						} else {
+							
+							final String[] sICAOs = OMC.findClosestICAOs(latitude, longitude, 100);
 							if (OMC.DEBUG)
-								Log.i(OMC.OMCSHORT + "7TWeather", "Start Building JSON.");
+								Log.i(OMC.OMCSHORT + "NOAAMETAR", "Nearest airports are " + OMC.flattenString(sICAOs));
+							
 							
 							// Get forecast JSON.
-							url = new URL(sURL+ OMC.findClosestICAO(latitude, longitude)+".TXT");
-							conn = url.openConnection();
-							conn.setConnectTimeout(600000);
-							conn.setReadTimeout(600000);
+							if (OMC.DEBUG)
+								Log.i(OMC.OMCSHORT + "NOAAMETAR", "Start Building JSON.");
+							String result = null;
 							
-							String result = OMC.streamToString(conn.getInputStream());
+							for (String s: sICAOs) {
+								try {
+									url = new URL(sURL+ s +".TXT");
+									conn = url.openConnection();
+									conn.setConnectTimeout(600000);
+									conn.setReadTimeout(600000);
+									
+									result = OMC.streamToString(conn.getInputStream());
+									if (OMC.DEBUG) {
+										Log.i(OMC.OMCSHORT + "NOAAMETAR", "Airport " + s + " returned good METAR.");
+										Log.i(OMC.OMCSHORT + "NOAAMETAR", result);
+									}
+								} catch (IOException e) {
+									if (OMC.DEBUG)
+										Log.i(OMC.OMCSHORT + "NOAAMETAR", "Airport " + s + " returned invalid METAR.");
+									continue;
+								}
+								break;
+							}
+							if (result==null) {
+								OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
+							}
+							
 
-							Metar metar = MetarParser.parseRecord(metarData)parse(result);
-							System.out.println(metar.toString());
-							System.out.println(metar.getConditions().toString());
-							System.out.println(metar.getTemperature().getTemperature());
+							Metar metar = MetarParser.parseRecord(result);
+							System.out.println(metar.getSkyCondition(0).getNaturalLanguageString());
+//							System.out.println(metar.toString());
+//							System.out.println(metar.getConditions().toString());
+//							System.out.println(metar.getTemperature().getTemperature());
 							
 						}
 					} catch (Exception e) {
+						OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 						e.printStackTrace();
 					}
 				}
@@ -269,8 +296,8 @@ public class ComboJSONHandler {
 //									jsonOneDayForecast.put("condition_code", CONDITIONS.get(day.format("%Y%m%d")));
 //									double lowc = OMC.roundToSignificantFigures(LOWTEMPS.get(day.format("%Y%m%d")),3);
 //									double highc = OMC.roundToSignificantFigures(HIGHTEMPS.get(day.format("%Y%m%d")),3);
-//									double lowf = (int)(lowc/5f*9f+32.7f);
-//									double highf = (int)(highc/5f*9f+32.7f);
+//									double lowf = (int)(lowc/5f*9f+32.5f);
+//									double highf = (int)(highc/5f*9f+32.5f);
 //									jsonOneDayForecast.put("low_c", lowc);
 //									jsonOneDayForecast.put("high_c", highc);
 //									jsonOneDayForecast.put("low", lowf);
@@ -288,7 +315,7 @@ public class ComboJSONHandler {
 //							UnivariateRealFunction fn = new SplineInterpolator().interpolate(x,y);
 //							double tempc = fn.value(System.currentTimeMillis());
 //							jsonWeather.putOpt("temp_c",(int)(tempc+0.5d));
-//							jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.7f));
+//							jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.5f));
 //							if (OMC.DEBUG)
 //								Log.i(OMC.OMCSHORT + "7TWeather", jsonWeather.toString());
 //	
@@ -500,8 +527,8 @@ public class ComboJSONHandler {
 //								jsonOneDayForecast.put("condition_code", CONDITIONS.get(day.format("%Y%m%d")));
 //								double lowc = OMC.roundToSignificantFigures(LOWTEMPS.get(day.format("%Y%m%d")),3);
 //								double highc = OMC.roundToSignificantFigures(HIGHTEMPS.get(day.format("%Y%m%d")),3);
-//								double lowf = (int)(lowc/5f*9f+32.7f);
-//								double highf = (int)(highc/5f*9f+32.7f);
+//								double lowf = (int)(lowc/5f*9f+32.5f);
+//								double highf = (int)(highc/5f*9f+32.5f);
 //								jsonOneDayForecast.put("low_c", lowc);
 //								jsonOneDayForecast.put("high_c", highc);
 //								jsonOneDayForecast.put("low", lowf);
@@ -519,7 +546,7 @@ public class ComboJSONHandler {
 //						UnivariateRealFunction fn = new SplineInterpolator().interpolate(x,y);
 //						double tempc = fn.value(System.currentTimeMillis());
 //						jsonWeather.putOpt("temp_c",(int)(tempc+0.5d));
-//						jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.7f));
+//						jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.5f));
 //						if (OMC.DEBUG)
 //							Log.i(OMC.OMCSHORT + "7TWeather", jsonWeather.toString());
 //	

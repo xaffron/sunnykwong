@@ -185,7 +185,7 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 						jsonOneDayForecast = new JSONObject();
 					jsonOneDayForecast.putOpt(localName, sData);
 					if (localName.equals("low") || localName.equals("high")) {
-						int tempC = (int) ((Float.parseFloat(sData) - 32.2f) * 5f / 9f);
+						int tempC = (int) ((Float.parseFloat(sData) - 32f) * 5f / 9f);
 						jsonOneDayForecast.putOpt(localName + "_c", tempC);
 					} else if (localName.equals("condition")) {
 						jsonOneDayForecast.putOpt("condition_lcase", sData.toLowerCase());

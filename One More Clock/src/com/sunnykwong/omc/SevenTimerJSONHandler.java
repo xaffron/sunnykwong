@@ -250,8 +250,8 @@ public class SevenTimerJSONHandler {
 									jsonOneDayForecast.put("condition_code", CONDITIONS.get(day.format("%Y%m%d")));
 									double lowc = OMC.roundToSignificantFigures(LOWTEMPS.get(day.format("%Y%m%d")),3);
 									double highc = OMC.roundToSignificantFigures(HIGHTEMPS.get(day.format("%Y%m%d")),3);
-									double lowf = (int)(lowc/5f*9f+32.7f);
-									double highf = (int)(highc/5f*9f+32.7f);
+									double lowf = (int)(lowc/5f*9f+32.5f);
+									double highf = (int)(highc/5f*9f+32.5f);
 									jsonOneDayForecast.put("low_c", lowc);
 									jsonOneDayForecast.put("high_c", highc);
 									jsonOneDayForecast.put("low", lowf);
@@ -269,7 +269,7 @@ public class SevenTimerJSONHandler {
 							UnivariateRealFunction fn = new SplineInterpolator().interpolate(x,y);
 							double tempc = fn.value(System.currentTimeMillis());
 							jsonWeather.putOpt("temp_c",(int)(tempc+0.5d));
-							jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.7f));
+							jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.5f));
 							if (OMC.DEBUG)
 								Log.i(OMC.OMCSHORT + "7TWeather", jsonWeather.toString());
 	
@@ -481,8 +481,8 @@ public class SevenTimerJSONHandler {
 								jsonOneDayForecast.put("condition_code", CONDITIONS.get(day.format("%Y%m%d")));
 								double lowc = OMC.roundToSignificantFigures(LOWTEMPS.get(day.format("%Y%m%d")),3);
 								double highc = OMC.roundToSignificantFigures(HIGHTEMPS.get(day.format("%Y%m%d")),3);
-								double lowf = (int)(lowc/5f*9f+32.7f);
-								double highf = (int)(highc/5f*9f+32.7f);
+								double lowf = (int)(lowc/5f*9f+32.5f);
+								double highf = (int)(highc/5f*9f+32.5f);
 								jsonOneDayForecast.put("low_c", lowc);
 								jsonOneDayForecast.put("high_c", highc);
 								jsonOneDayForecast.put("low", lowf);
@@ -500,7 +500,7 @@ public class SevenTimerJSONHandler {
 						UnivariateRealFunction fn = new SplineInterpolator().interpolate(x,y);
 						double tempc = fn.value(System.currentTimeMillis());
 						jsonWeather.putOpt("temp_c",(int)(tempc+0.5d));
-						jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.7f));
+						jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.5f));
 						if (OMC.DEBUG)
 							Log.i(OMC.OMCSHORT + "7TWeather", jsonWeather.toString());
 	

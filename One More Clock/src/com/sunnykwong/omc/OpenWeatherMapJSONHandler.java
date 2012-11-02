@@ -93,7 +93,7 @@ public class OpenWeatherMapJSONHandler {
 						// Translate temperature.
 						double tempc = maininfo.getDouble("temp")-273.15;
 						OWMhandler.jsonWeather.put("temp_c", tempc);
-						OWMhandler.jsonWeather.put("temp_f",(int)(tempc*9f/5f+32.7f));
+						OWMhandler.jsonWeather.put("temp_f",(int)(tempc*9f/5f+32.5f));
 						// Translate humidity.
 						OWMhandler.jsonWeather.put("humidity_raw",maininfo.getDouble("humidity"));
 						OWMhandler.jsonWeather.put("humidity", OMC.RString("humiditycondition") +
@@ -225,7 +225,7 @@ public class OpenWeatherMapJSONHandler {
 //								"Temp from " + FROMTIME.format2445() + " to " + TOTIME.format2445() + ":" + tempc);
 //					if (jsonWeather.optString("temp_c","missing").equals("missing")) {
 //						jsonWeather.putOpt("temp_c",tempc);
-//						jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.7f));
+//						jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.5f));
 //					}
 //					String sHTDay =TOTIME.format("%Y%m%d");
 //					String sLDDay =LOWDATE.format("%Y%m%d");
@@ -304,8 +304,8 @@ public class OpenWeatherMapJSONHandler {
 //				jsonOneDayForecast.put("condition_lcase", CONDITIONS.get(day.format("%Y%m%d")).toLowerCase());
 //				double lowc = OMC.roundToSignificantFigures(LOWTEMPS.get(day.format("%Y%m%d")),3);
 //				double highc = OMC.roundToSignificantFigures(HIGHTEMPS.get(day.format("%Y%m%d")),3);
-//				double lowf = (int)(lowc/5f*9f+32.7f);
-//				double highf = (int)(highc/5f*9f+32.7f);
+//				double lowf = (int)(lowc/5f*9f+32.5f);
+//				double highf = (int)(highc/5f*9f+32.5f);
 //				jsonOneDayForecast.put("low_c", lowc);
 //				jsonOneDayForecast.put("high_c", highc);
 //				jsonOneDayForecast.put("low", lowf);

@@ -15,6 +15,7 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -1673,7 +1674,7 @@ public class OMC extends Application {
 						final int iDay = Integer.parseInt(st[iTokenNum++]);
 						final String sFahrenheit = jsonWeather.getJSONArray("zzforecast_conditions").getJSONObject(iDay).optString("high","--");
 						if (OMC.PREFS.getString("weatherDisplay", "f").equals("c")) {
-							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32.2f)*5f/9f+0.5f));
+							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32f)*5f/9f+0.5f));
 						} else {
 							result = sFahrenheit;
 						}
@@ -1681,7 +1682,7 @@ public class OMC extends Application {
 						final int iDay = Integer.parseInt(st[iTokenNum++]);
 						final String sFahrenheit = jsonWeather.getJSONArray("zzforecast_conditions").getJSONObject(iDay).optString("low","--");
 						if (OMC.PREFS.getString("weatherDisplay", "f").equals("c")) {
-							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32.2f)*5f/9f+0.5f));
+							result = String.valueOf((int)((Float.parseFloat(sFahrenheit)-32f)*5f/9f+0.5f));
 						} else {
 							result = sFahrenheit;
 						}
@@ -2410,7 +2411,7 @@ public class OMC extends Application {
 		}
 	}
 	
-	public class ICAOLatLon {
+	public static class ICAOLatLon {
 		public String icao;
 		public double lat;
 		public double lon;
@@ -2421,12 +2422,22 @@ public class OMC extends Application {
 		}
 	}
 	
-	public void parseICAOMap() throws IOException {
+	public static class ICAODistPair {
+		public String icao;
+		public double dist;
+		public ICAODistPair(String ic, double dst){
+			this.icao= ic;
+			this.dist = dst;
+		}
+	}
+	
+	public static void parseICAOMap() throws IOException {
 		final int ICAOCOLUMN = 20;
 		final int LATCOLUMN = 39;
 		final int LONCOLUMN = 47;
 		final int NSCOLUMN = 44;
 		final int EWCOLUMN = 53;
+		final int METARCOLUMN = 62;
 		
 		BufferedReader r = new BufferedReader(new InputStreamReader(OMC.AM.open("stations.txt")));
 		String sLine=null;
@@ -2438,7 +2449,10 @@ public class OMC extends Application {
 				final String sICAO = sLine.substring(ICAOCOLUMN, ICAOCOLUMN+4);
 				final double lat = Double.parseDouble(sLine.substring(LATCOLUMN, LATCOLUMN+5).replace(" ", ".")) * (sLine.charAt(NSCOLUMN)=='N'?1d:-1d);
 				final double lon = Double.parseDouble(sLine.substring(LONCOLUMN, LONCOLUMN+6).replace(" ", ".")) * (sLine.charAt(EWCOLUMN)=='E'?1d:-1d);
+//				If it's not an airport line, just skip
 				if (sICAO.equals("    ") || sICAO.equals("ICAO")) continue;
+//				If it's not a METAR-reporting airport, just skip
+				if (sLine.charAt(METARCOLUMN)!='X') continue;
 				OMC.ICAOLIST.add(new ICAOLatLon(sICAO, lat, lon));
 			} catch (NumberFormatException e) {
 				
@@ -2447,10 +2461,18 @@ public class OMC extends Application {
 		r.close();
 	}
 	
-	public static String findClosestICAO(final double lat1, final double lon1) {
+	public static String flattenString(String[] array) {
+		StringBuilder result = new StringBuilder();
+		for (String s:array) {
+			result.append(s).append(" ");
+		}
+		return result.toString();
+	}
+	
+	public static String[] findClosestICAOs(final double lat1, final double lon1, final int radiusKM) {
 		final double R = 6371; //km
 		double bestDistance = Double.MAX_VALUE;
-		String bestICAO = null;
+		ArrayList<ICAODistPair> bestICAOs = new ArrayList<ICAODistPair>();
 		
 		Iterator<ICAOLatLon> i = OMC.ICAOLIST.iterator();
 		while (i.hasNext()) {
@@ -2464,11 +2486,25 @@ public class OMC extends Application {
 			        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(latR1) * Math.cos(latR2); 
 			double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 			double dist = R * c;
-			if (dist<=bestDistance) {
-				bestDistance = dist;
-				bestICAO = station.icao;
-			}
+			
+			if (dist>radiusKM) continue;
+			
+			bestICAOs.add(new ICAODistPair(station.icao, dist));
+			
 		}
-		return bestICAO;
+		if (bestICAOs.isEmpty()) return null;
+		Collections.sort(bestICAOs,new Comparator<ICAODistPair>() {
+			@Override
+			public int compare(ICAODistPair lhs, ICAODistPair rhs) {
+				if (lhs.dist<rhs.dist) return -1;
+				else if (lhs.dist>rhs.dist) return 1;
+				else return 0;
+			}
+		});
+		String[] result = new String[bestICAOs.size()];
+		for (int j=0;j<bestICAOs.size();j++) {
+			result[j]=bestICAOs.get(j).icao;
+		}
+		return result;
 	}
 }

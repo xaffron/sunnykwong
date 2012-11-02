@@ -388,8 +388,8 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 			jsonWeather.putOpt("wind_speed_mps", iWindSpeedMps);
 
 			// Convert current temp and dewpoint from f to c.
-			jsonWeather.putOpt("temp_c",(int)((jsonWeather.optDouble("temp_f")-32.2)/9d*5d+0.5d));
-			jsonWeather.putOpt("dewpoint_c",(int)((jsonWeather.optDouble("dewpoint_f")-32.2)/9d*5d+0.5d));
+			jsonWeather.putOpt("temp_c",(int)((jsonWeather.optDouble("temp_f")-32)/9d*5d+0.5d));
+			jsonWeather.putOpt("dewpoint_c",(int)((jsonWeather.optDouble("dewpoint_f")-32)/9d*5d+0.5d));
 
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -432,8 +432,8 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 						LOWTEMPS.get(i), 3);
 				double highf = OMC.roundToSignificantFigures(
 						HIGHTEMPS.get(i), 3);
-				double lowc = (int) (((lowf-32.2f) / 9f * 5f)+0.5f);
-				double highc = (int) (((highf-32.2f) / 9f * 5f)+0.5f);
+				double lowc = (int) (((lowf-32f) / 9f * 5f)+0.5f);
+				double highc = (int) (((highf-32f) / 9f * 5f)+0.5f);
 				jsonOneDayForecast.put("low_c", lowc);
 				jsonOneDayForecast.put("high_c", highc);
 				jsonOneDayForecast.put("low", lowf);
