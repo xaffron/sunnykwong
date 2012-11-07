@@ -400,6 +400,22 @@ public class OMCPrefActivity extends PreferenceActivity {
     		}
 
         	
+        	// "Weather via METAR".
+        	findPreference("weatherMETAR").setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+		    		if (newValue.equals(true)) {
+		        		preference.setSummary(OMC.RString("usingMETAR"));
+		    		} else {
+		        		preference.setSummary(OMC.RString("usingInterpolation"));
+		    		}
+			    	return true;
+				}
+			});
+        	if (OMC.PREFS.getBoolean("weatherMETAR",true)==true)
+        		findPreference("weatherMETAR").setSummary(OMC.RString("usingMETAR"));
+        	else findPreference("weatherMETAR").setSummary(OMC.RString("usingInterpolation"));
+
         	// "Weather Display Units".
         	prefWeatherDisplay = findPreference("weatherDisplay");
         	prefWeatherDisplay.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {

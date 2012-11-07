@@ -67,8 +67,8 @@ public class OMCProvider extends ContentProvider {
                         return new AssetFileDescriptor(ParcelFileDescriptor.open(f,
                                 ParcelFileDescriptor.MODE_READ_ONLY), 0, AssetFileDescriptor.UNKNOWN_LENGTH);
                 } else {
-                        if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Provider","widget png missing - return transparent png");
-                        return OMC.RES.openRawResourceFd(OMC.RDrawableId("transparent"));
+                        if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Provider","widget png missing - return null");
+                        return null;
                 }
 
         }

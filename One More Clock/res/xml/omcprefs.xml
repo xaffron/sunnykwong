@@ -88,6 +88,14 @@
                 android:summary="@string/usingFahrenheit"
                 android:title="@string/weatherDisplayUnits" >
             </ListPreference>
+            <CheckBoxPreference 
+                android:enabled="true"
+                android:key="weatherMETAR"
+                android:selectable="true"
+                android:summary="@string/usingMETAR"
+                android:title="@string/useMETAR" 
+                android:defaultValue="true" >
+            </CheckBoxPreference>
             <ListPreference
                 android:enabled="true"
                 android:entries="@array/interval_options"

@@ -20,60 +20,16 @@ public class Metar {
 	public double windVarFrom, windVarTo;
 	public double gustsKT, gustsMPS, gustsMPH;
 	public double visMI, visKM;
-    public static final ArrayList<String> CLOUDCODES = new ArrayList<String>();
-    public static final ArrayList<String> WEATHERCODES = new ArrayList<String>();
-    public static final ArrayList<String> WEATHERMODIFIERS = new ArrayList<String>();
 	
-    static {
-    	CLOUDCODES.add("SKC");
-    	CLOUDCODES.add("CLR");
-    	CLOUDCODES.add("NSC"); 
-    	CLOUDCODES.add("FEW"); //Few
-    	CLOUDCODES.add("SCT"); //Scattered
-    	CLOUDCODES.add("BKN"); //Broken
-    	CLOUDCODES.add("OVC"); //Overcast
-
-    	WEATHERMODIFIERS.add("BC"); //Patches
-    	WEATHERMODIFIERS.add("BL"); //Blowing
-    	WEATHERMODIFIERS.add("DR"); //Low Drifting
-    	WEATHERMODIFIERS.add("FZ"); //Freezing
-    	WEATHERMODIFIERS.add("MI"); //Shallow
-    	WEATHERMODIFIERS.add("RE"); //Recent
-    	WEATHERMODIFIERS.add("SH"); //Showers
-    	WEATHERMODIFIERS.add("TS"); //T-storms
-    	WEATHERMODIFIERS.add("VC"); //In Vicinity
-    	
-    	WEATHERCODES.add("BR"); //Mist
-    	WEATHERCODES.add("DS"); //Duststorm
-    	WEATHERCODES.add("DU"); //Dust
-    	WEATHERCODES.add("DZ"); //Drizzle
-    	WEATHERCODES.add("FC"); //Funnel Cloud/Tornado/Waterspout
-    	WEATHERCODES.add("FG"); //Fog
-    	WEATHERCODES.add("FU"); //Smoke
-    	WEATHERCODES.add("GR"); //Hail
-    	WEATHERCODES.add("GS"); //Small Hail
-    	WEATHERCODES.add("HZ"); //Haze
-    	WEATHERCODES.add("IC"); //Diamond Dust
-    	WEATHERCODES.add("PE"); //Ice Pellets
-    	WEATHERCODES.add("PL"); //Ice Pellets
-    	WEATHERCODES.add("PO"); //Dust Devils
-    	WEATHERCODES.add("RA"); //Rain
-    	WEATHERCODES.add("SA"); //Sand
-    	WEATHERCODES.add("SG"); //Snow Grains
-    	WEATHERCODES.add("SN"); //Snow
-    	WEATHERCODES.add("SQ"); //Squall
-    	WEATHERCODES.add("SS"); //Sandstorm
-    	WEATHERCODES.add("VA"); //Volcanic Ash
-    	WEATHERCODES.add("UP"); //Unidentified precipitation
-    }
-    
 	public static Metar parse(final String sICAO, final String sObservation) {
 		if (sObservation==null) throw new MetarParsingException();
 		Metar metar = new Metar();
 		metar.icao = (sICAO==null?null:sICAO);
 		metar.ob = sObservation;
 		
-		final String[] tokens = sObservation.split(" ");
+        if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"METAR","Raw report: " + sObservation);
+		
+		final String[] tokens = sObservation.split("[\\s(\\r?\\n)]");
 		int iMarker = 0;
 
 		// Get rid of initial stuff first.
@@ -92,6 +48,8 @@ public class Metar {
 			if (metar.icao==null) metar.icao=token;
 			break;
 		}
+		System.out.println("DONE WITH HEADER");
+		iMarker++;
 		
 		// Getting into the meat of things.
 		// Parse Timestamp and Wind
@@ -173,7 +131,7 @@ public class Metar {
             	metar.windVarTo=0;
             	int gustpos=token.indexOf('G');
             	if (gustpos!=-1) {
-            		String sGusts = token.substring(gustpos,gustpos+3);
+            		String sGusts = token.substring(gustpos+1,gustpos+4);
                 	if (sGusts.startsWith("P")) metar.gustsKT = Double.parseDouble("1"+sGusts.substring(1,3));
                 	else metar.gustsKT = Double.parseDouble(sGusts.substring(0,2));
             		metar.gustsMPH=kt2mph(metar.gustsKT);
@@ -183,6 +141,13 @@ public class Metar {
             		metar.gustsMPH=0;
             		metar.gustsMPS=0;
             	}
+            	String nextToken = tokens[i+1];
+                // Check for variable wind directions
+                if (nextToken.length()==7 && nextToken.charAt(3)=='V') {
+                	metar.windVarFrom=Integer.parseInt(nextToken.substring(0,3)); 
+                	metar.windVarTo=Integer.parseInt(nextToken.substring(4,7)); 
+                }
+                break;
             } 
             
             if (token.endsWith("KMH")||token.endsWith("KPH")) {
@@ -211,6 +176,13 @@ public class Metar {
             		metar.gustsMPH=0;
             		metar.gustsMPS=0;
             	}
+            	String nextToken = tokens[i+1];
+                // Check for variable wind directions
+                if (nextToken.length()==7 && nextToken.charAt(3)=='V') {
+                	metar.windVarFrom=Integer.parseInt(nextToken.substring(0,2)); 
+                	metar.windVarTo=Integer.parseInt(nextToken.substring(2,4)); 
+                }
+                break;
             }
             if (token.endsWith("MPS")) {
             	final String dir = token.substring(0,3);
@@ -235,20 +207,24 @@ public class Metar {
             		metar.gustsMPH=0;
             		metar.gustsMPS=0;
             	}
+            	String nextToken = tokens[i+1];
+                // Check for variable wind directions
+                if (nextToken.length()==7 && nextToken.charAt(3)=='V') {
+                	metar.windVarFrom=Integer.parseInt(nextToken.substring(0,2)); 
+                	metar.windVarTo=Integer.parseInt(nextToken.substring(2,4)); 
+                }
+                break;
             }
             	
-            // Check for variable wind directions
-            if (token.length()==7 && token.charAt(3)=='V' && 
-            		(tokens[i-1].endsWith("KT")||token.endsWith("KMH")||token.endsWith("MPS"))) {
-            	metar.windVarFrom=Integer.parseInt(token.substring(0,2)); 
-            	metar.windVarTo=Integer.parseInt(token.substring(2,4)); 
-            }
 
             // Update the token marker.
             iMarker=i;
 
 		}
             
+		System.out.println("DONE WITH TS/WIND");
+		iMarker+=2;
+		
 		// Next, Parse visibility
 		
 		sModifier=null;
@@ -276,180 +252,197 @@ public class Metar {
             
             // Update the token marker.
             iMarker=i;
+            break;
 		}
+		
+		System.out.println("DONE WITH VISIBILITY");
 		
 		// Next, Parse weather
 		
 		sModifier=null;
 		ArrayList<String> weatherTokens = new ArrayList<String>();
+		
+		// Add the clear skies indicator as a baseline - it will be used if all other "prevailing conditions" fail.
+    	weatherTokens.add("SKC");
 
 		for (int i=iMarker;i<tokens.length;i++) {
 			String token = new String(tokens[i]);
+			// Parse all weather and cloud conditions... if we see a temperature marker, bail.
+			if (token.contains("/")) break;
+			
             if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"METAR","Got phrase " + token);
-
-            //Intensity
-            if (token.startsWith("+")) {
-            	sModifier = "heavy";
-            	token = token.substring(1);
-            }
-            else if (token.startsWith("-")) {
-            	sModifier = "light";
-            	token = token.substring(1);
-            }
-
-            if (token.length()%2!=0) throw new MetarParsingException();
+            // Reset the modifier
+            sModifier="";
             
-            for (int j=0; j< token.length(); j+=2) {
-            	String subtoken = token.substring(j,j+2);
-            	weatherTokens.add(subtoken);
+            // If it says CAVOK, skip this whole thing
+            if (token.equals("CAVOK") || token.equals("CLR") || token.equals("SKC")) {
+            	iMarker++;
+            	break;
             }
-            
+            // If it has numbers in positions 4 thru 6, it's a cloud condition
+            if (token.length()>=6) {
+            		if (isNumeric(token.substring(3,6))) {
+            			weatherTokens.add(token.substring(0,3));
+            			iMarker++;
+            		}
+            // Otherwise, it's a weather indicator
+            } else {
+	            //Intensity
+	            if (token.startsWith("+")) {
+	            	sModifier = "heavy";
+	            	token = token.substring(1);
+	            }
+	            else if (token.startsWith("-")) {
+	            	sModifier = "light";
+	            	token = token.substring(1);
+	            }
+	
+	            if (token.length()%2!=0) throw new MetarParsingException();
+	            
+	            for (int j=0; j< token.length(); j+=2) {
+	            	String subtoken = token.substring(j,j+2);
+	            	weatherTokens.add(subtoken);
+	            }
+            	iMarker++;
+            }
+
             // OK, now we have a list of weathertokens denoting weather conditions.  
+            // We have added the cloud cover data to the weather conditions as well.
+            
 		}
             
-		iMarker++;
+		System.out.println("DONE WITH WEATHER/CLOUDS");
 		
+		
+	    // Find prevailing weather!
+	    	// 1. Hurricanes.
+	    if (metar.windSpdMPH>=74) {
+	    	metar.condition="hurricane";
+	    	metar.OMCConditionCode=39;
+	    	// 2. Tornadoes.
+	    } else if (weatherTokens.contains("FC")) {
+	    	metar.condition="tornado";
+	    	metar.OMCConditionCode=39;
+	    	// 3. Volcanic Ash.
+	    } else if (weatherTokens.contains("VA")) {
+	    	metar.condition="volcanic ash";
+	    	metar.OMCConditionCode=9;
+	    	// 4. Ice.
+	    } else if (weatherTokens.contains("IC") || weatherTokens.contains("PL") || weatherTokens.contains("PE")) {
+	    	metar.condition="ice pellets";
+	    	metar.OMCConditionCode=36;
+	    	// 5. T-storms.
+	    } else if (weatherTokens.contains("TS")) {
+	    	metar.condition="thunderstorms";
+	    	metar.OMCConditionCode=21;
+	    	// 6. Storms.
+	    } else if (weatherTokens.contains("TS") && sModifier.equals("light")) {
+	    	metar.condition="storm";
+	    	metar.OMCConditionCode=25;
+	    	// 7. Snow.
+	    } else if (weatherTokens.contains("SN") || weatherTokens.contains("SG")) {
+	    	if (weatherTokens.contains("SH") && sModifier.equals("light")) {
+	        	metar.condition="light snow showers";
+	        	metar.OMCConditionCode=32;
+	    	} else if (weatherTokens.contains("SH")) {
+	        	metar.condition="snow showers";
+	        	metar.OMCConditionCode=31;
+	    	} else if (sModifier.equals("light")) {
+	        	metar.condition="light snow";
+	        	metar.OMCConditionCode=29;
+	    	} {
+	        	metar.condition="snow";
+	        	metar.OMCConditionCode=33;
+	    	}
+	    	// 8. Dust- or Sandstorms.
+	    } else if (weatherTokens.contains("DS") || weatherTokens.contains("DU")) {
+	    	metar.condition="dust";
+	    	metar.OMCConditionCode=6;
+	    } else if (weatherTokens.contains("SS")) {
+	    	metar.condition="sandstorm";
+	    	metar.OMCConditionCode=6;
+	    	// 9. Fog.
+	    } else if (weatherTokens.contains("FG") && !weatherTokens.contains("BC")) {
+	    	metar.condition="fog";
+	    	metar.OMCConditionCode=13;
+	    	// 10. Mist.
+	    } else if (weatherTokens.contains("BR")) {
+	    	metar.condition="mist";
+	    	metar.OMCConditionCode=8;
+	    	// 11. Smoke.
+	    } else if (weatherTokens.contains("FU")) {
+	    	metar.condition="smoke";
+	    	metar.OMCConditionCode=9;
+	    	// 12. Patchy Fog.
+	    } else if (weatherTokens.contains("FG") && weatherTokens.contains("BC")) {
+	    	metar.condition="patchy fog";
+	    	metar.OMCConditionCode=13;
+	    	// 13. Windy.
+	    } else if (weatherTokens.contains("SQ") || metar.windSpdMPH>=40) {
+	    	metar.condition="windy";
+	    	metar.OMCConditionCode=39;
+	    	// 14. Drizzle.
+	    } else if (weatherTokens.contains("DZ")) {
+	    	if (weatherTokens.contains("FZ")) {
+	        	metar.condition="freezing drizzle";
+	        	metar.OMCConditionCode=37;
+	    	} else {
+	        	metar.condition="drizzle";
+	        	metar.OMCConditionCode=16;
+	    	}
+	    	// 15. Rain.
+	    } else if (weatherTokens.contains("RA")) {
+	    	if (weatherTokens.contains("FZ")) {
+	        	metar.condition="freezing rain";
+	        	metar.OMCConditionCode=37;
+	    	} else if (sModifier.equals("heavy")) {
+	        	metar.condition="heavy rain";
+	        	metar.OMCConditionCode=26;
+	    	} else if (sModifier.equals("light")) {
+	        	metar.condition="light rain";
+	        	metar.OMCConditionCode=14;
+	    	} else {
+	        	metar.condition="rain";
+	        	metar.OMCConditionCode=27;
+	    	}
+	    	// 16. Showers.
+	    } else if (weatherTokens.contains("SH")) {
+	    	if (weatherTokens.contains("SN")) {
+	        	metar.condition="snow showers";
+	        	metar.OMCConditionCode=31;
+	    	} else if (sModifier.equals("RA")) {
+	        	metar.condition="rain showers";
+	        	metar.OMCConditionCode=15;
+	    	} else {
+	        	metar.condition="showers";
+	        	metar.OMCConditionCode=17;
+	    	}
+	    	// 17. Overcast.
+	    } else if (weatherTokens.contains("OVC")) {
+	    	metar.condition="overcast";
+	    	metar.OMCConditionCode=11;
+	    	// 18. Mostly Cloudy.
+	    } else if (weatherTokens.contains("BKN")) {
+	    	metar.condition="mostly cloudy";
+	    	metar.OMCConditionCode=9;
+	    	// 19. Partly Cloudy.
+	    } else if (weatherTokens.contains("SCT")) {
+	    	metar.condition="partly cloudy";
+	    	metar.OMCConditionCode=5;
+	    	// 20. Mostly Clear.
+	    } else if (weatherTokens.contains("FEW")) {
+	    	metar.condition="mostly clear";
+	    	metar.OMCConditionCode=3;
+	    	// 21. Clear.
+	    } else if (weatherTokens.contains("SKC")) {
+	    	metar.condition="clear";
+	    	metar.OMCConditionCode=1;
+	    }
+            	
 		for (int i=iMarker;i<tokens.length;i++) {
 			String token = new String(tokens[i]);
-            if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"METAR","Got phrase " + token);
+	        if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"METAR","Got phrase " + token);
 
-            // OK, now we have added the worst cloud cover to the weather conditions as well.
-            
-            // Find prevailing weather!
-            	// 1. Hurricanes.
-            if (metar.windSpdMPH>=74) {
-            	metar.condition="hurricane";
-            	metar.OMCConditionCode=39;
-            	// 2. Tornadoes.
-            } else if (weatherTokens.contains("FC")) {
-            	metar.condition="tornado";
-            	metar.OMCConditionCode=39;
-            	// 3. Volcanic Ash.
-            } else if (weatherTokens.contains("VA")) {
-            	metar.condition="volcanic ash";
-            	metar.OMCConditionCode=9;
-            	// 4. Ice.
-            } else if (weatherTokens.contains("IC") || weatherTokens.contains("PL") || weatherTokens.contains("PE")) {
-            	metar.condition="ice pellets";
-            	metar.OMCConditionCode=36;
-            	// 5. T-storms.
-            } else if (weatherTokens.contains("TS")) {
-            	metar.condition="thunderstorms";
-            	metar.OMCConditionCode=21;
-            	// 5a. Storms.
-            } else if (weatherTokens.contains("TS") && sModifier.equals("light")) {
-            	metar.condition="storm";
-            	metar.OMCConditionCode=25;
-            	// 6. Snow.
-            } else if (weatherTokens.contains("SN") || weatherTokens.contains("SG")) {
-            	if (weatherTokens.contains("SH") && sModifier.equals("light")) {
-                	metar.condition="light snow showers";
-                	metar.OMCConditionCode=32;
-            	} else if (weatherTokens.contains("SH")) {
-                	metar.condition="snow showers";
-                	metar.OMCConditionCode=31;
-            	} else if (sModifier.equals("light")) {
-                	metar.condition="light snow";
-                	metar.OMCConditionCode=29;
-            	} {
-                	metar.condition="snow";
-                	metar.OMCConditionCode=33;
-            	}
-            	// 7. Dust- or Sandstorms.
-            } else if (weatherTokens.contains("DS") || weatherTokens.contains("DU")) {
-            	metar.condition="dust";
-            	metar.OMCConditionCode=6;
-            } else if (weatherTokens.contains("SS")) {
-            	metar.condition="sandstorm";
-            	metar.OMCConditionCode=6;
-            	// 8. Fog.
-            } else if (weatherTokens.contains("FG") && !weatherTokens.contains("BC")) {
-            	metar.condition="fog";
-            	metar.OMCConditionCode=13;
-            	// 8a. Mist.
-            } else if (weatherTokens.contains("BR")) {
-            	metar.condition="mist";
-            	metar.OMCConditionCode=8;
-            	// 9. Smoke.
-            } else if (weatherTokens.contains("FU")) {
-            	metar.condition="smoke";
-            	metar.OMCConditionCode=9;
-            	// 10. Patchy Fog.
-            } else if (weatherTokens.contains("FG") && weatherTokens.contains("BC")) {
-            	metar.condition="patchy fog";
-            	metar.OMCConditionCode=13;
-            	// 11. Windy.
-            } else if (weatherTokens.contains("FU")) {
-            	metar.condition="smoke";
-            	metar.OMCConditionCode=9;
-            	// 12. Breezy.
-            } else if (weatherTokens.contains("FU")) {
-            	metar.condition="smoke";
-            	metar.OMCConditionCode=9;
-            	// 13. Drizzle.
-            } else if (weatherTokens.contains("DZ")) {
-            	if (weatherTokens.contains("FZ")) {
-                	metar.condition="freezing drizzle";
-                	metar.OMCConditionCode=37;
-            	} else {
-                	metar.condition="drizzle";
-                	metar.OMCConditionCode=16;
-            	}
-            	// 14. Rain.
-            } else if (weatherTokens.contains("RA")) {
-            	if (weatherTokens.contains("FZ")) {
-                	metar.condition="freezing rain";
-                	metar.OMCConditionCode=37;
-            	} else if (sModifier.equals("heavy")) {
-                	metar.condition="heavy rain";
-                	metar.OMCConditionCode=26;
-            	} else if (sModifier.equals("light")) {
-                	metar.condition="light rain";
-                	metar.OMCConditionCode=14;
-            	} else {
-                	metar.condition="rain";
-                	metar.OMCConditionCode=9;
-            	}
-            	// 15. Showers.
-            } else if (weatherTokens.contains("SH")) {
-            	if (weatherTokens.contains("SN")) {
-                	metar.condition="snow showers";
-                	metar.OMCConditionCode=31;
-            	} else if (sModifier.equals("RA")) {
-                	metar.condition="rain showers";
-                	metar.OMCConditionCode=15;
-            	} else {
-                	metar.condition="showers";
-                	metar.OMCConditionCode=17;
-            	}
-            	// 16. Overcast.
-            } else if (weatherTokens.contains("FU")) {
-            	metar.condition="smoke";
-            	metar.OMCConditionCode=9;
-            	// 18. Mostly Cloudy.
-            } else if (weatherTokens.contains("FU")) {
-            	metar.condition="smoke";
-            	metar.OMCConditionCode=9;
-            	// 19. Partly Cloudy.
-            } else if (weatherTokens.contains("FU")) {
-            	metar.condition="smoke";
-            	metar.OMCConditionCode=9;
-            	// 20. Smog.
-            } else if (weatherTokens.contains("FU")) {
-            	metar.condition="smoke";
-            	metar.OMCConditionCode=9;
-            	// 21. Mostly Clear.
-            } else if (weatherTokens.contains("FU")) {
-            	metar.condition="smoke";
-            	metar.OMCConditionCode=9;
-            	// 22. Clear.
-            } else if (weatherTokens.contains("FU")) {
-            	metar.condition="smoke";
-            	metar.OMCConditionCode=9;
-            }
-            	
-            	
-            	
             // Check for Temp/Dew Point
             if (token.contains("/")) {
                 // Not dealing with runway visual range blocks right now
@@ -458,24 +451,33 @@ public class Metar {
             	String sTemp = token.substring(0,iDivider);
             	String sDew = token.substring(iDivider+1,token.length());
             	if (sTemp.startsWith("M")) metar.tempC = -1d*Double.parseDouble(sTemp.substring(1,3));
-            	else metar.tempC = -1d*Double.parseDouble(sTemp.substring(0,2));
+            	else metar.tempC = Double.parseDouble(sTemp.substring(0,2));
             	if (sDew.startsWith("M")) metar.dewC = -1d*Double.parseDouble(sDew.substring(1,3));
-            	else metar.dewC = -1d*Double.parseDouble(sDew.substring(0,2));
+            	else metar.dewC = Double.parseDouble(sDew.substring(0,2));
             	metar.tempF = c2f(metar.tempC);
             	metar.dewF = c2f(metar.dewC);
+            	break;
             }
 
-            // Check for Cloud Coverage
-        
-            
-            // Check for NOSIG/CAVOK
-            
-            // Check for Extreme Conditions
-            
-            
-            
 		}
+		
+		System.out.println("DONE WITH TEMPS");
+		iMarker++;
+		
+	    
+		// WHEW!  We're done.
+		
 		return metar;
+	}
+	
+	public void debugPrint() {
+		System.out.println("----------");
+		System.out.println("METAR @ " + icao +" :");
+		System.out.println("Temp: " + tempC + "C/"+tempF + "F");
+		System.out.println("Dew: " + dewC + "C/"+dewF + "F");
+		System.out.println("Condition: (" + OMCConditionCode + ") " + OMC.VERBOSEWEATHER[OMCConditionCode]);
+		System.out.println("Wind: " + windDirString + " @ " + windSpdMPH + "mph");
+		System.out.println("----------");
 	}
 	
 	public static String getWindDir(String degrees) {

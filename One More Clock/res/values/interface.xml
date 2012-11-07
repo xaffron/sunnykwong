@@ -247,6 +247,10 @@
         <string name="usingFahrenheit">Using Fahrenheit</string>
         <string name="usingCelsius">Using Celsius</string>
         
+        <string name="useMETAR">Weather via METAR</string>
+        <string name="usingMETAR">Conditions decoded from nearest airport</string>
+        <string name="usingInterpolation">Conditions extracted/interpolated from provider</string>
+        
         <string name="clockUpdateInterval">Clock Update Interval</string>
 		<string-array name="interval_options">
 		  <item>1 sec (Extreme Batt Use)</item>	
