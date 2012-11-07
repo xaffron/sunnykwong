@@ -399,8 +399,7 @@ public class OMC extends Application {
         					} else if (sWProvider.equals("owm")) {
         						OpenWeatherMapJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					} else if (sWProvider.equals("noaa")) {
-        						METARHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
-//        						NOAAWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+        						NOAAWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					} else {
         						SevenTimerJSONHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					}  
@@ -2260,8 +2259,7 @@ public class OMC extends Application {
 				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
 				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);
 			} else if (sWProvider.equals("noaa")) {
-				METARHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
-//				NOAAWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
+				NOAAWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
 				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 
 				OMC.jsonFIXEDLOCN.optString("country","Unknown"), 
 				OMC.jsonFIXEDLOCN.optString("city","Unknown"), true);

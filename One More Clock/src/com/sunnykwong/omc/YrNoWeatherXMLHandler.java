@@ -18,6 +18,7 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
 
+import android.location.Location;
 import android.os.Build;
 import android.text.format.Time;
 import android.util.Log;
@@ -70,6 +71,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 	public static String CACHEDFORECAST;
 	public static long CACHEDFORECASTMILLIS = 0l;
 	public static boolean LOCATIONCHANGED;
+	public static double LASTLAT,LASTLONG;
 	public static String LASTUSEDCITY, LASTUSEDCOUNTRY;
 	public static double[] FCSTCURVEX, FCSTCURVEY;
 
@@ -128,6 +130,8 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 		} else {
 			LOCATIONCHANGED = false;
 		}
+		YrNoWeatherXMLHandler.LASTLAT = latitude;
+		YrNoWeatherXMLHandler.LASTLONG = longitude;
 
 		if (LOCATIONCHANGED) {
 			// Update weather from provider.
@@ -610,6 +614,9 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				.putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH)
 				.commit();
 
+		if (OMC.PREFS.getBoolean("weatherMETAR", true)) {
+			METARHandler.updateWeather(LASTLAT, LASTLONG, OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+		}
 	}
 
 }
