@@ -48,7 +48,7 @@ public class Metar {
 			if (metar.icao==null) metar.icao=token;
 			break;
 		}
-		System.out.println("DONE WITH HEADER");
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"METAR","DONE WITH HEADER");
 		iMarker++;
 		
 		// Getting into the meat of things.
@@ -114,6 +114,7 @@ public class Metar {
             	} else {
             		throw new MetarParsingException();
             	}
+            	metar.timestamp=t;
             }
         
             // Check for Wind
@@ -222,7 +223,7 @@ public class Metar {
 
 		}
             
-		System.out.println("DONE WITH TS/WIND");
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"METAR","DONE WITH TS/WIND");
 		iMarker+=2;
 		
 		// Next, Parse visibility
@@ -255,7 +256,7 @@ public class Metar {
             break;
 		}
 		
-		System.out.println("DONE WITH VISIBILITY");
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"METAR","DONE WITH VISIBILITY");
 		
 		// Next, Parse weather
 		
@@ -311,7 +312,7 @@ public class Metar {
             
 		}
             
-		System.out.println("DONE WITH WEATHER/CLOUDS");
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"METAR","DONE WITH WEATHER/CLOUDS");
 		
 		
 	    // Find prevailing weather!
@@ -456,12 +457,15 @@ public class Metar {
             	else metar.dewC = Double.parseDouble(sDew.substring(0,2));
             	metar.tempF = c2f(metar.tempC);
             	metar.dewF = c2f(metar.dewC);
+            	
+            	//Approximate rel. humidity
+            	metar.relHumidity = 100d * Math.pow((112d-0.1*metar.tempC+metar.dewC)/(112d + 0.9d*metar.tempC), 8);
             	break;
             }
 
 		}
 		
-		System.out.println("DONE WITH TEMPS");
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"METAR","DONE WITH TEMPS");
 		iMarker++;
 		
 	    
@@ -471,13 +475,18 @@ public class Metar {
 	}
 	
 	public void debugPrint() {
-		System.out.println("----------");
-		System.out.println("METAR @ " + icao +" :");
-		System.out.println("Temp: " + tempC + "C/"+tempF + "F");
-		System.out.println("Dew: " + dewC + "C/"+dewF + "F");
-		System.out.println("Condition: (" + OMCConditionCode + ") " + OMC.VERBOSEWEATHER[OMCConditionCode]);
-		System.out.println("Wind: " + windDirString + " @ " + windSpdMPH + "mph");
-		System.out.println("----------");
+		if (OMC.DEBUG) {
+			Time tLocal = new Time(timestamp);
+			tLocal.switchTimezone(Time.getCurrentTimezone());
+			Log.i(OMC.OMCSHORT+"METAR","----------");
+			Log.i(OMC.OMCSHORT+"METAR","METAR @ " + icao +" :");
+			Log.i(OMC.OMCSHORT+"METAR","Date/Time: " + tLocal.format3339(false));
+			Log.i(OMC.OMCSHORT+"METAR","Temp: " + tempC + "C/"+tempF + "F");
+			Log.i(OMC.OMCSHORT+"METAR","Dew: " + dewC + "C/"+dewF + "F");
+			Log.i(OMC.OMCSHORT+"METAR","Condition: (" + OMCConditionCode + ") " + OMC.VERBOSEWEATHER[OMCConditionCode]);
+			Log.i(OMC.OMCSHORT+"METAR","Wind: " + windDirString + " @ " + windSpdMPH + "mph");
+			Log.i(OMC.OMCSHORT+"METAR","----------");
+		}
 	}
 	
 	public static String getWindDir(String degrees) {

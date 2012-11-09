@@ -387,9 +387,9 @@ public class OMC extends Application {
         					GoogleReverseGeocodeService.updateLocation(location);
         	        		OMC.WEATHERREFRESHSTATUS=OMC.WRS_GEOCODE;
 
-        	        		if (OMC.LASTKNOWNCOUNTRY.equals("United States")) {
-        	    				OMC.PREFS.edit().putString("weatherProvider", "noaa").commit();
-        	    			}
+//        	        		if (OMC.LASTKNOWNCOUNTRY.equals("United States")) {
+//        	    				OMC.PREFS.edit().putString("weatherProvider", "noaa").commit();
+//        	    			}
         	    			
         					final String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
         					if (sWProvider.equals("ig")) {

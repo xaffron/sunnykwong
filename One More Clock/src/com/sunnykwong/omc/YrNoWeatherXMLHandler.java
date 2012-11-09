@@ -441,10 +441,8 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 						OMC.VERBOSEWEATHER[iConditionCode]);
 				jsonOneDayForecast.put("condition_lcase",
 						OMC.VERBOSEWEATHER[iConditionCode].toLowerCase());
-				double lowc = OMC.roundToSignificantFigures(
-						LOWTEMPS.get(day.format("%Y%m%d")), 3);
-				double highc = OMC.roundToSignificantFigures(
-						HIGHTEMPS.get(day.format("%Y%m%d")), 3);
+				double lowc = LOWTEMPS.get(day.format("%Y%m%d"));
+				double highc = HIGHTEMPS.get(day.format("%Y%m%d"));
 				double lowf = (int) (lowc / 5f * 9f + 32.5f);
 				double highf = (int) (highc / 5f * 9f + 32.5f);
 				jsonOneDayForecast.put("low_c", lowc);
@@ -615,7 +613,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				.commit();
 
 		if (OMC.PREFS.getBoolean("weatherMETAR", true)) {
-			METARHandler.updateWeather(LASTLAT, LASTLONG, OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
+			METARHandler.updateCurrentConditions(LASTLAT, LASTLONG);
 		}
 	}
 

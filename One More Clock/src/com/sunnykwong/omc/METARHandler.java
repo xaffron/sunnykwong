@@ -1,11 +1,10 @@
 package com.sunnykwong.omc;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URLConnection;
+import java.io.InputStream;
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPReply;
 
-import org.apache.commons.math.analysis.SplineInterpolator;
-import org.apache.commons.math.analysis.UnivariateRealFunction;
 import java.net.URL;
 import java.util.HashMap;
 import org.json.JSONArray;
@@ -25,134 +24,108 @@ public class METARHandler {
 	public static String LASTUSEDCITY, LASTUSEDCOUNTRY;
 	
 	//public static final String URL_V4CIVIL = "http://www.7timer.com/v4/bin/civil.php?app=omc&output=json&tzshift=0&unit=metric&lang=en&ac=0";
-	public static final String URL_NOAAMETAR = "ftp://tgftp.nws.noaa.gov/data/observations/metar/stations/";
-	public static JSONObject tempJson, jsonWeather, jsonOneDayForecast;
-	public static HashMap<String, Double> LOWTEMPS;
-	public static HashMap<String, Double> HIGHTEMPS;
-	public static HashMap<String, Integer> CONDITIONS;
-	public static HashMap<String, Integer> CONDITIONTRANSLATIONS;
+	public static final String HOST_NOAAMETAR = "tgftp.nws.noaa.gov";
+	public static final String PATH_NOAAMETAR = "/data/observations/metar/stations/";
+	public static JSONObject jsonWeather;
  
-	static public void updateWeather(final double latitude, final double longitude, final String country, final String city, final boolean bylatlong) {
+	static public void updateCurrentConditions(final double latitude, final double longitude) {
 
-		// If the city or country is empty, it's the first time this is run - location has changed.
-		if (LASTUSEDCITY==null || LASTUSEDCOUNTRY==null) {
-			LASTUSEDCITY = city;
-			LASTUSEDCOUNTRY = country;
-			LOCATIONCHANGED=true;
-		// If either city and country have changed, 
-		// set the location change flag to true.
-		} else if (!LASTUSEDCITY.equals(city) || !LASTUSEDCOUNTRY.equals(country)) {
-			LASTUSEDCITY = city;
-			LASTUSEDCOUNTRY = country;
-			LOCATIONCHANGED=true;
-		// If city and country have not changed, 
-		// but we've lost the cached forecast or the 
-		// cached weather is older than 7 hours
-		// set the location change flag to true.
-		} else if (CACHEDFORECAST==null || System.currentTimeMillis()-CACHEDFORECASTMILLIS>MINTIMEBETWEENREQUESTS) {
-			LASTUSEDCITY = city;
-			LASTUSEDCOUNTRY = country;
-			LOCATIONCHANGED=true;
-		// otherwise, the location didn't change - let's use the cached forecast.
-		} else  {
-			LOCATIONCHANGED=false;
-		}
-
-		// Populating the condition translations
-		CONDITIONTRANSLATIONS = new HashMap<String,Integer>();
-		CONDITIONTRANSLATIONS.put("clear", 1);
-		CONDITIONTRANSLATIONS.put("pcloudy", 4);
-		CONDITIONTRANSLATIONS.put("mcloudy", 10);
-		CONDITIONTRANSLATIONS.put("cloudy", 12);
-		CONDITIONTRANSLATIONS.put("humid", 13);
-		CONDITIONTRANSLATIONS.put("lightrain", 14);
-		CONDITIONTRANSLATIONS.put("oshower", 19);
-		CONDITIONTRANSLATIONS.put("ishower", 20);
-		CONDITIONTRANSLATIONS.put("lightsnow", 29);
-		CONDITIONTRANSLATIONS.put("rain", 27);
-		CONDITIONTRANSLATIONS.put("snow", 33);
-		CONDITIONTRANSLATIONS.put("rainsnow", 38);
-		CONDITIONTRANSLATIONS.put("ts", 21);
-		CONDITIONTRANSLATIONS.put("tsrain", 22);
-		CONDITIONTRANSLATIONS.put("undefined", 0);
-		
-//		if (LOCATIONCHANGED) {
 			// Update weather from provider.
 			Thread t = new Thread() {
 				@Override
 				public void run() {
 	
-					jsonWeather = new JSONObject();
+					FTPClient ftp = new FTPClient();
+					
 					try {
-						jsonWeather.put("zzforecast_conditions", new JSONArray());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-					jsonOneDayForecast = null;
-					LOWTEMPS = new HashMap<String, Double>();
-					HIGHTEMPS = new HashMap<String, Double>();
-					CONDITIONS = new HashMap<String, Integer>();
-	
-					URLConnection conn = null; 
-					try {
+						ftp.connect(HOST_NOAAMETAR,FTPClient.DEFAULT_PORT);
+						int reply = ftp.getReplyCode();
+						if(!FTPReply.isPositiveCompletion(reply)) {
+							ftp.disconnect();
+							if (OMC.DEBUG)
+								Log.i(OMC.OMCSHORT + "NOAAMETAR", "FTP server refused connection.");
+
+					     }
+						ftp.login("ftp", "mozilla@example.com");
+						ftp.enterLocalPassiveMode();
+					} catch(IOException e) {
+				        if(ftp.isConnected()) {
+				          try {
+				            ftp.disconnect();
+				          } catch(IOException f) {
+				            // do nothing
+				          }
+				        }
+						if (OMC.DEBUG)
+							Log.i(OMC.OMCSHORT + "NOAAMETAR", "Could not connect to server.");
+				        e.printStackTrace();
+				        				      }
 						// Start building URL string.
-						String sURL = URL_NOAAMETAR;
+						String sPath = PATH_NOAAMETAR;
 						
 						Time tNow = new Time();
 						tNow.setToNow();
 						
-						if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
-						    System.setProperty("http.keepAlive", "false");
-						}
-	
-						jsonWeather.putOpt("country2", country);
-						jsonWeather.putOpt("city2", city);
-						jsonWeather.putOpt("bylatlong", bylatlong);
-						jsonWeather.putOpt("longitude_e6",longitude*1000000d);
-						jsonWeather.putOpt("latitude_e6",latitude*1000000d);
-	
-						URL url=null;
-						if (!bylatlong) {
-							Log.e(OMC.OMCSHORT + "NOAAMETAR", "NOAA-METAR plugin does not support weather by location name!");
-							return;
-						} else {
-							
-							final String[] sICAOs = OMC.findClosestICAOs(latitude, longitude, 100);
-							if (OMC.DEBUG)
-								Log.i(OMC.OMCSHORT + "NOAAMETAR", "Nearest airports are " + OMC.flattenString(sICAOs));
-							
-							
-							// Get forecast JSON.
-							if (OMC.DEBUG)
-								Log.i(OMC.OMCSHORT + "NOAAMETAR", "Start Building JSON.");
-							String result = null;
-							
-							for (String s: sICAOs) {
-								try {
-									url = new URL(sURL+ s +".TXT");
-									
-									if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "NOAAMETAR", "Trying: " + url.toExternalForm());
-									conn = url.openConnection();
-									conn.setConnectTimeout(600000);
-									conn.setReadTimeout(600000);
-									
-									result = OMC.streamToString(conn.getInputStream());
-									if (OMC.DEBUG) {
-										Log.i(OMC.OMCSHORT + "NOAAMETAR", "Airport " + s + " returned good METAR.");
-										Log.i(OMC.OMCSHORT + "NOAAMETAR", result);
-									}
-									Metar metar = Metar.parse(s, result);
-									metar.debugPrint();
-								} catch (IOException e) {
-									if (OMC.DEBUG)
-										Log.i(OMC.OMCSHORT + "NOAAMETAR", "Airport " + s + " returned invalid METAR.");
-									continue;
+						final String[] sICAOs = OMC.findClosestICAOs(latitude, longitude, 100);
+						if (OMC.DEBUG)
+							Log.i(OMC.OMCSHORT + "NOAAMETAR", "Nearest airports are " + OMC.flattenString(sICAOs));
+						
+						// Get forecast JSON.
+						if (OMC.DEBUG)
+							Log.i(OMC.OMCSHORT + "NOAAMETAR", "Start Building JSON.");
+						String result = null;
+						
+						for (String s: sICAOs) {
+							try {
+								String sFilePath = sPath+ s +".TXT";
+								
+								if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "NOAAMETAR", "Trying: " + sFilePath);
+								InputStream is = ftp.retrieveFileStream(sFilePath);
+								if (is==null) {
+									System.out.println( ftp.getReplyString());
+									throw new IOException();
 								}
+								
+								result = OMC.streamToString(is);
+								is.close();
+								ftp.disconnect();
+								if (OMC.DEBUG) {
+									Log.i(OMC.OMCSHORT + "NOAAMETAR", "Airport " + s + " returned good METAR.");
+									Log.i(OMC.OMCSHORT + "NOAAMETAR", result);
+								}
+								Metar metar = Metar.parse(s, result);
+								metar.debugPrint();
+								
+								// Update Current Conditions with METAR info.
+								jsonWeather = new JSONObject(OMC.PREFS.getString("weather", "{}"));
+								jsonWeather.put("temp_f", (int)(metar.tempF+0.5));
+								jsonWeather.put("temp_c", metar.tempC);
+								jsonWeather.put("condition_raw", metar.condition);
+								jsonWeather.put("condition_code", metar.OMCConditionCode);
+
+								jsonWeather.put("humidity_raw", (int)(metar.relHumidity+0.5));
+								String humidityString = OMC.RString("humiditycondition") +
+										(int)(metar.relHumidity+0.5) + "%";
+								jsonWeather.put("humidity", humidityString);
+
+								jsonWeather.put("wind_speed_knots", metar.windSpdKT);
+								jsonWeather.put("wind_speed_mph", metar.windSpdMPH);
+								jsonWeather.put("wind_speed_mps", metar.windSpdMPS);
+								jsonWeather.put("wind_direction",metar.windDirString);
+								String windString = OMC.RString("windcondition") +
+										metar.windDirString + " @ " +
+										(int)(metar.windSpdMPH + 0.5) + " mph";
+								jsonWeather.put("wind_condition", windString);
+								
+								OMC.PREFS.edit().putString("weather", jsonWeather.toString(1)).commit();
+
 								break;
-							}
-							if (result==null) {
-								OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
-							}
+							} catch (Exception e) {
+								if (OMC.DEBUG)
+									Log.i(OMC.OMCSHORT + "NOAAMETAR", "Airport " + s + " returned invalid METAR.");
+								e.printStackTrace();
+								continue;
+							} 
 							// Test cases
 //							Metar.parse(null,"METAR EHAM 1050Z 24015KT 9000 RA SCT025 BKN040 10/09 Q1010 NOSIG").debugPrint();
 //							Metar.parse(null,"METAR EGLL 0920Z 26005KT CAVOK 15/14 Q1013 NOSIG").debugPrint();
@@ -172,10 +145,10 @@ public class METARHandler {
 //							System.out.println(metar.getTemperature().getTemperature());
 							
 						}
-					} catch (Exception e) {
-						OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
-						e.printStackTrace();
-					}
+//					} catch (Exception e) {
+//						OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
+//						e.printStackTrace();
+//					}
 				}
 			};
 			t.start();
