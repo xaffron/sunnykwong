@@ -225,13 +225,14 @@
         
         <string name="weatherProvider">ספק מזג אוויר</string>
 		<string-array name="wprovider_options">
-		<!-- 	<item>OpenWeatherMap.org (default)</item> -->
-		 	<item>7Timer.com (default)</item>
+			<item>Automatic (default)</item>
+		 	<item>7Timer.com</item>
 		 	<item>NOAA (US Only)</item>
 			<item>Yr.no</item>
 			<item>Google Weather (מיושן/לא פעיל)</item>
 		</string-array>
-        <string name="wp7timer">משתמש ב-7Timer.com</string>
+        <string name="wpauto">Use best provider for location</string>
+		<string name="wp7timer">משתמש ב-7Timer.com</string>
         <string name="wpnoaa">משתמש ב-NOAA</string>
         <string name="wpowm">משתמש ב0OpenWeatherMap.org</string>
         <string name="wpyr">משתמש ב-yr.no</string>

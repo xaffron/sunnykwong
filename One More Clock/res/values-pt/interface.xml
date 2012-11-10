@@ -210,13 +210,14 @@
         
         <string name="weatherProvider">Provedor do tempo</string>
 		<string-array name="wprovider_options">
-		<!-- 	<item>OpenWeatherMap.org (Padrão)</item> -->
-<!-- 		 	<item>7Timer.com (Padrão)</item> -->
+			<item>Automatic (Padrão)</item>
+		 	<item>7Timer.com</item>
 		 	<item>NOAA (Somente EUA)</item>
 			<item>Yr.no</item>
 			<item>Google Weather (Não funciona)</item>
 		</string-array>
-        <string name="wp7timer">Usando 7Timer.com</string>
+        <string name="wpauto">Use best provider for location</string>
+		<string name="wp7timer">Usando 7Timer.com</string>
         <string name="wpnoaa">Usando NOAA</string>
         <string name="wpowm">Usando OpenWeatherMap.org</string>
         <string name="wpyr">Usando yr.no</string>

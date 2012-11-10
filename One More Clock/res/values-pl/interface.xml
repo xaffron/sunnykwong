@@ -39,7 +39,7 @@
         <!-- Forecast Screen -->
         <string name="doubleDash">--</string>
         <string name="unknown">Nieznany</string>
-        <string newname="" name="noaaWeatherCredit">Prognoza pogody udostępniona przez National Oceanic and Atmospheric Administration (NOAA).</string>
+        <string  name="noaaWeatherCredit">Prognoza pogody udostępniona przez National Oceanic and Atmospheric Administration (NOAA).</string>
         <string name="igWeatherCredit">Prognoza pogody udostepniona przez Google API.</string>
         <string name="yrWeatherCredit">Prognoza pogody udostępniona przez yr.no, z pomocą Norweskiego Instytutu Meteorologii</string>
         <string name="seventimerWeatherCredit">7Timer! prognoza pogody udostępniona przez Ye Quanzhi, wspierana przez Obserwatorium Astronomiczne w Szanghaju oraz Chińską Akademię Nauk</string>
@@ -78,36 +78,36 @@
 
         <!-- Theme Import/Unzip -->
         <string name="themePreview">Podgląd motywu</string>
-        <string newname="" name="openingConnection">Ustanawianie połączenia</string>
+        <string  name="openingConnection">Ustanawianie połączenia</string>
         <string name="beginningDownload">Rozpoczęcie pobierania.</string>
-        <string newname="" name="downloading">Pobieranie\u0020</string>
-        <string newname="" name="downloaded">Pobrano\u0020</string>
-        <string newname="" name="of">z\u0020of\u0020</string>
-        <string newname="" name="bytes">bajtów\u0020bytes</string>
-        <string newname="" name="existsOverwriting">Nadpisywanie</string>
-        <string newname="" name="createThemeFolder1">Utwórz Folder Motywu1 \'</string>
-        <string newname="" name="createThemeFolder2">Utwórz Folder Motywu2\'\u0020created.</string>
-        <string newname="" name="detectedWeatherskin">Wykryto skórkę pogody</string>
+        <string  name="downloading">Pobieranie\u0020</string>
+        <string  name="downloaded">Pobrano\u0020</string>
+        <string  name="of">z\u0020of\u0020</string>
+        <string  name="bytes">bajtów\u0020bytes</string>
+        <string  name="existsOverwriting">Nadpisywanie</string>
+        <string  name="createThemeFolder1">Utwórz Folder Motywu1 \'</string>
+        <string  name="createThemeFolder2">Utwórz Folder Motywu2\'\u0020created.</string>
+        <string  name="detectedWeatherskin">Wykryto skórkę pogody</string>
         <string name="extractingStarterClockPack">Rozpakowywanie pakietu startowego zegara&#8230;</string>
         <string name="starterClockPack">Pakiet startowy zegara</string>
         <string name="starterClockPackText">Pliki na Twojej karcie SD\'s .OMC Folder motywów zostanie nadpisany. Czy jesteś pewien?\(Jeżeli nie, wybierz Tak)</string>
-        <string newname="" name="importComplete">Importowanie zakończone!</string>
-        <string newname="" name="importAborted">Importowanie zaniechane!</string>
-        <string newname="" name="useDownloadInsteadOfPreview">Proszę używać Pobierz zamiast Podgląd, aby zaimportować zegar OMC!</string>
-        <string newname="" name="importWorksWithOMCFiles">Import działa wyłącznie z plikami .omc\nOtworzyłeś nieprawidłowy plik?</string>
-        <string newname="" name="nothingToExtract">Nie ma niczego do wypakowania!</string>
-        <string newname="" name="downloadInterrupted">Pobieranie przerwane!</string>
-        <string newname="" name="poorReceptionArea">Czy Twój telefon znajduje się w obszarze o słabym zasięgu?\nProszę spróbować później.</string>
-        <string newname="" name="connectionTimedOut">Przekroczono limit połączenia!</string>
-        <string newname="" name="serverNotFound">Nie odnaleziono serwera!</string>
+        <string  name="importComplete">Importowanie zakończone!</string>
+        <string  name="importAborted">Importowanie zaniechane!</string>
+        <string  name="useDownloadInsteadOfPreview">Proszę używać Pobierz zamiast Podgląd, aby zaimportować zegar OMC!</string>
+        <string  name="importWorksWithOMCFiles">Import działa wyłącznie z plikami .omc\nOtworzyłeś nieprawidłowy plik?</string>
+        <string  name="nothingToExtract">Nie ma niczego do wypakowania!</string>
+        <string  name="downloadInterrupted">Pobieranie przerwane!</string>
+        <string  name="poorReceptionArea">Czy Twój telefon znajduje się w obszarze o słabym zasięgu?\nProszę spróbować później.</string>
+        <string  name="connectionTimedOut">Przekroczono limit połączenia!</string>
+        <string  name="serverNotFound">Nie odnaleziono serwera!</string>
         
         <!-- Widget Theme Long Press-->
         
         <string name="emailOrDeleteTheme">Usuń motyw albo wyślij pocztą email</string>
         <string name="emailTheme">Wyślij motyw przez email</string>
         <string name="emailThemeText">Kompresuj ten motyw i wyślij  do siebie lub Twojego przyjaciela przez email.\Czy chcesz to zrobić?</string>
-        <string newname="" name="emailThemeConfirm1">Email\u0020</string>
-        <string newname="" name="emailThemeConfirm2">\u0020?</string>
+        <string  name="emailThemeConfirm1">Email\u0020</string>
+        <string  name="emailThemeConfirm2">\u0020?</string>
         <string name="emailThemeChooser">Kompresowanie plików motywu do wysyłki email.</string>
         <string name="deleteTheme">Usuń motyw</string>
         <string name="deleteThemeConfirm1">Usuń\u0020</string>
@@ -155,8 +155,8 @@
         <string name="weatherForecastTTL">Prognoza</string>
         <string name="viewAlarms">Wyświetl alarmy (opcja eksperymentalna)</string>
         <string name="viewAlarmsTTL">Prognoza</string>
-        <string newname="" name="battUsage">Użycie baterii</string>
-        <string newname="" name="battUsageTTL">Użycie baterii</string>
+        <string  name="battUsage">Użycie baterii</string>
+        <string  name="battUsageTTL">Użycie baterii</string>
         <string name="otherActivity">Inna czynność&#8230;</string>
         <string name="otherActivityTTL">Dostosuj czynnnosć</string>
         
@@ -166,9 +166,9 @@
         <string name="showLeadingZero">Wyświetl godzinę poprzedzoną 0</string>
         <string name="showLeadingZTrue">04:23</string>
         <string name="showLeadingZFalse">4:23</string>
-        <string newname="" name="mmddDateFormat">M/D/R Format Daty</string>
-        <string newname="" name="mmddDateFormatTrue">12/31/2012</string>
-        <string newname="" name="mmddDateFormatFalse">31/12/2012</string>
+        <string  name="mmddDateFormat">M/D/R Format Daty</string>
+        <string  name="mmddDateFormatTrue">12/31/2012</string>
+        <string  name="mmddDateFormatFalse">31/12/2012</string>
         <string name="changeTimeZone">Zmień strefę czasową</string>
         <string name="followingDeviceTimeZone">(Strefa czasowa ustawiona przez urządzenie)</string>
         
@@ -204,19 +204,20 @@
         <!-- Fixed Locn subscreen -->
         <string name="enterCityAndStateCountry">Wybierz miasto/kraj</string>
         <string name="locationExamples">Np. Warszawa PL</string>
-        <string newname="" name="locationError">Nie odnaleziono wyników.\nProszę spróbować ponownie.</string>
-        <string newname="" name="networkError">Brak połączenia internetowego.\nProszę spróbować ponownie.</string>
-        <string newname="" name="unknownError">Nieznany błąd.\nProszę spróbować ponownie.</string>
+        <string  name="locationError">Nie odnaleziono wyników.\nProszę spróbować ponownie.</string>
+        <string  name="networkError">Brak połączenia internetowego.\nProszę spróbować ponownie.</string>
+        <string  name="unknownError">Nieznany błąd.\nProszę spróbować ponownie.</string>
         
         <string name="weatherProvider">Dostawca pogody</string>
 		<string-array name="wprovider_options">
-		<!-- 	<item>OpenWeatherMap.org (default)</item> -->
-<!-- 		 	<item>7Timer.com (domyślnie)</item> -->
-		 	<item newname="" >NOAA (Tylko Usa)</item>
+			<item>Automatic (domyślnie)</item>
+		 	<item>7Timer.com</item>
+		 	<item  >NOAA (Tylko Usa)</item>
 		 				<item>Yr.no</item>
-			<item newname="" >Google Weather (legacy/nonworking)</item>
+			<item  >Google Weather (legacy/nonworking)</item>
 		</string-array>
-        <string name="wp7timer">Używa 7Timer.com</string>
+        <string name="wpauto">Use best provider for location</string>
+		<string name="wp7timer">Używa 7Timer.com</string>
         <string name="wpnoaa">Używa NOAA</string>
         <string name="wpowm">Używa OpenWeatherMap.org</string>
         <string name="wpyr">Używa yr.no</string>
@@ -260,7 +261,7 @@
         <string name="forceEnglishDates">Wymuś daty w języku angielskim</string>
         <string name="uncheckForSome">Odznacz dla innych języków.(Opcja eksperymentalna)</string>
         <string name="changeAppLocale">Język</string>
-        <string newname="" name="changeClockLocale">Zmień język zegara</string>
+        <string  name="changeClockLocale">Zmień język zegara</string>
         
         <string name="toggleWidgetSizes">Przełącz rozmiary widgetu</string>
         

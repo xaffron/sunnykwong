@@ -211,13 +211,14 @@
         
         <string name="weatherProvider">Väderleverantör</string>
 		<string-array name="wprovider_options">
-		<!-- 	<item>OpenWeatherMap.org (standard)</item> -->
-<!-- 		 	<item>7Timer.com (standard)</item> -->
+			<item>Automatic (standard)</item>
+		 	<item>7Timer.com</item>
 		 	<item newname="" >NOAA (US Only)</item>
 		 				<item>Yr.no</item>
 			<item>Google Weather (förlegat, fungerar ej)</item>
 		</string-array>
-        <string name="wp7timer">Använder 7Timer.com</string>
+        <string name="wpauto">Use best provider for location</string>
+		<string name="wp7timer">Använder 7Timer.com</string>
         <string name="wpnoaa">Använder NOAA</string>
         <string name="wpowm">Använder OpenWeatherMap.org</string>
         <string name="wpyr">Använder yr.no</string>
