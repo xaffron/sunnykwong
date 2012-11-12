@@ -46,6 +46,7 @@
         <string name="owmWeatherCredit">Weather updated from openweathermaps.org.</string>
         <string name="tapForAlternateForecast">Tap for Alternate Forecasts from AccuWeather®</string>
         <string name="weatherDisabledOrNoWeatherLoaded">Weather Disabled, or No Weather Loaded!</string>
+        <string name="supplementedbyMETAR">Current Conditions supplemented by METAR from</string>
         
         <!-- Clock Preferences -->
         

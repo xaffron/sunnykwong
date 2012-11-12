@@ -342,6 +342,9 @@ public class OpenWeatherMapJSONHandler {
 					jsonWeather.putOpt("city", jsonWeather.optString("country2"));
 			}
 			
+			//Mark weather forecast source.
+			jsonWeather.put("source", "owm");
+			
 			
 		} catch (JSONException e) {
 			e.printStackTrace();

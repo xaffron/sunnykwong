@@ -520,9 +520,6 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				Log.i(OMC.OMCSHORT + "YrNoWeather", "no interpolation");
 		}
 
-		if (OMC.DEBUG)
-			Log.i(OMC.OMCSHORT + "YrNoWeather", jsonWeather.toString());
-
 		try {
 			if (jsonWeather.optString("city") == null
 					|| jsonWeather.optString("city").equals("")) {
@@ -532,6 +529,12 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 					jsonWeather.putOpt("city",
 							jsonWeather.optString("country2"));
 			}
+
+			//Mark weather forecast source.
+			jsonWeather.put("source", "yr");
+			
+			if (OMC.DEBUG)
+				Log.i(OMC.OMCSHORT + "YrNoWeather", jsonWeather.toString());
 
 		} catch (JSONException e) {
 			e.printStackTrace();

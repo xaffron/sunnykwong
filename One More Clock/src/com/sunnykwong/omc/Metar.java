@@ -122,8 +122,13 @@ public class Metar {
             if (token.endsWith("KT")) {
             	final String dir = token.substring(0,3);
             	final String spd = token.substring(3,6);
-            	metar.windDir = Double.parseDouble(dir);
-            	metar.windDirString=getWindDir(dir);
+            	if (dir.equals("VRB")) {
+            		metar.windDir = 0d;
+            		metar.windDirString="VRB";
+            	} else {
+                	metar.windDir = Double.parseDouble(dir);
+                	metar.windDirString=getWindDir(dir);
+            	}
             	if (spd.startsWith("P")) metar.windSpdKT = Double.parseDouble("1"+spd.substring(1,3));
             	else metar.windSpdKT = Double.parseDouble(spd.substring(0,2));
             	metar.windSpdMPH = kt2mph(metar.windSpdKT);

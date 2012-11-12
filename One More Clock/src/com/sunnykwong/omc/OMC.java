@@ -395,7 +395,7 @@ public class OMC extends Application {
         	    				.commit();
         	    			}
         	    			
-        					final String sWProvider = OMC.PREFS.getString("activeWeatherProvider", "7timer");
+        					final String sWProvider = OMC.PREFS.getString("activeWeatherProvider", "seventimer");
         					if (sWProvider.equals("ig")) {
             					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					} else if (sWProvider.equals("yr")) {
@@ -487,11 +487,8 @@ public class OMC extends Application {
 			final Editor ed = OMC.PREFS.edit();
 			ed.putBoolean("showhelp", true)
 				.putBoolean("starterpack", false);
-			
-			// Convert all yr.no or 7timer users over to YR
-			if (OMC.PREFS.getString("weatherProvider", "default").equals("default"))
-				ed.putString("weatherProvider", "auto");
-				ed.putBoolean("weatherMETAR", true);
+			ed.putString("weatherProvider", "auto");
+			ed.putBoolean("weatherMETAR", true);
 			ed.commit();
 		}
 
@@ -2245,7 +2242,7 @@ public class OMC extends Application {
 			}
 			
 			OMC.calculateSunriseSunset(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), OMC.jsonFIXEDLOCN.optDouble("longitude",0d));
-			final String sWProvider = OMC.PREFS.getString("activeWeatherProvider", "7timer");
+			final String sWProvider = OMC.PREFS.getString("activeWeatherProvider", "seventimer");
 			if (sWProvider.equals("ig")) {
 				GoogleWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
 				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 

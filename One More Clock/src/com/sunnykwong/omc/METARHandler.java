@@ -101,6 +101,18 @@ public class METARHandler {
 								jsonWeather = new JSONObject(OMC.PREFS.getString("weather", "{}"));
 								jsonWeather.put("temp_f", (int)(metar.tempF+0.5));
 								jsonWeather.put("temp_c", metar.tempC);
+								
+								// Sanity Check - change current-day forecast to include current conditions
+								JSONObject today = jsonWeather.getJSONArray("zzforecast_conditions").getJSONObject(0);
+								if (metar.tempF > today.getDouble("high")) {
+									today.put("high",(int)(metar.tempF+0.5));
+									today.put("high_c", metar.tempC);
+								}
+								if (metar.tempF < today.getDouble("low")) {
+									today.put("low",(int)(metar.tempF+0.5));
+									today.put("low_c", metar.tempC);
+								}
+								
 								jsonWeather.put("condition_raw", metar.condition);
 								jsonWeather.put("condition_code", metar.OMCConditionCode);
 
@@ -118,6 +130,9 @@ public class METARHandler {
 										(int)(metar.windSpdMPH + 0.5) + " mph";
 								jsonWeather.put("wind_condition", windString);
 								
+								//Mark current conditions as updated by METAR.
+								jsonWeather.put("METAR", true);
+								jsonWeather.put("ICAO", metar.icao);
 								OMC.PREFS.edit().putString("weather", jsonWeather.toString(1)).commit();
 
 								break;

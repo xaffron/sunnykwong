@@ -383,7 +383,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 //								If no nearby airport, use yr.no + no METAR.
 //						    If no nearby airport, use 7Timer + no METAR.
 							
-						OMC.PREFS.edit().putString("activeWeatherProvider", "7timer")
+						OMC.PREFS.edit().putString("activeWeatherProvider", "seventimer")
 								.putBoolean("weatherMETAR", true)
 								.commit();
 						findPreference("weatherMETAR").setEnabled(false);

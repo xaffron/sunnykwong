@@ -74,18 +74,13 @@ public class OMCWeatherForecastActivity extends Activity {
 				tStation.parse(weather.optString("current_local_time","19700101T000000"));
 				if (tStation.year < 1980) tStation.set(OMC.LASTWEATHERREFRESH);
 					
-				String sWProvider = OMC.PREFS.getString("activeWeatherProvider", "7timer");
-				if (sWProvider.equals("ig")) {
-					setText(findViewById(OMC.RId("LastUpdate")),OMC.RString("igWeatherCredit"));
-				} else if (sWProvider.equals("yr")) {
-					setText(findViewById(OMC.RId("LastUpdate")),OMC.RString("yrWeatherCredit"));
-				} else if (sWProvider.equals("7timer")) {
-					setText(findViewById(OMC.RId("LastUpdate")),OMC.RString("seventimerWeatherCredit"));
-				} else if (sWProvider.equals("noaa")) {
-					setText(findViewById(OMC.RId("LastUpdate")),OMC.RString("noaaWeatherCredit"));
-				} else {
-					setText(findViewById(OMC.RId("LastUpdate")),OMC.RString("owmWeatherCredit"));
-				}  
+				String sWProvider = weather.optString("source",OMC.PREFS.getString("activeWeatherProvider", "seventimer"));
+				System.out.println("sWProvider: " + sWProvider);
+				String sWeatherCredit = OMC.RString(sWProvider+"WeatherCredit");
+				if (weather.has("METAR")) {
+					sWeatherCredit+="\n" + OMC.RString("supplementedbyMETAR") +" "+ weather.optString("ICAO", OMC.RString("unknown"));
+				}
+				setText(findViewById(OMC.RId("LastUpdate")),sWeatherCredit);
 
 				TextView acculink = ((TextView)findViewById(OMC.RId("AccuLink")));
 				acculink.setText(OMC.RString("tapForAlternateForecast"));

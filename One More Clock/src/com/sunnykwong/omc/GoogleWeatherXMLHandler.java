@@ -244,10 +244,6 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 
 	@Override
 	public void endDocument() {
-		if (OMC.DEBUG)
-			Log.i(OMC.OMCSHORT + "Weather", jsonWeather.toString());
-		if (OMC.DEBUG)
-			Log.i(OMC.OMCSHORT + "Weather", "End Document.");
 		// OK we're done parsing the whole document.
 		// Since the parse() method is synchronous, we don't need to do anything
 		// - just basic cleanup.
@@ -275,6 +271,13 @@ public class GoogleWeatherXMLHandler extends DefaultHandler {
 					jsonWeather.putOpt("city", jsonWeather.optString("country2"));
 			}
 			
+			//Mark weather forecast source.
+			jsonWeather.put("source", "ig");
+			
+			if (OMC.DEBUG)
+				Log.i(OMC.OMCSHORT + "Weather", jsonWeather.toString());
+			if (OMC.DEBUG)
+				Log.i(OMC.OMCSHORT + "Weather", "End Document.");
 			
 		} catch (JSONException e) {
 			e.printStackTrace();

@@ -409,7 +409,8 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 			CONDITIONS.add(0,iCurrentCondition);
 		}
 		//  If current condition code is missing or NA, use nearest forecast condition instead
-		if (jsonWeather.optString("condition_raw", "na").equals("na")) {
+		String sCurrentRaw = jsonWeather.optString("condition_raw", "na");
+		if (sCurrentRaw.equals("na") || sCurrentRaw.equals("")) {
 			try {
 				jsonWeather.put("condition_code",CONDITIONS.get(0));
 			} catch (JSONException e) {
@@ -448,9 +449,6 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 			}
 		}
 
-		if (OMC.DEBUG)
-			Log.i(OMC.OMCSHORT + "NOAAWeather", jsonWeather.toString());
-
 		try {
 			if (jsonWeather.optString("city")==null || jsonWeather.optString("city").equals("")) {
 				if (!jsonWeather.optString("city2").equals(""))
@@ -459,7 +457,12 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 					jsonWeather.putOpt("city", jsonWeather.optString("country2"));
 			}
 			
+			//Mark weather forecast source.
+			jsonWeather.put("source", "noaa");
 			
+			if (OMC.DEBUG)
+				Log.i(OMC.OMCSHORT + "NOAAWeather", jsonWeather.toString());
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 			OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
@@ -473,12 +476,15 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 			CACHEDFORECASTMILLIS = OMC.LASTWEATHERREFRESH;
 
 //	 	v1.4.1:  Auto weather provider.
-//			If NOAA returns NA, request METAR.
+//			If NOAA returns NA for current conditions but valid forecast, request METAR.
 //			If NOAA returns no forecast, switch to 7Timer + no METAR.
 
-		if (jsonWeather.optInt("condition_code")==0 && jsonWeather.optInt("temp_f")==0) {
-			if (CONDITIONS==null || CONDITIONS.size()==0 || CONDITIONS.get(0)==0) {
-				SevenTimerJSONHandler.updateWeather(jsonWeather.optDouble("latitude_e6")/1000000d, jsonWeather.optDouble("longitude_e6")/1000000d, jsonWeather.optString("country2"), jsonWeather.optString("city"), true);
+		if (jsonWeather.optInt("condition_code")==0 || !jsonWeather.has("temp_f")) {
+				if (CONDITIONS==null || CONDITIONS.size()==0 || CONDITIONS.get(0)==0) {
+	        		if (OMC.PREFS.getString("weatherProvider", "auto").equals("auto")) {
+	    				OMC.PREFS.edit().putBoolean("weatherMETAR", true).commit();
+	    			}
+    				SevenTimerJSONHandler.updateWeather(jsonWeather.optDouble("latitude_e6")/1000000d, jsonWeather.optDouble("longitude_e6")/1000000d, jsonWeather.optString("country2"), jsonWeather.optString("city"), true);
 			} else {
 				METARHandler.updateCurrentConditions(jsonWeather.optDouble("latitude_e6")/1000000d, jsonWeather.optDouble("longitude_e6")/1000000d);
 			}

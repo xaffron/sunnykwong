@@ -169,6 +169,10 @@ public class GoogleReverseGeocodeService {
 						+ bestProvider + " as of "
 						+ new java.sql.Time(bestTime).toLocaleString());
 //			bestResult.setProvider("passive");
+			
+// 		 	v1.4.1:  If we want to debug, change bestResult here before sending back to main thread.
+//			bestResult.setLatitude(LAT);
+//			bestResult.setLongitude(LONG);
 			OMC.LL.onLocationChanged(bestResult);
 		}
 	}

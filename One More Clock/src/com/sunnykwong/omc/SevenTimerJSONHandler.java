@@ -271,6 +271,9 @@ public class SevenTimerJSONHandler {
 							double tempc = fn.value(System.currentTimeMillis());
 							jsonWeather.putOpt("temp_c",(int)(tempc+0.5d));
 							jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.5f));
+							//Mark weather forecast source.
+							jsonWeather.putOpt("source", "seventimer");
+							
 							if (OMC.DEBUG)
 								Log.i(OMC.OMCSHORT + "7TWeather", jsonWeather.toString());
 	
@@ -512,6 +515,9 @@ public class SevenTimerJSONHandler {
 						double tempc = fn.value(System.currentTimeMillis());
 						jsonWeather.putOpt("temp_c",(int)(tempc+0.5d));
 						jsonWeather.putOpt("temp_f",(int)(tempc*9f/5f+32.5f));
+						//Mark weather forecast source.
+						jsonWeather.putOpt("source", "seventimer");
+						
 						if (OMC.DEBUG)
 							Log.i(OMC.OMCSHORT + "7TWeather", jsonWeather.toString());
 	
