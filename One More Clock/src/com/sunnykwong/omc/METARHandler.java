@@ -16,18 +16,12 @@ import android.util.Log;
 
 public class METARHandler {
 
-	public static final long MINTIMEBETWEENREQUESTS = 82800000l; //23 hours
-	public static final long MINRETRYPERIOD = 3660000l; //One hour + change
-	public static String CACHEDFORECAST;
-	public static long CACHEDFORECASTMILLIS=0l;
-	public static boolean LOCATIONCHANGED;
-	public static String LASTUSEDCITY, LASTUSEDCOUNTRY;
-	
 	//public static final String URL_V4CIVIL = "http://www.7timer.com/v4/bin/civil.php?app=omc&output=json&tzshift=0&unit=metric&lang=en&ac=0";
 	public static final String HOST_NOAAMETAR = "tgftp.nws.noaa.gov";
 	public static final String PATH_NOAAMETAR = "/data/observations/metar/stations/";
 	public static JSONObject jsonWeather;
- 
+	public static int MAXRADIUS = 100; //Maximum acceptable radius (in KM) for METAR reporting
+	
 	static public void updateCurrentConditions(final double latitude, final double longitude) {
 
 			// Update weather from provider.
@@ -66,7 +60,14 @@ public class METARHandler {
 						Time tNow = new Time();
 						tNow.setToNow();
 						
-						final String[] sICAOs = OMC.findClosestICAOs(latitude, longitude, 100);
+						final String[] sICAOs = OMC.findClosestICAOs(latitude, longitude, MAXRADIUS);
+//   				 	v1.4.1:  Auto weather provider.
+//							If no nearby airport, do not use METAR.
+						if (sICAOs==null) {
+							if (OMC.DEBUG)
+								Log.i(OMC.OMCSHORT + "NOAAMETAR", "No METAR-reporting stations withing a " + MAXRADIUS + "km radius... using interpolated conditions.");
+							return;
+						}						
 						if (OMC.DEBUG)
 							Log.i(OMC.OMCSHORT + "NOAAMETAR", "Nearest airports are " + OMC.flattenString(sICAOs));
 						

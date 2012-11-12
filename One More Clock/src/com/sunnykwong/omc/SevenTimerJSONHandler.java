@@ -16,6 +16,7 @@ public class SevenTimerJSONHandler {
 
 	public static final long MINTIMEBETWEENREQUESTS = 82800000l; //23 hours
 	public static final long MINRETRYPERIOD = 3660000l; //One hour + change
+	public static final int WEBTIMEOUT = 30000; // 5 minutes
 	public static String CACHEDFORECAST;
 	public static long CACHEDFORECASTMILLIS=0l;
 	public static boolean LOCATIONCHANGED;
@@ -46,7 +47,7 @@ public class SevenTimerJSONHandler {
 			LOCATIONCHANGED=true;
 		// If city and country have not changed, 
 		// but we've lost the cached forecast or the 
-		// cached weather is older than 7 hours
+		// cached weather is expired (based on MINTIMEBETWEENREQUESTS)
 		// set the location change flag to true.
 		} else if (CACHEDFORECAST==null || System.currentTimeMillis()-CACHEDFORECASTMILLIS>MINTIMEBETWEENREQUESTS) {
 			LASTUSEDCITY = city;
@@ -121,8 +122,8 @@ public class SevenTimerJSONHandler {
 							// Get forecast JSON.
 							url = new URL(sURL + "&lat="+latitude+"&lon="+longitude);
 							huc = (HttpURLConnection) url.openConnection();
-							huc.setConnectTimeout(600000);
-							huc.setReadTimeout(600000);
+							huc.setConnectTimeout(WEBTIMEOUT);
+							huc.setReadTimeout(WEBTIMEOUT);
 	
 							tempJson = OMC.streamToJSONObject(huc.getInputStream());
 
@@ -325,12 +326,22 @@ public class SevenTimerJSONHandler {
 							OMC.NEXTWEATHERREQUEST = OMC.NEXTWEATHERREFRESH + MINTIMEBETWEENREQUESTS;
 							OMC.WEATHERREFRESHSTATUS = OMC.WRS_SUCCESS;
 							
+							// Use METAR update if requested
+							if (OMC.PREFS.getBoolean("weatherMETAR", true)) {
+								METARHandler.updateCurrentConditions(latitude, longitude);
+							}
 						}
 	
 					} catch (Exception e) { 
 						e.printStackTrace();
 						if (huc!=null) huc.disconnect();
 						OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
+//   				 	v1.4.1:  Auto weather provider.
+//							If 7Timer times out, switch to yr.no (preserve METAR setting).
+						if (OMC.PREFS.getString("weatherProvider", "auto").equals("auto")) {
+							OMC.PREFS.edit().putString("activeWeatherProvider", "yr")
+							.commit();
+						}
 					}
 				};
 			};
@@ -552,11 +563,21 @@ public class SevenTimerJSONHandler {
 						OMC.PREFS.edit().putLong("weather_nextweatherrefresh", OMC.NEXTWEATHERREFRESH).commit();
 
 						OMC.WEATHERREFRESHSTATUS = OMC.WRS_SUCCESS;
-						
+												
+						// Use METAR update if requested
+						if (OMC.PREFS.getBoolean("weatherMETAR", true)) {
+							METARHandler.updateCurrentConditions(latitude, longitude);
+						}
 						
 					} catch (Exception e) {
 						e.printStackTrace();
 						OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
+//   				 	v1.4.1:  Auto weather provider.
+//							If 7Timer times out, switch to yr.no (preserve METAR setting).
+						if (OMC.PREFS.getString("weatherProvider", "auto").equals("auto")) {
+							OMC.PREFS.edit().putString("activeWeatherProvider", "yr")
+							.commit();
+						}
 					}
 					
 				}

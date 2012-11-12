@@ -387,11 +387,15 @@ public class OMC extends Application {
         					GoogleReverseGeocodeService.updateLocation(location);
         	        		OMC.WEATHERREFRESHSTATUS=OMC.WRS_GEOCODE;
 
-//        	        		if (OMC.LASTKNOWNCOUNTRY.equals("United States")) {
-//        	    				OMC.PREFS.edit().putString("weatherProvider", "noaa").commit();
-//        	    			}
+//       				 	v1.4.1:  Auto weather provider.
+//    							if location is in US, switch to NOAA + no METAR.
+        	        		if (OMC.LASTKNOWNCOUNTRY.equals("United States") && OMC.PREFS.getString("weatherProvider", "auto").equals("auto")) {
+        	    				OMC.PREFS.edit().putString("activeWeatherProvider", "noaa")
+        	    				.putBoolean("weatherMETAR", false)
+        	    				.commit();
+        	    			}
         	    			
-        					final String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
+        					final String sWProvider = OMC.PREFS.getString("activeWeatherProvider", "7timer");
         					if (sWProvider.equals("ig")) {
             					GoogleWeatherXMLHandler.updateWeather(location.getLatitude(), location.getLongitude(), OMC.LASTKNOWNCOUNTRY, OMC.LASTKNOWNCITY, true);
         					} else if (sWProvider.equals("yr")) {
@@ -485,10 +489,9 @@ public class OMC extends Application {
 				.putBoolean("starterpack", false);
 			
 			// Convert all yr.no or 7timer users over to YR
-			if (OMC.PREFS.getString("weatherProvider", "yrno").equals("yrno") ||
-					OMC.PREFS.getString("weatherProvider", "yrno").equals("7timer"))
-					ed.putString("weatherProvider", "yr");
-			
+			if (OMC.PREFS.getString("weatherProvider", "default").equals("default"))
+				ed.putString("weatherProvider", "auto");
+				ed.putBoolean("weatherMETAR", true);
 			ed.commit();
 		}
 
@@ -2237,12 +2240,12 @@ public class OMC extends Application {
 			OMC.LASTKNOWNCOUNTRY=OMC.jsonFIXEDLOCN.optString("country","Unknown");
 			OMC.WEATHERREFRESHSTATUS=OMC.WRS_FIXED;	
 			
-			if (OMC.LASTKNOWNCOUNTRY.equals("United States")) {
-				OMC.PREFS.edit().putString("weatherProvider", "noaa").commit();
+			if (OMC.LASTKNOWNCOUNTRY.equals("United States") && OMC.PREFS.getString("weatherProvider", "auto").equals("auto")) {
+				OMC.PREFS.edit().putString("activeWeatherProvider", "noaa").commit();
 			}
 			
 			OMC.calculateSunriseSunset(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), OMC.jsonFIXEDLOCN.optDouble("longitude",0d));
-			final String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
+			final String sWProvider = OMC.PREFS.getString("activeWeatherProvider", "7timer");
 			if (sWProvider.equals("ig")) {
 				GoogleWeatherXMLHandler.updateWeather(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), 
 				OMC.jsonFIXEDLOCN.optDouble("longitude",0d), 

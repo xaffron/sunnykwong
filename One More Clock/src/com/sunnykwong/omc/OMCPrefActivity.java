@@ -372,14 +372,36 @@ public class OMCPrefActivity extends PreferenceActivity {
         	prefWeatherProvider.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
-					OMC.PREFS.edit().putString("activeWeatherProvider", "7timer").commit();
-					preference.setSummary(OMC.RString("wp"+newValue));
-			    	return true;
+					if (newValue.equals("auto")) {
+//   				 	v1.4.1:  Auto weather provider.
+//						Rules:
+//							Default to 7Timer + METAR.
+//							if location is in US, switch to NOAA + no METAR.
+//								If NOAA returns NA, switch to NOAA + METAR.
+//									If no nearby airport, use 7Timer + no METAR.
+//							If 7Timer times out, switch to yr.no + METAR.
+//								If no nearby airport, use yr.no + no METAR.
+//						    If no nearby airport, use 7Timer + no METAR.
+							
+						OMC.PREFS.edit().putString("activeWeatherProvider", "7timer")
+								.putBoolean("weatherMETAR", true)
+								.commit();
+						findPreference("weatherMETAR").setEnabled(false);
+						preference.setSummary(OMC.RString("wp"+newValue));
+						return true;
+					} else {
+						OMC.PREFS.edit().putString("activeWeatherProvider", (String)newValue).commit();
+						findPreference("weatherMETAR").setEnabled(true);
+						preference.setSummary(OMC.RString("wp"+newValue));
+						return true;
+					}
 				}
 			});
-        	String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
+        	String sWProvider = OMC.PREFS.getString("weatherProvider", "auto");
 			prefWeatherProvider.setSummary(OMC.RString("wp"+sWProvider));
-
+			if (OMC.PREFS.getString("weatherProvider", "auto").equals("auto")) {
+				findPreference("weatherMETAR").setEnabled(false);
+			}
         	
         	// "Weather via METAR".
         	findPreference("weatherMETAR").setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
@@ -591,12 +613,20 @@ public class OMCPrefActivity extends PreferenceActivity {
 							try {
 								// Build weather debug data.
 								String sBody = "";
+								Time tNow = new Time();
+								tNow.setToNow();
+								Time tLock = new Time();
+								tLock.set(OMC.LASTKNOWNLOCN.getTime());
+								sBody+="Debug Report Timestamp: " + tNow.format3339(false) + "\n\n";
 								sBody+="Location:\n";
+								sBody+="Provider: " + OMC.LASTKNOWNLOCN.getProvider()+ "\n";
+								sBody+="Age: " + tLock.format3339(false) + "\n";
 								sBody+="Lat: " + OMC.LASTKNOWNLOCN.getLatitude()+ "\n";
 								sBody+="Lon: " + OMC.LASTKNOWNLOCN.getLongitude()+ "\n";
 								sBody+="Reverse Geocode:\n";
 								sBody+=GoogleReverseGeocodeService.updateLocation(OMC.LASTKNOWNLOCN)+"\n";
 								sBody+="WeatherProvider: " + OMC.PREFS.getString("weatherProvider", "NONE")+ "\n";
+								sBody+="activeWeatherProvider: " + OMC.PREFS.getString("activeWeatherProvider", "NONE")+ "\n";
 								sBody+="Weather:\n";
 								sBody+=OMC.PREFS.getString("weather", "Weather JSON Missing!")+"\n";
 								Intent it = new Intent(android.content.Intent.ACTION_SEND)

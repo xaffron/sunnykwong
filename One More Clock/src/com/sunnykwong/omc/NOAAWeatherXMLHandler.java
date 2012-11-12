@@ -274,7 +274,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 						NOAAWeatherXMLHandler.TEMPTOUPDATE = HIGHTEMPS;
 					else if (atts.getValue("type").equals("minimum"))
 						NOAAWeatherXMLHandler.TEMPTOUPDATE = LOWTEMPS;
-					else if (atts.getValue("type").equals("apparent"))
+					else if (atts.getValue("type").equals("apparent") || atts.getValue("type").equals("air"))
 						VALUETYPE="temp_f";
 					else if (atts.getValue("type").equals("dew point"))
 						VALUETYPE="dewpoint_f";
@@ -447,17 +447,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 				OMC.WEATHERREFRESHSTATUS = OMC.WRS_FAILURE;
 			}
 		}
-// Make sure today's data contains both high and low, too.
-//		if (!LOWTEMPS.containsKey(day.format("%Y%m%d"))) {
-//			Time nextday = new Time(day);
-//			nextday.hour+=24;
-//			nextday.normalize(false);
-//			LOWTEMPS.put(day.format("%Y%m%d"), LOWTEMPS.get(nextday.format("%Y%m%d")));
-//		}
-//		if (!HIGHTEMPS.containsKey(day.format("%Y%m%d"))) {
-//			HIGHTEMPS.put(day.format("%Y%m%d"), LOWTEMPS.get(day.format("%Y%m%d")));
-//		}
-//
+
 		if (OMC.DEBUG)
 			Log.i(OMC.OMCSHORT + "NOAAWeather", jsonWeather.toString());
 
@@ -482,6 +472,19 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 		if (LOCATIONCHANGED)
 			CACHEDFORECASTMILLIS = OMC.LASTWEATHERREFRESH;
 
+//	 	v1.4.1:  Auto weather provider.
+//			If NOAA returns NA, request METAR.
+//			If NOAA returns no forecast, switch to 7Timer + no METAR.
+
+		if (jsonWeather.optInt("condition_code")==0 && jsonWeather.optInt("temp_f")==0) {
+			if (CONDITIONS==null || CONDITIONS.size()==0 || CONDITIONS.get(0)==0) {
+				SevenTimerJSONHandler.updateWeather(jsonWeather.optDouble("latitude_e6")/1000000d, jsonWeather.optDouble("longitude_e6")/1000000d, jsonWeather.optString("country2"), jsonWeather.optString("city"), true);
+			} else {
+				METARHandler.updateCurrentConditions(jsonWeather.optDouble("latitude_e6")/1000000d, jsonWeather.optDouble("longitude_e6")/1000000d);
+			}
+			return;
+		}
+		
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "NOAAWeather", "Update Succeeded.  Phone Time:" + new java.sql.Time(OMC.LASTWEATHERREFRESH).toLocaleString());
 
 		Time t = new Time();
