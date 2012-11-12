@@ -372,32 +372,13 @@ public class OMCPrefActivity extends PreferenceActivity {
         	prefWeatherProvider.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
-		    		if (newValue.equals("yr")) {
-		        		preference.setSummary(OMC.RString("wpyr"));
-		    		} else if (newValue.equals("ig")) {
-		        		preference.setSummary(OMC.RString("wpig"));
-		    		} else if (newValue.equals("7timer")) {
-		    			preference.setSummary(OMC.RString("wp7timer"));
-		    		} else if (newValue.equals("noaa")) {
-		    			preference.setSummary(OMC.RString("wpnoaa"));
-		    		} else {
-		    			preference.setSummary(OMC.RString("wpowm"));
-		    		}
+					OMC.PREFS.edit().putString("activeWeatherProvider", "7timer").commit();
+					preference.setSummary(OMC.RString("wp"+newValue));
 			    	return true;
 				}
 			});
         	String sWProvider = OMC.PREFS.getString("weatherProvider", "7timer");
-    		if (sWProvider.equals("yr")) {
-    			prefWeatherProvider.setSummary(OMC.RString("wpyr"));
-    		} else if (sWProvider.equals("ig")) {
-    			prefWeatherProvider.setSummary(OMC.RString("wpig"));
-    		} else if (sWProvider.equals("7timer")) {
-    			prefWeatherProvider.setSummary(OMC.RString("wp7timer"));
-    		} else if (sWProvider.equals("noaa")) {
-    			prefWeatherProvider.setSummary(OMC.RString("wpnoaa"));
-    		} else {
-    			prefWeatherProvider.setSummary(OMC.RString("wpowm"));
-    		}
+			prefWeatherProvider.setSummary(OMC.RString("wp"+sWProvider));
 
         	
         	// "Weather via METAR".
