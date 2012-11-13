@@ -235,8 +235,13 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 		if (tree.peek(1)[0].equals("temperature")) {
 			if (bCurrentObservations) {
 				try {
-					jsonWeather.put(VALUETYPE, value);
-					if (VALUETYPE.equals("temp_f")) dCurrentTemp=Double.parseDouble(value);
+					if (VALUETYPE.equals("temp_f")) {
+						try {
+							dCurrentTemp=Double.parseDouble(value);
+							jsonWeather.put(VALUETYPE, value);
+						}
+						catch (NumberFormatException e) { dCurrentTemp=-999; }
+					}
 					VALUETYPE="";
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -480,7 +485,7 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 //			If NOAA returns no forecast, switch to 7Timer + no METAR.
 
 		if (jsonWeather.optInt("condition_code")==0 || !jsonWeather.has("temp_f")) {
-				if (CONDITIONS==null || CONDITIONS.size()==0 || CONDITIONS.get(0)==0) {
+				if (CONDITIONS==null || CONDITIONS.size()==0 || CONDITIONS.get(0)==-999) {
 	        		if (OMC.PREFS.getString("weatherProvider", "auto").equals("auto")) {
 	    				OMC.PREFS.edit().putBoolean("weatherMETAR", true).commit();
 	    			}
