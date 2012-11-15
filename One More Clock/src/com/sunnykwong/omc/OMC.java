@@ -2081,6 +2081,11 @@ public class OMC extends Application {
 	static public int numberInterpolate (final int n1, final int n2, final float gradient) {
 		return (int)(n1 + (n2-n1) * gradient);
 	}
+
+	static public int numberInterpolate (final int x1, final int y1, final int x2, final int y2, final int x) {
+		return (int)(((double)x-(double)x1) * ((double)y2-(double)y1)/((double)x2-(double)x1) + (double)y1 + 0.5);
+		
+	}
 	
 	static public int floatInterpolate (final float n1, final float n2, final float gradient) {
 		return (int)(n1 + (n2-n1) * gradient);
