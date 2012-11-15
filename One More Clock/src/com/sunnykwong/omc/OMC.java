@@ -85,7 +85,8 @@ public class OMC extends Application {
 	static final boolean FREEEDITION = false;
 	static final boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
-
+	static final HashMap<Integer, Integer> BATTVOLTAGESCALE = new HashMap<Integer, Integer>();
+	
 	static final boolean DEBUG = TESTVER.equals("")?false:true; 
 	
 	static final boolean THEMESFROMCACHE = true;

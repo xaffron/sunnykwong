@@ -1,6 +1,7 @@
 package com.sunnykwong.omc;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.BatteryManager;
 import android.util.Log;
+import android.util.Pair;
 import android.widget.Toast;
 
 public class OMCAlarmReceiver extends BroadcastReceiver {
@@ -79,6 +81,26 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			OMC.BATTPERCENT = (int)(100*intent.getIntExtra("level", 0)/(float)intent.getIntExtra("scale", 100));
 			OMC.CHARGESTATUS = sChargeStatus;
 
+//			OMC.BATTVOLTAGESCALE.put(OMC.BATTPERCENT, intent.getIntExtra("voltage",0));
+//			if (OMC.BATTVOLTAGESCALE.size()>1) {
+//				int lowx=0, lowy=0, highx=0, highy=0;
+//				boolean foundvoltage=false;
+//				for (int i=0;i<=100;i+=10) {
+//					if (OMC.BATTVOLTAGESCALE.containsKey(i) && !foundvoltage) {
+//						lowx = i;
+//						lowy = OMC.BATTVOLTAGESCALE.get(i);
+//					} else if (OMC.BATTVOLTAGESCALE.containsKey(i) && foundvoltage) {
+//						highx = i;
+//						highy = OMC.BATTVOLTAGESCALE.get(i);
+//						break;
+//					}
+//					if (OMC.BATTPERCENT - i < 10) {
+//						foundvoltage=true;
+//					}
+//				}
+//				OMC.battpercent = 
+//			}
+			
 			if (OMC.LASTBATTERYPLUGGEDSTATUS != iNewBatteryPluggedStatus) {
 				// Update the current plugged status
 				OMC.LASTBATTERYPLUGGEDSTATUS = iNewBatteryPluggedStatus;
