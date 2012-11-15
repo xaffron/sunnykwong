@@ -93,9 +93,9 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			if (OMC.BATTVOLTAGESCALE.size()>1) {
 				int lowx=0, lowy=0, highx=0, highy=0;
 				// Figure out low end.
-				for (int i=0;i<=100;i+=10) {
+				for (int i=0;i<=100;i+=1) {
 					if (!OMC.BATTVOLTAGESCALE.containsKey(i)) continue;
-					if (i>=currvoltage-10) {
+					if (i>=currvoltage-1) {
 						lowx=i;
 						lowy = OMC.BATTVOLTAGESCALE.get(i);
 						break;
@@ -105,9 +105,9 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 					}
 				}
 				// Figure out high end.
-				for (int i=100;i>=0; i-=10) {
+				for (int i=100;i>=0; i-=1) {
 					if (!OMC.BATTVOLTAGESCALE.containsKey(i)) continue;
-					if (i<=currvoltage+10) {
+					if (i<=currvoltage+1) {
 						highx=i;
 						highy = OMC.BATTVOLTAGESCALE.get(i);
 						break;
