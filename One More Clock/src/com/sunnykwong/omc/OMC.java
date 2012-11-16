@@ -198,8 +198,8 @@ public class OMC extends Application {
 
 	static Location LASTKNOWNLOCN = null;
 	
-	static final int WIDGETWIDTH=480;
-	static final int WIDGETHEIGHT=480;
+	static final int WIDGETWIDTH=1080;
+	static final int WIDGETHEIGHT=1080;
 	static final String[] COMPASSPOINTS = {"NW","N","NE","W","C","E","SW","S","SE"};
 	static final Time TIME = new Time();
 	static Date DATE = new Date(); 

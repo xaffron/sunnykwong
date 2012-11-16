@@ -81,44 +81,47 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			OMC.BATTPERCENT = (int)(100*intent.getIntExtra("level", 0)/(float)intent.getIntExtra("scale", 100));
 			OMC.CHARGESTATUS = sChargeStatus;
 			int currvoltage = intent.getIntExtra("voltage",0);
-			Integer testvolt = OMC.BATTVOLTAGESCALE.get(OMC.BATTPERCENT);
-			if (testvolt==null) {
-				OMC.BATTVOLTAGESCALE.put(OMC.BATTPERCENT, currvoltage);
-			} else if (testvolt > currvoltage) {
-				OMC.BATTVOLTAGESCALE.put(OMC.BATTPERCENT, currvoltage);
-			} else {
-				// We want the lowest voltage for each battery percentage.
-			}
-			
-			if (OMC.BATTVOLTAGESCALE.size()>1) {
-				int lowx=0, lowy=0, highx=0, highy=0;
-				// Figure out low end.
-				for (int i=0;i<=100;i+=1) {
-					if (!OMC.BATTVOLTAGESCALE.containsKey(i)) continue;
-					if (i>=currvoltage-1) {
-						lowx=i;
-						lowy = OMC.BATTVOLTAGESCALE.get(i);
-						break;
-					} else {
-						lowx=i;
-						lowy = OMC.BATTVOLTAGESCALE.get(i);
-					}
+
+			if (OMC.BATTPERCENT%10==0) {
+				Integer testvolt = OMC.BATTVOLTAGESCALE.get(OMC.BATTPERCENT);
+				if (testvolt==null) {
+					OMC.BATTVOLTAGESCALE.put(OMC.BATTPERCENT, currvoltage);
+				} else if (testvolt > currvoltage) {
+					OMC.BATTVOLTAGESCALE.put(OMC.BATTPERCENT, currvoltage);
+				} else {
+					// We want the lowest voltage for each battery percentage.
 				}
-				// Figure out high end.
-				for (int i=100;i>=0; i-=1) {
-					if (!OMC.BATTVOLTAGESCALE.containsKey(i)) continue;
-					if (i<=currvoltage+1) {
-						highx=i;
-						highy = OMC.BATTVOLTAGESCALE.get(i);
-						break;
-					} else {
-						highx=i;
-						highy = OMC.BATTVOLTAGESCALE.get(i);
+				
+				if (OMC.BATTVOLTAGESCALE.size()>1) {
+					int lowx=0, lowy=0, highx=0, highy=0;
+					// Figure out low end.
+					for (int i=0;i<=100;i+=1) {
+						if (!OMC.BATTVOLTAGESCALE.containsKey(i)) continue;
+						if (i>=currvoltage-1) {
+							lowx=i;
+							lowy = OMC.BATTVOLTAGESCALE.get(i);
+							break;
+						} else {
+							lowx=i;
+							lowy = OMC.BATTVOLTAGESCALE.get(i);
+						}
 					}
+					// Figure out high end.
+					for (int i=100;i>=0; i-=1) {
+						if (!OMC.BATTVOLTAGESCALE.containsKey(i)) continue;
+						if (i<=currvoltage+1) {
+							highx=i;
+							highy = OMC.BATTVOLTAGESCALE.get(i);
+							break;
+						} else {
+							highx=i;
+							highy = OMC.BATTVOLTAGESCALE.get(i);
+						}
+					}
+					OMC.BATTPERCENT = OMC.numberInterpolate(lowx, lowy, highx, highy, currvoltage);
+					OMC.BATTLEVEL = OMC.BATTPERCENT;
+					OMC.BATTSCALE = 100;
 				}
-				OMC.BATTPERCENT = OMC.numberInterpolate(lowx, lowy, highx, highy, currvoltage);
-				OMC.BATTLEVEL = OMC.BATTPERCENT;
-				OMC.BATTSCALE = 100;
 			}
 			
 			if (OMC.LASTBATTERYPLUGGEDSTATUS != iNewBatteryPluggedStatus) {
