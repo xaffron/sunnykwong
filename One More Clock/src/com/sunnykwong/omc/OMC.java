@@ -96,7 +96,7 @@ public class OMC extends Application {
 	static Bitmap PLACEHOLDERBMP;
 	
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "asset:pk136.omc";
+	static final String STARTERPACKURL = "asset:pk141.omc";
 	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v136.omc";
 	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v136.omc";
 	static final String DEFAULTTHEME = "IceLock";
