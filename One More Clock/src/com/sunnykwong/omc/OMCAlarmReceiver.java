@@ -82,11 +82,11 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			OMC.CHARGESTATUS = sChargeStatus;
 			int currvoltage = intent.getIntExtra("voltage",0);
 
-			if (OMC.BATTPERCENT%10==0) {
-				Integer testvolt = OMC.BATTVOLTAGESCALE.get(OMC.BATTPERCENT);
-				if (testvolt==null) {
+//			if (OMC.BATTPERCENT%10==0) {
+				Integer recordedVoltage = OMC.BATTVOLTAGESCALE.get(OMC.BATTPERCENT);
+				if (recordedVoltage==null) {
 					OMC.BATTVOLTAGESCALE.put(OMC.BATTPERCENT, currvoltage);
-				} else if (testvolt > currvoltage) {
+				} else if (currvoltage < recordedVoltage) {
 					OMC.BATTVOLTAGESCALE.put(OMC.BATTPERCENT, currvoltage);
 				} else {
 					// We want the lowest voltage for each battery percentage.
@@ -106,6 +106,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 							lowy = OMC.BATTVOLTAGESCALE.get(i);
 						}
 					}
+					System.out.println("LOW END: " + lowx + "(" + lowy + "V)");
 					// Figure out high end.
 					for (int i=100;i>=0; i-=1) {
 						if (!OMC.BATTVOLTAGESCALE.containsKey(i)) continue;
@@ -118,11 +119,13 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 							highy = OMC.BATTVOLTAGESCALE.get(i);
 						}
 					}
+					System.out.println("HIGH END: " + highx + "(" + highy + "V)");
 					OMC.BATTPERCENT = OMC.numberInterpolate(lowx, lowy, highx, highy, currvoltage);
+					System.out.println("BATTPERCENT: " + OMC.BATTPERCENT);
 					OMC.BATTLEVEL = OMC.BATTPERCENT;
 					OMC.BATTSCALE = 100;
 				}
-			}
+//			}
 			
 			if (OMC.LASTBATTERYPLUGGEDSTATUS != iNewBatteryPluggedStatus) {
 				// Update the current plugged status

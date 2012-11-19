@@ -130,31 +130,28 @@ public class OMCWidgetDrawEngine {
 		// Depending on the widget size, we make assumptions on the widget shape.
 		// These assumptions are necessary to prevent the homescreen from scaling our widget down
 		// when/if the final widget is rotated via "customscaling"->"cw_rotate".
-		// Entire homescreen is assumed to be 480dp x 600dp, 4 icons x 4 icons.
 		//
-		int thisWidgetWidth = 480;
-		int thisWidgetHeight = 600;
+		int thisWidgetWidth = OMC.WIDGETWIDTH;
+		int thisWidgetHeight = (int)(OMC.WIDGETWIDTH*1.2);
 		if (sWidgetSize.equals("4x2") || sWidgetSize.equals("5x2")) {
-			thisWidgetWidth = 480;
-			thisWidgetHeight = 300;
+			thisWidgetHeight /= 2;
 		} else if (sWidgetSize.equals("4x1") || sWidgetSize.equals("5x1")) {
-			thisWidgetWidth = 480;
-			thisWidgetHeight = 150;
+			thisWidgetHeight /= 4;
 		} else if (sWidgetSize.equals("3x3")) {
-			thisWidgetWidth = 360;
-			thisWidgetHeight = 450;
+			thisWidgetWidth=(int)(thisWidgetWidth*0.75);
+			thisWidgetHeight = (int)(thisWidgetHeight*0.75);
 		} else if (sWidgetSize.equals("3x1")) {
-			thisWidgetWidth = 360;
-			thisWidgetHeight = 150;
+			thisWidgetWidth=(int)(thisWidgetWidth*0.75);
+			thisWidgetHeight /= 4;
 		} else if (sWidgetSize.equals("2x2")) {
-			thisWidgetWidth = 240;
-			thisWidgetHeight = 300;
+			thisWidgetWidth /= 2;
+			thisWidgetHeight /= 2;
 		} else if (sWidgetSize.equals("2x1")) {
-			thisWidgetWidth = 240;
-			thisWidgetHeight = 150;
+			thisWidgetWidth /= 2;
+			thisWidgetHeight /= 4;
 		} else if (sWidgetSize.equals("1x3")) {
-			thisWidgetWidth = 120;
-			thisWidgetHeight = 450;
+			thisWidgetWidth /= 4;
+			thisWidgetHeight = (int)(thisWidgetHeight*0.75);
 		}
 
 		//Step 3:
@@ -258,7 +255,7 @@ public class OMCWidgetDrawEngine {
 		}
 
 		//Step 4:
-		// Now, based on the full canvas size (as of v125 it is 480x480), we estimate the size of the final widget canvas
+		// Now, based on the full canvas size, we estimate the size of the final widget canvas
 		// after cropping, stretching and rotating.
 		// Note that rotation in android grows the size of the bitmap because android doesn't throw away pixels
 		//
@@ -298,10 +295,13 @@ public class OMCWidgetDrawEngine {
 		float fFitGraphic = (float) Math.max(thisWidgetWidth/rotWidth, thisWidgetHeight/rotHeight);
 
 		//Step 6:
+		// <LEGACY>
 		// Create the final bitmap to be sent over to the homescreen app.  We are using 16-bit because 
 		// sending a 480x480x32 bitmap over IPC will choke half the time... 
-		// and compressing a 480x480x32 bitmap to flash and decompressing immediately after is both CPU and I/O heavy
-		//  (not to mention flash wear)
+		// <HD>
+		// We are actually writing the 32bit bitmap to flash and decompressing immediately.
+		// Flash wear should be minimal if the user doesn't keep the screen on 24x7.
+		//
 		// Note that the bitmaps are put in a hashmap keyed by the appwidgetID.
 		//
 		final Bitmap finalbitmap;

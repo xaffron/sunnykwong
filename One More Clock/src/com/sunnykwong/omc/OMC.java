@@ -198,8 +198,7 @@ public class OMC extends Application {
 
 	static Location LASTKNOWNLOCN = null;
 	
-	static final int WIDGETWIDTH=1080;
-	static final int WIDGETHEIGHT=1080;
+	static int WIDGETWIDTH, WIDGETHEIGHT;
 	static final String[] COMPASSPOINTS = {"NW","N","NE","W","C","E","SW","S","SE"};
 	static final Time TIME = new Time();
 	static Date DATE = new Date(); 
@@ -260,8 +259,8 @@ public class OMC extends Application {
     static final ArrayBlockingQueue<Paint> PAINTPOOL = new ArrayBlockingQueue<Paint>(2);
     static final ArrayBlockingQueue<Bitmap> WIDGETPOOL = new ArrayBlockingQueue<Bitmap>(2);
     
-    static final Bitmap ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
-
+    static Bitmap ROTBUFFER;
+    
     final Handler mHandler = new Handler();
     static String mMessage;
 	final Runnable mPopToast = new Runnable() {
@@ -364,7 +363,11 @@ public class OMC extends Application {
     	OMC.AM = getAssets();
     	OMC.RES = getResources();
     	
-    	
+    	OMC.WIDGETWIDTH=Math.min(getResources().getDisplayMetrics().widthPixels,getResources().getDisplayMetrics().heightPixels);
+    	OMC.WIDGETHEIGHT=OMC.WIDGETWIDTH;
+        OMC.ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
+
+
     	OMC.LM = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
     	
     	OMC.LL = new LocationListener() {
