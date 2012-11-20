@@ -376,9 +376,8 @@ public class OMCPrefActivity extends PreferenceActivity {
 //   				 	v1.4.1:  Auto weather provider.
 //						Rules:
 //							Default to 7Timer + METAR.
-//							if location is in US, switch to NOAA + no METAR.
-//								If NOAA returns NA, switch to NOAA + METAR.
-//									If no nearby airport, use 7Timer + no METAR.
+//							if location is in US, switch to NOAA + METAR.
+//								If no nearby airport, use 7Timer + no METAR.
 //							If 7Timer times out, switch to yr.no + METAR.
 //								If no nearby airport, use yr.no + no METAR.
 //						    If no nearby airport, use 7Timer + no METAR.

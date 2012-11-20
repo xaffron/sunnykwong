@@ -81,7 +81,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Alpha 3";
+	static final String TESTVER = "Alpha 4";
 	static final boolean FREEEDITION = false;
 	static final boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -1882,6 +1882,13 @@ public class OMC extends Application {
 			} catch (final java.lang.ArrayIndexOutOfBoundsException e) {
 				result = "";
 			}
+		} else if (sToken.equals("alarm")){
+			try {
+				result = android.provider.Settings.System.getString(OMC.CONTEXT.getContentResolver(), android.provider.Settings.System.NEXT_ALARM_FORMATTED);
+				System.out.println("ALARM RESULT = " + result);
+			} catch (final java.lang.ArrayIndexOutOfBoundsException e) {
+				result = "";
+			}
 		} else if (sToken.equals("lowercase")){
 			try {
 				result = st[iTokenNum++].toLowerCase();
@@ -2248,6 +2255,7 @@ public class OMC extends Application {
 			
 			if (OMC.LASTKNOWNCOUNTRY.equals("United States") && OMC.PREFS.getString("weatherProvider", "auto").equals("auto")) {
 				OMC.PREFS.edit().putString("activeWeatherProvider", "noaa").commit();
+				OMC.PREFS.edit().putBoolean("weatherMETAR", true).commit();
 			}
 			
 			OMC.calculateSunriseSunset(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), OMC.jsonFIXEDLOCN.optDouble("longitude",0d));
