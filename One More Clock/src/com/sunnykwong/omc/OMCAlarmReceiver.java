@@ -82,50 +82,50 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			OMC.CHARGESTATUS = sChargeStatus;
 			int currvoltage = intent.getIntExtra("voltage",0);
 
-//			if (OMC.BATTPERCENT%10==0) {
-				Integer recordedVoltage = OMC.BATTVOLTAGESCALE.get(OMC.BATTPERCENT);
-				if (recordedVoltage==null) {
-					OMC.BATTVOLTAGESCALE.put(OMC.BATTPERCENT, currvoltage);
-				} else if (currvoltage < recordedVoltage) {
-					OMC.BATTVOLTAGESCALE.put(OMC.BATTPERCENT, currvoltage);
+			Integer recordedVoltage = OMC.BATTVOLTAGESCALE[OMC.BATTPERCENT];
+			if (recordedVoltage==0) {
+				OMC.BATTVOLTAGESCALE[OMC.BATTPERCENT]=currvoltage;
+			} else if (currvoltage < recordedVoltage) {
+				OMC.BATTVOLTAGESCALE[OMC.BATTPERCENT]=currvoltage;
+			} else {
+				// We want the lowest voltage for each battery percentage.
+			}
+
+			int lowx=0, lowy=0, highx=0, highy=0;
+			// Figure out low end.
+			for (int i=0;i<=100;i+=1) {
+				if (OMC.BATTVOLTAGESCALE[i]==0) continue;
+				if (OMC.BATTVOLTAGESCALE[i]>=currvoltage) {
+					lowx=OMC.BATTVOLTAGESCALE[i];
+					lowy = i;
+					break;
 				} else {
-					// We want the lowest voltage for each battery percentage.
+					lowx=OMC.BATTVOLTAGESCALE[i];
+					lowy = i;
 				}
-				
-				if (OMC.BATTVOLTAGESCALE.size()>1) {
-					int lowx=0, lowy=0, highx=0, highy=0;
-					// Figure out low end.
-					for (int i=0;i<=100;i+=1) {
-						if (!OMC.BATTVOLTAGESCALE.containsKey(i)) continue;
-						if (i>=currvoltage-1) {
-							lowx=i;
-							lowy = OMC.BATTVOLTAGESCALE.get(i);
-							break;
-						} else {
-							lowx=i;
-							lowy = OMC.BATTVOLTAGESCALE.get(i);
-						}
-					}
-					System.out.println("LOW END: " + lowx + "(" + lowy + "V)");
-					// Figure out high end.
-					for (int i=100;i>=0; i-=1) {
-						if (!OMC.BATTVOLTAGESCALE.containsKey(i)) continue;
-						if (i<=currvoltage+1) {
-							highx=i;
-							highy = OMC.BATTVOLTAGESCALE.get(i);
-							break;
-						} else {
-							highx=i;
-							highy = OMC.BATTVOLTAGESCALE.get(i);
-						}
-					}
-					System.out.println("HIGH END: " + highx + "(" + highy + "V)");
-					OMC.BATTPERCENT = OMC.numberInterpolate(lowx, lowy, highx, highy, currvoltage);
-					System.out.println("BATTPERCENT: " + OMC.BATTPERCENT);
-					OMC.BATTLEVEL = OMC.BATTPERCENT;
-					OMC.BATTSCALE = 100;
+			}
+			System.out.println("LOW END: " + lowy + "(" + lowx + "V)");
+			// Figure out high end.
+			for (int i=100;i>lowy; i-=1) {
+				if (OMC.BATTVOLTAGESCALE[i]==0) continue;
+				if (OMC.BATTVOLTAGESCALE[i]<=currvoltage+1) {
+					highx=OMC.BATTVOLTAGESCALE[i];
+					highy = i;
+					break;
+				} else {
+					highx=OMC.BATTVOLTAGESCALE[i];
+					highy = i;
 				}
-//			}
+			}
+			System.out.println("HIGH END: " + highy + "(" + highx + "V)");
+			if (highy!=lowy && highy!=0) {
+				OMC.BATTPERCENT = OMC.numberInterpolate(lowx, lowy, highx, highy, currvoltage);
+				System.out.println("Interp BATTPERCENT: " + OMC.BATTPERCENT);
+				OMC.BATTLEVEL = OMC.BATTPERCENT;
+				OMC.BATTSCALE = 100;
+			} else {
+				System.out.println("Interp INSUFFICIENT DATA, leave alone");
+			}
 			
 			if (OMC.LASTBATTERYPLUGGEDSTATUS != iNewBatteryPluggedStatus) {
 				// Update the current plugged status
