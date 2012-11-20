@@ -362,7 +362,11 @@ public class OMC extends Application {
     	OMC.PKM = getPackageManager();
     	OMC.AM = getAssets();
     	OMC.RES = getResources();
-    	
+//SUNNY
+    	//  Insert educated guesses for battery voltage, if not already specified.
+    	OMC.BATTVOLTAGESCALE[0]=2250;
+    	OMC.BATTVOLTAGESCALE[100]=4250;
+//SUNNY    	
     	OMC.WIDGETWIDTH=Math.min(getResources().getDisplayMetrics().widthPixels,getResources().getDisplayMetrics().heightPixels);
     	OMC.WIDGETHEIGHT=OMC.WIDGETWIDTH;
         OMC.ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);

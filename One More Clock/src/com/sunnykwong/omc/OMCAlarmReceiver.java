@@ -108,7 +108,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			// Figure out high end.
 			for (int i=100;i>lowy; i-=1) {
 				if (OMC.BATTVOLTAGESCALE[i]==0) continue;
-				if (OMC.BATTVOLTAGESCALE[i]<=currvoltage+1) {
+				if (OMC.BATTVOLTAGESCALE[i]<=currvoltage) {
 					highx=OMC.BATTVOLTAGESCALE[i];
 					highy = i;
 					break;
