@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -962,6 +963,28 @@ public class OMCPrefActivity extends PreferenceActivity {
 				})
 				.show();
     	}
+    	//SUNNY SENDBATTDEBUG
+    	if (preference == findPreference("sendBatteryDebug")) {
+    		JSONArray ja = new JSONArray();
+    		for (int i:OMC.BATTVOLTAGESCALE) {
+    			ja.put(i);
+    		}
+    		try {
+				// Build weather debug data.
+				String sBody = "";
+				sBody+="battery calibration data:\n" + ja.toString(3);
+				Intent it = new Intent(android.content.Intent.ACTION_SEND)
+	   					.setType("plain/text")
+	   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
+	   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME + " BattDebug v" + OMC.THISVERSION)
+						.putExtra(android.content.Intent.EXTRA_TEXT, sBody);
+				startActivity(Intent.createChooser(it, OMC.RString("contactXaffronForIssues")));  
+				finish();
+    		} catch (JSONException e) {
+    			e.printStackTrace();
+    		}
+    	}
+    	//SUNNY SENDBATTDEBUG
     	if (preference == getPreferenceScreen().findPreference("widgetPrefs") && OMC.FREEEDITION) {
     		final CharSequence TitleCS = OMC.RString("areThereOtherWidgetSizes");
     		final CharSequence MessageCS = OMC.RString("actuallyThePaidVersion");

@@ -364,8 +364,17 @@ public class OMC extends Application {
     	OMC.RES = getResources();
 //SUNNY
     	//  Insert educated guesses for battery voltage, if not already specified.
-    	OMC.BATTVOLTAGESCALE[0]=2250;
-    	OMC.BATTVOLTAGESCALE[100]=4250;
+    	OMC.BATTVOLTAGESCALE[0]=3000;
+    	OMC.BATTVOLTAGESCALE[10]=3600;
+    	OMC.BATTVOLTAGESCALE[20]=3680;
+    	OMC.BATTVOLTAGESCALE[30]=3712;
+    	OMC.BATTVOLTAGESCALE[40]=3746;
+    	OMC.BATTVOLTAGESCALE[50]=3773;
+    	OMC.BATTVOLTAGESCALE[60]=3817;
+    	OMC.BATTVOLTAGESCALE[70]=3870;
+    	OMC.BATTVOLTAGESCALE[80]=3927;
+    	OMC.BATTVOLTAGESCALE[90]=4004;
+    	OMC.BATTVOLTAGESCALE[100]=4200;
 //SUNNY    	
     	OMC.WIDGETWIDTH=Math.min(getResources().getDisplayMetrics().widthPixels,getResources().getDisplayMetrics().heightPixels);
     	OMC.WIDGETHEIGHT=OMC.WIDGETWIDTH;

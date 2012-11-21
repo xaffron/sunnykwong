@@ -283,6 +283,11 @@
         </Preference>
         <Preference
             android:enabled="true"
+            android:key="sendBatteryDebug"
+            android:selectable="true"
+            android:title="Send Batt Debug" />
+        <Preference
+            android:enabled="true"
             android:key="sVersion"
             android:selectable="false"
             android:title="1.0.0" />
