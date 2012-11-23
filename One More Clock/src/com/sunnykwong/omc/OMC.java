@@ -574,8 +574,10 @@ public class OMC extends Application {
 	    	OMC.GEOLOCNCACHE = new JSONObject(OMC.PREFS.getString("geoLocnCache", "{}"));
 	    	parseICAOMap();
 			JSONArray ja = new JSONArray(OMC.PREFS.getString("ompc_battvoltagescale", "[]"));
-			for (int i=0; i<101; i++) {
-				OMC.BATTVOLTAGESCALE[i] = ja.getInt(i);
+			if (ja.length()==101) {
+				for (int i=0; i<101; i++) {
+					OMC.BATTVOLTAGESCALE[i] = ja.getInt(i);
+				}
 			}
 		} catch (final Exception e) {
 			e.printStackTrace();
