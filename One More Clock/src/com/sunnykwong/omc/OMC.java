@@ -568,7 +568,7 @@ public class OMC extends Application {
 		OMC.WIDGETBMPMAP = new HashMap<Integer, Bitmap>(3);
 		
 		OMC.STRETCHINFO = null;
-		try {
+		try { 
 			OMC.jsonFIXEDLOCN = new JSONObject(OMC.PREFS.getString("weather_fixedlocation", "{}"));
 			OMC.WEATHERCONVERSIONS = streamToJSONObject(OMC.AM.open("weathericons/weathertranslation.json"));
 	    	OMC.GEOLOCNCACHE = new JSONObject(OMC.PREFS.getString("geoLocnCache", "{}"));
