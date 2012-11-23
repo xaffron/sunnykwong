@@ -362,20 +362,20 @@ public class OMC extends Application {
     	OMC.PKM = getPackageManager();
     	OMC.AM = getAssets();
     	OMC.RES = getResources();
-//SUNNY
+
     	//  Insert educated guesses for battery voltage, if not already specified.
-    	OMC.BATTVOLTAGESCALE[0]=3000;
-    	OMC.BATTVOLTAGESCALE[10]=3600;
-    	OMC.BATTVOLTAGESCALE[20]=3680;
-    	OMC.BATTVOLTAGESCALE[30]=3712;
-    	OMC.BATTVOLTAGESCALE[40]=3746;
-    	OMC.BATTVOLTAGESCALE[50]=3773;
-    	OMC.BATTVOLTAGESCALE[60]=3817;
-    	OMC.BATTVOLTAGESCALE[70]=3870;
-    	OMC.BATTVOLTAGESCALE[80]=3927;
-    	OMC.BATTVOLTAGESCALE[90]=4004;
-    	OMC.BATTVOLTAGESCALE[100]=4200;
-//SUNNY    	
+//    	OMC.BATTVOLTAGESCALE[0]=3000;
+//    	OMC.BATTVOLTAGESCALE[10]=3600;
+//    	OMC.BATTVOLTAGESCALE[20]=3680;
+//    	OMC.BATTVOLTAGESCALE[30]=3712;
+//    	OMC.BATTVOLTAGESCALE[40]=3746;
+//    	OMC.BATTVOLTAGESCALE[50]=3773;
+//    	OMC.BATTVOLTAGESCALE[60]=3817;
+//    	OMC.BATTVOLTAGESCALE[70]=3870;
+//    	OMC.BATTVOLTAGESCALE[80]=3927;
+//    	OMC.BATTVOLTAGESCALE[90]=4004;
+//    	OMC.BATTVOLTAGESCALE[100]=4200;
+
     	OMC.WIDGETWIDTH=Math.min(getResources().getDisplayMetrics().widthPixels,getResources().getDisplayMetrics().heightPixels);
     	OMC.WIDGETHEIGHT=OMC.WIDGETWIDTH;
         OMC.ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
@@ -478,7 +478,7 @@ public class OMC extends Application {
 		OMC.BATTSCALE = OMC.PREFS.getInt("ompc_battscale", 100);
 		OMC.BATTPERCENT = OMC.PREFS.getInt("ompc_battpercent", 0);
 		OMC.CHARGESTATUS = OMC.PREFS.getString("ompc_chargestatus", "Discharging");
-		
+
 		final Time t = new Time();
 		t.setToNow();
 		t.hour=6;
@@ -573,6 +573,10 @@ public class OMC extends Application {
 			OMC.WEATHERCONVERSIONS = streamToJSONObject(OMC.AM.open("weathericons/weathertranslation.json"));
 	    	OMC.GEOLOCNCACHE = new JSONObject(OMC.PREFS.getString("geoLocnCache", "{}"));
 	    	parseICAOMap();
+			JSONArray ja = new JSONArray(OMC.PREFS.getString("ompc_battvoltagescale", "[]"));
+			for (int i=0; i<101; i++) {
+				OMC.BATTVOLTAGESCALE[i] = ja.getInt(i);
+			}
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}

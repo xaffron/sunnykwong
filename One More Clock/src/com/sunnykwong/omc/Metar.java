@@ -247,11 +247,17 @@ public class Metar {
             // Look for a block of 4 digits (raw metric visibility) - we'll discard right now
             if (token.length()==4 && isNumeric(token)) continue;
             
+            // Look for a standalone number - that's the whole number portion of visibility - we'll discard
+            if (isNumeric(token)) continue;
+            
             // Look for a block that starts with a digit and ends with a letter (directional visibility or
             // US visibility in SM) - we'll discard
             if (isNumeric(token.substring(0,1)) && 
             		isAlpha(token.substring(token.length()-1,token.length()))) continue;
             
+            // Look for a 'M1/4SM' block (Low US visibility in SM) - we'll discard
+            if (token.equals("M1/4SM")) continue;
+
             // Look for a block that has a slash and starts with R (runway visibility) -
             // we'll also discard right now
             if (token.startsWith("R") && token.contains("/")) continue;

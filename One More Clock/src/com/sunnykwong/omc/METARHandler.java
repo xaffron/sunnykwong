@@ -94,6 +94,7 @@ public class METARHandler {
 									Log.i(OMC.OMCSHORT + "NOAAMETAR", "Airport " + s + " returned good METAR.");
 									Log.i(OMC.OMCSHORT + "NOAAMETAR", result);
 								}
+								
 								Metar metar = Metar.parse(s, result);
 								metar.debugPrint();
 								
@@ -133,6 +134,14 @@ public class METARHandler {
 								//Mark current conditions as updated by METAR.
 								jsonWeather.put("METAR", true);
 								jsonWeather.put("ICAO", metar.icao);
+
+								// In NOAA situations where current conditions are NA, fix that too
+								JSONObject iTodaysWeatherForecastObject = jsonWeather.optJSONArray("zzforecast_conditions").getJSONObject(0);
+								if (iTodaysWeatherForecastObject.getInt("condition_code")==0) {
+									iTodaysWeatherForecastObject.put("condition_code",metar.OMCConditionCode);
+									iTodaysWeatherForecastObject.put("condition", OMC.VERBOSEWEATHER[metar.OMCConditionCode]);
+								}
+								
 								OMC.PREFS.edit().putString("weather", jsonWeather.toString(1)).commit();
 
 								break;

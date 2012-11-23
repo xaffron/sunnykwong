@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.json.JSONArray;
+
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -76,39 +78,31 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			// from plugged to unplugged, we want to update the widget asap.
 			// v1.3.3:   NOTE THAT WE *ONLY* WANT TO UPDATE ASAP if CHARGE STATUS CHANGED
 			// to avoid serious battery drain on weaker batteries!!
+			
 			OMC.BATTLEVEL = intent.getIntExtra("level", 0);
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","REPORTED BATT%: " + OMC.BATTLEVEL);
+//			OMC.BATTLEVEL=OMC.BATTLEVEL/10*10+10;
+//			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","FAKED BATT%: " + OMC.BATTLEVEL);
 			OMC.BATTSCALE = intent.getIntExtra("scale", 100);
-			OMC.BATTPERCENT = (int)(100*intent.getIntExtra("level", 0)/(float)intent.getIntExtra("scale", 100));
+			OMC.BATTPERCENT = (int)(100*OMC.BATTLEVEL/(float)intent.getIntExtra("scale", 100));
 			OMC.CHARGESTATUS = sChargeStatus;
 			int currvoltage = intent.getIntExtra("voltage",0);
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","REAL VOLTAGE: " + currvoltage);
 
 			Integer recordedVoltage = OMC.BATTVOLTAGESCALE[OMC.BATTPERCENT];
 			if (recordedVoltage==0) {
 				OMC.BATTVOLTAGESCALE[OMC.BATTPERCENT]=currvoltage;
-			} else if (currvoltage < recordedVoltage) {
+			} else if (currvoltage > recordedVoltage) {
 				OMC.BATTVOLTAGESCALE[OMC.BATTPERCENT]=currvoltage;
 			} else {
-				// We want the lowest voltage for each battery percentage.
+				// We want the highest voltage for each battery percentage.
 			}
 
 			int lowx=0, lowy=0, highx=0, highy=0;
-			// Figure out low end.
-			for (int i=0;i<=100;i+=1) {
-				if (OMC.BATTVOLTAGESCALE[i]==0) continue;
-				if (OMC.BATTVOLTAGESCALE[i]>=currvoltage) {
-					lowx=OMC.BATTVOLTAGESCALE[i];
-					lowy = i;
-					break;
-				} else {
-					lowx=OMC.BATTVOLTAGESCALE[i];
-					lowy = i;
-				}
-			}
-			System.out.println("LOW END: " + lowy + "(" + lowx + "V)");
 			// Figure out high end.
-			for (int i=100;i>lowy; i-=1) {
+			for (int i=100;i>=0; i-=1) {
 				if (OMC.BATTVOLTAGESCALE[i]==0) continue;
-				if (OMC.BATTVOLTAGESCALE[i]<=currvoltage) {
+				if (i<=OMC.BATTLEVEL) {
 					highx=OMC.BATTVOLTAGESCALE[i];
 					highy = i;
 					break;
@@ -117,14 +111,27 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 					highy = i;
 				}
 			}
-			System.out.println("HIGH END: " + highy + "(" + highx + "V)");
-			if (highy!=lowy && highy!=0) {
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","HIGH END: " + highy + "(" + highx + "V)");
+			// Figure out low end.
+			for (int i=0;i<highy;i+=1) {
+				if (OMC.BATTVOLTAGESCALE[i]==0) continue;
+				if (i>=OMC.BATTLEVEL) {
+					lowx=OMC.BATTVOLTAGESCALE[i];
+					lowy = i;
+					break;
+				} else {
+					lowx=OMC.BATTVOLTAGESCALE[i];
+					lowy = i;
+				}
+			}
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","LOW END: " + lowy + "(" + lowx + "V)");
+			if (highy!=lowy && lowy!=0) {
 				OMC.BATTPERCENT = OMC.numberInterpolate(lowx, lowy, highx, highy, currvoltage);
-				System.out.println("Interp BATTPERCENT: " + OMC.BATTPERCENT);
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Interp BATTPERCENT: " + OMC.BATTPERCENT);
 				OMC.BATTLEVEL = OMC.BATTPERCENT;
 				OMC.BATTSCALE = 100;
 			} else {
-				System.out.println("Interp INSUFFICIENT DATA, leave alone");
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Interp INSUFFICIENT DATA, leave alone at " + OMC.BATTPERCENT);
 			}
 			
 			if (OMC.LASTBATTERYPLUGGEDSTATUS != iNewBatteryPluggedStatus) {
@@ -143,11 +150,16 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		// every fifteen minutes.
 		if (omctime > OMC.NEXTBATTSAVEMILLIS) {
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Flushing BattLevels to SharedPrefs");
+    		JSONArray ja = new JSONArray();
+    		for (int i:OMC.BATTVOLTAGESCALE) {
+    			ja.put(i);
+    		}
 	    	OMC.PREFS.edit()
     		.putInt("ompc_battlevel", OMC.BATTLEVEL)
 			.putInt("ompc_battscale", OMC.BATTSCALE)
 			.putInt("ompc_battpercent", OMC.BATTPERCENT)
 			.putString("ompc_chargestatus", OMC.CHARGESTATUS)
+			.putString("ompc_battvoltagescale", ja.toString())
 			.commit();
 			OMC.NEXTBATTSAVEMILLIS=omctime+900000l;
 		}
