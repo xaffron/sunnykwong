@@ -136,7 +136,8 @@ public class GoogleReverseGeocodeService {
 					try {
 						if (OMC.DEBUG)
 							Log.i(OMC.OMCSHORT + "Weather", "Requesting GPS Locn.");
-						OMC.LM.requestLocationUpdates("gps", 0, 0, OMC.LL);
+		            	OMC.LM.removeUpdates(OMC.LL); 
+						OMC.LM.requestLocationUpdates("gps", 3600000, 50000, OMC.LL);
 					} catch (IllegalArgumentException ee) {
 						Log.w(OMC.OMCSHORT + "Weather", "Cannot fix location.");
 						ee.printStackTrace();
@@ -151,12 +152,14 @@ public class GoogleReverseGeocodeService {
 				try {
 					if (OMC.DEBUG)
 						Log.i(OMC.OMCSHORT + "Weather", "Requesting Network Locn.");
-					OMC.LM.requestLocationUpdates("network", 0, 0, OMC.LL);
+	            	OMC.LM.removeUpdates(OMC.LL); 
+					OMC.LM.requestLocationUpdates("network", 3600000, 50000, OMC.LL);
 				} catch (IllegalArgumentException e) {
 					try {
 						if (OMC.DEBUG)
 							Log.i(OMC.OMCSHORT + "Weather", "Requesting GPS Locn.");
-						OMC.LM.requestLocationUpdates("gps", 0, 0, OMC.LL);
+		            	OMC.LM.removeUpdates(OMC.LL); 
+						OMC.LM.requestLocationUpdates("gps", 3600000, 50000, OMC.LL);
 					} catch (IllegalArgumentException ee) {
 						Log.w(OMC.OMCSHORT + "Weather", "Cannot fix location.");
 						ee.printStackTrace();

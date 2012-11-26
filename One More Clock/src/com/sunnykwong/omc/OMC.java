@@ -394,7 +394,6 @@ public class OMC extends Application {
             	} else if (location.getProvider().equals("passive")) {
             		OMC.WEATHERREFRESHSTATUS=OMC.WRS_CACHED;
             	}
-            	OMC.LM.removeUpdates(OMC.LL); 
             	OMC.LASTKNOWNLOCN=new Location(location);
         		final Thread t = new Thread() {
         			@Override
@@ -2230,7 +2229,7 @@ public class OMC extends Application {
     }
 
     static public void abortWeatherUpdate() {
- 	    OMC.LM.removeUpdates(OMC.LL);
+// 	    OMC.LM.removeUpdates(OMC.LL);
     }
     
 	static public void updateWeather() {
