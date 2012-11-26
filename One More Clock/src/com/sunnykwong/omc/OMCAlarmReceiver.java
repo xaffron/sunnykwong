@@ -1,5 +1,8 @@
 package com.sunnykwong.omc;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -78,62 +81,35 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			// from plugged to unplugged, we want to update the widget asap.
 			// v1.3.3:   NOTE THAT WE *ONLY* WANT TO UPDATE ASAP if CHARGE STATUS CHANGED
 			// to avoid serious battery drain on weaker batteries!!
-			
-			OMC.BATTLEVEL = intent.getIntExtra("level", 0);
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","REPORTED BATT%: " + OMC.BATTLEVEL);
-//			OMC.BATTLEVEL=OMC.BATTLEVEL/10*10+10;
-//			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","FAKED BATT%: " + OMC.BATTLEVEL);
-			OMC.BATTSCALE = intent.getIntExtra("scale", 100);
-			OMC.BATTPERCENT = (int)(100*OMC.BATTLEVEL/(float)intent.getIntExtra("scale", 100));
-			OMC.CHARGESTATUS = sChargeStatus;
-			int currvoltage = intent.getIntExtra("voltage",0);
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","REAL VOLTAGE: " + currvoltage);
-
-			Integer recordedVoltage = OMC.BATTVOLTAGESCALE[OMC.BATTPERCENT];
-			if (recordedVoltage==0) {
-				OMC.BATTVOLTAGESCALE[OMC.BATTPERCENT]=currvoltage;
-			} else if (currvoltage > recordedVoltage) {
-				OMC.BATTVOLTAGESCALE[OMC.BATTPERCENT]=currvoltage;
-			} else {
-				// We want the highest voltage for each battery percentage.
-			}
-
-			int lowx=0, lowy=0, highx=0, highy=0;
-			// Figure out high end.
-			for (int i=100;i>=0; i-=1) {
-				if (OMC.BATTVOLTAGESCALE[i]==0) continue;
-				if (i<=OMC.BATTLEVEL) {
-					highx=OMC.BATTVOLTAGESCALE[i];
-					highy = i;
-					break;
-				} else {
-					highx=OMC.BATTVOLTAGESCALE[i];
-					highy = i;
+			// v1.4.1:   Motorola battery fix.
+			// Adapted from "The One-Percent Hack" by Josiah Barber of Darshan Computing, LLC.
+			// Thanks, Josiah!
+			File fChargeFile = new File("/sys/class/power_supply/battery/charge_counter");
+			if (OMC.PREFS.getBoolean("battReporting",true)==true && fChargeFile.exists()) {
+				try {
+					FileInputStream fis = new FileInputStream(fChargeFile);
+					OMC.BATTLEVEL = Integer.parseInt(OMC.streamToString(fis));
+					fis.close();
+					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","CHARGECOUNTER BATT%: " + OMC.BATTLEVEL);
+					OMC.BATTSCALE = intent.getIntExtra("scale", 100);
+					OMC.BATTPERCENT = (int)(100*OMC.BATTLEVEL/(float)intent.getIntExtra("scale", 100));
+					OMC.CHARGESTATUS = sChargeStatus;
+				} catch (IOException e) {
+					e.printStackTrace();
+					OMC.BATTLEVEL = intent.getIntExtra("level", 0);
+					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","REPORTED BATT%: " + OMC.BATTLEVEL);
+					OMC.BATTSCALE = intent.getIntExtra("scale", 100);
+					OMC.BATTPERCENT = (int)(100*OMC.BATTLEVEL/(float)intent.getIntExtra("scale", 100));
+					OMC.CHARGESTATUS = sChargeStatus;
 				}
-			}
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","HIGH END: " + highy + "(" + highx + "V)");
-			// Figure out low end.
-			for (int i=0;i<highy;i+=1) {
-				if (OMC.BATTVOLTAGESCALE[i]==0) continue;
-				if (i>=OMC.BATTLEVEL) {
-					lowx=OMC.BATTVOLTAGESCALE[i];
-					lowy = i;
-					break;
-				} else {
-					lowx=OMC.BATTVOLTAGESCALE[i];
-					lowy = i;
-				}
-			}
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","LOW END: " + lowy + "(" + lowx + "V)");
-			if (highy!=lowy && lowy!=0) {
-				OMC.BATTPERCENT = OMC.numberInterpolate(lowx, lowy, highx, highy, currvoltage);
-				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Interp BATTPERCENT: " + OMC.BATTPERCENT);
-				OMC.BATTLEVEL = OMC.BATTPERCENT;
-				OMC.BATTSCALE = 100;
 			} else {
-				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Interp INSUFFICIENT DATA, leave alone at " + OMC.BATTPERCENT);
+				OMC.BATTLEVEL = intent.getIntExtra("level", 0);
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","REPORTED BATT%: " + OMC.BATTLEVEL);
+				OMC.BATTSCALE = intent.getIntExtra("scale", 100);
+				OMC.BATTPERCENT = (int)(100*OMC.BATTLEVEL/(float)intent.getIntExtra("scale", 100));
+				OMC.CHARGESTATUS = sChargeStatus;
 			}
-			
+
 			if (OMC.LASTBATTERYPLUGGEDSTATUS != iNewBatteryPluggedStatus) {
 				// Update the current plugged status
 				OMC.LASTBATTERYPLUGGEDSTATUS = iNewBatteryPluggedStatus;

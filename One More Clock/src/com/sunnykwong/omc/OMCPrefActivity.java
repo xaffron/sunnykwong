@@ -601,6 +601,23 @@ public class OMCPrefActivity extends PreferenceActivity {
         	prefLocnPriority.setSummary(OMC.RStringArray("locationPriority_options")
         			[Integer.parseInt(OMC.PREFS.getString("locationPriority", "4"))]);
         	
+        	// "Battery Reporting".
+        	Preference prefBattReporting = findPreference("battReporting");
+        	prefBattReporting.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+		    		if (newValue.equals(true)) {
+		        		preference.setSummary(OMC.RString("battReportingNormal"));
+		    		} else {
+		        		preference.setSummary(OMC.RString("battReportingAlternate"));
+		    		}
+			    	return true;
+				}
+			});
+        	if (OMC.PREFS.getBoolean("battReporting",true)==true)
+        		findPreference("battReporting").setSummary(OMC.RString("battReportingNormal"));
+        	else findPreference("battReporting").setSummary(OMC.RString("battReportingAlternate"));
+
         	// "Weather Diagnostics".
         	Preference prefWeatherDiag = findPreference("weatherDebug");
         	prefWeatherDiag.setOnPreferenceClickListener(new OnPreferenceClickListener() {
@@ -965,41 +982,41 @@ public class OMCPrefActivity extends PreferenceActivity {
 				.show();
     	}
     	//SUNNY SENDBATTDEBUG
-    	if (preference == findPreference("sendBatteryDebug")) {
-    		JSONArray ja = new JSONArray();
-    		for (int i:OMC.BATTVOLTAGESCALE) {
-    			ja.put(i);
-    		}
-    		try {
-				// Build weather debug data.
-				String sBody = "";
-				sBody+="battery driver info:\n";
-				File dir = new File("/sys/class/power_supply/battery/");
-				for (File f: dir.listFiles()) {
-					sBody+="File:" + f.getName() + "\n";
-					if (f.getName().equals("capacity")||f.getName().equals("charge_counter")||f.getName().equals("uevent")) {
-						try {
-							FileInputStream fis = new FileInputStream(f);
-							sBody+="Content:" + OMC.streamToString(fis);
-							fis.close();
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				}
-				sBody+="\nbattery calibration data:\n" + ja.toString(3);
-				Intent it = new Intent(android.content.Intent.ACTION_SEND)
-	   					.setType("plain/text")
-	   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
-	   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME + " BattDebug v" + OMC.THISVERSION)
-						.putExtra(android.content.Intent.EXTRA_TEXT, sBody);
-				startActivity(Intent.createChooser(it, OMC.RString("contactXaffronForIssues")));  
-				finish();
-    		} catch (JSONException e) {
-    			e.printStackTrace();
-    		}
-    	}
-    	//SUNNY SENDBATTDEBUG
+//    	if (preference == findPreference("sendBatteryDebug")) {
+//    		JSONArray ja = new JSONArray();
+//    		for (int i:OMC.BATTVOLTAGESCALE) {
+//    			ja.put(i);
+//    		}
+//    		try {
+//				// Build weather debug data.
+//				String sBody = "";
+//				sBody+="battery driver info:\n";
+//				File dir = new File("/sys/class/power_supply/battery/");
+//				for (File f: dir.listFiles()) {
+//					sBody+="File:" + f.getName() + "\n";
+//					if (f.getName().equals("capacity")||f.getName().equals("charge_counter")||f.getName().equals("uevent")) {
+//						try {
+//							FileInputStream fis = new FileInputStream(f);
+//							sBody+="Content:" + OMC.streamToString(fis);
+//							fis.close();
+//						} catch (Exception e) {
+//							e.printStackTrace();
+//						}
+//					}
+//				}
+//				sBody+="\nbattery calibration data:\n" + ja.toString(3);
+//				Intent it = new Intent(android.content.Intent.ACTION_SEND)
+//	   					.setType("plain/text")
+//	   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
+//	   					.putExtra(android.content.Intent.EXTRA_SUBJECT, OMC.APPNAME + " BattDebug v" + OMC.THISVERSION)
+//						.putExtra(android.content.Intent.EXTRA_TEXT, sBody);
+//				startActivity(Intent.createChooser(it, OMC.RString("contactXaffronForIssues")));  
+//				finish();
+//    		} catch (JSONException e) {
+//    			e.printStackTrace();
+//    		}
+//    	}
+//    	//SUNNY SENDBATTDEBUG
     	if (preference == getPreferenceScreen().findPreference("widgetPrefs") && OMC.FREEEDITION) {
     		final CharSequence TitleCS = OMC.RString("areThereOtherWidgetSizes");
     		final CharSequence MessageCS = OMC.RString("actuallyThePaidVersion");

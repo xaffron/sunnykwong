@@ -367,6 +367,10 @@
 			staleness. Are you sure?</item>
 	</string-array>
 
+	<string name="battReporting">Battery Reporting</string>
+	<string name="battReportingNormal">Normal - As reported by Android</string>
+	<string name="battReportingAlternate">Alternate - As reported by driver</string>
+
 	<string name="weatherDiagnostics">Weather Diagnostics</string>
 	<string name="submitLocationWeatherDebugData">Submit location/weather debug data</string>
 	<string name="deleteAllThemes">Delete All Themes</string>

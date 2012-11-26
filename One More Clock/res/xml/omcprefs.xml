@@ -255,6 +255,14 @@
                 android:title="@string/locationPriority" >
             </ListPreference>
 
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:enabled="true"
+                android:key="battReporting"
+                android:selectable="true"
+                android:summary=""
+                android:title="@string/battReporting" />
+
             <Preference
                 android:enabled="true"
                 android:key="weatherDebug"
@@ -281,11 +289,6 @@
             android:summary="@string/donateOrContact"
             android:title="@string/contactXaffron" >
         </Preference>
-        <Preference
-            android:enabled="true"
-            android:key="sendBatteryDebug"
-            android:selectable="true"
-            android:title="Send Batt Debug" />
         <Preference
             android:enabled="true"
             android:key="sVersion"
