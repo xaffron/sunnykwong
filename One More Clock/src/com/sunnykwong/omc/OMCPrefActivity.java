@@ -1,6 +1,7 @@
 package com.sunnykwong.omc;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -972,7 +973,21 @@ public class OMCPrefActivity extends PreferenceActivity {
     		try {
 				// Build weather debug data.
 				String sBody = "";
-				sBody+="battery calibration data:\n" + ja.toString(3);
+				sBody+="battery driver info:\n";
+				File dir = new File("/sys/class/power_supply/battery/");
+				for (File f: dir.listFiles()) {
+					sBody+="File:" + f.getName() + "\n";
+					if (f.getName().equals("capacity")||f.getName().equals("charge_counter")||f.getName().equals("uevent")) {
+						try {
+							FileInputStream fis = new FileInputStream(f);
+							sBody+="Content:" + OMC.streamToString(fis);
+							fis.close();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}
+				sBody+="\nbattery calibration data:\n" + ja.toString(3);
 				Intent it = new Intent(android.content.Intent.ACTION_SEND)
 	   					.setType("plain/text")
 	   					.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"skwong@consultant.com"})
