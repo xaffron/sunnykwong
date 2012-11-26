@@ -436,7 +436,7 @@ public class Metar {
 	    	// 18. Mostly Cloudy.
 	    } else if (weatherTokens.contains("BKN")) {
 	    	metar.condition="mostly cloudy";
-	    	metar.OMCConditionCode=9;
+	    	metar.OMCConditionCode=10;
 	    	// 19. Partly Cloudy.
 	    } else if (weatherTokens.contains("SCT")) {
 	    	metar.condition="partly cloudy";
