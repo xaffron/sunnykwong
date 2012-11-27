@@ -694,6 +694,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 	    											int which) {
 		    										// TODO Auto-generated method stub
 	    										OMC.PREFS.edit().putBoolean("showhelp", false).commit(); 
+	    										OMC.SHOWHELP=false;
 	    									}
 										}).create();
 	    			d.show();
@@ -803,6 +804,7 @@ public class OMCPrefActivity extends PreferenceActivity {
     											int which) {
 	    										// TODO Auto-generated method stub
     										OMC.PREFS.edit().putBoolean("showhelp", false).commit(); 
+    										OMC.SHOWHELP=false;
     									}
 									}).create();
     			d.show();
