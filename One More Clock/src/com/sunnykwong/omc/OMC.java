@@ -98,8 +98,8 @@ public class OMC extends Application {
 	static final String SINGLETONNAME = "One More Clock";
 	static final String STARTERPACKURL = "asset:pk141.omc";
 	static final String OMCCHANGESURL = "https://sites.google.com/a/xaffron.com/xaffron-software/omc-changes";
-	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v136.omc";
-	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v136.omc";
+	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v141.omc";
+	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v141.omc";
 	static final String DEFAULTTHEME = "IceLock";
 	static final String DEFAULTTHEMELONG = "Ice Lock";
 	static final String APPICON = "clockicon";
