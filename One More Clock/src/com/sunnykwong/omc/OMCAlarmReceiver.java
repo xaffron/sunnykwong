@@ -88,7 +88,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			if (OMC.PREFS.getBoolean("battReporting",true)==true && fChargeFile.exists()) {
 				try {
 					FileInputStream fis = new FileInputStream(fChargeFile);
-					OMC.BATTLEVEL = Integer.parseInt(OMC.streamToString(fis));
+					OMC.BATTLEVEL = Integer.parseInt(OMC.streamToString(fis).trim());
 					fis.close();
 					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","CHARGECOUNTER BATT%: " + OMC.BATTLEVEL);
 					OMC.BATTSCALE = intent.getIntExtra("scale", 100);
