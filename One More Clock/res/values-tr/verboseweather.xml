@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string-array name="VerboseWeather">
+		<item>Bilinmiyor</item>
+		<item>Açýk</item>
+		<item>Açýk</item>
+		<item>Genellikle Açýk</item>
+		<item>Yer Yer Bulutlu</item>
+		<item>Parçalý Bulutlu</item>
+		<item>Tozlu</item>
+		<item>Puslu</item>
+		<item>Sisli</item>
+		<item>Kapalý</item>
+		<item>Çok Bulutlu</item>
+		<item>Bulutla Kaplý</item>
+		<item>Bulutlu</item>
+		<item>Sis</item>
+		<item>Hafif Yaðmur</item>
+		<item>Kýsa Süreli Yaðmur</item>
+		<item>Yaðmur Çiselemesi</item>
+		<item>Kýsa Süreli Yaðmur</item>
+		<item>Yaðmura Dönük</item>
+		<item>Kýsa Süreli Yaðmur</item>
+		<item>Saðanak Yaðýþ</item>
+		<item>Gök Gürültülü</item>
+		<item>Simþekli</item>
+		<item>Gökgürültülü Þimþekli</item>
+		<item>Fýrtýnaya Çevirebilir</item>
+		<item>Fýrtýna</item>
+		<item>Siddetli Yaðmur</item>
+		<item>Yaðmur</item>
+		<item>Kar Serpintisi</item>
+		<item>Sulu Kar</item>
+		<item>Kara Çevirebilir</item>
+		<item>Kesintili Kar Yaðýþý</item>
+		<item>Yoðun Kar Yaðýþý</item>
+		<item>Kar</item>
+		<item>Buz</item>
+		<item>Buz ya da Kar</item>
+		<item>Sulu Kar</item>
+		<item>Dolu</item>
+		<item>Yaðmur ve Kar</item>
+		<item>Rüzgarlý</item>
+	</string-array>
+
+</resources>

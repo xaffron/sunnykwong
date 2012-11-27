@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string-array name="VerboseWeather">
+		<item>Άγνωστο</item>
+		<item>Καθαρός</item>
+		<item>Καθαρός</item>
+		<item>Κυρίως καθαρός</item>
+		<item>Μερικώς καθαρός</item>
+		<item>Μερικώς συννεφιασμένος</item>
+		<item>Σκόνη</item>
+		<item>Καταχνιά</item>
+		<item>Ομίχλη</item>
+		<item>Καπνός</item>
+		<item>Κυρίως συννεφιασμένος</item>
+		<item>Νεφελώδης</item>
+		<item>Συνεφιασμένος</item>
+		<item>Ομίχλη</item>
+		<item>Ασθενής βροχόπτωση</item>
+		<item>Δυνατή βροχόπτωση</item>
+		<item>Ψιχάλα</item>
+		<item>Καταιγίδα</item>
+		<item>Πιθανότητα βροχής</item>
+		<item>Διάσπαρτες καταιγίδες</item>
+		<item>Πιθανή βροχή</item>
+		<item>Καταιγίδα</item>
+		<item>Πιθανότητα καταιγίδας</item>
+		<item>Διάσπαρτες καταιγίδες</item>
+		<item>Πιθανότητα καταιγίδας</item>
+		<item>Καταιγίδα</item>
+		<item>Δυνατή βροχή</item>
+		<item>Βροχή</item>
+		<item>Λίγο χιόνι</item>
+		<item>Λίγο χιόνι</item>
+		<item>Πιθανή χιονόπτωση</item>
+		<item>Δυνατό χιόνι</item>
+		<item>Περιοδική χιονόπτωση</item>
+		<item>Χιόvι</item>
+		<item>Πάγος</item>
+		<item>Πάγος ή Χιόνι</item>
+		<item>Χαλάζι</item>
+		<item>Παγωμένη ψιχάλα</item>
+		<item>Βροχή και χιόνι</item>
+		<item>Ανεμώδης</item>
+	</string-array>
+
+</resources>

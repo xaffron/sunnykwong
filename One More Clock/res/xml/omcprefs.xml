@@ -302,6 +302,11 @@
             android:summary="Language: English(US)"/>
         <Preference
             android:enabled="true"
+            android:key="releaseNotes"
+            android:selectable="true"
+            android:title="@string/viewReleaseNotes" />
+        <Preference
+            android:enabled="true"
             android:key="widgetCredits"
             android:selectable="true"
             android:title="@string/viewCredits" />

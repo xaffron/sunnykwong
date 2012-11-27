@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="WordNumbers">
+<item>Sýfýr</item>
+<item>Bir</item>
+<item>Ýki</item>
+<item>Üç</item>
+<item>Dört</item>
+<item>Beþ</item>
+<item>Altý</item>
+<item>Yedi</item>
+<item>Sekiz</item>
+<item>Dokuz</item>
+<item>On</item>
+<item>On Bir</item>
+<item>On Ýki</item>
+<item>On Üç</item>
+<item>On Dört</item>
+<item>On Beþ</item>
+<item>On Altý</item>
+<item>On Yedi</item>
+<item>On Sekiz</item>
+<item>On Dokuz</item>
+<item>Yirmi</item>
+<item>Yirmi Bir</item>
+<item>Yirmi Ýki</item>
+<item>Yirmi Üç</item>
+<item>Yirmi Dört</item>
+<item>Yirmi Beþ</item>
+<item>Yirmi Altý</item>
+<item>Yirmi Yedi</item>
+<item>Yirmi Sekiz</item>
+<item>Yirmi Dokuz</item>
+<item>Otuz</item>
+<item>Otuz Bir</item>
+<item>otuz Ýki</item>
+<item>Otuz Üç</item>
+<item>Otuz Dört</item>
+<item>Otuz Beþ</item>
+<item>Otuz Altý</item>
+<item>Otuz Yedi</item>
+<item>Otuz Sekiz</item>
+<item>Otuz Dokuz</item>
+<item>Kýrk</item>
+<item>Kýrk Bir</item>
+<item>Kýrk Ýki</item>
+<item>Kýrk Üç</item>
+<item>Kýrk Dört</item>
+<item>Kýrk Beþ</item>
+<item>Kýrk Altý</item>
+<item>Kýrk Yedi</item>
+<item>Kýrk Sekiz</item>
+<item>Kýrk Dokuz</item>
+<item>Elli</item>
+<item>Elli Bir</item>
+<item>Elli Ýki</item>
+<item>Elli Üç</item>
+<item>Elli Dört</item>
+<item>Elli Beþ</item>
+<item>Elli Altý</item>
+<item>Elli Yedi</item>
+<item>Elli Sekiz</item>
+<item>Elli Dokuz</item>
+<item>Altmýþ</item>
+<item>Altmýþ Bir</item>
+<item>Altmýþ Ýki</item>
+<item>Altmýþ Üç</item>
+<item>Altmýþ Dört</item>
+<item>Altmýþ Beþ</item>
+<item>Altmýþ Altý</item>
+<item>Altmýþ Yedi</item>
+<item>Altmýþ Sekiz</item>
+<item>Altmýþ Dokuz</item>
+<item>Yetmiþ</item>
+<item>Yetmiþ Bir</item>
+<item>Yetmiþ Ýki</item>
+<item>Yetmiþ Üç</item>
+<item>Yetmiþ Dört</item>
+<item>Yetmiþ Beþ</item>
+<item>Yetmiþ Altý</item>
+<item>Yetmiþ Yedi</item>
+<item>Yetmiþ Sekiz</item>
+<item>Yetmiþ Dokuz</item>
+<item>Seksen</item>
+<item>Seksen Bir</item>
+<item>Seksen Ýki</item>
+<item>Seksen Üç</item>
+<item>Seksen Dört</item>
+<item>Seksen Beþ</item>
+<item>Seksen Altý</item>
+<item>Seksen Yedi</item>
+<item>Seksen Sekiz</item>
+<item>Seksen Dokuz</item>
+<item>Doksan</item>
+<item>Doksan Bir</item>
+<item>Doksan Ýki</item>
+<item>Doksan Üç</item>
+<item>Doksan Dört</item>
+<item>Doksan Beþ</item>
+<item>Doksan Altý</item>
+<item>Doksan Yedi</item>
+<item>Doksan Sekiz</item>
+<item>Doksan Dokuz</item>
+</string-array>
+</resources>

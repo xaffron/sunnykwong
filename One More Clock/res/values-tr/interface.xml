@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="languageWord">Dil</string>
+	<string name="languageName">Türkçe</string>
+	<string name="translator">Okan ALTUNTAS</string>
+
+	<!-- General Buttons -->
+	<string name="nextTip">Sonraki İpucu</string>
+	<string name="ok">Tamam</string>
+	<string name="search">Ara</string>
+	<string name="abandon">İptal Et</string>
+	<string name="apply">Uygula</string>
+	<string name="yes">Evet</string>
+	<string name="no">Hayır</string>
+
+	<!-- General Errors -->
+	<string name="sdcardNotDetected">SD Card algılanmadı.\nHalen bağlanamadı iseniz 
+	USB belleği çıkarıp takarak tekrar deneyiniz</string>
+	<string name="sdcardMissingOrCorrupt">SD Card eksik ya da bozuk. \nHalen bağlanamadı iseniz 
+	USB belleği çıkarıp takarak tekrar deneyiniz!</string>
+	<string name="themeNotFound">Tema bulunamadı! Görünüm varsayılana dönüyor</string>
+	<string name="warningConflictPaid">UYARI!\nÜcretli versiyon ile uyumsuzluk</string>
+	<string name="warningConflictFree">UYARI!\nÜcretli versiyon ile uyumsuzluk</string>
+	<string name="warningConflictText">Tema özelleştirme ve saat ayarları düzgün çalışmayacaktır.
+	\nLütfen en kısa sürede ücretsiz sürümü kaldırınız!</string>
+	<string name="defaultThemeNotRemovable">Varsayılan Tema silinemez!</string>
+
+	<!-- Bailout App Dialog -->
+	<string name="thanksForDownloading">İndirdiğiniz için teşekkür ederiz!</string>
+	<string name="widgetDir1">Başlamak için geri tuşuna basarak anaekrana dönün, \'Widgets\' listesinden ekleyerek aktif edin!\u0020</string>
+	<string name="widgetDir2">\u0020Listelendi. İyi Eğlenceler!</string>
+
+	<!-- Useful Tips -->
+	<string name="usefulTip">İpuçları</string>
+	<string name="doNotShowAgain">Tekrar gösterme</string>
+
+	<!-- Weather Forecast Screen -->
+	<string name="humiditycondition">Nem: </string>
+	<string name="windcondition">Rüzgar: </string>
+
+	<!-- Forecast Screen -->
+	<string name="doubleDash">--</string>
+	<string name="unknown">Bilinmiyor</string>
+	<string name="noaaWeatherCredit">Hava gözlem ve tahminlerini Ulusal Okyanus ve Atmosfer İdaresi(NOAA) ile güncelle.</string>
+	<string name="igWeatherCredit">Hava Durumunu Google API ile güncelle.</string>
+	<string name="yrWeatherCredit">Hava Durumunu  yr.no, Norveç Meteoroloji Enstitüsü ve NRK tarafından veriler ile güncelle</string>
+	<string name="seventimerWeatherCredit">Ye Quanzhi\'nin 7Timer! hava durumu servisi, supported by the
+		Şangay Astronomik Gözlemevi, Çin Bilimler Akademisi tarafından destekleniyor</string>
+	<string name="owmWeatherCredit">Hava durumu openweathermaps.org tarafından güncellendi.</string>
+	<string name="tapForAlternateForecast">AccuWeather® alternatifi için tıklayın</string>
+	<string name="weatherDisabledOrNoWeatherLoaded">Hava Durumu kapalı, bilgiler alınamıyor!</string>
+	<string name="supplementedbyMETAR">Şuanda METAR tarafından destekleniyor.</string>
+
+	<!-- Clock Preferences -->
+	<string name="clockPreferences">Saat Özellikleri</string>
+	<string name="dashPreferences">\u0020- Özellikleri</string>
+	<string name="forThisClock">Bu saat için:</string>
+	<string name="widgetTheme">Widget Teması</string>
+
+	<!-- Widget Theme -->
+	<string name="widgetThemeTitle">Seçmek için kaydırın;  Seçenekler için basın &amp;</string>
+	<string name="corruptPlsDelete">[Bozulmuş - Lütfen siliniz]</string>
+	<string name="reextractBundledClocks">Paketlenmiş saatleri tekrar açın</string>
+	<string name="downloadAllClocks">Tüm saatleri indir(7MB)</string>
+	<string name="preselected" />
+	<string name="postselected">\u0020seçildi.</string>
+
+	<!-- Theme Picker Legend -->
+	<string name="legend">İşaretler</string>
+	<string name="batteryLegend">Pil durumunu göster</string>
+	<string name="weatherLegend">Hava durumunu göster</string>
+	<string name="bkimageLegend">Arkaplan resmini içersin</string>
+	<string name="ltbgLegend">Açık renk arkaplan</string>
+	<string name="dkbgLegend">Koyu renk arkaplan</string>
+	<string name="tweakLegend">Saat kullanıcı özelleştirmesini kullansın</string>
+
+	<!-- Theme Skinner Tool (deprecated) -->
+	<string name="reloadThemeCatalog">Tema kataloğunu güncelle</string>
+
+	<!-- Theme Import/Unzip -->
+	<string name="themePreview">Tema Önizleme</string>
+	<string name="openingConnection">Bağlantı açılıyor.</string>
+	<string name="beginningDownload">İndirmeye başlanıyır.</string>
+	<string name="downloading">İndiriliyor\u0020</string>
+	<string name="downloaded">Ündirildi\u0020</string>
+	<string name="of">\u0020of\u0020</string>
+	<string name="bytes">\u0020bytes</string>
+	<string name="storingFile">Saklanan Dosya:\u0020</string>
+	<string name="existsOverwriting">\u0020 mevcut; üzerine yazılsın mı</string>
+	<string name="createThemeFolder1">Tema Klasörü \'</string>
+	<string name="createThemeFolder2">\'\u0020Oluşturuldu.</string>
+	<string name="detectedWeatherskin">Havadurumu arayüzü tespit ediliyor.</string>
+	<string name="extractingStarterClockPack">Başlangıç saat paketi açılıyor&#8230;</string>
+	<string name="starterClockPack">Başlangıç Saat Paketi</string>
+	<string name="starterClockPackText">Dosyalar sdcard\'ınızda .OMC Tema dosyasının üzerine yazılacak.
+	Emin misiniz?\n(Emin değilseniz, Evet\'e basın)</string>
+	<string name="importComplete">İndirme Tamamlandı!</string>
+	<string name="importAborted">İndirme İptal Edildi!</string>
+	<string name="useDownloadInsteadOfPreview">Lütfen indirmek yerine önizleme kullanınız.</string>
+	<string name="importWorksWithOMCFiles">Clock import works with .omc files.\nWere you
+		opening the wrong file?</string>
+	<string name="nothingToExtract">Herhangi birşey açılmadı!</string>
+	<string name="downloadInterrupted">İndirme Kesildi!</string>
+	<string name="poorReceptionArea">Telefonunuz çekim alanı dışında mı?\nLütfen tekrar deneyiniz.</string>
+	<string name="connectionTimedOut">Bağlantı zamanaşımı!</string>
+	<string name="serverNotFound">Sunucu Bulunamadı!</string>
+
+	<!-- Widget Theme Long Press -->
+	<string name="emailOrDeleteTheme">Postala ya da Temayı Sil</string>
+	<string name="emailTheme">Temayı e-posta ile gönder</string>
+	<string name="emailThemeText">Bu temayı paketle, e-posta ile kendine ya da or
+		bir arkadaşına gönder.\nBunu yapmak istediğine emin misin?</string>
+	<string name="emailThemeConfirm1">E-Posta\u0020</string>
+	<string name="emailThemeConfirm2">\u0020?</string>
+	<string name="emailThemeChooser">E-posta için tema dosyalarınız paketlendi.</string>
+	<string name="deleteTheme">Temayı Sil</string>
+	<string name="deleteThemeConfirm1">Sil\u0020</string>
+	<string name="deleteThemeConfirm2">\u0020 SD card\'dan silinsin mi?</string>
+	<string name="deleteThemeConfirm3">Tekrar kullanmak için tema indirilecek/açılacak. Emin misin?</string>
+	<string name="submitThemeToDev">Geliştiriciye Tema Gönder</string>
+	<string name="submitThemeToDevConfirm1">Gönder\u0020</string>
+	<string name="submitThemeToDevConfirm2">\u0020 Xaffron için yeni bir tema mı?</string>
+	<string name="areYouAbsolutelySure">Buna kesinlikle emin misiniz?</string>
+	<string name="areYouAbsolutelySureText">Bu tema  \'Düzenlenebilir\' özelliklerle işaretlenmemiş
+		hazır tema gibi görünüyor.\n</string>
+
+	<!-- Personalize Clock -->
+	<string name="personalizeClock">Saati Kişiselleştir</string>
+	<string name="tweakColorsAndLayers">Renkleri ve Katmanları Düzenleyin</string>
+
+	<!-- Personalize Clock subscreen -->
+	<string name="selectALayerForTweaking">Düzenlemek istediğiniz katmanı seçin</string>
+	<string name="tweakerDirections">Sürükle: Menüyü Taşı: Düzenlemeyi Gerial: İptal</string>
+
+	<!-- Personalize Clock Menu -->
+	<string name="toggleVisibility">Toogle Görünürlüğü</string>
+	<string name="color1">Renk 1</string>
+	<string name="color2">Renk 2</string>
+
+	<!-- Personalize Clock Back -->
+	<string name="keepChanges">Değişiklikleri Koru?</string>
+
+	<!-- Tap & Display Options -->
+	<string name="tapAndDisplayOptions">Görüntü seçenekleri için basın &amp; </string>
+	<string name="assignTapToLaunch">Hızlı Kısayollar</string>
+	<string name="nwCornerReserved">Kuzeybatı köşesi özellikler için ayrılmıştır.</string>
+
+	<!-- TTL Popup -->
+	<string name="areaToCustomize">Düzenleme Alanı:</string>
+	<string name="chooseAction">Eylem Seçin</string>
+	<string name="openOptionsDefault">Seçenekleri açın (varsayılan)</string>
+	<string name="widgetPrefsTTL">Widget Özellikleri</string>
+	<string name="doNothing">Hiç birşey Yapma</string>
+	<string name="doNothingTTL">Hiç birşey Yapma</string>
+	<string name="refreshWeather">Hava durumunu güncelle</string>
+	<string name="refreshWeatherTTL">Hava durumunu şimdi güncelle</string>
+	<string name="weatherForecast">Hava Tahmini</string>
+	<string name="weatherForecastTTL">Tahminler</string>
+	<string name="viewAlarms">Alarmları Göster (Deneysel)</string>
+	<string name="viewAlarmsTTL">Alarmları Göster</string>
+	<string name="battUsage">Pil Kullanımını Göster</string>
+	<string name="battUsageTTL">Pil Kullanımı</string>
+	<string name="otherActivity">Diğer Uygulamalar&#8230;</string>
+	<string name="otherActivityTTL">Özel Uygulama</string>
+	<string name="use24HourClock">24 Saat dilimini Kullan</string>
+	<string name="use24HourTrue">23:59</string>
+	<string name="use24HourFalse">11:59pm</string>
+	<string name="showLeadingZero">Sıfırları Göster</string>
+	<string name="showLeadingZTrue">04:23</string>
+	<string name="showLeadingZFalse">4:23</string>
+	<string name="mmddDateFormat">A/G/Y Tarih Formatı</string>
+	<string name="mmddDateFormatTrue">12/31/2012</string>
+	<string name="mmddDateFormatFalse">31/12/2012</string>
+	<string name="changeTimeZone">Saat Dilimini Değiştir</string>
+	<string name="followingDeviceTimeZone">(İzlenen saat dilimi ayarı)</string>
+
+	<!-- TTL Sales Pitch -->
+	<string name="thinkOfThePossibilities">Diğer Seçenekler</string>
+	<string name="prePaidTTL">Ücretli sürümü ayarlamanızı sağlar\u0020</string>
+	<string name="postPaidTTL">\u0020 daha fazla uygulama istiyorsanız 4x2, 4x1, 3x1 and 2x1 
+	ölçülerinde widget\'lar için ücretli sürüme geçebilirsiniz.	\nBu boyutlar için 
+	yükseltme seçeneğini düşünün!</string>
+	<string name="takeMeToPaid">Ücretli sürüme götür</string>
+
+	<!-- Weather & Widget Options -->
+	<string name="forAllClocks">Tüm Saatler için:</string>
+	<string name="weatherAndWidgetOptions">Hava Durumu &amp; Widget Seçenekleri</string>
+	<string name="clearRenderCaches">Önbelleği temizle</string>
+	<string name="cachesCleared">Önbellek temizlendi</string>
+
+	<!-- Weather & Widget Subscreen -->
+	<string name="refreshWeatherNow">Hava Durumunu şimdi güncelle</string>
+	<string name="operationTimedOut">İşlem zamanaşımı!</string>
+	<string name="requestingLocation">İstediğiniz Şehir</string>
+	<string name="pleaseWait">Lütfen bekleyin&#8230;</string>
+	<string name="inProgress">İşleniyor&#8230;</string>
+	<string name="usingFixedCoordinates">Sabit koordinatları kullanın</string>
+	<string name="gotGPSLock">GPS kilidi var Reverse-Geocoding&#8230;</string>
+	<string name="gotNetworkLock">WiFi/Network kilidi var. Reverse-Geocoding&#8230;</string>
+	<string name="reusingCachedLocation">Şimdiki bilgiyi kullan. Reverse-Geocoding&#8230;</string>
+	<string name="requestingWeather">Hava durumu isteği&#8230;</string>
+	<string name="weatherReceived">Hava durumu bilgileri alındı. İşleniyor&#8230;</string>
+	<string name="weatherSuccess">Hava durumu başarıyla güncellendi.</string>
+	<string name="weatherFailure">Hava durumu güncellemesi başarısız.</string>
+	<string name="location">Şehir/Ülke:\u0020</string>
+	<string name="fixed">\u0020(Sabit)</string>
+	<string name="detected">\u0020(Konum)</string>
+	<string name="lastTry">Son Deneme:\u0020</string>
+	<string name="manualRefreshOnly">\u0020(Sadece elle güncelleme)</string>
+	<string name="nextRefresh">\u0020Sonraki Güncelleme:\u0020</string>
+	<string name="lastRefresh">Son Güncelleme:\u0020</string>
+	<string name="nextRequest">\u0020Son İstek:\u0020</string>
+	<string name="weatherLocation">Bölge/Şehir için havadurumu:</string>
+	<string name="disableLocationAndWeather">Hava durumu için konumu kapat</string>
+	<string name="followDevice">Konum Bilgisi(varsayılan)</string>
+	<string name="setFixedLocation">Sabit Kordinat</string>
+	<string name="weatherFunctionalityDisabled">Havadurumu özelliği kapalı</string>
+	<string name="tapToEnable">Tıklayarak Aç</string>
+
+	<!-- Fixed Locn subscreen -->
+	<string name="enterCityAndStateCountry">Ülke ya da Şehir Girin</string>
+	<string name="locationExamples">Örn. Istanbul, Turkey</string>
+	<string name="locationError">Sonuç bulunamadı.\nLütfen tekrar deneyin.</string>
+	<string name="networkError">Ağ bağlantısı yok.\nLütfen tekrar deneyin.</string>
+	<string name="unknownError">Bilinmeyen bir hata oluştu.\nLütfen tekrar deneyin.</string>
+	<string name="weatherProvider">Hava durumu Servis Sağlayıcı</string>
+
+	<string-array name="wprovider_options">
+		<item>Otomatik (varsayılan)</item>
+		<item>7Timer.com</item>
+		<item>NOAA (Sadece Amerika)</item>
+		<item>Yr.no</item>
+		<item>Google Weather (eski/çalışmayan)</item>
+	</string-array>
+
+	<string name="wpauto">Konum için en iyi sağlayıcıyı kullanın</string>
+	<string name="wp7timer">7Timer.com kullan</string>
+	<string name="wpnoaa">NOAA kullan</string>
+	<string name="wpowm">OpenWeatherMap.org kullan</string>
+	<string name="wpyr">yr.no kullan</string>
+	<string name="wpig">iGoogle Weather kullan</string>
+	<string name="weatherDisplayUnits">Hava Durumu Görüntüleme Değerleri</string>
+
+	<string-array name="wdisplay_options">
+		<item>Fahrenheit kullan(varsayılan)</item>
+		<item>Celsius kullan</item>
+	</string-array>
+
+	<string name="usingFahrenheit">Fahrenheit kullan</string>
+	<string name="usingCelsius">Celsius kullan</string>
+	<string name="useMETAR">METAR yolu ile Hava Durumu</string>
+	<string name="usingMETAR">En yakın havalimanı sonuçları</string>
+	<string name="usingInterpolation">Servis Sağlayıcı tarafından ilave edilmiş değerler</string>
+	<string name="clockUpdateInterval">Saat Güncelleme aralığı</string>
+
+	<string-array name="interval_options">
+		<item>1 saniye (Aşırı pil tüketimi)</item>
+		<item>10 saniye (Yüksek pil tüketimi)</item>
+		<item>15 saniye</item>
+		<item>20 saniye</item>
+		<item>30 saniye (Varsayılan)</item>
+		<item>60 saniye (Düşük pil tüketimi)</item>
+	</string-array>
+
+	<string name="redrawEvery">yeniden kur\u0020</string>
+	<string name="seconds">\u0020 saniyede bir.</string>
+	<string name="weatherUpdateInterval">Havadurumu Güncelleme Aralığı</string>
+
+	<string-array name="winterval_options">
+		<item>Her Saat (varsayılan)</item>
+		<item>4 saatte bir</item>
+		<item>8 saatte bir</item>
+		<item>Hiçbir zaman (Sadece Elle)</item>
+	</string-array>
+
+	<string name="manualWeatherUpdatesOnly">Hava durumunu sadece elle güncelle</string>
+	<string name="refreshWeatherEveryHour">Hava durumunu saatte bir güncelle</string>
+	<string name="refreshWeatherEvery4Hours">Hava durumunu 4 saatte bir güncelle</string>
+	<string name="refreshWeatherEvery8Hours">Hava durumunu 8 saatte bir güncelle</string>
+	<string name="setForegroundMode">ÖnAlan Moduna ayarla</string>
+	<string name="keepOMCfromSleeping">OMC\'yi uyku modunda tutun\n(bildirimde bulun)</string>
+	<string name="forceEnglishDates">İngilizce günlere zorla</string>
+	<string name="uncheckForSome">Bazı yerel olmayan ayarlar için kaldırın(Deneysel)</string>
+	<string name="changeAppLocale">uygulama Arayüz Dili</string>
+	<string name="changeClockLocale">Saat Dili</string>
+	<string name="toggleWidgetSizes">Toggle Widget Ölçüsü</string>
+	<string name="rebootRequired">Yeniden başlatma gerektirir</string>
+	<string name="changesToTheseSettings">Geçerli ayarların etkin olabilmesi için telefonununuz yeniden başlatılması gereklidir.</string>
+	<string name="enable5x4Widget">(5x4)  Widget aktif et</string>
+	<string name="enable5x2Widget">(5x2)  Widget aktif et</string>
+	<string name="enable5x1Widget">(5x1)  Widget aktif et</string>
+	<string name="enable4x4Widget">(4x4)  Widget aktif et</string>
+	<string name="enable4x2Widget">(4x2)  Widget aktif et</string>
+	<string name="enable4x1Widget">(4x1) Widget</string>
+	<string name="enable3x3Widget">(3x3)  Widget aktif et</string>
+	<string name="enable3x1Widget">(3x1)  Widget aktif et</string>
+	<string name="enable2x2Widget">(2x2)  Widget aktif et</string>
+	<string name="enable2x1Widget">(2x1)  Widget aktif et</string>
+	<string name="enable1x3Widget">(1x3)  Widget aktif et</string>
+	<string name="forGalaxyNote">Galaxy Note ya da benzerleri için</string>
+	<string name="enableThemeTester">Tema Testini Aç</string>
+	<string name="developmentToolForSkinnersOnly">Sadece Skin(Tema) Geliştiriciler için</string>
+
+	<!-- Widget Sizes Sales Pitch -->
+	<string name="areThereOtherWidgetSizes">Diğer Widget Boyutları var mı?</string>
+	<string name="actuallyThePaidVersion">5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 and 1x3 
+	boyutları sadece ücretli sürümde kullanılabiliyor.\nBu boyutlar için lütfen ücretli sürüme geçin!</string>
+
+	<!-- Troubleshooting Options -->
+	<string name="troubleshootingOptions">Sorun Giderme Seçenekleri</string>
+
+	<!-- Troubleshooting Options -->
+	<string name="clockPriority">Saat Önceliği</string>
+	<string name="forFineTuning">İnce Ayar için</string>
+
+	<string-array name="clockPriority_options">
+		<item>En Yüksek</item>
+		<item>Yüksek</item>
+		<item>Orta</item>
+		<item>Düşük (Varsayılan)</item>
+		<item>En Düşük</item>
+	</string-array>
+	<string-array name="clockPriority_legend">
+		<item>Agresif yeniden kurma(Tavsiye Edilmez). Emin misiniz?</item>
+		<item>Agresif yeniden kurma her dakika ekranı ya da hazırlayıcıyı günceller. Emin misiniz?</item>
+		<item>Tembel Güncelleme. Ekran açıksa her dakika güncelleme yapar. Kapalı ise arkaplanda bekler.</item>
+		<item>Lazy redraws every minute when launcher inactive or screen off.
+			Emin misiniz?</item>
+		<item>Tekrarlayıcı Kapalı.Ekran kapalı ise ya da hazırlayıcı deaktifse çalışmaz. Emin misiniz?</item>
+	</string-array>
+
+	<string name="locationPriority">Konum Önceliği</string>
+
+	<string-array name="locationPriority_options">
+		<item>Kesin - En yakın konum</item>
+		<item>Kesin - En yakın konum/Civarı</item>
+		<item>Orta - En yakın konum</item>
+		<item>Orta - En yakın konum/Civarı</item>
+		<item>Esnek (Varsayılan)</item>
+	</string-array>
+	<string-array name="locationPriority_legend">
+		<item>Sadece GPS\'in aktif olduğu bölgelerde 2 saatte bir kullan. UYARI:
+			Kapalı alanda iseniz havadurumu güncellemsi duracaktır. Emin misiniz?</item>
+		<item>Şebeke/GPS uygun olanı 2 saatte bir kullan. UYARI: Kapalı alanda iseniz havadurumu güncellemesi duracaktır.Emin misiniz?</item>
+		<item>Sadece GPS\'in aktif olduğu bölgelerde 10 saatte bir kullan. UYARI: Havadurumu 10 saatten fazla kapalı 
+		alanda kalırsanız güncellemeyi durduracaktır. Emin misiniz?</item>
+		<item>Herhangi bir şebeke ya da GPS\'i 10 saatte bir kullan. 10 saatten fazla bir süre kapalı alanda 
+		kalırsanız havadurumu güncellemesi duracaktır.Emin misiniz?</item>
+		<item>En çok tercih edilen şebekeyi ya da GPS\'i kullan. Emin misiniz?</item>
+	</string-array>
+
+	<string name="weatherDiagnostics">Hava Durumu Tanımalama</string>
+	<string name="submitLocationWeatherDebugData">Konum/Havadurumu hata raporlarını gönder</string>
+	<string name="deleteAllThemes">Tüm temaları sil</string>
+	<string name="forFixingThemeSelection">Uygulama çökmesi durumunda temayı sabitle</string>
+	<string name="deleteAllThemesFromSD">SD Card/Hafıza\'da yer alan tüm temaları sil?</string>
+	<string name="yesDelete">Evet, hepsini sil</string>
+	<string name="yesRestore">Evet, varsayılana geri al</string>
+	<string name="omcThemesFolderDeleted">OMC tema klasörü silindi.</string>
+	<string name="defaultClockPackRestored">Varsayılan saat paketi geri yüklendi.</string>
+
+	<!-- Contact Xaffron -->
+	<string name="contactXaffron">Xaffron ile iletişime geç</string>
+	<string name="donateOrContact">Yardım almak için ya da Bağış için geliştirici ile iletişime geç</string>
+	<string name="contactXaffronForIssues"> Xaffron ile sorunlar için iletişime geç, yardım &amp; Destek</string>
+	<string name="email">E-Posta</string>
+	<string name="donate">Bağış</string>
+	<string name="facebook">Facebook</string>
+
+	<!-- Credits -->
+
+	<string name="credits">İçerik</string>
+	<string name="version">Version</string>
+	<string name="free">Ücretsiz</string>
+	<string name="tapToGetFull">Ücretli versiyona geçmek için tıkla</string>
+	<string name="thanksForYourSupport">Desteğiniz için teşekkürler!</string>
+	<string name="viewCredits">Yapımcılar</string>
+
+	<!-- Credits subscreen -->
+	<string name="team">Takım</string>
+	<string name="programmer">Programcı</string>
+	<string name="sunny">Sunny Kwong</string>
+	<string name="testers">Test Ekibi</string>
+	<string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M.
+		Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
+	<string name="specialThanks">Özel Teşekkür</string>
+	<string name="specialThanksText">Öncülüğü için Zehro\'ya \nre: in-sync clock
+		widgets w//o notifications.\n Yerelleştirme yardımları için Stefan Pledl\'e teşekkürler.</string>
+	<string name="copyrights">Telif Hakları ve Lisanslar</string>
+	<string name="applicationIcon">Uygulama İkonları: Signpost tarafından Maroubal2</string>
+	<string name="applicationIconText">Adapted from Maroubal2\'s excellent
+		photo-turned-Ubuntu wallpaper.\nCC BY-SA
+		2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
+	<string name="codeColorPickerDialog">Kod: ColorPickerDialog</string>
+	<string name="codeColorPickerDialogText">CyanogenMod kaynağından kopyalanmıştır.</string>
+	<string name="codeSVG">Kod svg-android</string>
+	<string name="codeSVGText">sag-android library SVG destekli (Apache
+		Lisansı).\nhttp:////code.google.com//p//svg-android//</string>
+	<string name="weatherFont">Font: Weatherfont</string>
+	<string name="weatherFontText">Havadurumu fontuna ait tüm lisans hakları Jonathan
+		Macagba\'ya aittir, 5$ karşılığında e-posta ile temin edebilirsiniz. eposta: jonathan.macagba@gmail.com</string>
+	<string name="sourceCodeTitle">Kaynak Kodu</string>
+	<string name="sourceCode">Kaynak Kodları </string>
+
+</resources>

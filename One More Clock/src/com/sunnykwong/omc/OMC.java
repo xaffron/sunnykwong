@@ -81,7 +81,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Alpha 5";
+	static final String TESTVER = "Alpha 6";
 	static final boolean FREEEDITION = false;
 	static final boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -97,6 +97,7 @@ public class OMC extends Application {
 	
 	static final String SINGLETONNAME = "One More Clock";
 	static final String STARTERPACKURL = "asset:pk141.omc";
+	static final String OMCCHANGESURL = "https://sites.google.com/a/xaffron.com/xaffron-software/omc-changes";
 	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v136.omc";
 	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v136.omc";
 	static final String DEFAULTTHEME = "IceLock";
@@ -106,14 +107,14 @@ public class OMC extends Application {
 	static final String[] APM = {"Ante Meridiem","Post Meridiem"};	
 	static final Locale[] LOCALES = 
 		{new Locale("zh","TW",""),new Locale("zh","CN",""),new Locale("es","ES",""),
-		new Locale("de","",""),new Locale("en","US",""),new Locale("fr","",""),
+		new Locale("de","",""),new Locale("en","US",""),new Locale("fr","",""),new Locale("el","",""),
 		new Locale("iw","",""),new Locale("it","",""),new Locale("pl","",""),
-		new Locale("pt","",""),new Locale("sv","","")};
+		new Locale("pt","",""),new Locale("sv","",""),new Locale("tr","","")};
 	static final String[] LOCALENAMES = 
 		{"繁體中文","简体中文","Castellano",
-		"Deutsch","English (US)","Le Français",
+		"Deutsch","English (US)","Le Français","Ελληνικά",
 		"עברית","Italiano","Język Polski",
-		"Português","Svenska"};
+		"Português","Svenska","Türkçe"};
 	static SimpleDateFormat LOCALESDF;
 	static Locale CURRENTLOCALE;
 

@@ -44,6 +44,7 @@ import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -676,6 +677,29 @@ public class OMCPrefActivity extends PreferenceActivity {
         		findPreference("sVersion").setSummary(OMC.RString("thanksForYourSupport"));
         		findPreference("sVersion").setSelectable(false);
         	}
+        	
+        	findPreference("releaseNotes").setOnPreferenceClickListener(new OnPreferenceClickListener() {
+				
+				@Override
+				public boolean onPreferenceClick(Preference preference) {
+					// TODO Auto-generated method stub
+	    			WebView wv = new WebView(OMCPrefActivity.this);
+	    			wv.loadUrl(OMC.OMCCHANGESURL);
+	    			AlertDialog d = new AlertDialog.Builder(OMCPrefActivity.this)
+	    								.setView(wv)
+	    								.setPositiveButton(OMC.RString("ok"), new DialogInterface.OnClickListener() {
+	    									@Override
+	    									public void onClick(
+	    											DialogInterface dialog,
+	    											int which) {
+		    										// TODO Auto-generated method stub
+	    										OMC.PREFS.edit().putBoolean("showhelp", false).commit(); 
+	    									}
+										}).create();
+	    			d.show();
+					return false;
+				}
+			});
 
         	// We really don't need this in the prefs screen since we don't allow users to disable the freeware widget size
     		((PreferenceScreen)findPreference("widgetPrefs")).removePreference(findPreference("bFourByTwo"));
@@ -768,56 +792,70 @@ public class OMCPrefActivity extends PreferenceActivity {
     		// This is the help/FAQ dialog.
     		
     		if (OMC.SHOWHELP) {
-    			OMC.FAQS = OMC.RStringArray("faqs");
-				LayoutInflater li = LayoutInflater.from(this);
-				LinearLayout ll = (LinearLayout)(li.inflate(OMC.RLayoutId("faqdialog"), null));
-				mTextView = (TextView)ll.findViewById(OMC.RId("splashtext"));
-				mTextView.setAutoLinkMask(Linkify.ALL);
-				mTextView.setMinLines(8);
-				mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
-				OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
-				
-				mCheckBox = (CheckBox)ll.findViewById(OMC.RId("splashcheck"));
-				mCheckBox.setChecked(!OMC.SHOWHELP);
-				mCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-					
-					@Override
-					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-						// TODO Auto-generated method stub
-						OMC.SHOWHELP = !isChecked;
-					}
-				});
-	
-				((Button)ll.findViewById(OMC.RId("faqOK"))).setOnClickListener(new Button.OnClickListener() {
-					
-					@Override
-					public void onClick(android.view.View v) {
-						OMC.PREFS.edit().putBoolean("showhelp", OMC.SHOWHELP).commit();
-						mAD.dismiss();
-					}
-				});
-				((Button)ll.findViewById(OMC.RId("faqNeutral"))).setOnClickListener(new Button.OnClickListener() {
-					
-					@Override
-					public void onClick(android.view.View v) {
-						mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
-						mTextView.invalidate();
-						OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
-					}
-				});;
-				
-				mAD = new AlertDialog.Builder(this)
-				.setTitle(OMC.RString("usefulTip"))
-			    .setCancelable(true)
-			    .setView(ll)
-			    .setOnKeyListener(new OnKeyListener() {
-			    	@Override
-					public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
-			    		if (arg2.getKeyCode()==android.view.KeyEvent.KEYCODE_BACK) mAD.cancel();
-			    		return true;
-			    	};
-			    })
-			    .show();
+    			WebView wv = new WebView(this);
+    			wv.loadUrl(OMC.OMCCHANGESURL);
+    			AlertDialog d = new AlertDialog.Builder(this)
+    								.setView(wv)
+    								.setPositiveButton(OMC.RString("ok"), new DialogInterface.OnClickListener() {
+    									@Override
+    									public void onClick(
+    											DialogInterface dialog,
+    											int which) {
+	    										// TODO Auto-generated method stub
+    										OMC.PREFS.edit().putBoolean("showhelp", false).commit(); 
+    									}
+									}).create();
+    			d.show();
+//    			OMC.FAQS = OMC.RStringArray("faqs");
+//				LayoutInflater li = LayoutInflater.from(this);
+//				LinearLayout ll = (LinearLayout)(li.inflate(OMC.RLayoutId("faqdialog"), null));
+//				mTextView = (TextView)ll.findViewById(OMC.RId("splashtext"));
+//				mTextView.setAutoLinkMask(Linkify.ALL);
+//				mTextView.setMinLines(8);
+//				mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
+//				OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
+//				
+//				mCheckBox = (CheckBox)ll.findViewById(OMC.RId("splashcheck"));
+//				mCheckBox.setChecked(!OMC.SHOWHELP);
+//				mCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+//					
+//					@Override
+//					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//						// TODO Auto-generated method stub
+//						OMC.SHOWHELP = !isChecked;
+//					}
+//				});
+//	
+//				((Button)ll.findViewById(OMC.RId("faqOK"))).setOnClickListener(new Button.OnClickListener() {
+//					
+//					@Override
+//					public void onClick(android.view.View v) {
+//						OMC.PREFS.edit().putBoolean("showhelp", OMC.SHOWHELP).commit();
+//						mAD.dismiss();
+//					}
+//				});
+//				((Button)ll.findViewById(OMC.RId("faqNeutral"))).setOnClickListener(new Button.OnClickListener() {
+//					
+//					@Override
+//					public void onClick(android.view.View v) {
+//						mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
+//						mTextView.invalidate();
+//						OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
+//					}
+//				});;
+//				
+//				mAD = new AlertDialog.Builder(this)
+//				.setTitle(OMC.RString("usefulTip"))
+//			    .setCancelable(true)
+//			    .setView(ll)
+//			    .setOnKeyListener(new OnKeyListener() {
+//			    	@Override
+//					public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+//			    		if (arg2.getKeyCode()==android.view.KeyEvent.KEYCODE_BACK) mAD.cancel();
+//			    		return true;
+//			    	};
+//			    })
+//			    .show();
     		}
 
 		} else {
