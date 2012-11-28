@@ -213,7 +213,7 @@
 			<item>Automatic (domyślnie)</item>
 		 	<item>7Timer.com</item>
 		 	<item  >NOAA (Tylko Usa)</item>
-		 				<item>Yr.no</item>
+		 	<item>Yr.no</item>
 			<item  >Google Weather (legacy/nonworking)</item>
 		</string-array>
         <string name="wpauto">Use best provider for location</string>

@@ -233,7 +233,7 @@
         <item>Google Weather (héritage/non fonctionnel)</item>
     </string-array>
 
-        <string name="wpauto">Use best provider for location</string>
+    <string name="wpauto">Use best provider for location</string>
     <string name="wp7timer">Utilisant 7Timer.com</string>
     <string name="wpnoaa">Utilisant NOAA</string>
     <string name="wpowm">Utilisant OpenWeatherMap.org</string>

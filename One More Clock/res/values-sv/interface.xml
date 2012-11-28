@@ -214,7 +214,7 @@
 			<item>Automatic (standard)</item>
 		 	<item>7Timer.com</item>
 		 	<item newname="" >NOAA (US Only)</item>
-		 				<item>Yr.no</item>
+		 	<item>Yr.no</item>
 			<item>Google Weather (förlegat, fungerar ej)</item>
 		</string-array>
         <string name="wpauto">Use best provider for location</string>

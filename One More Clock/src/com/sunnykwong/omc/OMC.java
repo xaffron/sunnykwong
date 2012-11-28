@@ -85,7 +85,6 @@ public class OMC extends Application {
 	static final boolean FREEEDITION = false;
 	static final boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
-	static final int[] BATTVOLTAGESCALE = new int[101];
 	
 	static final boolean DEBUG = TESTVER.equals("")?false:true; 
 	
@@ -364,19 +363,6 @@ public class OMC extends Application {
     	OMC.AM = getAssets();
     	OMC.RES = getResources();
 
-    	//  Insert educated guesses for battery voltage, if not already specified.
-//    	OMC.BATTVOLTAGESCALE[0]=3000;
-//    	OMC.BATTVOLTAGESCALE[10]=3600;
-//    	OMC.BATTVOLTAGESCALE[20]=3680;
-//    	OMC.BATTVOLTAGESCALE[30]=3712;
-//    	OMC.BATTVOLTAGESCALE[40]=3746;
-//    	OMC.BATTVOLTAGESCALE[50]=3773;
-//    	OMC.BATTVOLTAGESCALE[60]=3817;
-//    	OMC.BATTVOLTAGESCALE[70]=3870;
-//    	OMC.BATTVOLTAGESCALE[80]=3927;
-//    	OMC.BATTVOLTAGESCALE[90]=4004;
-//    	OMC.BATTVOLTAGESCALE[100]=4200;
-
     	OMC.WIDGETWIDTH=Math.min(getResources().getDisplayMetrics().widthPixels,getResources().getDisplayMetrics().heightPixels);
     	OMC.WIDGETHEIGHT=OMC.WIDGETWIDTH;
         OMC.ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
@@ -573,12 +559,6 @@ public class OMC extends Application {
 			OMC.WEATHERCONVERSIONS = streamToJSONObject(OMC.AM.open("weathericons/weathertranslation.json"));
 	    	OMC.GEOLOCNCACHE = new JSONObject(OMC.PREFS.getString("geoLocnCache", "{}"));
 	    	parseICAOMap();
-			JSONArray ja = new JSONArray(OMC.PREFS.getString("ompc_battvoltagescale", "[]"));
-			if (ja.length()==101) {
-				for (int i=0; i<101; i++) {
-					OMC.BATTVOLTAGESCALE[i] = ja.getInt(i);
-				}
-			}
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}

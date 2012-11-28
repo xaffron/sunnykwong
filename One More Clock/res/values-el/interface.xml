@@ -16,7 +16,7 @@
         
         <!-- General Errors -->
         <string name="sdcard">Δεν βρέθηκε κάρτα SD .\Απενεργοποιήστε το USB storage αν είναι ακόμα συνδεμένο!</string>
-        <string name="sdcardMissingOrCorrupt">Η κάρτα SD  λείπει ή είναι χαλασμένη.\Απενεργοποιήστε το USB storage αν είναι ακόμα συνδεμένο!</string>
+        <string name="sdcardMissingOrCorrupt">Η κάρτα SD λείπει ή είναι χαλασμένη.\Απενεργοποιήστε το USB storage αν είναι ακόμα συνδεμένο!</string>
         <string name="themeNotFound">Το θέμα δεν βρέθηκε!  Επαναφορά στο προεπιλεγμένο θέμα.</string>
         <string name="warningConflictPaid">ΠΡΟΣΟΧΗ!\nΔιένεξη με την έκδοση επι πληρωμή.</string>
         <string name="warningConflictFree">ΠΡΟΣΟΧΗ!\nΔιένεξη με την έκδοση επι πληρωμή.</string>
@@ -25,7 +25,7 @@
         
         <!-- Bailout App Dialog -->
         <string name="thanksForDownloading">Thanks for downloading!</string>
-        <string name="widgetDir1">Για να αρχίσετε, πιέστε το πλήκτρο επιστροφής για να επιστρέψετε στην αρχική οθόνη, μετά επιλέξτε την λίστα των \'Widgets\' \u0020</string>
+        <string name="widgetDir1">Για να αρχίσετε, πιέστε το πλήκτρο επιστροφής για να επιστρέψετε στην αρχική οθόνη, μετά επιλέξτε από την λίστα των \'Widgets\' \u0020</string>
         <string name="widgetDir2">\u0020listed.  Καλή διασκέδαση!</string>
 
         <!-- Useful Tips -->
@@ -57,7 +57,7 @@
 
         <!-- Widget Theme -->
         
-        <string name="widgetThemeTitle">Σύρτε για επιλογή; Πιέστε &amp; και κρατήστε πιεσμένο για επιλογές</string>
+        <string name="widgetThemeTitle">Σύρτε για επιλογή. Πιέστε &amp; κρατήστε πιεσμένο για επιλογές</string>
         <string name="corruptPlsDelete">[Corrupt - Παρακαλώ σβήστε το]</string>
         <string name="reextractBundledClocks">Επαναεξαγωγή ρολογιών</string>
         <string name="downloadAllClocks">Κατέβασμα όλων των ρολογιών(7MB)</string>
@@ -65,13 +65,13 @@
         <string name="postselected">\u0020επιλεγμένο.</string>
         
         <!-- Theme Picker Legend -->
-        <string name="legend">Legend</string>
+        <string name="legend">Επεξήγηση</string>
         <string name="batteryLegend">Δείχνει το επίπεδο μπαταρίας</string>
         <string name="weatherLegend">Δείχνει τον καιρό</string>
         <string name="bkimageLegend">Περιλαμβάνει εικόνα φόντου</string>
         <string name="ltbgLegend">Καλό σε ανοιχτόχρωμο φόντο</string>
         <string name="dkbgLegend">Καλό σε σκούρο φόντο</string>
-        <string name="tweakLegend">Ρολόι διαμορφωμένο απ\'τον χρήστη</string>
+        <string name="tweakLegend">Ρολόι διαμορφώσιμο απ\'τον χρήστη</string>
         
         <!-- Theme Skinner Tool (deprecated) -->
         <string name="reloadThemeCatalog">Επαναφόρτωση καταλόγου θεμάτων</string>
@@ -85,7 +85,7 @@
         <string name="of">\u0020από\u0020</string>
         <string name="bytes">\u0020bytes</string>
 		<string name="storingFile">Αποθήκευση Αρχείου:\u0020</string>
-        <string name="existsOverwriting">\u0020υπάρχει; επανεγραφή</string>
+        <string name="existsOverwriting">\u0020Υπάρχει; Επανεγραφή</string>
         <string name="createThemeFolder1">Φάκελος θέματος \'</string>
         <string name="createThemeFolder2">\'\u0020δημιουργήθηκε.</string>
         <string name="detectedWeatherskin">Εντοπίστηκε Θέμα καιρού </string>
@@ -118,7 +118,7 @@
         <string name="submitThemeToDevConfirm1">Υποβολή\u0020</string>
         <string name="submitThemeToDevConfirm2">\u0020στον Xaffron σαν νέο θέμα;</string>
         <string name="areYouAbsolutelySure">Είστε απολύτως σίγουροι;</string>
-        <string name="areYouAbsolutelySureText">Αυτό το θέμα δεν έχει \'Διαμορφωμένο\' flag set;  Είναι ένα απ\'τα διαθέσιμα.\n</string>
+        <string name="areYouAbsolutelySureText">Αυτό το θέμα δεν έχει \'Διαμορφωθεί\' flag set;  Είναι ένα απ\'τα διαθέσιμα.\n</string>
         
         <!-- Personalize Clock -->        
         <string name="personalizeClock">Προσαρμογή Ρολογιού</string>
@@ -131,7 +131,7 @@
         
         <!-- Personalize Clock Menu-->
         
-        <string name="toggleVisibility">Εναλλαγή Προβολής</string>
+        <string name="toggleVisibility">Εναλλαγή Ορατότητας</string>
         <string name="color1">Χρώμα 1</string>
         <string name="color2">Χρώμα 2</string>
         
@@ -158,7 +158,7 @@
         <string name="weatherForecastTTL">Πρόγνωση Καιρού</string>
         <string name="viewAlarms">Εμφάνιση ξυπνητηριών (Πειραματικό)</string>
         <string name="viewAlarmsTTL">Εμφάνιση ξυπνητηριών</string>
-        <string name="battUsage">Εμφάνιση </string>
+        <string name="battUsage">Χρήση Μπαταρίας </string>
         <string name="battUsageTTL">Χρήση Μπαταρίας</string>
         <string name="otherActivity">Άλλη Ενέργεια&#8230;</string>
         <string name="otherActivityTTL">\'Αλλη Ενέργεια</string>
@@ -220,20 +220,21 @@
         
         <!-- Fixed Locn subscreen -->
         <string name="enterCityAndStateCountry">Εισάγετε Πόλη/Χώρα</string>
-        <string name="locationExamples">Π.χ. London UK </string>
+        <string name="locationExamples">Π.χ. Athens GR </string>
         <string name="locationError">Δεν βρέθηκαν αποτελέσματα.\nΠαρακαλώ ξαναπροσπαθήστε.</string>
         <string name="networkError">Δεν βρέθηκε υπηρεσία δικτύου.\nΠαρακαλώ ξαναπροσπαθήστε.</string>
         <string name="unknownError">Αγνωστο σφάλμα.\nΠαρακαλώ ξαναπροσπαθήστε.</string>
         
         <string name="weatherProvider">Πάροχος Καιρού</string>
 		<string-array name="wprovider_options">
-		<!-- 	<item>OpenWeatherMap.org (default)</item> -->
-		 	<item>7Timer.com (default)</item>
-		 	<item>NOAA (US μόνο)</item>
+			<item>Automatic (Προεπιλογή)</item>
+		 	<item>7Timer.com</item>
+		 	<item>NOAA (ΗΠΑ μόνο)</item>
 			<item>Yr.no</item>
 			<item>Google Weather (legacy/nonworking)</item>
 		</string-array>
-        <string name="wp7timer">Χρήση 7Timer.com</string>
+		<string name="wpauto">Επιλογή βέλτιστου παρόχου καιρού για την τοποθεσία σας</string>
+		<string name="wp7timer">Χρήση 7Timer.com</string>
         <string name="wpnoaa">Χρήση NOAA</string>
         <string name="wpowm">Χρήση OpenWeatherMap.org</string>
         <string name="wpyr">Χρήση yr.no</string>
@@ -246,15 +247,17 @@
 		</string-array>
         <string name="usingFahrenheit">Χρήση Φαρεναϊτ</string>
         <string name="usingCelsius">Χρήση Κελσίου</string>
+		<string name="useMETAR">Καιρός μέσω METAR</string>
+		<string name="usingMETAR">Οι καιρικές συνθήκες αποκωδικοποιούνται από το πλησιέστερο αεροδρόμιο</string>
         
         <string name="clockUpdateInterval">Ανανέωση Ρολογιού ανα...</string>
 		<string-array name="interval_options">
-		  <item>1 sec (Πολύ βαριά χρήση μπαταρίας)</item>	
-			<item>10 Δευτ. (Βαριά χρήση μπαταρίας)</item>
-			<item>15 Δευτ.</item>
-			<item>20 Δευτ.</item>
-			<item>30 Δευτ. (Προεπιλογή)</item>
-			<item>60 Δευτ. (Ελαφρά χρήση μπαταρίας)</item>
+		  <item>1 δευτ. (Πολύ βαριά χρήση μπαταρίας)</item>	
+			<item>10 δευτ. (Βαριά χρήση μπαταρίας)</item>
+			<item>15 δευτ.</item>
+			<item>20 δευτ.</item>
+			<item>30 δευτ. (Προεπιλογή)</item>
+			<item>60 δευτ. (Ελαφρά χρήση μπαταρίας)</item>
 		</string-array>
         <string name="redrawEvery">Επανασχεδίαση κάθε \u0020</string>
         <string name="seconds">\u0020δευτερόλεπτα.</string>
@@ -264,7 +267,7 @@
 			<item>Κάθε ώρα (Προεπιλογή)</item>
 			<item>Κάθε 4 ώρες</item>
 			<item>Κάθε 8 ώρες</item>
-			<item>Ποτέ (Μόνο χειρικίνητα)</item>
+			<item>Ποτέ (Μόνο χειροκίνητα)</item>
 		</string-array>
         <string name="manualWeatherUpdatesOnly">Χειροκίνητη ανανέωση μόνο</string>
         <string name="refreshWeatherEveryHour">Ανανέωση καιρού κάθε 1 ώρα</string>
@@ -309,20 +312,20 @@
         
         <!-- Troubleshooting Options-->
         
-        <string name="clockPriority">προτεραιότητα Ρολογιού</string>
+        <string name="clockPriority">Προτεραιότητα Ρολογιού</string>
         <string name="forFineTuning">Για ακριβή προσαρμογή απόκρισης </string>
 		<string-array name="clockPriority_options">
 		    <item>Υψηλότερη</item>	
 			<item>Υψηλή</item>
 			<item>Μέση</item>
-			<item>Χαμηλή (Default)</item>
+			<item>Χαμηλή (Προεπιλογή)</item>
 			<item>Πολύ Χαμηλή</item>
 		</string-array>
 		<string-array name="clockPriority_legend">
 		    <item>Δυναμικός επανασχεδιασμός σε κάθε δευτερόλεπτο(δεν προτείνεται).  Είστε σίγουροι;</item>	
 			<item>Δυναμικός επανασχεδιασμός κάθε λεπτό, ανεξάρτητα της κατάστασης της οθόνης ή του launcher.  Είστε σίγουροι;</item>
 			<item>Αργός επανασχεδιασμός κάθε λεπτό όταν η οθόνη είναι ενεργή, ακόμα και αν ο launcher είναι στο φόντο.  Είστε σίγουροι;</item>
-			<item>Αργός επανασχεδιασμός κάθε λεπτό όταν ο laucher ή η οθόνη είναι κλειστά.  Είστε σίγουροι;</item>
+			<item>Αργός επανασχεδιασμός κάθε λεπτό όταν ο launcher ή η οθόνη είναι κλειστά.  Είστε σίγουροι;</item>
 			<item>Καθόλου επανασχεδίαση όταν ο launcher ή η οθόνη είναι κλειστά.  Είστε σίγουροι;</item>
 		</string-array>
 		
@@ -335,10 +338,10 @@
 			<item>Ελαστική (Προεπιλογή)</item>
 		</string-array>
 		<string-array name="locationPriority_legend">
-		    <item>Χρήση μόνο τοποθεσίας GPS,σε διάστημα λιγότερο των 2 τελευταίων ωρών.  ΠΡΟΣΟΧΗ:Η ανανέωση καιρού μπορεί να σταματήσει σε εσωτερικούς χώρους.  Είστε σίγουροι;</item>	
-			<item>Χρήση network/GPS , σε διάστημα λιγότερο των 2 τελευταίων ωρών.  ΠΡΟΣΟΧΗ: Η ανανέωση καιρού μπορεί να σταματήσει σε εσωτερικούς χώρους.  Είστε σίγουροι;</item>
-			<item>Χρήση μόνο GPS τοποθεσίας, σε διάστημα λιγότερο των 10 τελευταίων ωρών.  Η ανανέωση καιρού μπορεί να σταματήσει εαν βρίσκεστε σε εσωτερικούς χώρους περισσότερο από 10 ώρες.  Είστε σίγουροι;</item>
-			<item>Χρήση όποιασδήποτε τοποθεσίας network ή GPS, σε διάστημα λιγότερο των 10 τελευταίων ωρών.  Η ανανέωση καιρού μπορεί να σταματήσει εαν βρίσκεστε σε εσωτερικούς χώρους περισσότερο από 10 ώρες.  Είστε σίγουροι;</item>
+		    <item>Χρήση μόνο τοποθεσίας GPS,που εντοπίστηκε σε διάστημα λιγότερο των 2 τελευταίων ωρών.  ΠΡΟΣΟΧΗ:Η ανανέωση καιρού μπορεί να σταματήσει σε εσωτερικούς χώρους.  Είστε σίγουροι;</item>	
+			<item>Χρήση network/GPS , που εντοπίστηκε σε διάστημα λιγότερο των 2 τελευταίων ωρών.  ΠΡΟΣΟΧΗ: Η ανανέωση καιρού μπορεί να σταματήσει σε εσωτερικούς χώρους.  Είστε σίγουροι;</item>
+			<item>Χρήση μόνο GPS τοποθεσίας, που εντοπίστηκε σε διάστημα λιγότερο των 10 τελευταίων ωρών.  Η ανανέωση καιρού μπορεί να σταματήσει εαν βρίσκεστε σε εσωτερικούς χώρους περισσότερο από 10 ώρες.  Είστε σίγουροι;</item>
+			<item>Χρήση όποιασδήποτε τοποθεσίας network ή GPS, που εντοπίστηκε σε διάστημα λιγότερο των 10 τελευταίων ωρών.  Η ανανέωση καιρού μπορεί να σταματήσει εαν βρίσκεστε σε εσωτερικούς χώρους περισσότερο από 10 ώρες.  Είστε σίγουροι;</item>
 			<item>Χρήση της πιο πρόσφατης network ή GPS τοποθεσίας, ανεξαρτήτως παλαιότητας.  Η ακρίβεια του Καιρού θα εξαρτάται από την ακρίβεια της τοποθεσίας και την παλαιότητα ανανέωσης.  Είστε σίγουροι;</item>
 		</string-array>
 		
@@ -347,7 +350,7 @@
         
         <string name="deleteAllThemes">Διαγραφή όλων των θεμάτων</string>
         <string name="forFixingThemeSelection">Για την επιδιόρθωση αναγκαστικής διακοπής της εφαρμογής, κατα την διάρκεια επιλογής θεμάτων.</string>
-        <string name="deleteAllThemesFromSD">Διαγραφή όλων των θεμάτων από την SD Card/Μνήμη;</string>
+        <string name="deleteAllThemesFromSD">Διαγραφή όλων των θεμάτων από την κάρτα SD;</string>
         <string name="yesDelete">Ναι, διαγραφή όλων</string>
         <string name="yesRestore">Ναι, επιστροφή στις προεπιλογές εφαρμογής</string>
         <string name="omcThemesFolderDeleted">Ο φακελος OMCThemes διαγράφηκε</string>
@@ -380,7 +383,7 @@
         <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
         <string name="specialThanks">Ιδιαίτερες ευχαριστίες</string>
         <string name="specialThanksText">Zehro for leading the way\nre: in-sync clock widgets w//o notifications.\nStefan Pledl for helping with the localization.</string>
-        <string name="copyrights">Copyrights and Licenses</string>
+        <string name="copyrights">Πνευματικά Δικαιώματα και Άδειες </string>
         <string name="applicationIcon">Application Icon: Signpost by Maroubal2</string>
         <string name="applicationIconText">Adapted from Maroubal2\'s excellent photo-turned-Ubuntu wallpaper.\nCC BY-SA 2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
         <string name="codeColorPickerDialog">Code: ColorPickerDialog</string>

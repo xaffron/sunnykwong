@@ -225,7 +225,6 @@
     <string name="weatherProvider">Proveedor Tiempo</string>
 
     <string-array name="wprovider_options">
-
         <item>Automatic (por defecto)</item>
 		<item>7Timer.com</item>
         <item>NOAA (EEUU sólo)</item>
@@ -233,7 +232,7 @@
         <item>Google Weather (antiguo/no funciona)</item>
     </string-array>
 
-        <string name="wpauto">Use best provider for location</string>
+    <string name="wpauto">Use best provider for location</string>
     <string name="wp7timer">Usando 7Timer.com</string>
     <string name="wpnoaa">Usando NOAA</string>
     <string name="wpowm">Usando OpenWeatherMap.org</string>
