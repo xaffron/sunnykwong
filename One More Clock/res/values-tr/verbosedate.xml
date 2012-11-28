@@ -5,9 +5,9 @@
 <string-array name="verbosedow">
 <item>Pazar</item>
 <item>Pazartesi</item>
-<item>Salý</item>
-<item>Çarþamba</item>
-<item>Perþembe</item>
+<item>Salı</item>
+<item>Çarşamba</item>
+<item>Perşembe</item>
 <item>Cuma</item>
 <item>Cumartesi</item>
 </string-array>
@@ -24,22 +24,22 @@
 
 <string-array name="verbosemonth">
 <item>Ocak</item>
-<item>Þubat</item>
+<item>Şubat</item>
 <item>Mart</item>
-<item>Nian</item>
-<item>Mayýs</item>
+<item>Nisan</item>
+<item>Mayıs</item>
 <item>Haziran</item>
 <item>Temmuz</item>
-<item>Aðustos</item>
+<item>Ağustos</item>
 <item>Eylül</item>
 <item>Ekim</item>
-<item>Kasým</item>
-<item>Aralýk</item>
+<item>Kasım</item>
+<item>Aralık</item>
 </string-array>
 
 <string-array name="shortmonth">
 <item>Oca</item>
-<item>Þub</item>
+<item>Şub</item>
 <item>Mar</item>
 <item>Nis</item>
 <item>May</item>

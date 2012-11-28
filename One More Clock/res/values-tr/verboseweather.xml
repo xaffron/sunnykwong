@@ -3,45 +3,45 @@
 
 	<string-array name="VerboseWeather">
 		<item>Bilinmiyor</item>
-		<item>Açýk</item>
-		<item>Açýk</item>
-		<item>Genellikle Açýk</item>
+		<item>Açık</item>
+		<item>Açık</item>
+		<item>Genellikle Açık</item>
 		<item>Yer Yer Bulutlu</item>
-		<item>Parçalý Bulutlu</item>
+		<item>Parçalı Bulutlu</item>
 		<item>Tozlu</item>
 		<item>Puslu</item>
 		<item>Sisli</item>
-		<item>Kapalý</item>
+		<item>Kapalı</item>
 		<item>Çok Bulutlu</item>
-		<item>Bulutla Kaplý</item>
+		<item>Bulutla Kaplı</item>
 		<item>Bulutlu</item>
 		<item>Sis</item>
-		<item>Hafif Yaðmur</item>
-		<item>Kýsa Süreli Yaðmur</item>
-		<item>Yaðmur Çiselemesi</item>
-		<item>Kýsa Süreli Yaðmur</item>
-		<item>Yaðmura Dönük</item>
-		<item>Kýsa Süreli Yaðmur</item>
-		<item>Saðanak Yaðýþ</item>
+		<item>Hafif Yağmur</item>
+		<item>Kısa Süreli Yağmur</item>
+		<item>Yağmur Çiselemesi</item>
+		<item>Kısa Süreli Yağmur</item>
+		<item>Yağmura Dönük</item>
+		<item>Kısa Süreli Yağmur</item>
+		<item>Sağanak Yağış</item>
 		<item>Gök Gürültülü</item>
-		<item>Simþekli</item>
-		<item>Gökgürültülü Þimþekli</item>
-		<item>Fýrtýnaya Çevirebilir</item>
-		<item>Fýrtýna</item>
-		<item>Siddetli Yaðmur</item>
-		<item>Yaðmur</item>
+		<item>Şimşekli</item>
+		<item>Gökgürültülü Şimşekli</item>
+		<item>Fırtınaya Çevirebilir</item>
+		<item>Fırtına</item>
+		<item>Şiddetli Yağmur</item>
+		<item>Yağmur</item>
 		<item>Kar Serpintisi</item>
 		<item>Sulu Kar</item>
 		<item>Kara Çevirebilir</item>
-		<item>Kesintili Kar Yaðýþý</item>
-		<item>Yoðun Kar Yaðýþý</item>
+		<item>Kesintili Kar Yağışı</item>
+		<item>Yoğun Kar Yağışı</item>
 		<item>Kar</item>
 		<item>Buz</item>
 		<item>Buz ya da Kar</item>
 		<item>Sulu Kar</item>
 		<item>Dolu</item>
-		<item>Yaðmur ve Kar</item>
-		<item>Rüzgarlý</item>
+		<item>Yağmur ve Kar</item>
+		<item>Rüzgarlı</item>
 	</string-array>
 
 </resources>

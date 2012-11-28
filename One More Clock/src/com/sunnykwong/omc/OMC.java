@@ -81,7 +81,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Alpha 6";
+	static final String TESTVER = "Alpha 7";
 	static final boolean FREEEDITION = false;
 	static final boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();

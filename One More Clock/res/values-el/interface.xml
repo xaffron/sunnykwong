@@ -131,7 +131,7 @@
         
         <!-- Personalize Clock Menu-->
         
-        <string name="toggleVisibility">Εναλλαγή Ορατότητας</string>
+        <string name="toggleVisibility">Εναλλαγή Προβολής</string>
         <string name="color1">Χρώμα 1</string>
         <string name="color2">Χρώμα 2</string>
         

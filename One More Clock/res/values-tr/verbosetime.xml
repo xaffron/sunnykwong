@@ -3,22 +3,22 @@
 
 	<string-array name="verbosetime1">
 		<item>Oniki</item>
-		<item>Oniki Sýfýrbir</item>
-		<item>Oniki Sýfýriki</item>
-		<item>Oniki Sýfýrüç</item>
-		<item>Oniki Sýfýrdört</item>
-		<item>Oniki Sýfýrbeþ</item>
-		<item>Oniki Sýfýraltý</item>
-		<item>Oniki Sýfýryedi</item>
-		<item>Oniki Sýfýrsekiz</item>
-		<item>Oniki Sýfýrdokuz</item>
+		<item>Oniki Sıfırbir</item>
+		<item>Oniki Sıfıriki</item>
+		<item>Oniki Sıfırüç</item>
+		<item>Oniki Sıfırdört</item>
+		<item>Oniki Sıfırbeş</item>
+		<item>Oniki Sıfıraltı</item>
+		<item>Oniki Sıfıryedi</item>
+		<item>Oniki Sıfırsekiz</item>
+		<item>Oniki Sıfırdokuz</item>
 		<item>Oniki On</item>
 		<item>Oniki Onbir</item>
 		<item>Oniki Oniki</item>
 		<item>Oniki Onüç</item>
 		<item>Oniki Ondört</item>
-		<item>Oniki Onbeþ</item>
-		<item>Oniki Onaltý</item>
+		<item>Oniki Onbeş</item>
+		<item>Oniki Onaltı</item>
 		<item>Oniki Onyedi</item>
 		<item>Oniki Onsekiz</item>
 		<item>Oniki Ondokuz</item>
@@ -27,8 +27,8 @@
 		<item>Oniki Yirmiiki</item>
 		<item>Oniki Yirmiüç</item>
 		<item>Oniki Yirmidört</item>
-		<item>Oniki Yirmibeþ</item>
-		<item>Oniki Yirmialtý</item>
+		<item>Oniki Yirmibeş</item>
+		<item>Oniki Yirmialtı</item>
 		<item>Oniki Yirmiyedi</item>
 		<item>Oniki Yirmisekiz</item>
 		<item>Oniki Yirmidokuz</item>
@@ -37,48 +37,48 @@
 		<item>Oniki Otuziki</item>
 		<item>Oniki Otuzüç</item>
 		<item>Oniki Otuzdört</item>
-		<item>Oniki Otuzbeþ</item>
-		<item>Oniki Otuzaltý</item>
+		<item>Oniki Otuzbeş</item>
+		<item>Oniki Otuzaltı</item>
 		<item>Oniki Otuzyedi</item>
 		<item>Oniki Otuzsekiz</item>
 		<item>Oniki Otuzdokuz</item>
-		<item>Oniki Kýrk</item>
-		<item>Oniki Kýrkbir</item>
-		<item>Oniki Kýrkiki</item>
-		<item>Oniki Kýrküç</item>
-		<item>Oniki Kýrkdört</item>
-		<item>Oniki Kýrkbeþ</item>
-		<item>Oniki Kýrkaltý</item>
-		<item>Oniki Kýrkyedi</item>
-		<item>Oniki Kýrksekiz</item>
-		<item>Oniki Kýrkdokuz</item>
+		<item>Oniki Kırk</item>
+		<item>Oniki Kırkbir</item>
+		<item>Oniki Kırkiki</item>
+		<item>Oniki Kırküç</item>
+		<item>Oniki Kırkdört</item>
+		<item>Oniki Kırkbeş</item>
+		<item>Oniki Kırkaltı</item>
+		<item>Oniki Kırkyedi</item>
+		<item>Oniki Kırksekiz</item>
+		<item>Oniki Kırkdokuz</item>
 		<item>Oniki Elli</item>
 		<item>Oniki Ellibir</item>
 		<item>Oniki Elliiki</item>
 		<item>Oniki Elliüç</item>
 		<item>Oniki Ellidört</item>
-		<item>Oniki Ellibeþ</item>
-		<item>Oniki Ellialtý</item>
+		<item>Oniki Ellibeş</item>
+		<item>Oniki Ellialtı</item>
 		<item>Oniki Elliyedi</item>
 		<item>Oniki Ellisekiz</item>
 		<item>Oniki Ellidokuz</item>
 		<item>Bir</item>
-		<item>Bir Sýfýrbir</item>
-		<item>Bir Sýfýriki</item>
-		<item>Bir Sýfýrüç</item>
-		<item>Bir Sýfýrdört</item>
-		<item>Bir Sýfýrbeþ</item>
-		<item>Bir Sýfýraltý</item>
-		<item>Bir Sýfýryedi</item>
-		<item>Bir Sýfýrsekiz</item>
-		<item>Bir Sýfýrdokuz</item>
+		<item>Bir Sıfırbir</item>
+		<item>Bir Sıfıriki</item>
+		<item>Bir Sıfırüç</item>
+		<item>Bir Sıfırdört</item>
+		<item>Bir Sıfırbeş</item>
+		<item>Bir Sıfıraltı</item>
+		<item>Bir Sıfıryedi</item>
+		<item>Bir Sıfırsekiz</item>
+		<item>Bir Sıfırdokuz</item>
 		<item>Bir On</item>
 		<item>Bir Onbir</item>
 		<item>Bir Oniki</item>
 		<item>Bir Onüç</item>
 		<item>Bir Ondört</item>
-		<item>Bir Onbeþ</item>
-		<item>Bir Onaltý</item>
+		<item>Bir Onbeş</item>
+		<item>Bir Onaltı</item>
 		<item>Bir Onyedi</item>
 		<item>Bir Onsekiz</item>
 		<item>Bir Ondokuz</item>
@@ -87,8 +87,8 @@
 		<item>Bir Yirmiiki</item>
 		<item>Bir Yirmiüç</item>
 		<item>Bir Yirmidört</item>
-		<item>Bir Yirmibeþ</item>
-		<item>Bir Yirmialtý</item>
+		<item>Bir Yirmibeş</item>
+		<item>Bir Yirmialtı</item>
 		<item>Bir Yirmiyedi</item>
 		<item>Bir Yirmisekiz</item>
 		<item>Bir Yirmidokuz</item>
@@ -97,108 +97,108 @@
 		<item>Bir Otuziki</item>
 		<item>Bir Otuzüç</item>
 		<item>Bir Otuzdört</item>
-		<item>Bir Otuzbeþ</item>
-		<item>Bir Otuzaltý</item>
+		<item>Bir Otuzbeş</item>
+		<item>Bir Otuzaltı</item>
 		<item>Bir Otuzyedi</item>
 		<item>Bir Otuzsekiz</item>
 		<item>Bir Otuzdokuz</item>
-		<item>Bir Kýrk</item>
-		<item>Bir Kýrkbir</item>
-		<item>Bir Kýrkiki</item>
-		<item>Bir Kýrküç</item>
-		<item>Bir Kýrkdört</item>
-		<item>Bir Kýrkbeþ</item>
-		<item>Bir Kýrkaltý</item>
-		<item>Bir Kýrkyedi</item>
-		<item>Bir Kýrksekiz</item>
-		<item>Bir Kýrkdokuz</item>
+		<item>Bir Kırk</item>
+		<item>Bir Kırkbir</item>
+		<item>Bir Kırkiki</item>
+		<item>Bir Kırküç</item>
+		<item>Bir Kırkdört</item>
+		<item>Bir Kırkbeş</item>
+		<item>Bir Kırkaltı</item>
+		<item>Bir Kırkyedi</item>
+		<item>Bir Kırksekiz</item>
+		<item>Bir Kırkdokuz</item>
 		<item>Bir Elli</item>
 		<item>Bir Ellibir</item>
 		<item>Bir Elliiki</item>
 		<item>Bir Elliüç</item>
 		<item>Bir Ellidört</item>
-		<item>Bir Ellibeþ</item>
-		<item>Bir Ellialtý</item>
+		<item>Bir Ellibeş</item>
+		<item>Bir Ellialtı</item>
 		<item>Bir Elliyedi</item>
 		<item>Bir Ellisekiz</item>
 		<item>Bir Ellidokuz</item>
-		<item>Ýki</item>
-		<item>Ýki Sýfýrbir</item>
-		<item>Ýki Sýfýriki</item>
-		<item>Ýki Sýfýrüç</item>
-		<item>Ýki Sýfýrdört</item>
-		<item>Ýki Sýfýrbeþ</item>
-		<item>Ýki Sýfýraltý</item>
-		<item>Ýki Sýfýryedi</item>
-		<item>Ýki Sýfýrsekiz</item>
-		<item>Ýki Sýfýrdokuz</item>
-		<item>Ýki On</item>
-		<item>Ýki Onbir</item>
-		<item>Ýki Oniki</item>
-		<item>Ýki Onüç</item>
-		<item>Ýki Ondört</item>
-		<item>Ýki Onbeþ</item>
-		<item>Ýki Onaltý</item>
-		<item>Ýki Onyedi</item>
-		<item>Ýki Onsekiz</item>
-		<item>Ýki Ondokuz</item>
-		<item>Ýki Yirmi</item>
-		<item>Ýki Yirmibir</item>
-		<item>Ýki Yirmiiki</item>
-		<item>Ýki Yirmiüç</item>
-		<item>Ýki Yirmidört</item>
-		<item>Ýki Yirmibeþ</item>
-		<item>Ýki Yirmialtý</item>
-		<item>Ýki Yirmiyedi</item>
-		<item>Ýki Yirmisekiz</item>
-		<item>Ýki Yirmidokuz</item>
-		<item>Ýki Otuz</item>
-		<item>Ýki Otuzbir</item>
-		<item>Ýki Otuziki</item>
-		<item>Ýki Otuzüç</item>
-		<item>Ýki Otuzdört</item>
-		<item>Ýki Otuzbeþ</item>
-		<item>Ýki Otuzaltý</item>
-		<item>Ýki Otuzyedi</item>
-		<item>Ýki Otuzsekiz</item>
-		<item>Ýki Otuzdokuz</item>
-		<item>Ýki Kýrk</item>
-		<item>Ýki Kýrkbir</item>
-		<item>Ýki Kýrkiki</item>
-		<item>Ýki Kýrküç</item>
-		<item>Ýki Kýrkdört</item>
-		<item>Ýki Kýrkbeþ</item>
-		<item>Ýki Kýrkaltý</item>
-		<item>Ýki Kýrkyedi</item>
-		<item>Ýki Kýrksekiz</item>
-		<item>Ýki Kýrkdokuz</item>
-		<item>Ýki Elli</item>
-		<item>Ýki Ellibir</item>
-		<item>Ýki Elliiki</item>
-		<item>Ýki Elliüç</item>
-		<item>Ýki Ellidört</item>
-		<item>Ýki Ellibeþ</item>
-		<item>Ýki Ellialtý</item>
-		<item>Ýki Elliyedi</item>
-		<item>Ýki Ellisekiz</item>
-		<item>Ýki Ellidokuz</item>
+		<item>İki</item>
+		<item>İki Sıfırbir</item>
+		<item>İki Sıfıriki</item>
+		<item>İki Sıfırüç</item>
+		<item>İki Sıfırdört</item>
+		<item>İki Sıfırbeş</item>
+		<item>İki Sıfıraltı</item>
+		<item>İki Sıfıryedi</item>
+		<item>İki Sıfırsekiz</item>
+		<item>İki Sıfırdokuz</item>
+		<item>İki On</item>
+		<item>İki Onbir</item>
+		<item>İki Oniki</item>
+		<item>İki Onüç</item>
+		<item>İki Ondört</item>
+		<item>İki Onbeş</item>
+		<item>İki Onaltı</item>
+		<item>İki Onyedi</item>
+		<item>İki Onsekiz</item>
+		<item>İki Ondokuz</item>
+		<item>İki Yirmi</item>
+		<item>İki Yirmibir</item>
+		<item>İki Yirmiiki</item>
+		<item>İki Yirmiüç</item>
+		<item>İki Yirmidört</item>
+		<item>İki Yirmibeş</item>
+		<item>İki Yirmialtı</item>
+		<item>İki Yirmiyedi</item>
+		<item>İki Yirmisekiz</item>
+		<item>İki Yirmidokuz</item>
+		<item>İki Otuz</item>
+		<item>İki Otuzbir</item>
+		<item>İki Otuziki</item>
+		<item>İki Otuzüç</item>
+		<item>İki Otuzdört</item>
+		<item>İki Otuzbeş</item>
+		<item>İki Otuzaltı</item>
+		<item>İki Otuzyedi</item>
+		<item>İki Otuzsekiz</item>
+		<item>İki Otuzdokuz</item>
+		<item>İki Kırk</item>
+		<item>İki Kırkbir</item>
+		<item>İki Kırkiki</item>
+		<item>İki Kırküç</item>
+		<item>İki Kırkdört</item>
+		<item>İki Kırkbeş</item>
+		<item>İki Kırkaltı</item>
+		<item>İki Kırkyedi</item>
+		<item>İki Kırksekiz</item>
+		<item>İki Kırkdokuz</item>
+		<item>İki Elli</item>
+		<item>İki Ellibir</item>
+		<item>İki Elliiki</item>
+		<item>İki Elliüç</item>
+		<item>İki Ellidört</item>
+		<item>İki Ellibeş</item>
+		<item>İki Ellialtı</item>
+		<item>İki Elliyedi</item>
+		<item>İki Ellisekiz</item>
+		<item>İki Ellidokuz</item>
 		<item>Üç</item>
-		<item>Üç Sýfýrbir</item>
-		<item>Üç Sýfýriki</item>
-		<item>Üç Sýfýrüç</item>
-		<item>Üç Sýfýrdört</item>
-		<item>Üç Sýfýrbeþ</item>
-		<item>Üç Sýfýraltý</item>
-		<item>Üç Sýfýryedi</item>
-		<item>Üç Sýfýrsekiz</item>
-		<item>Üç Sýfýrdokuz</item>
+		<item>Üç Sıfırbir</item>
+		<item>Üç Sıfıriki</item>
+		<item>Üç Sıfırüç</item>
+		<item>Üç Sıfırdört</item>
+		<item>Üç Sıfırbeş</item>
+		<item>Üç Sıfıraltı</item>
+		<item>Üç Sıfıryedi</item>
+		<item>Üç Sıfırsekiz</item>
+		<item>Üç Sıfırdokuz</item>
 		<item>Üç On</item>
 		<item>Üç Onbir</item>
 		<item>Üç Oniki</item>
 		<item>Üç Onüç</item>
 		<item>Üç Ondört</item>
-		<item>Üç Onbeþ</item>
-		<item>Üç Onaltý</item>
+		<item>Üç Onbeş</item>
+		<item>Üç Onaltı</item>
 		<item>Üç Onyedi</item>
 		<item>Üç Onsekiz</item>
 		<item>Üç Ondokuz</item>
@@ -207,8 +207,8 @@
 		<item>Üç Yirmiiki</item>
 		<item>Üç Yirmiüç</item>
 		<item>Üç Yirmidört</item>
-		<item>Üç Yirmibeþ</item>
-		<item>Üç Yirmialtý</item>
+		<item>Üç Yirmibeş</item>
+		<item>Üç Yirmialtı</item>
 		<item>Üç Yirmiyedi</item>
 		<item>Üç Yirmisekiz</item>
 		<item>Üç Yirmidokuz</item>
@@ -217,48 +217,48 @@
 		<item>Üç Otuziki</item>
 		<item>Üç Otuzüç</item>
 		<item>Üç Otuzdört</item>
-		<item>Üç Otuzbeþ</item>
-		<item>Üç Otuzaltý</item>
+		<item>Üç Otuzbeş</item>
+		<item>Üç Otuzaltı</item>
 		<item>Üç Otuzyedi</item>
 		<item>Üç Otuzsekiz</item>
 		<item>Üç Otuzdokuz</item>
-		<item>Üç Kýrk</item>
-		<item>Üç Kýrkbir</item>
-		<item>Üç Kýrkiki</item>
-		<item>Üç Kýrküç</item>
-		<item>Üç Kýrkdört</item>
-		<item>Üç Kýrkbeþ</item>
-		<item>Üç Kýrkaltý</item>
-		<item>Üç Kýrkyedi</item>
-		<item>Üç Kýrksekiz</item>
-		<item>Üç Kýrkdokuz</item>
+		<item>Üç Kırk</item>
+		<item>Üç Kırkbir</item>
+		<item>Üç Kırkiki</item>
+		<item>Üç Kırküç</item>
+		<item>Üç Kırkdört</item>
+		<item>Üç Kırkbeş</item>
+		<item>Üç Kırkaltı</item>
+		<item>Üç Kırkyedi</item>
+		<item>Üç Kırksekiz</item>
+		<item>Üç Kırkdokuz</item>
 		<item>Üç Elli</item>
 		<item>Üç Ellibir</item>
 		<item>Üç Elliiki</item>
 		<item>Üç Elliüç</item>
 		<item>Üç Ellidört</item>
-		<item>Üç Ellibeþ</item>
-		<item>Üç Ellialtý</item>
+		<item>Üç Ellibeş</item>
+		<item>Üç Ellialtı</item>
 		<item>Üç Elliyedi</item>
 		<item>Üç Ellisekiz</item>
 		<item>Üç Ellidokuz</item>
 		<item>Dört</item>
-		<item>Dört Sýfýrbir</item>
-		<item>Dört Sýfýriki</item>
-		<item>Dört Sýfýrüç</item>
-		<item>Dört Sýfýrdört</item>
-		<item>Dört Sýfýrbeþ</item>
-		<item>Dört Sýfýraltý</item>
-		<item>Dört Sýfýryedi</item>
-		<item>Dört Sýfýrsekiz</item>
-		<item>Dört Sýfýrdokuz</item>
+		<item>Dört Sıfırbir</item>
+		<item>Dört Sıfıriki</item>
+		<item>Dört Sıfırüç</item>
+		<item>Dört Sıfırdört</item>
+		<item>Dört Sıfırbeş</item>
+		<item>Dört Sıfıraltı</item>
+		<item>Dört Sıfıryedi</item>
+		<item>Dört Sıfırsekiz</item>
+		<item>Dört Sıfırdokuz</item>
 		<item>Dört On</item>
 		<item>Dört Onbir</item>
 		<item>Dört Oniki</item>
 		<item>Dört Onüç</item>
 		<item>Dört Ondört</item>
-		<item>Dört Onbeþ</item>
-		<item>Dört Onaltý</item>
+		<item>Dört Onbeş</item>
+		<item>Dört Onaltı</item>
 		<item>Dört Onyedi</item>
 		<item>Dört Onsekiz</item>
 		<item>Dört Ondokuz</item>
@@ -267,8 +267,8 @@
 		<item>Dört Yirmiiki</item>
 		<item>Dört Yirmiüç</item>
 		<item>Dört Yirmidört</item>
-		<item>Dört Yirmibeþ</item>
-		<item>Dört Yirmialtý</item>
+		<item>Dört Yirmibeş</item>
+		<item>Dört Yirmialtı</item>
 		<item>Dört Yirmiyedi</item>
 		<item>Dört Yirmisekiz</item>
 		<item>Dört Yirmidokuz</item>
@@ -277,170 +277,170 @@
 		<item>Dört Otuziki</item>
 		<item>Dört Otuzüç</item>
 		<item>Dört Otuzdört</item>
-		<item>Dört Otuzbeþ</item>
-		<item>Dört Otuzaltý</item>
+		<item>Dört Otuzbeş</item>
+		<item>Dört Otuzaltı</item>
 		<item>Dört Otuzyedi</item>
 		<item>Dört Otuzsekiz</item>
 		<item>Dört Otuzdokuz</item>
-		<item>Dört Kýrk</item>
-		<item>Dört Kýrkbir</item>
-		<item>Dört Kýrkiki</item>
-		<item>Dört Kýrküç</item>
-		<item>Dört Kýrkdört</item>
-		<item>Dört Kýrkbeþ</item>
-		<item>Dört Kýrkaltý</item>
-		<item>Dört Kýrkyedi</item>
-		<item>Dört Kýrksekiz</item>
-		<item>Dört Kýrkdokuz</item>
+		<item>Dört Kırk</item>
+		<item>Dört Kırkbir</item>
+		<item>Dört Kırkiki</item>
+		<item>Dört Kırküç</item>
+		<item>Dört Kırkdört</item>
+		<item>Dört Kırkbeş</item>
+		<item>Dört Kırkaltı</item>
+		<item>Dört Kırkyedi</item>
+		<item>Dört Kırksekiz</item>
+		<item>Dört Kırkdokuz</item>
 		<item>Dört Elli</item>
 		<item>Dört Ellibir</item>
 		<item>Dört Elliiki</item>
 		<item>Dört Elliüç</item>
 		<item>Dört Ellidört</item>
-		<item>Dört Ellibeþ</item>
-		<item>Dört Ellialtý</item>
+		<item>Dört Ellibeş</item>
+		<item>Dört Ellialtı</item>
 		<item>Dört Elliyedi</item>
 		<item>Dört Ellisekiz</item>
 		<item>Dört Ellidokuz</item>
-		<item>Beþ</item>
-		<item>Beþ Sýfýrbir</item>
-		<item>Beþ Sýfýriki</item>
-		<item>Beþ Sýfýrüç</item>
-		<item>Beþ Sýfýrdört</item>
-		<item>Beþ Sýfýrbeþ</item>
-		<item>Beþ Sýfýraltý</item>
-		<item>Beþ Sýfýryedi</item>
-		<item>Beþ Sýfýrsekiz</item>
-		<item>Beþ Sýfýrdokuz</item>
-		<item>Beþ On</item>
-		<item>Beþ Onbir</item>
-		<item>Beþ Oniki</item>
-		<item>Beþ Onüç</item>
-		<item>Beþ Ondört</item>
-		<item>Beþ Onbeþ</item>
-		<item>Beþ Onaltý</item>
-		<item>Beþ Onyedi</item>
-		<item>Beþ Onsekiz</item>
-		<item>Beþ Ondokuz</item>
-		<item>Beþ Yirmi</item>
-		<item>Beþ Yirmibir</item>
-		<item>Beþ Yirmiiki</item>
-		<item>Beþ Yirmiüç</item>
-		<item>Beþ Yirmidört</item>
-		<item>Beþ Yirmibeþ</item>
-		<item>Beþ Yirmialtý</item>
-		<item>Beþ Yirmiyedi</item>
-		<item>Beþ Yirmisekiz</item>
-		<item>Beþ Yirmidokuz</item>
-		<item>Beþ Otuz</item>
-		<item>Beþ Otuzbir</item>
-		<item>Beþ Otuziki</item>
-		<item>Beþ Otuzüç</item>
-		<item>Beþ Otuzdört</item>
-		<item>Beþ Otuzbeþ</item>
-		<item>Beþ Otuzaltý</item>
-		<item>Beþ Otuzyedi</item>
-		<item>Beþ Otuzsekiz</item>
-		<item>Beþ Otuzdokuz</item>
-		<item>Beþ Kýrk</item>
-		<item>Beþ Kýrkbir</item>
-		<item>Beþ Kýrkiki</item>
-		<item>Beþ Kýrküç</item>
-		<item>Beþ Kýrkdört</item>
-		<item>Beþ Kýrkbeþ</item>
-		<item>Beþ Kýrkaltý</item>
-		<item>Beþ Kýrkyedi</item>
-		<item>Beþ Kýrksekiz</item>
-		<item>Beþ Kýrkdokuz</item>
-		<item>Beþ Elli</item>
-		<item>Beþ Ellibir</item>
-		<item>Beþ Elliiki</item>
-		<item>Beþ Elliüç</item>
-		<item>Beþ Ellidört</item>
-		<item>Beþ Ellibeþ</item>
-		<item>Beþ Ellialtý</item>
-		<item>Beþ Elliyedi</item>
-		<item>Beþ Ellisekiz</item>
-		<item>Beþ Ellidokuz</item>
+		<item>Beş</item>
+		<item>Beş Sıfırbir</item>
+		<item>Beş Sıfıriki</item>
+		<item>Beş Sıfırüç</item>
+		<item>Beş Sıfırdört</item>
+		<item>Beş Sıfırbeş</item>
+		<item>Beş Sıfıraltı</item>
+		<item>Beş Sıfıryedi</item>
+		<item>Beş Sıfırsekiz</item>
+		<item>Beş Sıfırdokuz</item>
+		<item>Beş On</item>
+		<item>Beş Onbir</item>
+		<item>Beş Oniki</item>
+		<item>Beş Onüç</item>
+		<item>Beş Ondört</item>
+		<item>Beş Onbeş</item>
+		<item>Beş Onaltı</item>
+		<item>Beş Onyedi</item>
+		<item>Beş Onsekiz</item>
+		<item>Beş Ondokuz</item>
+		<item>Beş Yirmi</item>
+		<item>Beş Yirmibir</item>
+		<item>Beş Yirmiiki</item>
+		<item>Beş Yirmiüç</item>
+		<item>Beş Yirmidört</item>
+		<item>Beş Yirmibeş</item>
+		<item>Beş Yirmialtı</item>
+		<item>Beş Yirmiyedi</item>
+		<item>Beş Yirmisekiz</item>
+		<item>Beş Yirmidokuz</item>
+		<item>Beş Otuz</item>
+		<item>Beş Otuzbir</item>
+		<item>Beş Otuziki</item>
+		<item>Beş Otuzüç</item>
+		<item>Beş Otuzdört</item>
+		<item>Beş Otuzbeş</item>
+		<item>Beş Otuzaltı</item>
+		<item>Beş Otuzyedi</item>
+		<item>Beş Otuzsekiz</item>
+		<item>Beş Otuzdokuz</item>
+		<item>Beş Kırk</item>
+		<item>Beş Kırkbir</item>
+		<item>Beş Kırkiki</item>
+		<item>Beş Kırküç</item>
+		<item>Beş Kırkdört</item>
+		<item>Beş Kırkbeş</item>
+		<item>Beş Kırkaltı</item>
+		<item>Beş Kırkyedi</item>
+		<item>Beş Kırksekiz</item>
+		<item>Beş Kırkdokuz</item>
+		<item>Beş Elli</item>
+		<item>Beş Ellibir</item>
+		<item>Beş Elliiki</item>
+		<item>Beş Elliüç</item>
+		<item>Beş Ellidört</item>
+		<item>Beş Ellibeş</item>
+		<item>Beş Ellialtı</item>
+		<item>Beş Elliyedi</item>
+		<item>Beş Ellisekiz</item>
+		<item>Beş Ellidokuz</item>
 	</string-array>
 	<string-array name="verbosetime2">
-		<item>Altý</item>
-		<item>Altý Sýfýrbir</item>
-		<item>Altý Sýfýriki</item>
-		<item>Altý Sýfýrüç</item>
-		<item>Altý Sýfýrdört</item>
-		<item>Altý Sýfýrbeþ</item>
-		<item>Altý Sýfýraltý</item>
-		<item>Altý Sýfýryedi</item>
-		<item>Altý Sýfýrsekiz</item>
-		<item>Altý Sýfýrdokuz</item>
-		<item>Altý On</item>
-		<item>Altý Onbir</item>
-		<item>Altý Oniki</item>
-		<item>Altý Onüç</item>
-		<item>Altý Ondört</item>
-		<item>Altý Onbeþ</item>
-		<item>Altý Onaltý</item>
-		<item>Altý Onyedi</item>
-		<item>Altý Onsekiz</item>
-		<item>Altý Ondokuz</item>
-		<item>Altý Yirmi</item>
-		<item>Altý Yirmibir</item>
-		<item>Altý Yirmiiki</item>
-		<item>Altý Yirmiüç</item>
-		<item>Altý Yirmidört</item>
-		<item>Altý Yirmibeþ</item>
-		<item>Altý Yirmialtý</item>
-		<item>Altý Yirmiyedi</item>
-		<item>Altý Yirmisekiz</item>
-		<item>Altý Yirmidokuz</item>
-		<item>Altý Otuz</item>
-		<item>Altý Otuzbir</item>
-		<item>Altý Otuziki</item>
-		<item>Altý Otuzüç</item>
-		<item>Altý Otuzdört</item>
-		<item>Altý Otuzbeþ</item>
-		<item>Altý Otuzaltý</item>
-		<item>Altý Otuzyedi</item>
-		<item>Altý Otuzsekiz</item>
-		<item>Altý Otuzdokuz</item>
-		<item>Altý Kýrk</item>
-		<item>Altý Kýrkbir</item>
-		<item>Altý Kýrkiki</item>
-		<item>Altý Kýrküç</item>
-		<item>Altý Kýrkdört</item>
-		<item>Altý Kýrkbeþ</item>
-		<item>Altý Kýrkaltý</item>
-		<item>Altý Kýrkyedi</item>
-		<item>Altý Kýrksekiz</item>
-		<item>Altý Kýrkdokuz</item>
-		<item>Altý Elli</item>
-		<item>Altý Ellibir</item>
-		<item>Altý Elliiki</item>
-		<item>Altý Elliüç</item>
-		<item>Altý Ellidört</item>
-		<item>Altý Ellibeþ</item>
-		<item>Altý Ellialtý</item>
-		<item>Altý Elliyedi</item>
-		<item>Altý Ellisekiz</item>
-		<item>Altý Ellidokuz</item>
+		<item>Altı</item>
+		<item>Altı Sıfırbir</item>
+		<item>Altı Sıfıriki</item>
+		<item>Altı Sıfırüç</item>
+		<item>Altı Sıfırdört</item>
+		<item>Altı Sıfırbeş</item>
+		<item>Altı Sıfıraltı</item>
+		<item>Altı Sıfıryedi</item>
+		<item>Altı Sıfırsekiz</item>
+		<item>Altı Sıfırdokuz</item>
+		<item>Altı On</item>
+		<item>Altı Onbir</item>
+		<item>Altı Oniki</item>
+		<item>Altı Onüç</item>
+		<item>Altı Ondört</item>
+		<item>Altı Onbeş</item>
+		<item>Altı Onaltı</item>
+		<item>Altı Onyedi</item>
+		<item>Altı Onsekiz</item>
+		<item>Altı Ondokuz</item>
+		<item>Altı Yirmi</item>
+		<item>Altı Yirmibir</item>
+		<item>Altı Yirmiiki</item>
+		<item>Altı Yirmiüç</item>
+		<item>Altı Yirmidört</item>
+		<item>Altı Yirmibeş</item>
+		<item>Altı Yirmialtı</item>
+		<item>Altı Yirmiyedi</item>
+		<item>Altı Yirmisekiz</item>
+		<item>Altı Yirmidokuz</item>
+		<item>Altı Otuz</item>
+		<item>Altı Otuzbir</item>
+		<item>Altı Otuziki</item>
+		<item>Altı Otuzüç</item>
+		<item>Altı Otuzdört</item>
+		<item>Altı Otuzbeş</item>
+		<item>Altı Otuzaltı</item>
+		<item>Altı Otuzyedi</item>
+		<item>Altı Otuzsekiz</item>
+		<item>Altı Otuzdokuz</item>
+		<item>Altı Kırk</item>
+		<item>Altı Kırkbir</item>
+		<item>Altı Kırkiki</item>
+		<item>Altı Kırküç</item>
+		<item>Altı Kırkdört</item>
+		<item>Altı Kırkbeş</item>
+		<item>Altı Kırkaltı</item>
+		<item>Altı Kırkyedi</item>
+		<item>Altı Kırksekiz</item>
+		<item>Altı Kırkdokuz</item>
+		<item>Altı Elli</item>
+		<item>Altı Ellibir</item>
+		<item>Altı Elliiki</item>
+		<item>Altı Elliüç</item>
+		<item>Altı Ellidört</item>
+		<item>Altı Ellibeş</item>
+		<item>Altı Ellialtı</item>
+		<item>Altı Elliyedi</item>
+		<item>Altı Ellisekiz</item>
+		<item>Altı Ellidokuz</item>
 		<item>Yedi</item>
-		<item>Yedi Sýfýrbir</item>
-		<item>Yedi Sýfýriki</item>
-		<item>Yedi Sýfýrüç</item>
-		<item>Yedi Sýfýrdört</item>
-		<item>Yedi Sýfýrbeþ</item>
-		<item>Yedi Sýfýraltý</item>
-		<item>Yedi Sýfýryedi</item>
-		<item>Yedi Sýfýrsekiz</item>
-		<item>Yedi Sýfýrdokuz</item>
+		<item>Yedi Sıfırbir</item>
+		<item>Yedi Sıfıriki</item>
+		<item>Yedi Sıfırüç</item>
+		<item>Yedi Sıfırdört</item>
+		<item>Yedi Sıfırbeş</item>
+		<item>Yedi Sıfıraltı</item>
+		<item>Yedi Sıfıryedi</item>
+		<item>Yedi Sıfırsekiz</item>
+		<item>Yedi Sıfırdokuz</item>
 		<item>Yedi On</item>
 		<item>Yedi Onbir</item>
 		<item>Yedi Oniki</item>
 		<item>Yedi Onüç</item>
 		<item>Yedi Ondört</item>
-		<item>Yedi Onbeþ</item>
-		<item>Yedi Onaltý</item>
+		<item>Yedi Onbeş</item>
+		<item>Yedi Onaltı</item>
 		<item>Yedi Onyedi</item>
 		<item>Yedi Onsekiz</item>
 		<item>Yedi Ondokuz</item>
@@ -449,8 +449,8 @@
 		<item>Yedi Yirmiiki</item>
 		<item>Yedi Yirmiüç</item>
 		<item>Yedi Yirmidört</item>
-		<item>Yedi Yirmibeþ</item>
-		<item>Yedi Yirmialtý</item>
+		<item>Yedi Yirmibeş</item>
+		<item>Yedi Yirmialtı</item>
 		<item>Yedi Yirmiyedi</item>
 		<item>Yedi Yirmisekiz</item>
 		<item>Yedi Yirmidokuz</item>
@@ -459,48 +459,48 @@
 		<item>Yedi Otuziki</item>
 		<item>Yedi Otuzüç</item>
 		<item>Yedi Otuzdört</item>
-		<item>Yedi Otuzbeþ</item>
-		<item>Yedi Otuzaltý</item>
+		<item>Yedi Otuzbeş</item>
+		<item>Yedi Otuzaltı</item>
 		<item>Yedi Otuzyedi</item>
 		<item>Yedi Otuzsekiz</item>
 		<item>Yedi Otuzdokuz</item>
-		<item>Yedi Kýrk</item>
-		<item>Yedi Kýrkbir</item>
-		<item>Yedi Kýrkiki</item>
-		<item>Yedi Kýrküç</item>
-		<item>Yedi Kýrkdört</item>
-		<item>Yedi Kýrkbeþ</item>
-		<item>Yedi Kýrkaltý</item>
-		<item>Yedi Kýrkyedi</item>
-		<item>Yedi Kýrksekiz</item>
-		<item>Yedi Kýrkdokuz</item>
+		<item>Yedi Kırk</item>
+		<item>Yedi Kırkbir</item>
+		<item>Yedi Kırkiki</item>
+		<item>Yedi Kırküç</item>
+		<item>Yedi Kırkdört</item>
+		<item>Yedi Kırkbeş</item>
+		<item>Yedi Kırkaltı</item>
+		<item>Yedi Kırkyedi</item>
+		<item>Yedi Kırksekiz</item>
+		<item>Yedi Kırkdokuz</item>
 		<item>Yedi Elli</item>
 		<item>Yedi Ellibir</item>
 		<item>Yedi Elliiki</item>
 		<item>Yedi Elliüç</item>
 		<item>Yedi Ellidört</item>
-		<item>Yedi Ellibeþ</item>
-		<item>Yedi Ellialtý</item>
+		<item>Yedi Ellibeş</item>
+		<item>Yedi Ellialtı</item>
 		<item>Yedi Elliyedi</item>
 		<item>Yedi Ellisekiz</item>
 		<item>Yedi Ellidokuz</item>
 		<item>Sekiz</item>
-		<item>Sekiz Sýfýrbir</item>
-		<item>Sekiz Sýfýriki</item>
-		<item>Sekiz Sýfýrüç</item>
-		<item>Sekiz Sýfýrdört</item>
-		<item>Sekiz Sýfýrbeþ</item>
-		<item>Sekiz Sýfýraltý</item>
-		<item>Sekiz Sýfýryedi</item>
-		<item>Sekiz Sýfýrsekiz</item>
-		<item>Sekiz Sýfýrdokuz</item>
+		<item>Sekiz Sıfırbir</item>
+		<item>Sekiz Sıfıriki</item>
+		<item>Sekiz Sıfırüç</item>
+		<item>Sekiz Sıfırdört</item>
+		<item>Sekiz Sıfırbeş</item>
+		<item>Sekiz Sıfıraltı</item>
+		<item>Sekiz Sıfıryedi</item>
+		<item>Sekiz Sıfırsekiz</item>
+		<item>Sekiz Sıfırdokuz</item>
 		<item>Sekiz On</item>
 		<item>Sekiz Onbir</item>
 		<item>Sekiz Oniki</item>
 		<item>Sekiz Onüç</item>
 		<item>Sekiz Ondört</item>
-		<item>Sekiz Onbeþ</item>
-		<item>Sekiz Onaltý</item>
+		<item>Sekiz Onbeş</item>
+		<item>Sekiz Onaltı</item>
 		<item>Sekiz Onyedi</item>
 		<item>Sekiz Onsekiz</item>
 		<item>Sekiz Ondokuz</item>
@@ -509,8 +509,8 @@
 		<item>Sekiz Yirmiiki</item>
 		<item>Sekiz Yirmiüç</item>
 		<item>Sekiz Yirmidört</item>
-		<item>Sekiz Yirmibeþ</item>
-		<item>Sekiz Yirmialtý</item>
+		<item>Sekiz Yirmibeş</item>
+		<item>Sekiz Yirmialtı</item>
 		<item>Sekiz Yirmiyedi</item>
 		<item>Sekiz Yirmisekiz</item>
 		<item>Sekiz Yirmidokuz</item>
@@ -519,48 +519,48 @@
 		<item>Sekiz Otuziki</item>
 		<item>Sekiz Otuzüç</item>
 		<item>Sekiz Otuzdört</item>
-		<item>Sekiz Otuzbeþ</item>
-		<item>Sekiz Otuzaltý</item>
+		<item>Sekiz Otuzbeş</item>
+		<item>Sekiz Otuzaltı</item>
 		<item>Sekiz Otuzyedi</item>
 		<item>Sekiz Otuzsekiz</item>
 		<item>Sekiz Otuzdokuz</item>
-		<item>Sekiz Kýrk</item>
-		<item>Sekiz Kýrkbir</item>
-		<item>Sekiz Kýrkiki</item>
-		<item>Sekiz Kýrküç</item>
-		<item>Sekiz Kýrkdört</item>
-		<item>Sekiz Kýrkbeþ</item>
-		<item>Sekiz Kýrkaltý</item>
-		<item>Sekiz Kýrkyedi</item>
-		<item>Sekiz Kýrksekiz</item>
-		<item>Sekiz Kýrkdokuz</item>
+		<item>Sekiz Kırk</item>
+		<item>Sekiz Kırkbir</item>
+		<item>Sekiz Kırkiki</item>
+		<item>Sekiz Kırküç</item>
+		<item>Sekiz Kırkdört</item>
+		<item>Sekiz Kırkbeş</item>
+		<item>Sekiz Kırkaltı</item>
+		<item>Sekiz Kırkyedi</item>
+		<item>Sekiz Kırksekiz</item>
+		<item>Sekiz Kırkdokuz</item>
 		<item>Sekiz Elli</item>
 		<item>Sekiz Ellibir</item>
 		<item>Sekiz Elliiki</item>
 		<item>Sekiz Elliüç</item>
 		<item>Sekiz Ellidört</item>
-		<item>Sekiz Ellibeþ</item>
-		<item>Sekiz Ellialtý</item>
+		<item>Sekiz Ellibeş</item>
+		<item>Sekiz Ellialtı</item>
 		<item>Sekiz Elliyedi</item>
 		<item>Sekiz Ellisekiz</item>
 		<item>Sekiz Ellidokuz</item>
 		<item>Dokuz</item>
-		<item>Dokuz Sýfýrbir</item>
-		<item>Dokuz Sýfýriki</item>
-		<item>Dokuz Sýfýrüç</item>
-		<item>Dokuz Sýfýrdört</item>
-		<item>Dokuz Sýfýrbeþ</item>
-		<item>Dokuz Sýfýraltý</item>
-		<item>Dokuz Sýfýryedi</item>
-		<item>Dokuz Sýfýrsekiz</item>
-		<item>Dokuz Sýfýrdokuz</item>
+		<item>Dokuz Sıfırbir</item>
+		<item>Dokuz Sıfıriki</item>
+		<item>Dokuz Sıfırüç</item>
+		<item>Dokuz Sıfırdört</item>
+		<item>Dokuz Sıfırbeş</item>
+		<item>Dokuz Sıfıraltı</item>
+		<item>Dokuz Sıfıryedi</item>
+		<item>Dokuz Sıfırsekiz</item>
+		<item>Dokuz Sıfırdokuz</item>
 		<item>Dokuz On</item>
 		<item>Dokuz Onbir</item>
 		<item>Dokuz Oniki</item>
 		<item>Dokuz Onüç</item>
 		<item>Dokuz Ondört</item>
-		<item>Dokuz Onbeþ</item>
-		<item>Dokuz Onaltý</item>
+		<item>Dokuz Onbeş</item>
+		<item>Dokuz Onaltı</item>
 		<item>Dokuz Onyedi</item>
 		<item>Dokuz Onsekiz</item>
 		<item>Dokuz Ondokuz</item>
@@ -569,8 +569,8 @@
 		<item>Dokuz Yirmiiki</item>
 		<item>Dokuz Yirmiüç</item>
 		<item>Dokuz Yirmidört</item>
-		<item>Dokuz Yirmibeþ</item>
-		<item>Dokuz Yirmialtý</item>
+		<item>Dokuz Yirmibeş</item>
+		<item>Dokuz Yirmialtı</item>
 		<item>Dokuz Yirmiyedi</item>
 		<item>Dokuz Yirmisekiz</item>
 		<item>Dokuz Yirmidokuz</item>
@@ -579,48 +579,48 @@
 		<item>Dokuz Otuziki</item>
 		<item>Dokuz Otuzüç</item>
 		<item>Dokuz Otuzdört</item>
-		<item>Dokuz Otuzbeþ</item>
-		<item>Dokuz Otuzaltý</item>
+		<item>Dokuz Otuzbeş</item>
+		<item>Dokuz Otuzaltı</item>
 		<item>Dokuz Otuzyedi</item>
 		<item>Dokuz Otuzsekiz</item>
 		<item>Dokuz Otuzdokuz</item>
-		<item>Dokuz Kýrk</item>
-		<item>Dokuz Kýrkbir</item>
-		<item>Dokuz Kýrkiki</item>
-		<item>Dokuz Kýrküç</item>
-		<item>Dokuz Kýrkdört</item>
-		<item>Dokuz Kýrkbeþ</item>
-		<item>Dokuz Kýrkaltý</item>
-		<item>Dokuz Kýrkyedi</item>
-		<item>Dokuz Kýrksekiz</item>
-		<item>Dokuz Kýrkdokuz</item>
+		<item>Dokuz Kırk</item>
+		<item>Dokuz Kırkbir</item>
+		<item>Dokuz Kırkiki</item>
+		<item>Dokuz Kırküç</item>
+		<item>Dokuz Kırkdört</item>
+		<item>Dokuz Kırkbeş</item>
+		<item>Dokuz Kırkaltı</item>
+		<item>Dokuz Kırkyedi</item>
+		<item>Dokuz Kırksekiz</item>
+		<item>Dokuz Kırkdokuz</item>
 		<item>Dokuz Elli</item>
 		<item>Dokuz Ellibir</item>
 		<item>Dokuz Elliiki</item>
 		<item>Dokuz Elliüç</item>
 		<item>Dokuz Ellidört</item>
-		<item>Dokuz Ellibeþ</item>
-		<item>Dokuz Ellialtý</item>
+		<item>Dokuz Ellibeş</item>
+		<item>Dokuz Ellialtı</item>
 		<item>Dokuz Elliyedi</item>
 		<item>Dokuz Ellisekiz</item>
 		<item>Dokuz Ellidokuz</item>
 		<item>On</item>
-		<item>On Sýfýrbir</item>
-		<item>On Sýfýriki</item>
-		<item>On Sýfýrüç</item>
-		<item>On Sýfýrdört</item>
-		<item>On Sýfýrbeþ</item>
-		<item>On Sýfýraltý</item>
-		<item>On Sýfýryedi</item>
-		<item>On Sýfýrsekiz</item>
-		<item>On Sýfýrdokuz</item>
+		<item>On Sıfırbir</item>
+		<item>On Sıfıriki</item>
+		<item>On Sıfırüç</item>
+		<item>On Sıfırdört</item>
+		<item>On Sıfırbeş</item>
+		<item>On Sıfıraltı</item>
+		<item>On Sıfıryedi</item>
+		<item>On Sıfırsekiz</item>
+		<item>On Sıfırdokuz</item>
 		<item>On On</item>
 		<item>On Onbir</item>
 		<item>On Oniki</item>
 		<item>On Onüç</item>
 		<item>On Ondört</item>
-		<item>On Onbeþ</item>
-		<item>On Onaltý</item>
+		<item>On Onbeş</item>
+		<item>On Onaltı</item>
 		<item>On Onyedi</item>
 		<item>On Onsekiz</item>
 		<item>On Ondokuz</item>
@@ -629,8 +629,8 @@
 		<item>On Yirmiiki</item>
 		<item>On Yirmiüç</item>
 		<item>On Yirmidört</item>
-		<item>On Yirmibeþ</item>
-		<item>On Yirmialtý</item>
+		<item>On Yirmibeş</item>
+		<item>On Yirmialtı</item>
 		<item>On Yirmiyedi</item>
 		<item>On Yirmisekiz</item>
 		<item>On Yirmidokuz</item>
@@ -639,48 +639,48 @@
 		<item>On Otuziki</item>
 		<item>On Otuzüç</item>
 		<item>On Otuzdört</item>
-		<item>On Otuzbeþ</item>
-		<item>On Otuzaltý</item>
+		<item>On Otuzbeş</item>
+		<item>On Otuzaltı</item>
 		<item>On Otuzyedi</item>
 		<item>On Otuzsekiz</item>
 		<item>On Otuzdokuz</item>
-		<item>On Kýrk</item>
-		<item>On Kýrkbir</item>
-		<item>On Kýrkiki</item>
-		<item>On Kýrküç</item>
-		<item>On Kýrkdört</item>
-		<item>On Kýrkbeþ</item>
-		<item>On Kýrkaltý</item>
-		<item>On Kýrkyedi</item>
-		<item>On Kýrksekiz</item>
-		<item>On Kýrkdokuz</item>
+		<item>On Kırk</item>
+		<item>On Kırkbir</item>
+		<item>On Kırkiki</item>
+		<item>On Kırküç</item>
+		<item>On Kırkdört</item>
+		<item>On Kırkbeş</item>
+		<item>On Kırkaltı</item>
+		<item>On Kırkyedi</item>
+		<item>On Kırksekiz</item>
+		<item>On Kırkdokuz</item>
 		<item>On Elli</item>
 		<item>On Ellibir</item>
 		<item>On Elliiki</item>
 		<item>On Elliüç</item>
 		<item>On Ellidört</item>
-		<item>On Ellibeþ</item>
-		<item>On Ellialtý</item>
+		<item>On Ellibeş</item>
+		<item>On Ellialtı</item>
 		<item>On Elliyedi</item>
 		<item>On Ellisekiz</item>
 		<item>On Ellidokuz</item>
 		<item>Onbir</item>
-		<item>Onbir Sýfýrbir</item>
-		<item>Onbir Sýfýriki</item>
-		<item>Onbir Sýfýrüç</item>
-		<item>Onbir Sýfýrdört</item>
-		<item>Onbir Sýfýrbeþ</item>
-		<item>Onbir Sýfýraltý</item>
-		<item>Onbir Sýfýryedi</item>
-		<item>Onbir Sýfýrsekiz</item>
-		<item>Onbir Sýfýrdokuz</item>
+		<item>Onbir Sıfırbir</item>
+		<item>Onbir Sıfıriki</item>
+		<item>Onbir Sıfırüç</item>
+		<item>Onbir Sıfırdört</item>
+		<item>Onbir Sıfırbeş</item>
+		<item>Onbir Sıfıraltı</item>
+		<item>Onbir Sıfıryedi</item>
+		<item>Onbir Sıfırsekiz</item>
+		<item>Onbir Sıfırdokuz</item>
 		<item>Onbir On</item>
 		<item>Onbir Onbir</item>
 		<item>Onbir Oniki</item>
 		<item>Onbir Onüç</item>
 		<item>Onbir Ondört</item>
-		<item>Onbir Onbeþ</item>
-		<item>Onbir Onaltý</item>
+		<item>Onbir Onbeş</item>
+		<item>Onbir Onaltı</item>
 		<item>Onbir Onyedi</item>
 		<item>Onbir Onsekiz</item>
 		<item>Onbir Ondokuz</item>
@@ -689,8 +689,8 @@
 		<item>Onbir Yirmiiki</item>
 		<item>Onbir Yirmiüç</item>
 		<item>Onbir Yirmidört</item>
-		<item>Onbir Yirmibeþ</item>
-		<item>Onbir Yirmialtý</item>
+		<item>Onbir Yirmibeş</item>
+		<item>Onbir Yirmialtı</item>
 		<item>Onbir Yirmiyedi</item>
 		<item>Onbir Yirmisekiz</item>
 		<item>Onbir Yirmidokuz</item>
@@ -699,50 +699,50 @@
 		<item>Onbir Otuziki</item>
 		<item>Onbir Otuzüç</item>
 		<item>Onbir Otuzdört</item>
-		<item>Onbir Otuzbeþ</item>
-		<item>Onbir Otuzaltý</item>
+		<item>Onbir Otuzbeş</item>
+		<item>Onbir Otuzaltı</item>
 		<item>Onbir Otuzyedi</item>
 		<item>Onbir Otuzsekiz</item>
 		<item>Onbir Otuzdokuz</item>
-		<item>Onbir Kýrk</item>
-		<item>Onbir Kýrkbir</item>
-		<item>Onbir Kýrkiki</item>
-		<item>Onbir Kýrküç</item>
-		<item>Onbir Kýrkdört</item>
-		<item>Onbir Kýrkbeþ</item>
-		<item>Onbir Kýrkaltý</item>
-		<item>Onbir Kýrkyedi</item>
-		<item>Onbir Kýrksekiz</item>
-		<item>Onbir Kýrkdokuz</item>
+		<item>Onbir Kırk</item>
+		<item>Onbir Kırkbir</item>
+		<item>Onbir Kırkiki</item>
+		<item>Onbir Kırküç</item>
+		<item>Onbir Kırkdört</item>
+		<item>Onbir Kırkbeş</item>
+		<item>Onbir Kırkaltı</item>
+		<item>Onbir Kırkyedi</item>
+		<item>Onbir Kırksekiz</item>
+		<item>Onbir Kırkdokuz</item>
 		<item>Onbir Elli</item>
 		<item>Onbir Ellibir</item>
 		<item>Onbir Elliiki</item>
 		<item>Onbir Elliüç</item>
 		<item>Onbir Ellidört</item>
-		<item>Onbir Ellibeþ</item>
-		<item>Onbir Ellialtý</item>
+		<item>Onbir Ellibeş</item>
+		<item>Onbir Ellialtı</item>
 		<item>Onbir Elliyedi</item>
 		<item>Onbir Ellisekiz</item>
 		<item>Onbir Ellidokuz</item>
     </string-array>
     <string-array name="verbosetime3">
 		<item>Oniki</item>
-		<item>Oniki Sýfýrbir</item>
-		<item>Oniki Sýfýriki</item>
-		<item>Oniki Sýfýrüç</item>
-		<item>Oniki Sýfýrdört</item>
-		<item>Oniki Sýfýrbeþ</item>
-		<item>Oniki Sýfýraltý</item>
-		<item>Oniki Sýfýryedi</item>
-		<item>Oniki Sýfýrsekiz</item>
-		<item>Oniki Sýfýrdokuz</item>
+		<item>Oniki Sıfırbir</item>
+		<item>Oniki Sıfıriki</item>
+		<item>Oniki Sıfırüç</item>
+		<item>Oniki Sıfırdört</item>
+		<item>Oniki Sıfırbeş</item>
+		<item>Oniki Sıfıraltı</item>
+		<item>Oniki Sıfıryedi</item>
+		<item>Oniki Sıfırsekiz</item>
+		<item>Oniki Sıfırdokuz</item>
 		<item>Oniki On</item>
 		<item>Oniki Onbir</item>
 		<item>Oniki Oniki</item>
 		<item>Oniki Onüç</item>
 		<item>Oniki Ondört</item>
-		<item>Oniki Onbeþ</item>
-		<item>Oniki Onaltý</item>
+		<item>Oniki Onbeş</item>
+		<item>Oniki Onaltı</item>
 		<item>Oniki Onyedi</item>
 		<item>Oniki Onsekiz</item>
 		<item>Oniki Ondokuz</item>
@@ -751,8 +751,8 @@
 		<item>Oniki Yirmiiki</item>
 		<item>Oniki Yirmiüç</item>
 		<item>Oniki Yirmidört</item>
-		<item>Oniki Yirmibeþ</item>
-		<item>Oniki Yirmialtý</item>
+		<item>Oniki Yirmibeş</item>
+		<item>Oniki Yirmialtı</item>
 		<item>Oniki Yirmiyedi</item>
 		<item>Oniki Yirmisekiz</item>
 		<item>Oniki Yirmidokuz</item>
@@ -761,48 +761,48 @@
 		<item>Oniki Otuziki</item>
 		<item>Oniki Otuzüç</item>
 		<item>Oniki Otuzdört</item>
-		<item>Oniki Otuzbeþ</item>
-		<item>Oniki Otuzaltý</item>
+		<item>Oniki Otuzbeş</item>
+		<item>Oniki Otuzaltı</item>
 		<item>Oniki Otuzyedi</item>
 		<item>Oniki Otuzsekiz</item>
 		<item>Oniki Otuzdokuz</item>
-		<item>Oniki Kýrk</item>
-		<item>Oniki Kýrkbir</item>
-		<item>Oniki Kýrkiki</item>
-		<item>Oniki Kýrküç</item>
-		<item>Oniki Kýrkdört</item>
-		<item>Oniki Kýrkbeþ</item>
-		<item>Oniki Kýrkaltý</item>
-		<item>Oniki Kýrkyedi</item>
-		<item>Oniki Kýrksekiz</item>
-		<item>Oniki Kýrkdokuz</item>
+		<item>Oniki Kırk</item>
+		<item>Oniki Kırkbir</item>
+		<item>Oniki Kırkiki</item>
+		<item>Oniki Kırküç</item>
+		<item>Oniki Kırkdört</item>
+		<item>Oniki Kırkbeş</item>
+		<item>Oniki Kırkaltı</item>
+		<item>Oniki Kırkyedi</item>
+		<item>Oniki Kırksekiz</item>
+		<item>Oniki Kırkdokuz</item>
 		<item>Oniki Elli</item>
 		<item>Oniki Ellibir</item>
 		<item>Oniki Elliiki</item>
 		<item>Oniki Elliüç</item>
 		<item>Oniki Ellidört</item>
-		<item>Oniki Ellibeþ</item>
-		<item>Oniki Ellialtý</item>
+		<item>Oniki Ellibeş</item>
+		<item>Oniki Ellialtı</item>
 		<item>Oniki Elliyedi</item>
 		<item>Oniki Ellisekiz</item>
 		<item>Oniki Ellidokuz</item>
 		<item>Bir</item>
-		<item>Bir Sýfýrbir</item>
-		<item>Bir Sýfýriki</item>
-		<item>Bir Sýfýrüç</item>
-		<item>Bir Sýfýrdört</item>
-		<item>Bir Sýfýrbeþ</item>
-		<item>Bir Sýfýraltý</item>
-		<item>Bir Sýfýryedi</item>
-		<item>Bir Sýfýrsekiz</item>
-		<item>Bir Sýfýrdokuz</item>
+		<item>Bir Sıfırbir</item>
+		<item>Bir Sıfıriki</item>
+		<item>Bir Sıfırüç</item>
+		<item>Bir Sıfırdört</item>
+		<item>Bir Sıfırbeş</item>
+		<item>Bir Sıfıraltı</item>
+		<item>Bir Sıfıryedi</item>
+		<item>Bir Sıfırsekiz</item>
+		<item>Bir Sıfırdokuz</item>
 		<item>Bir On</item>
 		<item>Bir Onbir</item>
 		<item>Bir Oniki</item>
 		<item>Bir Onüç</item>
 		<item>Bir Ondört</item>
-		<item>Bir Onbeþ</item>
-		<item>Bir Onaltý</item>
+		<item>Bir Onbeş</item>
+		<item>Bir Onaltı</item>
 		<item>Bir Onyedi</item>
 		<item>Bir Onsekiz</item>
 		<item>Bir Ondokuz</item>
@@ -811,8 +811,8 @@
 		<item>Bir Yirmiiki</item>
 		<item>Bir Yirmiüç</item>
 		<item>Bir Yirmidört</item>
-		<item>Bir Yirmibeþ</item>
-		<item>Bir Yirmialtý</item>
+		<item>Bir Yirmibeş</item>
+		<item>Bir Yirmialtı</item>
 		<item>Bir Yirmiyedi</item>
 		<item>Bir Yirmisekiz</item>
 		<item>Bir Yirmidokuz</item>
@@ -821,108 +821,108 @@
 		<item>Bir Otuziki</item>
 		<item>Bir Otuzüç</item>
 		<item>Bir Otuzdört</item>
-		<item>Bir Otuzbeþ</item>
-		<item>Bir Otuzaltý</item>
+		<item>Bir Otuzbeş</item>
+		<item>Bir Otuzaltı</item>
 		<item>Bir Otuzyedi</item>
 		<item>Bir Otuzsekiz</item>
 		<item>Bir Otuzdokuz</item>
-		<item>Bir Kýrk</item>
-		<item>Bir Kýrkbir</item>
-		<item>Bir Kýrkiki</item>
-		<item>Bir Kýrküç</item>
-		<item>Bir Kýrkdört</item>
-		<item>Bir Kýrkbeþ</item>
-		<item>Bir Kýrkaltý</item>
-		<item>Bir Kýrkyedi</item>
-		<item>Bir Kýrksekiz</item>
-		<item>Bir Kýrkdokuz</item>
+		<item>Bir Kırk</item>
+		<item>Bir Kırkbir</item>
+		<item>Bir Kırkiki</item>
+		<item>Bir Kırküç</item>
+		<item>Bir Kırkdört</item>
+		<item>Bir Kırkbeş</item>
+		<item>Bir Kırkaltı</item>
+		<item>Bir Kırkyedi</item>
+		<item>Bir Kırksekiz</item>
+		<item>Bir Kırkdokuz</item>
 		<item>Bir Elli</item>
 		<item>Bir Ellibir</item>
 		<item>Bir Elliiki</item>
 		<item>Bir Elliüç</item>
 		<item>Bir Ellidört</item>
-		<item>Bir Ellibeþ</item>
-		<item>Bir Ellialtý</item>
+		<item>Bir Ellibeş</item>
+		<item>Bir Ellialtı</item>
 		<item>Bir Elliyedi</item>
 		<item>Bir Ellisekiz</item>
 		<item>Bir Ellidokuz</item>
-		<item>Ýki</item>
-		<item>Ýki Sýfýrbir</item>
-		<item>Ýki Sýfýriki</item>
-		<item>Ýki Sýfýrüç</item>
-		<item>Ýki Sýfýrdört</item>
-		<item>Ýki Sýfýrbeþ</item>
-		<item>Ýki Sýfýraltý</item>
-		<item>Ýki Sýfýryedi</item>
-		<item>Ýki Sýfýrsekiz</item>
-		<item>Ýki Sýfýrdokuz</item>
-		<item>Ýki On</item>
-		<item>Ýki Onbir</item>
-		<item>Ýki Oniki</item>
-		<item>Ýki Onüç</item>
-		<item>Ýki Ondört</item>
-		<item>Ýki Onbeþ</item>
-		<item>Ýki Onaltý</item>
-		<item>Ýki Onyedi</item>
-		<item>Ýki Onsekiz</item>
-		<item>Ýki Ondokuz</item>
-		<item>Ýki Yirmi</item>
-		<item>Ýki Yirmibir</item>
-		<item>Ýki Yirmiiki</item>
-		<item>Ýki Yirmiüç</item>
-		<item>Ýki Yirmidört</item>
-		<item>Ýki Yirmibeþ</item>
-		<item>Ýki Yirmialtý</item>
-		<item>Ýki Yirmiyedi</item>
-		<item>Ýki Yirmisekiz</item>
-		<item>Ýki Yirmidokuz</item>
-		<item>Ýki Otuz</item>
-		<item>Ýki Otuzbir</item>
-		<item>Ýki Otuziki</item>
-		<item>Ýki Otuzüç</item>
-		<item>Ýki Otuzdört</item>
-		<item>Ýki Otuzbeþ</item>
-		<item>Ýki Otuzaltý</item>
-		<item>Ýki Otuzyedi</item>
-		<item>Ýki Otuzsekiz</item>
-		<item>Ýki Otuzdokuz</item>
-		<item>Ýki Kýrk</item>
-		<item>Ýki Kýrkbir</item>
-		<item>Ýki Kýrkiki</item>
-		<item>Ýki Kýrküç</item>
-		<item>Ýki Kýrkdört</item>
-		<item>Ýki Kýrkbeþ</item>
-		<item>Ýki Kýrkaltý</item>
-		<item>Ýki Kýrkyedi</item>
-		<item>Ýki Kýrksekiz</item>
-		<item>Ýki Kýrkdokuz</item>
-		<item>Ýki Elli</item>
-		<item>Ýki Ellibir</item>
-		<item>Ýki Elliiki</item>
-		<item>Ýki Elliüç</item>
-		<item>Ýki Ellidört</item>
-		<item>Ýki Ellibeþ</item>
-		<item>Ýki Ellialtý</item>
-		<item>Ýki Elliyedi</item>
-		<item>Ýki Ellisekiz</item>
-		<item>Ýki Ellidokuz</item>
+		<item>İki</item>
+		<item>İki Sıfırbir</item>
+		<item>İki Sıfıriki</item>
+		<item>İki Sıfırüç</item>
+		<item>İki Sıfırdört</item>
+		<item>İki Sıfırbeş</item>
+		<item>İki Sıfıraltı</item>
+		<item>İki Sıfıryedi</item>
+		<item>İki Sıfırsekiz</item>
+		<item>İki Sıfırdokuz</item>
+		<item>İki On</item>
+		<item>İki Onbir</item>
+		<item>İki Oniki</item>
+		<item>İki Onüç</item>
+		<item>İki Ondört</item>
+		<item>İki Onbeş</item>
+		<item>İki Onaltı</item>
+		<item>İki Onyedi</item>
+		<item>İki Onsekiz</item>
+		<item>İki Ondokuz</item>
+		<item>İki Yirmi</item>
+		<item>İki Yirmibir</item>
+		<item>İki Yirmiiki</item>
+		<item>İki Yirmiüç</item>
+		<item>İki Yirmidört</item>
+		<item>İki Yirmibeş</item>
+		<item>İki Yirmialtı</item>
+		<item>İki Yirmiyedi</item>
+		<item>İki Yirmisekiz</item>
+		<item>İki Yirmidokuz</item>
+		<item>İki Otuz</item>
+		<item>İki Otuzbir</item>
+		<item>İki Otuziki</item>
+		<item>İki Otuzüç</item>
+		<item>İki Otuzdört</item>
+		<item>İki Otuzbeş</item>
+		<item>İki Otuzaltı</item>
+		<item>İki Otuzyedi</item>
+		<item>İki Otuzsekiz</item>
+		<item>İki Otuzdokuz</item>
+		<item>İki Kırk</item>
+		<item>İki Kırkbir</item>
+		<item>İki Kırkiki</item>
+		<item>İki Kırküç</item>
+		<item>İki Kırkdört</item>
+		<item>İki Kırkbeş</item>
+		<item>İki Kırkaltı</item>
+		<item>İki Kırkyedi</item>
+		<item>İki Kırksekiz</item>
+		<item>İki Kırkdokuz</item>
+		<item>İki Elli</item>
+		<item>İki Ellibir</item>
+		<item>İki Elliiki</item>
+		<item>İki Elliüç</item>
+		<item>İki Ellidört</item>
+		<item>İki Ellibeş</item>
+		<item>İki Ellialtı</item>
+		<item>İki Elliyedi</item>
+		<item>İki Ellisekiz</item>
+		<item>İki Ellidokuz</item>
 		<item>Üç</item>
-		<item>Üç Sýfýrbir</item>
-		<item>Üç Sýfýriki</item>
-		<item>Üç Sýfýrüç</item>
-		<item>Üç Sýfýrdört</item>
-		<item>Üç Sýfýrbeþ</item>
-		<item>Üç Sýfýraltý</item>
-		<item>Üç Sýfýryedi</item>
-		<item>Üç Sýfýrsekiz</item>
-		<item>Üç Sýfýrdokuz</item>
+		<item>Üç Sıfırbir</item>
+		<item>Üç Sıfıriki</item>
+		<item>Üç Sıfırüç</item>
+		<item>Üç Sıfırdört</item>
+		<item>Üç Sıfırbeş</item>
+		<item>Üç Sıfıraltı</item>
+		<item>Üç Sıfıryedi</item>
+		<item>Üç Sıfırsekiz</item>
+		<item>Üç Sıfırdokuz</item>
 		<item>Üç On</item>
 		<item>Üç Onbir</item>
 		<item>Üç Oniki</item>
 		<item>Üç Onüç</item>
 		<item>Üç Ondört</item>
-		<item>Üç Onbeþ</item>
-		<item>Üç Onaltý</item>
+		<item>Üç Onbeş</item>
+		<item>Üç Onaltı</item>
 		<item>Üç Onyedi</item>
 		<item>Üç Onsekiz</item>
 		<item>Üç Ondokuz</item>
@@ -931,8 +931,8 @@
 		<item>Üç Yirmiiki</item>
 		<item>Üç Yirmiüç</item>
 		<item>Üç Yirmidört</item>
-		<item>Üç Yirmibeþ</item>
-		<item>Üç Yirmialtý</item>
+		<item>Üç Yirmibeş</item>
+		<item>Üç Yirmialtı</item>
 		<item>Üç Yirmiyedi</item>
 		<item>Üç Yirmisekiz</item>
 		<item>Üç Yirmidokuz</item>
@@ -941,48 +941,48 @@
 		<item>Üç Otuziki</item>
 		<item>Üç Otuzüç</item>
 		<item>Üç Otuzdört</item>
-		<item>Üç Otuzbeþ</item>
-		<item>Üç Otuzaltý</item>
+		<item>Üç Otuzbeş</item>
+		<item>Üç Otuzaltı</item>
 		<item>Üç Otuzyedi</item>
 		<item>Üç Otuzsekiz</item>
 		<item>Üç Otuzdokuz</item>
-		<item>Üç Kýrk</item>
-		<item>Üç Kýrkbir</item>
-		<item>Üç Kýrkiki</item>
-		<item>Üç Kýrküç</item>
-		<item>Üç Kýrkdört</item>
-		<item>Üç Kýrkbeþ</item>
-		<item>Üç Kýrkaltý</item>
-		<item>Üç Kýrkyedi</item>
-		<item>Üç Kýrksekiz</item>
-		<item>Üç Kýrkdokuz</item>
+		<item>Üç Kırk</item>
+		<item>Üç Kırkbir</item>
+		<item>Üç Kırkiki</item>
+		<item>Üç Kırküç</item>
+		<item>Üç Kırkdört</item>
+		<item>Üç Kırkbeş</item>
+		<item>Üç Kırkaltı</item>
+		<item>Üç Kırkyedi</item>
+		<item>Üç Kırksekiz</item>
+		<item>Üç Kırkdokuz</item>
 		<item>Üç Elli</item>
 		<item>Üç Ellibir</item>
 		<item>Üç Elliiki</item>
 		<item>Üç Elliüç</item>
 		<item>Üç Ellidört</item>
-		<item>Üç Ellibeþ</item>
-		<item>Üç Ellialtý</item>
+		<item>Üç Ellibeş</item>
+		<item>Üç Ellialtı</item>
 		<item>Üç Elliyedi</item>
 		<item>Üç Ellisekiz</item>
 		<item>Üç Ellidokuz</item>
 		<item>Dört</item>
-		<item>Dört Sýfýrbir</item>
-		<item>Dört Sýfýriki</item>
-		<item>Dört Sýfýrüç</item>
-		<item>Dört Sýfýrdört</item>
-		<item>Dört Sýfýrbeþ</item>
-		<item>Dört Sýfýraltý</item>
-		<item>Dört Sýfýryedi</item>
-		<item>Dört Sýfýrsekiz</item>
-		<item>Dört Sýfýrdokuz</item>
+		<item>Dört Sıfırbir</item>
+		<item>Dört Sıfıriki</item>
+		<item>Dört Sıfırüç</item>
+		<item>Dört Sıfırdört</item>
+		<item>Dört Sıfırbeş</item>
+		<item>Dört Sıfıraltı</item>
+		<item>Dört Sıfıryedi</item>
+		<item>Dört Sıfırsekiz</item>
+		<item>Dört Sıfırdokuz</item>
 		<item>Dört On</item>
 		<item>Dört Onbir</item>
 		<item>Dört Oniki</item>
 		<item>Dört Onüç</item>
 		<item>Dört Ondört</item>
-		<item>Dört Onbeþ</item>
-		<item>Dört Onaltý</item>
+		<item>Dört Onbeş</item>
+		<item>Dört Onaltı</item>
 		<item>Dört Onyedi</item>
 		<item>Dört Onsekiz</item>
 		<item>Dört Ondokuz</item>
@@ -991,8 +991,8 @@
 		<item>Dört Yirmiiki</item>
 		<item>Dört Yirmiüç</item>
 		<item>Dört Yirmidört</item>
-		<item>Dört Yirmibeþ</item>
-		<item>Dört Yirmialtý</item>
+		<item>Dört Yirmibeş</item>
+		<item>Dört Yirmialtı</item>
 		<item>Dört Yirmiyedi</item>
 		<item>Dört Yirmisekiz</item>
 		<item>Dört Yirmidokuz</item>
@@ -1001,170 +1001,170 @@
 		<item>Dört Otuziki</item>
 		<item>Dört Otuzüç</item>
 		<item>Dört Otuzdört</item>
-		<item>Dört Otuzbeþ</item>
-		<item>Dört Otuzaltý</item>
+		<item>Dört Otuzbeş</item>
+		<item>Dört Otuzaltı</item>
 		<item>Dört Otuzyedi</item>
 		<item>Dört Otuzsekiz</item>
 		<item>Dört Otuzdokuz</item>
-		<item>Dört Kýrk</item>
-		<item>Dört Kýrkbir</item>
-		<item>Dört Kýrkiki</item>
-		<item>Dört Kýrküç</item>
-		<item>Dört Kýrkdört</item>
-		<item>Dört Kýrkbeþ</item>
-		<item>Dört Kýrkaltý</item>
-		<item>Dört Kýrkyedi</item>
-		<item>Dört Kýrksekiz</item>
-		<item>Dört Kýrkdokuz</item>
+		<item>Dört Kırk</item>
+		<item>Dört Kırkbir</item>
+		<item>Dört Kırkiki</item>
+		<item>Dört Kırküç</item>
+		<item>Dört Kırkdört</item>
+		<item>Dört Kırkbeş</item>
+		<item>Dört Kırkaltı</item>
+		<item>Dört Kırkyedi</item>
+		<item>Dört Kırksekiz</item>
+		<item>Dört Kırkdokuz</item>
 		<item>Dört Elli</item>
 		<item>Dört Ellibir</item>
 		<item>Dört Elliiki</item>
 		<item>Dört Elliüç</item>
 		<item>Dört Ellidört</item>
-		<item>Dört Ellibeþ</item>
-		<item>Dört Ellialtý</item>
+		<item>Dört Ellibeş</item>
+		<item>Dört Ellialtı</item>
 		<item>Dört Elliyedi</item>
 		<item>Dört Ellisekiz</item>
 		<item>Dört Ellidokuz</item>
-		<item>Beþ</item>
-		<item>Beþ Sýfýrbir</item>
-		<item>Beþ Sýfýriki</item>
-		<item>Beþ Sýfýrüç</item>
-		<item>Beþ Sýfýrdört</item>
-		<item>Beþ Sýfýrbeþ</item>
-		<item>Beþ Sýfýraltý</item>
-		<item>Beþ Sýfýryedi</item>
-		<item>Beþ Sýfýrsekiz</item>
-		<item>Beþ Sýfýrdokuz</item>
-		<item>Beþ On</item>
-		<item>Beþ Onbir</item>
-		<item>Beþ Oniki</item>
-		<item>Beþ Onüç</item>
-		<item>Beþ Ondört</item>
-		<item>Beþ Onbeþ</item>
-		<item>Beþ Onaltý</item>
-		<item>Beþ Onyedi</item>
-		<item>Beþ Onsekiz</item>
-		<item>Beþ Ondokuz</item>
-		<item>Beþ Yirmi</item>
-		<item>Beþ Yirmibir</item>
-		<item>Beþ Yirmiiki</item>
-		<item>Beþ Yirmiüç</item>
-		<item>Beþ Yirmidört</item>
-		<item>Beþ Yirmibeþ</item>
-		<item>Beþ Yirmialtý</item>
-		<item>Beþ Yirmiyedi</item>
-		<item>Beþ Yirmisekiz</item>
-		<item>Beþ Yirmidokuz</item>
-		<item>Beþ Otuz</item>
-		<item>Beþ Otuzbir</item>
-		<item>Beþ Otuziki</item>
-		<item>Beþ Otuzüç</item>
-		<item>Beþ Otuzdört</item>
-		<item>Beþ Otuzbeþ</item>
-		<item>Beþ Otuzaltý</item>
-		<item>Beþ Otuzyedi</item>
-		<item>Beþ Otuzsekiz</item>
-		<item>Beþ Otuzdokuz</item>
-		<item>Beþ Kýrk</item>
-		<item>Beþ Kýrkbir</item>
-		<item>Beþ Kýrkiki</item>
-		<item>Beþ Kýrküç</item>
-		<item>Beþ Kýrkdört</item>
-		<item>Beþ Kýrkbeþ</item>
-		<item>Beþ Kýrkaltý</item>
-		<item>Beþ Kýrkyedi</item>
-		<item>Beþ Kýrksekiz</item>
-		<item>Beþ Kýrkdokuz</item>
-		<item>Beþ Elli</item>
-		<item>Beþ Ellibir</item>
-		<item>Beþ Elliiki</item>
-		<item>Beþ Elliüç</item>
-		<item>Beþ Ellidört</item>
-		<item>Beþ Ellibeþ</item>
-		<item>Beþ Ellialtý</item>
-		<item>Beþ Elliyedi</item>
-		<item>Beþ Ellisekiz</item>
-		<item>Beþ Ellidokuz</item>
+		<item>Beş</item>
+		<item>Beş Sıfırbir</item>
+		<item>Beş Sıfıriki</item>
+		<item>Beş Sıfırüç</item>
+		<item>Beş Sıfırdört</item>
+		<item>Beş Sıfırbeş</item>
+		<item>Beş Sıfıraltı</item>
+		<item>Beş Sıfıryedi</item>
+		<item>Beş Sıfırsekiz</item>
+		<item>Beş Sıfırdokuz</item>
+		<item>Beş On</item>
+		<item>Beş Onbir</item>
+		<item>Beş Oniki</item>
+		<item>Beş Onüç</item>
+		<item>Beş Ondört</item>
+		<item>Beş Onbeş</item>
+		<item>Beş Onaltı</item>
+		<item>Beş Onyedi</item>
+		<item>Beş Onsekiz</item>
+		<item>Beş Ondokuz</item>
+		<item>Beş Yirmi</item>
+		<item>Beş Yirmibir</item>
+		<item>Beş Yirmiiki</item>
+		<item>Beş Yirmiüç</item>
+		<item>Beş Yirmidört</item>
+		<item>Beş Yirmibeş</item>
+		<item>Beş Yirmialtı</item>
+		<item>Beş Yirmiyedi</item>
+		<item>Beş Yirmisekiz</item>
+		<item>Beş Yirmidokuz</item>
+		<item>Beş Otuz</item>
+		<item>Beş Otuzbir</item>
+		<item>Beş Otuziki</item>
+		<item>Beş Otuzüç</item>
+		<item>Beş Otuzdört</item>
+		<item>Beş Otuzbeş</item>
+		<item>Beş Otuzaltı</item>
+		<item>Beş Otuzyedi</item>
+		<item>Beş Otuzsekiz</item>
+		<item>Beş Otuzdokuz</item>
+		<item>Beş Kırk</item>
+		<item>Beş Kırkbir</item>
+		<item>Beş Kırkiki</item>
+		<item>Beş Kırküç</item>
+		<item>Beş Kırkdört</item>
+		<item>Beş Kırkbeş</item>
+		<item>Beş Kırkaltı</item>
+		<item>Beş Kırkyedi</item>
+		<item>Beş Kırksekiz</item>
+		<item>Beş Kırkdokuz</item>
+		<item>Beş Elli</item>
+		<item>Beş Ellibir</item>
+		<item>Beş Elliiki</item>
+		<item>Beş Elliüç</item>
+		<item>Beş Ellidört</item>
+		<item>Beş Ellibeş</item>
+		<item>Beş Ellialtı</item>
+		<item>Beş Elliyedi</item>
+		<item>Beş Ellisekiz</item>
+		<item>Beş Ellidokuz</item>
     </string-array>
     <string-array name="verbosetime4">
-		<item>Altý</item>
-		<item>Altý Sýfýrbir</item>
-		<item>Altý Sýfýriki</item>
-		<item>Altý Sýfýrüç</item>
-		<item>Altý Sýfýrdört</item>
-		<item>Altý Sýfýrbeþ</item>
-		<item>Altý Sýfýraltý</item>
-		<item>Altý Sýfýryedi</item>
-		<item>Altý Sýfýrsekiz</item>
-		<item>Altý Sýfýrdokuz</item>
-		<item>Altý On</item>
-		<item>Altý Onbir</item>
-		<item>Altý Oniki</item>
-		<item>Altý Onüç</item>
-		<item>Altý Ondört</item>
-		<item>Altý Onbeþ</item>
-		<item>Altý Onaltý</item>
-		<item>Altý Onyedi</item>
-		<item>Altý Onsekiz</item>
-		<item>Altý Ondokuz</item>
-		<item>Altý Yirmi</item>
-		<item>Altý Yirmibir</item>
-		<item>Altý Yirmiiki</item>
-		<item>Altý Yirmiüç</item>
-		<item>Altý Yirmidört</item>
-		<item>Altý Yirmibeþ</item>
-		<item>Altý Yirmialtý</item>
-		<item>Altý Yirmiyedi</item>
-		<item>Altý Yirmisekiz</item>
-		<item>Altý Yirmidokuz</item>
-		<item>Altý Otuz</item>
-		<item>Altý Otuzbir</item>
-		<item>Altý Otuziki</item>
-		<item>Altý Otuzüç</item>
-		<item>Altý Otuzdört</item>
-		<item>Altý Otuzbeþ</item>
-		<item>Altý Otuzaltý</item>
-		<item>Altý Otuzyedi</item>
-		<item>Altý Otuzsekiz</item>
-		<item>Altý Otuzdokuz</item>
-		<item>Altý Kýrk</item>
-		<item>Altý Kýrkbir</item>
-		<item>Altý Kýrkiki</item>
-		<item>Altý Kýrküç</item>
-		<item>Altý Kýrkdört</item>
-		<item>Altý Kýrkbeþ</item>
-		<item>Altý Kýrkaltý</item>
-		<item>Altý Kýrkyedi</item>
-		<item>Altý Kýrksekiz</item>
-		<item>Altý Kýrkdokuz</item>
-		<item>Altý Elli</item>
-		<item>Altý Ellibir</item>
-		<item>Altý Elliiki</item>
-		<item>Altý Elliüç</item>
-		<item>Altý Ellidört</item>
-		<item>Altý Ellibeþ</item>
-		<item>Altý Ellialtý</item>
-		<item>Altý Elliyedi</item>
-		<item>Altý Ellisekiz</item>
-		<item>Altý Ellidokuz</item>
+		<item>Altı</item>
+		<item>Altı Sıfırbir</item>
+		<item>Altı Sıfıriki</item>
+		<item>Altı Sıfırüç</item>
+		<item>Altı Sıfırdört</item>
+		<item>Altı Sıfırbeş</item>
+		<item>Altı Sıfıraltı</item>
+		<item>Altı Sıfıryedi</item>
+		<item>Altı Sıfırsekiz</item>
+		<item>Altı Sıfırdokuz</item>
+		<item>Altı On</item>
+		<item>Altı Onbir</item>
+		<item>Altı Oniki</item>
+		<item>Altı Onüç</item>
+		<item>Altı Ondört</item>
+		<item>Altı Onbeş</item>
+		<item>Altı Onaltı</item>
+		<item>Altı Onyedi</item>
+		<item>Altı Onsekiz</item>
+		<item>Altı Ondokuz</item>
+		<item>Altı Yirmi</item>
+		<item>Altı Yirmibir</item>
+		<item>Altı Yirmiiki</item>
+		<item>Altı Yirmiüç</item>
+		<item>Altı Yirmidört</item>
+		<item>Altı Yirmibeş</item>
+		<item>Altı Yirmialtı</item>
+		<item>Altı Yirmiyedi</item>
+		<item>Altı Yirmisekiz</item>
+		<item>Altı Yirmidokuz</item>
+		<item>Altı Otuz</item>
+		<item>Altı Otuzbir</item>
+		<item>Altı Otuziki</item>
+		<item>Altı Otuzüç</item>
+		<item>Altı Otuzdört</item>
+		<item>Altı Otuzbeş</item>
+		<item>Altı Otuzaltı</item>
+		<item>Altı Otuzyedi</item>
+		<item>Altı Otuzsekiz</item>
+		<item>Altı Otuzdokuz</item>
+		<item>Altı Kırk</item>
+		<item>Altı Kırkbir</item>
+		<item>Altı Kırkiki</item>
+		<item>Altı Kırküç</item>
+		<item>Altı Kırkdört</item>
+		<item>Altı Kırkbeş</item>
+		<item>Altı Kırkaltı</item>
+		<item>Altı Kırkyedi</item>
+		<item>Altı Kırksekiz</item>
+		<item>Altı Kırkdokuz</item>
+		<item>Altı Elli</item>
+		<item>Altı Ellibir</item>
+		<item>Altı Elliiki</item>
+		<item>Altı Elliüç</item>
+		<item>Altı Ellidört</item>
+		<item>Altı Ellibeş</item>
+		<item>Altı Ellialtı</item>
+		<item>Altı Elliyedi</item>
+		<item>Altı Ellisekiz</item>
+		<item>Altı Ellidokuz</item>
 		<item>Yedi</item>
-		<item>Yedi Sýfýrbir</item>
-		<item>Yedi Sýfýriki</item>
-		<item>Yedi Sýfýrüç</item>
-		<item>Yedi Sýfýrdört</item>
-		<item>Yedi Sýfýrbeþ</item>
-		<item>Yedi Sýfýraltý</item>
-		<item>Yedi Sýfýryedi</item>
-		<item>Yedi Sýfýrsekiz</item>
-		<item>Yedi Sýfýrdokuz</item>
+		<item>Yedi Sıfırbir</item>
+		<item>Yedi Sıfıriki</item>
+		<item>Yedi Sıfırüç</item>
+		<item>Yedi Sıfırdört</item>
+		<item>Yedi Sıfırbeş</item>
+		<item>Yedi Sıfıraltı</item>
+		<item>Yedi Sıfıryedi</item>
+		<item>Yedi Sıfırsekiz</item>
+		<item>Yedi Sıfırdokuz</item>
 		<item>Yedi On</item>
 		<item>Yedi Onbir</item>
 		<item>Yedi Oniki</item>
 		<item>Yedi Onüç</item>
 		<item>Yedi Ondört</item>
-		<item>Yedi Onbeþ</item>
-		<item>Yedi Onaltý</item>
+		<item>Yedi Onbeş</item>
+		<item>Yedi Onaltı</item>
 		<item>Yedi Onyedi</item>
 		<item>Yedi Onsekiz</item>
 		<item>Yedi Ondokuz</item>
@@ -1173,8 +1173,8 @@
 		<item>Yedi Yirmiiki</item>
 		<item>Yedi Yirmiüç</item>
 		<item>Yedi Yirmidört</item>
-		<item>Yedi Yirmibeþ</item>
-		<item>Yedi Yirmialtý</item>
+		<item>Yedi Yirmibeş</item>
+		<item>Yedi Yirmialtı</item>
 		<item>Yedi Yirmiyedi</item>
 		<item>Yedi Yirmisekiz</item>
 		<item>Yedi Yirmidokuz</item>
@@ -1183,48 +1183,48 @@
 		<item>Yedi Otuziki</item>
 		<item>Yedi Otuzüç</item>
 		<item>Yedi Otuzdört</item>
-		<item>Yedi Otuzbeþ</item>
-		<item>Yedi Otuzaltý</item>
+		<item>Yedi Otuzbeş</item>
+		<item>Yedi Otuzaltı</item>
 		<item>Yedi Otuzyedi</item>
 		<item>Yedi Otuzsekiz</item>
 		<item>Yedi Otuzdokuz</item>
-		<item>Yedi Kýrk</item>
-		<item>Yedi Kýrkbir</item>
-		<item>Yedi Kýrkiki</item>
-		<item>Yedi Kýrküç</item>
-		<item>Yedi Kýrkdört</item>
-		<item>Yedi Kýrkbeþ</item>
-		<item>Yedi Kýrkaltý</item>
-		<item>Yedi Kýrkyedi</item>
-		<item>Yedi Kýrksekiz</item>
-		<item>Yedi Kýrkdokuz</item>
+		<item>Yedi Kırk</item>
+		<item>Yedi Kırkbir</item>
+		<item>Yedi Kırkiki</item>
+		<item>Yedi Kırküç</item>
+		<item>Yedi Kırkdört</item>
+		<item>Yedi Kırkbeş</item>
+		<item>Yedi Kırkaltı</item>
+		<item>Yedi Kırkyedi</item>
+		<item>Yedi Kırksekiz</item>
+		<item>Yedi Kırkdokuz</item>
 		<item>Yedi Elli</item>
 		<item>Yedi Ellibir</item>
 		<item>Yedi Elliiki</item>
 		<item>Yedi Elliüç</item>
 		<item>Yedi Ellidört</item>
-		<item>Yedi Ellibeþ</item>
-		<item>Yedi Ellialtý</item>
+		<item>Yedi Ellibeş</item>
+		<item>Yedi Ellialtı</item>
 		<item>Yedi Elliyedi</item>
 		<item>Yedi Ellisekiz</item>
 		<item>Yedi Ellidokuz</item>
 		<item>Sekiz</item>
-		<item>Sekiz Sýfýrbir</item>
-		<item>Sekiz Sýfýriki</item>
-		<item>Sekiz Sýfýrüç</item>
-		<item>Sekiz Sýfýrdört</item>
-		<item>Sekiz Sýfýrbeþ</item>
-		<item>Sekiz Sýfýraltý</item>
-		<item>Sekiz Sýfýryedi</item>
-		<item>Sekiz Sýfýrsekiz</item>
-		<item>Sekiz Sýfýrdokuz</item>
+		<item>Sekiz Sıfırbir</item>
+		<item>Sekiz Sıfıriki</item>
+		<item>Sekiz Sıfırüç</item>
+		<item>Sekiz Sıfırdört</item>
+		<item>Sekiz Sıfırbeş</item>
+		<item>Sekiz Sıfıraltı</item>
+		<item>Sekiz Sıfıryedi</item>
+		<item>Sekiz Sıfırsekiz</item>
+		<item>Sekiz Sıfırdokuz</item>
 		<item>Sekiz On</item>
 		<item>Sekiz Onbir</item>
 		<item>Sekiz Oniki</item>
 		<item>Sekiz Onüç</item>
 		<item>Sekiz Ondört</item>
-		<item>Sekiz Onbeþ</item>
-		<item>Sekiz Onaltý</item>
+		<item>Sekiz Onbeş</item>
+		<item>Sekiz Onaltı</item>
 		<item>Sekiz Onyedi</item>
 		<item>Sekiz Onsekiz</item>
 		<item>Sekiz Ondokuz</item>
@@ -1233,8 +1233,8 @@
 		<item>Sekiz Yirmiiki</item>
 		<item>Sekiz Yirmiüç</item>
 		<item>Sekiz Yirmidört</item>
-		<item>Sekiz Yirmibeþ</item>
-		<item>Sekiz Yirmialtý</item>
+		<item>Sekiz Yirmibeş</item>
+		<item>Sekiz Yirmialtı</item>
 		<item>Sekiz Yirmiyedi</item>
 		<item>Sekiz Yirmisekiz</item>
 		<item>Sekiz Yirmidokuz</item>
@@ -1243,48 +1243,48 @@
 		<item>Sekiz Otuziki</item>
 		<item>Sekiz Otuzüç</item>
 		<item>Sekiz Otuzdört</item>
-		<item>Sekiz Otuzbeþ</item>
-		<item>Sekiz Otuzaltý</item>
+		<item>Sekiz Otuzbeş</item>
+		<item>Sekiz Otuzaltı</item>
 		<item>Sekiz Otuzyedi</item>
 		<item>Sekiz Otuzsekiz</item>
 		<item>Sekiz Otuzdokuz</item>
-		<item>Sekiz Kýrk</item>
-		<item>Sekiz Kýrkbir</item>
-		<item>Sekiz Kýrkiki</item>
-		<item>Sekiz Kýrküç</item>
-		<item>Sekiz Kýrkdört</item>
-		<item>Sekiz Kýrkbeþ</item>
-		<item>Sekiz Kýrkaltý</item>
-		<item>Sekiz Kýrkyedi</item>
-		<item>Sekiz Kýrksekiz</item>
-		<item>Sekiz Kýrkdokuz</item>
+		<item>Sekiz Kırk</item>
+		<item>Sekiz Kırkbir</item>
+		<item>Sekiz Kırkiki</item>
+		<item>Sekiz Kırküç</item>
+		<item>Sekiz Kırkdört</item>
+		<item>Sekiz Kırkbeş</item>
+		<item>Sekiz Kırkaltı</item>
+		<item>Sekiz Kırkyedi</item>
+		<item>Sekiz Kırksekiz</item>
+		<item>Sekiz Kırkdokuz</item>
 		<item>Sekiz Elli</item>
 		<item>Sekiz Ellibir</item>
 		<item>Sekiz Elliiki</item>
 		<item>Sekiz Elliüç</item>
 		<item>Sekiz Ellidört</item>
-		<item>Sekiz Ellibeþ</item>
-		<item>Sekiz Ellialtý</item>
+		<item>Sekiz Ellibeş</item>
+		<item>Sekiz Ellialtı</item>
 		<item>Sekiz Elliyedi</item>
 		<item>Sekiz Ellisekiz</item>
 		<item>Sekiz Ellidokuz</item>
 		<item>Dokuz</item>
-		<item>Dokuz Sýfýrbir</item>
-		<item>Dokuz Sýfýriki</item>
-		<item>Dokuz Sýfýrüç</item>
-		<item>Dokuz Sýfýrdört</item>
-		<item>Dokuz Sýfýrbeþ</item>
-		<item>Dokuz Sýfýraltý</item>
-		<item>Dokuz Sýfýryedi</item>
-		<item>Dokuz Sýfýrsekiz</item>
-		<item>Dokuz Sýfýrdokuz</item>
+		<item>Dokuz Sıfırbir</item>
+		<item>Dokuz Sıfıriki</item>
+		<item>Dokuz Sıfırüç</item>
+		<item>Dokuz Sıfırdört</item>
+		<item>Dokuz Sıfırbeş</item>
+		<item>Dokuz Sıfıraltı</item>
+		<item>Dokuz Sıfıryedi</item>
+		<item>Dokuz Sıfırsekiz</item>
+		<item>Dokuz Sıfırdokuz</item>
 		<item>Dokuz On</item>
 		<item>Dokuz Onbir</item>
 		<item>Dokuz Oniki</item>
 		<item>Dokuz Onüç</item>
 		<item>Dokuz Ondört</item>
-		<item>Dokuz Onbeþ</item>
-		<item>Dokuz Onaltý</item>
+		<item>Dokuz Onbeş</item>
+		<item>Dokuz Onaltı</item>
 		<item>Dokuz Onyedi</item>
 		<item>Dokuz Onsekiz</item>
 		<item>Dokuz Ondokuz</item>
@@ -1293,8 +1293,8 @@
 		<item>Dokuz Yirmiiki</item>
 		<item>Dokuz Yirmiüç</item>
 		<item>Dokuz Yirmidört</item>
-		<item>Dokuz Yirmibeþ</item>
-		<item>Dokuz Yirmialtý</item>
+		<item>Dokuz Yirmibeş</item>
+		<item>Dokuz Yirmialtı</item>
 		<item>Dokuz Yirmiyedi</item>
 		<item>Dokuz Yirmisekiz</item>
 		<item>Dokuz Yirmidokuz</item>
@@ -1303,48 +1303,48 @@
 		<item>Dokuz Otuziki</item>
 		<item>Dokuz Otuzüç</item>
 		<item>Dokuz Otuzdört</item>
-		<item>Dokuz Otuzbeþ</item>
-		<item>Dokuz Otuzaltý</item>
+		<item>Dokuz Otuzbeş</item>
+		<item>Dokuz Otuzaltı</item>
 		<item>Dokuz Otuzyedi</item>
 		<item>Dokuz Otuzsekiz</item>
 		<item>Dokuz Otuzdokuz</item>
-		<item>Dokuz Kýrk</item>
-		<item>Dokuz Kýrkbir</item>
-		<item>Dokuz Kýrkiki</item>
-		<item>Dokuz Kýrküç</item>
-		<item>Dokuz Kýrkdört</item>
-		<item>Dokuz Kýrkbeþ</item>
-		<item>Dokuz Kýrkaltý</item>
-		<item>Dokuz Kýrkyedi</item>
-		<item>Dokuz Kýrksekiz</item>
-		<item>Dokuz Kýrkdokuz</item>
+		<item>Dokuz Kırk</item>
+		<item>Dokuz Kırkbir</item>
+		<item>Dokuz Kırkiki</item>
+		<item>Dokuz Kırküç</item>
+		<item>Dokuz Kırkdört</item>
+		<item>Dokuz Kırkbeş</item>
+		<item>Dokuz Kırkaltı</item>
+		<item>Dokuz Kırkyedi</item>
+		<item>Dokuz Kırksekiz</item>
+		<item>Dokuz Kırkdokuz</item>
 		<item>Dokuz Elli</item>
 		<item>Dokuz Ellibir</item>
 		<item>Dokuz Elliiki</item>
 		<item>Dokuz Elliüç</item>
 		<item>Dokuz Ellidört</item>
-		<item>Dokuz Ellibeþ</item>
-		<item>Dokuz Ellialtý</item>
+		<item>Dokuz Ellibeş</item>
+		<item>Dokuz Ellialtı</item>
 		<item>Dokuz Elliyedi</item>
 		<item>Dokuz Ellisekiz</item>
 		<item>Dokuz Ellidokuz</item>
 		<item>On</item>
-		<item>On Sýfýrbir</item>
-		<item>On Sýfýriki</item>
-		<item>On Sýfýrüç</item>
-		<item>On Sýfýrdört</item>
-		<item>On Sýfýrbeþ</item>
-		<item>On Sýfýraltý</item>
-		<item>On Sýfýryedi</item>
-		<item>On Sýfýrsekiz</item>
-		<item>On Sýfýrdokuz</item>
+		<item>On Sıfırbir</item>
+		<item>On Sıfıriki</item>
+		<item>On Sıfırüç</item>
+		<item>On Sıfırdört</item>
+		<item>On Sıfırbeş</item>
+		<item>On Sıfıraltı</item>
+		<item>On Sıfıryedi</item>
+		<item>On Sıfırsekiz</item>
+		<item>On Sıfırdokuz</item>
 		<item>On On</item>
 		<item>On Onbir</item>
 		<item>On Oniki</item>
 		<item>On Onüç</item>
 		<item>On Ondört</item>
-		<item>On Onbeþ</item>
-		<item>On Onaltý</item>
+		<item>On Onbeş</item>
+		<item>On Onaltı</item>
 		<item>On Onyedi</item>
 		<item>On Onsekiz</item>
 		<item>On Ondokuz</item>
@@ -1353,8 +1353,8 @@
 		<item>On Yirmiiki</item>
 		<item>On Yirmiüç</item>
 		<item>On Yirmidört</item>
-		<item>On Yirmibeþ</item>
-		<item>On Yirmialtý</item>
+		<item>On Yirmibeş</item>
+		<item>On Yirmialtı</item>
 		<item>On Yirmiyedi</item>
 		<item>On Yirmisekiz</item>
 		<item>On Yirmidokuz</item>
@@ -1363,48 +1363,48 @@
 		<item>On Otuziki</item>
 		<item>On Otuzüç</item>
 		<item>On Otuzdört</item>
-		<item>On Otuzbeþ</item>
-		<item>On Otuzaltý</item>
+		<item>On Otuzbeş</item>
+		<item>On Otuzaltı</item>
 		<item>On Otuzyedi</item>
 		<item>On Otuzsekiz</item>
 		<item>On Otuzdokuz</item>
-		<item>On Kýrk</item>
-		<item>On Kýrkbir</item>
-		<item>On Kýrkiki</item>
-		<item>On Kýrküç</item>
-		<item>On Kýrkdört</item>
-		<item>On Kýrkbeþ</item>
-		<item>On Kýrkaltý</item>
-		<item>On Kýrkyedi</item>
-		<item>On Kýrksekiz</item>
-		<item>On Kýrkdokuz</item>
+		<item>On Kırk</item>
+		<item>On Kırkbir</item>
+		<item>On Kırkiki</item>
+		<item>On Kırküç</item>
+		<item>On Kırkdört</item>
+		<item>On Kırkbeş</item>
+		<item>On Kırkaltı</item>
+		<item>On Kırkyedi</item>
+		<item>On Kırksekiz</item>
+		<item>On Kırkdokuz</item>
 		<item>On Elli</item>
 		<item>On Ellibir</item>
 		<item>On Elliiki</item>
 		<item>On Elliüç</item>
 		<item>On Ellidört</item>
-		<item>On Ellibeþ</item>
-		<item>On Ellialtý</item>
+		<item>On Ellibeş</item>
+		<item>On Ellialtı</item>
 		<item>On Elliyedi</item>
 		<item>On Ellisekiz</item>
 		<item>On Ellidokuz</item>
 		<item>Onbir</item>
-		<item>Onbir Sýfýrbir</item>
-		<item>Onbir Sýfýriki</item>
-		<item>Onbir Sýfýrüç</item>
-		<item>Onbir Sýfýrdört</item>
-		<item>Onbir Sýfýrbeþ</item>
-		<item>Onbir Sýfýraltý</item>
-		<item>Onbir Sýfýryedi</item>
-		<item>Onbir Sýfýrsekiz</item>
-		<item>Onbir Sýfýrdokuz</item>
+		<item>Onbir Sıfırbir</item>
+		<item>Onbir Sıfıriki</item>
+		<item>Onbir Sıfırüç</item>
+		<item>Onbir Sıfırdört</item>
+		<item>Onbir Sıfırbeş</item>
+		<item>Onbir Sıfıraltı</item>
+		<item>Onbir Sıfıryedi</item>
+		<item>Onbir Sıfırsekiz</item>
+		<item>Onbir Sıfırdokuz</item>
 		<item>Onbir On</item>
 		<item>Onbir Onbir</item>
 		<item>Onbir Oniki</item>
 		<item>Onbir Onüç</item>
 		<item>Onbir Ondört</item>
-		<item>Onbir Onbeþ</item>
-		<item>Onbir Onaltý</item>
+		<item>Onbir Onbeş</item>
+		<item>Onbir Onaltı</item>
 		<item>Onbir Onyedi</item>
 		<item>Onbir Onsekiz</item>
 		<item>Onbir Ondokuz</item>
@@ -1413,8 +1413,8 @@
 		<item>Onbir Yirmiiki</item>
 		<item>Onbir Yirmiüç</item>
 		<item>Onbir Yirmidört</item>
-		<item>Onbir Yirmibeþ</item>
-		<item>Onbir Yirmialtý</item>
+		<item>Onbir Yirmibeş</item>
+		<item>Onbir Yirmialtı</item>
 		<item>Onbir Yirmiyedi</item>
 		<item>Onbir Yirmisekiz</item>
 		<item>Onbir Yirmidokuz</item>
@@ -1423,28 +1423,28 @@
 		<item>Onbir Otuziki</item>
 		<item>Onbir Otuzüç</item>
 		<item>Onbir Otuzdört</item>
-		<item>Onbir Otuzbeþ</item>
-		<item>Onbir Otuzaltý</item>
+		<item>Onbir Otuzbeş</item>
+		<item>Onbir Otuzaltı</item>
 		<item>Onbir Otuzyedi</item>
 		<item>Onbir Otuzsekiz</item>
 		<item>Onbir Otuzdokuz</item>
-		<item>Onbir Kýrk</item>
-		<item>Onbir Kýrkbir</item>
-		<item>Onbir Kýrkiki</item>
-		<item>Onbir Kýrküç</item>
-		<item>Onbir Kýrkdört</item>
-		<item>Onbir Kýrkbeþ</item>
-		<item>Onbir Kýrkaltý</item>
-		<item>Onbir Kýrkyedi</item>
-		<item>Onbir Kýrksekiz</item>
-		<item>Onbir Kýrkdokuz</item>
+		<item>Onbir Kırk</item>
+		<item>Onbir Kırkbir</item>
+		<item>Onbir Kırkiki</item>
+		<item>Onbir Kırküç</item>
+		<item>Onbir Kırkdört</item>
+		<item>Onbir Kırkbeş</item>
+		<item>Onbir Kırkaltı</item>
+		<item>Onbir Kırkyedi</item>
+		<item>Onbir Kırksekiz</item>
+		<item>Onbir Kırkdokuz</item>
 		<item>Onbir Elli</item>
 		<item>Onbir Ellibir</item>
 		<item>Onbir Elliiki</item>
 		<item>Onbir Elliüç</item>
 		<item>Onbir Ellidört</item>
-		<item>Onbir Ellibeþ</item>
-		<item>Onbir Ellialtý</item>
+		<item>Onbir Ellibeş</item>
+		<item>Onbir Ellialtı</item>
 		<item>Onbir Elliyedi</item>
 		<item>Onbir Ellisekiz</item>
 		<item>Onbir Ellidokuz</item>

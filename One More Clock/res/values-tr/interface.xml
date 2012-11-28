@@ -142,7 +142,7 @@
 	<string name="keepChanges">Değişiklikleri Koru?</string>
 
 	<!-- Tap & Display Options -->
-	<string name="tapAndDisplayOptions">Görüntü seçenekleri için basın &amp; </string>
+	<string name="tapAndDisplayOptions">Görüntü Seçenekleri İçin Basın</string>
 	<string name="assignTapToLaunch">Hızlı Kısayollar</string>
 	<string name="nwCornerReserved">Kuzeybatı köşesi özellikler için ayrılmıştır.</string>
 
@@ -151,10 +151,10 @@
 	<string name="chooseAction">Eylem Seçin</string>
 	<string name="openOptionsDefault">Seçenekleri açın (varsayılan)</string>
 	<string name="widgetPrefsTTL">Widget Özellikleri</string>
-	<string name="doNothing">Hiç birşey Yapma</string>
-	<string name="doNothingTTL">Hiç birşey Yapma</string>
-	<string name="refreshWeather">Hava durumunu güncelle</string>
-	<string name="refreshWeatherTTL">Hava durumunu şimdi güncelle</string>
+	<string name="doNothing">Hiç Birşey Yapma</string>
+	<string name="doNothingTTL">Hiç Birşey Yapma</string>
+	<string name="refreshWeather">Hava Durumunu Güncelle</string>
+	<string name="refreshWeatherTTL">Hava Durumunu Şimdi Güncelle</string>
 	<string name="weatherForecast">Hava Tahmini</string>
 	<string name="weatherForecastTTL">Tahminler</string>
 	<string name="viewAlarms">Alarmları Göster (Deneysel)</string>
@@ -163,7 +163,7 @@
 	<string name="battUsageTTL">Pil Kullanımı</string>
 	<string name="otherActivity">Diğer Uygulamalar&#8230;</string>
 	<string name="otherActivityTTL">Özel Uygulama</string>
-	<string name="use24HourClock">24 Saat dilimini Kullan</string>
+	<string name="use24HourClock">24 Saat Dilimini Kullan</string>
 	<string name="use24HourTrue">23:59</string>
 	<string name="use24HourFalse">11:59pm</string>
 	<string name="showLeadingZero">Sıfırları Göster</string>
@@ -224,7 +224,7 @@
 	<string name="locationError">Sonuç bulunamadı.\nLütfen tekrar deneyin.</string>
 	<string name="networkError">Ağ bağlantısı yok.\nLütfen tekrar deneyin.</string>
 	<string name="unknownError">Bilinmeyen bir hata oluştu.\nLütfen tekrar deneyin.</string>
-	<string name="weatherProvider">Hava durumu Servis Sağlayıcı</string>
+	<string name="weatherProvider">Hava Durumu Servis Sağlayıcı</string>
 
 	<string-array name="wprovider_options">
 		<item>Otomatik (varsayılan)</item>
@@ -252,7 +252,7 @@
 	<string name="useMETAR">METAR yolu ile Hava Durumu</string>
 	<string name="usingMETAR">En yakın havalimanı sonuçları</string>
 	<string name="usingInterpolation">Servis Sağlayıcı tarafından ilave edilmiş değerler</string>
-	<string name="clockUpdateInterval">Saat Güncelleme aralığı</string>
+	<string name="clockUpdateInterval">Saat Güncelleme Aralığı</string>
 
 	<string-array name="interval_options">
 		<item>1 saniye (Aşırı pil tüketimi)</item>
@@ -263,7 +263,7 @@
 		<item>60 saniye (Düşük pil tüketimi)</item>
 	</string-array>
 
-	<string name="redrawEvery">yeniden kur\u0020</string>
+	<string name="redrawEvery">Yeniden Kur\u0020</string>
 	<string name="seconds">\u0020 saniyede bir.</string>
 	<string name="weatherUpdateInterval">Havadurumu Güncelleme Aralığı</string>
 
@@ -278,11 +278,11 @@
 	<string name="refreshWeatherEveryHour">Hava durumunu saatte bir güncelle</string>
 	<string name="refreshWeatherEvery4Hours">Hava durumunu 4 saatte bir güncelle</string>
 	<string name="refreshWeatherEvery8Hours">Hava durumunu 8 saatte bir güncelle</string>
-	<string name="setForegroundMode">ÖnAlan Moduna ayarla</string>
+	<string name="setForegroundMode">ÖnAlan Moduna Ayarla</string>
 	<string name="keepOMCfromSleeping">OMC\'yi uyku modunda tutun\n(bildirimde bulun)</string>
 	<string name="forceEnglishDates">İngilizce günlere zorla</string>
 	<string name="uncheckForSome">Bazı yerel olmayan ayarlar için kaldırın(Deneysel)</string>
-	<string name="changeAppLocale">uygulama Arayüz Dili</string>
+	<string name="changeAppLocale">Uygulama Arayüz Dili</string>
 	<string name="changeClockLocale">Saat Dili</string>
 	<string name="toggleWidgetSizes">Toggle Widget Ölçüsü</string>
 	<string name="rebootRequired">Yeniden başlatma gerektirir</string>
