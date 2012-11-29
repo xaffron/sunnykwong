@@ -305,11 +305,68 @@
             android:key="releaseNotes"
             android:selectable="true"
             android:title="@string/viewReleaseNotes" />
-        <Preference
-            android:enabled="true"
-            android:key="widgetCredits"
-            android:selectable="true"
-            android:title="@string/viewCredits" />
+		<PreferenceScreen 
+			android:key="widgetCredits"
+		    android:title="@string/viewCredits" >
+		    <PreferenceCategory android:title="@string/team" >
+		        <Preference
+		            android:enabled="true"
+		            android:key="1"
+		            android:selectable="false"
+		            android:summary="@string/sunny"
+		            android:title="@string/programmer" >
+		        </Preference>
+		        <Preference
+		            android:enabled="true"
+		            android:key="testerCredits"
+		            android:selectable="true"
+		            android:summary=""
+		            android:title="@string/testers" >
+		        </Preference>
+		        <Preference
+		            android:enabled="true"
+		            android:key="translatorCredits"
+		            android:selectable="true"
+		            android:summary=""
+		            android:title="@string/translators" >
+		        </Preference>
+		        <Preference
+		            android:summary="@string/specialThanksText"
+		            android:title="@string/specialThanks" >
+		        </Preference>
+		    </PreferenceCategory>
+		    <PreferenceCategory android:title="@string/copyrights" >
+		        <Preference
+		            android:key="Signpost Wallpaper"
+		            android:summary="@string/applicationIconText"
+		            android:title="@string/applicationIcon" >
+		        </Preference>
+		        <Preference
+		            android:key="ColorPickerDialog"
+		            android:summary="@string/codeColorPickerDialogText"
+		            android:title="@string/codeColorPickerDialog" >
+		        </Preference>
+		        <Preference
+		            android:key="svg-android"
+		            android:summary="@string/codeSVGText"
+		            android:title="@string/codeSVG" >
+		        </Preference>
+		        <Preference
+		            android:key="weatherfont"
+		            android:summary="@string/weatherFontText"
+		            android:title="@string/weatherFont" >
+		        </Preference>
+		    </PreferenceCategory>
+		    <PreferenceCategory android:title="@string/sourceCodeTitle" >
+		        <Preference
+		            android:enabled="true"
+		            android:key="99"
+		            android:selectable="false"
+		            android:summary="http://code.google.com/p/sunnykwong/"
+		            android:title="@string/sourceCode" >
+		        </Preference>
+		    </PreferenceCategory>
+		</PreferenceScreen>
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -31,7 +31,11 @@
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
 			</intent-filter>
 		</activity>
-        <activity android:name="com.sunnykwong.omc.OMCSkinnerActivity"
+		<activity android:name="com.sunnykwong.omc.CreditRollActivity" 
+                  android:screenOrientation="behind"
+                  android:label="@string/credits">
+		</activity>
+		<activity android:name="com.sunnykwong.omc.OMCSkinnerActivity"
                   android:screenOrientation="behind"
                   android:label="OMC Theme Tester" android:icon="@drawable/rubeicon_mdpi"
                   android:theme="@android:style/Theme.Translucent"
@@ -88,10 +92,6 @@
     			<category android:name="android.intent.category.DEFAULT" />
     			<data android:scheme="file" android:host="*" android:mimeType="*/*" android:pathPattern=".*\\.omc"/>
 	        </intent-filter>
-		</activity>
-        <activity android:name="com.sunnykwong.omc.OMCCreditsActivity"
-                  android:screenOrientation="behind"
-                  android:label="@string/app_name_paid">
 		</activity>
         <activity android:name="com.sunnykwong.omc.OMCThemeTweakerActivity"
                   android:screenOrientation="nosensor"

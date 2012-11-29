@@ -1077,8 +1077,15 @@ public class OMCPrefActivity extends PreferenceActivity {
 				}).create();
         	OMCPrefActivity.mAD.show();
     	}
-    	if (preference == getPreferenceScreen().findPreference("widgetCredits")) {
-    		startActivityForResult(OMC.CREDITSINTENT,0);
+    	if (preference == getPreferenceScreen().findPreference("testerCredits")) {
+    		Intent it = new Intent(this, CreditRollActivity.class);
+    		it.putExtra("type", 1);
+    		startActivityForResult(it, 0);
+    	}
+    	if (preference == getPreferenceScreen().findPreference("translatorCredits")) {
+    		Intent it = new Intent(this, CreditRollActivity.class);
+    		it.putExtra("type", 2);
+    		startActivityForResult(it, 0);
     	}
     	if (preference == getPreferenceScreen().findPreference("sVersion")) {
 			this.startActivity(OMC.OMCMARKETINTENT);

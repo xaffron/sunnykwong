@@ -81,7 +81,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Alpha 7";
+	static final String TESTVER = "Alpha 8";
 	static final boolean FREEEDITION = false;
 	static final boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -250,7 +250,7 @@ public class OMC extends Application {
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
     static final Class<?>[] mSetForegroundSignature = new Class[] {boolean.class};
-    static Intent SVCSTARTINTENT, CREDITSINTENT, PREFSINTENT, ALARMCLOCKINTENT, BATTUSAGEINTENT;
+    static Intent SVCSTARTINTENT, PREFSINTENT, ALARMCLOCKINTENT, BATTUSAGEINTENT;
     static Intent GETSTARTERPACKINTENT, GETBACKUPPACKINTENT, GETEXTENDEDPACKINTENT, PICKTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT, OMCWEATHERFORECASTINTENT;
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING, ALARMCLOCKPENDING, WEATHERFORECASTPENDING, BATTUSAGEPENDING, WEATHERREFRESHPENDING;
     static Notification FGNOTIFICIATION;
@@ -336,7 +336,6 @@ public class OMC extends Application {
 		OMC.FGPENDING = PendingIntent.getBroadcast(OMC.CONTEXT, 0, OMC.FGINTENT, 0);
 		OMC.BGPENDING = PendingIntent.getBroadcast(OMC.CONTEXT, 0, OMC.BGINTENT, 0);
 		OMC.SVCSTARTINTENT = new Intent(OMC.CONTEXT, OMCService.class);
-		OMC.CREDITSINTENT = new Intent(OMC.CONTEXT, OMCCreditsActivity.class);
 		OMC.PREFSINTENT = new Intent(OMC.CONTEXT, OMCPrefActivity.class);
 		OMC.PICKTHEMEINTENT = new Intent(OMC.CONTEXT, OMCThemePickerActivity.class);
 		OMC.PREFSPENDING = PendingIntent.getActivity(OMC.CONTEXT, 0, new Intent(OMC.CONTEXT, OMCPrefActivity.class), 0);

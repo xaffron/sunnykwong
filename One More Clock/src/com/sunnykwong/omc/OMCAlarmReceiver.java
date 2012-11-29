@@ -22,7 +22,7 @@ import android.widget.Toast;
 public class OMCAlarmReceiver extends BroadcastReceiver {
 	
 	@Override
-	public void onReceive(Context context, Intent intentt) {
+	public void onReceive(final Context context, final Intent intentt) {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Rcvd " + intentt.toString());
 		// Set the alarm for next tick first, so we don't lose sync
 		// targettime = Time we are rendering for next tick
@@ -61,6 +61,11 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		
 		final Intent intent = new Intent(intentt);
 
+		// Pop the weather refresh toast before we give up context
+		if (action.equals(OMC.WEATHERREFRESHSTRING)) {
+			Toast.makeText(context, OMC.RString("refreshWeatherNow"), Toast.LENGTH_LONG).show();
+		}	
+		
 		//
 		//v1.4.1 moving the bulk of processing to a separate thread to release the wakelock quickly
 		//hopefully this will resolve most of the wakelock/kernel bug issues with battery drain
@@ -149,7 +154,6 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 				// Weather-related responses.
 				// If user taps on hotspot for refresh weather, refresh weather.
 				if (action.equals(OMC.WEATHERREFRESHSTRING)) {
-					Toast.makeText(OMC.CONTEXT, OMC.RString("refreshWeatherNow"), Toast.LENGTH_LONG).show();
 					OMC.updateWeather();
 				// If we just set the clock or switched timezones, we definitely want to refresh weather right now.
 				} else if (action.equals(Intent.ACTION_TIME_CHANGED)

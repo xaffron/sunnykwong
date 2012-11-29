@@ -406,10 +406,11 @@
 	<string name="testers">Testers</string>
 	<string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M.
 		Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
+	<string name="translators">Translators</string>
 	<string name="specialThanks">Special Thanks</string>
 	<string name="specialThanksText">Zehro for leading the way\nre: in-sync clock
 		widgets w//o notifications.\nStefan Pledl for helping with the
-		localization.</string>
+		localization.\nJosiah Barber for his \'One-Percent Hack\' on Motorola phones.</string>
 	<string name="copyrights">Copyrights and Licenses</string>
 	<string name="applicationIcon">Application Icon: Signpost by Maroubal2</string>
 	<string name="applicationIconText">Adapted from Maroubal2\'s excellent
