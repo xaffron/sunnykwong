@@ -54,6 +54,21 @@
                 android:selectable="true"
                 android:title="@string/changeTimeZone" >
             </Preference>
+            
+            <Preference
+                android:enabled="false"
+                android:key="backupwidget"
+                android:selectable="true"
+                android:title="@string/backupWidget" >
+            </Preference>
+            
+            <Preference
+                android:enabled="false"
+                android:key="restorewidget"
+                android:selectable="true"
+                android:title="@string/restoreWidget" >
+            </Preference>
+            
         </PreferenceScreen>
     </PreferenceCategory>
     <PreferenceCategory

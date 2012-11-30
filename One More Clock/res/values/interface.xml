@@ -181,7 +181,9 @@
 	<string name="mmddDateFormatFalse">31/12/2012</string>
 	<string name="changeTimeZone">Change Time Zone</string>
 	<string name="followingDeviceTimeZone">(Following Device Time Zone)</string>
-
+	<string name="backupWidget">Backup this Widget</string>
+	<string name="restoreWidget">Restore Widget Settings</string>
+	
 	<!-- TTL Sales Pitch -->
 	<string name="thinkOfThePossibilities">Think of the possibilities!</string>
 	<string name="prePaidTTL">The paid version lets you set\u0020</string>
