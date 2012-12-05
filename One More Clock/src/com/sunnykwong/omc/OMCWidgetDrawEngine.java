@@ -68,12 +68,18 @@ public class OMCWidgetDrawEngine {
 //              }
 
 			// v139: Fix strange arrayoutofboundsexception (race condition?)
+			// v141: Cram in clock adjustment here, too
 			 if (i >= aWM.getAppWidgetIds(cName).length) break;
 			 
      		if (!OMC.PREFS.getString("sTimeZone"+aWM.getAppWidgetIds(cName)[i],"default").equals("default")) {
      			OMC.TIME.switchTimezone(OMC.PREFS.getString("sTimeZone"+aWM.getAppWidgetIds(cName)[i],TimeZone.getDefault().getID()));
      		} else {
      			OMC.TIME.switchTimezone(TimeZone.getDefault().getID());
+     		}
+     		if (!OMC.PREFS.getString("clockAdjustment"+aWM.getAppWidgetIds(cName)[i],"0").equals("0")) {
+     			int offset = Integer.parseInt(OMC.PREFS.getString("clockAdjustment"+aWM.getAppWidgetIds(cName)[i],"0"));
+     			OMC.TIME.minute+=offset;
+     			OMC.TIME.normalize(false);
      		}
 			 // v139: Fix strange arrayoutofboundsexception (race condition?)
 			 if (i >= aWM.getAppWidgetIds(cName).length) break;
