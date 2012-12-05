@@ -245,15 +245,15 @@ public class Metar {
             if (token.equals("BECMG") || token.equals("TEMPO") || token.equals("NOSIG")) break;
             
             // Look for a block of 4 digits (raw metric visibility) - we'll discard right now
-            if (token.length()==4 && isNumeric(token)) continue;
+            if (token.length()==4 && OMC.isNumeric(token)) continue;
             
             // Look for a standalone number - that's the whole number portion of visibility - we'll discard
-            if (isNumeric(token)) continue;
+            if (OMC.isNumeric(token)) continue;
             
             // Look for a block that starts with a digit and ends with a letter (directional visibility or
             // US visibility in SM) - we'll discard
-            if (isNumeric(token.substring(0,1)) && 
-            		isAlpha(token.substring(token.length()-1,token.length()))) continue;
+            if (OMC.isNumeric(token.substring(0,1)) && 
+            		OMC.isAlpha(token.substring(token.length()-1,token.length()))) continue;
             
             // Look for a 'M1/4SM' block (Low US visibility in SM) - we'll discard
             if (token.equals("M1/4SM")) continue;
@@ -293,7 +293,7 @@ public class Metar {
             }
             // If it has numbers in positions 4 thru 6, it's a cloud condition
             if (token.length()>=6) {
-            		if (isNumeric(token.substring(3,6))) {
+            		if (OMC.isNumeric(token.substring(3,6))) {
             			weatherTokens.add(token.substring(0,3));
             			iMarker++;
             		}
@@ -554,13 +554,6 @@ public class Metar {
 		return celsius /5d * 9d + 32d;
 	}
 	
-	public static boolean isNumeric(String inputData) {
-		return inputData.matches("[-+]?\\d+(\\.\\d+)?");
-	}
-
-	public static boolean isAlpha(String inputData) {
-		return inputData.matches("^[a-zA-Z]+$");
-	}
 }
 
 class MetarParsingException extends RuntimeException {
