@@ -42,13 +42,16 @@ import android.preference.PreferenceScreen;
 import android.text.format.Time;
 import android.text.util.Linkify;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -261,6 +264,131 @@ public class OMCPrefActivity extends PreferenceActivity {
     		} else {
     			findPreference("timeZone").setSummary(OMC.PREFS.getString("sTimeZone", "default"));
     		}
+        	
+        	// "Set Clock Ahead/Behind"
+        	Preference prefClockAdjustment = findPreference("clockAdjustment"); 
+        	prefClockAdjustment.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+					int offset = Integer.parseInt((String)newValue);
+					if (offset<0) {
+						preference.setSummary(-offset + OMC.RString("minutesBehind"));
+					} else {
+						preference.setSummary(offset + OMC.RString("minutesAhead"));
+					}
+					return true;
+				}
+			});
+        	int offset = Integer.parseInt(OMC.PREFS.getString("clockAdjustment", "0"));
+        	if (offset < 0 ) {
+        		prefClockAdjustment.setSummary(-offset + OMC.RString("minutesBehind"));
+        	} else {
+        		prefClockAdjustment.setSummary(offset + OMC.RString("minutesAhead"));
+        	}
+        	
+        	// "Backup this Widget"
+        	Preference prefBackupWidget = findPreference("backupwidget");
+        	prefBackupWidget.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+				
+				@Override
+				public boolean onPreferenceClick(Preference preference) {
+					
+					final Object[] backupOptions = new Object[2];
+					backupOptions[0] = OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)+OMC.TIME.format("%Y%m%d");
+					backupOptions[1] = Boolean.FALSE;
+					
+					LinearLayout ll = new LinearLayout(OMCPrefActivity.this);
+					ll.setOrientation(LinearLayout.VERTICAL);
+					EditText et = new EditText(OMCPrefActivity.this);
+					et.setText((String)backupOptions[0]);
+					CheckBox cb = new CheckBox(OMCPrefActivity.this);
+					cb.setText(OMC.RString("backupThemePersonalizations"));
+					cb.setChecked(false);
+					cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+						@Override
+						public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+							if (isChecked) backupOptions[1]=Boolean.TRUE;
+							else backupOptions[1]=Boolean.FALSE;
+						}
+					});
+					
+					ll.addView(et);
+					ll.addView(cb);
+					
+					new AlertDialog.Builder(OMCPrefActivity.this)
+						.setTitle(OMC.RString("nameOfBackup"))
+						.setView(ll)
+						.setPositiveButton(OMC.RString("ok"), new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								//	v141 backup work here														
+								System.out.println("backup " + backupOptions[0] + " " + backupOptions[1]);
+							}
+						})
+						.setNegativeButton(OMC.RString("abandon"), new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								dialog.cancel();
+							}
+						})
+						.create().show();
+					
+					return false;
+				}
+			});
+
+        	// "Restore Widget Settings"
+        	Preference prefRestoreWidget = findPreference("restorewidget");
+        	prefBackupWidget.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+				
+				@Override
+				public boolean onPreferenceClick(Preference preference) {
+					
+					final Object[] restoreOptions = new Object[2];
+					restoreOptions[0] = "";
+					restoreOptions[1] = Boolean.FALSE;
+					
+					LinearLayout ll = new LinearLayout(OMCPrefActivity.this);
+					ll.setOrientation(LinearLayout.VERTICAL);
+					ListView lv = new ListView(OMCPrefActivity.this);
+					EditText et = new EditText(OMCPrefActivity.this);
+					et.setText((String)backupOptions[0]);
+					CheckBox cb = new CheckBox(OMCPrefActivity.this);
+					cb.setText(OMC.RString("backupThemePersonalizations"));
+					cb.setChecked(false);
+					cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+						@Override
+						public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+							if (isChecked) backupOptions[1]=Boolean.TRUE;
+							else backupOptions[1]=Boolean.FALSE;
+						}
+					});
+					
+					ll.addView(et);
+					ll.addView(cb);
+					
+					new AlertDialog.Builder(OMCPrefActivity.this)
+						.setTitle(OMC.RString("nameOfBackup"))
+						.setView(ll)
+						.setPositiveButton(OMC.RString("ok"), new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								//	v141 backup work here														
+								System.out.println("backup " + backupOptions[0] + " " + backupOptions[1]);
+							}
+						})
+						.setNegativeButton(OMC.RString("abandon"), new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								dialog.cancel();
+							}
+						})
+						.create().show();
+					
+					return false;
+				}
+			});
 
         	// "App UI Language".
         	Preference prefLocale = findPreference("appLocale"); 
