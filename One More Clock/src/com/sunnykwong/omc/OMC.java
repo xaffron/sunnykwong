@@ -816,6 +816,7 @@ public class OMC extends Application {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Committing prefs for widget " + aWI);
 		final Editor e = OMC.PREFS.edit();
 		e.putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME))
+		.putString("clockAdjustment"+aWI, OMC.PREFS.getString("clockAdjustment", "0"))
 		.putString("widgetThemeLong"+aWI, OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true))
 		.putBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero", true))
@@ -832,6 +833,7 @@ public class OMC extends Application {
 		// For new clocks... just like setPrefs but leaves the URI empty.
 		final Editor e = OMC.PREFS.edit();
 		e.putString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme"+aWI, OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME)))
+		.putString("clockAdjustment"+aWI, OMC.PREFS.getString("clockAdjustment"+aWI, OMC.PREFS.getString("clockAdjustment", "0")))
 		.putString("widgetThemeLong"+aWI, OMC.PREFS.getString("widgetThemeLong"+aWI, OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG)))
 		.putBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock"+aWI, OMC.PREFS.getBoolean("widget24HrClock", true)))
 		.putBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, OMC.PREFS.getBoolean("widgetLeadingZero", true)))
@@ -848,6 +850,7 @@ public class OMC extends Application {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Retrieving prefs for widget " + aWI);
 		final Editor e = OMC.PREFS.edit();
 		e.putString("widgetTheme", OMC.PREFS.getString("widgetTheme"+aWI, OMC.DEFAULTTHEME))
+		.putString("clockAdjustment", OMC.PREFS.getString("clockAdjustment"+aWI, "0"))
 		.putString("widgetThemeLong", OMC.PREFS.getString("widgetThemeLong"+aWI, OMC.DEFAULTTHEMELONG))
 		.putBoolean("widget24HrClock", OMC.PREFS.getBoolean("widget24HrClock"+aWI, true))
 		.putBoolean("widgetLeadingZero", OMC.PREFS.getBoolean("widgetLeadingZero"+aWI, true))
@@ -864,6 +867,7 @@ public class OMC extends Application {
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","Deleting prefs for widget " + aWI);
 		final Editor e = OMC.PREFS.edit();
 		e.remove("widgetTheme"+aWI)
+			.remove("clockAdjustment"+aWI)
 			.remove("widgetThemeLong"+aWI)
 			.remove("widget24HrClock"+aWI)
 			.remove("widgetLeadingZero"+aWI)
@@ -2481,7 +2485,15 @@ public class OMC extends Application {
 		}
 		return result.toString();
 	}
-	
+
+	public static boolean isNumeric(String inputData) {
+		return inputData.matches("[-+]?\\d+(\\.\\d+)?");
+	}
+
+	public static boolean isAlpha(String inputData) {
+		return inputData.matches("^[a-zA-Z]+$");
+	}
+
 	public static String[] findClosestICAOs(final double lat1, final double lon1, final int radiusKM) {
 		final double R = 6371; //km
 		double bestDistance = Double.MAX_VALUE;
