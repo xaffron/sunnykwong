@@ -213,7 +213,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     	if (keyCode == android.view.KeyEvent.KEYCODE_BACK || keyCode == android.view.KeyEvent.KEYCODE_HOME) {
     		mAD = new AlertDialog.Builder(this)
     				.setTitle(OMC.RString("keepChanges"))
-    				.setPositiveButton(OMC.RString("apply"), new DialogInterface.OnClickListener() {	
+    				.setPositiveButton(OMC.RString("_apply"), new DialogInterface.OnClickListener() {	
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 				    		bApply=true;
@@ -247,7 +247,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				        	finish();
 						}
     				})
-    				.setNegativeButton(OMC.RString("abandon"), new DialogInterface.OnClickListener() {	
+    				.setNegativeButton(OMC.RString("_abandon"), new DialogInterface.OnClickListener() {	
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 				    		oTheme = null;

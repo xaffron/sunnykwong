@@ -6,12 +6,6 @@
     <string name="translator">SavanTorian (Andy)</string>
     <!-- General Buttons -->
     <string name="nextTip">Nächster Tip</string>
-    <string name="ok">OK</string>
-    <string name="search">Suche</string>
-    <string name="abandon">Abbruch</string>
-    <string name="apply">Bestätigung</string>
-    <string name="yes">Ja</string>
-    <string name="no">Nein</string>
     <!-- General Errors -->
     <string name="sdcardNotDetected">SD Card nicht gefunden.\nBitte trennen Sie das
 		Smartphone vom USB-Kabel, falls noch nicht geschehen!</string>
@@ -78,7 +72,7 @@
     <string name="downloading">Downloading…</string>
     <string name="downloaded">Download abgeschlossen</string>
     <string name="of">von</string>
-    <string name="bytes">Bytes</string>
+    <string name="bytes">\u0020Bytes</string>
     <string name="existsOverwriting">existiert; wird überschrieben</string>
     <string name="createThemeFolder1">Theme Ordner \'</string>
     <string name="createThemeFolder2">\'angelegt</string>
@@ -365,7 +359,6 @@
     <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M.
 		Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
     <!-- FILLED IN by Andy -->
-    <string name="translations">Übersetzung</string>
     <!-- FILLED IN by Andy -->
     <string name="specialThanks">Spezieller Dank geht an:</string>
     <string name="specialThanksText">\'Zehro\' fürs Zeigen des Pfades\nRE: in-sync
@@ -433,109 +426,108 @@
         <item>Nov</item>
         <item>Dez</item>
     </string-array>
-<string-array name="WordNumbers">
-<item>Null</item>
-<item>Eins</item>
-<item>Zwei</item>
-<item>Drei</item>
-<item>Vier</item>
-<item>Fuenf</item>
-<item>Sechs</item>
-<item>Sieben</item>
-<item>Acht</item>
-<item>Neun</item>
-<item>Zehn</item>
-<item>Elf</item>
-<item>Zwoelf</item>
-<item>Dreizehn</item>
-<item>Vierzehn</item>
-<item>Fuenfzehn</item>
-<item>Sechszehn</item>
-<item>Siebzehn</item>
-<item>Achtzehn</item>
-<item>Neunzehn</item>
-<item>Zwanzig</item>
-<item>Einundzwanzig</item>
-<item>Zweiundzwanzig</item>
-<item>Dreiundzwanzig</item>
-<item>Vierundzwanzig</item>
-<item>Fuenfundzwanzig</item>
-<item>Sechsundzwanzig</item>
-<item>Siebenundzwanzig</item>
-<item>Achtundzwanzig</item>
-<item>Neunundzwanzig</item>
-<item>Dreissig</item>
-<item>Einundydreissig</item>
-<item>Zweiunddreissig</item>
-<item>Dreiunddreissig</item>
-<item>Vierunddreissig</item>
-<item>Fuenfunddreissig</item>
-<item>Sechsunddreissig</item>
-<item>Siebenunddreissig</item>
-<item>Achtunddreissig</item>
-<item>Neununddreissig</item>
-<item>Vierzig</item>
-<item>Einundvierzig</item>
-<item>Zweiundvierzig</item>
-<item>Dreiundvierzig</item>
-<item>Vierundvierzig</item>
-<item>Fuenfundvierzig</item>
-<item>Sechsundvierzig</item>
-<item>Siebenundvierzig</item>
-<item>Achtundvierzig</item>
-<item>Neunundvierzig</item>
-<item>Fuenfzig</item>
-<item>Einundfuenfzig</item>
-<item>Zweiundfuenfzig</item>
-<item>Dreiundfuenfzig</item>
-<item>Vierundfuenfzig</item>
-<item>Fuenfundfuenfzig</item>
-<item>Sechsundfuenfzig</item>
-<item>Siebenundfuenfzig</item>
-<item>Achtundfuenfzig</item>
-<item>Neunundfuenfzig</item>
-<item>Sechzig</item>
-<item>Einundsechzig</item>
-<item>Zweiundsechzig</item>
-<item>Dreiundsechzig</item>
-<item>Vierundsechzig</item>
-<item>Fuenfundsechzig</item>
-<item>Sechsundsechzig</item>
-<item>Siebenundsechzig</item>
-<item>Achtundsechzig</item>
-<item>Neunundsechzig</item>
-<item>Siebzig</item>
-<item>Einundsiebzig</item>
-<item>Zweiundsiebzig</item>
-<item>Dreiundsiebzig</item>
-<item>Vierundsiebzig</item>
-<item>Fuenfundsiebzig</item>
-<item>Sechsundsiebzig</item>
-<item>Siebenundsiebzig</item>
-<item>Achtundsiebzig</item>
-<item>Neunundsiebzig</item>
-<item>Achtzig</item>
-<item>Einundachtzig</item>
-<item>Zweiundachtzig</item>
-<item>Dreiundachtzig</item>
-<item>Vierundachtzig</item>
-<item>Fuenfundachtzig</item>
-<item>Sechsundachtzig</item>
-<item>Siebenundachtzig</item>
-<item>Achtundachtzig</item>
-<item>Neunundachtzig</item>
-<item>Neunzig</item>
-<item>Einundneunzig</item>
-<item>Zweiundneunzig</item>
-<item>Dreiundneunzig</item>
-<item>Vierundneunzig</item>
-<item>Fuenfundneunzig</item>
-<item>Sechsundneunzig</item>
-<item>Siebenundneunzig</item>
-<item>Achtundneunzig</item>
-<item>Neunundneunzig</item>
-</string-array>
-
+    <string-array name="WordNumbers">
+        <item>Null</item>
+        <item>Eins</item>
+        <item>Zwei</item>
+        <item>Drei</item>
+        <item>Vier</item>
+        <item>Fuenf</item>
+        <item>Sechs</item>
+        <item>Sieben</item>
+        <item>Acht</item>
+        <item>Neun</item>
+        <item>Zehn</item>
+        <item>Elf</item>
+        <item>Zwoelf</item>
+        <item>Dreizehn</item>
+        <item>Vierzehn</item>
+        <item>Fuenfzehn</item>
+        <item>Sechszehn</item>
+        <item>Siebzehn</item>
+        <item>Achtzehn</item>
+        <item>Neunzehn</item>
+        <item>Zwanzig</item>
+        <item>Einundzwanzig</item>
+        <item>Zweiundzwanzig</item>
+        <item>Dreiundzwanzig</item>
+        <item>Vierundzwanzig</item>
+        <item>Fuenfundzwanzig</item>
+        <item>Sechsundzwanzig</item>
+        <item>Siebenundzwanzig</item>
+        <item>Achtundzwanzig</item>
+        <item>Neunundzwanzig</item>
+        <item>Dreissig</item>
+        <item>Einundydreissig</item>
+        <item>Zweiunddreissig</item>
+        <item>Dreiunddreissig</item>
+        <item>Vierunddreissig</item>
+        <item>Fuenfunddreissig</item>
+        <item>Sechsunddreissig</item>
+        <item>Siebenunddreissig</item>
+        <item>Achtunddreissig</item>
+        <item>Neununddreissig</item>
+        <item>Vierzig</item>
+        <item>Einundvierzig</item>
+        <item>Zweiundvierzig</item>
+        <item>Dreiundvierzig</item>
+        <item>Vierundvierzig</item>
+        <item>Fuenfundvierzig</item>
+        <item>Sechsundvierzig</item>
+        <item>Siebenundvierzig</item>
+        <item>Achtundvierzig</item>
+        <item>Neunundvierzig</item>
+        <item>Fuenfzig</item>
+        <item>Einundfuenfzig</item>
+        <item>Zweiundfuenfzig</item>
+        <item>Dreiundfuenfzig</item>
+        <item>Vierundfuenfzig</item>
+        <item>Fuenfundfuenfzig</item>
+        <item>Sechsundfuenfzig</item>
+        <item>Siebenundfuenfzig</item>
+        <item>Achtundfuenfzig</item>
+        <item>Neunundfuenfzig</item>
+        <item>Sechzig</item>
+        <item>Einundsechzig</item>
+        <item>Zweiundsechzig</item>
+        <item>Dreiundsechzig</item>
+        <item>Vierundsechzig</item>
+        <item>Fuenfundsechzig</item>
+        <item>Sechsundsechzig</item>
+        <item>Siebenundsechzig</item>
+        <item>Achtundsechzig</item>
+        <item>Neunundsechzig</item>
+        <item>Siebzig</item>
+        <item>Einundsiebzig</item>
+        <item>Zweiundsiebzig</item>
+        <item>Dreiundsiebzig</item>
+        <item>Vierundsiebzig</item>
+        <item>Fuenfundsiebzig</item>
+        <item>Sechsundsiebzig</item>
+        <item>Siebenundsiebzig</item>
+        <item>Achtundsiebzig</item>
+        <item>Neunundsiebzig</item>
+        <item>Achtzig</item>
+        <item>Einundachtzig</item>
+        <item>Zweiundachtzig</item>
+        <item>Dreiundachtzig</item>
+        <item>Vierundachtzig</item>
+        <item>Fuenfundachtzig</item>
+        <item>Sechsundachtzig</item>
+        <item>Siebenundachtzig</item>
+        <item>Achtundachtzig</item>
+        <item>Neunundachtzig</item>
+        <item>Neunzig</item>
+        <item>Einundneunzig</item>
+        <item>Zweiundneunzig</item>
+        <item>Dreiundneunzig</item>
+        <item>Vierundneunzig</item>
+        <item>Fuenfundneunzig</item>
+        <item>Sechsundneunzig</item>
+        <item>Siebenundneunzig</item>
+        <item>Achtundneunzig</item>
+        <item>Neunundneunzig</item>
+    </string-array>
     <string-array name="verbosetime1">
         <item>Zwölf Uhr.</item>
         <item>Eins nach Zwölf.</item>
@@ -1984,47 +1976,53 @@
         <item>Zwei vor Zwölf.</item>
         <item>Eins vor Zwölf.</item>
     </string-array>
-<string-array name="VerboseWeather">
-<item>Unbekannt</item>
-<item>Klar</item>
-<item>Klar</item>
-<item>Meist Klar</item>
-<item>Teilweise Klar</item>
-<item>Teilweise Bewölkt</item>
-<item>Staub</item>
-<item>Dunst</item>
-<item>Leichter Nebel</item>
-<item>Dampfig</item>
-<item>Meist Bewölkt</item>
-<item>Bedeckt</item>
-<item>Wolkig</item>
-<item>Nebel</item>
-<item>Leichter Regen</item>
-<item>Regenschauer</item>
-<item>Niesel</item>
-<item>Schauer</item>
-<item>Regenmöglichkeit</item>
-<item>Schauermöglichkeit</item>
-<item>Vereinzelt Schauer</item>
-<item>Gewitter</item>
-<item>Gewittermöglichkeit</item>
-<item>Vereinzelt Gewitter </item>
-<item>Sturmmöglichkeit</item>
-<item>Sturm</item>
-<item>Starkregen</item>
-<item>Regen</item>
-<item>Schneetreiben</item>
-<item>Leichter Schneefall</item>
-<item>Schneemöglichkeit</item>
-<item>Schneeschauer</item>
-<item>Vereinzelt Schneeschauer</item>
-<item>Schnee</item>
-<item>Eisglätte</item>
-<item>Eis oder Schnee</item>
-<item>Graupelschauer</item>
-<item>Gefrierender Sprühregen</item>
-<item>Graupel</item>
-<item>Windig</item>
-</string-array>
-
+    <string-array name="VerboseWeather">
+        <item>Unbekannt</item>
+        <item>Klar</item>
+        <item>Klar</item>
+        <item>Meist Klar</item>
+        <item>Teilweise Klar</item>
+        <item>Teilweise Bewölkt</item>
+        <item>Staub</item>
+        <item>Dunst</item>
+        <item>Leichter Nebel</item>
+        <item>Dampfig</item>
+        <item>Meist Bewölkt</item>
+        <item>Bedeckt</item>
+        <item>Wolkig</item>
+        <item>Nebel</item>
+        <item>Leichter Regen</item>
+        <item>Regenschauer</item>
+        <item>Niesel</item>
+        <item>Schauer</item>
+        <item>Regenmöglichkeit</item>
+        <item>Schauermöglichkeit</item>
+        <item>Vereinzelt Schauer</item>
+        <item>Gewitter</item>
+        <item>Gewittermöglichkeit</item>
+        <item>Vereinzelt Gewitter </item>
+        <item>Sturmmöglichkeit</item>
+        <item>Sturm</item>
+        <item>Starkregen</item>
+        <item>Regen</item>
+        <item>Schneetreiben</item>
+        <item>Leichter Schneefall</item>
+        <item>Schneemöglichkeit</item>
+        <item>Schneeschauer</item>
+        <item>Vereinzelt Schneeschauer</item>
+        <item>Schnee</item>
+        <item>Eisglätte</item>
+        <item>Eis oder Schnee</item>
+        <item>Graupelschauer</item>
+        <item>Gefrierender Sprühregen</item>
+        <item>Graupel</item>
+        <item>Windig</item>
+    </string-array>
+    <string name="_apply">Bestätigung</string>
+    <string name="_search">Suche</string>
+    <string name="_yes">Ja</string>
+    <string name="_abandon">Abbruch</string>
+    <string name="_ok">OK</string>
+    <string name="_no">Nein</string>
+    <string name="translators">Übersetzer</string>
 </resources>

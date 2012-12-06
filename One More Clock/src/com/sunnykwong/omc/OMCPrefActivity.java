@@ -325,7 +325,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 					new AlertDialog.Builder(OMCPrefActivity.this)
 						.setTitle(OMC.RString("nameOfBackup"))
 						.setView(ll)
-						.setPositiveButton(OMC.RString("ok"), new DialogInterface.OnClickListener() {
+						.setPositiveButton(OMC.RString("_ok"), new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int which) {
 								//	v141 backup work here														
@@ -421,7 +421,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 								}.execute(backupOptions[0],backupOptions[1]);
 							}
 						})
-						.setNegativeButton(OMC.RString("abandon"), new DialogInterface.OnClickListener() {
+						.setNegativeButton(OMC.RString("_abandon"), new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int which) {
 								dialog.cancel();
@@ -484,7 +484,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 								new AlertDialog.Builder(OMCPrefActivity.this)
 								.setTitle(OMC.RString("overwriteThemePersonalizations"))
 								.setMessage(OMC.RString("overwriteThemeWarning"))
-								.setPositiveButton(OMC.RString("ok"), new DialogInterface.OnClickListener() {
+								.setPositiveButton(OMC.RString("_ok"), new DialogInterface.OnClickListener() {
 									@Override
 									public void onClick(DialogInterface dialog, int which) {
 										restoreOptions[1]=Boolean.TRUE;
@@ -500,7 +500,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 					new AlertDialog.Builder(OMCPrefActivity.this)
 						.setTitle(OMC.RString("nameOfBackup"))
 						.setView(ll)
-						.setNegativeButton(OMC.RString("abandon"), new DialogInterface.OnClickListener() {
+						.setNegativeButton(OMC.RString("_abandon"), new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int which) {
 								dialog.cancel();
@@ -802,7 +802,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 					new AlertDialog.Builder(OMCPrefActivity.this)
 						.setTitle(OMC.RString("clockPriority"))
 						.setMessage(sExplanation)
-						.setPositiveButton(OMC.RString("yes"), new DialogInterface.OnClickListener() {
+						.setPositiveButton(OMC.RString("_yes"), new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int item) {
 								OMC.PREFS.edit().putString("clockPriority", (String)newValue).commit();
@@ -810,7 +810,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 					        	OMC.CURRENTCLOCKPRIORITY = Integer.parseInt(OMC.PREFS.getString("clockPriority", "3"));
 							}
 						})
-						.setNegativeButton(OMC.RString("no"), new DialogInterface.OnClickListener() {
+						.setNegativeButton(OMC.RString("_no"), new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int item) {
 							}
@@ -833,14 +833,14 @@ public class OMCPrefActivity extends PreferenceActivity {
 					new AlertDialog.Builder(OMCPrefActivity.this)
 						.setTitle(OMC.RString("locationPriority"))
 						.setMessage(sExplanation)
-						.setPositiveButton(OMC.RString("yes"), new DialogInterface.OnClickListener() {
+						.setPositiveButton(OMC.RString("_yes"), new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int item) {
 								OMC.PREFS.edit().putString("locationPriority", (String)newValue).commit();
 					        	preference.setSummary(OMC.RStringArray("locationPriority_options")[Integer.parseInt(OMC.PREFS.getString("locationPriority", "4"))]);
 							}
 						})
-						.setNegativeButton(OMC.RString("no"), new DialogInterface.OnClickListener() {
+						.setNegativeButton(OMC.RString("_no"), new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int item) {
 							}
@@ -937,7 +937,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 	    			wv.loadUrl(OMC.OMCCHANGESURL);
 	    			AlertDialog d = new AlertDialog.Builder(OMCPrefActivity.this)
 	    								.setView(wv)
-	    								.setPositiveButton(OMC.RString("ok"), new DialogInterface.OnClickListener() {
+	    								.setPositiveButton(OMC.RString("_ok"), new DialogInterface.OnClickListener() {
 	    									@Override
 	    									public void onClick(
 	    											DialogInterface dialog,
@@ -1047,7 +1047,7 @@ public class OMCPrefActivity extends PreferenceActivity {
     			wv.loadUrl(OMC.OMCCHANGESURL);
     			AlertDialog d = new AlertDialog.Builder(this)
     								.setView(wv)
-    								.setPositiveButton(OMC.RString("ok"), new DialogInterface.OnClickListener() {
+    								.setPositiveButton(OMC.RString("_ok"), new DialogInterface.OnClickListener() {
     									@Override
     									public void onClick(
     											DialogInterface dialog,
@@ -1146,7 +1146,7 @@ public class OMCPrefActivity extends PreferenceActivity {
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
     		Preference preference) {
     	if (preference == findPreference("deleteOMCThemes")){
-			final CharSequence[] items = {OMC.RString("yesDelete"), OMC.RString("yesRestore"), OMC.RString("no")};
+			final CharSequence[] items = {OMC.RString("_yesDelete"), OMC.RString("_yesRestore"), OMC.RString("_no")};
 			new AlertDialog.Builder(this)
 				.setTitle(OMC.RString("deleteAllThemesFromSD"))
 				.setItems(items, new DialogInterface.OnClickListener() {

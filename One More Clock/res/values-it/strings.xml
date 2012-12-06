@@ -5,12 +5,6 @@
     <string name="translator">Matteo Lo Russo</string>
     <!-- Pulsanti generali -->
     <string name="nextTip">Prossimo Suggerimento</string>
-    <string name="ok">OK</string>
-    <string name="search">Cerca</string>
-    <string name="abandon">Esci</string>
-    <string name="apply">Applica</string>
-    <string name="yes">Sì</string>
-    <string name="no">No</string>
     <!-- Errori generali -->
     <string name="sdcardNotDetected">Scheda SD non rilevata.\nRemember disattivare la
 		memorizzazione USB se\'s ancora in contatto!</string>
@@ -59,7 +53,7 @@
     <string name="reextractBundledClocks">Re-Estrarre Orologi combinati</string>
     <string name="downloadAllClocks">Download Tutti Orologi (7 MB)</string>
     <string name="preselected"/>
-    <string name="postselected">\u0020selected.</string>
+    <string name="postselected" newname="">\u0020selected.</string>
     <!-- Picker Legenda Tema -->
     <string name="legend">legenda</string>
     <string name="batteryLegend">Mostra livello di carica della batteria</string>
@@ -193,7 +187,7 @@
     <string name="detected">\u0020 (Rilevato)</string>
     <string name="lastTry">Ultima Prova: \u0020</string>
     <string name="manualRefreshOnly">\u0020 (Manuale Refresh solo)</string>
-    <string name="nextRefresh">\u0020Next Refresh: \u0020</string>
+    <string name="nextRefresh" newname="">\u0020Next Refresh: \u0020</string>
     <string name="lastRefresh" newname="">Last Refresh:\u0020</string>
     <string name="nextRequest" newname="">\u0020Next Request:\u0020</string>
     <string name="weatherLocation">Posizione per tempo:</string>
@@ -265,17 +259,17 @@
     <string name="rebootRequired">riavvio obbligatorio</string>
     <string name="changesToTheseSettings">Modifiche a queste impostazioni richiede il riavvio
 		del telefono per avere effetto.</string>
-    <string name="enable5x4Widget">Enable (5x4) Widget</string>
-    <string name="enable5x2Widget">Enable (5x2) Widget</string>
-    <string name="enable5x1Widget">Enable (5x1) Widget</string>
-    <string name="enable4x4Widget">Enable (4x4) Widget</string>
-    <string name="enable4x2Widget">Enable (4x2) Widget</string>
-    <string name="enable4x1Widget">Enable (4x1) Widget</string>
-    <string name="enable3x3Widget">Enable (3x3) Widget</string>
-    <string name="enable3x1Widget">Enable (3x1) Widget</string>
-    <string name="enable2x2Widget">Enable (2x2) Widget</string>
-    <string name="enable2x1Widget">Enable (2x1) Widget</string>
-    <string name="enable1x3Widget">Enable (1x3) Widget</string>
+    <string name="enable5x4Widget" newname="">Enable (5x4) Widget</string>
+    <string name="enable5x2Widget" newname="">Enable (5x2) Widget</string>
+    <string name="enable5x1Widget" newname="">Enable (5x1) Widget</string>
+    <string name="enable4x4Widget" newname="">Enable (4x4) Widget</string>
+    <string name="enable4x2Widget" newname="">Enable (4x2) Widget</string>
+    <string name="enable4x1Widget" newname="">Enable (4x1) Widget</string>
+    <string name="enable3x3Widget" newname="">Enable (3x3) Widget</string>
+    <string name="enable3x1Widget" newname="">Enable (3x1) Widget</string>
+    <string name="enable2x2Widget" newname="">Enable (2x2) Widget</string>
+    <string name="enable2x1Widget" newname="">Enable (2x1) Widget</string>
+    <string name="enable1x3Widget" newname="">Enable (1x3) Widget</string>
     <string name="forGalaxyNote">Per Galaxy Note o simili</string>
     <string name="enableThemeTester">Abilita Tester a tema</string>
     <string name="developmentToolForSkinnersOnly">strumento di sviluppo per skinners solo</string>
@@ -1976,7 +1970,7 @@
         <item>Mezzanotte meno due</item>
         <item>Mezzanotte meno uno</item>
     </string-array>
-    <string-array name="VerboseWeather">
+    <string-array name="VerboseWeather" newname="">
         <item>Unknown</item>
         <item>Clear</item>
         <item>Clear</item>
@@ -2018,4 +2012,11 @@
         <item>Rain and Snow</item>
         <item>Windy</item>
     </string-array>
+    <string name="_apply">Applica</string>
+    <string name="_search">Cerca</string>
+    <string name="_yes">Sì</string>
+    <string name="_abandon">Esci</string>
+    <string name="_ok">OK</string>
+    <string name="_no">No</string>
+    <string name="translators">Traduttori</string>
 </resources>

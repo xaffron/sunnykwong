@@ -32,7 +32,7 @@
             android:layout_alignBaseline="@+id/SearchBox"
             android:layout_alignBottom="@+id/SearchBox"
             android:layout_alignParentRight="true"
-            android:text="@string/search" />
+            android:text="@string/_search" />
 
         <ScrollView
             android:id="@+id/scrollView1"

@@ -171,7 +171,7 @@ public class OMCThemePickerActivity extends Activity {
 			.setCancelable(true)
 			.setTitle(OMC.RString("starterClockPack"))
 			.setMessage(OMC.RString("starterClockPackText"))
-			.setPositiveButton(OMC.RString("yes"), new DialogInterface.OnClickListener() {
+			.setPositiveButton(OMC.RString("_yes"), new DialogInterface.OnClickListener() {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
@@ -186,7 +186,7 @@ public class OMCThemePickerActivity extends Activity {
 					mAD.cancel();
 				}
 			})
-			.setNegativeButton(OMC.RString("no"), new DialogInterface.OnClickListener() {
+			.setNegativeButton(OMC.RString("_no"), new DialogInterface.OnClickListener() {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
@@ -548,7 +548,7 @@ public class OMCThemePickerActivity extends Activity {
     											(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())) 
     											+ OMC.RString("emailThemeConfirm2"))
     									.setMessage(msg)
-    									.setPositiveButton(OMC.RString("yes"), new DialogInterface.OnClickListener() {
+    									.setPositiveButton(OMC.RString("_yes"), new DialogInterface.OnClickListener() {
     										
     										@Override
     										public void onClick(DialogInterface dialog, int which) {
@@ -610,7 +610,7 @@ public class OMCThemePickerActivity extends Activity {
     											    OMCThemePickerActivity.this.finish();
     										}
     									})
-    									.setNegativeButton(OMC.RString("no"), new DialogInterface.OnClickListener() {
+    									.setNegativeButton(OMC.RString("_no"), new DialogInterface.OnClickListener() {
     										
     										@Override
     										public void onClick(DialogInterface dialog, int which) {
@@ -627,7 +627,7 @@ public class OMCThemePickerActivity extends Activity {
     											(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())) 
     											+ OMC.RString("deleteThemeConfirm2"))
     									.setMessage(OMC.RString("deleteThemeConfirm3"))
-    									.setPositiveButton(OMC.RString("yes"), new DialogInterface.OnClickListener() {
+    									.setPositiveButton(OMC.RString("_yes"), new DialogInterface.OnClickListener() {
     										
     										@Override
     										public void onClick(DialogInterface dialog, int which) {
@@ -644,7 +644,7 @@ public class OMCThemePickerActivity extends Activity {
     											OMCThemePickerActivity.this.refreshThemeList();
     										}
     									})
-    									.setNegativeButton(OMC.RString("no"), new DialogInterface.OnClickListener() {
+    									.setNegativeButton(OMC.RString("_no"), new DialogInterface.OnClickListener() {
     										
     										@Override
     										public void onClick(DialogInterface dialog, int which) {
@@ -666,7 +666,7 @@ public class OMCThemePickerActivity extends Activity {
     										(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition())) 
     										+ OMC.RString("submitThemeToDevConfirm2"))
     								.setMessage(msg)
-    								.setPositiveButton(OMC.RString("yes"), new DialogInterface.OnClickListener() {
+    								.setPositiveButton(OMC.RString("_yes"), new DialogInterface.OnClickListener() {
     									
     									@Override
     									public void onClick(DialogInterface dialog, int which) {
@@ -694,7 +694,7 @@ public class OMCThemePickerActivity extends Activity {
     										    OMCThemePickerActivity.this.finish();
     									}
     								})
-    								.setNegativeButton(OMC.RString("no"), new DialogInterface.OnClickListener() {
+    								.setNegativeButton(OMC.RString("_no"), new DialogInterface.OnClickListener() {
     									
     									@Override
     									public void onClick(DialogInterface dialog, int which) {

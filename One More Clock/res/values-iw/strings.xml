@@ -5,12 +5,6 @@
     <string name="translator">אורי צדוק</string>
     <!-- General Buttons -->
     <string name="nextTip">הטיפ הבא</string>
-    <string name="ok">אשר</string>
-    <string name="search">חפש</string>
-    <string name="abandon">בטל</string>
-    <string name="apply">הפעל</string>
-    <string name="yes">כן</string>
-    <string name="no">לא</string>
     <!-- General Errors -->
     <string name="sdcardNotDetected">כרטיס SD לא אותר.\n זכור לכבות אחסון USB אם עדיין מחובר!.</string>
     <string name="sdcardMissingOrCorrupt">כרטיס SD חסר או לא תקין.\nזכור לכבות אחסון USB אם עדיין מחובר!.</string>
@@ -333,206 +327,198 @@
     <string name="weatherFontText">Weatherfont ברשיון מלא מאת Jonathan Macagba,זמין עבור 5 דולר מאת jonathan.macagba@gmail.com</string>
     <string name="sourceCodeTitle">קוד מקור</string>
     <string name="sourceCode">קוד מקור זמין בכתובת</string>
-
-<string name="daysuffix"></string>
-
-<string-array name="verbosedow">
-<item>ראשון</item>
-<item>שני</item>
-<item>שלישי</item>
-<item>רביעי</item>
-<item>חמישי</item>
-<item>שישי</item>
-<item>שבת</item>
-</string-array>
-
-<string-array name="shortdow">
-<item>א\'</item>
-<item>ב\'</item>
-<item>ג\'</item>
-<item>ד\'</item>
-<item>ה\'</item>
-<item>ו\'</item>
-<item>ש\'</item>
-</string-array>
-
-<string-array name="verbosemonth">
-<item>ינואר</item>
-<item>פברואר</item>
-<item>מרץ</item>
-<item>אפריל</item>
-<item>מאי</item>
-<item>יוני</item>
-<item>יולי</item>
-<item>אוגוסט</item>
-<item>ספטמבר</item>
-<item>אוקטובר</item>
-<item>נובמבר</item>
-<item>דצמבר</item>
-</string-array>
-
-<string-array name="shortmonth">
-<item>ינו\'</item>
-<item>פבר\'</item>
-<item>מרץ</item>
-<item>אפר\'</item>
-<item>מאי</item>
-<item>יוני</item>
-<item>יולי</item>
-<item>אוג\'</item>
-<item>ספט\'</item>
-<item>אוק\'</item>
-<item>נוב\'</item>
-<item>דצמ\'</item>
-</string-array>
-
-<string-array name="WordNumbers">
-<item>אפס</item>
-<item>אחד</item>
-<item>שתיים</item>
-<item>שלוש</item>
-<item>ארבע</item>
-<item>חמש</item>
-<item>שש</item>
-<item>שבע</item>
-<item>שמונה</item>
-<item>תשע</item>
-<item>עשר</item>
-<item>אחת עשרה</item>
-<item>שתים עשרה</item>
-<item>שלוש עשרה</item>
-<item>ארבע עשרה</item>
-<item>חמש עשרה</item>
-<item>שש עשרה</item>
-<item>שבע עשרה</item>
-<item>שמונה עשרה</item>
-<item>תשע עשרה</item>
-<item>עשרים</item>
-<item>עשרים ואחת</item>
-<item>עשרים ושתיים</item>
-<item>עשרים ושלוש</item>
-<item>עשרים וארבע</item>
-<item>עשרים וחמש</item>
-<item>עשרים ושש</item>
-<item>עשרים ושבע</item>
-<item>עשרים ושמונה</item>
-<item>עשרים ותשע</item>
-<item>שלושים</item>
-<item>שלושים ואחת</item>
-<item>שלושים ושתיים</item>
-<item>שלושים ושלוש</item>
-<item>שלושים וארבע</item>
-<item>שלושים וחמש</item>
-<item>שלושים ושש</item>
-<item>שלושים ושבע</item>
-<item>שלושים ושמונה</item>
-<item>שלושים ותשע</item>
-<item>ארבעים</item>
-<item>ארבעים ואחת</item>
-<item>ארבעים ושתיים</item>
-<item>ארבעים ושלוש</item>
-<item>ארבעים וארבע</item>
-<item>ארבעים וחמש</item>
-<item>ארבעים ושש</item>
-<item>ארבעים ושבע</item>
-<item>ארבעים ושמונה</item>
-<item>ארבעים ותשע</item>
-<item>חמישים</item>
-<item>חמישים ואחת</item>
-<item>חמישים ושתיים</item>
-<item>חמישים ושלוש</item>
-<item>חמישים וארבע</item>
-<item>חמישים וחמש</item>
-<item>חמישים ושש</item>
-<item>חמישים ושבע</item>
-<item>חמישים ושמונה</item>
-<item>חמישים ותשע</item>
-<item>שישים</item>
-<item>שישים ואחת</item>
-<item>שישים ושתיים</item>
-<item>שישים ושלוש</item>
-<item>שישים וארבע</item>
-<item>שישים וחמש</item>
-<item>שישים ושש</item>
-<item>שישים ושבע</item>
-<item>שישים ושמונה</item>
-<item>שישים ותשע</item>
-<item>שבעים</item>
-<item>שבעים ואחת</item>
-<item>שבעים ושתיים</item>
-<item>שבעים ושלוש</item>
-<item>שבעים וארבע</item>
-<item>שבעים וחמש</item>
-<item>שבעים ושש</item>
-<item>שבעים ושבע</item>
-<item>שבעים ושמונה</item>
-<item>שבעים ותשע</item>
-<item>שמונים</item>
-<item>שמונים ואחת</item>
-<item>שמונים ושתיים</item>
-<item>שמונים ושלוש</item>
-<item>שמונים וארבע</item>
-<item>שמונים וחמש</item>
-<item>שמונים ושש</item>
-<item>שמונים ושבע</item>
-<item>שמונים ושמונה</item>
-<item>שמונים ותשע</item>
-<item>תשעים</item>
-<item>תשעים ואחת</item>
-<item>תשעים ושתיים</item>
-<item>תשעים ושלוש</item>
-<item>תשעים וארבע</item>
-<item>תשעים וחמש</item>
-<item>תשעים ושש</item>
-<item>תשעים ושבע</item>
-<item>תשעים ושמונה</item>
-<item>תשעים ותשע</item>
-</string-array>
-
-	<string-array name="VerboseWeather">
-		<item>לא ידוע</item>
-		<item>בהיר</item>
-		<item>בהיר</item>
-		<item>בהיר למדי</item>
-		<item>בהיר חלקית</item>
-		<item>מעונן חלקית</item>
-		<item>מאובק</item>
-		<item>אביך</item>
-		<item>מעורפל</item>
-		<item>עשן</item>
-		<item>מעונן למדי</item>
-		<item>עננות גבוהה</item>
-		<item>מעונן</item>
-		<item>ערפל</item>
-		<item>גשם קל</item>
-		<item>ממטרי גשם</item>
-		<item>גשם דק</item>
-		<item>ממטרים</item>
-		<item>סיכוי לגשם</item>
-		<item>סיכוי לממטרים</item>
-		<item>מטטרים פזורים</item>
-		<item>סופת רעמים</item>
-		<item>סיכוי לסופת רעמים</item>
-		<item>סופות רעמים פזורות</item>
-		<item>סיכוי לסערה</item>
-		<item>סערה</item>
-		<item>גשם כבד</item>
-		<item>גשם</item>
-		<item>משבי שלג</item>
-		<item>שלג קל</item>
-		<item>סיכוי לשלג</item>
-		<item>שלג לסירוגין</item>
-		<item>שלג פזור לסירוגין</item>
-		<item>שלג</item>
-		<item>קרח</item>
-		<item>קרח או שלג</item>
-		<item>גשם מעורם בשלג</item>
-		<item>גשם דק קפוא</item>
-		<item>גשם ושלג</item>
-		<item>רוח</item>
-	</string-array>
-
-   <string-array name="verbosetime1">
+    <string name="daysuffix"/>
+    <string-array name="verbosedow">
+        <item>ראשון</item>
+        <item>שני</item>
+        <item>שלישי</item>
+        <item>רביעי</item>
+        <item>חמישי</item>
+        <item>שישי</item>
+        <item>שבת</item>
+    </string-array>
+    <string-array name="shortdow">
+        <item>א\'</item>
+        <item>ב\'</item>
+        <item>ג\'</item>
+        <item>ד\'</item>
+        <item>ה\'</item>
+        <item>ו\'</item>
+        <item>ש\'</item>
+    </string-array>
+    <string-array name="verbosemonth">
+        <item>ינואר</item>
+        <item>פברואר</item>
+        <item>מרץ</item>
+        <item>אפריל</item>
+        <item>מאי</item>
+        <item>יוני</item>
+        <item>יולי</item>
+        <item>אוגוסט</item>
+        <item>ספטמבר</item>
+        <item>אוקטובר</item>
+        <item>נובמבר</item>
+        <item>דצמבר</item>
+    </string-array>
+    <string-array name="shortmonth">
+        <item>ינו\'</item>
+        <item>פבר\'</item>
+        <item>מרץ</item>
+        <item>אפר\'</item>
+        <item>מאי</item>
+        <item>יוני</item>
+        <item>יולי</item>
+        <item>אוג\'</item>
+        <item>ספט\'</item>
+        <item>אוק\'</item>
+        <item>נוב\'</item>
+        <item>דצמ\'</item>
+    </string-array>
+    <string-array name="WordNumbers">
+        <item>אפס</item>
+        <item>אחד</item>
+        <item>שתיים</item>
+        <item>שלוש</item>
+        <item>ארבע</item>
+        <item>חמש</item>
+        <item>שש</item>
+        <item>שבע</item>
+        <item>שמונה</item>
+        <item>תשע</item>
+        <item>עשר</item>
+        <item>אחת עשרה</item>
+        <item>שתים עשרה</item>
+        <item>שלוש עשרה</item>
+        <item>ארבע עשרה</item>
+        <item>חמש עשרה</item>
+        <item>שש עשרה</item>
+        <item>שבע עשרה</item>
+        <item>שמונה עשרה</item>
+        <item>תשע עשרה</item>
+        <item>עשרים</item>
+        <item>עשרים ואחת</item>
+        <item>עשרים ושתיים</item>
+        <item>עשרים ושלוש</item>
+        <item>עשרים וארבע</item>
+        <item>עשרים וחמש</item>
+        <item>עשרים ושש</item>
+        <item>עשרים ושבע</item>
+        <item>עשרים ושמונה</item>
+        <item>עשרים ותשע</item>
+        <item>שלושים</item>
+        <item>שלושים ואחת</item>
+        <item>שלושים ושתיים</item>
+        <item>שלושים ושלוש</item>
+        <item>שלושים וארבע</item>
+        <item>שלושים וחמש</item>
+        <item>שלושים ושש</item>
+        <item>שלושים ושבע</item>
+        <item>שלושים ושמונה</item>
+        <item>שלושים ותשע</item>
+        <item>ארבעים</item>
+        <item>ארבעים ואחת</item>
+        <item>ארבעים ושתיים</item>
+        <item>ארבעים ושלוש</item>
+        <item>ארבעים וארבע</item>
+        <item>ארבעים וחמש</item>
+        <item>ארבעים ושש</item>
+        <item>ארבעים ושבע</item>
+        <item>ארבעים ושמונה</item>
+        <item>ארבעים ותשע</item>
+        <item>חמישים</item>
+        <item>חמישים ואחת</item>
+        <item>חמישים ושתיים</item>
+        <item>חמישים ושלוש</item>
+        <item>חמישים וארבע</item>
+        <item>חמישים וחמש</item>
+        <item>חמישים ושש</item>
+        <item>חמישים ושבע</item>
+        <item>חמישים ושמונה</item>
+        <item>חמישים ותשע</item>
+        <item>שישים</item>
+        <item>שישים ואחת</item>
+        <item>שישים ושתיים</item>
+        <item>שישים ושלוש</item>
+        <item>שישים וארבע</item>
+        <item>שישים וחמש</item>
+        <item>שישים ושש</item>
+        <item>שישים ושבע</item>
+        <item>שישים ושמונה</item>
+        <item>שישים ותשע</item>
+        <item>שבעים</item>
+        <item>שבעים ואחת</item>
+        <item>שבעים ושתיים</item>
+        <item>שבעים ושלוש</item>
+        <item>שבעים וארבע</item>
+        <item>שבעים וחמש</item>
+        <item>שבעים ושש</item>
+        <item>שבעים ושבע</item>
+        <item>שבעים ושמונה</item>
+        <item>שבעים ותשע</item>
+        <item>שמונים</item>
+        <item>שמונים ואחת</item>
+        <item>שמונים ושתיים</item>
+        <item>שמונים ושלוש</item>
+        <item>שמונים וארבע</item>
+        <item>שמונים וחמש</item>
+        <item>שמונים ושש</item>
+        <item>שמונים ושבע</item>
+        <item>שמונים ושמונה</item>
+        <item>שמונים ותשע</item>
+        <item>תשעים</item>
+        <item>תשעים ואחת</item>
+        <item>תשעים ושתיים</item>
+        <item>תשעים ושלוש</item>
+        <item>תשעים וארבע</item>
+        <item>תשעים וחמש</item>
+        <item>תשעים ושש</item>
+        <item>תשעים ושבע</item>
+        <item>תשעים ושמונה</item>
+        <item>תשעים ותשע</item>
+    </string-array>
+    <string-array name="VerboseWeather">
+        <item>לא ידוע</item>
+        <item>בהיר</item>
+        <item>בהיר</item>
+        <item>בהיר למדי</item>
+        <item>בהיר חלקית</item>
+        <item>מעונן חלקית</item>
+        <item>מאובק</item>
+        <item>אביך</item>
+        <item>מעורפל</item>
+        <item>עשן</item>
+        <item>מעונן למדי</item>
+        <item>עננות גבוהה</item>
+        <item>מעונן</item>
+        <item>ערפל</item>
+        <item>גשם קל</item>
+        <item>ממטרי גשם</item>
+        <item>גשם דק</item>
+        <item>ממטרים</item>
+        <item>סיכוי לגשם</item>
+        <item>סיכוי לממטרים</item>
+        <item>מטטרים פזורים</item>
+        <item>סופת רעמים</item>
+        <item>סיכוי לסופת רעמים</item>
+        <item>סופות רעמים פזורות</item>
+        <item>סיכוי לסערה</item>
+        <item>סערה</item>
+        <item>גשם כבד</item>
+        <item>גשם</item>
+        <item>משבי שלג</item>
+        <item>שלג קל</item>
+        <item>סיכוי לשלג</item>
+        <item>שלג לסירוגין</item>
+        <item>שלג פזור לסירוגין</item>
+        <item>שלג</item>
+        <item>קרח</item>
+        <item>קרח או שלג</item>
+        <item>גשם מעורם בשלג</item>
+        <item>גשם דק קפוא</item>
+        <item>גשם ושלג</item>
+        <item>רוח</item>
+    </string-array>
+    <string-array name="verbosetime1">
         <item>שתים עשרה.</item>
         <item>שתים עשרה ודקה.</item>
         <item>שתים עשרה ושתי דקות.</item>
@@ -1980,5 +1966,11 @@
         <item>אחת עשרה וחמישים ושמונה דקות.</item>
         <item>אחת עשרה וחמישים ותשע דקות.</item>
     </string-array>
-
+    <string name="_apply">הפעל</string>
+    <string name="_search">חפש</string>
+    <string name="_yes">כן</string>
+    <string name="_abandon">בטל</string>
+    <string name="_ok">אשר</string>
+    <string name="_no">לא</string>
+    <string name="translators">מתרגמים</string>
 </resources>

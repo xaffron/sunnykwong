@@ -5,12 +5,6 @@
     <string name="translator">Michał Michalski</string>
     <!-- General Buttons -->
     <string name="nextTip">Następna Porada</string>
-    <string name="ok">OK</string>
-    <string name="search">Szukaj</string>
-    <string name="abandon">Porzuć</string>
-    <string name="apply">Zastosuj</string>
-    <string name="yes">Tak</string>
-    <string name="no">Nie</string>
     <!-- General Errors -->
     <string name="sdcardNotDetected">Nie wykryto Karty SD.\Pamiętaj o odłaczeniu pamięci masowej, jeżeli telefon jest wciąż podłączony!</string>
     <string name="sdcardMissingOrCorrupt">Brak Karty SD lub jest ona uszkodzona.\Pamiętaj o odłączeniu pamięci masowej, jeżeli telefon jest wciąż podłączony!</string>
@@ -302,162 +296,154 @@
     <string name="weatherFontText">Weatherfont is fully licensed from Jonathan Macagba, available for $5 USD from jonathan.macagba@gmail.com</string>
     <string name="sourceCodeTitle">Kod Żródłowy</string>
     <string name="sourceCode">Kod Źródłowy Dostępny na</string>
-    
     <string-array name="verbosedow">
-<item>Niedziela</item>
-<item>Poniedziałek</item>
-<item>Wtorek</item>
-<item>Środa</item>
-<item>Czwartek</item>
-<item>Piątek</item>
-<item>Sobota</item>
-</string-array>
-
-<string-array name="shortdow">
-<item>Nd</item>
-<item>Pn</item>
-<item>Wt</item>
-<item>Śr</item>
-<item>Cz</item>
-<item>Pt</item>
-<item>So</item>
-</string-array>
-
-<string-array name="verbosemonth">
-<item>Stycznia</item>
-<item>Lutego</item>
-<item>Marca</item>
-<item>Kwietnia</item>
-<item>Maja</item>
-<item>Czerwca</item>
-<item>Lipca</item>
-<item>Sierpnia</item>
-<item>Września</item>
-<item>Października</item>
-<item>Listopada</item>
-<item>Grudnia</item>
-</string-array>
-
-<string-array name="shortmonth">
-<item>sty</item>
-<item>lut</item>
-<item>mar</item>
-<item>kwi</item>
-<item>maj</item>
-<item>cze</item>
-<item>lip</item>
-<item>sie</item>
-<item>wrze</item>
-<item>paź</item>
-<item>lis</item>
-<item>gru</item>
-</string-array>
-    
-    
+        <item>Niedziela</item>
+        <item>Poniedziałek</item>
+        <item>Wtorek</item>
+        <item>Środa</item>
+        <item>Czwartek</item>
+        <item>Piątek</item>
+        <item>Sobota</item>
+    </string-array>
+    <string-array name="shortdow">
+        <item>Nd</item>
+        <item>Pn</item>
+        <item>Wt</item>
+        <item>Śr</item>
+        <item>Cz</item>
+        <item>Pt</item>
+        <item>So</item>
+    </string-array>
+    <string-array name="verbosemonth">
+        <item>Stycznia</item>
+        <item>Lutego</item>
+        <item>Marca</item>
+        <item>Kwietnia</item>
+        <item>Maja</item>
+        <item>Czerwca</item>
+        <item>Lipca</item>
+        <item>Sierpnia</item>
+        <item>Września</item>
+        <item>Października</item>
+        <item>Listopada</item>
+        <item>Grudnia</item>
+    </string-array>
+    <string-array name="shortmonth">
+        <item>sty</item>
+        <item>lut</item>
+        <item>mar</item>
+        <item>kwi</item>
+        <item>maj</item>
+        <item>cze</item>
+        <item>lip</item>
+        <item>sie</item>
+        <item>wrze</item>
+        <item>paź</item>
+        <item>lis</item>
+        <item>gru</item>
+    </string-array>
     <string-array name="WordNumbers">
-<item>Zero</item>
-<item>Jeden</item>
-<item>Dwa</item>
-<item>Trzy</item>
-<item>Cztery</item>
-<item>Pięć</item>
-<item>Sześć</item>
-<item>Siedem</item>
-<item>Osiem</item>
-<item>Dziewięć</item>
-<item>Dziesięć</item>
-<item>Jedenaście</item>
-<item>Dwanaście</item>
-<item>Trzynaście</item>
-<item>Czternaście</item>
-<item>Piętnaście</item>
-<item>Szesnaście</item>
-<item>Siedemnaście</item>
-<item>Osiemnaście</item>
-<item>Dziewiętnaście</item>
-<item>Dwadzieścia</item>
-<item>Dwadzieścia Jeden</item>
-<item>Dwadzieścia Dwa</item>
-<item>Dwadzieścia Trzy</item>
-<item>Dwadzieścia Cztery</item>
-<item>Dwadzieścia Pięć</item>
-<item>Dwadzieścia Sześć</item>
-<item>Dwadzieścia Siedem</item>
-<item>Dwadzieścia Osiem</item>
-<item>Dwadzieścia Dziewięć</item>
-<item>Trzydzieści</item>
-<item>Trzydzieści Jeden</item>
-<item>Trzydzieści Dwa</item>
-<item>Trzydzieści Trzy</item>
-<item>Trzydzieści Cztery</item>
-<item>Trzydzieści Pięć</item>
-<item>Trzydzieści Sześć</item>
-<item>Trzydzieści Siedem</item>
-<item>Trzydzieści Osiem</item>
-<item>Trzydzieści Dziewięć</item>
-<item>Czterdzieści</item>
-<item>Czterdzieści Jeden</item>
-<item>Czterdzieści Dwa</item>
-<item>Czterdzieści Trzy</item>
-<item>Czterdzieści Cztery</item>
-<item>Czterdzieści Pięć</item>
-<item>Czterdzieści Sześc</item>
-<item>Czterdzieści Siedem</item>
-<item>Czterdzieści Osiem</item>
-<item>Czterdzieści Dziewięć</item>
-<item>Pięćdziesiąt</item>
-<item>Pięćdziesiąt Jeden</item>
-<item>Pięćdziesiąt Dwa</item>
-<item>Pięćdziesiąt Trzy</item>
-<item>Pięćdziesiąt Cztery</item>
-<item>Pięćdziesiąt Pięć</item>
-<item>Pięćdziesiąt Sześć</item>
-<item>Pięćdziesiąt Siedem</item>
-<item>Pięćdziesiąt Osiem</item>
-<item>Pięćdziesiąt Dziewięć</item>
-<item>Sześćdziesiąt</item>
-<item>Sześćdziesiąt Jeden</item>
-<item>Sześćdziesiąt Dwa</item>
-<item>Sześćdziesiąt Trzy</item>
-<item>Sześćdziesiąt Cztery</item>
-<item>Sześćdziesiąt Pięć</item>
-<item>Sześćdziesiąt Sześć</item>
-<item>Sześćdziesiąt Siedem</item>
-<item>Sześćdziesiąt Osiem</item>
-<item>Sześćdziesiąt Dziewięć</item>
-<item>Siedemdziesiąt</item>
-<item>Siedemdziesiąt Jeden</item>
-<item>Siedemdziesiąt Dwa</item>
-<item>Siedemdziesiąt Trzy</item>
-<item>Siedemdziesiąt Cztery</item>
-<item>Siedemdziesiąt Pięć</item>
-<item>Siedemdziesiąt Sześć</item>
-<item>Siedemdziesiąt Siedem</item>
-<item>Siedemdziesiąt Osiem</item>
-<item>Siedemdziesiąt Dziewięć</item>
-<item>Osiemdziesiąt</item>
-<item>Osiemdziesiąt Jeden</item>
-<item>Osiemdziesiąt Dwa</item>
-<item>Osiemdziesiąt Trzy</item>
-<item>Osiemdziesiąt Cztery</item>
-<item>Osiemdziesiąt Pięć</item>
-<item>Osiemdziesiąt Sześć</item>
-<item>Osiemdziesiąt Siedem</item>
-<item>Osiemdziesiąt Osiem</item>
-<item>Osiemdziesiąt Dziewięć</item>
-<item>Dziewięćdziesiąt</item>
-<item>Dziewięćdziesiąt Jeden</item>
-<item>Dziewięćdziesiąt Dwa</item>
-<item>Dziewięćdziesiąt Trzy</item>
-<item>Dziewięćdziesiąt Cztery</item>
-<item>Dziewięćdziesiąt Pięć</item>
-<item>Dziewięćdziesiąt Sześć</item>
-<item>Dziewięćdziesiąt Siedem</item>
-<item>Dziewięćdziesiąt Osiem</item>
-<item>Dziewięćdziesiąt Dziewięć</item>
-</string-array>
-
-
+        <item>Zero</item>
+        <item>Jeden</item>
+        <item>Dwa</item>
+        <item>Trzy</item>
+        <item>Cztery</item>
+        <item>Pięć</item>
+        <item>Sześć</item>
+        <item>Siedem</item>
+        <item>Osiem</item>
+        <item>Dziewięć</item>
+        <item>Dziesięć</item>
+        <item>Jedenaście</item>
+        <item>Dwanaście</item>
+        <item>Trzynaście</item>
+        <item>Czternaście</item>
+        <item>Piętnaście</item>
+        <item>Szesnaście</item>
+        <item>Siedemnaście</item>
+        <item>Osiemnaście</item>
+        <item>Dziewiętnaście</item>
+        <item>Dwadzieścia</item>
+        <item>Dwadzieścia Jeden</item>
+        <item>Dwadzieścia Dwa</item>
+        <item>Dwadzieścia Trzy</item>
+        <item>Dwadzieścia Cztery</item>
+        <item>Dwadzieścia Pięć</item>
+        <item>Dwadzieścia Sześć</item>
+        <item>Dwadzieścia Siedem</item>
+        <item>Dwadzieścia Osiem</item>
+        <item>Dwadzieścia Dziewięć</item>
+        <item>Trzydzieści</item>
+        <item>Trzydzieści Jeden</item>
+        <item>Trzydzieści Dwa</item>
+        <item>Trzydzieści Trzy</item>
+        <item>Trzydzieści Cztery</item>
+        <item>Trzydzieści Pięć</item>
+        <item>Trzydzieści Sześć</item>
+        <item>Trzydzieści Siedem</item>
+        <item>Trzydzieści Osiem</item>
+        <item>Trzydzieści Dziewięć</item>
+        <item>Czterdzieści</item>
+        <item>Czterdzieści Jeden</item>
+        <item>Czterdzieści Dwa</item>
+        <item>Czterdzieści Trzy</item>
+        <item>Czterdzieści Cztery</item>
+        <item>Czterdzieści Pięć</item>
+        <item>Czterdzieści Sześc</item>
+        <item>Czterdzieści Siedem</item>
+        <item>Czterdzieści Osiem</item>
+        <item>Czterdzieści Dziewięć</item>
+        <item>Pięćdziesiąt</item>
+        <item>Pięćdziesiąt Jeden</item>
+        <item>Pięćdziesiąt Dwa</item>
+        <item>Pięćdziesiąt Trzy</item>
+        <item>Pięćdziesiąt Cztery</item>
+        <item>Pięćdziesiąt Pięć</item>
+        <item>Pięćdziesiąt Sześć</item>
+        <item>Pięćdziesiąt Siedem</item>
+        <item>Pięćdziesiąt Osiem</item>
+        <item>Pięćdziesiąt Dziewięć</item>
+        <item>Sześćdziesiąt</item>
+        <item>Sześćdziesiąt Jeden</item>
+        <item>Sześćdziesiąt Dwa</item>
+        <item>Sześćdziesiąt Trzy</item>
+        <item>Sześćdziesiąt Cztery</item>
+        <item>Sześćdziesiąt Pięć</item>
+        <item>Sześćdziesiąt Sześć</item>
+        <item>Sześćdziesiąt Siedem</item>
+        <item>Sześćdziesiąt Osiem</item>
+        <item>Sześćdziesiąt Dziewięć</item>
+        <item>Siedemdziesiąt</item>
+        <item>Siedemdziesiąt Jeden</item>
+        <item>Siedemdziesiąt Dwa</item>
+        <item>Siedemdziesiąt Trzy</item>
+        <item>Siedemdziesiąt Cztery</item>
+        <item>Siedemdziesiąt Pięć</item>
+        <item>Siedemdziesiąt Sześć</item>
+        <item>Siedemdziesiąt Siedem</item>
+        <item>Siedemdziesiąt Osiem</item>
+        <item>Siedemdziesiąt Dziewięć</item>
+        <item>Osiemdziesiąt</item>
+        <item>Osiemdziesiąt Jeden</item>
+        <item>Osiemdziesiąt Dwa</item>
+        <item>Osiemdziesiąt Trzy</item>
+        <item>Osiemdziesiąt Cztery</item>
+        <item>Osiemdziesiąt Pięć</item>
+        <item>Osiemdziesiąt Sześć</item>
+        <item>Osiemdziesiąt Siedem</item>
+        <item>Osiemdziesiąt Osiem</item>
+        <item>Osiemdziesiąt Dziewięć</item>
+        <item>Dziewięćdziesiąt</item>
+        <item>Dziewięćdziesiąt Jeden</item>
+        <item>Dziewięćdziesiąt Dwa</item>
+        <item>Dziewięćdziesiąt Trzy</item>
+        <item>Dziewięćdziesiąt Cztery</item>
+        <item>Dziewięćdziesiąt Pięć</item>
+        <item>Dziewięćdziesiąt Sześć</item>
+        <item>Dziewięćdziesiąt Siedem</item>
+        <item>Dziewięćdziesiąt Osiem</item>
+        <item>Dziewięćdziesiąt Dziewięć</item>
+    </string-array>
     <string-array name="verbosetime1">
         <item>Północ</item>
         <item>Jeden po północy</item>
@@ -1906,50 +1892,53 @@
         <item>Za dwie północ</item>
         <item>Za jeden północ</item>
     </string-array>
-
-<string-array name="VerboseWeather">
-<item>Nieznana</item>
-<item>Pogodnie</item>
-<item newname="">Pogodnie</item>
-<item newname="">Przeważnie Pogodnie</item>
-<item newname="">Częściowe Przejaśnienia</item>
-<item>Przewaga Chmur</item>
-<item newname="">Pył</item>
-<item newname="">Mgiełka</item>
-<item>Mgliście</item>
-<item newname="">Dym</item>
-<item>Częściowe Zachmurzenie</item>
-<item newname="">Pochmurny</item>
-<item>Pochmurno</item>
-<item newname="">Mgła</item>
-<item>Lekki Deszcz</item>
-<item newname="">Przelotne Opady</item>
-<item newname="">Mżawka</item>
-<item>Przelotne Opady</item>
-<item newname="">Możliwe Opady</item>
-<item newname="">Możliwe Deszcze</item>
-<item>Miejscowe Opady</item>
-<item>Burza Z Piorunami</item>
-<item newname="">Możliwe Burze</item>
-<item newname="">Miejscowe Burze</item>
-<item>Przelotne Burze</item>
-<item newname="">Burza</item>
-<item newname="">Ulewa</item>
-<item>Deszcz</item>
-<item newname="">Przelotne Opady Śniegu</item>
-<item>Lekki Śnieg</item>
-<item newname="">Możliwe Opady Śniegu</item>
-<item newname="">Opady Śniegu</item>
-<item newname="">Przelotne Opady Śniegu</item>
-<item>Śnieg</item>
-<item newname="">Mroźnie</item>
-<item newname="">Lód Lub Śnieg</item>
-<item newname="">Deszcz Ze Śniegiem</item>
-<item newname="">Mrzawka</item>
-<item>Zmiennie Zimno</item>
-<item newname="">Wietrznie</item>
-</string-array>
-
-
-    
+    <string-array name="VerboseWeather">
+        <item>Nieznana</item>
+        <item>Pogodnie</item>
+        <item newname="">Pogodnie</item>
+        <item newname="">Przeważnie Pogodnie</item>
+        <item newname="">Częściowe Przejaśnienia</item>
+        <item>Przewaga Chmur</item>
+        <item newname="">Pył</item>
+        <item newname="">Mgiełka</item>
+        <item>Mgliście</item>
+        <item newname="">Dym</item>
+        <item>Częściowe Zachmurzenie</item>
+        <item newname="">Pochmurny</item>
+        <item>Pochmurno</item>
+        <item newname="">Mgła</item>
+        <item>Lekki Deszcz</item>
+        <item newname="">Przelotne Opady</item>
+        <item newname="">Mżawka</item>
+        <item>Przelotne Opady</item>
+        <item newname="">Możliwe Opady</item>
+        <item newname="">Możliwe Deszcze</item>
+        <item>Miejscowe Opady</item>
+        <item>Burza Z Piorunami</item>
+        <item newname="">Możliwe Burze</item>
+        <item newname="">Miejscowe Burze</item>
+        <item>Przelotne Burze</item>
+        <item newname="">Burza</item>
+        <item newname="">Ulewa</item>
+        <item>Deszcz</item>
+        <item newname="">Przelotne Opady Śniegu</item>
+        <item>Lekki Śnieg</item>
+        <item newname="">Możliwe Opady Śniegu</item>
+        <item newname="">Opady Śniegu</item>
+        <item newname="">Przelotne Opady Śniegu</item>
+        <item>Śnieg</item>
+        <item newname="">Mroźnie</item>
+        <item newname="">Lód Lub Śnieg</item>
+        <item newname="">Deszcz Ze Śniegiem</item>
+        <item newname="">Mrzawka</item>
+        <item>Zmiennie Zimno</item>
+        <item newname="">Wietrznie</item>
+    </string-array>
+    <string name="_apply">Zastosuj</string>
+    <string name="_search">Szukaj</string>
+    <string name="_yes">Tak</string>
+    <string name="_abandon">Porzuć</string>
+    <string name="_ok">OK</string>
+    <string name="_no">Nie</string>
+    <string name="translators">Tłumacze</string>
 </resources>

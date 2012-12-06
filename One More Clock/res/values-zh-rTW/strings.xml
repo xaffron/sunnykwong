@@ -5,12 +5,6 @@
     <string name="translator">鄺宇恆</string>
     <!-- General Buttons -->
     <string name="nextTip">下一則</string>
-    <string name="ok">確定</string>
-    <string name="search">搜索</string>
-    <string name="abandon">取消</string>
-    <string name="apply">完成</string>
-    <string name="yes">是</string>
-    <string name="no">否</string>
     <!-- General Errors -->
     <string name="sdcardNotDetected">未檢測到SD卡。\n請留意終止USB存儲模式！</string>
     <string name="sdcardMissingOrCorrupt">SD卡讀取出現故障。\n請留意終止USB存儲模式！</string>
@@ -333,162 +327,155 @@
     <string name="weatherFontText">Weatherfont is fully licensed from Jonathan Macagba, available for $5 USD from jonathan.macagba@gmail.com</string>
     <string name="sourceCodeTitle">源代碼</string>
     <string name="sourceCode">可於以下網站瀏覽</string>
-    
     <string name="daysuffix">日</string>
-
-<string-array name="verbosedow">
-<item>星期日</item>
-<item>星期一</item>
-<item>星期二</item>
-<item>星期三</item>
-<item>星期四</item>
-<item>星期五</item>
-<item>星期六</item>
-</string-array>
-
-<string-array name="shortdow">
-<item>週日</item>
-<item>週一</item>
-<item>週二</item>
-<item>週三</item>
-<item>週四</item>
-<item>週五</item>
-<item>週六</item>
-</string-array>
-
-<string-array name="verbosemonth">
-<item>1月</item>
-<item>2月</item>
-<item>3月</item>
-<item>4月</item>
-<item>5月</item>
-<item>6月</item>
-<item>7月</item>
-<item>8月</item>
-<item>9月</item>
-<item>10月</item>
-<item>11月</item>
-<item>12月</item>
-</string-array>
-
-<string-array name="shortmonth">
-<item>1月</item>
-<item>2月</item>
-<item>3月</item>
-<item>4月</item>
-<item>5月</item>
-<item>6月</item>
-<item>7月</item>
-<item>8月</item>
-<item>9月</item>
-<item>10月</item>
-<item>11月</item>
-<item>12月</item>
-</string-array>
-
+    <string-array name="verbosedow">
+        <item>星期日</item>
+        <item>星期一</item>
+        <item>星期二</item>
+        <item>星期三</item>
+        <item>星期四</item>
+        <item>星期五</item>
+        <item>星期六</item>
+    </string-array>
+    <string-array name="shortdow">
+        <item>週日</item>
+        <item>週一</item>
+        <item>週二</item>
+        <item>週三</item>
+        <item>週四</item>
+        <item>週五</item>
+        <item>週六</item>
+    </string-array>
+    <string-array name="verbosemonth">
+        <item>1月</item>
+        <item>2月</item>
+        <item>3月</item>
+        <item>4月</item>
+        <item>5月</item>
+        <item>6月</item>
+        <item>7月</item>
+        <item>8月</item>
+        <item>9月</item>
+        <item>10月</item>
+        <item>11月</item>
+        <item>12月</item>
+    </string-array>
+    <string-array name="shortmonth">
+        <item>1月</item>
+        <item>2月</item>
+        <item>3月</item>
+        <item>4月</item>
+        <item>5月</item>
+        <item>6月</item>
+        <item>7月</item>
+        <item>8月</item>
+        <item>9月</item>
+        <item>10月</item>
+        <item>11月</item>
+        <item>12月</item>
+    </string-array>
     <string-array name="WordNumbers">
-<item>零</item>
-<item>一</item>
-<item>二</item>
-<item>三</item>
-<item>四</item>
-<item>五</item>
-<item>六</item>
-<item>七</item>
-<item>八</item>
-<item>九</item>
-<item>十</item>
-<item>十一</item>
-<item>十二</item>
-<item>十三</item>
-<item>十四</item>
-<item>十五</item>
-<item>十六</item>
-<item>十七</item>
-<item>十八</item>
-<item>十九</item>
-<item>二十</item>
-<item>二十一</item>
-<item>二十二</item>
-<item>二十三</item>
-<item>二十四</item>
-<item>二十五</item>
-<item>二十六</item>
-<item>二十七</item>
-<item>二十八</item>
-<item>二十九</item>
-<item>三十</item>
-<item>三十一</item>
-<item>三十二</item>
-<item>三十三</item>
-<item>三十四</item>
-<item>三十五</item>
-<item>三十六</item>
-<item>三十七</item>
-<item>三十八</item>
-<item>三十九</item>
-<item>四十</item>
-<item>四十一</item>
-<item>四十二</item>
-<item>四十三</item>
-<item>四十四</item>
-<item>四十五</item>
-<item>四十六</item>
-<item>四十七</item>
-<item>四十八</item>
-<item>四十九</item>
-<item>五十</item>
-<item>五十一</item>
-<item>五十二</item>
-<item>五十三</item>
-<item>五十四</item>
-<item>五十五</item>
-<item>五十六</item>
-<item>五十七</item>
-<item>五十八</item>
-<item>五十九</item>
-<item>六十</item>
-<item>六十一</item>
-<item>六十二</item>
-<item>六十三</item>
-<item>六十四</item>
-<item>六十五</item>
-<item>六十六</item>
-<item>六十七</item>
-<item>六十八</item>
-<item>六十九</item>
-<item>七十</item>
-<item>七十一</item>
-<item>七十二</item>
-<item>七十三</item>
-<item>七十四</item>
-<item>七十五</item>
-<item>七十六</item>
-<item>七十七</item>
-<item>七十八</item>
-<item>七十九</item>
-<item>八十</item>
-<item>八十一</item>
-<item>八十二</item>
-<item>八十三</item>
-<item>八十四</item>
-<item>八十五</item>
-<item>八十六</item>
-<item>八十七</item>
-<item>八十八</item>
-<item>八十九</item>
-<item>九十</item>
-<item>九十一</item>
-<item>九十二</item>
-<item>九十三</item>
-<item>九十四</item>
-<item>九十五</item>
-<item>九十六</item>
-<item>九十七</item>
-<item>九十八</item>
-<item>九十九</item>
-</string-array>
-
+        <item>零</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+        <item>七</item>
+        <item>八</item>
+        <item>九</item>
+        <item>十</item>
+        <item>十一</item>
+        <item>十二</item>
+        <item>十三</item>
+        <item>十四</item>
+        <item>十五</item>
+        <item>十六</item>
+        <item>十七</item>
+        <item>十八</item>
+        <item>十九</item>
+        <item>二十</item>
+        <item>二十一</item>
+        <item>二十二</item>
+        <item>二十三</item>
+        <item>二十四</item>
+        <item>二十五</item>
+        <item>二十六</item>
+        <item>二十七</item>
+        <item>二十八</item>
+        <item>二十九</item>
+        <item>三十</item>
+        <item>三十一</item>
+        <item>三十二</item>
+        <item>三十三</item>
+        <item>三十四</item>
+        <item>三十五</item>
+        <item>三十六</item>
+        <item>三十七</item>
+        <item>三十八</item>
+        <item>三十九</item>
+        <item>四十</item>
+        <item>四十一</item>
+        <item>四十二</item>
+        <item>四十三</item>
+        <item>四十四</item>
+        <item>四十五</item>
+        <item>四十六</item>
+        <item>四十七</item>
+        <item>四十八</item>
+        <item>四十九</item>
+        <item>五十</item>
+        <item>五十一</item>
+        <item>五十二</item>
+        <item>五十三</item>
+        <item>五十四</item>
+        <item>五十五</item>
+        <item>五十六</item>
+        <item>五十七</item>
+        <item>五十八</item>
+        <item>五十九</item>
+        <item>六十</item>
+        <item>六十一</item>
+        <item>六十二</item>
+        <item>六十三</item>
+        <item>六十四</item>
+        <item>六十五</item>
+        <item>六十六</item>
+        <item>六十七</item>
+        <item>六十八</item>
+        <item>六十九</item>
+        <item>七十</item>
+        <item>七十一</item>
+        <item>七十二</item>
+        <item>七十三</item>
+        <item>七十四</item>
+        <item>七十五</item>
+        <item>七十六</item>
+        <item>七十七</item>
+        <item>七十八</item>
+        <item>七十九</item>
+        <item>八十</item>
+        <item>八十一</item>
+        <item>八十二</item>
+        <item>八十三</item>
+        <item>八十四</item>
+        <item>八十五</item>
+        <item>八十六</item>
+        <item>八十七</item>
+        <item>八十八</item>
+        <item>八十九</item>
+        <item>九十</item>
+        <item>九十一</item>
+        <item>九十二</item>
+        <item>九十三</item>
+        <item>九十四</item>
+        <item>九十五</item>
+        <item>九十六</item>
+        <item>九十七</item>
+        <item>九十八</item>
+        <item>九十九</item>
+    </string-array>
     <string-array name="verbosetime1">
         <item>十二時正</item>
         <item>十二時零一分</item>
@@ -1937,49 +1924,54 @@
         <item>十一時五十八分</item>
         <item>十一時五十九分</item>
     </string-array>
-
-<string-array name="VerboseWeather">
-<item>不明</item>
-<item>天晴</item>
-<item>天晴</item>
-<item>大致天晴</item>
-<item>部分天晴</item>
-<item>部分多雲</item>
-<item>粉塵</item>
-<item>煙霧</item>
-<item>薄霧</item>
-<item>煙霧</item>
-<item>多雲時陰</item>
-<item>天陰</item>
-<item>多雲</item>
-<item>濃霧</item>
-<item>小雨</item>
-<item>陣雨</item>
-<item>細雨</item>
-<item>驟雨</item>
-<item>可能有雨</item>
-<item>可能有陣雨</item>
-<item>零散驟雨</item>
-<item>雷雨</item>
-<item>可能有雷雨</item>
-<item>零散雷雨</item>
-<item>可能有風暴</item>
-<item>風暴</item>
-<item>大雨</item>
-<item>降雨</item>
-<item>飄雪</item>
-<item>細雪</item>
-<item>可能有雪</item>
-<item>陣雪</item>
-<item>零散陣雪</item>
-<item>降雪</item>
-<item>有冰</item>
-<item>冰夾雪</item>
-<item>雨夾雪</item>
-<item>凍雨</item>
-<item>雨夾雪</item>
-<item>大風</item>
-</string-array>
-
-    
+    <string-array name="VerboseWeather">
+        <item>不明</item>
+        <item>天晴</item>
+        <item>天晴</item>
+        <item>大致天晴</item>
+        <item>部分天晴</item>
+        <item>部分多雲</item>
+        <item>粉塵</item>
+        <item>煙霧</item>
+        <item>薄霧</item>
+        <item>煙霧</item>
+        <item>多雲時陰</item>
+        <item>天陰</item>
+        <item>多雲</item>
+        <item>濃霧</item>
+        <item>小雨</item>
+        <item>陣雨</item>
+        <item>細雨</item>
+        <item>驟雨</item>
+        <item>可能有雨</item>
+        <item>可能有陣雨</item>
+        <item>零散驟雨</item>
+        <item>雷雨</item>
+        <item>可能有雷雨</item>
+        <item>零散雷雨</item>
+        <item>可能有風暴</item>
+        <item>風暴</item>
+        <item>大雨</item>
+        <item>降雨</item>
+        <item>飄雪</item>
+        <item>細雪</item>
+        <item>可能有雪</item>
+        <item>陣雪</item>
+        <item>零散陣雪</item>
+        <item>降雪</item>
+        <item>有冰</item>
+        <item>冰夾雪</item>
+        <item>雨夾雪</item>
+        <item>凍雨</item>
+        <item>雨夾雪</item>
+        <item>大風</item>
+    </string-array>
+    <string name="_apply">完成</string>
+    <string name="_search">搜索</string>
+    <string name="_yes">是</string>
+    <string name="_abandon">取消</string>
+    <string name="_ok">確定</string>
+    <string name="_no">否</string>
+    <string name="translators">翻譯員</string>
+    <string name="viewReleaseNotes">發行說明</string>
 </resources>

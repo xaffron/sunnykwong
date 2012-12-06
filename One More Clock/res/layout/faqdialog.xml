@@ -9,7 +9,7 @@
 <CheckBox android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/splashcheck" android:text="@string/doNotShowAgain" android:textSize="16dp"></CheckBox>
 
 <LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-<Button android:minWidth="100dp" android:gravity="center" android:layout_weight="1" android:text="@string/ok" android:id="@+id/faqOK" android:layout_width="fill_parent" android:layout_height="wrap_content"></Button>
+<Button android:minWidth="100dp" android:gravity="center" android:layout_weight="1" android:text="@string/_ok" android:id="@+id/faqOK" android:layout_width="fill_parent" android:layout_height="wrap_content"></Button>
 <Button android:minWidth="100dp" android:gravity="center" android:layout_weight="1" android:text="@string/nextTip" android:id="@+id/faqNeutral" android:layout_width="fill_parent" android:layout_height="wrap_content"></Button>
 </LinearLayout>
 </LinearLayout>

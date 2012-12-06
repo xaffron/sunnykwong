@@ -5,12 +5,6 @@
     <string name="translator">Sunny Kwong</string>
     <!-- General Buttons/notifications -->
     <string name="nextTip">Next Tip</string>
-    <string name="ok">OK</string>
-    <string name="search">Search</string>
-    <string name="abandon">Abandon</string>
-    <string name="apply">Apply</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
     <string name="taskComplete">Task Complete</string>
     <!-- General Errors -->
     <string name="sdcardNotDetected">SD Card not detected.\nRemember to turn off USB
@@ -2076,4 +2070,10 @@
         <item>Rain and Snow</item>
         <item>Windy</item>
     </string-array>
+    <string name="_ok">OK</string>
+    <string name="_apply">Apply</string>
+    <string name="_search">Search</string>
+    <string name="_yes">Yes</string>
+    <string name="_abandon">Abandon</string>
+    <string name="_no">No</string>
 </resources>

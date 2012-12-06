@@ -146,7 +146,7 @@ public class OMCThemeUnzipActivity extends Activity {
 			public void run() {
 				uri = getIntent().getData();
 				if (uri == null) {
-					Toast.makeText(getApplicationContext(), OMC.RString("nothingToExtract"), Toast.LENGTH_LONG).show();
+					Toast.makeText(getApplicationContext(), OMC.RString("_nothingToExtract"), Toast.LENGTH_LONG).show();
 					finish();
 					return;
 				} else { 

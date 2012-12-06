@@ -6,12 +6,6 @@
     <string name="translator">Miguel Angel Meseguer</string>
     <!-- General Buttons -->
     <string name="nextTip">Siguiente</string>
-    <string name="ok">Aceptar</string>
-    <string name="search">Buscar</string>
-    <string name="abandon">Salir</string>
-    <string name="apply">Aplicar</string>
-    <string name="yes">Si</string>
-    <string name="no">No</string>
     <!-- General Errors -->
     <string name="sdcardNotDetected">Tarjeta SD no detectada. \nRecuerda desactivar el almacenamiento USB si aún está conectado!</string>
     <string name="sdcardMissingOrCorrupt">Tarjeta SD ausente o corrupta. \nRecuerda desactivar el almacenamiento USB si aún está conectado!</string>
@@ -69,7 +63,7 @@
     <string name="downloading">Descargando</string>
     <string name="downloaded">Descargado</string>
     <string name="of">de</string>
-    <string name="bytes">bytes</string>
+    <string name="bytes">\u0020bytes</string>
     <string name="storingFile">Storing file:\u0020</string>
     <string name="existsOverwriting">existe; sobreescribiendo</string>
     <string name="createThemeFolder1">Carpeta tema \'</string>
@@ -336,159 +330,154 @@
     <string name="weatherFontText">Weatherfont está registrado por Jonathan Macagba, disponible por $5 USD en jonathan.macagba@gmail.com</string>
     <string name="sourceCodeTitle">Código fuente</string>
     <string name="sourceCode">Código fuente disponible en</string>
-
-<string-array name="verbosedow">
-<item>Domingo</item>
-<item>Lunes</item>
-<item>Martes</item>
-<item>Miércoles</item>
-<item>Jueves</item>
-<item>Viernes</item>
-<item>Sábado</item>
-</string-array>
-
-<string-array name="shortdow">
-<item>Dom</item>
-<item>Lun</item>
-<item>Mar</item>
-<item>Mie</item>
-<item>Jue</item>
-<item>Vie</item>
-<item>Sab</item>
-</string-array>
-
-<string-array name="verbosemonth">
-<item>Enero</item>
-<item>Febrero</item>
-<item>Marzo</item>
-<item>Abril</item>
-<item>Mayo</item>
-<item>Junio</item>
-<item>Julio</item>
-<item>Agosto</item>
-<item>Septiembre</item>
-<item>Octubre</item>
-<item>Noviembre</item>
-<item>Diciembre</item>
-</string-array>
-
-<string-array name="shortmonth">
-<item>Ene</item>
-<item>Feb</item>
-<item>Mar</item>
-<item>Abr</item>
-<item>May</item>
-<item>Jun</item>
-<item>Jul</item>
-<item>Ago</item>
-<item>Sep</item>
-<item>Oct</item>
-<item>Nov</item>
-<item>Dic</item>
-</string-array>
-<string-array name="WordNumbers">
-<item>cero</item>
-<item>uno</item>
-<item>Dos</item>
-<item>Tres</item>
-<item>Cuatro</item>
-<item>Cinco</item>
-<item>Seis</item>
-<item>Siete</item>
-<item>Ocho</item>
-<item>Nueve</item>
-<item>Diez</item>
-<item>Once</item>
-<item>Doce</item>
-<item>Trece</item>
-<item>Catorce</item>
-<item>Quince</item>
-<item>Dieciseis</item>
-<item>Diecisiete</item>
-<item>Dieciocho</item>
-<item>Diecinueve</item>
-<item>Veinte</item>
-<item>Veintiuno</item>
-<item>Veintidos</item>
-<item>Veintitres</item>
-<item>Veinticuatro</item>
-<item>Veinticinco</item>
-<item>Veintiseis</item>
-<item>Veintisiete</item>
-<item>Veintiocho</item>
-<item>Veintinueve</item>
-<item>Treinta</item>
-<item>Treinta y uno</item>
-<item>Treinta y dos</item>
-<item>Treinta y tres</item>
-<item>Treinta y cuatro</item>
-<item>Treinta y cinco</item>
-<item>Treinta y seis</item>
-<item>Treinta y siete</item>
-<item>Treinta y ocho</item>
-<item>Treinta y nueve</item>
-<item>Cuarenta</item>
-<item>Cuarenta y uno</item>
-<item>Cuarenta y dos</item>
-<item>Cuarenta y tres</item>
-<item>Cuarenta y cuatro</item>
-<item>Cuarenta y cinco</item>
-<item>Cuarenta y seis</item>
-<item>Cuarenta y siete</item>
-<item>Cuarenta y ocho</item>
-<item>Cuarenta y nueve</item>
-<item>Cincuenta</item>
-<item>Cincuenta y uno</item>
-<item>Cincuenta y dos</item>
-<item>Cincuenta y tres</item>
-<item>Cincuenta y cuatro</item>
-<item>Cincuenta y cinco</item>
-<item>Cincuenta y seis</item>
-<item>Cincuenta y siete</item>
-<item>Cincuenta y ocho</item>
-<item>Cincuenta y nueve</item>
-<item>Sesenta</item>
-<item>Sesenta y uno</item>
-<item>Sesenta y dos</item>
-<item>Sesenta y tres</item>
-<item>Sesenta y cuatro</item>
-<item>Sesenta y cinco</item>
-<item>Sesenta y seis</item>
-<item>Sesenta y siete</item>
-<item>Sesenta y ocho</item>
-<item>Sesenta y nueve</item>
-<item>Setenta</item>
-<item>Setenta y uno</item>
-<item>Setenta y dos</item>
-<item>Setenta y tres</item>
-<item>Setenta y cuatro</item>
-<item>Setenta y cinco</item>
-<item>Setenta y seis</item>
-<item>Setenta y siete</item>
-<item>Setenta y ocho</item>
-<item>Setenta y nueve</item>
-<item>Ochenta</item>
-<item>Ochenta y uno</item>
-<item>Ochenta y dos</item>
-<item>Ochenta y tres</item>
-<item>Ochenta y cuatro</item>
-<item>Ochenta y cinco</item>
-<item>Ochenta y seis</item>
-<item>Ochenta y siete</item>
-<item>Ochenta y ocho</item>
-<item>Ochenta y nueve</item>
-<item>Noventa</item>
-<item>Noventa y uno</item>
-<item>Noventa y dos</item>
-<item>Noventa y tres</item>
-<item>Noventa y cuatro</item>
-<item>Noventa y cinco</item>
-<item>Noventa y seis</item>
-<item>Noventa y siete</item>
-<item>Noventa y ocho</item>
-<item>Noventa y nueve</item>
-</string-array>
-
+    <string-array name="verbosedow">
+        <item>Domingo</item>
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miércoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+        <item>Sábado</item>
+    </string-array>
+    <string-array name="shortdow">
+        <item>Dom</item>
+        <item>Lun</item>
+        <item>Mar</item>
+        <item>Mie</item>
+        <item>Jue</item>
+        <item>Vie</item>
+        <item>Sab</item>
+    </string-array>
+    <string-array name="verbosemonth">
+        <item>Enero</item>
+        <item>Febrero</item>
+        <item>Marzo</item>
+        <item>Abril</item>
+        <item>Mayo</item>
+        <item>Junio</item>
+        <item>Julio</item>
+        <item>Agosto</item>
+        <item>Septiembre</item>
+        <item>Octubre</item>
+        <item>Noviembre</item>
+        <item>Diciembre</item>
+    </string-array>
+    <string-array name="shortmonth">
+        <item>Ene</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Abr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Ago</item>
+        <item>Sep</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dic</item>
+    </string-array>
+    <string-array name="WordNumbers">
+        <item>cero</item>
+        <item>uno</item>
+        <item>Dos</item>
+        <item>Tres</item>
+        <item>Cuatro</item>
+        <item>Cinco</item>
+        <item>Seis</item>
+        <item>Siete</item>
+        <item>Ocho</item>
+        <item>Nueve</item>
+        <item>Diez</item>
+        <item>Once</item>
+        <item>Doce</item>
+        <item>Trece</item>
+        <item>Catorce</item>
+        <item>Quince</item>
+        <item>Dieciseis</item>
+        <item>Diecisiete</item>
+        <item>Dieciocho</item>
+        <item>Diecinueve</item>
+        <item>Veinte</item>
+        <item>Veintiuno</item>
+        <item>Veintidos</item>
+        <item>Veintitres</item>
+        <item>Veinticuatro</item>
+        <item>Veinticinco</item>
+        <item>Veintiseis</item>
+        <item>Veintisiete</item>
+        <item>Veintiocho</item>
+        <item>Veintinueve</item>
+        <item>Treinta</item>
+        <item>Treinta y uno</item>
+        <item>Treinta y dos</item>
+        <item>Treinta y tres</item>
+        <item>Treinta y cuatro</item>
+        <item>Treinta y cinco</item>
+        <item>Treinta y seis</item>
+        <item>Treinta y siete</item>
+        <item>Treinta y ocho</item>
+        <item>Treinta y nueve</item>
+        <item>Cuarenta</item>
+        <item>Cuarenta y uno</item>
+        <item>Cuarenta y dos</item>
+        <item>Cuarenta y tres</item>
+        <item>Cuarenta y cuatro</item>
+        <item>Cuarenta y cinco</item>
+        <item>Cuarenta y seis</item>
+        <item>Cuarenta y siete</item>
+        <item>Cuarenta y ocho</item>
+        <item>Cuarenta y nueve</item>
+        <item>Cincuenta</item>
+        <item>Cincuenta y uno</item>
+        <item>Cincuenta y dos</item>
+        <item>Cincuenta y tres</item>
+        <item>Cincuenta y cuatro</item>
+        <item>Cincuenta y cinco</item>
+        <item>Cincuenta y seis</item>
+        <item>Cincuenta y siete</item>
+        <item>Cincuenta y ocho</item>
+        <item>Cincuenta y nueve</item>
+        <item>Sesenta</item>
+        <item>Sesenta y uno</item>
+        <item>Sesenta y dos</item>
+        <item>Sesenta y tres</item>
+        <item>Sesenta y cuatro</item>
+        <item>Sesenta y cinco</item>
+        <item>Sesenta y seis</item>
+        <item>Sesenta y siete</item>
+        <item>Sesenta y ocho</item>
+        <item>Sesenta y nueve</item>
+        <item>Setenta</item>
+        <item>Setenta y uno</item>
+        <item>Setenta y dos</item>
+        <item>Setenta y tres</item>
+        <item>Setenta y cuatro</item>
+        <item>Setenta y cinco</item>
+        <item>Setenta y seis</item>
+        <item>Setenta y siete</item>
+        <item>Setenta y ocho</item>
+        <item>Setenta y nueve</item>
+        <item>Ochenta</item>
+        <item>Ochenta y uno</item>
+        <item>Ochenta y dos</item>
+        <item>Ochenta y tres</item>
+        <item>Ochenta y cuatro</item>
+        <item>Ochenta y cinco</item>
+        <item>Ochenta y seis</item>
+        <item>Ochenta y siete</item>
+        <item>Ochenta y ocho</item>
+        <item>Ochenta y nueve</item>
+        <item>Noventa</item>
+        <item>Noventa y uno</item>
+        <item>Noventa y dos</item>
+        <item>Noventa y tres</item>
+        <item>Noventa y cuatro</item>
+        <item>Noventa y cinco</item>
+        <item>Noventa y seis</item>
+        <item>Noventa y siete</item>
+        <item>Noventa y ocho</item>
+        <item>Noventa y nueve</item>
+    </string-array>
     <string-array name="verbosetime1">
         <item>Doce en punto</item>
         <item>Doce y uno</item>
@@ -1937,47 +1926,53 @@
         <item>Once y cincuenta y ocho</item>
         <item>Once y cincuenta y nueve</item>
     </string-array>
-<string-array name="VerboseWeather">
-<item>Desconocido</item>
-<item>Despejado</item>
-<item>Despejado</item>
-<item>Mayormente despejado</item>
-<item>Parcialmente despejado</item>
-<item>Parcialmente nuboso</item>
-<item>Polvo</item>
-<item>Neblina</item>
-<item>Brumas</item>
-<item>Humo</item>
-<item>Mayormente nuboso</item>
-<item>Nublado</item>
-<item>Nubes</item>
-<item>Niebla</item>
-<item>Lluvia ligera</item>
-<item>Lluvia torrencial</item>
-<item>Llovizna</item>
-<item>Chubascos</item>
-<item>Probabilidad de lluvia</item>
-<item>Probabilidad de chubascos</item>
-<item>Chubascos dispersos</item>
-<item>Tormenta</item>
-<item>Probabilidad de tormentas eléctricas</item>
-<item>Tormentas dispersas</item>
-<item>Probabilidad de tormentas</item>
-<item>Tormenta</item>
-<item>LLuvias fuertes</item>
-<item>Lluvia</item>
-<item>Copos</item>
-<item>Débil nevada</item>
-<item>Probabilidades de nieve</item>
-<item>Chubascos de nieve</item>
-<item>Nieve débil</item>
-<item>Nieve</item>
-<item>Helada</item>
-<item>Hielo o nieve</item>
-<item>Aguanieve</item>
-<item>Llovizna helada</item>
-<item>Combinado invernal</item>
-<item>Ventoso</item>
-</string-array>
-
+    <string-array name="VerboseWeather">
+        <item>Desconocido</item>
+        <item>Despejado</item>
+        <item>Despejado</item>
+        <item>Mayormente despejado</item>
+        <item>Parcialmente despejado</item>
+        <item>Parcialmente nuboso</item>
+        <item>Polvo</item>
+        <item>Neblina</item>
+        <item>Brumas</item>
+        <item>Humo</item>
+        <item>Mayormente nuboso</item>
+        <item>Nublado</item>
+        <item>Nubes</item>
+        <item>Niebla</item>
+        <item>Lluvia ligera</item>
+        <item>Lluvia torrencial</item>
+        <item>Llovizna</item>
+        <item>Chubascos</item>
+        <item>Probabilidad de lluvia</item>
+        <item>Probabilidad de chubascos</item>
+        <item>Chubascos dispersos</item>
+        <item>Tormenta</item>
+        <item>Probabilidad de tormentas eléctricas</item>
+        <item>Tormentas dispersas</item>
+        <item>Probabilidad de tormentas</item>
+        <item>Tormenta</item>
+        <item>LLuvias fuertes</item>
+        <item>Lluvia</item>
+        <item>Copos</item>
+        <item>Débil nevada</item>
+        <item>Probabilidades de nieve</item>
+        <item>Chubascos de nieve</item>
+        <item>Nieve débil</item>
+        <item>Nieve</item>
+        <item>Helada</item>
+        <item>Hielo o nieve</item>
+        <item>Aguanieve</item>
+        <item>Llovizna helada</item>
+        <item>Combinado invernal</item>
+        <item>Ventoso</item>
+    </string-array>
+    <string name="_apply">Aplicar</string>
+    <string name="_search">Buscar</string>
+    <string name="_yes">Si</string>
+    <string name="_abandon">Salir</string>
+    <string name="_ok">Aceptar</string>
+    <string name="_no">No</string>
+    <string name="translators">Traductores</string>
 </resources>
