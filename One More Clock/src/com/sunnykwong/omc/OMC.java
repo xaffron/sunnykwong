@@ -1158,7 +1158,7 @@ public class OMC extends Application {
 		return fb;
 	}
 
-	public static void themeToFile(final JSONObject obj, final File tgt) {
+	public static void JSONToFile(final JSONObject obj, final File tgt) {
 		try {
 			final BufferedWriter out = new BufferedWriter(new FileWriter(tgt),8192);
 			out.write(obj.toString(5));

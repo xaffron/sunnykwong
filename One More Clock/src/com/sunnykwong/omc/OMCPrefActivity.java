@@ -1,11 +1,15 @@
 package com.sunnykwong.omc;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,6 +18,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ActionBar.LayoutParams;
 import android.appwidget.AppWidgetManager;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
@@ -45,6 +50,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -323,7 +329,96 @@ public class OMCPrefActivity extends PreferenceActivity {
 							@Override
 							public void onClick(DialogInterface dialog, int which) {
 								//	v141 backup work here														
-								System.out.println("backup " + backupOptions[0] + " " + backupOptions[1]);
+								new AsyncTask<Object, String, String>() {
+									@Override
+									protected String doInBackground(
+											Object... params) {
+										String backupName = (String)params[0];
+										boolean backupTheme = (Boolean)params[1];
+										
+										if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+											try {
+												Toast.makeText(OMCPrefActivity.this, OMC.RString("sdcardNotDetected"), Toast.LENGTH_LONG).show();
+											} catch (Exception e) {
+												e.printStackTrace();
+								        	}
+										}
+										File OMCRoot = Environment.getExternalStorageDirectory();
+										
+										JSONArray TTL= new JSONArray();
+										for (int i=0; i<9; i++)
+											TTL.put(OMC.PREFS.getString("URI"+OMC.COMPASSPOINTS[i], ""));
+										JSONObject result = new JSONObject();
+										try {
+											result.put("TTL",TTL);
+											result.put("clockAdjustment", OMC.PREFS.getString("clockAdjustment", "0"));
+											result.put("widget24HrClock", OMC.PREFS.getBoolean("widget24HrClock", true));
+											result.put("widgetLeadingZero",OMC.PREFS.getBoolean("widgetLeadingZero", true));
+											result.put("mmddDateFormat",OMC.PREFS.getBoolean("mmddDateFormat", true));
+											result.put("sTimeZone",OMC.PREFS.getString("sTimeZone", "default"));
+											if (backupTheme) {
+
+												result.put("widgetTheme", OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME));
+												result.put("widgetThemeLong", OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG));
+
+											    //convert from paths to Android friendly Parcelable Uri's
+											    System.out.println("dir: " + OMCRoot.getAbsolutePath());
+											    System.out.println("name: " + backupName+".omc");
+											    
+											    File outzip = new File(OMCRoot.getAbsolutePath(),backupName+".omc");
+											    if (outzip.exists()) outzip.delete();
+											    else outzip.mkdirs();
+
+											    
+											    File f = new File(OMCRoot.getAbsolutePath() + "/.OMCThemes/" 
+									        			+ OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME));
+									        	
+									        	try {
+										        	ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(outzip),8192));
+										        	for (File file : f.listFiles())
+												    {
+										        		ZipEntry ze = new ZipEntry(new ZipEntry(OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME) + "/" + file.getName()));
+											        	zos.putNextEntry(ze);
+													    FileInputStream ffis = new FileInputStream(file);
+														try {
+															//Absolute luxury 1980 style!  Using an 8k buffer.
+															byte[] buffer = new byte[8192];
+															int iBytesRead=0;
+															while ((iBytesRead=ffis.read(buffer))!= -1){
+																zos.write(buffer, 0, iBytesRead);
+															}
+															zos.flush();
+															zos.closeEntry();
+														} catch (Exception e) {
+											        		Log.w(OMC.OMCSHORT + "Prefs","cannot zip, zip error below");
+															e.printStackTrace();
+														}
+														ffis.close();
+											        	
+												    }
+								
+										        	zos.finish();
+										        	zos.close();
+
+										        	OMC.JSONToFile(result,new File(OMCRoot.getAbsolutePath(),backupName+".omcbackup"));
+										        	
+												} catch (Exception e) {
+													// File exists and read-only?  Shouldn't happen
+									        		Log.w(OMC.OMCSHORT + "Picker","cannot zip, file already open or RO");
+													e.printStackTrace();
+												}
+											}
+											System.out.println(result.toString(3));
+										} catch (JSONException e) {
+											e.printStackTrace();
+										}
+										return "";
+									}
+									@Override
+									protected void onPostExecute(String result) {
+										Toast.makeText(OMCPrefActivity.this, OMC.RString("taskComplete"), Toast.LENGTH_SHORT).show();
+									}
+								}.execute(backupOptions[0],backupOptions[1]);
 							}
 						})
 						.setNegativeButton(OMC.RString("abandon"), new DialogInterface.OnClickListener() {
@@ -340,7 +435,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 
         	// "Restore Widget Settings"
         	Preference prefRestoreWidget = findPreference("restorewidget");
-        	prefBackupWidget.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+        	prefRestoreWidget.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 				
 				@Override
 				public boolean onPreferenceClick(Preference preference) {
@@ -352,32 +447,59 @@ public class OMCPrefActivity extends PreferenceActivity {
 					LinearLayout ll = new LinearLayout(OMCPrefActivity.this);
 					ll.setOrientation(LinearLayout.VERTICAL);
 					ListView lv = new ListView(OMCPrefActivity.this);
-					EditText et = new EditText(OMCPrefActivity.this);
-					et.setText((String)backupOptions[0]);
+					
+					File OMCRoot = new File(Environment.getExternalStorageDirectory()+"/.OMCThemes");
+					if (!OMCRoot.exists()) OMCRoot.mkdirs();
+					
+					MarginLayoutParams mlp = new MarginLayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+					mlp.setMargins(100, 100, 100, 100);
+						ll.setLayoutParams(mlp);	
+					for (String filename: OMCRoot.list()) {
+						final String fname = new String(filename);
+						if (filename.endsWith(".backup")) {
+							TextView tv = new TextView(OMCPrefActivity.this);
+							tv.setText(filename);
+							tv.setClickable(true);
+							tv.setOnClickListener(new View.OnClickListener() {
+								@Override
+								public void onClick(View v) {
+									restoreOptions[0]=fname;
+									System.out.println("We're restoring " + restoreOptions[0]);
+									System.out.println("restore theme? " + restoreOptions[1]);
+								}
+							});
+							tv.setLayoutParams(mlp);
+
+							ll.addView(tv);
+						}
+					}
+					
 					CheckBox cb = new CheckBox(OMCPrefActivity.this);
-					cb.setText(OMC.RString("backupThemePersonalizations"));
+					cb.setText(OMC.RString("overwriteThemePersonalizations"));
 					cb.setChecked(false);
 					cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 						@Override
 						public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-							if (isChecked) backupOptions[1]=Boolean.TRUE;
-							else backupOptions[1]=Boolean.FALSE;
+							if (isChecked) {
+								new AlertDialog.Builder(OMCPrefActivity.this)
+								.setTitle(OMC.RString("overwriteThemePersonalizations"))
+								.setMessage(OMC.RString("overwriteThemeWarning"))
+								.setPositiveButton(OMC.RString("ok"), new DialogInterface.OnClickListener() {
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										restoreOptions[1]=Boolean.TRUE;
+									}	
+								}).create().show();
+							}
+							else restoreOptions[1]=Boolean.FALSE;
 						}
 					});
 					
-					ll.addView(et);
 					ll.addView(cb);
 					
 					new AlertDialog.Builder(OMCPrefActivity.this)
 						.setTitle(OMC.RString("nameOfBackup"))
 						.setView(ll)
-						.setPositiveButton(OMC.RString("ok"), new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								//	v141 backup work here														
-								System.out.println("backup " + backupOptions[0] + " " + backupOptions[1]);
-							}
-						})
 						.setNegativeButton(OMC.RString("abandon"), new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int which) {
