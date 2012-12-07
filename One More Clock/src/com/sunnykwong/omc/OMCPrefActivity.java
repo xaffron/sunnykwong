@@ -369,9 +369,6 @@ public class OMCPrefActivity extends PreferenceActivity {
 											    System.out.println("name: " + backupName+".omc");
 											    
 											    File outzip = new File(OMCRoot.getAbsolutePath(),backupName+".omc");
-											    if (outzip.exists()) outzip.delete();
-											    else outzip.mkdirs();
-
 											    
 											    File f = new File(OMCRoot.getAbsolutePath() + "/" 
 									        			+ OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME));
@@ -403,8 +400,6 @@ public class OMCPrefActivity extends PreferenceActivity {
 										        	zos.finish();
 										        	zos.close();
 
-										        	OMC.JSONToFile(result,new File(OMCRoot.getAbsolutePath(),backupName+".omcbackup"));
-										        	
 												} catch (Exception e) {
 													// File exists and read-only?  Shouldn't happen
 									        		Log.w(OMC.OMCSHORT + "Picker","cannot zip, file already open or RO");
@@ -412,6 +407,13 @@ public class OMCPrefActivity extends PreferenceActivity {
 												}
 											}
 											System.out.println(result.toString(3));
+								        	File backupOut = new File(OMCRoot.getAbsolutePath() + "/" 
+								        			+ backupName+".omcbackup");
+								        	System.out.println(backupOut);
+								        	System.out.println(backupOut.exists());
+								        	OMC.JSONToFile(result,backupOut);
+								        	
+
 										} catch (JSONException e) {
 											e.printStackTrace();
 										}
@@ -450,13 +452,12 @@ public class OMCPrefActivity extends PreferenceActivity {
 					LinearLayout ll = new LinearLayout(OMCPrefActivity.this);
 					ll.setOrientation(LinearLayout.VERTICAL);
 					RadioGroup rg = new RadioGroup(OMCPrefActivity.this);
-//					ListView lv = new ListView(OMCPrefActivity.this);
 					
 					File OMCRoot = Environment.getExternalStorageDirectory();
 					
 					for (String filename: OMCRoot.list()) {
 						final String fname = new String(filename);
-						if (filename.endsWith(".backup")) {
+						if (filename.endsWith(".omcbackup")) {
 							RadioButton tv = new RadioButton(OMCPrefActivity.this);
 							int scale = (int)(OMC.RES.getDisplayMetrics().density);
 							tv.setPadding(60*scale, 20*scale, 20*scale, 20*scale);
