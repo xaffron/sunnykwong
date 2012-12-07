@@ -30,6 +30,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -58,6 +59,8 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -370,7 +373,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 											    else outzip.mkdirs();
 
 											    
-											    File f = new File(OMCRoot.getAbsolutePath() + "/.OMCThemes/" 
+											    File f = new File(OMCRoot.getAbsolutePath() + "/" 
 									        			+ OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME));
 									        	
 									        	try {
@@ -446,18 +449,17 @@ public class OMCPrefActivity extends PreferenceActivity {
 					
 					LinearLayout ll = new LinearLayout(OMCPrefActivity.this);
 					ll.setOrientation(LinearLayout.VERTICAL);
-					ListView lv = new ListView(OMCPrefActivity.this);
+					RadioGroup rg = new RadioGroup(OMCPrefActivity.this);
+//					ListView lv = new ListView(OMCPrefActivity.this);
 					
-					File OMCRoot = new File(Environment.getExternalStorageDirectory()+"/.OMCThemes");
-					if (!OMCRoot.exists()) OMCRoot.mkdirs();
+					File OMCRoot = Environment.getExternalStorageDirectory();
 					
-					MarginLayoutParams mlp = new MarginLayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-					mlp.setMargins(100, 100, 100, 100);
-						ll.setLayoutParams(mlp);	
 					for (String filename: OMCRoot.list()) {
 						final String fname = new String(filename);
 						if (filename.endsWith(".backup")) {
-							TextView tv = new TextView(OMCPrefActivity.this);
+							RadioButton tv = new RadioButton(OMCPrefActivity.this);
+							int scale = (int)(OMC.RES.getDisplayMetrics().density);
+							tv.setPadding(60*scale, 20*scale, 20*scale, 20*scale);
 							tv.setText(filename);
 							tv.setClickable(true);
 							tv.setOnClickListener(new View.OnClickListener() {
@@ -468,9 +470,8 @@ public class OMCPrefActivity extends PreferenceActivity {
 									System.out.println("restore theme? " + restoreOptions[1]);
 								}
 							});
-							tv.setLayoutParams(mlp);
 
-							ll.addView(tv);
+							rg.addView(tv);
 						}
 					}
 					
@@ -494,7 +495,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 							else restoreOptions[1]=Boolean.FALSE;
 						}
 					});
-					
+					ll.addView(rg);
 					ll.addView(cb);
 					
 					new AlertDialog.Builder(OMCPrefActivity.this)
@@ -504,6 +505,77 @@ public class OMCPrefActivity extends PreferenceActivity {
 							@Override
 							public void onClick(DialogInterface dialog, int which) {
 								dialog.cancel();
+							}
+						})
+						.setPositiveButton(OMC.RString("_ok"), new DialogInterface.OnClickListener() {
+							
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								//	v141 backup work here														
+								new AsyncTask<Object, String, String>() {
+									@Override
+									protected String doInBackground(
+											Object... params) {
+										String restoreName = (String)params[0];
+										boolean restoreTheme = (Boolean)params[1];
+										
+										if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+											try {
+												Toast.makeText(OMCPrefActivity.this, OMC.RString("sdcardNotDetected"), Toast.LENGTH_LONG).show();
+											} catch (Exception e) {
+												e.printStackTrace();
+								        	}
+										}
+										File OMCRoot = new File(Environment.getExternalStorageDirectory(),restoreName);
+										
+										try {
+											JSONObject backup = OMC.streamToJSONObject(new FileInputStream(OMCRoot));
+											OMC.PREFS.edit()
+														.putString("clockAdjustment", backup.optString("clockAdjustment","0"))
+														.putString("sTimeZone", backup.optString("sTimeZone","default"))
+														.putBoolean("widget24HrClock", backup.optBoolean("widget24HrClock"))
+														.putBoolean("widgetLeadingZero", backup.optBoolean("widgetLeadingZero"))
+														.putBoolean("mmddDateFormat", backup.optBoolean("mmddDateFormat"))
+														.commit();
+											JSONArray TTL = backup.optJSONArray("TTL");
+											for (int i=0; i<9; i++) {
+												OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[i], TTL.optString(i)).commit();
+											}
+											OMC.setPrefs(appWidgetID);
+											
+												if (restoreTheme) {
+													OMC.PREFS.edit()
+													.putString("widgetTheme", backup.optString("widgetTheme",OMC.DEFAULTTHEME))
+													.putString("widgetThemeLong", backup.optString("widgetThemeLong",OMC.DEFAULTTHEMELONG))
+													.commit();
+													OMC.setPrefs(appWidgetID);
+
+												    //convert from paths to Android friendly Parcelable Uri's
+												    System.out.println("dir: " + OMCRoot.getAbsolutePath());
+												    System.out.println("name: " + restoreName+".omc");
+												    
+												    File inzip = new File(OMCRoot.getAbsolutePath(),restoreName+".omc");
+												    if (!inzip.exists()) return "";
+
+												    Intent it = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
+												    it.setData(Uri.fromFile(inzip));
+
+												    startActivity(OMC.GETSTARTERPACKINTENT);
+											        	
+												}
+											return "";
+
+										} catch (Exception e) {
+											e.printStackTrace();
+										}
+										return "";
+									}
+									@Override
+									protected void onPostExecute(String result) {
+										Toast.makeText(OMCPrefActivity.this, OMC.RString("taskComplete"), Toast.LENGTH_SHORT).show();
+									}
+								}.execute(restoreOptions[0],restoreOptions[1]);
+								
 							}
 						})
 						.create().show();
