@@ -374,7 +374,7 @@ public class OMCWidgetDrawEngine {
 		// Note that the final bitmap isn't actually sent until Step XX below.
 		//
 		
-		final RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
+		RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
 		final int iViewID = OMC.RId("omcIV");
 
 		if (OMC.HDRENDERING) {
@@ -386,12 +386,26 @@ public class OMCWidgetDrawEngine {
 
 		        
 		        rv.setImageViewUri(iViewID, Uri.parse("content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+appWidgetId));
-	        } catch (IOException e) {
+	        } catch (Exception e) {
 	        	e.printStackTrace();
+//	        	if (OMC.DEBUG) Log.w(OMC.OMCSHORT+"Engine","HD Rendering failed, using regular rendering");
+//				rv.setImageViewBitmap(iViewID, finalbitmap);
 	        }
 		} else {
 			rv.setImageViewBitmap(iViewID, finalbitmap);
 		}
+		// Push the image over
+		try {
+			appWidgetManager.updateAppWidget(appWidgetId, rv);
+		} catch (Exception e) {
+			e.printStackTrace();
+			rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
+			rv.setImageViewBitmap(iViewID, finalbitmap);
+			appWidgetManager.updateAppWidget(appWidgetId, rv);
+		}
+		// Second set of instructions
+		rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
+		
 
 		// Do some fancy footwork here and adjust the average lag (so OMC's slowness is less apparent)
 
@@ -429,7 +443,7 @@ public class OMCWidgetDrawEngine {
         	// Because we are skipping the NW corner.
         	for (int i = 1; i < 9; i++) { 
         		final String sPrefString = OMC.PREFS.getString("URI"+OMC.COMPASSPOINTS[i]+appWidgetId, "");
-        		if (sPrefString.equals("")) {
+        		if (sPrefString.equals("")||sPrefString.equals("default")) {
 		        	intent = new Intent(context, OMCPrefActivity.class);
 		        	intent.setData(Uri.parse("omc:"+appWidgetId));
 		        	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

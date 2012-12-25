@@ -115,15 +115,10 @@
     <string name="areaToCustomize">Área para customizar:</string>
     <string name="chooseAction">Escolher Ação</string>
     <string name="openOptionsDefault">Abrir Opções (padrão)</string>
-    <string name="widgetPrefsTTL">Preferências do Widget</string>
     <string name="doNothing">Sem ação</string>
-    <string name="doNothingTTL">Sem ação</string>
     <string name="weatherForecast">Previsão do tempo</string>
-    <string name="weatherForecastTTL">Previsão</string>
     <string name="viewAlarms">Ver alarmes(Experimental)</string>
-    <string name="viewAlarmsTTL">Ver alarmes</string>
     <string name="battUsage">Ver Utilização da Bateria</string>
-    <string name="battUsageTTL">Utilização da Bateria</string>
     <string name="otherActivity">Outra atividade…</string>
     <string name="otherActivityTTL">Escolher atividade</string>
     <string name="use24HourClock">Usar relógio de 24 horas</string>
@@ -1942,4 +1937,9 @@
     <string name="_ok">OK</string>
     <string name="_no">Não</string>
     <string name="translators">Tradutores</string>
+    <string name="TTLdefault">Preferências do Widget</string>
+    <string name="TTLnoop">Sem ação</string>
+    <string name="TTLweather">Previsão</string>
+    <string name="TTLbatt">Utilização da Bateria</string>
+    <string name="TTLalarms">Ver alarmes</string>
 </resources>

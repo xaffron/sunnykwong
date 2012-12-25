@@ -115,15 +115,10 @@
     <string name="areaToCustomize">Przestrzeń do dostosowania:</string>
     <string name="chooseAction">Wybierz akcję</string>
     <string name="openOptionsDefault">Otwórz opcje (domyślne)</string>
-    <string name="widgetPrefsTTL">Preferencje widgetu</string>
     <string name="doNothing">Nic nie rób</string>
-    <string name="doNothingTTL">Nic nie rób</string>
     <string name="weatherForecast">Prognoza pogody</string>
-    <string name="weatherForecastTTL">Prognoza</string>
     <string name="viewAlarms">Wyświetl alarmy (opcja eksperymentalna)</string>
-    <string name="viewAlarmsTTL">Prognoza</string>
     <string name="battUsage">Użycie baterii</string>
-    <string name="battUsageTTL">Użycie baterii</string>
     <string name="otherActivity">Inna czynność…</string>
     <string name="otherActivityTTL">Dostosuj czynnnosć</string>
     <string name="use24HourClock">Użyj 24 godzin dla zegara</string>
@@ -1941,4 +1936,9 @@
     <string name="_ok">OK</string>
     <string name="_no">Nie</string>
     <string name="translators">Tłumacze</string>
+    <string name="TTLdefault">Preferencje widgetu</string>
+    <string name="TTLnoop">Nic nie rób</string>
+    <string name="TTLweather">Prognoza</string>
+    <string name="TTLbatt">Użycie baterii</string>
+    <string name="TTLalarms">Prognoza</string>
 </resources>

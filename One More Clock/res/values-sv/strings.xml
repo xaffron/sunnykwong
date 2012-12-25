@@ -116,15 +116,10 @@
     <string name="areaToCustomize" newname="">Area to Customize:</string>
     <string name="chooseAction" newname="">Choose Action</string>
     <string name="openOptionsDefault" newname="">Open options (default)</string>
-    <string name="widgetPrefsTTL" newname="">Widget Prefs</string>
     <string name="doNothing" newname="">Do nothing</string>
-    <string name="doNothingTTL" newname="">Do Nothing</string>
     <string name="weatherForecast" newname="">Weather forecast</string>
-    <string name="weatherForecastTTL" newname="">Forecast</string>
     <string name="viewAlarms" newname="">View alarms (Experimental)</string>
-    <string name="viewAlarmsTTL" newname="">View Alarms</string>
     <string name="battUsage" newname="">View Battery Usage</string>
-    <string name="battUsageTTL" newname="">Battery Usage</string>
     <string name="otherActivity" newname="">Other activity…</string>
     <string name="otherActivityTTL" newname="">Custom Activity</string>
     <string name="use24HourClock">24-timmarsklocka</string>
@@ -1854,4 +1849,9 @@
     <string name="_ok">OK</string>
     <string name="_no">Nej</string>
     <string name="translators">översättare</string>
+    <string name="TTLdefault">Widget Prefs</string>
+    <string name="TTLnoop">Do Nothing</string>
+    <string name="TTLweather">Forecast</string>
+    <string name="TTLbatt">Battery Usage</string>
+    <string name="TTLalarms">View Alarms</string>
 </resources>

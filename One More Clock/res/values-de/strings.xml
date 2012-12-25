@@ -133,17 +133,11 @@
     <string name="areaToCustomize">Gebietsschema anpassen</string>
     <string name="chooseAction">Wählen Sie:</string>
     <string name="openOptionsDefault">Öffnen der Möglichkeiten (Standard)</string>
-    <string name="widgetPrefsTTL">Widget Einstellungen</string>
     <string name="doNothing">Nichts machen</string>
-    <string name="doNothingTTL">Nichts machen</string>
     <string name="refreshWeather" newname="">Wetter jetzt erneuern</string>
-    <string name="refreshWeatherTTL" newname="">Wetter jetzt erneuern</string>
     <string name="weatherForecast">Wettervorhersage</string>
-    <string name="weatherForecastTTL">Wettervorhersage</string>
     <string name="viewAlarms">Alarme ansehen (Experimentell)</string>
-    <string name="viewAlarmsTTL">Alarme ansehen</string>
     <string name="battUsage" newname="">Akkuverbrauch ansehen</string>
-    <string name="battUsageTTL" newname="">Akkuverbrauch</string>
     <string name="otherActivity">Andere Aktion…</string>
     <string name="otherActivityTTL">Benutzerdefinierte Aktion</string>
     <string name="use24HourClock">Benutzen der 24Std-Anzeige</string>
@@ -2025,4 +2019,10 @@
     <string name="_ok">OK</string>
     <string name="_no">Nein</string>
     <string name="translators">Übersetzer</string>
+    <string name="TTLdefault">Widget Einstellungen</string>
+    <string name="TTLnoop">Nichts machen</string>
+    <string name="TTLwrefresh">Wetter jetzt erneuern</string>
+    <string name="TTLweather">Wettervorhersage</string>
+    <string name="TTLbatt">Akkuverbrauch</string>
+    <string name="TTLalarms">Alarme ansehen</string>
 </resources>

@@ -117,17 +117,11 @@
     <string name="areaToCustomize">Endroit à modifier</string>
     <string name="chooseAction">Choisir une action</string>
     <string name="openOptionsDefault">Ouvrir options (défaut)</string>
-    <string name="widgetPrefsTTL">Préférences du Widget</string>
     <string name="doNothing">Ne fait rien</string>
-    <string name="doNothingTTL">Ne fait rien</string>
     <string name="refreshWeather">Mettre à jour la météo</string>
-    <string name="refreshWeatherTTL">Mettre à jour la météo</string>
     <string name="weatherForecast">Prévisions météo</string>
-    <string name="weatherForecastTTL">Prévisions</string>
     <string name="viewAlarms">Voir les alarmes (Expérimentale)</string>
-    <string name="viewAlarmsTTL">Voir les alarmes</string>
     <string name="battUsage">Voir l’utilisation de la batterie</string>
-    <string name="battUsageTTL">Utilisation de la batterie</string>
     <string name="otherActivity">Autre activité…</string>
     <string name="otherActivityTTL">Activité modifié</string>
     <string name="use24HourClock">Utiliser l’horloge en mode 24 heures</string>
@@ -1976,4 +1970,10 @@
     <string name="_ok">OK</string>
     <string name="_no">Non</string>
     <string name="translators">Les Traducteurs</string>
+    <string name="TTLdefault">Préférences du Widget</string>
+    <string name="TTLnoop">Ne fait rien</string>
+    <string name="TTLwrefresh">Mettre à jour la météo</string>
+    <string name="TTLweather">Prévisions</string>
+    <string name="TTLbatt">Utilisation de la batterie</string>
+    <string name="TTLalarms">Voir les alarmes</string>
 </resources>

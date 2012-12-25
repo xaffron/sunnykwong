@@ -116,17 +116,11 @@
     <string name="areaToCustomize">Περιοχή Προσαρμογής:</string>
     <string name="chooseAction">Επιλέξτε Ενέργεια</string>
     <string name="openOptionsDefault">Άνοιγμα Ρυθμίσεων (Προεπιλογή)</string>
-    <string name="widgetPrefsTTL">Ρυθμίσεις Widget</string>
     <string name="doNothing">Καμιά Ενέγεια</string>
-    <string name="doNothingTTL">Καμιά Ενέργεια</string>
     <string name="refreshWeather">Ενημέρωση Καιρού Τώρα</string>
-    <string name="refreshWeatherTTL">Ενημέρωση Καιρού Τώρα</string>
     <string name="weatherForecast">Πρόγνωση Καιρού</string>
-    <string name="weatherForecastTTL">Πρόγνωση Καιρού</string>
     <string name="viewAlarms">Εμφάνιση ξυπνητηριών (Πειραματικό)</string>
-    <string name="viewAlarmsTTL">Εμφάνιση ξυπνητηριών</string>
     <string name="battUsage">Χρήση Μπαταρίας </string>
-    <string name="battUsageTTL">Χρήση Μπαταρίας</string>
     <string name="otherActivity">Άλλη Ενέργεια…</string>
     <string name="otherActivityTTL">\'Αλλη Ενέργεια</string>
     <string name="use24HourClock">Χρήση 24-ωρης μορφής ώρας</string>
@@ -1977,4 +1971,10 @@
     <string name="_ok">OK</string>
     <string name="_no">Όχι</string>
     <string name="translators">Μεταφραστές</string>
+    <string name="TTLdefault">Ρυθμίσεις Widget</string>
+    <string name="TTLnoop">Καμιά Ενέργεια</string>
+    <string name="TTLwrefresh">Ενημέρωση Καιρού Τώρα</string>
+    <string name="TTLweather">Πρόγνωση Καιρού</string>
+    <string name="TTLbatt">Χρήση Μπαταρίας</string>
+    <string name="TTLalarms">Εμφάνιση ξυπνητηριών</string>
 </resources>

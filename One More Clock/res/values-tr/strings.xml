@@ -125,17 +125,11 @@
     <string name="areaToCustomize">Düzenleme Alanı:</string>
     <string name="chooseAction">Eylem Seçin</string>
     <string name="openOptionsDefault">Seçenekleri açın (varsayılan)</string>
-    <string name="widgetPrefsTTL">Widget Özellikleri</string>
     <string name="doNothing">Hiç Birşey Yapma</string>
-    <string name="doNothingTTL">Hiç Birşey Yapma</string>
     <string name="refreshWeather">Hava Durumunu Güncelle</string>
-    <string name="refreshWeatherTTL">Hava Durumunu Şimdi Güncelle</string>
     <string name="weatherForecast">Hava Tahmini</string>
-    <string name="weatherForecastTTL">Tahminler</string>
     <string name="viewAlarms">Alarmları Göster (Deneysel)</string>
-    <string name="viewAlarmsTTL">Alarmları Göster</string>
     <string name="battUsage">Pil Kullanımını Göster</string>
-    <string name="battUsageTTL">Pil Kullanımı</string>
     <string name="otherActivity">Diğer Uygulamalar…</string>
     <string name="otherActivityTTL">Özel Uygulama</string>
     <string name="use24HourClock">24 Saat Dilimini Kullan</string>
@@ -2000,4 +1994,10 @@
     <string name="_ok">Tamam</string>
     <string name="_no">Hayır</string>
     <string name="translators">Çevirmenler</string>
+    <string name="TTLdefault">Widget Özellikleri</string>
+    <string name="TTLnoop">Hiç Birşey Yapma</string>
+    <string name="TTLwrefresh">Hava Durumunu Şimdi Güncelle</string>
+    <string name="TTLweather">Tahminler</string>
+    <string name="TTLbatt">Pil Kullanımı</string>
+    <string name="TTLalarms">Alarmları Göster</string>
 </resources>

@@ -370,9 +370,8 @@ public class OMCPrefActivity extends PreferenceActivity {
 											    
 											    File outzip = new File(OMCRoot.getAbsolutePath(),backupName+".omc");
 											    
-											    File f = new File(OMCRoot.getAbsolutePath() + "/" 
+											    File f = new File(OMCRoot.getAbsolutePath() + "/.OMCThemes/" 
 									        			+ OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME));
-									        	
 									        	try {
 										        	ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(outzip),8192));
 										        	for (File file : f.listFiles())
@@ -405,6 +404,41 @@ public class OMCPrefActivity extends PreferenceActivity {
 									        		Log.w(OMC.OMCSHORT + "Picker","cannot zip, file already open or RO");
 													e.printStackTrace();
 												}
+//											    File f = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" 
+//									        			+ OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()));
+//									        	
+//									        	try {
+//										        	ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(outzip),8192));
+//										        	for (File file : f.listFiles())
+//												    {
+//										        		ZipEntry ze = new ZipEntry(new ZipEntry(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()) + "/" + file.getName()));
+//											        	zos.putNextEntry(ze);
+//													    FileInputStream ffis = new FileInputStream(file);
+//														try {
+//															//Absolute luxury 1980 style!  Using an 8k buffer.
+//															byte[] buffer = new byte[8192];
+//															int iBytesRead=0;
+//															while ((iBytesRead=ffis.read(buffer))!= -1){
+//																zos.write(buffer, 0, iBytesRead);
+//															}
+//															zos.flush();
+//															zos.closeEntry();
+//														} catch (Exception e) {
+//											        		Log.w(OMC.OMCSHORT + "Picker","cannot zip, zip error below");
+//															e.printStackTrace();
+//														}
+//														ffis.close();
+//											        	
+//												    }
+//								
+//										        	zos.finish();
+//										        	zos.close();
+//
+//												} catch (Exception e) {
+//													// File exists and read-only?  Shouldn't happen
+//									        		Log.w(OMC.OMCSHORT + "Picker","cannot zip, file already open or RO");
+//													e.printStackTrace();
+//												}
 											}
 											System.out.println(result.toString(3));
 								        	File backupOut = new File(OMCRoot.getAbsolutePath() + "/" 
@@ -540,7 +574,10 @@ public class OMCPrefActivity extends PreferenceActivity {
 														.commit();
 											JSONArray TTL = backup.optJSONArray("TTL");
 											for (int i=0; i<9; i++) {
-												OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[i], TTL.optString(i)).commit();
+												final String TTLString =  TTL.optString(i).equals("")?"default":TTL.optString(i);
+												System.out.println("URI"+OMC.COMPASSPOINTS[i]+": "+ TTLString);
+												OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[i], TTLString).commit();
+												OMC.PREFS.edit().putString("URIDesc"+OMC.COMPASSPOINTS[i], OMC.RString("TTL"+TTLString)).commit();
 											}
 											OMC.setPrefs(appWidgetID);
 											
@@ -1461,30 +1498,6 @@ public class OMCPrefActivity extends PreferenceActivity {
 				.setItems(items, new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int item) {
-							if (values[item].equals("default")) {
-								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "")
-									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("widgetPrefsTTL")).commit();
-							}
-							if (values[item].equals("noop")) {
-								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "noop")
-									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("doNothingTTL")).commit();
-							}
-							if (values[item].equals("wrefresh")) {
-								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "wrefresh")
-									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("refreshWeatherTTL")).commit();
-							}
-							if (values[item].equals("weather")) {
-								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "weather")
-									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("weatherForecastTTL")).commit();
-							}
-							if (values[item].equals("alarms")) {
-								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "alarms")
-									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("viewAlarmsTTL")).commit();
-							}
-							if (values[item].equals("batt")) {
-								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], "batt")
-									.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("battUsageTTL")).commit();
-							}
 							if (values[item].equals("activity")) {
 					    		getPreferenceScreen().setEnabled(false);
 					    		cancelTTL();
@@ -1497,9 +1510,13 @@ public class OMCPrefActivity extends PreferenceActivity {
 								startActivityForResult(pickIntent, iTTLArea);
 								mainIntent=null;
 								pickIntent=null;
+							} else {
+								if (values[item].equals("")) values[item]="default";
+								OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[iTTLArea], values[item])
+								.putString("URIDesc"+OMC.COMPASSPOINTS[iTTLArea], OMC.RString("TTL"+values[item])).commit();		
 							}
 							for (int iCompass = 0; iCompass < 9; iCompass++) {
-								btnCompass[iCompass].setText(OMC.PREFS.getString("URIDesc"+OMC.COMPASSPOINTS[iCompass],OMC.RString("widgetPrefsTTL")));
+								btnCompass[iCompass].setText(OMC.PREFS.getString("URIDesc"+OMC.COMPASSPOINTS[iCompass],OMC.RString("TTLdefault")));
 							}
 						}
 				}).create();
@@ -1509,7 +1526,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 
 				for (int iCompass = 0; iCompass < 9; iCompass++) {
 					btnCompass[iCompass] = (Button)ll.findViewById(OMC.RId("button" + OMC.COMPASSPOINTS[iCompass] + "Prv"));
-					btnCompass[iCompass].setText(OMC.PREFS.getString("URIDesc"+OMC.COMPASSPOINTS[iCompass],OMC.RString("widgetPrefsTTL")));
+					btnCompass[iCompass].setText(OMC.PREFS.getString("URIDesc"+OMC.COMPASSPOINTS[iCompass],OMC.RString("TTLdefault")));
 					final int iTTL = iCompass;
 					btnCompass[iCompass].setOnClickListener(new View.OnClickListener() {
 						@Override

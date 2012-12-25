@@ -116,17 +116,11 @@
     <string name="areaToCustomize">אזור להתאמה אישית:</string>
     <string name="chooseAction">בחר פעולה</string>
     <string name="openOptionsDefault">פתח אפשרויות (ברירת מחדל)</string>
-    <string name="widgetPrefsTTL">העדפות ווידג\'ט</string>
     <string name="doNothing">לא לעשות דבר</string>
-    <string name="doNothingTTL">לא לעשות דבר</string>
     <string name="refreshWeather">רענן מזג אוויר כאת</string>
-    <string name="refreshWeatherTTL">רענן מזג אוויר כעת</string>
     <string name="weatherForecast">תחזית מזג האוויר</string>
-    <string name="weatherForecastTTL">תחזית</string>
     <string name="viewAlarms">הראה התרעות (ניסיוני)</string>
-    <string name="viewAlarmsTTL">הראה התרעות</string>
     <string name="battUsage">הראה שימוש בסוללה</string>
-    <string name="battUsageTTL">שימוש בסוללה</string>
     <string name="otherActivity">פעילות אחרת…</string>
     <string name="otherActivityTTL">פעילות מותאמת אישית</string>
     <string name="use24HourClock">השתמש בשעון 24 שעות</string>
@@ -1973,4 +1967,10 @@
     <string name="_ok">אשר</string>
     <string name="_no">לא</string>
     <string name="translators">מתרגמים</string>
+    <string name="TTLdefault">העדפות ווידג\'ט</string>
+    <string name="TTLnoop">לא לעשות דבר</string>
+    <string name="TTLwrefresh">רענן מזג אוויר כעת</string>
+    <string name="TTLweather">תחזית</string>
+    <string name="TTLbatt">שימוש בסוללה</string>
+    <string name="TTLalarms">הראה התרעות</string>
 </resources>

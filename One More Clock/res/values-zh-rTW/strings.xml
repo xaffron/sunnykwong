@@ -116,17 +116,11 @@
     <string name="areaToCustomize">輕按區域:</string>
     <string name="chooseAction">請選擇輕按反應</string>
     <string name="openOptionsDefault">選項畫面(默認)</string>
-    <string name="widgetPrefsTTL">選項</string>
     <string name="doNothing">無輕按反應</string>
-    <string name="doNothingTTL">無反應</string>
     <string name="refreshWeather">立即刷新天氣</string>
-    <string name="refreshWeatherTTL">立即刷新天氣</string>
     <string name="weatherForecast">天氣預測</string>
-    <string name="weatherForecastTTL">天氣預測</string>
     <string name="viewAlarms">檢視鬧鐘設定 (試驗中)</string>
-    <string name="viewAlarmsTTL">檢視鬧鐘</string>
     <string name="battUsage">查看電池狀況</string>
-    <string name="battUsageTTL">查看電池狀況</string>
     <string name="otherActivity">其他…</string>
     <string name="otherActivityTTL">自訂行為</string>
     <string name="use24HourClock">用24小時方式顯示</string>
@@ -1974,4 +1968,10 @@
     <string name="_no">否</string>
     <string name="translators">翻譯員</string>
     <string name="viewReleaseNotes">發行說明</string>
+    <string name="TTLdefault">選項</string>
+    <string name="TTLnoop">無反應</string>
+    <string name="TTLwrefresh">立即刷新天氣</string>
+    <string name="TTLweather">天氣預測</string>
+    <string name="TTLbatt">查看電池狀況</string>
+    <string name="TTLalarms">檢視鬧鐘</string>
 </resources>

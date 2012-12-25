@@ -117,17 +117,11 @@
     <string name="areaToCustomize">Área a personalizar:</string>
     <string name="chooseAction">Elige una acción</string>
     <string name="openOptionsDefault">Abrir opciones (por defecto)</string>
-    <string name="widgetPrefsTTL">Pref. Widget</string>
     <string name="doNothing">No hacer nada</string>
-    <string name="doNothingTTL">No hacer nada</string>
     <string name="refreshWeather">Refresh Weather Now</string>
-    <string name="refreshWeatherTTL">Refresh Weather Now</string>
     <string name="weatherForecast">Predicción del Tiempo</string>
-    <string name="weatherForecastTTL">Predicción </string>
     <string name="viewAlarms">Ver alarmas (Experimental)</string>
-    <string name="viewAlarmsTTL">Alarma</string>
     <string name="battUsage">View Battery Usage</string>
-    <string name="battUsageTTL">Battery Usage</string>
     <string name="otherActivity">Otra actividad…</string>
     <string name="otherActivityTTL">Actividad personalizada</string>
     <string name="use24HourClock">Usar Reloj 24h</string>
@@ -1975,4 +1969,10 @@
     <string name="_ok">Aceptar</string>
     <string name="_no">No</string>
     <string name="translators">Traductores</string>
+    <string name="TTLdefault">Pref. Widget</string>
+    <string name="TTLnoop">No hacer nada</string>
+    <string name="TTLwrefresh">Refresh Weather Now</string>
+    <string name="TTLweather">Predicción </string>
+    <string name="TTLbatt">Battery Usage</string>
+    <string name="TTLalarms">Alarma</string>
 </resources>
