@@ -1975,4 +1975,7 @@
     <string name="TTLweather">天气预测</string>
     <string name="TTLbatt">查看电池状况</string>
     <string name="TTLalarms">检视闹钟</string>
+    <string name="HDRenderingFalse">旧：直接传送16位元图像</string>
+    <string name="HDRendering">绘图方法</string>
+    <string name="HDRenderingTrue">新：于SD卡缓存32位元图像</string>
 </resources>

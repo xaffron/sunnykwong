@@ -1977,4 +1977,11 @@
     <string name="TTLweather">Πρόγνωση Καιρού</string>
     <string name="TTLbatt">Χρήση Μπαταρίας</string>
     <string name="TTLalarms">Εμφάνιση ξυπνητηριών</string>
+    <string name="changeClockAdjustment">Ρύθμισε το ρολόι μπροστά/πίσω</string>
+    <string name="minutesBehind">λεπτά πίσω από την τρέχουσα ώρα</string>
+    <string name="backupThemePersonalizations">Αποθήκευση προσαρμογών θέματος</string>
+    <string name="overwriteThemePersonalizations">Αντικατάσταση προσαρμογών θέματος</string>
+    <string name="backupWidget">Αποθήκευση Widget</string>
+    <string name="restoreWidget">Ανάκτηση ρυθμίσεων Widget</string>
+    <string name="minutesAhead">λεπτά μπροστά από την τρέχουσα ώρα</string>
 </resources>

@@ -145,6 +145,7 @@ public class OMCThemeUnzipActivity extends Activity {
 		currentThread = new Thread() {
 			public void run() {
 				uri = getIntent().getData();
+				System.out.println("URI: "+ uri.toString());
 				if (uri == null) {
 					Toast.makeText(getApplicationContext(), OMC.RString("_nothingToExtract"), Toast.LENGTH_LONG).show();
 					finish();
@@ -202,6 +203,8 @@ public class OMCThemeUnzipActivity extends Activity {
 						while ((ze = zis.getNextEntry())!= null) {
 							//if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Unzip","Looping - now " + ze.getName());
 							outputFile = new File(omcRoot.getAbsolutePath()+"/"+ze.getName());
+							System.out.println(outputFile.toString());
+							outputFile.getParentFile().mkdirs();
 							if (ze.isDirectory()) {
 								pdTitleMessage = ze.getName();
 								mHandler.post(mUpdateTitle);

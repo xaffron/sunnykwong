@@ -500,7 +500,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 							tv.setOnClickListener(new View.OnClickListener() {
 								@Override
 								public void onClick(View v) {
-									restoreOptions[0]=fname;
+									restoreOptions[0]=fname.replace(".omcbackup", "");
 									System.out.println("We're restoring " + restoreOptions[0]);
 									System.out.println("restore theme? " + restoreOptions[1]);
 								}
@@ -561,7 +561,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 												e.printStackTrace();
 								        	}
 										}
-										File OMCRoot = new File(Environment.getExternalStorageDirectory(),restoreName);
+										File OMCRoot = new File(Environment.getExternalStorageDirectory(),restoreName+".omcbackup");
 										
 										try {
 											JSONObject backup = OMC.streamToJSONObject(new FileInputStream(OMCRoot));
@@ -589,16 +589,16 @@ public class OMCPrefActivity extends PreferenceActivity {
 													OMC.setPrefs(appWidgetID);
 
 												    //convert from paths to Android friendly Parcelable Uri's
-												    System.out.println("dir: " + OMCRoot.getAbsolutePath());
+												    System.out.println("dir: " + Environment.getExternalStorageDirectory());
 												    System.out.println("name: " + restoreName+".omc");
 												    
-												    File inzip = new File(OMCRoot.getAbsolutePath(),restoreName+".omc");
+												    File inzip = new File(Environment.getExternalStorageDirectory(),restoreName+".omc");
 												    if (!inzip.exists()) return "";
 
-												    Intent it = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
+												    final Intent it = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
 												    it.setData(Uri.fromFile(inzip));
 
-												    startActivity(OMC.GETSTARTERPACKINTENT);
+												    startActivity(it);
 											        	
 												}
 											return "";
@@ -716,7 +716,7 @@ public class OMCPrefActivity extends PreferenceActivity {
     			e.printStackTrace();
     			prefWeather.setTitle(OMC.RString("weatherFunctionalityDisabled"));
     		}
-        	prefWeather.setSummary(formatWeatherSummary());
+        	prefWeather.setSummary(formatWeatherSummary(Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))));
 
         	prefUpdWeatherNow.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 				@Override
@@ -863,7 +863,8 @@ public class OMCPrefActivity extends PreferenceActivity {
 		            	else 
 		            		OMC.NEXTWEATHERREFRESH = OMC.LASTWEATHERREFRESH + newMillis;
 		        	}
-		    		return true;
+		        	prefWeather.setSummary(formatWeatherSummary(newHrs));
+		        	return true;
 				}
 			});
         	switch (Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))/60) {
@@ -900,6 +901,26 @@ public class OMCPrefActivity extends PreferenceActivity {
         	// "Translator".
         	findPreference("sTranslator").setTitle(OMC.RString("translator"));
         	findPreference("sTranslator").setSummary(OMC.RString("languageWord") + ": " + OMC.RString("languageName"));
+        	
+        	// "Render Method".
+        	Preference prefHDRendering = findPreference("HDRendering");
+        	prefHDRendering.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+		    		if (newValue.equals(true)) {
+		        		preference.setSummary(OMC.RString("HDRenderingTrue"));
+		        		OMC.HDRENDERING=true;
+		    		} else {
+		        		preference.setSummary(OMC.RString("HDRenderingFalse"));
+		        		OMC.HDRENDERING=false;
+		    		}
+			    	return true;
+				}
+			});
+        	if (OMC.PREFS.getBoolean("HDRendering",true)==true)
+        		findPreference("HDRendering").setSummary(OMC.RString("HDRenderingTrue"));
+        	else findPreference("HDRendering").setSummary(OMC.RString("HDRenderingFalse"));
+
         	
         	// "Clock Priority".
         	Preference prefClockPriority = findPreference("clockPriority");
@@ -1313,7 +1334,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 								case 0: //Disabled (default)
 									OMC.PREFS.edit().putString("weathersetting", "disabled").commit();
 				        			prefWeather.setTitle(OMC.RString("weatherFunctionalityDisabled"));
-				        			prefWeather.setSummary(formatWeatherSummary());
+				        			prefWeather.setSummary(formatWeatherSummary(Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))));
 									break;
 								case 1: //Follow Device
 									OMC.PREFS.edit().putString("weathersetting", "bylatlong").commit();
@@ -1710,7 +1731,7 @@ public class OMCPrefActivity extends PreferenceActivity {
     			prefUpdWeatherNow.setTitle(values[0]);
     			prefUpdWeatherNow.setSummary(values[1]);
     			prefWeather.setTitle(values[2]);
-    			prefWeather.setSummary(formatWeatherSummary());
+    			prefWeather.setSummary(formatWeatherSummary(Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))));
     		}
     		@Override
     		protected void onPostExecute(String result) {
@@ -1723,7 +1744,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 	}
 
 	
-    public String formatWeatherSummary() {
+    public String formatWeatherSummary(final int iFreq) {
 		final String sWSetting = OMC.PREFS.getString("weathersetting", "bylatlong");
 		tLastTry.set(OMC.LASTWEATHERTRY);
 		tLastRefresh.set(OMC.LASTWEATHERREFRESH);
@@ -1732,7 +1753,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 		if (sWSetting.equals("disabled")) {
 			return (OMC.RString("tapToEnable"));
 		}
-		if (OMC.PREFS.getString("sWeatherFreq", "60").equals("0")) {
+		if (iFreq==0) {
 			return (OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("manualRefreshOnly"));
 		} else {
 			return (OMC.RString("lastTry")+tLastTry.format("%R") + OMC.RString("nextRefresh")+tNextRefresh.format("%R") 

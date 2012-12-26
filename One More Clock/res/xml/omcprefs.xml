@@ -259,7 +259,14 @@
         <PreferenceScreen
             android:key="Advanced"
             android:title="@string/troubleshootingOptions" >
-            <ListPreference
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:enabled="true"
+                android:key="HDRendering"
+                android:selectable="true"
+                android:summary=""
+                android:title="@string/HDRendering" />
+        	<ListPreference
                 android:enabled="true"
                 android:entries="@array/clockPriority_options"
                 android:entryValues="@array/clockPriority_values"
