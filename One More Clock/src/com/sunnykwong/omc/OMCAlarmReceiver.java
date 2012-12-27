@@ -40,7 +40,15 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		
 		// If we come back from a low memory state, all sorts of screwy stuff might happen.
 
-		final String action = intentt.getAction();
+		final String action = intentt.getAction()==null?OMC.FGSTRING:intentt.getAction();
+		
+		// the Intent action might be blank.
+		// In that case, we take an educated guess and say it's a foreground situation.
+		if (action==null) {
+			OMC.FG=true;
+			OMC.SCREENON=true;
+			OMC.SVCSTARTINTENT.setAction(OMC.FGSTRING);
+		}
 		
 		// If user taps on notification, cancel FG mode.
 		if (action.equals(OMC.CANCELFGSTRING)) {
@@ -51,14 +59,6 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 			return;
 		}
 				
-		// the Intent action might be blank.
-		// In that case, we take an educated guess and say it's a foreground situation.
-		if (action==null) {
-			OMC.FG=true;
-			OMC.SCREENON=true;
-			OMC.SVCSTARTINTENT.setAction(OMC.FGSTRING);
-		}
-		
 		final Intent intent = new Intent(intentt);
 
 		// Pop the weather refresh toast before we give up context
