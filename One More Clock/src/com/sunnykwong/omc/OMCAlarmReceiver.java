@@ -72,6 +72,8 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		//
 		Thread t = new Thread() {
 			public void run() {
+				// Reset HD Rendering switch (may have gotten overridden when cache dir unavailable)
+				OMC.HDRENDERING = OMC.PREFS.getBoolean("HDRendering",true);
 				// Battery-related responses.
 				// If something about the battery changed, we need to record the changes.
 				if (action.equals(Intent.ACTION_BATTERY_CHANGED)) {

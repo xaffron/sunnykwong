@@ -274,7 +274,7 @@
 		5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 und 1x3 an.\nBitte
 		überlegen Sie sich ein Upgrade, um diese Größen zu erhalten!</string>
     <!-- Troubleshooting Options -->
-    <string name="troubleshootingOptions">Troubleshooting</string>
+    <string name="troubleshootingOptions">Fehlerbehandlung</string>
     <!-- Troubleshooting Options -->
     <string name="clockPriority">Uhren-Rangfolge</string>
     <string name="forFineTuning">Für die Feineinstellungs-Empfindlichkeit</string>
@@ -2025,4 +2025,15 @@
     <string name="TTLweather">Wettervorhersage</string>
     <string name="TTLbatt">Akkuverbrauch</string>
     <string name="TTLalarms">Alarme ansehen</string>
+    <string name="HDRenderingFalse">Alt - 16bit Bitmap direkt zwischen den Prozessen verschoben</string>
+    <string name="changeClockAdjustment">Vor- /Zurücksetzen der Uhr</string>
+    <string name="minutesBehind">\u0020minuten nach der aktuellen Zeit</string>
+    <string name="battReporting">Batterie-Report</string>
+    <string name="backupWidget">Sichern des Widgets</string>
+    <string name="HDRendering">Renderingmethode</string>
+    <string name="battReportingAlternate">Ersatz - wie vom Treiber berichtet</string>
+    <string name="minutesAhead">\u0020minuten vor der aktuellen Zeit</string>
+    <string name="HDRenderingTrue">Neu - 32bit Bitmap auf der internen SDCard gecached</string>
+    <string name="battReportingNormal">Normal - wie von Android berichtet</string>
+    <string name="viewReleaseNotes">Neuerungen ansehen</string>
 </resources>

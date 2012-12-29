@@ -2,6 +2,7 @@ package com.sunnykwong.omc;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -55,17 +56,26 @@ public class OMCWidgetDrawEngine {
 
 		for (int i=0; i<(aWM.getAppWidgetIds(cName)==null? 0: aWM.getAppWidgetIds(cName).length); i++) {
 
-// v139: Fix strange arrayoutofboundsexception (race condition?)
-//			 if (i >= aWM.getAppWidgetIds(cName).length) break;
-//			 
-//             if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i]) && OMC.LEASTLAGMILLIS > 500l) {
-//            	// If this clock takes more than 0.5 sec to render, then blit cached bitmap over first
-//            	RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
-//                rv.setImageViewBitmap(OMC.RId("omcIV"),
-//                		OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
-//                aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);                    
-//                rv = null;
-//              }
+			// v139: Fix strange arrayoutofboundsexception (race condition?)
+			 if (i >= aWM.getAppWidgetIds(cName).length) break;
+			 
+             if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i]) && OMC.LEASTLAGMILLIS > 500l) {
+            	// If this clock takes more than 0.5 sec to render, then blit cached bitmap over first
+            	RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
+        		if (OMC.HDRENDERING) {
+       	        	File outTemp = new File(OMC.CACHEPATH + aWM.getAppWidgetIds(cName)[i] +"cache.png");
+       		        if (outTemp.exists()&&outTemp.canRead()) {
+       		        	rv.setImageViewUri(OMC.RId("omcIV"), Uri.parse("content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+aWM.getAppWidgetIds(cName)[i]));
+       		        } else {
+       					rv.setImageViewBitmap(OMC.RId("omcIV"), OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
+       		        }
+        		} else {
+	                rv.setImageViewBitmap(OMC.RId("omcIV"),
+	                		OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
+        		}
+                aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);                    
+                rv = null;
+              }
 
 			// v139: Fix strange arrayoutofboundsexception (race condition?)
 			// v141: Cram in clock adjustment here, too
@@ -380,16 +390,19 @@ public class OMCWidgetDrawEngine {
 		if (OMC.HDRENDERING) {
 
 	        try {
-                FileOutputStream fos = new FileOutputStream(OMC.CACHEPATH + appWidgetId +"cache.png");
+	        	File outTemp = new File(OMC.CACHEPATH + appWidgetId +"cache.png");
+                FileOutputStream fos = new FileOutputStream(outTemp);
 	        	finalbitmap.compress(CompressFormat.PNG, 100, fos);
 		        fos.close();
 
-		        
-		        rv.setImageViewUri(iViewID, Uri.parse("content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+appWidgetId));
+		        if (outTemp.exists()&&outTemp.canRead()) {
+		        	rv.setImageViewUri(iViewID, Uri.parse("content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+appWidgetId));
+		        } else {
+					rv.setImageViewBitmap(iViewID, finalbitmap);
+		        }
 	        } catch (Exception e) {
 	        	e.printStackTrace();
 //	        	if (OMC.DEBUG) Log.w(OMC.OMCSHORT+"Engine","HD Rendering failed, using regular rendering");
-//				rv.setImageViewBitmap(iViewID, finalbitmap);
 	        }
 		} else {
 			rv.setImageViewBitmap(iViewID, finalbitmap);

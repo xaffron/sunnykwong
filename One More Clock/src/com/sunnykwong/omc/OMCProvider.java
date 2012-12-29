@@ -62,14 +62,15 @@ public class OMCProvider extends ContentProvider {
                 int aWI = Integer.parseInt(uri.getQueryParameter("awi"));
         	
                 File f = new File(OMC.CACHEPATH + aWI +"cache.png");
-                if (f.exists()){
+                if (f.exists()&&f.canRead()){
                         if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Provider","Reading png for widget"+aWI);
                         return new AssetFileDescriptor(ParcelFileDescriptor.open(f,
                                 ParcelFileDescriptor.MODE_READ_ONLY), 0, AssetFileDescriptor.UNKNOWN_LENGTH);
                 } else {
                         if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Provider","widget png missing - return transparent png");
                     	//return OMC.RES.openRawResourceFd(OMC.RDrawableId("clockicon"));
-                        return OMC.RES.openRawResourceFd(OMC.RDrawableId("transparent"));
+                        //return OMC.RES.openRawResourceFd(OMC.RDrawableId("transparent"));
+                        return null;
                 }
 
         }

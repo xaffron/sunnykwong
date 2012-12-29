@@ -402,6 +402,10 @@ public class Metar {
 	        	metar.condition="drizzle";
 	        	metar.OMCConditionCode=16;
 	    	}
+	    	// 14a. Unknown Precipitation.
+	    } else if (weatherTokens.contains("UP")) {
+        	metar.condition="unknown precipitation";
+        	metar.OMCConditionCode=38;
 	    	// 15. Rain.
 	    } else if (weatherTokens.contains("RA")) {
 	    	if (weatherTokens.contains("FZ")) {
