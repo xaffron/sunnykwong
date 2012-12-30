@@ -81,7 +81,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Alpha 10";
+	static final String TESTVER = "Alpha 11";
 	static final boolean FREEEDITION = false;
 	static boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -1670,6 +1670,10 @@ public class OMC extends Application {
 						result = OMC.VERBOSEWEATHER[jsonWeather.optInt("condition_code",0)].toLowerCase();
 					} else if (sType.equals("temp")) {
 						result = jsonWeather.optString("temp_"+OMC.PREFS.getString("weatherDisplay", "f"),"--")+OMC.PREFS.getString("weatherDisplay", "f").toUpperCase();
+					} else if (sType.equals("tempraw")) {
+						result = jsonWeather.optString("temp_"+OMC.PREFS.getString("weatherDisplay", "f"),"--");
+					} else if (sType.equals("tempunit")) {
+						result = OMC.PREFS.getString("weatherDisplay", "f").toUpperCase();
 					} else if (sType.equals("tempc")) {
 						result = jsonWeather.optString("temp_c","--");
 					} else if (sType.equals("tempf")) {
