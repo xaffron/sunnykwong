@@ -388,37 +388,30 @@ public class OMCWidgetDrawEngine {
 		final int iViewID = OMC.RId("omcIV");
 
 		if (OMC.HDRENDERING) {
-
+			System.out.println("predraw:hdrendering "+OMC.HDRENDERING);
 	        try {
 	        	File outTemp = new File(OMC.CACHEPATH + appWidgetId +"cache.png");
                 FileOutputStream fos = new FileOutputStream(outTemp);
 	        	finalbitmap.compress(CompressFormat.PNG, 100, fos);
 		        fos.close();
 
+				System.out.println("compression complete:hdrendering "+OMC.HDRENDERING);
 		        if (outTemp.exists()&&outTemp.canRead()) {
+					System.out.println("URI:hdrendering "+OMC.HDRENDERING);
 		        	rv.setImageViewUri(iViewID, Uri.parse("content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+appWidgetId));
 		        } else {
+					System.out.println("BMP:hdrendering "+OMC.HDRENDERING);
 					rv.setImageViewBitmap(iViewID, finalbitmap);
 		        }
 	        } catch (Exception e) {
 	        	e.printStackTrace();
-//	        	if (OMC.DEBUG) Log.w(OMC.OMCSHORT+"Engine","HD Rendering failed, using regular rendering");
 	        }
 		} else {
+			System.out.println("BMP:hdrendering "+OMC.HDRENDERING);
 			rv.setImageViewBitmap(iViewID, finalbitmap);
 		}
-		// Push the image over
-		try {
-			appWidgetManager.updateAppWidget(appWidgetId, rv);
-		} catch (Exception e) {
-			e.printStackTrace();
-			rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
-			rv.setImageViewBitmap(iViewID, finalbitmap);
-			appWidgetManager.updateAppWidget(appWidgetId, rv);
-		}
-		// Second set of instructions
-		rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
-		
+
+		// v141 Removing multiple sets of RV instructions because Apex launcher chokes
 
 		// Do some fancy footwork here and adjust the average lag (so OMC's slowness is less apparent)
 

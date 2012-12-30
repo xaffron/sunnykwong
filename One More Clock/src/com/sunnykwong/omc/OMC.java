@@ -497,9 +497,10 @@ public class OMC extends Application {
 
 		// If paid and OMWPP installed, disable ads; otherwise, enable them
 		final File noads = new File("/sdcard/Android/data/com.sunnykwong.omwpp/files/.noads");
+		final File omwppfolder = noads.getParentFile();
 		if (!OMC.FREEEDITION) {
 	        try {
-	        	if (!noads.exists()) noads.createNewFile();
+	        	if (!noads.exists() && omwppfolder.exists()) noads.createNewFile();
 	        } catch (final Exception e) {
 	        	e.printStackTrace();
 	        }
