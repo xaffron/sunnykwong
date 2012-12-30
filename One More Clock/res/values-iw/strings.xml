@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="languageWord">שפה</string>
-    <string name="languageName">אנגלית (ארה"ב)</string>
+    <string name="languageName">עברית</string>
     <string name="translator">אורי צדוק</string>
     <!-- General Buttons -->
     <string name="nextTip">הטיפ הבא</string>
