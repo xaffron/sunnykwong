@@ -74,8 +74,8 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		//v1.4.1 moving the bulk of processing to a separate thread to release the wakelock quickly
 		//hopefully this will resolve most of the wakelock/kernel bug issues with battery drain
 		//
-		Thread t = new Thread() {
-			public void run() {
+//		Thread t = new Thread() {
+//			public void run() {
 				// Reset HD Rendering switch (may have gotten overridden when cache dir unavailable)
 				OMC.HDRENDERING = OMC.PREFS.getBoolean("HDRendering",true);
 				// Battery-related responses.
@@ -112,12 +112,11 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 							FileInputStream fis = new FileInputStream(fChargeFile);
 							OMC.BATTLEVEL = Math.min(Integer.parseInt(OMC.streamToString(fis).trim()),100);
 							fis.close();
-//							OMC.BATTLEVEL = 100;
 							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","CHARGECOUNTER BATT%: " + OMC.BATTLEVEL);
 							OMC.BATTSCALE = intent.getIntExtra("scale", 100);
 							OMC.BATTPERCENT = (int)(100*OMC.BATTLEVEL/(float)intent.getIntExtra("scale", 100));
 							OMC.CHARGESTATUS = sChargeStatus;
-						} catch (Exception e) {
+						} catch (IOException e) {
 							e.printStackTrace();
 							OMC.BATTLEVEL = intent.getIntExtra("level", 0);
 							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","REPORTED BATT%: " + OMC.BATTLEVEL);
@@ -158,13 +157,15 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 					OMC.NEXTBATTSAVEMILLIS=omctime+900000l;
 				}
 				
+			Thread t = new Thread() {
+			public void run() {
 				// Weather-related responses.
 				// If user taps on hotspot for refresh weather, refresh weather.
 				if (action.equals(OMC.WEATHERREFRESHSTRING)) {
 					OMC.updateWeather();
 				// If we just set the clock or switched timezones, we definitely want to refresh weather right now.
 				} else if (action.equals(Intent.ACTION_TIME_CHANGED)
-					 	|| action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
+						|| action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
 					if (Integer.parseInt(OMC.PREFS.getString("sWeatherFreq", "60"))!=0)
 						OMC.updateWeather();
 				} else {
