@@ -100,7 +100,8 @@
         <service android:enabled="true" android:name="com.sunnykwong.omc.OMCService"/>
         <receiver android:name="com.sunnykwong.omc.OMCAlarmReceiver" >
     		<intent-filter>
-        		<action android:name="android.intent.action.TIME_SET" />
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+    			<action android:name="android.intent.action.TIME_SET" />
         		<action android:name="android.intent.action.TIMEZONE_CHANGED" />
     		    <action android:name="com.sunnykwong.omc.BGSERVICEPAID" />
         		<action android:name="com.sunnykwong.omc.FGSERVICEPAID" />
@@ -120,7 +121,6 @@
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo4x2paid"/>
 			<intent-filter>  
-        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
          		<category android:name="android.intent.category.DEFAULT" />
@@ -130,7 +130,6 @@
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo5x4paid"/>
 			<intent-filter>  
-        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
         		<category android:name="android.intent.category.DEFAULT" />  
@@ -140,7 +139,6 @@
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo5x2paid"/>
 			<intent-filter>  
-        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
         		<category android:name="android.intent.category.DEFAULT" />  
@@ -150,7 +148,6 @@
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo5x1paid"/>
 			<intent-filter>  
-        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
         		<category android:name="android.intent.category.DEFAULT" />  
@@ -160,7 +157,6 @@
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo4x4paid"/>
 			<intent-filter>  
-        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
         		<category android:name="android.intent.category.DEFAULT" />  
@@ -170,7 +166,6 @@
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo4x1paid"/>
 			<intent-filter>  
-        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
         		<category android:name="android.intent.category.DEFAULT" />  
@@ -180,7 +175,6 @@
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo3x3paid"/>
 			<intent-filter>  
-        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
         		<category android:name="android.intent.category.DEFAULT" />  
@@ -190,7 +184,6 @@
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo3x1paid"/>
 			<intent-filter>  
-        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
         		<category android:name="android.intent.category.DEFAULT" />  
@@ -200,7 +193,6 @@
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo2x2paid"/>
 			<intent-filter>  
-        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
         		<category android:name="android.intent.category.DEFAULT" />  
@@ -210,7 +202,6 @@
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo2x1paid"/>
 			<intent-filter>  
-        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
         		<category android:name="android.intent.category.DEFAULT" />  
@@ -220,7 +211,6 @@
      		<meta-data android:name="android.appwidget.provider"
                android:resource="@xml/clockinfo1x3paid"/>
 			<intent-filter>  
-        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         		<action android:name="com.sunnykwong.omc.WIDGET_REFRESH" />
         		<category android:name="android.intent.category.DEFAULT" />  
