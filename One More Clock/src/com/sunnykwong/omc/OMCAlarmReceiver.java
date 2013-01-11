@@ -74,8 +74,8 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		//v1.4.1 moving the bulk of processing to a separate thread to release the wakelock quickly
 		//hopefully this will resolve most of the wakelock/kernel bug issues with battery drain
 		//
-//		Thread t = new Thread() {
-//			public void run() {
+		Thread t = new Thread() {
+			public void run() {
 				// Reset HD Rendering switch (may have gotten overridden when cache dir unavailable)
 				OMC.HDRENDERING = OMC.PREFS.getBoolean("HDRendering",true);
 				// Battery-related responses.
@@ -157,8 +157,6 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 					OMC.NEXTBATTSAVEMILLIS=omctime+900000l;
 				}
 				
-			Thread t = new Thread() {
-			public void run() {
 				// Weather-related responses.
 				// If user taps on hotspot for refresh weather, refresh weather.
 				if (action.equals(OMC.WEATHERREFRESHSTRING)) {

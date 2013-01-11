@@ -133,14 +133,25 @@ public class GoogleReverseGeocodeService {
 			// Fine - GPS only.
 			case 0:
 			case 2:
-					try {
-						if (OMC.DEBUG)
-							Log.i(OMC.OMCSHORT + "Weather", "Requesting GPS Locn.");
-		            	OMC.LM.removeUpdates(OMC.LL); 
-						OMC.LM.requestLocationUpdates("gps", 3600000, 10000, OMC.LL);
-					} catch (IllegalArgumentException ee) {
-						Log.w(OMC.OMCSHORT + "Weather", "Cannot fix location.");
-						ee.printStackTrace();
+					boolean bSuccess=false;
+					int iRetries = 0;
+					while (!bSuccess && iRetries<3) {
+						try {
+							if (OMC.DEBUG)
+								Log.i(OMC.OMCSHORT + "Weather", "Requesting GPS Locn.");
+			            	OMC.LM.removeUpdates(OMC.LL); 
+							OMC.LM.requestLocationUpdates("gps", 3600000, 10000, OMC.LL);
+							bSuccess=true;
+						} catch (Exception ee) {
+							Log.w(OMC.OMCSHORT + "Weather", "Cannot fix location.");
+							ee.printStackTrace();
+							iRetries++;
+							try {
+								Thread.sleep(5000);
+							} catch (InterruptedException ie) {
+								// Do nothing; just a pause that can be omitted
+							}
+						}
 					}
 				break;
 				
@@ -149,20 +160,32 @@ public class GoogleReverseGeocodeService {
 			case 3:
 			case 4:
 			default:
-				try {
-					if (OMC.DEBUG)
-						Log.i(OMC.OMCSHORT + "Weather", "Requesting Network Locn.");
-	            	OMC.LM.removeUpdates(OMC.LL); 
-					OMC.LM.requestLocationUpdates("network", 3600000, 10000, OMC.LL);
-				} catch (IllegalArgumentException e) {
+				bSuccess=false;
+				iRetries = 0;
+				while (!bSuccess && iRetries<3) {
 					try {
 						if (OMC.DEBUG)
-							Log.i(OMC.OMCSHORT + "Weather", "Requesting GPS Locn.");
+							Log.i(OMC.OMCSHORT + "Weather", "Requesting Network Locn.");
 		            	OMC.LM.removeUpdates(OMC.LL); 
-						OMC.LM.requestLocationUpdates("gps", 3600000, 10000, OMC.LL);
-					} catch (IllegalArgumentException ee) {
-						Log.w(OMC.OMCSHORT + "Weather", "Cannot fix location.");
-						ee.printStackTrace();
+						OMC.LM.requestLocationUpdates("network", 3600000, 10000, OMC.LL);
+						bSuccess=true;
+					} catch (Exception e) {
+						try {
+							if (OMC.DEBUG)
+								Log.i(OMC.OMCSHORT + "Weather", "Requesting GPS Locn.");
+			            	OMC.LM.removeUpdates(OMC.LL); 
+							OMC.LM.requestLocationUpdates("gps", 3600000, 10000, OMC.LL);
+							bSuccess=true;
+						} catch (Exception ee) {
+							Log.w(OMC.OMCSHORT + "Weather", "Cannot fix location.");
+							ee.printStackTrace();
+							iRetries++;
+							try {
+								Thread.sleep(5000);
+							} catch (InterruptedException ie) {
+								// Do nothing; just a pause that can be omitted
+							}
+						}
 					}
 				}
 			}
