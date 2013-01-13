@@ -305,8 +305,6 @@
     <string name="deleteAllThemes">Tüm temaları sil</string>
     <string name="forFixingThemeSelection">Uygulama çökmesi durumunda temayı sabitle</string>
     <string name="deleteAllThemesFromSD">SD Card/Hafıza\'da yer alan tüm temaları sil?</string>
-    <string name="yesDelete">Evet, hepsini sil</string>
-    <string name="yesRestore">Evet, varsayılana geri al</string>
     <string name="omcThemesFolderDeleted">OMC tema klasörü silindi.</string>
     <string name="defaultClockPackRestored">Varsayılan saat paketi geri yüklendi.</string>
     <!-- Contact Xaffron -->
@@ -2000,4 +1998,6 @@
     <string name="TTLweather">Tahminler</string>
     <string name="TTLbatt">Pil Kullanımı</string>
     <string name="TTLalarms">Alarmları Göster</string>
+    <string name="_yesRestore">Evet, varsayılana geri al</string>
+    <string name="_yesDelete">Evet, hepsini sil</string>
 </resources>

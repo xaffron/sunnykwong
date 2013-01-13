@@ -284,8 +284,6 @@
     <string name="deleteAllThemes">מחק את כל ערכות הנושא</string>
     <string name="forFixingThemeSelection">על מנת לפתור קריסות אפליקציה הקשורות לבחירת ערכת נושא</string>
     <string name="deleteAllThemesFromSD">האם למחוק את כל ערכות הנושא מכרטיס ה-SD/הזכרון?</string>
-    <string name="yesDelete">כן, מחק הכל</string>
-    <string name="yesRestore">כן, שחזר ברירות מחדל</string>
     <string name="omcThemesFolderDeleted">תיקיית OMCThemes נמחקה</string>
     <string name="defaultClockPackRestored">חבילת שעונים של ברירת המחדל שוחזרה</string>
     <!-- Contact Xaffron-->
@@ -1973,4 +1971,6 @@
     <string name="TTLweather">תחזית</string>
     <string name="TTLbatt">שימוש בסוללה</string>
     <string name="TTLalarms">הראה התרעות</string>
+    <string name="_yesRestore">כן, שחזר ברירות מחדל</string>
+    <string name="_yesDelete">כן, מחק הכל</string>
 </resources>

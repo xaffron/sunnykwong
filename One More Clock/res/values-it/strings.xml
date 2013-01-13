@@ -322,8 +322,6 @@
     <string name="deleteAllThemes">Elimina tutti i temi</string>
     <string name="forFixingThemeSelection">Per il fissaggio si blocca app tema di selezione</string>
     <string name="deleteAllThemesFromSD">Elimina tutti i temi dalla scheda SD / memoria?</string>
-    <string name="yesDelete">Sì, elimina tutto</string>
-    <string name="yesRestore">Sì, ripristinare le impostazioni predefinite</string>
     <string name="omcThemesFolderDeleted">OMCThemes cartella Posta eliminata</string>
     <string name="defaultClockPackRestored">Confezione predefinita Orologio ristrutturata</string>
     <!-- Xaffron Contatto -->
@@ -2019,4 +2017,6 @@
     <string name="TTLweather">Previsioni meteo</string>
     <string name="TTLbatt">Utilizzo della batteria</string>
     <string name="TTLalarms">Allarmi Visualizza</string>
+    <string name="_yesRestore">Sì, ripristinare le impostazioni predefinite</string>
+    <string name="_yesDelete">Sì, elimina tutto</string>
 </resources>

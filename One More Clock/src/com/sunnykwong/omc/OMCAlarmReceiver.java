@@ -85,15 +85,18 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 //					if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm","ChargeStatus: "+ action);
 //					if (OMC.DEBUG) Log.i (OMC.OMCSHORT + "Alarm",""+intent.getIntExtra("plugged", -1));
 					String sChargeStatus = "Discharging";
-					final int iNewBatteryPluggedStatus = intent.getIntExtra("plugged", -1);
-					switch (iNewBatteryPluggedStatus) {
+					OMC.CHARGESTATUSCODE = intent.getIntExtra("plugged", 0);
+					switch (OMC.CHARGESTATUSCODE) {
 					case BatteryManager.BATTERY_PLUGGED_AC: 
 						sChargeStatus="AC Charging";
 						break;
 					case BatteryManager.BATTERY_PLUGGED_USB:
 						sChargeStatus="USB Charging";
 						break;
-					case -1:
+					case 4: // BATTERY_PLUGGED_WIRELESS
+						sChargeStatus="Wireless Charging";
+						break;
+					case 0:
 						break;
 					default:
 						break;
@@ -132,9 +135,9 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 						OMC.CHARGESTATUS = sChargeStatus;
 					}
 
-					if (OMC.LASTBATTERYPLUGGEDSTATUS != iNewBatteryPluggedStatus) {
+					if (OMC.LASTBATTERYPLUGGEDSTATUS != OMC.CHARGESTATUSCODE) {
 						// Update the current plugged status
-						OMC.LASTBATTERYPLUGGEDSTATUS = iNewBatteryPluggedStatus;
+						OMC.LASTBATTERYPLUGGEDSTATUS = OMC.CHARGESTATUSCODE;
 						if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Battery now "+ sChargeStatus +" - refresh widget");
 					} else {
 						if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","BattLevel now " + OMC.BATTLEVEL + " - no refresh");
@@ -153,6 +156,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 					.putInt("ompc_battscale", OMC.BATTSCALE)
 					.putInt("ompc_battpercent", OMC.BATTPERCENT)
 					.putString("ompc_chargestatus", OMC.CHARGESTATUS)
+					.putInt("ompc_chargestatuscode", OMC.CHARGESTATUSCODE)
 					.commit();
 					OMC.NEXTBATTSAVEMILLIS=omctime+900000l;
 				}

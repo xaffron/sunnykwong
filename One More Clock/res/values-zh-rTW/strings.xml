@@ -284,8 +284,6 @@
     <string name="deleteAllThemes">刪除所有款式</string>
     <string name="forFixingThemeSelection">有助解決程式強制關閉問題</string>
     <string name="deleteAllThemesFromSD">刪除所有電腦/SD卡的款式嗎？</string>
-    <string name="yesDelete">確定,全部刪除</string>
-    <string name="yesRestore">確定,刪除後重載預裝時鐘</string>
     <string name="omcThemesFolderDeleted">OMCThemes資料夾刪除完成</string>
     <string name="defaultClockPackRestored">預裝時鐘重載完成</string>
     <!-- Contact Xaffron-->
@@ -1977,4 +1975,10 @@
     <string name="HDRenderingFalse">舊：直接傳送16位元圖像</string>
     <string name="HDRendering">繪圖方法</string>
     <string name="HDRenderingTrue">新：於SD卡緩存32位元圖像</string>
+    <string name="battChrgAC">充電(AC)</string>
+    <string name="battChrgUSB">充電(USB)</string>
+    <string name="battChrgWireless">無線充電</string>
+    <string name="battChrgDischarging">電池</string>
+    <string name="_yesRestore">確定,刪除後重載預裝時鐘</string>
+    <string name="_yesDelete">確定,全部刪除</string>
 </resources>

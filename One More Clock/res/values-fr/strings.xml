@@ -287,8 +287,6 @@
     <string name="deleteAllThemes">Effacer tous les thèmes</string>
     <string name="forFixingThemeSelection">Pour résoudre les crashes de l’application lors de la sélection des thèmes</string>
     <string name="deleteAllThemesFromSD">Effacer tous les thèmes de votre carte SD/Mémoire?</string>
-    <string name="yesDelete">Oui, effacer tout</string>
-    <string name="yesRestore">Oui, restaurer tout</string>
     <string name="omcThemesFolderDeleted">Répertoire des thèmes OMC effacé</string>
     <string name="defaultClockPackRestored">Ensemble d’horloges par défaut restauré</string>
     <!-- Contact Xaffron -->
@@ -1976,4 +1974,6 @@
     <string name="TTLweather">Prévisions</string>
     <string name="TTLbatt">Utilisation de la batterie</string>
     <string name="TTLalarms">Voir les alarmes</string>
+    <string name="_yesRestore">Oui, restaurer tout</string>
+    <string name="_yesDelete">Oui, effacer tout</string>
 </resources>

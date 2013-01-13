@@ -255,8 +255,6 @@
     <string name="deleteAllThemes">Usuń wszystkie motywy</string>
     <string name="forFixingThemeSelection">W celu naprawienia motywu</string>
     <string name="deleteAllThemesFromSD">Usunąć wszystkie motywy z Karty SD/Pamięci?</string>
-    <string name="yesDelete">Tak, usuń wszystkie</string>
-    <string name="yesRestore">Tak, przywróć domyślne</string>
     <string name="omcThemesFolderDeleted">Folder motywów OMC usunięty</string>
     <string name="defaultClockPackRestored">Przywrócono domyślny zestaw zegara</string>
     <!-- Contact Xaffron-->
@@ -1941,4 +1939,6 @@
     <string name="TTLweather">Prognoza</string>
     <string name="TTLbatt">Użycie baterii</string>
     <string name="TTLalarms">Prognoza</string>
+    <string name="_yesRestore">Tak, przywróć domyślne</string>
+    <string name="_yesDelete">Tak, usuń wszystkie</string>
 </resources>

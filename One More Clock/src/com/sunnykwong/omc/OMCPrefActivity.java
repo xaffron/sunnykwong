@@ -684,6 +684,17 @@ public class OMCPrefActivity extends PreferenceActivity {
 									OMC.VERBOSEMONTH = OMC.RStringArray("verbosemonth", selectedLocale);
 									OMC.SHORTMONTH = OMC.RStringArray("shortmonth", selectedLocale);
 									OMC.DAYSUFFIX = OMC.RString("daysuffix", selectedLocale);
+									OMC.VERBOSECHARGESTATUS = new String[10];
+									OMC.VERBOSECHARGESTATUS[0]=OMC.RString("battChrgDischarging", selectedLocale);
+									OMC.VERBOSECHARGESTATUS[1]=OMC.RString("battChrgAC", selectedLocale);
+									OMC.VERBOSECHARGESTATUS[2]=OMC.RString("battChrgUSB", selectedLocale);
+									OMC.VERBOSECHARGESTATUS[3]=OMC.RString("unknown", selectedLocale);
+									OMC.VERBOSECHARGESTATUS[4]=OMC.RString("battChrgWireless", selectedLocale);
+									OMC.VERBOSECHARGESTATUS[5]=OMC.VERBOSECHARGESTATUS[3];
+									OMC.VERBOSECHARGESTATUS[6]=OMC.VERBOSECHARGESTATUS[3];
+									OMC.VERBOSECHARGESTATUS[7]=OMC.VERBOSECHARGESTATUS[3];
+									OMC.VERBOSECHARGESTATUS[8]=OMC.VERBOSECHARGESTATUS[3];
+									OMC.VERBOSECHARGESTATUS[9]=OMC.VERBOSECHARGESTATUS[3];
 
 									preference.setSummary(items[item]);
 

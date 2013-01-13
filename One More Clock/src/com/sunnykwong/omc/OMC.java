@@ -64,6 +64,7 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -81,7 +82,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Alpha 12";
+	static final String TESTVER = "Beta 1";
 	static final boolean FREEEDITION = false;
 	static boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -147,6 +148,7 @@ public class OMC extends Application {
 	static String[] VERBOSEWEATHER;
 	static String[] VERBOSEWEATHERENG;
 	static String[] VERBOSENUMBERS;
+	static String[] VERBOSECHARGESTATUS;
 	static String DAYSUFFIX;
 	static Context CONTEXT;
 	static boolean SHOWHELP = true;
@@ -164,6 +166,7 @@ public class OMC extends Application {
 	static long NEXTBATTSAVEMILLIS=0l;
 	static int BATTLEVEL=0, BATTSCALE=100, BATTPERCENT=0;
 	static String CHARGESTATUS = "Discharging";
+	static int CHARGESTATUSCODE = 3;
 	static String WEATHERTRANSLATETYPE = "AccuWeather";
 	static String LASTKNOWNCITY, LASTKNOWNCOUNTRY;
 	static JSONObject jsonFIXEDLOCN;
@@ -464,6 +467,7 @@ public class OMC extends Application {
 		OMC.BATTSCALE = OMC.PREFS.getInt("ompc_battscale", 100);
 		OMC.BATTPERCENT = OMC.PREFS.getInt("ompc_battpercent", 0);
 		OMC.CHARGESTATUS = OMC.PREFS.getString("ompc_chargestatus", "Discharging");
+		OMC.CHARGESTATUSCODE = OMC.PREFS.getInt("ompc_chargestatuscode", 3);
 
 		final Time t = new Time();
 		t.setToNow();
@@ -595,7 +599,17 @@ public class OMC extends Application {
 				OMC.VERBOSEMONTH = OMC.RStringArray("verbosemonth", OMC.LOCALES[i]);
 				OMC.SHORTMONTH = OMC.RStringArray("shortmonth", OMC.LOCALES[i]);
 				OMC.DAYSUFFIX = OMC.RString("daysuffix", OMC.LOCALES[i]);
-				
+				OMC.VERBOSECHARGESTATUS = new String[10];
+				OMC.VERBOSECHARGESTATUS[0]=OMC.RString("battChrgDischarging", OMC.LOCALES[i]);
+				OMC.VERBOSECHARGESTATUS[1]=OMC.RString("battChrgAC", OMC.LOCALES[i]);
+				OMC.VERBOSECHARGESTATUS[2]=OMC.RString("battChrgUSB", OMC.LOCALES[i]);
+				OMC.VERBOSECHARGESTATUS[3]=OMC.RString("unknown", OMC.LOCALES[i]);
+				OMC.VERBOSECHARGESTATUS[4]=OMC.RString("battChrgWireless", OMC.LOCALES[i]);
+				OMC.VERBOSECHARGESTATUS[5]=OMC.VERBOSECHARGESTATUS[3];
+				OMC.VERBOSECHARGESTATUS[6]=OMC.VERBOSECHARGESTATUS[3];
+				OMC.VERBOSECHARGESTATUS[7]=OMC.VERBOSECHARGESTATUS[3];
+				OMC.VERBOSECHARGESTATUS[8]=OMC.VERBOSECHARGESTATUS[3];
+				OMC.VERBOSECHARGESTATUS[9]=OMC.VERBOSECHARGESTATUS[3];
 			}  
 			if (OMC.LOCALENAMES[i].equals("English (US)")){
 				OMC.VERBOSEWEATHERENG = OMC.RStringArray("VerboseWeather", OMC.LOCALES[i]);
@@ -1616,6 +1630,11 @@ public class OMC extends Application {
 				result = String.valueOf(OMC.BATTLEVEL);
 			} else if (sType.equals("chargestatus")) {
 				result = OMC.CHARGESTATUS;
+			} else if (sType.equals("chargestatustext")) {
+				try {
+					result = OMC.VERBOSECHARGESTATUS[OMC.CHARGESTATUSCODE];
+				} catch (Exception e) {
+				}
 			} else {
 				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "App","fallback");
 				result = OMC.PREFS.getString("ompc_"+sType, "99");
@@ -1883,6 +1902,15 @@ public class OMC extends Application {
 				} else {
 					result = subentry.optString(OMC.PREFS.getString("clockLocaleName", "English (US)"), sWord);
 				}
+			}
+		} else if (sToken.equals("verbose")) {
+			final String sWord = st[iTokenNum++];
+			final int index = Integer.parseInt(st[iTokenNum++]);
+
+			if (sWord.equals("dow")) {
+				result=OMC.VERBOSEDOW[index];
+			} else {
+				//Unknown - do nothing
 			}
 		} else if (sToken.equals("uppercase")){
 			try {

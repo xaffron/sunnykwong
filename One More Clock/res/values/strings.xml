@@ -372,8 +372,6 @@
     <string name="forFixingThemeSelection">For fixing theme selection app crashes</string>
     <string name="deleteAllThemesFromSD">Delete all Themes from your SD Card/Memory?
 	</string>
-    <string name="yesDelete">Yes, delete all</string>
-    <string name="yesRestore">Yes, restore defaults</string>
     <string name="omcThemesFolderDeleted">OMCThemes folder deleted</string>
     <string name="defaultClockPackRestored">Default Clock Pack restored</string>
     <!-- Contact Xaffron -->
@@ -2079,4 +2077,10 @@
     <string name="HDRenderingFalse">Old - 16bit bitmap sent directly between processes</string>
     <string name="HDRendering">Render Method</string>
     <string name="HDRenderingTrue">New - 32bit bitmap cached in SD storage</string>
+    <string name="battChrgAC">AC Charging</string>
+    <string name="battChrgUSB">USB Charging</string>
+    <string name="battChrgWireless">Wireless Charging</string>
+    <string name="battChrgDischarging">Discharging</string>
+    <string name="_yesRestore">Yes, restore defaults</string>
+    <string name="_yesDelete">Yes, delete all</string>
 </resources>

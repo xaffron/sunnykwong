@@ -288,8 +288,6 @@
     <string name="deleteAllThemes">Διαγραφή όλων των θεμάτων</string>
     <string name="forFixingThemeSelection">Για την επιδιόρθωση αναγκαστικής διακοπής της εφαρμογής, κατα την διάρκεια επιλογής θεμάτων.</string>
     <string name="deleteAllThemesFromSD">Διαγραφή όλων των θεμάτων από την κάρτα SD;</string>
-    <string name="yesDelete">Ναι, διαγραφή όλων</string>
-    <string name="yesRestore">Ναι, επιστροφή στις προεπιλογές εφαρμογής</string>
     <string name="omcThemesFolderDeleted">Ο φακελος OMCThemes διαγράφηκε</string>
     <string name="defaultClockPackRestored">Αποκατασταθηκε το προεπιλεγμένο πακέτο ρολογιών</string>
     <!-- Contact Xaffron-->
@@ -1984,4 +1982,6 @@
     <string name="backupWidget">Αποθήκευση Widget</string>
     <string name="restoreWidget">Ανάκτηση ρυθμίσεων Widget</string>
     <string name="minutesAhead">\u0020λεπτά μπροστά από την τρέχουσα ώρα</string>
+    <string name="_yesRestore">Ναι, επιστροφή στις προεπιλογές εφαρμογής</string>
+    <string name="_yesDelete">Ναι, διαγραφή όλων</string>
 </resources>

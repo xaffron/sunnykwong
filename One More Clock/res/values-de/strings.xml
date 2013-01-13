@@ -327,8 +327,6 @@
     <string name="deleteAllThemes">Alle Theme(n) löschen</string>
     <string name="forFixingThemeSelection">Beim Absturz des Apps (Theme Crash)</string>
     <string name="deleteAllThemesFromSD">Alles Themes von der SD Card/Speicher löschen?</string>
-    <string name="yesDelete">Ja, alle</string>
-    <string name="yesRestore">Ja, Standards wiederherstellen</string>
     <string name="omcThemesFolderDeleted">OMCThemes-Ordner gelöscht!</string>
     <string name="defaultClockPackRestored">Standard-Uhren-Paket wiederhergestellt</string>
     <!-- Contact Xaffron -->
@@ -2036,4 +2034,6 @@
     <string name="HDRenderingTrue">Neu - 32bit Bitmap auf der internen SDCard gecached</string>
     <string name="battReportingNormal">Normal - wie von Android berichtet</string>
     <string name="viewReleaseNotes">Neuerungen ansehen</string>
+    <string name="_yesRestore">Ja, Standards wiederherstellen</string>
+    <string name="_yesDelete">Ja, alle</string>
 </resources>

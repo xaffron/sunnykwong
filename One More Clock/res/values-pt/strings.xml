@@ -255,8 +255,6 @@
     <string name="deleteAllThemes">Deletar Todos os Temas</string>
     <string name="forFixingThemeSelection">Para corrigir erro na seleção de Temas</string>
     <string name="deleteAllThemesFromSD">Deletar todos os Temas do seu Cartão SD/Memória?</string>
-    <string name="yesDelete">Sim, deletar todos</string>
-    <string name="yesRestore">Sim, restaurar padrões</string>
     <string name="omcThemesFolderDeleted">Pasta OMCThemes deletada</string>
     <string name="defaultClockPackRestored">Pacote de Temas padrão restaurado</string>
     <!-- Contact Xaffron-->
@@ -1942,4 +1940,6 @@
     <string name="TTLweather">Previsão</string>
     <string name="TTLbatt">Utilização da Bateria</string>
     <string name="TTLalarms">Ver alarmes</string>
+    <string name="_yesRestore">Sim, restaurar padrões</string>
+    <string name="_yesDelete">Sim, deletar todos</string>
 </resources>
