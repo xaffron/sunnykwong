@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -75,7 +76,7 @@ public class OMCWeatherForecastActivity extends Activity {
 				if (tStation.year < 1980) tStation.set(OMC.LASTWEATHERREFRESH);
 					
 				String sWProvider = weather.optString("source",OMC.PREFS.getString("activeWeatherProvider", "seventimer"));
-				System.out.println("sWProvider: " + sWProvider);
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","sWProvider: " + sWProvider);
 				String sWeatherCredit = OMC.RString(sWProvider+"WeatherCredit");
 				if (weather.has("METAR")) {
 					sWeatherCredit+="\n" + OMC.RString("supplementedbyMETAR") +" "+ weather.optString("ICAO", OMC.RString("unknown"));

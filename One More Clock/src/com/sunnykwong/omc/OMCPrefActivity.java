@@ -365,8 +365,8 @@ public class OMCPrefActivity extends PreferenceActivity {
 												result.put("widgetThemeLong", OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG));
 
 											    //convert from paths to Android friendly Parcelable Uri's
-											    System.out.println("dir: " + OMCRoot.getAbsolutePath());
-											    System.out.println("name: " + backupName+".omc");
+												if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","dir: " + OMCRoot.getAbsolutePath());
+												if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","name: " + backupName+".omc");
 											    
 											    File outzip = new File(OMCRoot.getAbsolutePath(),backupName+".omc");
 											    
@@ -404,47 +404,9 @@ public class OMCPrefActivity extends PreferenceActivity {
 									        		Log.w(OMC.OMCSHORT + "Picker","cannot zip, file already open or RO");
 													e.printStackTrace();
 												}
-//											    File f = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" 
-//									        			+ OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()));
-//									        	
-//									        	try {
-//										        	ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(outzip),8192));
-//										        	for (File file : f.listFiles())
-//												    {
-//										        		ZipEntry ze = new ZipEntry(new ZipEntry(OMCThemePickerActivity.THEMEARRAY.mThemes.get(gallery.getSelectedItemPosition()) + "/" + file.getName()));
-//											        	zos.putNextEntry(ze);
-//													    FileInputStream ffis = new FileInputStream(file);
-//														try {
-//															//Absolute luxury 1980 style!  Using an 8k buffer.
-//															byte[] buffer = new byte[8192];
-//															int iBytesRead=0;
-//															while ((iBytesRead=ffis.read(buffer))!= -1){
-//																zos.write(buffer, 0, iBytesRead);
-//															}
-//															zos.flush();
-//															zos.closeEntry();
-//														} catch (Exception e) {
-//											        		Log.w(OMC.OMCSHORT + "Picker","cannot zip, zip error below");
-//															e.printStackTrace();
-//														}
-//														ffis.close();
-//											        	
-//												    }
-//								
-//										        	zos.finish();
-//										        	zos.close();
-//
-//												} catch (Exception e) {
-//													// File exists and read-only?  Shouldn't happen
-//									        		Log.w(OMC.OMCSHORT + "Picker","cannot zip, file already open or RO");
-//													e.printStackTrace();
-//												}
 											}
-											System.out.println(result.toString(3));
 								        	File backupOut = new File(OMCRoot.getAbsolutePath() + "/" 
 								        			+ backupName+".omcbackup");
-								        	System.out.println(backupOut);
-								        	System.out.println(backupOut.exists());
 								        	OMC.JSONToFile(result,backupOut);
 								        	
 
@@ -501,8 +463,8 @@ public class OMCPrefActivity extends PreferenceActivity {
 								@Override
 								public void onClick(View v) {
 									restoreOptions[0]=fname.replace(".omcbackup", "");
-									System.out.println("We're restoring " + restoreOptions[0]);
-									System.out.println("restore theme? " + restoreOptions[1]);
+									if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","We're restoring " + restoreOptions[0]);
+									if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","restore theme? " + restoreOptions[1]);
 								}
 							});
 
@@ -575,7 +537,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 											JSONArray TTL = backup.optJSONArray("TTL");
 											for (int i=0; i<9; i++) {
 												final String TTLString =  TTL.optString(i).equals("")?"default":TTL.optString(i);
-												System.out.println("URI"+OMC.COMPASSPOINTS[i]+": "+ TTLString);
+												if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","URI"+OMC.COMPASSPOINTS[i]+": "+ TTLString);
 												OMC.PREFS.edit().putString("URI"+OMC.COMPASSPOINTS[i], TTLString).commit();
 												OMC.PREFS.edit().putString("URIDesc"+OMC.COMPASSPOINTS[i], OMC.RString("TTL"+TTLString)).commit();
 											}
@@ -589,8 +551,8 @@ public class OMCPrefActivity extends PreferenceActivity {
 													OMC.setPrefs(appWidgetID);
 
 												    //convert from paths to Android friendly Parcelable Uri's
-												    System.out.println("dir: " + Environment.getExternalStorageDirectory());
-												    System.out.println("name: " + restoreName+".omc");
+													if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","dir: " + Environment.getExternalStorageDirectory());
+													if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","name: " + restoreName+".omc");
 												    
 												    File inzip = new File(Environment.getExternalStorageDirectory(),restoreName+".omc");
 												    if (!inzip.exists()) return "";

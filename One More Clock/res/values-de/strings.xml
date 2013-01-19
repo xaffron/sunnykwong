@@ -2036,4 +2036,7 @@
     <string name="viewReleaseNotes">Neuerungen ansehen</string>
     <string name="_yesRestore">Ja, Standards wiederherstellen</string>
     <string name="_yesDelete">Ja, alle</string>
+    <string name="battChrgUSB">Laden über USB</string>
+    <string name="battChrgAC">Laden über Netz</string>
+    <string name="battChrgDischarging">Entladend</string>
 </resources>

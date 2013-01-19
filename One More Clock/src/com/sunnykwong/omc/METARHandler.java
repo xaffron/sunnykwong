@@ -83,7 +83,7 @@ public class METARHandler {
 								if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "NOAAMETAR", "Trying: " + sFilePath);
 								InputStream is = ftp.retrieveFileStream(sFilePath);
 								if (is==null) {
-									System.out.println( ftp.getReplyString());
+									Log.w(OMC.OMCSHORT + "NOAAMETAR", ftp.getReplyString());
 									throw new IOException();
 								}
 								

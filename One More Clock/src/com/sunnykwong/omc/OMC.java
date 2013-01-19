@@ -82,7 +82,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Beta 1";
+	static final String TESTVER = "RC1";
 	static final boolean FREEEDITION = false;
 	static boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -1291,7 +1291,6 @@ public class OMC extends Application {
 		    while ((iBytesRead = oSRC.read(buffer))!= -1){
 		    	iByteCount+=iBytesRead;
 		    	oTGT.write(buffer,0,iBytesRead);
-			    System.out.println(buffer.toString() + " copied to memfile.");
 		    }
 		    oTGT.close();
 		    oSRC.close();
@@ -1921,7 +1920,6 @@ public class OMC extends Application {
 		} else if (sToken.equals("alarm")){
 			try {
 				result = android.provider.Settings.System.getString(OMC.CONTEXT.getContentResolver(), android.provider.Settings.System.NEXT_ALARM_FORMATTED);
-				System.out.println("ALARM RESULT = " + result);
 			} catch (final java.lang.ArrayIndexOutOfBoundsException e) {
 				result = "";
 			}
