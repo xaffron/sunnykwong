@@ -110,7 +110,7 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 					// Adapted from "The One-Percent Hack" by Josiah Barber of Darshan Computing, LLC.
 					// Thanks, Josiah!
 					File fChargeFile = new File("/sys/class/power_supply/battery/charge_counter");
-					if (OMC.PREFS.getBoolean("battReporting",true)==true && fChargeFile.exists()) {
+					if (OMC.PREFS.getBoolean("battReporting",true)==false && fChargeFile.exists()) {
 						try {
 							FileInputStream fis = new FileInputStream(fChargeFile);
 							OMC.BATTLEVEL = Math.min(Integer.parseInt(OMC.streamToString(fis).trim()),100);
