@@ -89,7 +89,7 @@ public class METARHandler {
 								
 								result = OMC.streamToString(is);
 								is.close();
-								ftp.disconnect();
+								ftp.completePendingCommand();
 								if (OMC.DEBUG) {
 									Log.i(OMC.OMCSHORT + "NOAAMETAR", "Airport " + s + " returned good METAR.");
 									Log.i(OMC.OMCSHORT + "NOAAMETAR", result);
@@ -98,6 +98,8 @@ public class METARHandler {
 								Metar metar = Metar.parse(s, result);
 								metar.debugPrint();
 								
+								ftp.disconnect();
+
 								// Update Current Conditions with METAR info.
 								jsonWeather = new JSONObject(OMC.PREFS.getString("weather", "{}"));
 								jsonWeather.put("temp_f", (int)(metar.tempF+0.5));
@@ -134,6 +136,7 @@ public class METARHandler {
 								//Mark current conditions as updated by METAR.
 								jsonWeather.put("METAR", true);
 								jsonWeather.put("ICAO", metar.icao);
+								jsonWeather.put("METARraw", metar.ob);
 
 								// In NOAA situations where current conditions are NA, fix that too
 								JSONObject iTodaysWeatherForecastObject = jsonWeather.optJSONArray("zzforecast_conditions").getJSONObject(0);

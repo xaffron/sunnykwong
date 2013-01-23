@@ -26,6 +26,7 @@ public class Metar {
 		Metar metar = new Metar();
 		metar.icao = (sICAO==null?null:sICAO);
 		metar.ob = sObservation;
+		metar.timestamp = null;
 		
         if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"METAR","Raw report: " + sObservation);
 		
@@ -42,6 +43,22 @@ public class Metar {
 			if (token.equals("METAR")) continue;
 			// Throw away the fixed "SPECI" designator
 			if (token.equals("SPECI")) continue;
+			// If we have the full date, parse it
+			if (token.contains("/")&& token.length()==10) {
+            	Time t = new Time(Time.TIMEZONE_UTC);
+            	t.setToNow();
+            	t.set(0, 0, 0, Integer.parseInt(token.substring(8)), Integer.parseInt(token.substring(5,7))-1, Integer.parseInt(token.substring(0,4)));
+            	t.normalize(true);
+            	metar.timestamp = t;
+			}
+			// If we have the full GMT time, parse it
+			if (token.contains(":")&& token.length()==5) {
+				if (metar.timestamp!=null) {
+					metar.timestamp.hour=Integer.parseInt(token.substring(0,2));
+					metar.timestamp.minute=Integer.parseInt(token.substring(3,5));
+					metar.timestamp.normalize(true);
+				}
+			}
 			// Throw away any shortcut times
 			if (token.length()!=4) continue;
 			// If we didn't know the ICAO before, we know now.
@@ -50,6 +67,12 @@ public class Metar {
 		}
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"METAR","DONE WITH HEADER");
 		iMarker++;
+		
+		// If we did get the timestamp from the NOAA header, is it very stale (more than 3 hours)?  If so, throw an exception
+		if (System.currentTimeMillis()-metar.timestamp.toMillis(true) > 3*60*60000l) {
+			if (OMC.DEBUG) Log.w(OMC.OMCSHORT+"METAR","Rejecting stale METAR");
+			throw new MetarParsingException();
+		}
 		
 		// Getting into the meat of things.
 		// Parse Timestamp and Wind
@@ -75,46 +98,48 @@ public class Metar {
 //          }
 
             
-            // Check for Timestamp
+            // Check for Timestamp; if header timestamp is corrupt or absent, parse timestamp here
             if (token.endsWith("Z")) {
-            	Time t = new Time(Time.TIMEZONE_UTC);
-            	t.setToNow();
-            	
-            	// If the timestamp is only 5 digits long, we're missing the month. assume current day.
-            	if (token.length()==5) {
-                	int iHour = Integer.parseInt(token.substring(0,2)); // First two numbers are hour
-                	int iMinute = Integer.parseInt(token.substring(2,4)); // Next two numbers are minute
-                	if (t.hour < iHour) {
-                		// We can safely assume that the observation time is in the past.
-                		// So if report hour is larger than current hour, we're right at the day change boundary.
-                		// If it's not, well, GIGO for now
-                		t.monthDay--;
-                	}
-            		t.hour=iHour;
-            		t.minute=iMinute;
-            		t.normalize(false);
-
-            	// If the timestamp is 7 digits long, we have day, hour, minute.
-            	} else if (token.length()==7) {
-                	//int iDayOfMonth = Integer.parseInt(token.substring(0,2)); // First two numbers are date of month
-                	int iHour = Integer.parseInt(token.substring(2,4)); // Next two numbers are hour
-                	int iMinute = Integer.parseInt(token.substring(4,6)); // Next two numbers are minute
-                	// Discard monthday info for now - we don't really need it since the phone should keep reasonably good time
-                	if (t.hour < iHour) {
-                		// We can safely assume that the observation time is in the past.
-                		// So if report hour is larger than current hour, we're right at the day change boundary.
-                		// If it's not, well, GIGO for now
-                		t.monthDay--;
-                	}
-            		t.hour=iHour;
-            		t.minute=iMinute;
-            		t.normalize(false);
-            		
-               	// If the timestamp is another length, something's wrong.
-            	} else {
-            		throw new MetarParsingException();
+            	if (metar.timestamp==null) {
+	            	Time t = new Time(Time.TIMEZONE_UTC);
+	            	t.setToNow();
+	            	
+	            	// If the timestamp is only 5 digits long, we're missing the month. assume current day.
+	            	if (token.length()==5) {
+	                	int iHour = Integer.parseInt(token.substring(0,2)); // First two numbers are hour
+	                	int iMinute = Integer.parseInt(token.substring(2,4)); // Next two numbers are minute
+	                	if (t.hour < iHour) {
+	                		// We can safely assume that the observation time is in the past.
+	                		// So if report hour is larger than current hour, we're right at the day change boundary.
+	                		// If it's not, well, GIGO for now
+	                		t.monthDay--;
+	                	}
+	            		t.hour=iHour;
+	            		t.minute=iMinute;
+	            		t.normalize(false);
+	
+	            	// If the timestamp is 7 digits long, we have day, hour, minute.
+	            	} else if (token.length()==7) {
+	                	//int iDayOfMonth = Integer.parseInt(token.substring(0,2)); // First two numbers are date of month
+	                	int iHour = Integer.parseInt(token.substring(2,4)); // Next two numbers are hour
+	                	int iMinute = Integer.parseInt(token.substring(4,6)); // Next two numbers are minute
+	                	// Discard monthday info for now - we don't really need it since the phone should keep reasonably good time
+	                	if (t.hour < iHour) {
+	                		// We can safely assume that the observation time is in the past.
+	                		// So if report hour is larger than current hour, we're right at the day change boundary.
+	                		// If it's not, well, GIGO for now
+	                		t.monthDay--;
+	                	}
+	            		t.hour=iHour;
+	            		t.minute=iMinute;
+	            		t.normalize(false);
+	            		
+	               	// If the timestamp is another length, something's wrong.
+	            	} else {
+	            		throw new MetarParsingException();
+	            	}
+	            	metar.timestamp=t;
             	}
-            	metar.timestamp=t;
             }
         
             // Check for Wind
