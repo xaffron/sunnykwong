@@ -82,7 +82,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "";
+	static final String TESTVER = "Alpha 1";
 	static final boolean FREEEDITION = false;
 	static boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -366,7 +366,7 @@ public class OMC extends Application {
     	OMC.AM = getAssets();
     	OMC.RES = getResources();
 
-    	OMC.WIDGETWIDTH=Math.min(getResources().getDisplayMetrics().widthPixels,getResources().getDisplayMetrics().heightPixels);
+    	OMC.WIDGETWIDTH=Math.max(480, Math.min(getResources().getDisplayMetrics().widthPixels,getResources().getDisplayMetrics().heightPixels));
     	OMC.WIDGETHEIGHT=OMC.WIDGETWIDTH;
         OMC.ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
 
