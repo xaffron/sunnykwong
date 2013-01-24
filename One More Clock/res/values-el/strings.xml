@@ -6,7 +6,6 @@
     <!-- General Buttons -->
     <string name="nextTip">Επόμενη συμβουλή</string>
     <!-- General Errors -->
-    <string name="sdcard">Δεν βρέθηκε κάρτα SD .\Απενεργοποιήστε το USB storage αν είναι ακόμα συνδεμένο!</string>
     <string name="sdcardMissingOrCorrupt">Η κάρτα SD λείπει ή είναι χαλασμένη.\Απενεργοποιήστε το USB storage αν είναι ακόμα συνδεμένο!</string>
     <string name="themeNotFound">Το θέμα δεν βρέθηκε!  Επαναφορά στο προεπιλεγμένο θέμα.</string>
     <string name="warningConflictPaid">ΠΡΟΣΟΧΗ!\nΔιένεξη με την έκδοση επι πληρωμή.</string>
@@ -1984,4 +1983,5 @@
     <string name="minutesAhead">\u0020λεπτά μπροστά από την τρέχουσα ώρα</string>
     <string name="_yesRestore">Ναι, επιστροφή στις προεπιλογές εφαρμογής</string>
     <string name="_yesDelete">Ναι, διαγραφή όλων</string>
+    <string name="sdcardNotDetected">Δεν βρέθηκε κάρτα SD .\Απενεργοποιήστε το USB storage αν είναι ακόμα συνδεμένο!</string>
 </resources>

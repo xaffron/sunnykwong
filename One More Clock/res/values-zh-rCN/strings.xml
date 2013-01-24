@@ -1982,4 +1982,9 @@
     <string name="battChrgDischarging">电池</string>
     <string name="_yesRestore">确定,删除后重载预装时钟</string>
     <string name="_yesDelete">确定,全部删除</string>
+    <string name="taskComplete">操作完成</string>
+    <string name="usingMETAR">直接存取附近机场天气</string>
+    <string name="useMETAR">采用 METAR 天气报告</string>
+    <string name="usingInterpolation">从数学模型估算天气</string>
+    <string name="supplementedbyMETAR">天气由此机场提供:</string>
 </resources>

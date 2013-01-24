@@ -69,7 +69,7 @@
     <string name="themePreview">Theme Vorschau</string>
     <string name="openingConnection">Öffnen der Verbindung</string>
     <string name="beginningDownload">Beginn des Downloads</string>
-    <string name="downloading">Downloading…</string>
+    <string name="downloading">Downloaden…</string>
     <string name="downloaded">Download abgeschlossen</string>
     <string name="of">von</string>
     <string name="bytes">\u0020Bytes</string>
@@ -2039,4 +2039,11 @@
     <string name="battChrgUSB">Laden über USB</string>
     <string name="battChrgAC">Laden über Netz</string>
     <string name="battChrgDischarging">Entladend</string>
+    <string name="restoreWidget">Wiederherstellen der Widget Einstellungen</string>
+    <string name="overwriteThemeWarning">ACHTUNG! Jegliche der individuellen Theme-Einstellungen für die Uhren werden überschrieben!</string>
+    <string name="backupThemePersonalizations">Sicherung der individuellen Theme-Einstellungen</string>
+    <string name="overwriteThemePersonalizations">Überschreiben der individuellen Theme-Einstellungen</string>
+    <string name="battChrgWireless">Drahtloses Laden</string>
+    <string name="storingFile">Abspeichern der Datei:\u0020</string>
+    <string name="taskComplete">Prozess beendet</string>
 </resources>

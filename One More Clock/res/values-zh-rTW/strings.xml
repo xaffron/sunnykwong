@@ -1981,4 +1981,9 @@
     <string name="battChrgDischarging">電池</string>
     <string name="_yesRestore">確定,刪除後重載預裝時鐘</string>
     <string name="_yesDelete">確定,全部刪除</string>
+    <string name="taskComplete">操作完成</string>
+    <string name="usingMETAR">直接存取附近機場天氣</string>
+    <string name="useMETAR">採用 METAR 天氣報告</string>
+    <string name="usingInterpolation">從數學模型估算天氣</string>
+    <string name="supplementedbyMETAR">天氣由此機場提供:</string>
 </resources>
