@@ -2046,4 +2046,5 @@
     <string name="battChrgWireless">Drahtloses Laden</string>
     <string name="storingFile">Abspeichern der Datei:\u0020</string>
     <string name="taskComplete">Prozess beendet</string>
+    <string name="nameOfBackup">Bezeichnung des Backups:</string>
 </resources>
