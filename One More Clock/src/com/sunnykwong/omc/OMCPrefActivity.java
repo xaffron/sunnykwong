@@ -660,6 +660,19 @@ public class OMCPrefActivity extends PreferenceActivity {
 
 									preference.setSummary(items[item]);
 
+									for (int i =0 ; i < OMC.LOCALES.length; i++) {
+										if (OMC.PREFS.getString("appLocaleName", "English (US)").equals(OMC.LOCALENAMES[i])) {
+											Log.i(OMC.OMCSHORT + "App","Using app locale: " + OMC.LOCALENAMES[i]);
+											final Configuration config = new Configuration();
+											OMC.CURRENTLOCALE = OMC.LOCALES[i];
+											config.locale=OMC.CURRENTLOCALE;
+											
+											OMC.RES.updateConfiguration(config, 
+													OMC.RES.getDisplayMetrics());
+											break;
+										}
+									}
+									
 									OMCPrefActivity.this.finish();
 								}
 						})
