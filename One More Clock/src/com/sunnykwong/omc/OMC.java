@@ -82,7 +82,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "pre Alpha 5";
+	static final String TESTVER = "Beta 1";
 	static final boolean FREEEDITION = false;
 	static boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -96,10 +96,10 @@ public class OMC extends Application {
 	static Bitmap PLACEHOLDERBMP;
 	
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "asset:pk141.omc";
+	static final String STARTERPACKURL = "asset:pk143.omc";
 	static final String OMCCHANGESURL = "https://sites.google.com/a/xaffron.com/xaffron-software/omc-changes";
-	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v141.omc";
-	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v141.omc";
+	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v143.omc";
+	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v143.omc";
 	static final String DEFAULTTHEME = "IceLock";
 	static final String DEFAULTTHEMELONG = "Ice Lock";
 	static final String APPICON = "clockicon";
@@ -303,7 +303,7 @@ public class OMC extends Application {
 		OMC.SHAREDPREFNAME = OMC.PKGNAME + "_preferences";
     	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_WORLD_READABLE);
     	OMC.CURRENTCLOCKPRIORITY = Integer.parseInt(OMC.PREFS.getString("clockPriority", "3"));
-    	OMC.CURRENTLOCATIONPRIORITY = Integer.parseInt(OMC.PREFS.getString("locationPriority", "4"));
+    	OMC.CURRENTLOCATIONPRIORITY = Integer.parseInt(OMC.PREFS.getString("locationPriority", "3"));
     	OMC.HDRENDERING = OMC.PREFS.getBoolean("HDRendering",true);
     	
 		// Work around pre-Froyo bugs in HTTP connection reuse.
@@ -1937,17 +1937,25 @@ public class OMC extends Application {
 			}
 		} else if (sToken.equals("verbosenumber")){
 			String sRawValue = st[iTokenNum++].trim();
+			String sUnit = "";
+			try {
+				sUnit = st[iTokenNum++].trim();
+			} catch (Exception e) {
+				//do nothing
+			}
 			if (OMC.DAYSUFFIX.length()!=0) {
 				sRawValue = sRawValue.replace(OMC.DAYSUFFIX,"");
 			}
-			if (sRawValue.equals("")) {
+			if (sRawValue.equals("") || Integer.parseInt(sRawValue)>99 || Integer.parseInt(sRawValue)<0) {
 				result="";
-			} else {
+			} else { 
 				try {
-					if (OMC.DAYSUFFIX.length()!=0) {
-						result = OMC.VERBOSENUMBERS[Integer.parseInt(sRawValue)]+OMC.DAYSUFFIX;
-					} else {
+					if (sUnit.equals("")){
 						result = OMC.VERBOSENUMBERS[Integer.parseInt(sRawValue)];
+					} else if (sUnit.equals("daysuffix")) {
+						result = OMC.VERBOSENUMBERS[Integer.parseInt(sRawValue)] + OMC.DAYSUFFIX;
+					} else  {
+						result = OMC.VERBOSENUMBERS[Integer.parseInt(sRawValue)] + sUnit;
 					}
 				} catch (final java.lang.ArrayIndexOutOfBoundsException e) {
 					result = "";
@@ -2284,7 +2292,7 @@ public class OMC extends Application {
 		// If weather is by latitude/longitude, request lazy location (unless forced).
 		// The location listener directs control to the updateweather function upon callback.
 		} else if (sWeatherSetting.equals("bylatlong")) {
-			GoogleReverseGeocodeService.getLastBestLocation(Integer.parseInt(OMC.PREFS.getString("locationPriority", "4")));
+			GoogleReverseGeocodeService.getLastBestLocation(Integer.parseInt(OMC.PREFS.getString("locationPriority", "3")));
 			return;
 		} else if (sWeatherSetting.equals("specific")) {
 			// If weather is for fixed location, calculate sunrise/sunset for the location, then
@@ -2292,12 +2300,16 @@ public class OMC extends Application {
 			OMC.LASTKNOWNCITY=OMC.jsonFIXEDLOCN.optString("city","Unknown");
 			OMC.LASTKNOWNCOUNTRY=OMC.jsonFIXEDLOCN.optString("country","Unknown");
 			OMC.WEATHERREFRESHSTATUS=OMC.WRS_FIXED;	
-			
-			if (OMC.LASTKNOWNCOUNTRY.equals("United States") && OMC.PREFS.getString("weatherProvider", "auto").equals("auto")) {
-				OMC.PREFS.edit().putString("activeWeatherProvider", "noaa").commit();
-				OMC.PREFS.edit().putBoolean("weatherMETAR", true).commit();
+			System.out.println("LASTKNOWNCOUNTRY: "+OMC.LASTKNOWNCOUNTRY);
+			if (OMC.PREFS.getString("weatherProvider", "auto").equals("auto")) {
+				if (OMC.LASTKNOWNCOUNTRY.equals("United States")) {
+					OMC.PREFS.edit().putString("activeWeatherProvider", "noaa").commit();
+					OMC.PREFS.edit().putBoolean("weatherMETAR", true).commit();
+				} else {
+					OMC.PREFS.edit().putString("activeWeatherProvider", "seventimer").commit();
+					OMC.PREFS.edit().putBoolean("weatherMETAR", true).commit();
+				}	
 			}
-			
 			OMC.calculateSunriseSunset(OMC.jsonFIXEDLOCN.optDouble("latitude",0d), OMC.jsonFIXEDLOCN.optDouble("longitude",0d));
 			final String sWProvider = OMC.PREFS.getString("activeWeatherProvider", "seventimer");
 			if (sWProvider.equals("ig")) {

@@ -954,7 +954,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 							@Override
 							public void onClick(DialogInterface dialog, int item) {
 								OMC.PREFS.edit().putString("locationPriority", (String)newValue).commit();
-					        	preference.setSummary(OMC.RStringArray("locationPriority_options")[Integer.parseInt(OMC.PREFS.getString("locationPriority", "4"))]);
+					        	preference.setSummary(OMC.RStringArray("locationPriority_options")[Integer.parseInt(OMC.PREFS.getString("locationPriority", "3"))]);
 							}
 						})
 						.setNegativeButton(OMC.RString("_no"), new DialogInterface.OnClickListener() {
@@ -967,7 +967,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 				}
 			});
         	prefLocnPriority.setSummary(OMC.RStringArray("locationPriority_options")
-        			[Integer.parseInt(OMC.PREFS.getString("locationPriority", "4"))]);
+        			[Integer.parseInt(OMC.PREFS.getString("locationPriority", "3"))]);
         	
         	// "Battery Reporting".
         	Preference prefBattReporting = findPreference("battReporting");

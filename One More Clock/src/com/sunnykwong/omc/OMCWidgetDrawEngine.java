@@ -67,7 +67,8 @@ public class OMCWidgetDrawEngine {
        		        if (outTemp.exists()&&outTemp.canRead()) {
        		        	rv.setImageViewUri(OMC.RId("omcIV"), Uri.parse("content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+aWM.getAppWidgetIds(cName)[i]));
        		        } else {
-       					rv.setImageViewBitmap(OMC.RId("omcIV"), OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
+       		        	// Do nothing
+       					//rv.setImageViewBitmap(OMC.RId("omcIV"), OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
        		        }
         		} else {
 	                rv.setImageViewBitmap(OMC.RId("omcIV"),
