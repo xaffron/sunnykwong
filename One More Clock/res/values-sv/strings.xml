@@ -2,7 +2,7 @@
 <resources>
     <string name="languageWord">Språk</string>
     <string name="languageName">Svenska</string>
-    <string name="translator">Tobias Hellgren</string>
+    <string name="translator">Tobias Hellgren och Pontus Edgren</string>
     <!-- General Buttons -->
     <string name="nextTip">Nästa tips</string>
     <!-- General Errors -->
@@ -26,7 +26,7 @@
     <!-- Forecast Screen -->
     <string name="doubleDash">--</string>
     <string name="unknown">Okänd</string>
-    <string name="noaaWeatherCredit" newname="">Weather observations and forecasts updated from the National Oceanic and Atmospheric Administration (NOAA).</string>
+    <string name="noaaWeatherCredit" newname="">Väderobservationer och prognoser uppdateras från National Oceanic och Atmospheric Administration (NOAA).</string>
     <string name="igWeatherCredit">Väder uppdaterat från Google API.</string>
     <string name="yrWeatherCredit">Väderprognos av yr.no, levererat av Meteorologisk Institutt i Norge och NRK.</string>
     <string name="seventimerWeatherCredit">7Timer!-prognoser av Ye Quanzhi, med stöd från Shanghai Astronomical Observatory (SHAO) och Chinese Academy of Sciences (CAS).</string>
@@ -57,29 +57,29 @@
     <string name="reloadThemeCatalog">Ladda om temakatalog</string>
     <!-- Theme Import/Unzip -->
     <string name="themePreview">Förhandsgranskning av tema</string>
-    <string name="openingConnection" newname="">Opening connection.</string>
+    <string name="openingConnection" newname="">Öppnar Anslutning.</string>
     <string name="beginningDownload">Startar nedladdning…</string>
-    <string name="downloading" newname="">Downloading\u0020</string>
-    <string name="downloaded" newname="">Downloaded\u0020</string>
+    <string name="downloading" newname="">Laddar ner\u0020</string>
+    <string name="downloaded" newname="">Nerladdad\u0020</string>
     <string name="of" newname="">\u0020of\u0020</string>
     <string name="bytes" newname="">\u0020bytes</string>
     <string name="storingFile">Sparar fil: </string>
-    <string name="existsOverwriting" newname="">\u0020exists; overwriting</string>
-    <string name="createThemeFolder1" newname="">Theme folder \'</string>
-    <string name="createThemeFolder2" newname="">\'\u0020created.</string>
-    <string name="detectedWeatherskin" newname="">Detected WeatherSkin </string>
+    <string name="existsOverwriting" newname="">\u0020existerar; skriver över</string>
+    <string name="createThemeFolder1" newname="">Tema mapp \'</string>
+    <string name="createThemeFolder2" newname="">\'\u0020skapad.</string>
+    <string name="detectedWeatherskin" newname="">Kände av Väder tema </string>
     <string name="extractingStarterClockPack">Extraherar startpaket av klockor…</string>
     <string name="starterClockPack">Startpaket av klockor</string>
     <string name="starterClockPackText">Filerna i din .OMCThemes-katalog på minneskortet kommer skrivas över. Är du säker?\n(Om osäker, välj "Ja")</string>
     <string name="importComplete">Importering klar!</string>
-    <string name="importAborted" newname="">Import Aborted!</string>
-    <string name="useDownloadInsteadOfPreview" newname="">Please use Download instead of Preview to import an OMC clock!</string>
-    <string name="importWorksWithOMCFiles" newname="">Clock import works with .omc files.\nWere you opening the wrong file?</string>
-    <string name="nothingToExtract" newname="">Nothing to extract!</string>
-    <string name="downloadInterrupted" newname="">Download Interrupted!</string>
-    <string name="poorReceptionArea" newname="">Is your phone in a poor reception area?\nPlease try again later.</string>
-    <string name="connectionTimedOut" newname="">Connection timed out!</string>
-    <string name="serverNotFound" newname="">Server not found!</string>
+    <string name="importAborted" newname="">Importering Avbruten!</string>
+    <string name="useDownloadInsteadOfPreview" newname="">Var god använd hämtningar istället för förhandsvisning för att importera en OMC klocka!</string>
+    <string name="importWorksWithOMCFiles" newname="">Klockimporter fungerar med .ocm filer.\nÖppnade du fel fil?</string>
+    <string name="nothingToExtract" newname="">Inget att extrahera!</string>
+    <string name="downloadInterrupted" newname="">Nerladdning avbruten!</string>
+    <string name="poorReceptionArea" newname="">Har din telefon dålig täckning just nu??\nVar god prova igen senare.</string>
+    <string name="connectionTimedOut" newname="">Anslutningen bröts(Connection timed out)!</string>
+    <string name="serverNotFound" newname="">Servern hittades inte!</string>
     <!-- Widget Theme Long Press-->
     <string name="emailOrDeleteTheme">Skicka eller radera tema</string>
     <string name="emailTheme">Sänd tema via e-mail</string>
@@ -113,22 +113,22 @@
     <string name="assignTapToLaunch">App att starta vid tryck</string>
     <string name="nwCornerReserved">Översta vänstra hörnet reserverat för inställningar</string>
     <!-- TTL Popup -->
-    <string name="areaToCustomize" newname="">Area to Customize:</string>
-    <string name="chooseAction" newname="">Choose Action</string>
-    <string name="openOptionsDefault" newname="">Open options (default)</string>
-    <string name="doNothing" newname="">Do nothing</string>
-    <string name="weatherForecast" newname="">Weather forecast</string>
-    <string name="viewAlarms" newname="">View alarms (Experimental)</string>
-    <string name="battUsage" newname="">View Battery Usage</string>
-    <string name="otherActivity" newname="">Other activity…</string>
-    <string name="otherActivityTTL" newname="">Custom Activity</string>
+    <string name="areaToCustomize" newname="">Område att anpassa:</string>
+    <string name="chooseAction" newname="">Välj åtgärd</string>
+    <string name="openOptionsDefault" newname="">Öppna inställningar (standard) </string>
+    <string name="doNothing" newname="">Gör ingenting</string>
+    <string name="weatherForecast" newname="">Väderprognos</string>
+    <string name="viewAlarms" newname="">Visa alarm (Beta)</string>
+    <string name="battUsage" newname="">Visa batterianvändande</string>
+    <string name="otherActivity" newname="">Annan aktivitet…</string>
+    <string name="otherActivityTTL" newname="">Anpassad Aktivitet</string>
     <string name="use24HourClock">24-timmarsklocka</string>
     <string name="use24HourTrue">23:59</string>
     <string name="use24HourFalse">11:59pm</string>
     <string name="showLeadingZero">Inled med noll</string>
     <string name="showLeadingZTrue">04:23</string>
     <string name="showLeadingZFalse">4:23</string>
-    <string name="mmddDateFormat" newname="">M/D/Y Date Format</string>
+    <string name="mmddDateFormat" newname="">M/D/Å Datumformat</string>
     <string name="mmddDateFormatTrue" newname="">12/31/2012</string>
     <string name="mmddDateFormatFalse" newname="">31/12/2012</string>
     <string name="changeTimeZone">Ändra tidszon</string>
@@ -160,18 +160,18 @@
     <!-- Fixed Locn subscreen -->
     <string name="enterCityAndStateCountry">Mata in stad och stat/land</string>
     <string name="locationExamples">Till exempel: "Stockholm Sverige"</string>
-    <string name="locationError" newname="">No Results Found.\nPlease Try Again.</string>
-    <string name="networkError" newname="">No Network Connection.\nPlease Try Again.</string>
-    <string name="unknownError" newname="">Unknown Error Occurred.\nPlease Try Again.</string>
+    <string name="locationError" newname="">INga resultat.\nProva igen.</string>
+    <string name="networkError" newname="">Ingen dataanslutning.\nProva Igen.</string>
+    <string name="unknownError" newname="">Okänt fel inträffade.\nProva Igen.</string>
     <string name="weatherProvider">Väderleverantör</string>
     <string-array name="wprovider_options">
-        <item>Automatic (standard)</item>
+        <item>Auto (standard)</item>
         <item>7Timer.com</item>
-        <item newname="">NOAA (US Only)</item>
+        <item newname="">NOAA (Bara USA)</item>
         <item>Yr.no</item>
         <item>Google Weather (förlegat, fungerar ej)</item>
     </string-array>
-    <string name="wpauto">Use best provider for location</string>
+    <string name="wpauto">Använd den bästa beroende på plats</string>
     <string name="wp7timer">Använder 7Timer.com</string>
     <string name="wpnoaa">Använder NOAA</string>
     <string name="wpowm">Använder OpenWeatherMap.org</string>
@@ -208,7 +208,7 @@
     <string name="refreshWeatherEvery8Hours">Uppdatera vädret var 8:e timme</string>
     <string name="setForegroundMode">Körläge</string>
     <string name="keepOMCfromSleeping">Hindra OMC från att somna\n(på bekostnad av en permanent notifiering)</string>
-    <string name="forceEnglishDates">Tvinga engelska datum</string>
+    <string name="forceEnglishDates">Tvinga engelskt datum</string>
     <string name="uncheckForSome">Avkryssa för att visa enhetens datum (experimentiell funktion)</string>
     <string name="changeAppLocale">Språk</string>
     <string name="changeClockLocale">Språk klocka</string>
@@ -1846,12 +1846,12 @@
     <string name="_abandon">Avbryt</string>
     <string name="_ok">OK</string>
     <string name="_no">Nej</string>
-    <string name="translators">översättare</string>
-    <string name="TTLdefault">Widget Prefs</string>
-    <string name="TTLnoop">Do Nothing</string>
-    <string name="TTLweather">Forecast</string>
-    <string name="TTLbatt">Battery Usage</string>
-    <string name="TTLalarms">View Alarms</string>
-    <string name="_yesRestore">Ja, återställ standard</string>
+    <string name="translators">Översättare</string>
+    <string name="TTLdefault">Widget Inställningar</string>
+    <string name="TTLnoop">Gör Ingenting</string>
+    <string name="TTLweather">Prognoser</string>
+    <string name="TTLbatt">Batterianvändning</string>
+    <string name="TTLalarms">Visa Alarm</string>
+    <string name="_yesRestore">Ja, återställ till standard</string>
     <string name="_yesDelete">Ja, radera alla</string>
 </resources>
