@@ -82,7 +82,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Beta 1";
+	static final String TESTVER = "Beta 2 (i18n test fix 2012-0302)";
 	static final boolean FREEEDITION = false;
 	static boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -278,20 +278,25 @@ public class OMC extends Application {
 	};
 	@Override
 	public void onConfigurationChanged(final Configuration newConfig) {
+		// Force update the app locale
+		if (OMC.CURRENTLOCALE==null) {
+			OMC.CURRENTLOCALE=Locale.getDefault();
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","SETUPPREFS - null current locale - default AppLOCALE: " + OMC.CURRENTLOCALE.toString());
+		} else {
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","SETUPPREFS - using current AppLOCALE: " + OMC.CURRENTLOCALE.toString());
+		}
 		for (int i =0 ; i < OMC.LOCALES.length; i++) {
-			if (OMC.PREFS.getString("appLocaleName", "English (US)").equals(OMC.LOCALENAMES[i])) {
+			if (OMC.PREFS.getString("appLocaleName", "DEFAULT").equals(OMC.LOCALENAMES[i])) {
 				Log.i(OMC.OMCSHORT + "App","Using app locale: " + OMC.LOCALENAMES[i]);
-				final Configuration config = new Configuration();
 				OMC.CURRENTLOCALE = OMC.LOCALES[i];
-				config.locale=OMC.CURRENTLOCALE;
-				
-				OMC.RES.updateConfiguration(config, 
-						OMC.RES.getDisplayMetrics());
-				return;
+				break;
 			}
 		}
-		OMC.CURRENTLOCALE = Locale.getDefault();
-
+		final Configuration config = new Configuration();
+		config.locale=OMC.CURRENTLOCALE; 
+		
+		OMC.RES.updateConfiguration(config, 
+				OMC.RES.getDisplayMetrics());
 	}
 
 	@Override

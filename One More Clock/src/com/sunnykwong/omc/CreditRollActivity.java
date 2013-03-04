@@ -22,9 +22,13 @@ public class CreditRollActivity extends ListActivity {
         ListView lv = getListView();
         CreditRollAdapter la = new CreditRollAdapter(this);
         if (getIntent().getIntExtra("type", 1)==1) {
-            la.addAll(Arrays.asList(OMC.RStringArray("testers")));
+        	for (String s:OMC.RStringArray("testers")) {
+                la.add(s);
+        	}
         } else {
-            la.addAll(Arrays.asList(OMC.RStringArray("translators")));
+        	for (String s:OMC.RStringArray("translators")) {
+                la.add(s);
+        	}
         }
         lv.setAdapter(la);
     }

@@ -168,6 +168,26 @@ public class OMCPrefActivity extends PreferenceActivity {
 
 			// Load the proper prefs into the generic prefs set
 			OMC.getPrefs(appWidgetID);
+			
+			// Force update the app locale first
+			if (OMC.CURRENTLOCALE==null) {
+				OMC.CURRENTLOCALE=Locale.getDefault();
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","SETUPPREFS - null current locale - default AppLOCALE: " + OMC.CURRENTLOCALE.toString());
+			} else {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","SETUPPREFS - using current AppLOCALE: " + OMC.CURRENTLOCALE.toString());
+			}
+			for (int i =0 ; i < OMC.LOCALES.length; i++) {
+				if (OMC.PREFS.getString("appLocaleName", "DEFAULT").equals(OMC.LOCALENAMES[i])) {
+					Log.i(OMC.OMCSHORT + "App","Using app locale: " + OMC.LOCALENAMES[i]);
+					OMC.CURRENTLOCALE = OMC.LOCALES[i];
+					break;
+				}
+			}
+			final Configuration config = new Configuration();
+			config.locale=OMC.CURRENTLOCALE; 
+			
+			OMC.RES.updateConfiguration(config, 
+					OMC.RES.getDisplayMetrics());
 
 			// Setting foreground options, and making sure we have at least one widget (4x2) enabled
 			Editor ed = OMC.PREFS.edit();
@@ -597,10 +617,13 @@ public class OMCPrefActivity extends PreferenceActivity {
 								@Override
 								public void onClick(DialogInterface dialog, int item) {
 									Locale selectedLocale = OMC.LOCALES[item];
+									if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","USER SET NEW LOCALE: " + selectedLocale.toString());
+									if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","USER SET NEW LOCALENAME: " + OMC.LOCALENAMES[item]);
+
 									OMC.PREFS.edit()
 											.putString("appLocaleName", OMC.LOCALENAMES[item])
 											.commit();
-
+									OMC.CURRENTLOCALE = selectedLocale;
 									// Determine locale.
 									Configuration config = new Configuration();
 									config.locale=selectedLocale;
@@ -615,7 +638,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 					return true;
 				}
 			});
-        	prefLocale.setSummary(OMC.PREFS.getString("appLocaleName", "English (US)"));
+        	prefLocale.setSummary(OMC.PREFS.getString("appLocaleName", "DEFAULT"));
         	
         	// "Clock Language".
         	Preference prefClockLocale = findPreference("clockLocale"); 
@@ -660,19 +683,26 @@ public class OMCPrefActivity extends PreferenceActivity {
 
 									preference.setSummary(items[item]);
 
+									// Force update the app locale
+									if (OMC.CURRENTLOCALE==null) {
+										OMC.CURRENTLOCALE=Locale.getDefault();
+										if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","SETUPPREFS - null current locale - default AppLOCALE: " + OMC.CURRENTLOCALE.toString());
+									} else {
+										if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","SETUPPREFS - using current AppLOCALE: " + OMC.CURRENTLOCALE.toString());
+									}
 									for (int i =0 ; i < OMC.LOCALES.length; i++) {
-										if (OMC.PREFS.getString("appLocaleName", "English (US)").equals(OMC.LOCALENAMES[i])) {
+										if (OMC.PREFS.getString("appLocaleName", "DEFAULT").equals(OMC.LOCALENAMES[i])) {
 											Log.i(OMC.OMCSHORT + "App","Using app locale: " + OMC.LOCALENAMES[i]);
-											final Configuration config = new Configuration();
 											OMC.CURRENTLOCALE = OMC.LOCALES[i];
-											config.locale=OMC.CURRENTLOCALE;
-											
-											OMC.RES.updateConfiguration(config, 
-													OMC.RES.getDisplayMetrics());
 											break;
 										}
 									}
+									final Configuration config = new Configuration();
+									config.locale=OMC.CURRENTLOCALE; 
 									
+									OMC.RES.updateConfiguration(config, 
+											OMC.RES.getDisplayMetrics());
+
 									OMCPrefActivity.this.finish();
 								}
 						})
