@@ -1147,7 +1147,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 	        	    .setOnKeyListener(new OnKeyListener() {
 	        	    	@Override
 						public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
-	        	    		dialogCancelled();
+//	        	    		dialogCancelled();
 	        	    		return true;
 	        	    	};
 	        	    })
@@ -1155,7 +1155,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 						
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-	        	    		dialogCancelled();
+//	        	    		dialogCancelled();
 						}
 					})
 	        	    .create();
@@ -1169,7 +1169,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 	        	    .setOnKeyListener(new OnKeyListener() {
 	        	    	@Override
 						public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
-	        	    		dialogCancelled();
+//	        	    		dialogCancelled();
 	        	    		return true;
 	        	    	};
 	        	    })
@@ -1177,7 +1177,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 						
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-	        	    		dialogCancelled();
+//	        	    		dialogCancelled();
 						}
 					})
 	        	    .create();

@@ -65,7 +65,10 @@ public class OMCWidgetDrawEngine {
         		if (OMC.HDRENDERING) {
        	        	File outTemp = new File(OMC.CACHEPATH + aWM.getAppWidgetIds(cName)[i] +"cache.png");
        		        if (outTemp.exists()&&outTemp.canRead()) {
-       		        	rv.setImageViewUri(OMC.RId("omcIV"), Uri.parse("content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+aWM.getAppWidgetIds(cName)[i]));
+       		        	String sUriString = OMC.FREEEDITION?
+       		        			"content://com.sunnykwong.freeomc/widgets?random="+Math.random()+"&awi="+aWM.getAppWidgetIds(cName)[i]
+       		        			:"content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+aWM.getAppWidgetIds(cName)[i];
+       		        	rv.setImageViewUri(OMC.RId("omcIV"), Uri.parse(sUriString));
        		        } else {
        		        	// Do nothing
        					//rv.setImageViewBitmap(OMC.RId("omcIV"), OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
@@ -399,7 +402,10 @@ public class OMCWidgetDrawEngine {
 		        if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","compression complete:hdrendering "+OMC.HDRENDERING);
 		        if (outTemp.exists()&&outTemp.canRead()) {
 		        	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","URI:hdrendering "+OMC.HDRENDERING);
-		        	rv.setImageViewUri(iViewID, Uri.parse("content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+appWidgetId));
+   		        	String sUriString = OMC.FREEEDITION?
+   		        			"content://com.sunnykwong.freeomc/widgets?random="+Math.random()+"&awi="+appWidgetId
+   		        			:"content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+appWidgetId;
+		        	rv.setImageViewUri(iViewID, Uri.parse(sUriString));
 		        } else {
 		        	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","BMP:hdrendering "+OMC.HDRENDERING);
 					rv.setImageViewBitmap(iViewID, finalbitmap);
@@ -747,6 +753,12 @@ public class OMCWidgetDrawEngine {
 				pt1.setXfermode(OMC.PORTERDUFF_SRC_OUT);
 			else if (sType.equals("DST_OUT"))
 				pt1.setXfermode(OMC.PORTERDUFF_DST_OUT);
+			else if (sType.equals("MULTIPLY"))
+				pt1.setXfermode(OMC.PORTERDUFF_MULTIPLY);
+			else if (sType.equals("OVERLAY"))
+				pt1.setXfermode(OMC.PORTERDUFF_OVERLAY);
+			else if (sType.equals("SCREEN"))
+				pt1.setXfermode(OMC.PORTERDUFF_SCREEN);
 			else if (sType.equals("SRC_OVER"))
 				pt1.setXfermode(OMC.PORTERDUFF_SRC_OVER);
 			else if (sType.equals("DST_OVER"))

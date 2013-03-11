@@ -72,6 +72,8 @@
         android:paddingTop="11dp"
         android:text=""
         android:textColor="#ffffffff"
-        android:textSize="6dp" />
+        android:textSize="7dp"
+        android:autoLink="all"
+         />
 
 </LinearLayout>
