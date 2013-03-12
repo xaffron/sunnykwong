@@ -74,6 +74,7 @@
         android:textColor="#ffffffff"
         android:textSize="7dp"
         android:autoLink="all"
+        android:textScaleX="1.0"
          />
 
 </LinearLayout>
