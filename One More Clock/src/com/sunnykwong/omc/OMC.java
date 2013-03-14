@@ -227,8 +227,6 @@ public class OMC extends Application {
 	static final PorterDuffXfermode PORTERDUFF_SRC_OVER = new PorterDuffXfermode(Mode.SRC_OVER);
 	static final PorterDuffXfermode PORTERDUFF_DST_OVER = new PorterDuffXfermode(Mode.DST_OVER);
 	static final PorterDuffXfermode PORTERDUFF_MULTIPLY = new PorterDuffXfermode(Mode.MULTIPLY);
-	static final PorterDuffXfermode PORTERDUFF_OVERLAY = new PorterDuffXfermode(Mode.OVERLAY);
-	static final PorterDuffXfermode PORTERDUFF_SCREEN = new PorterDuffXfermode(Mode.SCREEN);
 	static ComponentName WIDGET5x4CNAME;
 	static ComponentName WIDGET5x2CNAME;
 	static ComponentName WIDGET5x1CNAME;

@@ -755,10 +755,6 @@ public class OMCWidgetDrawEngine {
 				pt1.setXfermode(OMC.PORTERDUFF_DST_OUT);
 			else if (sType.equals("MULTIPLY"))
 				pt1.setXfermode(OMC.PORTERDUFF_MULTIPLY);
-			else if (sType.equals("OVERLAY"))
-				pt1.setXfermode(OMC.PORTERDUFF_OVERLAY);
-			else if (sType.equals("SCREEN"))
-				pt1.setXfermode(OMC.PORTERDUFF_SCREEN);
 			else if (sType.equals("SRC_OVER"))
 				pt1.setXfermode(OMC.PORTERDUFF_SRC_OVER);
 			else if (sType.equals("DST_OVER"))
