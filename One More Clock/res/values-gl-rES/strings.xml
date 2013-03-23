@@ -1,0 +1,1994 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="languageWord">Idioma</string>
+    <string name="languageName">Galego</string>
+    <string name="translator">ToninhoFJ</string>
+    <!-- General Buttons/notifications -->
+    <string name="nextTip">Seguinte Consello</string>
+    <string name="taskComplete">Tarefa Completada</string>
+    <!-- General Errors -->
+    <string name="sdcardNotDetected">Tarxeta SD non atopada.\nLembra apaga-lo almacenamento USB se o tes aceso!</string>
+    <string name="sdcardMissingOrCorrupt">Tarxeta SD perdida ou corrupta.\nLembra apaga-lo almacenamento USB se o tes aceso!</string>
+    <string name="themeNotFound">Tema non atopado! Restaurando tema por defecto.</string>
+    <string name="warningConflictPaid">Atención!\nConflicto coa versión de pago</string>
+    <string name="warningConflictFree">Atención!\nConflicto coa versión gratuita</string>
+    <string name="warningConflictText">O tema personalizado e as opcións do reloxo non traballan axeitadamente.\nPor favor, desinstala a Versión gratuita o antes posible!</string>
+    <string name="defaultThemeNotRemovable">O tema por defecto non se pode borrar!</string>
+    <!-- Bailout App Dialog -->
+    <string name="thanksForDownloading">Grazas pola descarga!</string>
+    <string name="widgetDir1">Comecemos, preme o botón atrás para voltar á pantalla inicial, despois vai a listaxe de \'Widgets\' para colocalo u0020</string>
+    <string name="widgetDir2">\u0020. Qué o disfrutes!</string>
+    <!-- Useful Tips -->
+    <string name="usefulTip">Consellos</string>
+    <string name="doNotShowAgain">Non mostrar de novo.</string>
+    <!-- Weather Forecast Screen -->
+    <string name="humiditycondition">Humidade: </string>
+    <string name="windcondition">Vento: </string>
+    <!-- Forecast Screen -->
+    <string name="doubleDash">--</string>
+    <string name="unknown">Descoñecido</string>
+    <string name="noaaWeatherCredit">Previsións meteorolóxicas anovadas do National Oceanic and Atmospheric Administration (NOAA).</string>
+    <string name="igWeatherCredit">Tempo anovado dende Google API.</string>
+    <string name="yrWeatherCredit">Previsión meteorolóxica de yr.no, anovadas polo Instituto Meteorolóxico noruegués NRK.</string>
+    <string name="seventimerWeatherCredit">7Timer! previsións de Ye Quanzhi, apoiado polo Observatorio Astronômico de Shanghai, da Academia Chinesa de Ciencias.</string>
+    <string name="owmWeatherCredit">Tempo anovado dende openweathermaps.org.</string>
+    <string name="tapForAlternateForecast">preme para ver previsións alternativas dende AccuWeather®</string>
+    <string name="weatherDisabledOrNoWeatherLoaded">Previsións deshabilitadas, ou non cargadas!</string>
+    <string name="supplementedbyMETAR">Condicións actuais complementadas por METAR</string>
+    <!-- Clock Preferences -->
+    <string name="clockPreferences">Opcións do reloxo</string>
+    <string name="dashPreferences">\u0020- Opcións</string>
+    <string name="forThisClock">Para este reloxo:</string>
+    <string name="widgetTheme">Tema do Widget</string>
+    <!-- Widget Theme -->
+    <string name="widgetThemeTitle">Pase para escoller; Premer e Manter para opcións</string>
+    <string name="corruptPlsDelete">[Corrupto - por favor borrar]</string>
+    <string name="reextractBundledClocks">Volve a extraer os reloxos</string>
+    <string name="downloadAllClocks">Baixar todos(7MB)</string>
+    <string name="preselected"/>
+    <string name="postselected">\u0020está seleccionado.</string>
+    <!-- Theme Picker Legend -->
+    <string name="legend">Lenda</string>
+    <string name="batteryLegend">Amosa a carga da batería</string>
+    <string name="weatherLegend">Amosa o tempo</string>
+    <string name="bkimageLegend">Incluir imaxe de fondo</string>
+    <string name="ltbgLegend">Recomendado para fondos claros</string>
+    <string name="dkbgLegend">Recomendado para fondos escuros</string>
+    <string name="tweakLegend">Reloxo configurado polo usuario</string>
+    <!-- Ferramenta para Temas (Obsoleta) -->
+    <string name="reloadThemeCatalog">Recargar o catálogo de temas</string>
+    <!-- Theme Import/Unzip -->
+    <string name="themePreview">Vista previa do tema</string>
+    <string name="openingConnection">Conectando...</string>
+    <string name="beginningDownload">Comezando a descarga.</string>
+    <string name="downloading">Baixando</string>
+    <string name="downloaded">Descargado</string>
+    <string name="of">de</string>
+    <string name="bytes">\u0020bytes</string>
+    <string name="storingFile">Gardando arquivo:\u0020</string>
+    <string name="existsOverwriting">\u0020xa existe; sobrescribindo</string>
+    <string name="createThemeFolder1">Cartafol temas \'</string>
+    <string name="createThemeFolder2">\'\u0020creado.</string>
+    <string name="detectedWeatherskin">Detetando Skin de tempo </string>
+    <string name="extractingStarterClockPack">Extraendo pack de reloxos por defecto…</string>
+    <string name="starterClockPack">Pack de reloxos por defecto</string>
+    <string name="starterClockPackText">Arquivos na tarxeta SD. O portafol OMCTemas será sobrescrito. Estás seguro?\n(en caso contrario, preme Si)</string>
+    <string name="importComplete">Importación completa!</string>
+    <string name="importAborted">Importación cancelada!</string>
+    <string name="useDownloadInsteadOfPreview">Por favor, empregue a descarga no canto da previsualización para importar un reloxo OMC!</string>
+    <string name="importWorksWithOMCFiles">A importación do reloxo emprega arquivos .omc. \nEstá abrindo un arquivo erróneo?</string>
+    <string name="nothingToExtract">Ren que extraer!</string>
+    <string name="downloadInterrupted">Baixada interrumpida!</string>
+    <string name="poorReceptionArea">Ten problemas de conexión?\nPor favor, inténteo máis tarde!</string>
+    <string name="connectionTimedOut">Conexión perdida!</string>
+    <string name="serverNotFound">Servidor non atopado!</string>
+    <!-- Widget Theme Long Press -->
+    <string name="emailOrDeleteTheme">Enviar por Email ou borrar tema</string>
+    <string name="emailTheme">Enviar Tema por Email</string>
+    <string name="emailThemeText">Engade este tema ó teu Email ou o dos teus amigos.\nQueres facelo?</string>
+    <string name="emailThemeConfirm1">Email\u0020</string>
+    <string name="emailThemeConfirm2">\u0020?</string>
+    <string name="emailThemeChooser">Engadindo arquivos de tema ó Email.</string>
+    <string name="deleteTheme">Borrar Tema</string>
+    <string name="deleteThemeConfirm1">Borrar\u0020</string>
+    <string name="deleteThemeConfirm2">\u0020dende a túa tarxeta SD?</string>
+    <string name="deleteThemeConfirm3">Tes que baixar/extraer o tema outra vez para empregalo. Estás seguro?</string>
+    <string name="submitThemeToDev">Enviar tema ó desenrolador</string>
+    <string name="submitThemeToDevConfirm1">Enviar\u0020</string>
+    <string name="submitThemeToDevConfirm2">\u0020para Xaffron coma novo tema?</string>
+    <string name="areYouAbsolutelySure">Estás completamente seguro?</string>
+    <string name="areYouAbsolutelySureText">Este tema non ten a etiqueta de \'Modificado\'; seica é un tema por defecto.\n</string>
+    <!-- Personalize Clock -->
+    <string name="personalizeClock">Personalizar Reloxo</string>
+    <string name="tweakColorsAndLayers">Axustar Cores e Capas</string>
+    <!-- Personalize Clock subscreen -->
+    <string name="selectALayerForTweaking">Seleccione unha capa para Axustar</string>
+    <string name="tweakerDirections">Arrastrar: Mover    Menú: Modificar    Atrás: Cancelar</string>
+    <!-- Personalize Clock Menu -->
+    <string name="toggleVisibility">Cambiar visibilidade</string>
+    <string name="color1">Color 1</string>
+    <string name="color2">Color 2</string>
+    <!-- Personalize Clock Back -->
+    <string name="keepChanges">Gardar Cambios?</string>
+    <!-- Tap & Display Options -->
+    <string name="tapAndDisplayOptions">Accións e Opcións de visualización </string>
+    <string name="assignTapToLaunch">Asignar acción ó premer</string>
+    <string name="nwCornerReserved">Arriba esquerda reservada para preferencias da app.</string>
+    <!-- TTL Popup -->
+    <string name="areaToCustomize">Área a personalizar:</string>
+    <string name="chooseAction">Elixir Acción</string>
+    <string name="openOptionsDefault">Abrir opcións(por defecto)</string>
+    <string name="doNothing">Non facer ren</string>
+    <string name="refreshWeather">Anovar tempo agora</string>
+    <string name="weatherForecast">Previsión do tempo</string>
+    <string name="viewAlarms">Ver alarmas (Experimental)</string>
+    <string name="battUsage">Ver uso da batería</string>
+    <string name="otherActivity">Outra actividade…</string>
+    <string name="otherActivityTTL">Actividade personalizada</string>
+    <string name="use24HourClock">Usar Reloxo 24H</string>
+    <string name="use24HourTrue">23:59</string>
+    <string name="use24HourFalse">11:59pm</string>
+    <string name="showLeadingZero">Amosar cero diante</string>
+    <string name="showLeadingZTrue">04:23</string>
+    <string name="showLeadingZFalse">4:23</string>
+    <string name="mmddDateFormat">M/D/Y Formato da Data</string>
+    <string name="mmddDateFormatTrue">12/31/2012</string>
+    <string name="mmddDateFormatFalse">31/12/2012</string>
+    <string name="changeTimeZone">Cambiar fuso horario</string>
+    <string name="followingDeviceTimeZone">(Empregar Fuso Horario do dispositivo)</string>
+    <string name="changeClockAdjustment">Axustar o reloxo á fronte / atrás</string>
+    <string name="minutesAhead">\u0020minutos antes do horario actual</string>
+    <string name="minutesBehind">\u0020minutos de tempo actual</string>
+    <string name="backupWidget">Backup este Widget</string>
+    <string name="nameOfBackup">Nome do Backup:</string>
+    <string name="backupThemePersonalizations">Backup Tema Personalizado</string>
+    <string name="restoreWidget">Restaurar Opción do Widget</string>
+    <string name="overwriteThemePersonalizations">Sobrescribir Tema Personalizado</string>
+    <string name="overwriteThemeWarning">Atención: Algunha opción personalizada no reloxo será sobrescrita!</string>
+    <!-- TTL Sales Pitch -->
+    <string name="thinkOfThePossibilities">Pense nas posibilidades!</string>
+    <string name="prePaidTTL">A versión de pago permite que estableza\u0020</string>
+    <string name="postPaidTTL">\u0020actividades que queiras lanzar, ademais de engadir Widgets de 4x2, 4x1, 3x1 and 2x1.\nPor favor, considere anovar para obter estes tamaños!</string>
+    <string name="takeMeToPaid">Lévame para a versión de pago!</string>
+    <!-- Weather & Widget Options -->
+    <string name="forAllClocks">Para tódolos reloxos:</string>
+    <string name="weatherAndWidgetOptions">Tempo e Opcións do Widget</string>
+    <string name="clearRenderCaches">Borrar cachés de renderización</string>
+    <string name="cachesCleared">Caché Limpa</string>
+    <!-- Weather & Widget Subscreen -->
+    <string name="refreshWeatherNow">Anovar Tempo agora</string>
+    <string name="operationTimedOut">Operación caducou!</string>
+    <string name="requestingLocation">solicitando Localización</string>
+    <string name="pleaseWait">Agarde Por Favor…</string>
+    <string name="inProgress">Executándose…</string>
+    <string name="usingFixedCoordinates">Usando coordenadas fixas</string>
+    <string name="gotGPSLock">GPS bloqueado. Geocodificación-Inversa…</string>
+    <string name="gotNetworkLock">WiFi/Network bloqueada. Geocodificación-Inversa…</string>
+    <string name="reusingCachedLocation">Reutilizanco localización recente. Geocodificación-Inversa…</string>
+    <string name="requestingWeather">Solicitando Tempo…</string>
+    <string name="weatherReceived">Tempo Recibido. procesando…</string>
+    <string name="weatherSuccess">Tempo anovado con éxito.</string>
+    <string name="weatherFailure">Tempo non anovado.</string>
+    <string name="location">Localización:\u0020</string>
+    <string name="fixed">\u0020(Fixado)</string>
+    <string name="detected">\u0020(Detectado)</string>
+    <string name="lastTry">Derradeiro Intento:\u0020</string>
+    <string name="manualRefreshOnly">\u0020(Anovar So Manualmente)</string>
+    <string name="nextRefresh">\u0020Seguinte Anovación:\u0020</string>
+    <string name="lastRefresh">Derradeira Anovación:\u0020</string>
+    <string name="nextRequest">\u0020Seguinte Solicitude:\u0020</string>
+    <string name="weatherLocation">Tempo para a Localización:</string>
+    <string name="disableLocationAndWeather">Deshabilitar Localización e Tempo</string>
+    <string name="followDevice">Este Dispositiv(default)</string>
+    <string name="setFixedLocation">Axustar Localización</string>
+    <string name="weatherFunctionalityDisabled">Tempo desactivado</string>
+    <string name="tapToEnable">Preme para activar</string>
+    <!-- Fixed Locn subscreen -->
+    <string name="enterCityAndStateCountry">Introduce Cidade/Estado</string>
+    <string name="locationExamples">Ex. London UK</string>
+    <string name="locationError">Non se atoparon resultados.\nPor favor, ténteo de novo.</string>
+    <string name="networkError">Non hai conexión.\nPor favor, ténteo de novo.</string>
+    <string name="unknownError">Ocurriu un erro descoñecido.\nPor favor, ténteo de novo.</string>
+    <string name="weatherProvider">Proveedor do Tempo</string>
+    <string-array name="wprovider_options">
+        <item>Automatico (por defecto)</item>
+        <item>7Timer.com</item>
+        <item>NOAA (Só EEUU) </item>
+        <item>Yr.no</item>
+        <item>Google Weather (legacy/nonworking)</item>
+    </string-array>
+    <string name="wpauto">Empregar millor proveedor para a localización</string>
+    <string name="wp7timer">Empregando 7Timer.com</string>
+    <string name="wpnoaa">Empregando NOAA</string>
+    <string name="wpowm">Empregando OpenWeatherMap.org</string>
+    <string name="wpyr">Empregando yr.no</string>
+    <string name="wpig">Empregando iGoogle Weather</string>
+    <string name="weatherDisplayUnits">Unidades de Tempo</string>
+    <string-array name="wdisplay_options">
+        <item>Fahrenheit (por defecto)</item>
+        <item>Celsius</item>
+    </string-array>
+    <string name="usingFahrenheit">Empregando Fahrenheit</string>
+    <string name="usingCelsius">Empregando Celsius</string>
+    <string name="useMETAR">Tempo via METAR</string>
+    <string name="usingMETAR">Previsión Recollida dende o Aeroporto máis próximo</string>
+    <string name="usingInterpolation">Previsión extraidas/interpoladas dende o proveedor</string>
+    <string name="clockUpdateInterval">Intervalo de Anovación do reloxo</string>
+    <string-array name="interval_options">
+        <item>1 seg (Consumo Extremo)</item>
+        <item>10 seg (Consumo Alto)</item>
+        <item>15 seg</item>
+        <item>20 seg</item>
+        <item>30 seg (por defecto)</item>
+        <item>60 seg (Consumo Baixo)</item>
+    </string-array>
+    <string name="redrawEvery">Redebuxar cada\u0020</string>
+    <string name="seconds">\u0020segundos.</string>
+    <string name="weatherUpdateInterval">Intervalo de Anovación do Tempo</string>
+    <string-array name="winterval_options">
+        <item>Cada Hora (por defecto)</item>
+        <item>Cada 4 Horas</item>
+        <item>Cada 8 Horas</item>
+        <item>Nunca (So Manualmente)</item>
+    </string-array>
+    <string name="manualWeatherUpdatesOnly">Só Anovacións Manuais do Tempo</string>
+    <string name="refreshWeatherEveryHour">Anovar Tempo cada hora</string>
+    <string name="refreshWeatherEvery4Hours">Anovar Tempo cada 4 horas</string>
+    <string name="refreshWeatherEvery8Hours">Anovar Tempo cada 8 horas</string>
+    <string name="setForegroundMode">Fixar modo primeiro plano</string>
+    <string name="keepOMCfromSleeping">Evitar que OMC entre en Suspensión\n(á custa dunha notificación persistente)</string>
+    <string name="forceEnglishDates">Forzar Datas Inglesas</string>
+    <string name="uncheckForSome">Desmarcar para localizacións non Inglesas.(Experimental)</string>
+    <string name="changeAppLocale">App UI Idioma</string>
+    <string name="changeClockLocale">Idioma do Reloxo</string>
+    <string name="toggleWidgetSizes">Tamaños Widget activados</string>
+    <string name="rebootRequired">Precisa Reinicio</string>
+    <string name="changesToTheseSettings">Estes Cambios precisan dun reinicio do terminal para teren efecto.</string>
+    <string name="enable5x4Widget">Permite (5x4) Widget</string>
+    <string name="enable5x2Widget">Permite (5x2) Widget</string>
+    <string name="enable5x1Widget">Permite (5x1) Widget</string>
+    <string name="enable4x4Widget">Permite (4x4) Widget</string>
+    <string name="enable4x2Widget">Permite (4x2) Widget</string>
+    <string name="enable4x1Widget">Permite (4x1) Widget</string>
+    <string name="enable3x3Widget">Permite (3x3) Widget</string>
+    <string name="enable3x1Widget">Permite (3x1) Widget</string>
+    <string name="enable2x2Widget">Permite (2x2) Widget</string>
+    <string name="enable2x1Widget">Permite (2x1) Widget</string>
+    <string name="enable1x3Widget">Permite (1x3) Widget</string>
+    <string name="forGalaxyNote">Para Galaxy Note ou similar</string>
+    <string name="enableThemeTester">Permitir Tester do Tema</string>
+    <string name="developmentToolForSkinnersOnly">Ferramenta de desenrolo só para skinners</string>
+    <!-- Widget Sizes Sales Pitch -->
+    <string name="areThereOtherWidgetSizes">Existe outro tamaños de Widget?</string>
+    <string name="actuallyThePaidVersion">Neste Intre, a versión de pago ofrece Widgets de 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 and 1x3.\nPor favor, considere anovar para obter estes tamaños!</string>
+    <!-- Troubleshooting Options -->
+    <string name="troubleshootingOptions">Troubleshooting Options</string>
+    <!-- Troubleshooting Options -->
+    <string name="clockPriority">Prioridade do Reloxo</string>
+    <string name="forFineTuning">Para un axuste fino de resposta</string>
+    <string-array name="clockPriority_options">
+        <item>Moi Alto</item>
+        <item>Alto</item>
+        <item>Medio</item>
+        <item>Baixo (por defecto)</item>
+        <item>Moi Baixo</item>
+    </string-array>
+    <string-array name="clockPriority_legend">
+        <item>Redebuxos agresivos cada tick (Non recomendado). Estás seguro?</item>
+        <item>Redebuxos agresivos cada minuto, independentemente da pantalla ou estado do launcher. Estás seguro?</item>
+        <item>Redebuxos baixos cada minuto cando a pantalla está acesa, aínda que o launcher esté en 2º plano. Estás seguro?</item>
+        <item>Redebuxos baixos cada minuto cando a pantalla está apagada e o launcher inactivo. Estás seguro?</item>
+        <item>Non redebuxar cando a pantalla está apagada e o launcher inactivo. Estás seguro?</item>
+    </string-array>
+    <string name="locationPriority">Prioridade de Localización</string>
+    <string-array name="locationPriority_options">
+        <item>Estricta - Só Fina</item>
+        <item>Estricta - Fina/Ampla</item>
+        <item>Media - Só Fina</item>
+        <item>Media - Fina/Ampla</item>
+        <item>Flexible (por defecto)</item>
+    </string-array>
+    <string-array name="locationPriority_legend">
+        <item>Emprega Só Localizacións GPS fixas menos de 2 horas. ATENCIÓN: As anovacións do tempo poden pararse se estás dentro. Estás seguro?</item>
+        <item>Emprega localizacións network/GPS fixas menos de 2 horas. ATENCIÓN: As anovacións do tempo poden pararse se estás dentro. Estás seguro?</item>
+        <item>Emprega só localizacións GPS fixas menos de 10 horas. As anovacións do tempo poden pararse se estás dentro máis de 10 horas. Estás seguro?</item>
+        <item>Emprega localizacións network/GPS fixas menos de 10 horas. As anovacións do tempo poden pararse se estás dentro máis de 10 horas. Estás seguro?</item>
+        <item>Emprega a localización Network/GPS máis recente, independente do duro que sexa. A precisión da predición dependerá da precisión da localización e da dureza. Estás seguro?</item>
+    </string-array>
+    <string name="battReporting">Battery Reporting</string>
+    <string name="battReportingNormal">Normal - As reported by Android</string>
+    <string name="battReportingAlternate">Alternate - As reported by driver</string>
+    <string name="weatherDiagnostics">Diagnóstico do Tempo</string>
+    <string name="submitLocationWeatherDebugData">Enviar datos debug de localización/tempo</string>
+    <string name="deleteAllThemes">Borrar tódolos temas</string>
+    <string name="forFixingThemeSelection">Para arranxar a sección da selección de tema se a app falla</string>
+    <string name="deleteAllThemesFromSD">Borrar tódolos temas da túa tarxeta SD/Memoria?</string>
+    <string name="omcThemesFolderDeleted">OMCTemas cartafol borrado</string>
+    <string name="defaultClockPackRestored">Pack de reloxos por defecto restaurado</string>
+    <!-- Contact Xaffron -->
+    <string name="contactXaffron">Contactar con Xaffron</string>
+    <string name="donateOrContact">Donar ou Contactar co autor para axuda</string>
+    <string name="contactXaffronForIssues">Contactar con Xaffron para problemas, axuda e soporte</string>
+    <string name="email">Email</string>
+    <string name="donate">Donar</string>
+    <string name="facebook">Facebook</string>
+    <!-- Credits -->
+    <string name="credits">Créditos</string>
+    <string name="version">Versión</string>
+    <string name="free">Free</string>
+    <string name="tapToGetFull">Preme para obter a versión completa!</string>
+    <string name="thanksForYourSupport">Thanks for your support!</string>
+    <string name="viewCredits">Ver Créditos</string>
+    <!-- Credits subscreen -->
+    <string name="team">Equipo</string>
+    <string name="programmer">Programador</string>
+    <string name="sunny">Sunny Kwong</string>
+    <string name="testers">Testers</string>
+    <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
+    <string name="specialThanks">Agradecementos especiais</string>
+    <string name="specialThanksText">Zehro por marca-lo camiño\nre: in-sync clock widgets w//o notificacións.\nStefan Pledl por axudar coa localización.</string>
+    <string name="copyrights">Copyrights e Licenzas</string>
+    <string name="applicationIcon">Icona app: Signpost por Maroubal2</string>
+    <string name="applicationIconText">Adaptado por Maroubal2\'s excelente foto convertida en Ubuntu wallpaper.\nCC BY-SA 2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
+    <string name="codeColorPickerDialog">Código: ColorPickerDialog</string>
+    <string name="codeColorPickerDialogText">Copiado do repositorio CyanogenMod.</string>
+    <string name="codeSVG">Código: svg-android</string>
+    <string name="codeSVGText">Soporte SVG por librería sag-android (Apache License).\nhttp:////code.google.com//p//svg-android//</string>
+    <string name="weatherFont">Fonte: Weatherfont</string>
+    <string name="weatherFontText">Weatherfont está rexistrado por Jonathan Macagba, disponible por $5 USD en jonathan.macagba@gmail.com</string>
+    <string name="sourceCodeTitle">Código fonte</string>
+    <string name="sourceCode">Código fonte disponible en</string>
+    <string-array name="verbosedow">
+        <item>Domingo</item>
+        <item>Luns</item>
+        <item>Martes</item>
+        <item>Mércolres</item>
+        <item>Xoves</item>
+        <item>Venres</item>
+        <item>Sábado</item>
+    </string-array>
+    <string-array name="shortdow">
+        <item>Dom</item>
+        <item>Lun</item>
+        <item>Mar</item>
+        <item>Mer</item>
+        <item>Xov</item>
+        <item>Ven</item>
+        <item>Sab</item>
+    </string-array>
+    <string-array name="verbosemonth">
+        <item>Xaneiro</item>
+        <item>Febreiro</item>
+        <item>Marzo</item>
+        <item>Abril</item>
+        <item>Maio</item>
+        <item>Xuño</item>
+        <item>Xullo</item>
+        <item>Agosto</item>
+        <item>Setembro</item>
+        <item>Outubro</item>
+        <item>Novembro</item>
+        <item>Decembro</item>
+    </string-array>
+    <string-array name="shortmonth">
+        <item>Xan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Abr</item>
+        <item>Mai</item>
+        <item>Xun</item>
+        <item>Xul</item>
+        <item>Ago</item>
+        <item>Set</item>
+        <item>Out</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </string-array>
+    <string-array name="WordNumbers">
+        <item>Cero</item>
+        <item>Un</item>
+        <item>Dous</item>
+        <item>Tres</item>
+        <item>Catro</item>
+        <item>Cinco</item>
+        <item>Seis</item>
+        <item>Sete</item>
+        <item>Oito</item>
+        <item>Nove</item>
+        <item>Dez</item>
+        <item>Once</item>
+        <item>Doce</item>
+        <item>Trece</item>
+        <item>Catorce</item>
+        <item>Quince</item>
+        <item>Dezaseis</item>
+        <item>Dezasete</item>
+        <item>Dezaoito</item>
+        <item>Dezanove</item>
+        <item>Vinte</item>
+        <item>Vinte e un</item>
+        <item>Vinte e dous</item>
+        <item>Vinte e tres</item>
+        <item>Vinte e catro</item>
+        <item>Vinte e cinco</item>
+        <item>Vinte e seis</item>
+        <item>Vinte e sete</item>
+        <item>Vinte e oito</item>
+        <item>Vinte e nove</item>
+        <item>Trinta</item>
+        <item>Trinta e un</item>
+        <item>Trinta e dous</item>
+        <item>Trinta e tres</item>
+        <item>Trinta e catro</item>
+        <item>Trinta e cinco</item>
+        <item>Trinta e seis</item>
+        <item>Trinta e sete</item>
+        <item>Trinta e oito</item>
+        <item>Trinta e nove</item>
+        <item>Corenta</item>
+        <item>Corenta e un</item>
+        <item>Corenta e dous</item>
+        <item>Corenta e tres</item>
+        <item>Corenta e catro</item>
+        <item>Corenta e cinco</item>
+        <item>Corenta e seis</item>
+        <item>Corenta e sete</item>
+        <item>Corenta e oito</item>
+        <item>Corenta e nove</item>
+        <item>Cincuenta</item>
+        <item>Cincuenta e un</item>
+        <item>Cincuenta e dous</item>
+        <item>Cincuenta e tres</item>
+        <item>Cincuenta e catro</item>
+        <item>Cincuenta e cinco</item>
+        <item>Cincuenta e seis</item>
+        <item>Cincuenta e sete</item>
+        <item>Cincuenta e oito</item>
+        <item>Cincuenta e nove</item>
+        <item>Sesenta</item>
+        <item>Sesenta e un</item>
+        <item>Sesenta e dous</item>
+        <item>Sesenta e tres</item>
+        <item>Sesenta e catro</item>
+        <item>Sesenta e cinco</item>
+        <item>Sesenta e seis</item>
+        <item>Sesenta e sete</item>
+        <item>Sesenta e oito</item>
+        <item>Sesenta e nove</item>
+        <item>Setenta</item>
+        <item>Setenta e un</item>
+        <item>Setenta e dous</item>
+        <item>Setenta e tres</item>
+        <item>Setenta e catro</item>
+        <item>Setenta e cinco</item>
+        <item>Setenta e seis</item>
+        <item>Setenta e sete</item>
+        <item>Setenta e oito</item>
+        <item>Setenta e nove</item>
+        <item>Ochenta</item>
+        <item>Ochenta e un</item>
+        <item>Ochenta e dous</item>
+        <item>Ochenta e tres</item>
+        <item>Ochenta e catro</item>
+        <item>Ochenta e cinco</item>
+        <item>Ochenta e seis</item>
+        <item>Ochenta e sete</item>
+        <item>Ochenta e oito</item>
+        <item>Ochenta e nove</item>
+        <item>Noventa</item>
+        <item>Noventa e un</item>
+        <item>Noventa e dous</item>
+        <item>Noventa e tres</item>
+        <item>Noventa e catro</item>
+        <item>Noventa e cinco</item>
+        <item>Noventa e seis</item>
+        <item>Noventa e sete</item>
+        <item>Noventa e oito</item>
+        <item>Noventa e nove</item>
+    </string-array>
+    <string-array name="verbosetime1">
+        <item>Doce en punto</item>
+        <item>Doce e un</item>
+        <item>Doce e duos</item>
+        <item>Doce e tres</item>
+        <item>Doce e catro</item>
+        <item>Doce e cinco</item>
+        <item>Doce e seis</item>
+        <item>Doce e sete</item>
+        <item>Doce e oito</item>
+        <item>Doce e nove</item>
+        <item>Doce e dez</item>
+        <item>Doce e once</item>
+        <item>Doce e doce</item>
+        <item>Doce e trece</item>
+        <item>Doce e catorce</item>
+        <item>Doce e cuarto</item>
+        <item>Doce e dezaseis</item>
+        <item>Doce e dezasete</item>
+        <item>Doce e dezaoito</item>
+        <item>Doce e dezanove</item>
+        <item>Doce e vinte</item>
+        <item>Doce e vinte e un</item>
+        <item>Doce e vinte e dous</item>
+        <item>Doce e vinte e tres</item>
+        <item>Doce e vinte e catro</item>
+        <item>Doce e vinte e cinco</item>
+        <item>Doce e vinte e seis</item>
+        <item>Doce e vinte e sete</item>
+        <item>Doce e vinte e oito</item>
+        <item>Doce e vinte e nove</item>
+        <item>Doce e media</item>
+        <item>Doce e trinta e un</item>
+        <item>Doce e trinta e dous</item>
+        <item>Doce e trinta e tres</item>
+        <item>Doce e trinta e catro</item>
+        <item>Doce e trinta e cinco</item>
+        <item>Doce e trinta e seis</item>
+        <item>Doce e trinta e sete</item>
+        <item>Doce e trinta e oito</item>
+        <item>Doce e trinta e nove</item>
+        <item>Doce e corenta</item>
+        <item>Doce e corenta e un</item>
+        <item>Doce e corenta e dous</item>
+        <item>Doce e corenta e tres</item>
+        <item>Doce e corenta e catro</item>
+        <item>Doce e menos cuarto</item>
+        <item>Doce e corenta e seis</item>
+        <item>Doce e corenta e sete</item>
+        <item>Doce e corenta e oitoo</item>
+        <item>Doce e corenta e nove</item>
+        <item>Doce e cincuenta</item>
+        <item>Doce e cincuenta e un</item>
+        <item>Doce e cincuenta e dous</item>
+        <item>Doce e cincuenta e tres</item>
+        <item>Doce e cincuenta e catro</item>
+        <item>Doce e cincuenta e cinco</item>
+        <item>Doce e cincuenta e seis</item>
+        <item>Doce e cincuenta e sete</item>
+        <item>Doce e cincuenta e oito</item>
+        <item>Doce e cincuenta e nove</item>
+        <item>Unha en punto</item>
+        <item>Unha e un</item>
+        <item>Unha e dous</item>
+        <item>Unha e tres</item>
+        <item>Unha e catro</item>
+        <item>Unha e cinco</item>
+        <item>Unha e seis</item>
+        <item>Unha e sete</item>
+        <item>Unha e oito</item>
+        <item>Unha e nove</item>
+        <item>Unha e dez</item>
+        <item>Unha e once</item>
+        <item>Unha e doce</item>
+        <item>Unha e trece</item>
+        <item>Unha e catorce</item>
+        <item>Unha e cuarto</item>
+        <item>Unha e dezaseis</item>
+        <item>Unha e dezasete</item>
+        <item>Unha e dezaoito</item>
+        <item>Unha e dezanove</item>
+        <item>Unha e vinte</item>
+        <item>Unha e vinte e un</item>
+        <item>Unha e vinte e dous</item>
+        <item>Unha e vinte e tres</item>
+        <item>Unha e vinte e catro</item>
+        <item>Unha e vinte e cinco</item>
+        <item>Unha e vinte e seis</item>
+        <item>Unha e vinte e sete</item>
+        <item>Unha e vinte e oito</item>
+        <item>Unha e vinte e nove</item>
+        <item>Unha e media</item>
+        <item>Unha e trinta e un</item>
+        <item>Unha e trinta e dous</item>
+        <item>Unha e trinta e tres</item>
+        <item>Unha e trinta e catro</item>
+        <item>Unha e trinta e cinco</item>
+        <item>Unha e trinta e seis</item>
+        <item>Unha e trinta e sete</item>
+        <item>Unha e trinta e oito</item>
+        <item>Unha e trinta e nove</item>
+        <item>Unha e corenta</item>
+        <item>Unha e corenta e un</item>
+        <item>Unha e corenta e dous</item>
+        <item>Unha e corenta e tres</item>
+        <item>Unha e corenta e catro</item>
+        <item>Unha e menos cuarto</item>
+        <item>Unha e corenta e seis</item>
+        <item>Unha e corenta e sete</item>
+        <item>Unha e corenta e oito</item>
+        <item>Unha e corenta e nove</item>
+        <item>Unha e cincuenta</item>
+        <item>Unha e cincuenta e un</item>
+        <item>Unha e cincuenta e dous</item>
+        <item>Unha e cincuenta e tres</item>
+        <item>Unha e cincuenta e catro</item>
+        <item>Unha e cincuenta e cinco</item>
+        <item>Unha e cincuenta e seis</item>
+        <item>Unha e cincuenta e sete</item>
+        <item>Unha e cincuenta e oito</item>
+        <item>Unha e cincuenta e nove</item>
+        <item>Dúas en punto</item>
+        <item>Dúas e un</item>
+        <item>Dúas e dous</item>
+        <item>Dúas e tres</item>
+        <item>Dúas e catro</item>
+        <item>Dúas e cinco</item>
+        <item>Dúas e seis</item>
+        <item>Dúas e sete</item>
+        <item>Dúas e oito</item>
+        <item>Dúas e nove</item>
+        <item>Dúas e dez</item>
+        <item>Dúas e once</item>
+        <item>Dúas e doce</item>
+        <item>Dúas e trece</item>
+        <item>Dúas e catorce</item>
+        <item>Dúas e cuarto</item>
+        <item>Dúas e dezaseis</item>
+        <item>Dúas e dezasete</item>
+        <item>Dúas e dezaoito</item>
+        <item>Dúas e dezanove</item>
+        <item>Dúas e vinte</item>
+        <item>Dúas e vinte e un</item>
+        <item>Dúas e vinte e dous</item>
+        <item>Dúas e vinte e tres</item>
+        <item>Dúas e vinte e catro</item>
+        <item>Dúas e vinte e cinco</item>
+        <item>Dúas e vinte e seis</item>
+        <item>Dúas e vinte e sete</item>
+        <item>Dúas e vinte e oito</item>
+        <item>Dúas e vinte e nove</item>
+        <item>Dúas e media</item>
+        <item>Dúas e trinta e un</item>
+        <item>Dúas e trinta e dous</item>
+        <item>Dúas e trinta e tres</item>
+        <item>Dúas e trinta e catro</item>
+        <item>Dúas e trinta e cinco</item>
+        <item>Dúas e trinta e seis</item>
+        <item>Dúas e trinta e sete</item>
+        <item>Dúas e trinta e oito</item>
+        <item>Dúas e trinta e nove</item>
+        <item>Dúas e corenta</item>
+        <item>Dúas e corenta e un</item>
+        <item>Dúas e corenta e dous</item>
+        <item>Dúas e corenta e tres</item>
+        <item>Dúas e corenta e catro</item>
+        <item>Dúas e menos cuarto</item>
+        <item>Dúas e corenta e seis</item>
+        <item>Dúas e corenta e sete</item>
+        <item>Dúas e corenta e oito</item>
+        <item>Dúas e corenta e nove</item>
+        <item>Dúas e cincuenta</item>
+        <item>Dúas e cincuenta e un</item>
+        <item>Dúas e cincuenta e dous</item>
+        <item>Dúas e cincuenta e tres</item>
+        <item>Dúas e cincuenta e catro</item>
+        <item>Dúas e cincuenta e cinco</item>
+        <item>Dúas e cincuenta e seis</item>
+        <item>Dúas e cincuenta e sete</item>
+        <item>Dúas e cincuenta e oito</item>
+        <item>Dúas e cincuenta e nove</item>
+        <item>Tres en punto</item>
+        <item>Tres e un</item>
+        <item>Tres e dous</item>
+        <item>Tres e tres</item>
+        <item>Tres e catro</item>
+        <item>Tres e cinco</item>
+        <item>Tres e seis</item>
+        <item>Tres e sete</item>
+        <item>Tres e oito</item>
+        <item>Tres e nove</item>
+        <item>Tres e dez</item>
+        <item>Tres e once</item>
+        <item>Tres e doce</item>
+        <item>Tres e trece</item>
+        <item>Tres e catorce</item>
+        <item>Tres e cuarto</item>
+        <item>Tres e dezaseis</item>
+        <item>Tres e dezasete</item>
+        <item>Tres e dezaoito</item>
+        <item>Tres e dezanove</item>
+        <item>Tres e vinte</item>
+        <item>Tres e vinte e un</item>
+        <item>Tres e vinte e dous</item>
+        <item>Tres e vinte e tres</item>
+        <item>Tres e vinte e catro</item>
+        <item>Tres e vinte e cinco</item>
+        <item>Tres e vinte e seis</item>
+        <item>Tres e vinte e sete</item>
+        <item>Tres e vinte e oito</item>
+        <item>Tres e vinte e nove</item>
+        <item>Tres e media</item>
+        <item>Tres e trinta e un</item>
+        <item>Tres e trinta e dous</item>
+        <item>Tres e trinta e tres</item>
+        <item>Tres e trinta e catro</item>
+        <item>Tres e trinta e cinco</item>
+        <item>Tres e trinta e seis</item>
+        <item>Tres e trinta e sete</item>
+        <item>Tres e trinta e oito</item>
+        <item>Tres e trinta e nove</item>
+        <item>Tres e corenta</item>
+        <item>Tres e corenta e un</item>
+        <item>Tres e corenta e dous</item>
+        <item>Tres e corenta e tres</item>
+        <item>Tres e corenta e catro</item>
+        <item>Tres e menos cuarto</item>
+        <item>Tres e corenta e seis</item>
+        <item>Tres e corenta e sete</item>
+        <item>Tres e corenta e oito</item>
+        <item>Tres e corenta e nove</item>
+        <item>Tres e cincuenta</item>
+        <item>Tres e cincuenta e un</item>
+        <item>Tres e cincuenta e dous</item>
+        <item>Tres e cincuenta e tres</item>
+        <item>Tres e cincuenta e catro</item>
+        <item>Tres e cincuenta e cinco</item>
+        <item>Tres e cincuenta e seis</item>
+        <item>Tres e cincuenta e sete</item>
+        <item>Tres e cincuenta e oito</item>
+        <item>Tres e cincuenta e nove</item>
+        <item>Catro en punto</item>
+        <item>Catro e un</item>
+        <item>Catro e dous</item>
+        <item>Catro e tres</item>
+        <item>Catro e catro</item>
+        <item>Catro e cinco</item>
+        <item>Catro e seis</item>
+        <item>Catro e sete</item>
+        <item>Catro e oito</item>
+        <item>Catro e nove</item>
+        <item>Catro e dez</item>
+        <item>Catro e once</item>
+        <item>Catro e doce</item>
+        <item>Catro e trece</item>
+        <item>Catro e catorce</item>
+        <item>Catro e cuarto</item>
+        <item>Catro e dezaseis</item>
+        <item>Catro e dezasete</item>
+        <item>Catro e dezaoito</item>
+        <item>Catro e dezanove</item>
+        <item>Catro e vinte</item>
+        <item>Catro e vinte e un</item>
+        <item>Catro e vinte e dous</item>
+        <item>Catro e vinte e tres</item>
+        <item>Catro e vinte e catro</item>
+        <item>Catro e vinte e cinco</item>
+        <item>Catro e vinte e seis</item>
+        <item>Catro e vinte e sete</item>
+        <item>Catro e vinte e oito</item>
+        <item>Catro e vinte e nove</item>
+        <item>Catro e media</item>
+        <item>Catro e trinta e un</item>
+        <item>Catro e trinta e dous</item>
+        <item>Catro e trinta e tres</item>
+        <item>Catro e trinta e catro</item>
+        <item>Catro e trinta e cinco</item>
+        <item>Catro e trinta e seis</item>
+        <item>Catro e trinta e sete</item>
+        <item>Catro e trinta e oito</item>
+        <item>Catro e trinta e nove</item>
+        <item>Catro e corenta</item>
+        <item>Catro e corenta e un</item>
+        <item>Catro e corenta e dous</item>
+        <item>Catro e corenta e tres</item>
+        <item>Catro e corenta e catro</item>
+        <item>Catro e menos cuarto</item>
+        <item>Catro e corenta e seis</item>
+        <item>Catro e corenta e sete</item>
+        <item>Catro e corenta e oito</item>
+        <item>Catro e corenta e nove</item>
+        <item>Catro e cincuenta</item>
+        <item>Catro e cincuenta e un</item>
+        <item>Catro e cincuenta e dous</item>
+        <item>Catro e cincuenta e tres</item>
+        <item>Catro e cincuenta e catro</item>
+        <item>Catro e cincuenta e cinco</item>
+        <item>Catro e cincuenta e seis</item>
+        <item>Catro e cincuenta e sete</item>
+        <item>Catro e cincuenta e oito</item>
+        <item>Catro e cincuenta e nove</item>
+        <item>Cinco en punto</item>
+        <item>Cinco e un</item>
+        <item>Cinco e dous</item>
+        <item>Cinco e tres</item>
+        <item>Cinco e catro</item>
+        <item>Cinco e cinco</item>
+        <item>Cinco e seis</item>
+        <item>Cinco e sete</item>
+        <item>Cinco e oito</item>
+        <item>Cinco e nove</item>
+        <item>Cinco e dez</item>
+        <item>Cinco e once</item>
+        <item>Cinco e doce</item>
+        <item>Cinco e trece</item>
+        <item>Cinco e catorce</item>
+        <item>Cinco e cuarto</item>
+        <item>Cinco e dezaseis</item>
+        <item>Cinco e dezasete</item>
+        <item>Cinco e dezaoito</item>
+        <item>Cinco e dezanove</item>
+        <item>Cinco e vinte</item>
+        <item>Cinco e vinte e un</item>
+        <item>Cinco e vinte e dous</item>
+        <item>Cinco e vinte e tres</item>
+        <item>Cinco e vinte e catro</item>
+        <item>Cinco e vinte e cinco</item>
+        <item>Cinco e vinte e seis</item>
+        <item>Cinco e vinte e sete</item>
+        <item>Cinco e vinte e oito</item>
+        <item>Cinco e vinte e nove</item>
+        <item>Cinco e media</item>
+        <item>Cinco e trinta e un</item>
+        <item>Cinco e trinta e dous</item>
+        <item>Cinco e trinta e tres</item>
+        <item>Cinco e trinta e catro</item>
+        <item>Cinco e trinta e cinco</item>
+        <item>Cinco e trinta e seis</item>
+        <item>Cinco e trinta e sete</item>
+        <item>Cinco e trinta e oito</item>
+        <item>Cinco e trinta e nove</item>
+        <item>Cinco e corenta</item>
+        <item>Cinco e corenta e un</item>
+        <item>Cinco e corenta e dous</item>
+        <item>Cinco e corenta e tres</item>
+        <item>Cinco e corenta e catro</item>
+        <item>Cinco e menos cuarto</item>
+        <item>Cinco e corenta e seis</item>
+        <item>Cinco e corenta e sete</item>
+        <item>Cinco e corenta e oito</item>
+        <item>Cinco e corenta e nove</item>
+        <item>Cinco e cincuenta</item>
+        <item>Cinco e cincuenta e un</item>
+        <item>Cinco e cincuenta e dous</item>
+        <item>Cinco e cincuenta e tres</item>
+        <item>Cinco e cincuenta e catro</item>
+        <item>Cinco e cincuenta e cinco</item>
+        <item>Cinco e cincuenta e seis</item>
+        <item>Cinco e cincuenta e sete</item>
+        <item>Cinco e cincuenta e oito</item>
+        <item>Cinco e cincuenta e nove</item>
+    </string-array>
+    <string-array name="verbosetime2">
+        <item>Seis en punto</item>
+        <item>Seis e un</item>
+        <item>Seis e dous</item>
+        <item>Seis e tres</item>
+        <item>Seis e catro</item>
+        <item>Seis e cinco</item>
+        <item>Seis e seis</item>
+        <item>Seis e sete</item>
+        <item>Seis e oito</item>
+        <item>Seis e nove</item>
+        <item>Seis e dez</item>
+        <item>Seis e once</item>
+        <item>Seis e doce</item>
+        <item>Seis e trece</item>
+        <item>Seis e catorce</item>
+        <item>Seis e cuarto</item>
+        <item>Seis e dezaseis</item>
+        <item>Seis e dezasete</item>
+        <item>Seis e dezaoito</item>
+        <item>Seis e dezanove</item>
+        <item>Seis e vinte</item>
+        <item>Seis e vinte e un</item>
+        <item>Seis e vinte e dous</item>
+        <item>Seis e vinte e tres</item>
+        <item>Seis e vinte e catro</item>
+        <item>Seis e vinte e cinco</item>
+        <item>Seis e vinte e seis</item>
+        <item>Seis e vinte e sete</item>
+        <item>Seis e vinte e oito</item>
+        <item>Seis e vinte e nove</item>
+        <item>Seis e media</item>
+        <item>Seis e trinta e un</item>
+        <item>Seis e trinta e dous</item>
+        <item>Seis e trinta e tres</item>
+        <item>Seis e trinta e catro</item>
+        <item>Seis e trinta e cinco</item>
+        <item>Seis e trinta e seis</item>
+        <item>Seis e trinta e sete</item>
+        <item>Seis e trinta e oito</item>
+        <item>Seis e trinta e nove</item>
+        <item>Seis e corenta</item>
+        <item>Seis e corenta e un</item>
+        <item>Seis e corenta e dous</item>
+        <item>Seis e corenta e tres</item>
+        <item>Seis e corenta e catro</item>
+        <item>Seis e menos cuarto</item>
+        <item>Seis e corenta e seis</item>
+        <item>Seis e corenta e sete</item>
+        <item>Seis e corenta e oito</item>
+        <item>Seis e corenta e nove</item>
+        <item>Seis e cincuenta</item>
+        <item>Seis e cincuenta e un</item>
+        <item>Seis e cincuenta e dous</item>
+        <item>Seis e cincuenta e tres</item>
+        <item>Seis e cincuenta e catro</item>
+        <item>Seis e cincuenta e cinco</item>
+        <item>Seis e cincuenta e seis</item>
+        <item>Seis e cincuenta e sete</item>
+        <item>Seis e cincuenta e oito</item>
+        <item>Seis e cincuenta e nove</item>
+        <item>Sete en punto</item>
+        <item>Sete e un</item>
+        <item>Sete e dous</item>
+        <item>Sete e tres</item>
+        <item>Sete e catro</item>
+        <item>Sete e cinco</item>
+        <item>Sete e seis</item>
+        <item>Sete e sete</item>
+        <item>Sete e oito</item>
+        <item>Sete e nove</item>
+        <item>Sete e dez</item>
+        <item>Sete e once</item>
+        <item>Sete e doce</item>
+        <item>Sete e trece</item>
+        <item>Sete e catorce</item>
+        <item>Sete e cuarto</item>
+        <item>Sete e dezaseis</item>
+        <item>Sete e dezasete</item>
+        <item>Sete e dezaoito</item>
+        <item>Sete e dezanove</item>
+        <item>Sete e vinte</item>
+        <item>Sete e vinte e un</item>
+        <item>Sete e vinte e dous</item>
+        <item>Sete e vinte e tres</item>
+        <item>Sete e vinte e catro</item>
+        <item>Sete e vinte e cinco</item>
+        <item>Sete e vinte e seis</item>
+        <item>Sete e vinte e sete</item>
+        <item>Sete e vinte e oito</item>
+        <item>Sete e vinte e nove</item>
+        <item>Sete e media</item>
+        <item>Sete e trinta e un</item>
+        <item>Sete e trinta e dous</item>
+        <item>Sete e trinta e tres</item>
+        <item>Sete e trinta e catro</item>
+        <item>Sete e trinta e cinco</item>
+        <item>Sete e trinta e seis</item>
+        <item>Sete e trinta e sete</item>
+        <item>Sete e trinta e oito</item>
+        <item>Sete e trinta e nove</item>
+        <item>Sete e corenta</item>
+        <item>Sete e corenta e un</item>
+        <item>Sete e corenta e dous</item>
+        <item>Sete e corenta e tres</item>
+        <item>Sete e corenta e catro</item>
+        <item>Sete e menos cuarto</item>
+        <item>Sete e corenta e seis</item>
+        <item>Sete e corenta e sete</item>
+        <item>Sete e corenta e oito</item>
+        <item>Sete e corenta e nove</item>
+        <item>Sete e cincuenta</item>
+        <item>Sete e cincuenta e un</item>
+        <item>Sete e cincuenta e dous</item>
+        <item>Sete e cincuenta e tres</item>
+        <item>Sete e cincuenta e catro</item>
+        <item>Sete e cincuenta e cinco</item>
+        <item>Sete e cincuenta e seis</item>
+        <item>Sete e cincuenta e sete</item>
+        <item>Sete e cincuenta e oito</item>
+        <item>Sete e cincuenta e nove</item>
+        <item>Oito en punto</item>
+        <item>Oito e un</item>
+        <item>Oito e dous</item>
+        <item>Oito e tres</item>
+        <item>Oito e catro</item>
+        <item>Oito e cinco</item>
+        <item>Oito e seis</item>
+        <item>Oito e sete</item>
+        <item>Oito e oito</item>
+        <item>Oito e nove</item>
+        <item>Oito e dez</item>
+        <item>Oito e once</item>
+        <item>Oito e doce</item>
+        <item>Oito e trece</item>
+        <item>Oito e catorce</item>
+        <item>Oito e cuarto</item>
+        <item>Oito e dezaseis</item>
+        <item>Oito e dezasete</item>
+        <item>Oito e dezaoito</item>
+        <item>Oito e dezanove</item>
+        <item>Oito e vinte</item>
+        <item>Oito e vinte e un</item>
+        <item>Oito e vinte e dous</item>
+        <item>Oito e vinte e tres</item>
+        <item>Oito e vinte e catro</item>
+        <item>Oito e vinte e cinco</item>
+        <item>Oito e vinte e seis</item>
+        <item>Oito e vinte e sete</item>
+        <item>Oito e vinte e oito</item>
+        <item>Oito e vinte e nove</item>
+        <item>Oito e media</item>
+        <item>Oito e trinta e un</item>
+        <item>Oito e trinta e dous</item>
+        <item>Oito e trinta e tres</item>
+        <item>Oito e trinta e catro</item>
+        <item>Oito e trinta e cinco</item>
+        <item>Oito e trinta e seis</item>
+        <item>Oito e trinta e sete</item>
+        <item>Oito e trinta e oito</item>
+        <item>Oito e trinta e nove</item>
+        <item>Oito e corenta</item>
+        <item>Oito e corenta e un</item>
+        <item>Oito e corenta e dous</item>
+        <item>Oito e corenta e tres</item>
+        <item>Oito e corenta e catro</item>
+        <item>Oito e menos cuarto</item>
+        <item>Oito e corenta e seis</item>
+        <item>Oito e corenta e sete</item>
+        <item>Oito e corenta e oito</item>
+        <item>Oito e corenta e nove</item>
+        <item>Oito e cincuenta</item>
+        <item>Oito e cincuenta e un</item>
+        <item>Oito e cincuenta e dous</item>
+        <item>Oito e cincuenta e tres</item>
+        <item>Oito e cincuenta e catro</item>
+        <item>Oito e cincuenta e cinco</item>
+        <item>Oito e cincuenta e seis</item>
+        <item>Oito e cincuenta e sete</item>
+        <item>Oito e cincuenta e oito</item>
+        <item>Oito e cincuenta e nove</item>
+        <item>Nove en punto</item>
+        <item>Nove e un</item>
+        <item>Nove e dous</item>
+        <item>Nove e tres</item>
+        <item>Nove e catro</item>
+        <item>Nove e cinco</item>
+        <item>Nove e seis</item>
+        <item>Nove e sete</item>
+        <item>Nove e oito</item>
+        <item>Nove e nove</item>
+        <item>Nove e dez</item>
+        <item>Nove e once</item>
+        <item>Nove e doce</item>
+        <item>Nove e trece</item>
+        <item>Nove e catorce</item>
+        <item>Nove e cuarto</item>
+        <item>Nove e dezaseis</item>
+        <item>Nove e dezasete</item>
+        <item>Nove e dezaoito</item>
+        <item>Nove e dezanove</item>
+        <item>Nove e vinte</item>
+        <item>Nove e vinte e un</item>
+        <item>Nove e vinte e dous</item>
+        <item>Nove e vinte e tres</item>
+        <item>Nove e vinte e catro</item>
+        <item>Nove e vinte e cinco</item>
+        <item>Nove e vinte e seis</item>
+        <item>Nove e vinte e sete</item>
+        <item>Nove e vinte e oito</item>
+        <item>Nove e vinte e nove</item>
+        <item>Nove e media</item>
+        <item>Nove e trinta e un</item>
+        <item>Nove e trinta e dous</item>
+        <item>Nove e trinta e tres</item>
+        <item>Nove e trinta e catro</item>
+        <item>Nove e trinta e cinco</item>
+        <item>Nove e trinta e seis</item>
+        <item>Nove e trinta e sete</item>
+        <item>Nove e trinta e oito</item>
+        <item>Nove e trinta e nove</item>
+        <item>Nove e corenta</item>
+        <item>Nove e corenta e un</item>
+        <item>Nove e corenta e dous</item>
+        <item>Nove e corenta e tres</item>
+        <item>Nove e corenta e catro</item>
+        <item>Nove e menos cuarto</item>
+        <item>Nove e corenta e seis</item>
+        <item>Nove e corenta e sete</item>
+        <item>Nove e corenta e oito</item>
+        <item>Nove e corenta e nove</item>
+        <item>Nove e cincuenta</item>
+        <item>Nove e cincuenta e un</item>
+        <item>Nove e cincuenta e dous</item>
+        <item>Nove e cincuenta e tres</item>
+        <item>Nove e cincuenta e catro</item>
+        <item>Nove e cincuenta e cinco</item>
+        <item>Nove e cincuenta e seis</item>
+        <item>Nove e cincuenta e sete</item>
+        <item>Nove e cincuenta e oito</item>
+        <item>Nove e cincuenta e nove</item>
+        <item>Dez en punto</item>
+        <item>Dez e un</item>
+        <item>Dez e dous</item>
+        <item>Dez e tres</item>
+        <item>Dez e catro</item>
+        <item>Dez e cinco</item>
+        <item>Dez e seis</item>
+        <item>Dez e sete</item>
+        <item>Dez e oito</item>
+        <item>Dez e nove</item>
+        <item>Dez e dez</item>
+        <item>Dez e once</item>
+        <item>Dez e doce</item>
+        <item>Dez e trece</item>
+        <item>Dez e catorce</item>
+        <item>Dez e cuarto</item>
+        <item>Dez e dezaseis</item>
+        <item>Dez e dezasete</item>
+        <item>Dez e dezaoito</item>
+        <item>Dez e dezanove</item>
+        <item>Dez e vinte</item>
+        <item>Dez e vinte e un</item>
+        <item>Dez e vinte e dous</item>
+        <item>Dez e vinte e tres</item>
+        <item>Dez e vinte e catro</item>
+        <item>Dez e vinte e cinco</item>
+        <item>Dez e vinte e seis</item>
+        <item>Dez e vinte e sete</item>
+        <item>Dez e vinte e oito</item>
+        <item>Dez e vinte e nove</item>
+        <item>Dez e media</item>
+        <item>Dez e trinta e un</item>
+        <item>Dez e trinta e dous</item>
+        <item>Dez e trinta e tres</item>
+        <item>Dez e trinta e catro</item>
+        <item>Dez e trinta e cinco</item>
+        <item>Dez e trinta e seis</item>
+        <item>Dez e trinta e sete</item>
+        <item>Dez e trinta e oito</item>
+        <item>Dez e trinta e nove</item>
+        <item>Dez e corenta</item>
+        <item>Dez e corenta e un</item>
+        <item>Dez e corenta e dous</item>
+        <item>Dez e corenta e tres</item>
+        <item>Dez e corenta e catro</item>
+        <item>Dez e menos cuarto</item>
+        <item>Dez e corenta e seis</item>
+        <item>Dez e corenta e sete</item>
+        <item>Dez e corenta e oito</item>
+        <item>Dez e corenta e nove</item>
+        <item>Dez e cincuenta</item>
+        <item>Dez e cincuenta e un</item>
+        <item>Dez e cincuenta e dous</item>
+        <item>Dez e cincuenta e tres</item>
+        <item>Dez e cincuenta e catro</item>
+        <item>Dez e cincuenta e cinco</item>
+        <item>Dez e cincuenta e seis</item>
+        <item>Dez e cincuenta e sete</item>
+        <item>Dez e cincuenta e oito</item>
+        <item>Dez e cincuenta e nove</item>
+        <item>Once en punto</item>
+        <item>Once e un</item>
+        <item>Once e dous</item>
+        <item>Once e tres</item>
+        <item>Once e catro</item>
+        <item>Once e cinco</item>
+        <item>Once e seis</item>
+        <item>Once e sete</item>
+        <item>Once e oito</item>
+        <item>Once e nove</item>
+        <item>Once e dez</item>
+        <item>Once e once</item>
+        <item>Once e doce</item>
+        <item>Once e trece</item>
+        <item>Once e catorce</item>
+        <item>Once e cuarto</item>
+        <item>Once e dezaseis</item>
+        <item>Once e dezasete</item>
+        <item>Once e dezaoito</item>
+        <item>Once e dezanove</item>
+        <item>Once e vinte</item>
+        <item>Once e vinte e un</item>
+        <item>Once e vinte e dous</item>
+        <item>Once e vinte e tres</item>
+        <item>Once e vinte e catro</item>
+        <item>Once e vinte e cinco</item>
+        <item>Once e vinte e seis</item>
+        <item>Once e vinte e sete</item>
+        <item>Once e vinte e oito</item>
+        <item>Once e vinte e nove</item>
+        <item>Once e media</item>
+        <item>Once e trinta e un</item>
+        <item>Once e trinta e dous</item>
+        <item>Once e trinta e tres</item>
+        <item>Once e trinta e catro</item>
+        <item>Once e trinta e cinco</item>
+        <item>Once e trinta e seis</item>
+        <item>Once e trinta e sete</item>
+        <item>Once e trinta e oito</item>
+        <item>Once e trinta e nove</item>
+        <item>Once e corenta</item>
+        <item>Once e corenta e un</item>
+        <item>Once e corenta e dous</item>
+        <item>Once e corenta e tres</item>
+        <item>Once e corenta e catro</item>
+        <item>Once e menos cuarto</item>
+        <item>Once e corenta e seis</item>
+        <item>Once e corenta e sete</item>
+        <item>Once e corenta e oito</item>
+        <item>Once e corenta e nove</item>
+        <item>Once e cincuenta</item>
+        <item>Once e cincuenta e un</item>
+        <item>Once e cincuenta e dous</item>
+        <item>Once e cincuenta e tres</item>
+        <item>Once e cincuenta e catro</item>
+        <item>Once e cincuenta e cinco</item>
+        <item>Once e cincuenta e seis</item>
+        <item>Once e cincuenta e sete</item>
+        <item>Once e cincuenta e oito</item>
+        <item>Once e cincuenta e nove</item>
+    </string-array>
+    <string-array name="verbosetime3">
+        <item>Doce en punto</item>
+        <item>Doce e un</item>
+        <item>Doce e dous</item>
+        <item>Doce e tres</item>
+        <item>Doce e catro</item>
+        <item>Doce e cinco</item>
+        <item>Doce e seis</item>
+        <item>Doce e sete</item>
+        <item>Doce e oito</item>
+        <item>Doce e nove</item>
+        <item>Doce e dez</item>
+        <item>Doce e once</item>
+        <item>Doce e doce</item>
+        <item>Doce e trece</item>
+        <item>Doce e catorce</item>
+        <item>Doce e cuarto</item>
+        <item>Doce e dezaseis</item>
+        <item>Doce e dezasete</item>
+        <item>Doce e dezaoito</item>
+        <item>Doce e dezanove</item>
+        <item>Doce e vinte</item>
+        <item>Doce e vinte e un</item>
+        <item>Doce e vinte e dous</item>
+        <item>Doce e vinte e tres</item>
+        <item>Doce e vinte e catro</item>
+        <item>Doce e vinte e cinco</item>
+        <item>Doce e vinte e seis</item>
+        <item>Doce e vinte e sete</item>
+        <item>Doce e vinte e oito</item>
+        <item>Doce e vinte e nove</item>
+        <item>Doce e media</item>
+        <item>Doce e trinta e un</item>
+        <item>Doce e trinta e dous</item>
+        <item>Doce e trinta e tres</item>
+        <item>Doce e trinta e catro</item>
+        <item>Doce e trinta e cinco</item>
+        <item>Doce e trinta e seis</item>
+        <item>Doce e trinta e sete</item>
+        <item>Doce e trinta e oito</item>
+        <item>Doce e trinta e nove</item>
+        <item>Doce e corenta</item>
+        <item>Doce e corenta e un</item>
+        <item>Doce e corenta e dous</item>
+        <item>Doce e corenta e tres</item>
+        <item>Doce e corenta e catro</item>
+        <item>Doce e menos cuarto</item>
+        <item>Doce e corenta e seis</item>
+        <item>Doce e corenta e sete</item>
+        <item>Doce e corenta e oito</item>
+        <item>Doce e corenta e nove</item>
+        <item>Doce e cincuenta</item>
+        <item>Doce e cincuenta e un</item>
+        <item>Doce e cincuenta e dous</item>
+        <item>Doce e cincuenta e tres</item>
+        <item>Doce e cincuenta e catro</item>
+        <item>Doce e cincuenta e cinco</item>
+        <item>Doce e cincuenta e seis</item>
+        <item>Doce e cincuenta e sete</item>
+        <item>Doce e cincuenta e oito</item>
+        <item>Doce e cincuenta e nove</item>
+        <item>Unha en punto</item>
+        <item>Unha e un</item>
+        <item>Unha e dous</item>
+        <item>Unha e tres</item>
+        <item>Unha e catro</item>
+        <item>Unha e cinco</item>
+        <item>Unha e seis</item>
+        <item>Unha e sete</item>
+        <item>Unha e oito</item>
+        <item>Unha e nove</item>
+        <item>Unha e dez</item>
+        <item>Unha e once</item>
+        <item>Unha e doce</item>
+        <item>Unha e trece</item>
+        <item>Unha e catorce</item>
+        <item>Unha e cuarto</item>
+        <item>Unha e dezaseis</item>
+        <item>Unha e dezasete</item>
+        <item>Unha e dezaoito</item>
+        <item>Unha e dezanove</item>
+        <item>Unha e vinte</item>
+        <item>Unha e vinte e un</item>
+        <item>Unha e vinte e dous</item>
+        <item>Unha e vinte e tres</item>
+        <item>Unha e vinte e catro</item>
+        <item>Unha e vinte e cinco</item>
+        <item>Unha e vinte e seis</item>
+        <item>Unha e vinte e sete</item>
+        <item>Unha e vinte e oito</item>
+        <item>Unha e vinte e nove</item>
+        <item>Unha e media</item>
+        <item>Unha e trinta e un</item>
+        <item>Unha e trinta e dous</item>
+        <item>Unha e trinta e tres</item>
+        <item>Unha e trinta e catro</item>
+        <item>Unha e trinta e cinco</item>
+        <item>Unha e trinta e seis</item>
+        <item>Unha e trinta e sete</item>
+        <item>Unha e trinta e oito</item>
+        <item>Unha e trinta e nove</item>
+        <item>Unha e corenta</item>
+        <item>Unha e corenta e un</item>
+        <item>Unha e corenta e dous</item>
+        <item>Unha e corenta e tres</item>
+        <item>Unha e corenta e catro</item>
+        <item>Unha e menos cuarto</item>
+        <item>Unha e corenta e seis</item>
+        <item>Unha e corenta e sete</item>
+        <item>Unha e corenta e oito</item>
+        <item>Unha e corenta e nove</item>
+        <item>Unha e cincuenta</item>
+        <item>Unha e cincuenta e un</item>
+        <item>Unha e cincuenta e dous</item>
+        <item>Unha e cincuenta e tres</item>
+        <item>Unha e cincuenta e catro</item>
+        <item>Unha e cincuenta e cinco</item>
+        <item>Unha e cincuenta e seis</item>
+        <item>Unha e cincuenta e sete</item>
+        <item>Unha e cincuenta e oito</item>
+        <item>Unha e cincuenta e nove</item>
+        <item>Dúas en punto</item>
+        <item>Dúas e un</item>
+        <item>Dúas e dous</item>
+        <item>Dúas e tres</item>
+        <item>Dúas e catro</item>
+        <item>Dúas e cinco</item>
+        <item>Dúas e seis</item>
+        <item>Dúas e sete</item>
+        <item>Dúas e oito</item>
+        <item>Dúas e nove</item>
+        <item>Dúas e dez</item>
+        <item>Dúas e once</item>
+        <item>Dúas e doce</item>
+        <item>Dúas e trece</item>
+        <item>Dúas e catorce</item>
+        <item>Dúas e cuarto</item>
+        <item>Dúas e dezaseis</item>
+        <item>Dúas e dezasete</item>
+        <item>Dúas e dezaoito</item>
+        <item>Dúas e dezanove</item>
+        <item>Dúas e vinte</item>
+        <item>Dúas e vinte e un</item>
+        <item>Dúas e vinte e dous</item>
+        <item>Dúas e vinte e tres</item>
+        <item>Dúas e vinte e catro</item>
+        <item>Dúas e vinte e cinco</item>
+        <item>Dúas e vinte e seis</item>
+        <item>Dúas e vinte e sete</item>
+        <item>Dúas e vinte e oito</item>
+        <item>Dúas e vinte e nove</item>
+        <item>Dúas e media</item>
+        <item>Dúas e trinta e un</item>
+        <item>Dúas e trinta e dous</item>
+        <item>Dúas e trinta e tres</item>
+        <item>Dúas e trinta e catro</item>
+        <item>Dúas e trinta e cinco</item>
+        <item>Dúas e trinta e seis</item>
+        <item>Dúas e trinta e sete</item>
+        <item>Dúas e trinta e oito</item>
+        <item>Dúas e trinta e nove</item>
+        <item>Dúas e corenta</item>
+        <item>Dúas e corenta e un</item>
+        <item>Dúas e corenta e dous</item>
+        <item>Dúas e corenta e tres</item>
+        <item>Dúas e corenta e catro</item>
+        <item>Dúas e menos cuarto</item>
+        <item>Dúas e corenta e seis</item>
+        <item>Dúas e corenta e sete</item>
+        <item>Dúas e corenta e oito</item>
+        <item>Dúas e corenta e nove</item>
+        <item>Dúas e cincuenta</item>
+        <item>Dúas e cincuenta e un</item>
+        <item>Dúas e cincuenta e dous</item>
+        <item>Dúas e cincuenta e tres</item>
+        <item>Dúas e cincuenta e catro</item>
+        <item>Dúas e cincuenta e cinco</item>
+        <item>Dúas e cincuenta e seis</item>
+        <item>Dúas e cincuenta e sete</item>
+        <item>Dúas e cincuenta e oito</item>
+        <item>Dúas e cincuenta e nove</item>
+        <item>Tres en punto</item>
+        <item>Tres e un</item>
+        <item>Tres e dous</item>
+        <item>Tres e tres</item>
+        <item>Tres e catro</item>
+        <item>Tres e cinco</item>
+        <item>Tres e seis</item>
+        <item>Tres e sete</item>
+        <item>Tres e oito</item>
+        <item>Tres e nove</item>
+        <item>Tres e dez</item>
+        <item>Tres e once</item>
+        <item>Tres e doce</item>
+        <item>Tres e trece</item>
+        <item>Tres e catorce</item>
+        <item>Tres e cuarto</item>
+        <item>Tres e dezaseis</item>
+        <item>Tres e dezasete</item>
+        <item>Tres e dezaoito</item>
+        <item>Tres e dezanove</item>
+        <item>Tres e vinte</item>
+        <item>Tres e vinte e un</item>
+        <item>Tres e vinte e dous</item>
+        <item>Tres e vinte e tres</item>
+        <item>Tres e vinte e catro</item>
+        <item>Tres e vinte e cinco</item>
+        <item>Tres e vinte e seis</item>
+        <item>Tres e vinte e sete</item>
+        <item>Tres e vinte e oito</item>
+        <item>Tres e vinte e nove</item>
+        <item>Tres e media</item>
+        <item>Tres e trinta e un</item>
+        <item>Tres e trinta e dous</item>
+        <item>Tres e trinta e tres</item>
+        <item>Tres e trinta e catro</item>
+        <item>Tres e trinta e cinco</item>
+        <item>Tres e trinta e seis</item>
+        <item>Tres e trinta e sete</item>
+        <item>Tres e trinta e oito</item>
+        <item>Tres e trinta e nove</item>
+        <item>Tres e corenta</item>
+        <item>Tres e corenta e un</item>
+        <item>Tres e corenta e dous</item>
+        <item>Tres e corenta e tres</item>
+        <item>Tres e corenta e catro</item>
+        <item>Tres e menos cuarto</item>
+        <item>Tres e corenta e seis</item>
+        <item>Tres e corenta e sete</item>
+        <item>Tres e corenta e oito</item>
+        <item>Tres e corenta e nove</item>
+        <item>Tres e cincuenta</item>
+        <item>Tres e cincuenta e un</item>
+        <item>Tres e cincuenta e dous</item>
+        <item>Tres e cincuenta e tres</item>
+        <item>Tres e cincuenta e catro</item>
+        <item>Tres e cincuenta e cinco</item>
+        <item>Tres e cincuenta e seis</item>
+        <item>Tres e cincuenta e sete</item>
+        <item>Tres e cincuenta e oito</item>
+        <item>Tres e cincuenta e nove</item>
+        <item>Catro en punto</item>
+        <item>Catro e un</item>
+        <item>Catro e dous</item>
+        <item>Catro e tres</item>
+        <item>Catro e catro</item>
+        <item>Catro e cinco</item>
+        <item>Catro e seis</item>
+        <item>Catro e sete</item>
+        <item>Catro e oito</item>
+        <item>Catro e nove</item>
+        <item>Catro e dez</item>
+        <item>Catro e once</item>
+        <item>Catro e doce</item>
+        <item>Catro e trece</item>
+        <item>Catro e catorce</item>
+        <item>Catro e cuarto</item>
+        <item>Catro e dezaseis</item>
+        <item>Catro e dezasete</item>
+        <item>Catro e dezaoito</item>
+        <item>Catro e dezanove</item>
+        <item>Catro e vinte</item>
+        <item>Catro e vinte e un</item>
+        <item>Catro e vinte e dous</item>
+        <item>Catro e vinte e tres</item>
+        <item>Catro e vinte e catro</item>
+        <item>Catro e vinte e cinco</item>
+        <item>Catro e vinte e seis</item>
+        <item>Catro e vinte e sete</item>
+        <item>Catro e vinte e oito</item>
+        <item>Catro e vinte e nove</item>
+        <item>Catro e media</item>
+        <item>Catro e trinta e un</item>
+        <item>Catro e trinta e dous</item>
+        <item>Catro e trinta e tres</item>
+        <item>Catro e trinta e catro</item>
+        <item>Catro e trinta e cinco</item>
+        <item>Catro e trinta e seis</item>
+        <item>Catro e trinta e sete</item>
+        <item>Catro e trinta e oito</item>
+        <item>Catro e trinta e nove</item>
+        <item>Catro e corenta</item>
+        <item>Catro e corenta e un</item>
+        <item>Catro e corenta e dous</item>
+        <item>Catro e corenta e tres</item>
+        <item>Catro e corenta e catro</item>
+        <item>Catro e menos cuarto</item>
+        <item>Catro e corenta e seis</item>
+        <item>Catro e corenta e sete</item>
+        <item>Catro e corenta e oito</item>
+        <item>Catro e corenta e nove</item>
+        <item>Catro e cincuenta</item>
+        <item>Catro e cincuenta e un</item>
+        <item>Catro e cincuenta e dous</item>
+        <item>Catro e cincuenta e tres</item>
+        <item>Catro e cincuenta e catro</item>
+        <item>Catro e cincuenta e cinco</item>
+        <item>Catro e cincuenta e seis</item>
+        <item>Catro e cincuenta e sete</item>
+        <item>Catro e cincuenta e oito</item>
+        <item>Catro e cincuenta e nove</item>
+        <item>Cinco en punto</item>
+        <item>Cinco e un</item>
+        <item>Cinco e dous</item>
+        <item>Cinco e tres</item>
+        <item>Cinco e catro</item>
+        <item>Cinco e cinco</item>
+        <item>Cinco e seis</item>
+        <item>Cinco e sete</item>
+        <item>Cinco e oito</item>
+        <item>Cinco e nove</item>
+        <item>Cinco e dez</item>
+        <item>Cinco e once</item>
+        <item>Cinco e doce</item>
+        <item>Cinco e trece</item>
+        <item>Cinco e catorce</item>
+        <item>Cinco e cuarto</item>
+        <item>Cinco e dezaseis</item>
+        <item>Cinco e dezasete</item>
+        <item>Cinco e dezaoito</item>
+        <item>Cinco e dezanove</item>
+        <item>Cinco e vinte</item>
+        <item>Cinco e vinte e un</item>
+        <item>Cinco e vinte e dous</item>
+        <item>Cinco e vinte e tres</item>
+        <item>Cinco e vinte e catro</item>
+        <item>Cinco e vinte e cinco</item>
+        <item>Cinco e vinte e seis</item>
+        <item>Cinco e vinte e sete</item>
+        <item>Cinco e vinte e oito</item>
+        <item>Cinco e vinte e nove</item>
+        <item>Cinco e media</item>
+        <item>Cinco e trinta e un</item>
+        <item>Cinco e trinta e dous</item>
+        <item>Cinco e trinta e tres</item>
+        <item>Cinco e trinta e catro</item>
+        <item>Cinco e trinta e cinco</item>
+        <item>Cinco e trinta e seis</item>
+        <item>Cinco e trinta e sete</item>
+        <item>Cinco e trinta e oito</item>
+        <item>Cinco e trinta e nove</item>
+        <item>Cinco e corenta</item>
+        <item>Cinco e corenta e un</item>
+        <item>Cinco e corenta e dous</item>
+        <item>Cinco e corenta e tres</item>
+        <item>Cinco e corenta e catro</item>
+        <item>Cinco e menos cuarto</item>
+        <item>Cinco e corenta e seis</item>
+        <item>Cinco e corenta e sete</item>
+        <item>Cinco e corenta e oito</item>
+        <item>Cinco e corenta e nove</item>
+        <item>Cinco e cincuenta</item>
+        <item>Cinco e cincuenta e un</item>
+        <item>Cinco e cincuenta e dous</item>
+        <item>Cinco e cincuenta e tres</item>
+        <item>Cinco e cincuenta e catro</item>
+        <item>Cinco e cincuenta e cinco</item>
+        <item>Cinco e cincuenta e seis</item>
+        <item>Cinco e cincuenta e sete</item>
+        <item>Cinco e cincuenta e oito</item>
+        <item>Cinco e cincuenta e nove</item>
+    </string-array>
+    <string-array name="verbosetime4">
+        <item>Seis en punto</item>
+        <item>Seis e un</item>
+        <item>Seis e dous</item>
+        <item>Seis e tres</item>
+        <item>Seis e catro</item>
+        <item>Seis e cinco</item>
+        <item>Seis e seis</item>
+        <item>Seis e sete</item>
+        <item>Seis e oito</item>
+        <item>Seis e nove</item>
+        <item>Seis e dez</item>
+        <item>Seis e once</item>
+        <item>Seis e doce</item>
+        <item>Seis e trece</item>
+        <item>Seis e catorce</item>
+        <item>Seis e cuarto</item>
+        <item>Seis e dezaseis</item>
+        <item>Seis e dezasete</item>
+        <item>Seis e dezaoito</item>
+        <item>Seis e dezanove</item>
+        <item>Seis e vinte</item>
+        <item>Seis e vinte e un</item>
+        <item>Seis e vinte e dous</item>
+        <item>Seis e vinte e tres</item>
+        <item>Seis e vinte e catro</item>
+        <item>Seis e vinte e cinco</item>
+        <item>Seis e vinte e seis</item>
+        <item>Seis e vinte e sete</item>
+        <item>Seis e vinte e oito</item>
+        <item>Seis e vinte e nove</item>
+        <item>Seis e media</item>
+        <item>Seis e trinta e un</item>
+        <item>Seis e trinta e dous</item>
+        <item>Seis e trinta e tres</item>
+        <item>Seis e trinta e catro</item>
+        <item>Seis e trinta e cinco</item>
+        <item>Seis e trinta e seis</item>
+        <item>Seis e trinta e sete</item>
+        <item>Seis e trinta e oito</item>
+        <item>Seis e trinta e nove</item>
+        <item>Seis e corenta</item>
+        <item>Seis e corenta e un</item>
+        <item>Seis e corenta e dous</item>
+        <item>Seis e corenta e tres</item>
+        <item>Seis e corenta e catro</item>
+        <item>Seis e menos cuarto</item>
+        <item>Seis e corenta e seis</item>
+        <item>Seis e corenta e sete</item>
+        <item>Seis e corenta e oito</item>
+        <item>Seis e corenta e nove</item>
+        <item>Seis e cincuenta</item>
+        <item>Seis e cincuenta e un</item>
+        <item>Seis e cincuenta e dous</item>
+        <item>Seis e cincuenta e tres</item>
+        <item>Seis e cincuenta e catro</item>
+        <item>Seis e cincuenta e cinco</item>
+        <item>Seis e cincuenta e seis</item>
+        <item>Seis e cincuenta e sete</item>
+        <item>Seis e cincuenta e oito</item>
+        <item>Seis e cincuenta e nove</item>
+        <item>Sete en punto</item>
+        <item>Sete e un</item>
+        <item>Sete e dous</item>
+        <item>Sete e tres</item>
+        <item>Sete e catro</item>
+        <item>Sete e cinco</item>
+        <item>Sete e seis</item>
+        <item>Sete e sete</item>
+        <item>Sete e oito</item>
+        <item>Sete e nove</item>
+        <item>Sete e dez</item>
+        <item>Sete e once</item>
+        <item>Sete e doce</item>
+        <item>Sete e trece</item>
+        <item>Sete e catorce</item>
+        <item>Sete e cuarto</item>
+        <item>Sete e dezaseis</item>
+        <item>Sete e dezasete</item>
+        <item>Sete e dezaoito</item>
+        <item>Sete e dezanove</item>
+        <item>Sete e vinte</item>
+        <item>Sete e vinte e un</item>
+        <item>Sete e vinte e dous</item>
+        <item>Sete e vinte e tres</item>
+        <item>Sete e vinte e catro</item>
+        <item>Sete e vinte e cinco</item>
+        <item>Sete e vinte e seis</item>
+        <item>Sete e vinte e sete</item>
+        <item>Sete e vinte e oito</item>
+        <item>Sete e vinte e nove</item>
+        <item>Sete e media</item>
+        <item>Sete e trinta e un</item>
+        <item>Sete e trinta e dous</item>
+        <item>Sete e trinta e tres</item>
+        <item>Sete e trinta e catro</item>
+        <item>Sete e trinta e cinco</item>
+        <item>Sete e trinta e seis</item>
+        <item>Sete e trinta e sete</item>
+        <item>Sete e trinta e oito</item>
+        <item>Sete e trinta e nove</item>
+        <item>Sete e corenta</item>
+        <item>Sete e corenta e un</item>
+        <item>Sete e corenta e dous</item>
+        <item>Sete e corenta e tres</item>
+        <item>Sete e corenta e catro</item>
+        <item>Sete e menos cuarto</item>
+        <item>Sete e corenta e seis</item>
+        <item>Sete e corenta e sete</item>
+        <item>Sete e corenta e oito</item>
+        <item>Sete e corenta e nove</item>
+        <item>Sete e cincuenta</item>
+        <item>Sete e cincuenta e un</item>
+        <item>Sete e cincuenta e dous</item>
+        <item>Sete e cincuenta e tres</item>
+        <item>Sete e cincuenta e catro</item>
+        <item>Sete e cincuenta e cinco</item>
+        <item>Sete e cincuenta e seis</item>
+        <item>Sete e cincuenta e sete</item>
+        <item>Sete e cincuenta e oito</item>
+        <item>Sete e cincuenta e nove</item>
+        <item>Oito en punto</item>
+        <item>Oito e un</item>
+        <item>Oito e dous</item>
+        <item>Oito e tres</item>
+        <item>Oito e catro</item>
+        <item>Oito e cinco</item>
+        <item>Oito e seis</item>
+        <item>Oito e sete</item>
+        <item>Oito e oito</item>
+        <item>Oito e nove</item>
+        <item>Oito e dez</item>
+        <item>Oito e once</item>
+        <item>Oito e doce</item>
+        <item>Oito e trece</item>
+        <item>Oito e catorce</item>
+        <item>Oito e cuarto</item>
+        <item>Oito e dezaseis</item>
+        <item>Oito e dezasete</item>
+        <item>Oito e dezaoito</item>
+        <item>Oito e dezanove</item>
+        <item>Oito e vinte</item>
+        <item>Oito e vinte e un</item>
+        <item>Oito e vinte e dous</item>
+        <item>Oito e vinte e tres</item>
+        <item>Oito e vinte e catro</item>
+        <item>Oito e vinte e cinco</item>
+        <item>Oito e vinte e seis</item>
+        <item>Oito e vinte e sete</item>
+        <item>Oito e vinte e oito</item>
+        <item>Oito e vinte e nove</item>
+        <item>Oito e media</item>
+        <item>Oito e trinta e un</item>
+        <item>Oito e trinta e dous</item>
+        <item>Oito e trinta e tres</item>
+        <item>Oito e trinta e catro</item>
+        <item>Oito e trinta e cinco</item>
+        <item>Oito e trinta e seis</item>
+        <item>Oito e trinta e sete</item>
+        <item>Oito e trinta e oito</item>
+        <item>Oito e trinta e nove</item>
+        <item>Oito e corenta</item>
+        <item>Oito e corenta e un</item>
+        <item>Oito e corenta e dous</item>
+        <item>Oito e corenta e tres</item>
+        <item>Oito e corenta e catro</item>
+        <item>Oito e menos cuarto</item>
+        <item>Oito e corenta e seis</item>
+        <item>Oito e corenta e sete</item>
+        <item>Oito e corenta e oito</item>
+        <item>Oito e corenta e nove</item>
+        <item>Oito e cincuenta</item>
+        <item>Oito e cincuenta e un</item>
+        <item>Oito e cincuenta e dous</item>
+        <item>Oito e cincuenta e tres</item>
+        <item>Oito e cincuenta e catro</item>
+        <item>Oito e cincuenta e cinco</item>
+        <item>Oito e cincuenta e seis</item>
+        <item>Oito e cincuenta e sete</item>
+        <item>Oito e cincuenta e oito</item>
+        <item>Oito e cincuenta e nove</item>
+        <item>Nove en punto</item>
+        <item>Nove e un</item>
+        <item>Nove e dous</item>
+        <item>Nove e tres</item>
+        <item>Nove e catro</item>
+        <item>Nove e cinco</item>
+        <item>Nove e seis</item>
+        <item>Nove e sete</item>
+        <item>Nove e oito</item>
+        <item>Nove e nove</item>
+        <item>Nove e dez</item>
+        <item>Nove e once</item>
+        <item>Nove e doce</item>
+        <item>Nove e trece</item>
+        <item>Nove e catorce</item>
+        <item>Nove e cuarto</item>
+        <item>Nove e dezaseis</item>
+        <item>Nove e dezasete</item>
+        <item>Nove e dezaoito</item>
+        <item>Nove e dezanove</item>
+        <item>Nove e vinte</item>
+        <item>Nove e vinte e un</item>
+        <item>Nove e vinte e dous</item>
+        <item>Nove e vinte e tres</item>
+        <item>Nove e vinte e catro</item>
+        <item>Nove e vinte e cinco</item>
+        <item>Nove e vinte e seis</item>
+        <item>Nove e vinte e sete</item>
+        <item>Nove e vinte e oito</item>
+        <item>Nove e vinte e nove</item>
+        <item>Nove e media</item>
+        <item>Nove e trinta e un</item>
+        <item>Nove e trinta e dous</item>
+        <item>Nove e trinta e tres</item>
+        <item>Nove e trinta e catro</item>
+        <item>Nove e trinta e cinco</item>
+        <item>Nove e trinta e seis</item>
+        <item>Nove e trinta e sete</item>
+        <item>Nove e trinta e oito</item>
+        <item>Nove e trinta e nove</item>
+        <item>Nove e corenta</item>
+        <item>Nove e corenta e un</item>
+        <item>Nove e corenta e dous</item>
+        <item>Nove e corenta e tres</item>
+        <item>Nove e corenta e catro</item>
+        <item>Nove e menos cuarto</item>
+        <item>Nove e corenta e seis</item>
+        <item>Nove e corenta e sete</item>
+        <item>Nove e corenta e oito</item>
+        <item>Nove e corenta e nove</item>
+        <item>Nove e cincuenta</item>
+        <item>Nove e cincuenta e un</item>
+        <item>Nove e cincuenta e dous</item>
+        <item>Nove e cincuenta e tres</item>
+        <item>Nove e cincuenta e catro</item>
+        <item>Nove e cincuenta e cinco</item>
+        <item>Nove e cincuenta e seis</item>
+        <item>Nove e cincuenta e sete</item>
+        <item>Nove e cincuenta e oito</item>
+        <item>Nove e cincuenta e nove</item>
+        <item>Dez en punto</item>
+        <item>Dez e un</item>
+        <item>Dez e dous</item>
+        <item>Dez e tres</item>
+        <item>Dez e catro</item>
+        <item>Dez e cinco</item>
+        <item>Dez e seis</item>
+        <item>Dez e sete</item>
+        <item>Dez e oito</item>
+        <item>Dez e nove</item>
+        <item>Dez e dez</item>
+        <item>Dez e once</item>
+        <item>Dez e doce</item>
+        <item>Dez e trece</item>
+        <item>Dez e catorce</item>
+        <item>Dez e cuarto</item>
+        <item>Dez e dezaseis</item>
+        <item>Dez e dezasete</item>
+        <item>Dez e dezaoito</item>
+        <item>Dez e dezanove</item>
+        <item>Dez e vinte</item>
+        <item>Dez e vinte e un</item>
+        <item>Dez e vinte e dous</item>
+        <item>Dez e vinte e tres</item>
+        <item>Dez e vinte e catro</item>
+        <item>Dez e vinte e cinco</item>
+        <item>Dez e vinte e seis</item>
+        <item>Dez e vinte e sete</item>
+        <item>Dez e vinte e oito</item>
+        <item>Dez e vinte e nove</item>
+        <item>Dez e media</item>
+        <item>Dez e trinta e un</item>
+        <item>Dez e trinta e dous</item>
+        <item>Dez e trinta e tres</item>
+        <item>Dez e trinta e catro</item>
+        <item>Dez e trinta e cinco</item>
+        <item>Dez e trinta e seis</item>
+        <item>Dez e trinta e sete</item>
+        <item>Dez e trinta e oito</item>
+        <item>Dez e trinta e nove</item>
+        <item>Dez e corenta</item>
+        <item>Dez e corenta e un</item>
+        <item>Dez e corenta e dous</item>
+        <item>Dez e corenta e tres</item>
+        <item>Dez e corenta e catro</item>
+        <item>Dez e menos cuarto</item>
+        <item>Dez e corenta e seis</item>
+        <item>Dez e corenta e sete</item>
+        <item>Dez e corenta e oito</item>
+        <item>Dez e corenta e nove</item>
+        <item>Dez e cincuenta</item>
+        <item>Dez e cincuenta e un</item>
+        <item>Dez e cincuenta e dous</item>
+        <item>Dez e cincuenta e tres</item>
+        <item>Dez e cincuenta e catro</item>
+        <item>Dez e cincuenta e cinco</item>
+        <item>Dez e cincuenta e seis</item>
+        <item>Dez e cincuenta e sete</item>
+        <item>Dez e cincuenta e oito</item>
+        <item>Dez e cincuenta e nove</item>
+        <item>Once en punto</item>
+        <item>Once e un</item>
+        <item>Once e dous</item>
+        <item>Once e tres</item>
+        <item>Once e catro</item>
+        <item>Once e cinco</item>
+        <item>Once e seis</item>
+        <item>Once e sete</item>
+        <item>Once e oito</item>
+        <item>Once e nove</item>
+        <item>Once e dez</item>
+        <item>Once e once</item>
+        <item>Once e doce</item>
+        <item>Once e trece</item>
+        <item>Once e catorce</item>
+        <item>Once e cuarto</item>
+        <item>Once e dezaseis</item>
+        <item>Once e dezasete</item>
+        <item>Once e dezaoito</item>
+        <item>Once e dezanove</item>
+        <item>Once e vinte</item>
+        <item>Once e vinte e un</item>
+        <item>Once e vinte e dous</item>
+        <item>Once e vinte e tres</item>
+        <item>Once e vinte e catro</item>
+        <item>Once e vinte e cinco</item>
+        <item>Once e vinte e seis</item>
+        <item>Once e vinte e sete</item>
+        <item>Once e vinte e oito</item>
+        <item>Once e vinte e nove</item>
+        <item>Once e media</item>
+        <item>Once e trinta e un</item>
+        <item>Once e trinta e dous</item>
+        <item>Once e trinta e tres</item>
+        <item>Once e trinta e catro</item>
+        <item>Once e trinta e cinco</item>
+        <item>Once e trinta e seis</item>
+        <item>Once e trinta e sete</item>
+        <item>Once e trinta e oito</item>
+        <item>Once e trinta e nove</item>
+        <item>Once e corenta</item>
+        <item>Once e corenta e un</item>
+        <item>Once e corenta e dous</item>
+        <item>Once e corenta e tres</item>
+        <item>Once e corenta e catro</item>
+        <item>Once e menos cuarto</item>
+        <item>Once e corenta e seis</item>
+        <item>Once e corenta e sete</item>
+        <item>Once e corenta e oito</item>
+        <item>Once e corenta e nove</item>
+        <item>Once e cincuenta</item>
+        <item>Once e cincuenta e un</item>
+        <item>Once e cincuenta e dous</item>
+        <item>Once e cincuenta e tres</item>
+        <item>Once e cincuenta e catro</item>
+        <item>Once e cincuenta e cinco</item>
+        <item>Once e cincuenta e seis</item>
+        <item>Once e cincuenta e sete</item>
+        <item>Once e cincuenta e oito</item>
+        <item>Once e cincuenta e nove</item>
+    </string-array>
+    <string-array name="VerboseWeather">
+        <item>Descoñecido</item>
+        <item>Despexado</item>
+        <item>Despexado</item>
+        <item>Moi despexado</item>
+        <item>Parcialmente despexado</item>
+        <item>Parcialmente anubrado</item>
+        <item>Po</item>
+        <item>Néboa</item>
+        <item>Brumas</item>
+        <item>Fume</item>
+        <item>Moi anubrado</item>
+        <item>Anubrado</item>
+        <item>Nubes</item>
+        <item>Brétema</item>
+        <item>Chuvia lixeira</item>
+        <item>Chuvia torrencial</item>
+        <item>Orballo</item>
+        <item>Chuvascos</item>
+        <item>Probabilidade de chuvia</item>
+        <item>Probabilidade de chuvascos</item>
+        <item>Chuvascos dispersos</item>
+        <item>Tormenta</item>
+        <item>Probabilidade de tormentas eléctricas</item>
+        <item>Tormentas dispersas</item>
+        <item>Probabilidade de tormentas</item>
+        <item>Tormenta</item>
+        <item>Chuvias fortes</item>
+        <item>Chuvia</item>
+        <item>Folerpas</item>
+        <item>Débil nevada</item>
+        <item>Probabilidades de neve</item>
+        <item>Chuvascos de neve</item>
+        <item>Neve débil</item>
+        <item>Neve</item>
+        <item>Xeada</item>
+        <item>Xeo ou neve</item>
+        <item>Auganeve</item>
+        <item>Orballo Xeado</item>
+        <item>Combinado invernal</item>
+        <item>Ventoso</item>
+    </string-array>
+    <string name="_apply">Aplicar</string>
+    <string name="_search">Procurar</string>
+    <string name="_yes">Si</string>
+    <string name="_abandon">Sair</string>
+    <string name="_ok">Aceptar</string>
+    <string name="_no">Non</string>
+    <string name="translators">Tradutores</string>
+    <string name="TTLdefault">Opcións Widget</string>
+    <string name="TTLnoop">Non facer ren</string>
+    <string name="TTLwrefresh">Anovar tempo agora</string>
+    <string name="TTLweather">Predición</string>
+    <string name="TTLbatt">Uso da batería</string>
+    <string name="TTLalarms">Alarma</string>
+    <string name="_yesRestore">Si, restaurar por defecto</string>
+    <string name="_yesDelete">Si, borrar todo</string>
+</resources>

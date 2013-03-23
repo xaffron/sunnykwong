@@ -82,7 +82,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "";
+	static final String TESTVER = "Alpha 1";
 	static final boolean FREEEDITION = false;
 	static boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -108,14 +108,14 @@ public class OMC extends Application {
 	static final Locale[] LOCALES = 
 		{new Locale("zh","TW",""),new Locale("zh","CN",""),new Locale("es","ES",""),
 		new Locale("de","",""),new Locale("en","US",""),new Locale("fi","",""),
-		new Locale("fr","",""),new Locale("el","",""),
+		new Locale("fr","",""),new Locale("el","",""),new Locale("gl","ES",""),
 		new Locale("iw","",""),new Locale("it","",""),new Locale("pl","",""),
 		new Locale("pt","",""),new Locale("ru","",""),
 		new Locale("sv","",""),new Locale("tr","","")};
 	static final String[] LOCALENAMES = 
 		{"繁體中文","简体中文","Castellano",
 		"Deutsch","English (US)","Suomi",
-		"Le Français","Ελληνικά",
+		"Le Français","Ελληνικά","Galego",
 		"עברית","Italiano","Język Polski",
 		"Português","Русский (RU)",
 		"Svenska","Türkçe"};
