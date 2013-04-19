@@ -206,6 +206,9 @@ public class OMC extends Application {
 	static Location LASTKNOWNLOCN = null;
 	
 	static int WIDGETWIDTH, WIDGETHEIGHT;
+	static float fFinalScaling;
+	static double dFinalScaling;
+	
 	static final String[] COMPASSPOINTS = {"NW","N","NE","W","C","E","SW","S","SE"};
 	static final Time TIME = new Time();
 	static Date DATE = new Date(); 
@@ -380,6 +383,8 @@ public class OMC extends Application {
     	OMC.WIDGETHEIGHT=OMC.WIDGETWIDTH;
         OMC.ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
 
+        OMC.dFinalScaling = 1d;
+        OMC.fFinalScaling = 1f;
 
     	OMC.LM = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
     	

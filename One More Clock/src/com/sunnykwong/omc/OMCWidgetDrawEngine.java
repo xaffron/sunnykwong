@@ -519,6 +519,15 @@ public class OMCWidgetDrawEngine {
 		// v1.4.1: HD Rendering.
 		final int iWidgetWidth = oTheme.optInt("canvaswidth",480);
 		final int iWidgetHeight = oTheme.optInt("canvasheight",480);
+		
+		//v147: HD scaling.
+		OMC.dFinalScaling=1;
+		OMC.fFinalScaling = 1f;
+		if (iWidgetWidth==480) {
+			OMC.dFinalScaling = OMC.WIDGETWIDTH/480d;
+			OMC.fFinalScaling = OMC.WIDGETWIDTH/480f;
+		}
+
 		if (OMC.SCREENON) {
 			 resultBitmap= Bitmap.createBitmap(iWidgetWidth,iWidgetHeight,Bitmap.Config.ARGB_8888);
 		} else {
@@ -665,10 +674,10 @@ public class OMCWidgetDrawEngine {
 		final RectF tempBGRect = new RectF();
 		try {
 			
-			tempFGRect.left = (float)layer.getDouble("left");
-			tempFGRect.top = (float)layer.getDouble("top");
-			tempFGRect.right = (float)layer.getDouble("right");
-			tempFGRect.bottom = (float)layer.getDouble("bottom");
+			tempFGRect.left = (float)layer.getDouble("left") * OMC.fFinalScaling;
+			tempFGRect.top = (float)layer.getDouble("top") * OMC.fFinalScaling;
+			tempFGRect.right = (float)layer.getDouble("right") * OMC.fFinalScaling;
+			tempFGRect.bottom = (float)layer.getDouble("bottom") * OMC.fFinalScaling;
 		} catch (JSONException e) {
 			Log.w(OMC.OMCSHORT + "Engine", " (panel) is missing left/top/right/bottom values!  Giving up.");
 			if (OMC.DEBUG) e.printStackTrace();
@@ -712,31 +721,31 @@ public class OMCWidgetDrawEngine {
     	
 		//Draw the SFX
 		if (layer.optString("render_style").equals("emboss")) {
-			tempBGRect.left = tempFGRect.left-1;
-			tempBGRect.top = tempFGRect.top-1;
-			tempBGRect.right = tempFGRect.right-1;
-			tempBGRect.bottom = tempFGRect.bottom-1;
-			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
-			tempBGRect.left+=2;
-			tempBGRect.top+=2;
-			tempBGRect.right+=2;
-			tempBGRect.bottom+=2;
-			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
+			tempBGRect.left = tempFGRect.left - OMC.fFinalScaling;
+			tempBGRect.top = tempFGRect.top - OMC.fFinalScaling;
+			tempBGRect.right = tempFGRect.right-OMC.fFinalScaling;
+			tempBGRect.bottom = tempFGRect.bottom-OMC.fFinalScaling;
+			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner")* OMC.fFinalScaling, layer.optInt("ycorner")* OMC.fFinalScaling, pt2);
+			tempBGRect.left+=2* OMC.fFinalScaling;
+			tempBGRect.top+=2* OMC.fFinalScaling;
+			tempBGRect.right+=2* OMC.fFinalScaling;
+			tempBGRect.bottom+=2* OMC.fFinalScaling;
+			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner")* OMC.fFinalScaling, layer.optInt("ycorner")* OMC.fFinalScaling, pt2);
 		} else if (layer.optString("render_style").equals("shadow")) {
-			tempBGRect.left = tempFGRect.left+3;
-			tempBGRect.top = tempFGRect.top+3;
-			tempBGRect.right = tempFGRect.right+3;
-			tempBGRect.bottom = tempFGRect.bottom+3;
-			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
+			tempBGRect.left = tempFGRect.left+3* OMC.fFinalScaling;
+			tempBGRect.top = tempFGRect.top+3* OMC.fFinalScaling;
+			tempBGRect.right = tempFGRect.right+3* OMC.fFinalScaling;
+			tempBGRect.bottom = tempFGRect.bottom+3* OMC.fFinalScaling;
+			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner")* OMC.fFinalScaling, layer.optInt("ycorner")* OMC.fFinalScaling, pt2);
 		} else if (layer.optString("render_style").startsWith("shadow")) {
-			int iShadowWidth = Integer.parseInt(layer.optString("render_style").substring(7));
+			int iShadowWidth = (int)(Integer.parseInt(layer.optString("render_style").substring(7))* OMC.fFinalScaling);
 			tempBGRect.left = tempFGRect.left+iShadowWidth;
 			tempBGRect.top = tempFGRect.top+iShadowWidth;
 			tempBGRect.right = tempFGRect.right+iShadowWidth;
 			tempBGRect.bottom = tempFGRect.bottom+iShadowWidth;
-			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt2);
+			cvas.drawRoundRect(tempBGRect, layer.optInt("xcorner")* OMC.fFinalScaling, layer.optInt("ycorner")* OMC.fFinalScaling, pt2);
 		} else if (layer.optString("render_style").startsWith("glow")) {
-			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5)), 0f, 0f, pt2.getColor());
+			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5))* OMC.fFinalScaling, 0f, 0f, pt2.getColor());
 		} else if (layer.optString("render_style").startsWith("porterduff")) {
 			String sType = layer.optString("render_style").substring(11);
 			if (sType.equals("XOR"))
@@ -761,7 +770,7 @@ public class OMCWidgetDrawEngine {
 				pt1.setXfermode(OMC.PORTERDUFF_DST_OVER);
 		}
 		//Either way, draw the proper panel
-		cvas.drawRoundRect(tempFGRect, layer.optInt("xcorner"), layer.optInt("ycorner"), pt1);
+		cvas.drawRoundRect(tempFGRect, layer.optInt("xcorner")* OMC.fFinalScaling, layer.optInt("ycorner")* OMC.fFinalScaling, pt1);
 		OMC.returnPaint(pt1);
 		OMC.returnPaint(pt2);
 	}
@@ -779,13 +788,13 @@ public class OMCWidgetDrawEngine {
 			pt1.setAntiAlias(true);
 			pt1.setStyle(Paint.Style.STROKE);
 			pt1.setStrokeCap(Paint.Cap.BUTT);
-			final float fInnerRadius = (float)layer.optDouble("inner_radius", 0);
-			final float fStrokeWidth = Math.abs((float)layer.getDouble("radius")-fInnerRadius);
+			final float fInnerRadius = (float)layer.optDouble("inner_radius", 0)* OMC.fFinalScaling;
+			final float fStrokeWidth = Math.abs(((float)layer.getDouble("radius"))* OMC.fFinalScaling-fInnerRadius);
 			pt1.setStrokeWidth(fStrokeWidth);
-			tempFGRect.left = (float)layer.getDouble("x")-fInnerRadius-fStrokeWidth/2f;
-			tempFGRect.top = (float)layer.getDouble("y")-fInnerRadius-fStrokeWidth/2f;
-			tempFGRect.right = (float)layer.getDouble("x")+fInnerRadius+fStrokeWidth/2f;
-			tempFGRect.bottom = (float)layer.getDouble("y")+fInnerRadius+fStrokeWidth/2f;
+			tempFGRect.left = OMC.fFinalScaling * ((float)layer.getDouble("x")-fInnerRadius-fStrokeWidth/2f);
+			tempFGRect.top = OMC.fFinalScaling * ((float)layer.getDouble("y")-fInnerRadius-fStrokeWidth/2f);
+			tempFGRect.right = OMC.fFinalScaling * ((float)layer.getDouble("x")+fInnerRadius+fStrokeWidth/2f);
+			tempFGRect.bottom = OMC.fFinalScaling * ((float)layer.getDouble("y")+fInnerRadius+fStrokeWidth/2f);
 		} catch (JSONException e) {
 			Log.w(OMC.OMCSHORT + "Engine", " (arc) is missing left/top/right/bottom values!  Giving up.");
 			if (OMC.DEBUG) e.printStackTrace();
@@ -833,31 +842,31 @@ public class OMCWidgetDrawEngine {
 		if (fSweepAngle>360)fSweepAngle = fSweepAngle % 360f;
 		//Draw the SFX
 		if (layer.optString("render_style").equals("emboss")) {
-			tempBGRect.left = tempFGRect.left-1;
-			tempBGRect.top = tempFGRect.top-1;
-			tempBGRect.right = tempFGRect.right-1;
-			tempBGRect.bottom = tempFGRect.bottom-1;
+			tempBGRect.left = tempFGRect.left-OMC.fFinalScaling;
+			tempBGRect.top = tempFGRect.top-OMC.fFinalScaling;
+			tempBGRect.right = tempFGRect.right-OMC.fFinalScaling;
+			tempBGRect.bottom = tempFGRect.bottom-OMC.fFinalScaling;
 			cvas.drawArc(tempBGRect, fStartAngle, fSweepAngle, true, pt2);
-			tempBGRect.left+=2;
-			tempBGRect.top+=2;
-			tempBGRect.right+=2;
-			tempBGRect.bottom+=2;
+			tempBGRect.left+=2*OMC.fFinalScaling;
+			tempBGRect.top+=2*OMC.fFinalScaling;
+			tempBGRect.right+=2*OMC.fFinalScaling;
+			tempBGRect.bottom+=2*OMC.fFinalScaling;
 			cvas.drawArc(tempBGRect, fStartAngle, fSweepAngle, true, pt2);
 		} else if (layer.optString("render_style").equals("shadow")) {
-			tempBGRect.left = tempFGRect.left+3;
-			tempBGRect.top = tempFGRect.top+3;
-			tempBGRect.right = tempFGRect.right+3;
-			tempBGRect.bottom = tempFGRect.bottom+3;
+			tempBGRect.left = tempFGRect.left+3*OMC.fFinalScaling;
+			tempBGRect.top = tempFGRect.top+3*OMC.fFinalScaling;
+			tempBGRect.right = tempFGRect.right+3*OMC.fFinalScaling;
+			tempBGRect.bottom = tempFGRect.bottom+3*OMC.fFinalScaling;
 			cvas.drawArc(tempBGRect, fStartAngle, fSweepAngle, true, pt2);
 		} else if (layer.optString("render_style").startsWith("shadow")) {
-			int iShadowWidth = Integer.parseInt(layer.optString("render_style").substring(7));
+			int iShadowWidth = (int)(Float.parseFloat(layer.optString("render_style").substring(7))*OMC.fFinalScaling);
 			tempBGRect.left = tempFGRect.left+iShadowWidth;
 			tempBGRect.top = tempFGRect.top+iShadowWidth;
 			tempBGRect.right = tempFGRect.right+iShadowWidth;
 			tempBGRect.bottom = tempFGRect.bottom+iShadowWidth;
 			cvas.drawArc(tempBGRect, fStartAngle, fSweepAngle, true, pt2);
 		} else if (layer.optString("render_style").startsWith("glow")) {
-			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5)), 0f, 0f, pt2.getColor());
+			pt1.setShadowLayer(Float.parseFloat(layer.optString("render_style").substring(5))*OMC.fFinalScaling, 0f, 0f, pt2.getColor());
 		} else if (layer.optString("render_style").startsWith("porterduff")) {
 			String sType = layer.optString("render_style").substring(11);
 			if (sType.equals("XOR"))
@@ -973,7 +982,7 @@ public class OMCWidgetDrawEngine {
 			return;
 		}
 		pt1.setTypeface(tempTypeface);
-		pt1.setTextSize(layer.optInt("text_size"));
+		pt1.setTextSize(layer.optInt("text_size")*OMC.fFinalScaling);
 		pt1.setTextSkewX((float)layer.optDouble("text_skew"));
 		String sTemp = layer.optString("text_stretch");
 		if (sTemp==null) {
@@ -1026,7 +1035,7 @@ public class OMCWidgetDrawEngine {
 		pt2.reset();
 		pt2.setAntiAlias(true);
 		pt2.setTypeface(tempTypeface);
-		pt2.setTextSize(pt1.getTextSize());
+		pt2.setTextSize(pt1.getTextSize()*OMC.fFinalScaling);
 		pt2.setTextSkewX(pt1.getTextSkewX());
 		pt2.setTextScaleX(pt1.getTextScaleX());
 		try {
@@ -1053,8 +1062,8 @@ public class OMCWidgetDrawEngine {
     			layer.optString("render_style"),
     			cvas,
     			text,
-    			layer.optInt("x"),
-    			layer.optInt("y"),
+    			(int)(layer.optInt("x")*OMC.fFinalScaling),
+    			(int)(layer.optInt("y")*OMC.fFinalScaling),
     			pt1,
     			pt2,
     			fRot);
