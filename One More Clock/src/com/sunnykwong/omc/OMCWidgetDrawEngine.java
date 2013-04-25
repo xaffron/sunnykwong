@@ -279,8 +279,13 @@ public class OMCWidgetDrawEngine {
 		// after cropping, stretching and rotating.
 		// Note that rotation in android grows the size of the bitmap because android doesn't throw away pixels
 		//
-		int width = bitmap.getWidth()- OMC.STRETCHINFO.optInt("left_crop") - OMC.STRETCHINFO.optInt("right_crop"); 
-		int height = bitmap.getHeight() - OMC.STRETCHINFO.optInt("top_crop") - OMC.STRETCHINFO.optInt("bottom_crop"); 
+		int width = (int)(bitmap.getWidth()- OMC.STRETCHINFO.optInt("left_crop")*OMC.fFinalScaling - OMC.STRETCHINFO.optInt("right_crop")*OMC.fFinalScaling); 
+		int height = (int)(bitmap.getHeight() - OMC.STRETCHINFO.optInt("top_crop")*OMC.fFinalScaling - OMC.STRETCHINFO.optInt("bottom_crop")*OMC.fFinalScaling); 
+		System.out.println("width: " + width);
+		System.out.println("height: " + height);
+		System.out.println("bmpwidth: " + bitmap.getWidth());
+		System.out.println("bmpheight: " + bitmap.getHeight());
+		System.out.println("scaling: " + OMC.fFinalScaling);
 		float hzStretch = (float)OMC.STRETCHINFO.optDouble("horizontal_stretch");
 		float vtStretch = (float)OMC.STRETCHINFO.optDouble("vertical_stretch");
 		double dScaledWidth = width * hzStretch;
@@ -529,9 +534,9 @@ public class OMCWidgetDrawEngine {
 		}
 
 		if (OMC.SCREENON) {
-			 resultBitmap= Bitmap.createBitmap(iWidgetWidth,iWidgetHeight,Bitmap.Config.ARGB_8888);
+			 resultBitmap= Bitmap.createBitmap((int)(iWidgetWidth*OMC.fFinalScaling),(int)(iWidgetHeight*OMC.fFinalScaling),Bitmap.Config.ARGB_8888);
 		} else {
-			 resultBitmap= Bitmap.createBitmap(iWidgetWidth,iWidgetHeight,Bitmap.Config.ARGB_4444);
+			 resultBitmap= Bitmap.createBitmap((int)(iWidgetWidth*OMC.fFinalScaling),(int)(iWidgetHeight*OMC.fFinalScaling),Bitmap.Config.ARGB_4444);
 		}
 		final Canvas resultCanvas = new Canvas(resultBitmap);
 		resultCanvas.setDensity(DisplayMetrics.DENSITY_HIGH);
@@ -658,8 +663,8 @@ public class OMCWidgetDrawEngine {
 			dist += (1.f/layer.optInt("number_circles")); 
 			float x = (x2-x1) * dist + OMC.WIDGETWIDTH/2f;
 			float y = (y2-y1) * dist + OMC.WIDGETHEIGHT/2f;
-			cvas.drawCircle(x, y, OMC.FLARERADII[i], pt1);
-			cvas.drawCircle(x, y, OMC.FLARERADII[i]+1, pt2);
+			cvas.drawCircle(x, y, OMC.FLARERADII[i]*OMC.fFinalScaling, pt1);
+			cvas.drawCircle(x, y, OMC.FLARERADII[i]*OMC.fFinalScaling+OMC.fFinalScaling, pt2);
 		}
 		
     	// theme-specific tweaks.
@@ -788,9 +793,9 @@ public class OMCWidgetDrawEngine {
 			pt1.setAntiAlias(true);
 			pt1.setStyle(Paint.Style.STROKE);
 			pt1.setStrokeCap(Paint.Cap.BUTT);
-			final float fInnerRadius = (float)layer.optDouble("inner_radius", 0)* OMC.fFinalScaling;
-			final float fStrokeWidth = Math.abs(((float)layer.getDouble("radius"))* OMC.fFinalScaling-fInnerRadius);
-			pt1.setStrokeWidth(fStrokeWidth);
+			final float fInnerRadius = (float)layer.optDouble("inner_radius", 0);
+			final float fStrokeWidth = Math.abs(((float)layer.getDouble("radius"))-fInnerRadius);
+			pt1.setStrokeWidth(OMC.fFinalScaling * fStrokeWidth);
 			tempFGRect.left = OMC.fFinalScaling * ((float)layer.getDouble("x")-fInnerRadius-fStrokeWidth/2f);
 			tempFGRect.top = OMC.fFinalScaling * ((float)layer.getDouble("y")-fInnerRadius-fStrokeWidth/2f);
 			tempFGRect.right = OMC.fFinalScaling * ((float)layer.getDouble("x")+fInnerRadius+fStrokeWidth/2f);
@@ -945,13 +950,13 @@ public class OMCWidgetDrawEngine {
 
 		Matrix tempMatrix = OMC.getMatrix();
 		tempMatrix.postTranslate(-tempBitmap.getWidth()/2f, -tempBitmap.getHeight()/2f);
-		tempMatrix.postScale((float)layer.optDouble("horizontal_stretch"),(float)layer.optDouble("vertical_stretch"));
+		tempMatrix.postScale((float)layer.optDouble("horizontal_stretch")*OMC.fFinalScaling,(float)layer.optDouble("vertical_stretch")*OMC.fFinalScaling);
 		tempMatrix.postRotate((float)layer.optDouble("cw_rotate"));
 
-		tempMatrix.postTranslate((tempBitmap.getWidth()*(float)layer.optDouble("horizontal_stretch"))/2f
-				+ layer.optInt("x"), 
-				(tempBitmap.getHeight()*(float)layer.optDouble("vertical_stretch"))/2f
-				+ layer.optInt("y"));
+		tempMatrix.postTranslate((tempBitmap.getWidth()*OMC.fFinalScaling*(float)layer.optDouble("horizontal_stretch"))/2f
+				+ (int)(layer.optInt("x")*OMC.fFinalScaling), 
+				(tempBitmap.getHeight()*OMC.fFinalScaling*(float)layer.optDouble("vertical_stretch"))/2f
+				+ (int)(layer.optInt("y")*OMC.fFinalScaling));
 
 		tempBitmap.setDensity(DisplayMetrics.DENSITY_HIGH);
 		cvas.drawBitmap(tempBitmap,tempMatrix,pt1);
@@ -991,11 +996,11 @@ public class OMCWidgetDrawEngine {
 			int iTemp;
 			if (sTemp.startsWith("f")) {
 				pt1.setTextScaleX(1f);
-				float fFactor = Float.parseFloat(sTemp.substring(1))/OMCWidgetDrawEngine.getSpannedStringWidth(new SpannedString(Html.fromHtml(text)),pt1);
+				float fFactor = Float.parseFloat(sTemp.substring(1))*OMC.fFinalScaling/OMCWidgetDrawEngine.getSpannedStringWidth(new SpannedString(Html.fromHtml(text)),pt1);
 				pt1.setTextScaleX(fFactor);
 			} else if ((iTemp = sTemp.indexOf("m"))!= -1) {
 				pt1.setTextScaleX(Float.parseFloat(sTemp.substring(0,iTemp)));
-				int iMax = Integer.parseInt(sTemp.substring(iTemp+1));
+				int iMax = (int)(Integer.parseInt(sTemp.substring(iTemp+1))*OMC.fFinalScaling);
 				int iLength = OMCWidgetDrawEngine.getSpannedStringWidth(new SpannedString(Html.fromHtml(text)),pt1); 
 				if (iLength <= iMax){
 					//do nothing, PT1 properly set
@@ -1035,7 +1040,7 @@ public class OMCWidgetDrawEngine {
 		pt2.reset();
 		pt2.setAntiAlias(true);
 		pt2.setTypeface(tempTypeface);
-		pt2.setTextSize(pt1.getTextSize()*OMC.fFinalScaling);
+		pt2.setTextSize(pt1.getTextSize());
 		pt2.setTextSkewX(pt1.getTextSkewX());
 		pt2.setTextScaleX(pt1.getTextScaleX());
 		try {
