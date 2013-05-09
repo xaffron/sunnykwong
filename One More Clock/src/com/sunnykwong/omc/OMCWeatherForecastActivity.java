@@ -89,9 +89,11 @@ public class OMCWeatherForecastActivity extends Activity {
 					
 					@Override
 					public void onClick(View v) {
-						Intent accu = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.accuweather.com/m/Forecast.aspx?lat="+weather.optLong("latitude_e6",0l)/1000000d
-								+ "&lon=" + weather.optLong("longitude_e6",0l)/1000000d));
-						startActivity(accu);
+						Intent gw = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=weather+"+OMC.LASTKNOWNCITY+"+"+OMC.LASTKNOWNCOUNTRY));
+						startActivity(gw);
+//						Intent accu = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.accuweather.com/m/Forecast.aspx?lat="+weather.optLong("latitude_e6",0l)/1000000d
+//								+ "&lon=" + weather.optLong("longitude_e6",0l)/1000000d));
+//						startActivity(accu);
 						finish();
 					}
 				});

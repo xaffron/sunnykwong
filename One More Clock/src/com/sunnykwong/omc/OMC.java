@@ -82,7 +82,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Alpha 2";
+	static final String TESTVER = "pre Alpha 3";
 	static final boolean FREEEDITION = false;
 	static boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -110,6 +110,7 @@ public class OMC extends Application {
 		new Locale("de","",""),new Locale("en","US",""),new Locale("fi","",""),
 		new Locale("fr","",""),new Locale("el","",""),new Locale("gl","ES",""),
 		new Locale("iw","",""),new Locale("it","",""),new Locale("pl","",""),
+		new Locale("nn","NO",""),
 		new Locale("pt","",""),new Locale("ru","",""),
 		new Locale("sv","",""),new Locale("tr","","")};
 	static final String[] LOCALENAMES = 
@@ -117,6 +118,7 @@ public class OMC extends Application {
 		"Deutsch","English (US)","Suomi",
 		"Le Français","Ελληνικά","Galego",
 		"עברית","Italiano","Język Polski",
+		"Norsk (NO)",
 		"Português","Русский (RU)",
 		"Svenska","Türkçe"};
 	static SimpleDateFormat LOCALESDF;

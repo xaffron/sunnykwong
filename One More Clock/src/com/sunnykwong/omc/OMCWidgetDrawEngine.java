@@ -374,8 +374,8 @@ public class OMCWidgetDrawEngine {
 		
 		finalcanvas.setMatrix(tempMatrix);
 		finalcanvas.drawBitmap(Bitmap.createBitmap(bitmap, 
-				(OMC.STRETCHINFO.optInt("left_crop")),
-				(OMC.STRETCHINFO.optInt("top_crop")),
+				((int)(OMC.STRETCHINFO.optInt("left_crop")*OMC.fFinalScaling)),
+				((int)(OMC.STRETCHINFO.optInt("top_crop")*OMC.fFinalScaling)),
 				width, height),0,0, pt);
 
 

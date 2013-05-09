@@ -1,0 +1,2017 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="languageWord">Språk</string>
+    <string name="languageName">Norsk (NO)</string>
+    <string name="translator">Håvard Lunde</string>
+    <!-- General Buttons/notifications -->
+    <string name="nextTip">Neste tips</string>
+    <string name="taskComplete">Ferdig</string>
+    <!-- General Errors -->
+    <string name="sdcardNotDetected">SD-kort ble ikke funnet.\nHusk å skru av USB lagring hvis den er tilkoblet.</string>
+    <string name="sdcardMissingOrCorrupt">SD-kort mangler eller er ødelagt.\nHusk å skru av USB lagring hvis den er tilkoblet.</string>
+    <string name="themeNotFound">Temaet ble ikke funnet, tilbakestiller til standard utseende.</string>
+    <string name="warningConflictPaid">ADVARSEL!\nKonflikt med betalt versjon.</string>
+    <string name="warningConflictFree">ADVARSEL!\nKonflikt med gratis versjon.</string>
+    <string name="warningConflictText">Temainnstillinger og klokkeinnstillinger vil ikke virke skikkelig,\nvennligst avinstaller gratisversjonen så snart som mulig.</string>
+    <string name="defaultThemeNotRemovable">Standardtema kan ikke fjernes!</string>
+    <!-- Bailout App Dialog -->
+    <string name="thanksForDownloading">Takk for at du lastet ned</string>
+    <string name="widgetDir1">For å komme igang trykker du på tilbake-tasten for å gå tilbake til startskjermen, gå så til listen over widgeter hvor du blant annet vil se\u0020</string>
+    <string name="widgetDir2">\u0020. Legg den til på startskjermen og kos deg.</string>
+    <!-- Useful Tips -->
+    <string name="usefulTip">Nyttige tips</string>
+    <string name="doNotShowAgain">Ikke vis igjen.</string>
+    <!-- Weather Forecast Screen -->
+    <string name="humiditycondition">Luftfuktighet: </string>
+    <string name="windcondition">Vindstyrke: </string>
+    <!-- Forecast Screen -->
+    <string name="doubleDash">--</string>
+    <string name="unknown">Ukjent</string>
+    <string name="noaaWeatherCredit">Oppdaterte værobservasjoner og meldinger er hentet fra National Oceanic and Atmospheric Administration (NOAA).</string>
+    <string name="igWeatherCredit">Oppdatert værmelding er hentet fra Google API.</string>
+    <string name="yrWeatherCredit">Oppdatert værmelding er hentet fra yr.no, levert av Meteorologisk Institutt og NRK.</string>
+    <string name="seventimerWeatherCredit">7Timer! værmeldinger av Ye Quanzhi, støttet av Shanghai Astronomical Observatory, Chinese Academy of Sciences.</string>
+    <string name="owmWeatherCredit">Oppdatert værmelding er hentet fra openweathermaps.org.</string>
+    <string name="tapForAlternateForecast">Trykk for alternativ værmelding fra AccuWeather®</string>
+    <string name="weatherDisabledOrNoWeatherLoaded">Værmelding er deaktivert, ingen melding ble hentet.</string>
+    <string name="supplementedbyMETAR">Nåværende observasjoner er supplert av METAR fra</string>
+    <!-- Clock Preferences -->
+    <string name="clockPreferences">Klokkeinnstillinger</string>
+    <string name="dashPreferences">\u0020- Innstillinger</string>
+    <string name="forThisClock">For denne klokken:</string>
+    <string name="widgetTheme">Widget tema</string>
+    <!-- Widget Theme -->
+    <string name="widgetThemeTitle">Bla høyre/venstre, trykk for å velge, hold for meny</string>
+    <string name="corruptPlsDelete">[Ødelagt - Vennligst slett]</string>
+    <string name="reextractBundledClocks">Pakk ut innebygde klokker på nytt</string>
+    <string name="downloadAllClocks">Last ned alle klokker(7MB)</string>
+    <string name="preselected" />
+    <string name="postselected">\u0020valgt.</string>
+    <!-- Theme Picker Legend -->
+    <string name="legend">Kortfattet</string>
+    <string name="batteryLegend">Viser batterinivå</string>
+    <string name="weatherLegend">Viser været</string>
+    <string name="bkimageLegend">Inkluderer bakgrunnsbilde</string>
+    <string name="ltbgLegend">Bra på lyse bakgrunner</string>
+    <string name="dkbgLegend">Bra på mørke bakgrunner</string>
+    <string name="tweakLegend">Klokken er brukerjustert</string>
+    <!-- Theme Skinner Tool (deprecated) -->
+    <string name="reloadThemeCatalog">Laster temaliste på nytt</string>
+    <!-- Theme Import/Unzip -->
+    <string name="themePreview">Temaforhåndsvisning</string>
+    <string name="openingConnection">Oppretter forbindelse.</string>
+    <string name="beginningDownload">Starter nedlasting.</string>
+    <string name="downloading">Laster ned\u0020</string>
+    <string name="downloaded">Lastet ned\u0020</string>
+    <string name="of">\u0020av\u0020</string>
+    <string name="bytes">\u0020bytes</string>
+    <string name="storingFile">Lagrer fil:\u0020</string>
+    <string name="existsOverwriting">\u0020finnes; overskriver</string>
+    <string name="createThemeFolder1">Temamappe \'</string>
+    <string name="createThemeFolder2">\'\u0020opprettet.</string>
+    <string name="detectedWeatherskin">Fant værmeldingsdrakt </string>
+    <string name="extractingStarterClockPack">Pakker ut startpakken for klokker…</string>
+    <string name="starterClockPack">Startpakken for klokker</string>
+    <string name="starterClockPackText">Filene i sd-kortets .OMCThemes mappe vil bli overskrevet. Er du sikker?\n(trykk Ja hvis du er usikker)</string>
+    <string name="importComplete">Importering er ferdig.</string>
+    <string name="importAborted">Importering ble avbrutt!</string>
+    <string name="useDownloadInsteadOfPreview">Bruk nedlasting i stedet for forhåndsvisning for å importere en OMC klokke.</string>
+    <string name="importWorksWithOMCFiles">Klokkeimportering virker for .omc filer.\nÅpnet du feil fil?</string>
+    <string name="nothingToExtract">Ingenting å pakke ut</string>
+    <string name="downloadInterrupted">Nedlasting ble avbrutt!</string>
+    <string name="poorReceptionArea">Er du i et område med dårlig dekning?\nVennligst prøv igjen senere.</string>
+    <string name="connectionTimedOut">Tidsavbrudd ved forbindelse!</string>
+    <string name="serverNotFound">Kan ikke finne tjeneren!</string>
+    <!-- Widget Theme Long Press -->
+    <string name="emailOrDeleteTheme">Sende/epost eller slett tema</string>
+    <string name="emailTheme">Send tema med epost</string>
+    <string name="emailThemeText">Pakke og sende dette temaet til deg selv eller en venn,\nVil du gjøre dette?</string>
+    <string name="emailThemeConfirm1">Sende\u0020</string>
+    <string name="emailThemeConfirm2">\u0020med epost?</string>
+    <string name="emailThemeChooser">Pakker temafiler for epost.</string>
+    <string name="deleteTheme">Slett tema</string>
+    <string name="deleteThemeConfirm1">Slett\u0020</string>
+    <string name="deleteThemeConfirm2">\u0020fra SD-kortet?</string>
+    <string name="deleteThemeConfirm3">Du må laste ned/pakke ut temaet på nytt hvis du vil bruke det igjen. Er du sikker?</string>
+    <string name="submitThemeToDev">Send tema til utvikler</string>
+    <string name="submitThemeToDevConfirm1">Send\u0020</string>
+    <string name="submitThemeToDevConfirm2">\u0020til Xaffron som et nytt tema?</string>
+    <string name="areYouAbsolutelySure">Er du helt sikker?</string>
+    <string name="areYouAbsolutelySureText">Dette temaet ser ikke ut til å være justert på, det ser ut som et standardtema.\n</string>
+    <!-- Personalize Clock -->
+    <string name="personalizeClock">Tilpasse klokke</string>
+    <string name="tweakColorsAndLayers">Tilpass farger og overlegg</string>
+    <!-- Personalize Clock subscreen -->
+    <string name="selectALayerForTweaking">Velg et lag for justering</string>
+    <string name="tweakerDirections">Dra: Flytta - Meny: Justere - Tilbake: Avbryt</string>
+    <!-- Personalize Clock Menu -->
+    <string name="toggleVisibility">Velg synlighet</string>
+    <string name="color1">1. farge</string>
+    <string name="color2">2. farge</string>
+    <!-- Personalize Clock Back -->
+    <string name="keepChanges">Beholde endringer?</string>
+    <!-- Tap & Display Options -->
+    <string name="tapAndDisplayOptions">Berøring og visning</string>
+    <string name="assignTapToLaunch">Handlinger for berøring</string>
+    <string name="nwCornerReserved">Øverst/Venstre er reservert for app-innstillinger.</string>
+    <!-- TTL Popup -->
+    <string name="areaToCustomize">Område for å tilpasse:</string>
+    <string name="chooseAction">Velg handling</string>
+    <string name="openOptionsDefault">Åpne innstillinger (standard)</string>
+    <string name="doNothing">Ikke gjør noe</string>
+    <string name="refreshWeather">Oppdater værmelding nå</string>
+    <string name="weatherForecast">Værmelding</string>
+    <string name="viewAlarms">Vise alarmer (eksperimentell)</string>
+    <string name="battUsage">Vise batteriforbruk</string>
+    <string name="otherActivity">Annen aktivitet…</string>
+    <string name="otherActivityTTL">Brukervalgt aktivitet</string>
+    <string name="use24HourClock">24-timersklokke</string>
+    <string name="use24HourTrue">23:59</string>
+    <string name="use24HourFalse">11:59pm</string>
+    <string name="showLeadingZero">Vis innledende \'0\'</string>
+    <string name="showLeadingZTrue">04:23</string>
+    <string name="showLeadingZFalse">4:23</string>
+    <string name="mmddDateFormat">M/D/Y Datoformat</string>
+    <string name="mmddDateFormatTrue">12/31/2012</string>
+    <string name="mmddDateFormatFalse">31/12/2012</string>
+    <string name="changeTimeZone">Endre tidssone</string>
+    <string name="followingDeviceTimeZone">(Bruk enhetens tidssone)</string>
+    <string name="changeClockAdjustment">Still klokken foran/bak</string>
+    <string name="minutesAhead">\u0020minutter foran faktisk tid</string>
+    <string name="minutesBehind">\u0020minutter bak faktisk tid</string>
+    <string name="backupWidget">Backup av widget</string>
+    <string name="nameOfBackup">Navn for backup:</string>
+    <string name="backupThemePersonalizations">Backup av tematilpasninger</string>
+    <string name="restoreWidget">Gjenopprett widgetinnstillinger</string>
+    <string name="overwriteThemePersonalizations">Overskrive tematilpasninger</string>
+    <string name="overwriteThemeWarning">ADVARSEL: Alle tilpasninger du har gjort for klokken vil bli overskrevet!</string>
+    <!-- TTL Sales Pitch -->
+    <string name="thinkOfThePossibilities">Tenk på mulighetene</string>
+    <string name="prePaidTTL">Den betalte versjonen lar deg\u0020</string>
+    <string name="postPaidTTL">\u0020starte hvilken aktivitet du vil, og tilbyr widgetstørrelser 4x2, 4x1, 3x1 and 2x1.\nVær snill å vurdere en oppgradering så får du disse størrelsene.</string>
+    <string name="takeMeToPaid">Vis meg betalversjonen.</string>
+    <!-- Weather & Widget Options -->
+    <string name="forAllClocks">For alle klokker:</string>
+    <string name="weatherAndWidgetOptions">Vær- og widgetinnstillinger</string>
+    <string name="clearRenderCaches">Slett grafikkmellomlager</string>
+    <string name="cachesCleared">Mellomlager slettet</string>
+    <!-- Weather & Widget Subscreen -->
+    <string name="refreshWeatherNow">Oppdater værmelding nå</string>
+    <string name="operationTimedOut">Tidsavbrudd ved operasjon!</string>
+    <string name="requestingLocation">Prøver å finne plassering</string>
+    <string name="pleaseWait">Vennligst vent…</string>
+    <string name="inProgress">Arbeider…</string>
+    <string name="usingFixedCoordinates">Bruker faste koordinater</string>
+    <string name="gotGPSLock">Fikk GPS signal, prøver å finne adresse…</string>
+    <string name="gotNetworkLock">Fant WiFi/nettverkssignal, prøver å finne adresse…</string>
+    <string name="reusingCachedLocation">Gjenbruker siste posisjon, prøver å finne adresse…</string>
+    <string name="requestingWeather">Forespør værmelding…</string>
+    <string name="weatherReceived">Mottok værmelding, behandler…</string>
+    <string name="weatherSuccess">Vellykket oppdatering av værmelding.</string>
+    <string name="weatherFailure">Mislykket oppdatering av værmelding.</string>
+    <string name="location">Plassering:\u0020</string>
+    <string name="fixed">\u0020(Fast)</string>
+    <string name="detected">\u0020(Oppdaget)</string>
+    <string name="lastTry">Siste forsøk:\u0020</string>
+    <string name="manualRefreshOnly">\u0020(Kun manuell oppdatering)</string>
+    <string name="nextRefresh">\u0020Neste oppdatering:\u0020</string>
+    <string name="lastRefresh">Siste oppdatering:\u0020</string>
+    <string name="nextRequest">\u0020Neste forespørsel:\u0020</string>
+    <string name="weatherLocation">Sted for værmelding:</string>
+    <string name="disableLocationAndWeather">Skru av plassering og vær</string>
+    <string name="followDevice">Bruk det samme som enhet (standard)</string>
+    <string name="setFixedLocation">Angi fast plassering</string>
+    <string name="weatherFunctionalityDisabled">Værfunksjonalitet er skrudd av</string>
+    <string name="tapToEnable">Trykk for å skru på</string>
+    <!-- Fixed Locn subscreen -->
+    <string name="enterCityAndStateCountry">Angi by/sted/land</string>
+    <string name="locationExamples">Eks. Alta, Norge</string>
+    <string name="locationError">Ingen søkeresultater.\nVennligst prøv igjen.</string>
+    <string name="networkError">Ingen nettverksforbindelse.\nVennligst prøv igjen.</string>
+    <string name="unknownError">En ukjent feil oppsto.\nVennligst prøv igjen.</string>
+    <string name="weatherProvider">Tilbyder av værmeldinger</string>
+
+    <string-array name="wprovider_options">
+        <item>Automatisk (standard)</item>
+        <item>7Timer.com</item>
+        <item>NOAA (Kun i USA)</item>
+        <item>Yr.no</item>
+        <item>Google Weather (gammel/ikke fungerende?)</item>
+    </string-array>
+
+    <string name="wpauto">Bruk beste tilbyder for din plassering</string>
+    <string name="wp7timer">Bruker 7Timer.com</string>
+    <string name="wpnoaa">Bruker NOAA</string>
+    <string name="wpowm">Bruker OpenWeatherMap.org</string>
+    <string name="wpyr">Bruker yr.no</string>
+    <string name="wpig">Bruker iGoogle Weather</string>
+    <string name="weatherDisplayUnits">Enhet for temperatur</string>
+
+    <string-array name="wdisplay_options">
+        <item>Bruk Fahrenheit (standard)</item>
+        <item>Bruk Celsius</item>
+    </string-array>
+
+    <string name="usingFahrenheit">Bruker Fahrenheit</string>
+    <string name="usingCelsius">Bruker Celsius</string>
+    <string name="useMETAR">Værdata fra METAR</string>
+    <string name="usingMETAR">Værdata hentes og tolkes fra nærmeste flyplass</string>
+    <string name="usingInterpolation">Værdata hentes fra tilbyder</string>
+    <string name="clockUpdateInterval">Oppdateringsintervall for klokke</string>
+
+    <string-array name="interval_options">
+        <item>1 sek (Veldig høyt batteriforbruk)</item>
+        <item>10 sek (Høyt batteriforbruk)</item>
+        <item>15 sek</item>
+        <item>20 sek</item>
+        <item>30 sek (standard)</item>
+        <item>60 sek (Lavt batteriforbruk)</item>
+    </string-array>
+
+    <string name="redrawEvery">Tegn opp widget hvert\u0020</string>
+    <string name="seconds">\u0020sekund.</string>
+    <string name="weatherUpdateInterval">Oppdateringsintervall for værmelding</string>
+
+    <string-array name="winterval_options">
+        <item>Hver time (standard)</item>
+        <item>Hver 4. time</item>
+        <item>Hver 8. time</item>
+        <item>Aldri (Kun manuell oppdatering)</item>
+    </string-array>
+
+    <string name="manualWeatherUpdatesOnly">Kun manuell oppdatering av værmelding</string>
+    <string name="refreshWeatherEveryHour">Oppdater værmelding hver time</string>
+    <string name="refreshWeatherEvery4Hours">Oppdater værmelding hver 4. time</string>
+    <string name="refreshWeatherEvery8Hours">Oppdater værmelding hver 8. time</string>
+    <string name="setForegroundMode">Angi forgrunnsmodus</string>
+    <string name="keepOMCfromSleeping">Forhindre OMC i å sove\n(på bekostning av en permanent notifikasjon)</string>
+    <string name="forceEnglishDates">Tving engelsk datoformat</string>
+    <string name="uncheckForSome">Velg bort for enkelte ikke-engelske språk (eksperimentell)</string>
+    <string name="changeAppLocale">Applikasjonsspråk</string>
+    <string name="changeClockLocale">Klokkespråk</string>
+    <string name="toggleWidgetSizes">Angi widgetstørrelser</string>
+    <string name="rebootRequired">Krever omstart</string>
+    <string name="changesToTheseSettings">Endringer i disse innstillingene krever omstart av ditt apparat for å tre i kraft</string>
+    <string name="enable5x4Widget">Slå på (5x4) Widget</string>
+    <string name="enable5x2Widget">Slå på (5x2) Widget</string>
+    <string name="enable5x1Widget">Slå på (5x1) Widget</string>
+    <string name="enable4x4Widget">Slå på (4x4) Widget</string>
+    <string name="enable4x2Widget">Slå på (4x2) Widget</string>
+    <string name="enable4x1Widget">Slå på (4x1) Widget</string>
+    <string name="enable3x3Widget">Slå på (3x3) Widget</string>
+    <string name="enable3x1Widget">Slå på (3x1) Widget</string>
+    <string name="enable2x2Widget">Slå på (2x2) Widget</string>
+    <string name="enable2x1Widget">Slå på (2x1) Widget</string>
+    <string name="enable1x3Widget">Slå på (1x3) Widget</string>
+    <string name="forGalaxyNote">For Galaxy Note eller tilsvarende</string>
+    <string name="enableThemeTester">Slå på tematester</string>
+    <string name="developmentToolForSkinnersOnly">Utviklingsverktøy for draktmakere</string>
+    <!-- Widget Sizes Sales Pitch -->
+    <string name="areThereOtherWidgetSizes">Finnes det flere widgetstørrelser?</string>
+    <string name="actuallyThePaidVersion">Ja faktisk, betalversjonen tilbyr widgeter i størrelsene 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 og 1x3.\nVær snill og vurder oppgradering for å få disse størrelsene</string>
+    <!-- Troubleshooting Options -->
+    <string name="troubleshootingOptions">Feilsøkealternativer</string>
+    <!-- Troubleshooting Options -->
+    <string name="clockPriority">Klokkens prioritet</string>
+    <string name="forFineTuning">For finjustering av responsivitet</string>
+
+    <string-array name="clockPriority_options">
+        <item>Høyeste</item>
+        <item>Høy</item>
+        <item>Middels</item>
+        <item>Lav (Standard)</item>
+        <item>Lavest</item>
+    </string-array>
+    <string-array name="clockPriority_legend">
+        <item>Kontinuerlig opptegning (ikke anbefalt). Er du sikker?</item>
+        <item>Konsekvent opptegning hvert minutt, uansett om skjermen er på eller av. Er du sikker?</item>
+        <item>Undertrykt opptegning hvert minutt når skjermen er på, selv når startskjerm er i bakgrunn. Er du sikker?</item>
+        <item>Lat opptegning hvert minutt når startskjermen er inaktiv eller skjermen er av. Er du sikker?</item>
+        <item>Ingen opptegning når startskjerm er inaktiv eller skjermen er av. Er du sikker?</item>
+    </string-array>
+
+    <string name="locationPriority">Plasseringsprioritet</string>
+
+    <string-array name="locationPriority_options">
+        <item>Streng - Nøyaktig</item>
+        <item>Streng - Nøyaktig/Grov</item>
+        <item>Middels - Nøyaktig</item>
+        <item>Middels - Nøyaktig/Grov</item>
+        <item>Fleksibel (standard)</item>
+    </string-array>
+    <string-array name="locationPriority_legend">
+        <item>Bruk kun GPS posisjon, mindre enn 2 timer gammel. ADVARSEL: Væroppdateringer kan utebli hvis du er innendørs. Er du sikker?</item>
+        <item>Bruk nettverk og GPS posisjon, mindre enn 2 timer gammel. ADVARSEL: Væroppdateringer kan utebli hvis du er innendørs. Er du sikker?</item>
+        <item>Bruk kun GPS posisjon, mindre enn 10 timer gammel. Væroppdateringer kan utebli hvis du er innendørs i mer enn 10 timer. Er du sikker?</item>
+        <item>Bruk nettverk og GPS posisjon, mindre enn 10 timer gammel. Væroppdateringer kan utebli hvis du er innendørs i mer enn 10 timer. Er du sikker?</item>
+        <item>Bruk siste kjente GPS- eller nettverksposisjon, uavhengig av når den sist ble oppdatert. Nøyaktigheten av værmelding er avhengig av hvor oppdatert din posisjon er. Er du sikker?</item>
+    </string-array>
+
+    <string name="battReporting">Batterivisning</string>
+    <string name="battReportingNormal">Normal - Slik den vises av Android</string>
+    <string name="battReportingAlternate">Alternativ - Slik den vises av driver</string>
+    <string name="weatherDiagnostics">Værdiagnose</string>
+    <string name="submitLocationWeatherDebugData">Send inn feilsøkeinformasjon for posisjon og værmelding</string>
+    <string name="deleteAllThemes">Slett alle temaer</string>
+    <string name="forFixingThemeSelection">For å løse opp i at appen kræsjer ved valg av tema</string>
+    <string name="deleteAllThemesFromSD">Slette alle tema fra SD-kort/minne?</string>
+    <string name="omcThemesFolderDeleted">OMCThemes mappe er slettet</string>
+    <string name="defaultClockPackRestored">Standardpakke med klokker ble gjenopprettet</string>
+    <!-- Contact Xaffron -->
+    <string name="contactXaffron">Kontakt Xaffron</string>
+    <string name="donateOrContact">Gi en liten donasjon eller kontakt utvikler for hjelp</string>
+    <string name="contactXaffronForIssues">Kontakt Xaffron for problemer, hjelp &amp; støtte</string>
+    <string name="email">Epost</string>
+    <string name="donate">Donasjon</string>
+    <string name="facebook">Facebook</string>
+    <string name="viewReleaseNotes">Se utgivelsesinformasjon</string>
+    <!-- Credits -->
+    <string name="credits">Credits</string>
+    <string name="version">Versjon</string>
+    <string name="free">Gratis</string>
+    <string name="tapToGetFull">Trykk for å få fullversjon</string>
+    <string name="thanksForYourSupport">Takk for din støtte!</string>
+    <string name="viewCredits">Vis Credits</string>
+    <!-- Credits subscreen -->
+    <string name="team">Team</string>
+    <string name="programmer">Utvikler</string>
+    <string name="sunny">Sunny Kwong</string>
+    <string name="testers">Testere</string>
+    <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
+    <string name="translators">Oversettere</string>
+    <string name="specialThanks">Takk til</string>
+    <string name="specialThanksText">Zehro for å vise veien\nang: synkronisert klokkewidget m//u notifikasjoner.\nStefan Pledl for hjelp med flerspråktilpassinger.\nJosiah Barber for hans \'Ett-Prosent Hack\' for Motorola	apparater.</string>
+    <string name="copyrights">Opphavsrett og lisenser</string>
+    <string name="applicationIcon">Programikon: Signpost av Maroubal2</string>
+    <string name="applicationIconText">Hentet fra Maroubal2\'s glimrende fotograferte Ubuntu bakgrunnsbilde.\nCC BY-SA 2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
+    <string name="codeColorPickerDialog">Programkode: Fargevelgerdialog</string>
+    <string name="codeColorPickerDialogText">Kopiert fra CyanogenMod kildekode.</string>
+    <string name="codeSVG">Programkode: svg-android</string>
+    <string name="codeSVGText">SVG støtte fra sag-android bibliotek (Apache License).\nhttp:////code.google.com//p//svg-android//</string>
+    <string name="weatherFont">Skrifttype: Weatherfont</string>
+    <string name="weatherFontText">Weatherfont er fullt og helt lisensiert fra Jonathan Macagba, tilgjengelig for $5 USD fra jonathan.macagba@gmail.com</string>
+    <string name="sourceCodeTitle">Kildekode</string>
+    <string name="sourceCode">Kildekoden er tilgjengelig på</string>
+    <string name="daysuffix" />
+
+    <string-array name="verbosedow">
+        <item>Søndag</item>
+        <item>Mandag</item>
+        <item>Tirsdag</item>
+        <item>Onsdag</item>
+        <item>Torsdag</item>
+        <item>Fredag</item>
+        <item>Lørdag</item>
+    </string-array>
+    <string-array name="shortdow">
+        <item>Søn</item>
+        <item>Man</item>
+        <item>Tir</item>
+        <item>Ons</item>
+        <item>Tor</item>
+        <item>Fre</item>
+        <item>Lør</item>
+    </string-array>
+    <string-array name="verbosemonth">
+        <item>Januar</item>
+        <item>Februar</item>
+        <item>Mars</item>
+        <item>April</item>
+        <item>Mai</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>August</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Desember</item>
+    </string-array>
+    <string-array name="shortmonth">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>Mai</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Okt</item>
+        <item>Nov</item>
+        <item>Des</item>
+    </string-array>
+    <string-array name="WordNumbers">
+        <item>Null</item>
+        <item>En</item>
+        <item>To</item>
+        <item>Tre</item>
+        <item>Fire</item>
+        <item>Fem</item>
+        <item>Seks</item>
+        <item>Sju</item>
+        <item>Åtte</item>
+        <item>Ni</item>
+        <item>Ti</item>
+        <item>Elleve</item>
+        <item>Tolv</item>
+        <item>Tretten</item>
+        <item>Fjorten</item>
+        <item>Femten</item>
+        <item>Seksten</item>
+        <item>Sytten</item>
+        <item>Atten</item>
+        <item>Nitten</item>
+        <item>Tjue</item>
+        <item>Tjueen</item>
+        <item>Tjueto</item>
+        <item>Tjuetre</item>
+        <item>Tjuefire</item>
+        <item>Tjuefem</item>
+        <item>Tjueseks</item>
+        <item>Tjuesju</item>
+        <item>Tjueåtte</item>
+        <item>Tjueni</item>
+        <item>Tretti</item>
+        <item>Trettien</item>
+        <item>Trettito</item>
+        <item>Trettitre</item>
+        <item>Trettifire</item>
+        <item>Trettifem</item>
+        <item>Trettiseks</item>
+        <item>Trettisju</item>
+        <item>Trettiåtte</item>
+        <item>Trettini</item>
+        <item>Førti</item>
+        <item>Førtien</item>
+        <item>Førtito</item>
+        <item>Førtitre</item>
+        <item>Førtifire</item>
+        <item>Førtifem</item>
+        <item>Førtiseks</item>
+        <item>Førtisju</item>
+        <item>Førtiåtte</item>
+        <item>Førtini</item>
+        <item>Femti</item>
+        <item>Femtien</item>
+        <item>Femtito</item>
+        <item>Femtitre</item>
+        <item>Femtifire</item>
+        <item>Femtifem</item>
+        <item>Femtiseks</item>
+        <item>Femtisju</item>
+        <item>Femtiåtte</item>
+        <item>Femtini</item>
+        <item>Seksti</item>
+        <item>Sekstien</item>
+        <item>Sekstito</item>
+        <item>Sekstitre</item>
+        <item>Sekstifire</item>
+        <item>Sekstifem</item>
+        <item>Sekstiseks</item>
+        <item>Sekstisju</item>
+        <item>Sekstiåtte</item>
+        <item>Sekstini</item>
+        <item>Sytti</item>
+        <item>Syttien</item>
+        <item>Syttito</item>
+        <item>Syttitre</item>
+        <item>Syttifire</item>
+        <item>Syttifem</item>
+        <item>Syttiseks</item>
+        <item>Syttisju</item>
+        <item>Syttiåtte</item>
+        <item>Syttini</item>
+        <item>Åtti</item>
+        <item>Åttien</item>
+        <item>Åttito</item>
+        <item>Åttitre</item>
+        <item>Åttifire</item>
+        <item>Åttifem</item>
+        <item>Åttiseks</item>
+        <item>Åttisju</item>
+        <item>Åttiåtte</item>
+        <item>Åttini</item>
+        <item>Nitti</item>
+        <item>Nittien</item>
+        <item>Nittito</item>
+        <item>Nittitre</item>
+        <item>Nittifire</item>
+        <item>Nittifem</item>
+        <item>Nittiseks</item>
+        <item>Nittisju</item>
+        <item>Nittiåtte</item>
+        <item>Nittini</item>
+    </string-array>
+    <string-array name="verbosetime1">
+        <item>Akkurat Tolv.</item>
+        <item>Ett over Tolv.</item>
+        <item>To over Tolv.</item>
+        <item>Tre over Tolv.</item>
+        <item>Fire over Tolv.</item>
+        <item>Fem over Tolv.</item>
+        <item>Seks over Tolv.</item>
+        <item>Sju over Tolv.</item>
+        <item>Åtte over Tolv.</item>
+        <item>Ni over Tolv.</item>
+        <item>Ti over Tolv.</item>
+        <item>Elleve over Tolv.</item>
+        <item>Tolv over Tolv.</item>
+        <item>Tretten over Tolv.</item>
+        <item>Fjorten over Tolv.</item>
+        <item>Kvart over Tolv.</item>
+        <item>Seksten over Tolv.</item>
+        <item>Sytten over Tolv.</item>
+        <item>Atten over Tolv.</item>
+        <item>Nitten over Tolv.</item>
+        <item>Ti på Halv Ett.</item>
+        <item>Ni på Halv Ett.</item>
+        <item>Åtte på Halv Ett.</item>
+        <item>Sju på Halv Ett.</item>
+        <item>Seks på Halv Ett.</item>
+        <item>Fem på Halv Ett.</item>
+        <item>Fire på Halv Ett.</item>
+        <item>Tre på Halv Ett.</item>
+        <item>To på Halv Ett.</item>
+        <item>Ett på Halv Ett.</item>
+        <item>Halv Ett.</item>
+        <item>Ett over Halv Ett.</item>
+        <item>To over Halv Ett.</item>
+        <item>Tre over Halv Ett.</item>
+        <item>Fire over Halv Ett.</item>
+        <item>Fem over Halv Ett.</item>
+        <item>Seks over Halv Ett.</item>
+        <item>Sju over Halv Ett.</item>
+        <item>Åtte over Halv Ett.</item>
+        <item>Ni over Halv Ett.</item>
+        <item>Ti over Halv Ett.</item>
+        <item>Elleve over Halv Ett.</item>
+        <item>Tolv over Halv Ett.</item>
+        <item>Tretten over Halv Ett.</item>
+        <item>Fjorten over Halv Ett.</item>
+        <item>Kvart på Ett.</item>
+        <item>Fjorten på Ett.</item>
+        <item>Tretten på Ett.</item>
+        <item>Tolv på Ett.</item>
+        <item>Elleve på Ett.</item>
+        <item>Ti på Ett.</item>
+        <item>Ni på Ett.</item>
+        <item>Åtte på Ett.</item>
+        <item>Sju på Ett.</item>
+        <item>Seks på Ett.</item>
+        <item>Fem på Ett.</item>
+        <item>Fire på Ett.</item>
+        <item>Tre på Ett.</item>
+        <item>To på Ett.</item>
+        <item>Ett på Ett.</item>
+        <item>Akkurat Ett.</item>
+        <item>Ett over Ett.</item>
+        <item>To over Ett.</item>
+        <item>Tre over Ett.</item>
+        <item>Fire over Ett.</item>
+        <item>Fem over Ett.</item>
+        <item>Seks over Ett.</item>
+        <item>Sju over Ett.</item>
+        <item>Åtte over Ett.</item>
+        <item>Ni over Ett.</item>
+        <item>Ti over Ett.</item>
+        <item>Elleve over Ett.</item>
+        <item>Tolv over Ett.</item>
+        <item>Tretten over Ett.</item>
+        <item>Fjorten over Ett.</item>
+        <item>Kvart over Ett.</item>
+        <item>Seksten over Ett.</item>
+        <item>Sytten over Ett.</item>
+        <item>Atten over Ett.</item>
+        <item>Nitten over Ett.</item>
+        <item>Ti på Halv To.</item>
+        <item>Ni på Halv To.</item>
+        <item>Åtte på Halv To.</item>
+        <item>Sju på Halv To.</item>
+        <item>Seks på Halv To.</item>
+        <item>Fem på Halv To.</item>
+        <item>Fire på Halv To.</item>
+        <item>Tre på Halv To.</item>
+        <item>To på Halv To.</item>
+        <item>Ett på Halv To.</item>
+        <item>Halv To.</item>
+        <item>Ett over Halv To.</item>
+        <item>To over Halv To.</item>
+        <item>Tre over Halv To.</item>
+        <item>Fire over Halv To.</item>
+        <item>Fem over Halv To.</item>
+        <item>Seks over Halv To.</item>
+        <item>Sju over Halv To.</item>
+        <item>Åtte over Halv To.</item>
+        <item>Ni over Halv To.</item>
+        <item>Ti over Halv To.</item>
+        <item>Elleve over Halv To.</item>
+        <item>Tolv over Halv To.</item>
+        <item>Tretten over Halv To.</item>
+        <item>Fjorten over Halv To.</item>
+        <item>Kvart på To.</item>
+        <item>Fjorten på To.</item>
+        <item>Tretten på To.</item>
+        <item>Tolv på To.</item>
+        <item>Elleve på To.</item>
+        <item>Ti på To.</item>
+        <item>Ni på To.</item>
+        <item>Åtte på To.</item>
+        <item>Sju på To.</item>
+        <item>Seks på To.</item>
+        <item>Fem på To.</item>
+        <item>Fire på To.</item>
+        <item>Tre på To.</item>
+        <item>To på To.</item>
+        <item>Ett på To.</item>
+        <item>Akkurat To.</item>
+        <item>Ett over To.</item>
+        <item>To over To.</item>
+        <item>Tre over To.</item>
+        <item>Fire over To.</item>
+        <item>Fem over To.</item>
+        <item>Seks over To.</item>
+        <item>Sju over To.</item>
+        <item>Åtte over To.</item>
+        <item>Ni over To.</item>
+        <item>Ti over To.</item>
+        <item>Elleve over To.</item>
+        <item>Tolv over To.</item>
+        <item>Tretten over To.</item>
+        <item>Fjorten over To.</item>
+        <item>Kvart over To.</item>
+        <item>Seksten over To.</item>
+        <item>Sytten over To.</item>
+        <item>Atten over To.</item>
+        <item>Nitten over To.</item>
+        <item>Ti på Halv Tre.</item>
+        <item>Ni på Halv Tre.</item>
+        <item>Åtte på Halv Tre.</item>
+        <item>Sju på Halv Tre.</item>
+        <item>Seks på Halv Tre.</item>
+        <item>Fem på Halv Tre.</item>
+        <item>Fire på Halv Tre.</item>
+        <item>Tre på Halv Tre.</item>
+        <item>To på Halv Tre.</item>
+        <item>Ett på Halv Tre.</item>
+        <item>Halv Tre.</item>
+        <item>Ett over Halv Tre.</item>
+        <item>To over Halv Tre.</item>
+        <item>Tre over Halv Tre.</item>
+        <item>Fire over Halv Tre.</item>
+        <item>Fem over Halv Tre.</item>
+        <item>Seks over Halv Tre.</item>
+        <item>Sju over Halv Tre.</item>
+        <item>Åtte over Halv Tre.</item>
+        <item>Ni over Halv Tre.</item>
+        <item>Ti over Halv Tre.</item>
+        <item>Elleve over Halv Tre.</item>
+        <item>Tolv over Halv Tre.</item>
+        <item>Tretten over Halv Tre.</item>
+        <item>Fjorten over Halv Tre.</item>
+        <item>Kvart på Tre.</item>
+        <item>Fjorten på Tre.</item>
+        <item>Tretten på Tre.</item>
+        <item>Tolv på Tre.</item>
+        <item>Elleve på Tre.</item>
+        <item>Ti på Tre.</item>
+        <item>Ni på Tre.</item>
+        <item>Åtte på Tre.</item>
+        <item>Sju på Tre.</item>
+        <item>Seks på Tre.</item>
+        <item>Fem på Tre.</item>
+        <item>Fire på Tre.</item>
+        <item>Tre på Tre.</item>
+        <item>To på Tre.</item>
+        <item>Ett på Tre.</item>
+        <item>Akkurat Tre.</item>
+        <item>Ett over Tre.</item>
+        <item>To over Tre.</item>
+        <item>Tre over Tre.</item>
+        <item>Fire over Tre.</item>
+        <item>Fem over Tre.</item>
+        <item>Seks over Tre.</item>
+        <item>Sju over Tre.</item>
+        <item>Åtte over Tre.</item>
+        <item>Ni over Tre.</item>
+        <item>Ti over Tre.</item>
+        <item>Elleve over Tre.</item>
+        <item>Tolv over Tre.</item>
+        <item>Tretten over Tre.</item>
+        <item>Fjorten over Tre.</item>
+        <item>Kvart over Tre.</item>
+        <item>Seksten over Tre.</item>
+        <item>Sytten over Tre.</item>
+        <item>Atten over Tre.</item>
+        <item>Nitten over Tre.</item>
+        <item>Ti på Halv Fire.</item>
+        <item>Ni på Halv Fire.</item>
+        <item>Åtte på Halv Fire.</item>
+        <item>Sju på Halv Fire.</item>
+        <item>Seks på Halv Fire.</item>
+        <item>Fem på Halv Fire.</item>
+        <item>Fire på Halv Fire.</item>
+        <item>Tre på Halv Fire.</item>
+        <item>To på Halv Fire.</item>
+        <item>Ett på Halv Fire.</item>
+        <item>Halv Fire.</item>
+        <item>Ett over Halv Fire.</item>
+        <item>To over Halv Fire.</item>
+        <item>Tre over Halv Fire.</item>
+        <item>Fire over Halv Fire.</item>
+        <item>Fem over Halv Fire.</item>
+        <item>Seks over Halv Fire.</item>
+        <item>Sju over Halv Fire.</item>
+        <item>Åtte over Halv Fire.</item>
+        <item>Ni over Halv Fire.</item>
+        <item>Ti over Halv Fire.</item>
+        <item>Elleve over Halv Fire.</item>
+        <item>Tolv over Halv Fire.</item>
+        <item>Tretten over Halv Fire.</item>
+        <item>Fjorten over Halv Fire.</item>
+        <item>Kvart på Fire.</item>
+        <item>Fjorten på Fire.</item>
+        <item>Tretten på Fire.</item>
+        <item>Tolv på Fire.</item>
+        <item>Elleve på Fire.</item>
+        <item>Ti på Fire.</item>
+        <item>Ni på Fire.</item>
+        <item>Åtte på Fire.</item>
+        <item>Sju på Fire.</item>
+        <item>Seks på Fire.</item>
+        <item>Fem på Fire.</item>
+        <item>Fire på Fire.</item>
+        <item>Tre på Fire.</item>
+        <item>To på Fire.</item>
+        <item>Ett på Fire.</item>
+        <item>Akkurat Fire.</item>
+        <item>Ett over Fire.</item>
+        <item>To over Fire.</item>
+        <item>Tre over Fire.</item>
+        <item>Fire over Fire.</item>
+        <item>Fem over Fire.</item>
+        <item>Seks over Fire.</item>
+        <item>Sju over Fire.</item>
+        <item>Åtte over Fire.</item>
+        <item>Ni over Fire.</item>
+        <item>Ti over Fire.</item>
+        <item>Elleve over Fire.</item>
+        <item>Tolv over Fire.</item>
+        <item>Tretten over Fire.</item>
+        <item>Fjorten over Fire.</item>
+        <item>Kvart over Fire.</item>
+        <item>Seksten over Fire.</item>
+        <item>Sytten over Fire.</item>
+        <item>Atten over Fire.</item>
+        <item>Nitten over Fire.</item>
+        <item>Ti på Halv Fem.</item>
+        <item>Ni på Halv Fem.</item>
+        <item>Åtte på Halv Fem.</item>
+        <item>Sju på Halv Fem.</item>
+        <item>Seks på Halv Fem.</item>
+        <item>Fem på Halv Fem.</item>
+        <item>Fire på Halv Fem.</item>
+        <item>Tre på Halv Fem.</item>
+        <item>To på Halv Fem.</item>
+        <item>Ett på Halv Fem.</item>
+        <item>Halv Fem.</item>
+        <item>Ett over Halv Fem.</item>
+        <item>To over Halv Fem.</item>
+        <item>Tre over Halv Fem.</item>
+        <item>Fire over Halv Fem.</item>
+        <item>Fem over Halv Fem.</item>
+        <item>Seks over Halv Fem.</item>
+        <item>Sju over Halv Fem.</item>
+        <item>Åtte over Halv Fem.</item>
+        <item>Ni over Halv Fem.</item>
+        <item>Ti over Halv Fem.</item>
+        <item>Elleve over Halv Fem.</item>
+        <item>Tolv over Halv Fem.</item>
+        <item>Tretten over Halv Fem.</item>
+        <item>Fjorten over Halv Fem.</item>
+        <item>Kvart på Fem.</item>
+        <item>Fjorten på Fem.</item>
+        <item>Tretten på Fem.</item>
+        <item>Tolv på Fem.</item>
+        <item>Elleve på Fem.</item>
+        <item>Ti på Fem.</item>
+        <item>Ni på Fem.</item>
+        <item>Åtte på Fem.</item>
+        <item>Sju på Fem.</item>
+        <item>Seks på Fem.</item>
+        <item>Fem på Fem.</item>
+        <item>Fire på Fem.</item>
+        <item>Tre på Fem.</item>
+        <item>To på Fem.</item>
+        <item>Ett på Fem.</item>
+        <item>Akkurat Fem.</item>
+        <item>Ett over Fem.</item>
+        <item>To over Fem.</item>
+        <item>Tre over Fem.</item>
+        <item>Fire over Fem.</item>
+        <item>Fem over Fem.</item>
+        <item>Seks over Fem.</item>
+        <item>Sju over Fem.</item>
+        <item>Åtte over Fem.</item>
+        <item>Ni over Fem.</item>
+        <item>Ti over Fem.</item>
+        <item>Elleve over Fem.</item>
+        <item>Tolv over Fem.</item>
+        <item>Tretten over Fem.</item>
+        <item>Fjorten over Fem.</item>
+        <item>Kvart over Fem.</item>
+        <item>Seksten over Fem.</item>
+        <item>Sytten over Fem.</item>
+        <item>Atten over Fem.</item>
+        <item>Nitten over Fem.</item>
+        <item>Ti på Halv Seks.</item>
+        <item>Ni på Halv Seks.</item>
+        <item>Åtte på Halv Seks.</item>
+        <item>Sju på Halv Seks.</item>
+        <item>Seks på Halv Seks.</item>
+        <item>Fem på Halv Seks.</item>
+        <item>Fire på Halv Seks.</item>
+        <item>Tre på Halv Seks.</item>
+        <item>To på Halv Seks.</item>
+        <item>Ett på Halv Seks.</item>
+        <item>Halv Seks.</item>
+        <item>Ett over Halv Seks.</item>
+        <item>To over Halv Seks.</item>
+        <item>Tre over Halv Seks.</item>
+        <item>Fire over Halv Seks.</item>
+        <item>Fem over Halv Seks.</item>
+        <item>Seks over Halv Seks.</item>
+        <item>Sju over Halv Seks.</item>
+        <item>Åtte over Halv Seks.</item>
+        <item>Ni over Halv Seks.</item>
+        <item>Ti over Halv Seks.</item>
+        <item>Elleve over Halv Seks.</item>
+        <item>Tolv over Halv Seks.</item>
+        <item>Tretten over Halv Seks.</item>
+        <item>Fjorten over Halv Seks.</item>
+        <item>Kvart på Seks.</item>
+        <item>Fjorten på Seks.</item>
+        <item>Tretten på Seks.</item>
+        <item>Tolv på Seks.</item>
+        <item>Elleve på Seks.</item>
+        <item>Ti på Seks.</item>
+        <item>Ni på Seks.</item>
+        <item>Åtte på Seks.</item>
+        <item>Sju på Seks.</item>
+        <item>Seks på Seks.</item>
+        <item>Fem på Seks.</item>
+        <item>Fire på Seks.</item>
+        <item>Tre på Seks.</item>
+        <item>To på Seks.</item>
+        <item>Ett på Seks.</item>
+    </string-array>
+    <string-array name="verbosetime2">
+        <item>Akkurat Seks.</item>
+        <item>Ett over Seks.</item>
+        <item>To over Seks.</item>
+        <item>Tre over Seks.</item>
+        <item>Fire over Seks.</item>
+        <item>Fem over Seks.</item>
+        <item>Seks over Seks.</item>
+        <item>Sju over Seks.</item>
+        <item>Åtte over Seks.</item>
+        <item>Ni over Seks.</item>
+        <item>Ti over Seks.</item>
+        <item>Elleve over Seks.</item>
+        <item>Tolv over Seks.</item>
+        <item>Tretten over Seks.</item>
+        <item>Fjorten over Seks.</item>
+        <item>Kvart over Seks.</item>
+        <item>Seksten over Seks.</item>
+        <item>Sytten over Seks.</item>
+        <item>Atten over Seks.</item>
+        <item>Nitten over Seks.</item>
+        <item>Ti på Halv Sju.</item>
+        <item>Ni på Halv Sju.</item>
+        <item>Åtte på Halv Sju.</item>
+        <item>Sju på Halv Sju.</item>
+        <item>Seks på Halv Sju.</item>
+        <item>Fem på Halv Sju.</item>
+        <item>Fire på Halv Sju.</item>
+        <item>Tre på Halv Sju.</item>
+        <item>To på Halv Sju.</item>
+        <item>Ett på Halv Sju.</item>
+        <item>Halv Sju.</item>
+        <item>Ett over Halv Sju.</item>
+        <item>To over Halv Sju.</item>
+        <item>Tre over Halv Sju.</item>
+        <item>Fire over Halv Sju.</item>
+        <item>Fem over Halv Sju.</item>
+        <item>Seks over Halv Sju.</item>
+        <item>Sju over Halv Sju.</item>
+        <item>Åtte over Halv Sju.</item>
+        <item>Ni over Halv Sju.</item>
+        <item>Ti over Halv Sju.</item>
+        <item>Elleve over Halv Sju.</item>
+        <item>Tolv over Halv Sju.</item>
+        <item>Tretten over Halv Sju.</item>
+        <item>Fjorten over Halv Sju.</item>
+        <item>Kvart på Sju.</item>
+        <item>Fjorten på Sju.</item>
+        <item>Tretten på Sju.</item>
+        <item>Tolv på Sju.</item>
+        <item>Elleve på Sju.</item>
+        <item>Ti på Sju.</item>
+        <item>Ni på Sju.</item>
+        <item>Åtte på Sju.</item>
+        <item>Sju på Sju.</item>
+        <item>Seks på Sju.</item>
+        <item>Fem på Sju.</item>
+        <item>Fire på Sju.</item>
+        <item>Tre på Sju.</item>
+        <item>To på Sju.</item>
+        <item>Ett på Sju.</item>
+        <item>Akkurat Sju.</item>
+        <item>Ett over Sju.</item>
+        <item>To over Sju.</item>
+        <item>Tre over Sju.</item>
+        <item>Fire over Sju.</item>
+        <item>Fem over Sju.</item>
+        <item>Seks over Sju.</item>
+        <item>Sju over Sju.</item>
+        <item>Åtte over Sju.</item>
+        <item>Ni over Sju.</item>
+        <item>Ti over Sju.</item>
+        <item>Elleve over Sju.</item>
+        <item>Tolv over Sju.</item>
+        <item>Tretten over Sju.</item>
+        <item>Fjorten over Sju.</item>
+        <item>Kvart over Sju.</item>
+        <item>Seksten over Sju.</item>
+        <item>Sytten over Sju.</item>
+        <item>Atten over Sju.</item>
+        <item>Nitten over Sju.</item>
+        <item>Ti på Halv Åtte.</item>
+        <item>Ni på Halv Åtte.</item>
+        <item>Åtte på Halv Åtte.</item>
+        <item>Sju på Halv Åtte.</item>
+        <item>Seks på Halv Åtte.</item>
+        <item>Fem på Halv Åtte.</item>
+        <item>Fire på Halv Åtte.</item>
+        <item>Tre på Halv Åtte.</item>
+        <item>To på Halv Åtte.</item>
+        <item>Ett på Halv Åtte.</item>
+        <item>Halv Åtte.</item>
+        <item>Ett over Halv Åtte.</item>
+        <item>To over Halv Åtte.</item>
+        <item>Tre over Halv Åtte.</item>
+        <item>Fire over Halv Åtte.</item>
+        <item>Fem over Halv Åtte.</item>
+        <item>Seks over Halv Åtte.</item>
+        <item>Sju over Halv Åtte.</item>
+        <item>Åtte over Halv Åtte.</item>
+        <item>Ni over Halv Åtte.</item>
+        <item>Ti over Halv Åtte.</item>
+        <item>Elleve over Halv Åtte.</item>
+        <item>Tolv over Halv Åtte.</item>
+        <item>Tretten over Halv Åtte.</item>
+        <item>Fjorten over Halv Åtte.</item>
+        <item>Kvart på Åtte.</item>
+        <item>Fjorten på Åtte.</item>
+        <item>Tretten på Åtte.</item>
+        <item>Tolv på Åtte.</item>
+        <item>Elleve på Åtte.</item>
+        <item>Ti på Åtte.</item>
+        <item>Ni på Åtte.</item>
+        <item>Åtte på Åtte.</item>
+        <item>Sju på Åtte.</item>
+        <item>Seks på Åtte.</item>
+        <item>Fem på Åtte.</item>
+        <item>Fire på Åtte.</item>
+        <item>Tre på Åtte.</item>
+        <item>To på Åtte.</item>
+        <item>Ett på Åtte.</item>
+        <item>Akkurat Åtte.</item>
+        <item>Ett over Åtte.</item>
+        <item>To over Åtte.</item>
+        <item>Tre over Åtte.</item>
+        <item>Fire over Åtte.</item>
+        <item>Fem over Åtte.</item>
+        <item>Seks over Åtte.</item>
+        <item>Sju over Åtte.</item>
+        <item>Åtte over Åtte.</item>
+        <item>Ni over Åtte.</item>
+        <item>Ti over Åtte.</item>
+        <item>Elleve over Åtte.</item>
+        <item>Tolv over Åtte.</item>
+        <item>Tretten over Åtte.</item>
+        <item>Fjorten over Åtte.</item>
+        <item>Kvart over Åtte.</item>
+        <item>Seksten over Åtte.</item>
+        <item>Sytten over Åtte.</item>
+        <item>Atten over Åtte.</item>
+        <item>Nitten over Åtte.</item>
+        <item>Ti på Halv Ni.</item>
+        <item>Ni på Halv Ni.</item>
+        <item>Åtte på Halv Ni.</item>
+        <item>Sju på Halv Ni.</item>
+        <item>Seks på Halv Ni.</item>
+        <item>Fem på Halv Ni.</item>
+        <item>Fire på Halv Ni.</item>
+        <item>Tre på Halv Ni.</item>
+        <item>To på Halv Ni.</item>
+        <item>Ett på Halv Ni.</item>
+        <item>Halv Ni.</item>
+        <item>Ett over Halv Ni.</item>
+        <item>To over Halv Ni.</item>
+        <item>Tre over Halv Ni.</item>
+        <item>Fire over Halv Ni.</item>
+        <item>Fem over Halv Ni.</item>
+        <item>Seks over Halv Ni.</item>
+        <item>Sju over Halv Ni.</item>
+        <item>Åtte over Halv Ni.</item>
+        <item>Ni over Halv Ni.</item>
+        <item>Ti over Halv Ni.</item>
+        <item>Elleve over Halv Ni.</item>
+        <item>Tolv over Halv Ni.</item>
+        <item>Tretten over Halv Ni.</item>
+        <item>Fjorten over Halv Ni.</item>
+        <item>Kvart på Ni.</item>
+        <item>Fjorten på Ni.</item>
+        <item>Tretten på Ni.</item>
+        <item>Tolv på Ni.</item>
+        <item>Elleve på Ni.</item>
+        <item>Ti på Ni.</item>
+        <item>Ni på Ni.</item>
+        <item>Åtte på Ni.</item>
+        <item>Sju på Ni.</item>
+        <item>Seks på Ni.</item>
+        <item>Fem på Ni.</item>
+        <item>Fire på Ni.</item>
+        <item>Tre på Ni.</item>
+        <item>To på Ni.</item>
+        <item>Ett på Ni.</item>
+        <item>Akkurat Ni.</item>
+        <item>Ett over Ni.</item>
+        <item>To over Ni.</item>
+        <item>Tre over Ni.</item>
+        <item>Fire over Ni.</item>
+        <item>Fem over Ni.</item>
+        <item>Seks over Ni.</item>
+        <item>Sju over Ni.</item>
+        <item>Åtte over Ni.</item>
+        <item>Ni over Ni.</item>
+        <item>Ti over Ni.</item>
+        <item>Elleve over Ni.</item>
+        <item>Tolv over Ni.</item>
+        <item>Tretten over Ni.</item>
+        <item>Fjorten over Ni.</item>
+        <item>Kvart over Ni.</item>
+        <item>Seksten over Ni.</item>
+        <item>Sytten over Ni.</item>
+        <item>Atten over Ni.</item>
+        <item>Nitten over Ni.</item>
+        <item>Ti på Halv Ti.</item>
+        <item>Ni på Halv Ti.</item>
+        <item>Åtte på Halv Ti.</item>
+        <item>Sju på Halv Ti.</item>
+        <item>Seks på Halv Ti.</item>
+        <item>Fem på Halv Ti.</item>
+        <item>Fire på Halv Ti.</item>
+        <item>Tre på Halv Ti.</item>
+        <item>To på Halv Ti.</item>
+        <item>Ett på Halv Ti.</item>
+        <item>Halv Ti.</item>
+        <item>Ett over Halv Ti.</item>
+        <item>To over Halv Ti.</item>
+        <item>Tre over Halv Ti.</item>
+        <item>Fire over Halv Ti.</item>
+        <item>Fem over Halv Ti.</item>
+        <item>Seks over Halv Ti.</item>
+        <item>Sju over Halv Ti.</item>
+        <item>Åtte over Halv Ti.</item>
+        <item>Ni over Halv Ti.</item>
+        <item>Ti over Halv Ti.</item>
+        <item>Elleve over Halv Ti.</item>
+        <item>Tolv over Halv Ti.</item>
+        <item>Tretten over Halv Ti.</item>
+        <item>Fjorten over Halv Ti.</item>
+        <item>Kvart på Ti.</item>
+        <item>Fjorten på Ti.</item>
+        <item>Tretten på Ti.</item>
+        <item>Tolv på Ti.</item>
+        <item>Elleve på Ti.</item>
+        <item>Ti på Ti.</item>
+        <item>Ni på Ti.</item>
+        <item>Åtte på Ti.</item>
+        <item>Sju på Ti.</item>
+        <item>Seks på Ti.</item>
+        <item>Fem på Ti.</item>
+        <item>Fire på Ti.</item>
+        <item>Tre på Ti.</item>
+        <item>To på Ti.</item>
+        <item>Ett på Ti.</item>
+        <item>Akkurat Ti.</item>
+        <item>Ett over Ti.</item>
+        <item>To over Ti.</item>
+        <item>Tre over Ti.</item>
+        <item>Fire over Ti.</item>
+        <item>Fem over Ti.</item>
+        <item>Seks over Ti.</item>
+        <item>Sju over Ti.</item>
+        <item>Åtte over Ti.</item>
+        <item>Ni over Ti.</item>
+        <item>Ti over Ti.</item>
+        <item>Elleve over Ti.</item>
+        <item>Tolv over Ti.</item>
+        <item>Tretten over Ti.</item>
+        <item>Fjorten over Ti.</item>
+        <item>Kvart over Ti.</item>
+        <item>Seksten over Ti.</item>
+        <item>Sytten over Ti.</item>
+        <item>Atten over Ti.</item>
+        <item>Nitten over Ti.</item>
+        <item>Ti på Halv Elleve.</item>
+        <item>Ni på Halv Elleve.</item>
+        <item>Åtte på Halv Elleve.</item>
+        <item>Sju på Halv Elleve.</item>
+        <item>Seks på Halv Elleve.</item>
+        <item>Fem på Halv Elleve.</item>
+        <item>Fire på Halv Elleve.</item>
+        <item>Tre på Halv Elleve.</item>
+        <item>To på Halv Elleve.</item>
+        <item>Ett på Halv Elleve.</item>
+        <item>Halv Elleve.</item>
+        <item>Ett over Halv Elleve.</item>
+        <item>To over Halv Elleve.</item>
+        <item>Tre over Halv Elleve.</item>
+        <item>Fire over Halv Elleve.</item>
+        <item>Fem over Halv Elleve.</item>
+        <item>Seks over Halv Elleve.</item>
+        <item>Sju over Halv Elleve.</item>
+        <item>Åtte over Halv Elleve.</item>
+        <item>Ni over Halv Elleve.</item>
+        <item>Ti over Halv Elleve.</item>
+        <item>Elleve over Halv Elleve.</item>
+        <item>Tolv over Halv Elleve.</item>
+        <item>Tretten over Halv Elleve.</item>
+        <item>Fjorten over Halv Elleve.</item>
+        <item>Kvart på Elleve.</item>
+        <item>Fjorten på Elleve.</item>
+        <item>Tretten på Elleve.</item>
+        <item>Tolv på Elleve.</item>
+        <item>Elleve på Elleve.</item>
+        <item>Ti på Elleve.</item>
+        <item>Ni på Elleve.</item>
+        <item>Åtte på Elleve.</item>
+        <item>Sju på Elleve.</item>
+        <item>Seks på Elleve.</item>
+        <item>Fem på Elleve.</item>
+        <item>Fire på Elleve.</item>
+        <item>Tre på Elleve.</item>
+        <item>To på Elleve.</item>
+        <item>Ett på Elleve.</item>
+        <item>Akkurat Elleve.</item>
+        <item>Ett over Elleve.</item>
+        <item>To over Elleve.</item>
+        <item>Tre over Elleve.</item>
+        <item>Fire over Elleve.</item>
+        <item>Fem over Elleve.</item>
+        <item>Seks over Elleve.</item>
+        <item>Sju over Elleve.</item>
+        <item>Åtte over Elleve.</item>
+        <item>Ni over Elleve.</item>
+        <item>Ti over Elleve.</item>
+        <item>Elleve over Elleve.</item>
+        <item>Tolv over Elleve.</item>
+        <item>Tretten over Elleve.</item>
+        <item>Fjorten over Elleve.</item>
+        <item>Kvart over Elleve.</item>
+        <item>Seksten over Elleve.</item>
+        <item>Sytten over Elleve.</item>
+        <item>Atten over Elleve.</item>
+        <item>Nitten over Elleve.</item>
+        <item>Ti på Halv Tolv.</item>
+        <item>Ni på Halv Tolv.</item>
+        <item>Åtte på Halv Tolv.</item>
+        <item>Sju på Halv Tolv.</item>
+        <item>Seks på Halv Tolv.</item>
+        <item>Fem på Halv Tolv.</item>
+        <item>Fire på Halv Tolv.</item>
+        <item>Tre på Halv Tolv.</item>
+        <item>To på Halv Tolv.</item>
+        <item>Ett på Halv Tolv.</item>
+        <item>Halv Tolv.</item>
+        <item>Ett over Halv Tolv.</item>
+        <item>To over Halv Tolv.</item>
+        <item>Tre over Halv Tolv.</item>
+        <item>Fire over Halv Tolv.</item>
+        <item>Fem over Halv Tolv.</item>
+        <item>Seks over Halv Tolv.</item>
+        <item>Sju over Halv Tolv.</item>
+        <item>Åtte over Halv Tolv.</item>
+        <item>Ni over Halv Tolv.</item>
+        <item>Ti over Halv Tolv.</item>
+        <item>Elleve over Halv Tolv.</item>
+        <item>Tolv over Halv Tolv.</item>
+        <item>Tretten over Halv Tolv.</item>
+        <item>Fjorten over Halv Tolv.</item>
+        <item>Kvart på Tolv.</item>
+        <item>Fjorten på Tolv.</item>
+        <item>Tretten på Tolv.</item>
+        <item>Tolv på Tolv.</item>
+        <item>Elleve på Tolv.</item>
+        <item>Ti på Tolv.</item>
+        <item>Ni på Tolv.</item>
+        <item>Åtte på Tolv.</item>
+        <item>Sju på Tolv.</item>
+        <item>Seks på Tolv.</item>
+        <item>Fem på Tolv.</item>
+        <item>Fire på Tolv.</item>
+        <item>Tre på Tolv.</item>
+        <item>To på Tolv.</item>
+        <item>Ett på Tolv.</item>
+    </string-array>
+    <string-array name="verbosetime3">
+        <item>Akkurat Tolv.</item>
+        <item>Ett over Tolv.</item>
+        <item>To over Tolv.</item>
+        <item>Tre over Tolv.</item>
+        <item>Fire over Tolv.</item>
+        <item>Fem over Tolv.</item>
+        <item>Seks over Tolv.</item>
+        <item>Sju over Tolv.</item>
+        <item>Åtte over Tolv.</item>
+        <item>Ni over Tolv.</item>
+        <item>Ti over Tolv.</item>
+        <item>Elleve over Tolv.</item>
+        <item>Tolv over Tolv.</item>
+        <item>Tretten over Tolv.</item>
+        <item>Fjorten over Tolv.</item>
+        <item>Kvart over Tolv.</item>
+        <item>Seksten over Tolv.</item>
+        <item>Sytten over Tolv.</item>
+        <item>Atten over Tolv.</item>
+        <item>Nitten over Tolv.</item>
+        <item>Ti på Halv Ett.</item>
+        <item>Ni på Halv Ett.</item>
+        <item>Åtte på Halv Ett.</item>
+        <item>Sju på Halv Ett.</item>
+        <item>Seks på Halv Ett.</item>
+        <item>Fem på Halv Ett.</item>
+        <item>Fire på Halv Ett.</item>
+        <item>Tre på Halv Ett.</item>
+        <item>To på Halv Ett.</item>
+        <item>Ett på Halv Ett.</item>
+        <item>Halv Ett.</item>
+        <item>Ett over Halv Ett.</item>
+        <item>To over Halv Ett.</item>
+        <item>Tre over Halv Ett.</item>
+        <item>Fire over Halv Ett.</item>
+        <item>Fem over Halv Ett.</item>
+        <item>Seks over Halv Ett.</item>
+        <item>Sju over Halv Ett.</item>
+        <item>Åtte over Halv Ett.</item>
+        <item>Ni over Halv Ett.</item>
+        <item>Ti over Halv Ett.</item>
+        <item>Elleve over Halv Ett.</item>
+        <item>Tolv over Halv Ett.</item>
+        <item>Tretten over Halv Ett.</item>
+        <item>Fjorten over Halv Ett.</item>
+        <item>Kvart på Ett.</item>
+        <item>Fjorten på Ett.</item>
+        <item>Tretten på Ett.</item>
+        <item>Tolv på Ett.</item>
+        <item>Elleve på Ett.</item>
+        <item>Ti på Ett.</item>
+        <item>Ni på Ett.</item>
+        <item>Åtte på Ett.</item>
+        <item>Sju på Ett.</item>
+        <item>Seks på Ett.</item>
+        <item>Fem på Ett.</item>
+        <item>Fire på Ett.</item>
+        <item>Tre på Ett.</item>
+        <item>To på Ett.</item>
+        <item>Ett på Ett.</item>
+        <item>Akkurat Ett.</item>
+        <item>Ett over Ett.</item>
+        <item>To over Ett.</item>
+        <item>Tre over Ett.</item>
+        <item>Fire over Ett.</item>
+        <item>Fem over Ett.</item>
+        <item>Seks over Ett.</item>
+        <item>Sju over Ett.</item>
+        <item>Åtte over Ett.</item>
+        <item>Ni over Ett.</item>
+        <item>Ti over Ett.</item>
+        <item>Elleve over Ett.</item>
+        <item>Tolv over Ett.</item>
+        <item>Tretten over Ett.</item>
+        <item>Fjorten over Ett.</item>
+        <item>Kvart over Ett.</item>
+        <item>Seksten over Ett.</item>
+        <item>Sytten over Ett.</item>
+        <item>Atten over Ett.</item>
+        <item>Nitten over Ett.</item>
+        <item>Ti på Halv To.</item>
+        <item>Ni på Halv To.</item>
+        <item>Åtte på Halv To.</item>
+        <item>Sju på Halv To.</item>
+        <item>Seks på Halv To.</item>
+        <item>Fem på Halv To.</item>
+        <item>Fire på Halv To.</item>
+        <item>Tre på Halv To.</item>
+        <item>To på Halv To.</item>
+        <item>Ett på Halv To.</item>
+        <item>Halv To.</item>
+        <item>Ett over Halv To.</item>
+        <item>To over Halv To.</item>
+        <item>Tre over Halv To.</item>
+        <item>Fire over Halv To.</item>
+        <item>Fem over Halv To.</item>
+        <item>Seks over Halv To.</item>
+        <item>Sju over Halv To.</item>
+        <item>Åtte over Halv To.</item>
+        <item>Ni over Halv To.</item>
+        <item>Ti over Halv To.</item>
+        <item>Elleve over Halv To.</item>
+        <item>Tolv over Halv To.</item>
+        <item>Tretten over Halv To.</item>
+        <item>Fjorten over Halv To.</item>
+        <item>Kvart på To.</item>
+        <item>Fjorten på To.</item>
+        <item>Tretten på To.</item>
+        <item>Tolv på To.</item>
+        <item>Elleve på To.</item>
+        <item>Ti på To.</item>
+        <item>Ni på To.</item>
+        <item>Åtte på To.</item>
+        <item>Sju på To.</item>
+        <item>Seks på To.</item>
+        <item>Fem på To.</item>
+        <item>Fire på To.</item>
+        <item>Tre på To.</item>
+        <item>To på To.</item>
+        <item>Ett på To.</item>
+        <item>Akkurat To.</item>
+        <item>Ett over To.</item>
+        <item>To over To.</item>
+        <item>Tre over To.</item>
+        <item>Fire over To.</item>
+        <item>Fem over To.</item>
+        <item>Seks over To.</item>
+        <item>Sju over To.</item>
+        <item>Åtte over To.</item>
+        <item>Ni over To.</item>
+        <item>Ti over To.</item>
+        <item>Elleve over To.</item>
+        <item>Tolv over To.</item>
+        <item>Tretten over To.</item>
+        <item>Fjorten over To.</item>
+        <item>Kvart over To.</item>
+        <item>Seksten over To.</item>
+        <item>Sytten over To.</item>
+        <item>Atten over To.</item>
+        <item>Nitten over To.</item>
+        <item>Ti på Halv Tre.</item>
+        <item>Ni på Halv Tre.</item>
+        <item>Åtte på Halv Tre.</item>
+        <item>Sju på Halv Tre.</item>
+        <item>Seks på Halv Tre.</item>
+        <item>Fem på Halv Tre.</item>
+        <item>Fire på Halv Tre.</item>
+        <item>Tre på Halv Tre.</item>
+        <item>To på Halv Tre.</item>
+        <item>Ett på Halv Tre.</item>
+        <item>Halv Tre.</item>
+        <item>Ett over Halv Tre.</item>
+        <item>To over Halv Tre.</item>
+        <item>Tre over Halv Tre.</item>
+        <item>Fire over Halv Tre.</item>
+        <item>Fem over Halv Tre.</item>
+        <item>Seks over Halv Tre.</item>
+        <item>Sju over Halv Tre.</item>
+        <item>Åtte over Halv Tre.</item>
+        <item>Ni over Halv Tre.</item>
+        <item>Ti over Halv Tre.</item>
+        <item>Elleve over Halv Tre.</item>
+        <item>Tolv over Halv Tre.</item>
+        <item>Tretten over Halv Tre.</item>
+        <item>Fjorten over Halv Tre.</item>
+        <item>Kvart på Tre.</item>
+        <item>Fjorten på Tre.</item>
+        <item>Tretten på Tre.</item>
+        <item>Tolv på Tre.</item>
+        <item>Elleve på Tre.</item>
+        <item>Ti på Tre.</item>
+        <item>Ni på Tre.</item>
+        <item>Åtte på Tre.</item>
+        <item>Sju på Tre.</item>
+        <item>Seks på Tre.</item>
+        <item>Fem på Tre.</item>
+        <item>Fire på Tre.</item>
+        <item>Tre på Tre.</item>
+        <item>To på Tre.</item>
+        <item>Ett på Tre.</item>
+        <item>Akkurat Tre.</item>
+        <item>Ett over Tre.</item>
+        <item>To over Tre.</item>
+        <item>Tre over Tre.</item>
+        <item>Fire over Tre.</item>
+        <item>Fem over Tre.</item>
+        <item>Seks over Tre.</item>
+        <item>Sju over Tre.</item>
+        <item>Åtte over Tre.</item>
+        <item>Ni over Tre.</item>
+        <item>Ti over Tre.</item>
+        <item>Elleve over Tre.</item>
+        <item>Tolv over Tre.</item>
+        <item>Tretten over Tre.</item>
+        <item>Fjorten over Tre.</item>
+        <item>Kvart over Tre.</item>
+        <item>Seksten over Tre.</item>
+        <item>Sytten over Tre.</item>
+        <item>Atten over Tre.</item>
+        <item>Nitten over Tre.</item>
+        <item>Ti på Halv Fire.</item>
+        <item>Ni på Halv Fire.</item>
+        <item>Åtte på Halv Fire.</item>
+        <item>Sju på Halv Fire.</item>
+        <item>Seks på Halv Fire.</item>
+        <item>Fem på Halv Fire.</item>
+        <item>Fire på Halv Fire.</item>
+        <item>Tre på Halv Fire.</item>
+        <item>To på Halv Fire.</item>
+        <item>Ett på Halv Fire.</item>
+        <item>Halv Fire.</item>
+        <item>Ett over Halv Fire.</item>
+        <item>To over Halv Fire.</item>
+        <item>Tre over Halv Fire.</item>
+        <item>Fire over Halv Fire.</item>
+        <item>Fem over Halv Fire.</item>
+        <item>Seks over Halv Fire.</item>
+        <item>Sju over Halv Fire.</item>
+        <item>Åtte over Halv Fire.</item>
+        <item>Ni over Halv Fire.</item>
+        <item>Ti over Halv Fire.</item>
+        <item>Elleve over Halv Fire.</item>
+        <item>Tolv over Halv Fire.</item>
+        <item>Tretten over Halv Fire.</item>
+        <item>Fjorten over Halv Fire.</item>
+        <item>Kvart på Fire.</item>
+        <item>Fjorten på Fire.</item>
+        <item>Tretten på Fire.</item>
+        <item>Tolv på Fire.</item>
+        <item>Elleve på Fire.</item>
+        <item>Ti på Fire.</item>
+        <item>Ni på Fire.</item>
+        <item>Åtte på Fire.</item>
+        <item>Sju på Fire.</item>
+        <item>Seks på Fire.</item>
+        <item>Fem på Fire.</item>
+        <item>Fire på Fire.</item>
+        <item>Tre på Fire.</item>
+        <item>To på Fire.</item>
+        <item>Ett på Fire.</item>
+        <item>Akkurat Fire.</item>
+        <item>Ett over Fire.</item>
+        <item>To over Fire.</item>
+        <item>Tre over Fire.</item>
+        <item>Fire over Fire.</item>
+        <item>Fem over Fire.</item>
+        <item>Seks over Fire.</item>
+        <item>Sju over Fire.</item>
+        <item>Åtte over Fire.</item>
+        <item>Ni over Fire.</item>
+        <item>Ti over Fire.</item>
+        <item>Elleve over Fire.</item>
+        <item>Tolv over Fire.</item>
+        <item>Tretten over Fire.</item>
+        <item>Fjorten over Fire.</item>
+        <item>Kvart over Fire.</item>
+        <item>Seksten over Fire.</item>
+        <item>Sytten over Fire.</item>
+        <item>Atten over Fire.</item>
+        <item>Nitten over Fire.</item>
+        <item>Ti på Halv Fem.</item>
+        <item>Ni på Halv Fem.</item>
+        <item>Åtte på Halv Fem.</item>
+        <item>Sju på Halv Fem.</item>
+        <item>Seks på Halv Fem.</item>
+        <item>Fem på Halv Fem.</item>
+        <item>Fire på Halv Fem.</item>
+        <item>Tre på Halv Fem.</item>
+        <item>To på Halv Fem.</item>
+        <item>Ett på Halv Fem.</item>
+        <item>Halv Fem.</item>
+        <item>Ett over Halv Fem.</item>
+        <item>To over Halv Fem.</item>
+        <item>Tre over Halv Fem.</item>
+        <item>Fire over Halv Fem.</item>
+        <item>Fem over Halv Fem.</item>
+        <item>Seks over Halv Fem.</item>
+        <item>Sju over Halv Fem.</item>
+        <item>Åtte over Halv Fem.</item>
+        <item>Ni over Halv Fem.</item>
+        <item>Ti over Halv Fem.</item>
+        <item>Elleve over Halv Fem.</item>
+        <item>Tolv over Halv Fem.</item>
+        <item>Tretten over Halv Fem.</item>
+        <item>Fjorten over Halv Fem.</item>
+        <item>Kvart på Fem.</item>
+        <item>Fjorten på Fem.</item>
+        <item>Tretten på Fem.</item>
+        <item>Tolv på Fem.</item>
+        <item>Elleve på Fem.</item>
+        <item>Ti på Fem.</item>
+        <item>Ni på Fem.</item>
+        <item>Åtte på Fem.</item>
+        <item>Sju på Fem.</item>
+        <item>Seks på Fem.</item>
+        <item>Fem på Fem.</item>
+        <item>Fire på Fem.</item>
+        <item>Tre på Fem.</item>
+        <item>To på Fem.</item>
+        <item>Ett på Fem.</item>
+        <item>Akkurat Fem.</item>
+        <item>Ett over Fem.</item>
+        <item>To over Fem.</item>
+        <item>Tre over Fem.</item>
+        <item>Fire over Fem.</item>
+        <item>Fem over Fem.</item>
+        <item>Seks over Fem.</item>
+        <item>Sju over Fem.</item>
+        <item>Åtte over Fem.</item>
+        <item>Ni over Fem.</item>
+        <item>Ti over Fem.</item>
+        <item>Elleve over Fem.</item>
+        <item>Tolv over Fem.</item>
+        <item>Tretten over Fem.</item>
+        <item>Fjorten over Fem.</item>
+        <item>Kvart over Fem.</item>
+        <item>Seksten over Fem.</item>
+        <item>Sytten over Fem.</item>
+        <item>Atten over Fem.</item>
+        <item>Nitten over Fem.</item>
+        <item>Ti på Halv Seks.</item>
+        <item>Ni på Halv Seks.</item>
+        <item>Åtte på Halv Seks.</item>
+        <item>Sju på Halv Seks.</item>
+        <item>Seks på Halv Seks.</item>
+        <item>Fem på Halv Seks.</item>
+        <item>Fire på Halv Seks.</item>
+        <item>Tre på Halv Seks.</item>
+        <item>To på Halv Seks.</item>
+        <item>Ett på Halv Seks.</item>
+        <item>Halv Seks.</item>
+        <item>Ett over Halv Seks.</item>
+        <item>To over Halv Seks.</item>
+        <item>Tre over Halv Seks.</item>
+        <item>Fire over Halv Seks.</item>
+        <item>Fem over Halv Seks.</item>
+        <item>Seks over Halv Seks.</item>
+        <item>Sju over Halv Seks.</item>
+        <item>Åtte over Halv Seks.</item>
+        <item>Ni over Halv Seks.</item>
+        <item>Ti over Halv Seks.</item>
+        <item>Elleve over Halv Seks.</item>
+        <item>Tolv over Halv Seks.</item>
+        <item>Tretten over Halv Seks.</item>
+        <item>Fjorten over Halv Seks.</item>
+        <item>Kvart på Seks.</item>
+        <item>Fjorten på Seks.</item>
+        <item>Tretten på Seks.</item>
+        <item>Tolv på Seks.</item>
+        <item>Elleve på Seks.</item>
+        <item>Ti på Seks.</item>
+        <item>Ni på Seks.</item>
+        <item>Åtte på Seks.</item>
+        <item>Sju på Seks.</item>
+        <item>Seks på Seks.</item>
+        <item>Fem på Seks.</item>
+        <item>Fire på Seks.</item>
+        <item>Tre på Seks.</item>
+        <item>To på Seks.</item>
+        <item>Ett på Seks.</item>
+    </string-array>
+    <string-array name="verbosetime4">
+        <item>Akkurat Seks.</item>
+        <item>Ett over Seks.</item>
+        <item>To over Seks.</item>
+        <item>Tre over Seks.</item>
+        <item>Fire over Seks.</item>
+        <item>Fem over Seks.</item>
+        <item>Seks over Seks.</item>
+        <item>Sju over Seks.</item>
+        <item>Åtte over Seks.</item>
+        <item>Ni over Seks.</item>
+        <item>Ti over Seks.</item>
+        <item>Elleve over Seks.</item>
+        <item>Tolv over Seks.</item>
+        <item>Tretten over Seks.</item>
+        <item>Fjorten over Seks.</item>
+        <item>Kvart over Seks.</item>
+        <item>Seksten over Seks.</item>
+        <item>Sytten over Seks.</item>
+        <item>Atten over Seks.</item>
+        <item>Nitten over Seks.</item>
+        <item>Ti på Halv Sju.</item>
+        <item>Ni på Halv Sju.</item>
+        <item>Åtte på Halv Sju.</item>
+        <item>Sju på Halv Sju.</item>
+        <item>Seks på Halv Sju.</item>
+        <item>Fem på Halv Sju.</item>
+        <item>Fire på Halv Sju.</item>
+        <item>Tre på Halv Sju.</item>
+        <item>To på Halv Sju.</item>
+        <item>Ett på Halv Sju.</item>
+        <item>Halv Sju.</item>
+        <item>Ett over Halv Sju.</item>
+        <item>To over Halv Sju.</item>
+        <item>Tre over Halv Sju.</item>
+        <item>Fire over Halv Sju.</item>
+        <item>Fem over Halv Sju.</item>
+        <item>Seks over Halv Sju.</item>
+        <item>Sju over Halv Sju.</item>
+        <item>Åtte over Halv Sju.</item>
+        <item>Ni over Halv Sju.</item>
+        <item>Ti over Halv Sju.</item>
+        <item>Elleve over Halv Sju.</item>
+        <item>Tolv over Halv Sju.</item>
+        <item>Tretten over Halv Sju.</item>
+        <item>Fjorten over Halv Sju.</item>
+        <item>Kvart på Sju.</item>
+        <item>Fjorten på Sju.</item>
+        <item>Tretten på Sju.</item>
+        <item>Tolv på Sju.</item>
+        <item>Elleve på Sju.</item>
+        <item>Ti på Sju.</item>
+        <item>Ni på Sju.</item>
+        <item>Åtte på Sju.</item>
+        <item>Sju på Sju.</item>
+        <item>Seks på Sju.</item>
+        <item>Fem på Sju.</item>
+        <item>Fire på Sju.</item>
+        <item>Tre på Sju.</item>
+        <item>To på Sju.</item>
+        <item>Ett på Sju.</item>
+        <item>Akkurat Sju.</item>
+        <item>Ett over Sju.</item>
+        <item>To over Sju.</item>
+        <item>Tre over Sju.</item>
+        <item>Fire over Sju.</item>
+        <item>Fem over Sju.</item>
+        <item>Seks over Sju.</item>
+        <item>Sju over Sju.</item>
+        <item>Åtte over Sju.</item>
+        <item>Ni over Sju.</item>
+        <item>Ti over Sju.</item>
+        <item>Elleve over Sju.</item>
+        <item>Tolv over Sju.</item>
+        <item>Tretten over Sju.</item>
+        <item>Fjorten over Sju.</item>
+        <item>Kvart over Sju.</item>
+        <item>Seksten over Sju.</item>
+        <item>Sytten over Sju.</item>
+        <item>Atten over Sju.</item>
+        <item>Nitten over Sju.</item>
+        <item>Ti på Halv Åtte.</item>
+        <item>Ni på Halv Åtte.</item>
+        <item>Åtte på Halv Åtte.</item>
+        <item>Sju på Halv Åtte.</item>
+        <item>Seks på Halv Åtte.</item>
+        <item>Fem på Halv Åtte.</item>
+        <item>Fire på Halv Åtte.</item>
+        <item>Tre på Halv Åtte.</item>
+        <item>To på Halv Åtte.</item>
+        <item>Ett på Halv Åtte.</item>
+        <item>Halv Åtte.</item>
+        <item>Ett over Halv Åtte.</item>
+        <item>To over Halv Åtte.</item>
+        <item>Tre over Halv Åtte.</item>
+        <item>Fire over Halv Åtte.</item>
+        <item>Fem over Halv Åtte.</item>
+        <item>Seks over Halv Åtte.</item>
+        <item>Sju over Halv Åtte.</item>
+        <item>Åtte over Halv Åtte.</item>
+        <item>Ni over Halv Åtte.</item>
+        <item>Ti over Halv Åtte.</item>
+        <item>Elleve over Halv Åtte.</item>
+        <item>Tolv over Halv Åtte.</item>
+        <item>Tretten over Halv Åtte.</item>
+        <item>Fjorten over Halv Åtte.</item>
+        <item>Kvart på Åtte.</item>
+        <item>Fjorten på Åtte.</item>
+        <item>Tretten på Åtte.</item>
+        <item>Tolv på Åtte.</item>
+        <item>Elleve på Åtte.</item>
+        <item>Ti på Åtte.</item>
+        <item>Ni på Åtte.</item>
+        <item>Åtte på Åtte.</item>
+        <item>Sju på Åtte.</item>
+        <item>Seks på Åtte.</item>
+        <item>Fem på Åtte.</item>
+        <item>Fire på Åtte.</item>
+        <item>Tre på Åtte.</item>
+        <item>To på Åtte.</item>
+        <item>Ett på Åtte.</item>
+        <item>Akkurat Åtte.</item>
+        <item>Ett over Åtte.</item>
+        <item>To over Åtte.</item>
+        <item>Tre over Åtte.</item>
+        <item>Fire over Åtte.</item>
+        <item>Fem over Åtte.</item>
+        <item>Seks over Åtte.</item>
+        <item>Sju over Åtte.</item>
+        <item>Åtte over Åtte.</item>
+        <item>Ni over Åtte.</item>
+        <item>Ti over Åtte.</item>
+        <item>Elleve over Åtte.</item>
+        <item>Tolv over Åtte.</item>
+        <item>Tretten over Åtte.</item>
+        <item>Fjorten over Åtte.</item>
+        <item>Kvart over Åtte.</item>
+        <item>Seksten over Åtte.</item>
+        <item>Sytten over Åtte.</item>
+        <item>Atten over Åtte.</item>
+        <item>Nitten over Åtte.</item>
+        <item>Ti på Halv Ni.</item>
+        <item>Ni på Halv Ni.</item>
+        <item>Åtte på Halv Ni.</item>
+        <item>Sju på Halv Ni.</item>
+        <item>Seks på Halv Ni.</item>
+        <item>Fem på Halv Ni.</item>
+        <item>Fire på Halv Ni.</item>
+        <item>Tre på Halv Ni.</item>
+        <item>To på Halv Ni.</item>
+        <item>Ett på Halv Ni.</item>
+        <item>Halv Ni.</item>
+        <item>Ett over Halv Ni.</item>
+        <item>To over Halv Ni.</item>
+        <item>Tre over Halv Ni.</item>
+        <item>Fire over Halv Ni.</item>
+        <item>Fem over Halv Ni.</item>
+        <item>Seks over Halv Ni.</item>
+        <item>Sju over Halv Ni.</item>
+        <item>Åtte over Halv Ni.</item>
+        <item>Ni over Halv Ni.</item>
+        <item>Ti over Halv Ni.</item>
+        <item>Elleve over Halv Ni.</item>
+        <item>Tolv over Halv Ni.</item>
+        <item>Tretten over Halv Ni.</item>
+        <item>Fjorten over Halv Ni.</item>
+        <item>Kvart på Ni.</item>
+        <item>Fjorten på Ni.</item>
+        <item>Tretten på Ni.</item>
+        <item>Tolv på Ni.</item>
+        <item>Elleve på Ni.</item>
+        <item>Ti på Ni.</item>
+        <item>Ni på Ni.</item>
+        <item>Åtte på Ni.</item>
+        <item>Sju på Ni.</item>
+        <item>Seks på Ni.</item>
+        <item>Fem på Ni.</item>
+        <item>Fire på Ni.</item>
+        <item>Tre på Ni.</item>
+        <item>To på Ni.</item>
+        <item>Ett på Ni.</item>
+        <item>Akkurat Ni.</item>
+        <item>Ett over Ni.</item>
+        <item>To over Ni.</item>
+        <item>Tre over Ni.</item>
+        <item>Fire over Ni.</item>
+        <item>Fem over Ni.</item>
+        <item>Seks over Ni.</item>
+        <item>Sju over Ni.</item>
+        <item>Åtte over Ni.</item>
+        <item>Ni over Ni.</item>
+        <item>Ti over Ni.</item>
+        <item>Elleve over Ni.</item>
+        <item>Tolv over Ni.</item>
+        <item>Tretten over Ni.</item>
+        <item>Fjorten over Ni.</item>
+        <item>Kvart over Ni.</item>
+        <item>Seksten over Ni.</item>
+        <item>Sytten over Ni.</item>
+        <item>Atten over Ni.</item>
+        <item>Nitten over Ni.</item>
+        <item>Ti på Halv Ti.</item>
+        <item>Ni på Halv Ti.</item>
+        <item>Åtte på Halv Ti.</item>
+        <item>Sju på Halv Ti.</item>
+        <item>Seks på Halv Ti.</item>
+        <item>Fem på Halv Ti.</item>
+        <item>Fire på Halv Ti.</item>
+        <item>Tre på Halv Ti.</item>
+        <item>To på Halv Ti.</item>
+        <item>Ett på Halv Ti.</item>
+        <item>Halv Ti.</item>
+        <item>Ett over Halv Ti.</item>
+        <item>To over Halv Ti.</item>
+        <item>Tre over Halv Ti.</item>
+        <item>Fire over Halv Ti.</item>
+        <item>Fem over Halv Ti.</item>
+        <item>Seks over Halv Ti.</item>
+        <item>Sju over Halv Ti.</item>
+        <item>Åtte over Halv Ti.</item>
+        <item>Ni over Halv Ti.</item>
+        <item>Ti over Halv Ti.</item>
+        <item>Elleve over Halv Ti.</item>
+        <item>Tolv over Halv Ti.</item>
+        <item>Tretten over Halv Ti.</item>
+        <item>Fjorten over Halv Ti.</item>
+        <item>Kvart på Ti.</item>
+        <item>Fjorten på Ti.</item>
+        <item>Tretten på Ti.</item>
+        <item>Tolv på Ti.</item>
+        <item>Elleve på Ti.</item>
+        <item>Ti på Ti.</item>
+        <item>Ni på Ti.</item>
+        <item>Åtte på Ti.</item>
+        <item>Sju på Ti.</item>
+        <item>Seks på Ti.</item>
+        <item>Fem på Ti.</item>
+        <item>Fire på Ti.</item>
+        <item>Tre på Ti.</item>
+        <item>To på Ti.</item>
+        <item>Ett på Ti.</item>
+        <item>Akkurat Ti.</item>
+        <item>Ett over Ti.</item>
+        <item>To over Ti.</item>
+        <item>Tre over Ti.</item>
+        <item>Fire over Ti.</item>
+        <item>Fem over Ti.</item>
+        <item>Seks over Ti.</item>
+        <item>Sju over Ti.</item>
+        <item>Åtte over Ti.</item>
+        <item>Ni over Ti.</item>
+        <item>Ti over Ti.</item>
+        <item>Elleve over Ti.</item>
+        <item>Tolv over Ti.</item>
+        <item>Tretten over Ti.</item>
+        <item>Fjorten over Ti.</item>
+        <item>Kvart over Ti.</item>
+        <item>Seksten over Ti.</item>
+        <item>Sytten over Ti.</item>
+        <item>Atten over Ti.</item>
+        <item>Nitten over Ti.</item>
+        <item>Ti på Halv Elleve.</item>
+        <item>Ni på Halv Elleve.</item>
+        <item>Åtte på Halv Elleve.</item>
+        <item>Sju på Halv Elleve.</item>
+        <item>Seks på Halv Elleve.</item>
+        <item>Fem på Halv Elleve.</item>
+        <item>Fire på Halv Elleve.</item>
+        <item>Tre på Halv Elleve.</item>
+        <item>To på Halv Elleve.</item>
+        <item>Ett på Halv Elleve.</item>
+        <item>Halv Elleve.</item>
+        <item>Ett over Halv Elleve.</item>
+        <item>To over Halv Elleve.</item>
+        <item>Tre over Halv Elleve.</item>
+        <item>Fire over Halv Elleve.</item>
+        <item>Fem over Halv Elleve.</item>
+        <item>Seks over Halv Elleve.</item>
+        <item>Sju over Halv Elleve.</item>
+        <item>Åtte over Halv Elleve.</item>
+        <item>Ni over Halv Elleve.</item>
+        <item>Ti over Halv Elleve.</item>
+        <item>Elleve over Halv Elleve.</item>
+        <item>Tolv over Halv Elleve.</item>
+        <item>Tretten over Halv Elleve.</item>
+        <item>Fjorten over Halv Elleve.</item>
+        <item>Kvart på Elleve.</item>
+        <item>Fjorten på Elleve.</item>
+        <item>Tretten på Elleve.</item>
+        <item>Tolv på Elleve.</item>
+        <item>Elleve på Elleve.</item>
+        <item>Ti på Elleve.</item>
+        <item>Ni på Elleve.</item>
+        <item>Åtte på Elleve.</item>
+        <item>Sju på Elleve.</item>
+        <item>Seks på Elleve.</item>
+        <item>Fem på Elleve.</item>
+        <item>Fire på Elleve.</item>
+        <item>Tre på Elleve.</item>
+        <item>To på Elleve.</item>
+        <item>Ett på Elleve.</item>
+        <item>Akkurat Elleve.</item>
+        <item>Ett over Elleve.</item>
+        <item>To over Elleve.</item>
+        <item>Tre over Elleve.</item>
+        <item>Fire over Elleve.</item>
+        <item>Fem over Elleve.</item>
+        <item>Seks over Elleve.</item>
+        <item>Sju over Elleve.</item>
+        <item>Åtte over Elleve.</item>
+        <item>Ni over Elleve.</item>
+        <item>Ti over Elleve.</item>
+        <item>Elleve over Elleve.</item>
+        <item>Tolv over Elleve.</item>
+        <item>Tretten over Elleve.</item>
+        <item>Fjorten over Elleve.</item>
+        <item>Kvart over Elleve.</item>
+        <item>Seksten over Elleve.</item>
+        <item>Sytten over Elleve.</item>
+        <item>Atten over Elleve.</item>
+        <item>Nitten over Elleve.</item>
+        <item>Ti på Halv Tolv.</item>
+        <item>Ni på Halv Tolv.</item>
+        <item>Åtte på Halv Tolv.</item>
+        <item>Sju på Halv Tolv.</item>
+        <item>Seks på Halv Tolv.</item>
+        <item>Fem på Halv Tolv.</item>
+        <item>Fire på Halv Tolv.</item>
+        <item>Tre på Halv Tolv.</item>
+        <item>To på Halv Tolv.</item>
+        <item>Ett på Halv Tolv.</item>
+        <item>Halv Tolv.</item>
+        <item>Ett over Halv Tolv.</item>
+        <item>To over Halv Tolv.</item>
+        <item>Tre over Halv Tolv.</item>
+        <item>Fire over Halv Tolv.</item>
+        <item>Fem over Halv Tolv.</item>
+        <item>Seks over Halv Tolv.</item>
+        <item>Sju over Halv Tolv.</item>
+        <item>Åtte over Halv Tolv.</item>
+        <item>Ni over Halv Tolv.</item>
+        <item>Ti over Halv Tolv.</item>
+        <item>Elleve over Halv Tolv.</item>
+        <item>Tolv over Halv Tolv.</item>
+        <item>Tretten over Halv Tolv.</item>
+        <item>Fjorten over Halv Tolv.</item>
+        <item>Kvart på Tolv.</item>
+        <item>Fjorten på Tolv.</item>
+        <item>Tretten på Tolv.</item>
+        <item>Tolv på Tolv.</item>
+        <item>Elleve på Tolv.</item>
+        <item>Ti på Tolv.</item>
+        <item>Ni på Tolv.</item>
+        <item>Åtte på Tolv.</item>
+        <item>Sju på Tolv.</item>
+        <item>Seks på Tolv.</item>
+        <item>Fem på Tolv.</item>
+        <item>Fire på Tolv.</item>
+        <item>Tre på Tolv.</item>
+        <item>To på Tolv.</item>
+        <item>Ett på Tolv.</item>
+    </string-array>
+    <string-array name="VerboseWeather">
+        <item>Ukjent</item>
+        <item>Klart</item>
+        <item>Klart</item>
+        <item>Hovedsaklig klart</item>
+        <item>Delvis klarvær</item>
+        <item>Delvis skyet</item>
+        <item>Støv</item>
+        <item>Dis</item>
+        <item>Dis</item>
+        <item>Røyk</item>
+        <item>Hovedsaklig skyet</item>
+        <item>Overskyet</item>
+        <item>Skyet</item>
+        <item>Tåke</item>
+        <item>Yr</item>
+        <item>Regnskurer</item>
+        <item>Dryppregn</item>
+        <item>Regnbyger</item>
+        <item>Mulighet for regn</item>
+        <item>Mulighet for regnskurer</item>
+        <item>Spredte regnbyger</item>
+        <item>Tordenvær</item>
+        <item>Mulighet for torden</item>
+        <item>Spredte tordenbyger</item>
+        <item>Mulighet for storm</item>
+        <item>Storm</item>
+        <item>Skybrudd</item>
+        <item>Regn</item>
+        <item>Sludd</item>
+        <item>Lett snøvær</item>
+        <item>Mulighet for snø</item>
+        <item>Snøbyger</item>
+        <item>Spredte snøbyger</item>
+        <item>Snø</item>
+        <item>Is</item>
+        <item>Is eller snø</item>
+        <item>Hålke</item>
+        <item>Undekjølt regn</item>
+        <item>Regn og snø</item>
+        <item>Blæst</item>
+    </string-array>
+
+    <string name="_ok">OK</string>
+    <string name="_apply">Bruk</string>
+    <string name="_search">Søk</string>
+    <string name="_yes">Ja</string>
+    <string name="_abandon">Forkast</string>
+    <string name="_no">Nei</string>
+    <string name="TTLdefault">Widgetinnstillinger</string>
+    <string name="TTLnoop">Inaktiv</string>
+    <string name="TTLwrefresh">Oppdater værmelding nå</string>
+    <string name="TTLweather">Værmelding</string>
+    <string name="TTLbatt">Batteriforbruk</string>
+    <string name="TTLalarms">Vis alarmer</string>
+    <string name="HDRenderingFalse">Gml - 16bit bitmap sendes direkte mellom prosesser</string>
+    <string name="HDRendering">Rendermetode</string>
+    <string name="HDRenderingTrue">Ny - 32bit bitmap mellomlagres på sd-kort</string>
+    <string name="battChrgAC">Nettlading</string>
+    <string name="battChrgUSB">USB-lading</string>
+    <string name="battChrgWireless">Trådløs lading</string>
+    <string name="battChrgDischarging">Utlader</string>
+    <string name="_yesRestore">Ja, gjenopprett standarder</string>
+    <string name="_yesDelete">Ja, slett alt</string>
+</resources>
