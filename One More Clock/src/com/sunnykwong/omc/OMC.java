@@ -78,7 +78,6 @@ import android.widget.Toast;
  * @author skwong01
  * Thanks to ralfoide's 24clock code; taught me quite a bit about broadcastreceivers
  * Thanks to the Open Font Library for a great resource.
- * 
  */ 
 public class OMC extends Application { 
 
