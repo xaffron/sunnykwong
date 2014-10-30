@@ -1,0 +1,7 @@
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+	android:widgetCategory="keyguard|home_screen"
+	android:minWidth="286dp" android:minHeight="286dp"
+	android:minResizeWidth="64dp" android:minResizeHeight="64dp" 
+	android:updatePeriodMillis="1800000" android:initialLayout="@layout/omcwidget" 
+	android:resizeMode="horizontal|vertical"/>
+

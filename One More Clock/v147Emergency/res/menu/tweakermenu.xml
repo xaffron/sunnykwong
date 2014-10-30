@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:enabled="true" showAsAction="ifRoom" android:id="@+id/tweakmenulayerenable" android:title="Toggle Visibility" android:visible="true" android:icon="@android:drawable/ic_menu_view"></item><group android:visible="true" android:id="@+id/tweakmenucolors" android:enabled="true">
+<item android:id="@+id/tweakmenupickColor1" showAsAction="ifRoom" android:title="Color 1" android:icon="@android:drawable/ic_menu_edit"></item>
+<item android:id="@+id/tweakmenupickColor2" showAsAction="ifRoom" android:title="Color 2" android:icon="@android:drawable/ic_menu_edit"></item></group>
+
+
+ 
+</menu> 

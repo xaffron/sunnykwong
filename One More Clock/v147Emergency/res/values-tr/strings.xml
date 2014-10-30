@@ -1,0 +1,2003 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="languageWord">Dil</string>
+    <string name="languageName">Türkçe</string>
+    <string name="translator">Okan ALTUNTAS</string>
+    <!-- General Buttons -->
+    <string name="nextTip">Sonraki İpucu</string>
+    <!-- General Errors -->
+    <string name="sdcardNotDetected">SD Card algılanmadı.\nHalen bağlanamadı iseniz 
+	USB belleği çıkarıp takarak tekrar deneyiniz</string>
+    <string name="sdcardMissingOrCorrupt">SD Card eksik ya da bozuk. \nHalen bağlanamadı iseniz 
+	USB belleği çıkarıp takarak tekrar deneyiniz!</string>
+    <string name="themeNotFound">Tema bulunamadı! Görünüm varsayılana dönüyor</string>
+    <string name="warningConflictPaid">UYARI!\nÜcretli versiyon ile uyumsuzluk</string>
+    <string name="warningConflictFree">UYARI!\nÜcretli versiyon ile uyumsuzluk</string>
+    <string name="warningConflictText">Tema özelleştirme ve saat ayarları düzgün çalışmayacaktır.
+	\nLütfen en kısa sürede ücretsiz sürümü kaldırınız!</string>
+    <string name="defaultThemeNotRemovable">Varsayılan Tema silinemez!</string>
+    <!-- Bailout App Dialog -->
+    <string name="thanksForDownloading">İndirdiğiniz için teşekkür ederiz!</string>
+    <string name="widgetDir1">Başlamak için geri tuşuna basarak anaekrana dönün, \'Widgets\' listesinden ekleyerek aktif edin!\u0020</string>
+    <string name="widgetDir2">\u0020Listelendi. İyi Eğlenceler!</string>
+    <!-- Useful Tips -->
+    <string name="usefulTip">İpuçları</string>
+    <string name="doNotShowAgain">Tekrar gösterme</string>
+    <!-- Weather Forecast Screen -->
+    <string name="humiditycondition">Nem: </string>
+    <string name="windcondition">Rüzgar: </string>
+    <!-- Forecast Screen -->
+    <string name="doubleDash">--</string>
+    <string name="unknown">Bilinmiyor</string>
+    <string name="noaaWeatherCredit">Hava gözlem ve tahminlerini Ulusal Okyanus ve Atmosfer İdaresi(NOAA) ile güncelle.</string>
+    <string name="igWeatherCredit">Hava Durumunu Google API ile güncelle.</string>
+    <string name="yrWeatherCredit">Hava Durumunu  yr.no, Norveç Meteoroloji Enstitüsü ve NRK tarafından veriler ile güncelle</string>
+    <string name="seventimerWeatherCredit">Ye Quanzhi\'nin 7Timer! hava durumu servisi, supported by the
+		Şangay Astronomik Gözlemevi, Çin Bilimler Akademisi tarafından destekleniyor</string>
+    <string name="owmWeatherCredit">Hava durumu openweathermaps.org tarafından güncellendi.</string>
+    <string name="tapForAlternateForecast">AccuWeather® alternatifi için tıklayın</string>
+    <string name="weatherDisabledOrNoWeatherLoaded">Hava Durumu kapalı, bilgiler alınamıyor!</string>
+    <string name="supplementedbyMETAR">Şuanda METAR tarafından destekleniyor.</string>
+    <!-- Clock Preferences -->
+    <string name="clockPreferences">Saat Özellikleri</string>
+    <string name="dashPreferences">\u0020- Özellikleri</string>
+    <string name="forThisClock">Bu saat için:</string>
+    <string name="widgetTheme">Widget Teması</string>
+    <!-- Widget Theme -->
+    <string name="widgetThemeTitle">Seçmek için kaydırın;  Seçenekler için basın &amp;</string>
+    <string name="corruptPlsDelete">[Bozulmuş - Lütfen siliniz]</string>
+    <string name="reextractBundledClocks">Paketlenmiş saatleri tekrar açın</string>
+    <string name="downloadAllClocks">Tüm saatleri indir(7MB)</string>
+    <string name="preselected"/>
+    <string name="postselected">\u0020seçildi.</string>
+    <!-- Theme Picker Legend -->
+    <string name="legend">İşaretler</string>
+    <string name="batteryLegend">Pil durumunu göster</string>
+    <string name="weatherLegend">Hava durumunu göster</string>
+    <string name="bkimageLegend">Arkaplan resmini içersin</string>
+    <string name="ltbgLegend">Açık renk arkaplan</string>
+    <string name="dkbgLegend">Koyu renk arkaplan</string>
+    <string name="tweakLegend">Saat kullanıcı özelleştirmesini kullansın</string>
+    <!-- Theme Skinner Tool (deprecated) -->
+    <string name="reloadThemeCatalog">Tema kataloğunu güncelle</string>
+    <!-- Theme Import/Unzip -->
+    <string name="themePreview">Tema Önizleme</string>
+    <string name="openingConnection">Bağlantı açılıyor.</string>
+    <string name="beginningDownload">İndirmeye başlanıyır.</string>
+    <string name="downloading">İndiriliyor\u0020</string>
+    <string name="downloaded">Ündirildi\u0020</string>
+    <string name="of">\u0020of\u0020</string>
+    <string name="bytes">\u0020bytes</string>
+    <string name="storingFile">Saklanan Dosya:\u0020</string>
+    <string name="existsOverwriting">\u0020 mevcut; üzerine yazılsın mı</string>
+    <string name="createThemeFolder1">Tema Klasörü \'</string>
+    <string name="createThemeFolder2">\'\u0020Oluşturuldu.</string>
+    <string name="detectedWeatherskin">Havadurumu arayüzü tespit ediliyor.</string>
+    <string name="extractingStarterClockPack">Başlangıç saat paketi açılıyor…</string>
+    <string name="starterClockPack">Başlangıç Saat Paketi</string>
+    <string name="starterClockPackText">Dosyalar sdcard\'ınızda .OMC Tema dosyasının üzerine yazılacak.
+	Emin misiniz?\n(Emin değilseniz, Evet\'e basın)</string>
+    <string name="importComplete">İndirme Tamamlandı!</string>
+    <string name="importAborted">İndirme İptal Edildi!</string>
+    <string name="useDownloadInsteadOfPreview">Lütfen indirmek yerine önizleme kullanınız.</string>
+    <string name="importWorksWithOMCFiles">Clock import works with .omc files.\nWere you
+		opening the wrong file?</string>
+    <string name="nothingToExtract">Herhangi birşey açılmadı!</string>
+    <string name="downloadInterrupted">İndirme Kesildi!</string>
+    <string name="poorReceptionArea">Telefonunuz çekim alanı dışında mı?\nLütfen tekrar deneyiniz.</string>
+    <string name="connectionTimedOut">Bağlantı zamanaşımı!</string>
+    <string name="serverNotFound">Sunucu Bulunamadı!</string>
+    <!-- Widget Theme Long Press -->
+    <string name="emailOrDeleteTheme">Postala ya da Temayı Sil</string>
+    <string name="emailTheme">Temayı e-posta ile gönder</string>
+    <string name="emailThemeText">Bu temayı paketle, e-posta ile kendine ya da or
+		bir arkadaşına gönder.\nBunu yapmak istediğine emin misin?</string>
+    <string name="emailThemeConfirm1">E-Posta\u0020</string>
+    <string name="emailThemeConfirm2">\u0020?</string>
+    <string name="emailThemeChooser">E-posta için tema dosyalarınız paketlendi.</string>
+    <string name="deleteTheme">Temayı Sil</string>
+    <string name="deleteThemeConfirm1">Sil\u0020</string>
+    <string name="deleteThemeConfirm2">\u0020 SD card\'dan silinsin mi?</string>
+    <string name="deleteThemeConfirm3">Tekrar kullanmak için tema indirilecek/açılacak. Emin misin?</string>
+    <string name="submitThemeToDev">Geliştiriciye Tema Gönder</string>
+    <string name="submitThemeToDevConfirm1">Gönder\u0020</string>
+    <string name="submitThemeToDevConfirm2">\u0020 Xaffron için yeni bir tema mı?</string>
+    <string name="areYouAbsolutelySure">Buna kesinlikle emin misiniz?</string>
+    <string name="areYouAbsolutelySureText">Bu tema  \'Düzenlenebilir\' özelliklerle işaretlenmemiş
+		hazır tema gibi görünüyor.\n</string>
+    <!-- Personalize Clock -->
+    <string name="personalizeClock">Saati Kişiselleştir</string>
+    <string name="tweakColorsAndLayers">Renkleri ve Katmanları Düzenleyin</string>
+    <!-- Personalize Clock subscreen -->
+    <string name="selectALayerForTweaking">Düzenlemek istediğiniz katmanı seçin</string>
+    <string name="tweakerDirections">Sürükle: Menüyü Taşı: Düzenlemeyi Gerial: İptal</string>
+    <!-- Personalize Clock Menu -->
+    <string name="toggleVisibility">Toogle Görünürlüğü</string>
+    <string name="color1">Renk 1</string>
+    <string name="color2">Renk 2</string>
+    <!-- Personalize Clock Back -->
+    <string name="keepChanges">Değişiklikleri Koru?</string>
+    <!-- Tap & Display Options -->
+    <string name="tapAndDisplayOptions">Görüntü Seçenekleri İçin Basın</string>
+    <string name="assignTapToLaunch">Hızlı Kısayollar</string>
+    <string name="nwCornerReserved">Kuzeybatı köşesi özellikler için ayrılmıştır.</string>
+    <!-- TTL Popup -->
+    <string name="areaToCustomize">Düzenleme Alanı:</string>
+    <string name="chooseAction">Eylem Seçin</string>
+    <string name="openOptionsDefault">Seçenekleri açın (varsayılan)</string>
+    <string name="doNothing">Hiç Birşey Yapma</string>
+    <string name="refreshWeather">Hava Durumunu Güncelle</string>
+    <string name="weatherForecast">Hava Tahmini</string>
+    <string name="viewAlarms">Alarmları Göster (Deneysel)</string>
+    <string name="battUsage">Pil Kullanımını Göster</string>
+    <string name="otherActivity">Diğer Uygulamalar…</string>
+    <string name="otherActivityTTL">Özel Uygulama</string>
+    <string name="use24HourClock">24 Saat Dilimini Kullan</string>
+    <string name="use24HourTrue">23:59</string>
+    <string name="use24HourFalse">11:59pm</string>
+    <string name="showLeadingZero">Sıfırları Göster</string>
+    <string name="showLeadingZTrue">04:23</string>
+    <string name="showLeadingZFalse">4:23</string>
+    <string name="mmddDateFormat">A/G/Y Tarih Formatı</string>
+    <string name="mmddDateFormatTrue">12/31/2012</string>
+    <string name="mmddDateFormatFalse">31/12/2012</string>
+    <string name="changeTimeZone">Saat Dilimini Değiştir</string>
+    <string name="followingDeviceTimeZone">(İzlenen saat dilimi ayarı)</string>
+    <!-- TTL Sales Pitch -->
+    <string name="thinkOfThePossibilities">Diğer Seçenekler</string>
+    <string name="prePaidTTL">Ücretli sürümü ayarlamanızı sağlar\u0020</string>
+    <string name="postPaidTTL">\u0020 daha fazla uygulama istiyorsanız 4x2, 4x1, 3x1 and 2x1 
+	ölçülerinde widget\'lar için ücretli sürüme geçebilirsiniz.	\nBu boyutlar için 
+	yükseltme seçeneğini düşünün!</string>
+    <string name="takeMeToPaid">Ücretli sürüme götür</string>
+    <!-- Weather & Widget Options -->
+    <string name="forAllClocks">Tüm Saatler için:</string>
+    <string name="weatherAndWidgetOptions">Hava Durumu &amp; Widget Seçenekleri</string>
+    <string name="clearRenderCaches">Önbelleği temizle</string>
+    <string name="cachesCleared">Önbellek temizlendi</string>
+    <!-- Weather & Widget Subscreen -->
+    <string name="refreshWeatherNow">Hava Durumunu şimdi güncelle</string>
+    <string name="operationTimedOut">İşlem zamanaşımı!</string>
+    <string name="requestingLocation">İstediğiniz Şehir</string>
+    <string name="pleaseWait">Lütfen bekleyin…</string>
+    <string name="inProgress">İşleniyor…</string>
+    <string name="usingFixedCoordinates">Sabit koordinatları kullanın</string>
+    <string name="gotGPSLock">GPS kilidi var Reverse-Geocoding…</string>
+    <string name="gotNetworkLock">WiFi/Network kilidi var. Reverse-Geocoding…</string>
+    <string name="reusingCachedLocation">Şimdiki bilgiyi kullan. Reverse-Geocoding…</string>
+    <string name="requestingWeather">Hava durumu isteği…</string>
+    <string name="weatherReceived">Hava durumu bilgileri alındı. İşleniyor…</string>
+    <string name="weatherSuccess">Hava durumu başarıyla güncellendi.</string>
+    <string name="weatherFailure">Hava durumu güncellemesi başarısız.</string>
+    <string name="location">Şehir/Ülke:\u0020</string>
+    <string name="fixed">\u0020(Sabit)</string>
+    <string name="detected">\u0020(Konum)</string>
+    <string name="lastTry">Son Deneme:\u0020</string>
+    <string name="manualRefreshOnly">\u0020(Sadece elle güncelleme)</string>
+    <string name="nextRefresh">\u0020Sonraki Güncelleme:\u0020</string>
+    <string name="lastRefresh">Son Güncelleme:\u0020</string>
+    <string name="nextRequest">\u0020Son İstek:\u0020</string>
+    <string name="weatherLocation">Bölge/Şehir için havadurumu:</string>
+    <string name="disableLocationAndWeather">Hava durumu için konumu kapat</string>
+    <string name="followDevice">Konum Bilgisi(varsayılan)</string>
+    <string name="setFixedLocation">Sabit Kordinat</string>
+    <string name="weatherFunctionalityDisabled">Havadurumu özelliği kapalı</string>
+    <string name="tapToEnable">Tıklayarak Aç</string>
+    <!-- Fixed Locn subscreen -->
+    <string name="enterCityAndStateCountry">Ülke ya da Şehir Girin</string>
+    <string name="locationExamples">Örn. Istanbul, Turkey</string>
+    <string name="locationError">Sonuç bulunamadı.\nLütfen tekrar deneyin.</string>
+    <string name="networkError">Ağ bağlantısı yok.\nLütfen tekrar deneyin.</string>
+    <string name="unknownError">Bilinmeyen bir hata oluştu.\nLütfen tekrar deneyin.</string>
+    <string name="weatherProvider">Hava Durumu Servis Sağlayıcı</string>
+    <string-array name="wprovider_options">
+        <item>Otomatik (varsayılan)</item>
+        <item>7Timer.com</item>
+        <item>NOAA (Sadece Amerika)</item>
+        <item>Yr.no</item>
+        <item>Google Weather (eski/çalışmayan)</item>
+    </string-array>
+    <string name="wpauto">Konum için en iyi sağlayıcıyı kullanın</string>
+    <string name="wp7timer">7Timer.com kullan</string>
+    <string name="wpnoaa">NOAA kullan</string>
+    <string name="wpowm">OpenWeatherMap.org kullan</string>
+    <string name="wpyr">yr.no kullan</string>
+    <string name="wpig">iGoogle Weather kullan</string>
+    <string name="weatherDisplayUnits">Hava Durumu Görüntüleme Değerleri</string>
+    <string-array name="wdisplay_options">
+        <item>Fahrenheit kullan(varsayılan)</item>
+        <item>Celsius kullan</item>
+    </string-array>
+    <string name="usingFahrenheit">Fahrenheit kullan</string>
+    <string name="usingCelsius">Celsius kullan</string>
+    <string name="useMETAR">METAR yolu ile Hava Durumu</string>
+    <string name="usingMETAR">En yakın havalimanı sonuçları</string>
+    <string name="usingInterpolation">Servis Sağlayıcı tarafından ilave edilmiş değerler</string>
+    <string name="clockUpdateInterval">Saat Güncelleme Aralığı</string>
+    <string-array name="interval_options">
+        <item>1 saniye (Aşırı pil tüketimi)</item>
+        <item>10 saniye (Yüksek pil tüketimi)</item>
+        <item>15 saniye</item>
+        <item>20 saniye</item>
+        <item>30 saniye (Varsayılan)</item>
+        <item>60 saniye (Düşük pil tüketimi)</item>
+    </string-array>
+    <string name="redrawEvery">Yeniden Kur\u0020</string>
+    <string name="seconds">\u0020 saniyede bir.</string>
+    <string name="weatherUpdateInterval">Havadurumu Güncelleme Aralığı</string>
+    <string-array name="winterval_options">
+        <item>Her Saat (varsayılan)</item>
+        <item>4 saatte bir</item>
+        <item>8 saatte bir</item>
+        <item>Hiçbir zaman (Sadece Elle)</item>
+    </string-array>
+    <string name="manualWeatherUpdatesOnly">Hava durumunu sadece elle güncelle</string>
+    <string name="refreshWeatherEveryHour">Hava durumunu saatte bir güncelle</string>
+    <string name="refreshWeatherEvery4Hours">Hava durumunu 4 saatte bir güncelle</string>
+    <string name="refreshWeatherEvery8Hours">Hava durumunu 8 saatte bir güncelle</string>
+    <string name="setForegroundMode">ÖnAlan Moduna Ayarla</string>
+    <string name="keepOMCfromSleeping">OMC\'yi uyku modunda tutun\n(bildirimde bulun)</string>
+    <string name="forceEnglishDates">İngilizce günlere zorla</string>
+    <string name="uncheckForSome">Bazı yerel olmayan ayarlar için kaldırın(Deneysel)</string>
+    <string name="changeAppLocale">Uygulama Arayüz Dili</string>
+    <string name="changeClockLocale">Saat Dili</string>
+    <string name="toggleWidgetSizes">Toggle Widget Ölçüsü</string>
+    <string name="rebootRequired">Yeniden başlatma gerektirir</string>
+    <string name="changesToTheseSettings">Geçerli ayarların etkin olabilmesi için telefonununuz yeniden başlatılması gereklidir.</string>
+    <string name="enable5x4Widget">(5x4)  Widget aktif et</string>
+    <string name="enable5x2Widget">(5x2)  Widget aktif et</string>
+    <string name="enable5x1Widget">(5x1)  Widget aktif et</string>
+    <string name="enable4x4Widget">(4x4)  Widget aktif et</string>
+    <string name="enable4x2Widget">(4x2)  Widget aktif et</string>
+    <string name="enable4x1Widget">(4x1) Widget</string>
+    <string name="enable3x3Widget">(3x3)  Widget aktif et</string>
+    <string name="enable3x1Widget">(3x1)  Widget aktif et</string>
+    <string name="enable2x2Widget">(2x2)  Widget aktif et</string>
+    <string name="enable2x1Widget">(2x1)  Widget aktif et</string>
+    <string name="enable1x3Widget">(1x3)  Widget aktif et</string>
+    <string name="forGalaxyNote">Galaxy Note ya da benzerleri için</string>
+    <string name="enableThemeTester">Tema Testini Aç</string>
+    <string name="developmentToolForSkinnersOnly">Sadece Skin(Tema) Geliştiriciler için</string>
+    <!-- Widget Sizes Sales Pitch -->
+    <string name="areThereOtherWidgetSizes">Diğer Widget Boyutları var mı?</string>
+    <string name="actuallyThePaidVersion">5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 and 1x3 
+	boyutları sadece ücretli sürümde kullanılabiliyor.\nBu boyutlar için lütfen ücretli sürüme geçin!</string>
+    <!-- Troubleshooting Options -->
+    <string name="troubleshootingOptions">Sorun Giderme Seçenekleri</string>
+    <!-- Troubleshooting Options -->
+    <string name="clockPriority">Saat Önceliği</string>
+    <string name="forFineTuning">İnce Ayar için</string>
+    <string-array name="clockPriority_options">
+        <item>En Yüksek</item>
+        <item>Yüksek</item>
+        <item>Orta</item>
+        <item>Düşük (Varsayılan)</item>
+        <item>En Düşük</item>
+    </string-array>
+    <string-array name="clockPriority_legend">
+        <item>Agresif yeniden kurma(Tavsiye Edilmez). Emin misiniz?</item>
+        <item>Agresif yeniden kurma her dakika ekranı ya da hazırlayıcıyı günceller. Emin misiniz?</item>
+        <item>Tembel Güncelleme. Ekran açıksa her dakika güncelleme yapar. Kapalı ise arkaplanda bekler.</item>
+        <item>Lazy redraws every minute when launcher inactive or screen off.
+			Emin misiniz?</item>
+        <item>Tekrarlayıcı Kapalı.Ekran kapalı ise ya da hazırlayıcı deaktifse çalışmaz. Emin misiniz?</item>
+    </string-array>
+    <string name="locationPriority">Konum Önceliği</string>
+    <string-array name="locationPriority_options">
+        <item>Kesin - En yakın konum</item>
+        <item>Kesin - En yakın konum/Civarı</item>
+        <item>Orta - En yakın konum</item>
+        <item>Orta - En yakın konum/Civarı</item>
+        <item>Esnek (Varsayılan)</item>
+    </string-array>
+    <string-array name="locationPriority_legend">
+        <item>Sadece GPS\'in aktif olduğu bölgelerde 2 saatte bir kullan. UYARI:
+			Kapalı alanda iseniz havadurumu güncellemsi duracaktır. Emin misiniz?</item>
+        <item>Şebeke/GPS uygun olanı 2 saatte bir kullan. UYARI: Kapalı alanda iseniz havadurumu güncellemesi duracaktır.Emin misiniz?</item>
+        <item>Sadece GPS\'in aktif olduğu bölgelerde 10 saatte bir kullan. UYARI: Havadurumu 10 saatten fazla kapalı 
+		alanda kalırsanız güncellemeyi durduracaktır. Emin misiniz?</item>
+        <item>Herhangi bir şebeke ya da GPS\'i 10 saatte bir kullan. 10 saatten fazla bir süre kapalı alanda 
+		kalırsanız havadurumu güncellemesi duracaktır.Emin misiniz?</item>
+        <item>En çok tercih edilen şebekeyi ya da GPS\'i kullan. Emin misiniz?</item>
+    </string-array>
+    <string name="weatherDiagnostics">Hava Durumu Tanımalama</string>
+    <string name="submitLocationWeatherDebugData">Konum/Havadurumu hata raporlarını gönder</string>
+    <string name="deleteAllThemes">Tüm temaları sil</string>
+    <string name="forFixingThemeSelection">Uygulama çökmesi durumunda temayı sabitle</string>
+    <string name="deleteAllThemesFromSD">SD Card/Hafıza\'da yer alan tüm temaları sil?</string>
+    <string name="omcThemesFolderDeleted">OMC tema klasörü silindi.</string>
+    <string name="defaultClockPackRestored">Varsayılan saat paketi geri yüklendi.</string>
+    <!-- Contact Xaffron -->
+    <string name="contactXaffron">Xaffron ile iletişime geç</string>
+    <string name="donateOrContact">Yardım almak için ya da Bağış için geliştirici ile iletişime geç</string>
+    <string name="contactXaffronForIssues"> Xaffron ile sorunlar için iletişime geç, yardım &amp; Destek</string>
+    <string name="email">E-Posta</string>
+    <string name="donate">Bağış</string>
+    <string name="facebook">Facebook</string>
+    <!-- Credits -->
+    <string name="credits">İçerik</string>
+    <string name="version">Version</string>
+    <string name="free">Ücretsiz</string>
+    <string name="tapToGetFull">Ücretli versiyona geçmek için tıkla</string>
+    <string name="thanksForYourSupport">Desteğiniz için teşekkürler!</string>
+    <string name="viewCredits">Yapımcılar</string>
+    <!-- Credits subscreen -->
+    <string name="team">Takım</string>
+    <string name="programmer">Programcı</string>
+    <string name="sunny">Sunny Kwong</string>
+    <string name="testers">Test Ekibi</string>
+    <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M.
+		Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
+    <string name="specialThanks">Özel Teşekkür</string>
+    <string name="specialThanksText">Öncülüğü için Zehro\'ya \nre: in-sync clock
+		widgets w//o notifications.\n Yerelleştirme yardımları için Stefan Pledl\'e teşekkürler.</string>
+    <string name="copyrights">Telif Hakları ve Lisanslar</string>
+    <string name="applicationIcon">Uygulama İkonları: Signpost tarafından Maroubal2</string>
+    <string name="applicationIconText">Adapted from Maroubal2\'s excellent
+		photo-turned-Ubuntu wallpaper.\nCC BY-SA
+		2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
+    <string name="codeColorPickerDialog">Kod: ColorPickerDialog</string>
+    <string name="codeColorPickerDialogText">CyanogenMod kaynağından kopyalanmıştır.</string>
+    <string name="codeSVG">Kod svg-android</string>
+    <string name="codeSVGText">sag-android library SVG destekli (Apache
+		Lisansı).\nhttp:////code.google.com//p//svg-android//</string>
+    <string name="weatherFont">Font: Weatherfont</string>
+    <string name="weatherFontText">Havadurumu fontuna ait tüm lisans hakları Jonathan
+		Macagba\'ya aittir, 5$ karşılığında e-posta ile temin edebilirsiniz. eposta: jonathan.macagba@gmail.com</string>
+    <string name="sourceCodeTitle">Kaynak Kodu</string>
+    <string name="sourceCode">Kaynak Kodları </string>
+    <string name="daysuffix"/>
+    <string-array name="verbosedow">
+        <item>Pazar</item>
+        <item>Pazartesi</item>
+        <item>Salı</item>
+        <item>Çarşamba</item>
+        <item>Perşembe</item>
+        <item>Cuma</item>
+        <item>Cumartesi</item>
+    </string-array>
+    <string-array name="shortdow">
+        <item>Paz</item>
+        <item>Pts</item>
+        <item>Sal</item>
+        <item>Çar</item>
+        <item>Per</item>
+        <item>Cum</item>
+        <item>Cts</item>
+    </string-array>
+    <string-array name="verbosemonth">
+        <item>Ocak</item>
+        <item>Şubat</item>
+        <item>Mart</item>
+        <item>Nisan</item>
+        <item>Mayıs</item>
+        <item>Haziran</item>
+        <item>Temmuz</item>
+        <item>Ağustos</item>
+        <item>Eylül</item>
+        <item>Ekim</item>
+        <item>Kasım</item>
+        <item>Aralık</item>
+    </string-array>
+    <string-array name="shortmonth">
+        <item>Oca</item>
+        <item>Şub</item>
+        <item>Mar</item>
+        <item>Nis</item>
+        <item>May</item>
+        <item>Haz</item>
+        <item>Tem</item>
+        <item>Agu</item>
+        <item>Eyl</item>
+        <item>Eki</item>
+        <item>Kas</item>
+        <item>Ara</item>
+    </string-array>
+    <string-array name="WordNumbers">
+        <item>Sıfır</item>
+        <item>Bir</item>
+        <item>İki</item>
+        <item>Üç</item>
+        <item>Dört</item>
+        <item>Beş</item>
+        <item>Altı</item>
+        <item>Yedi</item>
+        <item>Sekiz</item>
+        <item>Dokuz</item>
+        <item>On</item>
+        <item>On Bir</item>
+        <item>On İki</item>
+        <item>On Üç</item>
+        <item>On Dört</item>
+        <item>On Beş</item>
+        <item>On Altı</item>
+        <item>On Yedi</item>
+        <item>On Sekiz</item>
+        <item>On Dokuz</item>
+        <item>Yirmi</item>
+        <item>Yirmi Bir</item>
+        <item>Yirmi İki</item>
+        <item>Yirmi Üç</item>
+        <item>Yirmi Dört</item>
+        <item>Yirmi Beş</item>
+        <item>Yirmi Altı</item>
+        <item>Yirmi Yedi</item>
+        <item>Yirmi Sekiz</item>
+        <item>Yirmi Dokuz</item>
+        <item>Otuz</item>
+        <item>Otuz Bir</item>
+        <item>otuz İki</item>
+        <item>Otuz Üç</item>
+        <item>Otuz Dört</item>
+        <item>Otuz Beş</item>
+        <item>Otuz Altı</item>
+        <item>Otuz Yedi</item>
+        <item>Otuz Sekiz</item>
+        <item>Otuz Dokuz</item>
+        <item>Kırk</item>
+        <item>Kırk Bir</item>
+        <item>Kırk İki</item>
+        <item>Kırk Üç</item>
+        <item>Kırk Dört</item>
+        <item>Kırk Beş</item>
+        <item>Kırk Altı</item>
+        <item>Kırk Yedi</item>
+        <item>Kırk Sekiz</item>
+        <item>Kırk Dokuz</item>
+        <item>Elli</item>
+        <item>Elli Bir</item>
+        <item>Elli İki</item>
+        <item>Elli Üç</item>
+        <item>Elli Dört</item>
+        <item>Elli Beş</item>
+        <item>Elli Altı</item>
+        <item>Elli Yedi</item>
+        <item>Elli Sekiz</item>
+        <item>Elli Dokuz</item>
+        <item>Altmış</item>
+        <item>Altmış Bir</item>
+        <item>Altmış İki</item>
+        <item>Altmış Üç</item>
+        <item>Altmış Dört</item>
+        <item>Altmış Beş</item>
+        <item>Altmış Altı</item>
+        <item>Altmış Yedi</item>
+        <item>Altmış Sekiz</item>
+        <item>Altmış Dokuz</item>
+        <item>Yetmiş</item>
+        <item>Yetmiş Bir</item>
+        <item>Yetmiş İki</item>
+        <item>Yetmiş Üç</item>
+        <item>Yetmiş Dört</item>
+        <item>Yetmiş Beş</item>
+        <item>Yetmiş Altı</item>
+        <item>Yetmiş Yedi</item>
+        <item>Yetmiş Sekiz</item>
+        <item>Yetmiş Dokuz</item>
+        <item>Seksen</item>
+        <item>Seksen Bir</item>
+        <item>Seksen İki</item>
+        <item>Seksen Üç</item>
+        <item>Seksen Dört</item>
+        <item>Seksen Beş</item>
+        <item>Seksen Altı</item>
+        <item>Seksen Yedi</item>
+        <item>Seksen Sekiz</item>
+        <item>Seksen Dokuz</item>
+        <item>Doksan</item>
+        <item>Doksan Bir</item>
+        <item>Doksan İki</item>
+        <item>Doksan Üç</item>
+        <item>Doksan Dört</item>
+        <item>Doksan Beş</item>
+        <item>Doksan Altı</item>
+        <item>Doksan Yedi</item>
+        <item>Doksan Sekiz</item>
+        <item>Doksan Dokuz</item>
+    </string-array>
+    <string-array name="verbosetime1">
+        <item>Oniki</item>
+        <item>Oniki Sıfırbir</item>
+        <item>Oniki Sıfıriki</item>
+        <item>Oniki Sıfırüç</item>
+        <item>Oniki Sıfırdört</item>
+        <item>Oniki Sıfırbeş</item>
+        <item>Oniki Sıfıraltı</item>
+        <item>Oniki Sıfıryedi</item>
+        <item>Oniki Sıfırsekiz</item>
+        <item>Oniki Sıfırdokuz</item>
+        <item>Oniki On</item>
+        <item>Oniki Onbir</item>
+        <item>Oniki Oniki</item>
+        <item>Oniki Onüç</item>
+        <item>Oniki Ondört</item>
+        <item>Oniki Onbeş</item>
+        <item>Oniki Onaltı</item>
+        <item>Oniki Onyedi</item>
+        <item>Oniki Onsekiz</item>
+        <item>Oniki Ondokuz</item>
+        <item>Oniki Yirmi</item>
+        <item>Oniki Yirmibir</item>
+        <item>Oniki Yirmiiki</item>
+        <item>Oniki Yirmiüç</item>
+        <item>Oniki Yirmidört</item>
+        <item>Oniki Yirmibeş</item>
+        <item>Oniki Yirmialtı</item>
+        <item>Oniki Yirmiyedi</item>
+        <item>Oniki Yirmisekiz</item>
+        <item>Oniki Yirmidokuz</item>
+        <item>Oniki Otuz</item>
+        <item>Oniki Otuzbir</item>
+        <item>Oniki Otuziki</item>
+        <item>Oniki Otuzüç</item>
+        <item>Oniki Otuzdört</item>
+        <item>Oniki Otuzbeş</item>
+        <item>Oniki Otuzaltı</item>
+        <item>Oniki Otuzyedi</item>
+        <item>Oniki Otuzsekiz</item>
+        <item>Oniki Otuzdokuz</item>
+        <item>Oniki Kırk</item>
+        <item>Oniki Kırkbir</item>
+        <item>Oniki Kırkiki</item>
+        <item>Oniki Kırküç</item>
+        <item>Oniki Kırkdört</item>
+        <item>Oniki Kırkbeş</item>
+        <item>Oniki Kırkaltı</item>
+        <item>Oniki Kırkyedi</item>
+        <item>Oniki Kırksekiz</item>
+        <item>Oniki Kırkdokuz</item>
+        <item>Oniki Elli</item>
+        <item>Oniki Ellibir</item>
+        <item>Oniki Elliiki</item>
+        <item>Oniki Elliüç</item>
+        <item>Oniki Ellidört</item>
+        <item>Oniki Ellibeş</item>
+        <item>Oniki Ellialtı</item>
+        <item>Oniki Elliyedi</item>
+        <item>Oniki Ellisekiz</item>
+        <item>Oniki Ellidokuz</item>
+        <item>Bir</item>
+        <item>Bir Sıfırbir</item>
+        <item>Bir Sıfıriki</item>
+        <item>Bir Sıfırüç</item>
+        <item>Bir Sıfırdört</item>
+        <item>Bir Sıfırbeş</item>
+        <item>Bir Sıfıraltı</item>
+        <item>Bir Sıfıryedi</item>
+        <item>Bir Sıfırsekiz</item>
+        <item>Bir Sıfırdokuz</item>
+        <item>Bir On</item>
+        <item>Bir Onbir</item>
+        <item>Bir Oniki</item>
+        <item>Bir Onüç</item>
+        <item>Bir Ondört</item>
+        <item>Bir Onbeş</item>
+        <item>Bir Onaltı</item>
+        <item>Bir Onyedi</item>
+        <item>Bir Onsekiz</item>
+        <item>Bir Ondokuz</item>
+        <item>Bir Yirmi</item>
+        <item>Bir Yirmibir</item>
+        <item>Bir Yirmiiki</item>
+        <item>Bir Yirmiüç</item>
+        <item>Bir Yirmidört</item>
+        <item>Bir Yirmibeş</item>
+        <item>Bir Yirmialtı</item>
+        <item>Bir Yirmiyedi</item>
+        <item>Bir Yirmisekiz</item>
+        <item>Bir Yirmidokuz</item>
+        <item>Bir Otuz</item>
+        <item>Bir Otuzbir</item>
+        <item>Bir Otuziki</item>
+        <item>Bir Otuzüç</item>
+        <item>Bir Otuzdört</item>
+        <item>Bir Otuzbeş</item>
+        <item>Bir Otuzaltı</item>
+        <item>Bir Otuzyedi</item>
+        <item>Bir Otuzsekiz</item>
+        <item>Bir Otuzdokuz</item>
+        <item>Bir Kırk</item>
+        <item>Bir Kırkbir</item>
+        <item>Bir Kırkiki</item>
+        <item>Bir Kırküç</item>
+        <item>Bir Kırkdört</item>
+        <item>Bir Kırkbeş</item>
+        <item>Bir Kırkaltı</item>
+        <item>Bir Kırkyedi</item>
+        <item>Bir Kırksekiz</item>
+        <item>Bir Kırkdokuz</item>
+        <item>Bir Elli</item>
+        <item>Bir Ellibir</item>
+        <item>Bir Elliiki</item>
+        <item>Bir Elliüç</item>
+        <item>Bir Ellidört</item>
+        <item>Bir Ellibeş</item>
+        <item>Bir Ellialtı</item>
+        <item>Bir Elliyedi</item>
+        <item>Bir Ellisekiz</item>
+        <item>Bir Ellidokuz</item>
+        <item>İki</item>
+        <item>İki Sıfırbir</item>
+        <item>İki Sıfıriki</item>
+        <item>İki Sıfırüç</item>
+        <item>İki Sıfırdört</item>
+        <item>İki Sıfırbeş</item>
+        <item>İki Sıfıraltı</item>
+        <item>İki Sıfıryedi</item>
+        <item>İki Sıfırsekiz</item>
+        <item>İki Sıfırdokuz</item>
+        <item>İki On</item>
+        <item>İki Onbir</item>
+        <item>İki Oniki</item>
+        <item>İki Onüç</item>
+        <item>İki Ondört</item>
+        <item>İki Onbeş</item>
+        <item>İki Onaltı</item>
+        <item>İki Onyedi</item>
+        <item>İki Onsekiz</item>
+        <item>İki Ondokuz</item>
+        <item>İki Yirmi</item>
+        <item>İki Yirmibir</item>
+        <item>İki Yirmiiki</item>
+        <item>İki Yirmiüç</item>
+        <item>İki Yirmidört</item>
+        <item>İki Yirmibeş</item>
+        <item>İki Yirmialtı</item>
+        <item>İki Yirmiyedi</item>
+        <item>İki Yirmisekiz</item>
+        <item>İki Yirmidokuz</item>
+        <item>İki Otuz</item>
+        <item>İki Otuzbir</item>
+        <item>İki Otuziki</item>
+        <item>İki Otuzüç</item>
+        <item>İki Otuzdört</item>
+        <item>İki Otuzbeş</item>
+        <item>İki Otuzaltı</item>
+        <item>İki Otuzyedi</item>
+        <item>İki Otuzsekiz</item>
+        <item>İki Otuzdokuz</item>
+        <item>İki Kırk</item>
+        <item>İki Kırkbir</item>
+        <item>İki Kırkiki</item>
+        <item>İki Kırküç</item>
+        <item>İki Kırkdört</item>
+        <item>İki Kırkbeş</item>
+        <item>İki Kırkaltı</item>
+        <item>İki Kırkyedi</item>
+        <item>İki Kırksekiz</item>
+        <item>İki Kırkdokuz</item>
+        <item>İki Elli</item>
+        <item>İki Ellibir</item>
+        <item>İki Elliiki</item>
+        <item>İki Elliüç</item>
+        <item>İki Ellidört</item>
+        <item>İki Ellibeş</item>
+        <item>İki Ellialtı</item>
+        <item>İki Elliyedi</item>
+        <item>İki Ellisekiz</item>
+        <item>İki Ellidokuz</item>
+        <item>Üç</item>
+        <item>Üç Sıfırbir</item>
+        <item>Üç Sıfıriki</item>
+        <item>Üç Sıfırüç</item>
+        <item>Üç Sıfırdört</item>
+        <item>Üç Sıfırbeş</item>
+        <item>Üç Sıfıraltı</item>
+        <item>Üç Sıfıryedi</item>
+        <item>Üç Sıfırsekiz</item>
+        <item>Üç Sıfırdokuz</item>
+        <item>Üç On</item>
+        <item>Üç Onbir</item>
+        <item>Üç Oniki</item>
+        <item>Üç Onüç</item>
+        <item>Üç Ondört</item>
+        <item>Üç Onbeş</item>
+        <item>Üç Onaltı</item>
+        <item>Üç Onyedi</item>
+        <item>Üç Onsekiz</item>
+        <item>Üç Ondokuz</item>
+        <item>Üç Yirmi</item>
+        <item>Üç Yirmibir</item>
+        <item>Üç Yirmiiki</item>
+        <item>Üç Yirmiüç</item>
+        <item>Üç Yirmidört</item>
+        <item>Üç Yirmibeş</item>
+        <item>Üç Yirmialtı</item>
+        <item>Üç Yirmiyedi</item>
+        <item>Üç Yirmisekiz</item>
+        <item>Üç Yirmidokuz</item>
+        <item>Üç Otuz</item>
+        <item>Üç Otuzbir</item>
+        <item>Üç Otuziki</item>
+        <item>Üç Otuzüç</item>
+        <item>Üç Otuzdört</item>
+        <item>Üç Otuzbeş</item>
+        <item>Üç Otuzaltı</item>
+        <item>Üç Otuzyedi</item>
+        <item>Üç Otuzsekiz</item>
+        <item>Üç Otuzdokuz</item>
+        <item>Üç Kırk</item>
+        <item>Üç Kırkbir</item>
+        <item>Üç Kırkiki</item>
+        <item>Üç Kırküç</item>
+        <item>Üç Kırkdört</item>
+        <item>Üç Kırkbeş</item>
+        <item>Üç Kırkaltı</item>
+        <item>Üç Kırkyedi</item>
+        <item>Üç Kırksekiz</item>
+        <item>Üç Kırkdokuz</item>
+        <item>Üç Elli</item>
+        <item>Üç Ellibir</item>
+        <item>Üç Elliiki</item>
+        <item>Üç Elliüç</item>
+        <item>Üç Ellidört</item>
+        <item>Üç Ellibeş</item>
+        <item>Üç Ellialtı</item>
+        <item>Üç Elliyedi</item>
+        <item>Üç Ellisekiz</item>
+        <item>Üç Ellidokuz</item>
+        <item>Dört</item>
+        <item>Dört Sıfırbir</item>
+        <item>Dört Sıfıriki</item>
+        <item>Dört Sıfırüç</item>
+        <item>Dört Sıfırdört</item>
+        <item>Dört Sıfırbeş</item>
+        <item>Dört Sıfıraltı</item>
+        <item>Dört Sıfıryedi</item>
+        <item>Dört Sıfırsekiz</item>
+        <item>Dört Sıfırdokuz</item>
+        <item>Dört On</item>
+        <item>Dört Onbir</item>
+        <item>Dört Oniki</item>
+        <item>Dört Onüç</item>
+        <item>Dört Ondört</item>
+        <item>Dört Onbeş</item>
+        <item>Dört Onaltı</item>
+        <item>Dört Onyedi</item>
+        <item>Dört Onsekiz</item>
+        <item>Dört Ondokuz</item>
+        <item>Dört Yirmi</item>
+        <item>Dört Yirmibir</item>
+        <item>Dört Yirmiiki</item>
+        <item>Dört Yirmiüç</item>
+        <item>Dört Yirmidört</item>
+        <item>Dört Yirmibeş</item>
+        <item>Dört Yirmialtı</item>
+        <item>Dört Yirmiyedi</item>
+        <item>Dört Yirmisekiz</item>
+        <item>Dört Yirmidokuz</item>
+        <item>Dört Otuz</item>
+        <item>Dört Otuzbir</item>
+        <item>Dört Otuziki</item>
+        <item>Dört Otuzüç</item>
+        <item>Dört Otuzdört</item>
+        <item>Dört Otuzbeş</item>
+        <item>Dört Otuzaltı</item>
+        <item>Dört Otuzyedi</item>
+        <item>Dört Otuzsekiz</item>
+        <item>Dört Otuzdokuz</item>
+        <item>Dört Kırk</item>
+        <item>Dört Kırkbir</item>
+        <item>Dört Kırkiki</item>
+        <item>Dört Kırküç</item>
+        <item>Dört Kırkdört</item>
+        <item>Dört Kırkbeş</item>
+        <item>Dört Kırkaltı</item>
+        <item>Dört Kırkyedi</item>
+        <item>Dört Kırksekiz</item>
+        <item>Dört Kırkdokuz</item>
+        <item>Dört Elli</item>
+        <item>Dört Ellibir</item>
+        <item>Dört Elliiki</item>
+        <item>Dört Elliüç</item>
+        <item>Dört Ellidört</item>
+        <item>Dört Ellibeş</item>
+        <item>Dört Ellialtı</item>
+        <item>Dört Elliyedi</item>
+        <item>Dört Ellisekiz</item>
+        <item>Dört Ellidokuz</item>
+        <item>Beş</item>
+        <item>Beş Sıfırbir</item>
+        <item>Beş Sıfıriki</item>
+        <item>Beş Sıfırüç</item>
+        <item>Beş Sıfırdört</item>
+        <item>Beş Sıfırbeş</item>
+        <item>Beş Sıfıraltı</item>
+        <item>Beş Sıfıryedi</item>
+        <item>Beş Sıfırsekiz</item>
+        <item>Beş Sıfırdokuz</item>
+        <item>Beş On</item>
+        <item>Beş Onbir</item>
+        <item>Beş Oniki</item>
+        <item>Beş Onüç</item>
+        <item>Beş Ondört</item>
+        <item>Beş Onbeş</item>
+        <item>Beş Onaltı</item>
+        <item>Beş Onyedi</item>
+        <item>Beş Onsekiz</item>
+        <item>Beş Ondokuz</item>
+        <item>Beş Yirmi</item>
+        <item>Beş Yirmibir</item>
+        <item>Beş Yirmiiki</item>
+        <item>Beş Yirmiüç</item>
+        <item>Beş Yirmidört</item>
+        <item>Beş Yirmibeş</item>
+        <item>Beş Yirmialtı</item>
+        <item>Beş Yirmiyedi</item>
+        <item>Beş Yirmisekiz</item>
+        <item>Beş Yirmidokuz</item>
+        <item>Beş Otuz</item>
+        <item>Beş Otuzbir</item>
+        <item>Beş Otuziki</item>
+        <item>Beş Otuzüç</item>
+        <item>Beş Otuzdört</item>
+        <item>Beş Otuzbeş</item>
+        <item>Beş Otuzaltı</item>
+        <item>Beş Otuzyedi</item>
+        <item>Beş Otuzsekiz</item>
+        <item>Beş Otuzdokuz</item>
+        <item>Beş Kırk</item>
+        <item>Beş Kırkbir</item>
+        <item>Beş Kırkiki</item>
+        <item>Beş Kırküç</item>
+        <item>Beş Kırkdört</item>
+        <item>Beş Kırkbeş</item>
+        <item>Beş Kırkaltı</item>
+        <item>Beş Kırkyedi</item>
+        <item>Beş Kırksekiz</item>
+        <item>Beş Kırkdokuz</item>
+        <item>Beş Elli</item>
+        <item>Beş Ellibir</item>
+        <item>Beş Elliiki</item>
+        <item>Beş Elliüç</item>
+        <item>Beş Ellidört</item>
+        <item>Beş Ellibeş</item>
+        <item>Beş Ellialtı</item>
+        <item>Beş Elliyedi</item>
+        <item>Beş Ellisekiz</item>
+        <item>Beş Ellidokuz</item>
+    </string-array>
+    <string-array name="verbosetime2">
+        <item>Altı</item>
+        <item>Altı Sıfırbir</item>
+        <item>Altı Sıfıriki</item>
+        <item>Altı Sıfırüç</item>
+        <item>Altı Sıfırdört</item>
+        <item>Altı Sıfırbeş</item>
+        <item>Altı Sıfıraltı</item>
+        <item>Altı Sıfıryedi</item>
+        <item>Altı Sıfırsekiz</item>
+        <item>Altı Sıfırdokuz</item>
+        <item>Altı On</item>
+        <item>Altı Onbir</item>
+        <item>Altı Oniki</item>
+        <item>Altı Onüç</item>
+        <item>Altı Ondört</item>
+        <item>Altı Onbeş</item>
+        <item>Altı Onaltı</item>
+        <item>Altı Onyedi</item>
+        <item>Altı Onsekiz</item>
+        <item>Altı Ondokuz</item>
+        <item>Altı Yirmi</item>
+        <item>Altı Yirmibir</item>
+        <item>Altı Yirmiiki</item>
+        <item>Altı Yirmiüç</item>
+        <item>Altı Yirmidört</item>
+        <item>Altı Yirmibeş</item>
+        <item>Altı Yirmialtı</item>
+        <item>Altı Yirmiyedi</item>
+        <item>Altı Yirmisekiz</item>
+        <item>Altı Yirmidokuz</item>
+        <item>Altı Otuz</item>
+        <item>Altı Otuzbir</item>
+        <item>Altı Otuziki</item>
+        <item>Altı Otuzüç</item>
+        <item>Altı Otuzdört</item>
+        <item>Altı Otuzbeş</item>
+        <item>Altı Otuzaltı</item>
+        <item>Altı Otuzyedi</item>
+        <item>Altı Otuzsekiz</item>
+        <item>Altı Otuzdokuz</item>
+        <item>Altı Kırk</item>
+        <item>Altı Kırkbir</item>
+        <item>Altı Kırkiki</item>
+        <item>Altı Kırküç</item>
+        <item>Altı Kırkdört</item>
+        <item>Altı Kırkbeş</item>
+        <item>Altı Kırkaltı</item>
+        <item>Altı Kırkyedi</item>
+        <item>Altı Kırksekiz</item>
+        <item>Altı Kırkdokuz</item>
+        <item>Altı Elli</item>
+        <item>Altı Ellibir</item>
+        <item>Altı Elliiki</item>
+        <item>Altı Elliüç</item>
+        <item>Altı Ellidört</item>
+        <item>Altı Ellibeş</item>
+        <item>Altı Ellialtı</item>
+        <item>Altı Elliyedi</item>
+        <item>Altı Ellisekiz</item>
+        <item>Altı Ellidokuz</item>
+        <item>Yedi</item>
+        <item>Yedi Sıfırbir</item>
+        <item>Yedi Sıfıriki</item>
+        <item>Yedi Sıfırüç</item>
+        <item>Yedi Sıfırdört</item>
+        <item>Yedi Sıfırbeş</item>
+        <item>Yedi Sıfıraltı</item>
+        <item>Yedi Sıfıryedi</item>
+        <item>Yedi Sıfırsekiz</item>
+        <item>Yedi Sıfırdokuz</item>
+        <item>Yedi On</item>
+        <item>Yedi Onbir</item>
+        <item>Yedi Oniki</item>
+        <item>Yedi Onüç</item>
+        <item>Yedi Ondört</item>
+        <item>Yedi Onbeş</item>
+        <item>Yedi Onaltı</item>
+        <item>Yedi Onyedi</item>
+        <item>Yedi Onsekiz</item>
+        <item>Yedi Ondokuz</item>
+        <item>Yedi Yirmi</item>
+        <item>Yedi Yirmibir</item>
+        <item>Yedi Yirmiiki</item>
+        <item>Yedi Yirmiüç</item>
+        <item>Yedi Yirmidört</item>
+        <item>Yedi Yirmibeş</item>
+        <item>Yedi Yirmialtı</item>
+        <item>Yedi Yirmiyedi</item>
+        <item>Yedi Yirmisekiz</item>
+        <item>Yedi Yirmidokuz</item>
+        <item>Yedi Otuz</item>
+        <item>Yedi Otuzbir</item>
+        <item>Yedi Otuziki</item>
+        <item>Yedi Otuzüç</item>
+        <item>Yedi Otuzdört</item>
+        <item>Yedi Otuzbeş</item>
+        <item>Yedi Otuzaltı</item>
+        <item>Yedi Otuzyedi</item>
+        <item>Yedi Otuzsekiz</item>
+        <item>Yedi Otuzdokuz</item>
+        <item>Yedi Kırk</item>
+        <item>Yedi Kırkbir</item>
+        <item>Yedi Kırkiki</item>
+        <item>Yedi Kırküç</item>
+        <item>Yedi Kırkdört</item>
+        <item>Yedi Kırkbeş</item>
+        <item>Yedi Kırkaltı</item>
+        <item>Yedi Kırkyedi</item>
+        <item>Yedi Kırksekiz</item>
+        <item>Yedi Kırkdokuz</item>
+        <item>Yedi Elli</item>
+        <item>Yedi Ellibir</item>
+        <item>Yedi Elliiki</item>
+        <item>Yedi Elliüç</item>
+        <item>Yedi Ellidört</item>
+        <item>Yedi Ellibeş</item>
+        <item>Yedi Ellialtı</item>
+        <item>Yedi Elliyedi</item>
+        <item>Yedi Ellisekiz</item>
+        <item>Yedi Ellidokuz</item>
+        <item>Sekiz</item>
+        <item>Sekiz Sıfırbir</item>
+        <item>Sekiz Sıfıriki</item>
+        <item>Sekiz Sıfırüç</item>
+        <item>Sekiz Sıfırdört</item>
+        <item>Sekiz Sıfırbeş</item>
+        <item>Sekiz Sıfıraltı</item>
+        <item>Sekiz Sıfıryedi</item>
+        <item>Sekiz Sıfırsekiz</item>
+        <item>Sekiz Sıfırdokuz</item>
+        <item>Sekiz On</item>
+        <item>Sekiz Onbir</item>
+        <item>Sekiz Oniki</item>
+        <item>Sekiz Onüç</item>
+        <item>Sekiz Ondört</item>
+        <item>Sekiz Onbeş</item>
+        <item>Sekiz Onaltı</item>
+        <item>Sekiz Onyedi</item>
+        <item>Sekiz Onsekiz</item>
+        <item>Sekiz Ondokuz</item>
+        <item>Sekiz Yirmi</item>
+        <item>Sekiz Yirmibir</item>
+        <item>Sekiz Yirmiiki</item>
+        <item>Sekiz Yirmiüç</item>
+        <item>Sekiz Yirmidört</item>
+        <item>Sekiz Yirmibeş</item>
+        <item>Sekiz Yirmialtı</item>
+        <item>Sekiz Yirmiyedi</item>
+        <item>Sekiz Yirmisekiz</item>
+        <item>Sekiz Yirmidokuz</item>
+        <item>Sekiz Otuz</item>
+        <item>Sekiz Otuzbir</item>
+        <item>Sekiz Otuziki</item>
+        <item>Sekiz Otuzüç</item>
+        <item>Sekiz Otuzdört</item>
+        <item>Sekiz Otuzbeş</item>
+        <item>Sekiz Otuzaltı</item>
+        <item>Sekiz Otuzyedi</item>
+        <item>Sekiz Otuzsekiz</item>
+        <item>Sekiz Otuzdokuz</item>
+        <item>Sekiz Kırk</item>
+        <item>Sekiz Kırkbir</item>
+        <item>Sekiz Kırkiki</item>
+        <item>Sekiz Kırküç</item>
+        <item>Sekiz Kırkdört</item>
+        <item>Sekiz Kırkbeş</item>
+        <item>Sekiz Kırkaltı</item>
+        <item>Sekiz Kırkyedi</item>
+        <item>Sekiz Kırksekiz</item>
+        <item>Sekiz Kırkdokuz</item>
+        <item>Sekiz Elli</item>
+        <item>Sekiz Ellibir</item>
+        <item>Sekiz Elliiki</item>
+        <item>Sekiz Elliüç</item>
+        <item>Sekiz Ellidört</item>
+        <item>Sekiz Ellibeş</item>
+        <item>Sekiz Ellialtı</item>
+        <item>Sekiz Elliyedi</item>
+        <item>Sekiz Ellisekiz</item>
+        <item>Sekiz Ellidokuz</item>
+        <item>Dokuz</item>
+        <item>Dokuz Sıfırbir</item>
+        <item>Dokuz Sıfıriki</item>
+        <item>Dokuz Sıfırüç</item>
+        <item>Dokuz Sıfırdört</item>
+        <item>Dokuz Sıfırbeş</item>
+        <item>Dokuz Sıfıraltı</item>
+        <item>Dokuz Sıfıryedi</item>
+        <item>Dokuz Sıfırsekiz</item>
+        <item>Dokuz Sıfırdokuz</item>
+        <item>Dokuz On</item>
+        <item>Dokuz Onbir</item>
+        <item>Dokuz Oniki</item>
+        <item>Dokuz Onüç</item>
+        <item>Dokuz Ondört</item>
+        <item>Dokuz Onbeş</item>
+        <item>Dokuz Onaltı</item>
+        <item>Dokuz Onyedi</item>
+        <item>Dokuz Onsekiz</item>
+        <item>Dokuz Ondokuz</item>
+        <item>Dokuz Yirmi</item>
+        <item>Dokuz Yirmibir</item>
+        <item>Dokuz Yirmiiki</item>
+        <item>Dokuz Yirmiüç</item>
+        <item>Dokuz Yirmidört</item>
+        <item>Dokuz Yirmibeş</item>
+        <item>Dokuz Yirmialtı</item>
+        <item>Dokuz Yirmiyedi</item>
+        <item>Dokuz Yirmisekiz</item>
+        <item>Dokuz Yirmidokuz</item>
+        <item>Dokuz Otuz</item>
+        <item>Dokuz Otuzbir</item>
+        <item>Dokuz Otuziki</item>
+        <item>Dokuz Otuzüç</item>
+        <item>Dokuz Otuzdört</item>
+        <item>Dokuz Otuzbeş</item>
+        <item>Dokuz Otuzaltı</item>
+        <item>Dokuz Otuzyedi</item>
+        <item>Dokuz Otuzsekiz</item>
+        <item>Dokuz Otuzdokuz</item>
+        <item>Dokuz Kırk</item>
+        <item>Dokuz Kırkbir</item>
+        <item>Dokuz Kırkiki</item>
+        <item>Dokuz Kırküç</item>
+        <item>Dokuz Kırkdört</item>
+        <item>Dokuz Kırkbeş</item>
+        <item>Dokuz Kırkaltı</item>
+        <item>Dokuz Kırkyedi</item>
+        <item>Dokuz Kırksekiz</item>
+        <item>Dokuz Kırkdokuz</item>
+        <item>Dokuz Elli</item>
+        <item>Dokuz Ellibir</item>
+        <item>Dokuz Elliiki</item>
+        <item>Dokuz Elliüç</item>
+        <item>Dokuz Ellidört</item>
+        <item>Dokuz Ellibeş</item>
+        <item>Dokuz Ellialtı</item>
+        <item>Dokuz Elliyedi</item>
+        <item>Dokuz Ellisekiz</item>
+        <item>Dokuz Ellidokuz</item>
+        <item>On</item>
+        <item>On Sıfırbir</item>
+        <item>On Sıfıriki</item>
+        <item>On Sıfırüç</item>
+        <item>On Sıfırdört</item>
+        <item>On Sıfırbeş</item>
+        <item>On Sıfıraltı</item>
+        <item>On Sıfıryedi</item>
+        <item>On Sıfırsekiz</item>
+        <item>On Sıfırdokuz</item>
+        <item>On On</item>
+        <item>On Onbir</item>
+        <item>On Oniki</item>
+        <item>On Onüç</item>
+        <item>On Ondört</item>
+        <item>On Onbeş</item>
+        <item>On Onaltı</item>
+        <item>On Onyedi</item>
+        <item>On Onsekiz</item>
+        <item>On Ondokuz</item>
+        <item>On Yirmi</item>
+        <item>On Yirmibir</item>
+        <item>On Yirmiiki</item>
+        <item>On Yirmiüç</item>
+        <item>On Yirmidört</item>
+        <item>On Yirmibeş</item>
+        <item>On Yirmialtı</item>
+        <item>On Yirmiyedi</item>
+        <item>On Yirmisekiz</item>
+        <item>On Yirmidokuz</item>
+        <item>On Otuz</item>
+        <item>On Otuzbir</item>
+        <item>On Otuziki</item>
+        <item>On Otuzüç</item>
+        <item>On Otuzdört</item>
+        <item>On Otuzbeş</item>
+        <item>On Otuzaltı</item>
+        <item>On Otuzyedi</item>
+        <item>On Otuzsekiz</item>
+        <item>On Otuzdokuz</item>
+        <item>On Kırk</item>
+        <item>On Kırkbir</item>
+        <item>On Kırkiki</item>
+        <item>On Kırküç</item>
+        <item>On Kırkdört</item>
+        <item>On Kırkbeş</item>
+        <item>On Kırkaltı</item>
+        <item>On Kırkyedi</item>
+        <item>On Kırksekiz</item>
+        <item>On Kırkdokuz</item>
+        <item>On Elli</item>
+        <item>On Ellibir</item>
+        <item>On Elliiki</item>
+        <item>On Elliüç</item>
+        <item>On Ellidört</item>
+        <item>On Ellibeş</item>
+        <item>On Ellialtı</item>
+        <item>On Elliyedi</item>
+        <item>On Ellisekiz</item>
+        <item>On Ellidokuz</item>
+        <item>Onbir</item>
+        <item>Onbir Sıfırbir</item>
+        <item>Onbir Sıfıriki</item>
+        <item>Onbir Sıfırüç</item>
+        <item>Onbir Sıfırdört</item>
+        <item>Onbir Sıfırbeş</item>
+        <item>Onbir Sıfıraltı</item>
+        <item>Onbir Sıfıryedi</item>
+        <item>Onbir Sıfırsekiz</item>
+        <item>Onbir Sıfırdokuz</item>
+        <item>Onbir On</item>
+        <item>Onbir Onbir</item>
+        <item>Onbir Oniki</item>
+        <item>Onbir Onüç</item>
+        <item>Onbir Ondört</item>
+        <item>Onbir Onbeş</item>
+        <item>Onbir Onaltı</item>
+        <item>Onbir Onyedi</item>
+        <item>Onbir Onsekiz</item>
+        <item>Onbir Ondokuz</item>
+        <item>Onbir Yirmi</item>
+        <item>Onbir Yirmibir</item>
+        <item>Onbir Yirmiiki</item>
+        <item>Onbir Yirmiüç</item>
+        <item>Onbir Yirmidört</item>
+        <item>Onbir Yirmibeş</item>
+        <item>Onbir Yirmialtı</item>
+        <item>Onbir Yirmiyedi</item>
+        <item>Onbir Yirmisekiz</item>
+        <item>Onbir Yirmidokuz</item>
+        <item>Onbir Otuz</item>
+        <item>Onbir Otuzbir</item>
+        <item>Onbir Otuziki</item>
+        <item>Onbir Otuzüç</item>
+        <item>Onbir Otuzdört</item>
+        <item>Onbir Otuzbeş</item>
+        <item>Onbir Otuzaltı</item>
+        <item>Onbir Otuzyedi</item>
+        <item>Onbir Otuzsekiz</item>
+        <item>Onbir Otuzdokuz</item>
+        <item>Onbir Kırk</item>
+        <item>Onbir Kırkbir</item>
+        <item>Onbir Kırkiki</item>
+        <item>Onbir Kırküç</item>
+        <item>Onbir Kırkdört</item>
+        <item>Onbir Kırkbeş</item>
+        <item>Onbir Kırkaltı</item>
+        <item>Onbir Kırkyedi</item>
+        <item>Onbir Kırksekiz</item>
+        <item>Onbir Kırkdokuz</item>
+        <item>Onbir Elli</item>
+        <item>Onbir Ellibir</item>
+        <item>Onbir Elliiki</item>
+        <item>Onbir Elliüç</item>
+        <item>Onbir Ellidört</item>
+        <item>Onbir Ellibeş</item>
+        <item>Onbir Ellialtı</item>
+        <item>Onbir Elliyedi</item>
+        <item>Onbir Ellisekiz</item>
+        <item>Onbir Ellidokuz</item>
+    </string-array>
+    <string-array name="verbosetime3">
+        <item>Oniki</item>
+        <item>Oniki Sıfırbir</item>
+        <item>Oniki Sıfıriki</item>
+        <item>Oniki Sıfırüç</item>
+        <item>Oniki Sıfırdört</item>
+        <item>Oniki Sıfırbeş</item>
+        <item>Oniki Sıfıraltı</item>
+        <item>Oniki Sıfıryedi</item>
+        <item>Oniki Sıfırsekiz</item>
+        <item>Oniki Sıfırdokuz</item>
+        <item>Oniki On</item>
+        <item>Oniki Onbir</item>
+        <item>Oniki Oniki</item>
+        <item>Oniki Onüç</item>
+        <item>Oniki Ondört</item>
+        <item>Oniki Onbeş</item>
+        <item>Oniki Onaltı</item>
+        <item>Oniki Onyedi</item>
+        <item>Oniki Onsekiz</item>
+        <item>Oniki Ondokuz</item>
+        <item>Oniki Yirmi</item>
+        <item>Oniki Yirmibir</item>
+        <item>Oniki Yirmiiki</item>
+        <item>Oniki Yirmiüç</item>
+        <item>Oniki Yirmidört</item>
+        <item>Oniki Yirmibeş</item>
+        <item>Oniki Yirmialtı</item>
+        <item>Oniki Yirmiyedi</item>
+        <item>Oniki Yirmisekiz</item>
+        <item>Oniki Yirmidokuz</item>
+        <item>Oniki Otuz</item>
+        <item>Oniki Otuzbir</item>
+        <item>Oniki Otuziki</item>
+        <item>Oniki Otuzüç</item>
+        <item>Oniki Otuzdört</item>
+        <item>Oniki Otuzbeş</item>
+        <item>Oniki Otuzaltı</item>
+        <item>Oniki Otuzyedi</item>
+        <item>Oniki Otuzsekiz</item>
+        <item>Oniki Otuzdokuz</item>
+        <item>Oniki Kırk</item>
+        <item>Oniki Kırkbir</item>
+        <item>Oniki Kırkiki</item>
+        <item>Oniki Kırküç</item>
+        <item>Oniki Kırkdört</item>
+        <item>Oniki Kırkbeş</item>
+        <item>Oniki Kırkaltı</item>
+        <item>Oniki Kırkyedi</item>
+        <item>Oniki Kırksekiz</item>
+        <item>Oniki Kırkdokuz</item>
+        <item>Oniki Elli</item>
+        <item>Oniki Ellibir</item>
+        <item>Oniki Elliiki</item>
+        <item>Oniki Elliüç</item>
+        <item>Oniki Ellidört</item>
+        <item>Oniki Ellibeş</item>
+        <item>Oniki Ellialtı</item>
+        <item>Oniki Elliyedi</item>
+        <item>Oniki Ellisekiz</item>
+        <item>Oniki Ellidokuz</item>
+        <item>Bir</item>
+        <item>Bir Sıfırbir</item>
+        <item>Bir Sıfıriki</item>
+        <item>Bir Sıfırüç</item>
+        <item>Bir Sıfırdört</item>
+        <item>Bir Sıfırbeş</item>
+        <item>Bir Sıfıraltı</item>
+        <item>Bir Sıfıryedi</item>
+        <item>Bir Sıfırsekiz</item>
+        <item>Bir Sıfırdokuz</item>
+        <item>Bir On</item>
+        <item>Bir Onbir</item>
+        <item>Bir Oniki</item>
+        <item>Bir Onüç</item>
+        <item>Bir Ondört</item>
+        <item>Bir Onbeş</item>
+        <item>Bir Onaltı</item>
+        <item>Bir Onyedi</item>
+        <item>Bir Onsekiz</item>
+        <item>Bir Ondokuz</item>
+        <item>Bir Yirmi</item>
+        <item>Bir Yirmibir</item>
+        <item>Bir Yirmiiki</item>
+        <item>Bir Yirmiüç</item>
+        <item>Bir Yirmidört</item>
+        <item>Bir Yirmibeş</item>
+        <item>Bir Yirmialtı</item>
+        <item>Bir Yirmiyedi</item>
+        <item>Bir Yirmisekiz</item>
+        <item>Bir Yirmidokuz</item>
+        <item>Bir Otuz</item>
+        <item>Bir Otuzbir</item>
+        <item>Bir Otuziki</item>
+        <item>Bir Otuzüç</item>
+        <item>Bir Otuzdört</item>
+        <item>Bir Otuzbeş</item>
+        <item>Bir Otuzaltı</item>
+        <item>Bir Otuzyedi</item>
+        <item>Bir Otuzsekiz</item>
+        <item>Bir Otuzdokuz</item>
+        <item>Bir Kırk</item>
+        <item>Bir Kırkbir</item>
+        <item>Bir Kırkiki</item>
+        <item>Bir Kırküç</item>
+        <item>Bir Kırkdört</item>
+        <item>Bir Kırkbeş</item>
+        <item>Bir Kırkaltı</item>
+        <item>Bir Kırkyedi</item>
+        <item>Bir Kırksekiz</item>
+        <item>Bir Kırkdokuz</item>
+        <item>Bir Elli</item>
+        <item>Bir Ellibir</item>
+        <item>Bir Elliiki</item>
+        <item>Bir Elliüç</item>
+        <item>Bir Ellidört</item>
+        <item>Bir Ellibeş</item>
+        <item>Bir Ellialtı</item>
+        <item>Bir Elliyedi</item>
+        <item>Bir Ellisekiz</item>
+        <item>Bir Ellidokuz</item>
+        <item>İki</item>
+        <item>İki Sıfırbir</item>
+        <item>İki Sıfıriki</item>
+        <item>İki Sıfırüç</item>
+        <item>İki Sıfırdört</item>
+        <item>İki Sıfırbeş</item>
+        <item>İki Sıfıraltı</item>
+        <item>İki Sıfıryedi</item>
+        <item>İki Sıfırsekiz</item>
+        <item>İki Sıfırdokuz</item>
+        <item>İki On</item>
+        <item>İki Onbir</item>
+        <item>İki Oniki</item>
+        <item>İki Onüç</item>
+        <item>İki Ondört</item>
+        <item>İki Onbeş</item>
+        <item>İki Onaltı</item>
+        <item>İki Onyedi</item>
+        <item>İki Onsekiz</item>
+        <item>İki Ondokuz</item>
+        <item>İki Yirmi</item>
+        <item>İki Yirmibir</item>
+        <item>İki Yirmiiki</item>
+        <item>İki Yirmiüç</item>
+        <item>İki Yirmidört</item>
+        <item>İki Yirmibeş</item>
+        <item>İki Yirmialtı</item>
+        <item>İki Yirmiyedi</item>
+        <item>İki Yirmisekiz</item>
+        <item>İki Yirmidokuz</item>
+        <item>İki Otuz</item>
+        <item>İki Otuzbir</item>
+        <item>İki Otuziki</item>
+        <item>İki Otuzüç</item>
+        <item>İki Otuzdört</item>
+        <item>İki Otuzbeş</item>
+        <item>İki Otuzaltı</item>
+        <item>İki Otuzyedi</item>
+        <item>İki Otuzsekiz</item>
+        <item>İki Otuzdokuz</item>
+        <item>İki Kırk</item>
+        <item>İki Kırkbir</item>
+        <item>İki Kırkiki</item>
+        <item>İki Kırküç</item>
+        <item>İki Kırkdört</item>
+        <item>İki Kırkbeş</item>
+        <item>İki Kırkaltı</item>
+        <item>İki Kırkyedi</item>
+        <item>İki Kırksekiz</item>
+        <item>İki Kırkdokuz</item>
+        <item>İki Elli</item>
+        <item>İki Ellibir</item>
+        <item>İki Elliiki</item>
+        <item>İki Elliüç</item>
+        <item>İki Ellidört</item>
+        <item>İki Ellibeş</item>
+        <item>İki Ellialtı</item>
+        <item>İki Elliyedi</item>
+        <item>İki Ellisekiz</item>
+        <item>İki Ellidokuz</item>
+        <item>Üç</item>
+        <item>Üç Sıfırbir</item>
+        <item>Üç Sıfıriki</item>
+        <item>Üç Sıfırüç</item>
+        <item>Üç Sıfırdört</item>
+        <item>Üç Sıfırbeş</item>
+        <item>Üç Sıfıraltı</item>
+        <item>Üç Sıfıryedi</item>
+        <item>Üç Sıfırsekiz</item>
+        <item>Üç Sıfırdokuz</item>
+        <item>Üç On</item>
+        <item>Üç Onbir</item>
+        <item>Üç Oniki</item>
+        <item>Üç Onüç</item>
+        <item>Üç Ondört</item>
+        <item>Üç Onbeş</item>
+        <item>Üç Onaltı</item>
+        <item>Üç Onyedi</item>
+        <item>Üç Onsekiz</item>
+        <item>Üç Ondokuz</item>
+        <item>Üç Yirmi</item>
+        <item>Üç Yirmibir</item>
+        <item>Üç Yirmiiki</item>
+        <item>Üç Yirmiüç</item>
+        <item>Üç Yirmidört</item>
+        <item>Üç Yirmibeş</item>
+        <item>Üç Yirmialtı</item>
+        <item>Üç Yirmiyedi</item>
+        <item>Üç Yirmisekiz</item>
+        <item>Üç Yirmidokuz</item>
+        <item>Üç Otuz</item>
+        <item>Üç Otuzbir</item>
+        <item>Üç Otuziki</item>
+        <item>Üç Otuzüç</item>
+        <item>Üç Otuzdört</item>
+        <item>Üç Otuzbeş</item>
+        <item>Üç Otuzaltı</item>
+        <item>Üç Otuzyedi</item>
+        <item>Üç Otuzsekiz</item>
+        <item>Üç Otuzdokuz</item>
+        <item>Üç Kırk</item>
+        <item>Üç Kırkbir</item>
+        <item>Üç Kırkiki</item>
+        <item>Üç Kırküç</item>
+        <item>Üç Kırkdört</item>
+        <item>Üç Kırkbeş</item>
+        <item>Üç Kırkaltı</item>
+        <item>Üç Kırkyedi</item>
+        <item>Üç Kırksekiz</item>
+        <item>Üç Kırkdokuz</item>
+        <item>Üç Elli</item>
+        <item>Üç Ellibir</item>
+        <item>Üç Elliiki</item>
+        <item>Üç Elliüç</item>
+        <item>Üç Ellidört</item>
+        <item>Üç Ellibeş</item>
+        <item>Üç Ellialtı</item>
+        <item>Üç Elliyedi</item>
+        <item>Üç Ellisekiz</item>
+        <item>Üç Ellidokuz</item>
+        <item>Dört</item>
+        <item>Dört Sıfırbir</item>
+        <item>Dört Sıfıriki</item>
+        <item>Dört Sıfırüç</item>
+        <item>Dört Sıfırdört</item>
+        <item>Dört Sıfırbeş</item>
+        <item>Dört Sıfıraltı</item>
+        <item>Dört Sıfıryedi</item>
+        <item>Dört Sıfırsekiz</item>
+        <item>Dört Sıfırdokuz</item>
+        <item>Dört On</item>
+        <item>Dört Onbir</item>
+        <item>Dört Oniki</item>
+        <item>Dört Onüç</item>
+        <item>Dört Ondört</item>
+        <item>Dört Onbeş</item>
+        <item>Dört Onaltı</item>
+        <item>Dört Onyedi</item>
+        <item>Dört Onsekiz</item>
+        <item>Dört Ondokuz</item>
+        <item>Dört Yirmi</item>
+        <item>Dört Yirmibir</item>
+        <item>Dört Yirmiiki</item>
+        <item>Dört Yirmiüç</item>
+        <item>Dört Yirmidört</item>
+        <item>Dört Yirmibeş</item>
+        <item>Dört Yirmialtı</item>
+        <item>Dört Yirmiyedi</item>
+        <item>Dört Yirmisekiz</item>
+        <item>Dört Yirmidokuz</item>
+        <item>Dört Otuz</item>
+        <item>Dört Otuzbir</item>
+        <item>Dört Otuziki</item>
+        <item>Dört Otuzüç</item>
+        <item>Dört Otuzdört</item>
+        <item>Dört Otuzbeş</item>
+        <item>Dört Otuzaltı</item>
+        <item>Dört Otuzyedi</item>
+        <item>Dört Otuzsekiz</item>
+        <item>Dört Otuzdokuz</item>
+        <item>Dört Kırk</item>
+        <item>Dört Kırkbir</item>
+        <item>Dört Kırkiki</item>
+        <item>Dört Kırküç</item>
+        <item>Dört Kırkdört</item>
+        <item>Dört Kırkbeş</item>
+        <item>Dört Kırkaltı</item>
+        <item>Dört Kırkyedi</item>
+        <item>Dört Kırksekiz</item>
+        <item>Dört Kırkdokuz</item>
+        <item>Dört Elli</item>
+        <item>Dört Ellibir</item>
+        <item>Dört Elliiki</item>
+        <item>Dört Elliüç</item>
+        <item>Dört Ellidört</item>
+        <item>Dört Ellibeş</item>
+        <item>Dört Ellialtı</item>
+        <item>Dört Elliyedi</item>
+        <item>Dört Ellisekiz</item>
+        <item>Dört Ellidokuz</item>
+        <item>Beş</item>
+        <item>Beş Sıfırbir</item>
+        <item>Beş Sıfıriki</item>
+        <item>Beş Sıfırüç</item>
+        <item>Beş Sıfırdört</item>
+        <item>Beş Sıfırbeş</item>
+        <item>Beş Sıfıraltı</item>
+        <item>Beş Sıfıryedi</item>
+        <item>Beş Sıfırsekiz</item>
+        <item>Beş Sıfırdokuz</item>
+        <item>Beş On</item>
+        <item>Beş Onbir</item>
+        <item>Beş Oniki</item>
+        <item>Beş Onüç</item>
+        <item>Beş Ondört</item>
+        <item>Beş Onbeş</item>
+        <item>Beş Onaltı</item>
+        <item>Beş Onyedi</item>
+        <item>Beş Onsekiz</item>
+        <item>Beş Ondokuz</item>
+        <item>Beş Yirmi</item>
+        <item>Beş Yirmibir</item>
+        <item>Beş Yirmiiki</item>
+        <item>Beş Yirmiüç</item>
+        <item>Beş Yirmidört</item>
+        <item>Beş Yirmibeş</item>
+        <item>Beş Yirmialtı</item>
+        <item>Beş Yirmiyedi</item>
+        <item>Beş Yirmisekiz</item>
+        <item>Beş Yirmidokuz</item>
+        <item>Beş Otuz</item>
+        <item>Beş Otuzbir</item>
+        <item>Beş Otuziki</item>
+        <item>Beş Otuzüç</item>
+        <item>Beş Otuzdört</item>
+        <item>Beş Otuzbeş</item>
+        <item>Beş Otuzaltı</item>
+        <item>Beş Otuzyedi</item>
+        <item>Beş Otuzsekiz</item>
+        <item>Beş Otuzdokuz</item>
+        <item>Beş Kırk</item>
+        <item>Beş Kırkbir</item>
+        <item>Beş Kırkiki</item>
+        <item>Beş Kırküç</item>
+        <item>Beş Kırkdört</item>
+        <item>Beş Kırkbeş</item>
+        <item>Beş Kırkaltı</item>
+        <item>Beş Kırkyedi</item>
+        <item>Beş Kırksekiz</item>
+        <item>Beş Kırkdokuz</item>
+        <item>Beş Elli</item>
+        <item>Beş Ellibir</item>
+        <item>Beş Elliiki</item>
+        <item>Beş Elliüç</item>
+        <item>Beş Ellidört</item>
+        <item>Beş Ellibeş</item>
+        <item>Beş Ellialtı</item>
+        <item>Beş Elliyedi</item>
+        <item>Beş Ellisekiz</item>
+        <item>Beş Ellidokuz</item>
+    </string-array>
+    <string-array name="verbosetime4">
+        <item>Altı</item>
+        <item>Altı Sıfırbir</item>
+        <item>Altı Sıfıriki</item>
+        <item>Altı Sıfırüç</item>
+        <item>Altı Sıfırdört</item>
+        <item>Altı Sıfırbeş</item>
+        <item>Altı Sıfıraltı</item>
+        <item>Altı Sıfıryedi</item>
+        <item>Altı Sıfırsekiz</item>
+        <item>Altı Sıfırdokuz</item>
+        <item>Altı On</item>
+        <item>Altı Onbir</item>
+        <item>Altı Oniki</item>
+        <item>Altı Onüç</item>
+        <item>Altı Ondört</item>
+        <item>Altı Onbeş</item>
+        <item>Altı Onaltı</item>
+        <item>Altı Onyedi</item>
+        <item>Altı Onsekiz</item>
+        <item>Altı Ondokuz</item>
+        <item>Altı Yirmi</item>
+        <item>Altı Yirmibir</item>
+        <item>Altı Yirmiiki</item>
+        <item>Altı Yirmiüç</item>
+        <item>Altı Yirmidört</item>
+        <item>Altı Yirmibeş</item>
+        <item>Altı Yirmialtı</item>
+        <item>Altı Yirmiyedi</item>
+        <item>Altı Yirmisekiz</item>
+        <item>Altı Yirmidokuz</item>
+        <item>Altı Otuz</item>
+        <item>Altı Otuzbir</item>
+        <item>Altı Otuziki</item>
+        <item>Altı Otuzüç</item>
+        <item>Altı Otuzdört</item>
+        <item>Altı Otuzbeş</item>
+        <item>Altı Otuzaltı</item>
+        <item>Altı Otuzyedi</item>
+        <item>Altı Otuzsekiz</item>
+        <item>Altı Otuzdokuz</item>
+        <item>Altı Kırk</item>
+        <item>Altı Kırkbir</item>
+        <item>Altı Kırkiki</item>
+        <item>Altı Kırküç</item>
+        <item>Altı Kırkdört</item>
+        <item>Altı Kırkbeş</item>
+        <item>Altı Kırkaltı</item>
+        <item>Altı Kırkyedi</item>
+        <item>Altı Kırksekiz</item>
+        <item>Altı Kırkdokuz</item>
+        <item>Altı Elli</item>
+        <item>Altı Ellibir</item>
+        <item>Altı Elliiki</item>
+        <item>Altı Elliüç</item>
+        <item>Altı Ellidört</item>
+        <item>Altı Ellibeş</item>
+        <item>Altı Ellialtı</item>
+        <item>Altı Elliyedi</item>
+        <item>Altı Ellisekiz</item>
+        <item>Altı Ellidokuz</item>
+        <item>Yedi</item>
+        <item>Yedi Sıfırbir</item>
+        <item>Yedi Sıfıriki</item>
+        <item>Yedi Sıfırüç</item>
+        <item>Yedi Sıfırdört</item>
+        <item>Yedi Sıfırbeş</item>
+        <item>Yedi Sıfıraltı</item>
+        <item>Yedi Sıfıryedi</item>
+        <item>Yedi Sıfırsekiz</item>
+        <item>Yedi Sıfırdokuz</item>
+        <item>Yedi On</item>
+        <item>Yedi Onbir</item>
+        <item>Yedi Oniki</item>
+        <item>Yedi Onüç</item>
+        <item>Yedi Ondört</item>
+        <item>Yedi Onbeş</item>
+        <item>Yedi Onaltı</item>
+        <item>Yedi Onyedi</item>
+        <item>Yedi Onsekiz</item>
+        <item>Yedi Ondokuz</item>
+        <item>Yedi Yirmi</item>
+        <item>Yedi Yirmibir</item>
+        <item>Yedi Yirmiiki</item>
+        <item>Yedi Yirmiüç</item>
+        <item>Yedi Yirmidört</item>
+        <item>Yedi Yirmibeş</item>
+        <item>Yedi Yirmialtı</item>
+        <item>Yedi Yirmiyedi</item>
+        <item>Yedi Yirmisekiz</item>
+        <item>Yedi Yirmidokuz</item>
+        <item>Yedi Otuz</item>
+        <item>Yedi Otuzbir</item>
+        <item>Yedi Otuziki</item>
+        <item>Yedi Otuzüç</item>
+        <item>Yedi Otuzdört</item>
+        <item>Yedi Otuzbeş</item>
+        <item>Yedi Otuzaltı</item>
+        <item>Yedi Otuzyedi</item>
+        <item>Yedi Otuzsekiz</item>
+        <item>Yedi Otuzdokuz</item>
+        <item>Yedi Kırk</item>
+        <item>Yedi Kırkbir</item>
+        <item>Yedi Kırkiki</item>
+        <item>Yedi Kırküç</item>
+        <item>Yedi Kırkdört</item>
+        <item>Yedi Kırkbeş</item>
+        <item>Yedi Kırkaltı</item>
+        <item>Yedi Kırkyedi</item>
+        <item>Yedi Kırksekiz</item>
+        <item>Yedi Kırkdokuz</item>
+        <item>Yedi Elli</item>
+        <item>Yedi Ellibir</item>
+        <item>Yedi Elliiki</item>
+        <item>Yedi Elliüç</item>
+        <item>Yedi Ellidört</item>
+        <item>Yedi Ellibeş</item>
+        <item>Yedi Ellialtı</item>
+        <item>Yedi Elliyedi</item>
+        <item>Yedi Ellisekiz</item>
+        <item>Yedi Ellidokuz</item>
+        <item>Sekiz</item>
+        <item>Sekiz Sıfırbir</item>
+        <item>Sekiz Sıfıriki</item>
+        <item>Sekiz Sıfırüç</item>
+        <item>Sekiz Sıfırdört</item>
+        <item>Sekiz Sıfırbeş</item>
+        <item>Sekiz Sıfıraltı</item>
+        <item>Sekiz Sıfıryedi</item>
+        <item>Sekiz Sıfırsekiz</item>
+        <item>Sekiz Sıfırdokuz</item>
+        <item>Sekiz On</item>
+        <item>Sekiz Onbir</item>
+        <item>Sekiz Oniki</item>
+        <item>Sekiz Onüç</item>
+        <item>Sekiz Ondört</item>
+        <item>Sekiz Onbeş</item>
+        <item>Sekiz Onaltı</item>
+        <item>Sekiz Onyedi</item>
+        <item>Sekiz Onsekiz</item>
+        <item>Sekiz Ondokuz</item>
+        <item>Sekiz Yirmi</item>
+        <item>Sekiz Yirmibir</item>
+        <item>Sekiz Yirmiiki</item>
+        <item>Sekiz Yirmiüç</item>
+        <item>Sekiz Yirmidört</item>
+        <item>Sekiz Yirmibeş</item>
+        <item>Sekiz Yirmialtı</item>
+        <item>Sekiz Yirmiyedi</item>
+        <item>Sekiz Yirmisekiz</item>
+        <item>Sekiz Yirmidokuz</item>
+        <item>Sekiz Otuz</item>
+        <item>Sekiz Otuzbir</item>
+        <item>Sekiz Otuziki</item>
+        <item>Sekiz Otuzüç</item>
+        <item>Sekiz Otuzdört</item>
+        <item>Sekiz Otuzbeş</item>
+        <item>Sekiz Otuzaltı</item>
+        <item>Sekiz Otuzyedi</item>
+        <item>Sekiz Otuzsekiz</item>
+        <item>Sekiz Otuzdokuz</item>
+        <item>Sekiz Kırk</item>
+        <item>Sekiz Kırkbir</item>
+        <item>Sekiz Kırkiki</item>
+        <item>Sekiz Kırküç</item>
+        <item>Sekiz Kırkdört</item>
+        <item>Sekiz Kırkbeş</item>
+        <item>Sekiz Kırkaltı</item>
+        <item>Sekiz Kırkyedi</item>
+        <item>Sekiz Kırksekiz</item>
+        <item>Sekiz Kırkdokuz</item>
+        <item>Sekiz Elli</item>
+        <item>Sekiz Ellibir</item>
+        <item>Sekiz Elliiki</item>
+        <item>Sekiz Elliüç</item>
+        <item>Sekiz Ellidört</item>
+        <item>Sekiz Ellibeş</item>
+        <item>Sekiz Ellialtı</item>
+        <item>Sekiz Elliyedi</item>
+        <item>Sekiz Ellisekiz</item>
+        <item>Sekiz Ellidokuz</item>
+        <item>Dokuz</item>
+        <item>Dokuz Sıfırbir</item>
+        <item>Dokuz Sıfıriki</item>
+        <item>Dokuz Sıfırüç</item>
+        <item>Dokuz Sıfırdört</item>
+        <item>Dokuz Sıfırbeş</item>
+        <item>Dokuz Sıfıraltı</item>
+        <item>Dokuz Sıfıryedi</item>
+        <item>Dokuz Sıfırsekiz</item>
+        <item>Dokuz Sıfırdokuz</item>
+        <item>Dokuz On</item>
+        <item>Dokuz Onbir</item>
+        <item>Dokuz Oniki</item>
+        <item>Dokuz Onüç</item>
+        <item>Dokuz Ondört</item>
+        <item>Dokuz Onbeş</item>
+        <item>Dokuz Onaltı</item>
+        <item>Dokuz Onyedi</item>
+        <item>Dokuz Onsekiz</item>
+        <item>Dokuz Ondokuz</item>
+        <item>Dokuz Yirmi</item>
+        <item>Dokuz Yirmibir</item>
+        <item>Dokuz Yirmiiki</item>
+        <item>Dokuz Yirmiüç</item>
+        <item>Dokuz Yirmidört</item>
+        <item>Dokuz Yirmibeş</item>
+        <item>Dokuz Yirmialtı</item>
+        <item>Dokuz Yirmiyedi</item>
+        <item>Dokuz Yirmisekiz</item>
+        <item>Dokuz Yirmidokuz</item>
+        <item>Dokuz Otuz</item>
+        <item>Dokuz Otuzbir</item>
+        <item>Dokuz Otuziki</item>
+        <item>Dokuz Otuzüç</item>
+        <item>Dokuz Otuzdört</item>
+        <item>Dokuz Otuzbeş</item>
+        <item>Dokuz Otuzaltı</item>
+        <item>Dokuz Otuzyedi</item>
+        <item>Dokuz Otuzsekiz</item>
+        <item>Dokuz Otuzdokuz</item>
+        <item>Dokuz Kırk</item>
+        <item>Dokuz Kırkbir</item>
+        <item>Dokuz Kırkiki</item>
+        <item>Dokuz Kırküç</item>
+        <item>Dokuz Kırkdört</item>
+        <item>Dokuz Kırkbeş</item>
+        <item>Dokuz Kırkaltı</item>
+        <item>Dokuz Kırkyedi</item>
+        <item>Dokuz Kırksekiz</item>
+        <item>Dokuz Kırkdokuz</item>
+        <item>Dokuz Elli</item>
+        <item>Dokuz Ellibir</item>
+        <item>Dokuz Elliiki</item>
+        <item>Dokuz Elliüç</item>
+        <item>Dokuz Ellidört</item>
+        <item>Dokuz Ellibeş</item>
+        <item>Dokuz Ellialtı</item>
+        <item>Dokuz Elliyedi</item>
+        <item>Dokuz Ellisekiz</item>
+        <item>Dokuz Ellidokuz</item>
+        <item>On</item>
+        <item>On Sıfırbir</item>
+        <item>On Sıfıriki</item>
+        <item>On Sıfırüç</item>
+        <item>On Sıfırdört</item>
+        <item>On Sıfırbeş</item>
+        <item>On Sıfıraltı</item>
+        <item>On Sıfıryedi</item>
+        <item>On Sıfırsekiz</item>
+        <item>On Sıfırdokuz</item>
+        <item>On On</item>
+        <item>On Onbir</item>
+        <item>On Oniki</item>
+        <item>On Onüç</item>
+        <item>On Ondört</item>
+        <item>On Onbeş</item>
+        <item>On Onaltı</item>
+        <item>On Onyedi</item>
+        <item>On Onsekiz</item>
+        <item>On Ondokuz</item>
+        <item>On Yirmi</item>
+        <item>On Yirmibir</item>
+        <item>On Yirmiiki</item>
+        <item>On Yirmiüç</item>
+        <item>On Yirmidört</item>
+        <item>On Yirmibeş</item>
+        <item>On Yirmialtı</item>
+        <item>On Yirmiyedi</item>
+        <item>On Yirmisekiz</item>
+        <item>On Yirmidokuz</item>
+        <item>On Otuz</item>
+        <item>On Otuzbir</item>
+        <item>On Otuziki</item>
+        <item>On Otuzüç</item>
+        <item>On Otuzdört</item>
+        <item>On Otuzbeş</item>
+        <item>On Otuzaltı</item>
+        <item>On Otuzyedi</item>
+        <item>On Otuzsekiz</item>
+        <item>On Otuzdokuz</item>
+        <item>On Kırk</item>
+        <item>On Kırkbir</item>
+        <item>On Kırkiki</item>
+        <item>On Kırküç</item>
+        <item>On Kırkdört</item>
+        <item>On Kırkbeş</item>
+        <item>On Kırkaltı</item>
+        <item>On Kırkyedi</item>
+        <item>On Kırksekiz</item>
+        <item>On Kırkdokuz</item>
+        <item>On Elli</item>
+        <item>On Ellibir</item>
+        <item>On Elliiki</item>
+        <item>On Elliüç</item>
+        <item>On Ellidört</item>
+        <item>On Ellibeş</item>
+        <item>On Ellialtı</item>
+        <item>On Elliyedi</item>
+        <item>On Ellisekiz</item>
+        <item>On Ellidokuz</item>
+        <item>Onbir</item>
+        <item>Onbir Sıfırbir</item>
+        <item>Onbir Sıfıriki</item>
+        <item>Onbir Sıfırüç</item>
+        <item>Onbir Sıfırdört</item>
+        <item>Onbir Sıfırbeş</item>
+        <item>Onbir Sıfıraltı</item>
+        <item>Onbir Sıfıryedi</item>
+        <item>Onbir Sıfırsekiz</item>
+        <item>Onbir Sıfırdokuz</item>
+        <item>Onbir On</item>
+        <item>Onbir Onbir</item>
+        <item>Onbir Oniki</item>
+        <item>Onbir Onüç</item>
+        <item>Onbir Ondört</item>
+        <item>Onbir Onbeş</item>
+        <item>Onbir Onaltı</item>
+        <item>Onbir Onyedi</item>
+        <item>Onbir Onsekiz</item>
+        <item>Onbir Ondokuz</item>
+        <item>Onbir Yirmi</item>
+        <item>Onbir Yirmibir</item>
+        <item>Onbir Yirmiiki</item>
+        <item>Onbir Yirmiüç</item>
+        <item>Onbir Yirmidört</item>
+        <item>Onbir Yirmibeş</item>
+        <item>Onbir Yirmialtı</item>
+        <item>Onbir Yirmiyedi</item>
+        <item>Onbir Yirmisekiz</item>
+        <item>Onbir Yirmidokuz</item>
+        <item>Onbir Otuz</item>
+        <item>Onbir Otuzbir</item>
+        <item>Onbir Otuziki</item>
+        <item>Onbir Otuzüç</item>
+        <item>Onbir Otuzdört</item>
+        <item>Onbir Otuzbeş</item>
+        <item>Onbir Otuzaltı</item>
+        <item>Onbir Otuzyedi</item>
+        <item>Onbir Otuzsekiz</item>
+        <item>Onbir Otuzdokuz</item>
+        <item>Onbir Kırk</item>
+        <item>Onbir Kırkbir</item>
+        <item>Onbir Kırkiki</item>
+        <item>Onbir Kırküç</item>
+        <item>Onbir Kırkdört</item>
+        <item>Onbir Kırkbeş</item>
+        <item>Onbir Kırkaltı</item>
+        <item>Onbir Kırkyedi</item>
+        <item>Onbir Kırksekiz</item>
+        <item>Onbir Kırkdokuz</item>
+        <item>Onbir Elli</item>
+        <item>Onbir Ellibir</item>
+        <item>Onbir Elliiki</item>
+        <item>Onbir Elliüç</item>
+        <item>Onbir Ellidört</item>
+        <item>Onbir Ellibeş</item>
+        <item>Onbir Ellialtı</item>
+        <item>Onbir Elliyedi</item>
+        <item>Onbir Ellisekiz</item>
+        <item>Onbir Ellidokuz</item>
+    </string-array>
+    <string-array name="VerboseWeather">
+        <item>Bilinmiyor</item>
+        <item>Açık</item>
+        <item>Açık</item>
+        <item>Genellikle Açık</item>
+        <item>Yer Yer Bulutlu</item>
+        <item>Parçalı Bulutlu</item>
+        <item>Tozlu</item>
+        <item>Puslu</item>
+        <item>Sisli</item>
+        <item>Kapalı</item>
+        <item>Çok Bulutlu</item>
+        <item>Bulutla Kaplı</item>
+        <item>Bulutlu</item>
+        <item>Sis</item>
+        <item>Hafif Yağmur</item>
+        <item>Kısa Süreli Yağmur</item>
+        <item>Yağmur Çiselemesi</item>
+        <item>Kısa Süreli Yağmur</item>
+        <item>Yağmura Dönük</item>
+        <item>Kısa Süreli Yağmur</item>
+        <item>Sağanak Yağış</item>
+        <item>Gök Gürültülü</item>
+        <item>Şimşekli</item>
+        <item>Gökgürültülü Şimşekli</item>
+        <item>Fırtınaya Çevirebilir</item>
+        <item>Fırtına</item>
+        <item>Şiddetli Yağmur</item>
+        <item>Yağmur</item>
+        <item>Kar Serpintisi</item>
+        <item>Sulu Kar</item>
+        <item>Kara Çevirebilir</item>
+        <item>Kesintili Kar Yağışı</item>
+        <item>Yoğun Kar Yağışı</item>
+        <item>Kar</item>
+        <item>Buz</item>
+        <item>Buz ya da Kar</item>
+        <item>Sulu Kar</item>
+        <item>Dolu</item>
+        <item>Yağmur ve Kar</item>
+        <item>Rüzgarlı</item>
+    </string-array>
+    <string name="_apply">Uygula</string>
+    <string name="_search">Ara</string>
+    <string name="_yes">Evet</string>
+    <string name="_abandon">İptal Et</string>
+    <string name="_ok">Tamam</string>
+    <string name="_no">Hayır</string>
+    <string name="translators">Çevirmenler</string>
+    <string name="TTLdefault">Widget Özellikleri</string>
+    <string name="TTLnoop">Hiç Birşey Yapma</string>
+    <string name="TTLwrefresh">Hava Durumunu Şimdi Güncelle</string>
+    <string name="TTLweather">Tahminler</string>
+    <string name="TTLbatt">Pil Kullanımı</string>
+    <string name="TTLalarms">Alarmları Göster</string>
+    <string name="_yesRestore">Evet, varsayılana geri al</string>
+    <string name="_yesDelete">Evet, hepsini sil</string>
+</resources>

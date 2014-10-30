@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/ThemeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:shadowColor="#ff888888"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        android:text=""
+        android:textColor="#ffffffff"
+        android:textSize="30dp" />
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="24dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:layout_weight="1" >
+
+    <ImageView
+        android:id="@+id/ThemePreview"
+        android:contentDescription="@string/themePreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ThemePreview"
+        android:minHeight="180dp"
+        android:minWidth="288dp"
+        android:scaleType="centerCrop" 
+        />
+
+        <ImageView
+            android:id="@+id/LikeFlag"
+        	android:contentDescription="@string/legend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/ThemePreview"
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            />
+
+        <LinearLayout
+            android:id="@+id/tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        	android:layout_alignLeft="@id/ThemePreview"
+            android:layout_alignParentTop="true"
+		>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/ThemeCredits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="80dp"
+        android:maxWidth="280dp"
+        android:minHeight="80dp"
+        android:minWidth="280dp"
+        android:paddingTop="11dp"
+        android:text=""
+        android:textColor="#ffffffff"
+        android:textSize="7dp"
+        android:autoLink="all"
+        android:textScaleX="1.0"
+         />
+
+</LinearLayout>

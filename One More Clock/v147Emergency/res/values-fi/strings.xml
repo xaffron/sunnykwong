@@ -1,0 +1,2079 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="languageWord">Kieli</string>
+    <string name="languageName">Suomi</string>
+    <string name="translator">badmojo</string>
+    <!-- General Buttons/notifications -->
+    <string name="nextTip">Seuraava vihje</string>
+    <string name="taskComplete">Tehtävä suoritettu</string>
+    <!-- General Errors -->
+    <string name="sdcardNotDetected">SD-korttia ei havaittu.\nMuista kytkeä USB-massamuistitila
+		pois päältä!
+	</string>
+    <string name="sdcardMissingOrCorrupt">SD-kortti puuttuu tai on korruptoitunut.\nMuista kytkeä
+	    USB-massamuistitila pois päältä!
+	</string>
+    <string name="themeNotFound">Teemaa ei löyty! Oletusnäkymä palautettu.
+	</string>
+    <string name="warningConflictPaid">VAROITUS!\nKonflikti maksetun version kanssa</string>
+    <string name="warningConflictFree">VAROITUS!\nKonflikti ilmaisen version kanssa</string>
+    <string name="warningConflictText">Teemojen räätälöinti ja kellon asetukset eivät tule
+		toimimaan kunnolla.\nPoista ilmainen versio!
+	</string>
+    <string name="defaultThemeNotRemovable">Oletusteemaa ei voi poistaa!</string>
+    <!-- Bailout App Dialog -->
+    <string name="thanksForDownloading">Kiitos että latasit sovelluksen!</string>
+    <string name="widgetDir1">Aloittaaksesi, paina takaisin palataksesi
+		aloitusnäytölle, sitten mene kohtaan \'Widgetit\' nähdäksesi\u0020
+	</string>
+    <string name="widgetDir2">\u0020listattu. Nauti!</string>
+    <!-- Useful Tips -->
+    <string name="usefulTip">Vinkki</string>
+    <string name="doNotShowAgain">Älä näytä tätä jatkossa.</string>
+    <!-- Weather Forecast Screen -->
+    <string name="humiditycondition">Kosteus: </string>
+    <string name="windcondition">Tuuli: </string>
+    <!-- Forecast Screen -->
+    <string name="doubleDash">--</string>
+    <string name="unknown">Tuntematon</string>
+    <string name="noaaWeatherCredit">Säätiedot päivitetty lähteestä
+		National Oceanic and Atmospheric Administration (NOAA).
+	</string>
+    <string name="igWeatherCredit">Säätiedot päivitetty Googlelta.</string>
+    <string name="yrWeatherCredit">Säätiedot päivitetty lähteestä yr.no, tiedot toimittaa
+		Norjan Meteorologinen Instituutti ja NRK.
+	</string>
+    <string name="seventimerWeatherCredit">7Timer! Säätiedot päivitetty lähteestä
+	Ye Quanzhi, Shanghain Astronominen Observatorio, Kiinan tiedeakatemia.
+	</string>
+    <string name="owmWeatherCredit">Säätiedot haettu lähteestä openweathermaps.org.</string>
+    <string name="tapForAlternateForecast">Kosketa saadaksesi vaihtoehtoinen ennuste lähteestä AccuWeather®
+	</string>
+    <string name="weatherDisabledOrNoWeatherLoaded">Säätiedot pois käytöstä tai tietoja ei ole ladattu!</string>
+    <string name="supplementedbyMETAR">Tämän hetken olosuhteet täydentänyt METAR lähteestä
+	</string>
+    <!-- Clock Preferences -->
+    <string name="clockPreferences">Kellon asetukset</string>
+    <string name="dashPreferences">\u0020- Asetukset</string>
+    <string name="forThisClock">Tälle kellolle:</string>
+    <string name="widgetTheme">Widgetin Teema</string>
+    <!-- Widget Theme -->
+    <string name="widgetThemeTitle">Pyyhkäise valitaksesi; Kosketa pitkään päästäksesi asetuksiin</string>
+    <string name="corruptPlsDelete">[Korruptoitunut - Poista, ole hyvä]</string>
+    <string name="reextractBundledClocks">Tuo uudelleen alkuperäiskellot</string>
+    <string name="downloadAllClocks">Lataa kaikki kellot(7MB)</string>
+    <string name="preselected"/>
+    <string name="postselected">\u0020valittu.</string>
+    <!-- Theme Picker Legend -->
+    <string name="legend">Selite</string>
+    <string name="batteryLegend">Näyttää akun varauksen</string>
+    <string name="weatherLegend">Näyttää säätiedot</string>
+    <string name="bkimageLegend">Sisältää taustakuvan</string>
+    <string name="ltbgLegend">Hyvä vaaleilla taustoilla</string>
+    <string name="dkbgLegend">Hyvä tummilla taustoilla</string>
+    <string name="tweakLegend">Kello on käyttäjän muokkaama</string>
+    <!-- Theme Skinner Tool (deprecated) -->
+    <string name="reloadThemeCatalog">Päivitä Teemakatalogi</string>
+    <!-- Theme Import/Unzip -->
+    <string name="themePreview">Teeman esikatselu</string>
+    <string name="openingConnection">Muodostetaan yhteyttä.</string>
+    <string name="beginningDownload">Aloitetaan lataus.</string>
+    <string name="downloading">Ladataan\u0020</string>
+    <string name="downloaded">Ladattu\u0020</string>
+    <string name="of">\u0020of\u0020</string>
+    <string name="bytes">\u0020bytes</string>
+    <string name="storingFile">Tallennetaan tiedosto:\u0020</string>
+    <string name="existsOverwriting">\u0020on olemassa; korvataan</string>
+    <string name="createThemeFolder1">Teemakansio \'</string>
+    <string name="createThemeFolder2">\'\u0020luotu.</string>
+    <string name="detectedWeatherskin">WeatherSkin havaittu</string>
+    <string name="extractingStarterClockPack">Puretaan ensikertalaisen kellopaketti...</string>
+    <string name="starterClockPack">Ensikertalaisen kellopaketti</string>
+    <string name="starterClockPackText">Tiedostosi SD-kortin .OMCThemes-kansiossa 
+		korvataan. Oletko varma?\n(Jos et ole varma, valitse Kyllä)
+	</string>
+    <string name="importComplete">Tuonti valmis!</string>
+    <string name="importAborted">Tuonti keskeytetty!</string>
+    <string name="useDownloadInsteadOfPreview">Tuodaksesi OMC kellon, käytä esikatselun
+	    sijaan latausta!
+	</string>
+    <string name="importWorksWithOMCFiles">Kellon tuominen toimii .omc-tiedostojen kanssa.
+		Yrititkö avata väärää tiedostoa?
+	</string>
+    <string name="nothingToExtract">Ei purettavia tiedostoja!</string>
+    <string name="downloadInterrupted">Lataus keskeytynyt!</string>
+    <string name="poorReceptionArea">Oletko huonon kuuluvuuden alueella?\n
+		Ole hyvä, yritä uudelleen myöhemmin.
+	</string>
+    <string name="connectionTimedOut">Yhteyden aikakatkaisu!</string>
+    <string name="serverNotFound">Palvelinta ei löydy!</string>
+    <!-- Widget Theme Long Press -->
+    <string name="emailOrDeleteTheme">Poista tai lädetä teema sähköpostilla</string>
+    <string name="emailTheme">Lähetä teema sähköpostilla</string>
+    <string name="emailThemeText">Pakkaa teema ja lähetä se sähköpostilla itsellesi
+		tai ystävälle.\nHaluatko lähettää?
+	</string>
+    <string name="emailThemeConfirm1">Sähköposti\u0020</string>
+    <string name="emailThemeConfirm2">\u0020?</string>
+    <string name="emailThemeChooser">Pakataan teemaa sähköpostia varten.</string>
+    <string name="deleteTheme">Poista Teema</string>
+    <string name="deleteThemeConfirm1">Poista\u0020</string>
+    <string name="deleteThemeConfirm2">\u0020SD-kortilta?</string>
+    <string name="deleteThemeConfirm3">Sinun täytyy ladata tai purkaa teema uudelleen
+		käyttääksesi sitä. Oletko varma?
+	</string>
+    <string name="submitThemeToDev">Lähetä teema sovelluksen kehittäjälle.</string>
+    <string name="submitThemeToDevConfirm1">Lähetä\u0020</string>
+    <string name="submitThemeToDevConfirm2">\u0020Xaffronille uutena teemana?</string>
+    <string name="areYouAbsolutelySure">Oletko varma?</string>
+    <string name="areYouAbsolutelySureText">Tälle teemalle ei ole asetettu \'Muokattu\' 
+		-merkintää; se näyttää oletusteemalta.
+	</string>
+    <!-- Personalize Clock -->
+    <string name="personalizeClock">Muokkaa kelloa</string>
+    <string name="tweakColorsAndLayers">Muokkaa värejä ja kerroksia</string>
+    <!-- Personalize Clock subscreen -->
+    <string name="selectALayerForTweaking">Valitse muokattava kerros</string>
+    <string name="tweakerDirections">Vedä: Liiku Menu: Muokkaa Takaisin: Peruuta</string>
+    <!-- Personalize Clock Menu -->
+    <string name="toggleVisibility">Valitse näkyvyys</string>
+    <string name="color1">Väri 1</string>
+    <string name="color2">Väri 2</string>
+    <!-- Personalize Clock Back -->
+    <string name="keepChanges">Pidä muutokset?</string>
+    <!-- Tap & Display Options -->
+    <string name="tapAndDisplayOptions">Kosketus- ja näyttöasetukset</string>
+    <string name="assignTapToLaunch">Määritä koskettamalla käynnistyvät</string>
+    <string name="nwCornerReserved">Vasen yläkulma varattu Asetuksille.</string>
+    <!-- TTL Popup -->
+    <string name="areaToCustomize">Muokattava alue:</string>
+    <string name="chooseAction">Valitse toiminto</string>
+    <string name="openOptionsDefault">Avaa asetukset (oletus)</string>
+    <string name="doNothing">Ei toimintoa</string>
+    <string name="refreshWeather">Päivitä säätiedot</string>
+    <string name="weatherForecast">Sääennuste</string>
+    <string name="viewAlarms">Tarkastele hälytyksiä (kokeellinen)</string>
+    <string name="battUsage">Tarkastele akunkäyttöä</string>
+    <string name="otherActivity">Muu toiminto...</string>
+    <string name="otherActivityTTL">Oma toiminto</string>
+    <string name="use24HourClock">Käytä 24h kelloa</string>
+    <string name="use24HourTrue">23:59</string>
+    <string name="use24HourFalse">11:59pm</string>
+    <string name="showLeadingZero">Näytä edeltävä nolla</string>
+    <string name="showLeadingZTrue">04:23</string>
+    <string name="showLeadingZFalse">4:23</string>
+    <string name="mmddDateFormat">P/K/V Date Format</string>
+    <string name="mmddDateFormatTrue">12/31/2012</string>
+    <string name="mmddDateFormatFalse">31/12/2012</string>
+    <string name="changeTimeZone">Muuta aikavyöhyke</string>
+    <string name="followingDeviceTimeZone">(Käyttää laitteen aikavyöhykettä)</string>
+    <string name="changeClockAdjustment">Säädä kelloa eteen/taakse</string>
+    <string name="minutesAhead">\u0020 minuuttia tätä hetkeä edemmäs</string>
+    <string name="minutesBehind">\u0020 minuuttia tätä hetkeä jäljemmäs</string>
+    <string name="backupWidget">Varmuuskopioi tämä widget</string>
+    <string name="nameOfBackup">Varmuuskopion nimi:</string>
+    <string name="backupThemePersonalizations">Varmuuskopioi teeman asetukset</string>
+    <string name="restoreWidget">Palauta widgetin asetukset</string>
+    <string name="overwriteThemePersonalizations">Korvaa teeman asetukset</string>
+    <string name="overwriteThemeWarning">VAROITUS: kaikki teemaan tehdyt asetukset
+		korvataan!</string>
+    <!-- TTL Sales Pitch -->
+    <string name="thinkOfThePossibilities">Ajattele mahdollisuuksia!</string>
+    <string name="prePaidTTL">Maksullinen versio mahdollistaa\u0020</string>
+    <string name="postPaidTTL">\u0020minkä tahansa toiminnon käynnistämisen
+		sekä tarjoaa widgetit koossa 4x2, 4x1, 3x1 ja 2x1.\nOle hyvä, harkitse
+		päivittämistä saadaksesi nämä!
+	</string>
+    <string name="takeMeToPaid">Vie minut maksulliseen versioon!</string>
+    <!-- Weather & Widget Options -->
+    <string name="forAllClocks">Kaikille kelloille:</string>
+    <string name="weatherAndWidgetOptions">Sää- ja widgetasetukset</string>
+    <string name="clearRenderCaches">Tyhjennä Renderöinticache</string>
+    <string name="cachesCleared">Cache tyhjennetty</string>
+    <!-- Weather & Widget Subscreen -->
+    <string name="refreshWeatherNow">Päivitä säätiedot nyt</string>
+    <string name="operationTimedOut">Toiminto aikakatkaistiin!</string>
+    <string name="requestingLocation">Pyydetään sijaintia</string>
+    <string name="pleaseWait">Ole hyvä, odota…</string>
+    <string name="inProgress">Käsitellään…</string>
+    <string name="usingFixedCoordinates">Käytetään kiinteitä koordinaatteja</string>
+    <string name="gotGPSLock">GPS sijainti muodostettu. Paikannetaan…</string>
+    <string name="gotNetworkLock">WiFi/Verkko-sijainti muodostettu. Paikannetaan…
+	</string>
+    <string name="reusingCachedLocation">Uudelleenkäytetään sijaintitietoa. Paikannetaan…
+	</string>
+    <string name="requestingWeather">Pyydetään säätietoja…</string>
+    <string name="weatherReceived">Säätiedot vastaanotettu. Prosessoidaan…</string>
+    <string name="weatherSuccess">Säätiedot onnistuneesti päivitetty.</string>
+    <string name="weatherFailure">Säätietojen päivitys epäonnistui.</string>
+    <string name="location">Sijainti:\u0020</string>
+    <string name="fixed">\u0020(Kiinteä)</string>
+    <string name="detected">\u0020(Havaittu)</string>
+    <string name="lastTry">Viimeisin yritys:\u0020</string>
+    <string name="manualRefreshOnly">\u0020(Vain manuaalinen päivitys)</string>
+    <string name="nextRefresh">\u0020Seuraava päivitys:\u0020</string>
+    <string name="lastRefresh">Viimeisin päivitys:\u0020</string>
+    <string name="nextRequest">\u0020Seuraava pyyntö:\u0020</string>
+    <string name="weatherLocation">Säätietojen sijaintin:</string>
+    <string name="disableLocationAndWeather">Poista käytöstä sijainti ja säätiedot</string>
+    <string name="followDevice">Seuraa laitetta(oletus)</string>
+    <string name="setFixedLocation">Aseta kiinteä sijainti</string>
+    <string name="weatherFunctionalityDisabled">Säätietotoiminnot ei käytössä</string>
+    <string name="tapToEnable">Kosketa käynnistääksesi</string>
+    <!-- Fixed Locn subscreen -->
+    <string name="enterCityAndStateCountry">Aseta kaupunki/maa</string>
+    <string name="locationExamples">Esim. Helsinki Finland</string>
+    <string name="locationError">Tuloksia ei löytynt.\nOle hyvä, yritä uudelleen.</string>
+    <string name="networkError">Ei verkkoyhteyttä.\nOle hyvä, yritä uudelleen.</string>
+    <string name="unknownError">Tuntematon virhe.\nOle hyvä, yritä uudelleen.</string>
+    <string name="weatherProvider">Säätietojen toimittaja</string>
+    <string-array name="wprovider_options">
+        <item>Automaattinen (oletus)</item>
+        <item>7Timer.com</item>
+        <item>NOAA (Vain USA)</item>
+        <item>Yr.no</item>
+        <item>Google Weather (legacy/nonworking)</item>
+    </string-array>
+    <string name="wpauto">Käytä parasta toimittajaa sijainnille</string>
+    <string name="wp7timer">Käytetään 7Timer.com</string>
+    <string name="wpnoaa">Käytetään NOAA</string>
+    <string name="wpowm">Käytetään OpenWeatherMap.org</string>
+    <string name="wpyr">Käytetään yr.no</string>
+    <string name="wpig">Käytetään iGoogle Weather</string>
+    <string name="weatherDisplayUnits">Säätietojen yksiköt</string>
+    <string-array name="wdisplay_options">
+        <item>Käytä Fahrenheit-asteikkoa (oletus)</item>
+        <item>Käytä Celsius-asteikkoa</item>
+    </string-array>
+    <string name="usingFahrenheit">Käytetään Fahrenheit-asteikkoa</string>
+    <string name="usingCelsius">Käytetään Celsius-asteikkoa</string>
+    <string name="useMETAR">Säätiedot METAR:n kautta</string>
+    <string name="usingMETAR">Säätiedot lähimmän lentoaseman kautta</string>
+    <string name="usingInterpolation">Säätiedot tuotu/interpoloitu toimittajalta
+	</string>
+    <string name="clockUpdateInterval">Kellon päivitystiheys</string>
+    <string-array name="interval_options">
+        <item>1 sek (Erittäin raskas virrankulutus)</item>
+        <item>10 sek (Raskas virrankulutus)</item>
+        <item>15 sek</item>
+        <item>20 sek</item>
+        <item>30 sek (Oletus)</item>
+        <item>60 sek (Vähäinen virrankulutus)</item>
+    </string-array>
+    <string name="redrawEvery">Uudelleenpiirrä \u0020</string>
+    <string name="seconds">\u0020sekunnin välein.</string>
+    <string name="weatherUpdateInterval">Säätietojen päivitystiheys</string>
+    <string-array name="winterval_options">
+        <item>Joka tunti (oletus)</item>
+        <item>4 tunnin välein</item>
+        <item>8 tunnin välein</item>
+        <item>Ei koskaan (Vain manuaalinen päivitys)</item>
+    </string-array>
+    <string name="manualWeatherUpdatesOnly">Vain manuaalinen säätietojen päivitys</string>
+    <string name="refreshWeatherEveryHour">Päivitä sää kerran tunnissa</string>
+    <string name="refreshWeatherEvery4Hours">Päivitä sää 4:n tunnin välein</string>
+    <string name="refreshWeatherEvery8Hours">Päivitä sää 8:n tunnin välein</string>
+    <string name="setForegroundMode">Aseta etualan tila</string>
+    <string name="keepOMCfromSleeping">Pidä OMC hereillä\n(at the cost of a
+		persistent notification)
+	</string>
+    <string name="forceEnglishDates">Pakota englannin kieliset päivät</string>
+    <string name="uncheckForSome">Poista joillekin ei-englannin kielisille sijainneille.(Kokeellinen)
+	</string>
+    <string name="changeAppLocale">Sovelluksen käyttöliittymän kieli</string>
+    <string name="changeClockLocale">Kellon kieli</string>
+    <string name="toggleWidgetSizes">Säädä widgetien kokoja</string>
+    <string name="rebootRequired">Uudelleenkäynnistys vaaditaan</string>
+    <string name="changesToTheseSettings">Näiden asetusten muuttaminen vaatii laitteen
+	uudelleenkäynnistyksen, jotta asetukset tulevat voimaan. 
+	</string>
+    <string name="enable5x4Widget">Ota käyttöön (5x4) Widgetti</string>
+    <string name="enable5x2Widget">Ota käyttöön (5x2) Widgetti</string>
+    <string name="enable5x1Widget">Ota käyttöön (5x1) Widgetti</string>
+    <string name="enable4x4Widget">Ota käyttöön (4x4) Widgetti</string>
+    <string name="enable4x2Widget">Ota käyttöön (4x2) Widgetti</string>
+    <string name="enable4x1Widget">Ota käyttöön (4x1) Widgetti</string>
+    <string name="enable3x3Widget">Ota käyttöön (3x3) Widgetti</string>
+    <string name="enable3x1Widget">Ota käyttöön (3x1) Widgetti</string>
+    <string name="enable2x2Widget">Ota käyttöön (2x2) Widgetti</string>
+    <string name="enable2x1Widget">Ota käyttöön (2x1) Widgetti</string>
+    <string name="enable1x3Widget">Ota käyttöön (1x3) Widgetti</string>
+    <string name="forGalaxyNote">Esim. Galaxy Notelle</string>
+    <string name="enableThemeTester">Ota käyttöön Theme Tester</string>
+    <string name="developmentToolForSkinnersOnly">Kehitystyökalu vain skinien luojille</string>
+    <!-- Widget Sizes Sales Pitch -->
+    <string name="areThereOtherWidgetSizes">Onko saatavilla muita widgetkokoja?</string>
+    <string name="actuallyThePaidVersion">Maksullinen versio tarjoaa widgetit koossa
+		5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 and 1x3.\nHarkitse
+		päivittämistä saadaksesi nämä!
+	</string>
+    <!-- Troubleshooting Options -->
+    <string name="troubleshootingOptions">Vianmääritysten asetukset</string>
+    <!-- Troubleshooting Options -->
+    <string name="clockPriority">Kellon prioriteetti</string>
+    <string name="forFineTuning">Hienosäädön herkkyyttä varten</string>
+    <string-array name="clockPriority_options">
+        <item>Korkein</item>
+        <item>Korkea</item>
+        <item>Keskitaso</item>
+        <item>Alhainen (Oletus)</item>
+        <item>Alhaisin</item>
+    </string-array>
+    <string-array name="clockPriority_legend">
+        <item>Aggressiivinen uudelleenpiirto jokaisella päivityksellä (ei suositella). Oletko varma?
+		</item>
+        <item>Aggressiivinen uudelleenpiirto kerran minuutissa näytön ja launcherin tilasta
+		huolimatta Oletko varma?
+		</item>
+        <item>Laiska uudelleenpiirto kerran minuutissa kun näyttö on päällä,
+		vaikka kotinäyttö olisi taustalla. Oletko varma? 
+		</item>
+        <item>Laiska uudelleenpiirto kerran minuutissa kun launcher ei ole
+		käytössä tai näyttö on pois päältä. Oletko varma?
+		</item>
+        <item>Ei uudelleenpiirtoa kun launcher ei ole käytössä tai näyttö
+		on pois päältä. Oletko varma?
+		</item>
+    </string-array>
+    <string name="locationPriority">Sijainnin prioriteetti</string>
+    <string-array name="locationPriority_options">
+        <item>Tarkka - Vain tarkka</item>
+        <item>Tarkka - Tarkka tai karkea</item>
+        <item>Keskitaso - Vain tarkka</item>
+        <item>Keskitaso - Tarkka tai karkea</item>
+        <item>Joustava (Oletus)</item>
+    </string-array>
+    <string-array name="locationPriority_legend">
+        <item>Käytä vain alle 2 tuntia vanhoja GPS-sijaintitietoja. VAROITUS: Säätietojen
+			päivitykset saattavat loppua jos olet sisätiloissa. Oletko varma?
+		</item>
+        <item>Käytä vain alle 2 tuntia vanhoja GPS-sijaintitietoja. VAROITUS: Säätietojen
+			päivitykset saattavat loppua jos olet sisätiloissa. Oletko varma?
+		</item>
+        <item>Käytä vain alle 10 tuntia vanhoja GPS-sijaintitietoja. Säätietojen
+			päivitykset saattavat loppua jos olet sisätiloissa yli 10 tuntia. Oletko varma?
+		</item>
+        <item>Käytä mitä vain alle 10 tuntia vanhoja sijaintitietoja. Säätietojen
+			päivitykset saattavat loppua jos olet sisätiloissa yli 10 tuntia. Oletko varma?
+		</item>
+        <item>Käytä uusinta verkko- tai GPS-sijaintitietoa sen vanhuudesta riippumatta.
+			Säätietojen tarkkuus rippuu sijainnin tarkkuudesta ja vanhuudesta. Oletko varma?
+		</item>
+    </string-array>
+    <string name="battReporting">Akkutietojen raportointi</string>
+    <string name="battReportingNormal">Normaali - Androidin ilmoittama</string>
+    <string name="battReportingAlternate">Vaihtoehtoinen - Ajurin ilmoittama</string>
+    <string name="weatherDiagnostics">Säädiagnostiikka</string>
+    <string name="submitLocationWeatherDebugData">Lähetä sijainti-/säätietodata virheenkorjausta varten</string>
+    <string name="deleteAllThemes">Poista kaikki teemat</string>
+    <string name="forFixingThemeSelection">Korjataksesi teemanvalinnan sovelluksen kaatuminen</string>
+    <string name="deleteAllThemesFromSD">Poista kaikki teemat SD-kortilta ja muistista?
+	</string>
+    <string name="omcThemesFolderDeleted">OMCThemes-kansio poistettu</string>
+    <string name="defaultClockPackRestored">Oletuskellopaketti palautettu</string>
+    <!-- Contact Xaffron -->
+    <string name="contactXaffron">Yhteydenotto Xaffroniin</string>
+    <string name="donateOrContact">Lahjoita tai pyydä apua kehittäjältä</string>
+    <string name="contactXaffronForIssues">Ota yhteys Xaffroniin ongelmien tai tuentarpeen takia
+	</string>
+    <string name="email">Sähköposti</string>
+    <string name="donate">Lahjoita</string>
+    <string name="facebook">Facebook</string>
+    <string name="viewReleaseNotes">Tarkastele julkaisumerkintöjä</string>
+    <!-- Credits -->
+    <string name="credits">Kiitokset</string>
+    <string name="version">Versio</string>
+    <string name="free">Maksuton</string>
+    <string name="tapToGetFull">Paina tästä päästäksesi maksulliseen versioon!</string>
+    <string name="thanksForYourSupport">Kiitos tuestasi!</string>
+    <string name="viewCredits">Katsele kiitoksia</string>
+    <!-- Credits subscreen -->
+    <string name="team">Tiimi</string>
+    <string name="programmer">Ohjelmoija</string>
+    <string name="sunny">Sunny Kwong</string>
+    <string name="testers">Testaajat</string>
+    <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M.
+		Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann
+	</string>
+    <string name="translators">Kääntäjät</string>
+    <string name="specialThanks">Erityiskiitokset</string>
+    <string name="specialThanksText">Zehro for leading the way\nre: in-sync clock
+		widgets w//o notifications.\nStefan Pledl for helping with the
+		localization.\nJosiah Barber for his \'One-Percent Hack\' on Motorola
+		phones.
+	</string>
+    <string name="copyrights">Tekijänoikeudet ja käyttöoikeudet</string>
+    <string name="applicationIcon">Sovelluksen ikoni: Signpost by Maroubal2</string>
+    <string name="applicationIconText">Adapted from Maroubal2\'s excellent
+		photo-turned-Ubuntu wallpaper.\nCC BY-SA
+		2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/
+	</string>
+    <string name="codeColorPickerDialog">Code: ColorPickerDialog</string>
+    <string name="codeColorPickerDialogText">Copied from CyanogenMod source repo.</string>
+    <string name="codeSVG">Code: svg-android</string>
+    <string name="codeSVGText">SVG support provided by sag-android library (Apache
+		License).\nhttp:////code.google.com//p//svg-android//
+	</string>
+    <string name="weatherFont">Fontti: Weatherfont</string>
+    <string name="weatherFontText">Weatherfont on Jonathan Macagban lisensoima ja
+		saatavilla hintaan $5: jonathan.macagba@gmail.com
+	</string>
+    <string name="sourceCodeTitle">Lähdekoodi</string>
+    <string name="sourceCode">Lähdekoodi saatavilla</string>
+    <string name="daysuffix"/>
+    <string-array name="verbosedow">
+        <item>Sunnuntai</item>
+        <item>Maanantai</item>
+        <item>Tiistai</item>
+        <item>Keskiviikko</item>
+        <item>Torstai</item>
+        <item>Perjantai</item>
+        <item>Lauantai</item>
+    </string-array>
+    <string-array name="shortdow">
+        <item>Sun</item>
+        <item>Maa</item>
+        <item>Tii</item>
+        <item>Kes</item>
+        <item>Tor</item>
+        <item>Per</item>
+        <item>Lau</item>
+    </string-array>
+    <string-array name="verbosemonth">
+        <item>Tammikuu</item>
+        <item>Helmikuu</item>
+        <item>Maaliskuu</item>
+        <item>Huhtikuu</item>
+        <item>Toukokuu</item>
+        <item>Kesäkuu</item>
+        <item>Heinäkuu</item>
+        <item>Elokuu</item>
+        <item>Syyskuu</item>
+        <item>Lokakuu</item>
+        <item>Marraskuu</item>
+        <item>Joululkuu</item>
+    </string-array>
+    <string-array name="shortmonth">
+        <item>Tammi</item>
+        <item>Helmi</item>
+        <item>Maalis</item>
+        <item>Huhti</item>
+        <item>Touko</item>
+        <item>Kesä</item>
+        <item>Heinä</item>
+        <item>Elo</item>
+        <item>Syys</item>
+        <item>Loka</item>
+        <item>Marras</item>
+        <item>Joulu</item>
+    </string-array>
+    <string-array name="WordNumbers">
+        <item>Nolla</item>
+        <item>Yksi</item>
+        <item>Kaksi</item>
+        <item>Kolme</item>
+        <item>Neljä</item>
+        <item>Viisi</item>
+        <item>Kuusi</item>
+        <item>Seitsemän</item>
+        <item>Kahdeksan</item>
+        <item>Yhdeksän</item>
+        <item>Kymmenen</item>
+        <item>Yksitoista</item>
+        <item>Kaksitoista</item>
+        <item>Kolmetoista</item>
+        <item>Neljätoista</item>
+        <item>Viisitoista</item>
+        <item>Kuusitoista</item>
+        <item>Seitsemäntoista</item>
+        <item>Kahdeksantoista</item>
+        <item>Yhdeksäntoista</item>
+        <item>Kaksikymmentä</item>
+        <item>Kaksikymmentäyksi</item>
+        <item>Kaksikymmentäkaksi</item>
+        <item>Kaksikymmentäkolme</item>
+        <item>Kaksikymmentäneljä</item>
+        <item>Kaksikymmentäviisi</item>
+        <item>Kaksikymmentäkuusi</item>
+        <item>Kaksikymmentäseitsemän</item>
+        <item>Kaksikymmentäkahdeksan</item>
+        <item>Kaksikymmentäyhdeksän</item>
+        <item>Kolmekymmentä</item>
+        <item>Kolmekymmentäyksi</item>
+        <item>Kolmekymmentäkaksi</item>
+        <item>Kolmekymmentäkolme</item>
+        <item>Kolmekymmentäneljä</item>
+        <item>Kolmekymmentäviisi</item>
+        <item>Kolmekymmentäkuusi</item>
+        <item>Kolmekymmentäseitsemän</item>
+        <item>Kolmekymmentäkahdeksan</item>
+        <item>Kolmekymmentäyhdeksän</item>
+        <item>Neljäkymmentä</item>
+        <item>Neljäkymmentäyksi</item>
+        <item>Neljäkymmentäkaksi</item>
+        <item>Neljäkymmentäkolme</item>
+        <item>Neljäkymmentäneljä</item>
+        <item>Neljäkymmentäviisi</item>
+        <item>Neljäkymmentäkuusi</item>
+        <item>Neljäkymmentäseitsemän</item>
+        <item>Neljäkymmentäkahdeksan</item>
+        <item>Neljäkymmentäyhdeksän</item>
+        <item>Viisikymmentä</item>
+        <item>Viisikymmentäyksi</item>
+        <item>Viisikymmentäkaksi</item>
+        <item>Viisikymmentäkolme</item>
+        <item>Viisikymmentäneljä</item>
+        <item>Viisikymmentäviisi</item>
+        <item>Viisikymmentäkuusi</item>
+        <item>Viisikymmentäseitsemän</item>
+        <item>Viisikymmentäkahdeksan</item>
+        <item>Viisikymmentäyhdeksän</item>
+        <item>Kuusikymmentä</item>
+        <item>Kuusikymmentäyksi</item>
+        <item>Kuusikymmentäkaksi</item>
+        <item>Kuusikymmentäkolme</item>
+        <item>Kuusikymmentäneljä</item>
+        <item>Kuusikymmentäviisi</item>
+        <item>Kuusikymmentäkuusi</item>
+        <item>Kuusikymmentäseitsemän</item>
+        <item>Kuusikymmentäkahdeksan</item>
+        <item>Kuusikymmentäyhdeksän</item>
+        <item>Seitsemänkymmentä</item>
+        <item>Seitsemänkymmentäyksi</item>
+        <item>Seitsemänkymmentäkaksi</item>
+        <item>Seitsemänkymmentäkolme</item>
+        <item>Seitsemänkymmentäneljä</item>
+        <item>Seitsemänkymmentäviisi</item>
+        <item>Seitsemänkymmentäkuusi</item>
+        <item>Seitsemänkymmentäseitsemän</item>
+        <item>Seitsemänkymmentäkahdeksan</item>
+        <item>Seitsemänkymmentäyhdeksän</item>
+        <item>Kahdeksankymmentä</item>
+        <item>Kahdeksankymmentäyksi</item>
+        <item>Kahdeksankymmentäkaksi</item>
+        <item>Kahdeksankymmentäkolme</item>
+        <item>Kahdeksankymmentäneljä</item>
+        <item>Kahdeksankymmentäviisi</item>
+        <item>Kahdeksankymmentäkuusi</item>
+        <item>Kahdeksankymmentäseitsemän</item>
+        <item>Kahdeksankymmentäkahdeksan</item>
+        <item>Kahdeksankymmentäyhdeksän</item>
+        <item>Yhdeksänkymmentä</item>
+        <item>Yhdeksänkymmentäyksi</item>
+        <item>Yhdeksänkymmentäkaksi</item>
+        <item>Yhdeksänkymmentäkolme</item>
+        <item>Yhdeksänkymmentäneljä</item>
+        <item>Yhdeksänkymmentäviisi</item>
+        <item>Yhdeksänkymmentäkuusi</item>
+        <item>Yhdeksänkymmentäseitsemän</item>
+        <item>Yhdeksänkymmentäkahdeksan</item>
+        <item>Yhdeksänkymmentäyhdeksän</item>
+    </string-array>
+    <string-array name="verbosetime1">
+        <item>tasan puolenyön</item>
+        <item>yksi yli puolenyön</item>
+        <item>kaksi yli puolenyön</item>
+        <item>kolme yli puolenyön</item>
+        <item>neljä yli puolenyön</item>
+        <item>viisi yli puolenyön</item>
+        <item>kuusi yli puolenyön</item>
+        <item>seitsemän yli puolenyön</item>
+        <item>kahdeksan yli puolenyön</item>
+        <item>yhdeksän yli puolenyön</item>
+        <item>kymmenen yli puolenyön</item>
+        <item>yksitoista yli puolenyön</item>
+        <item>kaksitoista yli puolenyön</item>
+        <item>kolmetoista yli puolenyön</item>
+        <item>neljätoista yli puolenyön</item>
+        <item>varttia  yli puolenyön</item>
+        <item>kuusitoista yli puolenyön</item>
+        <item>seitsemäntoista yli puolenyön</item>
+        <item>kahdeksantoista yli puolenyön</item>
+        <item>yhdeksäntoista yli puolenyön</item>
+        <item>kaksikymmentä yli puolenyön</item>
+        <item>kaksikymmentäyksi yli puolenyön</item>
+        <item>kaksikymmentäkaksi yli puolenyön</item>
+        <item>kaksikymmentäkolme yli puolenyön</item>
+        <item>kaksikymmentäneljä yli puolenyön</item>
+        <item>kaksikymmentäviisi yli puolenyön</item>
+        <item>kaksikymmentäkuusi yli puolenyön</item>
+        <item>kaksikymmentäseitsemän yli puolenyön</item>
+        <item>kaksikymmentäkahdeksan yli puolenyön</item>
+        <item>kaksikymmentäyhdeksän yli puolenyön</item>
+        <item>puoli yhdeltä</item>
+        <item>kaksikymmentäyhdeksän vaille yksi</item>
+        <item>kaksikymmentäkahdeksan vaille yksi</item>
+        <item>kaksikymmentäseitsemän vaille yksi</item>
+        <item>kaksikymmentäkuusi vaille yksi</item>
+        <item>kaksikymmentäviisi vaille yksi</item>
+        <item>kaksikymmentäneljä vaille yksi</item>
+        <item>kaksikymmentäkolme vaille yksi</item>
+        <item>kaksikymmentäkaksi vaille yksi</item>
+        <item>kaksikymmentäyksi vaille yksi</item>
+        <item>kaksikymmentä vaille yksi</item>
+        <item>yhdeksäntoista vaille yksi</item>
+        <item>kahdeksantoista vaille yksi</item>
+        <item>seitsemäntoista vaille yksi</item>
+        <item>kuusitoista vaille yksi</item>
+        <item>varttia vaille yksi</item>
+        <item>neljätoista vaille yksi</item>
+        <item>kolmetoista vaille yksi</item>
+        <item>kaksitoista vaille yksi</item>
+        <item>yksitoista vaille yksi</item>
+        <item>kymmenen vaille yksi</item>
+        <item>yhdeksän vaille yksi</item>
+        <item>kahdeksan vaille yksi</item>
+        <item>seitsemän vaille yksi</item>
+        <item>kuusi vaille yksi</item>
+        <item>viisi vaille yksi</item>
+        <item>neljä vaille yksi</item>
+        <item>kolme vaille yksi</item>
+        <item>kaksi vaille yksi</item>
+        <item>yksi vaille yksi</item>
+        <item>tasan yhdeltä</item>
+        <item>yksi yli yksi</item>
+        <item>kaksi yli yksi</item>
+        <item>kolme yli yksi</item>
+        <item>neljä yli yksi</item>
+        <item>viisi yli yksi</item>
+        <item>kuusi yli yksi</item>
+        <item>seitsemän yli yksi</item>
+        <item>kahdeksan yli yksi</item>
+        <item>yhdeksän yli yksi</item>
+        <item>kymmenen yli yksi</item>
+        <item>yksitoista yli yksi</item>
+        <item>kaksitoista yli yksi</item>
+        <item>kolmetoista yli yksi</item>
+        <item>neljätoista yli yksi</item>
+        <item>varttia  yli yksi</item>
+        <item>kuusitoista yli yksi</item>
+        <item>seitsemäntoista yli yksi</item>
+        <item>kahdeksantoista yli yksi</item>
+        <item>yhdeksäntoista yli yksi</item>
+        <item>kaksikymmentä yli yksi</item>
+        <item>kaksikymmentäyksi yli yksi</item>
+        <item>kaksikymmentäkaksi yli yksi</item>
+        <item>kaksikymmentäkolme yli yksi</item>
+        <item>kaksikymmentäneljä yli yksi</item>
+        <item>kaksikymmentäviisi yli yksi</item>
+        <item>kaksikymmentäkuusi yli yksi</item>
+        <item>kaksikymmentäseitsemän yli yksi</item>
+        <item>kaksikymmentäkahdeksan yli yksi</item>
+        <item>kaksikymmentäyhdeksän yli yksi</item>
+        <item>puoli kahdelta</item>
+        <item>kaksikymmentäyhdeksän vaille kaksi</item>
+        <item>kaksikymmentäkahdeksan vaille kaksi</item>
+        <item>kaksikymmentäseitsemän vaille kaksi</item>
+        <item>kaksikymmentäkuusi vaille kaksi</item>
+        <item>kaksikymmentäviisi vaille kaksi</item>
+        <item>kaksikymmentäneljä vaille kaksi</item>
+        <item>kaksikymmentäkolme vaille kaksi</item>
+        <item>kaksikymmentäkaksi vaille kaksi</item>
+        <item>kaksikymmentäyksi vaille kaksi</item>
+        <item>kaksikymmentä vaille kaksi</item>
+        <item>yhdeksäntoista vaille kaksi</item>
+        <item>kahdeksantoista vaille kaksi</item>
+        <item>seitsemäntoista vaille kaksi</item>
+        <item>kuusitoista vaille kaksi</item>
+        <item>varttia vaille kaksi</item>
+        <item>neljätoista vaille kaksi</item>
+        <item>kolmetoista vaille kaksi</item>
+        <item>kaksitoista vaille kaksi</item>
+        <item>yksitoista vaille kaksi</item>
+        <item>kymmenen vaille kaksi</item>
+        <item>yhdeksän vaille kaksi</item>
+        <item>kahdeksan vaille kaksi</item>
+        <item>seitsemän vaille kaksi</item>
+        <item>kuusi vaille kaksi</item>
+        <item>viisi vaille kaksi</item>
+        <item>neljä vaille kaksi</item>
+        <item>kolme vaille kaksi</item>
+        <item>kaksi vaille kaksi</item>
+        <item>yksi vaille kaksi</item>
+        <item>tasan kaksi</item>
+        <item>yksi yli kaksi</item>
+        <item>kaksi yli kaksi</item>
+        <item>kolme yli kaksi</item>
+        <item>neljä yli kaksi</item>
+        <item>viisi yli kaksi</item>
+        <item>kuusi yli kaksi</item>
+        <item>seitsemän yli kaksi</item>
+        <item>kahdeksan yli kaksi</item>
+        <item>yhdeksän yli kaksi</item>
+        <item>kymmenen yli kaksi</item>
+        <item>yksitoista yli kaksi</item>
+        <item>kaksitoista yli kaksi</item>
+        <item>kolmetoista yli kaksi</item>
+        <item>neljätoista yli kaksi</item>
+        <item>varttia  yli kaksi</item>
+        <item>kuusitoista yli kaksi</item>
+        <item>seitsemäntoista yli kaksi</item>
+        <item>kahdeksantoista yli kaksi</item>
+        <item>yhdeksäntoista yli kaksi</item>
+        <item>kaksikymmentä yli kaksi</item>
+        <item>kaksikymmentäyksi yli kaksi</item>
+        <item>kaksikymmentäkaksi yli kaksi</item>
+        <item>kaksikymmentäkolme yli kaksi</item>
+        <item>kaksikymmentäneljä yli kaksi</item>
+        <item>kaksikymmentäviisi yli kaksi</item>
+        <item>kaksikymmentäkuusi yli kaksi</item>
+        <item>kaksikymmentäseitsemän yli kaksi</item>
+        <item>kaksikymmentäkahdeksan yli kaksi</item>
+        <item>kaksikymmentäyhdeksän yli kaksi</item>
+        <item>puoli kolme</item>
+        <item>kaksikymmentäyhdeksän vaille kolme</item>
+        <item>kaksikymmentäkahdeksan vaille kolme</item>
+        <item>kaksikymmentäseitsemän vaille kolme</item>
+        <item>kaksikymmentäkuusi vaille kolme</item>
+        <item>kaksikymmentäviisi vaille kolme</item>
+        <item>kaksikymmentäneljä vaille kolme</item>
+        <item>kaksikymmentäkolme vaille kolme</item>
+        <item>kaksikymmentäkaksi vaille kolme</item>
+        <item>kaksikymmentäyksi vaille kolme</item>
+        <item>kaksikymmentä vaille kolme</item>
+        <item>yhdeksäntoista vaille kolme</item>
+        <item>kahdeksantoista vaille kolme</item>
+        <item>seitsemäntoista vaille kolme</item>
+        <item>kuusitoista vaille kolme</item>
+        <item>varttia vaille kolme</item>
+        <item>neljätoista vaille kolme</item>
+        <item>kolmetoista vaille kolme</item>
+        <item>kaksitoista vaille kolme</item>
+        <item>yksitoista vaille kolme</item>
+        <item>kymmenen vaille kolme</item>
+        <item>yhdeksän vaille kolme</item>
+        <item>kahdeksan vaille kolme</item>
+        <item>seitsemän vaille kolme</item>
+        <item>kuusi vaille kolme</item>
+        <item>viisi vaille kolme</item>
+        <item>neljä vaille kolme</item>
+        <item>kolme vaille kolme</item>
+        <item>kaksi vaille kolme</item>
+        <item>yksi vaille kolme</item>
+        <item>tasan kolme</item>
+        <item>yksi yli kolme</item>
+        <item>kaksi yli kolme</item>
+        <item>kolme yli kolme</item>
+        <item>neljä yli kolme</item>
+        <item>viisi yli kolme</item>
+        <item>kuusi yli kolme</item>
+        <item>seitsemän yli kolme</item>
+        <item>kahdeksan yli kolme</item>
+        <item>yhdeksän yli kolme</item>
+        <item>kymmenen yli kolme</item>
+        <item>yksitoista yli kolme</item>
+        <item>kaksitoista yli kolme</item>
+        <item>kolmetoista yli kolme</item>
+        <item>neljätoista yli kolme</item>
+        <item>varttia  yli kolme</item>
+        <item>kuusitoista yli kolme</item>
+        <item>seitsemäntoista yli kolme</item>
+        <item>kahdeksantoista yli kolme</item>
+        <item>yhdeksäntoista yli kolme</item>
+        <item>kaksikymmentä yli kolme</item>
+        <item>kaksikymmentäyksi yli kolme</item>
+        <item>kaksikymmentäkaksi yli kolme</item>
+        <item>kaksikymmentäkolme yli kolme</item>
+        <item>kaksikymmentäneljä yli kolme</item>
+        <item>kaksikymmentäviisi yli kolme</item>
+        <item>kaksikymmentäkuusi yli kolme</item>
+        <item>kaksikymmentäseitsemän yli kolme</item>
+        <item>kaksikymmentäkahdeksan yli kolme</item>
+        <item>kaksikymmentäyhdeksän yli kolme</item>
+        <item>puoli neljä</item>
+        <item>kaksikymmentäyhdeksän vaille neljä</item>
+        <item>kaksikymmentäkahdeksan vaille neljä</item>
+        <item>kaksikymmentäseitsemän vaille neljä</item>
+        <item>kaksikymmentäkuusi vaille neljä</item>
+        <item>kaksikymmentäviisi vaille neljä</item>
+        <item>kaksikymmentäneljä vaille neljä</item>
+        <item>kaksikymmentäkolme vaille neljä</item>
+        <item>kaksikymmentäkaksi vaille neljä</item>
+        <item>kaksikymmentäyksi vaille neljä</item>
+        <item>kaksikymmentä vaille neljä</item>
+        <item>yhdeksäntoista vaille neljä</item>
+        <item>kahdeksantoista vaille neljä</item>
+        <item>seitsemäntoista vaille neljä</item>
+        <item>kuusitoista vaille neljä</item>
+        <item>varttia vaille neljä</item>
+        <item>neljätoista vaille neljä</item>
+        <item>kolmetoista vaille neljä</item>
+        <item>kaksitoista vaille neljä</item>
+        <item>yksitoista vaille neljä</item>
+        <item>kymmenen vaille neljä</item>
+        <item>yhdeksän vaille neljä</item>
+        <item>kahdeksan vaille neljä</item>
+        <item>seitsemän vaille neljä</item>
+        <item>kuusi vaille neljä</item>
+        <item>viisi vaille neljä</item>
+        <item>neljä vaille neljä</item>
+        <item>kolme vaille neljä</item>
+        <item>kaksi vaille neljä</item>
+        <item>yksi vaille neljä</item>
+        <item>tasan neljä</item>
+        <item>yksi yli neljä</item>
+        <item>kaksi yli neljä</item>
+        <item>kolme yli neljä</item>
+        <item>neljä yli neljä</item>
+        <item>viisi yli neljä</item>
+        <item>kuusi yli neljä</item>
+        <item>seitsemän yli neljä</item>
+        <item>kahdeksan yli neljä</item>
+        <item>yhdeksän yli neljä</item>
+        <item>kymmenen yli neljä</item>
+        <item>yksitoista yli neljä</item>
+        <item>kaksitoista yli neljä</item>
+        <item>kolmetoista yli neljä</item>
+        <item>neljätoista yli neljä</item>
+        <item>varttia  yli neljä</item>
+        <item>kuusitoista yli neljä</item>
+        <item>seitsemäntoista yli neljä</item>
+        <item>kahdeksantoista yli neljä</item>
+        <item>yhdeksäntoista yli neljä</item>
+        <item>kaksikymmentä yli neljä</item>
+        <item>kaksikymmentäyksi yli neljä</item>
+        <item>kaksikymmentäkaksi yli neljä</item>
+        <item>kaksikymmentäkolme yli neljä</item>
+        <item>kaksikymmentäneljä yli neljä</item>
+        <item>kaksikymmentäviisi yli neljä</item>
+        <item>kaksikymmentäkuusi yli neljä</item>
+        <item>kaksikymmentäseitsemän yli neljä</item>
+        <item>kaksikymmentäkahdeksan yli neljä</item>
+        <item>kaksikymmentäyhdeksän yli neljä</item>
+        <item>puoli viisi</item>
+        <item>kaksikymmentäyhdeksän vaille viisi</item>
+        <item>kaksikymmentäkahdeksan vaille viisi</item>
+        <item>kaksikymmentäseitsemän vaille viisi</item>
+        <item>kaksikymmentäkuusi vaille viisi</item>
+        <item>kaksikymmentäviisi vaille viisi</item>
+        <item>kaksikymmentäneljä vaille viisi</item>
+        <item>kaksikymmentäkolme vaille viisi</item>
+        <item>kaksikymmentäkaksi vaille viisi</item>
+        <item>kaksikymmentäyksi vaille viisi</item>
+        <item>kaksikymmentä vaille viisi</item>
+        <item>yhdeksäntoista vaille viisi</item>
+        <item>kahdeksantoista vaille viisi</item>
+        <item>seitsemäntoista vaille viisi</item>
+        <item>kuusitoista vaille viisi</item>
+        <item>varttia vaille viisi</item>
+        <item>neljätoista vaille viisi</item>
+        <item>kolmetoista vaille viisi</item>
+        <item>kaksitoista vaille viisi</item>
+        <item>yksitoista vaille viisi</item>
+        <item>kymmenen vaille viisi</item>
+        <item>yhdeksän vaille viisi</item>
+        <item>kahdeksan vaille viisi</item>
+        <item>seitsemän vaille viisi</item>
+        <item>kuusi vaille viisi</item>
+        <item>viisi vaille viisi</item>
+        <item>neljä vaille viisi</item>
+        <item>kolme vaille viisi</item>
+        <item>kaksi vaille viisi</item>
+        <item>yksi vaille viisi</item>
+        <item>tasan viisi</item>
+        <item>yksi yli viisi</item>
+        <item>kaksi yli viisi</item>
+        <item>kolme yli viisi</item>
+        <item>neljä yli viisi</item>
+        <item>viisi yli viisi</item>
+        <item>kuusi yli viisi</item>
+        <item>seitsemän yli viisi</item>
+        <item>kahdeksan yli viisi</item>
+        <item>yhdeksän yli viisi</item>
+        <item>kymmenen yli viisi</item>
+        <item>yksitoista yli viisi</item>
+        <item>kaksitoista yli viisi</item>
+        <item>kolmetoista yli viisi</item>
+        <item>neljätoista yli viisi</item>
+        <item>varttia  yli viisi</item>
+        <item>kuusitoista yli viisi</item>
+        <item>seitsemäntoista yli viisi</item>
+        <item>kahdeksantoista yli viisi</item>
+        <item>yhdeksäntoista yli viisi</item>
+        <item>kaksikymmentä yli viisi</item>
+        <item>kaksikymmentäyksi yli viisi</item>
+        <item>kaksikymmentäkaksi yli viisi</item>
+        <item>kaksikymmentäkolme yli viisi</item>
+        <item>kaksikymmentäneljä yli viisi</item>
+        <item>kaksikymmentäviisi yli viisi</item>
+        <item>kaksikymmentäkuusi yli viisi</item>
+        <item>kaksikymmentäseitsemän yli viisi</item>
+        <item>kaksikymmentäkahdeksan yli viisi</item>
+        <item>kaksikymmentäyhdeksän yli viisi</item>
+        <item>puoli kuusi</item>
+        <item>kaksikymmentäyhdeksän vaille kuusi</item>
+        <item>kaksikymmentäkahdeksan vaille kuusi</item>
+        <item>kaksikymmentäseitsemän vaille kuusi</item>
+        <item>kaksikymmentäkuusi vaille kuusi</item>
+        <item>kaksikymmentäviisi vaille kuusi</item>
+        <item>kaksikymmentäneljä vaille kuusi</item>
+        <item>kaksikymmentäkolme vaille kuusi</item>
+        <item>kaksikymmentäkaksi vaille kuusi</item>
+        <item>kaksikymmentäyksi vaille kuusi</item>
+        <item>kaksikymmentä vaille kuusi</item>
+        <item>yhdeksäntoista vaille kuusi</item>
+        <item>kahdeksantoista vaille kuusi</item>
+        <item>seitsemäntoista vaille kuusi</item>
+        <item>kuusitoista vaille kuusi</item>
+        <item>varttia vaille kuusi</item>
+        <item>neljätoista vaille kuusi</item>
+        <item>kolmetoista vaille kuusi</item>
+        <item>kaksitoista vaille kuusi</item>
+        <item>yksitoista vaille kuusi</item>
+        <item>kymmenen vaille kuusi</item>
+        <item>yhdeksän vaille kuusi</item>
+        <item>kahdeksan vaille kuusi</item>
+        <item>seitsemän vaille kuusi</item>
+        <item>kuusi vaille kuusi</item>
+        <item>viisi vaille kuusi</item>
+        <item>neljä vaille kuusi</item>
+        <item>kolme vaille kuusi</item>
+        <item>kaksi vaille kuusi</item>
+        <item>yksi vaille kuusi</item>
+    </string-array>
+    <string-array name="verbosetime2">
+        <item>tasan kuusi</item>
+        <item>yksi yli kuusi</item>
+        <item>kaksi yli kuusi</item>
+        <item>kolme yli kuusi</item>
+        <item>neljä yli kuusi</item>
+        <item>viisi yli kuusi</item>
+        <item>kuusi yli kuusi</item>
+        <item>seitsemän yli kuusi</item>
+        <item>kahdeksan yli kuusi</item>
+        <item>yhdeksän yli kuusi</item>
+        <item>kymmenen yli kuusi</item>
+        <item>yksitoista yli kuusi</item>
+        <item>kaksitoista yli kuusi</item>
+        <item>kolmetoista yli kuusi</item>
+        <item>neljätoista yli kuusi</item>
+        <item>varttia  yli kuusi</item>
+        <item>kuusitoista yli kuusi</item>
+        <item>seitsemäntoista yli kuusi</item>
+        <item>kahdeksantoista yli kuusi</item>
+        <item>yhdeksäntoista yli kuusi</item>
+        <item>kaksikymmentä yli kuusi</item>
+        <item>kaksikymmentäyksi yli kuusi</item>
+        <item>kaksikymmentäkaksi yli kuusi</item>
+        <item>kaksikymmentäkolme yli kuusi</item>
+        <item>kaksikymmentäneljä yli kuusi</item>
+        <item>kaksikymmentäviisi yli kuusi</item>
+        <item>kaksikymmentäkuusi yli kuusi</item>
+        <item>kaksikymmentäseitsemän yli kuusi</item>
+        <item>kaksikymmentäkahdeksan yli kuusi</item>
+        <item>kaksikymmentäyhdeksän yli kuusi</item>
+        <item>puoli seitsemän</item>
+        <item>kaksikymmentäyhdeksän vaille seitsemän</item>
+        <item>kaksikymmentäkahdeksan vaille seitsemän</item>
+        <item>kaksikymmentäseitsemän vaille seitsemän</item>
+        <item>kaksikymmentäkuusi vaille seitsemän</item>
+        <item>kaksikymmentäviisi vaille seitsemän</item>
+        <item>kaksikymmentäneljä vaille seitsemän</item>
+        <item>kaksikymmentäkolme vaille seitsemän</item>
+        <item>kaksikymmentäkaksi vaille seitsemän</item>
+        <item>kaksikymmentäyksi vaille seitsemän</item>
+        <item>kaksikymmentä vaille seitsemän</item>
+        <item>yhdeksäntoista vaille seitsemän</item>
+        <item>kahdeksantoista vaille seitsemän</item>
+        <item>seitsemäntoista vaille seitsemän</item>
+        <item>kuusitoista vaille seitsemän</item>
+        <item>varttia vaille seitsemän</item>
+        <item>neljätoista vaille seitsemän</item>
+        <item>kolmetoista vaille seitsemän</item>
+        <item>kaksitoista vaille seitsemän</item>
+        <item>yksitoista vaille seitsemän</item>
+        <item>kymmenen vaille seitsemän</item>
+        <item>yhdeksän vaille seitsemän</item>
+        <item>kahdeksan vaille seitsemän</item>
+        <item>seitsemän vaille seitsemän</item>
+        <item>kuusi vaille seitsemän</item>
+        <item>viisi vaille seitsemän</item>
+        <item>neljä vaille seitsemän</item>
+        <item>kolme vaille seitsemän</item>
+        <item>kaksi vaille seitsemän</item>
+        <item>yksi vaille seitsemän</item>
+        <item>tasan seitsemän</item>
+        <item>yksi yli seitsemän</item>
+        <item>kaksi yli seitsemän</item>
+        <item>kolme yli seitsemän</item>
+        <item>neljä yli seitsemän</item>
+        <item>viisi yli seitsemän</item>
+        <item>kuusi yli seitsemän</item>
+        <item>seitsemän yli seitsemän</item>
+        <item>kahdeksan yli seitsemän</item>
+        <item>yhdeksän yli seitsemän</item>
+        <item>kymmenen yli seitsemän</item>
+        <item>yksitoista yli seitsemän</item>
+        <item>kaksitoista yli seitsemän</item>
+        <item>kolmetoista yli seitsemän</item>
+        <item>neljätoista yli seitsemän</item>
+        <item>varttia  yli seitsemän</item>
+        <item>kuusitoista yli seitsemän</item>
+        <item>seitsemäntoista yli seitsemän</item>
+        <item>kahdeksantoista yli seitsemän</item>
+        <item>yhdeksäntoista yli seitsemän</item>
+        <item>kaksikymmentä yli seitsemän</item>
+        <item>kaksikymmentäyksi yli seitsemän</item>
+        <item>kaksikymmentäkaksi yli seitsemän</item>
+        <item>kaksikymmentäkolme yli seitsemän</item>
+        <item>kaksikymmentäneljä yli seitsemän</item>
+        <item>kaksikymmentäviisi yli seitsemän</item>
+        <item>kaksikymmentäkuusi yli seitsemän</item>
+        <item>kaksikymmentäseitsemän yli seitsemän</item>
+        <item>kaksikymmentäkahdeksan yli seitsemän</item>
+        <item>kaksikymmentäyhdeksän yli seitsemän</item>
+        <item>puoli kahdeksan</item>
+        <item>kaksikymmentäyhdeksän vaille kahdeksan</item>
+        <item>kaksikymmentäkahdeksan vaille kahdeksan</item>
+        <item>kaksikymmentäseitsemän vaille kahdeksan</item>
+        <item>kaksikymmentäkuusi vaille kahdeksan</item>
+        <item>kaksikymmentäviisi vaille kahdeksan</item>
+        <item>kaksikymmentäneljä vaille kahdeksan</item>
+        <item>kaksikymmentäkolme vaille kahdeksan</item>
+        <item>kaksikymmentäkaksi vaille kahdeksan</item>
+        <item>kaksikymmentäyksi vaille kahdeksan</item>
+        <item>kaksikymmentä vaille kahdeksan</item>
+        <item>yhdeksäntoista vaille kahdeksan</item>
+        <item>kahdeksantoista vaille kahdeksan</item>
+        <item>seitsemäntoista vaille kahdeksan</item>
+        <item>kuusitoista vaille kahdeksan</item>
+        <item>varttia vaille kahdeksan</item>
+        <item>neljätoista vaille kahdeksan</item>
+        <item>kolmetoista vaille kahdeksan</item>
+        <item>kaksitoista vaille kahdeksan</item>
+        <item>yksitoista vaille kahdeksan</item>
+        <item>kymmenen vaille kahdeksan</item>
+        <item>yhdeksän vaille kahdeksan</item>
+        <item>kahdeksan vaille kahdeksan</item>
+        <item>seitsemän vaille kahdeksan</item>
+        <item>kuusi vaille kahdeksan</item>
+        <item>viisi vaille kahdeksan</item>
+        <item>neljä vaille kahdeksan</item>
+        <item>kolme vaille kahdeksan</item>
+        <item>kaksi vaille kahdeksan</item>
+        <item>yksi vaille kahdeksan</item>
+        <item>tasan kahdeksan</item>
+        <item>yksi yli kahdeksan</item>
+        <item>kaksi yli kahdeksan</item>
+        <item>kolme yli kahdeksan</item>
+        <item>neljä yli kahdeksan</item>
+        <item>viisi yli kahdeksan</item>
+        <item>kuusi yli kahdeksan</item>
+        <item>seitsemän yli kahdeksan</item>
+        <item>kahdeksan yli kahdeksan</item>
+        <item>yhdeksän yli kahdeksan</item>
+        <item>kymmenen yli kahdeksan</item>
+        <item>yksitoista yli kahdeksan</item>
+        <item>kaksitoista yli kahdeksan</item>
+        <item>kolmetoista yli kahdeksan</item>
+        <item>neljätoista yli kahdeksan</item>
+        <item>varttia  yli kahdeksan</item>
+        <item>kuusitoista yli kahdeksan</item>
+        <item>seitsemäntoista yli kahdeksan</item>
+        <item>kahdeksantoista yli kahdeksan</item>
+        <item>yhdeksäntoista yli kahdeksan</item>
+        <item>kaksikymmentä yli kahdeksan</item>
+        <item>kaksikymmentäyksi yli kahdeksan</item>
+        <item>kaksikymmentäkaksi yli kahdeksan</item>
+        <item>kaksikymmentäkolme yli kahdeksan</item>
+        <item>kaksikymmentäneljä yli kahdeksan</item>
+        <item>kaksikymmentäviisi yli kahdeksan</item>
+        <item>kaksikymmentäkuusi yli kahdeksan</item>
+        <item>kaksikymmentäseitsemän yli kahdeksan</item>
+        <item>kaksikymmentäkahdeksan yli kahdeksan</item>
+        <item>kaksikymmentäyhdeksän yli kahdeksan</item>
+        <item>puoli yhdeksän</item>
+        <item>kaksikymmentäyhdeksän vaille yhdeksän</item>
+        <item>kaksikymmentäkahdeksan vaille yhdeksän</item>
+        <item>kaksikymmentäseitsemän vaille yhdeksän</item>
+        <item>kaksikymmentäkuusi vaille yhdeksän</item>
+        <item>kaksikymmentäviisi vaille yhdeksän</item>
+        <item>kaksikymmentäneljä vaille yhdeksän</item>
+        <item>kaksikymmentäkolme vaille yhdeksän</item>
+        <item>kaksikymmentäkaksi vaille yhdeksän</item>
+        <item>kaksikymmentäyksi vaille yhdeksän</item>
+        <item>kaksikymmentä vaille yhdeksän</item>
+        <item>yhdeksäntoista vaille yhdeksän</item>
+        <item>kahdeksantoista vaille yhdeksän</item>
+        <item>seitsemäntoista vaille yhdeksän</item>
+        <item>kuusitoista vaille yhdeksän</item>
+        <item>varttia vaille yhdeksän</item>
+        <item>neljätoista vaille yhdeksän</item>
+        <item>kolmetoista vaille yhdeksän</item>
+        <item>kaksitoista vaille yhdeksän</item>
+        <item>yksitoista vaille yhdeksän</item>
+        <item>kymmenen vaille yhdeksän</item>
+        <item>yhdeksän vaille yhdeksän</item>
+        <item>kahdeksan vaille yhdeksän</item>
+        <item>seitsemän vaille yhdeksän</item>
+        <item>kuusi vaille yhdeksän</item>
+        <item>viisi vaille yhdeksän</item>
+        <item>neljä vaille yhdeksän</item>
+        <item>kolme vaille yhdeksän</item>
+        <item>kaksi vaille yhdeksän</item>
+        <item>yksi vaille yhdeksän</item>
+        <item>tasan yhdeksän</item>
+        <item>yksi yli yhdeksän</item>
+        <item>kaksi yli yhdeksän</item>
+        <item>kolme yli yhdeksän</item>
+        <item>neljä yli yhdeksän</item>
+        <item>viisi yli yhdeksän</item>
+        <item>kuusi yli yhdeksän</item>
+        <item>seitsemän yli yhdeksän</item>
+        <item>kahdeksan yli yhdeksän</item>
+        <item>yhdeksän yli yhdeksän</item>
+        <item>kymmenen yli yhdeksän</item>
+        <item>yksitoista yli yhdeksän</item>
+        <item>kaksitoista yli yhdeksän</item>
+        <item>kolmetoista yli yhdeksän</item>
+        <item>neljätoista yli yhdeksän</item>
+        <item>varttia  yli yhdeksän</item>
+        <item>kuusitoista yli yhdeksän</item>
+        <item>seitsemäntoista yli yhdeksän</item>
+        <item>kahdeksantoista yli yhdeksän</item>
+        <item>yhdeksäntoista yli yhdeksän</item>
+        <item>kaksikymmentä yli yhdeksän</item>
+        <item>kaksikymmentäyksi yli yhdeksän</item>
+        <item>kaksikymmentäkaksi yli yhdeksän</item>
+        <item>kaksikymmentäkolme yli yhdeksän</item>
+        <item>kaksikymmentäneljä yli yhdeksän</item>
+        <item>kaksikymmentäviisi yli yhdeksän</item>
+        <item>kaksikymmentäkuusi yli yhdeksän</item>
+        <item>kaksikymmentäseitsemän yli yhdeksän</item>
+        <item>kaksikymmentäkahdeksan yli yhdeksän</item>
+        <item>kaksikymmentäyhdeksän yli yhdeksän</item>
+        <item>puoli kymmenen</item>
+        <item>kaksikymmentäyhdeksän vaille kymmenen</item>
+        <item>kaksikymmentäkahdeksan vaille kymmenen</item>
+        <item>kaksikymmentäseitsemän vaille kymmenen</item>
+        <item>kaksikymmentäkuusi vaille kymmenen</item>
+        <item>kaksikymmentäviisi vaille kymmenen</item>
+        <item>kaksikymmentäneljä vaille kymmenen</item>
+        <item>kaksikymmentäkolme vaille kymmenen</item>
+        <item>kaksikymmentäkaksi vaille kymmenen</item>
+        <item>kaksikymmentäyksi vaille kymmenen</item>
+        <item>kaksikymmentä vaille kymmenen</item>
+        <item>yhdeksäntoista vaille kymmenen</item>
+        <item>kahdeksantoista vaille kymmenen</item>
+        <item>seitsemäntoista vaille kymmenen</item>
+        <item>kuusitoista vaille kymmenen</item>
+        <item>varttia vaille kymmenen</item>
+        <item>neljätoista vaille kymmenen</item>
+        <item>kolmetoista vaille kymmenen</item>
+        <item>kaksitoista vaille kymmenen</item>
+        <item>yksitoista vaille kymmenen</item>
+        <item>kymmenen vaille kymmenen</item>
+        <item>yhdeksän vaille kymmenen</item>
+        <item>kahdeksan vaille kymmenen</item>
+        <item>seitsemän vaille kymmenen</item>
+        <item>kuusi vaille kymmenen</item>
+        <item>viisi vaille kymmenen</item>
+        <item>neljä vaille kymmenen</item>
+        <item>kolme vaille kymmenen</item>
+        <item>kaksi vaille kymmenen</item>
+        <item>yksi vaille kymmenen</item>
+        <item>tasan kymmenen</item>
+        <item>yksi yli kymmenen</item>
+        <item>kaksi yli kymmenen</item>
+        <item>kolme yli kymmenen</item>
+        <item>neljä yli kymmenen</item>
+        <item>viisi yli kymmenen</item>
+        <item>kuusi yli kymmenen</item>
+        <item>seitsemän yli kymmenen</item>
+        <item>kahdeksan yli kymmenen</item>
+        <item>yhdeksän yli kymmenen</item>
+        <item>kymmenen yli kymmenen</item>
+        <item>yksitoista yli kymmenen</item>
+        <item>kaksitoista yli kymmenen</item>
+        <item>kolmetoista yli kymmenen</item>
+        <item>neljätoista yli kymmenen</item>
+        <item>varttia  yli kymmenen</item>
+        <item>kuusitoista yli kymmenen</item>
+        <item>seitsemäntoista yli kymmenen</item>
+        <item>kahdeksantoista yli kymmenen</item>
+        <item>yhdeksäntoista yli kymmenen</item>
+        <item>kaksikymmentä yli kymmenen</item>
+        <item>kaksikymmentäyksi yli kymmenen</item>
+        <item>kaksikymmentäkaksi yli kymmenen</item>
+        <item>kaksikymmentäkolme yli kymmenen</item>
+        <item>kaksikymmentäneljä yli kymmenen</item>
+        <item>kaksikymmentäviisi yli kymmenen</item>
+        <item>kaksikymmentäkuusi yli kymmenen</item>
+        <item>kaksikymmentäseitsemän yli kymmenen</item>
+        <item>kaksikymmentäkahdeksan yli kymmenen</item>
+        <item>kaksikymmentäyhdeksän yli kymmenen</item>
+        <item>puoli yksitoista</item>
+        <item>kaksikymmentäyhdeksän vaille yksitoista</item>
+        <item>kaksikymmentäkahdeksan vaille yksitoista</item>
+        <item>kaksikymmentäseitsemän vaille yksitoista</item>
+        <item>kaksikymmentäkuusi vaille yksitoista</item>
+        <item>kaksikymmentäviisi vaille yksitoista</item>
+        <item>kaksikymmentäneljä vaille yksitoista</item>
+        <item>kaksikymmentäkolme vaille yksitoista</item>
+        <item>kaksikymmentäkaksi vaille yksitoista</item>
+        <item>kaksikymmentäyksi vaille yksitoista</item>
+        <item>kaksikymmentä vaille yksitoista</item>
+        <item>yhdeksäntoista vaille yksitoista</item>
+        <item>kahdeksantoista vaille yksitoista</item>
+        <item>seitsemäntoista vaille yksitoista</item>
+        <item>kuusitoista vaille yksitoista</item>
+        <item>varttia vaille yksitoista</item>
+        <item>neljätoista vaille yksitoista</item>
+        <item>kolmetoista vaille yksitoista</item>
+        <item>kaksitoista vaille yksitoista</item>
+        <item>yksitoista vaille yksitoista</item>
+        <item>kymmenen vaille yksitoista</item>
+        <item>yhdeksän vaille yksitoista</item>
+        <item>kahdeksan vaille yksitoista</item>
+        <item>seitsemän vaille yksitoista</item>
+        <item>kuusi vaille yksitoista</item>
+        <item>viisi vaille yksitoista</item>
+        <item>neljä vaille yksitoista</item>
+        <item>kolme vaille yksitoista</item>
+        <item>kaksi vaille yksitoista</item>
+        <item>yksi vaille yksitoista</item>
+        <item>tasan yksitoista</item>
+        <item>yksi yli yksitoista</item>
+        <item>kaksi yli yksitoista</item>
+        <item>kolme yli yksitoista</item>
+        <item>neljä yli yksitoista</item>
+        <item>viisi yli yksitoista</item>
+        <item>kuusi yli yksitoista</item>
+        <item>seitsemän yli yksitoista</item>
+        <item>kahdeksan yli yksitoista</item>
+        <item>yhdeksän yli yksitoista</item>
+        <item>kymmenen yli yksitoista</item>
+        <item>yksitoista yli yksitoista</item>
+        <item>kaksitoista yli yksitoista</item>
+        <item>kolmetoista yli yksitoista</item>
+        <item>neljätoista yli yksitoista</item>
+        <item>varttia  yli yksitoista</item>
+        <item>kuusitoista yli yksitoista</item>
+        <item>seitsemäntoista yli yksitoista</item>
+        <item>kahdeksantoista yli yksitoista</item>
+        <item>yhdeksäntoista yli yksitoista</item>
+        <item>kaksikymmentä yli yksitoista</item>
+        <item>kaksikymmentäyksi yli yksitoista</item>
+        <item>kaksikymmentäkaksi yli yksitoista</item>
+        <item>kaksikymmentäkolme yli yksitoista</item>
+        <item>kaksikymmentäneljä yli yksitoista</item>
+        <item>kaksikymmentäviisi yli yksitoista</item>
+        <item>kaksikymmentäkuusi yli yksitoista</item>
+        <item>kaksikymmentäseitsemän yli yksitoista</item>
+        <item>kaksikymmentäkahdeksan yli yksitoista</item>
+        <item>kaksikymmentäyhdeksän yli yksitoista</item>
+        <item>puoli kaksitoista</item>
+        <item>kaksikymmentäyhdeksän vaille kaksitoista</item>
+        <item>kaksikymmentäkahdeksan vaille kaksitoista</item>
+        <item>kaksikymmentäseitsemän vaille kaksitoista</item>
+        <item>kaksikymmentäkuusi vaille kaksitoista</item>
+        <item>kaksikymmentäviisi vaille kaksitoista</item>
+        <item>kaksikymmentäneljä vaille kaksitoista</item>
+        <item>kaksikymmentäkolme vaille kaksitoista</item>
+        <item>kaksikymmentäkaksi vaille kaksitoista</item>
+        <item>kaksikymmentäyksi vaille kaksitoista</item>
+        <item>kaksikymmentä vaille kaksitoista</item>
+        <item>yhdeksäntoista vaille kaksitoista</item>
+        <item>kahdeksantoista vaille kaksitoista</item>
+        <item>seitsemäntoista vaille kaksitoista</item>
+        <item>kuusitoista vaille kaksitoista</item>
+        <item>varttia vaille kaksitoista</item>
+        <item>neljätoista vaille kaksitoista</item>
+        <item>kolmetoista vaille kaksitoista</item>
+        <item>kaksitoista vaille kaksitoista</item>
+        <item>yksitoista vaille kaksitoista</item>
+        <item>kymmenen vaille kaksitoista</item>
+        <item>yhdeksän vaille kaksitoista</item>
+        <item>kahdeksan vaille kaksitoista</item>
+        <item>seitsemän vaille kaksitoista</item>
+        <item>kuusi vaille kaksitoista</item>
+        <item>viisi vaille kaksitoista</item>
+        <item>neljä vaille kaksitoista</item>
+        <item>kolme vaille kaksitoista</item>
+        <item>kaksi vaille kaksitoista</item>
+        <item>yksi vaille kaksitoista</item>
+    </string-array>
+    <string-array name="verbosetime3">
+        <item>tasan kaksitoista</item>
+        <item>yksi yli kaksitoista</item>
+        <item>kaksi yli kaksitoista</item>
+        <item>kolme yli kaksitoista</item>
+        <item>neljä yli kaksitoista</item>
+        <item>viisi yli kaksitoista</item>
+        <item>kuusi yli kaksitoista</item>
+        <item>seitsemän yli kaksitoista</item>
+        <item>kahdeksan yli kaksitoista</item>
+        <item>yhdeksän yli kaksitoista</item>
+        <item>kymmenen yli kaksitoista</item>
+        <item>yksitoista yli kaksitoista</item>
+        <item>kaksitoista yli kaksitoista</item>
+        <item>kolmetoista yli kaksitoista</item>
+        <item>neljätoista yli kaksitoista</item>
+        <item>varttia  yli kaksitoista</item>
+        <item>kuusitoista yli kaksitoista</item>
+        <item>seitsemäntoista yli kaksitoista</item>
+        <item>kahdeksantoista yli kaksitoista</item>
+        <item>yhdeksäntoista yli kaksitoista</item>
+        <item>kaksikymmentä yli kaksitoista</item>
+        <item>kaksikymmentäyksi yli kaksitoista</item>
+        <item>kaksikymmentäkaksi yli kaksitoista</item>
+        <item>kaksikymmentäkolme yli kaksitoista</item>
+        <item>kaksikymmentäneljä yli kaksitoista</item>
+        <item>kaksikymmentäviisi yli kaksitoista</item>
+        <item>kaksikymmentäkuusi yli kaksitoista</item>
+        <item>kaksikymmentäseitsemän yli kaksitoista</item>
+        <item>kaksikymmentäkahdeksan yli kaksitoista</item>
+        <item>kaksikymmentäyhdeksän yli kaksitoista</item>
+        <item>puoli kolmetoista</item>
+        <item>kaksikymmentäyhdeksän vaille kolmetoista</item>
+        <item>kaksikymmentäkahdeksan vaille kolmetoista</item>
+        <item>kaksikymmentäseitsemän vaille kolmetoista</item>
+        <item>kaksikymmentäkuusi vaille kolmetoista</item>
+        <item>kaksikymmentäviisi vaille kolmetoista</item>
+        <item>kaksikymmentäneljä vaille kolmetoista</item>
+        <item>kaksikymmentäkolme vaille kolmetoista</item>
+        <item>kaksikymmentäkaksi vaille kolmetoista</item>
+        <item>kaksikymmentäyksi vaille kolmetoista</item>
+        <item>kaksikymmentä vaille kolmetoista</item>
+        <item>yhdeksäntoista vaille kolmetoista</item>
+        <item>kahdeksantoista vaille kolmetoista</item>
+        <item>seitsemäntoista vaille kolmetoista</item>
+        <item>kuusitoista vaille kolmetoista</item>
+        <item>varttia vaille kolmetoista</item>
+        <item>neljätoista vaille kolmetoista</item>
+        <item>kolmetoista vaille kolmetoista</item>
+        <item>kaksitoista vaille kolmetoista</item>
+        <item>yksitoista vaille kolmetoista</item>
+        <item>kymmenen vaille kolmetoista</item>
+        <item>yhdeksän vaille kolmetoista</item>
+        <item>kahdeksan vaille kolmetoista</item>
+        <item>seitsemän vaille kolmetoista</item>
+        <item>kuusi vaille kolmetoista</item>
+        <item>viisi vaille kolmetoista</item>
+        <item>neljä vaille kolmetoista</item>
+        <item>kolme vaille kolmetoista</item>
+        <item>kaksi vaille kolmetoista</item>
+        <item>yksi vaille kolmetoista</item>
+        <item>tasan kolmetoista</item>
+        <item>yksi yli kolmetoista</item>
+        <item>kaksi yli kolmetoista</item>
+        <item>kolme yli kolmetoista</item>
+        <item>neljä yli kolmetoista</item>
+        <item>viisi yli kolmetoista</item>
+        <item>kuusi yli kolmetoista</item>
+        <item>seitsemän yli kolmetoista</item>
+        <item>kahdeksan yli kolmetoista</item>
+        <item>yhdeksän yli kolmetoista</item>
+        <item>kymmenen yli kolmetoista</item>
+        <item>yksitoista yli kolmetoista</item>
+        <item>kaksitoista yli kolmetoista</item>
+        <item>kolmetoista yli kolmetoista</item>
+        <item>neljätoista yli kolmetoista</item>
+        <item>varttia  yli kolmetoista</item>
+        <item>kuusitoista yli kolmetoista</item>
+        <item>seitsemäntoista yli kolmetoista</item>
+        <item>kahdeksantoista yli kolmetoista</item>
+        <item>yhdeksäntoista yli kolmetoista</item>
+        <item>kaksikymmentä yli kolmetoista</item>
+        <item>kaksikymmentäyksi yli kolmetoista</item>
+        <item>kaksikymmentäkaksi yli kolmetoista</item>
+        <item>kaksikymmentäkolme yli kolmetoista</item>
+        <item>kaksikymmentäneljä yli kolmetoista</item>
+        <item>kaksikymmentäviisi yli kolmetoista</item>
+        <item>kaksikymmentäkuusi yli kolmetoista</item>
+        <item>kaksikymmentäseitsemän yli kolmetoista</item>
+        <item>kaksikymmentäkahdeksan yli kolmetoista</item>
+        <item>kaksikymmentäyhdeksän yli kolmetoista</item>
+        <item>puoli neljätoista</item>
+        <item>kaksikymmentäyhdeksän vaille neljätoista</item>
+        <item>kaksikymmentäkahdeksan vaille neljätoista</item>
+        <item>kaksikymmentäseitsemän vaille neljätoista</item>
+        <item>kaksikymmentäkuusi vaille neljätoista</item>
+        <item>kaksikymmentäviisi vaille neljätoista</item>
+        <item>kaksikymmentäneljä vaille neljätoista</item>
+        <item>kaksikymmentäkolme vaille neljätoista</item>
+        <item>kaksikymmentäkaksi vaille neljätoista</item>
+        <item>kaksikymmentäyksi vaille neljätoista</item>
+        <item>kaksikymmentä vaille neljätoista</item>
+        <item>yhdeksäntoista vaille neljätoista</item>
+        <item>kahdeksantoista vaille neljätoista</item>
+        <item>seitsemäntoista vaille neljätoista</item>
+        <item>kuusitoista vaille neljätoista</item>
+        <item>varttia vaille neljätoista</item>
+        <item>neljätoista vaille neljätoista</item>
+        <item>kolmetoista vaille neljätoista</item>
+        <item>kaksitoista vaille neljätoista</item>
+        <item>yksitoista vaille neljätoista</item>
+        <item>kymmenen vaille neljätoista</item>
+        <item>yhdeksän vaille neljätoista</item>
+        <item>kahdeksan vaille neljätoista</item>
+        <item>seitsemän vaille neljätoista</item>
+        <item>kuusi vaille neljätoista</item>
+        <item>viisi vaille neljätoista</item>
+        <item>neljä vaille neljätoista</item>
+        <item>kolme vaille neljätoista</item>
+        <item>kaksi vaille neljätoista</item>
+        <item>yksi vaille neljätoista</item>
+        <item>tasan neljätoista</item>
+        <item>yksi yli neljätoista</item>
+        <item>kaksi yli neljätoista</item>
+        <item>kolme yli neljätoista</item>
+        <item>neljä yli neljätoista</item>
+        <item>viisi yli neljätoista</item>
+        <item>kuusi yli neljätoista</item>
+        <item>seitsemän yli neljätoista</item>
+        <item>kahdeksan yli neljätoista</item>
+        <item>yhdeksän yli neljätoista</item>
+        <item>kymmenen yli neljätoista</item>
+        <item>yksitoista yli neljätoista</item>
+        <item>kaksitoista yli neljätoista</item>
+        <item>kolmetoista yli neljätoista</item>
+        <item>neljätoista yli neljätoista</item>
+        <item>varttia  yli neljätoista</item>
+        <item>kuusitoista yli neljätoista</item>
+        <item>seitsemäntoista yli neljätoista</item>
+        <item>kahdeksantoista yli neljätoista</item>
+        <item>yhdeksäntoista yli neljätoista</item>
+        <item>kaksikymmentä yli neljätoista</item>
+        <item>kaksikymmentäyksi yli neljätoista</item>
+        <item>kaksikymmentäkaksi yli neljätoista</item>
+        <item>kaksikymmentäkolme yli neljätoista</item>
+        <item>kaksikymmentäneljä yli neljätoista</item>
+        <item>kaksikymmentäviisi yli neljätoista</item>
+        <item>kaksikymmentäkuusi yli neljätoista</item>
+        <item>kaksikymmentäseitsemän yli neljätoista</item>
+        <item>kaksikymmentäkahdeksan yli neljätoista</item>
+        <item>kaksikymmentäyhdeksän yli neljätoista</item>
+        <item>puoli viisitoista</item>
+        <item>kaksikymmentäyhdeksän vaille viisitoista</item>
+        <item>kaksikymmentäkahdeksan vaille viisitoista</item>
+        <item>kaksikymmentäseitsemän vaille viisitoista</item>
+        <item>kaksikymmentäkuusi vaille viisitoista</item>
+        <item>kaksikymmentäviisi vaille viisitoista</item>
+        <item>kaksikymmentäneljä vaille viisitoista</item>
+        <item>kaksikymmentäkolme vaille viisitoista</item>
+        <item>kaksikymmentäkaksi vaille viisitoista</item>
+        <item>kaksikymmentäyksi vaille viisitoista</item>
+        <item>kaksikymmentä vaille viisitoista</item>
+        <item>yhdeksäntoista vaille viisitoista</item>
+        <item>kahdeksantoista vaille viisitoista</item>
+        <item>seitsemäntoista vaille viisitoista</item>
+        <item>kuusitoista vaille viisitoista</item>
+        <item>varttia vaille viisitoista</item>
+        <item>neljätoista vaille viisitoista</item>
+        <item>kolmetoista vaille viisitoista</item>
+        <item>kaksitoista vaille viisitoista</item>
+        <item>yksitoista vaille viisitoista</item>
+        <item>kymmenen vaille viisitoista</item>
+        <item>yhdeksän vaille viisitoista</item>
+        <item>kahdeksan vaille viisitoista</item>
+        <item>seitsemän vaille viisitoista</item>
+        <item>kuusi vaille viisitoista</item>
+        <item>viisi vaille viisitoista</item>
+        <item>neljä vaille viisitoista</item>
+        <item>kolme vaille viisitoista</item>
+        <item>kaksi vaille viisitoista</item>
+        <item>yksi vaille viisitoista</item>
+        <item>tasan viisitoista</item>
+        <item>yksi yli viisitoista</item>
+        <item>kaksi yli viisitoista</item>
+        <item>kolme yli viisitoista</item>
+        <item>neljä yli viisitoista</item>
+        <item>viisi yli viisitoista</item>
+        <item>kuusi yli viisitoista</item>
+        <item>seitsemän yli viisitoista</item>
+        <item>kahdeksan yli viisitoista</item>
+        <item>yhdeksän yli viisitoista</item>
+        <item>kymmenen yli viisitoista</item>
+        <item>yksitoista yli viisitoista</item>
+        <item>kaksitoista yli viisitoista</item>
+        <item>kolmetoista yli viisitoista</item>
+        <item>neljätoista yli viisitoista</item>
+        <item>varttia  yli viisitoista</item>
+        <item>kuusitoista yli viisitoista</item>
+        <item>seitsemäntoista yli viisitoista</item>
+        <item>kahdeksantoista yli viisitoista</item>
+        <item>yhdeksäntoista yli viisitoista</item>
+        <item>kaksikymmentä yli viisitoista</item>
+        <item>kaksikymmentäyksi yli viisitoista</item>
+        <item>kaksikymmentäkaksi yli viisitoista</item>
+        <item>kaksikymmentäkolme yli viisitoista</item>
+        <item>kaksikymmentäneljä yli viisitoista</item>
+        <item>kaksikymmentäviisi yli viisitoista</item>
+        <item>kaksikymmentäkuusi yli viisitoista</item>
+        <item>kaksikymmentäseitsemän yli viisitoista</item>
+        <item>kaksikymmentäkahdeksan yli viisitoista</item>
+        <item>kaksikymmentäyhdeksän yli viisitoista</item>
+        <item>puoli kuusitoista</item>
+        <item>kaksikymmentäyhdeksän vaille kuusitoista</item>
+        <item>kaksikymmentäkahdeksan vaille kuusitoista</item>
+        <item>kaksikymmentäseitsemän vaille kuusitoista</item>
+        <item>kaksikymmentäkuusi vaille kuusitoista</item>
+        <item>kaksikymmentäviisi vaille kuusitoista</item>
+        <item>kaksikymmentäneljä vaille kuusitoista</item>
+        <item>kaksikymmentäkolme vaille kuusitoista</item>
+        <item>kaksikymmentäkaksi vaille kuusitoista</item>
+        <item>kaksikymmentäyksi vaille kuusitoista</item>
+        <item>kaksikymmentä vaille kuusitoista</item>
+        <item>yhdeksäntoista vaille kuusitoista</item>
+        <item>kahdeksantoista vaille kuusitoista</item>
+        <item>seitsemäntoista vaille kuusitoista</item>
+        <item>kuusitoista vaille kuusitoista</item>
+        <item>varttia vaille kuusitoista</item>
+        <item>neljätoista vaille kuusitoista</item>
+        <item>kolmetoista vaille kuusitoista</item>
+        <item>kaksitoista vaille kuusitoista</item>
+        <item>yksitoista vaille kuusitoista</item>
+        <item>kymmenen vaille kuusitoista</item>
+        <item>yhdeksän vaille kuusitoista</item>
+        <item>kahdeksan vaille kuusitoista</item>
+        <item>seitsemän vaille kuusitoista</item>
+        <item>kuusi vaille kuusitoista</item>
+        <item>viisi vaille kuusitoista</item>
+        <item>neljä vaille kuusitoista</item>
+        <item>kolme vaille kuusitoista</item>
+        <item>kaksi vaille kuusitoista</item>
+        <item>yksi vaille kuusitoista</item>
+        <item>tasan kuusitoista</item>
+        <item>yksi yli kuusitoista</item>
+        <item>kaksi yli kuusitoista</item>
+        <item>kolme yli kuusitoista</item>
+        <item>neljä yli kuusitoista</item>
+        <item>viisi yli kuusitoista</item>
+        <item>kuusi yli kuusitoista</item>
+        <item>seitsemän yli kuusitoista</item>
+        <item>kahdeksan yli kuusitoista</item>
+        <item>yhdeksän yli kuusitoista</item>
+        <item>kymmenen yli kuusitoista</item>
+        <item>yksitoista yli kuusitoista</item>
+        <item>kaksitoista yli kuusitoista</item>
+        <item>kolmetoista yli kuusitoista</item>
+        <item>neljätoista yli kuusitoista</item>
+        <item>varttia  yli kuusitoista</item>
+        <item>kuusitoista yli kuusitoista</item>
+        <item>seitsemäntoista yli kuusitoista</item>
+        <item>kahdeksantoista yli kuusitoista</item>
+        <item>yhdeksäntoista yli kuusitoista</item>
+        <item>kaksikymmentä yli kuusitoista</item>
+        <item>kaksikymmentäyksi yli kuusitoista</item>
+        <item>kaksikymmentäkaksi yli kuusitoista</item>
+        <item>kaksikymmentäkolme yli kuusitoista</item>
+        <item>kaksikymmentäneljä yli kuusitoista</item>
+        <item>kaksikymmentäviisi yli kuusitoista</item>
+        <item>kaksikymmentäkuusi yli kuusitoista</item>
+        <item>kaksikymmentäseitsemän yli kuusitoista</item>
+        <item>kaksikymmentäkahdeksan yli kuusitoista</item>
+        <item>kaksikymmentäyhdeksän yli kuusitoista</item>
+        <item>puoli seitsemäntoista</item>
+        <item>kaksikymmentäyhdeksän vaille seitsemäntoista</item>
+        <item>kaksikymmentäkahdeksan vaille seitsemäntoista</item>
+        <item>kaksikymmentäseitsemän vaille seitsemäntoista</item>
+        <item>kaksikymmentäkuusi vaille seitsemäntoista</item>
+        <item>kaksikymmentäviisi vaille seitsemäntoista</item>
+        <item>kaksikymmentäneljä vaille seitsemäntoista</item>
+        <item>kaksikymmentäkolme vaille seitsemäntoista</item>
+        <item>kaksikymmentäkaksi vaille seitsemäntoista</item>
+        <item>kaksikymmentäyksi vaille seitsemäntoista</item>
+        <item>kaksikymmentä vaille seitsemäntoista</item>
+        <item>yhdeksäntoista vaille seitsemäntoista</item>
+        <item>kahdeksantoista vaille seitsemäntoista</item>
+        <item>seitsemäntoista vaille seitsemäntoista</item>
+        <item>kuusitoista vaille seitsemäntoista</item>
+        <item>varttia vaille seitsemäntoista</item>
+        <item>neljätoista vaille seitsemäntoista</item>
+        <item>kolmetoista vaille seitsemäntoista</item>
+        <item>kaksitoista vaille seitsemäntoista</item>
+        <item>yksitoista vaille seitsemäntoista</item>
+        <item>kymmenen vaille seitsemäntoista</item>
+        <item>yhdeksän vaille seitsemäntoista</item>
+        <item>kahdeksan vaille seitsemäntoista</item>
+        <item>seitsemän vaille seitsemäntoista</item>
+        <item>kuusi vaille seitsemäntoista</item>
+        <item>viisi vaille seitsemäntoista</item>
+        <item>neljä vaille seitsemäntoista</item>
+        <item>kolme vaille seitsemäntoista</item>
+        <item>kaksi vaille seitsemäntoista</item>
+        <item>yksi vaille seitsemäntoista</item>
+        <item>tasan seitsemäntoista</item>
+        <item>yksi yli seitsemäntoista</item>
+        <item>kaksi yli seitsemäntoista</item>
+        <item>kolme yli seitsemäntoista</item>
+        <item>neljä yli seitsemäntoista</item>
+        <item>viisi yli seitsemäntoista</item>
+        <item>kuusi yli seitsemäntoista</item>
+        <item>seitsemän yli seitsemäntoista</item>
+        <item>kahdeksan yli seitsemäntoista</item>
+        <item>yhdeksän yli seitsemäntoista</item>
+        <item>kymmenen yli seitsemäntoista</item>
+        <item>yksitoista yli seitsemäntoista</item>
+        <item>kaksitoista yli seitsemäntoista</item>
+        <item>kolmetoista yli seitsemäntoista</item>
+        <item>neljätoista yli seitsemäntoista</item>
+        <item>varttia  yli seitsemäntoista</item>
+        <item>kuusitoista yli seitsemäntoista</item>
+        <item>seitsemäntoista yli seitsemäntoista</item>
+        <item>kahdeksantoista yli seitsemäntoista</item>
+        <item>yhdeksäntoista yli seitsemäntoista</item>
+        <item>kaksikymmentä yli seitsemäntoista</item>
+        <item>kaksikymmentäyksi yli seitsemäntoista</item>
+        <item>kaksikymmentäkaksi yli seitsemäntoista</item>
+        <item>kaksikymmentäkolme yli seitsemäntoista</item>
+        <item>kaksikymmentäneljä yli seitsemäntoista</item>
+        <item>kaksikymmentäviisi yli seitsemäntoista</item>
+        <item>kaksikymmentäkuusi yli seitsemäntoista</item>
+        <item>kaksikymmentäseitsemän yli seitsemäntoista</item>
+        <item>kaksikymmentäkahdeksan yli seitsemäntoista</item>
+        <item>kaksikymmentäyhdeksän yli seitsemäntoista</item>
+        <item>puoli kahdeksantoista</item>
+        <item>kaksikymmentäyhdeksän vaille kahdeksantoista</item>
+        <item>kaksikymmentäkahdeksan vaille kahdeksantoista</item>
+        <item>kaksikymmentäseitsemän vaille kahdeksantoista</item>
+        <item>kaksikymmentäkuusi vaille kahdeksantoista</item>
+        <item>kaksikymmentäviisi vaille kahdeksantoista</item>
+        <item>kaksikymmentäneljä vaille kahdeksantoista</item>
+        <item>kaksikymmentäkolme vaille kahdeksantoista</item>
+        <item>kaksikymmentäkaksi vaille kahdeksantoista</item>
+        <item>kaksikymmentäyksi vaille kahdeksantoista</item>
+        <item>kaksikymmentä vaille kahdeksantoista</item>
+        <item>yhdeksäntoista vaille kahdeksantoista</item>
+        <item>kahdeksantoista vaille kahdeksantoista</item>
+        <item>seitsemäntoista vaille kahdeksantoista</item>
+        <item>kuusitoista vaille kahdeksantoista</item>
+        <item>varttia vaille kahdeksantoista</item>
+        <item>neljätoista vaille kahdeksantoista</item>
+        <item>kolmetoista vaille kahdeksantoista</item>
+        <item>kaksitoista vaille kahdeksantoista</item>
+        <item>yksitoista vaille kahdeksantoista</item>
+        <item>kymmenen vaille kahdeksantoista</item>
+        <item>yhdeksän vaille kahdeksantoista</item>
+        <item>kahdeksan vaille kahdeksantoista</item>
+        <item>seitsemän vaille kahdeksantoista</item>
+        <item>kuusi vaille kahdeksantoista</item>
+        <item>viisi vaille kahdeksantoista</item>
+        <item>neljä vaille kahdeksantoista</item>
+        <item>kolme vaille kahdeksantoista</item>
+        <item>kaksi vaille kahdeksantoista</item>
+        <item>yksi vaille kahdeksantoista</item>
+    </string-array>
+    <string-array name="verbosetime4">
+        <item>tasan kahdeksantoista</item>
+        <item>yksi yli kahdeksantoista</item>
+        <item>kaksi yli kahdeksantoista</item>
+        <item>kolme yli kahdeksantoista</item>
+        <item>neljä yli kahdeksantoista</item>
+        <item>viisi yli kahdeksantoista</item>
+        <item>kuusi yli kahdeksantoista</item>
+        <item>seitsemän yli kahdeksantoista</item>
+        <item>kahdeksan yli kahdeksantoista</item>
+        <item>yhdeksän yli kahdeksantoista</item>
+        <item>kymmenen yli kahdeksantoista</item>
+        <item>yksitoista yli kahdeksantoista</item>
+        <item>kaksitoista yli kahdeksantoista</item>
+        <item>kolmetoista yli kahdeksantoista</item>
+        <item>neljätoista yli kahdeksantoista</item>
+        <item>varttia  yli kahdeksantoista</item>
+        <item>kuusitoista yli kahdeksantoista</item>
+        <item>seitsemäntoista yli kahdeksantoista</item>
+        <item>kahdeksantoista yli kahdeksantoista</item>
+        <item>yhdeksäntoista yli kahdeksantoista</item>
+        <item>kaksikymmentä yli kahdeksantoista</item>
+        <item>kaksikymmentäyksi yli kahdeksantoista</item>
+        <item>kaksikymmentäkaksi yli kahdeksantoista</item>
+        <item>kaksikymmentäkolme yli kahdeksantoista</item>
+        <item>kaksikymmentäneljä yli kahdeksantoista</item>
+        <item>kaksikymmentäviisi yli kahdeksantoista</item>
+        <item>kaksikymmentäkuusi yli kahdeksantoista</item>
+        <item>kaksikymmentäseitsemän yli kahdeksantoista</item>
+        <item>kaksikymmentäkahdeksan yli kahdeksantoista</item>
+        <item>kaksikymmentäyhdeksän yli kahdeksantoista</item>
+        <item>puoli yhdeksäntoista</item>
+        <item>kaksikymmentäyhdeksän vaille yhdeksäntoista</item>
+        <item>kaksikymmentäkahdeksan vaille yhdeksäntoista</item>
+        <item>kaksikymmentäseitsemän vaille yhdeksäntoista</item>
+        <item>kaksikymmentäkuusi vaille yhdeksäntoista</item>
+        <item>kaksikymmentäviisi vaille yhdeksäntoista</item>
+        <item>kaksikymmentäneljä vaille yhdeksäntoista</item>
+        <item>kaksikymmentäkolme vaille yhdeksäntoista</item>
+        <item>kaksikymmentäkaksi vaille yhdeksäntoista</item>
+        <item>kaksikymmentäyksi vaille yhdeksäntoista</item>
+        <item>kaksikymmentä vaille yhdeksäntoista</item>
+        <item>yhdeksäntoista vaille yhdeksäntoista</item>
+        <item>kahdeksantoista vaille yhdeksäntoista</item>
+        <item>seitsemäntoista vaille yhdeksäntoista</item>
+        <item>kuusitoista vaille yhdeksäntoista</item>
+        <item>varttia vaille yhdeksäntoista</item>
+        <item>neljätoista vaille yhdeksäntoista</item>
+        <item>kolmetoista vaille yhdeksäntoista</item>
+        <item>kaksitoista vaille yhdeksäntoista</item>
+        <item>yksitoista vaille yhdeksäntoista</item>
+        <item>kymmenen vaille yhdeksäntoista</item>
+        <item>yhdeksän vaille yhdeksäntoista</item>
+        <item>kahdeksan vaille yhdeksäntoista</item>
+        <item>seitsemän vaille yhdeksäntoista</item>
+        <item>kuusi vaille yhdeksäntoista</item>
+        <item>viisi vaille yhdeksäntoista</item>
+        <item>neljä vaille yhdeksäntoista</item>
+        <item>kolme vaille yhdeksäntoista</item>
+        <item>kaksi vaille yhdeksäntoista</item>
+        <item>yksi vaille yhdeksäntoista</item>
+        <item>tasan yhdeksäntoista</item>
+        <item>yksi yli yhdeksäntoista</item>
+        <item>kaksi yli yhdeksäntoista</item>
+        <item>kolme yli yhdeksäntoista</item>
+        <item>neljä yli yhdeksäntoista</item>
+        <item>viisi yli yhdeksäntoista</item>
+        <item>kuusi yli yhdeksäntoista</item>
+        <item>seitsemän yli yhdeksäntoista</item>
+        <item>kahdeksan yli yhdeksäntoista</item>
+        <item>yhdeksän yli yhdeksäntoista</item>
+        <item>kymmenen yli yhdeksäntoista</item>
+        <item>yksitoista yli yhdeksäntoista</item>
+        <item>kaksitoista yli yhdeksäntoista</item>
+        <item>kolmetoista yli yhdeksäntoista</item>
+        <item>neljätoista yli yhdeksäntoista</item>
+        <item>varttia  yli yhdeksäntoista</item>
+        <item>kuusitoista yli yhdeksäntoista</item>
+        <item>seitsemäntoista yli yhdeksäntoista</item>
+        <item>kahdeksantoista yli yhdeksäntoista</item>
+        <item>yhdeksäntoista yli yhdeksäntoista</item>
+        <item>kaksikymmentä yli yhdeksäntoista</item>
+        <item>kaksikymmentäyksi yli yhdeksäntoista</item>
+        <item>kaksikymmentäkaksi yli yhdeksäntoista</item>
+        <item>kaksikymmentäkolme yli yhdeksäntoista</item>
+        <item>kaksikymmentäneljä yli yhdeksäntoista</item>
+        <item>kaksikymmentäviisi yli yhdeksäntoista</item>
+        <item>kaksikymmentäkuusi yli yhdeksäntoista</item>
+        <item>kaksikymmentäseitsemän yli yhdeksäntoista</item>
+        <item>kaksikymmentäkahdeksan yli yhdeksäntoista</item>
+        <item>kaksikymmentäyhdeksän yli yhdeksäntoista</item>
+        <item>puoli kaksikymmentä</item>
+        <item>kaksikymmentäyhdeksän vaille kaksikymmentä</item>
+        <item>kaksikymmentäkahdeksan vaille kaksikymmentä</item>
+        <item>kaksikymmentäseitsemän vaille kaksikymmentä</item>
+        <item>kaksikymmentäkuusi vaille kaksikymmentä</item>
+        <item>kaksikymmentäviisi vaille kaksikymmentä</item>
+        <item>kaksikymmentäneljä vaille kaksikymmentä</item>
+        <item>kaksikymmentäkolme vaille kaksikymmentä</item>
+        <item>kaksikymmentäkaksi vaille kaksikymmentä</item>
+        <item>kaksikymmentäyksi vaille kaksikymmentä</item>
+        <item>kaksikymmentä vaille kaksikymmentä</item>
+        <item>yhdeksäntoista vaille kaksikymmentä</item>
+        <item>kahdeksantoista vaille kaksikymmentä</item>
+        <item>seitsemäntoista vaille kaksikymmentä</item>
+        <item>kuusitoista vaille kaksikymmentä</item>
+        <item>varttia vaille kaksikymmentä</item>
+        <item>neljätoista vaille kaksikymmentä</item>
+        <item>kolmetoista vaille kaksikymmentä</item>
+        <item>kaksitoista vaille kaksikymmentä</item>
+        <item>yksitoista vaille kaksikymmentä</item>
+        <item>kymmenen vaille kaksikymmentä</item>
+        <item>yhdeksän vaille kaksikymmentä</item>
+        <item>kahdeksan vaille kaksikymmentä</item>
+        <item>seitsemän vaille kaksikymmentä</item>
+        <item>kuusi vaille kaksikymmentä</item>
+        <item>viisi vaille kaksikymmentä</item>
+        <item>neljä vaille kaksikymmentä</item>
+        <item>kolme vaille kaksikymmentä</item>
+        <item>kaksi vaille kaksikymmentä</item>
+        <item>yksi vaille kaksikymmentä</item>
+        <item>tasan kaksikymmentä</item>
+        <item>yksi yli kaksikymmentä</item>
+        <item>kaksi yli kaksikymmentä</item>
+        <item>kolme yli kaksikymmentä</item>
+        <item>neljä yli kaksikymmentä</item>
+        <item>viisi yli kaksikymmentä</item>
+        <item>kuusi yli kaksikymmentä</item>
+        <item>seitsemän yli kaksikymmentä</item>
+        <item>kahdeksan yli kaksikymmentä</item>
+        <item>yhdeksän yli kaksikymmentä</item>
+        <item>kymmenen yli kaksikymmentä</item>
+        <item>yksitoista yli kaksikymmentä</item>
+        <item>kaksitoista yli kaksikymmentä</item>
+        <item>kolmetoista yli kaksikymmentä</item>
+        <item>neljätoista yli kaksikymmentä</item>
+        <item>varttia  yli kaksikymmentä</item>
+        <item>kuusitoista yli kaksikymmentä</item>
+        <item>seitsemäntoista yli kaksikymmentä</item>
+        <item>kahdeksantoista yli kaksikymmentä</item>
+        <item>yhdeksäntoista yli kaksikymmentä</item>
+        <item>kaksikymmentä yli kaksikymmentä</item>
+        <item>kaksikymmentäyksi yli kaksikymmentä</item>
+        <item>kaksikymmentäkaksi yli kaksikymmentä</item>
+        <item>kaksikymmentäkolme yli kaksikymmentä</item>
+        <item>kaksikymmentäneljä yli kaksikymmentä</item>
+        <item>kaksikymmentäviisi yli kaksikymmentä</item>
+        <item>kaksikymmentäkuusi yli kaksikymmentä</item>
+        <item>kaksikymmentäseitsemän yli kaksikymmentä</item>
+        <item>kaksikymmentäkahdeksan yli kaksikymmentä</item>
+        <item>kaksikymmentäyhdeksän yli kaksikymmentä</item>
+        <item>puoli kaksikymmentäyksi</item>
+        <item>kaksikymmentäyhdeksän vaille kaksikymmentäyksi</item>
+        <item>kaksikymmentäkahdeksan vaille kaksikymmentäyksi</item>
+        <item>kaksikymmentäseitsemän vaille kaksikymmentäyksi</item>
+        <item>kaksikymmentäkuusi vaille kaksikymmentäyksi</item>
+        <item>kaksikymmentäviisi vaille kaksikymmentäyksi</item>
+        <item>kaksikymmentäneljä vaille kaksikymmentäyksi</item>
+        <item>kaksikymmentäkolme vaille kaksikymmentäyksi</item>
+        <item>kaksikymmentäkaksi vaille kaksikymmentäyksi</item>
+        <item>kaksikymmentäyksi vaille kaksikymmentäyksi</item>
+        <item>kaksikymmentä vaille kaksikymmentäyksi</item>
+        <item>yhdeksäntoista vaille kaksikymmentäyksi</item>
+        <item>kahdeksantoista vaille kaksikymmentäyksi</item>
+        <item>seitsemäntoista vaille kaksikymmentäyksi</item>
+        <item>kuusitoista vaille kaksikymmentäyksi</item>
+        <item>varttia vaille kaksikymmentäyksi</item>
+        <item>neljätoista vaille kaksikymmentäyksi</item>
+        <item>kolmetoista vaille kaksikymmentäyksi</item>
+        <item>kaksitoista vaille kaksikymmentäyksi</item>
+        <item>yksitoista vaille kaksikymmentäyksi</item>
+        <item>kymmenen vaille kaksikymmentäyksi</item>
+        <item>yhdeksän vaille kaksikymmentäyksi</item>
+        <item>kahdeksan vaille kaksikymmentäyksi</item>
+        <item>seitsemän vaille kaksikymmentäyksi</item>
+        <item>kuusi vaille kaksikymmentäyksi</item>
+        <item>viisi vaille kaksikymmentäyksi</item>
+        <item>neljä vaille kaksikymmentäyksi</item>
+        <item>kolme vaille kaksikymmentäyksi</item>
+        <item>kaksi vaille kaksikymmentäyksi</item>
+        <item>yksi vaille kaksikymmentäyksi</item>
+        <item>tasan kaksikymmentäyksi</item>
+        <item>yksi yli kaksikymmentäyksi</item>
+        <item>kaksi yli kaksikymmentäyksi</item>
+        <item>kolme yli kaksikymmentäyksi</item>
+        <item>neljä yli kaksikymmentäyksi</item>
+        <item>viisi yli kaksikymmentäyksi</item>
+        <item>kuusi yli kaksikymmentäyksi</item>
+        <item>seitsemän yli kaksikymmentäyksi</item>
+        <item>kahdeksan yli kaksikymmentäyksi</item>
+        <item>yhdeksän yli kaksikymmentäyksi</item>
+        <item>kymmenen yli kaksikymmentäyksi</item>
+        <item>yksitoista yli kaksikymmentäyksi</item>
+        <item>kaksitoista yli kaksikymmentäyksi</item>
+        <item>kolmetoista yli kaksikymmentäyksi</item>
+        <item>neljätoista yli kaksikymmentäyksi</item>
+        <item>varttia  yli kaksikymmentäyksi</item>
+        <item>kuusitoista yli kaksikymmentäyksi</item>
+        <item>seitsemäntoista yli kaksikymmentäyksi</item>
+        <item>kahdeksantoista yli kaksikymmentäyksi</item>
+        <item>yhdeksäntoista yli kaksikymmentäyksi</item>
+        <item>kaksikymmentä yli kaksikymmentäyksi</item>
+        <item>kaksikymmentäyksi yli kaksikymmentäyksi</item>
+        <item>kaksikymmentäkaksi yli kaksikymmentäyksi</item>
+        <item>kaksikymmentäkolme yli kaksikymmentäyksi</item>
+        <item>kaksikymmentäneljä yli kaksikymmentäyksi</item>
+        <item>kaksikymmentäviisi yli kaksikymmentäyksi</item>
+        <item>kaksikymmentäkuusi yli kaksikymmentäyksi</item>
+        <item>kaksikymmentäseitsemän yli kaksikymmentäyksi</item>
+        <item>kaksikymmentäkahdeksan yli kaksikymmentäyksi</item>
+        <item>kaksikymmentäyhdeksän yli kaksikymmentäyksi</item>
+        <item>puoli kaksikymmentäkaksi</item>
+        <item>kaksikymmentäyhdeksän vaille kaksikymmentäkaksi</item>
+        <item>kaksikymmentäkahdeksan vaille kaksikymmentäkaksi</item>
+        <item>kaksikymmentäseitsemän vaille kaksikymmentäkaksi</item>
+        <item>kaksikymmentäkuusi vaille kaksikymmentäkaksi</item>
+        <item>kaksikymmentäviisi vaille kaksikymmentäkaksi</item>
+        <item>kaksikymmentäneljä vaille kaksikymmentäkaksi</item>
+        <item>kaksikymmentäkolme vaille kaksikymmentäkaksi</item>
+        <item>kaksikymmentäkaksi vaille kaksikymmentäkaksi</item>
+        <item>kaksikymmentäyksi vaille kaksikymmentäkaksi</item>
+        <item>kaksikymmentä vaille kaksikymmentäkaksi</item>
+        <item>yhdeksäntoista vaille kaksikymmentäkaksi</item>
+        <item>kahdeksantoista vaille kaksikymmentäkaksi</item>
+        <item>seitsemäntoista vaille kaksikymmentäkaksi</item>
+        <item>kuusitoista vaille kaksikymmentäkaksi</item>
+        <item>varttia vaille kaksikymmentäkaksi</item>
+        <item>neljätoista vaille kaksikymmentäkaksi</item>
+        <item>kolmetoista vaille kaksikymmentäkaksi</item>
+        <item>kaksitoista vaille kaksikymmentäkaksi</item>
+        <item>yksitoista vaille kaksikymmentäkaksi</item>
+        <item>kymmenen vaille kaksikymmentäkaksi</item>
+        <item>yhdeksän vaille kaksikymmentäkaksi</item>
+        <item>kahdeksan vaille kaksikymmentäkaksi</item>
+        <item>seitsemän vaille kaksikymmentäkaksi</item>
+        <item>kuusi vaille kaksikymmentäkaksi</item>
+        <item>viisi vaille kaksikymmentäkaksi</item>
+        <item>neljä vaille kaksikymmentäkaksi</item>
+        <item>kolme vaille kaksikymmentäkaksi</item>
+        <item>kaksi vaille kaksikymmentäkaksi</item>
+        <item>yksi vaille kaksikymmentäkaksi</item>
+        <item>tasan kaksikymmentäkaksi</item>
+        <item>yksi yli kaksikymmentäkaksi</item>
+        <item>kaksi yli kaksikymmentäkaksi</item>
+        <item>kolme yli kaksikymmentäkaksi</item>
+        <item>neljä yli kaksikymmentäkaksi</item>
+        <item>viisi yli kaksikymmentäkaksi</item>
+        <item>kuusi yli kaksikymmentäkaksi</item>
+        <item>seitsemän yli kaksikymmentäkaksi</item>
+        <item>kahdeksan yli kaksikymmentäkaksi</item>
+        <item>yhdeksän yli kaksikymmentäkaksi</item>
+        <item>kymmenen yli kaksikymmentäkaksi</item>
+        <item>yksitoista yli kaksikymmentäkaksi</item>
+        <item>kaksitoista yli kaksikymmentäkaksi</item>
+        <item>kolmetoista yli kaksikymmentäkaksi</item>
+        <item>neljätoista yli kaksikymmentäkaksi</item>
+        <item>varttia  yli kaksikymmentäkaksi</item>
+        <item>kuusitoista yli kaksikymmentäkaksi</item>
+        <item>seitsemäntoista yli kaksikymmentäkaksi</item>
+        <item>kahdeksantoista yli kaksikymmentäkaksi</item>
+        <item>yhdeksäntoista yli kaksikymmentäkaksi</item>
+        <item>kaksikymmentä yli kaksikymmentäkaksi</item>
+        <item>kaksikymmentäyksi yli kaksikymmentäkaksi</item>
+        <item>kaksikymmentäkaksi yli kaksikymmentäkaksi</item>
+        <item>kaksikymmentäkolme yli kaksikymmentäkaksi</item>
+        <item>kaksikymmentäneljä yli kaksikymmentäkaksi</item>
+        <item>kaksikymmentäviisi yli kaksikymmentäkaksi</item>
+        <item>kaksikymmentäkuusi yli kaksikymmentäkaksi</item>
+        <item>kaksikymmentäseitsemän yli kaksikymmentäkaksi</item>
+        <item>kaksikymmentäkahdeksan yli kaksikymmentäkaksi</item>
+        <item>kaksikymmentäyhdeksän yli kaksikymmentäkaksi</item>
+        <item>puoli kaksikymmentäkolme</item>
+        <item>kaksikymmentäyhdeksän vaille kaksikymmentäkolme</item>
+        <item>kaksikymmentäkahdeksan vaille kaksikymmentäkolme</item>
+        <item>kaksikymmentäseitsemän vaille kaksikymmentäkolme</item>
+        <item>kaksikymmentäkuusi vaille kaksikymmentäkolme</item>
+        <item>kaksikymmentäviisi vaille kaksikymmentäkolme</item>
+        <item>kaksikymmentäneljä vaille kaksikymmentäkolme</item>
+        <item>kaksikymmentäkolme vaille kaksikymmentäkolme</item>
+        <item>kaksikymmentäkaksi vaille kaksikymmentäkolme</item>
+        <item>kaksikymmentäyksi vaille kaksikymmentäkolme</item>
+        <item>kaksikymmentä vaille kaksikymmentäkolme</item>
+        <item>yhdeksäntoista vaille kaksikymmentäkolme</item>
+        <item>kahdeksantoista vaille kaksikymmentäkolme</item>
+        <item>seitsemäntoista vaille kaksikymmentäkolme</item>
+        <item>kuusitoista vaille kaksikymmentäkolme</item>
+        <item>varttia vaille kaksikymmentäkolme</item>
+        <item>neljätoista vaille kaksikymmentäkolme</item>
+        <item>kolmetoista vaille kaksikymmentäkolme</item>
+        <item>kaksitoista vaille kaksikymmentäkolme</item>
+        <item>yksitoista vaille kaksikymmentäkolme</item>
+        <item>kymmenen vaille kaksikymmentäkolme</item>
+        <item>yhdeksän vaille kaksikymmentäkolme</item>
+        <item>kahdeksan vaille kaksikymmentäkolme</item>
+        <item>seitsemän vaille kaksikymmentäkolme</item>
+        <item>kuusi vaille kaksikymmentäkolme</item>
+        <item>viisi vaille kaksikymmentäkolme</item>
+        <item>neljä vaille kaksikymmentäkolme</item>
+        <item>kolme vaille kaksikymmentäkolme</item>
+        <item>kaksi vaille kaksikymmentäkolme</item>
+        <item>yksi vaille kaksikymmentäkolme</item>
+        <item>tasan kaksikymmentäkolme</item>
+        <item>yksi yli kaksikymmentäkolme</item>
+        <item>kaksi yli kaksikymmentäkolme</item>
+        <item>kolme yli kaksikymmentäkolme</item>
+        <item>neljä yli kaksikymmentäkolme</item>
+        <item>viisi yli kaksikymmentäkolme</item>
+        <item>kuusi yli kaksikymmentäkolme</item>
+        <item>seitsemän yli kaksikymmentäkolme</item>
+        <item>kahdeksan yli kaksikymmentäkolme</item>
+        <item>yhdeksän yli kaksikymmentäkolme</item>
+        <item>kymmenen yli kaksikymmentäkolme</item>
+        <item>yksitoista yli kaksikymmentäkolme</item>
+        <item>kaksitoista yli kaksikymmentäkolme</item>
+        <item>kolmetoista yli kaksikymmentäkolme</item>
+        <item>neljätoista yli kaksikymmentäkolme</item>
+        <item>varttia  yli kaksikymmentäkolme</item>
+        <item>kuusitoista yli kaksikymmentäkolme</item>
+        <item>seitsemäntoista yli kaksikymmentäkolme</item>
+        <item>kahdeksantoista yli kaksikymmentäkolme</item>
+        <item>yhdeksäntoista yli kaksikymmentäkolme</item>
+        <item>kaksikymmentä yli kaksikymmentäkolme</item>
+        <item>kaksikymmentäyksi yli kaksikymmentäkolme</item>
+        <item>kaksikymmentäkaksi yli kaksikymmentäkolme</item>
+        <item>kaksikymmentäkolme yli kaksikymmentäkolme</item>
+        <item>kaksikymmentäneljä yli kaksikymmentäkolme</item>
+        <item>kaksikymmentäviisi yli kaksikymmentäkolme</item>
+        <item>kaksikymmentäkuusi yli kaksikymmentäkolme</item>
+        <item>kaksikymmentäseitsemän yli kaksikymmentäkolme</item>
+        <item>kaksikymmentäkahdeksan yli kaksikymmentäkolme</item>
+        <item>kaksikymmentäyhdeksän yli kaksikymmentäkolme</item>
+        <item>puoli puolenyön</item>
+        <item>kaksikymmentäyhdeksän vaille puolenyön</item>
+        <item>kaksikymmentäkahdeksan vaille puolenyön</item>
+        <item>kaksikymmentäseitsemän vaille puolenyön</item>
+        <item>kaksikymmentäkuusi vaille puolenyön</item>
+        <item>kaksikymmentäviisi vaille puolenyön</item>
+        <item>kaksikymmentäneljä vaille puolenyön</item>
+        <item>kaksikymmentäkolme vaille puolenyön</item>
+        <item>kaksikymmentäkaksi vaille puolenyön</item>
+        <item>kaksikymmentäyksi vaille puolenyön</item>
+        <item>kaksikymmentä vaille puolenyön</item>
+        <item>yhdeksäntoista vaille puolenyön</item>
+        <item>kahdeksantoista vaille puolenyön</item>
+        <item>seitsemäntoista vaille puolenyön</item>
+        <item>kuusitoista vaille puolenyön</item>
+        <item>varttia vaille puolenyön</item>
+        <item>neljätoista vaille puolenyön</item>
+        <item>kolmetoista vaille puolenyön</item>
+        <item>kaksitoista vaille puolenyön</item>
+        <item>yksitoista vaille puolenyön</item>
+        <item>kymmenen vaille puolenyön</item>
+        <item>yhdeksän vaille puolenyön</item>
+        <item>kahdeksan vaille puolenyön</item>
+        <item>seitsemän vaille puolenyön</item>
+        <item>kuusi vaille puolenyön</item>
+        <item>viisi vaille puolenyön</item>
+        <item>neljä vaille puolenyön</item>
+        <item>kolme vaille puolenyön</item>
+        <item>kaksi vaille puolenyön</item>
+        <item>yksi vaille puolenyön</item>
+    </string-array>
+    <string-array name="VerboseWeather">
+        <item>Ei tiedossa</item>
+        <item>Selkeää</item>
+        <item>Selkeää</item>
+        <item>Melko selkeää</item>
+        <item>Osittain selkeää</item>
+        <item>Puolipilvistä</item>
+        <item>Pölyisää</item>
+        <item>Utua</item>
+        <item>Sumua</item>
+        <item>Savua</item>
+        <item>Enimmäkseen pilvistä</item>
+        <item>Pilvistä</item>
+        <item>Pilvistä</item>
+        <item>Sumua</item>
+        <item>Kevyttä sadetta</item>
+        <item>Sadekuuroja</item>
+        <item>Tihkua</item>
+        <item>Sadekuuroja</item>
+        <item>Sateen mahdollisuus</item>
+        <item>Mahdollisesti kuuroja</item>
+        <item>Paikallisia sadekuuroja</item>
+        <item>Ukkonen</item>
+        <item>Ukkosen mahdollisuus</item>
+        <item>Paikallisia ukkosrintamia</item>
+        <item>Myrskyn mahdollisuus</item>
+        <item>Myrskyä</item>
+        <item>Runsasta sadetta</item>
+        <item>Sadetta</item>
+        <item>Puuskia</item>
+        <item>Kevyttä lumisadetta</item>
+        <item>Lumisateen mahdollisuus</item>
+        <item>Lumikuuroja</item>
+        <item>Paikallisia lumikuuroja</item>
+        <item>Lumisadetta</item>
+        <item>Jäätävää</item>
+        <item>Jäätä tai lunta</item>
+        <item>Räntää</item>
+        <item>Jäätävää tihkua</item>
+        <item>Tuulista ja lumisadetta</item>
+        <item>Tuulista</item>
+    </string-array>
+    <string name="_ok">OK</string>
+    <string name="_apply">Käytä</string>
+    <string name="_search">Etsi</string>
+    <string name="_yes">Kyllä</string>
+    <string name="_abandon">Hylkää</string>
+    <string name="_no">Ei</string>
+    <string name="TTLdefault">Widget asetukset</string>
+    <string name="TTLnoop">Älä tee mitään</string>
+    <string name="TTLwrefresh">Päivitä säätiedot nyt</string>
+    <string name="TTLweather">Sääennuste</string>
+    <string name="TTLbatt">Akunkäyttö</string>
+    <string name="TTLalarms">Katso hälytyksiä</string>
+    <string name="HDRenderingFalse">Vanha - 16bittinen bittikartta prosessien välissä</string>
+    <string name="HDRendering">Renderöintitapa</string>
+    <string name="HDRenderingTrue">Uusi - 32bittinen bittikartta välimuistiin SD-kortille</string>
+    <string name="_yesRestore">Kyllä, palauta oletukset</string>
+    <string name="_yesDelete">Kyllä, poista kaikki</string>
+</resources>

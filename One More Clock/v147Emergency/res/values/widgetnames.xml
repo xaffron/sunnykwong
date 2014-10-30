@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name_paid">One More Clock</string><string name="app_name_free">One More Clock Free</string>
+<string name="widget_name1x3">OMC 1x3</string>
+<string name="widget_name2x1">OMC 2x1</string>
+<string name="widget_name2x2">OMC 2x2</string>
+<string name="widget_name3x1">OMC 3x1</string>
+<string name="widget_name3x3">OMC 3x3</string>
+<string name="widget_name4x1">OMC 4x1</string>
+<string name="widget_name4x2">OMC 4x2</string>
+<string name="widget_name4x4">OMC 4x4</string>
+<string name="widget_name5x1">OMC 5x1</string>
+<string name="widget_name5x2">OMC 5x2</string>
+<string name="widget_name5x4">OMC 5x4</string>
+</resources>

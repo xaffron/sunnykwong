@@ -1,0 +1,1987 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="languageWord">Γλώσσα</string>
+    <string name="languageName">Ελληνικά (GR)</string>
+    <string name="translator">R_BachmaN</string>
+    <!-- General Buttons -->
+    <string name="nextTip">Επόμενη συμβουλή</string>
+    <!-- General Errors -->
+    <string name="sdcardMissingOrCorrupt">Η κάρτα SD λείπει ή είναι χαλασμένη.\Απενεργοποιήστε το USB storage αν είναι ακόμα συνδεμένο!</string>
+    <string name="themeNotFound">Το θέμα δεν βρέθηκε!  Επαναφορά στο προεπιλεγμένο θέμα.</string>
+    <string name="warningConflictPaid">ΠΡΟΣΟΧΗ!\nΔιένεξη με την έκδοση επι πληρωμή.</string>
+    <string name="warningConflictFree">ΠΡΟΣΟΧΗ!\nΔιένεξη με την έκδοση επι πληρωμή.</string>
+    <string name="warningConflictText">Η προσαρμογή θέματος και οι ρυθμίσεις ρολογιού δεν θα δουλέψουν σωστά.\Παρακαλώ απεγκαταστήστε την δωρεάν έκδοση της εφαρμογής!</string>
+    <string name="defaultThemeNotRemovable">Το προεπιλεγμένο θέμα δεν μπορεί να αφαιρεθεί!</string>
+    <!-- Bailout App Dialog -->
+    <string name="thanksForDownloading">Thanks for downloading!</string>
+    <string name="widgetDir1">Για να αρχίσετε, πιέστε το πλήκτρο επιστροφής για να επιστρέψετε στην αρχική οθόνη, μετά επιλέξτε από την λίστα των \'Widgets\' \u0020</string>
+    <string name="widgetDir2">\u0020listed.  Καλή διασκέδαση!</string>
+    <!-- Useful Tips -->
+    <string name="usefulTip">Βοήθεια</string>
+    <string name="doNotShowAgain">Να Μην Ξαναεμφανιστεί.</string>
+    <!-- Weather Forecast Screen -->
+    <string name="humiditycondition">Υγρασία: </string>
+    <string name="windcondition">Άνεμος: </string>
+    <!-- Forecast Screen -->
+    <string name="doubleDash">--</string>
+    <string name="unknown">Άγνωστο</string>
+    <string name="noaaWeatherCredit">Ενημέρωση του καιρού από το National Oceanic and Atmospheric Administration (NOAA).</string>
+    <string name="igWeatherCredit">Ενημέρωση του καιρού από  Google API.</string>
+    <string name="yrWeatherCredit">Ενημέρωση του καιρού από το yr.no,Norwegian Meteorological Institute and the NRK.</string>
+    <string name="seventimerWeatherCredit">7Timer! Ενημέρωση καιρού από το Ye Quanzhi, supported by the Shanghai Astronomical Observatory, Chinese Academy of Sciences.</string>
+    <string name="owmWeatherCredit">Ενημέρωση καιρού από το  openweathermaps.org.</string>
+    <string name="tapForAlternateForecast">Πιέστε για πρόγνωση καιρού από το AccuWeather®</string>
+    <string name="weatherDisabledOrNoWeatherLoaded">Ο καιρός είναι απενεργοποιημένος ή δεν φορτώθηκε!</string>
+    <!-- Clock Preferences -->
+    <string name="clockPreferences">Ρυθμίσεις ρολογιού</string>
+    <string name="dashPreferences">\u0020- Ρυθμίσεις</string>
+    <string name="forThisClock">Για αυτό το ρολόι:</string>
+    <string name="widgetTheme">Θέμα Widget</string>
+    <!-- Widget Theme -->
+    <string name="widgetThemeTitle">Σύρτε για επιλογή. Πιέστε &amp; κρατήστε πιεσμένο για επιλογές</string>
+    <string name="corruptPlsDelete">[Corrupt - Παρακαλώ σβήστε το]</string>
+    <string name="reextractBundledClocks">Επαναεξαγωγή ρολογιών</string>
+    <string name="downloadAllClocks">Κατέβασμα όλων των ρολογιών(7MB)</string>
+    <string name="preselected"/>
+    <string name="postselected">\u0020επιλεγμένο.</string>
+    <!-- Theme Picker Legend -->
+    <string name="legend">Επεξήγηση</string>
+    <string name="batteryLegend">Δείχνει το επίπεδο μπαταρίας</string>
+    <string name="weatherLegend">Δείχνει τον καιρό</string>
+    <string name="bkimageLegend">Περιλαμβάνει εικόνα φόντου</string>
+    <string name="ltbgLegend">Καλό σε ανοιχτόχρωμο φόντο</string>
+    <string name="dkbgLegend">Καλό σε σκούρο φόντο</string>
+    <string name="tweakLegend">Ρολόι διαμορφώσιμο απ\'τον χρήστη</string>
+    <!-- Theme Skinner Tool (deprecated) -->
+    <string name="reloadThemeCatalog">Επαναφόρτωση καταλόγου θεμάτων</string>
+    <!-- Theme Import/Unzip -->
+    <string name="themePreview">Προεπισκόπιση θέματος</string>
+    <string name="openingConnection">Άνοιγμα σύνδεσης.</string>
+    <string name="beginningDownload">Εκκίνηση Μεταφόρτωσης.</string>
+    <string name="downloading">Μεταφόρτωση\u0020</string>
+    <string name="downloaded">Επιτυχής Μεταφόρτωση\u0020</string>
+    <string name="of">\u0020από\u0020</string>
+    <string name="bytes">\u0020bytes</string>
+    <string name="storingFile">Αποθήκευση Αρχείου:\u0020</string>
+    <string name="existsOverwriting">\u0020Υπάρχει; Επανεγραφή</string>
+    <string name="createThemeFolder1">Φάκελος θέματος \'</string>
+    <string name="createThemeFolder2">\'\u0020δημιουργήθηκε.</string>
+    <string name="detectedWeatherskin">Εντοπίστηκε Θέμα καιρού </string>
+    <string name="extractingStarterClockPack">Εξαγωγή αρχικού πακέτου ρολογιών…</string>
+    <string name="starterClockPack">Αρχικό πακέτο ρολογιών</string>
+    <string name="starterClockPackText">Αρχεία στην κάρτα sd\'s .Ο φάκελος OMCThemes θα επανεγγραφεί.  Είστε σίγουροι?\n(αν όχι , πιέστε Ναι)</string>
+    <string name="importComplete">Η Εισαγωγή Ολοκληρώθηκε!</string>
+    <string name="importAborted">Η Εισαγωγή Ακυρώθηκε!</string>
+    <string name="useDownloadInsteadOfPreview">Παρακαλώ χρησιμοποιήστε την επιλογή Κατέβασμα αντί για Προεπισκόπιση για την εισαγωγή ενός OMC ρολογιού!</string>
+    <string name="importWorksWithOMCFiles">Η εισαγωγή ρολογιού λειτουργεί με .omc files.\nΜήπως ανοίγατε λάθος αρχείο;</string>
+    <string name="nothingToExtract">Τίποτα για εξαγωγή!</string>
+    <string name="downloadInterrupted">Η μεταφόρτωση διακόπηκε!</string>
+    <string name="poorReceptionArea">Χαμηλό σήμα συσκευής;\nΠαρακαλώ προσπαθήστε αργότερα.</string>
+    <string name="connectionTimedOut">Διακοπή σύνδεσης!</string>
+    <string name="serverNotFound">Δεν βρέθηκε ο server!</string>
+    <!-- Widget Theme Long Press-->
+    <string name="emailOrDeleteTheme">Email ή Διαγραφή Θέματος</string>
+    <string name="emailTheme">Αποστολή με Email</string>
+    <string name="emailThemeText">Στείλτε αυτό το θέμα στον εαυτό σας, ή σε ένα φίλο.\nΘέλετε να προχωρήσετε;</string>
+    <string name="emailThemeConfirm1">Email\u0020</string>
+    <string name="emailThemeConfirm2">\u0020?</string>
+    <string name="emailThemeChooser">Προετοιμασία θέματος για αποστολή με email.</string>
+    <string name="deleteTheme">Διαγραφή Θέματος</string>
+    <string name="deleteThemeConfirm1">Διαγραφή\u0020</string>
+    <string name="deleteThemeConfirm2">\u0020από την SD card?</string>
+    <string name="deleteThemeConfirm3">Πρέπει να ξανακατεβάσετε το θέμα για να το χρησιμοποιήσετε.  Είστε σίγουροι;</string>
+    <string name="submitThemeToDev">Υποβολή θέματος στον προγραμματιστή</string>
+    <string name="submitThemeToDevConfirm1">Υποβολή\u0020</string>
+    <string name="submitThemeToDevConfirm2">\u0020στον Xaffron σαν νέο θέμα;</string>
+    <string name="areYouAbsolutelySure">Είστε απολύτως σίγουροι;</string>
+    <string name="areYouAbsolutelySureText">Αυτό το θέμα δεν έχει \'Διαμορφωθεί\' flag set;  Είναι ένα απ\'τα διαθέσιμα.\n</string>
+    <!-- Personalize Clock -->
+    <string name="personalizeClock">Προσαρμογή Ρολογιού</string>
+    <string name="tweakColorsAndLayers">Διαμόρφωση χρωμάτων και Layers</string>
+    <!-- Personalize Clock subscreen -->
+    <string name="selectALayerForTweaking">Επιλέξτε Layer για διαμόρφωση</string>
+    <string name="tweakerDirections">Τράβηγμα: Μετακίνηση    Μενού: Διαμόρφωση    Επιστροφή: Ακύρωση</string>
+    <!-- Personalize Clock Menu-->
+    <string name="toggleVisibility">Εναλλαγή Ορατότητας</string>
+    <string name="color1">Χρώμα 1</string>
+    <string name="color2">Χρώμα 2</string>
+    <!-- Personalize Clock Back-->
+    <string name="keepChanges">Αποθήκευση Αλλαγών;</string>
+    <!-- Tap & Display Options -->
+    <string name="tapAndDisplayOptions">Ενέργειες πίεσης widget και ρυθμίσεις εμφάνισης</string>
+    <string name="assignTapToLaunch">Ρυθμίσεις πίεσης widget</string>
+    <string name="nwCornerReserved">Η ΒΔ γωνία δεσμεύεται για την οθόνη ρυθμίσεων.</string>
+    <!-- TTL Popup -->
+    <string name="areaToCustomize">Περιοχή Προσαρμογής:</string>
+    <string name="chooseAction">Επιλέξτε Ενέργεια</string>
+    <string name="openOptionsDefault">Άνοιγμα Ρυθμίσεων (Προεπιλογή)</string>
+    <string name="doNothing">Καμιά Ενέγεια</string>
+    <string name="refreshWeather">Ενημέρωση Καιρού Τώρα</string>
+    <string name="weatherForecast">Πρόγνωση Καιρού</string>
+    <string name="viewAlarms">Εμφάνιση ξυπνητηριών (Πειραματικό)</string>
+    <string name="battUsage">Χρήση Μπαταρίας </string>
+    <string name="otherActivity">Άλλη Ενέργεια…</string>
+    <string name="otherActivityTTL">\'Αλλη Ενέργεια</string>
+    <string name="use24HourClock">Χρήση 24-ωρης μορφής ώρας</string>
+    <string name="use24HourTrue">23:59</string>
+    <string name="use24HourFalse">11:59μμ</string>
+    <string name="showLeadingZero">Εκτεταμένη μορφή ώρας</string>
+    <string name="showLeadingZTrue">04:23</string>
+    <string name="showLeadingZFalse">4:23</string>
+    <string name="mmddDateFormat">Μ/Η/Χ διάταξη ημερομηνίας</string>
+    <string name="mmddDateFormatTrue">12/31/2012</string>
+    <string name="mmddDateFormatFalse">31/12/2012</string>
+    <string name="changeTimeZone">Αλλαγή ζώνης ώρας</string>
+    <string name="followingDeviceTimeZone">(Σύμφωνα με τη ζώνη ώρας συστήματος )</string>
+    <!-- TTL Sales Pitch -->
+    <string name="thinkOfThePossibilities">Σκεφτείτε τις δυνατότητες!</string>
+    <string name="prePaidTTL">Η έκδοση επί πληρωμή σας επιτρέπει να επιλέξετε\u0020</string>
+    <string name="postPaidTTL">\u0020 να εκκινήσετε όποια εφαρμογή/δρατηριότητα θέλετε,επιπρόσθετα προσφέρει μεγέθη widget 4x2, 4x1, 3x1 και 2x1.\nΠαρακαλώ εξετάστε το ενδεχόμενο αναβάθμισης για να έχετε πρόσβαση στα επιπλέον μεγέθη!</string>
+    <string name="takeMeToPaid">Μετάβαση στην έδοση επί πληρωμή!</string>
+    <!-- Weather & Widget Options -->
+    <string name="forAllClocks">Για όλα τα ρολόγια:</string>
+    <string name="weatherAndWidgetOptions">Επιλογές Καιρού &amp; Widget</string>
+    <string name="clearRenderCaches">Καθαρισμός λανθάνουσας μνήμης(cache)</string>
+    <string name="cachesCleared">Έγινε καθαρισμός της Cache</string>
+    <!-- Weather & Widget Subscreen -->
+    <string name="refreshWeatherNow">Ανανέωση Καιρού Τώρα</string>
+    <string name="operationTimedOut">Διακοπή διεργασίας!</string>
+    <string name="requestingLocation">Αναζήτηση τοποθεσίας</string>
+    <string name="pleaseWait">Παρακαλώ περιμένετε…</string>
+    <string name="inProgress">Σε εξέλιξη…</string>
+    <string name="usingFixedCoordinates">Χρήση σταθερών συντεταγμένων</string>
+    <string name="gotGPSLock">Έγινε κλείδωμα GPS.  Reverse-Geocoding…</string>
+    <string name="gotNetworkLock"> Έγινε κλείδωμα WiFi/Network .  Reverse-Geocoding…</string>
+    <string name="reusingCachedLocation">Επαναχρησιμοποίηση πρόσφατης τοποθεσίας.  Reverse-Geocoding…</string>
+    <string name="requestingWeather">Αίτηση Καιρού…</string>
+    <string name="weatherReceived">Λήψη καιρού.  Επεξεργασία…</string>
+    <string name="weatherSuccess">Ο καιρός ενημερώθηκε επιτυχώς.</string>
+    <string name="weatherFailure">Αποτυχία ενημέρωσης καιρού.</string>
+    <string name="location">Τοποθεσία:\u0020</string>
+    <string name="fixed">\u0020(Σταθερή)</string>
+    <string name="detected">\u0020(Εντοπίστηκε)</string>
+    <string name="lastTry">Τελευταία ανανέωση:\u0020</string>
+    <string name="manualRefreshOnly">\u0020(Μόνο χειροκίνητη ανανέωση)</string>
+    <string name="nextRefresh">\u0020Επόμενη ανανέωση:\u0020</string>
+    <string name="lastRefresh">Τελευταία ανανέωση:\u0020</string>
+    <string name="nextRequest">\u0020Επόμενη ανανέωση:\u0020</string>
+    <string name="weatherLocation">Τοποθεσία καιρού:</string>
+    <string name="disableLocationAndWeather">Απενεργοποίηση τοποθεσίας &amp; καιρού</string>
+    <string name="followDevice">Τοποθεσία συσκευής(Προεπιλογή)</string>
+    <string name="setFixedLocation">Σταθερή τοποθεσία</string>
+    <string name="weatherFunctionalityDisabled">Ο καιρός έχει απενεργοποιηθεί</string>
+    <string name="tapToEnable">Πιέστε για ενεργοποίηση</string>
+    <!-- Fixed Locn subscreen -->
+    <string name="enterCityAndStateCountry">Εισάγετε Πόλη/Χώρα</string>
+    <string name="locationExamples">Π.χ. Athens GR </string>
+    <string name="locationError">Δεν βρέθηκαν αποτελέσματα.\nΠαρακαλώ ξαναπροσπαθήστε.</string>
+    <string name="networkError">Δεν βρέθηκε υπηρεσία δικτύου.\nΠαρακαλώ ξαναπροσπαθήστε.</string>
+    <string name="unknownError">Αγνωστο σφάλμα.\nΠαρακαλώ ξαναπροσπαθήστε.</string>
+    <string name="weatherProvider">Πάροχος Καιρού</string>
+    <string-array name="wprovider_options">
+        <item>Automatic (Προεπιλογή)</item>
+        <item>7Timer.com</item>
+        <item>NOAA (ΗΠΑ μόνο)</item>
+        <item>Yr.no</item>
+        <item>Google Weather (legacy/nonworking)</item>
+    </string-array>
+    <string name="wpauto">Επιλογή βέλτιστου παρόχου καιρού για την τοποθεσία σας</string>
+    <string name="wp7timer">Χρήση 7Timer.com</string>
+    <string name="wpnoaa">Χρήση NOAA</string>
+    <string name="wpowm">Χρήση OpenWeatherMap.org</string>
+    <string name="wpyr">Χρήση yr.no</string>
+    <string name="wpig">Χρήση iGoogle Weather</string>
+    <string name="weatherDisplayUnits">Εναλλαγή μονάδων Κελσίου/Φαρεναϊτ</string>
+    <string-array name="wdisplay_options">
+        <item>Χρήση Φαρεναϊτ (Προεπιλογή)</item>
+        <item>Χρήση Κελσίου</item>
+    </string-array>
+    <string name="usingFahrenheit">Χρήση Φαρεναϊτ</string>
+    <string name="usingCelsius">Χρήση Κελσίου</string>
+    <string name="useMETAR">Καιρός μέσω METAR</string>
+    <string name="usingMETAR">Οι καιρικές συνθήκες αποκωδικοποιούνται από το πλησιέστερο αεροδρόμιο</string>
+    <string name="clockUpdateInterval">Ανανέωση Ρολογιού ανα...</string>
+    <string-array name="interval_options">
+        <item>1 δευτ. (Πολύ βαριά χρήση μπαταρίας)</item>
+        <item>10 δευτ. (Βαριά χρήση μπαταρίας)</item>
+        <item>15 δευτ.</item>
+        <item>20 δευτ.</item>
+        <item>30 δευτ. (Προεπιλογή)</item>
+        <item>60 δευτ. (Ελαφρά χρήση μπαταρίας)</item>
+    </string-array>
+    <string name="redrawEvery">Επανασχεδίαση κάθε \u0020</string>
+    <string name="seconds">\u0020δευτερόλεπτα.</string>
+    <string name="weatherUpdateInterval">Ανανέωση Καιρού ανα...</string>
+    <string-array name="winterval_options">
+        <item>Κάθε ώρα (Προεπιλογή)</item>
+        <item>Κάθε 4 ώρες</item>
+        <item>Κάθε 8 ώρες</item>
+        <item>Ποτέ (Μόνο χειροκίνητα)</item>
+    </string-array>
+    <string name="manualWeatherUpdatesOnly">Χειροκίνητη ανανέωση μόνο</string>
+    <string name="refreshWeatherEveryHour">Ανανέωση καιρού κάθε 1 ώρα</string>
+    <string name="refreshWeatherEvery4Hours">Ανανέωση καιρού κάθε 4 ώρες</string>
+    <string name="refreshWeatherEvery8Hours">Ανανέωση καιρού κάθε 8 ώρες</string>
+    <string name="setForegroundMode">Θέσε Foreground λειτουργία</string>
+    <string name="keepOMCfromSleeping">Κρατά το OMC ενεργό(keep from sleeping)\n(με κόστος μια ειδοποίηση στην μπάρα ειδοποιήσεων)</string>
+    <string name="forceEnglishDates">Χρήση Ημερομηνίας στα Αγγλικά</string>
+    <string name="uncheckForSome">Αποεπιλέξτε για μερικές περιοχές εκτός Αγγλίας.(Πειραματικό)</string>
+    <string name="changeAppLocale">Γλώσσα Εφαρμογής</string>
+    <string name="changeClockLocale">Γλώσσα Ρολογιού</string>
+    <string name="toggleWidgetSizes">Επιλογή εμφανιζόμενων Widgets</string>
+    <string name="rebootRequired">Χρειάζεται επανεκκίνηση</string>
+    <string name="changesToTheseSettings">Οι αλλαγές σε αυτές τις ρυθμίσεις χρειάζονται επανεκκίνηση της συσκευής για να ισχύουν.</string>
+    <string name="enable5x4Widget">Ενεργοποίηση (5x4) Widget</string>
+    <string name="enable5x2Widget">Ενεργοποίηση  (5x2) Widget</string>
+    <string name="enable5x1Widget">Ενεργοποίηση  (5x1) Widget</string>
+    <string name="enable4x4Widget">Ενεργοποίηση  (4x4) Widget</string>
+    <string name="enable4x2Widget">Ενεργοποίηση  (4x2) Widget</string>
+    <string name="enable4x1Widget">Ενεργοποίηση  (4x1) Widget</string>
+    <string name="enable3x3Widget">Ενεργοποίηση  (3x3) Widget</string>
+    <string name="enable3x1Widget">Ενεργοποίηση  (3x1) Widget</string>
+    <string name="enable2x2Widget">Ενεργοποίηση  (2x2) Widget</string>
+    <string name="enable2x1Widget">Ενεργοποίηση  (2x1) Widget</string>
+    <string name="enable1x3Widget">Ενεργοποίηση  (1x3) Widget</string>
+    <string name="forGalaxyNote">Για Galaxy Note ή παρόμοια συσκευή</string>
+    <string name="enableThemeTester">Ενεργοποίηση Tester Θεμάτων</string>
+    <string name="developmentToolForSkinnersOnly">Development tool για skinners μόνο</string>
+    <!-- Widget Sizes Sales Pitch -->
+    <string name="areThereOtherWidgetSizes">Υπάρχουν άλλα μεγέθη widgets;</string>
+    <string name="actuallyThePaidVersion">Η εφαρμογή επί πληρωμή προσφέρει μεγέθη widgets 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 και 1x3.\nΠαρακαλώ εξετάστε το ενδεχόμενο αναβάθμισης για να έχετε πρόσβαση στα επιπλέον μεγέθη!</string>
+    <!-- Troubleshooting Options -->
+    <string name="troubleshootingOptions">Επιλογές επίλυσης προβλημάτων</string>
+    <!-- Troubleshooting Options-->
+    <string name="clockPriority">Προτεραιότητα Ρολογιού</string>
+    <string name="forFineTuning">Για ακριβή προσαρμογή απόκρισης </string>
+    <string-array name="clockPriority_options">
+        <item>Υψηλότερη</item>
+        <item>Υψηλή</item>
+        <item>Μέση</item>
+        <item>Χαμηλή (Προεπιλογή)</item>
+        <item>Πολύ Χαμηλή</item>
+    </string-array>
+    <string-array name="clockPriority_legend">
+        <item>Δυναμικός επανασχεδιασμός σε κάθε δευτερόλεπτο(δεν προτείνεται).  Είστε σίγουροι;</item>
+        <item>Δυναμικός επανασχεδιασμός κάθε λεπτό, ανεξάρτητα της κατάστασης της οθόνης ή του launcher.  Είστε σίγουροι;</item>
+        <item>Αργός επανασχεδιασμός κάθε λεπτό όταν η οθόνη είναι ενεργή, ακόμα και αν ο launcher είναι στο φόντο.  Είστε σίγουροι;</item>
+        <item>Αργός επανασχεδιασμός κάθε λεπτό όταν ο launcher ή η οθόνη είναι κλειστά.  Είστε σίγουροι;</item>
+        <item>Καθόλου επανασχεδίαση όταν ο launcher ή η οθόνη είναι κλειστά.  Είστε σίγουροι;</item>
+    </string-array>
+    <string name="locationPriority">Προτέραιότητα Τοποθεσίας</string>
+    <string-array name="locationPriority_options">
+        <item>Αυστηρή - Fine Only</item>
+        <item>Αυστηρή - Fine/Coarse</item>
+        <item>Μέση - Fine Only</item>
+        <item>Μέση - Fine/Coarse</item>
+        <item>Ελαστική (Προεπιλογή)</item>
+    </string-array>
+    <string-array name="locationPriority_legend">
+        <item>Χρήση μόνο τοποθεσίας GPS,που εντοπίστηκε σε διάστημα λιγότερο των 2 τελευταίων ωρών.  ΠΡΟΣΟΧΗ:Η ανανέωση καιρού μπορεί να σταματήσει σε εσωτερικούς χώρους.  Είστε σίγουροι;</item>
+        <item>Χρήση network/GPS , που εντοπίστηκε σε διάστημα λιγότερο των 2 τελευταίων ωρών.  ΠΡΟΣΟΧΗ: Η ανανέωση καιρού μπορεί να σταματήσει σε εσωτερικούς χώρους.  Είστε σίγουροι;</item>
+        <item>Χρήση μόνο GPS τοποθεσίας, που εντοπίστηκε σε διάστημα λιγότερο των 10 τελευταίων ωρών.  Η ανανέωση καιρού μπορεί να σταματήσει εαν βρίσκεστε σε εσωτερικούς χώρους περισσότερο από 10 ώρες.  Είστε σίγουροι;</item>
+        <item>Χρήση όποιασδήποτε τοποθεσίας network ή GPS, που εντοπίστηκε σε διάστημα λιγότερο των 10 τελευταίων ωρών.  Η ανανέωση καιρού μπορεί να σταματήσει εαν βρίσκεστε σε εσωτερικούς χώρους περισσότερο από 10 ώρες.  Είστε σίγουροι;</item>
+        <item>Χρήση της πιο πρόσφατης network ή GPS τοποθεσίας, ανεξαρτήτως παλαιότητας.  Η ακρίβεια του Καιρού θα εξαρτάται από την ακρίβεια της τοποθεσίας και την παλαιότητα ανανέωσης.  Είστε σίγουροι;</item>
+    </string-array>
+    <string name="weatherDiagnostics">Διαγνωστικά καιρού</string>
+    <string name="submitLocationWeatherDebugData">Υποβολή τοποθεσίας/καιρού ,ανίχνευσης και εξαφάνισης λαθών δεδομένων(debug data).</string>
+    <string name="deleteAllThemes">Διαγραφή όλων των θεμάτων</string>
+    <string name="forFixingThemeSelection">Για την επιδιόρθωση αναγκαστικής διακοπής της εφαρμογής, κατα την διάρκεια επιλογής θεμάτων.</string>
+    <string name="deleteAllThemesFromSD">Διαγραφή όλων των θεμάτων από την κάρτα SD;</string>
+    <string name="omcThemesFolderDeleted">Ο φακελος OMCThemes διαγράφηκε</string>
+    <string name="defaultClockPackRestored">Αποκατασταθηκε το προεπιλεγμένο πακέτο ρολογιών</string>
+    <!-- Contact Xaffron-->
+    <string name="contactXaffron">Επικοινωνία με  Xaffron</string>
+    <string name="donateOrContact">Συνεισφορά ή επικοινωνία με τον προγραμματιστη για βοήθεια</string>
+    <string name="contactXaffronForIssues">Επικοινωνία με Xaffron για προβλήματα, βοήθεια &amp; υποστήριξη</string>
+    <string name="email">Email</string>
+    <string name="donate">Συνεισφορά</string>
+    <string name="facebook">Facebook</string>
+    <!-- Credits-->
+    <string name="credits">Credits</string>
+    <string name="version">Έκδοση</string>
+    <string name="free">Δωρεάν</string>
+    <string name="tapToGetFull">Πιέστε για την πλήρη έκδοση της εφαρμογής!</string>
+    <string name="thanksForYourSupport">Ευχαριστώ για την υποστήριξη!</string>
+    <string name="viewCredits">Προβολή ευχαριστιών</string>
+    <!-- Credits subscreen -->
+    <string name="team">Ομάδα</string>
+    <string name="programmer">Προγραμματιστής</string>
+    <string name="sunny">Sunny Kwong</string>
+    <string name="testers">Testers</string>
+    <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
+    <string name="specialThanks">Ιδιαίτερες ευχαριστίες</string>
+    <string name="specialThanksText">Zehro for leading the way\nre: in-sync clock widgets w//o notifications.\nStefan Pledl for helping with the localization.</string>
+    <string name="copyrights">Πνευματικά Δικαιώματα και Άδειες </string>
+    <string name="applicationIcon">Application Icon: Signpost by Maroubal2</string>
+    <string name="applicationIconText">Adapted from Maroubal2\'s excellent photo-turned-Ubuntu wallpaper.\nCC BY-SA 2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
+    <string name="codeColorPickerDialog">Code: ColorPickerDialog</string>
+    <string name="codeColorPickerDialogText">Copied from CyanogenMod source repo.</string>
+    <string name="codeSVG">Code: svg-android</string>
+    <string name="codeSVGText">SVG support provided by sag-android library (Apache License).\nhttp:////code.google.com//p//svg-android//</string>
+    <string name="weatherFont">Font: Weatherfont</string>
+    <string name="weatherFontText">Weatherfont is fully licensed from Jonathan Macagba, available for $5 USD from jonathan.macagba@gmail.com</string>
+    <string name="sourceCodeTitle">Source Code</string>
+    <string name="sourceCode">Source Code Available at</string>
+    <string name="daysuffix"/>
+    <string-array name="verbosedow">
+        <item>Κυριακή</item>
+        <item>Δευτέρα</item>
+        <item>Τρίτη</item>
+        <item>Τετάρτη</item>
+        <item>Πέμπτη</item>
+        <item>Παρασκευή</item>
+        <item>Σάββατο</item>
+    </string-array>
+    <string-array name="shortdow">
+        <item>Κυρ</item>
+        <item>Δευ</item>
+        <item>Τρ</item>
+        <item>Τετ</item>
+        <item>Πεμ</item>
+        <item>Παρ</item>
+        <item>Σαβ</item>
+    </string-array>
+    <string-array name="verbosemonth">
+        <item>Ιανουάριος</item>
+        <item>Φεβρουάριος</item>
+        <item>Μάρτιος</item>
+        <item>Απρίλιος</item>
+        <item>Μάιος</item>
+        <item>Ιούνιος</item>
+        <item>Ιούλιος</item>
+        <item>Αύγουστος</item>
+        <item>Σεπτέμβριος</item>
+        <item>Οκτώβριος</item>
+        <item>Νοέμβριος</item>
+        <item>Δεκέμβριος</item>
+    </string-array>
+    <string-array name="shortmonth">
+        <item>Ιαν</item>
+        <item>Φεβ</item>
+        <item>Μαρ</item>
+        <item>Απρ</item>
+        <item>Μαι</item>
+        <item>Ιουν</item>
+        <item>Ιουλ</item>
+        <item>Αυγ</item>
+        <item>Σεπ</item>
+        <item>Οκτ</item>
+        <item>Νοε</item>
+        <item>Δεκ</item>
+    </string-array>
+    <string-array name="WordNumbers">
+        <item>Μηδέν</item>
+        <item>Ένα</item>
+        <item>Δύο</item>
+        <item>Τρία</item>
+        <item>Τεσσερα</item>
+        <item>Πέντε</item>
+        <item>Έξι</item>
+        <item>Επτά</item>
+        <item>Οκτώ</item>
+        <item>Εννέα</item>
+        <item>Δέκα</item>
+        <item>Έντεκα</item>
+        <item>Δώδεκα</item>
+        <item>Δεκατρία </item>
+        <item>Δεκατέσσερα </item>
+        <item>Δεκαπέντε </item>
+        <item>Δεκαέξι </item>
+        <item>Δεκαεπτά </item>
+        <item>Δεκαοκτώ </item>
+        <item>Δεκαεννιά </item>
+        <item>Είκοσι </item>
+        <item>Είκοσι Ένα </item>
+        <item>Είκοσι Δύο</item>
+        <item>Είκοσι Τρία</item>
+        <item>Είκοσι Τεσσερα</item>
+        <item>Είκοσι Πέντε</item>
+        <item>Είκοσι Έξι</item>
+        <item>Είκοσι Επτά</item>
+        <item>Είκοσι Οκτώ</item>
+        <item>Είκοσι Εννέα</item>
+        <item>Τριάντα </item>
+        <item>Τριάντα  Ένα</item>
+        <item>Τριάντα Δύο</item>
+        <item>Τριάντα Τρία</item>
+        <item>Τριάντα Τεσσερα</item>
+        <item>Τριάντα Πέντε</item>
+        <item>Τριάντα Έξι</item>
+        <item>Τριάντα Επτά</item>
+        <item>Τριάντα Οκτώ</item>
+        <item>Τριάντα Εννέα</item>
+        <item>Σαράντα </item>
+        <item>Σαράντα Ένα</item>
+        <item>Σαράντα Δύο</item>
+        <item>Σαράντα Τρία</item>
+        <item>Σαράντα Τεσσερα</item>
+        <item>Σαράντα Πέντε</item>
+        <item>Σαράντα Έξι</item>
+        <item>Σαράντα Επτά</item>
+        <item>Σαράντα Οκτώ</item>
+        <item>Σαράντα Εννέα</item>
+        <item>Πενήντα </item>
+        <item>Πενήντα Ένα</item>
+        <item>Πενήντα Δύο</item>
+        <item>Πενήντα Τρία</item>
+        <item>Πενήντα Τεσσερα</item>
+        <item>Πενήντα Πέντε</item>
+        <item>Πενήντα Έξι</item>
+        <item>Πενήντα Επτά</item>
+        <item>Πενήντα Οκτώ</item>
+        <item>Πενήντα Εννέα</item>
+        <item>Εξήντα </item>
+        <item>Εξήντα Ένα</item>
+        <item>Εξήντα Δύο</item>
+        <item>Εξήντα Τρία</item>
+        <item>Εξήντα Τεσσερα</item>
+        <item>Εξήντα Πέντε</item>
+        <item>Εξήντα Έξι</item>
+        <item>Εξήντα Επτά</item>
+        <item>Εξήντα Οκτώ</item>
+        <item>Εξήντα Εννέα</item>
+        <item>Εβδομήντα </item>
+        <item>Εβδομήντα Ένα</item>
+        <item>Εβδομήντα Δύο</item>
+        <item>Εβδομήντα Τρία</item>
+        <item>Εβδομήντα Τεσσερα</item>
+        <item>Εβδομήντα Πέντε</item>
+        <item>Εβδομήντα Έξι</item>
+        <item>Εβδομήντα Επτά</item>
+        <item>Εβδομήντα Οκτώ</item>
+        <item>Εβδομήντα Εννέα</item>
+        <item>Ογδόντα </item>
+        <item>Ογδόντα Ένα</item>
+        <item>Ογδόντα Δύο</item>
+        <item>Ογδόντα Τρία</item>
+        <item>Ογδόντα Τεσσερα</item>
+        <item>Ογδόντα Πέντε</item>
+        <item>Ογδόντα Έξι</item>
+        <item>Ογδόντα Επτά</item>
+        <item>Ογδόντα Οκτώ</item>
+        <item>Ογδόντα Εννέα</item>
+        <item>Ενενήντα </item>
+        <item>Ενενήντα Ένα</item>
+        <item>Ενενήντα Δύο</item>
+        <item>Ενενήντα Τρία</item>
+        <item>Ενενήντα Τεσσερα</item>
+        <item>Ενενήντα Πέντε</item>
+        <item>Ενενήντα Έξι</item>
+        <item>Ενενήντα Επτά</item>
+        <item>Ενενήντα Οκτώ</item>
+        <item>Ενενήντα Εννέα</item>
+    </string-array>
+    <string-array name="verbosetime1">
+        <item>Δώδεκα</item>
+        <item>Δώδεκα και Ένα</item>
+        <item>Δώδεκα και Δύο</item>
+        <item>Δώδεκα και Τρία</item>
+        <item>Δώδεκα και Τέσσερα</item>
+        <item>Δώδεκα και Πέντε</item>
+        <item>Δώδεκα και Έξι</item>
+        <item>Δώδεκα και Επτά</item>
+        <item>Δώδεκα και Οκτώ</item>
+        <item>Δώδεκα και Εννέα</item>
+        <item>Δώδεκα και Δέκα</item>
+        <item>Δώδεκα και Έντεκα</item>
+        <item>Δώδεκα και Δώδεκα</item>
+        <item>Δώδεκα και Δεκατρία</item>
+        <item>Δώδεκα και Δεκατέσσερα</item>
+        <item>Δώδεκα και Τέταρτο</item>
+        <item>Δώδεκα και Δεκαέξι</item>
+        <item>Δώδεκα και Δεκαεπτά</item>
+        <item>Δώδεκα και Δεκαοκτώ</item>
+        <item>Δώδεκα και Δεκαεννέα</item>
+        <item>Δώδεκα και Είκοσι</item>
+        <item>Δώδεκα και Είκοσι Ένα</item>
+        <item>Δώδεκα και Είκοσι Δύο</item>
+        <item>Δώδεκα και Είκοσι Τρία</item>
+        <item>Δώδεκα και Είκοσι Τέσσερα</item>
+        <item>Δώδεκα και Είκοσι Πέντε</item>
+        <item>Δώδεκα και Είκοσι Έξι</item>
+        <item>Δώδεκα και Είκοσι Επτά</item>
+        <item>Δώδεκα και Είκοσι Οκτώ</item>
+        <item>Δώδεκα και Είκοσι Εννέα</item>
+        <item>Δώδεκα και Μισή</item>
+        <item>Μία παρά Είκοσι Εννέα</item>
+        <item>Μία παρά Είκοσι Οκτώ</item>
+        <item>Μία παρά Είκοσι Επτά</item>
+        <item>Μία παρά Είκοσι Έξι</item>
+        <item>Μία παρά Είκοσι Πέντε</item>
+        <item>Μία παρά Είκοσι Τέσσερα</item>
+        <item>Μία παρά Είκοσι Τρία</item>
+        <item>Μία παρά Είκοσι Δύο</item>
+        <item>Μία παρά Είκοσι Ένα</item>
+        <item>Μία παρά Είκοσι</item>
+        <item>Μία παρά Δεκαεννέα</item>
+        <item>Μία παρά Δεκαοκτώ</item>
+        <item>Μία παρά Δεκαεπτά</item>
+        <item>Μία παρά Δεκαέξι</item>
+        <item>Μία παρά Τέταρτο</item>
+        <item>Μία παρά Δεκατέσσερα</item>
+        <item>Μία παρά Δεκατρία</item>
+        <item>Μία παρά Δώδεκα</item>
+        <item>Μία παρά Έντεκα</item>
+        <item>Μία παρά Δέκα</item>
+        <item>Μία παρά Εννέα</item>
+        <item>Μία παρά Οκτώ</item>
+        <item>Μία παρά Επτά</item>
+        <item>Μία παρά Έξι</item>
+        <item>Μία παρά Πέντε</item>
+        <item>Μία παρά Τέσσερα</item>
+        <item>Μία παρά Τρία</item>
+        <item>Μία παρά Δύο</item>
+        <item>Μία παρά Ένα</item>
+        <item>Μία</item>
+        <item>Μία και Ένα</item>
+        <item>Μία και Δύο</item>
+        <item>Μία και Τρία</item>
+        <item>Μία και Τέσσερα</item>
+        <item>Μία και Πέντε</item>
+        <item>Μία και Έξι</item>
+        <item>Μία και Επτά</item>
+        <item>Μία και Οκτώ</item>
+        <item>Μία και Εννέα</item>
+        <item>Μία και Δέκα</item>
+        <item>Μία και Έντεκα</item>
+        <item>Μία και Δώδεκα</item>
+        <item>Μία και Δεκατρία</item>
+        <item>Μία και Δεκατέσσερα</item>
+        <item>Μία και Τέταρτο</item>
+        <item>Μία και Δεκαέξι</item>
+        <item>Μία και Δεκαεπτά</item>
+        <item>Μία και Δεκαοκτώ</item>
+        <item>Μία και Δεκαεννέα</item>
+        <item>Μία και Είκοσι</item>
+        <item>Μία και Είκοσι Ένα</item>
+        <item>Μία και Είκοσι Δύο</item>
+        <item>Μία και Είκοσι Τρία</item>
+        <item>Μία και Είκοσι Τέσσερα</item>
+        <item>Μία και Είκοσι Πέντε</item>
+        <item>Μία και Είκοσι Έξι</item>
+        <item>Μία και Είκοσι Επτά</item>
+        <item>Μία και Είκοσι Οκτώ</item>
+        <item>Μία και Είκοσι Εννέα</item>
+        <item>Μία και Μισή</item>
+        <item>Δύο παρά Είκοσι Εννέα</item>
+        <item>Δύο παρά Είκοσι Οκτώ</item>
+        <item>Δύο παρά Είκοσι Επτά</item>
+        <item>Δύο παρά Είκοσι Έξι</item>
+        <item>Δύο παρά Είκοσι Πέντε</item>
+        <item>Δύο παρά Είκοσι Τέσσερα</item>
+        <item>Δύο παρά Είκοσι Τρία</item>
+        <item>Δύο παρά Είκοσι Δύο</item>
+        <item>Δύο παρά Είκοσι Ένα</item>
+        <item>Δύο παρά Είκοσι</item>
+        <item>Δύο παρά Δεκαεννέα</item>
+        <item>Δύο παρά Δεκαοκτώ</item>
+        <item>Δύο παρά Δεκαεπτά</item>
+        <item>Δύο παρά Δεκαέξι</item>
+        <item>Δύο παρά Τέταρτο</item>
+        <item>Δύο παρά Δεκατέσσερα</item>
+        <item>Δύο παρά Δεκατρία</item>
+        <item>Δύο παρά Δώδεκα</item>
+        <item>Δύο παρά Έντεκα</item>
+        <item>Δύο παρά Δέκα</item>
+        <item>Δύο παρά Εννέα</item>
+        <item>Δύο παρά Οκτώ</item>
+        <item>Δύο παρά Επτά</item>
+        <item>Δύο παρά Έξι</item>
+        <item>Δύο παρά Πέντε</item>
+        <item>Δύο παρά Τέσσερα</item>
+        <item>Δύο παρά Τρία</item>
+        <item>Δύο παρά Δύο</item>
+        <item>Δύο παρά Ένα</item>
+        <item>Δύο</item>
+        <item>Δύο και Ένα</item>
+        <item>Δύο και Δύο</item>
+        <item>Δύο και Τρία</item>
+        <item>Δύο και Τέσσερα</item>
+        <item>Δύο και Πέντε</item>
+        <item>Δύο και Έξι</item>
+        <item>Δύο και Επτά</item>
+        <item>Δύο και Οκτώ</item>
+        <item>Δύο και Εννέα</item>
+        <item>Δύο και Δέκα</item>
+        <item>Δύο και Έντεκα</item>
+        <item>Δύο και Δώδεκα</item>
+        <item>Δύο και Δεκατρία</item>
+        <item>Δύο και Δεκατέσσερα</item>
+        <item>Δύο και Τέταρτο</item>
+        <item>Δύο και Δεκαέξι</item>
+        <item>Δύο και Δεκαεπτά</item>
+        <item>Δύο και Δεκαοκτώ</item>
+        <item>Δύο και Δεκαεννέα</item>
+        <item>Δύο και Είκοσι</item>
+        <item>Δύο και Είκοσι Ένα</item>
+        <item>Δύο και Είκοσι Δύο</item>
+        <item>Δύο και Είκοσι Τρία</item>
+        <item>Δύο και Είκοσι Τέσσερα</item>
+        <item>Δύο και Είκοσι Πέντε</item>
+        <item>Δύο και Είκοσι Έξι</item>
+        <item>Δύο και Είκοσι Επτά</item>
+        <item>Δύο και Είκοσι Οκτώ</item>
+        <item>Δύο και Είκοσι Εννέα</item>
+        <item>Δύο και Μισή</item>
+        <item>Τρείς παρά Είκοσι Εννέα</item>
+        <item>Τρείς παρά Είκοσι Οκτώ</item>
+        <item>Τρείς παρά Είκοσι Επτά</item>
+        <item>Τρείς παρά Είκοσι Έξι</item>
+        <item>Τρείς παρά Είκοσι Πέντε</item>
+        <item>Τρείς παρά Είκοσι Τέσσερα</item>
+        <item>Τρείς παρά Είκοσι Τρία</item>
+        <item>Τρείς παρά Είκοσι Δύο</item>
+        <item>Τρείς παρά Είκοσι Ένα</item>
+        <item>Τρείς παρά Είκοσι</item>
+        <item>Τρείς παρά Δεκαεννέα</item>
+        <item>Τρείς παρά Δεκαοκτώ</item>
+        <item>Τρείς παρά Δεκαεπτά</item>
+        <item>Τρείς παρά Δεκαέξι</item>
+        <item>Τρείς παρά Τέταρτο</item>
+        <item>Τρείς παρά Δεκατέσσερα</item>
+        <item>Τρείς παρά Δεκατρία</item>
+        <item>Τρείς παρά Δώδεκα</item>
+        <item>Τρείς παρά Έντεκα</item>
+        <item>Τρείς παρά Δέκα</item>
+        <item>Τρείς παρά Εννέα</item>
+        <item>Τρείς παρά Οκτώ</item>
+        <item>Τρείς παρά Επτά</item>
+        <item>Τρείς παρά Έξι</item>
+        <item>Τρείς παρά Πέντε</item>
+        <item>Τρείς παρά Τέσσερα</item>
+        <item>Τρείς παρά Τρία</item>
+        <item>Τρείς παρά Δύο</item>
+        <item>Τρείς παρά Ένα</item>
+        <item>Τρείς</item>
+        <item>Τρείς και Ένα</item>
+        <item>Τρείς και Δύο</item>
+        <item>Τρείς και Τρία</item>
+        <item>Τρείς και Τέσσερα</item>
+        <item>Τρείς και Πέντε</item>
+        <item>Τρείς και Έξι</item>
+        <item>Τρείς και Επτά</item>
+        <item>Τρείς και Οκτώ</item>
+        <item>Τρείς και Εννέα</item>
+        <item>Τρείς και Δέκα</item>
+        <item>Τρείς και Έντεκα</item>
+        <item>Τρείς και Δώδεκα</item>
+        <item>Τρείς και Δεκατρία</item>
+        <item>Τρείς και Δεκατέσσερα</item>
+        <item>Τρείς και Τέταρτο</item>
+        <item>Τρείς και Δεκαέξι</item>
+        <item>Τρείς και Δεκαεπτά</item>
+        <item>Τρείς και Δεκαοκτώ</item>
+        <item>Τρείς και Δεκαεννέα</item>
+        <item>Τρείς και Είκοσι</item>
+        <item>Τρείς και Είκοσι Ένα</item>
+        <item>Τρείς και Είκοσι Δύο</item>
+        <item>Τρείς και Είκοσι Τρία</item>
+        <item>Τρείς και Είκοσι Τέσσερα</item>
+        <item>Τρείς και Είκοσι Πέντε</item>
+        <item>Τρείς και Είκοσι Έξι</item>
+        <item>Τρείς και Είκοσι Επτά</item>
+        <item>Τρείς και Είκοσι Οκτώ</item>
+        <item>Τρείς και Είκοσι Εννέα</item>
+        <item>Τρείς και Μισή</item>
+        <item>Tέσσερις παρά Είκοσι Εννέα</item>
+        <item>Tέσσερις παρά Είκοσι Οκτώ</item>
+        <item>Tέσσερις παρά Είκοσι Επτά</item>
+        <item>Tέσσερις παρά Είκοσι Έξι</item>
+        <item>Tέσσερις παρά Είκοσι Πέντε</item>
+        <item>Tέσσερις παρά Είκοσι Τέσσερα</item>
+        <item>Tέσσερις παρά Είκοσι Τρία</item>
+        <item>Tέσσερις παρά Είκοσι Δύο</item>
+        <item>Tέσσερις παρά Είκοσι Ένα</item>
+        <item>Tέσσερις παρά Είκοσι</item>
+        <item>Tέσσερις παρά Δεκαεννέα</item>
+        <item>Tέσσερις παρά Δεκαοκτώ</item>
+        <item>Tέσσερις παρά Δεκαεπτά</item>
+        <item>Tέσσερις παρά Δεκαέξι</item>
+        <item>Tέσσερις παρά Τέταρτο</item>
+        <item>Tέσσερις παρά Δεκατέσσερα</item>
+        <item>Tέσσερις παρά Δεκατρία</item>
+        <item>Tέσσερις παρά Δώδεκα</item>
+        <item>Tέσσερις παρά Έντεκα</item>
+        <item>Tέσσερις παρά Δέκα</item>
+        <item>Tέσσερις παρά Εννέα</item>
+        <item>Tέσσερις παρά Οκτώ</item>
+        <item>Tέσσερις παρά Επτά</item>
+        <item>Tέσσερις παρά Έξι</item>
+        <item>Tέσσερις παρά Πέντε</item>
+        <item>Tέσσερις παρά Τέσσερα</item>
+        <item>Tέσσερις παρά Τρία</item>
+        <item>Tέσσερις παρά Δύο</item>
+        <item>Tέσσερις παρά Ένα</item>
+        <item>Tέσσερις</item>
+        <item>Tέσσερις και Ένα</item>
+        <item>Tέσσερις και Δύο</item>
+        <item>Tέσσερις και Τρία</item>
+        <item>Tέσσερις και Τέσσερα</item>
+        <item>Tέσσερις και Πέντε</item>
+        <item>Tέσσερις και Έξι</item>
+        <item>Tέσσερις και Επτά</item>
+        <item>Tέσσερις και Οκτώ</item>
+        <item>Tέσσερις και Εννέα</item>
+        <item>Tέσσερις και Δέκα</item>
+        <item>Tέσσερις και Έντεκα</item>
+        <item>Tέσσερις και Δώδεκα</item>
+        <item>Tέσσερις και Δεκατρία</item>
+        <item>Tέσσερις και Δεκατέσσερα</item>
+        <item>Tέσσερις και Τέταρτο</item>
+        <item>Tέσσερις και Δεκαέξι</item>
+        <item>Tέσσερις και Δεκαεπτά</item>
+        <item>Tέσσερις και Δεκαοκτώ</item>
+        <item>Tέσσερις και Δεκαεννέα</item>
+        <item>Tέσσερις και Είκοσι</item>
+        <item>Tέσσερις και Είκοσι Ένα</item>
+        <item>Tέσσερις και Είκοσι Δύο</item>
+        <item>Tέσσερις και Είκοσι Τρία</item>
+        <item>Tέσσερις και Είκοσι Τέσσερα</item>
+        <item>Tέσσερις και Είκοσι Πέντε</item>
+        <item>Tέσσερις και Είκοσι Έξι</item>
+        <item>Tέσσερις και Είκοσι Επτά</item>
+        <item>Tέσσερις και Είκοσι Οκτώ</item>
+        <item>Tέσσερις και Είκοσι Εννέα</item>
+        <item>Tέσσερις και Μισή</item>
+        <item>Πέντε παρά Είκοσι Εννέα</item>
+        <item>Πέντε παρά Είκοσι Οκτώ</item>
+        <item>Πέντε παρά Είκοσι Επτά</item>
+        <item>Πέντε παρά Είκοσι Έξι</item>
+        <item>Πέντε παρά Είκοσι Πέντε</item>
+        <item>Πέντε παρά Είκοσι Τέσσερα</item>
+        <item>Πέντε παρά Είκοσι Τρία</item>
+        <item>Πέντε παρά Είκοσι Δύο</item>
+        <item>Πέντε παρά Είκοσι Ένα</item>
+        <item>Πέντε παρά Είκοσι</item>
+        <item>Πέντε παρά Δεκαεννέα</item>
+        <item>Πέντε παρά Δεκαοκτώ</item>
+        <item>Πέντε παρά Δεκαεπτά</item>
+        <item>Πέντε παρά Δεκαέξι</item>
+        <item>Πέντε παρά Τέταρτο</item>
+        <item>Πέντε παρά Δεκατέσσερα</item>
+        <item>Πέντε παρά Δεκατρία</item>
+        <item>Πέντε παρά Δώδεκα</item>
+        <item>Πέντε παρά Έντεκα</item>
+        <item>Πέντε παρά Δέκα</item>
+        <item>Πέντε παρά Εννέα</item>
+        <item>Πέντε παρά Οκτώ</item>
+        <item>Πέντε παρά Επτά</item>
+        <item>Πέντε παρά Έξι</item>
+        <item>Πέντε παρά Πέντε</item>
+        <item>Πέντε παρά Τέσσερα</item>
+        <item>Πέντε παρά Τρία</item>
+        <item>Πέντε παρά Δύο</item>
+        <item>Πέντε παρά Ένα</item>
+        <item>Πέντε</item>
+        <item>Πέντε και Ένα</item>
+        <item>Πέντε και Δύο</item>
+        <item>Πέντε και Τρία</item>
+        <item>Πέντε και Τέσσερα</item>
+        <item>Πέντε και Πέντε</item>
+        <item>Πέντε και Έξι</item>
+        <item>Πέντε και Επτά</item>
+        <item>Πέντε και Οκτώ</item>
+        <item>Πέντε και Εννέα</item>
+        <item>Πέντε και Δέκα</item>
+        <item>Πέντε και Έντεκα</item>
+        <item>Πέντε και Δώδεκα</item>
+        <item>Πέντε και Δεκατρία</item>
+        <item>Πέντε και Δεκατέσσερα</item>
+        <item>Πέντε και Τέταρτο</item>
+        <item>Πέντε και Δεκαέξι</item>
+        <item>Πέντε και Δεκαεπτά</item>
+        <item>Πέντε και Δεκαοκτώ</item>
+        <item>Πέντε και Δεκαεννέα</item>
+        <item>Πέντε και Είκοσι</item>
+        <item>Πέντε και Είκοσι Ένα</item>
+        <item>Πέντε και Είκοσι Δύο</item>
+        <item>Πέντε και Είκοσι Τρία</item>
+        <item>Πέντε και Είκοσι Τέσσερα</item>
+        <item>Πέντε και Είκοσι Πέντε</item>
+        <item>Πέντε και Είκοσι Έξι</item>
+        <item>Πέντε και Είκοσι Επτά</item>
+        <item>Πέντε και Είκοσι Οκτώ</item>
+        <item>Πέντε και Είκοσι Εννέα</item>
+        <item>Πέντε και Μισή</item>
+        <item> Έξι παρά Είκοσι Εννέα</item>
+        <item> Έξι παρά Είκοσι Οκτώ</item>
+        <item> Έξι παρά Είκοσι Επτά</item>
+        <item> Έξι παρά Είκοσι Έξι</item>
+        <item> Έξι παρά Είκοσι Πέντε</item>
+        <item> Έξι παρά Είκοσι Τέσσερα</item>
+        <item> Έξι παρά Είκοσι Τρία</item>
+        <item> Έξι παρά Είκοσι Δύο</item>
+        <item> Έξι παρά Είκοσι Ένα</item>
+        <item> Έξι παρά Είκοσι</item>
+        <item> Έξι παρά Δεκαεννέα</item>
+        <item> Έξι παρά Δεκαοκτώ</item>
+        <item> Έξι παρά Δεκαεπτά</item>
+        <item> Έξι παρά Δεκαέξι</item>
+        <item> Έξι παρά Τέταρτο</item>
+        <item> Έξι παρά Δεκατέσσερα</item>
+        <item> Έξι παρά Δεκατρία</item>
+        <item> Έξι παρά Δώδεκα</item>
+        <item> Έξι παρά Έντεκα</item>
+        <item> Έξι παρά Δέκα</item>
+        <item> Έξι παρά Εννέα</item>
+        <item> Έξι παρά Οκτώ</item>
+        <item> Έξι παρά Επτά</item>
+        <item> Έξι παρά Έξι</item>
+        <item> Έξι παρά Πέντε</item>
+        <item> Έξι παρά Τέσσερα</item>
+        <item> Έξι παρά Τρία</item>
+        <item> Έξι παρά Δύο</item>
+        <item> Έξι παρά Ένα</item>
+    </string-array>
+    <string-array name="verbosetime2">
+        <item> Έξι</item>
+        <item> Έξι και Ένα</item>
+        <item> Έξι και Δύο</item>
+        <item> Έξι και Τρία</item>
+        <item> Έξι και Τέσσερα</item>
+        <item> Έξι και Πέντε</item>
+        <item> Έξι και Έξι</item>
+        <item> Έξι και Επτά</item>
+        <item> Έξι και Οκτώ</item>
+        <item> Έξι και Εννέα</item>
+        <item> Έξι και Δέκα</item>
+        <item> Έξι και Έντεκα</item>
+        <item> Έξι και Δώδεκα</item>
+        <item> Έξι και Δεκατρία</item>
+        <item> Έξι και Δεκατέσσερα</item>
+        <item> Έξι και Τέταρτο</item>
+        <item> Έξι και Δεκαέξι</item>
+        <item> Έξι και Δεκαεπτά</item>
+        <item> Έξι και Δεκαοκτώ</item>
+        <item> Έξι και Δεκαεννέα</item>
+        <item> Έξι και Είκοσι</item>
+        <item> Έξι και Είκοσι Ένα</item>
+        <item> Έξι και Είκοσι Δύο</item>
+        <item> Έξι και Είκοσι Τρία</item>
+        <item> Έξι και Είκοσι Τέσσερα</item>
+        <item> Έξι και Είκοσι Πέντε</item>
+        <item> Έξι και Είκοσι Έξι</item>
+        <item> Έξι και Είκοσι Επτά</item>
+        <item> Έξι και Είκοσι Οκτώ</item>
+        <item> Έξι και Είκοσι Εννέα</item>
+        <item> Έξι και Μισή</item>
+        <item>Επτά παρά Είκοσι Εννέα</item>
+        <item>Επτά παρά Είκοσι Οκτώ</item>
+        <item>Επτά παρά Είκοσι Επτά</item>
+        <item>Επτά παρά Είκοσι Έξι</item>
+        <item>Επτά παρά Είκοσι Πέντε</item>
+        <item>Επτά παρά Είκοσι Τέσσερα</item>
+        <item>Επτά παρά Είκοσι Τρία</item>
+        <item>Επτά παρά Είκοσι Δύο</item>
+        <item>Επτά παρά Είκοσι Ένα</item>
+        <item>Επτά παρά Είκοσι</item>
+        <item>Επτά παρά Δεκαεννέα</item>
+        <item>Επτά παρά Δεκαοκτώ</item>
+        <item>Επτά παρά Δεκαεπτά</item>
+        <item>Επτά παρά Δεκαέξι</item>
+        <item>Επτά παρά Τέταρτο</item>
+        <item>Επτά παρά Δεκατέσσερα</item>
+        <item>Επτά παρά Δεκατρία</item>
+        <item>Επτά παρά Δώδεκα</item>
+        <item>Επτά παρά Έντεκα</item>
+        <item>Επτά παρά Δέκα</item>
+        <item>Επτά παρά Εννέα</item>
+        <item>Επτά παρά Οκτώ</item>
+        <item>Επτά παρά Επτά</item>
+        <item>Επτά παρά Έξι</item>
+        <item>Επτά παρά Πέντε</item>
+        <item>Επτά παρά Τέσσερα</item>
+        <item>Επτά παρά Τρία</item>
+        <item>Επτά παρά Δύο</item>
+        <item>Επτά παρά Ένα</item>
+        <item>Επτά</item>
+        <item>Επτά και Ένα</item>
+        <item>Επτά και Δύο</item>
+        <item>Επτά και Τρία</item>
+        <item>Επτά και Τέσσερα</item>
+        <item>Επτά και Πέντε</item>
+        <item>Επτά και Έξι</item>
+        <item>Επτά και Επτά</item>
+        <item>Επτά και Οκτώ</item>
+        <item>Επτά και Εννέα</item>
+        <item>Επτά και Δέκα</item>
+        <item>Επτά και Έντεκα</item>
+        <item>Επτά και Δώδεκα</item>
+        <item>Επτά και Δεκατρία</item>
+        <item>Επτά και Δεκατέσσερα</item>
+        <item>Επτά και Τέταρτο</item>
+        <item>Επτά και Δεκαέξι</item>
+        <item>Επτά και Δεκαεπτά</item>
+        <item>Επτά και Δεκαοκτώ</item>
+        <item>Επτά και Δεκαεννέα</item>
+        <item>Επτά και Είκοσι</item>
+        <item>Επτά και Είκοσι Ένα</item>
+        <item>Επτά και Είκοσι Δύο</item>
+        <item>Επτά και Είκοσι Τρία</item>
+        <item>Επτά και Είκοσι Τέσσερα</item>
+        <item>Επτά και Είκοσι Πέντε</item>
+        <item>Επτά και Είκοσι Έξι</item>
+        <item>Επτά και Είκοσι Επτά</item>
+        <item>Επτά και Είκοσι Οκτώ</item>
+        <item>Επτά και Είκοσι Εννέα</item>
+        <item>Επτά και Μισή</item>
+        <item> Έξι παρά Είκοσι Εννέα</item>
+        <item> Έξι παρά Είκοσι Οκτώ</item>
+        <item> Έξι παρά Είκοσι Επτά</item>
+        <item> Έξι παρά Είκοσι Έξι</item>
+        <item> Έξι παρά Είκοσι Πέντε</item>
+        <item> Έξι παρά Είκοσι Τέσσερα</item>
+        <item> Έξι παρά Είκοσι Τρία</item>
+        <item> Έξι παρά Είκοσι Δύο</item>
+        <item> Έξι παρά Είκοσι Ένα</item>
+        <item> Έξι παρά Είκοσι</item>
+        <item> Έξι παρά Δεκαεννέα</item>
+        <item> Έξι παρά Δεκαοκτώ</item>
+        <item> Έξι παρά Δεκαεπτά</item>
+        <item> Έξι παρά Δεκαέξι</item>
+        <item> Έξι παρά Τέταρτο</item>
+        <item> Έξι παρά Δεκατέσσερα</item>
+        <item> Έξι παρά Δεκατρία</item>
+        <item> Έξι παρά Δώδεκα</item>
+        <item> Έξι παρά Έντεκα</item>
+        <item> Έξι παρά Δέκα</item>
+        <item> Έξι παρά Εννέα</item>
+        <item> Έξι παρά Οκτώ</item>
+        <item> Έξι παρά Επτά</item>
+        <item> Έξι παρά Έξι</item>
+        <item> Έξι παρά Πέντε</item>
+        <item> Έξι παρά Τέσσερα</item>
+        <item> Έξι παρά Τρία</item>
+        <item> Έξι παρά Δύο</item>
+        <item> Έξι παρά Ένα</item>
+        <item> Έξι</item>
+        <item> Έξι και Ένα</item>
+        <item> Έξι και Δύο</item>
+        <item> Έξι και Τρία</item>
+        <item> Έξι και Τέσσερα</item>
+        <item> Έξι και Πέντε</item>
+        <item> Έξι και Έξι</item>
+        <item> Έξι και Επτά</item>
+        <item> Έξι και Οκτώ</item>
+        <item> Έξι και Εννέα</item>
+        <item> Έξι και Δέκα</item>
+        <item> Έξι και Έντεκα</item>
+        <item> Έξι και Δώδεκα</item>
+        <item> Έξι και Δεκατρία</item>
+        <item> Έξι και Δεκατέσσερα</item>
+        <item> Έξι και Τέταρτο</item>
+        <item> Έξι και Δεκαέξι</item>
+        <item> Έξι και Δεκαεπτά</item>
+        <item> Έξι και Δεκαοκτώ</item>
+        <item> Έξι και Δεκαεννέα</item>
+        <item> Έξι και Είκοσι</item>
+        <item> Έξι και Είκοσι Ένα</item>
+        <item> Έξι και Είκοσι Δύο</item>
+        <item> Έξι και Είκοσι Τρία</item>
+        <item> Έξι και Είκοσι Τέσσερα</item>
+        <item> Έξι και Είκοσι Πέντε</item>
+        <item> Έξι και Είκοσι Έξι</item>
+        <item> Έξι και Είκοσι Επτά</item>
+        <item> Έξι και Είκοσι Οκτώ</item>
+        <item> Έξι και Είκοσι Εννέα</item>
+        <item> Έξι και Μισή</item>
+        <item>Επτά παρά Είκοσι Εννέα</item>
+        <item>Επτά παρά Είκοσι Οκτώ</item>
+        <item>Επτά παρά Είκοσι Επτά</item>
+        <item>Επτά παρά Είκοσι Έξι</item>
+        <item>Επτά παρά Είκοσι Πέντε</item>
+        <item>Επτά παρά Είκοσι Τέσσερα</item>
+        <item>Επτά παρά Είκοσι Τρία</item>
+        <item>Επτά παρά Είκοσι Δύο</item>
+        <item>Επτά παρά Είκοσι Ένα</item>
+        <item>Επτά παρά Είκοσι</item>
+        <item>Επτά παρά Δεκαεννέα</item>
+        <item>Επτά παρά Δεκαοκτώ</item>
+        <item>Επτά παρά Δεκαεπτά</item>
+        <item>Επτά παρά Δεκαέξι</item>
+        <item>Επτά παρά Τέταρτο</item>
+        <item>Επτά παρά Δεκατέσσερα</item>
+        <item>Επτά παρά Δεκατρία</item>
+        <item>Επτά παρά Δώδεκα</item>
+        <item>Επτά παρά Έντεκα</item>
+        <item>Επτά παρά Δέκα</item>
+        <item>Επτά παρά Εννέα</item>
+        <item>Επτά παρά Οκτώ</item>
+        <item>Επτά παρά Επτά</item>
+        <item>Επτά παρά Έξι</item>
+        <item>Επτά παρά Πέντε</item>
+        <item>Επτά παρά Τέσσερα</item>
+        <item>Επτά παρά Τρία</item>
+        <item>Επτά παρά Δύο</item>
+        <item>Επτά παρά Ένα</item>
+        <item>Επτά</item>
+        <item>Επτά και Ένα</item>
+        <item>Επτά και Δύο</item>
+        <item>Επτά και Τρία</item>
+        <item>Επτά και Τέσσερα</item>
+        <item>Επτά και Πέντε</item>
+        <item>Επτά και Έξι</item>
+        <item>Επτά και Επτά</item>
+        <item>Επτά και Οκτώ</item>
+        <item>Επτά και Εννέα</item>
+        <item>Επτά και Δέκα</item>
+        <item>Επτά και Έντεκα</item>
+        <item>Επτά και Δώδεκα</item>
+        <item>Επτά και Δεκατρία</item>
+        <item>Επτά και Δεκατέσσερα</item>
+        <item>Επτά και Τέταρτο</item>
+        <item>Επτά και Δεκαέξι</item>
+        <item>Επτά και Δεκαεπτά</item>
+        <item>Επτά και Δεκαοκτώ</item>
+        <item>Επτά και Δεκαεννέα</item>
+        <item>Επτά και Είκοσι</item>
+        <item>Επτά και Είκοσι Ένα</item>
+        <item>Επτά και Είκοσι Δύο</item>
+        <item>Επτά και Είκοσι Τρία</item>
+        <item>Επτά και Είκοσι Τέσσερα</item>
+        <item>Επτά και Είκοσι Πέντε</item>
+        <item>Επτά και Είκοσι Έξι</item>
+        <item>Επτά και Είκοσι Επτά</item>
+        <item>Επτά και Είκοσι Οκτώ</item>
+        <item>Επτά και Είκοσι Εννέα</item>
+        <item>Επτά και Μισή</item>
+        <item>Δέκα παρά Είκοσι Εννέα</item>
+        <item>Δέκα παρά Είκοσι Οκτώ</item>
+        <item>Δέκα παρά Είκοσι Επτά</item>
+        <item>Δέκα παρά Είκοσι Έξι</item>
+        <item>Δέκα παρά Είκοσι Πέντε</item>
+        <item>Δέκα παρά Είκοσι Τέσσερα</item>
+        <item>Δέκα παρά Είκοσι Τρία</item>
+        <item>Δέκα παρά Είκοσι Δύο</item>
+        <item>Δέκα παρά Είκοσι Ένα</item>
+        <item>Δέκα παρά Είκοσι</item>
+        <item>Δέκα παρά Δεκαεννέα</item>
+        <item>Δέκα παρά Δεκαοκτώ</item>
+        <item>Δέκα παρά Δεκαεπτά</item>
+        <item>Δέκα παρά Δεκαέξι</item>
+        <item>Δέκα παρά Τέταρτο</item>
+        <item>Δέκα παρά Δεκατέσσερα</item>
+        <item>Δέκα παρά Δεκατρία</item>
+        <item>Δέκα παρά Δώδεκα</item>
+        <item>Δέκα παρά Έντεκα</item>
+        <item>Δέκα παρά Δέκα</item>
+        <item>Δέκα παρά Εννέα</item>
+        <item>Δέκα παρά Οκτώ</item>
+        <item>Δέκα παρά Επτά</item>
+        <item>Δέκα παρά Έξι</item>
+        <item>Δέκα παρά Πέντε</item>
+        <item>Δέκα παρά Τέσσερα</item>
+        <item>Δέκα παρά Τρία</item>
+        <item>Δέκα παρά Δύο</item>
+        <item>Δέκα παρά Ένα</item>
+        <item>Δέκα</item>
+        <item>Δέκα και Ένα</item>
+        <item>Δέκα και Δύο</item>
+        <item>Δέκα και Τρία</item>
+        <item>Δέκα και Τέσσερα</item>
+        <item>Δέκα και Πέντε</item>
+        <item>Δέκα και Έξι</item>
+        <item>Δέκα και Επτά</item>
+        <item>Δέκα και Οκτώ</item>
+        <item>Δέκα και Εννέα</item>
+        <item>Δέκα και Δέκα</item>
+        <item>Δέκα και Έντεκα</item>
+        <item>Δέκα και Δώδεκα</item>
+        <item>Δέκα και Δεκατρία</item>
+        <item>Δέκα και Δεκατέσσερα</item>
+        <item>Δέκα και Τέταρτο</item>
+        <item>Δέκα και Δεκαέξι</item>
+        <item>Δέκα και Δεκαεπτά</item>
+        <item>Δέκα και Δεκαοκτώ</item>
+        <item>Δέκα και Δεκαεννέα</item>
+        <item>Δέκα και Είκοσι</item>
+        <item>Δέκα και Είκοσι Ένα</item>
+        <item>Δέκα και Είκοσι Δύο</item>
+        <item>Δέκα και Είκοσι Τρία</item>
+        <item>Δέκα και Είκοσι Τέσσερα</item>
+        <item>Δέκα και Είκοσι Πέντε</item>
+        <item>Δέκα και Είκοσι Έξι</item>
+        <item>Δέκα και Είκοσι Επτά</item>
+        <item>Δέκα και Είκοσι Οκτώ</item>
+        <item>Δέκα και Είκοσι Εννέα</item>
+        <item>Δέκα και Μισή</item>
+        <item>Έντεκα παρά Είκοσι Εννέα</item>
+        <item>Έντεκα παρά Είκοσι Οκτώ</item>
+        <item>Έντεκα παρά Είκοσι Επτά</item>
+        <item>Έντεκα παρά Είκοσι Έξι</item>
+        <item>Έντεκα παρά Είκοσι Πέντε</item>
+        <item>Έντεκα παρά Είκοσι Τέσσερα</item>
+        <item>Έντεκα παρά Είκοσι Τρία</item>
+        <item>Έντεκα παρά Είκοσι Δύο</item>
+        <item>Έντεκα παρά Είκοσι Ένα</item>
+        <item>Έντεκα παρά Είκοσι</item>
+        <item>Έντεκα παρά Δεκαεννέα</item>
+        <item>Έντεκα παρά Δεκαοκτώ</item>
+        <item>Έντεκα παρά Δεκαεπτά</item>
+        <item>Έντεκα παρά Δεκαέξι</item>
+        <item>Έντεκα παρά Τέταρτο</item>
+        <item>Έντεκα παρά Δεκατέσσερα</item>
+        <item>Έντεκα παρά Δεκατρία</item>
+        <item>Έντεκα παρά Δώδεκα</item>
+        <item>Έντεκα παρά Έντεκα</item>
+        <item>Έντεκα παρά Δέκα</item>
+        <item>Έντεκα παρά Εννέα</item>
+        <item>Έντεκα παρά Οκτώ</item>
+        <item>Έντεκα παρά Επτά</item>
+        <item>Έντεκα παρά Έξι</item>
+        <item>Έντεκα παρά Πέντε</item>
+        <item>Έντεκα παρά Τέσσερα</item>
+        <item>Έντεκα παρά Τρία</item>
+        <item>Έντεκα παρά Δύο</item>
+        <item>Έντεκα παρά Ένα</item>
+        <item>Έντεκα</item>
+        <item>Έντεκα και Ένα</item>
+        <item>Έντεκα και Δύο</item>
+        <item>Έντεκα και Τρία</item>
+        <item>Έντεκα και Τέσσερα</item>
+        <item>Έντεκα και Πέντε</item>
+        <item>Έντεκα και Έξι</item>
+        <item>Έντεκα και Επτά</item>
+        <item>Έντεκα και Οκτώ</item>
+        <item>Έντεκα και Εννέα</item>
+        <item>Έντεκα και Δέκα</item>
+        <item>Έντεκα και Έντεκα</item>
+        <item>Έντεκα και Δώδεκα</item>
+        <item>Έντεκα και Δεκατρία</item>
+        <item>Έντεκα και Δεκατέσσερα</item>
+        <item>Έντεκα και Τέταρτο</item>
+        <item>Έντεκα και Δεκαέξι</item>
+        <item>Έντεκα και Δεκαεπτά</item>
+        <item>Έντεκα και Δεκαοκτώ</item>
+        <item>Έντεκα και Δεκαεννέα</item>
+        <item>Έντεκα και Είκοσι</item>
+        <item>Έντεκα και Είκοσι Ένα</item>
+        <item>Έντεκα και Είκοσι Δύο</item>
+        <item>Έντεκα και Είκοσι Τρία</item>
+        <item>Έντεκα και Είκοσι Τέσσερα</item>
+        <item>Έντεκα και Είκοσι Πέντε</item>
+        <item>Έντεκα και Είκοσι Έξι</item>
+        <item>Έντεκα και Είκοσι Επτά</item>
+        <item>Έντεκα και Είκοσι Οκτώ</item>
+        <item>Έντεκα και Είκοσι Εννέα</item>
+        <item>Έντεκα και Μισή</item>
+        <item>Δώδεκα παρά Είκοσι Εννέα</item>
+        <item>Δώδεκα παρά Είκοσι Οκτώ</item>
+        <item>Δώδεκα παρά Είκοσι Επτά</item>
+        <item>Δώδεκα παρά Είκοσι Έξι</item>
+        <item>Δώδεκα παρά Είκοσι Πέντε</item>
+        <item>Δώδεκα παρά Είκοσι Τέσσερα</item>
+        <item>Δώδεκα παρά Είκοσι Τρία</item>
+        <item>Δώδεκα παρά Είκοσι Δύο</item>
+        <item>Δώδεκα παρά Είκοσι Ένα</item>
+        <item>Δώδεκα παρά Είκοσι</item>
+        <item>Δώδεκα παρά Δεκαεννέα</item>
+        <item>Δώδεκα παρά Δεκαοκτώ</item>
+        <item>Δώδεκα παρά Δεκαεπτά</item>
+        <item>Δώδεκα παρά Δεκαέξι</item>
+        <item>Δώδεκα παρά Τέταρτο</item>
+        <item>Δώδεκα παρά Δεκατέσσερα</item>
+        <item>Δώδεκα παρά Δεκατρία</item>
+        <item>Δώδεκα παρά Δώδεκα</item>
+        <item>Δώδεκα παρά Έντεκα</item>
+        <item>Δώδεκα παρά Δέκα</item>
+        <item>Δώδεκα παρά Εννέα</item>
+        <item>Δώδεκα παρά Οκτώ</item>
+        <item>Δώδεκα παρά Επτά</item>
+        <item>Δώδεκα παρά Έξι</item>
+        <item>Δώδεκα παρά Πέντε</item>
+        <item>Δώδεκα παρά Τέσσερα</item>
+        <item>Δώδεκα παρά Τρία</item>
+        <item>Δώδεκα παρά Δύο</item>
+        <item>Δώδεκα παρά Ένα</item>
+    </string-array>
+    <string-array name="verbosetime3">
+        <item>Δώδεκα</item>
+        <item>Δώδεκα και Ένα</item>
+        <item>Δώδεκα και Δύο</item>
+        <item>Δώδεκα και Τρία</item>
+        <item>Δώδεκα και Τέσσερα</item>
+        <item>Δώδεκα και Πέντε</item>
+        <item>Δώδεκα και Έξι</item>
+        <item>Δώδεκα και Επτά</item>
+        <item>Δώδεκα και Οκτώ</item>
+        <item>Δώδεκα και Εννέα</item>
+        <item>Δώδεκα και Δέκα</item>
+        <item>Δώδεκα και Έντεκα</item>
+        <item>Δώδεκα και Δώδεκα</item>
+        <item>Δώδεκα και Δεκατρία</item>
+        <item>Δώδεκα και Δεκατέσσερα</item>
+        <item>Δώδεκα και Τέταρτο</item>
+        <item>Δώδεκα και Δεκαέξι</item>
+        <item>Δώδεκα και Δεκαεπτά</item>
+        <item>Δώδεκα και Δεκαοκτώ</item>
+        <item>Δώδεκα και Δεκαεννέα</item>
+        <item>Δώδεκα και Είκοσι</item>
+        <item>Δώδεκα και Είκοσι Ένα</item>
+        <item>Δώδεκα και Είκοσι Δύο</item>
+        <item>Δώδεκα και Είκοσι Τρία</item>
+        <item>Δώδεκα και Είκοσι Τέσσερα</item>
+        <item>Δώδεκα και Είκοσι Πέντε</item>
+        <item>Δώδεκα και Είκοσι Έξι</item>
+        <item>Δώδεκα και Είκοσι Επτά</item>
+        <item>Δώδεκα και Είκοσι Οκτώ</item>
+        <item>Δώδεκα και Είκοσι Εννέα</item>
+        <item>Δώδεκα και Μισή</item>
+        <item>Μία παρά Είκοσι Εννέα</item>
+        <item>Μία παρά Είκοσι Οκτώ</item>
+        <item>Μία παρά Είκοσι Επτά</item>
+        <item>Μία παρά Είκοσι Έξι</item>
+        <item>Μία παρά Είκοσι Πέντε</item>
+        <item>Μία παρά Είκοσι Τέσσερα</item>
+        <item>Μία παρά Είκοσι Τρία</item>
+        <item>Μία παρά Είκοσι Δύο</item>
+        <item>Μία παρά Είκοσι Ένα</item>
+        <item>Μία παρά Είκοσι</item>
+        <item>Μία παρά Δεκαεννέα</item>
+        <item>Μία παρά Δεκαοκτώ</item>
+        <item>Μία παρά Δεκαεπτά</item>
+        <item>Μία παρά Δεκαέξι</item>
+        <item>Μία παρά Τέταρτο</item>
+        <item>Μία παρά Δεκατέσσερα</item>
+        <item>Μία παρά Δεκατρία</item>
+        <item>Μία παρά Δώδεκα</item>
+        <item>Μία παρά Έντεκα</item>
+        <item>Μία παρά Δέκα</item>
+        <item>Μία παρά Εννέα</item>
+        <item>Μία παρά Οκτώ</item>
+        <item>Μία παρά Επτά</item>
+        <item>Μία παρά Έξι</item>
+        <item>Μία παρά Πέντε</item>
+        <item>Μία παρά Τέσσερα</item>
+        <item>Μία παρά Τρία</item>
+        <item>Μία παρά Δύο</item>
+        <item>Μία παρά Ένα</item>
+        <item>Μία</item>
+        <item>Μία και Ένα</item>
+        <item>Μία και Δύο</item>
+        <item>Μία και Τρία</item>
+        <item>Μία και Τέσσερα</item>
+        <item>Μία και Πέντε</item>
+        <item>Μία και Έξι</item>
+        <item>Μία και Επτά</item>
+        <item>Μία και Οκτώ</item>
+        <item>Μία και Εννέα</item>
+        <item>Μία και Δέκα</item>
+        <item>Μία και Έντεκα</item>
+        <item>Μία και Δώδεκα</item>
+        <item>Μία και Δεκατρία</item>
+        <item>Μία και Δεκατέσσερα</item>
+        <item>Μία και Τέταρτο</item>
+        <item>Μία και Δεκαέξι</item>
+        <item>Μία και Δεκαεπτά</item>
+        <item>Μία και Δεκαοκτώ</item>
+        <item>Μία και Δεκαεννέα</item>
+        <item>Μία και Είκοσι</item>
+        <item>Μία και Είκοσι Ένα</item>
+        <item>Μία και Είκοσι Δύο</item>
+        <item>Μία και Είκοσι Τρία</item>
+        <item>Μία και Είκοσι Τέσσερα</item>
+        <item>Μία και Είκοσι Πέντε</item>
+        <item>Μία και Είκοσι Έξι</item>
+        <item>Μία και Είκοσι Επτά</item>
+        <item>Μία και Είκοσι Οκτώ</item>
+        <item>Μία και Είκοσι Εννέα</item>
+        <item>Μία και Μισή</item>
+        <item>Δύο παρά Είκοσι Εννέα</item>
+        <item>Δύο παρά Είκοσι Οκτώ</item>
+        <item>Δύο παρά Είκοσι Επτά</item>
+        <item>Δύο παρά Είκοσι Έξι</item>
+        <item>Δύο παρά Είκοσι Πέντε</item>
+        <item>Δύο παρά Είκοσι Τέσσερα</item>
+        <item>Δύο παρά Είκοσι Τρία</item>
+        <item>Δύο παρά Είκοσι Δύο</item>
+        <item>Δύο παρά Είκοσι Ένα</item>
+        <item>Δύο παρά Είκοσι</item>
+        <item>Δύο παρά Δεκαεννέα</item>
+        <item>Δύο παρά Δεκαοκτώ</item>
+        <item>Δύο παρά Δεκαεπτά</item>
+        <item>Δύο παρά Δεκαέξι</item>
+        <item>Δύο παρά Τέταρτο</item>
+        <item>Δύο παρά Δεκατέσσερα</item>
+        <item>Δύο παρά Δεκατρία</item>
+        <item>Δύο παρά Δώδεκα</item>
+        <item>Δύο παρά Έντεκα</item>
+        <item>Δύο παρά Δέκα</item>
+        <item>Δύο παρά Εννέα</item>
+        <item>Δύο παρά Οκτώ</item>
+        <item>Δύο παρά Επτά</item>
+        <item>Δύο παρά Έξι</item>
+        <item>Δύο παρά Πέντε</item>
+        <item>Δύο παρά Τέσσερα</item>
+        <item>Δύο παρά Τρία</item>
+        <item>Δύο παρά Δύο</item>
+        <item>Δύο παρά Ένα</item>
+        <item>Δύο</item>
+        <item>Δύο και Ένα</item>
+        <item>Δύο και Δύο</item>
+        <item>Δύο και Τρία</item>
+        <item>Δύο και Τέσσερα</item>
+        <item>Δύο και Πέντε</item>
+        <item>Δύο και Έξι</item>
+        <item>Δύο και Επτά</item>
+        <item>Δύο και Οκτώ</item>
+        <item>Δύο και Εννέα</item>
+        <item>Δύο και Δέκα</item>
+        <item>Δύο και Έντεκα</item>
+        <item>Δύο και Δώδεκα</item>
+        <item>Δύο και Δεκατρία</item>
+        <item>Δύο και Δεκατέσσερα</item>
+        <item>Δύο και Τέταρτο</item>
+        <item>Δύο και Δεκαέξι</item>
+        <item>Δύο και Δεκαεπτά</item>
+        <item>Δύο και Δεκαοκτώ</item>
+        <item>Δύο και Δεκαεννέα</item>
+        <item>Δύο και Είκοσι</item>
+        <item>Δύο και Είκοσι Ένα</item>
+        <item>Δύο και Είκοσι Δύο</item>
+        <item>Δύο και Είκοσι Τρία</item>
+        <item>Δύο και Είκοσι Τέσσερα</item>
+        <item>Δύο και Είκοσι Πέντε</item>
+        <item>Δύο και Είκοσι Έξι</item>
+        <item>Δύο και Είκοσι Επτά</item>
+        <item>Δύο και Είκοσι Οκτώ</item>
+        <item>Δύο και Είκοσι Εννέα</item>
+        <item>Δύο και Μισή</item>
+        <item>Τρείς παρά Είκοσι Εννέα</item>
+        <item>Τρείς παρά Είκοσι Οκτώ</item>
+        <item>Τρείς παρά Είκοσι Επτά</item>
+        <item>Τρείς παρά Είκοσι Έξι</item>
+        <item>Τρείς παρά Είκοσι Πέντε</item>
+        <item>Τρείς παρά Είκοσι Τέσσερα</item>
+        <item>Τρείς παρά Είκοσι Τρία</item>
+        <item>Τρείς παρά Είκοσι Δύο</item>
+        <item>Τρείς παρά Είκοσι Ένα</item>
+        <item>Τρείς παρά Είκοσι</item>
+        <item>Τρείς παρά Δεκαεννέα</item>
+        <item>Τρείς παρά Δεκαοκτώ</item>
+        <item>Τρείς παρά Δεκαεπτά</item>
+        <item>Τρείς παρά Δεκαέξι</item>
+        <item>Τρείς παρά Τέταρτο</item>
+        <item>Τρείς παρά Δεκατέσσερα</item>
+        <item>Τρείς παρά Δεκατρία</item>
+        <item>Τρείς παρά Δώδεκα</item>
+        <item>Τρείς παρά Έντεκα</item>
+        <item>Τρείς παρά Δέκα</item>
+        <item>Τρείς παρά Εννέα</item>
+        <item>Τρείς παρά Οκτώ</item>
+        <item>Τρείς παρά Επτά</item>
+        <item>Τρείς παρά Έξι</item>
+        <item>Τρείς παρά Πέντε</item>
+        <item>Τρείς παρά Τέσσερα</item>
+        <item>Τρείς παρά Τρία</item>
+        <item>Τρείς παρά Δύο</item>
+        <item>Τρείς παρά Ένα</item>
+        <item>Τρείς</item>
+        <item>Τρείς και Ένα</item>
+        <item>Τρείς και Δύο</item>
+        <item>Τρείς και Τρία</item>
+        <item>Τρείς και Τέσσερα</item>
+        <item>Τρείς και Πέντε</item>
+        <item>Τρείς και Έξι</item>
+        <item>Τρείς και Επτά</item>
+        <item>Τρείς και Οκτώ</item>
+        <item>Τρείς και Εννέα</item>
+        <item>Τρείς και Δέκα</item>
+        <item>Τρείς και Έντεκα</item>
+        <item>Τρείς και Δώδεκα</item>
+        <item>Τρείς και Δεκατρία</item>
+        <item>Τρείς και Δεκατέσσερα</item>
+        <item>Τρείς και Τέταρτο</item>
+        <item>Τρείς και Δεκαέξι</item>
+        <item>Τρείς και Δεκαεπτά</item>
+        <item>Τρείς και Δεκαοκτώ</item>
+        <item>Τρείς και Δεκαεννέα</item>
+        <item>Τρείς και Είκοσι</item>
+        <item>Τρείς και Είκοσι Ένα</item>
+        <item>Τρείς και Είκοσι Δύο</item>
+        <item>Τρείς και Είκοσι Τρία</item>
+        <item>Τρείς και Είκοσι Τέσσερα</item>
+        <item>Τρείς και Είκοσι Πέντε</item>
+        <item>Τρείς και Είκοσι Έξι</item>
+        <item>Τρείς και Είκοσι Επτά</item>
+        <item>Τρείς και Είκοσι Οκτώ</item>
+        <item>Τρείς και Είκοσι Εννέα</item>
+        <item>Τρείς και Μισή</item>
+        <item>Tέσσερις παρά Είκοσι Εννέα</item>
+        <item>Tέσσερις παρά Είκοσι Οκτώ</item>
+        <item>Tέσσερις παρά Είκοσι Επτά</item>
+        <item>Tέσσερις παρά Είκοσι Έξι</item>
+        <item>Tέσσερις παρά Είκοσι Πέντε</item>
+        <item>Tέσσερις παρά Είκοσι Τέσσερα</item>
+        <item>Tέσσερις παρά Είκοσι Τρία</item>
+        <item>Tέσσερις παρά Είκοσι Δύο</item>
+        <item>Tέσσερις παρά Είκοσι Ένα</item>
+        <item>Tέσσερις παρά Είκοσι</item>
+        <item>Tέσσερις παρά Δεκαεννέα</item>
+        <item>Tέσσερις παρά Δεκαοκτώ</item>
+        <item>Tέσσερις παρά Δεκαεπτά</item>
+        <item>Tέσσερις παρά Δεκαέξι</item>
+        <item>Tέσσερις παρά Τέταρτο</item>
+        <item>Tέσσερις παρά Δεκατέσσερα</item>
+        <item>Tέσσερις παρά Δεκατρία</item>
+        <item>Tέσσερις παρά Δώδεκα</item>
+        <item>Tέσσερις παρά Έντεκα</item>
+        <item>Tέσσερις παρά Δέκα</item>
+        <item>Tέσσερις παρά Εννέα</item>
+        <item>Tέσσερις παρά Οκτώ</item>
+        <item>Tέσσερις παρά Επτά</item>
+        <item>Tέσσερις παρά Έξι</item>
+        <item>Tέσσερις παρά Πέντε</item>
+        <item>Tέσσερις παρά Τέσσερα</item>
+        <item>Tέσσερις παρά Τρία</item>
+        <item>Tέσσερις παρά Δύο</item>
+        <item>Tέσσερις παρά Ένα</item>
+        <item>Tέσσερις</item>
+        <item>Tέσσερις και Ένα</item>
+        <item>Tέσσερις και Δύο</item>
+        <item>Tέσσερις και Τρία</item>
+        <item>Tέσσερις και Τέσσερα</item>
+        <item>Tέσσερις και Πέντε</item>
+        <item>Tέσσερις και Έξι</item>
+        <item>Tέσσερις και Επτά</item>
+        <item>Tέσσερις και Οκτώ</item>
+        <item>Tέσσερις και Εννέα</item>
+        <item>Tέσσερις και Δέκα</item>
+        <item>Tέσσερις και Έντεκα</item>
+        <item>Tέσσερις και Δώδεκα</item>
+        <item>Tέσσερις και Δεκατρία</item>
+        <item>Tέσσερις και Δεκατέσσερα</item>
+        <item>Tέσσερις και Τέταρτο</item>
+        <item>Tέσσερις και Δεκαέξι</item>
+        <item>Tέσσερις και Δεκαεπτά</item>
+        <item>Tέσσερις και Δεκαοκτώ</item>
+        <item>Tέσσερις και Δεκαεννέα</item>
+        <item>Tέσσερις και Είκοσι</item>
+        <item>Tέσσερις και Είκοσι Ένα</item>
+        <item>Tέσσερις και Είκοσι Δύο</item>
+        <item>Tέσσερις και Είκοσι Τρία</item>
+        <item>Tέσσερις και Είκοσι Τέσσερα</item>
+        <item>Tέσσερις και Είκοσι Πέντε</item>
+        <item>Tέσσερις και Είκοσι Έξι</item>
+        <item>Tέσσερις και Είκοσι Επτά</item>
+        <item>Tέσσερις και Είκοσι Οκτώ</item>
+        <item>Tέσσερις και Είκοσι Εννέα</item>
+        <item>Tέσσερις και Μισή</item>
+        <item>Πέντε παρά Είκοσι Εννέα</item>
+        <item>Πέντε παρά Είκοσι Οκτώ</item>
+        <item>Πέντε παρά Είκοσι Επτά</item>
+        <item>Πέντε παρά Είκοσι Έξι</item>
+        <item>Πέντε παρά Είκοσι Πέντε</item>
+        <item>Πέντε παρά Είκοσι Τέσσερα</item>
+        <item>Πέντε παρά Είκοσι Τρία</item>
+        <item>Πέντε παρά Είκοσι Δύο</item>
+        <item>Πέντε παρά Είκοσι Ένα</item>
+        <item>Πέντε παρά Είκοσι</item>
+        <item>Πέντε παρά Δεκαεννέα</item>
+        <item>Πέντε παρά Δεκαοκτώ</item>
+        <item>Πέντε παρά Δεκαεπτά</item>
+        <item>Πέντε παρά Δεκαέξι</item>
+        <item>Πέντε παρά Τέταρτο</item>
+        <item>Πέντε παρά Δεκατέσσερα</item>
+        <item>Πέντε παρά Δεκατρία</item>
+        <item>Πέντε παρά Δώδεκα</item>
+        <item>Πέντε παρά Έντεκα</item>
+        <item>Πέντε παρά Δέκα</item>
+        <item>Πέντε παρά Εννέα</item>
+        <item>Πέντε παρά Οκτώ</item>
+        <item>Πέντε παρά Επτά</item>
+        <item>Πέντε παρά Έξι</item>
+        <item>Πέντε παρά Πέντε</item>
+        <item>Πέντε παρά Τέσσερα</item>
+        <item>Πέντε παρά Τρία</item>
+        <item>Πέντε παρά Δύο</item>
+        <item>Πέντε παρά Ένα</item>
+        <item>Πέντε</item>
+        <item>Πέντε και Ένα</item>
+        <item>Πέντε και Δύο</item>
+        <item>Πέντε και Τρία</item>
+        <item>Πέντε και Τέσσερα</item>
+        <item>Πέντε και Πέντε</item>
+        <item>Πέντε και Έξι</item>
+        <item>Πέντε και Επτά</item>
+        <item>Πέντε και Οκτώ</item>
+        <item>Πέντε και Εννέα</item>
+        <item>Πέντε και Δέκα</item>
+        <item>Πέντε και Έντεκα</item>
+        <item>Πέντε και Δώδεκα</item>
+        <item>Πέντε και Δεκατρία</item>
+        <item>Πέντε και Δεκατέσσερα</item>
+        <item>Πέντε και Τέταρτο</item>
+        <item>Πέντε και Δεκαέξι</item>
+        <item>Πέντε και Δεκαεπτά</item>
+        <item>Πέντε και Δεκαοκτώ</item>
+        <item>Πέντε και Δεκαεννέα</item>
+        <item>Πέντε και Είκοσι</item>
+        <item>Πέντε και Είκοσι Ένα</item>
+        <item>Πέντε και Είκοσι Δύο</item>
+        <item>Πέντε και Είκοσι Τρία</item>
+        <item>Πέντε και Είκοσι Τέσσερα</item>
+        <item>Πέντε και Είκοσι Πέντε</item>
+        <item>Πέντε και Είκοσι Έξι</item>
+        <item>Πέντε και Είκοσι Επτά</item>
+        <item>Πέντε και Είκοσι Οκτώ</item>
+        <item>Πέντε και Είκοσι Εννέα</item>
+        <item>Πέντε και Μισή</item>
+        <item> Έξι παρά Είκοσι Εννέα</item>
+        <item> Έξι παρά Είκοσι Οκτώ</item>
+        <item> Έξι παρά Είκοσι Επτά</item>
+        <item> Έξι παρά Είκοσι Έξι</item>
+        <item> Έξι παρά Είκοσι Πέντε</item>
+        <item> Έξι παρά Είκοσι Τέσσερα</item>
+        <item> Έξι παρά Είκοσι Τρία</item>
+        <item> Έξι παρά Είκοσι Δύο</item>
+        <item> Έξι παρά Είκοσι Ένα</item>
+        <item> Έξι παρά Είκοσι</item>
+        <item> Έξι παρά Δεκαεννέα</item>
+        <item> Έξι παρά Δεκαοκτώ</item>
+        <item> Έξι παρά Δεκαεπτά</item>
+        <item> Έξι παρά Δεκαέξι</item>
+        <item> Έξι παρά Τέταρτο</item>
+        <item> Έξι παρά Δεκατέσσερα</item>
+        <item> Έξι παρά Δεκατρία</item>
+        <item> Έξι παρά Δώδεκα</item>
+        <item> Έξι παρά Έντεκα</item>
+        <item> Έξι παρά Δέκα</item>
+        <item> Έξι παρά Εννέα</item>
+        <item> Έξι παρά Οκτώ</item>
+        <item> Έξι παρά Επτά</item>
+        <item> Έξι παρά Έξι</item>
+        <item> Έξι παρά Πέντε</item>
+        <item> Έξι παρά Τέσσερα</item>
+        <item> Έξι παρά Τρία</item>
+        <item> Έξι παρά Δύο</item>
+        <item> Έξι παρά Ένα</item>
+    </string-array>
+    <string-array name="verbosetime4">
+        <item> Έξι</item>
+        <item> Έξι και Ένα</item>
+        <item> Έξι και Δύο</item>
+        <item> Έξι και Τρία</item>
+        <item> Έξι και Τέσσερα</item>
+        <item> Έξι και Πέντε</item>
+        <item> Έξι και Έξι</item>
+        <item> Έξι και Επτά</item>
+        <item> Έξι και Οκτώ</item>
+        <item> Έξι και Εννέα</item>
+        <item> Έξι και Δέκα</item>
+        <item> Έξι και Έντεκα</item>
+        <item> Έξι και Δώδεκα</item>
+        <item> Έξι και Δεκατρία</item>
+        <item> Έξι και Δεκατέσσερα</item>
+        <item> Έξι και Τέταρτο</item>
+        <item> Έξι και Δεκαέξι</item>
+        <item> Έξι και Δεκαεπτά</item>
+        <item> Έξι και Δεκαοκτώ</item>
+        <item> Έξι και Δεκαεννέα</item>
+        <item> Έξι και Είκοσι</item>
+        <item> Έξι και Είκοσι Ένα</item>
+        <item> Έξι και Είκοσι Δύο</item>
+        <item> Έξι και Είκοσι Τρία</item>
+        <item> Έξι και Είκοσι Τέσσερα</item>
+        <item> Έξι και Είκοσι Πέντε</item>
+        <item> Έξι και Είκοσι Έξι</item>
+        <item> Έξι και Είκοσι Επτά</item>
+        <item> Έξι και Είκοσι Οκτώ</item>
+        <item> Έξι και Είκοσι Εννέα</item>
+        <item> Έξι και Μισή</item>
+        <item>Επτά παρά Είκοσι Εννέα</item>
+        <item>Επτά παρά Είκοσι Οκτώ</item>
+        <item>Επτά παρά Είκοσι Επτά</item>
+        <item>Επτά παρά Είκοσι Έξι</item>
+        <item>Επτά παρά Είκοσι Πέντε</item>
+        <item>Επτά παρά Είκοσι Τέσσερα</item>
+        <item>Επτά παρά Είκοσι Τρία</item>
+        <item>Επτά παρά Είκοσι Δύο</item>
+        <item>Επτά παρά Είκοσι Ένα</item>
+        <item>Επτά παρά Είκοσι</item>
+        <item>Επτά παρά Δεκαεννέα</item>
+        <item>Επτά παρά Δεκαοκτώ</item>
+        <item>Επτά παρά Δεκαεπτά</item>
+        <item>Επτά παρά Δεκαέξι</item>
+        <item>Επτά παρά Τέταρτο</item>
+        <item>Επτά παρά Δεκατέσσερα</item>
+        <item>Επτά παρά Δεκατρία</item>
+        <item>Επτά παρά Δώδεκα</item>
+        <item>Επτά παρά Έντεκα</item>
+        <item>Επτά παρά Δέκα</item>
+        <item>Επτά παρά Εννέα</item>
+        <item>Επτά παρά Οκτώ</item>
+        <item>Επτά παρά Επτά</item>
+        <item>Επτά παρά Έξι</item>
+        <item>Επτά παρά Πέντε</item>
+        <item>Επτά παρά Τέσσερα</item>
+        <item>Επτά παρά Τρία</item>
+        <item>Επτά παρά Δύο</item>
+        <item>Επτά παρά Ένα</item>
+        <item>Επτά</item>
+        <item>Επτά και Ένα</item>
+        <item>Επτά και Δύο</item>
+        <item>Επτά και Τρία</item>
+        <item>Επτά και Τέσσερα</item>
+        <item>Επτά και Πέντε</item>
+        <item>Επτά και Έξι</item>
+        <item>Επτά και Επτά</item>
+        <item>Επτά και Οκτώ</item>
+        <item>Επτά και Εννέα</item>
+        <item>Επτά και Δέκα</item>
+        <item>Επτά και Έντεκα</item>
+        <item>Επτά και Δώδεκα</item>
+        <item>Επτά και Δεκατρία</item>
+        <item>Επτά και Δεκατέσσερα</item>
+        <item>Επτά και Τέταρτο</item>
+        <item>Επτά και Δεκαέξι</item>
+        <item>Επτά και Δεκαεπτά</item>
+        <item>Επτά και Δεκαοκτώ</item>
+        <item>Επτά και Δεκαεννέα</item>
+        <item>Επτά και Είκοσι</item>
+        <item>Επτά και Είκοσι Ένα</item>
+        <item>Επτά και Είκοσι Δύο</item>
+        <item>Επτά και Είκοσι Τρία</item>
+        <item>Επτά και Είκοσι Τέσσερα</item>
+        <item>Επτά και Είκοσι Πέντε</item>
+        <item>Επτά και Είκοσι Έξι</item>
+        <item>Επτά και Είκοσι Επτά</item>
+        <item>Επτά και Είκοσι Οκτώ</item>
+        <item>Επτά και Είκοσι Εννέα</item>
+        <item>Επτά και Μισή</item>
+        <item> Έξι παρά Είκοσι Εννέα</item>
+        <item> Έξι παρά Είκοσι Οκτώ</item>
+        <item> Έξι παρά Είκοσι Επτά</item>
+        <item> Έξι παρά Είκοσι Έξι</item>
+        <item> Έξι παρά Είκοσι Πέντε</item>
+        <item> Έξι παρά Είκοσι Τέσσερα</item>
+        <item> Έξι παρά Είκοσι Τρία</item>
+        <item> Έξι παρά Είκοσι Δύο</item>
+        <item> Έξι παρά Είκοσι Ένα</item>
+        <item> Έξι παρά Είκοσι</item>
+        <item> Έξι παρά Δεκαεννέα</item>
+        <item> Έξι παρά Δεκαοκτώ</item>
+        <item> Έξι παρά Δεκαεπτά</item>
+        <item> Έξι παρά Δεκαέξι</item>
+        <item> Έξι παρά Τέταρτο</item>
+        <item> Έξι παρά Δεκατέσσερα</item>
+        <item> Έξι παρά Δεκατρία</item>
+        <item> Έξι παρά Δώδεκα</item>
+        <item> Έξι παρά Έντεκα</item>
+        <item> Έξι παρά Δέκα</item>
+        <item> Έξι παρά Εννέα</item>
+        <item> Έξι παρά Οκτώ</item>
+        <item> Έξι παρά Επτά</item>
+        <item> Έξι παρά Έξι</item>
+        <item> Έξι παρά Πέντε</item>
+        <item> Έξι παρά Τέσσερα</item>
+        <item> Έξι παρά Τρία</item>
+        <item> Έξι παρά Δύο</item>
+        <item> Έξι παρά Ένα</item>
+        <item> Έξι</item>
+        <item> Έξι και Ένα</item>
+        <item> Έξι και Δύο</item>
+        <item> Έξι και Τρία</item>
+        <item> Έξι και Τέσσερα</item>
+        <item> Έξι και Πέντε</item>
+        <item> Έξι και Έξι</item>
+        <item> Έξι και Επτά</item>
+        <item> Έξι και Οκτώ</item>
+        <item> Έξι και Εννέα</item>
+        <item> Έξι και Δέκα</item>
+        <item> Έξι και Έντεκα</item>
+        <item> Έξι και Δώδεκα</item>
+        <item> Έξι και Δεκατρία</item>
+        <item> Έξι και Δεκατέσσερα</item>
+        <item> Έξι και Τέταρτο</item>
+        <item> Έξι και Δεκαέξι</item>
+        <item> Έξι και Δεκαεπτά</item>
+        <item> Έξι και Δεκαοκτώ</item>
+        <item> Έξι και Δεκαεννέα</item>
+        <item> Έξι και Είκοσι</item>
+        <item> Έξι και Είκοσι Ένα</item>
+        <item> Έξι και Είκοσι Δύο</item>
+        <item> Έξι και Είκοσι Τρία</item>
+        <item> Έξι και Είκοσι Τέσσερα</item>
+        <item> Έξι και Είκοσι Πέντε</item>
+        <item> Έξι και Είκοσι Έξι</item>
+        <item> Έξι και Είκοσι Επτά</item>
+        <item> Έξι και Είκοσι Οκτώ</item>
+        <item> Έξι και Είκοσι Εννέα</item>
+        <item> Έξι και Μισή</item>
+        <item>Επτά παρά Είκοσι Εννέα</item>
+        <item>Επτά παρά Είκοσι Οκτώ</item>
+        <item>Επτά παρά Είκοσι Επτά</item>
+        <item>Επτά παρά Είκοσι Έξι</item>
+        <item>Επτά παρά Είκοσι Πέντε</item>
+        <item>Επτά παρά Είκοσι Τέσσερα</item>
+        <item>Επτά παρά Είκοσι Τρία</item>
+        <item>Επτά παρά Είκοσι Δύο</item>
+        <item>Επτά παρά Είκοσι Ένα</item>
+        <item>Επτά παρά Είκοσι</item>
+        <item>Επτά παρά Δεκαεννέα</item>
+        <item>Επτά παρά Δεκαοκτώ</item>
+        <item>Επτά παρά Δεκαεπτά</item>
+        <item>Επτά παρά Δεκαέξι</item>
+        <item>Επτά παρά Τέταρτο</item>
+        <item>Επτά παρά Δεκατέσσερα</item>
+        <item>Επτά παρά Δεκατρία</item>
+        <item>Επτά παρά Δώδεκα</item>
+        <item>Επτά παρά Έντεκα</item>
+        <item>Επτά παρά Δέκα</item>
+        <item>Επτά παρά Εννέα</item>
+        <item>Επτά παρά Οκτώ</item>
+        <item>Επτά παρά Επτά</item>
+        <item>Επτά παρά Έξι</item>
+        <item>Επτά παρά Πέντε</item>
+        <item>Επτά παρά Τέσσερα</item>
+        <item>Επτά παρά Τρία</item>
+        <item>Επτά παρά Δύο</item>
+        <item>Επτά παρά Ένα</item>
+        <item>Επτά</item>
+        <item>Επτά και Ένα</item>
+        <item>Επτά και Δύο</item>
+        <item>Επτά και Τρία</item>
+        <item>Επτά και Τέσσερα</item>
+        <item>Επτά και Πέντε</item>
+        <item>Επτά και Έξι</item>
+        <item>Επτά και Επτά</item>
+        <item>Επτά και Οκτώ</item>
+        <item>Επτά και Εννέα</item>
+        <item>Επτά και Δέκα</item>
+        <item>Επτά και Έντεκα</item>
+        <item>Επτά και Δώδεκα</item>
+        <item>Επτά και Δεκατρία</item>
+        <item>Επτά και Δεκατέσσερα</item>
+        <item>Επτά και Τέταρτο</item>
+        <item>Επτά και Δεκαέξι</item>
+        <item>Επτά και Δεκαεπτά</item>
+        <item>Επτά και Δεκαοκτώ</item>
+        <item>Επτά και Δεκαεννέα</item>
+        <item>Επτά και Είκοσι</item>
+        <item>Επτά και Είκοσι Ένα</item>
+        <item>Επτά και Είκοσι Δύο</item>
+        <item>Επτά και Είκοσι Τρία</item>
+        <item>Επτά και Είκοσι Τέσσερα</item>
+        <item>Επτά και Είκοσι Πέντε</item>
+        <item>Επτά και Είκοσι Έξι</item>
+        <item>Επτά και Είκοσι Επτά</item>
+        <item>Επτά και Είκοσι Οκτώ</item>
+        <item>Επτά και Είκοσι Εννέα</item>
+        <item>Επτά και Μισή</item>
+        <item>Δέκα παρά Είκοσι Εννέα</item>
+        <item>Δέκα παρά Είκοσι Οκτώ</item>
+        <item>Δέκα παρά Είκοσι Επτά</item>
+        <item>Δέκα παρά Είκοσι Έξι</item>
+        <item>Δέκα παρά Είκοσι Πέντε</item>
+        <item>Δέκα παρά Είκοσι Τέσσερα</item>
+        <item>Δέκα παρά Είκοσι Τρία</item>
+        <item>Δέκα παρά Είκοσι Δύο</item>
+        <item>Δέκα παρά Είκοσι Ένα</item>
+        <item>Δέκα παρά Είκοσι</item>
+        <item>Δέκα παρά Δεκαεννέα</item>
+        <item>Δέκα παρά Δεκαοκτώ</item>
+        <item>Δέκα παρά Δεκαεπτά</item>
+        <item>Δέκα παρά Δεκαέξι</item>
+        <item>Δέκα παρά Τέταρτο</item>
+        <item>Δέκα παρά Δεκατέσσερα</item>
+        <item>Δέκα παρά Δεκατρία</item>
+        <item>Δέκα παρά Δώδεκα</item>
+        <item>Δέκα παρά Έντεκα</item>
+        <item>Δέκα παρά Δέκα</item>
+        <item>Δέκα παρά Εννέα</item>
+        <item>Δέκα παρά Οκτώ</item>
+        <item>Δέκα παρά Επτά</item>
+        <item>Δέκα παρά Έξι</item>
+        <item>Δέκα παρά Πέντε</item>
+        <item>Δέκα παρά Τέσσερα</item>
+        <item>Δέκα παρά Τρία</item>
+        <item>Δέκα παρά Δύο</item>
+        <item>Δέκα παρά Ένα</item>
+        <item>Δέκα</item>
+        <item>Δέκα και Ένα</item>
+        <item>Δέκα και Δύο</item>
+        <item>Δέκα και Τρία</item>
+        <item>Δέκα και Τέσσερα</item>
+        <item>Δέκα και Πέντε</item>
+        <item>Δέκα και Έξι</item>
+        <item>Δέκα και Επτά</item>
+        <item>Δέκα και Οκτώ</item>
+        <item>Δέκα και Εννέα</item>
+        <item>Δέκα και Δέκα</item>
+        <item>Δέκα και Έντεκα</item>
+        <item>Δέκα και Δώδεκα</item>
+        <item>Δέκα και Δεκατρία</item>
+        <item>Δέκα και Δεκατέσσερα</item>
+        <item>Δέκα και Τέταρτο</item>
+        <item>Δέκα και Δεκαέξι</item>
+        <item>Δέκα και Δεκαεπτά</item>
+        <item>Δέκα και Δεκαοκτώ</item>
+        <item>Δέκα και Δεκαεννέα</item>
+        <item>Δέκα και Είκοσι</item>
+        <item>Δέκα και Είκοσι Ένα</item>
+        <item>Δέκα και Είκοσι Δύο</item>
+        <item>Δέκα και Είκοσι Τρία</item>
+        <item>Δέκα και Είκοσι Τέσσερα</item>
+        <item>Δέκα και Είκοσι Πέντε</item>
+        <item>Δέκα και Είκοσι Έξι</item>
+        <item>Δέκα και Είκοσι Επτά</item>
+        <item>Δέκα και Είκοσι Οκτώ</item>
+        <item>Δέκα και Είκοσι Εννέα</item>
+        <item>Δέκα και Μισή</item>
+        <item>Έντεκα παρά Είκοσι Εννέα</item>
+        <item>Έντεκα παρά Είκοσι Οκτώ</item>
+        <item>Έντεκα παρά Είκοσι Επτά</item>
+        <item>Έντεκα παρά Είκοσι Έξι</item>
+        <item>Έντεκα παρά Είκοσι Πέντε</item>
+        <item>Έντεκα παρά Είκοσι Τέσσερα</item>
+        <item>Έντεκα παρά Είκοσι Τρία</item>
+        <item>Έντεκα παρά Είκοσι Δύο</item>
+        <item>Έντεκα παρά Είκοσι Ένα</item>
+        <item>Έντεκα παρά Είκοσι</item>
+        <item>Έντεκα παρά Δεκαεννέα</item>
+        <item>Έντεκα παρά Δεκαοκτώ</item>
+        <item>Έντεκα παρά Δεκαεπτά</item>
+        <item>Έντεκα παρά Δεκαέξι</item>
+        <item>Έντεκα παρά Τέταρτο</item>
+        <item>Έντεκα παρά Δεκατέσσερα</item>
+        <item>Έντεκα παρά Δεκατρία</item>
+        <item>Έντεκα παρά Δώδεκα</item>
+        <item>Έντεκα παρά Έντεκα</item>
+        <item>Έντεκα παρά Δέκα</item>
+        <item>Έντεκα παρά Εννέα</item>
+        <item>Έντεκα παρά Οκτώ</item>
+        <item>Έντεκα παρά Επτά</item>
+        <item>Έντεκα παρά Έξι</item>
+        <item>Έντεκα παρά Πέντε</item>
+        <item>Έντεκα παρά Τέσσερα</item>
+        <item>Έντεκα παρά Τρία</item>
+        <item>Έντεκα παρά Δύο</item>
+        <item>Έντεκα παρά Ένα</item>
+        <item>Έντεκα</item>
+        <item>Έντεκα και Ένα</item>
+        <item>Έντεκα και Δύο</item>
+        <item>Έντεκα και Τρία</item>
+        <item>Έντεκα και Τέσσερα</item>
+        <item>Έντεκα και Πέντε</item>
+        <item>Έντεκα και Έξι</item>
+        <item>Έντεκα και Επτά</item>
+        <item>Έντεκα και Οκτώ</item>
+        <item>Έντεκα και Εννέα</item>
+        <item>Έντεκα και Δέκα</item>
+        <item>Έντεκα και Έντεκα</item>
+        <item>Έντεκα και Δώδεκα</item>
+        <item>Έντεκα και Δεκατρία</item>
+        <item>Έντεκα και Δεκατέσσερα</item>
+        <item>Έντεκα και Τέταρτο</item>
+        <item>Έντεκα και Δεκαέξι</item>
+        <item>Έντεκα και Δεκαεπτά</item>
+        <item>Έντεκα και Δεκαοκτώ</item>
+        <item>Έντεκα και Δεκαεννέα</item>
+        <item>Έντεκα και Είκοσι</item>
+        <item>Έντεκα και Είκοσι Ένα</item>
+        <item>Έντεκα και Είκοσι Δύο</item>
+        <item>Έντεκα και Είκοσι Τρία</item>
+        <item>Έντεκα και Είκοσι Τέσσερα</item>
+        <item>Έντεκα και Είκοσι Πέντε</item>
+        <item>Έντεκα και Είκοσι Έξι</item>
+        <item>Έντεκα και Είκοσι Επτά</item>
+        <item>Έντεκα και Είκοσι Οκτώ</item>
+        <item>Έντεκα και Είκοσι Εννέα</item>
+        <item>Έντεκα και Μισή</item>
+        <item>Δώδεκα παρά Είκοσι Εννέα</item>
+        <item>Δώδεκα παρά Είκοσι Οκτώ</item>
+        <item>Δώδεκα παρά Είκοσι Επτά</item>
+        <item>Δώδεκα παρά Είκοσι Έξι</item>
+        <item>Δώδεκα παρά Είκοσι Πέντε</item>
+        <item>Δώδεκα παρά Είκοσι Τέσσερα</item>
+        <item>Δώδεκα παρά Είκοσι Τρία</item>
+        <item>Δώδεκα παρά Είκοσι Δύο</item>
+        <item>Δώδεκα παρά Είκοσι Ένα</item>
+        <item>Δώδεκα παρά Είκοσι</item>
+        <item>Δώδεκα παρά Δεκαεννέα</item>
+        <item>Δώδεκα παρά Δεκαοκτώ</item>
+        <item>Δώδεκα παρά Δεκαεπτά</item>
+        <item>Δώδεκα παρά Δεκαέξι</item>
+        <item>Δώδεκα παρά Τέταρτο</item>
+        <item>Δώδεκα παρά Δεκατέσσερα</item>
+        <item>Δώδεκα παρά Δεκατρία</item>
+        <item>Δώδεκα παρά Δώδεκα</item>
+        <item>Δώδεκα παρά Έντεκα</item>
+        <item>Δώδεκα παρά Δέκα</item>
+        <item>Δώδεκα παρά Εννέα</item>
+        <item>Δώδεκα παρά Οκτώ</item>
+        <item>Δώδεκα παρά Επτά</item>
+        <item>Δώδεκα παρά Έξι</item>
+        <item>Δώδεκα παρά Πέντε</item>
+        <item>Δώδεκα παρά Τέσσερα</item>
+        <item>Δώδεκα παρά Τρία</item>
+        <item>Δώδεκα παρά Δύο</item>
+        <item>Δώδεκα παρά Ένα</item>
+    </string-array>
+    <string-array name="VerboseWeather">
+        <item>Άγνωστο</item>
+        <item>Καθαρός</item>
+        <item>Καθαρός</item>
+        <item>Κυρίως καθαρός</item>
+        <item>Μερικώς καθαρός</item>
+        <item>Μερικώς συννεφιασμένος</item>
+        <item>Σκόνη</item>
+        <item>Καταχνιά</item>
+        <item>Ομίχλη</item>
+        <item>Καπνός</item>
+        <item>Κυρίως συννεφιασμένος</item>
+        <item>Νεφελώδης</item>
+        <item>Συνεφιασμένος</item>
+        <item>Ομίχλη</item>
+        <item>Ασθενής βροχόπτωση</item>
+        <item>Δυνατή βροχόπτωση</item>
+        <item>Ψιχάλα</item>
+        <item>Καταιγίδα</item>
+        <item>Πιθανότητα βροχής</item>
+        <item>Σποραδικές καταιγίδες</item>
+        <item>Πιθανή βροχή</item>
+        <item>Καταιγίδα</item>
+        <item>Πιθανότητα καταιγίδας</item>
+        <item>Σποραδικές καταιγίδες</item>
+        <item>Πιθανότητα καταιγίδας</item>
+        <item>Καταιγίδα</item>
+        <item>Δυνατή βροχή</item>
+        <item>Βροχή</item>
+        <item>Λίγο χιόνι</item>
+        <item>Λίγο χιόνι</item>
+        <item>Πιθανή χιονόπτωση</item>
+        <item>Δυνατό χιόνι</item>
+        <item>Περιοδική χιονόπτωση</item>
+        <item>Χιόvι</item>
+        <item>Πάγος</item>
+        <item>Πάγος ή Χιόνι</item>
+        <item>Χαλάζι</item>
+        <item>Παγωμένη ψιχάλα</item>
+        <item>Βροχή και χιόνι</item>
+        <item>Ανεμώδης</item>
+    </string-array>
+    <string name="_apply">Εφαρμογή</string>
+    <string name="_search">Αναζήτηση</string>
+    <string name="_yes">Ναι</string>
+    <string name="_abandon">Απόρριψη</string>
+    <string name="_ok">OK</string>
+    <string name="_no">Όχι</string>
+    <string name="translators">Μεταφραστές</string>
+    <string name="TTLdefault">Ρυθμίσεις Widget</string>
+    <string name="TTLnoop">Καμιά Ενέργεια</string>
+    <string name="TTLwrefresh">Ενημέρωση Καιρού Τώρα</string>
+    <string name="TTLweather">Πρόγνωση Καιρού</string>
+    <string name="TTLbatt">Χρήση Μπαταρίας</string>
+    <string name="TTLalarms">Εμφάνιση ξυπνητηριών</string>
+    <string name="changeClockAdjustment">Ρύθμισε το ρολόι μπροστά/πίσω</string>
+    <string name="minutesBehind">\u0020λεπτά πίσω από την τρέχουσα ώρα</string>
+    <string name="backupThemePersonalizations">Αποθήκευση προσαρμογών θέματος</string>
+    <string name="overwriteThemePersonalizations">Αντικατάσταση προσαρμογών θέματος</string>
+    <string name="backupWidget">Αποθήκευση Widget</string>
+    <string name="restoreWidget">Ανάκτηση ρυθμίσεων Widget</string>
+    <string name="minutesAhead">\u0020λεπτά μπροστά από την τρέχουσα ώρα</string>
+    <string name="_yesRestore">Ναι, επιστροφή στις προεπιλογές εφαρμογής</string>
+    <string name="_yesDelete">Ναι, διαγραφή όλων</string>
+    <string name="sdcardNotDetected">Δεν βρέθηκε κάρτα SD .\Απενεργοποιήστε το USB storage αν είναι ακόμα συνδεμένο!</string>
+</resources>

@@ -1,0 +1,193 @@
+{
+	"id": "IceLock",
+	"name": "Ice Lock",
+	"author": "S. Kwong & C. Bizon",
+	"date": "19 Oct 2011",
+	"credits": "For the 1st anniversary of OMC's launch, here is a clock inspired by Android 4.0 - Ice Cream Sandwich!\n\n All ttf files under Apache License, as part of Android source.",
+	"tags":["battery","weather","ltbg","dkbg"],
+	"layers_bottomtotop": [
+		{
+		"name":"Time",
+		"type":"text",
+		"enabled":"true",
+		"text":"%H:%M",
+		"filename":"AndroidClock_Solid.ttf",
+		"x":"[%ap24_400_400_460%]","y":"100",
+		"fgcolor":"#ffffffff","bgcolor":"#ff000000",
+		"text_size":"150",
+		"text_skew":"0",
+		"text_stretch":"1",
+		"text_align":"right",
+		"render_style":"glow_5",
+		"cw_rotate":"0"
+		},
+		{
+		"name":"AM-PM",
+		"type":"text",
+		"enabled":"true",
+		"text":"[%ap24_AM_PM_ %]",
+		"filename":"Roboto-Bold.ttf",
+		"x":"470","y":"100",
+		"fgcolor":"#ffffffff","bgcolor":"#ff000000",
+		"text_size":"40",
+		"text_skew":"0",
+		"text_stretch":"1",
+		"text_align":"right",
+		"render_style":"glow_5",
+		"cw_rotate":"0"
+		},
+		{
+		"name":"Date",
+		"type":"text",
+		"enabled":"true",
+		"text":"%A, %B %e",
+		"filename":"Roboto-Regular.ttf",
+		"x":"460","y":"135",
+		"fgcolor":"#ffffffff","bgcolor":"#ff000000",
+		"text_size":"30",
+		"text_skew":"0",
+		"text_stretch":"1",
+		"text_align":"right",
+		"render_style":"glow_5",
+		"cw_rotate":"0"
+		},
+		{
+		"name":"Charge",
+		"type":"text",
+		"enabled":"true",
+		"text":"[%ompc_battlevel%]%% [%translate_remaining%]",
+		"filename":"Roboto-Regular.ttf",
+		"x":"420","y":"195",
+		"fgcolor":"#ffffffff","bgcolor":"#ff000000",
+		"text_size":"30",
+		"text_skew":"0",
+		"text_stretch":"1",
+		"text_align":"right",
+		"render_style":"glow_5",
+		"cw_rotate":"0"
+		},
+		{
+		"name":"Battery Icon",
+		"type":"image",
+		"enabled":"true",
+		"filename":"battery[%gradient_number_1_[%ompc_battdecimal%]_4%].png",
+		"x":"430","y":"170",
+		"horizontal_stretch":"1.5",
+		"vertical_stretch":"1.5",
+		"cw_rotate":"0"
+		},
+		{
+		"name":"Weather",
+		"type":"text",
+		"enabled":"true",
+		"text":"[%weather_temp%], [%weather_condition%]",
+		"filename":"Roboto-Regular.ttf",
+		"x":"460","y":"165",
+		"fgcolor":"#ffffffff","bgcolor":"#ff000000",
+		"text_size":"30",
+		"text_skew":"0",
+		"text_stretch":"1",
+		"text_align":"right",
+		"render_style":"glow_5",
+		"cw_rotate":"0"
+		}
+
+	],
+
+	"translations":{
+		"remaining":{
+			"Deutsch":"verbleibenden",
+			"English (US)":"remaining",
+			"Le Français":"restant",
+			"Ελληνικά":"απομένουν",
+			"Castellano":"restante",
+			"Italiano":"rimanente",
+			"Język Polski":"pozostałe",
+			"Português":"restantes",
+			"Svenska":"kvarvarande",
+			"繁體中文":"剩餘",
+			"简体中文":"剩余"
+		}
+	},
+
+	"arrays":{
+	},
+
+	"customscaling": {
+		"4x4":{
+			"horizontal_stretch": 1,
+			"vertical_stretch":1,
+			"top_crop":0,
+			"bottom_crop":250,
+			"left_crop":0,
+			"right_crop":0,
+			"cw_rotate":0
+		},
+		"4x2":{
+			"horizontal_stretch": 1,
+			"vertical_stretch":1,
+			"top_crop":0,
+			"bottom_crop":250,
+			"left_crop":0,
+			"right_crop":0,
+			"cw_rotate":0
+		},
+		"4x1":{
+			"horizontal_stretch":0.5,
+			"vertical_stretch":0.5,
+			"top_crop":0,
+			"bottom_crop":250,
+			"left_crop":0,
+			"right_crop":0,
+			"cw_rotate":0
+		},
+		"3x3":{
+			"horizontal_stretch": 0.5,
+			"vertical_stretch":0.5,
+			"top_crop":0,
+			"bottom_crop":250,
+			"left_crop":0,
+			"right_crop":0,
+			"cw_rotate":0
+		},
+		"3x1":{
+			"horizontal_stretch":0.5,
+			"vertical_stretch":0.5,
+			"top_crop":0,
+			"bottom_crop":250,
+			"left_crop":0,
+			"right_crop":0,
+			"cw_rotate":0
+		},
+		"2x2":{
+			"horizontal_stretch":0.5,
+			"vertical_stretch":0.5,
+			"top_crop":0,
+			"bottom_crop":250,
+			"left_crop":0,
+			"right_crop":0,
+			"cw_rotate":0
+		},
+		"2x1":{
+			"horizontal_stretch": 0.5,
+			"vertical_stretch":0.5,
+			"top_crop":0,
+			"bottom_crop":250,
+			"left_crop":0,
+			"right_crop":0,
+			"cw_rotate":0
+		},
+		"1x3":{
+			"horizontal_stretch": 1,
+			"vertical_stretch":1,
+			"top_crop":0,
+			"bottom_crop":250,
+			"left_crop":0,
+			"right_crop":0,
+			"cw_rotate":-90
+		}
+	},
+
+	"customURIs": {
+	}
+}

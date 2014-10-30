@@ -1,0 +1,2030 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="languageWord">Язык</string>
+    <string name="languageName">Русский (RU)</string>
+    <string name="translator">Andrey Kosenko</string>
+    <!-- General Buttons/notifications -->
+    <string name="nextTip">След. совет</string>
+    <string name="taskComplete">Task Complete</string>
+    <!-- General Errors -->
+    <string name="sdcardNotDetected">SD Card не найдена.\nОтключите USB-хранилище, если оно все еще подключено!
+	</string>
+    <string name="sdcardMissingOrCorrupt">SD Card отключена или повреждена.\nОтключите USB-хранилище, если оно все еще подключено!
+	</string>
+    <string name="themeNotFound">Тема не найдена! Восстанавлию стандартную тему.
+	</string>
+    <string name="warningConflictPaid">ВНИМАНИЕ!\nКонфликт с платной версией</string>
+    <string name="warningConflictFree">ВНИМАНИЕ!\nКонфликт с бесплатной версией</string>
+    <string name="warningConflictText">Настройка темы и часов не будут работать правильно\nПожалуйста, переустановите бесплатную версию при первой возможности!
+	</string>
+    <string name="defaultThemeNotRemovable">Нельзя удалить стандартную тему!</string>
+    <!-- Bailout App Dialog -->
+    <string name="thanksForDownloading">Спасибо за установку!</string>
+    <string name="widgetDir1">Чтобы начать, нажмите кнопку НАЗАД и перейдите к домашнему экрану, потом откройте \'Виджеты\' чтобы увидеть\u0020
+	</string>
+    <string name="widgetDir2">\u0020listed. Наслаждайтесь!</string>
+    <!-- Useful Tips -->
+    <string name="usefulTip">Полезные советы</string>
+    <string name="doNotShowAgain">Не показывать снова.</string>
+    <!-- Weather Forecast Screen -->
+    <string name="humiditycondition">Влажность: </string>
+    <string name="windcondition">Ветер: </string>
+    <!-- Forecast Screen -->
+    <string name="doubleDash">--</string>
+    <string name="unknown">Неизвестно</string>
+    <string name="noaaWeatherCredit">Прогноз погоды обновлен с National Oceanic and Atmospheric Administration (NOAA).
+	</string>
+    <string name="igWeatherCredit">Прогноз погоды обновлен с Google API.</string>
+    <string name="yrWeatherCredit">Прогноз погоды с yr.no, предоставлен Норвежским Метеорологическим Институтом и  NRK.
+	</string>
+    <string name="seventimerWeatherCredit">7Timer! Прогнозы от Ye Quanzhi, при поддержке Шанхайской Астрономической Обсерватории, Китайской Академии Наук.
+	</string>
+    <string name="owmWeatherCredit">Погода обновлена с openweathermaps.org.</string>
+    <string name="tapForAlternateForecast">Нажмите для альтернативных прогнозов от  AccuWeather®
+	</string>
+    <string name="weatherDisabledOrNoWeatherLoaded">Прогноз погоды отключен или не загружен!</string>
+    <string name="supplementedbyMETAR">Текущие условия дополнены by METAR from
+	</string>
+    <!-- Clock Preferences -->
+    <string name="clockPreferences">Настройки</string>
+    <string name="dashPreferences">Настройки \u0020- </string>
+    <string name="forThisClock">Для этих часов:</string>
+    <string name="widgetTheme">Тема виджета</string>
+    <!-- Widget Theme -->
+    <string name="widgetThemeTitle">Листайте, чтобы просмотреть; Нажмите, чтобы выбрать и для опций</string>
+    <string name="corruptPlsDelete">[Повреждено, пожалуйста удалите!]</string>
+    <string name="reextractBundledClocks">Распаковать стандартные часы</string>
+    <string name="downloadAllClocks">Скачать все часы (7MB)</string>
+    <string name="preselected"/>
+    <string name="postselected">\Выбрано.</string>
+    <!-- Theme Picker Legend -->
+    <string name="legend">Легенда</string>
+    <string name="batteryLegend">Показывать заряд батареи</string>
+    <string name="weatherLegend">Показывать погоду</string>
+    <string name="bkimageLegend">Включает фоновый рисунок</string>
+    <string name="ltbgLegend">Красиво на светлом фоне</string>
+    <string name="dkbgLegend">Красиво на темном фоне</string>
+    <string name="tweakLegend">Часы улучшены пользователем</string>
+    <!-- Theme Skinner Tool (deprecated) -->
+    <string name="reloadThemeCatalog">Перезагрузить список тем</string>
+    <!-- Theme Import/Unzip -->
+    <string name="themePreview">Просмотр тем</string>
+    <string name="openingConnection">Открытие подключения.</string>
+    <string name="beginningDownload">Начало скачивания.</string>
+    <string name="downloading">Загружается\u0020</string>
+    <string name="downloaded">Загружено\u0020</string>
+    <string name="of">\u0020из\u0020</string>
+    <string name="bytes">\u0020байт</string>
+    <string name="storingFile">Файл сохранен:\u0020</string>
+    <string name="existsOverwriting">\u0020существует; перезаписать</string>
+    <string name="createThemeFolder1">Папка тем \'</string>
+    <string name="createThemeFolder2">\'\u0020создано.</string>
+    <string name="detectedWeatherskin">Найдена обложка погоды </string>
+    <string name="extractingStarterClockPack">Распаковка стандартных тем часов</string>
+    <string name="starterClockPack">Стандартные темы часов</string>
+    <string name="starterClockPackText">Файлы на вашей sdcard. Папка с темами будет перезаписана. Вы уверены?\n(Если нет, нажмите кнопку ДА)
+	</string>
+    <string name="importComplete">Импорт завершен!</string>
+    <string name="importAborted">Импорт прерван!</string>
+    <string name="useDownloadInsteadOfPreview">Пожалуйста используйте Загрузить вместо Предпросмотра, чтобы импортировать OMC часы!</string>
+    <string name="importWorksWithOMCFiles">Импорт часов работает с файлами .omc.\nМожет Вы открыли не тот файл?</string>
+    <string name="nothingToExtract">Нечего распаковывать!</string>
+    <string name="downloadInterrupted">Загрузка прервана!</string>
+    <string name="poorReceptionArea">Ваш телефон может быть в зоне плохого сигнала.\nПожалуйста попробуйте позже.</string>
+    <string name="connectionTimedOut">Тайм-аут соединения!</string>
+    <string name="serverNotFound">Сервер не найден!</string>
+    <!-- Widget Theme Long Press -->
+    <string name="emailOrDeleteTheme">Отправить по почте или удалить тему</string>
+    <string name="emailTheme">Отправить по почте</string>
+    <string name="emailThemeText">Запаковать эту тему и отправить ее себе или другу на почту.\nВы хотите это сделать?</string>
+    <string name="emailThemeConfirm1">Email\u0020</string>
+    <string name="emailThemeConfirm2">\u0020?</string>
+    <string name="emailThemeChooser">Упаковка файлов темы для отправки.</string>
+    <string name="deleteTheme">Удалить тему</string>
+    <string name="deleteThemeConfirm1">Удалить\u0020</string>
+    <string name="deleteThemeConfirm2">\u0020с SD card?</string>
+    <string name="deleteThemeConfirm3">Вам необходимо загрузить/распаковать тему снова, чтобы ее использовать. Вы уверенны?</string>
+    <string name="submitThemeToDev">Отправить тему разработчику</string>
+    <string name="submitThemeToDevConfirm1">Представить\u0020</string>
+    <string name="submitThemeToDevConfirm2">\u0020к Xaffron как новую тему?</string>
+    <string name="areYouAbsolutelySure">Вы уверены?</string>
+    <string name="areYouAbsolutelySureText">Эта тема не имеет отметки \'Tweaked\';
+		Это похоже на стандартную тему.\n
+	</string>
+    <!-- Personalize Clock -->
+    <string name="personalizeClock">Настроить часы</string>
+    <string name="tweakColorsAndLayers">Настройки цветов и слоев</string>
+    <!-- Personalize Clock subscreen -->
+    <string name="selectALayerForTweaking">Выберите слой для настройки</string>
+    <string name="tweakerDirections">Переместить: Сдвинуть меню: Вернуть обратно: Отмена</string>
+    <!-- Personalize Clock Menu -->
+    <string name="toggleVisibility">Переключить видимость</string>
+    <string name="color1">Цвет 1</string>
+    <string name="color2">Цвет 2</string>
+    <!-- Personalize Clock Back -->
+    <string name="keepChanges">Сохранить изменения?</string>
+    <!-- Tap & Display Options -->
+    <string name="tapAndDisplayOptions">Нажмите; Показать настройки</string>
+    <string name="assignTapToLaunch">Настроить запуск по нажатию</string>
+    <string name="nwCornerReserved">Этот угол занят для стандартных настроек.</string>
+    <!-- TTL Popup -->
+    <string name="areaToCustomize">Зона для настроек:</string>
+    <string name="chooseAction">Выберите действие</string>
+    <string name="openOptionsDefault">Открыть опции (по умолчанию)</string>
+    <string name="doNothing">Ничего не делать</string>
+    <string name="refreshWeather">Обновить погоду сейчас</string>
+    <string name="weatherForecast">Прогноз погоды</string>
+    <string name="viewAlarms">Просмотр будильников (Тестируется)</string>
+    <string name="battUsage">Просмотр использование батареи</string>
+    <string name="otherActivity">Другая активность…</string>
+    <string name="otherActivityTTL">Пользовательская активность</string>
+    <string name="use24HourClock">Использовать 24-часовые часы</string>
+    <string name="use24HourTrue">23:59</string>
+    <string name="use24HourFalse">11:59pm</string>
+    <string name="showLeadingZero">Ноль спереди</string>
+    <string name="showLeadingZTrue">04:23</string>
+    <string name="showLeadingZFalse">4:23</string>
+    <string name="mmddDateFormat">Формат даты М/Д/Г</string>
+    <string name="mmddDateFormatTrue">12/31/2012</string>
+    <string name="mmddDateFormatFalse">31/12/2012</string>
+    <string name="changeTimeZone">Изменить часовой пояс</string>
+    <string name="followingDeviceTimeZone">(Использовать часовой пояс устройства)</string>
+    <string name="changeClockAdjustment">Установить опережение/отставание времени</string>
+    <string name="minutesAhead">\u0020минуты наперед</string>
+    <string name="minutesBehind">\u0020минуты назад</string>
+    <string name="backupWidget">Сохранить этот виджет</string>
+    <string name="nameOfBackup">Имя сохранения:</string>
+    <string name="backupThemePersonalizations">Сохранить персональные настройки виджета</string>
+    <string name="restoreWidget">Восстановить настройки виджета</string>
+    <string name="overwriteThemePersonalizations">Перезаписать настройки виджета</string>
+    <string name="overwriteThemeWarning">ВНИМАНИЕ: Любые настройки для этих часов будут перезаписаны!</string>
+    <!-- TTL Sales Pitch -->
+    <string name="thinkOfThePossibilities">Подумайте о возможностях!</string>
+    <string name="prePaidTTL">Платная версия позволит Вам настроить\u0020</string>
+    <string name="postPaidTTL">\u0020чтобы запускать любые приложения, а еще станут доступны виджеты таких размеров 4x2, 4x1, 3x1 and 2x1.\nПожалуйста, обновитесь до платной версии, чтобы получить все это!</string>
+    <string name="takeMeToPaid">Shut up and take my money!:-) </string>
+    <!-- Weather & Widget Options -->
+    <string name="forAllClocks">Для всех часов:</string>
+    <string name="weatherAndWidgetOptions">Погода; Настройки виджета</string>
+    <string name="clearRenderCaches">Очистить кэш</string>
+    <string name="cachesCleared">Кэш очищен</string>
+    <!-- Weather & Widget Subscreen -->
+    <string name="refreshWeatherNow">Обновить погоду</string>
+    <string name="operationTimedOut">Время ожидания вышло!</string>
+    <string name="requestingLocation">Запрашивается местоположение</string>
+    <string name="pleaseWait">Подождите…</string>
+    <string name="inProgress">В процессе…</string>
+    <string name="usingFixedCoordinates">Использование установленых координат</string>
+    <string name="gotGPSLock">Получен сигнал от GPS…</string>
+    <string name="gotNetworkLock">Получен сигнал WiFi/Сети…</string>
+    <string name="reusingCachedLocation">Использование предыдущего местоположения…
+	</string>
+    <string name="requestingWeather">Запрашивается прогноз…</string>
+    <string name="weatherReceived">Прогноз получен. Обработка…</string>
+    <string name="weatherSuccess">Прогноз успешно обновлен.</string>
+    <string name="weatherFailure">Ошибка обновления прогноза.</string>
+    <string name="location">Местоположение:\u0020</string>
+    <string name="fixed">\u0020(Fixed)</string>
+    <string name="detected">\u0020(Обнаружено)</string>
+    <string name="lastTry">Последняя попытка:\u0020</string>
+    <string name="manualRefreshOnly">\u0020(Обновление только в ручную)</string>
+    <string name="nextRefresh">\u0020Следующее обновление:\u0020</string>
+    <string name="lastRefresh">Последнее обновление:\u0020</string>
+    <string name="nextRequest">\u0020Следующий запрос:\u0020</string>
+    <string name="weatherLocation">Место для погоды:</string>
+    <string name="disableLocationAndWeather">Отключить погоду</string>
+    <string name="followDevice">Следить за телефоном(по умолчанию)</string>
+    <string name="setFixedLocation">Установить постоянное место</string>
+    <string name="weatherFunctionalityDisabled">Погода отключена</string>
+    <string name="tapToEnable">Нажмите, чтобы включить</string>
+    <!-- Fixed Locn subscreen -->
+    <string name="enterCityAndStateCountry">Введите страну/город</string>
+    <string name="locationExamples">Например London UK</string>
+    <string name="locationError">Не обнаружено.\nПопробуйте по-другому.</string>
+    <string name="networkError">Нет связи с сетью.\nПопробуйте еще.</string>
+    <string name="unknownError">Ой, вот незадача.\nПопробуйте еще</string>
+    <string name="weatherProvider">Поставщик прогнозов</string>
+    <string-array name="wprovider_options">
+        <item>Automatic (стандартный)</item>
+        <item>7Timer.com</item>
+        <item>NOAA (для США)</item>
+        <item>Yr.no</item>
+        <item>Google Weather (legacy/не работает)</item>
+    </string-array>
+    <string name="wpauto">Используйте лучшего поставщика прогнозов</string>
+    <string name="wp7timer">Использовать 7Timer.com</string>
+    <string name="wpnoaa">Использовать NOAA</string>
+    <string name="wpowm">Использовать OpenWeatherMap.org</string>
+    <string name="wpyr">Использовать yr.no</string>
+    <string name="wpig">Использовать iGoogle Weather</string>
+    <string name="weatherDisplayUnits">Использование единиц измерения</string>
+    <string-array name="wdisplay_options">
+        <item>Использовать Фаренгейты (не для нас, братишки)</item>
+        <item>Использовать градусы Цельсия</item>
+    </string-array>
+    <string name="usingFahrenheit">Использую Фаренгейты</string>
+    <string name="usingCelsius">Использую градусы Цельсия</string>
+    <string name="useMETAR">Погода от METAR</string>
+    <string name="usingMETAR">Условия взяты с близжайшего аеропорта</string>
+    <string name="usingInterpolation">Условия взяты у провайдера прогнозов погоды
+	</string>
+    <string name="clockUpdateInterval">Обновление часов</string>
+    <string-array name="interval_options">
+        <item>1 сек (Жрет батарею)</item>
+        <item>10 сек (Все еще жрет батарею)</item>
+        <item>15 сек</item>
+        <item>20 сек</item>
+        <item>30 сек (Стандартно)</item>
+        <item>60 сек (Незначительное использование батареи)</item>
+    </string-array>
+    <string name="redrawEvery">Перерисовывать каждые\u0020</string>
+    <string name="seconds">\u0020сек.</string>
+    <string name="weatherUpdateInterval">Интервал обновления погоды</string>
+    <string-array name="winterval_options">
+        <item>Каждый час (Стандарт)</item>
+        <item>Каждых 4 часа</item>
+        <item>EКаждых 8 часов</item>
+        <item>Никогда (Вручную)</item>
+    </string-array>
+    <string name="manualWeatherUpdatesOnly">Только ручное обновление погоды</string>
+    <string name="refreshWeatherEveryHour">Обновлять погоду каждый час</string>
+    <string name="refreshWeatherEvery4Hours">Обновлять погоду каждых 4 часа</string>
+    <string name="refreshWeatherEvery8Hours">Обновлять погоду каждых 8 часов</string>
+    <string name="setForegroundMode">Установить основной режим</string>
+    <string name="keepOMCfromSleeping">Не давать ОМС уснуть\n(за счет уведомлений)
+	</string>
+    <string name="forceEnglishDates">Принудительно англ. даты</string>
+    <string name="uncheckForSome">Уберите галочку для некоторых мест.(Тестируется)
+	</string>
+    <string name="changeAppLocale">Язык настроек</string>
+    <string name="changeClockLocale">Язык часов</string>
+    <string name="toggleWidgetSizes">Выбрать размер виджета</string>
+    <string name="rebootRequired">Требуется перезагрузка</string>
+    <string name="changesToTheseSettings">Изменения этих настроек потребуют перезагрузить Ваш телефон.</string>
+    <string name="enable5x4Widget">Выбрать виджет (5x4)</string>
+    <string name="enable5x2Widget">Выбрать виджет (5x2)</string>
+    <string name="enable5x1Widget">Выбрать виджет (5x1)</string>
+    <string name="enable4x4Widget">Выбрать виджет (4x4)</string>
+    <string name="enable4x2Widget">Выбрать виджет (4x2)</string>
+    <string name="enable4x1Widget">Выбрать виджет (4x1)</string>
+    <string name="enable3x3Widget">Выбрать виджет (3x3)</string>
+    <string name="enable3x1Widget">Выбрать виджет (3x1)</string>
+    <string name="enable2x2Widget">Выбрать виджет (2x2)</string>
+    <string name="enable2x1Widget">Выбрать виджет (2x1)</string>
+    <string name="enable1x3Widget">Выбрать виджет (1x3)</string>
+    <string name="forGalaxyNote">Для Galaxy Note или похожих</string>
+    <string name="enableThemeTester">Включить тестер тем</string>
+    <string name="developmentToolForSkinnersOnly">Инструмент только для разработчиков тем</string>
+    <!-- Widget Sizes Sales Pitch -->
+    <string name="areThereOtherWidgetSizes">А есть другие размеры виджета?</string>
+    <string name="actuallyThePaidVersion">На самом деле платная версия предлагает Вам такие размеры 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 и 1x3.\nОбновитесь до платной версии, чтобы получить их!</string>
+    <!-- Troubleshooting Options -->
+    <string name="troubleshootingOptions">Варианты устранения неполадок</string>
+    <!-- Troubleshooting Options -->
+    <string name="clockPriority">Приоритет часов</string>
+    <string name="forFineTuning">Для тонкой настройки</string>
+    <string-array name="clockPriority_options">
+        <item>Наивысший</item>
+        <item>Высокий</item>
+        <item>Средний</item>
+        <item>Низкий (Стандарт)</item>
+        <item>Самый низкий</item>
+    </string-array>
+    <string-array name="clockPriority_legend">
+        <item>Перерисовывает каждую секунду (Не рекомендуется). Вы уверенны?
+		</item>
+        <item>Перерисовывает каждую минуту, не зависимо работает ли экран/лаунчер или нет. Вы уверенны?</item>
+        <item>Перерисовывает каждую минуту, когда экран включен, даже если лаунчер не активен. Вы уверенны?</item>
+        <item>Перерисовывает каждую минуту, когда экран выключен или лаунчер не активен. Вы уверенны?</item>
+        <item>Не перерисовывает, когда экран выключен или лаунчер не активен. Вы уверенны?</item>
+    </string-array>
+    <string name="locationPriority">Приоритет местоположения</string>
+    <string-array name="locationPriority_options">
+        <item>Строгий - только точное</item>
+        <item>Строгий - точное/приблизительное</item>
+        <item>Средний - только точное</item>
+        <item>Средний - точное/приблизительное</item>
+        <item>Гибкий (Стандарт)</item>
+    </string-array>
+    <string-array name="locationPriority_legend">
+        <item>Использовать места по GPS, но не более чем 2 часов назад. ВНИМАНИЕ: Обновления могут прекратиться внутри зданий. Вы уверенны?</item>
+        <item>Использовать места по сети/GPS, но не более чем 2 часов назад. ВНИМАНИЕ: Обновления могут прекратиться внутри зданий. Вы уверенны?</item>
+        <item>Использовать места по GPS, но не более чем 10 часов назад. ВНИМАНИЕ: Обновления могут прекратиться внутри зданий. Вы уверенны?
+		</item>
+        <item>Использовать места по сети/GPS, но не более чем 10 часов назад. ВНИМАНИЕ: Обновления могут прекратиться внутри зданий. Вы уверенны?</item>
+        <item>Использовать самые последние данные из сети/GPS не зависимо от давности. Точность прогноза будет зависеть от точности поиска вашего города и давности. Вы уверенны?</item>
+    </string-array>
+    <string name="battReporting">Отчет по батарее</string>
+    <string name="battReportingNormal">Нормальный - как отчет из Android</string>
+    <string name="battReportingAlternate">Альтернативный - как позывает драйвер</string>
+    <string name="weatherDiagnostics">Диагностика погоды</string>
+    <string name="submitLocationWeatherDebugData">Подтвердить отладку данных по погоде/поиску города</string>
+    <string name="deleteAllThemes">Удалить все темы</string>
+    <string name="forFixingThemeSelection">При выборе темы приложение отлючается</string>
+    <string name="deleteAllThemesFromSD">Удалить все темы из памяти телефона/карты памяти?</string>
+    <string name="omcThemesFolderDeleted">Папка с темами удалена</string>
+    <string name="defaultClockPackRestored">Стандартный набор часов восстановлен</string>
+    <!-- Contact Xaffron -->
+    <string name="contactXaffron">Связаться с Xaffron</string>
+    <string name="donateOrContact">Поблагодарить или связаться с автором</string>
+    <string name="contactXaffronForIssues">Связаться с Xaffron при проблемах.</string>
+    <string name="email">Почта</string>
+    <string name="donate">Пожертвовать</string>
+    <string name="facebook">Facebook</string>
+    <string name="viewReleaseNotes">Посмотреть список изменений</string>
+    <!-- Credits -->
+    <string name="credits">Благодарности</string>
+    <string name="version">Версия</string>
+    <string name="free">Бесплатно</string>
+    <string name="tapToGetFull">Нажмите, чтобы получить платную версию!</string>
+    <string name="thanksForYourSupport">Спасибо за Вашу поддержку!</string>
+    <string name="viewCredits">Посмотреть благодарности</string>
+    <!-- Credits subscreen -->
+    <string name="team">Команда</string>
+    <string name="programmer">Програмист</string>
+    <string name="sunny">Sunny Kwong</string>
+    <string name="testers">Тестеры</string>
+    <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M.
+		Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann
+	</string>
+    <string name="translators">Переводчики</string>
+    <string name="specialThanks">Особые благодарности</string>
+    <string name="specialThanksText">Zehro за поддержку в синхронизации часов и уведомлений.\nStefan Pledl за помощь в переводе.\nJosiah Barber за его \'One-Percent Hack\' для Моторол.
+	</string>
+    <string name="copyrights">Авторские права и лицензии</string>
+    <string name="applicationIcon">Иконка приложения: Signpost by Maroubal2</string>
+    <string name="applicationIconText">Адаптированно с отличной обоины с Убунты от Maroubal2\'s.\nCC BY-SA 2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/
+	</string>
+    <string name="codeColorPickerDialog">КОД: диалог выбора цвера.</string>
+    <string name="codeColorPickerDialogText">Стырено с хранилища исходников CyanogenMod.</string>
+    <string name="codeSVG">КОД: svg-android</string>
+    <string name="codeSVGText">Поддержка SVG с помощью sag-android library (Apache
+		License).\nhttp:////code.google.com//p//svg-android//
+	</string>
+    <string name="weatherFont">Шрифт: Weatherfont</string>
+    <string name="weatherFontText">Шрифты погоды полностью лицензированны у Jonathan
+		Macagba, можно купить по 5 баксов у jonathan.macagba@gmail.com
+	</string>
+    <string name="sourceCodeTitle">Исходный код</string>
+    <string name="sourceCode">Исходный код доступен на</string>
+    <string name="daysuffix"/>
+    <string-array name="verbosedow">
+        <item>Восресение</item>
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+    </string-array>
+    <string-array name="shortdow">
+        <item>Вс</item>
+        <item>Пд</item>
+        <item>Вт</item>
+        <item>Ср</item>
+        <item>Чт</item>
+        <item>Пт</item>
+        <item>Сб</item>
+    </string-array>
+    <string-array name="verbosemonth">
+        <item>Январь</item>
+        <item>Февраль</item>
+        <item>Март</item>
+        <item>Апрель</item>
+        <item>Май</item>
+        <item>Июнь</item>
+        <item>Июль</item>
+        <item>Август</item>
+        <item>Сентябрь</item>
+        <item>Октябрь</item>
+        <item>Ноябрь</item>
+        <item>Декабрь</item>
+    </string-array>
+    <string-array name="shortmonth">
+        <item>Янв</item>
+        <item>Фев</item>
+        <item>Мар</item>
+        <item>Апр</item>
+        <item>Май</item>
+        <item>Июнь</item>
+        <item>Июль</item>
+        <item>Авг</item>
+        <item>Сен</item>
+        <item>Окт</item>
+        <item>Ноя</item>
+        <item>Дек</item>
+    </string-array>
+    <string-array name="WordNumbers">
+        <item>Ноль</item>
+        <item>Один</item>
+        <item>Два</item>
+        <item>Три</item>
+        <item>Четыре</item>
+        <item>Пять</item>
+        <item>Шесть</item>
+        <item>Семь</item>
+        <item>Восемь</item>
+        <item>Девять</item>
+        <item>Десять</item>
+        <item>Одиннадцать</item>
+        <item>Двенадцать</item>
+        <item>Тринадцать</item>
+        <item>Четырнадцать</item>
+        <item>Пятнадцать</item>
+        <item>Шестнадцать</item>
+        <item>Семьнадцать</item>
+        <item>Восемьнадцать</item>
+        <item>Девятнадцать</item>
+        <item>Двадцать</item>
+        <item>Двадцать один</item>
+        <item>Двадцать два</item>
+        <item>Двадцать три</item>
+        <item>Двадцать четыре</item>
+        <item>Двадцать пять</item>
+        <item>Двадцать шесть</item>
+        <item>Двадцать семь</item>
+        <item>Двадцать восемь</item>
+        <item>Двадцать девять</item>
+        <item>Тридцать</item>
+        <item>Тридцать один</item>
+        <item>Тридцать два</item>
+        <item>Тридцать три</item>
+        <item>Тридцать четыре</item>
+        <item>Тридцать пять</item>
+        <item>Тридцать шесть</item>
+        <item>Тридцать семь</item>
+        <item>Тридцать восемь</item>
+        <item>Тридцать девять</item>
+        <item>Сорок</item>
+        <item>Сорок один</item>
+        <item>Сорок два</item>
+        <item>Сорок три</item>
+        <item>Сорок четыре</item>
+        <item>Сорок пять</item>
+        <item>Сорок шесть</item>
+        <item>Сорок семь</item>
+        <item>Сорок восемь</item>
+        <item>Сорок девять</item>
+        <item>Пятьдесят</item>
+        <item>Пятьдесят один</item>
+        <item>Пятьдесят два</item>
+        <item>Пятьдесят три</item>
+        <item>Пятьдесят четыре</item>
+        <item>Пятьдесят пять</item>
+        <item>Пятьдесят шесть</item>
+        <item>Пятьдесят семь</item>
+        <item>Пятьдесят восемь</item>
+        <item>Пятьдесят девять</item>
+        <item>Шестьдесят</item>
+        <item>Шестьдесят один</item>
+        <item>Шестьдесят два</item>
+        <item>Шестьдесят три</item>
+        <item>Шестьдесят четыре</item>
+        <item>Шестьдесят пять</item>
+        <item>Шестьдесят шесть</item>
+        <item>Шестьдесят семь</item>
+        <item>Шестьдесят восемь</item>
+        <item>Шестьдесят девять</item>
+        <item>Семьдесят</item>
+        <item>Семьдесят один</item>
+        <item>Семьдесят два</item>
+        <item>Семьдесят три</item>
+        <item>Семьдесят четыре</item>
+        <item>Семьдесят пять</item>
+        <item>Семьдесят шесть</item>
+        <item>Семьдесят семь</item>
+        <item>Семьдесят восемь</item>
+        <item>Семьдесят девять</item>
+        <item>Восемьдесят</item>
+        <item>Восемьдесят один</item>
+        <item>Восемьдесят два</item>
+        <item>Восемьдесят три</item>
+        <item>Восемьдесят четыре</item>
+        <item>Восемьдесят пять</item>
+        <item>Восемьдесят шесть</item>
+        <item>Восемьдесят семь</item>
+        <item>Восемьдесят восемь</item>
+        <item>Восемьдесят девять</item>
+        <item>Девяносто</item>
+        <item>Девяносто один</item>
+        <item>Девяносто два</item>
+        <item>Девяносто три</item>
+        <item>Девяносто четыре</item>
+        <item>Девяносто пять</item>
+        <item>Девяносто шесть</item>
+        <item>Девяносто семь</item>
+        <item>Девяносто восемь</item>
+        <item>Девяносто девять</item>
+    </string-array>
+    <string-array name="verbosetime1">
+        <item>Двенадцать ровно.</item>
+        <item>Двенадцать ноль одна.</item>
+        <item>Двенадцать ноль две.</item>
+        <item>Двенадцать ноль три.</item>
+        <item>Двенадцать ноль четыре.</item>
+        <item>Двенадцать ноль пять.</item>
+        <item>Двенадцать ноль шесть.</item>
+        <item>Двенадцать ноль семь.</item>
+        <item>Двенадцать ноль восемь.</item>
+        <item>Двенадцать ноль девять.</item>
+        <item>Десять минут первого.</item>
+        <item>Двенадцать одиннадцать.</item>
+        <item>Двенадцать двенадцать.</item>
+        <item>Двенадцать тринадцать.</item>
+        <item>Двенадцать четырнадцать.</item>
+        <item>Пятнадцать первого.</item>
+        <item>Шестнадцать первого.</item>
+        <item>Семьнадцать первого.</item>
+        <item>Восемьнадцать первого.</item>
+        <item>Двенадцать девятнадцать.</item>
+        <item>Двенадцать двадцать.</item>
+        <item>Двенадцать двадцать одна.</item>
+        <item>Двенадцать двадцать две.</item>
+        <item>Двенадцать двадцать три.</item>
+        <item>Двенадцать двадцать четыре.</item>
+        <item>Двенадцать двадцать пять.</item>
+        <item>Двенадцать двадцать шесть.</item>
+        <item>Двенадцать двадцать семь.</item>
+        <item>Двенадцать двадцать восемь.</item>
+        <item>Двенадцать двадцать девять.</item>
+        <item>Половина первого.</item>
+        <item>Двенадцать тридцать одна.</item>
+        <item>Двенадцать тридцать две.</item>
+        <item>Двенадцать тридцать три.</item>
+        <item>Двенадцать тридцать четыре.</item>
+        <item>Двенадцать тридцать пять.</item>
+        <item>Двенадцать тридцать шесть.</item>
+        <item>Двенадцать тридцать семь.</item>
+        <item>Двенадцать тридцать восемь.</item>
+        <item>Двенадцать тридцать девять.</item>
+        <item>Без двадцати час.</item>
+        <item>Двенадцать сорок одна.</item>
+        <item>Двенадцать сорок две.</item>
+        <item>Двенадцать сорок три.</item>
+        <item>Двенадцать сорок четыре.</item>
+        <item>Без пятнадцати час.</item>
+        <item>Двенадцать сорок шесть.</item>
+        <item>Двенадцать сорок семь.</item>
+        <item>Двенадцать сорок восемь.</item>
+        <item>Двенадцать сорок девять.</item>
+        <item>Без десяти час.</item>
+        <item>Двенадцать пятьдесят одна.</item>
+        <item>Двенадцать пятьдесят две.</item>
+        <item>Двенадцать пятьдесят три.</item>
+        <item>Двенадцать пятьдесят четыре.</item>
+        <item>Двенадцать пятьдесят пять.</item>
+        <item>Двенадцать пятьдесят шесть.</item>
+        <item>Двенадцать пятьдесят семь.</item>
+        <item>Двенадцать пятьдесят восемь.</item>
+        <item>Вот-вот час.</item>
+        <item>Час ровно.</item>
+        <item>Час ноль одна.</item>
+        <item>Час ноль две.</item>
+        <item>Час ноль три.</item>
+        <item>Час ноль четыре.</item>
+        <item>час ноль пять.</item>
+        <item>Час ноль шесть.</item>
+        <item>Час ноль семь.</item>
+        <item>Час ноль восемь.</item>
+        <item>Час ноль девять.</item>
+        <item>Десять минут второго.</item>
+        <item>Час одиннадцать.</item>
+        <item>Час двенадцать.</item>
+        <item>Час тринадцать.</item>
+        <item>Час четырнадцать.</item>
+        <item>Пятнадцать второго.</item>
+        <item>Шестнадцать второго.</item>
+        <item>Семьнадцать второго.</item>
+        <item>Восемьнадцать второго.</item>
+        <item>Час девятнадцать.</item>
+        <item>Час двадцать.</item>
+        <item>Час двадцать одна.</item>
+        <item>Час двадцать две.</item>
+        <item>Час двадцать три.</item>
+        <item>Час двадцать четыре.</item>
+        <item>Час двадцать пять.</item>
+        <item>Час двадцать шесть.</item>
+        <item>Час двадцать семь.</item>
+        <item>Час двадцать восемь.</item>
+        <item>Час двадцать девять.</item>
+        <item>Половина второго.</item>
+        <item>Час тридцать одна.</item>
+        <item>Час тридцать две.</item>
+        <item>Час тридцать три.</item>
+        <item>Час тридцать четыре.</item>
+        <item>Час тридцать пять.</item>
+        <item>Час тридцать шесть.</item>
+        <item>Час тридцать семь.</item>
+        <item>Час тридцать восемь.</item>
+        <item>Час тридцать девять.</item>
+        <item>Без двадцати два.</item>
+        <item>Час сорок одна.</item>
+        <item>Час сорок две.</item>
+        <item>Час сорок три.</item>
+        <item>Час сорок четыре.</item>
+        <item>Без пятнадцати два.</item>
+        <item>Час сорок шесть.</item>
+        <item>Час сорок семь.</item>
+        <item>Час сорок восемь.</item>
+        <item>Час сорок девять.</item>
+        <item>Без десяти два.</item>
+        <item>Час пятьдесят одна.</item>
+        <item>Час пятьдесят две.</item>
+        <item>Час пятьдесят три.</item>
+        <item>Час пятьдесят четыре.</item>
+        <item>Час пятьдесят пять.</item>
+        <item>Час пятьдесят шесть.</item>
+        <item>Час пятьдесят семь.</item>
+        <item>Час пятьдесят восемь.</item>
+        <item>Вот-вот два.</item>
+        <item>Два ровно.</item>
+        <item>Два ноль одна.</item>
+        <item>Два ноль две.</item>
+        <item>Два ноль три.</item>
+        <item>Два ноль четыре.</item>
+        <item>Два ноль пять.</item>
+        <item>Два ноль шесть.</item>
+        <item>Два ноль семь.</item>
+        <item>Два ноль восемь.</item>
+        <item>Два ноль девять.</item>
+        <item>Десять минут третьего.</item>
+        <item>Два одиннадцать.</item>
+        <item>Два двенадцать.</item>
+        <item>Два тринадцать.</item>
+        <item>Два четырнадцать.</item>
+        <item>Пятнадцать третьего.</item>
+        <item>Шестнадцать третьего.</item>
+        <item>Семьнадцать третьего.</item>
+        <item>Восемьнадцать третьего.</item>
+        <item>Два девятнадцать.</item>
+        <item>Два двадцать.</item>
+        <item>Два двадцать одна.</item>
+        <item>Два двадцать две.</item>
+        <item>Два двадцать три.</item>
+        <item>Два двадцать четыре.</item>
+        <item>Два двадцать пять.</item>
+        <item>Два двадцать шесть.</item>
+        <item>Два двадцать семь.</item>
+        <item>Два двадцать восемь.</item>
+        <item>Два двадцать девять.</item>
+        <item>Половина третьего.</item>
+        <item>Два тридцать одна.</item>
+        <item>Два тридцать две.</item>
+        <item>Два тридцать три.</item>
+        <item>Два тридцать четыре.</item>
+        <item>Два тридцать пять.</item>
+        <item>Два тридцать шесть.</item>
+        <item>Два тридцать семь.</item>
+        <item>Два тридцать восемь.</item>
+        <item>Два тридцать девять.</item>
+        <item>Без двадцати три.</item>
+        <item>Два сорок одна.</item>
+        <item>Два сорок две.</item>
+        <item>Два сорок три.</item>
+        <item>Два сорок четыре.</item>
+        <item>Без пятнадцати три.</item>
+        <item>Два сорок шесть.</item>
+        <item>Два сорок семь.</item>
+        <item>Два сорок восемь.</item>
+        <item>Два сорок девять.</item>
+        <item>Без десяти три.</item>
+        <item>Два пятьдесят одна.</item>
+        <item>Два пятьдесят две.</item>
+        <item>Два пятьдесят три.</item>
+        <item>Два пятьдесят четыре.</item>
+        <item>Два пятьдесят пять.</item>
+        <item>Два пятьдесят шесть.</item>
+        <item>Два пятьдесят семь.</item>
+        <item>Два пятьдесят восемь.</item>
+        <item>Вот-вот три.</item>
+        <item>Три часа ровно.</item>
+        <item>Три ноль одна.</item>
+        <item>Три ноль две.</item>
+        <item>Три ноль три.</item>
+        <item>Три ноль четыре.</item>
+        <item>Три ноль пять.</item>
+        <item>Три ноль шесть.</item>
+        <item>Три ноль семь.</item>
+        <item>Три ноль восемь.</item>
+        <item>Три ноль девять.</item>
+        <item>Десять минут Четвертого.</item>
+        <item>Три одиннадцать.</item>
+        <item>Три двенадцать.</item>
+        <item>Три тринадцать.</item>
+        <item>Три четырнадцать.</item>
+        <item>Пятнадцать четвертого.</item>
+        <item>Шестнадцать четвертого.</item>
+        <item>Семьнадцать четвертого.</item>
+        <item>Восемьнадцать четвертого.</item>
+        <item>Три девятнадцать.</item>
+        <item>Три двадцать.</item>
+        <item>Три двадцать одна.</item>
+        <item>Три двадцать две.</item>
+        <item>Три двадцать три.</item>
+        <item>Три двадцать четыре.</item>
+        <item>Три двадцать пять.</item>
+        <item>Три двадцать шесть.</item>
+        <item>Три двадцать семь.</item>
+        <item>Три двадцать восемь.</item>
+        <item>Три двадцать девять.</item>
+        <item>Половина четвертого.</item>
+        <item>Три тридцать одна.</item>
+        <item>Три тридцать две.</item>
+        <item>Три тридцать три.</item>
+        <item>Три тридцать четыре.</item>
+        <item>Три тридцать пять.</item>
+        <item>Три тридцать шесть.</item>
+        <item>Три тридцать семь.</item>
+        <item>Три тридцать восемь.</item>
+        <item>Три тридцать девять.</item>
+        <item>Без двадцати четыре.</item>
+        <item>Три сорок одна.</item>
+        <item>Три сорок две.</item>
+        <item>Три сорок три.</item>
+        <item>Три сорок четыре.</item>
+        <item>Без пятнадцати четыре.</item>
+        <item>Три сорок шесть.</item>
+        <item>Три сорок семь.</item>
+        <item>Три сорок восемь.</item>
+        <item>Три сорок девять.</item>
+        <item>Без десяти четыре.</item>
+        <item>Три пятьдесят одна.</item>
+        <item>Три пятьдесят две.</item>
+        <item>Три пятьдесят три.</item>
+        <item>Три пятьдесят четыре.</item>
+        <item>Три пятьдесят пять.</item>
+        <item>Три пятьдесят шесть.</item>
+        <item>Три пятьдесят семь.</item>
+        <item>Три пятьдесят восемь.</item>
+        <item>Вот-вот четыре.</item>
+        <item>Четыре часа ровно.</item>
+        <item>Четыре ноль одна.</item>
+        <item>Четыре ноль две.</item>
+        <item>Четыре ноль три.</item>
+        <item>Четыре ноль четыре.</item>
+        <item>Четыре ноль пять.</item>
+        <item>Четыре ноль шесть.</item>
+        <item>Четыре ноль семь.</item>
+        <item>Четыре ноль восемь.</item>
+        <item>Четыре ноль девять.</item>
+        <item>Десять минут пятого.</item>
+        <item>Четыре одиннадцать.</item>
+        <item>Четыре двенадцать.</item>
+        <item>Четыре тринадцать.</item>
+        <item>Четыре четырнадцать.</item>
+        <item>Пятнадцать пятого.</item>
+        <item>Шестнадцать пятого.</item>
+        <item>Семьнадцать пятого.</item>
+        <item>Восемьнадцать пятого.</item>
+        <item>Четыре девятнадцать.</item>
+        <item>Четыре двадцать.</item>
+        <item>Четыре двадцать одна.</item>
+        <item>Четыре двадцать две.</item>
+        <item>Четыре двадцать три.</item>
+        <item>Четыре двадцать четыре.</item>
+        <item>Четыре двадцать пять.</item>
+        <item>Четыре двадцать шесть.</item>
+        <item>Четыре двадцать семь.</item>
+        <item>Четыре двадцать восемь.</item>
+        <item>Четыре двадцать девять.</item>
+        <item>Половина пятого.</item>
+        <item>Четыре тридцать одна.</item>
+        <item>Четыре тридцать две.</item>
+        <item>Четыре тридцать три.</item>
+        <item>Четыре тридцать четыре.</item>
+        <item>Четыре тридцать пять.</item>
+        <item>Четыре тридцать шесть.</item>
+        <item>Четыре тридцать семь.</item>
+        <item>Четыре тридцать восемь.</item>
+        <item>Четыре тридцать девять.</item>
+        <item>Без двадцати пять.</item>
+        <item>Четыре сорок одна.</item>
+        <item>Четыре сорок две.</item>
+        <item>Четыре сорок три.</item>
+        <item>Четыре сорок четыре.</item>
+        <item>Без пятнадцати пять.</item>
+        <item>Четыре сорок шесть.</item>
+        <item>Четыре сорок семь.</item>
+        <item>Четыре сорок восемь.</item>
+        <item>Четыре сорок девять.</item>
+        <item>Без десяти пять.</item>
+        <item>Четыре пятьдесят одна.</item>
+        <item>Четыре пятьдесят две.</item>
+        <item>Четыре пятьдесят три.</item>
+        <item>Четыре пятьдесят четыре.</item>
+        <item>Четыре пятьдесят пять.</item>
+        <item>Четыре пятьдесят шесть.</item>
+        <item>Четыре пятьдесят семь.</item>
+        <item>Четыре пятьдесят восемь.</item>
+        <item>Вот-вот пять.</item>
+        <item>Пять часов ровно.</item>
+        <item>Пять ноль одна.</item>
+        <item>Пять ноль две.</item>
+        <item>Пять ноль три.</item>
+        <item>Пять ноль четыре.</item>
+        <item>Пять ноль пять.</item>
+        <item>Пять ноль шесть.</item>
+        <item>Пять ноль семь.</item>
+        <item>Пять ноль восемь.</item>
+        <item>Пять ноль девять.</item>
+        <item>Десять минут шестого.</item>
+        <item>Пять одиннадцать.</item>
+        <item>Пять двенадцать.</item>
+        <item>Пять тринадцать.</item>
+        <item>Пять четырнадцать.</item>
+        <item>Пятнадцать шестого.</item>
+        <item>Шестнадцать шестого.</item>
+        <item>Семьнадцать шестого.</item>
+        <item>Восемьнадцать шестого.</item>
+        <item>Пять девятнадцать.</item>
+        <item>Пять двадцать.</item>
+        <item>Пять двадцать одна.</item>
+        <item>Пять двадцать две.</item>
+        <item>Пять двадцать три.</item>
+        <item>Пять двадцать четыре.</item>
+        <item>Пять двадцать пять.</item>
+        <item>Пять двадцать шесть.</item>
+        <item>Пять двадцать семь.</item>
+        <item>Пять двадцать восемь.</item>
+        <item>Пять двадцать девять.</item>
+        <item>Половина шестого.</item>
+        <item>Пять тридцать одна.</item>
+        <item>Пять тридцать две.</item>
+        <item>Пять тридцать три.</item>
+        <item>Пять тридцать четыре.</item>
+        <item>Пять тридцать пять.</item>
+        <item>Пять тридцать шесть.</item>
+        <item>Пять тридцать семь.</item>
+        <item>Пять тридцать восемь.</item>
+        <item>Пять тридцать девять.</item>
+        <item>Без двадцати шесть.</item>
+        <item>Пять сорок одна.</item>
+        <item>Пять сорок две.</item>
+        <item>Пять сорок три.</item>
+        <item>Пять сорок четыре.</item>
+        <item>Без пятнадцати шесть.</item>
+        <item>Пять сорок шесть.</item>
+        <item>Пять сорок семь.</item>
+        <item>Пять сорок восемь.</item>
+        <item>Пять сорок девять.</item>
+        <item>Без десяти шесть.</item>
+        <item>Пять пятьдесят одна.</item>
+        <item>Пять пятьдесят две.</item>
+        <item>Пять пятьдесят три.</item>
+        <item>Пять пятьдесят четыре.</item>
+        <item>Пять пятьдесят пять.</item>
+        <item>Пять пятьдесят шесть.</item>
+        <item>Пять пятьдесят семь.</item>
+        <item>Пять пятьдесят восемь.</item>
+        <item>Вот-вот шесть.</item>
+    </string-array>
+    <string-array name="verbosetime2">
+        <item>Шесть часов ровно.</item>
+        <item>Шесть ноль одна.</item>
+        <item>Шесть ноль две.</item>
+        <item>Шесть ноль три.</item>
+        <item>Шесть ноль четыре.</item>
+        <item>Шесть ноль пять.</item>
+        <item>Шесть ноль шесть.</item>
+        <item>Шесть ноль семь.</item>
+        <item>Шесть ноль восемь.</item>
+        <item>Шесть ноль девять.</item>
+        <item>Десять минут седьмого.</item>
+        <item>Шесть одиннадцать.</item>
+        <item>Шесть двенадцать.</item>
+        <item>Шесть тринадцать.</item>
+        <item>Шесть четырнадцать.</item>
+        <item>Пятнадцать седьмого.</item>
+        <item>Шестнадцать седьмого.</item>
+        <item>Семьнадцать седьмого.</item>
+        <item>Восемьнадцать седьмого.</item>
+        <item>Шесть девятнадцать.</item>
+        <item>Шесть двадцать.</item>
+        <item>Шесть двадцать одна.</item>
+        <item>Шесть двадцать две.</item>
+        <item>Шесть двадцать три.</item>
+        <item>Шесть двадцать четыре.</item>
+        <item>Шесть двадцать пять.</item>
+        <item>Шесть двадцать шесть.</item>
+        <item>Шесть двадцать семь.</item>
+        <item>Шесть двадцать восемь.</item>
+        <item>Шесть двадцать девять.</item>
+        <item>Половина седьмого.</item>
+        <item>Шесть тридцать одна.</item>
+        <item>Шесть тридцать две.</item>
+        <item>Шесть тридцать три.</item>
+        <item>Шесть тридцать четыре.</item>
+        <item>Шесть тридцать пять.</item>
+        <item>Шесть тридцать шесть.</item>
+        <item>Шесть тридцать семь.</item>
+        <item>Шесть тридцать восемь.</item>
+        <item>Шесть тридцать девять.</item>
+        <item>Без двадцати семь.</item>
+        <item>Шесть сорок одна.</item>
+        <item>Шесть сорок две.</item>
+        <item>Шесть сорок три.</item>
+        <item>Шесть сорок четыре.</item>
+        <item>Без пятнадцати семь.</item>
+        <item>Шесть сорок шесть.</item>
+        <item>Шесть сорок семь.</item>
+        <item>Шесть сорок восемь.</item>
+        <item>Шесть сорок девять.</item>
+        <item>Без десяти семь.</item>
+        <item>Шесть пятьдесят одна.</item>
+        <item>Шесть пятьдесят две.</item>
+        <item>Шесть пятьдесят три.</item>
+        <item>Шесть пятьдесят четыре.</item>
+        <item>Шесть пятьдесят пять.</item>
+        <item>Шесть пятьдесят шесть.</item>
+        <item>Шесть пятьдесят семь.</item>
+        <item>Шесть пятьдесят восемь.</item>
+        <item>Вот-вот семь.</item>
+        <item>Семь часов ровно.</item>
+        <item>Семь ноль одна.</item>
+        <item>Семь ноль две.</item>
+        <item>Семь ноль три.</item>
+        <item>Семь ноль четыре.</item>
+        <item>Семь ноль пять.</item>
+        <item>Семь ноль шесть.</item>
+        <item>Семь ноль семь.</item>
+        <item>Семь ноль восемь.</item>
+        <item>Семь ноль девять.</item>
+        <item>Десять минут восьмого.</item>
+        <item>Семь одиннадцать.</item>
+        <item>Семь двенадцать.</item>
+        <item>Семь тринадцать.</item>
+        <item>Семь четырнадцать.</item>
+        <item>Пятнадцать восьмого.</item>
+        <item>Шестнадцать восьмого.</item>
+        <item>Семьнадцать восьмого.</item>
+        <item>Восемьнадцать восьмого.</item>
+        <item>Семь девятнадцать.</item>
+        <item>Семь двадцать.</item>
+        <item>Семь двадцать одна.</item>
+        <item>Семь двадцать две.</item>
+        <item>Семь двадцать три.</item>
+        <item>Семь двадцать четыре.</item>
+        <item>Семь двадцать пять.</item>
+        <item>Семь двадцать шесть.</item>
+        <item>Семь двадцать семь.</item>
+        <item>Семь двадцать восемь.</item>
+        <item>Семь двадцать девять.</item>
+        <item>Половина восьмого.</item>
+        <item>Семь тридцать одна.</item>
+        <item>Семь тридцать две.</item>
+        <item>Семь тридцать три.</item>
+        <item>Семь тридцать четыре.</item>
+        <item>Семь тридцать пять.</item>
+        <item>Семь тридцать шесть.</item>
+        <item>Семь тридцать семь.</item>
+        <item>Семь тридцать восемь.</item>
+        <item>Семь тридцать девять.</item>
+        <item>Без двадцати восемь.</item>
+        <item>Семь сорок одна.</item>
+        <item>Семь сорок две.</item>
+        <item>Семь сорок три.</item>
+        <item>Семь сорок четыре.</item>
+        <item>Без пятнадцати восемь.</item>
+        <item>Семь сорок шесть.</item>
+        <item>Семь сорок семь.</item>
+        <item>Семь сорок восемь.</item>
+        <item>Семь сорок девять.</item>
+        <item>Без десяти восемь.</item>
+        <item>Семь пятьдесят одна.</item>
+        <item>Семь пятьдесят две.</item>
+        <item>Семь пятьдесят три.</item>
+        <item>Семь пятьдесят четыре.</item>
+        <item>Семь пятьдесят пять.</item>
+        <item>Семь пятьдесят шесть.</item>
+        <item>Семь пятьдесят семь.</item>
+        <item>Семь пятьдесят восемь.</item>
+        <item>Вот-вот восемь.</item>
+        <item>Восемь часов ровно.</item>
+        <item>Восемь ноль одна.</item>
+        <item>Восемь ноль две.</item>
+        <item>Восемь ноль три.</item>
+        <item>Восемь ноль четыре.</item>
+        <item>Восемь ноль пять.</item>
+        <item>Восемь ноль шесть.</item>
+        <item>Восемь ноль семь.</item>
+        <item>Восемь ноль восемь.</item>
+        <item>Восемь ноль девять.</item>
+        <item>Десять минут девятого.</item>
+        <item>Восемь одиннадцать.</item>
+        <item>Восемь двенадцать.</item>
+        <item>Восемь тринадцать.</item>
+        <item>Восемь четырнадцать.</item>
+        <item>Пятнадцать девятого.</item>
+        <item>Шестнадцать девятого.</item>
+        <item>Семьнадцать девятого.</item>
+        <item>Восемьнадцать девятого.</item>
+        <item>Восемь девятнадцать.</item>
+        <item>Восемь двадцать.</item>
+        <item>Восемь двадцать одна.</item>
+        <item>Восемь двадцать две.</item>
+        <item>Восемь двадцать три.</item>
+        <item>Восемь двадцать четыре.</item>
+        <item>Восемь двадцать пять.</item>
+        <item>Восемь двадцать шесть.</item>
+        <item>Восемь двадцать семь.</item>
+        <item>Восемь двадцать восемь.</item>
+        <item>Восемь двадцать девять.</item>
+        <item>Половина девятого.</item>
+        <item>Восемь тридцать одна.</item>
+        <item>Восемь тридцать две.</item>
+        <item>Восемь тридцать три.</item>
+        <item>Восемь тридцать четыре.</item>
+        <item>Восемь тридцать пять.</item>
+        <item>Восемь тридцать шесть.</item>
+        <item>Восемь тридцать семь.</item>
+        <item>Восемь тридцать восемь.</item>
+        <item>Восемь тридцать девять.</item>
+        <item>Без двадцати девять.</item>
+        <item>Восемь сорок одна.</item>
+        <item>Восемь сорок две.</item>
+        <item>Восемь сорок три.</item>
+        <item>Восемь сорок четыре.</item>
+        <item>Без пятнадцати девять.</item>
+        <item>Восемь сорок шесть.</item>
+        <item>Восемь сорок семь.</item>
+        <item>Восемь сорок восемь.</item>
+        <item>Восемь сорок девять.</item>
+        <item>Без десяти девять.</item>
+        <item>Восемь пятьдесят одна.</item>
+        <item>Восемь пятьдесят две.</item>
+        <item>Восемь пятьдесят три.</item>
+        <item>Восемь пятьдесят четыре.</item>
+        <item>Восемь пятьдесят пять.</item>
+        <item>Восемь пятьдесят шесть.</item>
+        <item>Восемь пятьдесят семь.</item>
+        <item>Восемь пятьдесят восемь.</item>
+        <item>Вот-вот девять.</item>
+        <item>Девять часов ровно.</item>
+        <item>Девять ноль одна.</item>
+        <item>Девять ноль две.</item>
+        <item>Девять ноль три.</item>
+        <item>Девять ноль четыре.</item>
+        <item>Девять ноль пять.</item>
+        <item>Девять ноль шесть.</item>
+        <item>Девять ноль семь.</item>
+        <item>Девять ноль восемь.</item>
+        <item>Девять ноль девять.</item>
+        <item>Десять минут десятого.</item>
+        <item>Девять одиннадцать.</item>
+        <item>Девять двенадцать.</item>
+        <item>Девять тринадцать.</item>
+        <item>Девять четырнадцать.</item>
+        <item>Пятнадцать десятого.</item>
+        <item>Шестнадцать десятого.</item>
+        <item>Семьнадцать десятого.</item>
+        <item>Восемьнадцать десятого.</item>
+        <item>Девять девятнадцать.</item>
+        <item>Девять двадцать.</item>
+        <item>Девять двадцать одна.</item>
+        <item>Девять двадцать две.</item>
+        <item>Девять двадцать три.</item>
+        <item>Девять двадцать четыре.</item>
+        <item>Девять двадцать пять.</item>
+        <item>Девять двадцать шесть.</item>
+        <item>Девять двадцать семь.</item>
+        <item>Девять двадцать восемь.</item>
+        <item>Девять двадцать девять.</item>
+        <item>Половина десятого.</item>
+        <item>Девять тридцать одна.</item>
+        <item>Девять тридцать две.</item>
+        <item>Девять тридцать три.</item>
+        <item>Девять тридцать четыре.</item>
+        <item>Девять тридцать пять.</item>
+        <item>Девять тридцать шесть.</item>
+        <item>Девять тридцать семь.</item>
+        <item>Девять тридцать восемь.</item>
+        <item>Девять тридцать девять.</item>
+        <item>Без двадцати десять.</item>
+        <item>Девять сорок одна.</item>
+        <item>Девять сорок две.</item>
+        <item>Девять сорок три.</item>
+        <item>Девять сорок четыре.</item>
+        <item>Без пятнадцати десять.</item>
+        <item>Девять сорок шесть.</item>
+        <item>Девять сорок семь.</item>
+        <item>Девять сорок восемь.</item>
+        <item>Девять сорок девять.</item>
+        <item>Без десяти десять.</item>
+        <item>Девять пятьдесят одна.</item>
+        <item>Девять пятьдесят две.</item>
+        <item>Девять пятьдесят три.</item>
+        <item>Девять пятьдесят четыре.</item>
+        <item>Девять пятьдесят пять.</item>
+        <item>Девять пятьдесят шесть.</item>
+        <item>Девять пятьдесят семь.</item>
+        <item>Девять пятьдесят восемь.</item>
+        <item>Вот-вот десять.</item>
+        <item>Десять часов ровно.</item>
+        <item>Десять ноль одна.</item>
+        <item>Десять ноль две.</item>
+        <item>Десять ноль три.</item>
+        <item>Десять ноль четыре.</item>
+        <item>Десять ноль пять.</item>
+        <item>Десять ноль шесть.</item>
+        <item>Десять ноль семь.</item>
+        <item>Десять ноль восемь.</item>
+        <item>Десять ноль девять.</item>
+        <item>Десять минут одиннадцатого.</item>
+        <item>Десять одиннадцать.</item>
+        <item>Десять двенадцать.</item>
+        <item>Десять тринадцать.</item>
+        <item>Десять четырнадцать.</item>
+        <item>Пятнадцать одиннадцатого.</item>
+        <item>Шестнадцать одиннадцатого.</item>
+        <item>Семьнадцать одиннадцатого.</item>
+        <item>Восемьнадцать одиннадцатого.</item>
+        <item>Десять девятнадцать.</item>
+        <item>Десять двадцать.</item>
+        <item>Десять двадцать одна.</item>
+        <item>Десять двадцать две.</item>
+        <item>Десять двадцать три.</item>
+        <item>Десять двадцать четыре.</item>
+        <item>Десять двадцать пять.</item>
+        <item>Десять двадцать шесть.</item>
+        <item>Десять двадцать семь.</item>
+        <item>Десять двадцать восемь.</item>
+        <item>Десять двадцать девять.</item>
+        <item>Половина одиннадцатого.</item>
+        <item>Десять тридцать одна.</item>
+        <item>Десять тридцать две.</item>
+        <item>Десять тридцать три.</item>
+        <item>Десять тридцать четыре.</item>
+        <item>Десять тридцать пять.</item>
+        <item>Десять тридцать шесть.</item>
+        <item>Десять тридцать семь.</item>
+        <item>Десять тридцать восемь.</item>
+        <item>Десять тридцать девять.</item>
+        <item>Без двадцати одиннадцать.</item>
+        <item>Десять сорок одна.</item>
+        <item>Десять сорок две.</item>
+        <item>Десять сорок три.</item>
+        <item>Десять сорок четыре.</item>
+        <item>Без пятнадцати одиннадцать.</item>
+        <item>Десять сорок шесть.</item>
+        <item>Десять сорок семь.</item>
+        <item>Десять сорок восемь.</item>
+        <item>Десять сорок девять.</item>
+        <item>Без десяти одиннадцать.</item>
+        <item>Десять пятьдесят одна.</item>
+        <item>Десять пятьдесят две.</item>
+        <item>Десять пятьдесят три.</item>
+        <item>Десять пятьдесят четыре.</item>
+        <item>Десять пятьдесят пять.</item>
+        <item>Десять пятьдесят шесть.</item>
+        <item>Десять пятьдесят семь.</item>
+        <item>Десять пятьдесят восемь.</item>
+        <item>Вот-вот одиннадцать.</item>
+        <item>Одиннадцать часов.</item>
+        <item>Одиннадцать ноль одна.</item>
+        <item>Одиннадцать ноль две.</item>
+        <item>Одиннадцать ноль три.</item>
+        <item>Одиннадцать ноль четыре.</item>
+        <item>Одиннадцать ноль пять.</item>
+        <item>Одиннадцать ноль шесть.</item>
+        <item>Одиннадцать ноль семь.</item>
+        <item>Одиннадцать ноль восемь.</item>
+        <item>Одиннадцать ноль девять.</item>
+        <item>Десять минут двенадцатого.</item>
+        <item>Одиннадцать одиннадцать.</item>
+        <item>Одиннадцать двенадцать.</item>
+        <item>Одиннадцать тринадцать.</item>
+        <item>Одиннадцать четырнадцать.</item>
+        <item>Пятнадцать двенадцатого.</item>
+        <item>Шестнадцать двенадцатого.</item>
+        <item>Семьнадцать двенадцатого.</item>
+        <item>Восемьнадцать двенадцатого.</item>
+        <item>Одиннадцать девятнадцать.</item>
+        <item>Одиннадцать двадцать.</item>
+        <item>Одиннадцать двадцать одна.</item>
+        <item>Одиннадцать двадцать две.</item>
+        <item>Одиннадцать двадцать три.</item>
+        <item>Одиннадцать двадцать четыре.</item>
+        <item>Одиннадцать двадцать пять.</item>
+        <item>Одиннадцать двадцать шесть.</item>
+        <item>Одиннадцать двадцать семь.</item>
+        <item>Одиннадцать двадцать восемь.</item>
+        <item>Одиннадцать двадцать девять.</item>
+        <item>Половина двенадцатого.</item>
+        <item>Одиннадцать тридцать одна.</item>
+        <item>Одиннадцать тридцать две.</item>
+        <item>Одиннадцать тридцать три.</item>
+        <item>Одиннадцать тридцать четыре.</item>
+        <item>Одиннадцать тридцать пять.</item>
+        <item>Одиннадцать тридцать шесть.</item>
+        <item>Одиннадцать тридцать семь.</item>
+        <item>Одиннадцать тридцать восемь.</item>
+        <item>Одиннадцать тридцать девять.</item>
+        <item>Без двадцати двенадцать.</item>
+        <item>Одиннадцать сорок одна.</item>
+        <item>Одиннадцать сорок две.</item>
+        <item>Одиннадцать сорок три.</item>
+        <item>Одиннадцать сорок четыре.</item>
+        <item>Без пятнадцати двенадцать.</item>
+        <item>Одиннадцать сорок шесть.</item>
+        <item>Одиннадцать сорок семь.</item>
+        <item>Одиннадцать сорок восемь.</item>
+        <item>Одиннадцать сорок девять.</item>
+        <item>Без десяти двенадцать.</item>
+        <item>Одиннадцать пятьдесят одна.</item>
+        <item>Одиннадцать пятьдесят две.</item>
+        <item>Одиннадцать пятьдесят три.</item>
+        <item>Одиннадцать пятьдесят четыре.</item>
+        <item>Одиннадцать пятьдесят пять.</item>
+        <item>Одиннадцать пятьдесят шесть.</item>
+        <item>Одиннадцать пятьдесят семь.</item>
+        <item>Одиннадцать пятьдесят восемь.</item>
+        <item>Вот-вот двенадцать.</item>
+    </string-array>
+    <string-array name="verbosetime3">
+        <item>Двенадцать ровно.</item>
+        <item>Двенадцать ноль одна.</item>
+        <item>Двенадцать ноль две.</item>
+        <item>Двенадцать ноль три.</item>
+        <item>Двенадцать ноль четыре.</item>
+        <item>Двенадцать ноль пять.</item>
+        <item>Двенадцать ноль шесть.</item>
+        <item>Двенадцать ноль семь.</item>
+        <item>Двенадцать ноль восемь.</item>
+        <item>Двенадцать ноль девять.</item>
+        <item>Десять минут первого.</item>
+        <item>Двенадцать одиннадцать.</item>
+        <item>Двенадцать двенадцать.</item>
+        <item>Двенадцать тринадцать.</item>
+        <item>Двенадцать четырнадцать.</item>
+        <item>Пятнадцать первого.</item>
+        <item>Шестнадцать первого.</item>
+        <item>Семьнадцать первого.</item>
+        <item>Восемьнадцать первого.</item>
+        <item>Двенадцать девятнадцать.</item>
+        <item>Двенадцать двадцать.</item>
+        <item>Двенадцать двадцать одна.</item>
+        <item>Двенадцать двадцать две.</item>
+        <item>Двенадцать двадцать три.</item>
+        <item>Двенадцать двадцать четыре.</item>
+        <item>Двенадцать двадцать пять.</item>
+        <item>Двенадцать двадцать шесть.</item>
+        <item>Двенадцать двадцать семь.</item>
+        <item>Двенадцать двадцать восемь.</item>
+        <item>Двенадцать двадцать девять.</item>
+        <item>Половина первого.</item>
+        <item>Двенадцать тридцать одна.</item>
+        <item>Двенадцать тридцать две.</item>
+        <item>Двенадцать тридцать три.</item>
+        <item>Двенадцать тридцать четыре.</item>
+        <item>Двенадцать тридцать пять.</item>
+        <item>Двенадцать тридцать шесть.</item>
+        <item>Двенадцать тридцать семь.</item>
+        <item>Двенадцать тридцать восемь.</item>
+        <item>Двенадцать тридцать девять.</item>
+        <item>Без двадцати час.</item>
+        <item>Двенадцать сорок одна.</item>
+        <item>Двенадцать сорок две.</item>
+        <item>Двенадцать сорок три.</item>
+        <item>Двенадцать сорок четыре.</item>
+        <item>Без пятнадцати час.</item>
+        <item>Двенадцать сорок шесть.</item>
+        <item>Двенадцать сорок семь.</item>
+        <item>Двенадцать сорок восемь.</item>
+        <item>Двенадцать сорок девять.</item>
+        <item>Без десяти час.</item>
+        <item>Двенадцать пятьдесят одна.</item>
+        <item>Двенадцать пятьдесят две.</item>
+        <item>Двенадцать пятьдесят три.</item>
+        <item>Двенадцать пятьдесят четыре.</item>
+        <item>Двенадцать пятьдесят пять.</item>
+        <item>Двенадцать пятьдесят шесть.</item>
+        <item>Двенадцать пятьдесят семь.</item>
+        <item>Двенадцать пятьдесят восемь.</item>
+        <item>Вот-вот час.</item>
+        <item>Час ровно.</item>
+        <item>Час ноль одна.</item>
+        <item>Час ноль две.</item>
+        <item>Час ноль три.</item>
+        <item>Час ноль четыре.</item>
+        <item>час ноль пять.</item>
+        <item>Час ноль шесть.</item>
+        <item>Час ноль семь.</item>
+        <item>Час ноль восемь.</item>
+        <item>Час ноль девять.</item>
+        <item>Десять минут второго.</item>
+        <item>Час одиннадцать.</item>
+        <item>Час двенадцать.</item>
+        <item>Час тринадцать.</item>
+        <item>Час четырнадцать.</item>
+        <item>Пятнадцать второго.</item>
+        <item>Шестнадцать второго.</item>
+        <item>Семьнадцать второго.</item>
+        <item>Восемьнадцать второго.</item>
+        <item>Час девятнадцать.</item>
+        <item>Час двадцать.</item>
+        <item>Час двадцать одна.</item>
+        <item>Час двадцать две.</item>
+        <item>Час двадцать три.</item>
+        <item>Час двадцать четыре.</item>
+        <item>Час двадцать пять.</item>
+        <item>Час двадцать шесть.</item>
+        <item>Час двадцать семь.</item>
+        <item>Час двадцать восемь.</item>
+        <item>Час двадцать девять.</item>
+        <item>Половина второго.</item>
+        <item>Час тридцать одна.</item>
+        <item>Час тридцать две.</item>
+        <item>Час тридцать три.</item>
+        <item>Час тридцать четыре.</item>
+        <item>Час тридцать пять.</item>
+        <item>Час тридцать шесть.</item>
+        <item>Час тридцать семь.</item>
+        <item>Час тридцать восемь.</item>
+        <item>Час тридцать девять.</item>
+        <item>Без двадцати два.</item>
+        <item>Час сорок одна.</item>
+        <item>Час сорок две.</item>
+        <item>Час сорок три.</item>
+        <item>Час сорок четыре.</item>
+        <item>Без пятнадцати два.</item>
+        <item>Час сорок шесть.</item>
+        <item>Час сорок семь.</item>
+        <item>Час сорок восемь.</item>
+        <item>Час сорок девять.</item>
+        <item>Без десяти два.</item>
+        <item>Час пятьдесят одна.</item>
+        <item>Час пятьдесят две.</item>
+        <item>Час пятьдесят три.</item>
+        <item>Час пятьдесят четыре.</item>
+        <item>Час пятьдесят пять.</item>
+        <item>Час пятьдесят шесть.</item>
+        <item>Час пятьдесят семь.</item>
+        <item>Час пятьдесят восемь.</item>
+        <item>Вот-вот два.</item>
+        <item>Два часа ровно.</item>
+        <item>Два ноль одна.</item>
+        <item>Два ноль две.</item>
+        <item>Два ноль три.</item>
+        <item>Два ноль четыре.</item>
+        <item>Два ноль пять.</item>
+        <item>Два ноль шесть.</item>
+        <item>Два ноль семь.</item>
+        <item>Два ноль восемь.</item>
+        <item>Два ноль девять.</item>
+        <item>Десять минут третьего.</item>
+        <item>Два одиннадцать.</item>
+        <item>Два двенадцать.</item>
+        <item>Два тринадцать.</item>
+        <item>Два четырнадцать.</item>
+        <item>Пятнадцать третьего.</item>
+        <item>Шестнадцать третьего.</item>
+        <item>Семьнадцать третьего.</item>
+        <item>Восемьнадцать третьего.</item>
+        <item>Два девятнадцать.</item>
+        <item>Два двадцать.</item>
+        <item>Два двадцать одна.</item>
+        <item>Два двадцать две.</item>
+        <item>Два двадцать три.</item>
+        <item>Два двадцать четыре.</item>
+        <item>Два двадцать пять.</item>
+        <item>Два двадцать шесть.</item>
+        <item>Два двадцать семь.</item>
+        <item>Два двадцать восемь.</item>
+        <item>Два двадцать девять.</item>
+        <item>Половина третьего.</item>
+        <item>Два тридцать одна.</item>
+        <item>Два тридцать две.</item>
+        <item>Два тридцать три.</item>
+        <item>Два тридцать четыре.</item>
+        <item>Два тридцать пять.</item>
+        <item>Два тридцать шесть.</item>
+        <item>Два тридцать семь.</item>
+        <item>Два тридцать восемь.</item>
+        <item>Два тридцать девять.</item>
+        <item>Без двадцати три.</item>
+        <item>Два сорок одна.</item>
+        <item>Два сорок две.</item>
+        <item>Два сорок три.</item>
+        <item>Два сорок четыре.</item>
+        <item>Без пятнадцати три.</item>
+        <item>Два сорок шесть.</item>
+        <item>Два сорок семь.</item>
+        <item>Два сорок восемь.</item>
+        <item>Два сорок девять.</item>
+        <item>Без десяти три.</item>
+        <item>Два пятьдесят одна.</item>
+        <item>Два пятьдесят две.</item>
+        <item>Два пятьдесят три.</item>
+        <item>Два пятьдесят четыре.</item>
+        <item>Два пятьдесят пять.</item>
+        <item>Два пятьдесят шесть.</item>
+        <item>Два пятьдесят семь.</item>
+        <item>Два пятьдесят восемь.</item>
+        <item>Вот-вот три.</item>
+        <item>Три часа ровно.</item>
+        <item>Три ноль одна.</item>
+        <item>Три ноль две.</item>
+        <item>Три ноль три.</item>
+        <item>Три ноль четыре.</item>
+        <item>Три ноль пять.</item>
+        <item>Три ноль шесть.</item>
+        <item>Три ноль семь.</item>
+        <item>Три ноль восемь.</item>
+        <item>Три ноль девять.</item>
+        <item>Десять минут Четвертого.</item>
+        <item>Три одиннадцать.</item>
+        <item>Три двенадцать.</item>
+        <item>Три тринадцать.</item>
+        <item>Три четырнадцать.</item>
+        <item>Пятнадцать четвертого.</item>
+        <item>Шестнадцать четвертого.</item>
+        <item>Семьнадцать четвертого.</item>
+        <item>Восемьнадцать четвертого.</item>
+        <item>Три девятнадцать.</item>
+        <item>Три двадцать.</item>
+        <item>Три двадцать одна.</item>
+        <item>Три двадцать две.</item>
+        <item>Три двадцать три.</item>
+        <item>Три двадцать четыре.</item>
+        <item>Три двадцать пять.</item>
+        <item>Три двадцать шесть.</item>
+        <item>Три двадцать семь.</item>
+        <item>Три двадцать восемь.</item>
+        <item>Три двадцать девять.</item>
+        <item>Половина четвертого.</item>
+        <item>Три тридцать одна.</item>
+        <item>Три тридцать две.</item>
+        <item>Три тридцать три.</item>
+        <item>Три тридцать четыре.</item>
+        <item>Три тридцать пять.</item>
+        <item>Три тридцать шесть.</item>
+        <item>Три тридцать семь.</item>
+        <item>Три тридцать восемь.</item>
+        <item>Три тридцать девять.</item>
+        <item>Без двадцати четыре.</item>
+        <item>Три сорок одна.</item>
+        <item>Три сорок две.</item>
+        <item>Три сорок три.</item>
+        <item>Три сорок четыре.</item>
+        <item>Без пятнадцати четыре.</item>
+        <item>Три сорок шесть.</item>
+        <item>Три сорок семь.</item>
+        <item>Три сорок восемь.</item>
+        <item>Три сорок девять.</item>
+        <item>Без десяти четыре.</item>
+        <item>Три пятьдесят одна.</item>
+        <item>Три пятьдесят две.</item>
+        <item>Три пятьдесят три.</item>
+        <item>Три пятьдесят четыре.</item>
+        <item>Три пятьдесят пять.</item>
+        <item>Три пятьдесят шесть.</item>
+        <item>Три пятьдесят семь.</item>
+        <item>Три пятьдесят восемь.</item>
+        <item>Вот-вот четыре.</item>
+        <item>Четыре часа ровно.</item>
+        <item>Четыре ноль одна.</item>
+        <item>Четыре ноль две.</item>
+        <item>Четыре ноль три.</item>
+        <item>Четыре ноль четыре.</item>
+        <item>Четыре ноль пять.</item>
+        <item>Четыре ноль шесть.</item>
+        <item>Четыре ноль семь.</item>
+        <item>Четыре ноль восемь.</item>
+        <item>Четыре ноль девять.</item>
+        <item>Десять минут пятого.</item>
+        <item>Четыре одиннадцать.</item>
+        <item>Четыре двенадцать.</item>
+        <item>Четыре тринадцать.</item>
+        <item>Четыре четырнадцать.</item>
+        <item>Пятнадцать пятого.</item>
+        <item>Шестнадцать пятого.</item>
+        <item>Семьнадцать пятого.</item>
+        <item>Восемьнадцать пятого.</item>
+        <item>Четыре девятнадцать.</item>
+        <item>Четыре двадцать.</item>
+        <item>Четыре двадцать одна.</item>
+        <item>Четыре двадцать две.</item>
+        <item>Четыре двадцать три.</item>
+        <item>Четыре двадцать четыре.</item>
+        <item>Четыре двадцать пять.</item>
+        <item>Четыре двадцать шесть.</item>
+        <item>Четыре двадцать семь.</item>
+        <item>Четыре двадцать восемь.</item>
+        <item>Четыре двадцать девять.</item>
+        <item>Половина пятого.</item>
+        <item>Четыре тридцать одна.</item>
+        <item>Четыре тридцать две.</item>
+        <item>Четыре тридцать три.</item>
+        <item>Четыре тридцать четыре.</item>
+        <item>Четыре тридцать пять.</item>
+        <item>Четыре тридцать шесть.</item>
+        <item>Четыре тридцать семь.</item>
+        <item>Четыре тридцать восемь.</item>
+        <item>Четыре тридцать девять.</item>
+        <item>Без двадцати пять.</item>
+        <item>Четыре сорок одна.</item>
+        <item>Четыре сорок две.</item>
+        <item>Четыре сорок три.</item>
+        <item>Четыре сорок четыре.</item>
+        <item>Без пятнадцати пять.</item>
+        <item>Четыре сорок шесть.</item>
+        <item>Четыре сорок семь.</item>
+        <item>Четыре сорок восемь.</item>
+        <item>Четыре сорок девять.</item>
+        <item>Без десяти пять.</item>
+        <item>Четыре пятьдесят одна.</item>
+        <item>Четыре пятьдесят две.</item>
+        <item>Четыре пятьдесят три.</item>
+        <item>Четыре пятьдесят четыре.</item>
+        <item>Четыре пятьдесят пять.</item>
+        <item>Четыре пятьдесят шесть.</item>
+        <item>Четыре пятьдесят семь.</item>
+        <item>Четыре пятьдесят восемь.</item>
+        <item>Вот-вот пять.</item>
+        <item>Пять часов ровно.</item>
+        <item>Пять ноль одна.</item>
+        <item>Пять ноль две.</item>
+        <item>Пять ноль три.</item>
+        <item>Пять ноль четыре.</item>
+        <item>Пять ноль пять.</item>
+        <item>Пять ноль шесть.</item>
+        <item>Пять ноль семь.</item>
+        <item>Пять ноль восемь.</item>
+        <item>Пять ноль девять.</item>
+        <item>Десять минут шестого.</item>
+        <item>Пять одиннадцать.</item>
+        <item>Пять двенадцать.</item>
+        <item>Пять тринадцать.</item>
+        <item>Пять четырнадцать.</item>
+        <item>Пятнадцать шестого.</item>
+        <item>Шестнадцать шестого.</item>
+        <item>Семьнадцать шестого.</item>
+        <item>Восемьнадцать шестого.</item>
+        <item>Пять девятнадцать.</item>
+        <item>Пять двадцать.</item>
+        <item>Пять двадцать одна.</item>
+        <item>Пять двадцать две.</item>
+        <item>Пять двадцать три.</item>
+        <item>Пять двадцать четыре.</item>
+        <item>Пять двадцать пять.</item>
+        <item>Пять двадцать шесть.</item>
+        <item>Пять двадцать семь.</item>
+        <item>Пять двадцать восемь.</item>
+        <item>Пять двадцать девять.</item>
+        <item>Половина шестого.</item>
+        <item>Пять тридцать одна.</item>
+        <item>Пять тридцать две.</item>
+        <item>Пять тридцать три.</item>
+        <item>Пять тридцать четыре.</item>
+        <item>Пять тридцать пять.</item>
+        <item>Пять тридцать шесть.</item>
+        <item>Пять тридцать семь.</item>
+        <item>Пять тридцать восемь.</item>
+        <item>Пять тридцать девять.</item>
+        <item>Без двадцати шесть.</item>
+        <item>Пять сорок одна.</item>
+        <item>Пять сорок две.</item>
+        <item>Пять сорок три.</item>
+        <item>Пять сорок четыре.</item>
+        <item>Без пятнадцати шесть.</item>
+        <item>Пять сорок шесть.</item>
+        <item>Пять сорок семь.</item>
+        <item>Пять сорок восемь.</item>
+        <item>Пять сорок девять.</item>
+        <item>Без десяти шесть.</item>
+        <item>Пять пятьдесят одна.</item>
+        <item>Пять пятьдесят две.</item>
+        <item>Пять пятьдесят три.</item>
+        <item>Пять пятьдесят четыре.</item>
+        <item>Пять пятьдесят пять.</item>
+        <item>Пять пятьдесят шесть.</item>
+        <item>Пять пятьдесят семь.</item>
+        <item>Пять пятьдесят восемь.</item>
+        <item>Вот-вот шесть.</item>
+    </string-array>
+    <string-array name="verbosetime4">
+        <item>Шесть часов ровно.</item>
+        <item>Шесть ноль одна.</item>
+        <item>Шесть ноль две.</item>
+        <item>Шесть ноль три.</item>
+        <item>Шесть ноль четыре.</item>
+        <item>Шесть ноль пять.</item>
+        <item>Шесть ноль шесть.</item>
+        <item>Шесть ноль семь.</item>
+        <item>Шесть ноль восемь.</item>
+        <item>Шесть ноль девять.</item>
+        <item>Десять минут седьмого.</item>
+        <item>Шесть одиннадцать.</item>
+        <item>Шесть двенадцать.</item>
+        <item>Шесть тринадцать.</item>
+        <item>Шесть четырнадцать.</item>
+        <item>Пятнадцать седьмого.</item>
+        <item>Шестнадцать седьмого.</item>
+        <item>Семьнадцать седьмого.</item>
+        <item>Восемьнадцать седьмого.</item>
+        <item>Шесть девятнадцать.</item>
+        <item>Шесть двадцать.</item>
+        <item>Шесть двадцать одна.</item>
+        <item>Шесть двадцать две.</item>
+        <item>Шесть двадцать три.</item>
+        <item>Шесть двадцать четыре.</item>
+        <item>Шесть двадцать пять.</item>
+        <item>Шесть двадцать шесть.</item>
+        <item>Шесть двадцать семь.</item>
+        <item>Шесть двадцать восемь.</item>
+        <item>Шесть двадцать девять.</item>
+        <item>Половина седьмого.</item>
+        <item>Шесть тридцать одна.</item>
+        <item>Шесть тридцать две.</item>
+        <item>Шесть тридцать три.</item>
+        <item>Шесть тридцать четыре.</item>
+        <item>Шесть тридцать пять.</item>
+        <item>Шесть тридцать шесть.</item>
+        <item>Шесть тридцать семь.</item>
+        <item>Шесть тридцать восемь.</item>
+        <item>Шесть тридцать девять.</item>
+        <item>Без двадцати семь.</item>
+        <item>Шесть сорок одна.</item>
+        <item>Шесть сорок две.</item>
+        <item>Шесть сорок три.</item>
+        <item>Шесть сорок четыре.</item>
+        <item>Без пятнадцати семь.</item>
+        <item>Шесть сорок шесть.</item>
+        <item>Шесть сорок семь.</item>
+        <item>Шесть сорок восемь.</item>
+        <item>Шесть сорок девять.</item>
+        <item>Без десяти семь.</item>
+        <item>Шесть пятьдесят одна.</item>
+        <item>Шесть пятьдесят две.</item>
+        <item>Шесть пятьдесят три.</item>
+        <item>Шесть пятьдесят четыре.</item>
+        <item>Шесть пятьдесят пять.</item>
+        <item>Шесть пятьдесят шесть.</item>
+        <item>Шесть пятьдесят семь.</item>
+        <item>Шесть пятьдесят восемь.</item>
+        <item>Вот-вот семь.</item>
+        <item>Семь часов ровно.</item>
+        <item>Семь ноль одна.</item>
+        <item>Семь ноль две.</item>
+        <item>Семь ноль три.</item>
+        <item>Семь ноль четыре.</item>
+        <item>Семь ноль пять.</item>
+        <item>Семь ноль шесть.</item>
+        <item>Семь ноль семь.</item>
+        <item>Семь ноль восемь.</item>
+        <item>Семь ноль девять.</item>
+        <item>Десять минут восьмого.</item>
+        <item>Семь одиннадцать.</item>
+        <item>Семь двенадцать.</item>
+        <item>Семь тринадцать.</item>
+        <item>Семь четырнадцать.</item>
+        <item>Пятнадцать восьмого.</item>
+        <item>Шестнадцать восьмого.</item>
+        <item>Семьнадцать восьмого.</item>
+        <item>Восемьнадцать восьмого.</item>
+        <item>Семь девятнадцать.</item>
+        <item>Семь двадцать.</item>
+        <item>Семь двадцать одна.</item>
+        <item>Семь двадцать две.</item>
+        <item>Семь двадцать три.</item>
+        <item>Семь двадцать четыре.</item>
+        <item>Семь двадцать пять.</item>
+        <item>Семь двадцать шесть.</item>
+        <item>Семь двадцать семь.</item>
+        <item>Семь двадцать восемь.</item>
+        <item>Семь двадцать девять.</item>
+        <item>Половина восьмого.</item>
+        <item>Семь тридцать одна.</item>
+        <item>Семь тридцать две.</item>
+        <item>Семь тридцать три.</item>
+        <item>Семь тридцать четыре.</item>
+        <item>Семь тридцать пять.</item>
+        <item>Семь тридцать шесть.</item>
+        <item>Семь тридцать семь.</item>
+        <item>Семь тридцать восемь.</item>
+        <item>Семь тридцать девять.</item>
+        <item>Без двадцати восемь.</item>
+        <item>Семь сорок одна.</item>
+        <item>Семь сорок две.</item>
+        <item>Семь сорок три.</item>
+        <item>Семь сорок четыре.</item>
+        <item>Без пятнадцати восемь.</item>
+        <item>Семь сорок шесть.</item>
+        <item>Семь сорок семь.</item>
+        <item>Семь сорок восемь.</item>
+        <item>Семь сорок девять.</item>
+        <item>Без десяти восемь.</item>
+        <item>Семь пятьдесят одна.</item>
+        <item>Семь пятьдесят две.</item>
+        <item>Семь пятьдесят три.</item>
+        <item>Семь пятьдесят четыре.</item>
+        <item>Семь пятьдесят пять.</item>
+        <item>Семь пятьдесят шесть.</item>
+        <item>Семь пятьдесят семь.</item>
+        <item>Семь пятьдесят восемь.</item>
+        <item>Вот-вот восемь.</item>
+        <item>Восемь часов ровно.</item>
+        <item>Восемь ноль одна.</item>
+        <item>Восемь ноль две.</item>
+        <item>Восемь ноль три.</item>
+        <item>Восемь ноль четыре.</item>
+        <item>Восемь ноль пять.</item>
+        <item>Восемь ноль шесть.</item>
+        <item>Восемь ноль семь.</item>
+        <item>Восемь ноль восемь.</item>
+        <item>Восемь ноль девять.</item>
+        <item>Десять минут девятого.</item>
+        <item>Восемь одиннадцать.</item>
+        <item>Восемь двенадцать.</item>
+        <item>Восемь тринадцать.</item>
+        <item>Восемь четырнадцать.</item>
+        <item>Пятнадцать девятого.</item>
+        <item>Шестнадцать девятого.</item>
+        <item>Семьнадцать девятого.</item>
+        <item>Восемьнадцать девятого.</item>
+        <item>Восемь девятнадцать.</item>
+        <item>Восемь двадцать.</item>
+        <item>Восемь двадцать одна.</item>
+        <item>Восемь двадцать две.</item>
+        <item>Восемь двадцать три.</item>
+        <item>Восемь двадцать четыре.</item>
+        <item>Восемь двадцать пять.</item>
+        <item>Восемь двадцать шесть.</item>
+        <item>Восемь двадцать семь.</item>
+        <item>Восемь двадцать восемь.</item>
+        <item>Восемь двадцать девять.</item>
+        <item>Половина девятого.</item>
+        <item>Восемь тридцать одна.</item>
+        <item>Восемь тридцать две.</item>
+        <item>Восемь тридцать три.</item>
+        <item>Восемь тридцать четыре.</item>
+        <item>Восемь тридцать пять.</item>
+        <item>Восемь тридцать шесть.</item>
+        <item>Восемь тридцать семь.</item>
+        <item>Восемь тридцать восемь.</item>
+        <item>Восемь тридцать девять.</item>
+        <item>Без двадцати девять.</item>
+        <item>Восемь сорок одна.</item>
+        <item>Восемь сорок две.</item>
+        <item>Восемь сорок три.</item>
+        <item>Восемь сорок четыре.</item>
+        <item>Без пятнадцати девять.</item>
+        <item>Восемь сорок шесть.</item>
+        <item>Восемь сорок семь.</item>
+        <item>Восемь сорок восемь.</item>
+        <item>Восемь сорок девять.</item>
+        <item>Без десяти девять.</item>
+        <item>Восемь пятьдесят одна.</item>
+        <item>Восемь пятьдесят две.</item>
+        <item>Восемь пятьдесят три.</item>
+        <item>Восемь пятьдесят четыре.</item>
+        <item>Восемь пятьдесят пять.</item>
+        <item>Восемь пятьдесят шесть.</item>
+        <item>Восемь пятьдесят семь.</item>
+        <item>Восемь пятьдесят восемь.</item>
+        <item>Вот-вот девять.</item>
+        <item>Девять часов ровно.</item>
+        <item>Девять ноль одна.</item>
+        <item>Девять ноль две.</item>
+        <item>Девять ноль три.</item>
+        <item>Девять ноль четыре.</item>
+        <item>Девять ноль пять.</item>
+        <item>Девять ноль шесть.</item>
+        <item>Девять ноль семь.</item>
+        <item>Девять ноль восемь.</item>
+        <item>Девять ноль девять.</item>
+        <item>Десять минут десятого.</item>
+        <item>Девять одиннадцать.</item>
+        <item>Девять двенадцать.</item>
+        <item>Девять тринадцать.</item>
+        <item>Девять четырнадцать.</item>
+        <item>Пятнадцать десятого.</item>
+        <item>Шестнадцать десятого.</item>
+        <item>Семьнадцать десятого.</item>
+        <item>Восемьнадцать десятого.</item>
+        <item>Девять девятнадцать.</item>
+        <item>Девять двадцать.</item>
+        <item>Девять двадцать одна.</item>
+        <item>Девять двадцать две.</item>
+        <item>Девять двадцать три.</item>
+        <item>Девять двадцать четыре.</item>
+        <item>Девять двадцать пять.</item>
+        <item>Девять двадцать шесть.</item>
+        <item>Девять двадцать семь.</item>
+        <item>Девять двадцать восемь.</item>
+        <item>Девять двадцать девять.</item>
+        <item>Половина десятого.</item>
+        <item>Девять тридцать одна.</item>
+        <item>Девять тридцать две.</item>
+        <item>Девять тридцать три.</item>
+        <item>Девять тридцать четыре.</item>
+        <item>Девять тридцать пять.</item>
+        <item>Девять тридцать шесть.</item>
+        <item>Девять тридцать семь.</item>
+        <item>Девять тридцать восемь.</item>
+        <item>Девять тридцать девять.</item>
+        <item>Без двадцати десять.</item>
+        <item>Девять сорок одна.</item>
+        <item>Девять сорок две.</item>
+        <item>Девять сорок три.</item>
+        <item>Девять сорок четыре.</item>
+        <item>Без пятнадцати десять.</item>
+        <item>Девять сорок шесть.</item>
+        <item>Девять сорок семь.</item>
+        <item>Девять сорок восемь.</item>
+        <item>Девять сорок девять.</item>
+        <item>Без десяти десять.</item>
+        <item>Девять пятьдесят одна.</item>
+        <item>Девять пятьдесят две.</item>
+        <item>Девять пятьдесят три.</item>
+        <item>Девять пятьдесят четыре.</item>
+        <item>Девять пятьдесят пять.</item>
+        <item>Девять пятьдесят шесть.</item>
+        <item>Девять пятьдесят семь.</item>
+        <item>Девять пятьдесят восемь.</item>
+        <item>Вот-вот десять.</item>
+        <item>Десять часов ровно.</item>
+        <item>Десять ноль одна.</item>
+        <item>Десять ноль две.</item>
+        <item>Десять ноль три.</item>
+        <item>Десять ноль четыре.</item>
+        <item>Десять ноль пять.</item>
+        <item>Десять ноль шесть.</item>
+        <item>Десять ноль семь.</item>
+        <item>Десять ноль восемь.</item>
+        <item>Десять ноль девять.</item>
+        <item>Десять минут одиннадцатого.</item>
+        <item>Десять одиннадцать.</item>
+        <item>Десять двенадцать.</item>
+        <item>Десять тринадцать.</item>
+        <item>Десять четырнадцать.</item>
+        <item>Пятнадцать одиннадцатого.</item>
+        <item>Шестнадцать одиннадцатого.</item>
+        <item>Семьнадцать одиннадцатого.</item>
+        <item>Восемьнадцать одиннадцатого.</item>
+        <item>Десять девятнадцать.</item>
+        <item>Десять двадцать.</item>
+        <item>Десять двадцать одна.</item>
+        <item>Десять двадцать две.</item>
+        <item>Десять двадцать три.</item>
+        <item>Десять двадцать четыре.</item>
+        <item>Десять двадцать пять.</item>
+        <item>Десять двадцать шесть.</item>
+        <item>Десять двадцать семь.</item>
+        <item>Десять двадцать восемь.</item>
+        <item>Десять двадцать девять.</item>
+        <item>Половина одиннадцатого.</item>
+        <item>Десять тридцать одна.</item>
+        <item>Десять тридцать две.</item>
+        <item>Десять тридцать три.</item>
+        <item>Десять тридцать четыре.</item>
+        <item>Десять тридцать пять.</item>
+        <item>Десять тридцать шесть.</item>
+        <item>Десять тридцать семь.</item>
+        <item>Десять тридцать восемь.</item>
+        <item>Десять тридцать девять.</item>
+        <item>Без двадцати одиннадцать.</item>
+        <item>Десять сорок одна.</item>
+        <item>Десять сорок две.</item>
+        <item>Десять сорок три.</item>
+        <item>Десять сорок четыре.</item>
+        <item>Без пятнадцати одиннадцать.</item>
+        <item>Десять сорок шесть.</item>
+        <item>Десять сорок семь.</item>
+        <item>Десять сорок восемь.</item>
+        <item>Десять сорок девять.</item>
+        <item>Без десяти одиннадцать.</item>
+        <item>Десять пятьдесят одна.</item>
+        <item>Десять пятьдесят две.</item>
+        <item>Десять пятьдесят три.</item>
+        <item>Десять пятьдесят четыре.</item>
+        <item>Десять пятьдесят пять.</item>
+        <item>Десять пятьдесят шесть.</item>
+        <item>Десять пятьдесят семь.</item>
+        <item>Десять пятьдесят восемь.</item>
+        <item>Вот-вот одиннадцать.</item>
+        <item>Одиннадцать часов.</item>
+        <item>Одиннадцать ноль одна.</item>
+        <item>Одиннадцать ноль две.</item>
+        <item>Одиннадцать ноль три.</item>
+        <item>Одиннадцать ноль четыре.</item>
+        <item>Одиннадцать ноль пять.</item>
+        <item>Одиннадцать ноль шесть.</item>
+        <item>Одиннадцать ноль семь.</item>
+        <item>Одиннадцать ноль восемь.</item>
+        <item>Одиннадцать ноль девять.</item>
+        <item>Десять минут двенадцатого.</item>
+        <item>Одиннадцать одиннадцать.</item>
+        <item>Одиннадцать двенадцать.</item>
+        <item>Одиннадцать тринадцать.</item>
+        <item>Одиннадцать четырнадцать.</item>
+        <item>Пятнадцать двенадцатого.</item>
+        <item>Шестнадцать двенадцатого.</item>
+        <item>Семьнадцать двенадцатого.</item>
+        <item>Восемьнадцать двенадцатого.</item>
+        <item>Одиннадцать девятнадцать.</item>
+        <item>Одиннадцать двадцать.</item>
+        <item>Одиннадцать двадцать одна.</item>
+        <item>Одиннадцать двадцать две.</item>
+        <item>Одиннадцать двадцать три.</item>
+        <item>Одиннадцать двадцать четыре.</item>
+        <item>Одиннадцать двадцать пять.</item>
+        <item>Одиннадцать двадцать шесть.</item>
+        <item>Одиннадцать двадцать семь.</item>
+        <item>Одиннадцать двадцать восемь.</item>
+        <item>Одиннадцать двадцать девять.</item>
+        <item>Половина двенадцатого.</item>
+        <item>Одиннадцать тридцать одна.</item>
+        <item>Одиннадцать тридцать две.</item>
+        <item>Одиннадцать тридцать три.</item>
+        <item>Одиннадцать тридцать четыре.</item>
+        <item>Одиннадцать тридцать пять.</item>
+        <item>Одиннадцать тридцать шесть.</item>
+        <item>Одиннадцать тридцать семь.</item>
+        <item>Одиннадцать тридцать восемь.</item>
+        <item>Одиннадцать тридцать девять.</item>
+        <item>Без двадцати двенадцать.</item>
+        <item>Одиннадцать сорок одна.</item>
+        <item>Одиннадцать сорок две.</item>
+        <item>Одиннадцать сорок три.</item>
+        <item>Одиннадцать сорок четыре.</item>
+        <item>Без пятнадцати двенадцать.</item>
+        <item>Одиннадцать сорок шесть.</item>
+        <item>Одиннадцать сорок семь.</item>
+        <item>Одиннадцать сорок восемь.</item>
+        <item>Одиннадцать сорок девять.</item>
+        <item>Без десяти двенадцать.</item>
+        <item>Одиннадцать пятьдесят одна.</item>
+        <item>Одиннадцать пятьдесят две.</item>
+        <item>Одиннадцать пятьдесят три.</item>
+        <item>Одиннадцать пятьдесят четыре.</item>
+        <item>Одиннадцать пятьдесят пять.</item>
+        <item>Одиннадцать пятьдесят шесть.</item>
+        <item>Одиннадцать пятьдесят семь.</item>
+        <item>Одиннадцать пятьдесят восемь.</item>
+        <item>Вот-вот двенадцать.</item>
+    </string-array>
+    <string-array name="VerboseWeather">
+        <item>Неизвестно</item>
+        <item>Ясно</item>
+        <item>Ясно</item>
+        <item>Переменная облачность</item>
+        <item>Частичная облачность</item>
+        <item>В основном облачно</item>
+        <item>Пыль</item>
+        <item>Туман</item>
+        <item>Легкий туман</item>
+        <item>Сильный туман</item>
+        <item>Облачно</item>
+        <item>Облачность</item>
+        <item>Хмарно</item>
+        <item>Густой туман</item>
+        <item>Небольшой дождь</item>
+        <item>Дожди</item>
+        <item>Мелкий дождь</item>
+        <item>Ливни</item>
+        <item>Шанс дождя</item>
+        <item>Шанс ливня</item>
+        <item>Вероятные дожди</item>
+        <item>Гроза</item>
+        <item>Шанс грозы</item>
+        <item>вероятные грозы</item>
+        <item>Шанс бури</item>
+        <item>Буря</item>
+        <item>Сильный дождь</item>
+        <item>Дождь</item>
+        <item>Порывы</item>
+        <item>Небольшой снег</item>
+        <item>Шанс снега</item>
+        <item>Метелица</item>
+        <item>Вероятная метелица</item>
+        <item>Снег</item>
+        <item>Гололед</item>
+        <item>Гололед или снег</item>
+        <item>Мокрый снег</item>
+        <item>Изморозь</item>
+        <item>Дождь и снег</item>
+        <item>Ветренно</item>
+    </string-array>
+    <string name="_ok">OK</string>
+    <string name="_apply">Применить</string>
+    <string name="_search">Поиск</string>
+    <string name="_yes">Да</string>
+    <string name="_abandon">Отменить</string>
+    <string name="_no">Нет</string>
+    <string name="TTLdefault">Настройки виджета</string>
+    <string name="TTLnoop">Ничего не делать</string>
+    <string name="TTLwrefresh">Обновить погоду</string>
+    <string name="TTLweather">Прогноз</string>
+    <string name="TTLbatt">Использование батареи</string>
+    <string name="TTLalarms">Просмотр будильников</string>
+    <string name="HDRenderingFalse">Старый метод в общем - 16bit bitmap sent directly between processes</string>
+    <string name="HDRendering">Метод отрисовки</string>
+    <string name="HDRenderingTrue">новый - 32bit bitmap cached in SD storage</string>
+    <string name="battChrgAC">Зарядка от сети</string>
+    <string name="battChrgUSB">Зарядка от USB</string>
+    <string name="battChrgWireless">Беспроводная зарядка</string>
+    <string name="battChrgDischarging">Разрядка</string>
+    <string name="_yesRestore">Да, восстановить по умолчанию</string>
+    <string name="_yesDelete">Да, удалить</string>
+</resources>

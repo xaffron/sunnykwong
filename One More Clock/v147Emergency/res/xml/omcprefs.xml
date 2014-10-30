@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="rootPrefs"
+    android:title="@string/clockPreferences" >
+
+    <PreferenceCategory
+        android:key="thisClock"
+        android:title="@string/forThisClock" >
+        <Preference
+            android:enabled="true"
+            android:key="loadThemeFile"
+            android:selectable="true"
+            android:title="@string/widgetTheme" />
+        <Preference
+            android:enabled="true"
+            android:key="tweakTheme"
+            android:selectable="true"
+            android:summary="@string/tweakColorsAndLayers"
+            android:title="@string/personalizeClock" >
+        </Preference>
+
+        <PreferenceScreen
+            android:key="DisplayPrefs"
+            android:title="@string/tapAndDisplayOptions" >
+            <Preference
+                android:key="oTTL"
+                android:summary="@string/nwCornerReserved"
+                android:title="@string/assignTapToLaunch" >
+            </Preference>
+
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:enabled="true"
+                android:key="widget24HrClock"
+                android:selectable="true"
+                android:summary=""
+                android:title="@string/use24HourClock" />
+            <CheckBoxPreference
+                android:enabled="true"
+                android:key="widgetLeadingZero"
+                android:selectable="true"
+                android:summary=""
+                android:title="@string/showLeadingZero" />
+            <CheckBoxPreference
+                android:enabled="true"
+                android:key="mmddDateFormat"
+                android:selectable="true"
+                android:summary=""
+                android:title="@string/mmddDateFormat" />
+            
+            <Preference
+                android:enabled="true"
+                android:key="timeZone"
+                android:selectable="true"
+                android:title="@string/changeTimeZone" >
+            </Preference>
+            
+            <ListPreference
+                android:enabled="true"
+                android:key="clockAdjustment"
+                android:selectable="true"
+                android:title="@string/changeClockAdjustment" 
+                android:entries="@array/clockAdjustment_values"
+                android:entryValues="@array/clockAdjustment_values">
+            </ListPreference>
+            
+            <Preference
+                android:enabled="true"
+                android:key="backupwidget"
+                android:selectable="true"
+                android:title="@string/backupWidget" >
+            </Preference>
+            
+            <Preference
+                android:enabled="true"
+                android:key="restorewidget"
+                android:selectable="true"
+                android:title="@string/restoreWidget" >
+            </Preference>
+            
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="allClocks"
+        android:title="@string/forAllClocks" >
+        <PreferenceScreen
+            android:key="WeatherPrefs"
+            android:title="@string/weatherAndWidgetOptions" >
+            <Preference
+                android:key="updweathernow"
+                android:title="@string/refreshWeatherNow" />
+            <Preference
+                android:key="weather"
+                android:summary="@string/tapToEnable"
+                android:title="@string/weatherFunctionalityDisabled" />
+
+            <ListPreference
+                android:enabled="true"
+                android:entries="@array/wprovider_options"
+                android:entryValues="@array/wprovider_values"
+                android:key="weatherProvider"
+                android:selectable="true"
+                android:summary="@string/wp7timer"
+                android:title="@string/weatherProvider" >
+            </ListPreference>
+            <ListPreference
+                android:enabled="true"
+                android:entries="@array/wdisplay_options"
+                android:entryValues="@array/wdisplay_values"
+                android:key="weatherDisplay"
+                android:selectable="true"
+                android:summary="@string/usingFahrenheit"
+                android:title="@string/weatherDisplayUnits" >
+            </ListPreference>
+            <CheckBoxPreference 
+                android:enabled="true"
+                android:key="weatherMETAR"
+                android:selectable="true"
+                android:summary="@string/usingMETAR"
+                android:title="@string/useMETAR" 
+                android:defaultValue="true" >
+            </CheckBoxPreference>
+            <ListPreference
+                android:enabled="true"
+                android:entries="@array/interval_options"
+                android:entryValues="@array/interval_values"
+                android:key="sUpdateFreq"
+                android:selectable="true"
+                android:summary=""
+                android:title="@string/clockUpdateInterval" >
+            </ListPreference>
+            <ListPreference
+                android:enabled="true"
+                android:entries="@array/winterval_options"
+                android:entryValues="@array/winterval_values"
+                android:key="sWeatherFreq"
+                android:selectable="true"
+                android:summary="@string/refreshWeatherEveryHour"
+                android:title="@string/weatherUpdateInterval" >
+            </ListPreference>
+
+            <CheckBoxPreference
+                android:enabled="true"
+                android:key="widgetPersistence"
+                android:selectable="true"
+                android:summary="@string/keepOMCfromSleeping"
+                android:title="@string/setForegroundMode" />
+<!--            <CheckBoxPreference
+                android:defaultValue="true"
+                android:enabled="false"
+                android:key="widgetEnglishOnly"
+                android:selectable="false"
+                android:summary="@string/uncheckForSome"
+                android:title="@string/forceEnglishDates" />
+-->
+            <Preference
+                android:enabled="true"
+                android:key="appLocale"
+                android:title="@string/changeAppLocale" />
+            <Preference
+                android:enabled="true"
+                android:key="clockLocale"
+                android:title="@string/changeClockLocale" />
+            
+            <PreferenceScreen
+                android:key="widgetPrefs"
+                android:title="@string/toggleWidgetSizes" >
+                <Preference
+                    android:enabled="true"
+                    android:selectable="false"
+                    android:summary="@string/changesToTheseSettings"
+                    android:title="@string/rebootRequired" />
+
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:enabled="true"
+                    android:key="bFiveByFour"
+                    android:selectable="true"
+                    android:summary="@string/forGalaxyNote"
+                    android:title="@string/enable5x4Widget" />
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:enabled="true"
+                    android:key="bFiveByTwo"
+                    android:selectable="true"
+                    android:summary="@string/forGalaxyNote"
+                    android:title="@string/enable5x2Widget" />
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:enabled="true"
+                    android:key="bFiveByOne"
+                    android:selectable="true"
+                    android:summary="@string/forGalaxyNote"
+                    android:title="@string/enable5x1Widget" />
+                <CheckBoxPreference
+                    android:defaultValue="true"
+                    android:enabled="true"
+                    android:key="bFourByFour"
+                    android:selectable="true"
+                    android:title="@string/enable4x4Widget" />
+                <CheckBoxPreference
+                    android:defaultValue="true"
+                    android:enabled="true"
+                    android:key="bFourByTwo"
+                    android:selectable="false"
+                    android:title="@string/enable4x2Widget" />
+                <CheckBoxPreference
+                    android:defaultValue="true"
+                    android:enabled="true"
+                    android:key="bFourByOne"
+                    android:selectable="true"
+                    android:title="@string/enable4x1Widget" />
+                <CheckBoxPreference
+                    android:defaultValue="true"
+                    android:enabled="true"
+                    android:key="bThreeByThree"
+                    android:selectable="true"
+                    android:title="@string/enable3x3Widget" />
+                <CheckBoxPreference
+                    android:defaultValue="true"
+                    android:enabled="true"
+                    android:key="bThreeByOne"
+                    android:selectable="true"
+                    android:title="@string/enable3x1Widget" />
+                <CheckBoxPreference
+                    android:defaultValue="true"
+                    android:enabled="true"
+                    android:key="bTwoByTwo"
+                    android:selectable="true"
+                    android:title="@string/enable2x2Widget" />
+                <CheckBoxPreference
+                    android:defaultValue="true"
+                    android:enabled="true"
+                    android:key="bTwoByOne"
+                    android:selectable="true"
+                    android:title="@string/enable2x1Widget" />
+                <CheckBoxPreference
+                    android:defaultValue="true"
+                    android:enabled="true"
+                    android:key="bOneByThree"
+                    android:selectable="true"
+                    android:title="@string/enable1x3Widget" />
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:enabled="false"
+                    android:key="bSkinner"
+                    android:selectable="true"
+                    android:summary="@string/developmentToolForSkinnersOnly"
+                    android:title="@string/enableThemeTester" />
+            </PreferenceScreen>
+        </PreferenceScreen>
+
+        <Preference
+            android:enabled="true"
+            android:key="clearCache"
+            android:selectable="true"
+            android:title="@string/clearRenderCaches" />
+
+        <PreferenceScreen
+            android:key="Advanced"
+            android:title="@string/troubleshootingOptions" >
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:enabled="true"
+                android:key="HDRendering"
+                android:selectable="true"
+                android:summary=""
+                android:title="@string/HDRendering" />
+        	<ListPreference
+                android:enabled="true"
+                android:entries="@array/clockPriority_options"
+                android:entryValues="@array/clockPriority_values"
+                android:key="clockPriority"
+                android:selectable="true"
+                android:summary="@string/forFineTuning"
+                android:title="@string/clockPriority" >
+            </ListPreference>
+
+            <ListPreference
+                android:enabled="true"
+                android:entries="@array/locationPriority_options"
+                android:entryValues="@array/locationPriority_values"
+                android:key="locationPriority"
+                android:selectable="true"
+                android:summary=""
+                android:title="@string/locationPriority" >
+            </ListPreference>
+
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:enabled="true"
+                android:key="battReporting"
+                android:selectable="true"
+                android:summary=""
+                android:title="@string/battReporting" />
+
+            <Preference
+                android:enabled="true"
+                android:key="weatherDebug"
+                android:selectable="true"
+                android:summary="@string/submitLocationWeatherDebugData"
+                android:title="@string/weatherDiagnostics" />
+            
+            <Preference
+                android:enabled="true"
+                android:key="deleteOMCThemes"
+                android:selectable="true"
+                android:summary="@string/forFixingThemeSelection"
+                android:title="@string/deleteAllThemes" />
+            
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="Credits"
+        android:title="@string/credits" >
+        <Preference
+            android:enabled="true"
+            android:key="emailMe"
+            android:selectable="true"
+            android:summary="@string/donateOrContact"
+            android:title="@string/contactXaffron" >
+        </Preference>
+        <Preference
+            android:enabled="true"
+            android:key="sVersion"
+            android:selectable="false"
+            android:title="1.0.0" />
+        <Preference
+            android:enabled="true"
+            android:key="sTranslator"
+            android:selectable="false"
+            android:title="Sunny Kwong" 
+            android:summary="Language: English(US)"/>
+        <Preference
+            android:enabled="true"
+            android:key="releaseNotes"
+            android:selectable="true"
+            android:title="@string/viewReleaseNotes" />
+		<PreferenceScreen 
+			android:key="widgetCredits"
+		    android:title="@string/viewCredits" >
+		    <PreferenceCategory android:title="@string/team" >
+		        <Preference
+		            android:enabled="true"
+		            android:key="1"
+		            android:selectable="false"
+		            android:summary="@string/sunny"
+		            android:title="@string/programmer" >
+		        </Preference>
+		        <Preference
+		            android:enabled="true"
+		            android:key="testerCredits"
+		            android:selectable="true"
+		            android:summary=""
+		            android:title="@string/testers" >
+		        </Preference>
+		        <Preference
+		            android:enabled="true"
+		            android:key="translatorCredits"
+		            android:selectable="true"
+		            android:summary=""
+		            android:title="@string/translators" >
+		        </Preference>
+		        <Preference
+		            android:summary="@string/specialThanksText"
+		            android:title="@string/specialThanks" >
+		        </Preference>
+		    </PreferenceCategory>
+		    <PreferenceCategory android:title="@string/copyrights" >
+		        <Preference
+		            android:key="Signpost Wallpaper"
+		            android:summary="@string/applicationIconText"
+		            android:title="@string/applicationIcon" >
+		        </Preference>
+		        <Preference
+		            android:key="ColorPickerDialog"
+		            android:summary="@string/codeColorPickerDialogText"
+		            android:title="@string/codeColorPickerDialog" >
+		        </Preference>
+		        <Preference
+		            android:key="svg-android"
+		            android:summary="@string/codeSVGText"
+		            android:title="@string/codeSVG" >
+		        </Preference>
+		        <Preference
+		            android:key="weatherfont"
+		            android:summary="@string/weatherFontText"
+		            android:title="@string/weatherFont" >
+		        </Preference>
+		    </PreferenceCategory>
+		    <PreferenceCategory android:title="@string/sourceCodeTitle" >
+		        <Preference
+		            android:enabled="true"
+		            android:key="99"
+		            android:selectable="false"
+		            android:summary="http://code.google.com/p/sunnykwong/"
+		            android:title="@string/sourceCode" >
+		        </Preference>
+		    </PreferenceCategory>
+		</PreferenceScreen>
+    </PreferenceCategory>
+
+</PreferenceScreen>

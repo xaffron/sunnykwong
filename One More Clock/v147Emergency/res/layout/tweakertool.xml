@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:background="#FF888888"
+        android:gravity="center"
+        android:text="@string/selectALayerForTweaking"
+        android:textColor="#FFFFFFFF" >
+    </TextView>
+
+    <Spinner
+        android:id="@+id/tweakerlayerspinner"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_margin="0dp"
+        android:background="#FF444444"
+        android:padding="0dp"
+        android:textColor="#FFFFFFFF" >
+    </Spinner>
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:background="#FF888888"
+        android:gravity="center"
+        android:text="@string/tweakerDirections"
+        android:textColor="#FFFFFFFF" >
+    </TextView>
+
+    <AbsoluteLayout
+        android:id="@+id/toplevel"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageView
+            android:id="@+id/tweakerbkgd"
+            android:contentDescription="@string/themePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="0dp"
+            android:layout_y="0dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/gray_squares_narrow"
+            android:scaleType="center" >
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/tweakerpreview"
+            android:contentDescription="@string/themePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="0dp"
+            android:layout_y="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="center" >
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/tweakerbounds"
+            android:contentDescription="@string/themePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="0dp"
+            android:layout_y="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="center" >
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/tweakerdragpreview"
+            android:contentDescription="@string/themePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_x="0dp"
+            android:layout_y="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="center" >
+        </ImageView>
+    </AbsoluteLayout>
+
+</LinearLayout>

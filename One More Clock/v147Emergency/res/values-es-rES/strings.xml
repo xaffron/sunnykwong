@@ -1,0 +1,1978 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!-- English -->
+<resources>
+    <string name="languageWord">Lenguaje</string>
+    <string name="languageName">Castellano</string>
+    <string name="translator">Miguel Angel Meseguer</string>
+    <!-- General Buttons -->
+    <string name="nextTip">Siguiente</string>
+    <!-- General Errors -->
+    <string name="sdcardNotDetected">Tarjeta SD no detectada. \nRecuerda desactivar el almacenamiento USB si aún está conectado!</string>
+    <string name="sdcardMissingOrCorrupt">Tarjeta SD ausente o corrupta. \nRecuerda desactivar el almacenamiento USB si aún está conectado!</string>
+    <string name="themeNotFound">Tema no encontrado! Restaurando tema por defecto.</string>
+    <string name="warningConflictPaid">ATENCION!\nConflicto con la versión de pago</string>
+    <string name="warningConflictFree">ATENCION!\nConflicto con la versión gratuita</string>
+    <string name="warningConflictText">La personalización del tema y reloj no funcionará correctamente.\nPor favor desinstala la versión gratuita cuando puedas!</string>
+    <string name="defaultThemeNotRemovable">El tema por defecto no se puede borrar!</string>
+    <!-- Bailout App Dialog -->
+    <string name="thanksForDownloading">¡Gracias por descargar!</string>
+    <string name="widgetDir1">Para empezar, pulsa el botón atrás para volver a la pantalla de inicio. Accede a la lista \'Widgets\' y busca el listado de\u0020</string>
+    <string name="widgetDir2">\u0020. Disfruta!</string>
+    <!-- Useful Tips -->
+    <string name="usefulTip">Consejo útil</string>
+    <string name="doNotShowAgain">No volver a mostrar.</string>
+    <!-- Weather Forecast Screen -->
+    <string name="humiditycondition">Humedad: </string>
+    <string name="windcondition">Viento: </string>
+    <!-- Forecast Screen -->
+    <string name="doubleDash">--</string>
+    <string name="unknown">Desconocido</string>
+    <string name="noaaWeatherCredit">Tiempo y pronóstico actualizado por el National Oceanic and Atmospheric Administration (NOAA).</string>
+    <string name="igWeatherCredit">Tiempo actualizado por Google API.</string>
+    <string name="yrWeatherCredit">Tiempo y pronóstico actualizado por yr.no, gracias al Instituto Noruego de Metereología y el NRK.</string>
+    <string name="seventimerWeatherCredit">7Timer! pronostico por Ye Quanzhi, gracias al Observatorio Astronómico Shanghai, Academia China de Ciencias.</string>
+    <string name="owmWeatherCredit">Tiempo actualizado por openweathermaps.org.</string>
+    <string name="tapForAlternateForecast">Pulsa para predicciones alternativas de AccuWeather®</string>
+    <string name="weatherDisabledOrNoWeatherLoaded">Tiempo desactivado o sin actualizar!</string>
+    <!-- Clock Preferences -->
+    <string name="clockPreferences">Preferencias del Reloj</string>
+    <string name="dashPreferences">\u0020- Preferencias</string>
+    <string name="forThisClock">Para este Reloj:</string>
+    <string name="widgetTheme">Tema Widget</string>
+    <!-- Widget Theme -->
+    <string name="widgetThemeTitle">Desplaza para elegir; Pulsa y mantén para opciones</string>
+    <string name="corruptPlsDelete">[Corrupto - Por favor borra]</string>
+    <string name="reextractBundledClocks">Volver a extraer Pack de relojes</string>
+    <string name="downloadAllClocks">Descargar todos(7MB)</string>
+    <string name="preselected"/>
+    <string name="postselected">\u0020está seleccionado.</string>
+    <!-- Theme Picker Legend -->
+    <string name="legend">Leyenda</string>
+    <string name="batteryLegend">Mostrar carga de batería</string>
+    <string name="weatherLegend">Mostrar Tiempo</string>
+    <string name="bkimageLegend">Incluir imagen de fondo</string>
+    <string name="ltbgLegend">Recomendado para fondos claros</string>
+    <string name="dkbgLegend">Recomendado para fondos oscuros</string>
+    <string name="tweakLegend">Reloj ajustado por el usuario</string>
+    <!-- Theme Skinner Tool (deprecated) -->
+    <string name="reloadThemeCatalog">Recargar catálogo de temas</string>
+    <!-- Theme Import/Unzip -->
+    <string name="themePreview">Vista preliminar de Tema</string>
+    <string name="openingConnection">Abriendo conexión.</string>
+    <string name="beginningDownload">Comenzando descarga.</string>
+    <string name="downloading">Descargando</string>
+    <string name="downloaded">Descargado</string>
+    <string name="of">de</string>
+    <string name="bytes">\u0020bytes</string>
+    <string name="storingFile">Storing file:\u0020</string>
+    <string name="existsOverwriting">existe; sobreescribiendo</string>
+    <string name="createThemeFolder1">Carpeta tema \'</string>
+    <string name="createThemeFolder2">\'creada.</string>
+    <string name="detectedWeatherskin">Detectado Skin de Tiempo</string>
+    <string name="extractingStarterClockPack">Extrayendo pack de relojes por defecto…</string>
+    <string name="starterClockPack">Pack de relojes por defecto</string>
+    <string name="starterClockPackText">Archivos en tu tarjeta SD. La carpeta OMCThemes será sobreescrita.  ¿Estas seguro?\n(Si no pulsa SI)</string>
+    <string name="importComplete">Importación completa!</string>
+    <string name="importAborted">Importación cancelada!</string>
+    <string name="useDownloadInsteadOfPreview">Usa Descarga en vez de Vista Previa para importar un reloj OMC!</string>
+    <string name="importWorksWithOMCFiles">La importacion de reloj funciona con archivos .omc.\n¿Estás abriendo el archivo equivocado?</string>
+    <string name="nothingToExtract">Nada que extraer!</string>
+    <string name="downloadInterrupted">Descarga interrumpida!</string>
+    <string name="poorReceptionArea">¿Tiene problemas de conexión?\nIntétalo de nuevo más tarde.</string>
+    <string name="connectionTimedOut">Límite de tiempo de conexión!</string>
+    <string name="serverNotFound">Servidor no encontrado!</string>
+    <!-- Widget Theme Long Press -->
+    <string name="emailOrDeleteTheme">Enviar por email o borrar tema</string>
+    <string name="emailTheme">Enviar por email</string>
+    <string name="emailThemeText">Comprime este tema y envía por email a ti mismo o a un amigo.\nQuieres hacer esto?</string>
+    <string name="emailThemeConfirm1">Email\u0020</string>
+    <string name="emailThemeConfirm2">\u0020?</string>
+    <string name="emailThemeChooser">Comprimiendo tus archivos de tema para enviar.</string>
+    <string name="deleteTheme">Borrar tema</string>
+    <string name="deleteThemeConfirm1">Borrar\u0020</string>
+    <string name="deleteThemeConfirm2">\u0020de tu tarjeta SD?</string>
+    <string name="deleteThemeConfirm3">Deberas de descargar/extraer el tema de nuevo para poder usarlo. Estás seguro?</string>
+    <string name="submitThemeToDev">Enviar tema al desarrollador</string>
+    <string name="submitThemeToDevConfirm1">Enviar\u0020</string>
+    <string name="submitThemeToDevConfirm2">\u0020a Xaffron como un nuevo tema?</string>
+    <string name="areYouAbsolutelySure">Estas seguro?</string>
+    <string name="areYouAbsolutelySureText">Este tema no tiene la etiqueta de \'Modificado\'; parece ser un tema por defecto.\n</string>
+    <!-- Personalize Clock -->
+    <string name="personalizeClock">Personalizar el Reloj</string>
+    <string name="tweakColorsAndLayers">Modificar Colores y Capas</string>
+    <!-- Personalize Clock subscreen -->
+    <string name="selectALayerForTweaking">Selecciona una Capa para modificar</string>
+    <string name="tweakerDirections">Arrastrar: Mover    Menú: Modificar    Atrás: Cancelar</string>
+    <!-- Personalize Clock Menu -->
+    <string name="toggleVisibility">Cambiar Visibilidad</string>
+    <string name="color1">Color 1</string>
+    <string name="color2">Color 2</string>
+    <!-- Personalize Clock Back -->
+    <string name="keepChanges">¿Aplicar cambios?</string>
+    <!-- Tap & Display Options -->
+    <string name="tapAndDisplayOptions">Acciones y Opciones de Vista</string>
+    <string name="assignTapToLaunch">Asignar acción al pulsar</string>
+    <string name="nwCornerReserved">Arriba izquierda reservada para preferencias del Widget.</string>
+    <!-- TTL Popup -->
+    <string name="areaToCustomize">Área a personalizar:</string>
+    <string name="chooseAction">Elige una acción</string>
+    <string name="openOptionsDefault">Abrir opciones (por defecto)</string>
+    <string name="doNothing">No hacer nada</string>
+    <string name="refreshWeather">Refresh Weather Now</string>
+    <string name="weatherForecast">Predicción del Tiempo</string>
+    <string name="viewAlarms">Ver alarmas (Experimental)</string>
+    <string name="battUsage">View Battery Usage</string>
+    <string name="otherActivity">Otra actividad…</string>
+    <string name="otherActivityTTL">Actividad personalizada</string>
+    <string name="use24HourClock">Usar Reloj 24h</string>
+    <string name="use24HourTrue">23:59</string>
+    <string name="use24HourFalse">11:59pm</string>
+    <string name="showLeadingZero">Mostrar el cero delante</string>
+    <string name="showLeadingZTrue">04:23</string>
+    <string name="showLeadingZFalse">4:23</string>
+    <string name="mmddDateFormat">M/D/Y Date Format</string>
+    <string name="mmddDateFormatTrue">12/31/2012</string>
+    <string name="mmddDateFormatFalse">31/12/2012</string>
+    <string name="changeTimeZone">Cambiar zona horaria</string>
+    <string name="followingDeviceTimeZone">(Usar la zona horaria del dispositivo)</string>
+    <!-- TTL Sales Pitch -->
+    <string name="thinkOfThePossibilities">Piensa en las posibilidades!</string>
+    <string name="prePaidTTL">La versión de pago te deja\u0020</string>
+    <string name="postPaidTTL">\u0020lanzar cualquier actividad que quieras. Además podrás tener widgets de tamaño 4x2, 4x1, 3x1 y 2x1.\nPiénsatelo para poder tener esos widgets también!</string>
+    <string name="takeMeToPaid">Llévame a la versión de pago!</string>
+    <!-- Weather & Widget Options -->
+    <string name="forAllClocks">Para todos los relojes:</string>
+    <string name="weatherAndWidgetOptions">Tiempo y Opciones de Widget</string>
+    <string name="clearRenderCaches">Limpiar cache de renders</string>
+    <string name="cachesCleared">Caches eliminados</string>
+    <!-- Weather & Widget Subscreen -->
+    <string name="refreshWeatherNow">Actualizar Tiempo ahora</string>
+    <string name="operationTimedOut">Operation timed out!</string>
+    <string name="requestingLocation">Requesting Location</string>
+    <string name="pleaseWait">Please wait…</string>
+    <string name="inProgress">In Progress…</string>
+    <string name="usingFixedCoordinates">Using fixed coordinates</string>
+    <string name="gotGPSLock">Got GPS lock.  Reverse-Geocoding…</string>
+    <string name="gotNetworkLock">Got WiFi/Network lock.  Reverse-Geocoding…</string>
+    <string name="reusingCachedLocation">Reusing recent location.  Reverse-Geocoding…</string>
+    <string name="requestingWeather">Requesting Weather…</string>
+    <string name="weatherReceived">Weather Received.  Processing…</string>
+    <string name="weatherSuccess">Weather successfully updated.</string>
+    <string name="weatherFailure">Weather update unsuccessful.</string>
+    <string name="location">Localización:\u0020</string>
+    <string name="fixed">\u0020(Fijado)</string>
+    <string name="detected">\u0020(Detectado)</string>
+    <string name="lastTry">Última vez:\u0020</string>
+    <string name="manualRefreshOnly">\u0020(Actualización manula solamente)</string>
+    <string name="nextRefresh">\u0020Próxima actualización:\u0020</string>
+    <string name="lastRefresh">Last Refresh:\u0020</string>
+    <string name="nextRequest">\u0020Next Request:\u0020</string>
+    <string name="weatherLocation">Localización para Tiempo:</string>
+    <string name="disableLocationAndWeather">Desactivar localización y Tiempo</string>
+    <string name="followDevice">Según dispositivo (defecto)</string>
+    <string name="setFixedLocation">Usar localización fijada</string>
+    <string name="weatherFunctionalityDisabled">Tiempo desactivado</string>
+    <string name="tapToEnable">Pulsa para activar</string>
+    <!-- Fixed Locn subscreen -->
+    <string name="enterCityAndStateCountry">Introduce la ciudad/estado</string>
+    <string name="locationExamples">E.j. Murcia SPA</string>
+    <string name="locationError">Sin resultados.\nInténtalo de nuevo.</string>
+    <string name="networkError">Sin conexión.\nInténtalo de nuevo.</string>
+    <string name="unknownError">Error desconocido.\nInténtalo de nuevo.</string>
+    <string name="weatherProvider">Proveedor Tiempo</string>
+    <string-array name="wprovider_options">
+        <item>Automatic (por defecto)</item>
+        <item>7Timer.com</item>
+        <item>NOAA (EEUU sólo)</item>
+        <item>Yr.no</item>
+        <item>Google Weather (antiguo/no funciona)</item>
+    </string-array>
+    <string name="wpauto">Use best provider for location</string>
+    <string name="wp7timer">Usando 7Timer.com</string>
+    <string name="wpnoaa">Usando NOAA</string>
+    <string name="wpowm">Usando OpenWeatherMap.org</string>
+    <string name="wpyr">Usando yr.no</string>
+    <string name="wpig">Usando iGoogle Weather</string>
+    <string name="weatherDisplayUnits">Unidades de Tiempo</string>
+    <string-array name="wdisplay_options">
+        <item>Usar Fahrenheit (por defecto)</item>
+        <item>Usar Celsius</item>
+    </string-array>
+    <string name="usingFahrenheit">Usando Fahrenheit</string>
+    <string name="usingCelsius">Usando Celsius</string>
+    <string name="clockUpdateInterval">Intervalo de actualizacion de Reloj</string>
+    <string-array name="interval_options">
+        <item>1 sec (Consumo Extremo)</item>
+        <item>10 sec (Consumo Alto)</item>
+        <item>15 sec</item>
+        <item>20 sec</item>
+        <item>30 sec (por defecto)</item>
+        <item>60 sec (Consumo Bajo)</item>
+    </string-array>
+    <string name="redrawEvery">Redibujar cada\u0020</string>
+    <string name="seconds">\u0020segundos.</string>
+    <string name="weatherUpdateInterval">Intervalo actualización tiempo</string>
+    <string-array name="winterval_options">
+        <item>Cada hora (por defecto)</item>
+        <item>Cada 4 Hrs</item>
+        <item>Cada 8 Hrs</item>
+        <item>Nunca (Sólo Manual)</item>
+    </string-array>
+    <string name="manualWeatherUpdatesOnly">Sólo actualizaciones de tiempo manual</string>
+    <string name="refreshWeatherEveryHour">Actualizar tiempo cada hora</string>
+    <string name="refreshWeatherEvery4Hours">Actualizar tiempo cada 4 horas</string>
+    <string name="refreshWeatherEvery8Hours">Actualizar tiempo cada 8 horas</string>
+    <string name="setForegroundMode">Fijar modo primer plano</string>
+    <string name="keepOMCfromSleeping">Mantener OMC activo en suspensión\n(por el coste de una notificación persistente)</string>
+    <string name="forceEnglishDates">Forzar fecha en inglés</string>
+    <string name="uncheckForSome">Desactivar para no ingleses.(Experimental)</string>
+    <string name="changeAppLocale">Lenguaje</string>
+    <string name="changeClockLocale">Lenguaje del Reloj</string>
+    <string name="toggleWidgetSizes">Tamaños Widget activados</string>
+    <string name="rebootRequired">Reinicio Requerido</string>
+    <string name="changesToTheseSettings">Cambiar estos ajustes requerirá reinicar tu teléfono para que se apliquen.</string>
+    <string name="enable5x4Widget">Activar (5x4) Widget</string>
+    <string name="enable5x2Widget">Activar (5x2) Widget</string>
+    <string name="enable5x1Widget">Activar (5x1) Widget</string>
+    <string name="enable4x4Widget">Activar (4x4) Widget</string>
+    <string name="enable4x2Widget">Activar (4x2) Widget</string>
+    <string name="enable4x1Widget">Activar (4x1) Widget</string>
+    <string name="enable3x3Widget">Activar (3x3) Widget</string>
+    <string name="enable3x1Widget">Activar (3x1) Widget</string>
+    <string name="enable2x2Widget">Activar (2x2) Widget</string>
+    <string name="enable2x1Widget">Activar (2x1) Widget</string>
+    <string name="enable1x3Widget">Activar (1x3) Widget</string>
+    <string name="forGalaxyNote">Para Galaxy Note o similar</string>
+    <string name="enableThemeTester">Activar Testeador de Temas</string>
+    <string name="developmentToolForSkinnersOnly">Herramienta de Desarrollo sólo para skinners</string>
+    <!-- Widget Sizes Sales Pitch -->
+    <string name="areThereOtherWidgetSizes">Existen otros tamaños de widget?</string>
+    <string name="actuallyThePaidVersion">Actualmente la versión de pago ofrece widgets de 5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 y 1x3.\nConsidera obtener la versión de pago para obtener esos tamaños!</string>
+    <!-- Troubleshooting Options -->
+    <string name="troubleshootingOptions">Opciones Avanzadas</string>
+    <!-- Troubleshooting Options -->
+    <string name="clockPriority">Prioridad del Reloj</string>
+    <string name="forFineTuning">Para ajuste fino de respuesta</string>
+    <string-array name="clockPriority_options">
+        <item>Muy Alto</item>
+        <item>Alto</item>
+        <item>Medio</item>
+        <item>Bajo (Por defecto)</item>
+        <item>Muy bajo</item>
+    </string-array>
+    <string-array name="clockPriority_legend">
+        <item>Redibujos agresivos cada tick (No recomendado).  Estas seguro?</item>
+        <item>Redibujos agresivos cada minuto, independientemente de la pantalla o el estado del launcher.  Estas seguro?</item>
+        <item>Bajos redibujos cada minuto cuando la pantalla esta activa, incluso cuando el launcher está en segundo plano.  Estas seguro?</item>
+        <item>Bajos redibujos cada minuto cuando el launcher o la pantalla están inactivas.  Estas seguro?</item>
+        <item>No hay redibujos cuando el launcher o la pantalla están inactivas.  Estas seguro?</item>
+    </string-array>
+    <string name="locationPriority">Location Priority</string>
+    <string-array name="locationPriority_options">
+        <item>Strict - Fine Only</item>
+        <item>Strict - Fine/Coarse</item>
+        <item>Medium - Fine Only</item>
+        <item>Medium - Fine/Coarse</item>
+        <item>Flexible (Default)</item>
+    </string-array>
+    <string-array name="locationPriority_legend">
+        <item>Use only GPS location fixes less than 2 hours old.  WARNING: Weather updates may stop if you are indoors.  Are you sure?</item>
+        <item>Use network/GPS fixes less than 2 hours old.  WARNING: Weather updates may stop if you are indoors.  Are you sure?</item>
+        <item>Use only GPS location fixes less than 10 hours old.  Weather updates may stop if you are indoors for more than 10 hours.  Are you sure?</item>
+        <item>Use any network or GPS location less than 10 hours old.  Weather updates may stop if you are indoors for more than 10 hours.  Are you sure?</item>
+        <item>Use the most recent network or GPS location, regardless of staleness.  Weather accuracy will depend on location accuracy and staleness.  Are you sure?</item>
+    </string-array>
+    <string name="weatherDiagnostics">Diagnóstico de Tiempo</string>
+    <string name="submitLocationWeatherDebugData">Enviar datos debug de localización/tiempo</string>
+    <string name="deleteAllThemes">Borrar todos los temas</string>
+    <string name="forFixingThemeSelection">Para arreglar la sección de selección de tema si la aplicación falla</string>
+    <string name="deleteAllThemesFromSD">Borrar todos los temas de tu tarjeta SD/Memoria?</string>
+    <string name="omcThemesFolderDeleted">OMCThemes carpeta borrada</string>
+    <string name="defaultClockPackRestored">Pack de relojes por defecto restaurado</string>
+    <!-- Contact Xaffron -->
+    <string name="contactXaffron">Contactar con Xaffron</string>
+    <string name="donateOrContact">Donar o Contactar con el autor para ayuda</string>
+    <string name="contactXaffronForIssues">Contactar con Xaffron para problemas, ayuda y soporte</string>
+    <string name="email">Email</string>
+    <string name="donate">Donar</string>
+    <string name="facebook">Facebook</string>
+    <!-- Credits -->
+    <string name="credits">Créditos</string>
+    <string name="version">Versión</string>
+    <string name="free">Free</string>
+    <string name="tapToGetFull">Púlsame para obtener la versión completa!</string>
+    <string name="thanksForYourSupport">Thanks for your support!</string>
+    <string name="viewCredits">Ver Créditos</string>
+    <!-- Credits subscreen -->
+    <string name="team">Equipo</string>
+    <string name="programmer">Programador</string>
+    <string name="sunny">Sunny Kwong</string>
+    <string name="testers">Testers</string>
+    <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M. Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann</string>
+    <string name="specialThanks">Agradecimientos especiales</string>
+    <string name="specialThanksText">Zehro por marcar el camino\nre: in-sync clock widgets w//o notificaciones.\nStefan Pledl por ayudar con la localización.</string>
+    <string name="copyrights">Copyrights y Licencias</string>
+    <string name="applicationIcon">Icono aplicación: Signpost por Maroubal2</string>
+    <string name="applicationIconText">Adaptado por Maroubal2\'s excelente foto convertida en Ubuntu wallpaper.\nCC BY-SA 2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/</string>
+    <string name="codeColorPickerDialog">Código: ColorPickerDialog</string>
+    <string name="codeColorPickerDialogText">Copiado de repositorio CyanogenMod.</string>
+    <string name="codeSVG">Código: svg-android</string>
+    <string name="codeSVGText">Soporte SVG por librería sag-android (Apache License).\nhttp:////code.google.com//p//svg-android//</string>
+    <string name="weatherFont">Fuente: Weatherfont</string>
+    <string name="weatherFontText">Weatherfont está registrado por Jonathan Macagba, disponible por $5 USD en jonathan.macagba@gmail.com</string>
+    <string name="sourceCodeTitle">Código fuente</string>
+    <string name="sourceCode">Código fuente disponible en</string>
+    <string-array name="verbosedow">
+        <item>Domingo</item>
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miércoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+        <item>Sábado</item>
+    </string-array>
+    <string-array name="shortdow">
+        <item>Dom</item>
+        <item>Lun</item>
+        <item>Mar</item>
+        <item>Mie</item>
+        <item>Jue</item>
+        <item>Vie</item>
+        <item>Sab</item>
+    </string-array>
+    <string-array name="verbosemonth">
+        <item>Enero</item>
+        <item>Febrero</item>
+        <item>Marzo</item>
+        <item>Abril</item>
+        <item>Mayo</item>
+        <item>Junio</item>
+        <item>Julio</item>
+        <item>Agosto</item>
+        <item>Septiembre</item>
+        <item>Octubre</item>
+        <item>Noviembre</item>
+        <item>Diciembre</item>
+    </string-array>
+    <string-array name="shortmonth">
+        <item>Ene</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Abr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Ago</item>
+        <item>Sep</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dic</item>
+    </string-array>
+    <string-array name="WordNumbers">
+        <item>cero</item>
+        <item>uno</item>
+        <item>Dos</item>
+        <item>Tres</item>
+        <item>Cuatro</item>
+        <item>Cinco</item>
+        <item>Seis</item>
+        <item>Siete</item>
+        <item>Ocho</item>
+        <item>Nueve</item>
+        <item>Diez</item>
+        <item>Once</item>
+        <item>Doce</item>
+        <item>Trece</item>
+        <item>Catorce</item>
+        <item>Quince</item>
+        <item>Dieciseis</item>
+        <item>Diecisiete</item>
+        <item>Dieciocho</item>
+        <item>Diecinueve</item>
+        <item>Veinte</item>
+        <item>Veintiuno</item>
+        <item>Veintidos</item>
+        <item>Veintitres</item>
+        <item>Veinticuatro</item>
+        <item>Veinticinco</item>
+        <item>Veintiseis</item>
+        <item>Veintisiete</item>
+        <item>Veintiocho</item>
+        <item>Veintinueve</item>
+        <item>Treinta</item>
+        <item>Treinta y uno</item>
+        <item>Treinta y dos</item>
+        <item>Treinta y tres</item>
+        <item>Treinta y cuatro</item>
+        <item>Treinta y cinco</item>
+        <item>Treinta y seis</item>
+        <item>Treinta y siete</item>
+        <item>Treinta y ocho</item>
+        <item>Treinta y nueve</item>
+        <item>Cuarenta</item>
+        <item>Cuarenta y uno</item>
+        <item>Cuarenta y dos</item>
+        <item>Cuarenta y tres</item>
+        <item>Cuarenta y cuatro</item>
+        <item>Cuarenta y cinco</item>
+        <item>Cuarenta y seis</item>
+        <item>Cuarenta y siete</item>
+        <item>Cuarenta y ocho</item>
+        <item>Cuarenta y nueve</item>
+        <item>Cincuenta</item>
+        <item>Cincuenta y uno</item>
+        <item>Cincuenta y dos</item>
+        <item>Cincuenta y tres</item>
+        <item>Cincuenta y cuatro</item>
+        <item>Cincuenta y cinco</item>
+        <item>Cincuenta y seis</item>
+        <item>Cincuenta y siete</item>
+        <item>Cincuenta y ocho</item>
+        <item>Cincuenta y nueve</item>
+        <item>Sesenta</item>
+        <item>Sesenta y uno</item>
+        <item>Sesenta y dos</item>
+        <item>Sesenta y tres</item>
+        <item>Sesenta y cuatro</item>
+        <item>Sesenta y cinco</item>
+        <item>Sesenta y seis</item>
+        <item>Sesenta y siete</item>
+        <item>Sesenta y ocho</item>
+        <item>Sesenta y nueve</item>
+        <item>Setenta</item>
+        <item>Setenta y uno</item>
+        <item>Setenta y dos</item>
+        <item>Setenta y tres</item>
+        <item>Setenta y cuatro</item>
+        <item>Setenta y cinco</item>
+        <item>Setenta y seis</item>
+        <item>Setenta y siete</item>
+        <item>Setenta y ocho</item>
+        <item>Setenta y nueve</item>
+        <item>Ochenta</item>
+        <item>Ochenta y uno</item>
+        <item>Ochenta y dos</item>
+        <item>Ochenta y tres</item>
+        <item>Ochenta y cuatro</item>
+        <item>Ochenta y cinco</item>
+        <item>Ochenta y seis</item>
+        <item>Ochenta y siete</item>
+        <item>Ochenta y ocho</item>
+        <item>Ochenta y nueve</item>
+        <item>Noventa</item>
+        <item>Noventa y uno</item>
+        <item>Noventa y dos</item>
+        <item>Noventa y tres</item>
+        <item>Noventa y cuatro</item>
+        <item>Noventa y cinco</item>
+        <item>Noventa y seis</item>
+        <item>Noventa y siete</item>
+        <item>Noventa y ocho</item>
+        <item>Noventa y nueve</item>
+    </string-array>
+    <string-array name="verbosetime1">
+        <item>Doce en punto</item>
+        <item>Doce y uno</item>
+        <item>Doce y dos</item>
+        <item>Doce y tres</item>
+        <item>Doce y cuatro</item>
+        <item>Doce y cinco</item>
+        <item>Doce y seis</item>
+        <item>Doce y siete</item>
+        <item>Doce y ocho</item>
+        <item>Doce y nueve</item>
+        <item>Doce y diez</item>
+        <item>Doce y once</item>
+        <item>Doce y doce</item>
+        <item>Doce y trece</item>
+        <item>Doce y catorce</item>
+        <item>Doce y cuarto</item>
+        <item>Doce y dieciseis</item>
+        <item>Doce y diecisiete</item>
+        <item>Doce y dieciocho</item>
+        <item>Doce y diecinueve</item>
+        <item>Doce y veinte</item>
+        <item>Doce y veintiuno</item>
+        <item>Doce y veintidos</item>
+        <item>Doce y veintitres</item>
+        <item>Doce y veinticuatro</item>
+        <item>Doce y veinticinco</item>
+        <item>Doce y veintiseis</item>
+        <item>Doce y veintisiete</item>
+        <item>Doce y veintiocho</item>
+        <item>Doce y veintinueve</item>
+        <item>Doce y media</item>
+        <item>Doce y treinta y uno</item>
+        <item>Doce y treinta y dos</item>
+        <item>Doce y treinta y tres</item>
+        <item>Doce y treinta y cuatro</item>
+        <item>Doce y treinta y cinco</item>
+        <item>Doce y treinta y seis</item>
+        <item>Doce y treinta y siete</item>
+        <item>Doce y treinta y ocho</item>
+        <item>Doce y treinta y nueve</item>
+        <item>Doce y cuarenta</item>
+        <item>Doce y cuarenta y uno</item>
+        <item>Doce y cuarenta y dos</item>
+        <item>Doce y cuarenta y tres</item>
+        <item>Doce y cuarenta y cuatro</item>
+        <item>Doce y menos cuarto</item>
+        <item>Doce y cuarenta y seis</item>
+        <item>Doce y cuarenta y siete</item>
+        <item>Doce y cuarenta y ocho</item>
+        <item>Doce y cuarenta y nueve</item>
+        <item>Doce y cincuenta</item>
+        <item>Doce y cincuenta y uno</item>
+        <item>Doce y cincuenta y dos</item>
+        <item>Doce y cincuenta y tres</item>
+        <item>Doce y cincuenta y cuatro</item>
+        <item>Doce y cincuenta y cinco</item>
+        <item>Doce y cincuenta y seis</item>
+        <item>Doce y cincuenta y siete</item>
+        <item>Doce y cincuenta y ocho</item>
+        <item>Doce y cincuenta y nueve</item>
+        <item>Una en punto</item>
+        <item>Una y uno</item>
+        <item>Una y dos</item>
+        <item>Una y tres</item>
+        <item>Una y cuatro</item>
+        <item>Una y cinco</item>
+        <item>Una y seis</item>
+        <item>Una y siete</item>
+        <item>Una y ocho</item>
+        <item>Una y nueve</item>
+        <item>Una y diez</item>
+        <item>Una y once</item>
+        <item>Una y doce</item>
+        <item>Una y trece</item>
+        <item>Una y catorce</item>
+        <item>Una y cuarto</item>
+        <item>Una y dieciseis</item>
+        <item>Una y diecisiete</item>
+        <item>Una y dieciocho</item>
+        <item>Una y diecinueve</item>
+        <item>Una y veinte</item>
+        <item>Una y veintiuno</item>
+        <item>Una y veintidos</item>
+        <item>Una y veintitres</item>
+        <item>Una y veinticuatro</item>
+        <item>Una y veinticinco</item>
+        <item>Una y veintiseis</item>
+        <item>Una y veintisiete</item>
+        <item>Una y veintiocho</item>
+        <item>Una y veintinueve</item>
+        <item>Una y media</item>
+        <item>Una y treinta y uno</item>
+        <item>Una y treinta y dos</item>
+        <item>Una y treinta y tres</item>
+        <item>Una y treinta y cuatro</item>
+        <item>Una y treinta y cinco</item>
+        <item>Una y treinta y seis</item>
+        <item>Una y treinta y siete</item>
+        <item>Una y treinta y ocho</item>
+        <item>Una y treinta y nueve</item>
+        <item>Una y cuarenta</item>
+        <item>Una y cuarenta y uno</item>
+        <item>Una y cuarenta y dos</item>
+        <item>Una y cuarenta y tres</item>
+        <item>Una y cuarenta y cuatro</item>
+        <item>Una y menos cuarto</item>
+        <item>Una y cuarenta y seis</item>
+        <item>Una y cuarenta y siete</item>
+        <item>Una y cuarenta y ocho</item>
+        <item>Una y cuarenta y nueve</item>
+        <item>Una y cincuenta</item>
+        <item>Una y cincuenta y uno</item>
+        <item>Una y cincuenta y dos</item>
+        <item>Una y cincuenta y tres</item>
+        <item>Una y cincuenta y cuatro</item>
+        <item>Una y cincuenta y cinco</item>
+        <item>Una y cincuenta y seis</item>
+        <item>Una y cincuenta y siete</item>
+        <item>Una y cincuenta y ocho</item>
+        <item>Una y cincuenta y nueve</item>
+        <item>Dos en punto</item>
+        <item>Dos y uno</item>
+        <item>Dos y dos</item>
+        <item>Dos y tres</item>
+        <item>Dos y cuatro</item>
+        <item>Dos y cinco</item>
+        <item>Dos y seis</item>
+        <item>Dos y siete</item>
+        <item>Dos y ocho</item>
+        <item>Dos y nueve</item>
+        <item>Dos y diez</item>
+        <item>Dos y once</item>
+        <item>Dos y doce</item>
+        <item>Dos y trece</item>
+        <item>Dos y catorce</item>
+        <item>Dos y cuarto</item>
+        <item>Dos y dieciseis</item>
+        <item>Dos y diecisiete</item>
+        <item>Dos y dieciocho</item>
+        <item>Dos y diecinueve</item>
+        <item>Dos y veinte</item>
+        <item>Dos y veintiuno</item>
+        <item>Dos y veintidos</item>
+        <item>Dos y veintitres</item>
+        <item>Dos y veinticuatro</item>
+        <item>Dos y veinticinco</item>
+        <item>Dos y veintiseis</item>
+        <item>Dos y veintisiete</item>
+        <item>Dos y veintiocho</item>
+        <item>Dos y veintinueve</item>
+        <item>Dos y media</item>
+        <item>Dos y treinta y uno</item>
+        <item>Dos y treinta y dos</item>
+        <item>Dos y treinta y tres</item>
+        <item>Dos y treinta y cuatro</item>
+        <item>Dos y treinta y cinco</item>
+        <item>Dos y treinta y seis</item>
+        <item>Dos y treinta y siete</item>
+        <item>Dos y treinta y ocho</item>
+        <item>Dos y treinta y nueve</item>
+        <item>Dos y cuarenta</item>
+        <item>Dos y cuarenta y uno</item>
+        <item>Dos y cuarenta y dos</item>
+        <item>Dos y cuarenta y tres</item>
+        <item>Dos y cuarenta y cuatro</item>
+        <item>Dos y menos cuarto</item>
+        <item>Dos y cuarenta y seis</item>
+        <item>Dos y cuarenta y siete</item>
+        <item>Dos y cuarenta y ocho</item>
+        <item>Dos y cuarenta y nueve</item>
+        <item>Dos y cincuenta</item>
+        <item>Dos y cincuenta y uno</item>
+        <item>Dos y cincuenta y dos</item>
+        <item>Dos y cincuenta y tres</item>
+        <item>Dos y cincuenta y cuatro</item>
+        <item>Dos y cincuenta y cinco</item>
+        <item>Dos y cincuenta y seis</item>
+        <item>Dos y cincuenta y siete</item>
+        <item>Dos y cincuenta y ocho</item>
+        <item>Dos y cincuenta y nueve</item>
+        <item>Tres en punto</item>
+        <item>Tres y uno</item>
+        <item>Tres y dos</item>
+        <item>Tres y tres</item>
+        <item>Tres y cuatro</item>
+        <item>Tres y cinco</item>
+        <item>Tres y seis</item>
+        <item>Tres y siete</item>
+        <item>Tres y ocho</item>
+        <item>Tres y nueve</item>
+        <item>Tres y diez</item>
+        <item>Tres y once</item>
+        <item>Tres y doce</item>
+        <item>Tres y trece</item>
+        <item>Tres y catorce</item>
+        <item>Tres y cuarto</item>
+        <item>Tres y dieciseis</item>
+        <item>Tres y diecisiete</item>
+        <item>Tres y dieciocho</item>
+        <item>Tres y diecinueve</item>
+        <item>Tres y veinte</item>
+        <item>Tres y veintiuno</item>
+        <item>Tres y veintidos</item>
+        <item>Tres y veintitres</item>
+        <item>Tres y veinticuatro</item>
+        <item>Tres y veinticinco</item>
+        <item>Tres y veintiseis</item>
+        <item>Tres y veintisiete</item>
+        <item>Tres y veintiocho</item>
+        <item>Tres y veintinueve</item>
+        <item>Tres y media</item>
+        <item>Tres y treinta y uno</item>
+        <item>Tres y treinta y dos</item>
+        <item>Tres y treinta y tres</item>
+        <item>Tres y treinta y cuatro</item>
+        <item>Tres y treinta y cinco</item>
+        <item>Tres y treinta y seis</item>
+        <item>Tres y treinta y siete</item>
+        <item>Tres y treinta y ocho</item>
+        <item>Tres y treinta y nueve</item>
+        <item>Tres y cuarenta</item>
+        <item>Tres y cuarenta y uno</item>
+        <item>Tres y cuarenta y dos</item>
+        <item>Tres y cuarenta y tres</item>
+        <item>Tres y cuarenta y cuatro</item>
+        <item>Tres y menos cuarto</item>
+        <item>Tres y cuarenta y seis</item>
+        <item>Tres y cuarenta y siete</item>
+        <item>Tres y cuarenta y ocho</item>
+        <item>Tres y cuarenta y nueve</item>
+        <item>Tres y cincuenta</item>
+        <item>Tres y cincuenta y uno</item>
+        <item>Tres y cincuenta y dos</item>
+        <item>Tres y cincuenta y tres</item>
+        <item>Tres y cincuenta y cuatro</item>
+        <item>Tres y cincuenta y cinco</item>
+        <item>Tres y cincuenta y seis</item>
+        <item>Tres y cincuenta y siete</item>
+        <item>Tres y cincuenta y ocho</item>
+        <item>Tres y cincuenta y nueve</item>
+        <item>Cuatro en punto</item>
+        <item>Cuatro y uno</item>
+        <item>Cuatro y dos</item>
+        <item>Cuatro y tres</item>
+        <item>Cuatro y cuatro</item>
+        <item>Cuatro y cinco</item>
+        <item>Cuatro y seis</item>
+        <item>Cuatro y siete</item>
+        <item>Cuatro y ocho</item>
+        <item>Cuatro y nueve</item>
+        <item>Cuatro y diez</item>
+        <item>Cuatro y once</item>
+        <item>Cuatro y doce</item>
+        <item>Cuatro y trece</item>
+        <item>Cuatro y catorce</item>
+        <item>Cuatro y cuarto</item>
+        <item>Cuatro y dieciseis</item>
+        <item>Cuatro y diecisiete</item>
+        <item>Cuatro y dieciocho</item>
+        <item>Cuatro y diecinueve</item>
+        <item>Cuatro y veinte</item>
+        <item>Cuatro y veintiuno</item>
+        <item>Cuatro y veintidos</item>
+        <item>Cuatro y veintitres</item>
+        <item>Cuatro y veinticuatro</item>
+        <item>Cuatro y veinticinco</item>
+        <item>Cuatro y veintiseis</item>
+        <item>Cuatro y veintisiete</item>
+        <item>Cuatro y veintiocho</item>
+        <item>Cuatro y veintinueve</item>
+        <item>Cuatro y media</item>
+        <item>Cuatro y treinta y uno</item>
+        <item>Cuatro y treinta y dos</item>
+        <item>Cuatro y treinta y tres</item>
+        <item>Cuatro y treinta y cuatro</item>
+        <item>Cuatro y treinta y cinco</item>
+        <item>Cuatro y treinta y seis</item>
+        <item>Cuatro y treinta y siete</item>
+        <item>Cuatro y treinta y ocho</item>
+        <item>Cuatro y treinta y nueve</item>
+        <item>Cuatro y cuarenta</item>
+        <item>Cuatro y cuarenta y uno</item>
+        <item>Cuatro y cuarenta y dos</item>
+        <item>Cuatro y cuarenta y tres</item>
+        <item>Cuatro y cuarenta y cuatro</item>
+        <item>Cuatro y menos cuarto</item>
+        <item>Cuatro y cuarenta y seis</item>
+        <item>Cuatro y cuarenta y siete</item>
+        <item>Cuatro y cuarenta y ocho</item>
+        <item>Cuatro y cuarenta y nueve</item>
+        <item>Cuatro y cincuenta</item>
+        <item>Cuatro y cincuenta y uno</item>
+        <item>Cuatro y cincuenta y dos</item>
+        <item>Cuatro y cincuenta y tres</item>
+        <item>Cuatro y cincuenta y cuatro</item>
+        <item>Cuatro y cincuenta y cinco</item>
+        <item>Cuatro y cincuenta y seis</item>
+        <item>Cuatro y cincuenta y siete</item>
+        <item>Cuatro y cincuenta y ocho</item>
+        <item>Cuatro y cincuenta y nueve</item>
+        <item>Cinco en punto</item>
+        <item>Cinco y uno</item>
+        <item>Cinco y dos</item>
+        <item>Cinco y tres</item>
+        <item>Cinco y cuatro</item>
+        <item>Cinco y cinco</item>
+        <item>Cinco y seis</item>
+        <item>Cinco y siete</item>
+        <item>Cinco y ocho</item>
+        <item>Cinco y nueve</item>
+        <item>Cinco y diez</item>
+        <item>Cinco y once</item>
+        <item>Cinco y doce</item>
+        <item>Cinco y trece</item>
+        <item>Cinco y catorce</item>
+        <item>Cinco y cuarto</item>
+        <item>Cinco y dieciseis</item>
+        <item>Cinco y diecisiete</item>
+        <item>Cinco y dieciocho</item>
+        <item>Cinco y diecinueve</item>
+        <item>Cinco y veinte</item>
+        <item>Cinco y veintiuno</item>
+        <item>Cinco y veintidos</item>
+        <item>Cinco y veintitres</item>
+        <item>Cinco y veinticuatro</item>
+        <item>Cinco y veinticinco</item>
+        <item>Cinco y veintiseis</item>
+        <item>Cinco y veintisiete</item>
+        <item>Cinco y veintiocho</item>
+        <item>Cinco y veintinueve</item>
+        <item>Cinco y media</item>
+        <item>Cinco y treinta y uno</item>
+        <item>Cinco y treinta y dos</item>
+        <item>Cinco y treinta y tres</item>
+        <item>Cinco y treinta y cuatro</item>
+        <item>Cinco y treinta y cinco</item>
+        <item>Cinco y treinta y seis</item>
+        <item>Cinco y treinta y siete</item>
+        <item>Cinco y treinta y ocho</item>
+        <item>Cinco y treinta y nueve</item>
+        <item>Cinco y cuarenta</item>
+        <item>Cinco y cuarenta y uno</item>
+        <item>Cinco y cuarenta y dos</item>
+        <item>Cinco y cuarenta y tres</item>
+        <item>Cinco y cuarenta y cuatro</item>
+        <item>Cinco y menos cuarto</item>
+        <item>Cinco y cuarenta y seis</item>
+        <item>Cinco y cuarenta y siete</item>
+        <item>Cinco y cuarenta y ocho</item>
+        <item>Cinco y cuarenta y nueve</item>
+        <item>Cinco y cincuenta</item>
+        <item>Cinco y cincuenta y uno</item>
+        <item>Cinco y cincuenta y dos</item>
+        <item>Cinco y cincuenta y tres</item>
+        <item>Cinco y cincuenta y cuatro</item>
+        <item>Cinco y cincuenta y cinco</item>
+        <item>Cinco y cincuenta y seis</item>
+        <item>Cinco y cincuenta y siete</item>
+        <item>Cinco y cincuenta y ocho</item>
+        <item>Cinco y cincuenta y nueve</item>
+    </string-array>
+    <string-array name="verbosetime2">
+        <item>Seis en punto</item>
+        <item>Seis y uno</item>
+        <item>Seis y dos</item>
+        <item>Seis y tres</item>
+        <item>Seis y cuatro</item>
+        <item>Seis y cinco</item>
+        <item>Seis y seis</item>
+        <item>Seis y siete</item>
+        <item>Seis y ocho</item>
+        <item>Seis y nueve</item>
+        <item>Seis y diez</item>
+        <item>Seis y once</item>
+        <item>Seis y doce</item>
+        <item>Seis y trece</item>
+        <item>Seis y catorce</item>
+        <item>Seis y cuarto</item>
+        <item>Seis y dieciseis</item>
+        <item>Seis y diecisiete</item>
+        <item>Seis y dieciocho</item>
+        <item>Seis y diecinueve</item>
+        <item>Seis y veinte</item>
+        <item>Seis y veintiuno</item>
+        <item>Seis y veintidos</item>
+        <item>Seis y veintitres</item>
+        <item>Seis y veinticuatro</item>
+        <item>Seis y veinticinco</item>
+        <item>Seis y veintiseis</item>
+        <item>Seis y veintisiete</item>
+        <item>Seis y veintiocho</item>
+        <item>Seis y veintinueve</item>
+        <item>Seis y media</item>
+        <item>Seis y treinta y uno</item>
+        <item>Seis y treinta y dos</item>
+        <item>Seis y treinta y tres</item>
+        <item>Seis y treinta y cuatro</item>
+        <item>Seis y treinta y cinco</item>
+        <item>Seis y treinta y seis</item>
+        <item>Seis y treinta y siete</item>
+        <item>Seis y treinta y ocho</item>
+        <item>Seis y treinta y nueve</item>
+        <item>Seis y cuarenta</item>
+        <item>Seis y cuarenta y uno</item>
+        <item>Seis y cuarenta y dos</item>
+        <item>Seis y cuarenta y tres</item>
+        <item>Seis y cuarenta y cuatro</item>
+        <item>Seis y menos cuarto</item>
+        <item>Seis y cuarenta y seis</item>
+        <item>Seis y cuarenta y siete</item>
+        <item>Seis y cuarenta y ocho</item>
+        <item>Seis y cuarenta y nueve</item>
+        <item>Seis y cincuenta</item>
+        <item>Seis y cincuenta y uno</item>
+        <item>Seis y cincuenta y dos</item>
+        <item>Seis y cincuenta y tres</item>
+        <item>Seis y cincuenta y cuatro</item>
+        <item>Seis y cincuenta y cinco</item>
+        <item>Seis y cincuenta y seis</item>
+        <item>Seis y cincuenta y siete</item>
+        <item>Seis y cincuenta y ocho</item>
+        <item>Seis y cincuenta y nueve</item>
+        <item>Siete en punto</item>
+        <item>Siete y uno</item>
+        <item>Siete y dos</item>
+        <item>Siete y tres</item>
+        <item>Siete y cuatro</item>
+        <item>Siete y cinco</item>
+        <item>Siete y seis</item>
+        <item>Siete y siete</item>
+        <item>Siete y ocho</item>
+        <item>Siete y nueve</item>
+        <item>Siete y diez</item>
+        <item>Siete y once</item>
+        <item>Siete y doce</item>
+        <item>Siete y trece</item>
+        <item>Siete y catorce</item>
+        <item>Siete y cuarto</item>
+        <item>Siete y dieciseis</item>
+        <item>Siete y diecisiete</item>
+        <item>Siete y dieciocho</item>
+        <item>Siete y diecinueve</item>
+        <item>Siete y veinte</item>
+        <item>Siete y veintiuno</item>
+        <item>Siete y veintidos</item>
+        <item>Siete y veintitres</item>
+        <item>Siete y veinticuatro</item>
+        <item>Siete y veinticinco</item>
+        <item>Siete y veintiseis</item>
+        <item>Siete y veintisiete</item>
+        <item>Siete y veintiocho</item>
+        <item>Siete y veintinueve</item>
+        <item>Siete y media</item>
+        <item>Siete y treinta y uno</item>
+        <item>Siete y treinta y dos</item>
+        <item>Siete y treinta y tres</item>
+        <item>Siete y treinta y cuatro</item>
+        <item>Siete y treinta y cinco</item>
+        <item>Siete y treinta y seis</item>
+        <item>Siete y treinta y siete</item>
+        <item>Siete y treinta y ocho</item>
+        <item>Siete y treinta y nueve</item>
+        <item>Siete y cuarenta</item>
+        <item>Siete y cuarenta y uno</item>
+        <item>Siete y cuarenta y dos</item>
+        <item>Siete y cuarenta y tres</item>
+        <item>Siete y cuarenta y cuatro</item>
+        <item>Siete y menos cuarto</item>
+        <item>Siete y cuarenta y seis</item>
+        <item>Siete y cuarenta y siete</item>
+        <item>Siete y cuarenta y ocho</item>
+        <item>Siete y cuarenta y nueve</item>
+        <item>Siete y cincuenta</item>
+        <item>Siete y cincuenta y uno</item>
+        <item>Siete y cincuenta y dos</item>
+        <item>Siete y cincuenta y tres</item>
+        <item>Siete y cincuenta y cuatro</item>
+        <item>Siete y cincuenta y cinco</item>
+        <item>Siete y cincuenta y seis</item>
+        <item>Siete y cincuenta y siete</item>
+        <item>Siete y cincuenta y ocho</item>
+        <item>Siete y cincuenta y nueve</item>
+        <item>Ocho en punto</item>
+        <item>Ocho y uno</item>
+        <item>Ocho y dos</item>
+        <item>Ocho y tres</item>
+        <item>Ocho y cuatro</item>
+        <item>Ocho y cinco</item>
+        <item>Ocho y seis</item>
+        <item>Ocho y siete</item>
+        <item>Ocho y ocho</item>
+        <item>Ocho y nueve</item>
+        <item>Ocho y diez</item>
+        <item>Ocho y once</item>
+        <item>Ocho y doce</item>
+        <item>Ocho y trece</item>
+        <item>Ocho y catorce</item>
+        <item>Ocho y cuarto</item>
+        <item>Ocho y dieciseis</item>
+        <item>Ocho y diecisiete</item>
+        <item>Ocho y dieciocho</item>
+        <item>Ocho y diecinueve</item>
+        <item>Ocho y veinte</item>
+        <item>Ocho y veintiuno</item>
+        <item>Ocho y veintidos</item>
+        <item>Ocho y veintitres</item>
+        <item>Ocho y veinticuatro</item>
+        <item>Ocho y veinticinco</item>
+        <item>Ocho y veintiseis</item>
+        <item>Ocho y veintisiete</item>
+        <item>Ocho y veintiocho</item>
+        <item>Ocho y veintinueve</item>
+        <item>Ocho y media</item>
+        <item>Ocho y treinta y uno</item>
+        <item>Ocho y treinta y dos</item>
+        <item>Ocho y treinta y tres</item>
+        <item>Ocho y treinta y cuatro</item>
+        <item>Ocho y treinta y cinco</item>
+        <item>Ocho y treinta y seis</item>
+        <item>Ocho y treinta y siete</item>
+        <item>Ocho y treinta y ocho</item>
+        <item>Ocho y treinta y nueve</item>
+        <item>Ocho y cuarenta</item>
+        <item>Ocho y cuarenta y uno</item>
+        <item>Ocho y cuarenta y dos</item>
+        <item>Ocho y cuarenta y tres</item>
+        <item>Ocho y cuarenta y cuatro</item>
+        <item>Ocho y menos cuarto</item>
+        <item>Ocho y cuarenta y seis</item>
+        <item>Ocho y cuarenta y siete</item>
+        <item>Ocho y cuarenta y ocho</item>
+        <item>Ocho y cuarenta y nueve</item>
+        <item>Ocho y cincuenta</item>
+        <item>Ocho y cincuenta y uno</item>
+        <item>Ocho y cincuenta y dos</item>
+        <item>Ocho y cincuenta y tres</item>
+        <item>Ocho y cincuenta y cuatro</item>
+        <item>Ocho y cincuenta y cinco</item>
+        <item>Ocho y cincuenta y seis</item>
+        <item>Ocho y cincuenta y siete</item>
+        <item>Ocho y cincuenta y ocho</item>
+        <item>Ocho y cincuenta y nueve</item>
+        <item>Nueve en punto</item>
+        <item>Nueve y uno</item>
+        <item>Nueve y dos</item>
+        <item>Nueve y tres</item>
+        <item>Nueve y cuatro</item>
+        <item>Nueve y cinco</item>
+        <item>Nueve y seis</item>
+        <item>Nueve y siete</item>
+        <item>Nueve y ocho</item>
+        <item>Nueve y nueve</item>
+        <item>Nueve y diez</item>
+        <item>Nueve y once</item>
+        <item>Nueve y doce</item>
+        <item>Nueve y trece</item>
+        <item>Nueve y catorce</item>
+        <item>Nueve y cuarto</item>
+        <item>Nueve y dieciseis</item>
+        <item>Nueve y diecisiete</item>
+        <item>Nueve y dieciocho</item>
+        <item>Nueve y diecinueve</item>
+        <item>Nueve y veinte</item>
+        <item>Nueve y veintiuno</item>
+        <item>Nueve y veintidos</item>
+        <item>Nueve y veintitres</item>
+        <item>Nueve y veinticuatro</item>
+        <item>Nueve y veinticinco</item>
+        <item>Nueve y veintiseis</item>
+        <item>Nueve y veintisiete</item>
+        <item>Nueve y veintiocho</item>
+        <item>Nueve y veintinueve</item>
+        <item>Nueve y media</item>
+        <item>Nueve y treinta y uno</item>
+        <item>Nueve y treinta y dos</item>
+        <item>Nueve y treinta y tres</item>
+        <item>Nueve y treinta y cuatro</item>
+        <item>Nueve y treinta y cinco</item>
+        <item>Nueve y treinta y seis</item>
+        <item>Nueve y treinta y siete</item>
+        <item>Nueve y treinta y ocho</item>
+        <item>Nueve y treinta y nueve</item>
+        <item>Nueve y cuarenta</item>
+        <item>Nueve y cuarenta y uno</item>
+        <item>Nueve y cuarenta y dos</item>
+        <item>Nueve y cuarenta y tres</item>
+        <item>Nueve y cuarenta y cuatro</item>
+        <item>Nueve y menos cuarto</item>
+        <item>Nueve y cuarenta y seis</item>
+        <item>Nueve y cuarenta y siete</item>
+        <item>Nueve y cuarenta y ocho</item>
+        <item>Nueve y cuarenta y nueve</item>
+        <item>Nueve y cincuenta</item>
+        <item>Nueve y cincuenta y uno</item>
+        <item>Nueve y cincuenta y dos</item>
+        <item>Nueve y cincuenta y tres</item>
+        <item>Nueve y cincuenta y cuatro</item>
+        <item>Nueve y cincuenta y cinco</item>
+        <item>Nueve y cincuenta y seis</item>
+        <item>Nueve y cincuenta y siete</item>
+        <item>Nueve y cincuenta y ocho</item>
+        <item>Nueve y cincuenta y nueve</item>
+        <item>Diez en punto</item>
+        <item>Diez y uno</item>
+        <item>Diez y dos</item>
+        <item>Diez y tres</item>
+        <item>Diez y cuatro</item>
+        <item>Diez y cinco</item>
+        <item>Diez y seis</item>
+        <item>Diez y siete</item>
+        <item>Diez y ocho</item>
+        <item>Diez y nueve</item>
+        <item>Diez y diez</item>
+        <item>Diez y once</item>
+        <item>Diez y doce</item>
+        <item>Diez y trece</item>
+        <item>Diez y catorce</item>
+        <item>Diez y cuarto</item>
+        <item>Diez y dieciseis</item>
+        <item>Diez y diecisiete</item>
+        <item>Diez y dieciocho</item>
+        <item>Diez y diecinueve</item>
+        <item>Diez y veinte</item>
+        <item>Diez y veintiuno</item>
+        <item>Diez y veintidos</item>
+        <item>Diez y veintitres</item>
+        <item>Diez y veinticuatro</item>
+        <item>Diez y veinticinco</item>
+        <item>Diez y veintiseis</item>
+        <item>Diez y veintisiete</item>
+        <item>Diez y veintiocho</item>
+        <item>Diez y veintinueve</item>
+        <item>Diez y media</item>
+        <item>Diez y treinta y uno</item>
+        <item>Diez y treinta y dos</item>
+        <item>Diez y treinta y tres</item>
+        <item>Diez y treinta y cuatro</item>
+        <item>Diez y treinta y cinco</item>
+        <item>Diez y treinta y seis</item>
+        <item>Diez y treinta y siete</item>
+        <item>Diez y treinta y ocho</item>
+        <item>Diez y treinta y nueve</item>
+        <item>Diez y cuarenta</item>
+        <item>Diez y cuarenta y uno</item>
+        <item>Diez y cuarenta y dos</item>
+        <item>Diez y cuarenta y tres</item>
+        <item>Diez y cuarenta y cuatro</item>
+        <item>Diez y menos cuarto</item>
+        <item>Diez y cuarenta y seis</item>
+        <item>Diez y cuarenta y siete</item>
+        <item>Diez y cuarenta y ocho</item>
+        <item>Diez y cuarenta y nueve</item>
+        <item>Diez y cincuenta</item>
+        <item>Diez y cincuenta y uno</item>
+        <item>Diez y cincuenta y dos</item>
+        <item>Diez y cincuenta y tres</item>
+        <item>Diez y cincuenta y cuatro</item>
+        <item>Diez y cincuenta y cinco</item>
+        <item>Diez y cincuenta y seis</item>
+        <item>Diez y cincuenta y siete</item>
+        <item>Diez y cincuenta y ocho</item>
+        <item>Diez y cincuenta y nueve</item>
+        <item>Once en punto</item>
+        <item>Once y uno</item>
+        <item>Once y dos</item>
+        <item>Once y tres</item>
+        <item>Once y cuatro</item>
+        <item>Once y cinco</item>
+        <item>Once y seis</item>
+        <item>Once y siete</item>
+        <item>Once y ocho</item>
+        <item>Once y nueve</item>
+        <item>Once y diez</item>
+        <item>Once y once</item>
+        <item>Once y doce</item>
+        <item>Once y trece</item>
+        <item>Once y catorce</item>
+        <item>Once y cuarto</item>
+        <item>Once y dieciseis</item>
+        <item>Once y diecisiete</item>
+        <item>Once y dieciocho</item>
+        <item>Once y diecinueve</item>
+        <item>Once y veinte</item>
+        <item>Once y veintiuno</item>
+        <item>Once y veintidos</item>
+        <item>Once y veintitres</item>
+        <item>Once y veinticuatro</item>
+        <item>Once y veinticinco</item>
+        <item>Once y veintiseis</item>
+        <item>Once y veintisiete</item>
+        <item>Once y veintiocho</item>
+        <item>Once y veintinueve</item>
+        <item>Once y media</item>
+        <item>Once y treinta y uno</item>
+        <item>Once y treinta y dos</item>
+        <item>Once y treinta y tres</item>
+        <item>Once y treinta y cuatro</item>
+        <item>Once y treinta y cinco</item>
+        <item>Once y treinta y seis</item>
+        <item>Once y treinta y siete</item>
+        <item>Once y treinta y ocho</item>
+        <item>Once y treinta y nueve</item>
+        <item>Once y cuarenta</item>
+        <item>Once y cuarenta y uno</item>
+        <item>Once y cuarenta y dos</item>
+        <item>Once y cuarenta y tres</item>
+        <item>Once y cuarenta y cuatro</item>
+        <item>Once y menos cuarto</item>
+        <item>Once y cuarenta y seis</item>
+        <item>Once y cuarenta y siete</item>
+        <item>Once y cuarenta y ocho</item>
+        <item>Once y cuarenta y nueve</item>
+        <item>Once y cincuenta</item>
+        <item>Once y cincuenta y uno</item>
+        <item>Once y cincuenta y dos</item>
+        <item>Once y cincuenta y tres</item>
+        <item>Once y cincuenta y cuatro</item>
+        <item>Once y cincuenta y cinco</item>
+        <item>Once y cincuenta y seis</item>
+        <item>Once y cincuenta y siete</item>
+        <item>Once y cincuenta y ocho</item>
+        <item>Once y cincuenta y nueve</item>
+    </string-array>
+    <string-array name="verbosetime3">
+        <item>Doce en punto</item>
+        <item>Doce y uno</item>
+        <item>Doce y dos</item>
+        <item>Doce y tres</item>
+        <item>Doce y cuatro</item>
+        <item>Doce y cinco</item>
+        <item>Doce y seis</item>
+        <item>Doce y siete</item>
+        <item>Doce y ocho</item>
+        <item>Doce y nueve</item>
+        <item>Doce y diez</item>
+        <item>Doce y once</item>
+        <item>Doce y doce</item>
+        <item>Doce y trece</item>
+        <item>Doce y catorce</item>
+        <item>Doce y cuarto</item>
+        <item>Doce y dieciseis</item>
+        <item>Doce y diecisiete</item>
+        <item>Doce y dieciocho</item>
+        <item>Doce y diecinueve</item>
+        <item>Doce y veinte</item>
+        <item>Doce y veintiuno</item>
+        <item>Doce y veintidos</item>
+        <item>Doce y veintitres</item>
+        <item>Doce y veinticuatro</item>
+        <item>Doce y veinticinco</item>
+        <item>Doce y veintiseis</item>
+        <item>Doce y veintisiete</item>
+        <item>Doce y veintiocho</item>
+        <item>Doce y veintinueve</item>
+        <item>Doce y media</item>
+        <item>Doce y treinta y uno</item>
+        <item>Doce y treinta y dos</item>
+        <item>Doce y treinta y tres</item>
+        <item>Doce y treinta y cuatro</item>
+        <item>Doce y treinta y cinco</item>
+        <item>Doce y treinta y seis</item>
+        <item>Doce y treinta y siete</item>
+        <item>Doce y treinta y ocho</item>
+        <item>Doce y treinta y nueve</item>
+        <item>Doce y cuarenta</item>
+        <item>Doce y cuarenta y uno</item>
+        <item>Doce y cuarenta y dos</item>
+        <item>Doce y cuarenta y tres</item>
+        <item>Doce y cuarenta y cuatro</item>
+        <item>Doce y menos cuarto</item>
+        <item>Doce y cuarenta y seis</item>
+        <item>Doce y cuarenta y siete</item>
+        <item>Doce y cuarenta y ocho</item>
+        <item>Doce y cuarenta y nueve</item>
+        <item>Doce y cincuenta</item>
+        <item>Doce y cincuenta y uno</item>
+        <item>Doce y cincuenta y dos</item>
+        <item>Doce y cincuenta y tres</item>
+        <item>Doce y cincuenta y cuatro</item>
+        <item>Doce y cincuenta y cinco</item>
+        <item>Doce y cincuenta y seis</item>
+        <item>Doce y cincuenta y siete</item>
+        <item>Doce y cincuenta y ocho</item>
+        <item>Doce y cincuenta y nueve</item>
+        <item>Una en punto</item>
+        <item>Una y uno</item>
+        <item>Una y dos</item>
+        <item>Una y tres</item>
+        <item>Una y cuatro</item>
+        <item>Una y cinco</item>
+        <item>Una y seis</item>
+        <item>Una y siete</item>
+        <item>Una y ocho</item>
+        <item>Una y nueve</item>
+        <item>Una y diez</item>
+        <item>Una y once</item>
+        <item>Una y doce</item>
+        <item>Una y trece</item>
+        <item>Una y catorce</item>
+        <item>Una y cuarto</item>
+        <item>Una y dieciseis</item>
+        <item>Una y diecisiete</item>
+        <item>Una y dieciocho</item>
+        <item>Una y diecinueve</item>
+        <item>Una y veinte</item>
+        <item>Una y veintiuno</item>
+        <item>Una y veintidos</item>
+        <item>Una y veintitres</item>
+        <item>Una y veinticuatro</item>
+        <item>Una y veinticinco</item>
+        <item>Una y veintiseis</item>
+        <item>Una y veintisiete</item>
+        <item>Una y veintiocho</item>
+        <item>Una y veintinueve</item>
+        <item>Una y media</item>
+        <item>Una y treinta y uno</item>
+        <item>Una y treinta y dos</item>
+        <item>Una y treinta y tres</item>
+        <item>Una y treinta y cuatro</item>
+        <item>Una y treinta y cinco</item>
+        <item>Una y treinta y seis</item>
+        <item>Una y treinta y siete</item>
+        <item>Una y treinta y ocho</item>
+        <item>Una y treinta y nueve</item>
+        <item>Una y cuarenta</item>
+        <item>Una y cuarenta y uno</item>
+        <item>Una y cuarenta y dos</item>
+        <item>Una y cuarenta y tres</item>
+        <item>Una y cuarenta y cuatro</item>
+        <item>Una y menos cuarto</item>
+        <item>Una y cuarenta y seis</item>
+        <item>Una y cuarenta y siete</item>
+        <item>Una y cuarenta y ocho</item>
+        <item>Una y cuarenta y nueve</item>
+        <item>Una y cincuenta</item>
+        <item>Una y cincuenta y uno</item>
+        <item>Una y cincuenta y dos</item>
+        <item>Una y cincuenta y tres</item>
+        <item>Una y cincuenta y cuatro</item>
+        <item>Una y cincuenta y cinco</item>
+        <item>Una y cincuenta y seis</item>
+        <item>Una y cincuenta y siete</item>
+        <item>Una y cincuenta y ocho</item>
+        <item>Una y cincuenta y nueve</item>
+        <item>Dos en punto</item>
+        <item>Dos y uno</item>
+        <item>Dos y dos</item>
+        <item>Dos y tres</item>
+        <item>Dos y cuatro</item>
+        <item>Dos y cinco</item>
+        <item>Dos y seis</item>
+        <item>Dos y siete</item>
+        <item>Dos y ocho</item>
+        <item>Dos y nueve</item>
+        <item>Dos y diez</item>
+        <item>Dos y once</item>
+        <item>Dos y doce</item>
+        <item>Dos y trece</item>
+        <item>Dos y catorce</item>
+        <item>Dos y cuarto</item>
+        <item>Dos y dieciseis</item>
+        <item>Dos y diecisiete</item>
+        <item>Dos y dieciocho</item>
+        <item>Dos y diecinueve</item>
+        <item>Dos y veinte</item>
+        <item>Dos y veintiuno</item>
+        <item>Dos y veintidos</item>
+        <item>Dos y veintitres</item>
+        <item>Dos y veinticuatro</item>
+        <item>Dos y veinticinco</item>
+        <item>Dos y veintiseis</item>
+        <item>Dos y veintisiete</item>
+        <item>Dos y veintiocho</item>
+        <item>Dos y veintinueve</item>
+        <item>Dos y media</item>
+        <item>Dos y treinta y uno</item>
+        <item>Dos y treinta y dos</item>
+        <item>Dos y treinta y tres</item>
+        <item>Dos y treinta y cuatro</item>
+        <item>Dos y treinta y cinco</item>
+        <item>Dos y treinta y seis</item>
+        <item>Dos y treinta y siete</item>
+        <item>Dos y treinta y ocho</item>
+        <item>Dos y treinta y nueve</item>
+        <item>Dos y cuarenta</item>
+        <item>Dos y cuarenta y uno</item>
+        <item>Dos y cuarenta y dos</item>
+        <item>Dos y cuarenta y tres</item>
+        <item>Dos y cuarenta y cuatro</item>
+        <item>Dos y menos cuarto</item>
+        <item>Dos y cuarenta y seis</item>
+        <item>Dos y cuarenta y siete</item>
+        <item>Dos y cuarenta y ocho</item>
+        <item>Dos y cuarenta y nueve</item>
+        <item>Dos y cincuenta</item>
+        <item>Dos y cincuenta y uno</item>
+        <item>Dos y cincuenta y dos</item>
+        <item>Dos y cincuenta y tres</item>
+        <item>Dos y cincuenta y cuatro</item>
+        <item>Dos y cincuenta y cinco</item>
+        <item>Dos y cincuenta y seis</item>
+        <item>Dos y cincuenta y siete</item>
+        <item>Dos y cincuenta y ocho</item>
+        <item>Dos y cincuenta y nueve</item>
+        <item>Tres en punto</item>
+        <item>Tres y uno</item>
+        <item>Tres y dos</item>
+        <item>Tres y tres</item>
+        <item>Tres y cuatro</item>
+        <item>Tres y cinco</item>
+        <item>Tres y seis</item>
+        <item>Tres y siete</item>
+        <item>Tres y ocho</item>
+        <item>Tres y nueve</item>
+        <item>Tres y diez</item>
+        <item>Tres y once</item>
+        <item>Tres y doce</item>
+        <item>Tres y trece</item>
+        <item>Tres y catorce</item>
+        <item>Tres y cuarto</item>
+        <item>Tres y dieciseis</item>
+        <item>Tres y diecisiete</item>
+        <item>Tres y dieciocho</item>
+        <item>Tres y diecinueve</item>
+        <item>Tres y veinte</item>
+        <item>Tres y veintiuno</item>
+        <item>Tres y veintidos</item>
+        <item>Tres y veintitres</item>
+        <item>Tres y veinticuatro</item>
+        <item>Tres y veinticinco</item>
+        <item>Tres y veintiseis</item>
+        <item>Tres y veintisiete</item>
+        <item>Tres y veintiocho</item>
+        <item>Tres y veintinueve</item>
+        <item>Tres y media</item>
+        <item>Tres y treinta y uno</item>
+        <item>Tres y treinta y dos</item>
+        <item>Tres y treinta y tres</item>
+        <item>Tres y treinta y cuatro</item>
+        <item>Tres y treinta y cinco</item>
+        <item>Tres y treinta y seis</item>
+        <item>Tres y treinta y siete</item>
+        <item>Tres y treinta y ocho</item>
+        <item>Tres y treinta y nueve</item>
+        <item>Tres y cuarenta</item>
+        <item>Tres y cuarenta y uno</item>
+        <item>Tres y cuarenta y dos</item>
+        <item>Tres y cuarenta y tres</item>
+        <item>Tres y cuarenta y cuatro</item>
+        <item>Tres y menos cuarto</item>
+        <item>Tres y cuarenta y seis</item>
+        <item>Tres y cuarenta y siete</item>
+        <item>Tres y cuarenta y ocho</item>
+        <item>Tres y cuarenta y nueve</item>
+        <item>Tres y cincuenta</item>
+        <item>Tres y cincuenta y uno</item>
+        <item>Tres y cincuenta y dos</item>
+        <item>Tres y cincuenta y tres</item>
+        <item>Tres y cincuenta y cuatro</item>
+        <item>Tres y cincuenta y cinco</item>
+        <item>Tres y cincuenta y seis</item>
+        <item>Tres y cincuenta y siete</item>
+        <item>Tres y cincuenta y ocho</item>
+        <item>Tres y cincuenta y nueve</item>
+        <item>Cuatro en punto</item>
+        <item>Cuatro y uno</item>
+        <item>Cuatro y dos</item>
+        <item>Cuatro y tres</item>
+        <item>Cuatro y cuatro</item>
+        <item>Cuatro y cinco</item>
+        <item>Cuatro y seis</item>
+        <item>Cuatro y siete</item>
+        <item>Cuatro y ocho</item>
+        <item>Cuatro y nueve</item>
+        <item>Cuatro y diez</item>
+        <item>Cuatro y once</item>
+        <item>Cuatro y doce</item>
+        <item>Cuatro y trece</item>
+        <item>Cuatro y catorce</item>
+        <item>Cuatro y cuarto</item>
+        <item>Cuatro y dieciseis</item>
+        <item>Cuatro y diecisiete</item>
+        <item>Cuatro y dieciocho</item>
+        <item>Cuatro y diecinueve</item>
+        <item>Cuatro y veinte</item>
+        <item>Cuatro y veintiuno</item>
+        <item>Cuatro y veintidos</item>
+        <item>Cuatro y veintitres</item>
+        <item>Cuatro y veinticuatro</item>
+        <item>Cuatro y veinticinco</item>
+        <item>Cuatro y veintiseis</item>
+        <item>Cuatro y veintisiete</item>
+        <item>Cuatro y veintiocho</item>
+        <item>Cuatro y veintinueve</item>
+        <item>Cuatro y media</item>
+        <item>Cuatro y treinta y uno</item>
+        <item>Cuatro y treinta y dos</item>
+        <item>Cuatro y treinta y tres</item>
+        <item>Cuatro y treinta y cuatro</item>
+        <item>Cuatro y treinta y cinco</item>
+        <item>Cuatro y treinta y seis</item>
+        <item>Cuatro y treinta y siete</item>
+        <item>Cuatro y treinta y ocho</item>
+        <item>Cuatro y treinta y nueve</item>
+        <item>Cuatro y cuarenta</item>
+        <item>Cuatro y cuarenta y uno</item>
+        <item>Cuatro y cuarenta y dos</item>
+        <item>Cuatro y cuarenta y tres</item>
+        <item>Cuatro y cuarenta y cuatro</item>
+        <item>Cuatro y menos cuarto</item>
+        <item>Cuatro y cuarenta y seis</item>
+        <item>Cuatro y cuarenta y siete</item>
+        <item>Cuatro y cuarenta y ocho</item>
+        <item>Cuatro y cuarenta y nueve</item>
+        <item>Cuatro y cincuenta</item>
+        <item>Cuatro y cincuenta y uno</item>
+        <item>Cuatro y cincuenta y dos</item>
+        <item>Cuatro y cincuenta y tres</item>
+        <item>Cuatro y cincuenta y cuatro</item>
+        <item>Cuatro y cincuenta y cinco</item>
+        <item>Cuatro y cincuenta y seis</item>
+        <item>Cuatro y cincuenta y siete</item>
+        <item>Cuatro y cincuenta y ocho</item>
+        <item>Cuatro y cincuenta y nueve</item>
+        <item>Cinco en punto</item>
+        <item>Cinco y uno</item>
+        <item>Cinco y dos</item>
+        <item>Cinco y tres</item>
+        <item>Cinco y cuatro</item>
+        <item>Cinco y cinco</item>
+        <item>Cinco y seis</item>
+        <item>Cinco y siete</item>
+        <item>Cinco y ocho</item>
+        <item>Cinco y nueve</item>
+        <item>Cinco y diez</item>
+        <item>Cinco y once</item>
+        <item>Cinco y doce</item>
+        <item>Cinco y trece</item>
+        <item>Cinco y catorce</item>
+        <item>Cinco y cuarto</item>
+        <item>Cinco y dieciseis</item>
+        <item>Cinco y diecisiete</item>
+        <item>Cinco y dieciocho</item>
+        <item>Cinco y diecinueve</item>
+        <item>Cinco y veinte</item>
+        <item>Cinco y veintiuno</item>
+        <item>Cinco y veintidos</item>
+        <item>Cinco y veintitres</item>
+        <item>Cinco y veinticuatro</item>
+        <item>Cinco y veinticinco</item>
+        <item>Cinco y veintiseis</item>
+        <item>Cinco y veintisiete</item>
+        <item>Cinco y veintiocho</item>
+        <item>Cinco y veintinueve</item>
+        <item>Cinco y media</item>
+        <item>Cinco y treinta y uno</item>
+        <item>Cinco y treinta y dos</item>
+        <item>Cinco y treinta y tres</item>
+        <item>Cinco y treinta y cuatro</item>
+        <item>Cinco y treinta y cinco</item>
+        <item>Cinco y treinta y seis</item>
+        <item>Cinco y treinta y siete</item>
+        <item>Cinco y treinta y ocho</item>
+        <item>Cinco y treinta y nueve</item>
+        <item>Cinco y cuarenta</item>
+        <item>Cinco y cuarenta y uno</item>
+        <item>Cinco y cuarenta y dos</item>
+        <item>Cinco y cuarenta y tres</item>
+        <item>Cinco y cuarenta y cuatro</item>
+        <item>Cinco y menos cuarto</item>
+        <item>Cinco y cuarenta y seis</item>
+        <item>Cinco y cuarenta y siete</item>
+        <item>Cinco y cuarenta y ocho</item>
+        <item>Cinco y cuarenta y nueve</item>
+        <item>Cinco y cincuenta</item>
+        <item>Cinco y cincuenta y uno</item>
+        <item>Cinco y cincuenta y dos</item>
+        <item>Cinco y cincuenta y tres</item>
+        <item>Cinco y cincuenta y cuatro</item>
+        <item>Cinco y cincuenta y cinco</item>
+        <item>Cinco y cincuenta y seis</item>
+        <item>Cinco y cincuenta y siete</item>
+        <item>Cinco y cincuenta y ocho</item>
+        <item>Cinco y cincuenta y nueve</item>
+    </string-array>
+    <string-array name="verbosetime4">
+        <item>Seis en punto</item>
+        <item>Seis y uno</item>
+        <item>Seis y dos</item>
+        <item>Seis y tres</item>
+        <item>Seis y cuatro</item>
+        <item>Seis y cinco</item>
+        <item>Seis y seis</item>
+        <item>Seis y siete</item>
+        <item>Seis y ocho</item>
+        <item>Seis y nueve</item>
+        <item>Seis y diez</item>
+        <item>Seis y once</item>
+        <item>Seis y doce</item>
+        <item>Seis y trece</item>
+        <item>Seis y catorce</item>
+        <item>Seis y cuarto</item>
+        <item>Seis y dieciseis</item>
+        <item>Seis y diecisiete</item>
+        <item>Seis y dieciocho</item>
+        <item>Seis y diecinueve</item>
+        <item>Seis y veinte</item>
+        <item>Seis y veintiuno</item>
+        <item>Seis y veintidos</item>
+        <item>Seis y veintitres</item>
+        <item>Seis y veinticuatro</item>
+        <item>Seis y veinticinco</item>
+        <item>Seis y veintiseis</item>
+        <item>Seis y veintisiete</item>
+        <item>Seis y veintiocho</item>
+        <item>Seis y veintinueve</item>
+        <item>Seis y media</item>
+        <item>Seis y treinta y uno</item>
+        <item>Seis y treinta y dos</item>
+        <item>Seis y treinta y tres</item>
+        <item>Seis y treinta y cuatro</item>
+        <item>Seis y treinta y cinco</item>
+        <item>Seis y treinta y seis</item>
+        <item>Seis y treinta y siete</item>
+        <item>Seis y treinta y ocho</item>
+        <item>Seis y treinta y nueve</item>
+        <item>Seis y cuarenta</item>
+        <item>Seis y cuarenta y uno</item>
+        <item>Seis y cuarenta y dos</item>
+        <item>Seis y cuarenta y tres</item>
+        <item>Seis y cuarenta y cuatro</item>
+        <item>Seis y menos cuarto</item>
+        <item>Seis y cuarenta y seis</item>
+        <item>Seis y cuarenta y siete</item>
+        <item>Seis y cuarenta y ocho</item>
+        <item>Seis y cuarenta y nueve</item>
+        <item>Seis y cincuenta</item>
+        <item>Seis y cincuenta y uno</item>
+        <item>Seis y cincuenta y dos</item>
+        <item>Seis y cincuenta y tres</item>
+        <item>Seis y cincuenta y cuatro</item>
+        <item>Seis y cincuenta y cinco</item>
+        <item>Seis y cincuenta y seis</item>
+        <item>Seis y cincuenta y siete</item>
+        <item>Seis y cincuenta y ocho</item>
+        <item>Seis y cincuenta y nueve</item>
+        <item>Siete en punto</item>
+        <item>Siete y uno</item>
+        <item>Siete y dos</item>
+        <item>Siete y tres</item>
+        <item>Siete y cuatro</item>
+        <item>Siete y cinco</item>
+        <item>Siete y seis</item>
+        <item>Siete y siete</item>
+        <item>Siete y ocho</item>
+        <item>Siete y nueve</item>
+        <item>Siete y diez</item>
+        <item>Siete y once</item>
+        <item>Siete y doce</item>
+        <item>Siete y trece</item>
+        <item>Siete y catorce</item>
+        <item>Siete y cuarto</item>
+        <item>Siete y dieciseis</item>
+        <item>Siete y diecisiete</item>
+        <item>Siete y dieciocho</item>
+        <item>Siete y diecinueve</item>
+        <item>Siete y veinte</item>
+        <item>Siete y veintiuno</item>
+        <item>Siete y veintidos</item>
+        <item>Siete y veintitres</item>
+        <item>Siete y veinticuatro</item>
+        <item>Siete y veinticinco</item>
+        <item>Siete y veintiseis</item>
+        <item>Siete y veintisiete</item>
+        <item>Siete y veintiocho</item>
+        <item>Siete y veintinueve</item>
+        <item>Siete y media</item>
+        <item>Siete y treinta y uno</item>
+        <item>Siete y treinta y dos</item>
+        <item>Siete y treinta y tres</item>
+        <item>Siete y treinta y cuatro</item>
+        <item>Siete y treinta y cinco</item>
+        <item>Siete y treinta y seis</item>
+        <item>Siete y treinta y siete</item>
+        <item>Siete y treinta y ocho</item>
+        <item>Siete y treinta y nueve</item>
+        <item>Siete y cuarenta</item>
+        <item>Siete y cuarenta y uno</item>
+        <item>Siete y cuarenta y dos</item>
+        <item>Siete y cuarenta y tres</item>
+        <item>Siete y cuarenta y cuatro</item>
+        <item>Siete y menos cuarto</item>
+        <item>Siete y cuarenta y seis</item>
+        <item>Siete y cuarenta y siete</item>
+        <item>Siete y cuarenta y ocho</item>
+        <item>Siete y cuarenta y nueve</item>
+        <item>Siete y cincuenta</item>
+        <item>Siete y cincuenta y uno</item>
+        <item>Siete y cincuenta y dos</item>
+        <item>Siete y cincuenta y tres</item>
+        <item>Siete y cincuenta y cuatro</item>
+        <item>Siete y cincuenta y cinco</item>
+        <item>Siete y cincuenta y seis</item>
+        <item>Siete y cincuenta y siete</item>
+        <item>Siete y cincuenta y ocho</item>
+        <item>Siete y cincuenta y nueve</item>
+        <item>Ocho en punto</item>
+        <item>Ocho y uno</item>
+        <item>Ocho y dos</item>
+        <item>Ocho y tres</item>
+        <item>Ocho y cuatro</item>
+        <item>Ocho y cinco</item>
+        <item>Ocho y seis</item>
+        <item>Ocho y siete</item>
+        <item>Ocho y ocho</item>
+        <item>Ocho y nueve</item>
+        <item>Ocho y diez</item>
+        <item>Ocho y once</item>
+        <item>Ocho y doce</item>
+        <item>Ocho y trece</item>
+        <item>Ocho y catorce</item>
+        <item>Ocho y cuarto</item>
+        <item>Ocho y dieciseis</item>
+        <item>Ocho y diecisiete</item>
+        <item>Ocho y dieciocho</item>
+        <item>Ocho y diecinueve</item>
+        <item>Ocho y veinte</item>
+        <item>Ocho y veintiuno</item>
+        <item>Ocho y veintidos</item>
+        <item>Ocho y veintitres</item>
+        <item>Ocho y veinticuatro</item>
+        <item>Ocho y veinticinco</item>
+        <item>Ocho y veintiseis</item>
+        <item>Ocho y veintisiete</item>
+        <item>Ocho y veintiocho</item>
+        <item>Ocho y veintinueve</item>
+        <item>Ocho y media</item>
+        <item>Ocho y treinta y uno</item>
+        <item>Ocho y treinta y dos</item>
+        <item>Ocho y treinta y tres</item>
+        <item>Ocho y treinta y cuatro</item>
+        <item>Ocho y treinta y cinco</item>
+        <item>Ocho y treinta y seis</item>
+        <item>Ocho y treinta y siete</item>
+        <item>Ocho y treinta y ocho</item>
+        <item>Ocho y treinta y nueve</item>
+        <item>Ocho y cuarenta</item>
+        <item>Ocho y cuarenta y uno</item>
+        <item>Ocho y cuarenta y dos</item>
+        <item>Ocho y cuarenta y tres</item>
+        <item>Ocho y cuarenta y cuatro</item>
+        <item>Ocho y menos cuarto</item>
+        <item>Ocho y cuarenta y seis</item>
+        <item>Ocho y cuarenta y siete</item>
+        <item>Ocho y cuarenta y ocho</item>
+        <item>Ocho y cuarenta y nueve</item>
+        <item>Ocho y cincuenta</item>
+        <item>Ocho y cincuenta y uno</item>
+        <item>Ocho y cincuenta y dos</item>
+        <item>Ocho y cincuenta y tres</item>
+        <item>Ocho y cincuenta y cuatro</item>
+        <item>Ocho y cincuenta y cinco</item>
+        <item>Ocho y cincuenta y seis</item>
+        <item>Ocho y cincuenta y siete</item>
+        <item>Ocho y cincuenta y ocho</item>
+        <item>Ocho y cincuenta y nueve</item>
+        <item>Nueve en punto</item>
+        <item>Nueve y uno</item>
+        <item>Nueve y dos</item>
+        <item>Nueve y tres</item>
+        <item>Nueve y cuatro</item>
+        <item>Nueve y cinco</item>
+        <item>Nueve y seis</item>
+        <item>Nueve y siete</item>
+        <item>Nueve y ocho</item>
+        <item>Nueve y nueve</item>
+        <item>Nueve y diez</item>
+        <item>Nueve y once</item>
+        <item>Nueve y doce</item>
+        <item>Nueve y trece</item>
+        <item>Nueve y catorce</item>
+        <item>Nueve y cuarto</item>
+        <item>Nueve y dieciseis</item>
+        <item>Nueve y diecisiete</item>
+        <item>Nueve y dieciocho</item>
+        <item>Nueve y diecinueve</item>
+        <item>Nueve y veinte</item>
+        <item>Nueve y veintiuno</item>
+        <item>Nueve y veintidos</item>
+        <item>Nueve y veintitres</item>
+        <item>Nueve y veinticuatro</item>
+        <item>Nueve y veinticinco</item>
+        <item>Nueve y veintiseis</item>
+        <item>Nueve y veintisiete</item>
+        <item>Nueve y veintiocho</item>
+        <item>Nueve y veintinueve</item>
+        <item>Nueve y media</item>
+        <item>Nueve y treinta y uno</item>
+        <item>Nueve y treinta y dos</item>
+        <item>Nueve y treinta y tres</item>
+        <item>Nueve y treinta y cuatro</item>
+        <item>Nueve y treinta y cinco</item>
+        <item>Nueve y treinta y seis</item>
+        <item>Nueve y treinta y siete</item>
+        <item>Nueve y treinta y ocho</item>
+        <item>Nueve y treinta y nueve</item>
+        <item>Nueve y cuarenta</item>
+        <item>Nueve y cuarenta y uno</item>
+        <item>Nueve y cuarenta y dos</item>
+        <item>Nueve y cuarenta y tres</item>
+        <item>Nueve y cuarenta y cuatro</item>
+        <item>Nueve y menos cuarto</item>
+        <item>Nueve y cuarenta y seis</item>
+        <item>Nueve y cuarenta y siete</item>
+        <item>Nueve y cuarenta y ocho</item>
+        <item>Nueve y cuarenta y nueve</item>
+        <item>Nueve y cincuenta</item>
+        <item>Nueve y cincuenta y uno</item>
+        <item>Nueve y cincuenta y dos</item>
+        <item>Nueve y cincuenta y tres</item>
+        <item>Nueve y cincuenta y cuatro</item>
+        <item>Nueve y cincuenta y cinco</item>
+        <item>Nueve y cincuenta y seis</item>
+        <item>Nueve y cincuenta y siete</item>
+        <item>Nueve y cincuenta y ocho</item>
+        <item>Nueve y cincuenta y nueve</item>
+        <item>Diez en punto</item>
+        <item>Diez y uno</item>
+        <item>Diez y dos</item>
+        <item>Diez y tres</item>
+        <item>Diez y cuatro</item>
+        <item>Diez y cinco</item>
+        <item>Diez y seis</item>
+        <item>Diez y siete</item>
+        <item>Diez y ocho</item>
+        <item>Diez y nueve</item>
+        <item>Diez y diez</item>
+        <item>Diez y once</item>
+        <item>Diez y doce</item>
+        <item>Diez y trece</item>
+        <item>Diez y catorce</item>
+        <item>Diez y cuarto</item>
+        <item>Diez y dieciseis</item>
+        <item>Diez y diecisiete</item>
+        <item>Diez y dieciocho</item>
+        <item>Diez y diecinueve</item>
+        <item>Diez y veinte</item>
+        <item>Diez y veintiuno</item>
+        <item>Diez y veintidos</item>
+        <item>Diez y veintitres</item>
+        <item>Diez y veinticuatro</item>
+        <item>Diez y veinticinco</item>
+        <item>Diez y veintiseis</item>
+        <item>Diez y veintisiete</item>
+        <item>Diez y veintiocho</item>
+        <item>Diez y veintinueve</item>
+        <item>Diez y media</item>
+        <item>Diez y treinta y uno</item>
+        <item>Diez y treinta y dos</item>
+        <item>Diez y treinta y tres</item>
+        <item>Diez y treinta y cuatro</item>
+        <item>Diez y treinta y cinco</item>
+        <item>Diez y treinta y seis</item>
+        <item>Diez y treinta y siete</item>
+        <item>Diez y treinta y ocho</item>
+        <item>Diez y treinta y nueve</item>
+        <item>Diez y cuarenta</item>
+        <item>Diez y cuarenta y uno</item>
+        <item>Diez y cuarenta y dos</item>
+        <item>Diez y cuarenta y tres</item>
+        <item>Diez y cuarenta y cuatro</item>
+        <item>Diez y menos cuarto</item>
+        <item>Diez y cuarenta y seis</item>
+        <item>Diez y cuarenta y siete</item>
+        <item>Diez y cuarenta y ocho</item>
+        <item>Diez y cuarenta y nueve</item>
+        <item>Diez y cincuenta</item>
+        <item>Diez y cincuenta y uno</item>
+        <item>Diez y cincuenta y dos</item>
+        <item>Diez y cincuenta y tres</item>
+        <item>Diez y cincuenta y cuatro</item>
+        <item>Diez y cincuenta y cinco</item>
+        <item>Diez y cincuenta y seis</item>
+        <item>Diez y cincuenta y siete</item>
+        <item>Diez y cincuenta y ocho</item>
+        <item>Diez y cincuenta y nueve</item>
+        <item>Once en punto</item>
+        <item>Once y uno</item>
+        <item>Once y dos</item>
+        <item>Once y tres</item>
+        <item>Once y cuatro</item>
+        <item>Once y cinco</item>
+        <item>Once y seis</item>
+        <item>Once y siete</item>
+        <item>Once y ocho</item>
+        <item>Once y nueve</item>
+        <item>Once y diez</item>
+        <item>Once y once</item>
+        <item>Once y doce</item>
+        <item>Once y trece</item>
+        <item>Once y catorce</item>
+        <item>Once y cuarto</item>
+        <item>Once y dieciseis</item>
+        <item>Once y diecisiete</item>
+        <item>Once y dieciocho</item>
+        <item>Once y diecinueve</item>
+        <item>Once y veinte</item>
+        <item>Once y veintiuno</item>
+        <item>Once y veintidos</item>
+        <item>Once y veintitres</item>
+        <item>Once y veinticuatro</item>
+        <item>Once y veinticinco</item>
+        <item>Once y veintiseis</item>
+        <item>Once y veintisiete</item>
+        <item>Once y veintiocho</item>
+        <item>Once y veintinueve</item>
+        <item>Once y media</item>
+        <item>Once y treinta y uno</item>
+        <item>Once y treinta y dos</item>
+        <item>Once y treinta y tres</item>
+        <item>Once y treinta y cuatro</item>
+        <item>Once y treinta y cinco</item>
+        <item>Once y treinta y seis</item>
+        <item>Once y treinta y siete</item>
+        <item>Once y treinta y ocho</item>
+        <item>Once y treinta y nueve</item>
+        <item>Once y cuarenta</item>
+        <item>Once y cuarenta y uno</item>
+        <item>Once y cuarenta y dos</item>
+        <item>Once y cuarenta y tres</item>
+        <item>Once y cuarenta y cuatro</item>
+        <item>Once y menos cuarto</item>
+        <item>Once y cuarenta y seis</item>
+        <item>Once y cuarenta y siete</item>
+        <item>Once y cuarenta y ocho</item>
+        <item>Once y cuarenta y nueve</item>
+        <item>Once y cincuenta</item>
+        <item>Once y cincuenta y uno</item>
+        <item>Once y cincuenta y dos</item>
+        <item>Once y cincuenta y tres</item>
+        <item>Once y cincuenta y cuatro</item>
+        <item>Once y cincuenta y cinco</item>
+        <item>Once y cincuenta y seis</item>
+        <item>Once y cincuenta y siete</item>
+        <item>Once y cincuenta y ocho</item>
+        <item>Once y cincuenta y nueve</item>
+    </string-array>
+    <string-array name="VerboseWeather">
+        <item>Desconocido</item>
+        <item>Despejado</item>
+        <item>Despejado</item>
+        <item>Mayormente despejado</item>
+        <item>Parcialmente despejado</item>
+        <item>Parcialmente nuboso</item>
+        <item>Polvo</item>
+        <item>Neblina</item>
+        <item>Brumas</item>
+        <item>Humo</item>
+        <item>Mayormente nuboso</item>
+        <item>Nublado</item>
+        <item>Nubes</item>
+        <item>Niebla</item>
+        <item>Lluvia ligera</item>
+        <item>Lluvia torrencial</item>
+        <item>Llovizna</item>
+        <item>Chubascos</item>
+        <item>Probabilidad de lluvia</item>
+        <item>Probabilidad de chubascos</item>
+        <item>Chubascos dispersos</item>
+        <item>Tormenta</item>
+        <item>Probabilidad de tormentas eléctricas</item>
+        <item>Tormentas dispersas</item>
+        <item>Probabilidad de tormentas</item>
+        <item>Tormenta</item>
+        <item>LLuvias fuertes</item>
+        <item>Lluvia</item>
+        <item>Copos</item>
+        <item>Débil nevada</item>
+        <item>Probabilidades de nieve</item>
+        <item>Chubascos de nieve</item>
+        <item>Nieve débil</item>
+        <item>Nieve</item>
+        <item>Helada</item>
+        <item>Hielo o nieve</item>
+        <item>Aguanieve</item>
+        <item>Llovizna helada</item>
+        <item>Combinado invernal</item>
+        <item>Ventoso</item>
+    </string-array>
+    <string name="_apply">Aplicar</string>
+    <string name="_search">Buscar</string>
+    <string name="_yes">Si</string>
+    <string name="_abandon">Salir</string>
+    <string name="_ok">Aceptar</string>
+    <string name="_no">No</string>
+    <string name="translators">Traductores</string>
+    <string name="TTLdefault">Pref. Widget</string>
+    <string name="TTLnoop">No hacer nada</string>
+    <string name="TTLwrefresh">Refresh Weather Now</string>
+    <string name="TTLweather">Predicción </string>
+    <string name="TTLbatt">Battery Usage</string>
+    <string name="TTLalarms">Alarma</string>
+    <string name="_yesRestore">Si, restaurar por defecto</string>
+    <string name="_yesDelete">Si, borrar todo</string>
+</resources>
