@@ -22,7 +22,7 @@ public class SevenTimerJSONHandler {
 	public static boolean LOCATIONCHANGED;
 	public static String LASTUSEDCITY, LASTUSEDCOUNTRY;
 	
-	public static final String URL_V4CIVIL = "http://www.7timer.com/v4/bin/api.pl?app=omc&product=civil&output=json&tzshift=0&unit=metric&lang=en&ac=0";
+	public static final String URL_V4CIVIL = "http://202.127.24.18/v4/bin/api.pl?app=omc&product=civil&output=json&tzshift=0&unit=metric&lang=en&ac=0";
 	public static JSONObject tempJson, jsonWeather, jsonOneDayForecast;
 	public static HashMap<String, Double> LOWTEMPS;
 	public static HashMap<String, Double> HIGHTEMPS;
