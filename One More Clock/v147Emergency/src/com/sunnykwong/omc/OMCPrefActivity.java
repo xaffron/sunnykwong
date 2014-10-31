@@ -132,12 +132,6 @@ public class OMCPrefActivity extends PreferenceActivity {
 			OMC.INSTALLEDLAUNCHERAPPS.add(info.activityInfo.packageName);
 		}
 
-    	
-    	// FIX FOR BADTHEME
-		if (OMC.checkSDPresent()) {
-			((OMC)(this.getApplication())).fixKnownBadThemes();
-		}
-
     	// If action is null, we are coming from an existing widget - 
     	// we want both the home and back buttons to apply changes,
     	// So we set default result to OK.

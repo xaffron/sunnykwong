@@ -1243,35 +1243,6 @@ public class OMC extends Application {
 		}
 	}
 	
-	public boolean fixKnownBadThemes() {
-		final Thread t = new Thread() {
-			@Override
-			public void run() {
-				final String[] badThemes = new String[]{"iPhone"};
-				for (final String theme:badThemes) {
-					final File badThemeFile = new File( OMC.WORKDIR+"/" + theme + "/00control.json");
-					if (!badThemeFile.exists()) continue;
-					final File fixFile = new File(OMC.WORKDIR+"/" + theme + "/fixed.txt");
-					if (fixFile.exists()) continue;
-					try {
-						FileWriter fw = new FileWriter(badThemeFile);
-						fw.write(OMC.FALLBACKTHEME);
-						fw.close();
-						fw = new FileWriter(fixFile);
-						fw.write("FIXED");
-						fw.close();
-						mMessage = "A corrupt theme (iPhone) was found and replaced.";
-						mHandler.post(mPopToast);
-					} catch (final Exception e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		};
-		t.start();
-		return true;
-	}
-	
 	public static void copyDirectory(final File src, final File tgt) {
 		if (!tgt.exists()) tgt.mkdirs();
 		if (!tgt.isDirectory()) return;
