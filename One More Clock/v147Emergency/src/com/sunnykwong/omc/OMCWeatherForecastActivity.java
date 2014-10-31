@@ -35,9 +35,9 @@ public class OMCWeatherForecastActivity extends Activity {
 				final JSONObject weather = new JSONObject(OMC.PREFS.getString("weather", ""));
 				String sWeatherDigits = "--";
 				if (OMC.PREFS.getString("weatherDisplay", "f").equals("f")) {
-					sWeatherDigits = weather.optString("temp_f", "--")+"캟";
+					sWeatherDigits = weather.optString("temp_f", "--")+"째F";
 				} else {
-					sWeatherDigits = weather.optString("temp_c", "--")+"캜";
+					sWeatherDigits = weather.optString("temp_c", "--")+"째C";
 				}
 				float fStretch = Math.min(1f,120f/(sWeatherDigits.length()*40f));
 				setText(findViewById(OMC.RId("CurrTemp")),sWeatherDigits,fStretch);
@@ -64,11 +64,11 @@ public class OMCWeatherForecastActivity extends Activity {
 					fStretch = Math.min(1f,600f/(OMC.VERBOSEWEATHER[day.optInt("condition_code")].length()*40f));
 					setText(findViewById(OMC.RId("ForecastCond"+i)),OMC.VERBOSEWEATHER[day.optInt("condition_code")],fStretch);
 					if (OMC.PREFS.getString("weatherDisplay", "f").equals("f")) {
-						setText(findViewById(OMC.RId("HighTemp"+i)),day.optString("high")+"캟");
-						setText(findViewById(OMC.RId("LowTemp"+i)),day.optString("low")+"캟");
+						setText(findViewById(OMC.RId("HighTemp"+i)),day.optString("high")+"째F");
+						setText(findViewById(OMC.RId("LowTemp"+i)),day.optString("low")+"째F");
 					} else {
-						setText(findViewById(OMC.RId("HighTemp"+i)),day.optString("high_c")+"캜");
-						setText(findViewById(OMC.RId("LowTemp"+i)),day.optString("low_c")+"캜");
+						setText(findViewById(OMC.RId("HighTemp"+i)),day.optString("high_c")+"째C");
+						setText(findViewById(OMC.RId("LowTemp"+i)),day.optString("low_c")+"째C");
 					}
 				}
 				Time tStation = new Time();
