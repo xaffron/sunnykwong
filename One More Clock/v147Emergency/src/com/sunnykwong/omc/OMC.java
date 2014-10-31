@@ -1,5 +1,6 @@
 package com.sunnykwong.omc;
 
+import android.support.v4.content.ContextCompat;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -86,6 +87,7 @@ public class OMC extends Application {
 	static final boolean FREEEDITION = false;
 	static boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
+	static String WORKDIR;
 	
 	static final boolean DEBUG = TESTVER.equals("")?false:true; 
 	
@@ -311,7 +313,14 @@ public class OMC extends Application {
     	OMC.CURRENTCLOCKPRIORITY = Integer.parseInt(OMC.PREFS.getString("clockPriority", "3"));
     	OMC.CURRENTLOCATIONPRIORITY = Integer.parseInt(OMC.PREFS.getString("locationPriority", "3"));
     	OMC.HDRENDERING = OMC.PREFS.getBoolean("HDRendering",true);
-    	
+    	// Set the Themes directory, create a .nomedia file immediately 
+    	// (to make sure indexers respect .nomedia before any files are added)
+    	// This is a low-priority action so ignore any .nomedia creation errors
+    	OMC.WORKDIR = ContextCompat.getExternalFilesDirs(OMC.CONTEXT, null)[0].getAbsolutePath();
+    	try {
+    		new File(OMC.WORKDIR+"/.nomedia").createNewFile();
+    	} catch (IOException e) 
+    	{}
 		// Work around pre-Froyo bugs in HTTP connection reuse.
 		if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
 		    System.setProperty("http.keepAlive", "false");
@@ -936,7 +945,7 @@ public class OMC extends Application {
 		}
 		//Look in sd card;
 		if (OMC.checkSDPresent()) {
-			final File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+sTheme+"/"+src);
+			final File f = new File(OMC.WORKDIR+"/"+sTheme+"/"+src);
 			try {
 				if (f.exists()) {
 					copyFile(f.getAbsolutePath(),OMC.CACHEPATH +"/"+sTheme+f.getName());
@@ -962,11 +971,11 @@ public class OMC extends Application {
 		if (src.startsWith("ww-")) {
 			if (checkSDPresent()) {
 				OMC.WEATHERTRANSLATETYPE="AccuWeather";
-				File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/zz_WeatherSkin/accuweather.type");
+				File f = new File(OMC.WORKDIR+"/zz_WeatherSkin/accuweather.type");
 				if (f.exists()) {
 					OMC.WEATHERTRANSLATETYPE = "AccuWeather";
 				}
-				f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/zz_WeatherSkin/weatherdotcom.type");
+				f = new File(OMC.WORKDIR+"/zz_WeatherSkin/weatherdotcom.type");
 				if (f.exists()) {
 					OMC.WEATHERTRANSLATETYPE = "WeatherDotCom";
 				}
@@ -995,11 +1004,11 @@ public class OMC extends Application {
 		if (src.startsWith("w-")) {
 			if (checkSDPresent()) {
 				OMC.WEATHERTRANSLATETYPE="AccuWeather";
-				File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/zz_WeatherSkin/accuweather.type");
+				File f = new File(OMC.WORKDIR+"/zz_WeatherSkin/accuweather.type");
 				if (f.exists()) {
 					OMC.WEATHERTRANSLATETYPE = "AccuWeather";
 				}
-				f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/zz_WeatherSkin/weatherdotcom.type");
+				f = new File(OMC.WORKDIR+"/zz_WeatherSkin/weatherdotcom.type");
 				if (f.exists()) {
 					OMC.WEATHERTRANSLATETYPE = "WeatherDotCom";
 				}
@@ -1043,13 +1052,13 @@ public class OMC extends Application {
 		}
 		// Look in SD path
 		if (OMC.checkSDPresent()) {
-			File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+sTheme+"/"+src);
+			File f = new File(OMC.WORKDIR+"/"+sTheme+"/"+src);
 			if (f.exists()) {
 				copyFile(f.getAbsolutePath(),OMC.CACHEPATH +"/"+sTheme+f.getName());
 				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(f.getAbsolutePath()));
 				return OMC.BMPMAP.get(src);
 			}
-			f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/zz_WeatherSkin/"+src);
+			f = new File(OMC.WORKDIR+"/zz_WeatherSkin/"+src);
 			if (f.exists()) {
 				copyFile(f.getAbsolutePath(),OMC.CACHEPATH +"/"+sTheme+f.getName());
 				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(f.getAbsolutePath()));
@@ -1122,7 +1131,7 @@ public class OMC extends Application {
 		}
 		// Look in SD path
 		if (OMC.checkSDPresent()) {
-			final File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+nm);
+			final File f = new File(OMC.WORKDIR+"/"+nm);
 			if (f.exists() && f.isDirectory()) {
 				for (final File ff:f.listFiles()) {
 					copyFile(ff.getAbsolutePath(),OMC.CACHEPATH + nm + ff.getName());
@@ -1209,7 +1218,7 @@ public class OMC extends Application {
 		//System.gc();
 	}
 	public static void purgeEmailCache() {
-		final File tempDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/tmp/");
+		final File tempDir = new File(OMC.WORKDIR+"/tmp/");
 		if (!tempDir.exists()) return;
 		else {
 			for (final File f:(tempDir.listFiles())) {
@@ -1240,9 +1249,9 @@ public class OMC extends Application {
 			public void run() {
 				final String[] badThemes = new String[]{"iPhone"};
 				for (final String theme:badThemes) {
-					final File badThemeFile = new File( Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + theme + "/00control.json");
+					final File badThemeFile = new File( OMC.WORKDIR+"/" + theme + "/00control.json");
 					if (!badThemeFile.exists()) continue;
-					final File fixFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + theme + "/fixed.txt");
+					final File fixFile = new File(OMC.WORKDIR+"/" + theme + "/fixed.txt");
 					if (fixFile.exists()) continue;
 					try {
 						FileWriter fw = new FileWriter(badThemeFile);
@@ -1370,11 +1379,11 @@ public class OMC extends Application {
 	public static void setupDefaultTheme() {
 		final String sDefaultThemeAssetDir = "defaulttheme/";
 		try {
-			if (new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME + "/00control.json").exists()) return;
-			(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/"+ OMC.DEFAULTTHEME)).mkdirs();
+			if (new File(OMC.WORKDIR+"/"+ OMC.DEFAULTTHEME + "/00control.json").exists()) return;
+			(new File(OMC.WORKDIR+"/"+ OMC.DEFAULTTHEME)).mkdirs();
 			for (final String sFile : OMC.AM.list("defaulttheme")) {
 				copyAssetToCache(sDefaultThemeAssetDir+sFile,sFile, OMC.DEFAULTTHEME);
-				copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + sFile, Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes/" + OMC.DEFAULTTHEME + "/" + sFile);
+				copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + sFile, OMC.WORKDIR+"/" + OMC.DEFAULTTHEME + "/" + sFile);
 			}
 		} catch (final Exception e) {
 			e.printStackTrace();
@@ -1409,7 +1418,7 @@ public class OMC extends Application {
 			return false;
         }
 
-        final File sdRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes");
+        final File sdRoot = new File(OMC.WORKDIR+"/");
         if (!sdRoot.exists()) {
         	sdRoot.mkdir();
         }

@@ -82,7 +82,7 @@ public class OMCThemePickerActivity extends Activity {
 			finish();
         	return;
         }
-        OMCThemePickerActivity.SDROOT = Environment.getExternalStorageDirectory();
+        OMCThemePickerActivity.SDROOT = new File(OMC.WORKDIR);
 		if (!OMCThemePickerActivity.SDROOT.canRead()) {
         	Toast.makeText(this, OMC.RString("sdcardMissingOrCorrupt"), Toast.LENGTH_LONG).show();
 			finish();
@@ -135,7 +135,7 @@ public class OMCThemePickerActivity extends Activity {
         	return;
         }
 
-        OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath()+"/.OMCThemes");
+        OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath());
         if (!OMCThemePickerActivity.THEMEROOT.exists()) {
 			try {
 				Toast.makeText(this, OMC.RString("extractingStarterClockPack"), Toast.LENGTH_LONG).show();

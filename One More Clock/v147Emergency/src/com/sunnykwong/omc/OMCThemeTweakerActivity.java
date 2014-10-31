@@ -106,7 +106,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 			finish();
         	return;
         }
-        OMCThemePickerActivity.SDROOT = Environment.getExternalStorageDirectory();
+        OMCThemePickerActivity.SDROOT = new File(OMC.WORKDIR);
 		if (!OMCThemePickerActivity.SDROOT.canRead()) {
         	Toast.makeText(this, OMC.RString("sdcardMissingOrCorrupt"), Toast.LENGTH_LONG).show();
 			finish();
@@ -219,8 +219,8 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				    		bApply=true;
 				    		// If it's already a tweak, just overwrite the control file
 				        	if (sTheme.endsWith("Tweak")) {
-				        		OMC.JSONToFile(oTheme, new File(Environment.getExternalStorageDirectory()+"/.OMCThemes/"+sTheme+"/00control.json"));
-				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(Environment.getExternalStorageDirectory()+"/.OMCThemes/"+sTheme+"/000preview.jpg"));
+				        		OMC.JSONToFile(oTheme, new File(OMC.WORKDIR+"/"+sTheme+"/00control.json"));
+				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(OMC.WORKDIR+"/"+sTheme+"/000preview.jpg"));
 				        		// Purge all caches to eliminate "non-sticky" settings bug
 				            	OMC.purgeBitmapCache();
 				            	OMC.purgeImportCache();
@@ -230,12 +230,12 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				            	OMC.WIDGETBMPMAP.clear();
 				        	} else {
 				        		// Otherwise, create a copy of the theme	
-				        		OMC.copyDirectory(new File(Environment.getExternalStorageDirectory()+"/.OMCThemes/"+sTheme), new File(Environment.getExternalStorageDirectory()+"/.OMCThemes/"+sTheme+"Tweak"));
+				        		OMC.copyDirectory(new File(OMC.WORKDIR+"/"+sTheme), new File(OMC.WORKDIR+"/"+sTheme+"Tweak"));
 				        		OMC.PREFS.edit().putString("widgetTheme"+aWI, sTheme+"Tweak")
 				        				.putString("widgetTheme", sTheme+"Tweak")
 				        				.commit();
-				        		OMC.JSONToFile(oTheme, new File(Environment.getExternalStorageDirectory()+"/.OMCThemes/"+sTheme+"Tweak/00control.json"));
-				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(Environment.getExternalStorageDirectory()+"/.OMCThemes/"+sTheme+"Tweak/000preview.jpg"));
+				        		OMC.JSONToFile(oTheme, new File(OMC.WORKDIR+"/"+sTheme+"Tweak/00control.json"));
+				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(OMC.WORKDIR+"/"+sTheme+"Tweak/000preview.jpg"));
 				        		// Purge all caches to eliminate "non-sticky" settings bug
 				            	OMC.purgeBitmapCache();
 				            	OMC.purgeImportCache();
