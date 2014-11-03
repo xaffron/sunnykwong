@@ -1198,56 +1198,56 @@ public class OMCPrefActivity extends PreferenceActivity {
     									}
 									}).create();
     			d.show();
-//    			OMC.FAQS = OMC.RStringArray("faqs");
-//				LayoutInflater li = LayoutInflater.from(this);
-//				LinearLayout ll = (LinearLayout)(li.inflate(OMC.RLayoutId("faqdialog"), null));
-//				mTextView = (TextView)ll.findViewById(OMC.RId("splashtext"));
-//				mTextView.setAutoLinkMask(Linkify.ALL);
-//				mTextView.setMinLines(8);
-//				mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
-//				OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
-//				
-//				mCheckBox = (CheckBox)ll.findViewById(OMC.RId("splashcheck"));
-//				mCheckBox.setChecked(!OMC.SHOWHELP);
-//				mCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-//					
-//					@Override
-//					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//						// TODO Auto-generated method stub
-//						OMC.SHOWHELP = !isChecked;
-//					}
-//				});
-//	
-//				((Button)ll.findViewById(OMC.RId("faqOK"))).setOnClickListener(new Button.OnClickListener() {
-//					
-//					@Override
-//					public void onClick(android.view.View v) {
-//						OMC.PREFS.edit().putBoolean("showhelp", OMC.SHOWHELP).commit();
-//						mAD.dismiss();
-//					}
-//				});
-//				((Button)ll.findViewById(OMC.RId("faqNeutral"))).setOnClickListener(new Button.OnClickListener() {
-//					
-//					@Override
-//					public void onClick(android.view.View v) {
-//						mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
-//						mTextView.invalidate();
-//						OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
-//					}
-//				});;
-//				
-//				mAD = new AlertDialog.Builder(this)
-//				.setTitle(OMC.RString("usefulTip"))
-//			    .setCancelable(true)
-//			    .setView(ll)
-//			    .setOnKeyListener(new OnKeyListener() {
-//			    	@Override
-//					public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
-//			    		if (arg2.getKeyCode()==android.view.KeyEvent.KEYCODE_BACK) mAD.cancel();
-//			    		return true;
-//			    	};
-//			    })
-//			    .show();
+    			OMC.FAQS = OMC.RStringArray("faqs");
+				LayoutInflater li = LayoutInflater.from(this);
+				LinearLayout ll = (LinearLayout)(li.inflate(OMC.RLayoutId("faqdialog"), null));
+				mTextView = (TextView)ll.findViewById(OMC.RId("splashtext"));
+				mTextView.setAutoLinkMask(Linkify.ALL);
+				mTextView.setMinLines(8);
+				mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
+				OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
+				
+				mCheckBox = (CheckBox)ll.findViewById(OMC.RId("splashcheck"));
+				mCheckBox.setChecked(!OMC.SHOWHELP);
+				mCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+					
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+						// TODO Auto-generated method stub
+						OMC.SHOWHELP = !isChecked;
+					}
+				});
+	
+				((Button)ll.findViewById(OMC.RId("faqOK"))).setOnClickListener(new Button.OnClickListener() {
+					
+					@Override
+					public void onClick(android.view.View v) {
+						OMC.PREFS.edit().putBoolean("showhelp", OMC.SHOWHELP).commit();
+						mAD.dismiss();
+					}
+				});
+				((Button)ll.findViewById(OMC.RId("faqNeutral"))).setOnClickListener(new Button.OnClickListener() {
+					
+					@Override
+					public void onClick(android.view.View v) {
+						mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
+						mTextView.invalidate();
+						OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
+					}
+				});;
+				
+				mAD = new AlertDialog.Builder(this)
+				.setTitle(OMC.RString("usefulTip"))
+			    .setCancelable(true)
+			    .setView(ll)
+			    .setOnKeyListener(new OnKeyListener() {
+			    	@Override
+					public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+			    		if (arg2.getKeyCode()==android.view.KeyEvent.KEYCODE_BACK) mAD.cancel();
+			    		return true;
+			    	};
+			    })
+			    .show();
     		}
 
 		} else {

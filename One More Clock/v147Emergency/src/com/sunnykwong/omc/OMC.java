@@ -84,7 +84,7 @@ import android.widget.Toast;
 public class OMC extends Application { 
 
 	static final String TESTVER = "Emergency Beta 2";
-	static final boolean FREEEDITION = true;
+	static final boolean FREEEDITION = false;
 	static boolean HDRENDERING = true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
 	static String WORKDIR;
@@ -99,7 +99,7 @@ public class OMC extends Application {
 	
 	static final String SINGLETONNAME = "One More Clock";
 	static final String STARTERPACKURL = "asset:pk143.omc";
-	static final String OMCCHANGESURL = "https://sites.google.com/a/xaffron.com/xaffron-software/omc-changes";
+	static String OMCCHANGESURL;
 	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v143.omc";
 	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v143.omc";
 	static final String DEFAULTTHEME = "IceLock";
@@ -328,13 +328,13 @@ public class OMC extends Application {
 		// Define XML Parser.
 		System.setProperty ("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver");
 
+		OMC.OMCCHANGESURL = "https://sites.google.com/a/xaffron.com/xaffron-software/omc-changes";
 		try {
 			OMC.THISVERSION = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA).versionName + " " + OMC.TESTVER;
+			OMC.OMCCHANGESURL+=getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA).versionCode;
 		} catch (final NameNotFoundException e) {
 			OMC.THISVERSION = "1.0.0";
 		}
-
-		OMC.PAIDURI = (OMC.SINGLETON? Uri.parse("market://details?id=" + OMC.PKGNAME +"donate"):Uri.parse("market://details?id=com.sunnykwong.omc"));
 
 		OMC.WIDGET5x2CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget5x2");
 		OMC.WIDGET5x4CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget5x4");

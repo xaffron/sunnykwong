@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="faqs">
-		<item>Version 1.4.0 removed support for the 7Timer weather provider.  Many thanks to 7Timer for providing weather information to OMC when I needed help the most!</item>,
-        <item>Launching with v.1.3.6 are Firmament and Iris.  New clocks are on the way, but please be patient as I sort through weather stability issues!</item>,
-		<item>New in version 1.3.6 is one-second refresh.  While the one-second refresh results in higher battery drain, it adds a nice dynamic quality to clocks with a second hand.</item>,
-		<item>As of version 1.3.0, clocks now have tags.  Tap on a tag to understand what it means!</item>,
+		<item>Version 1.4.7 launches after a year-and-a-half hiatus.  Thank you for waiting, really!</item>,
+        <item>With Version 1.4.7, themes and backups are now stored in /Android/data/com.sunnykwong.omc/files/ instead of /.OMCThemes/. WARNING: THEMES AND BACKUPS NO LONGER SURVIVE UNINSTALL, so please move your backups and customizations to another folder *before* you uninstall!</item>,
+		<item>If you have old customizations and backups, please save them to a safe place on your SD card.  When you need to use them, copy them to the /Android/data/com.sunnykwong.omc/files/ folder.  After you finish backing everything up, you can delete all the files in the .OMCThemes folder (with a dot).</item>,
+		<item>The paid version features a one-second refresh.  While the one-second refresh results in higher battery drain, it adds a nice dynamic quality to clocks with a second hand.</item>,
+		<item>Clocks have tags on the theme picker screen.  Tap on a tag to understand what it means!</item>,
 		<item>Not finding your favorite clock?  OMC comes with just a few initially.  To get the full clock collection, tap on \'Download Full Online Collection\' when you\'re in the theme picker screen.</item>,
-		<item>To back up or share your changes, try the new experimental feature!  On \'Set Widget Theme\', long-press a theme and select \'email theme\'.</item>,
+		<item>To back up or share your changes, on \'Set Widget Theme\', long-press a theme and select \'email theme\'.</item>,
 		<item>OMC supports battery levels.  Some of the widgets contain battery indicators in surprising ways - browse around and experiment!</item>,
-		<item>You can now specify a timezone for each clock independently of the device setting.  This allows for nice home/travel clock scenarios.</item>,
-		<item>OMC stores themes in the .OMCThemes folder (with a dot).  This will keep OMC from cluttering up your Gallery&#8230; feel free to delete any old themes in your SD card\'s OMCThemes directory (without dot).</item>,
+		<item>You can specify a timezone or time offset for each clock independently of the device setting.  This allows for nice home/travel clock scenarios.</item>,
 		<item>OMC lets you send your favorite personalizations to Xaffron!  Tap and hold a clock on the theme picker screen, then select \'Email Tweaked Theme\' to send to me.</item>,
 		<item>OMC allows theme personalization on the phone.  Try moving each layer around, changing colors and toggling visibility!</item>,
 		<item>Theme personalization overwrites dynamic elements (changing colors, positions, text, etc).  To make fine-tuned changes to dynamic elements, fire up a text editor on your phone or computer and look at the contents of the 00control.json file.</item>,
