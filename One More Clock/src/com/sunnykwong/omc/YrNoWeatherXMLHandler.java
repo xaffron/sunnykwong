@@ -52,8 +52,35 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 			23, // 20 SLEETSUNTHUNDER
 			23, // 21 SNOWSUNTHUNDER
 			21, // 22 LIGHTRAINTHUNDER
-			21 // 23 SLEETTHUNDER2
-	};
+			21, // 23 SLEETTHUNDER2
+			21,// 24 DrizzleThunderSun
+			21,// 25 RainThunderSun
+			21,// 26 LightSleetThunderSun
+			34,// 27 HeavySleetThunderSun
+			38,// 28 LightSnowThunderSun
+			38,// 29 HeavySnowThunderSun
+			21,// 30 DrizzleThunder
+			21,// 31 LightSleetThunder
+			21,// 32 HeavySleetThunder
+			21,// 33 LightSnowThunder
+			21,// 34 HeavySnowThunder
+			0, // 35 UNUSED
+			0, // 36 UNUSED
+			0, // 37 UNUSED
+			0, // 38 UNUSED
+			0, // 39 UNUSED
+			19,// 40 DrizzleSun
+			20,// 41 RainSun
+			36,// 42 LightSleetSun
+			36,// 43 HeavySleetSun
+			29,// 44 LightSnowSun
+			33,// 45 HeavysnowSun
+			16,// 46 Drizzle
+			36,// 47 LightSleet
+			36,// 48 HeavySleet
+			29,// 49 LightSnow
+			33 // 50 HeavySnow
+			};
 
 	public Stack<String[]> tree;
 	public HashMap<String, String> element;
@@ -169,6 +196,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 									YrNoWeatherXMLHandler.URL_LOCATIONFORECASTLTS
 											+ latitude + ";lon=" + longitude);
 						}
+						System.out.println(url.toString());
 						huc = (HttpURLConnection) url.openConnection();
 						huc.setConnectTimeout(30000);
 						huc.setReadTimeout(30000);
@@ -260,8 +288,10 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				// First, parse the forecast time.
 				if (localName.equals("weatherdata")) {
 					UPDATEDTIME.parse(atts.getValue("created"));
+					System.out.println("UPDATETIME:"+ UPDATEDTIME.format2445());
 				}
-
+				// If it's a time tag with a forecast datatype,
+				// parse the from and to values
 				if (localName.equals("time")) {
 					if (atts.getValue("datatype").equals("forecast")) {
 						FROMTIME.parse(atts.getValue("from").replace("-", "")
@@ -270,6 +300,9 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 						TOTIME.parse(atts.getValue("to").replace("-", "")
 								.replace(":", ""));
 						TOTIME.switchTimezone(Time.getCurrentTimezone());
+						// LOWDATE is used to calculate the cutoff for high/low temperatures
+						// The usual practice is to calculate highs/lows for each day
+						// Beginning and ending at 7am local time.
 						LOWDATE.parse(atts.getValue("to").replace("-", "")
 								.replace(":", ""));
 						LOWDATE.switchTimezone(Time.getCurrentTimezone());
@@ -318,8 +351,15 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				}
 
 				if (localName.equals("symbol")) {
-					int iConditionCode = CONDITIONTRANSLATIONS[Integer
-							.parseInt(atts.getValue("number"))];
+					int iYrConditionNumber = Integer.parseInt(atts.getValue("number"));
+					if (iYrConditionNumber>100) iYrConditionNumber-=100;
+					if (iYrConditionNumber>=CONDITIONTRANSLATIONS.length) {
+						iYrConditionNumber=0;
+						if (OMC.DEBUG)
+							Log.w(OMC.OMCSHORT + "YrNoWeather", "Unknown yr.no weather symbol #:" + iYrConditionNumber);
+							
+					}
+					int iConditionCode = CONDITIONTRANSLATIONS[iYrConditionNumber];
 					if (jsonWeather.optString("condition_code", "missing")
 							.equals("missing")) {
 						jsonWeather.putOpt("condition_code", iConditionCode);

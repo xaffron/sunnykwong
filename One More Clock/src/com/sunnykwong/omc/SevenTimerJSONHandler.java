@@ -121,6 +121,7 @@ public class SevenTimerJSONHandler {
 							
 							// Get forecast JSON.
 							url = new URL(sURL + "&lat="+latitude+"&lon="+longitude);
+							System.out.println(url.toString());
 							huc = (HttpURLConnection) url.openConnection();
 							huc.setConnectTimeout(WEBTIMEOUT);
 							huc.setReadTimeout(WEBTIMEOUT);

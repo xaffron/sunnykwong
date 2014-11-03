@@ -132,12 +132,6 @@ public class OMCPrefActivity extends PreferenceActivity {
 			OMC.INSTALLEDLAUNCHERAPPS.add(info.activityInfo.packageName);
 		}
 
-    	
-    	// FIX FOR BADTHEME
-		if (OMC.checkSDPresent()) {
-			((OMC)(this.getApplication())).fixKnownBadThemes();
-		}
-
     	// If action is null, we are coming from an existing widget - 
     	// we want both the home and back buttons to apply changes,
     	// So we set default result to OK.
@@ -366,7 +360,6 @@ public class OMCPrefActivity extends PreferenceActivity {
 												e.printStackTrace();
 								        	}
 										}
-										File OMCRoot = Environment.getExternalStorageDirectory();
 										
 										JSONArray TTL= new JSONArray();
 										for (int i=0; i<9; i++)
@@ -385,12 +378,12 @@ public class OMCPrefActivity extends PreferenceActivity {
 												result.put("widgetThemeLong", OMC.PREFS.getString("widgetThemeLong", OMC.DEFAULTTHEMELONG));
 
 											    //convert from paths to Android friendly Parcelable Uri's
-												if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","dir: " + OMCRoot.getAbsolutePath());
+												if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","dir: " + OMC.WORKDIR);
 												if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","name: " + backupName+".omc");
 											    
-											    File outzip = new File(OMCRoot.getAbsolutePath(),backupName+".omc");
+											    File outzip = new File(OMC.WORKDIR,backupName+".omc");
 											    
-											    File f = new File(OMCRoot.getAbsolutePath() + "/.OMCThemes/" 
+											    File f = new File(OMC.WORKDIR + "/" 
 									        			+ OMC.PREFS.getString("widgetTheme", OMC.DEFAULTTHEME));
 									        	try {
 										        	ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(outzip),8192));
@@ -425,7 +418,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 													e.printStackTrace();
 												}
 											}
-								        	File backupOut = new File(OMCRoot.getAbsolutePath() + "/" 
+								        	File backupOut = new File(OMC.WORKDIR + "/" 
 								        			+ backupName+".omcbackup");
 								        	OMC.JSONToFile(result,backupOut);
 								        	
@@ -469,7 +462,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 					ll.setOrientation(LinearLayout.VERTICAL);
 					RadioGroup rg = new RadioGroup(OMCPrefActivity.this);
 					
-					File OMCRoot = Environment.getExternalStorageDirectory();
+					File OMCRoot = new File(OMC.WORKDIR);
 					
 					for (String filename: OMCRoot.list()) {
 						final String fname = new String(filename);
@@ -543,7 +536,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 												e.printStackTrace();
 								        	}
 										}
-										File OMCRoot = new File(Environment.getExternalStorageDirectory(),restoreName+".omcbackup");
+										File OMCRoot = new File(OMC.WORKDIR,restoreName+".omcbackup");
 										
 										try {
 											JSONObject backup = OMC.streamToJSONObject(new FileInputStream(OMCRoot));
@@ -571,10 +564,10 @@ public class OMCPrefActivity extends PreferenceActivity {
 													OMC.setPrefs(appWidgetID);
 
 												    //convert from paths to Android friendly Parcelable Uri's
-													if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","dir: " + Environment.getExternalStorageDirectory());
+													if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","dir: " + OMC.WORKDIR);
 													if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","name: " + restoreName+".omc");
 												    
-												    File inzip = new File(Environment.getExternalStorageDirectory(),restoreName+".omc");
+												    File inzip = new File(OMC.WORKDIR,restoreName+".omc");
 												    if (!inzip.exists()) return "";
 
 												    final Intent it = new Intent(OMC.CONTEXT, OMCThemeUnzipActivity.class);
@@ -1205,56 +1198,56 @@ public class OMCPrefActivity extends PreferenceActivity {
     									}
 									}).create();
     			d.show();
-//    			OMC.FAQS = OMC.RStringArray("faqs");
-//				LayoutInflater li = LayoutInflater.from(this);
-//				LinearLayout ll = (LinearLayout)(li.inflate(OMC.RLayoutId("faqdialog"), null));
-//				mTextView = (TextView)ll.findViewById(OMC.RId("splashtext"));
-//				mTextView.setAutoLinkMask(Linkify.ALL);
-//				mTextView.setMinLines(8);
-//				mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
-//				OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
-//				
-//				mCheckBox = (CheckBox)ll.findViewById(OMC.RId("splashcheck"));
-//				mCheckBox.setChecked(!OMC.SHOWHELP);
-//				mCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-//					
-//					@Override
-//					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//						// TODO Auto-generated method stub
-//						OMC.SHOWHELP = !isChecked;
-//					}
-//				});
-//	
-//				((Button)ll.findViewById(OMC.RId("faqOK"))).setOnClickListener(new Button.OnClickListener() {
-//					
-//					@Override
-//					public void onClick(android.view.View v) {
-//						OMC.PREFS.edit().putBoolean("showhelp", OMC.SHOWHELP).commit();
-//						mAD.dismiss();
-//					}
-//				});
-//				((Button)ll.findViewById(OMC.RId("faqNeutral"))).setOnClickListener(new Button.OnClickListener() {
-//					
-//					@Override
-//					public void onClick(android.view.View v) {
-//						mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
-//						mTextView.invalidate();
-//						OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
-//					}
-//				});;
-//				
-//				mAD = new AlertDialog.Builder(this)
-//				.setTitle(OMC.RString("usefulTip"))
-//			    .setCancelable(true)
-//			    .setView(ll)
-//			    .setOnKeyListener(new OnKeyListener() {
-//			    	@Override
-//					public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
-//			    		if (arg2.getKeyCode()==android.view.KeyEvent.KEYCODE_BACK) mAD.cancel();
-//			    		return true;
-//			    	};
-//			    })
-//			    .show();
+    			OMC.FAQS = OMC.RStringArray("faqs");
+				LayoutInflater li = LayoutInflater.from(this);
+				LinearLayout ll = (LinearLayout)(li.inflate(OMC.RLayoutId("faqdialog"), null));
+				mTextView = (TextView)ll.findViewById(OMC.RId("splashtext"));
+				mTextView.setAutoLinkMask(Linkify.ALL);
+				mTextView.setMinLines(8);
+				mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
+				OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
+				
+				mCheckBox = (CheckBox)ll.findViewById(OMC.RId("splashcheck"));
+				mCheckBox.setChecked(!OMC.SHOWHELP);
+				mCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+					
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+						// TODO Auto-generated method stub
+						OMC.SHOWHELP = !isChecked;
+					}
+				});
+	
+				((Button)ll.findViewById(OMC.RId("faqOK"))).setOnClickListener(new Button.OnClickListener() {
+					
+					@Override
+					public void onClick(android.view.View v) {
+						OMC.PREFS.edit().putBoolean("showhelp", OMC.SHOWHELP).commit();
+						mAD.dismiss();
+					}
+				});
+				((Button)ll.findViewById(OMC.RId("faqNeutral"))).setOnClickListener(new Button.OnClickListener() {
+					
+					@Override
+					public void onClick(android.view.View v) {
+						mTextView.setText(OMC.FAQS[OMC.faqtoshow++]);
+						mTextView.invalidate();
+						OMC.faqtoshow = OMC.faqtoshow==OMC.FAQS.length?0:OMC.faqtoshow;
+					}
+				});;
+				
+				mAD = new AlertDialog.Builder(this)
+				.setTitle(OMC.RString("usefulTip"))
+			    .setCancelable(true)
+			    .setView(ll)
+			    .setOnKeyListener(new OnKeyListener() {
+			    	@Override
+					public boolean onKey(DialogInterface arg0, int arg1, android.view.KeyEvent arg2) {
+			    		if (arg2.getKeyCode()==android.view.KeyEvent.KEYCODE_BACK) mAD.cancel();
+			    		return true;
+			    	};
+			    })
+			    .show();
     		}
 
 		} else {
@@ -1299,11 +1292,16 @@ public class OMCPrefActivity extends PreferenceActivity {
 				.setItems(items, new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int item) {
+							File fThemeDirs;
 							switch (item) {
 								case 0: //Yes
-									OMC.removeDirectory(
-											new File(
-													Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes"));
+									fThemeDirs = new File(OMC.WORKDIR);
+									for (File fFolder:fThemeDirs.listFiles()){
+										if (fFolder.isDirectory())
+											OMC.removeDirectory(fFolder);
+										if (fFolder.isFile())
+											OMC.removeFile(fFolder);
+									}
 						    		OMC.purgeTypefaceCache();
 						    		OMC.purgeBitmapCache();
 						    		OMC.purgeImportCache();
@@ -1313,10 +1311,13 @@ public class OMCPrefActivity extends PreferenceActivity {
 						    		Toast.makeText(OMCPrefActivity.this, OMC.RString("omcThemesFolderDeleted"), Toast.LENGTH_SHORT).show();
 									break;
 								case 1: //Yes but restore
-									File omcroot = new File(
-											Environment.getExternalStorageDirectory().getAbsolutePath()+"/.OMCThemes");
-									OMC.removeDirectory(omcroot);
-									omcroot.mkdirs();
+									fThemeDirs = new File(OMC.WORKDIR);
+									for (File fFolder:fThemeDirs.listFiles()){
+										if (fFolder.isDirectory())
+											OMC.removeDirectory(fFolder);
+										if (fFolder.isFile())
+											OMC.removeFile(fFolder);
+									}
 						        	OMC.setupDefaultTheme();
 									startActivity(OMC.GETSTARTERPACKINTENT);
 						    		OMC.purgeTypefaceCache();
