@@ -51,15 +51,16 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 		if (action==null) {
 			OMC.FG=true;
 			OMC.SCREENON=true;
-			OMC.SVCSTARTINTENT.setAction(OMC.FGSTRING);
+			//OMC.SVCSTARTINTENT.setAction(OMC.FGSTRING);
 		}
 		
 		// If user taps on notification, cancel FG mode.
 		if (action.equals(OMC.CANCELFGSTRING)) {
 			OMC.FG=false;
-			OMC.SVCSTARTINTENT.setAction(OMC.BGSTRING);
+			//OMC.SVCSTARTINTENT.setAction(OMC.BGSTRING);
 			OMC.LASTRENDEREDTIME.set(((omctime+OMC.LEASTLAGMILLIS)/1000l)*1000l);
-			OMC.CONTEXT.startService(OMC.SVCSTARTINTENT);
+//			OMC.CONTEXT.startService(OMC.SVCSTARTINTENT);
+			OMC.CONTEXT.sendBroadcast(OMC.WIDGETREFRESHINTENT);
 			return;
 		}
 				
@@ -187,8 +188,8 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 					}
 				}
 				
-				if (action.equals(OMC.FGINTENT)) OMC.SVCSTARTINTENT.setAction(OMC.FGSTRING);
-				else OMC.SVCSTARTINTENT.setAction(OMC.BGSTRING);
+				//if (action.equals(OMC.FGINTENT)) OMC.SVCSTARTINTENT.setAction(OMC.FGSTRING);
+				//else OMC.SVCSTARTINTENT.setAction(OMC.BGSTRING);
 
 				// When Clock Priority is Medium or above:
 				// Do nothing if the screen turns off, but
@@ -246,13 +247,15 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 				// If it is a forced update, update.
 				if (bForceUpdate) {
 					OMC.LASTRENDEREDTIME.set(omctime);
-					OMC.CONTEXT.startService(OMC.SVCSTARTINTENT);
+					//OMC.CONTEXT.startService(OMC.SVCSTARTINTENT);
+					OMC.CONTEXT.sendBroadcast(OMC.WIDGETREFRESHINTENT);
 
 				// If time/zone changed, also force update.
 				} else if (action.equals(Intent.ACTION_TIME_CHANGED)
 						||action.equals(Intent.ACTION_TIMEZONE_CHANGED)) {
 					OMC.LASTRENDEREDTIME.set(omctime);
-					OMC.CONTEXT.startService(OMC.SVCSTARTINTENT);
+					//OMC.CONTEXT.startService(OMC.SVCSTARTINTENT);
+					OMC.CONTEXT.sendBroadcast(OMC.WIDGETREFRESHINTENT);
 
 				// Otherwise, skip the redraw.
 				} else {

@@ -1815,7 +1815,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 	    	OMC.toggleWidgets(getApplicationContext());
 	
 			// Set the alarm for next tick first, so we don't lose sync
-    		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
+	    	getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
 			OMC.setServiceAlarm(System.currentTimeMillis()+10500l, (System.currentTimeMillis()+10500l)/1000l*1000l);
 
 		}

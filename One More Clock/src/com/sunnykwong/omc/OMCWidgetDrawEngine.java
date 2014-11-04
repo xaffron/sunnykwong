@@ -49,9 +49,6 @@ public class OMCWidgetDrawEngine {
 		// Set target time slightly ahead to account for lag
 		OMC.TIME.set(((System.currentTimeMillis()+OMC.LEASTLAGMILLIS)/1000l)*1000l);
 		
-		if (!OMCService.RUNNING) {
-			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l*1000l);
-		}
 		AppWidgetManager aWM = AppWidgetManager.getInstance(context);
 
 		for (int i=0; i<(aWM.getAppWidgetIds(cName)==null? 0: aWM.getAppWidgetIds(cName).length); i++) {

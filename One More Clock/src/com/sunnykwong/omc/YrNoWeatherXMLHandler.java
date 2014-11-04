@@ -196,7 +196,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 									YrNoWeatherXMLHandler.URL_LOCATIONFORECASTLTS
 											+ latitude + ";lon=" + longitude);
 						}
-						System.out.println(url.toString());
+						//System.out.println(url.toString());
 						huc = (HttpURLConnection) url.openConnection();
 						huc.setConnectTimeout(30000);
 						huc.setReadTimeout(30000);
@@ -288,7 +288,7 @@ public class YrNoWeatherXMLHandler extends DefaultHandler {
 				// First, parse the forecast time.
 				if (localName.equals("weatherdata")) {
 					UPDATEDTIME.parse(atts.getValue("created"));
-					System.out.println("UPDATETIME:"+ UPDATEDTIME.format2445());
+					//System.out.println("UPDATETIME:"+ UPDATEDTIME.format2445());
 				}
 				// If it's a time tag with a forecast datatype,
 				// parse the from and to values

@@ -28,23 +28,6 @@ public class ClockWidget3x3 extends AppWidgetProvider {
 		}
 	}
 
-//	When the very last widget is removed.
-	public void onDisabled(Context context) {
-
-		//Flag OMCService to stop.
-		OMCService.STOPNOW3x3=true;
-	}
-		
-//	This gets called when the very first widget is instantiated.
-	public void onEnabled(Context context) {
-		if (!OMCService.RUNNING) {
-			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l*1000l);
-		}
-
-		//Unflag the STOP FLAG for OMCService.
-		OMCService.STOPNOW3x3=false;
-	}
-	
 	// This fires when the OMC Service broadcasts the WIDGET_REFRESH intent.
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -70,11 +53,6 @@ public class ClockWidget3x3 extends AppWidgetProvider {
 	@Override
 	public void onUpdate(Context context, AppWidgetManager aWM, int[] appWidgetIds) {
 		
-		// Restart the service if stopped.
-		if (!OMCService.RUNNING) {
-			OMC.setServiceAlarm(System.currentTimeMillis()+500l, (System.currentTimeMillis()+500l)/1000l*1000l);
-		}
-
         final int N = appWidgetIds.length;
         for (int i=0; i<N; i++) {
         		// For a brand new widget (but not established widgets), initialize the prefs

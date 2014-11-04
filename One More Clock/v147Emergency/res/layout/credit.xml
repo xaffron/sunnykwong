@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@drawable/gradient_selector"
-	android:orientation="vertical" android:padding="10dp" xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@+id/testerraw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textAppearance="?android:attr/textAppearanceLarge"/>
-	<TextView android:id="@+id/testername" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textAppearance="?android:attr/textAppearanceLarge"/>
-    <TextView android:id="@+id/testerquote" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textAppearance="?android:attr/textAppearanceSmall" android:autoLink="all"/>
-</LinearLayout>

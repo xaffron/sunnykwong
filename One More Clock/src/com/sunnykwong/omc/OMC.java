@@ -264,7 +264,8 @@ public class OMC extends Application {
     static final Class<?>[] mStartForegroundSignature = new Class[] {int.class, Notification.class};
     static final Class<?>[] mStopForegroundSignature = new Class[] {boolean.class};
     static final Class<?>[] mSetForegroundSignature = new Class[] {boolean.class};
-    static Intent SVCSTARTINTENT, PREFSINTENT, ALARMCLOCKINTENT, BATTUSAGEINTENT;
+    //static Intent SVCSTARTINTENT;
+    static Intent PREFSINTENT, ALARMCLOCKINTENT, BATTUSAGEINTENT;
     static Intent GETSTARTERPACKINTENT, GETBACKUPPACKINTENT, GETEXTENDEDPACKINTENT, PICKTHEMEINTENT, DUMMYINTENT, OMCMARKETINTENT, OMCWEATHERFORECASTINTENT;
     static PendingIntent FGPENDING, BGPENDING, PREFSPENDING, ALARMCLOCKPENDING, WEATHERFORECASTPENDING, BATTUSAGEPENDING, WEATHERREFRESHPENDING;
     static Notification FGNOTIFICIATION;
@@ -362,7 +363,7 @@ public class OMC extends Application {
 
 		OMC.FGPENDING = PendingIntent.getBroadcast(OMC.CONTEXT, 0, OMC.FGINTENT, 0);
 		OMC.BGPENDING = PendingIntent.getBroadcast(OMC.CONTEXT, 0, OMC.BGINTENT, 0);
-		OMC.SVCSTARTINTENT = new Intent(OMC.CONTEXT, OMCService.class);
+		//OMC.SVCSTARTINTENT = new Intent(OMC.CONTEXT, OMCService.class);
 		OMC.PREFSINTENT = new Intent(OMC.CONTEXT, OMCPrefActivity.class);
 		OMC.PICKTHEMEINTENT = new Intent(OMC.CONTEXT, OMCThemePickerActivity.class);
 		OMC.PREFSPENDING = PendingIntent.getActivity(OMC.CONTEXT, 0, new Intent(OMC.CONTEXT, OMCPrefActivity.class), 0);
@@ -844,11 +845,12 @@ public class OMC extends Application {
 //		}
 
 		final int iAlarmSetting = OMC.CURRENTCLOCKPRIORITY>1?AlarmManager.RTC:AlarmManager.RTC_WAKEUP;
+		long lPracticalTargetTime=lTimeToRefresh>lTargetTime?lTargetTime+1000l:lTargetTime;
 		if (OMC.FG) {
-			OMC.FGINTENT.putExtra("target", lTargetTime);
+			OMC.FGINTENT.putExtra("target", lPracticalTargetTime);
 			OMC.ALARMS.set(iAlarmSetting, lTimeToRefresh, OMC.FGPENDING);
 		} else {
-			OMC.BGINTENT.putExtra("target", lTargetTime);
+			OMC.BGINTENT.putExtra("target", lPracticalTargetTime);
 			OMC.ALARMS.set(iAlarmSetting, lTimeToRefresh, OMC.BGPENDING);
 		}
     }
@@ -2154,16 +2156,6 @@ public class OMC extends Application {
 
     @Override
     public void onTerminate() {
-//    	if (!OMCService.STOPNOW4x4 || !OMCService.STOPNOW4x2 || !OMCService.STOPNOW4x1 
-//    			|| !OMCService.STOPNOW3x3 || !OMCService.STOPNOW3x1 
-//    			|| !OMCService.STOPNOW2x2 || !OMCService.STOPNOW2x1
-//    			|| !OMCService.STOPNOW1x3) {
-//    		Log.i(OMC.OMCSHORT + "App","APP TERMINATED - NOT UNREGISTERING RECEIVERS - OMC WILL RESTART");
-//    		// do nothing
-//    	} else {
-//    		Log.i(OMC.OMCSHORT + "App","APP TERMINATED - UNREGISTERING RECEIVERS - OMC WILL NOT RESTART");
-//    		unregisterReceiver(aRC);
-//    	}
         OMC.PREFS.edit().commit();
         super.onTerminate();
     }
