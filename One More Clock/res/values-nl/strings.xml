@@ -1,0 +1,2153 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+ 	<string name="languageWord">Taal</string>
+    <string name="languageName">Nederlands (Belgie)</string>
+    <string name="translator">Tonny Mulch</string>
+    <!-- General Buttons/notifications -->
+    <string name="nextTip">Volgende Aanwijzing</string>
+    <string name="taskComplete">Taak Volbracht</string>
+    <!-- General Errors -->
+    <string name="sdcardNotDetected">SD Card niet gedetecteerd.\nVergeet niet je USB opslag uit te zetTien
+		als deze nog is aangesloTien
+	</string>
+    <string name="sdcardMissingOrCorrupt">SD Card niet gevonden of stuk.\nVergeet niet je USB opslag uit te zetTien
+		als deze nog is aangesloTien
+	</string>
+    <string name="themeNotFound">Thema niet gevonden! Herstellen naar de standaard thema.
+	</string>
+    <string name="warningConflictPaid">WAARSCHIEUWING!\nConflict met de betaalde editie</string>
+    <string name="warningConflictFree">WAARSCHIEUWING!\nConflict met de gratis editie</string>
+    <string name="warningConflictText">Thema customalisatie en klok instellingen Werkt niet goed.\n
+		Verwijder de gratis editie als eerste!
+	</string>
+    <string name="defaultThemeNotRemovable">Het standaard thema is niet verwijderbaar!</string>
+    <!-- Bailout App Dialog -->
+    <string name="thanksForDownloading">Bedankt voor het downloaden!</string>
+    <string name="widgetDir1">Om te beginnen, druk tap op de terug knop om terug te gaan naar je hoofdscherm,
+		daarna naar de \'Widgets\' lijst met \u0020
+	</string>
+    <string name="widgetDir2">\u0020daarin. Veel plezier!</string>
+    <!-- Useful Tips -->
+    <string name="usefulTip">Bruikbare Tip</string>
+    <string name="doNotShowAgain">Niet meer laten zien.</string>
+    <!-- Weather Forecast Screen -->
+    <string name="humiditycondition">Vochtigheid: </string>
+    <string name="windcondition">Wind: </string>
+    <!-- Forecast Screen -->
+    <string name="doubleDash">--</string>
+    <string name="unknown">Onbekend</string>
+    <string name="noaaWeatherCredit">Weer observaties en de voorspellingen van de National Oceanic 
+	en Atmospheric Administration (NOAA) bijgewerkt.
+	</string>
+    <string name="igWeatherCredit">Weer bijgewerkt vanuit Google API.</string>
+    <string name="yrWeatherCredit">Weer voorspelling van yr.no, geleverd door het Noorse Meteorologisch
+	Instituut en de NRK.
+	</string>
+    <string name="ZeventimerWeatherCredit">7Timer! forecasts by Ye Quanzhi, supported by the
+		Shanghai Astronomical Observatory, Chinese Academy of Sciences.
+	</string>
+    <string name="owmWeatherCredit">Weer bijgewerkt op basis van openweathermaps.org.</string>
+    <string name="tapForAlternateForecast">Tap voor alternatieve prognoses van AccuWeather®
+	</string>
+    <string name="weatherDisabledOrNoWeatherLoaded">Weer uitgeschakeld, of geen weer geladen!</string>
+    <string name="supplementedbyMETAR">Huidige voorwaarden aangevuld met METAR van
+	</string>
+    <!-- Clock Preferences -->
+	<!-- Klaar met vertalen -->   
+    <string name="clockPreferences">Klok voorkeuren</string>
+    <string name="dashPreferences">\u0020- voorkeuren</string>
+    <string name="forThisClock">Voor deze Klok:</string>
+    <string name="widgetTheme">Widget Thema</string>
+	<!-- Widget Theme -->
+	<string name="widgetThemeTitle">Swipe om te kiezen; Tap &amp; hou vast voor Opties</string>
+    <string name="corruptPlsDelete">[Beschadigd - Verwijderen A.u.b.]</string>
+    <string name="reextractBundledClocks">Opnieuw Gebundelde Klokken Uitpakken</string>
+    <string name="downloadAllClocks">Download Alle Klokken(7MB)</string>
+    <string name="preselected"/>
+    <string name="postselected">\u0020geselecteerd.</string>
+	<!-- Theme Picker Legend -->
+	<string name="legend">Legende</string>
+    <string name="batteryLegend">De lading van de batterij tEenn</string>
+    <string name="weatherLegend">Laat het weer zien</string>
+    <string name="bkimageLegend">Bijgevoegde Achtergrond Image</string>
+    <string name="ltbgLegend">Goed op Lichte Achtergronden</string>
+    <string name="dkbgLegend">Goed op Donkere Achtergronden</string>
+    <string name="tweakLegend">Klok is door gebruiker veranderd</string>
+	<!-- Theme Skinner tool (deprecated) -->
+	<string name="reloadThemeCatalog">Herladen Thema Catalogus</string>
+	<!-- Theme Import/Unzip -->
+	<string name="themePreview">Thema Preview</string>
+    <string name="openingConnection">Openen verbinding.</string>
+    <string name="beginningDownload">Beginnen met downloaden.</string>
+    <string name="downloading">Downloading\u0020</string>
+    <string name="downloaded">Gedownload\u0020</string>
+    <string name="of">\u0020van\u0020</string>
+    <string name="bytes">\u0020bytes</string>
+    <string name="storingFile">Storing bestand:\u0020</string>
+    <string name="existsOverwriting">\u0020bestaand; overschrijving</string>
+    <string name="createThemeFolder1">Thema map \'</string>
+    <string name="createThemeFolder2">\'\u0020gemaakt.</string>
+    <string name="detectedWeatherskin">Gedetecteerde Weatherskin </string>
+    <string name="extractingStarterClockPack">Uitpakken van een Klok starters pakket…</string>
+    <string name="starterClockPack">Klok starters pakket</string>
+    <string name="starterClockPackText">Files in your SDcard\'s .OMC Themes Map Zal worden
+		overschreven. Weet je het zeker?\n(Wanneer niet zeker, tap Ja)
+	</string>
+    <string name="importComplete">Importeren is Klaar!</string>
+    <string name="importAborted">Importeren is Afgebroken!</string>
+    <string name="useDownloadInsteadOfPreview">Gebruik Download in plaats van Bekijken voor het 
+	    importeren van een OCM Klok!
+	</string>
+    <string name="imporTweerksWithOMCFiles">Klok importeren werkt met .omc bestanden.\nJe probeert
+     	een verkeerd bestand te openen.
+	</string>
+    <string name="nothingtoExtract">Niets om uit te pakken!</string>
+    <string name="downloadInterrupted">Download Onderbroken!</string>
+    <string name="poorReceptionArea">Is uw telefoon in een slecht ontvangst gebied?\nProbeer het
+     	later nog eens.
+	</string>
+    <string name="connectionTimedOut">Verbinden duurde te lang!</string>
+    <string name="serverNotFound">Server niet gevonden!</string>
+    <!-- Widget Theme Long Press -->
+    <string name="emailOrDeleteTheme">Email of Verwijder Thema</string>
+    <string name="emailTheme">Email Thema</string>
+    <string name="emailThemeText">Inpakken van dit thema en Email het naar je zelf, of
+		voor een vriend.\nWil je dit doen?
+	</string>
+    <string name="emailThemeConfirm1">Email\u0020</string>
+    <string name="emailThemeConfirm2">\u0020?</string>
+    <string name="emailThemeChooser">Inpakken van je thema bestanden voor email.</string>
+    <string name="deleteTheme">Verwijder Thema</string>
+    <string name="deleteThemeConfirm1">Verwijder\u0020</string>
+    <string name="deleteThemeConfirm2">\u0020van de SD card?</string>
+    <string name="deleteThemeConfirm3">U moet het thema weer downloaden/uitpakken om het te
+		kunnen gebruiken. Weet je het zeker?
+	</string>
+    <string name="submitThemetoDev">Verstuur Thema voor Dev</string>
+    <string name="submitThemetoDevConfirm1">Versturen\u0020</string>
+    <string name="submitThemetoDevConfirm2">\u0020voor Xaffron als een nieuw thema?</string>
+    <string name="areYouAbsolutelySure">Ben je absoluut zeker?</string>
+    <string name="areYouAbsolutelySureText">Dit thema heeft niet de \'Veranderd\' flag ;
+		het lijkt wel een standaard Thema.\n
+	</string>
+    <!-- Personalize Clock -->
+    <string name="personalizeClock">Personaliseer Klok</string>
+    <string name="tweakColorsAndLayers">Tweak Kleur and Lagen</string>
+    <!-- Personalize Clock subscreen -->
+    <string name="selectALayerForTweaking">Selecteer een Laag voor Verandering</string>
+    <string name="tweakerDirections">Sleep: Beweeg Menu: Tweak Terug: Anuleer</string>
+    <!-- Personalize Clock Menu -->
+    <string name="toggleVisibility">Wisselen Zichtbaarheid</string>
+    <string name="color1">Kleur 1</string>
+    <string name="color2">Kleur 2</string>
+    <!-- Personalize Clock Back -->
+    <string name="keepChanges">Verandering Behouden?</string>
+    <!-- Tap & Display Options -->
+    <string name="tapAndDisplayOptions">Tap &amp; Beeld Opties</string>
+    <string name="assignTaptoLaunch">Toewijzen Tap-voor-Starten</string>
+    <string name="nwCornerReserved">NW hoek gereserveerd voor instel scherm.</string>
+    <!-- TTL Popup -->
+    <string name="areatoCustomize">Gebied voor Aanpassen:</string>
+    <string name="chooseAction">Kies een Aktie</string>
+    <string name="openOptionsDefault">Open options (default)</string>
+    <string name="doNothing">Do nothing</string>
+    <string name="refreshWeather">Ververs nu het Weer</string>
+    <string name="weatherForecast">Weers voorspelling</string>
+    <string name="viewAlarms">Bekijk de alarmen (Experimenteel)</string>
+    <string name="battUsage">Bekijk Batterij Verbruik</string>
+    <string name="otherActivity">Overige Activiteit…</string>
+    <string name="otherActivityTTL">Eigen Activiteit</string>
+    <string name="use24HourClock">Gebruik 24 uurs klok</string>
+    <string name="use24HourTrue">23:59</string>
+    <string name="use24HourFalse">11:59pm</string>
+    <string name="showLeadingZero">Voorste Nul Zichtbaar</string>
+    <string name="showLeadingZTrue">04:23</string>
+    <string name="showLeadingZFalse">4:23</string>
+    <string name="mmddDateFormat">M/D/Y Datum Formaat</string>
+    <string name="mmddDateFormatTrue">12/31/2012</string>
+    <string name="mmddDateFormatFalse">31/12/2012</string>
+    <string name="changeTimeZEen">Verander de Tijdzone</string>
+    <string name="followingDeviceTimeZEen">(Volg Tijdzone van Apparaat)</string>
+    <string name="changeClockAdjustment">Zet Klok Voor/Achter</string>
+    <string name="minutesAhead">\u0020minuten vooruit op huidige tijd</string>
+    <string name="minutesBehind">\u0020minutes behind huidige tijd</string>
+    <string name="backupWidget">Backup Deze Widget</string>
+    <string name="nameOfBackup">Naam van Backup:</string>
+    <string name="backupThemePersonalizations">Backup Thema Personalisatie</string>
+    <string name="restoreWidget">Herstel Widget Instellingen</string>
+    <string name="overwriteThemePersonalizations">Overschrijf Thema Personalisatie</string>
+    <string name="overwriteThemeWarning">WAARSCHIEUWING: Alle bestaande personalisaties gemaakt voor de
+		klok worden overschrijven!</string>
+    <!-- TTL Sales Pitch -->
+    <string name="thinkOfThePossibilities">Denk eens aan de mogelijkheden!</string>
+    <string name="prePaidTTL">De betaalde versie laat jou\u0020</string>
+    <string name="postPaidTTL">\u0020starten van alle Activiteiten die jij wilt, plus het geeft
+		widget afmetingen van 4x2, 4x1, 3x1 en 2x1.\nA.U.B. overweeg
+		opwaarding om deze afmetingen te krijgen!
+	</string>
+    <string name="takeMetoPaid">Breng me naar de betaalde versie!</string>
+    <!-- Weather & Widget Options -->
+    <string name="forAllClocks">Voor alle Klokken:</string>
+    <string name="weatherAndWidgetoptions">Weer &amp; Widget Instellingen</string>
+    <string name="clearRenderCaches">Opschonen Render Caches</string>
+    <string name="cachesCleared">Caches Opgeschoond</string>
+    <!-- Weather & Widget Subscreen -->
+    <string name="refreshWeatherNow">Ververs het Weer Nu</string>
+    <string name="operationTimedOut">Verwerkingen duurden te lang!</string>
+    <string name="requestingLocation">Aanvragen Lokatie</string>
+    <string name="pleaseWait">Even Wachten…</string>
+    <string name="inProgress">In Uitvoering…</string>
+    <string name="usingFixedCoordinates">Gebruikt vaste coordinaties</string>
+    <string name="gotGPSLock">Heb een GPS signaal. Omgekeerd-GeoCoding…</string>
+    <string name="gotNeTweerkLock">Heb een WiFi/Netwerk signaal. Omgekeerd-GeoCoding…
+	</string>
+    <string name="reusingCachedLocation">Hergebruik recente Lokatie. Omgekeerd-GeoCoding…
+	</string>
+    <string name="requestingWeather">Opvragen van het Weer…</string>
+    <string name="weatherReceived">Weer Ontvangen. Verwerken…</string>
+    <string name="weatherSuccess">Weer successvol opgewaardeerd.</string>
+    <string name="weatherFailure">Weer opwaardering onsuccessvol.</string>
+    <string name="location">Lokatie:\u0020</string>
+    <string name="fixed">\u0020(Vast)</string>
+    <string name="detected">\u0020(gedetecteerd)</string>
+    <string name="lastTry">Laatste Poging:\u0020</string>
+    <string name="manualRefreshOnly">\u0020(Alleen Handmatig Verversen)</string>
+    <string name="nextRefresh">\u0020Volgende Verversing:\u0020</string>
+    <string name="lastRefresh">Laatste Verversing:\u0020</string>
+    <string name="nextRequest">\u0020Volgende Aanvraag:\u0020</string>
+    <string name="weatherLocation">Lokatie voor Weer:</string>
+    <string name="disableLocationAndWeather">Uitschakelen Lokatie &amp; Weer</string>
+    <string name="followDevice">Volg Apparaat(standaard)</string>
+    <string name="setFixedLocation">Instellen Vaste Lokatie</string>
+    <string name="weatherFunctionalityDisabled">Weer functionaliteid uitgeschakeld</string>
+    <string name="taptoEnable">Tap voor aanzetten</string>
+    <!-- Fixed Locn subscreen -->
+    <string name="enterCityAndStateCountry">Invoeren Stad Provincie/Land</string>
+    <string name="locationExamples">B.v. Harderwijk NL</string>
+    <string name="locationError">Geen resultaten gevonden.\nProbeer het opnieuw.</string>
+    <string name="networkError">Geen Netwerk Connectie.\nProbeer het opnieuw.</string>
+    <string name="unknownError">Onbekende Fout Opgetreden.\nProbeer het opnieuw.</string>
+    <string name="weatherProvider">Weer Provider</string>
+    <string-array name="wprovider_options">
+        <item>Automatish (standaard)</item>
+        <item>7Timer.com</item>
+        <item>NOAA (US Only)</item>
+        <item>Yr.no</item>
+        <item>Google Weather (oudere/nietwerkend)</item>
+    </string-array>
+    <string name="wpauto">Gebruik beste provider voor lokatie</string>
+    <string name="wp7timer">Gebruik 7Timer.com</string>
+    <string name="wpnoaa">Gebruik NOAA</string>
+    <string name="wpowm">Gebruik OpenWeatherMap.org</string>
+    <string name="wpyr">Gebruik yr.no</string>
+    <string name="wpig">Gebruik iGoogle Weather</string>
+    <string name="weatherDisplayUnits">Weer Weergave Eenheden</string>
+    <string-array name="wdisplay_options">
+        <item>Gebruik Fahrenheit (standaard)</item>
+        <item>Gebruik Celsius</item>
+    </string-array>
+    <string name="usingFahrenheit">Gebruikt nu Fahrenheit</string>
+    <string name="usingCelsius">Gebruikt nu Celsius</string>
+    <string name="useMETAR">Het Weer via METAR</string>
+    <string name="usingMETAR">Condities gedecodeerd vanaf nabij zijnde luchthaven</string>
+    <string name="usingInterpolation">Condities ingewonnen/geïnterpoleerd van provider
+	</string>
+    <string name="clockUpdateInterval">Klok Update Interval</string>
+    <string-array name="interval_options">
+        <item>1 sec (Extreem Batt verbruik)</item>
+        <item>10 sec (Zwaar Batt verbruik)</item>
+        <item>15 sec</item>
+        <item>20 sec</item>
+        <item>30 sec (standaard)</item>
+        <item>60 sec (Weinig Batt verbruik)</item>
+    </string-array>
+    <string name="redrawEvery">Ververs elke\u0020</string>
+    <string name="seconds">\u0020seconden.</string>
+    <string name="weatherUpdateInterval">Weer Update Interval</string>
+    <string-array name="winterval_options">
+        <item>Elk Uur (default)</item>
+        <item>Elke 4 Uur</item>
+        <item>Elke 8 Uur</item>
+        <item>Nooit (Alleen Handmatig)</item>
+    </string-array>
+   <string name="manualWeatherUpdatesOnly">Alleen handmatige weer updates</string>
+    <string name="refreshWeatherEveryHour">Het Weer om het uur Vernieuwen</string>
+    <string name="refreshWeatherEvery4Hours">Het Weer elke 4 uur vernieuwen</string>
+    <string name="refreshWeatherEvery8Hours">Het Weer elke 8 uur vernieuwen</string>
+    <string name="setForegroundMode">Instellen Voorgrond Mode</string>
+    <string name="keepOMCfromSleeping">voorkom OMC van inslapen\n(ten koste van een 
+		blijvende kennisgeving)
+	</string>
+    <string name="forceEnglishDates">Forceer Engelse Datums</string>
+    <string name="uncheckForSome">In/Uit Schakelen voor sommige niet-Engelse landinstellingen.(Experimenteel)
+	</string>
+    <string name="changeAppLocale">App UI Taal</string>
+    <string name="changeClockLocale">Klok Taal</string>
+    <string name="toggleWidgetSizes">Schakelen Widget Afmetingen</string>
+    <string name="rebootRequired">Reboot Vereist</string>
+    <string name="changestoTheseSettings">Wijzigingen in deze instelling zal een herstart
+		van uw telefoon vereisen om te activeren.
+	</string>
+    <string name="enable5x4Widget">Inschakelen (5x4) Widget</string>
+    <string name="enable5x2Widget">Inschakelen (5x2) Widget</string>
+    <string name="enable5x1Widget">Inschakelen (5x1) Widget</string>
+    <string name="enable4x4Widget">Inschakelen (4x4) Widget</string>
+    <string name="enable4x2Widget">Inschakelen (4x2) Widget</string>
+    <string name="enable4x1Widget">Inschakelen (4x1) Widget</string>
+    <string name="enable3x3Widget">Inschakelen (3x3) Widget</string>
+    <string name="enable3x1Widget">Inschakelen (3x1) Widget</string>
+    <string name="enable2x2Widget">Inschakelen (2x2) Widget</string>
+    <string name="enable2x1Widget">Inschakelen (2x1) Widget</string>
+    <string name="enable1x3Widget">Inschakelen (1x3) Widget</string>
+    <string name="forGalaxyNote">Voor een Galaxy Note of soortgelijks</string>
+    <string name="enableThemeTester">Inschakelen Thema Tester</string>
+    <string name="developmenttoolForSkinnersOnly">Development tool voor skinners alleen</string>
+      <!-- Widget Sizes Sales Pitch -->
+    <string name="areThereOtherWidgetSizes">Zijn er nog andere widget afmetingen?</string>
+    <string name="actuallyThePaidVersion">Eigenlijk, de betaalde versie geeft je widget afmetingen van
+		5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 en 1x3.\nDenk er eens over na
+		door opwaarderen voor deze afmetingen!
+	</string>
+   <!-- Troubleshooting Options -->
+    <string name="troubleshootingOptions">Probleemoplossing Opties</string>
+   <!-- Troubleshooting Options -->
+    <string name="clockPriority">Klok Prioriteit</string>
+    <string name="forFineTuning">Voor het afstellen van het reactievermogen</string>
+    <string-array name="clockPriority_options">
+        <item>Hoogst</item>
+        <item>Hoog</item>
+        <item>Middel</item>
+        <item>Laag (Standaard)</item>
+        <item>Laagst</item>
+    </string-array>
+    <string-array name="clockPriority_legend">
+        <item>Agressief hertekenen iedere tik (niet aanbevolen). Weet je het zeker?
+		</item>
+        <item>Agressieve verwerkingsstatus elke minuut, ongeacht de status van het 
+			scherm of launcher. Weet je het zeker?
+		</item>
+        <item>Lui verwerkingsstatus elke minuut wanneer scherm aan is, zelfs wanneer
+			de launcher op de achtergrond is. Weet je het zeker?
+		</item>
+        <item>Lui verwerkingsstatus elke minuut wanneer de launcher inactief is 
+			of het scherm uit is. Weet je het zeker?
+		</item>
+        <item>Niet opnieuw hertekenen wanneer de Launcher inactief is 
+			of het scherm uit is. Weet je het zeker?
+		</item>
+    </string-array>
+    <string name="locationPriority">Locatie prioriteit</string>
+    <string-array name="locationPriority_options">
+        <item>Strikt - Fine Only</item>
+        <item>Strikt - Fine/Coarse</item>
+        <item>Middel - Fine Only</item>
+        <item>Middel - Fine/Coarse</item>
+        <item>Flexibel (Standaard)</item>
+    </string-array>
+    <string-array name="locationPriority_legend">
+        <item>Use only GPS location fixes less than 2 hours old. WARNING:
+			Weather updates may stop if you are indoors. Are you sure?
+		</item>
+        <item>Use network/GPS fixes less than 2 hours old. WARNING: Weather
+			updates may stop if you are indoors. Are you sure?
+		</item>
+        <item>Use only GPS location fixes less than 10 hours old. Weather
+			updates may stop if you are indoors for more than 10 hours. Are you
+			sure?
+		</item>
+        <item>Use any network or GPS location less than 10 hours old. Weather
+			updates may stop if you are indoors for more than 10 hours. Are you
+			sure?
+		</item>
+        <item>Use the most recent network or GPS location, regardless of
+			staleness. Weather accuracy will depend on location accuracy and
+			staleness. Are you sure?
+		</item>
+    </string-array>
+    <string name="battReporting">Battery Reporting</string>
+    <string name="battReportingNormal">Normal - As reported by Android</string>
+    <string name="battReportingAlternate">Alternate - As reported by driver</string>
+    <string name="weatherDiagnostics">Weather Diagnostics</string>
+    <string name="submitLocationWeatherDebugData">Submit location/weather debug data</string>
+    <string name="deleteAllThemes">Delete All Themes</string>
+    <string name="forFixingThemeSelection">For fixing theme selection app crashes</string>
+    <string name="deleteAllThemesFromSD">Delete all Themes from your SD Card/Memory?
+	</string>
+    <string name="omcThemesFolderDeleted">OMCThemes folder deleted</string>
+    <string name="defaultClockPackRestored">Default Clock Pack restored</string>
+    <!-- Contact Xaffron -->
+    <string name="contactXaffron">Contact Xaffron</string>
+    <string name="donateOrContact">Donate or Contact author for help</string>
+    <string name="contactXaffronForIssues">Contact Xaffron for issues, help &amp; support
+	</string>
+    <string name="email">Email</string>
+    <string name="donate">Donatie</string>
+    <string name="facebook">Facebook</string>
+    <string name="viewReleaseNotes">Bekijk Uitgave Notities</string>
+    <!-- Credits -->
+    <string name="credits">Credits</string>
+    <string name="version">Versie</string>
+    <string name="free">Garatis</string>
+    <string name="taptoGetFull">Tap mij om de betaalde versie te verkrijgen!</string>
+    <string name="thanksForYourSupport">Bedankt voor je support!</string>
+    <string name="viewCredits">Bekijk Credits</string>
+    <!-- Credits subscreen -->
+    <string name="team">Team</string>
+    <string name="programmer">Programeur</string>
+    <string name="sunny">Sunny Kwong</string>
+    <string name="testers">Testers</string>
+    <string name="testersText">ibawanzingee, C. Bizon, Cjsnet,Grant, JMoser, M.
+		Viviani, M. Oktay, Nate, P. Naumann, Ra\', R. Dickenson, T. Wiedemann, Tonny Mulch
+	</string>
+    <string name="translators">Vertalers</string>
+    <string name="specialThanks">Speciale Dank</string>
+    <string name="specialThanksText">Zehro for leading the way\nre: in-sync clock
+		widgets w//o notifications.\nStefan Pledl for helping with the
+		localization.\nJosiah Barber for his \'one-Percent Hack\' on Motorrola
+		phones.
+	</string>
+    <string name="copyrights">Copyrights and Licenses</string>
+    <string name="applicationIcon">Applicatie Icoon: Signpost door Maroubal2</string>
+    <string name="applicationIconText">Adapted from Maroubal2\'s excellent
+		photo-turned-Ubuntu wallpaper.\nCC BY-SA
+		2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/
+	</string>
+    <string name="codeColorPickerDialog">Code: ColorPickerDialog</string>
+    <string name="codeColorPickerDialogText">Copied from CyanogenMod source repo.</string>
+    <string name="codeSVG">Code: svg-android</string>
+    <string name="codeSVGText">SVG support provided by sag-android library (Apache
+		License).\nhttp:////code.google.com//p//svg-android//
+	</string>
+    <string name="weatherFont">Font: Weatherfont</string>
+    <string name="weatherFontText">Weatherfont is fully licensed from Jonathan
+		Macagba, available for $5 USD from jonathan.macagba@gmail.com
+	</string>
+    <string name="sourceCodeTitle">Broncode</string>
+    <string name="sourceCode">Broncode te downloaden bij</string>
+    <string name="daysuffix"/>
+	<string-array name="verbosedow">
+        <item>Zondag</item>
+        <item>Maandag</item>
+        <item>Dinsdag</item>
+        <item>Woensdag</item>
+        <item>Donderdag</item>
+        <item>Vrijdag</item>
+        <item>Zaterdag</item>
+    </string-array>
+    <string-array name="shortdow">
+        <item>Zon</item>
+        <item>Maa</item>
+        <item>Din</item>
+        <item>Woe</item>
+        <item>Don</item>
+        <item>Vri</item>
+        <item>Zat</item>
+    </string-array>
+    <string-array name="verbosemonth">
+        <item>Januarie</item>
+        <item>Februarie</item>
+        <item>Maart</item>
+        <item>April</item>
+        <item>Mei</item>
+        <item>Junie</item>
+        <item>Julie</item>
+        <item>Augustus</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+    <string-array name="shortmonth">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Maa</item>
+        <item>Apr</item>
+        <item>Mei</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </string-array>
+    <string-array name="WordNumbers">
+        <item>Nul</item>
+        <item>een</item>
+        <item>Twee</item>
+        <item>Drie</item>
+        <item>Vier</item>
+        <item>Vijf</item>
+        <item>Zes</item>
+        <item>Zeven</item>
+        <item>Acht</item>
+        <item>Negen</item>
+        <item>Tien</item>
+        <item>Elf</item>
+        <item>Twaalf</item>
+        <item>Dertien</item>
+        <item>Veertien</item>
+        <item>Vijftien</item>
+        <item>Zestien</item>
+        <item>Zeventien</item>
+        <item>Achttien</item>
+        <item>Negentien</item>
+        <item>Twintig</item>
+        <item>EenenTwintig</item>
+        <item>TweeenTwintig</item>
+        <item>DrieenTwintig</item>
+        <item>VierenTwintig</item>
+        <item>VijfenTwintig</item>
+        <item>ZesenTwintig</item>
+        <item>ZevenenTwintig</item>
+        <item>AchTienTwintig</item>
+        <item>NegenenTwintig</item>
+        <item>Dertig</item>
+        <item>EenenDertig</item>
+        <item>TweeenDertig</item>
+        <item>DrieenDertig</item>
+        <item>VierenDertig</item>
+        <item>VijfenDertig</item>
+        <item>ZesenDertig</item>
+        <item>ZevenenDertig</item>
+        <item>AchTienDertig</item>
+        <item>NegenenDertig</item>
+        <item>Veertig</item>
+        <item>EenenVeertig</item>
+        <item>TweeenVeertig</item>
+        <item>DrieenVeertig</item>
+        <item>VierenVeertig</item>
+        <item>VijfenVeertig</item>
+        <item>ZesenVeertigD</item>
+        <item>ZevenenVeertig</item>
+        <item>AchTienVeertig</item>
+        <item>NegenenVeertig</item>
+        <item>Vijftig</item>
+        <item>EenenVijftig</item>
+        <item>TweeenVijftig</item>
+        <item>DrieenVijftig</item>
+        <item>VierenVijftig</item>
+        <item>VijfenVijftig</item>
+        <item>ZesenVijftig</item>
+        <item>ZevenenVijftig</item>
+        <item>AchTienVijftig</item>
+        <item>NegenenVijftig</item>
+        <item>Zestig</item>
+        <item>EenenZestig</item>
+        <item>TweeenZestig</item>
+        <item>DrieenZestig</item>
+        <item>VierenZestig</item>
+        <item>VijfenZestig</item>
+        <item>ZesenZestig</item>
+        <item>ZevenenZestig</item>
+        <item>AchTienZestig</item>
+        <item>NegenenZestig</item>
+        <item>Zeventig</item>
+        <item>EenenZeventig</item>
+        <item>TweeenZeventig</item>
+        <item>DrieenZeventig</item>
+        <item>VierenZeventig</item>
+        <item>VijfenZeventig</item>
+        <item>ZesenZeventig</item>
+        <item>ZevenenZeventig</item>
+        <item>AchTienZeventig</item>
+        <item>NegenenZeventig</item>
+        <item>Tachtig</item>
+        <item>EenenTachtig</item>
+        <item>TweeenTachtig</item>
+        <item>DrieenTachtig</item>
+        <item>VierenTachtig</item>
+        <item>VijfenTachtig</item>
+        <item>ZesenTachtig</item>
+        <item>ZevenenTachtig</item>
+        <item>AchTienTachtig</item>
+        <item>NegenenTachtig</item>
+        <item>Negentig</item>
+        <item>EenenNegentig</item>
+        <item>TweeenNegentig</item>
+        <item>DrieenNegentig</item>
+        <item>VierenNegentig</item>
+        <item>VijfenNegentig</item>
+        <item>ZesenNegentig</item>
+        <item>ZevenenNegentig</item>
+        <item>AchTienNegentig</item>
+        <item>NegenenNegentig</item>
+    </string-array>
+ 	 <!-- Verbose Tijden -->
+	   
+
+   <string-array name="verbosetime1">
+        <item>Twaalf uur.</item>
+        <item>Een over Twaalf.</item>
+        <item>Twee over Twaalf.</item>
+        <item>Drie over Twaalf.</item>
+        <item>Vier over Twaalf.</item>
+        <item>Vijf over Twaalf.</item>
+        <item>Zes over Twaalf.</item>
+        <item>Zeven over Twaalf.</item>
+        <item>Acht over Twaalf.</item>
+        <item>Negen over Twaalf.</item>
+        <item>Tien over Twaalf.</item>
+        <item>Elf over Twaalf.</item>
+        <item>Twaalf over Twaalf.</item>
+        <item>Dertien over Twaalf.</item>
+        <item>Veertien over Twaalf.</item>
+        <item>Kwart over Twaalf.</item>
+        <item>Zestien over Twaalf.</item>
+        <item>Zeventien over Twaalf.</item>
+        <item>Achtien over Twaalf.</item>
+        <item>Negentien over Twaalf.</item>
+        <item>Twintig over Twaalf.</item>
+        <item>EenenTwintig over Twaalf.</item>
+        <item>TweeenTwintig over Twaalf.</item>
+        <item>DrieenTwintig over Twaalf.</item>
+        <item>VierenTwintig over Twaalf.</item>
+        <item>VijfenTwintig over Twaalf.</item>
+        <item>ZesenTwintig over Twaalf.</item>
+        <item>ZevenenTwintig over Twaalf.</item>
+        <item>AchTienTwintig over Twaalf.</item>
+        <item>NegenenTwintig over Twaalf.</item>
+        <item>Half Een.</item>
+        <item>NegenenTwintig voor Een.</item>
+        <item>AchtenTwintig voor Een.</item>
+        <item>ZevenenTwintig voor Een.</item>
+        <item>ZesenTwintig voor Een.</item>
+        <item>VijfenTwintig voor Een.</item>
+        <item>VierenTwintig voor Een.</item>
+        <item>DrieenTwintig voor Een.</item>
+        <item>TweeenTwintig voor Een.</item>
+        <item>EenenTwintig voor Een.</item>
+        <item>Twintig voor Een.</item>
+        <item>Negentien voor Een.</item>
+        <item>Achtien voor Een.</item>
+        <item>Zeventien voor Een.</item>
+        <item>Zestien voor Een.</item>
+        <item>Kwart voor Een.</item>
+        <item>Veerteen voor Een.</item>
+        <item>Dertien voor Een.</item>
+        <item>Twaalf voor Een.</item>
+        <item>Elf voor Een.</item>
+        <item>Tien voor Een.</item>
+        <item>Negen voor Een.</item>
+        <item>Acht voor Een.</item>
+        <item>Zeven voor Een.</item>
+        <item>Zes voor Een.</item>
+        <item>Vijf voor Een.</item>
+        <item>Vier voor Een.</item>
+        <item>Drie voor Een.</item>
+        <item>Twee voor Een.</item>
+        <item>Een voor Een.</item>
+        <item>Een Uur.</item>
+        <item>Een over Een.</item>
+        <item>Twee over Een.</item>
+        <item>Drie over Een.</item>
+        <item>Vier over Een.</item>
+        <item>Vijf over Een.</item>
+        <item>Zes over Een.</item>
+        <item>Zeven over Een.</item>
+        <item>Acht over Een.</item>
+        <item>Negen over Een.</item>
+        <item>Tien over Een.</item>
+        <item>Elf over Een.</item>
+        <item>Twaalf over Een.</item>
+        <item>Dertien over Een.</item>
+        <item>Veertien over Een.</item>
+        <item>Kwart over Een.</item>
+        <item>Zestien over Een.</item>
+        <item>Zeventien over Een.</item>
+        <item>Achtien over Een.</item>
+        <item>Negentien over Een.</item>
+        <item>Twintig over Een.</item>
+        <item>EenenTwintig over Een.</item>
+        <item>TweeenTwintig over Een.</item>
+        <item>DrieenTwintig over Een.</item>
+        <item>VierenTwintig over Een.</item>
+        <item>VijfenTwintig over Een.</item>
+        <item>ZesenTwintig over Een.</item>
+        <item>ZevenenTwintig over Een.</item>
+        <item>AchtenTwintig over Een.</item>
+        <item>NegenenTwintig over Een.</item>
+        <item>Half Twee.</item>
+        <item>NegenenTwintig voor Twee.</item>
+        <item>AchtenTwintig Acht voor Twee.</item>
+        <item>ZevenenTwintig Zeven voor Twee.</item>
+        <item>ZesenTwintig Zes voor Twee.</item>
+        <item>VijfenTwintig Vijf voor Twee.</item>
+        <item>VierenTwintig Vier voor Twee.</item>
+        <item>DrieenTwintig Drie voor Twee.</item>
+        <item>TweeenTwintig Twee voor Twee.</item>
+        <item>EenenTwintig Een voor Twee.</item>
+        <item>Twintig voor Twee.</item>
+        <item>Negentien voor Twee.</item>
+        <item>Achtien voor Twee.</item>
+        <item>Zeventien voor Twee.</item>
+        <item>Zestien voor Twee.</item>
+        <item>Kwart voor Twee.</item>
+        <item>Veertien voor Twee.</item>
+        <item>Dertien voor Twee.</item>
+        <item>Twaalf voor Twee.</item>
+        <item>Elf voor Twee.</item>
+        <item>Tien voor Twee.</item>
+        <item>Negen voor Twee.</item>
+        <item>Acht voor Twee.</item>
+        <item>Zeven voor Twee.</item>
+        <item>Zes voor Twee.</item>
+        <item>Vijf voor Twee.</item>
+        <item>Vier voor Twee.</item>
+        <item>Drie voor Twee.</item>
+        <item>Twee voor Twee.</item>
+        <item>Een voor Twee.</item>
+        <item>Twee Uur.</item>
+        <item>Een over Twee.</item>
+        <item>Twee over Twee.</item>
+        <item>Drie over Twee.</item>
+        <item>Vier over Twee.</item>
+        <item>Vijf over Twee.</item>
+        <item>Zes over Twee.</item>
+        <item>Zeven over Twee.</item>
+        <item>Acht over Twee.</item>
+        <item>Negen over Twee.</item>
+        <item>Tien over Twee.</item>
+        <item>Elf over Twee.</item>
+        <item>Twaalf over Twee.</item>
+        <item>Dertien over Twee.</item>
+        <item>Veertien over Twee.</item>
+		<item>Kwart over Twee.</item>
+        <item>Zestien over Twee.</item>
+        <item>Zeventien over Twee.</item>
+        <item>Achtien over Twee.</item>
+        <item>Negentien over Twee.</item>
+        <item>Twintig over Twee.</item>
+        <item>EenenTwintig over Twee.</item>
+        <item>TweeenTwintig over Twee.</item>
+        <item>DrieenTwintig over Twee.</item>
+        <item>VierenTwintig over Twee.</item>
+        <item>VijfenTwintig over Twee.</item>
+        <item>ZesenTwintig over Twee.</item>
+        <item>ZevenenTwintig over Twee.</item>
+        <item>AchtenTwintig over Twee.</item>
+        <item>NegenenTwintig over Twee.</item>
+        <item>Half Drie.</item>
+        <item>NegenenTwintig voor Drie.</item>
+        <item>AchtenTwintig voor Drie.</item>
+        <item>ZevenenTwintig voor Drie.</item>
+        <item>ZesenTwintig voor Drie.</item>
+        <item>VijfenTwintig voor Drie.</item>
+        <item>VierenTwintig voor Drie.</item>
+        <item>DrieenTwintig voor Drie.</item>
+        <item>TweeenTwintig voor Drie.</item>
+        <item>EenenTwintig voor Drie.</item>
+        <item>Twintig voor Drie.</item>
+        <item>Negentien voor Drie.</item>
+        <item>Achtien voor Drie.</item>
+        <item>Zeventien voor Drie.</item>
+        <item>Zestien voor Drie.</item>
+        <item>Kwart voor Drie.</item>
+        <item>Veertien voor Drie.</item>
+        <item>Dertien voor Drie.</item>
+        <item>Twaalf voor Drie.</item>
+        <item>Elf voor Drie.</item>
+        <item>Tien voor Drie.</item>
+        <item>Negen voor Drie.</item>
+        <item>Acht voor Drie.</item>
+        <item>Zeven voor Drie.</item>
+        <item>Zes voor Drie.</item>
+        <item>Vijf voor Drie.</item>
+        <item>Vier voor Drie.</item>
+        <item>Drie voor Drie.</item>
+        <item>Twee voor Drie.</item>
+        <item>Een voor Drie.</item>
+        <item>Drie Uur.</item>
+        <item>Een over Drie.</item>
+        <item>Twee over Drie.</item>
+        <item>Drie over Drie.</item>
+        <item>Vier over Drie.</item>
+        <item>Vijf over Drie.</item>
+        <item>Zes over Drie.</item>
+        <item>Zeven over Drie.</item>
+        <item>Acht over Drie.</item>
+        <item>Negen over Drie.</item>
+        <item>Tien over Drie.</item>
+        <item>Elf over Drie.</item>
+        <item>Twaalf over Drie.</item>
+        <item>Dertien over Drie.</item>
+        <item>Veertien over Drie.</item>
+        <item>Kwart over Drie.</item>
+        <item>Zestien over Drie.</item>
+        <item>Zeventien over Drie.</item>
+        <item>Achtien over Drie.</item>
+        <item>Negentien over Drie.</item>
+        <item>Twintig over Drie.</item>
+        <item>EenenTwintig over Drie.</item>
+        <item>TweeenTwintig over Drie.</item>
+        <item>DrieenTwintig over Drie.</item>
+        <item>VierenTwintig over Drie.</item>
+        <item>VijfenTwintig over Drie.</item>
+        <item>ZesenTwintig over Drie.</item>
+        <item>ZevenenTwintig over Drie.</item>
+        <item>AchtenTwintig over Drie.</item>
+        <item>NegenenTwintig over Drie.</item>
+        <item>half Vier.</item>
+        <item>NegenTwintig voor Vier.</item>
+        <item>AchtenTwintig voor Vier.</item>
+        <item>ZevenenTwintig voor Vier.</item>
+        <item>ZesenTwintig voor Vier.</item>
+        <item>VijfenTwintig voor Vier.</item>
+        <item>VierenTwintig voor Vier.</item>
+        <item>DrieenTwintig voor Vier.</item>
+        <item>TweeenTwintig voor Vier.</item>
+        <item>EenenTwintig voor Vier.</item>
+        <item>Twintig voor Vier.</item>
+        <item>Negentien voor Vier.</item>
+        <item>Achtien voor Vier.</item>
+        <item>Zeventien voor Vier.</item>
+        <item>Zestien voor Vier.</item>
+        <item>Kwart voor Vier.</item>
+        <item>Veertien voor Vier.</item>
+        <item>Dertien voor Vier.</item>
+        <item>Twaalf voor Vier.</item>
+        <item>Elf voor Vier.</item>
+        <item>Tien voor Vier.</item>
+        <item>Negen voor Vier.</item>
+        <item>Acht voor Vier.</item>
+        <item>Zeven voor Vier.</item>
+        <item>Zes voor Vier.</item>
+        <item>Vijf voor Vier.</item>
+        <item>Vier voor Vier.</item>
+        <item>Drie voor Vier.</item>
+        <item>Twee voor Vier.</item>
+        <item>Een voor Vier.</item>
+        <item>Vier Uur.</item>
+        <item>Een over Vier.</item>
+        <item>Twee over Vier.</item>
+        <item>Drie over Vier.</item>
+        <item>Vier over Vier.</item>
+        <item>Vijf over Vier.</item>
+        <item>Zes over Vier.</item>
+        <item>Zeven over Vier.</item>
+        <item>Acht over Vier.</item>
+        <item>Negen over Vier.</item>
+        <item>Tien over Vier.</item>
+        <item>Tien over Vier.</item>
+        <item>Twaalf over Vier.</item>
+        <item>Dertien over Vier.</item>
+        <item>Veertien over Vier.</item>
+        <item>Kwart over Vier.</item>
+        <item>Zestien over Vier.</item>
+        <item>Zeventien over Vier.</item>
+        <item>Achtien over Vier.</item>
+        <item>Negentien over Vier.</item>
+        <item>Twintig over Vier.</item>
+        <item>EenenTwintig over Vier.</item>
+        <item>TweeenTwintig over Vier.</item>
+        <item>DrieenTwintig over Vier.</item>
+        <item>VierenTwintig over Vier.</item>
+        <item>VijfenTwintig over Vier.</item>
+        <item>ZesenTwintig over Vier.</item>
+        <item>ZevenenTwintig over Vier.</item>
+        <item>AchtenTwintig over Vier.</item>
+        <item>NegenenTwintig over Vier.</item>
+        <item>Half Vijf.</item>
+        <item>NegenenTwintig voor Vijf.</item>
+        <item>AchtenTwintig voor Vijf.</item>
+        <item>ZevenenTwintig voor Vijf.</item>
+        <item>ZesenTwintig voor Vijf.</item>
+        <item>VijfenTwintig voor Vijf.</item>
+        <item>VierenTwintig voor Vijf.</item>
+        <item>DrieenTwintig voor Vijf.</item>
+        <item>TweeenTwintig voor Vijf.</item>
+        <item>EenenTwintig voor Vijf.</item>
+        <item>Twintig voor Vijf.</item>
+        <item>Negentien voor Vijf.</item>
+        <item>Achtien voor Vijf.</item>
+        <item>Zeventien voor Vijf.</item>
+        <item>Zestien voor Vijf.</item>
+        <item>Kwart voor Vijf.</item>
+        <item>Veertien voor Vijf.</item>
+        <item>Dertien voor Vijf.</item>
+        <item>Twaalf voor Vijf.</item>
+        <item>Elf voor Vijf.</item>
+        <item>Tien voor Vijf.</item>
+        <item>Negen voor Vijf.</item>
+        <item>Acht voor Vijf.</item>
+        <item>Zeven voor Vijf.</item>
+        <item>Zes voor Vijf.</item>
+        <item>Vijf voor Vijf.</item>
+        <item>Vier voor Vijf.</item>
+        <item>Drie voor Vijf.</item>
+        <item>Twee voor Vijf.</item>
+        <item>Een voor Vijf.</item>
+        <item>Vijf Uur.</item>
+        <item>Een over Vijf.</item>
+        <item>Twee over Vijf.</item>
+        <item>Drie over Vijf.</item>
+        <item>Vier over Vijf.</item>
+        <item>Vijf over Vijf.</item>
+        <item>Zes over Vijf.</item>
+        <item>Zeven over Vijf.</item>
+        <item>Acht over Vijf.</item>
+        <item>Negen over Vijf.</item>
+        <item>Tien over Vijf.</item>
+        <item>Elf over Vijf.</item>
+        <item>Twaalf over Vijf.</item>
+        <item>Dertien over Vijf.</item>
+        <item>Viertien over Vijf.</item>
+        <item>Kwart over Vijf.</item>
+        <item>Zestien over Vijf.</item>
+        <item>Zeventien over Vijf.</item>
+        <item>Achtien over Vijf.</item>
+        <item>Negentien over Vijf.</item>
+        <item>Twintig over Vijf.</item>
+        <item>EenenTwintig over Vijf.</item>
+        <item>TweeenTwintig over Vijf.</item>
+        <item>DrieenTwintig over Vijf.</item>
+        <item>VierenTwintig over Vijf.</item>
+        <item>VijfenTwintig over Vijf.</item>
+        <item>ZesenTwintig over Vijf.</item>
+        <item>ZevenenTwintig over Vijf.</item>
+        <item>AchtenTwintig over Vijf.</item>
+        <item>NegenenTwintig over Vijf.</item>
+        <item>Half Zes.</item>
+		<item>NegenenTwintig voor Zes.</item>
+        <item>AchtenTwintig voor Zes.</item>
+        <item>ZevenenTwintig voor Zes.</item>
+        <item>ZesenTwintig voor Zes.</item>
+        <item>VijfenTwintig voor Zes.</item>
+        <item>VierenTwintig voor Zes.</item>
+        <item>DrieenTwintig voor Zes.</item>
+        <item>TweeenTwintig voor Zes.</item>
+        <item>EenenTwintig voor Zes.</item>
+        <item>Twintig voor Zes.</item>
+        <item>Negentien voor Zes.</item>
+        <item>Achtien voor Zes.</item>
+        <item>Zeventien voor Zes.</item>
+        <item>Zestien voor Zes.</item>
+        <item>Kwart voor Zes.</item>
+        <item>Veertien voor Zes.</item>
+        <item>Dertien voor Zes.</item>
+        <item>Twaalf voor Zes.</item>
+        <item>Elf voor Zes.</item>
+        <item>Tien voor Zes.</item>
+        <item>Negen voor Zes.</item>
+        <item>Acht voor Zes.</item>
+        <item>Zeven voor Zes.</item>
+        <item>Zes voor Zes.</item>
+        <item>Vijf voor Zes.</item>
+        <item>Vier voor Zes.</item>
+        <item>Drie voor Zes.</item>
+        <item>Twee voor Zes.</item>
+        <item>Een voor Zes.</item>
+    </string-array>
+    <string-array name="verbosetime2">
+        <item>Zes Uur.</item>
+        <item>Een over Zes.</item>
+        <item>Twee over Zes.</item>
+        <item>Drie over Zes.</item>
+        <item>Vier over Zes.</item>
+        <item>Vijf over Zes.</item>
+        <item>Zes over Zes.</item>
+        <item>Zeven over Zes.</item>
+        <item>Acht over Zes.</item>
+        <item>Negen over Zes.</item>
+        <item>Tien over Zes.</item>
+        <item>Elf over Zes.</item>
+        <item>Twaalf over Zes.</item>
+        <item>Dertien over Zes.</item>
+        <item>Veertien over Zes.</item>
+        <item>Kwart over Zes.</item>
+        <item>Zestien over Zes.</item>
+        <item>Zeventien over Zes.</item>
+        <item>Achtien over Zes.</item>
+        <item>Negentien over Zes.</item>
+        <item>Twintig over Zes.</item>
+        <item>EenenTwintig over Zes.</item>
+        <item>TweeenTwintig over Zes.</item>
+        <item>DrienTwintig over Zes.</item>
+        <item>VierenTwintig over Zes.</item>
+        <item>VijfenTwintig over Zes.</item>
+        <item>ZesenTwintig over Zes.</item>
+        <item>ZevenenTwintig over Zes.</item>
+        <item>AchtenTwintig over Zes.</item>
+        <item>NegenenTwintig over Zes.</item>
+        <item>half Zeven.</item>
+        <item>NegenenTwintig voor Zeven.</item>
+        <item>AchtenTwintig voor Zeven.</item>
+        <item>ZevenenTwintig voor Zeven.</item>
+        <item>ZesenTwintig voor Zeven.</item>
+        <item>VijfenTwintig voor Zeven.</item>
+        <item>VierenTwintig voor Zeven.</item>
+        <item>DrieenTwintig voor Zeven.</item>
+        <item>TweeenTwintig voor Zeven.</item>
+        <item>EenenTwintig voor Zeven.</item>
+        <item>Twintig voor Zeven.</item>
+        <item>Negentien voor Zeven.</item>
+        <item>Achtien voor Zeven.</item>
+        <item>Zeventien voor Zeven.</item>
+        <item>Zestien voor Zeven.</item>
+        <item>Kwart voor Zeven.</item>
+        <item>Veertien voor Zeven.</item>
+        <item>Dertien voor Zeven.</item>
+        <item>Twaalf voor Zeven.</item>
+        <item>Elf voor Zeven.</item>
+        <item>Tien voor Zeven.</item>
+        <item>Negen voor Zeven.</item>
+        <item>Acht voor Zeven.</item>
+        <item>Zeven voor Zeven.</item>
+        <item>Zes voor Zeven.</item>
+        <item>Vijf voor Zeven.</item>
+        <item>Vier voor Zeven.</item>
+        <item>Drie voor Zeven.</item>
+        <item>Twee voor Zeven.</item>
+        <item>Een voor Zeven.</item>
+        <item>Zeven Uur.</item>
+        <item>Een over Zeven.</item>
+        <item>Twee over Zeven.</item>
+        <item>Drie over Zeven.</item>
+        <item>Vier over Zeven.</item>
+        <item>Vijf over Zeven.</item>
+        <item>Zes over Zeven.</item>
+        <item>Zeven over Zeven.</item>
+        <item>Acht over Zeven.</item>
+        <item>Negen over Zeven.</item>
+        <item>Tien over Zeven.</item>
+        <item>Elf over Zeven.</item>
+        <item>Twaalf over Zeven.</item>
+        <item>Dertien over Zeven.</item>
+        <item>Veertien over Zeven.</item>
+        <item>Kwart over Zeven.</item>
+        <item>Zestien over Zeven.</item>
+        <item>Zeventien over Zeven.</item>
+        <item>Achtien over Zeven.</item>
+        <item>Negentien over Zeven.</item>
+        <item>Twintig over Zeven.</item>
+        <item>EenenTwintig over Zeven.</item>
+        <item>TweeenTwintig over Zeven.</item>
+        <item>DrieenTwintig over Zeven.</item>
+        <item>VierenTwintig over Zeven.</item>
+        <item>VijfenTwintig over Zeven.</item>
+        <item>ZesenTwintig over Zeven.</item>
+        <item>ZevenenTwintig over Zeven.</item>
+        <item>AchtenTwintig over Zeven.</item>
+        <item>NegenenTwintig over Zeven.</item>
+        <item>Half Acht.</item>
+        <item>NegenenTwintig voor Acht.</item>
+        <item>AchtenTwintig voor Acht.</item>
+        <item>ZevenenTwintig voor Acht.</item>
+        <item>ZesenTwintig voor Acht.</item>
+        <item>VijfenTwintig voor Acht.</item>
+        <item>AchtenTwintig voor Acht.</item>
+        <item>DrieenTwintig voor Acht.</item>
+        <item>TweeenTwintig voor Acht.</item>
+        <item>EenenTwintig voor Acht.</item>
+        <item>Twintig voor Acht.</item>
+        <item>Negentien voor Acht.</item>
+        <item>Achtien voor Acht.</item>
+        <item>Zeventien voor Acht.</item>
+        <item>Zestien voor Acht.</item>
+        <item>Kwart voor Acht.</item>
+        <item>Veertien voor Acht.</item>
+        <item>Dertien voor Acht.</item>
+        <item>Twaalf voor Acht.</item>
+        <item>Elf voor Acht.</item>
+        <item>Tien voor Acht.</item>
+        <item>Negen voor Acht.</item>
+        <item>Acht voor Acht.</item>
+        <item>Zeven voor Acht.</item>
+        <item>Zes voor Acht.</item>
+        <item>Vijf voor Acht.</item>
+        <item>Vier voor Acht.</item>
+        <item>Drie voor Acht.</item>
+        <item>Twee voor Acht.</item>
+        <item>Een voor Acht.</item>
+        <item>Acht Uur.</item>
+        <item>Een over Acht.</item>
+        <item>Twee over Acht.</item>
+        <item>Drie over Acht.</item>
+        <item>Vier over Acht.</item>
+        <item>Vijf over Acht.</item>
+        <item>Zes over Acht.</item>
+        <item>Zeven over Acht.</item>
+        <item>Acht over Acht.</item>
+        <item>Negen over Acht.</item>
+        <item>Tien over Acht.</item>
+        <item>Elf over Acht.</item>
+        <item>Twaalf over Acht.</item>
+        <item>Dertien over Acht.</item>
+        <item>Veertien over Acht.</item>
+        <item>Kwart over Acht.</item>
+        <item>Zestien over Acht.</item>
+        <item>Zeventien over Acht.</item>
+        <item>Achtien over Acht.</item>
+        <item>Negentien over Acht.</item>
+        <item>Twintig over Acht.</item>
+        <item>EenenTwintig over Acht.</item>
+        <item>TweeenTwintig over Acht.</item>
+        <item>DrieenTwintig over Acht.</item>
+        <item>VierenTwintig over Acht.</item>
+        <item>VijfenTwintig over Acht.</item>
+        <item>ZesenTwintig over Acht.</item>
+        <item>ZevenenTwintig over Acht.</item>
+        <item>AchtenTwintig over Acht.</item>
+        <item>NegenenTwintig over Acht.</item>
+        <item>half Negen.</item>
+        <item>NegenenTwintig voor Negen.</item>
+        <item>AchtenTwintig voor Negen.</item>
+        <item>ZevenenTwintig voor Negen.</item>
+        <item>ZesenTwintig voor Negen.</item>
+        <item>VijfenTwintig voor Negen.</item>
+        <item>VierenTwintig voor Negen.</item>
+        <item>DrieenTwintig voor Negen.</item>
+        <item>TweeenTwintig voor Negen.</item>
+        <item>EenenTwintig voor Negen.</item>
+        <item>Twintig voor Negen.</item>
+        <item>Negentien voor Negen.</item>
+        <item>Achteen voor Negen.</item>
+        <item>Zeventien voor Negen.</item>
+        <item>Zestien voor Negen.</item>
+        <item>Kwart voor Negen.</item>
+        <item>Veertien voor Negen.</item>
+        <item>Dertien voor Negen.</item>
+        <item>Twaalf voor Negen.</item>
+        <item>Elf voor Negen.</item>
+        <item>Tien voor Negen.</item>
+        <item>Negen voor Negen.</item>
+        <item>Acht voor Negen.</item>
+        <item>Zeven voor Negen.</item>
+        <item>Zes voor Negen.</item>
+        <item>Vijf voor Negen.</item>
+        <item>Vier voor Negen.</item>
+        <item>Drie voor Negen.</item>
+        <item>Twee voor Negen.</item>
+        <item>Een voor Negen.</item>
+        <item>Negen Uur.</item>
+        <item>Een over Negen.</item>
+        <item>Twee over Negen.</item>
+        <item>Drie over Negen.</item>
+        <item>Vier over Negen.</item>
+        <item>Vijf over Negen.</item>
+        <item>Zes over Negen.</item>
+        <item>Zeven over Negen.</item>
+        <item>Acht over Negen.</item>
+        <item>Negen over Negen.</item>
+        <item>Tien over Negen.</item>
+        <item>Elf over Negen.</item>
+        <item>Twaalf over Negen.</item>
+        <item>Dertien over Negen.</item>
+        <item>Veertien over Negen.</item>
+        <item>Kwart over Negen.</item>
+        <item>Zestien over Negen.</item>
+        <item>Zeventien over Negen.</item>
+        <item>Achtien over Negen.</item>
+        <item>Negentien over Negen.</item>
+        <item>Twintig over Negen.</item>
+        <item>EenenTwintig over Negen.</item>
+        <item>TweeenTwintig over Negen.</item>
+        <item>DrieenTwintig over Negen.</item>
+        <item>VierenTwintig over Negen.</item>
+        <item>VijfenTwintig over Negen.</item>
+        <item>ZesenTwintig over Negen.</item>
+        <item>ZevenenTwintig over Negen.</item>
+        <item>AchtenTwintig over Negen.</item>
+        <item>NegenenTwintig over Negen.</item>
+        <item>half Tien.</item>
+        
+		<item>NegenenTwintig voor Tien.</item>
+        <item>AchtenTwintig voor Tien.</item>
+        <item>ZevenenTwintig voor Tien.</item>
+        <item>ZesenTwintig voor Tien.</item>
+        <item>VijfenTwintig voor Tien.</item>
+        <item>VierenTwintig voor Tien.</item>
+        <item>DrieenTwintig voor Tien.</item>
+        <item>TweeenTwintig voor Tien.</item>
+        <item>EenenTwintig voor Tien.</item>
+        <item>Twintig voor Tien.</item>
+        <item>Negentien voor Tien.</item>
+        <item>Achtien voor Tien.</item>
+        <item>Zeventien voor Tien.</item>
+        <item>Zestien voor Tien.</item>
+        <item>Kwart voor Tien.</item>
+        <item>Veertien voor Tien.</item>
+        <item>Dertien voor Tien.</item>
+        <item>Twaalf voor Tien.</item>
+        <item>Elf voor Tien.</item>
+        <item>Tien voor Tien.</item>
+        <item>Negen voor Tien.</item>
+        <item>Acht voor Tien.</item>
+        <item>Zeven voor Tien.</item>
+        <item>Zes voor Tien.</item>
+        <item>Vijf voor Tien.</item>
+        <item>Vier voor Tien.</item>
+        <item>Drie voor Tien.</item>
+        <item>Twee voor Tien.</item>
+        <item>Een voor Tien.</item>
+        <item>Tien Uur.</item>
+		<item>Een over Tien.</item>
+        <item>Twee over Tien.</item>
+        <item>Drie over Tien.</item>
+        <item>Vier over Tien.</item>
+        <item>Vijf over Tien.</item>
+        <item>Zes over Tien.</item>
+        <item>Zeven over Tien.</item>
+        <item>Acht over Tien.</item>
+        <item>Negen over Tien.</item>
+        <item>Tien over Tien.</item>
+        <item>Elf over Tien.</item>
+        <item>Twaalf over Tien.</item>
+        <item>Dertien over Tien.</item>
+        <item>Veertien over Tien.</item>
+        <item>Kwart over Tien.</item>
+        <item>Zestien over Tien.</item>
+        <item>Zeventien over Tien.</item>
+        <item>Achtien over Tien.</item>
+        <item>Negentien over Tien.</item>
+        <item>Twintig over Tien.</item>
+        <item>EenenTwintig over Tien.</item>
+        <item>TweeenTwintig over Tien.</item>
+        <item>DrieenTwintig over Tien.</item>
+        <item>VierenTwintig over Tien.</item>
+        <item>VijfenTwintig over Tien.</item>
+        <item>ZesenTwintig over Tien.</item>
+        <item>ZevenenTwintig over Tien.</item>
+        <item>AchtenTwintig over Tien.</item>
+        <item>NegenenTwintig over Tien.</item>
+        <item>half Elf.</item>
+        <item>NegenenTwintig voor Elf.</item>
+        <item>AchtenTwintig voor Elf.</item>
+        <item>ZevenenTwintig voor Elf.</item>
+        <item>ZesenTwintig voor Elf.</item>
+        <item>VijfenTwintig voor Elf.</item>
+        <item>VierenTwintig voor Elf.</item>
+        <item>DrieenTwintig voor Elf.</item>
+        <item>TweeenTwintig voor Elf.</item>
+        <item>EenenTwintig voor Elf.</item>
+        <item>Twintig voor Elf.</item>
+        <item>Negentien voor Elf.</item>
+        <item>Achtien voor Elf.</item>
+        <item>Zeventien voor Elf.</item>
+        <item>Zestien voor Elf.</item>
+        <item>Kwart voor Elf.</item>
+        <item>Veertien voor Elf.</item>
+        <item>Dertien voor Elf.</item>
+        <item>Twaalf voor Elf.</item>
+        <item>Elf voor Elf.</item>
+        <item>Tien voor Elf.</item>
+        <item>Negen voor Elf.</item>
+        <item>Acht voor Elf.</item>
+        <item>Zeven voor Elf.</item>
+        <item>Zes voor Elf.</item>
+        <item>Vijf voor Elf.</item>
+        <item>Vier voor Elf.</item>
+        <item>Drie voor Elf.</item>
+        <item>Twee voor Elf.</item>
+        <item>Een voor Elf.</item>
+        <item>Elf Uur.</item>
+        <item>Een over Elf.</item>
+        <item>Twee over Elf.</item>
+        <item>Drie over Elf.</item>
+        <item>Vier over Elf.</item>
+        <item>Vijf over Elf.</item>
+        <item>Zes over Elf.</item>
+        <item>Zeven over Elf.</item>
+        <item>Acht over Elf.</item>
+        <item>Negen over Elf.</item>
+        <item>Tien over Elf.</item>
+        <item>Elf over Elf.</item>
+        <item>Twaalf over Elf.</item>
+        <item>Dertien over Elf.</item>
+        <item>Veertien over Elf.</item>
+        <item>Kwart over Elf.</item>
+        <item>Zestien over Elf.</item>
+        <item>Zeventien over Elf.</item>
+        <item>Achtien over Elf.</item>
+        <item>Negentien over Elf.</item>
+        <item>Twintig over Elf.</item>
+        <item>EenenTwintig over Elf.</item>
+        <item>TweeenTwintig over Elf.</item>
+        <item>DrieenTwintig over Elf.</item>
+        <item>VierenTwintig over Elf.</item>
+        <item>VijfenTwintig over Elf.</item>
+        <item>ZesenTwintig over Elf.</item>
+        <item>ZevenenTwintig over Elf.</item>
+        <item>AchtenTwintig over Elf.</item>
+        <item>NegenenTwintig over Elf.</item>
+        <item>Half Twaalf.</item>
+        <item>NegenenTwintig voor Twaalf.</item>
+        <item>AchtenTwintig voor Twaalf.</item>
+        <item>ZevenenTwintig voor Twaalf.</item>
+        <item>ZesenTwintig voor Twaalf.</item>
+        <item>VijfenTwintig voor Twaalf.</item>
+        <item>VierenTwintig voor Twaalf.</item>
+        <item>DrieenTwintig voor Twaalf.</item>
+        <item>TweeenTwintig voor Twaalf.</item>
+        <item>EenenTwintig voor Twaalf.</item>
+        <item>Twintig voor Twaalf.</item>
+        <item>Negentien voor Twaalf.</item>
+        <item>Achtien voor Twaalf.</item>
+        <item>Zeventien voor Twaalf.</item>
+        <item>Zestien voor Twaalf.</item>
+        <item>Kwart voor Twaalf.</item>
+        <item>Veertien voor Twaalf.</item>
+        <item>Dertien voor Twaalf.</item>
+        <item>Twaalf voor Twaalf.</item>
+        <item>Elf voor Twaalf.</item>
+        <item>Tien voor Twaalf.</item>
+        <item>Negen voor Twaalf.</item>
+        <item>Acht voor Twaalf.</item>
+        <item>Zeven voor Twaalf.</item>
+        <item>Zes voor Twaalf.</item>
+        <item>Vijf voor Twaalf.</item>
+        <item>Vier voor Twaalf.</item>
+        <item>Drie voor Twaalf.</item>
+        <item>Twee voor Twaalf.</item>
+        <item>Een voor Twaalf.</item>
+    </string-array>
+    <string-array name="verbosetime3">
+        <item>Twaalf Uur.</item>
+        <item>Een over Twaalf.</item>
+        <item>Twee over Twaalf.</item>
+        <item>Drie over Twaalf.</item>
+        <item>Vier over Twaalf.</item>
+        <item>Vijf over Twaalf.</item>
+        <item>Zes over Twaalf.</item>
+        <item>Zeven over Twaalf.</item>
+        <item>Acht over Twaalf.</item>
+        <item>Negen over Twaalf.</item>
+        <item>Tien over Twaalf.</item>
+        <item>Elf over Twaalf.</item>
+        <item>Twaalf over Twaalf.</item>
+        <item>Dertien over Twaalf.</item>
+        <item>Veertien over Twaalf.</item>
+        <item>Kwart over Twaalf.</item>
+        <item>Zestien over Twaalf.</item>
+        <item>Zeventien over Twaalf.</item>
+        <item>Achtien over Twaalf.</item>
+        <item>Negentien over Twaalf.</item>
+        <item>Twintig over Twaalf.</item>
+        <item>EenenTwintig over Twaalf.</item>
+        <item>TweeenTwintig over Twaalf.</item>
+        <item>DrieenTwintig over Twaalf.</item>
+        <item>VierenTwintig over Twaalf.</item>
+        <item>VijfenTwintig over Twaalf.</item>
+        <item>ZesenTwintig over Twaalf.</item>
+        <item>ZevenenTwintig over Twaalf.</item>
+        <item>AchtenTwintig over Twaalf.</item>
+        <item>NegenenTwintig over Twaalf.</item>
+        <item>Half Een.</item>
+        <item>NegenenTwintig voor Een.</item>
+        <item>AchtenTwintig voor Een.</item>
+        <item>ZevenenTwintig voor Een.</item>
+        <item>ZesenTwintig voor Een.</item>
+        <item>VijfenTwintig voor Een.</item>
+        <item>VierenTwintig voor Een.</item>
+        <item>DrieenTwintig voor Een.</item>
+        <item>TweeenTwintig voor Een.</item>
+        <item>EenenTwintig voor Een.</item>
+        <item>Twintig voor Een.</item>
+        <item>Negentien voor Een.</item>
+        <item>Achtien voor Een.</item>
+        <item>Zeventien voor Een.</item>
+        <item>Zestien voor Een.</item>
+        <item>Kwart voor Een.</item>
+        <item>Veertien voor Een.</item>
+        <item>Dertien voor Een.</item>
+        <item>Twaalf voor Een.</item>
+        <item>Elf voor Een.</item>
+        <item>Tien voor Een.</item>
+        <item>Negen voor Een.</item>
+        <item>Acht voor Een.</item>
+        <item>Zeven voor Een.</item>
+        <item>Zes voor Een.</item>
+        <item>Vijf voor Een.</item>
+        <item>Vier voor Een.</item>
+        <item>Drie voor Een.</item>
+        <item>Twee voor Een.</item>
+        <item>Een voor Een.</item>
+        <item>Een Uur.</item>
+        <item>Een over Een.</item>
+        <item>Twee over Een.</item>
+        <item>Drie over Een.</item>
+        <item>Vier over Een.</item>
+        <item>Vijf over Een.</item>
+        <item>Zes over Een.</item>
+        <item>Zeven over Een.</item>
+        <item>Acht over Een.</item>
+        <item>Negen over Een.</item>
+        <item>Tien over Een.</item>
+        <item>Elf over Een.</item>
+        <item>Twaalf over Een.</item>
+        <item>Dertien over Een.</item>
+        <item>Veertien over Een.</item>
+        <item>Kwart over Een.</item>
+        <item>Zestien over Een.</item>
+        <item>Zeventien over Een.</item>
+        <item>Achtienen over Een.</item>
+        <item>Negentien over Een.</item>
+        <item>Twintig over Een.</item>
+        <item>EenenTwintig over Een.</item>
+        <item>TweeenTwintig over Een.</item>
+        <item>DrieenTwintig over Een.</item>
+        <item>VierenTwintig over Een.</item>
+        <item>VijfenTwintig over Een.</item>
+        <item>ZesenTwintig over Een.</item>
+        <item>ZevenenTwintig over Een.</item>
+        <item>AchtenTwintig over Een.</item>
+        <item>NegenenTwintig over Een.</item>
+        <item>Half Twee.</item>
+        <item>NegenenTwintig voor Twee.</item>
+        <item>AchtenTwintig voor Twee.</item>
+        <item>ZevenenTwintig voor Twee.</item>
+        <item>ZesenTwintig voor Twee.</item>
+        <item>Vijfentwintig voor Twee.</item>
+        <item>VierenTwintig voor Twee.</item>
+        <item>DrieenTwintig voor Twee.</item>
+        <item>TweeenTwintig voor Twee.</item>
+        <item>EenenTwintig voor Twee.</item>
+        <item>Twintig voor Twee.</item>
+        <item>Negentien voor Twee.</item>
+        <item>Achtien voor Twee.</item>
+        <item>Zeventien voor Twee.</item>
+        <item>Zestien voor Twee.</item>
+        <item>Kwart voor Twee.</item>
+        <item>Viertien voor Twee.</item>
+        <item>Dertien voor Twee.</item>
+        <item>Twaalf voor Twee.</item>
+        <item>Elf voor Twee.</item>
+        <item>Tien voor Twee.</item>
+        <item>Negen voor Twee.</item>
+        <item>Acht voor Twee.</item>
+        <item>Zeven voor Twee.</item>
+        <item>Zes voor Twee.</item>
+        <item>Vijf voor Twee.</item>
+        <item>Vier voor Twee.</item>
+        <item>Drie voor Twee.</item>
+        <item>Twee voor Twee.</item>
+        <item>Een voor Twee.</item>
+        <item>Twee Uur.</item>
+        <item>Een over Twee.</item>
+        <item>Twee over Twee.</item>
+        <item>Drie over Twee.</item>
+        <item>Vier over Twee.</item>
+        <item>Vijf over Twee.</item>
+        <item>Zes over Twee.</item>
+        <item>Zeven over Twee.</item>
+        <item>Acht over Twee.</item>
+        <item>Negen over Twee.</item>
+        <item>Tien over Twee.</item>
+        <item>Elf over Twee.</item>
+        <item>Twaalf over Twee.</item>
+        <item>Dertient over Twee.</item>
+        <item>Veertien over Twee.</item>
+        <item>Kwart over Twee.</item>
+        <item>Zestien over Twee.</item>
+        <item>Zeventien over Twee.</item>
+        <item>Achtien over Twee.</item>
+        <item>Negentien over Twee.</item>
+        <item>Twintig over Twee.</item>
+        		
+		<item>EenenTwintig over Twee.</item>
+        <item>TweeenTwintig over Twee.</item>
+        <item>DrieenTwintig over Twee.</item>
+        <item>VierenTwintig over Twee.</item>
+        <item>VijfenTwintig over Twee.</item>
+        <item>ZesenTwintig over Twee.</item>
+        <item>ZevenenTwintig over Twee.</item>
+        <item>AchtenTwintig over Twee.</item>
+        <item>NegenenTwintig over Twee.</item>
+        <item>half Drie.</item>
+        <item>NegenenTwintig voor Drie.</item>
+        <item>AchtenTwintig voor Drie.</item>
+        <item>ZevenenTwintig voor Drie.</item>
+        <item>ZesenTwintig voor Drie.</item>
+        <item>VijfenTwintig voor Drie.</item>
+        <item>VierenTwintig voor Drie.</item>
+        <item>DrieenTwintig voor Drie.</item>
+        <item>TweeenTwintig voor Drie.</item>
+        <item>EenenTwintig voor Drie.</item>
+        <item>Twintig voor Drie.</item>
+        <item>Negentien voor Drie.</item>
+        <item>Achtien voor Drie.</item>
+        <item>Zeventien voor Drie.</item>
+        <item>Zestien voor Drie.</item>
+        <item>Kwart voor Drie.</item>
+        <item>Veertien voor Drie.</item>
+        <item>Dertien voor Drie.</item>
+        <item>Twaalf voor Drie.</item>
+        <item>Elf voor Drie.</item>
+        <item>Tien voor Drie.</item>
+        <item>Negen voor Drie.</item>
+        <item>Acht voor Drie.</item>
+        <item>Zeven voor Drie.</item>
+        <item>Zes voor Drie.</item>
+        <item>Vijf voor Drie.</item>
+        <item>Vier voor Drie.</item>
+        <item>Drie voor Drie.</item>
+        <item>Twee voor Drie.</item>
+        <item>Een voor Drie.</item>
+        <item>Drie Uur.</item>
+        <item>Een over Drie.</item>
+        <item>Twee over Drie.</item>
+        <item>Drie over Drie.</item>
+        <item>Vier over Drie.</item>
+        <item>Vijf over Drie.</item>
+        <item>Zes over Drie.</item>
+        <item>Zeven over Drie.</item>
+        <item>Acht over Drie.</item>
+        <item>Negen over Drie.</item>
+        <item>Tien over Drie.</item>
+        <item>Elf over Drie.</item>
+        <item>Twaalf over Drie.</item>
+        <item>Dertien over Drie.</item>
+        <item>Veertien over Drie.</item>
+        <item>Kwart over Drie.</item>
+        <item>Zestien over Drie.</item>
+        <item>Zeventien over Drie.</item>
+        <item>Achtien over Drie.</item>
+        <item>Negentien over Drie.</item>
+        <item>Twintig over Drie.</item>
+        <item>EenenTwintig over Drie.</item>
+        <item>TweeenTwintig over Drie.</item>
+        <item>DrieenTwintig over Drie.</item>
+        <item>VierenTwintig over Drie.</item>
+        <item>VijfenTwintig over Drie.</item>
+        <item>ZesenTwintig over Drie.</item>
+        <item>ZevenenTwintig over Drie.</item>
+        <item>AchtenTwintig over Drie.</item>
+        <item>NegenenTwintig over Drie.</item>
+        <item>Half Vier.</item>
+        <item>NegenenTwintig voor Vier.</item>
+        <item>AchtenTwintig voor Vier.</item>
+        <item>ZevenenTwintig voor Vier.</item>
+        <item>ZesenTwintig  voor Vier.</item>
+        <item>VijfenTwintig voor Vier.</item>
+        <item>VierenTwintig voor Vier.</item>
+        <item>DrieenTwintig voor Vier.</item>
+        <item>TweeenTwintig voor Vier.</item>
+        <item>EenenTwintig voor Vier.</item>
+        <item>Twintig voor Vier.</item>
+        <item>Negentien voor Vier.</item>
+        <item>Achtien voor Vier.</item>
+        <item>Zeventien voor Vier.</item>
+        <item>Zestien voor Vier.</item>
+        <item>Kwart voor Vier.</item>
+        <item>Veertien voor Vier.</item>
+        <item>Dertien voor Vier.</item>
+        <item>Twaalf voor Vier.</item>
+        <item>Elf voor Vier.</item>
+        <item>Tien voor Vier.</item>
+        <item>Negen voor Vier.</item>
+        <item>Acht voor Vier.</item>
+        <item>Zeven voor Vier.</item>
+        <item>Zes voor Vier.</item>
+        <item>Vijf voor Vier.</item>
+        <item>Vier voor Vier.</item>
+        <item>Drie voor Vier.</item>
+        <item>Twee voor Vier.</item>
+        <item>Een voor Vier.</item>
+        <item>Vier Uur.</item>
+        <item>Een over Vier.</item>
+        <item>Twee over Vier.</item>
+        <item>Drie over Vier.</item>
+        <item>Vier over Vier.</item>
+        <item>Vijf over Vier.</item>
+        <item>Zes over Vier.</item>
+        <item>Zeven over Vier.</item>
+        <item>Acht over Vier.</item>
+        <item>Negen over Vier.</item>
+        <item>Tien over Vier.</item>
+        <item>Elf over Vier.</item>
+        <item>Twaalf over Vier.</item>
+        <item>Dertien over Vier.</item>
+        <item>Veertien over Vier.</item>
+        <item>Kwart over Vier.</item>
+        <item>Zestien over Vier.</item>
+        <item>Zeventien over Vier.</item>
+        <item>Achtien over Vier.</item>
+        <item>Negentien over Vier.</item>
+        <item>Twintig over Vier.</item>
+        <item>EenenTwintig over Vier.</item>
+        <item>TweeenTwintig over Vier.</item>
+        <item>DrieenTwintig over Vier.</item>
+        <item>VierenTwintig over Vier.</item>
+        <item>VijfenTwintig over Vier.</item>
+        <item>ZesenTwintig over Vier.</item>
+        <item>ZevenenTwintig over Vier.</item>
+        <item>AchtenTwintig over Vier.</item>
+        <item>NegenenTwintig over Vier.</item>
+        <item>half Vijf.</item>
+        <item>NegenenTwintig voor Vijf.</item>
+        <item>AchtenTwintig voor Vijf.</item>
+        <item>ZevenenTwintig voor Vijf.</item>
+        <item>ZesenTwintig voor Vijf.</item>
+        <item>VijfenTwintig voor Vijf.</item>
+        <item>VierenTwintig voor Vijf.</item>
+        <item>DrieenTwintig voor Vijf.</item>
+        <item>TweeenTwintig voor Vijf.</item>
+        <item>EenenTwintig voor Vijf.</item>
+        <item>Twintig voor Vijf.</item>
+        <item>Negentien voor Vijf.</item>
+        <item>Achtien voor Vijf.</item>
+        <item>Zeventien voor Vijf.</item>
+        <item>Zestien voor Vijf.</item>
+        <item>Kwart voor Vijf.</item>
+        <item>Veertien voor Vijf.</item>
+        <item>Dertien voor Vijf.</item>
+        <item>Twaalf voor Vijf.</item>
+        <item>Elf voor Vijf.</item>
+        <item>Tien voor Vijf.</item>
+        <item>Negen voor Vijf.</item>
+        <item>Acht voor Vijf.</item>
+        <item>Zeven voor Vijf.</item>
+        <item>Zes voor Vijf.</item>
+        <item>Vijf voor Vijf.</item>
+        <item>Vier voor Vijf.</item>
+        <item>Drie voor Vijf.</item>
+        <item>Twee voor Vijf.</item>
+        <item>Een voor Vijf.</item>
+        <item>Vijf Uur.</item>
+        <item>Een over Vijf.</item>
+        <item>Twee over Vijf.</item>
+        <item>Drie over Vijf.</item>
+        <item>Vier over Vijf.</item>
+        <item>Vijf over Vijf.</item>
+        <item>Zes over Vijf.</item>
+        <item>Zeven over Vijf.</item>
+        <item>Acht over Vijf.</item>
+        <item>Negen over Vijf.</item>
+        <item>Tien over Vijf.</item>
+        <item>Elf over Vijf.</item>
+        <item>Twaalf over Vijf.</item>
+        <item>Dertien over Vijf.</item>
+        <item>Viertien over Vijf.</item>
+        <item>Kwart over Vijf.</item>
+        <item>Zestien over Vijf.</item>
+        <item>Zeventien over Vijf.</item>
+        <item>Achtien over Vijf.</item>
+        <item>Negentien over Vijf.</item>
+        <item>Twintig over Vijf.</item>
+        <item>EenenTwintig over Vijf.</item>
+        <item>TweeenTwintig over Vijf.</item>
+        <item>DrieenTwintig over Vijf.</item>
+        <item>VierenTwintig over Vijf.</item>
+        <item>VijfenTwintig over Vijf.</item>
+        <item>ZesenTwintig over Vijf.</item>
+        <item>ZevenenTwintig over Vijf.</item>
+        <item>AchtenTwintig over Vijf.</item>
+        <item>NegenenTwintig over Vijf.</item>
+        <item>Half Zes.</item>
+		<item>NegenenTwintig voor Zes.</item>
+        <item>AchtenTwintig voor Zes.</item>
+        <item>ZevenenTwintig voor Zes.</item>
+        <item>ZesenTwintig voor Zes.</item>
+        <item>VijfenTwintig voor Zes.</item>
+        <item>VierenTwintig voor Zes.</item>
+        <item>DrieenTwintig voor Zes.</item>
+        <item>TweeenTwintig voor Zes.</item>
+        <item>EenenTwintig voor Zes.</item>
+        <item>Twintig voor Zes.</item>
+        <item>Negentien voor Zes.</item>
+        <item>Achtien voor Zes.</item>
+        <item>Zeventien voor Zes.</item>
+        <item>Zestien voor Zes.</item>
+        <item>Kwart voor Zes.</item>
+        <item>Veertien voor Zes.</item>
+        <item>Dertien voor Zes.</item>
+        <item>Twaalf voor Zes.</item>
+        <item>Elf voor Zes.</item>
+        <item>Tien voor Zes.</item>
+        <item>Negen voor Zes.</item>
+        <item>Acht voor Zes.</item>
+        <item>Zeven voor Zes.</item>
+        <item>Zes voor Zes.</item>
+        <item>Vijf voor Zes.</item>
+        <item>Vier voor Zes.</item>
+        <item>Drie voor Zes.</item>
+        <item>Twee voor Zes.</item>
+        <item>Een voor Zes.</item>
+	</string-array>
+    <string-array name="verbosetime4">
+        <item>Zes Uur.</item>
+        <item>Een over Zes.</item>
+        <item>Twee over Zes.</item>
+        <item>Drie over Zes.</item>
+        <item>Vier over Zes.</item>
+        <item>Vijf over Zes.</item>
+        <item>Zes over Zes.</item>
+        <item>Zeven over Zes.</item>
+        <item>Acht over Zes.</item>
+        <item>Negen over Zes.</item>
+        <item>Tien over Zes.</item>
+        <item>Elf over Zes.</item>
+        <item>Twaalf over Zes.</item>
+        <item>Dertien over Zes.</item>
+        <item>Veertien over Zes.</item>
+        <item>Kwart over Zes.</item>
+        <item>Zestien over Zes.</item>
+        <item>Zeventien over Zes.</item>
+        <item>Achtien over Zes.</item>
+        <item>Negentien over Zes.</item>
+        <item>Twintig over Zes.</item>
+        <item>EenenTwintig over Zes.</item>
+        <item>TweeenTwintig over Zes.</item>
+        <item>DrieenTwintig over Zes.</item>
+        <item>VierenTwintig over Zes.</item>
+        <item>VijfenTwintig over Zes.</item>
+        <item>ZesenTwintig over Zes.</item>
+        <item>ZevenenTwintig over Zes.</item>
+        <item>AchtenTwintig over Zes.</item>
+        <item>NegenenTwintig over Zes.</item>
+        <item>half Zeven.</item>
+        <item>NegenenTwintig voor Zeven.</item>
+        <item>AchtenTwintig voor Zeven.</item>
+        <item>ZevenenTwintig voor Zeven.</item>
+        <item>ZesenTwintig voor Zeven.</item>
+        <item>VijfenTwintig voor Zeven.</item>
+        <item>VierenTwintig voor Zeven.</item>
+        <item>DrieenTwintig voor Zeven.</item>
+        <item>TweeenTwintig voor Zeven.</item>
+        <item>EenenTwintig voor Zeven.</item>
+        <item>Twintig voor Zeven.</item>
+        <item>Negentien voor Zeven.</item>
+        <item>Achtien voor Zeven.</item>
+        <item>Zeventien voor Zeven.</item>
+        <item>Zestien voor Zeven.</item>
+        <item>Kwart voor Zeven.</item>
+        <item>Veertien voor Zeven.</item>
+        <item>Dertien voor Zeven.</item>
+        <item>Twaalf voor Zeven.</item>
+        <item>Elf voor Zeven.</item>
+        <item>Tien voor Zeven.</item>
+        <item>Negen voor Zeven.</item>
+        <item>Acht voor Zeven.</item>
+        <item>Zeven voor Zeven.</item>
+        <item>Zes voor Zeven.</item>
+        <item>Vijf voor Zeven.</item>
+        <item>Vier voor Zeven.</item>
+        <item>Drie voor Zeven.</item>
+        <item>Twee voor Zeven.</item>
+        <item>Een voor Zeven.</item>
+        <item>Zeven Uur.</item>
+        <item>Een over Zeven.</item>
+        <item>Twee over Zeven.</item>
+        <item>Drie over Zeven.</item>
+        <item>Vier over Zeven.</item>
+        <item>Vijf over Zeven.</item>
+        <item>Zes over Zeven.</item>
+        <item>Zeven over Zeven.</item>
+        <item>Acht over Zeven.</item>
+        <item>Negen over Zeven.</item>
+        <item>Tien over Zeven.</item>
+        <item>Elf over Zeven.</item>
+        <item>Twaalf over Zeven.</item>
+        <item>Dertien over Zeven.</item>
+        <item>Veertien over Zeven.</item>
+        <item>Kwart over Zeven.</item>
+        <item>Zestien over Zeven.</item>
+        <item>Zeventien over Zeven.</item>
+        <item>Achtien over Zeven.</item>
+        <item>Negentien over Zeven.</item>
+        <item>Twintig over Zeven.</item>
+        <item>EenenTwintig over Zes.</item>
+        <item>TweeenTwintig over Zes.</item>
+        <item>DrienTwintig over Zes.</item>
+        <item>VierenTwintig over Zes.</item>
+        <item>VijfenTwintig over Zes.</item>
+        <item>ZesenTwintig over Zes.</item>
+        <item>ZevenenTwintig over Zes.</item>
+        <item>AchtenTwintig over Zes.</item>
+        <item>NegenenTwintig over Zes.</item>
+        <item>half Zeven.</item>
+        <item>NegenenTwintig voor Zeven.</item>
+        <item>AchtenTwintig voor Zeven.</item>
+        <item>ZevenenTwintig voor Zeven.</item>
+        <item>ZesenTwintig voor Zeven.</item>
+        <item>VijfenTwintig voor Zeven.</item>
+        <item>VierenTwintig voor Zeven.</item>
+        <item>DrieenTwintig voor Zeven.</item>
+        <item>TweeenTwintig voor Zeven.</item>
+        <item>EenenTwintig voor Zeven.</item>
+        <item>Twintig voor Zeven.</item>
+        <item>Negentien voor Zeven.</item>
+        <item>Achtien voor Zeven.</item>
+        <item>Zeventien voor Zeven.</item>
+        <item>Zestien voor Zeven.</item>
+        <item>Kwart voor Zeven.</item>
+        <item>Veertien voor Zeven.</item>
+        <item>Dertien voor Zeven.</item>
+        <item>Twaalf voor Zeven.</item>
+        <item>Elf voor Zeven.</item>
+        <item>Tien voor Zeven.</item>
+        <item>Negen voor Zeven.</item>
+        <item>Acht voor Zeven.</item>
+        <item>Zeven voor Zeven.</item>
+        <item>Zes voor Zeven.</item>
+        <item>Vijf voor Zeven.</item>
+        <item>Vier voor Zeven.</item>
+        <item>Drie voor Zeven.</item>
+        <item>Twee voor Zeven.</item>
+        <item>Een voor Zeven.</item>
+        <item>Zeven Uur.</item>
+        <item>Een over Zeven.</item>
+        <item>Twee over Zeven.</item>
+        <item>Drie over Zeven.</item>
+        <item>Vier over Zeven.</item>
+        <item>Vijf over Zeven.</item>
+        <item>Zes over Zeven.</item>
+        <item>Zeven over Zeven.</item>
+        <item>Acht over Zeven.</item>
+        <item>Negen over Zeven.</item>
+        <item>Tien over Zeven.</item>
+        <item>Elf over Zeven.</item>
+        <item>Twaalf over Zeven.</item>
+        <item>Dertien over Zeven.</item>
+        <item>Veertien over Zeven.</item>
+        <item>Kwart over Zeven.</item>
+        <item>Zestien over Zeven.</item>
+        <item>Zeventien over Zeven.</item>
+        <item>Achtien over Zeven.</item>
+        <item>Negentien over Zeven.</item>
+        <item>Twintig over Zeven.</item>
+        <item>EenenTwintig over Zeven.</item>
+        <item>TweeenTwintig over Zeven.</item>
+        <item>DrieenTwintig over Zeven.</item>
+        <item>VierenTwintig over Zeven.</item>
+        <item>VijfenTwintig over Zeven.</item>
+        <item>ZesenTwintig over Zeven.</item>
+        <item>ZevenenTwintig over Zeven.</item>
+        <item>AchtenTwintig over Zeven.</item>
+        <item>NegenenTwintig over Zeven.</item>
+        <item>Half Acht.</item>
+        <item>NegenenTwintig voor Acht.</item>
+        <item>AchtenTwintig voor Acht.</item>
+        <item>ZevenenTwintig voor Acht.</item>
+        <item>ZesenTwintig voor Acht.</item>
+        <item>VijfenTwintig voor Acht.</item>
+        <item>AchtenTwintig voor Acht.</item>
+        <item>DrieenTwintig voor Acht.</item>
+        <item>TweeenTwintig voor Acht.</item>
+        <item>EenenTwintig voor Acht.</item>
+        <item>Twintig voor Acht.</item>
+        <item>Negentien voor Acht.</item>
+        <item>Achtien voor Acht.</item>
+        <item>Zeventien voor Acht.</item>
+        <item>Zestien voor Acht.</item>
+        <item>Kwart voor Acht.</item>
+        <item>Veertien voor Acht.</item>
+        <item>Dertien voor Acht.</item>
+        <item>Twaalf voor Acht.</item>
+        <item>Elf voor Acht.</item>
+        <item>Tien voor Acht.</item>
+        <item>Negen voor Acht.</item>
+        <item>Acht voor Acht.</item>
+        <item>Zeven voor Acht.</item>
+        <item>Zes voor Acht.</item>
+        <item>Vijf voor Acht.</item>
+        <item>Vier voor Acht.</item>
+        <item>Drie voor Acht.</item>
+        <item>Twee voor Acht.</item>
+        <item>Een voor Acht.</item>
+        <item>Acht Uur.</item>
+        <item>Een over Acht.</item>
+        <item>Twee over Acht.</item>
+        <item>Drie over Acht.</item>
+        <item>Vier over Acht.</item>
+        <item>Vijf over Acht.</item>
+        <item>Zes over Acht.</item>
+        <item>Zeven over Acht.</item>
+        <item>Acht over Acht.</item>
+        <item>Negen over Acht.</item>
+        <item>Tien over Acht.</item>
+        <item>Elf over Acht.</item>
+        <item>Twaalf over Acht.</item>
+        <item>Dertien over Acht.</item>
+        <item>Veertien over Acht.</item>
+        <item>Kwart over Acht.</item>
+        <item>Zestien over Acht.</item>
+        <item>Zeventien over Acht.</item>
+        <item>Achtien over Acht.</item>
+        <item>Negentien over Acht.</item>
+        <item>Twintig over Acht.</item>
+        <item>EenenTwintig over Acht.</item>
+        <item>TweeenTwintig over Acht.</item>
+        <item>DrieenTwintig over Acht.</item>
+        <item>VierenTwintig over Acht.</item>
+        <item>VijfenTwintig over Acht.</item>
+        <item>ZesenTwintig over Acht.</item>
+        <item>ZevenenTwintig over Acht.</item>
+        <item>AchtenTwintig over Acht.</item>
+        <item>NegenenTwintig over Acht.</item>
+        <item>half Negen.</item>
+        <item>NegenenTwintig voor Negen.</item>
+        <item>AchtenTwintig voor Negen.</item>
+        <item>ZevenenTwintig voor Negen.</item>
+        <item>ZesenTwintig voor Negen.</item>
+        <item>VijfenTwintig voor Negen.</item>
+        <item>VierenTwintig voor Negen.</item>
+        <item>DrieenTwintig voor Negen.</item>
+        <item>TweeenTwintig voor Negen.</item>
+        <item>EenenTwintig voor Negen.</item>
+        <item>Twintig voor Negen.</item>
+        <item>Negentien voor Negen.</item>
+        <item>Achteen voor Negen.</item>
+        <item>Zeventien voor Negen.</item>
+        <item>Zestien voor Negen.</item>
+        <item>Kwart voor Negen.</item>
+        <item>Veertien voor Negen.</item>
+        <item>Dertien voor Negen.</item>
+        <item>Twaalf voor Negen.</item>
+        <item>Elf voor Negen.</item>
+        <item>Tien voor Negen.</item>
+        <item>Negen voor Negen.</item>
+        <item>Acht voor Negen.</item>
+        <item>Zeven voor Negen.</item>
+        <item>Zes voor Negen.</item>
+        <item>Vijf voor Negen.</item>
+        <item>Vier voor Negen.</item>
+        <item>Drie voor Negen.</item>
+        <item>Twee voor Negen.</item>
+        <item>Een voor Negen.</item>
+        <item>Negen Uur.</item>
+        <item>Een over Negen.</item>
+        <item>Twee over Negen.</item>
+        <item>Drie over Negen.</item>
+        <item>Vier over Negen.</item>
+        <item>Vijf over Negen.</item>
+        <item>Zes over Negen.</item>
+        <item>Zeven over Negen.</item>
+        <item>Acht over Negen.</item>
+        <item>Negen over Negen.</item>
+        <item>Tien over Negen.</item>
+        <item>Elf over Negen.</item>
+        <item>Twaalf over Negen.</item>
+        <item>Dertien over Negen.</item>
+        <item>Veertien over Negen.</item>
+        <item>Kwart over Negen.</item>
+        <item>Zestien over Negen.</item>
+        <item>Zeventien over Negen.</item>
+        <item>Achtien over Negen.</item>
+        <item>Negentien over Negen.</item>
+        <item>Twintig over Negen.</item>
+        <item>EenenTwintig over Negen.</item>
+        <item>TweeenTwintig over Negen.</item>
+        <item>DrieenTwintig over Negen.</item>
+        <item>VierenTwintig over Negen.</item>
+        <item>VijfenTwintig over Negen.</item>
+        <item>ZesenTwintig over Negen.</item>
+        <item>ZevenenTwintig over Negen.</item>
+        <item>AchtenTwintig over Negen.</item>
+        <item>NegenenTwintig over Negen.</item>
+        <item>half Tien.</item>
+        <item>NegenenTwintig voor Tien.</item>
+        <item>AchtenTwintig voor Tien.</item>
+        <item>ZevenenTwintig voor Tien.</item>
+        <item>ZesenTwintig voor Tien.</item>
+        <item>VijfenTwintig voor Tien.</item>
+        <item>VierenTwintig voor Tien.</item>
+        <item>DrieenTwintig voor Tien.</item>
+        <item>TweeenTwintig voor Tien.</item>
+        <item>EenenTwintig voor Tien.</item>
+        <item>Twintig voor Tien.</item>
+        <item>Negentien voor Tien.</item>
+        <item>Achtien voor Tien.</item>
+        <item>Zeventien voor Tien.</item>
+        <item>Zestien voor Tien.</item>
+        <item>Kwart voor Tien.</item>
+        <item>Veertien voor Tien.</item>
+        <item>Dertien voor Tien.</item>
+        <item>Twaalf voor Tien.</item>
+        <item>Elf voor Tien.</item>
+        <item>Tien voor Tien.</item>
+        <item>Negen voor Tien.</item>
+        <item>Acht voor Tien.</item>
+        <item>Zeven voor Tien.</item>
+        <item>Zes voor Tien.</item>
+        <item>Vijf voor Tien.</item>
+        <item>Vier voor Tien.</item>
+        <item>Drie voor Tien.</item>
+        <item>Twee voor Tien.</item>
+        <item>Een voor Tien.</item>
+        <item>Tien Uur.</item>
+		<item>Een over Tien.</item>
+        <item>Twee over Tien.</item>
+        <item>Drie over Tien.</item>
+        <item>Vier over Tien.</item>
+        <item>Vijf over Tien.</item>
+        <item>Zes over Tien.</item>
+        <item>Zeven over Tien.</item>
+        <item>Acht over Tien.</item>
+        <item>Negen over Tien.</item>
+        <item>Tien over Tien.</item>
+        <item>Elf over Tien.</item>
+        <item>Twaalf over Tien.</item>
+        <item>Dertien over Tien.</item>
+        <item>Veertien over Tien.</item>
+        <item>Kwart over Tien.</item>
+        <item>Zestien over Tien.</item>
+        <item>Zeventien over Tien.</item>
+        <item>Achtien over Tien.</item>
+        <item>Negentien over Tien.</item>
+        <item>Twintig over Tien.</item>
+        <item>EenenTwintig over Tien.</item>
+        <item>TweeenTwintig over Tien.</item>
+        <item>DrieenTwintig over Tien.</item>
+        <item>VierenTwintig over Tien.</item>
+        <item>VijfenTwintig over Tien.</item>
+        <item>ZesenTwintig over Tien.</item>
+        <item>ZevenenTwintig over Tien.</item>
+        <item>AchtenTwintig over Tien.</item>
+        <item>NegenenTwintig over Tien.</item>
+        <item>half Elf.</item>
+        <item>NegenenTwintig voor Elf.</item>
+        <item>AchtenTwintig voor Elf.</item>
+        <item>ZevenenTwintig voor Elf.</item>
+        <item>ZesenTwintig voor Elf.</item>
+        <item>VijfenTwintig voor Elf.</item>
+        <item>VierenTwintig voor Elf.</item>
+        <item>DrieenTwintig voor Elf.</item>
+        <item>TweeenTwintig voor Elf.</item>
+        <item>EenenTwintig voor Elf.</item>
+        <item>Twintig voor Elf.</item>
+        <item>Negentien voor Elf.</item>
+        <item>Achtien voor Elf.</item>
+        <item>Zeventien voor Elf.</item>
+        <item>Zestien voor Elf.</item>
+        <item>Kwart voor Elf.</item>
+        <item>Veertien voor Elf.</item>
+        <item>Dertien voor Elf.</item>
+        <item>Twaalf voor Elf.</item>
+        <item>Elf voor Elf.</item>
+        <item>Tien voor Elf.</item>
+        <item>Negen voor Elf.</item>
+        <item>Acht voor Elf.</item>
+        <item>Zeven voor Elf.</item>
+        <item>Zes voor Elf.</item>
+        <item>Vijf voor Elf.</item>
+        <item>Vier voor Elf.</item>
+        <item>Drie voor Elf.</item>
+        <item>Twee voor Elf.</item>
+        <item>Een voor Elf.</item>
+        <item>Elf Uur.</item>
+        <item>Een over Elf.</item>
+        <item>Twee over Elf.</item>
+        <item>Drie over Elf.</item>
+        <item>Vier over Elf.</item>
+        <item>Vijf over Elf.</item>
+        <item>Zes over Elf.</item>
+        <item>Zeven over Elf.</item>
+        <item>Acht over Elf.</item>
+        <item>Negen over Elf.</item>
+        <item>Tien over Elf.</item>
+        <item>Elf over Elf.</item>
+        <item>Twaalf over Elf.</item>
+        <item>Dertien over Elf.</item>
+        <item>Veertien over Elf.</item>
+        <item>Kwart over Elf.</item>
+        <item>Zestien over Elf.</item>
+        <item>Zeventien over Elf.</item>
+        <item>Achtien over Elf.</item>
+        <item>Negentien over Elf.</item>
+        <item>Twintig over Elf.</item>
+        <item>EenenTwintig over Elf.</item>
+        <item>TweeenTwintig over Elf.</item>
+        <item>DrieenTwintig over Elf.</item>
+        <item>VierenTwintig over Elf.</item>
+        <item>VijfenTwintig over Elf.</item>
+        <item>ZesenTwintig over Elf.</item>
+        <item>ZevenenTwintig over Elf.</item>
+        <item>AchtenTwintig over Elf.</item>
+        <item>NegenenTwintig over Elf.</item>
+        <item>Half Twaalf.</item>
+        <item>NegenenTwintig voor Twaalf.</item>
+        <item>AchtenTwintig voor Twaalf.</item>
+        <item>ZevenenTwintig voor Twaalf.</item>
+        <item>ZesenTwintig voor Twaalf.</item>
+        <item>VijfenTwintig voor Twaalf.</item>
+        <item>VierenTwintig voor Twaalf.</item>
+        <item>DrieenTwintig voor Twaalf.</item>
+        <item>TweeenTwintig voor Twaalf.</item>
+        <item>EenenTwintig voor Twaalf.</item>
+        <item>Twintig voor Twaalf.</item>
+        <item>Negentien voor Twaalf.</item>
+        <item>Achtien voor Twaalf.</item>
+        <item>Zeventien voor Twaalf.</item>
+        <item>Zestien voor Twaalf.</item>
+        <item>Kwart voor Twaalf.</item>
+        <item>Veertien voor Twaalf.</item>
+        <item>Dertien voor Twaalf.</item>
+        <item>Twaalf voor Twaalf.</item>
+        <item>Elf voor Twaalf.</item>
+        <item>Tien voor Twaalf.</item>
+        <item>Negen voor Twaalf.</item>
+        <item>Acht voor Twaalf.</item>
+        <item>Zeven voor Twaalf.</item>
+        <item>Zes voor Twaalf.</item>
+        <item>Vijf voor Twaalf.</item>
+        <item>Vier voor Twaalf.</item>
+        <item>Drie voor Twaalf.</item>
+        <item>Twee voor Twaalf.</item>
+        <item>Een voor Twaalf.</item>
+	</string-array>
+    <string-array name="VerboseWeather">
+        <item>Onbekend</item>
+        <item>Onbewolkt</item>
+        <item>Onbewolkt</item>
+        <item>Meestal Onbewolkt</item>
+        <item>Deels Onbewolkt</item>
+        <item>Deels Bewolkt</item>
+        <item>Stoffig</item>
+        <item>Wazig</item>
+        <item>Mist</item>
+        <item>Rokerig</item>
+        <item>Meestal Bewolkt</item>
+        <item>Bewolking</item>
+        <item>Bewolkt</item>
+        <item>Mistig</item>
+        <item>Lichte Regen</item>
+        <item>Regenbuien</item>
+        <item>Motregen</item>
+        <item>Regenbuien</item>
+        <item>Kans op Regen</item>
+        <item>Kans op Regenbuien</item>
+        <item>Verspreide Regenbuien</item>
+        <item>Onweerbui</item>
+        <item>Kans op Onweer</item>
+        <item>Verspreide Onweersbuien</item>
+        <item>Kans op Onweersbuien</item>
+        <item>Buien</item>
+        <item>Hevige Regen</item>
+        <item>Regen</item>
+        <item>Sneeuwbuien</item>
+        <item>Lichte Sneeuw</item>
+        <item>Kans op Sneeuw</item>
+        <item>Sneeuwbuien</item>
+        <item>Verspreide Sneeuwbuien</item>
+        <item>Sneeuw</item>
+        <item>Ijzel</item>
+        <item>Ijzel of Sneeuw</item>
+        <item>Glad</item>
+        <item>Bevroren Motregen</item>
+        <item>Nattesneeuw</item>
+        <item>Winderig</item>
+    </string-array>
+	<!-- Klaar met vertalen Clock -->
+    <string name="_ok">OKE</string>
+    <string name="_apply">Bevestig</string>
+    <string name="_search">Zoeken</string>
+    <string name="_yes">Ja</string>
+    <string name="_abandon">Verlaten</string>
+    <string name="_no">Nee</string>
+    <string name="TTLdefault">Widget Inst.</string>
+    <string name="TTLnoop">Doe Niets</string>
+    <string name="TTLwrefresh">Het Weer Nu Verversen</string>
+    <string name="TTLweather">Voorspelling</string>
+    <string name="TTLbatt">Batterij Verbruik</string>
+    <string name="TTLalarms">Alarmen Bekijken</string>
+    <string name="HDRenderingFalse">Oude - 16bit bitmap direkt verstuurt tussen bewerkingen</string>
+    <string name="HDRendering">Render Methode</string>
+    <string name="HDRenderingTrue">Nieuw - 32bit bitmap cached in SD herstellen</string>
+    <string name="battChrgAC">AC Opladen</string>
+    <string name="battChrgUSB">USB Opladen</string>
+    <string name="battChrgWireless">Draadloos Opladen</string>
+    <string name="battChrgDischarging">Ontladen</string>
+    <string name="_yesRestore">Ja, Herstel standaardwaarden</string>
+    <string name="_yesDelete">Ja, verwijder alles</string>
+</resources>
