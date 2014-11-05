@@ -115,7 +115,8 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 
 		setContentView(OMC.RLayoutId("tweakertool"));
         toplevel = (AbsoluteLayout)findViewById(OMC.RId("toplevel"));
-
+        ImageView iv = (ImageView)(toplevel.findViewById(OMC.RId("tweakerbkgd")));
+        iv.setImageDrawable(getWallpaper());
         OMCThemeTweakerActivity.REFRESHINTERVAL = 1000;
 
         bApply = false;
