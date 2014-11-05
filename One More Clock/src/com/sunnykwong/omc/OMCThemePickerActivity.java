@@ -20,8 +20,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -260,6 +262,7 @@ public class OMCThemePickerActivity extends Activity {
     	public HashMap<String, String> mCreds = new HashMap<String, String>();
     	public HashMap<String, String> mNames = new HashMap<String, String>();
     	public HashMap<String, Boolean> mTweaked = new HashMap<String, Boolean>();
+    	public HashMap<String, Boolean> mTesterOnly = new HashMap<String, Boolean>();
     	public HashMap<String, String[]> mTags = new HashMap<String, String[]>();
     	
 
@@ -298,7 +301,8 @@ public class OMCThemePickerActivity extends Activity {
 				JSONObject oResult = new JSONObject(sb.toString());
 				sb.setLength(0);
     			mNames.put(sTheme,oResult.optString("name"));
-    			mTweaked.put(sTheme, new Boolean(oResult.optBoolean("tweaked")));
+    			mTweaked.put(sTheme, Boolean.valueOf(oResult.optBoolean("tweaked")));
+    			mTesterOnly.put(sTheme, Boolean.valueOf(oResult.optBoolean("testeronly")));
     			mCreds.put(sTheme,"Author: " + oResult.optString("author") + "  (" +oResult.optString("date")+ ")\n" + oResult.optString("credits"));
     			if (oResult.has("tags")) {
     				final JSONArray tags = oResult.getJSONArray("tags");
@@ -329,6 +333,7 @@ public class OMCThemePickerActivity extends Activity {
         	mBitmaps.remove(pos);
         	mCreds.remove(sTheme);
         	mTweaked.remove(sTheme);
+        	mTesterOnly.remove(sTheme);
         	File f = new File(OMCThemePickerActivity.THEMEROOT.getAbsolutePath() + "/" + sTheme);
         	OMC.THEMEMAP.clear();
         	OMC.removeDirectory(f);
@@ -369,6 +374,11 @@ public class OMCThemePickerActivity extends Activity {
         	//  If the theme list isn't loaded yet, just return a blank screen!
         	if (position < 0 || position > mThemes.size()) return ll;
 
+        	// Tester only clocks are colored RED
+        	if (mTesterOnly.get(mThemes.get(position)).booleanValue()) {
+	    		((TextView)ll.findViewById(OMC.RId("ThemeName"))).setTextColor(Color.RED);
+	    		((TextView)ll.findViewById(OMC.RId("ThemeCredits"))).setTextColor(Color.RED);
+        	}
         	if (mNames.get(mThemes.get(position)) != null) {
         		((TextView)ll.findViewById(OMC.RId("ThemeName"))).setText(mNames.get(mThemes.get(position)));
         	} else {
