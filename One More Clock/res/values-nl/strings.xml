@@ -7,11 +7,11 @@
     <string name="nextTip">Volgende Aanwijzing</string>
     <string name="taskComplete">Taak Volbracht</string>
     <!-- General Errors -->
-    <string name="sdcardNotDetected">SD Card niet gedetecteerd.\nVergeet niet je USB opslag uit te zetTien
-		als deze nog is aangesloTien
+    <string name="sdcardNotDetected">SD Kaart niet gedetecteerd.\nVergeet niet je USB opslag uit te zetten
+		als deze nog is aangesloten
 	</string>
-    <string name="sdcardMissingOrCorrupt">SD Card niet gevonden of stuk.\nVergeet niet je USB opslag uit te zetTien
-		als deze nog is aangesloTien
+    <string name="sdcardMissingOrCorrupt">SD Kaart niet gevonden of stuk.\nVergeet niet je USB opslag uit te zetten
+		als deze nog is aangesloten
 	</string>
     <string name="themeNotFound">Thema niet gevonden! Herstellen naar de standaard thema.
 	</string>
@@ -43,7 +43,7 @@
     <string name="yrWeatherCredit">Weer voorspelling van yr.no, geleverd door het Noorse Meteorologisch
 	Instituut en de NRK.
 	</string>
-    <string name="ZeventimerWeatherCredit">7Timer! forecasts by Ye Quanzhi, supported by the
+    <string name="ZeventimerWeatherCredit">7Timer! forecasts by Ye Quanzhi, supported door de
 		Shanghai Astronomical Observatory, Chinese Academy of Sciences.
 	</string>
     <string name="owmWeatherCredit">Weer bijgewerkt op basis van openweathermaps.org.</string>
@@ -53,21 +53,20 @@
     <string name="supplementedbyMETAR">Huidige voorwaarden aangevuld met METAR van
 	</string>
     <!-- Clock Preferences -->
-	<!-- Klaar met vertalen -->   
-    <string name="clockPreferences">Klok voorkeuren</string>
+	<string name="clockPreferences">Klok voorkeuren</string>
     <string name="dashPreferences">\u0020- voorkeuren</string>
     <string name="forThisClock">Voor deze Klok:</string>
     <string name="widgetTheme">Widget Thema</string>
 	<!-- Widget Theme -->
 	<string name="widgetThemeTitle">Swipe om te kiezen; Tap &amp; hou vast voor Opties</string>
     <string name="corruptPlsDelete">[Beschadigd - Verwijderen A.u.b.]</string>
-    <string name="reextractBundledClocks">Opnieuw Gebundelde Klokken Uitpakken</string>
-    <string name="downloadAllClocks">Download Alle Klokken(7MB)</string>
+    <string name="reextractBundledClocks"> Klokken Opnieuw Uitpakken</string>
+    <string name="downloadAllClocks">Alle Klokken Downloaden (7MB)</string>
     <string name="preselected"/>
     <string name="postselected">\u0020geselecteerd.</string>
 	<!-- Theme Picker Legend -->
 	<string name="legend">Legende</string>
-    <string name="batteryLegend">De lading van de batterij tEenn</string>
+    <string name="batteryLegend">De lading van de batterij tonen</string>
     <string name="weatherLegend">Laat het weer zien</string>
     <string name="bkimageLegend">Bijgevoegde Achtergrond Image</string>
     <string name="ltbgLegend">Goed op Lichte Achtergronden</string>
@@ -90,7 +89,7 @@
     <string name="detectedWeatherskin">Gedetecteerde Weatherskin </string>
     <string name="extractingStarterClockPack">Uitpakken van een Klok starters pakket…</string>
     <string name="starterClockPack">Klok starters pakket</string>
-    <string name="starterClockPackText">Files in your SDcard\'s .OMC Themes Map Zal worden
+    <string name="starterClockPackText">Bestanden op je SDcard\'s .OMC Thema Map Zal worden
 		overschreven. Weet je het zeker?\n(Wanneer niet zeker, tap Ja)
 	</string>
     <string name="importComplete">Importeren is Klaar!</string>
@@ -132,7 +131,7 @@
 	</string>
     <!-- Personalize Clock -->
     <string name="personalizeClock">Personaliseer Klok</string>
-    <string name="tweakColorsAndLayers">Tweak Kleur and Lagen</string>
+    <string name="tweakColorsAndLayers">Verander Kleur and Lagen</string>
     <!-- Personalize Clock subscreen -->
     <string name="selectALayerForTweaking">Selecteer een Laag voor Verandering</string>
     <string name="tweakerDirections">Sleep: Beweeg Menu: Tweak Terug: Anuleer</string>
@@ -149,8 +148,8 @@
     <!-- TTL Popup -->
     <string name="areatoCustomize">Gebied voor Aanpassen:</string>
     <string name="chooseAction">Kies een Aktie</string>
-    <string name="openOptionsDefault">Open options (default)</string>
-    <string name="doNothing">Do nothing</string>
+    <string name="openOptionsDefault">Open opties (default)</string>
+    <string name="doNothing">Doe niets</string>
     <string name="refreshWeather">Ververs nu het Weer</string>
     <string name="weatherForecast">Weers voorspelling</string>
     <string name="viewAlarms">Bekijk de alarmen (Experimenteel)</string>
@@ -164,11 +163,11 @@
     <string name="showLeadingZTrue">04:23</string>
     <string name="showLeadingZFalse">4:23</string>
     <string name="mmddDateFormat">M/D/Y Datum Formaat</string>
-    <string name="mmddDateFormatTrue">12/31/2012</string>
-    <string name="mmddDateFormatFalse">31/12/2012</string>
+    <string name="mmddDateFormatTrue">12/31/2014</string>
+    <string name="mmddDateFormatFalse">31/12/2014</string>
     <string name="changeTimeZEen">Verander de Tijdzone</string>
     <string name="followingDeviceTimeZEen">(Volg Tijdzone van Apparaat)</string>
-    <string name="changeClockAdjustment">Zet Klok Voor/Achter</string>
+    <string name="changeClockAdjustment">Zet Klok Vooruit/Achteruit</string>
     <string name="minutesAhead">\u0020minuten vooruit op huidige tijd</string>
     <string name="minutesBehind">\u0020minutes behind huidige tijd</string>
     <string name="backupWidget">Backup Deze Widget</string>
@@ -233,7 +232,7 @@
         <item>7Timer.com</item>
         <item>NOAA (US Only)</item>
         <item>Yr.no</item>
-        <item>Google Weather (oudere/nietwerkend)</item>
+        <item>Google Weather (verouderd/nietwerkend)</item>
     </string-array>
     <string name="wpauto">Gebruik beste provider voor lokatie</string>
     <string name="wp7timer">Gebruik 7Timer.com</string>
@@ -301,7 +300,7 @@
     <string name="enable1x3Widget">Inschakelen (1x3) Widget</string>
     <string name="forGalaxyNote">Voor een Galaxy Note of soortgelijks</string>
     <string name="enableThemeTester">Inschakelen Thema Tester</string>
-    <string name="developmenttoolForSkinnersOnly">Development tool voor skinners alleen</string>
+    <string name="developmenttoolForSkinnersOnly">Development tool voor alleen skinners</string>
       <!-- Widget Sizes Sales Pitch -->
     <string name="areThereOtherWidgetSizes">Zijn er nog andere widget afmetingen?</string>
     <string name="actuallyThePaidVersion">Eigenlijk, de betaalde versie geeft je widget afmetingen van
@@ -338,47 +337,45 @@
     </string-array>
     <string name="locationPriority">Locatie prioriteit</string>
     <string-array name="locationPriority_options">
-        <item>Strikt - Fine Only</item>
-        <item>Strikt - Fine/Coarse</item>
-        <item>Middel - Fine Only</item>
-        <item>Middel - Fine/Coarse</item>
+        <item>Strikt - Fijn Alleen</item>
+        <item>Strikt - Fijn/Koers</item>
+        <item>Middel - Fijn Alleen</item>
+        <item>Middel - Fijn/Koers</item>
         <item>Flexibel (Standaard)</item>
     </string-array>
     <string-array name="locationPriority_legend">
-        <item>Use only GPS location fixes less than 2 hours old. WARNING:
-			Weather updates may stop if you are indoors. Are you sure?
+        <item>Gebruik alleen GPS locatie fixes lager dan 2 uur 2 oud. WAARSCHIEUWING:
+			Weer verversen kan stoppen als je in huis bent. Weet je het zeker?
 		</item>
-        <item>Use network/GPS fixes less than 2 hours old. WARNING: Weather
-			updates may stop if you are indoors. Are you sure?
+        <item>Gebruik netwerk/GPS fixes minder dan 2 uur oud. WAARSCHIEUWING:
+			Weer verversen kan stoppen als je in huis bent. Weet je het zeker?
 		</item>
-        <item>Use only GPS location fixes less than 10 hours old. Weather
-			updates may stop if you are indoors for more than 10 hours. Are you
-			sure?
+        <item>Gebruik alleen GPS locatie fixes minder dan 10 uur oud. Weer 
+		    verversen kan stoppen als je langer in huis bent voor meer dan 10 uur. Weet je het zeker?
 		</item>
-        <item>Use any network or GPS location less than 10 hours old. Weather
-			updates may stop if you are indoors for more than 10 hours. Are you
-			sure?
+        <item>Gebruik alle netwerk of GPS locaties minder dan 10 uur oud. Weer 
+		    verversen kan stoppen als je langer in huis bent voor meer dan 10 uur. Weet je het zeker?
 		</item>
-        <item>Use the most recent network or GPS location, regardless of
+        <item>Gebruik de meest recente netwerk GPS locatie, ongeacht regardless of
 			staleness. Weather accuracy will depend on location accuracy and
 			staleness. Are you sure?
 		</item>
     </string-array>
-    <string name="battReporting">Battery Reporting</string>
-    <string name="battReportingNormal">Normal - As reported by Android</string>
-    <string name="battReportingAlternate">Alternate - As reported by driver</string>
-    <string name="weatherDiagnostics">Weather Diagnostics</string>
-    <string name="submitLocationWeatherDebugData">Submit location/weather debug data</string>
-    <string name="deleteAllThemes">Delete All Themes</string>
-    <string name="forFixingThemeSelection">For fixing theme selection app crashes</string>
-    <string name="deleteAllThemesFromSD">Delete all Themes from your SD Card/Memory?
+    <string name="battReporting">Batterij Raportering</string>
+    <string name="battReportingNormal">Normaal - Als geraporteerd door Android</string>
+    <string name="battReportingAlternate">Alternatief - Als gereporteerd door driver</string>
+    <string name="weatherDiagnostics">Weer Diagnoses</string>
+    <string name="submitLocationWeatherDebugData">Verstuur locatie/weer debug data</string>
+    <string name="deleteAllThemes">Verwijder alles Thema's</string>
+    <string name="forFixingThemeSelection">Voor het fixen van thema selectie app crashes</string>
+    <string name="deleteAllThemesFromSD">Verwijder alle Thema's van je SD kaart/Geheugen
 	</string>
-    <string name="omcThemesFolderDeleted">OMCThemes folder deleted</string>
-    <string name="defaultClockPackRestored">Default Clock Pack restored</string>
+    <string name="omcThemesFolderDeleted">OMCThema's map verwijderd</string>
+    <string name="defaultClockPackRestored">Standaard Klok pakket hersteld</string>
     <!-- Contact Xaffron -->
-    <string name="contactXaffron">Contact Xaffron</string>
-    <string name="donateOrContact">Donate or Contact author for help</string>
-    <string name="contactXaffronForIssues">Contact Xaffron for issues, help &amp; support
+    <string name="contactXaffron">Kontakt Xaffron</string>
+    <string name="donateOrContact">Donateer of neem kontakt autheur voor help</string>
+    <string name="contactXaffronForIssues"> Kontakt Xaffron voor kwesties, help &amp; support
 	</string>
     <string name="email">Email</string>
     <string name="donate">Donatie</string>
@@ -387,8 +384,8 @@
     <!-- Credits -->
     <string name="credits">Credits</string>
     <string name="version">Versie</string>
-    <string name="free">Garatis</string>
-    <string name="taptoGetFull">Tap mij om de betaalde versie te verkrijgen!</string>
+    <string name="free">Gratis</string>
+    <string name="taptoGetFull">Tap om de betaalde versie te verkrijgen!</string>
     <string name="thanksForYourSupport">Bedankt voor je support!</string>
     <string name="viewCredits">Bekijk Credits</string>
     <!-- Credits subscreen -->
@@ -401,26 +398,25 @@
 	</string>
     <string name="translators">Vertalers</string>
     <string name="specialThanks">Speciale Dank</string>
-    <string name="specialThanksText">Zehro for leading the way\nre: in-sync clock
-		widgets w//o notifications.\nStefan Pledl for helping with the
-		localization.\nJosiah Barber for his \'one-Percent Hack\' on Motorrola
-		phones.
+    <string name="specialThanksText">Zehro voor naar het verwijzen: in-sync klok
+		widgets w//o notificaties.\nStefan Pledl voor hulp met de lokalisatie.\nJosiah Barber voor deze \'een-Procent Hack\' met Motorrola
+		telefoons.
 	</string>
-    <string name="copyrights">Copyrights and Licenses</string>
+    <string name="copyrights">Copyrights and Licenties</string>
     <string name="applicationIcon">Applicatie Icoon: Signpost door Maroubal2</string>
-    <string name="applicationIconText">Adapted from Maroubal2\'s excellent
+    <string name="applicationIconText">Aangepast vanuit Maroubal2\'s schiterende
 		photo-turned-Ubuntu wallpaper.\nCC BY-SA
 		2.0\nhttp:////www.flickr.com//photos//maroubal2//5412017784/
 	</string>
     <string name="codeColorPickerDialog">Code: ColorPickerDialog</string>
-    <string name="codeColorPickerDialogText">Copied from CyanogenMod source repo.</string>
+    <string name="codeColorPickerDialogText">Gekopieerd van CyanogenMod source repo.</string>
     <string name="codeSVG">Code: svg-android</string>
-    <string name="codeSVGText">SVG support provided by sag-android library (Apache
+    <string name="codeSVGText">SVG support geboden door sag-android library (Apache
 		License).\nhttp:////code.google.com//p//svg-android//
 	</string>
     <string name="weatherFont">Font: Weatherfont</string>
-    <string name="weatherFontText">Weatherfont is fully licensed from Jonathan
-		Macagba, available for $5 USD from jonathan.macagba@gmail.com
+    <string name="weatherFontText">Weatherfont is volledig gelicenseerd van Jonathan
+		Macagba, beschikbaar voor $5 USD bij jonathan.macagba@gmail.com
 	</string>
     <string name="sourceCodeTitle">Broncode</string>
     <string name="sourceCode">Broncode te downloaden bij</string>
@@ -574,9 +570,7 @@
         <item>NegenenNegentig</item>
     </string-array>
  	 <!-- Verbose Tijden -->
-	   
-
-   <string-array name="verbosetime1">
+	<string-array name="verbosetime1">
         <item>Twaalf uur.</item>
         <item>Een over Twaalf.</item>
         <item>Twee over Twaalf.</item>
@@ -1150,8 +1144,7 @@
         <item>AchtenTwintig over Negen.</item>
         <item>NegenenTwintig over Negen.</item>
         <item>half Tien.</item>
-        
-		<item>NegenenTwintig voor Tien.</item>
+        <item>NegenenTwintig voor Tien.</item>
         <item>AchtenTwintig voor Tien.</item>
         <item>ZevenenTwintig voor Tien.</item>
         <item>ZesenTwintig voor Tien.</item>
@@ -2129,7 +2122,7 @@
         <item>Winderig</item>
     </string-array>
 	<!-- Klaar met vertalen Clock -->
-    <string name="_ok">OKE</string>
+    <string name="_ok">OK</string>
     <string name="_apply">Bevestig</string>
     <string name="_search">Zoeken</string>
     <string name="_yes">Ja</string>
