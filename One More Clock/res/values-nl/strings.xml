@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
- 	<string name="languageWord">Taal</string>
-    <string name="languageName">Nederlands (Belgie)</string>
+    <string name="languageWord">Taal</string>
+    <string name="languageName">Dutch (Belgium)</string>
     <string name="translator">Tonny Mulch</string>
     <!-- General Buttons/notifications -->
     <string name="nextTip">Volgende Aanwijzing</string>
@@ -43,9 +43,6 @@
     <string name="yrWeatherCredit">Weer voorspelling van yr.no, geleverd door het Noorse Meteorologisch
 	Instituut en de NRK.
 	</string>
-    <string name="ZeventimerWeatherCredit">7Timer! forecasts by Ye Quanzhi, supported door de
-		Shanghai Astronomical Observatory, Chinese Academy of Sciences.
-	</string>
     <string name="owmWeatherCredit">Weer bijgewerkt op basis van openweathermaps.org.</string>
     <string name="tapForAlternateForecast">Tap voor alternatieve prognoses van AccuWeather®
 	</string>
@@ -53,29 +50,29 @@
     <string name="supplementedbyMETAR">Huidige voorwaarden aangevuld met METAR van
 	</string>
     <!-- Clock Preferences -->
-	<string name="clockPreferences">Klok voorkeuren</string>
+    <string name="clockPreferences">Klok voorkeuren</string>
     <string name="dashPreferences">\u0020- voorkeuren</string>
     <string name="forThisClock">Voor deze Klok:</string>
     <string name="widgetTheme">Widget Thema</string>
-	<!-- Widget Theme -->
-	<string name="widgetThemeTitle">Swipe om te kiezen; Tap &amp; hou vast voor Opties</string>
+    <!-- Widget Theme -->
+    <string name="widgetThemeTitle">Swipe om te kiezen; Tap &amp; hou vast voor Opties</string>
     <string name="corruptPlsDelete">[Beschadigd - Verwijderen A.u.b.]</string>
-    <string name="reextractBundledClocks"> Klokken Opnieuw Uitpakken</string>
+    <string name="reextractBundledClocks"> Alle Klokken Opnieuw Uitpakken</string>
     <string name="downloadAllClocks">Alle Klokken Downloaden (7MB)</string>
     <string name="preselected"/>
     <string name="postselected">\u0020geselecteerd.</string>
-	<!-- Theme Picker Legend -->
-	<string name="legend">Legende</string>
+    <!-- Theme Picker Legend -->
+    <string name="legend">Legende</string>
     <string name="batteryLegend">De lading van de batterij tonen</string>
     <string name="weatherLegend">Laat het weer zien</string>
     <string name="bkimageLegend">Bijgevoegde Achtergrond Image</string>
     <string name="ltbgLegend">Goed op Lichte Achtergronden</string>
     <string name="dkbgLegend">Goed op Donkere Achtergronden</string>
     <string name="tweakLegend">Klok is door gebruiker veranderd</string>
-	<!-- Theme Skinner tool (deprecated) -->
-	<string name="reloadThemeCatalog">Herladen Thema Catalogus</string>
-	<!-- Theme Import/Unzip -->
-	<string name="themePreview">Thema Preview</string>
+    <!-- Theme Skinner tool (deprecated) -->
+    <string name="reloadThemeCatalog">Herladen Thema Catalogus</string>
+    <!-- Theme Import/Unzip -->
+    <string name="themePreview">Thema Preview</string>
     <string name="openingConnection">Openen verbinding.</string>
     <string name="beginningDownload">Beginnen met downloaden.</string>
     <string name="downloading">Downloading\u0020</string>
@@ -97,10 +94,6 @@
     <string name="useDownloadInsteadOfPreview">Gebruik Download in plaats van Bekijken voor het 
 	    importeren van een OCM Klok!
 	</string>
-    <string name="imporTweerksWithOMCFiles">Klok importeren werkt met .omc bestanden.\nJe probeert
-     	een verkeerd bestand te openen.
-	</string>
-    <string name="nothingtoExtract">Niets om uit te pakken!</string>
     <string name="downloadInterrupted">Download Onderbroken!</string>
     <string name="poorReceptionArea">Is uw telefoon in een slecht ontvangst gebied?\nProbeer het
      	later nog eens.
@@ -122,9 +115,6 @@
     <string name="deleteThemeConfirm3">U moet het thema weer downloaden/uitpakken om het te
 		kunnen gebruiken. Weet je het zeker?
 	</string>
-    <string name="submitThemetoDev">Verstuur Thema voor Dev</string>
-    <string name="submitThemetoDevConfirm1">Versturen\u0020</string>
-    <string name="submitThemetoDevConfirm2">\u0020voor Xaffron als een nieuw thema?</string>
     <string name="areYouAbsolutelySure">Ben je absoluut zeker?</string>
     <string name="areYouAbsolutelySureText">Dit thema heeft niet de \'Veranderd\' flag ;
 		het lijkt wel een standaard Thema.\n
@@ -143,10 +133,8 @@
     <string name="keepChanges">Verandering Behouden?</string>
     <!-- Tap & Display Options -->
     <string name="tapAndDisplayOptions">Tap &amp; Beeld Opties</string>
-    <string name="assignTaptoLaunch">Toewijzen Tap-voor-Starten</string>
     <string name="nwCornerReserved">NW hoek gereserveerd voor instel scherm.</string>
     <!-- TTL Popup -->
-    <string name="areatoCustomize">Gebied voor Aanpassen:</string>
     <string name="chooseAction">Kies een Aktie</string>
     <string name="openOptionsDefault">Open opties (default)</string>
     <string name="doNothing">Doe niets</string>
@@ -165,8 +153,6 @@
     <string name="mmddDateFormat">M/D/Y Datum Formaat</string>
     <string name="mmddDateFormatTrue">12/31/2014</string>
     <string name="mmddDateFormatFalse">31/12/2014</string>
-    <string name="changeTimeZEen">Verander de Tijdzone</string>
-    <string name="followingDeviceTimeZEen">(Volg Tijdzone van Apparaat)</string>
     <string name="changeClockAdjustment">Zet Klok Vooruit/Achteruit</string>
     <string name="minutesAhead">\u0020minuten vooruit op huidige tijd</string>
     <string name="minutesBehind">\u0020minutes behind huidige tijd</string>
@@ -184,10 +170,8 @@
 		widget afmetingen van 4x2, 4x1, 3x1 en 2x1.\nA.U.B. overweeg
 		opwaarding om deze afmetingen te krijgen!
 	</string>
-    <string name="takeMetoPaid">Breng me naar de betaalde versie!</string>
     <!-- Weather & Widget Options -->
     <string name="forAllClocks">Voor alle Klokken:</string>
-    <string name="weatherAndWidgetoptions">Weer &amp; Widget Instellingen</string>
     <string name="clearRenderCaches">Opschonen Render Caches</string>
     <string name="cachesCleared">Caches Opgeschoond</string>
     <!-- Weather & Widget Subscreen -->
@@ -198,8 +182,6 @@
     <string name="inProgress">In Uitvoering…</string>
     <string name="usingFixedCoordinates">Gebruikt vaste coordinaties</string>
     <string name="gotGPSLock">Heb een GPS signaal. Omgekeerd-GeoCoding…</string>
-    <string name="gotNeTweerkLock">Heb een WiFi/Netwerk signaal. Omgekeerd-GeoCoding…
-	</string>
     <string name="reusingCachedLocation">Hergebruik recente Lokatie. Omgekeerd-GeoCoding…
 	</string>
     <string name="requestingWeather">Opvragen van het Weer…</string>
@@ -219,7 +201,6 @@
     <string name="followDevice">Volg Apparaat(standaard)</string>
     <string name="setFixedLocation">Instellen Vaste Lokatie</string>
     <string name="weatherFunctionalityDisabled">Weer functionaliteid uitgeschakeld</string>
-    <string name="taptoEnable">Tap voor aanzetten</string>
     <!-- Fixed Locn subscreen -->
     <string name="enterCityAndStateCountry">Invoeren Stad Provincie/Land</string>
     <string name="locationExamples">B.v. Harderwijk NL</string>
@@ -269,7 +250,7 @@
         <item>Elke 8 Uur</item>
         <item>Nooit (Alleen Handmatig)</item>
     </string-array>
-   <string name="manualWeatherUpdatesOnly">Alleen handmatige weer updates</string>
+    <string name="manualWeatherUpdatesOnly">Alleen handmatige weer updates</string>
     <string name="refreshWeatherEveryHour">Het Weer om het uur Vernieuwen</string>
     <string name="refreshWeatherEvery4Hours">Het Weer elke 4 uur vernieuwen</string>
     <string name="refreshWeatherEvery8Hours">Het Weer elke 8 uur vernieuwen</string>
@@ -284,9 +265,6 @@
     <string name="changeClockLocale">Klok Taal</string>
     <string name="toggleWidgetSizes">Schakelen Widget Afmetingen</string>
     <string name="rebootRequired">Reboot Vereist</string>
-    <string name="changestoTheseSettings">Wijzigingen in deze instelling zal een herstart
-		van uw telefoon vereisen om te activeren.
-	</string>
     <string name="enable5x4Widget">Inschakelen (5x4) Widget</string>
     <string name="enable5x2Widget">Inschakelen (5x2) Widget</string>
     <string name="enable5x1Widget">Inschakelen (5x1) Widget</string>
@@ -300,16 +278,15 @@
     <string name="enable1x3Widget">Inschakelen (1x3) Widget</string>
     <string name="forGalaxyNote">Voor een Galaxy Note of soortgelijks</string>
     <string name="enableThemeTester">Inschakelen Thema Tester</string>
-    <string name="developmenttoolForSkinnersOnly">Development tool voor alleen skinners</string>
-      <!-- Widget Sizes Sales Pitch -->
+    <!-- Widget Sizes Sales Pitch -->
     <string name="areThereOtherWidgetSizes">Zijn er nog andere widget afmetingen?</string>
     <string name="actuallyThePaidVersion">Eigenlijk, de betaalde versie geeft je widget afmetingen van
 		5x4/5x2/5x1, 4x4/4x2/4x1, 3x3/3x1, 2x2/2x1 en 1x3.\nDenk er eens over na
 		door opwaarderen voor deze afmetingen!
 	</string>
-   <!-- Troubleshooting Options -->
+    <!-- Troubleshooting Options -->
     <string name="troubleshootingOptions">Probleemoplossing Opties</string>
-   <!-- Troubleshooting Options -->
+    <!-- Troubleshooting Options -->
     <string name="clockPriority">Klok Prioriteit</string>
     <string name="forFineTuning">Voor het afstellen van het reactievermogen</string>
     <string-array name="clockPriority_options">
@@ -366,11 +343,10 @@
     <string name="battReportingAlternate">Alternatief - Als gereporteerd door driver</string>
     <string name="weatherDiagnostics">Weer Diagnoses</string>
     <string name="submitLocationWeatherDebugData">Verstuur locatie/weer debug data</string>
-    <string name="deleteAllThemes">Verwijder alles Thema's</string>
+    <string name="deleteAllThemes">Verwijder alles Thema\'s</string>
     <string name="forFixingThemeSelection">Voor het fixen van thema selectie app crashes</string>
-    <string name="deleteAllThemesFromSD">Verwijder alle Thema's van je SD kaart/Geheugen
-	</string>
-    <string name="omcThemesFolderDeleted">OMCThema's map verwijderd</string>
+    <string name="deleteAllThemesFromSD">Verwijder alle Thema\'s van je SD kaart/Geheugen</string>
+    <string name="omcThemesFolderDeleted">OMCThema\'s map verwijderd</string>
     <string name="defaultClockPackRestored">Standaard Klok pakket hersteld</string>
     <!-- Contact Xaffron -->
     <string name="contactXaffron">Kontakt Xaffron</string>
@@ -385,7 +361,6 @@
     <string name="credits">Credits</string>
     <string name="version">Versie</string>
     <string name="free">Gratis</string>
-    <string name="taptoGetFull">Tap om de betaalde versie te verkrijgen!</string>
     <string name="thanksForYourSupport">Bedankt voor je support!</string>
     <string name="viewCredits">Bekijk Credits</string>
     <!-- Credits subscreen -->
@@ -421,7 +396,7 @@
     <string name="sourceCodeTitle">Broncode</string>
     <string name="sourceCode">Broncode te downloaden bij</string>
     <string name="daysuffix"/>
-	<string-array name="verbosedow">
+    <string-array name="verbosedow">
         <item>Zondag</item>
         <item>Maandag</item>
         <item>Dinsdag</item>
@@ -569,8 +544,8 @@
         <item>AchTienNegentig</item>
         <item>NegenenNegentig</item>
     </string-array>
- 	 <!-- Verbose Tijden -->
-	<string-array name="verbosetime1">
+    <!-- Verbose Tijden -->
+    <string-array name="verbosetime1">
         <item>Twaalf uur.</item>
         <item>Een over Twaalf.</item>
         <item>Twee over Twaalf.</item>
@@ -706,7 +681,7 @@
         <item>Twaalf over Twee.</item>
         <item>Dertien over Twee.</item>
         <item>Veertien over Twee.</item>
-		<item>Kwart over Twee.</item>
+        <item>Kwart over Twee.</item>
         <item>Zestien over Twee.</item>
         <item>Zeventien over Twee.</item>
         <item>Achtien over Twee.</item>
@@ -902,7 +877,7 @@
         <item>AchtenTwintig over Vijf.</item>
         <item>NegenenTwintig over Vijf.</item>
         <item>Half Zes.</item>
-		<item>NegenenTwintig voor Zes.</item>
+        <item>NegenenTwintig voor Zes.</item>
         <item>AchtenTwintig voor Zes.</item>
         <item>ZevenenTwintig voor Zes.</item>
         <item>ZesenTwintig voor Zes.</item>
@@ -1174,7 +1149,7 @@
         <item>Twee voor Tien.</item>
         <item>Een voor Tien.</item>
         <item>Tien Uur.</item>
-		<item>Een over Tien.</item>
+        <item>Een over Tien.</item>
         <item>Twee over Tien.</item>
         <item>Drie over Tien.</item>
         <item>Vier over Tien.</item>
@@ -1436,8 +1411,7 @@
         <item>Achtien over Twee.</item>
         <item>Negentien over Twee.</item>
         <item>Twintig over Twee.</item>
-        		
-		<item>EenenTwintig over Twee.</item>
+        <item>EenenTwintig over Twee.</item>
         <item>TweeenTwintig over Twee.</item>
         <item>DrieenTwintig over Twee.</item>
         <item>VierenTwintig over Twee.</item>
@@ -1627,7 +1601,7 @@
         <item>AchtenTwintig over Vijf.</item>
         <item>NegenenTwintig over Vijf.</item>
         <item>Half Zes.</item>
-		<item>NegenenTwintig voor Zes.</item>
+        <item>NegenenTwintig voor Zes.</item>
         <item>AchtenTwintig voor Zes.</item>
         <item>ZevenenTwintig voor Zes.</item>
         <item>ZesenTwintig voor Zes.</item>
@@ -1656,7 +1630,7 @@
         <item>Drie voor Zes.</item>
         <item>Twee voor Zes.</item>
         <item>Een voor Zes.</item>
-	</string-array>
+    </string-array>
     <string-array name="verbosetime4">
         <item>Zes Uur.</item>
         <item>Een over Zes.</item>
@@ -1959,7 +1933,7 @@
         <item>Twee voor Tien.</item>
         <item>Een voor Tien.</item>
         <item>Tien Uur.</item>
-		<item>Een over Tien.</item>
+        <item>Een over Tien.</item>
         <item>Twee over Tien.</item>
         <item>Drie over Tien.</item>
         <item>Vier over Tien.</item>
@@ -2018,67 +1992,7 @@
         <item>Drie voor Elf.</item>
         <item>Twee voor Elf.</item>
         <item>Een voor Elf.</item>
-        <item>Elf Uur.</item>
-        <item>Een over Elf.</item>
-        <item>Twee over Elf.</item>
-        <item>Drie over Elf.</item>
-        <item>Vier over Elf.</item>
-        <item>Vijf over Elf.</item>
-        <item>Zes over Elf.</item>
-        <item>Zeven over Elf.</item>
-        <item>Acht over Elf.</item>
-        <item>Negen over Elf.</item>
-        <item>Tien over Elf.</item>
-        <item>Elf over Elf.</item>
-        <item>Twaalf over Elf.</item>
-        <item>Dertien over Elf.</item>
-        <item>Veertien over Elf.</item>
-        <item>Kwart over Elf.</item>
-        <item>Zestien over Elf.</item>
-        <item>Zeventien over Elf.</item>
-        <item>Achtien over Elf.</item>
-        <item>Negentien over Elf.</item>
-        <item>Twintig over Elf.</item>
-        <item>EenenTwintig over Elf.</item>
-        <item>TweeenTwintig over Elf.</item>
-        <item>DrieenTwintig over Elf.</item>
-        <item>VierenTwintig over Elf.</item>
-        <item>VijfenTwintig over Elf.</item>
-        <item>ZesenTwintig over Elf.</item>
-        <item>ZevenenTwintig over Elf.</item>
-        <item>AchtenTwintig over Elf.</item>
-        <item>NegenenTwintig over Elf.</item>
-        <item>Half Twaalf.</item>
-        <item>NegenenTwintig voor Twaalf.</item>
-        <item>AchtenTwintig voor Twaalf.</item>
-        <item>ZevenenTwintig voor Twaalf.</item>
-        <item>ZesenTwintig voor Twaalf.</item>
-        <item>VijfenTwintig voor Twaalf.</item>
-        <item>VierenTwintig voor Twaalf.</item>
-        <item>DrieenTwintig voor Twaalf.</item>
-        <item>TweeenTwintig voor Twaalf.</item>
-        <item>EenenTwintig voor Twaalf.</item>
-        <item>Twintig voor Twaalf.</item>
-        <item>Negentien voor Twaalf.</item>
-        <item>Achtien voor Twaalf.</item>
-        <item>Zeventien voor Twaalf.</item>
-        <item>Zestien voor Twaalf.</item>
-        <item>Kwart voor Twaalf.</item>
-        <item>Veertien voor Twaalf.</item>
-        <item>Dertien voor Twaalf.</item>
-        <item>Twaalf voor Twaalf.</item>
-        <item>Elf voor Twaalf.</item>
-        <item>Tien voor Twaalf.</item>
-        <item>Negen voor Twaalf.</item>
-        <item>Acht voor Twaalf.</item>
-        <item>Zeven voor Twaalf.</item>
-        <item>Zes voor Twaalf.</item>
-        <item>Vijf voor Twaalf.</item>
-        <item>Vier voor Twaalf.</item>
-        <item>Drie voor Twaalf.</item>
-        <item>Twee voor Twaalf.</item>
-        <item>Een voor Twaalf.</item>
-	</string-array>
+    </string-array>
     <string-array name="VerboseWeather">
         <item>Onbekend</item>
         <item>Onbewolkt</item>
@@ -2121,7 +2035,7 @@
         <item>Nattesneeuw</item>
         <item>Winderig</item>
     </string-array>
-	<!-- Klaar met vertalen Clock -->
+    <!-- Klaar met vertalen Clock -->
     <string name="_ok">OK</string>
     <string name="_apply">Bevestig</string>
     <string name="_search">Zoeken</string>
@@ -2143,4 +2057,24 @@
     <string name="battChrgDischarging">Ontladen</string>
     <string name="_yesRestore">Ja, Herstel standaardwaarden</string>
     <string name="_yesDelete">Ja, verwijder alles</string>
+    <string name="developmentToolForSkinnersOnly">Development tool voor alleen skinners</string>
+    <string name="takeMeToPaid">Breng me naar de betaalde versie!</string>
+    <string name="followingDeviceTimeZone">(Volg Tijdzone van Apparaat)</string>
+    <string name="changeTimeZone">Verander de Tijdzone</string>
+    <string name="tapToGetFull">Tap om de betaalde versie te verkrijgen!</string>
+    <string name="seventimerWeatherCredit">7Timer! forecasts door Ye Quanzhi, gesupport door de Shanghai Astronomical Observatory, Chinese Academy of Sciences.</string>
+    <string name="weatherAndWidgetOptions">Weer &amp; Widget Opties</string>
+    <string name="importWorksWithOMCFiles">Klok importeren werkt met .omc bestanden.\nJe probeert
+     	een verkeerd bestand te openen.
+	</string>
+    <string name="changesToTheseSettings">Wijzigingen in deze instelling zal een herstart 
+van uw telefoon vereisen om te activeren.</string>
+    <string name="tapToEnable">Tap voor aanzetten</string>
+    <string name="submitThemeToDevConfirm1">Versturen\u0020</string>
+    <string name="submitThemeToDevConfirm2">\u0020voor Xaffron als een nieuw thema?</string>
+    <string name="assignTapToLaunch">Toewijzen Tap-voor-Starten</string>
+    <string name="nothingToExtract">Niets om uit te pakken!</string>
+    <string name="gotNetworkLock">Heb een WiFi/Netwerk signaal. Omgekeerd-GeoCoding…</string>
+    <string name="areaToCustomize">Gebied voor Aanpassen:</string>
+    <string name="submitThemeToDev">Verstuur Thema voor Dev</string>
 </resources>
