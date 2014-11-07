@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="languageWord">Taal</string>
-    <string name="languageName">Dutch (Belgium)</string>
+    <string name="languageName">Dutch (Belgie)</string>
     <string name="translator">Tonny Mulch</string>
     <!-- General Buttons/notifications -->
     <string name="nextTip">Volgende Aanwijzing</string>
@@ -23,7 +23,7 @@
     <string name="defaultThemeNotRemovable">Het standaard thema is niet verwijderbaar!</string>
     <!-- Bailout App Dialog -->
     <string name="thanksForDownloading">Bedankt voor het downloaden!</string>
-    <string name="widgetDir1">Om te beginnen, druk tap op de terug knop om terug te gaan naar je hoofdscherm,
+    <string name="widgetDir1">Om te beginnen, druk op de terug knop om terug te gaan naar je hoofdscherm,
 		daarna naar de \'Widgets\' lijst met \u0020
 	</string>
     <string name="widgetDir2">\u0020daarin. Veel plezier!</string>
@@ -121,10 +121,10 @@
 	</string>
     <!-- Personalize Clock -->
     <string name="personalizeClock">Personaliseer Klok</string>
-    <string name="tweakColorsAndLayers">Verander Kleur and Lagen</string>
+    <string name="tweakColorsAndLayers">Verander Kleur en Lagen</string>
     <!-- Personalize Clock subscreen -->
     <string name="selectALayerForTweaking">Selecteer een Laag voor Verandering</string>
-    <string name="tweakerDirections">Sleep: Beweeg Menu: Tweak Terug: Anuleer</string>
+    <string name="tweakerDirections">Sleep: Beweeg Menu: Verander Terug: Anuleer</string>
     <!-- Personalize Clock Menu -->
     <string name="toggleVisibility">Wisselen Zichtbaarheid</string>
     <string name="color1">Kleur 1</string>
@@ -155,14 +155,14 @@
     <string name="mmddDateFormatFalse">31/12/2014</string>
     <string name="changeClockAdjustment">Zet Klok Vooruit/Achteruit</string>
     <string name="minutesAhead">\u0020minuten vooruit op huidige tijd</string>
-    <string name="minutesBehind">\u0020minutes behind huidige tijd</string>
+    <string name="minutesBehind">\u0020minutes achteruit huidige tijd</string>
     <string name="backupWidget">Backup Deze Widget</string>
     <string name="nameOfBackup">Naam van Backup:</string>
     <string name="backupThemePersonalizations">Backup Thema Personalisatie</string>
     <string name="restoreWidget">Herstel Widget Instellingen</string>
     <string name="overwriteThemePersonalizations">Overschrijf Thema Personalisatie</string>
     <string name="overwriteThemeWarning">WAARSCHIEUWING: Alle bestaande personalisaties gemaakt voor de
-		klok worden overschrijven!</string>
+		klok worden overschreven!</string>
     <!-- TTL Sales Pitch -->
     <string name="thinkOfThePossibilities">Denk eens aan de mogelijkheden!</string>
     <string name="prePaidTTL">De betaalde versie laat jou\u0020</string>
@@ -288,7 +288,7 @@
     <string name="troubleshootingOptions">Probleemoplossing Opties</string>
     <!-- Troubleshooting Options -->
     <string name="clockPriority">Klok Prioriteit</string>
-    <string name="forFineTuning">Voor het afstellen van het reactievermogen</string>
+    <string name="forFineTuning">Voor het afstellen van de Klok</string>
     <string-array name="clockPriority_options">
         <item>Hoogst</item>
         <item>Hoog</item>
@@ -350,8 +350,8 @@
     <string name="defaultClockPackRestored">Standaard Klok pakket hersteld</string>
     <!-- Contact Xaffron -->
     <string name="contactXaffron">Kontakt Xaffron</string>
-    <string name="donateOrContact">Donateer of neem kontakt autheur voor help</string>
-    <string name="contactXaffronForIssues"> Kontakt Xaffron voor kwesties, help &amp; support
+    <string name="donateOrContact">Donateer of neem kontakt op met de autheur voor help</string>
+    <string name="contactXaffronForIssues"> Kontakt Xaffron voor fouten, help &amp; support
 	</string>
     <string name="email">Email</string>
     <string name="donate">Donatie</string>
@@ -2063,15 +2063,15 @@
     <string name="changeTimeZone">Verander de Tijdzone</string>
     <string name="tapToGetFull">Tap om de betaalde versie te verkrijgen!</string>
     <string name="seventimerWeatherCredit">7Timer! forecasts door Ye Quanzhi, gesupport door de Shanghai Astronomical Observatory, Chinese Academy of Sciences.</string>
-    <string name="weatherAndWidgetOptions">Weer &amp; Widget Opties</string>
+    <string name="weatherAndWidgetOptions">Weer en Widget Opties</string>
     <string name="importWorksWithOMCFiles">Klok importeren werkt met .omc bestanden.\nJe probeert
      	een verkeerd bestand te openen.
 	</string>
     <string name="changesToTheseSettings">Wijzigingen in deze instelling zal een herstart 
-van uw telefoon vereisen om te activeren.</string>
+		van uw telefoon vereisen om te activeren.</string>
     <string name="tapToEnable">Tap voor aanzetten</string>
     <string name="submitThemeToDevConfirm1">Versturen\u0020</string>
-    <string name="submitThemeToDevConfirm2">\u0020voor Xaffron als een nieuw thema?</string>
+    <string name="submitThemeToDevConfirm2">\u0020aan Xaffron als een nieuw thema?</string>
     <string name="assignTapToLaunch">Toewijzen Tap-voor-Starten</string>
     <string name="nothingToExtract">Niets om uit te pakken!</string>
     <string name="gotNetworkLock">Heb een WiFi/Netwerk signaal. Omgekeerd-GeoCoding…</string>
