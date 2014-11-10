@@ -101,13 +101,13 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         //Hide the title bar
 //      requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+		if (!OMC.checkSDPresent()) {
         	Toast.makeText(this, OMC.RString("sdcardNotDetected"), Toast.LENGTH_LONG).show();
 			finish();
         	return;
         }
-        OMCThemePickerActivity.SDROOT = new File(OMC.WORKDIR);
-		if (!OMCThemePickerActivity.SDROOT.canRead()) {
+        OMCThemePickerActivity.STORAGEDIR = new File(OMC.WORKDIR);
+		if (!OMCThemePickerActivity.STORAGEDIR.canRead()) {
         	Toast.makeText(this, OMC.RString("sdcardMissingOrCorrupt"), Toast.LENGTH_LONG).show();
 			finish();
         	return;

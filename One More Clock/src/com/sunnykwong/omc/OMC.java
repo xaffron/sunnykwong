@@ -321,7 +321,13 @@ public class OMC extends Application {
     	// Set the Themes directory, create a .nomedia file immediately 
     	// (to make sure indexers respect .nomedia before any files are added)
     	// This is a low-priority action so ignore any .nomedia creation errors
-    	OMC.WORKDIR = ContextCompat.getExternalFilesDirs(OMC.CONTEXT, null)[0].getAbsolutePath();
+    	File[] fTemp = ContextCompat.getExternalFilesDirs(OMC.CONTEXT, null);
+    	if (fTemp==null) {
+    		OMC.WORKDIR = "/sdcard/Android/data/com.sunnykwong.omc/files";
+    		boolean stat = new File(OMC.WORKDIR).mkdirs();
+    	} else {
+    		OMC.WORKDIR = fTemp[0].getAbsolutePath();
+    	}
     	try {
     		new File(OMC.WORKDIR+"/.nomedia").createNewFile();
     	} catch (IOException e) 
@@ -1392,11 +1398,11 @@ public class OMC extends Application {
     }
 	
 	public static boolean checkSDPresent() {
-    	
-		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+    	String status = Environment.getExternalStorageState();
+		if (!status.equals(Environment.MEDIA_MOUNTED)
+				&& !(status.equals("shared"))) {
 			return false;
         }
-
         final File sdRoot = new File(OMC.WORKDIR+"/");
         if (!sdRoot.exists()) {
         	sdRoot.mkdir();

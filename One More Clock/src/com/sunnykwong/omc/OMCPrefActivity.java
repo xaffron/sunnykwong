@@ -347,13 +347,15 @@ public class OMCPrefActivity extends PreferenceActivity {
 							public void onClick(DialogInterface dialog, int which) {
 								//	v141 backup work here														
 								new AsyncTask<Object, String, String>() {
+									
 									@Override
 									protected String doInBackground(
 											Object... params) {
 										String backupName = (String)params[0];
 										boolean backupTheme = (Boolean)params[1];
-										
-										if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+										OMC.checkSDPresent();
+
+										if (!OMC.checkSDPresent()) {
 											try {
 												Toast.makeText(OMCPrefActivity.this, OMC.RString("sdcardNotDetected"), Toast.LENGTH_LONG).show();
 											} catch (Exception e) {
@@ -528,8 +530,7 @@ public class OMCPrefActivity extends PreferenceActivity {
 											Object... params) {
 										String restoreName = (String)params[0];
 										boolean restoreTheme = (Boolean)params[1];
-										
-										if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+										if (!OMC.checkSDPresent()) {
 											try {
 												Toast.makeText(OMCPrefActivity.this, OMC.RString("sdcardNotDetected"), Toast.LENGTH_LONG).show();
 											} catch (Exception e) {

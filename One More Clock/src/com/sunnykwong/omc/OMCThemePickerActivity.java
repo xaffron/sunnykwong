@@ -50,7 +50,7 @@ public class OMCThemePickerActivity extends Activity {
 
 	public static HashMap<String,String[]> ELEMENTS;
 	public static String tempText = "";
-	public static File SDROOT, THEMEROOT;
+	public static File STORAGEDIR, THEMEROOT;
 	public static ThemePickerAdapter THEMEARRAY;
 	public static String RAWCONTROLFILE;
 	
@@ -79,23 +79,13 @@ public class OMCThemePickerActivity extends Activity {
         
 		setResult(Activity.RESULT_CANCELED);
 
-		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-        	Toast.makeText(this, OMC.RString("sdcardNotDetected"), Toast.LENGTH_LONG).show();
-			finish();
-        	return;
-        }
-        OMCThemePickerActivity.SDROOT = new File(OMC.WORKDIR);
-		if (!OMCThemePickerActivity.SDROOT.canRead()) {
-        	Toast.makeText(this, OMC.RString("sdcardMissingOrCorrupt"), Toast.LENGTH_LONG).show();
-			finish();
-        	return;
-        }
-
         setContentView(OMC.RLayoutId("themepickerlayout"));
 
         topLevel = findViewById(OMC.RId("PickerTopLevel"));
         topLevel.setEnabled(false);
         
+        OMCThemePickerActivity.STORAGEDIR = new File(OMC.WORKDIR);
+
         setTitle(OMC.RString("widgetThemeTitle"));
 
         mListener = new OMCThemePickerListener();
@@ -126,7 +116,7 @@ public class OMCThemePickerActivity extends Activity {
 
         topLevel.setEnabled(false);
 
-		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+		if (!OMC.checkSDPresent()) {
 			try {
 				Toast.makeText(this, OMC.RString("sdcardNotDetected"), Toast.LENGTH_LONG).show();
 			} catch (Exception e) {
@@ -136,8 +126,19 @@ public class OMCThemePickerActivity extends Activity {
 			finish();
         	return;
         }
+		if (!OMCThemePickerActivity.STORAGEDIR.canRead()) {
+			try {
+	        	Toast.makeText(this, OMC.RString("sdcardMissingOrCorrupt"), Toast.LENGTH_LONG).show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			setResult(Activity.RESULT_OK);
+			finish();
+       	return;
+        }
 
-        OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.SDROOT.getAbsolutePath());
+
+        OMCThemePickerActivity.THEMEROOT = new File(OMCThemePickerActivity.STORAGEDIR.getAbsolutePath());
         if (!OMCThemePickerActivity.THEMEROOT.exists()) {
 			try {
 				Toast.makeText(this, OMC.RString("extractingStarterClockPack"), Toast.LENGTH_LONG).show();
@@ -274,6 +275,12 @@ public class OMCThemePickerActivity extends Activity {
         	if (mThemes.size()==0 || sTheme.compareTo(mThemes.get(mThemes.size()-1))>0) {
 	        	mThemes.add(sTheme);
 	        	mBitmaps.add(OMC.PLACEHOLDERBMP);
+	        	mCreds.put(sTheme, "");
+	        	mNames.put(sTheme, "Loading...");
+	        	mTweaked.put(sTheme,false);
+	        	mTesterOnly.put(sTheme,false);
+	        	
+	        	
 	        	result=0; //position of the add
         	} else {
         		for (int iPos = 0; iPos < mThemes.size(); iPos++) {
@@ -282,6 +289,10 @@ public class OMCThemePickerActivity extends Activity {
         			} else {
         				mThemes.add(iPos,sTheme);
         	        	mBitmaps.add(iPos,OMC.PLACEHOLDERBMP);
+        	        	mCreds.put(sTheme, "");
+        	        	mNames.put(sTheme, "Loading...");
+        	        	mTweaked.put(sTheme,false);
+        	        	mTesterOnly.put(sTheme,false);
         	        	result= iPos;
         				break;
         			}
@@ -369,10 +380,10 @@ public class OMCThemePickerActivity extends Activity {
         @Override
 		public View getView(int position, View convertView, ViewGroup parent) {
         	LinearLayout ll = (LinearLayout)((LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(OMC.RLayoutId("themepickerpreview"), null);
-        	((TextView)ll.findViewById(OMC.RId("ThemeName"))).setTypeface(OMC.GEOFONT);
         	
         	//  If the theme list isn't loaded yet, just return a blank screen!
         	if (position < 0 || position > mThemes.size()) return ll;
+        	((TextView)ll.findViewById(OMC.RId("ThemeName"))).setTypeface(OMC.GEOFONT);
 
         	// Tester only clocks are colored RED
         	if (mTesterOnly.get(mThemes.get(position)).booleanValue()) {

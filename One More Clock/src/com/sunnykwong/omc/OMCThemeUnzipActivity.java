@@ -6,7 +6,6 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
-import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.zip.ZipEntry;
@@ -174,29 +173,29 @@ public class OMCThemeUnzipActivity extends Activity {
 						} else {
 							downloadURL = new URL(sScheme + uri.getSchemeSpecificPart());
 							URLConnection conn = downloadURL.openConnection();
+							zis = new ZipInputStream(conn.getInputStream());
 							pdMessage = OMC.RString("downloading") + conn.getContentLength() + OMC.RString("bytes");
 							mHandler.post(mUpdateStatus);
 
-							InputStream is = conn.getInputStream();
-							FileOutputStream oTGT = new FileOutputStream(tempFile);
-						    byte[] buffer = new byte[8192];
-						    int iBytesRead = 0, iByteCount=0, iCounter=0, iTotal=conn.getContentLength();
-						    while ((iBytesRead = is.read(buffer))!= -1){
-						    	oTGT.write(buffer,0,iBytesRead);
-						    	iByteCount+=iBytesRead;
-						    	iCounter++;
-						    	if (iCounter>20) {
-									pdMessage = OMC.RString("downloaded") + iByteCount + OMC.RString("of") + iTotal + OMC.RString("bytes");
-									mHandler.post(mUpdateStatus);
-						    		iCounter=0;
-						    	}
-						    }
-						    oTGT.close();
-						    is.close();
-
-							zis = new ZipInputStream(new FileInputStream(tempFile));
+//							InputStream is = conn.getInputStream();
+//							FileOutputStream oTGT = new FileOutputStream(tempFile);
+//						    byte[] buffer = new byte[8192];
+//						    int iBytesRead = 0, iByteCount=0, iCounter=0, iTotal=conn.getContentLength();
+//						    while ((iBytesRead = is.read(buffer))!= -1){
+//						    	oTGT.write(buffer,0,iBytesRead);
+//						    	iByteCount+=iBytesRead;
+//						    	iCounter++;
+//						    	if (iCounter>20) {
+//									pdMessage = OMC.RString("downloaded") + iByteCount + OMC.RString("of") + iTotal + OMC.RString("bytes");
+//									mHandler.post(mUpdateStatus);
+//						    		iCounter=0;
+//						    	}
+//						    }
+//						    oTGT.close();
+//						    is.close();
+//
+//							zis = new ZipInputStream(new FileInputStream(tempFile));
 						}
-
 						BufferedInputStream bis = new BufferedInputStream(zis,8192);
 						ZipEntry ze;
 
