@@ -141,7 +141,7 @@ public class OMCSkinnerActivity extends Activity {
     public void refreshViews() {
 
     	JSONObject FourByOneStretch, ThreeByOneStretch;
-    	bmpRender = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1);
+    	bmpRender = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1, true);
     	FourByTwo.setImageBitmap(bmpRender);
 		
 		try {

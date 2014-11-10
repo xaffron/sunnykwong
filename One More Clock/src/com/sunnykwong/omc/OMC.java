@@ -209,6 +209,8 @@ public class OMC extends Application {
 	static Location LASTKNOWNLOCN = null;
 	
 	static int WIDGETWIDTH, WIDGETHEIGHT;
+	static int IDLEWIDGETWIDTH, FULLWIDGETWIDTH;
+	static boolean IDLEMODE;
 	static float fFinalScaling;
 	static double dFinalScaling;
 	
@@ -300,11 +302,12 @@ public class OMC extends Application {
 				break;
 			}
 		}
-		final Configuration config = new Configuration();
+		final Configuration config = new Configuration(newConfig);
 		config.locale=OMC.CURRENTLOCALE; 
 		
 		OMC.RES.updateConfiguration(config, 
 				OMC.RES.getDisplayMetrics());
+		
 	}
 
 	@Override
@@ -396,10 +399,10 @@ public class OMC extends Application {
     	OMC.AM = getAssets();
     	OMC.RES = getResources();
 
-    	OMC.WIDGETWIDTH=Math.max(480, Math.min(getResources().getDisplayMetrics().widthPixels,getResources().getDisplayMetrics().heightPixels));
-    	OMC.WIDGETHEIGHT=OMC.WIDGETWIDTH;
-        OMC.ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
-
+    	OMC.IDLEMODE=true;
+		OMC.BMPTOCVAS = new HashMap<Bitmap, Canvas>(3);
+    	setWidgetWidths(OMC.CONTEXT, true);
+    	
         OMC.dFinalScaling = 1d;
         OMC.fFinalScaling = 1f;
 
@@ -587,7 +590,6 @@ public class OMC extends Application {
 		OMC.TYPEFACEMAP = new HashMap<String, Typeface>(3);
 		OMC.BMPMAP = new HashMap<String, Bitmap>(5);
 		OMC.THEMEMAP=Collections.synchronizedMap(new HashMap<String, JSONObject>(2));
-		OMC.BMPTOCVAS = new HashMap<Bitmap, Canvas>(3);
 		OMC.WIDGETBMPMAP = new HashMap<Integer, Bitmap>(3);
 		
 		OMC.STRETCHINFO = null;
@@ -660,7 +662,6 @@ public class OMC extends Application {
 			OMC.WIDGETPOOL.add(bmp);
 			OMC.BMPTOCVAS.put(bmp, cvas);
 		}
-		OMC.BMPTOCVAS.put(OMC.ROTBUFFER, new Canvas(OMC.ROTBUFFER));
 		
 		Log.i(OMC.OMCSHORT + "App","Starting up... default theme is " + OMC.PREFS.getString("widgetTheme", "MISSING"));
 		setupDefaultTheme();
@@ -2534,6 +2535,48 @@ public class OMC extends Application {
 		return inputData.matches("^[a-zA-Z]+$");
 	}
 
+	public static void setWidgetWidths(final Context c, final boolean bHighResDraw){
+		
+    	// Determine the widget width.
+    	// When the phone is sleeping, only render a bare-minimum widget that's 
+    	// half the size of the screen width (for ultra-high-density screens, 
+    	// we cap the resolution at 360 pixels)
+    	// This results in massive battery savings.
+		final int iOldWidgetWidth=OMC.WIDGETWIDTH;
+       	final int iScreenWidth=c.getResources().getDisplayMetrics().widthPixels;
+    	final int iScreenHeight= c.getResources().getDisplayMetrics().heightPixels;
+    	OMC.IDLEWIDGETWIDTH=Math.min(360,Math.min(iScreenWidth, iScreenHeight)/2);
+    	
+    	// Full version gets full screen width resolution when launcher is visible
+    	// Free version gets 480 pixels when launcher is visible
+    	if (OMC.FREEEDITION) {
+        	OMC.FULLWIDGETWIDTH=480;
+    	} else {
+        	OMC.FULLWIDGETWIDTH=iScreenWidth-(int)(25*c.getResources().getDisplayMetrics().density);
+    	}
+    	if (bHighResDraw) {
+    		OMC.WIDGETWIDTH=OMC.FULLWIDGETWIDTH;
+    	} else {
+    		OMC.WIDGETWIDTH=OMC.IDLEWIDGETWIDTH;
+    	}
+    	OMC.WIDGETHEIGHT=OMC.WIDGETWIDTH;
+
+    	if (OMC.DEBUG)
+			Log.i(OMC.OMCSHORT + "App","Widget width is " + OMC.WIDGETWIDTH + " pixels."); 
+
+    	if (iOldWidgetWidth!=OMC.WIDGETWIDTH) {
+	    	Bitmap bmpTrash = OMC.ROTBUFFER;
+	        OMC.ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
+	        if (bmpTrash!=null) {
+	        	OMC.BMPTOCVAS.remove(bmpTrash);
+	        	OMC.BMPTOCVAS.put(OMC.ROTBUFFER, new Canvas(OMC.ROTBUFFER));
+	        	bmpTrash.recycle();
+	        } else {
+	        	OMC.BMPTOCVAS.put(OMC.ROTBUFFER, new Canvas(OMC.ROTBUFFER));
+	        }
+    	}
+	}
+	
 	public static String[] findClosestICAOs(final double lat1, final double lon1, final int radiusKM) {
 		final double R = 6371; //km
 		double bestDistance = Double.MAX_VALUE;

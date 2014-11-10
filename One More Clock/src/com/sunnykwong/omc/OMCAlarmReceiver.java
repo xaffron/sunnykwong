@@ -207,42 +207,52 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 				if (action.equals(Intent.ACTION_SCREEN_OFF)) {
 					OMC.SCREENON=false;
 					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Scrn switched off.");
+					// v149:  If clock priority is medium or lower, lower render resolution
+					if (OMC.CURRENTCLOCKPRIORITY>=2) {
+						OMC.IDLEMODE=true;
+					}
 				}
 				
 				boolean bForceUpdate=false;
-
-				//If OMC is set to highest priority, every tick is a forced update.
+				OMC.IDLEMODE=true;
+				//If OMC is set to highest priority, every tick is a forced update at full resolution.
 				if (OMC.CURRENTCLOCKPRIORITY==0) {
+					OMC.IDLEMODE=false;
 					bForceUpdate=true;
-				//If OMC is set to high priority, every minute mark is a forced update.
+				//If OMC is set to high priority, every minute mark is a forced update at full resolution.
 				} else if (OMC.CURRENTCLOCKPRIORITY==1
 						 && new Date(omctime).getSeconds()==0) {
+					OMC.IDLEMODE=false;
 					bForceUpdate=true;
 				//If OMC is set to medium priority, lazy draw/minute when screen on OR at minute mark when in BG.
-				} else if (OMC.CURRENTCLOCKPRIORITY==2
-						 && (new Date(omctime).getSeconds()==0
-						 	|| OMC.SCREENON)) {
-					bForceUpdate=true;
+				} else if (OMC.CURRENTCLOCKPRIORITY==2) {
+					if (OMC.SCREENON) OMC.IDLEMODE=false;
+					if (new Date(omctime).getSeconds()==0 || OMC.SCREENON)
+						bForceUpdate=true;
 				// If at low clock priority, lazy draw/minute when (screen on & launcher in FG) OR at minute mark when in BG.
-				} else if (OMC.CURRENTCLOCKPRIORITY==3 && (
-						new Date(omctime).getSeconds()==0 || (
-							OMC.SCREENON &&
+				} else if (OMC.CURRENTCLOCKPRIORITY==3) {
+					if (OMC.SCREENON &&
 							OMC.INSTALLEDLAUNCHERAPPS.contains(
 								OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName()
-							)
-						)
-					)) {
-					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Launcher "+ OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName() +" running.");
-					bForceUpdate=true;
+							)) {
+						OMC.IDLEMODE=false;
+						bForceUpdate=true;
+					} else if (new Date(omctime).getSeconds()==0) {	
+						OMC.IDLEMODE=false;
+						bForceUpdate=true;
+					}
 				// If at lowest clock priority, lazy draw when screen on & launcher in FG.  No draw otherwise, period.
-				} else if (OMC.CURRENTCLOCKPRIORITY==4 && (
-						OMC.SCREENON &&
-						OMC.INSTALLEDLAUNCHERAPPS.contains(
-							OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName()
-						)
-					)) {
-					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Launcher "+ OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName() +" running.");
-					bForceUpdate=true;
+				} else if (OMC.CURRENTCLOCKPRIORITY==4) {
+					if (OMC.SCREENON &&
+							OMC.INSTALLEDLAUNCHERAPPS.contains(
+									OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName()
+								)
+							) {
+							if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Alarm","Launcher "+ OMC.ACTM.getRunningTasks(1).get(0).topActivity.getPackageName() +" running.");
+							OMC.IDLEMODE=false;
+							bForceUpdate=true;
+					}
+						
 				}
 				// If it is a forced update, update.
 				if (bForceUpdate) {

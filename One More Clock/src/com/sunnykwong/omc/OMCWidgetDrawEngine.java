@@ -41,7 +41,7 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 
 public class OMCWidgetDrawEngine {
-//	static final String TESTTHEME="IronIndicant";
+	static final String TESTTHEME="";
 
 	// Needs to be synchronized now that we have different widget sizes 
 	// calling this same method creating a potential race condition
@@ -56,27 +56,27 @@ public class OMCWidgetDrawEngine {
 			// v139: Fix strange arrayoutofboundsexception (race condition?)
 			 if (i >= aWM.getAppWidgetIds(cName).length) break;
 			 
-             if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i]) && OMC.LEASTLAGMILLIS > 500l) {
-            	// If this clock takes more than 0.5 sec to render, then blit cached bitmap over first
-            	RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
-        		if (OMC.HDRENDERING) {
-       	        	File outTemp = new File(OMC.CACHEPATH + aWM.getAppWidgetIds(cName)[i] +"cache.png");
-       		        if (outTemp.exists()&&outTemp.canRead()) {
-       		        	String sUriString = OMC.FREEEDITION?
-       		        			"content://com.sunnykwong.freeomc/widgets?random="+Math.random()+"&awi="+aWM.getAppWidgetIds(cName)[i]
-       		        			:"content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+aWM.getAppWidgetIds(cName)[i];
-       		        	rv.setImageViewUri(OMC.RId("omcIV"), Uri.parse(sUriString));
-       		        } else {
-       		        	// Do nothing
-       					//rv.setImageViewBitmap(OMC.RId("omcIV"), OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
-       		        }
-        		} else {
-	                rv.setImageViewBitmap(OMC.RId("omcIV"),
-	                		OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
-        		}
-                aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);                    
-                rv = null;
-              }
+//             if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i]) && OMC.LEASTLAGMILLIS > 500l) {
+//            	// If this clock takes more than 0.5 sec to render, then blit cached bitmap over first
+//            	RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
+//        		if (OMC.HDRENDERING) {
+//       	        	File outTemp = new File(OMC.CACHEPATH + aWM.getAppWidgetIds(cName)[i] +"cache.png");
+//       		        if (outTemp.exists()&&outTemp.canRead()) {
+//       		        	String sUriString = OMC.FREEEDITION?
+//       		        			"content://com.sunnykwong.freeomc/widgets?random="+Math.random()+"&awi="+aWM.getAppWidgetIds(cName)[i]
+//       		        			:"content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+aWM.getAppWidgetIds(cName)[i];
+//       		        	rv.setImageViewUri(OMC.RId("omcIV"), Uri.parse(sUriString));
+//       		        } else {
+//       		        	// Do nothing
+//       					//rv.setImageViewBitmap(OMC.RId("omcIV"), OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
+//       		        }
+//        		} else {
+//	                rv.setImageViewBitmap(OMC.RId("omcIV"),
+//	                		OMC.WIDGETBMPMAP.get(aWM.getAppWidgetIds(cName)[i]));
+//        		}
+//                aWM.updateAppWidget(aWM.getAppWidgetIds(cName)[i], rv);                    
+//                rv = null;
+//              }
 
 			// v139: Fix strange arrayoutofboundsexception (race condition?)
 			// v141: Cram in clock adjustment here, too
@@ -115,9 +115,7 @@ public class OMCWidgetDrawEngine {
 		// Get theme.  (Nowadays, OMC.getTheme takes care of caching/importing.)
 		String sTheme = OMC.PREFS.getString("widgetTheme"+appWidgetId,OMC.DEFAULTTHEME);
 
-		// WHEN TESTING NEW THEME, UNCOMMENT THIS LINE 
-		//String sTheme = TESTTHEME;
-
+		if (TESTTHEME.length()>0) sTheme = TESTTHEME;
 		
 		JSONObject oTheme = OMC.getTheme(context, sTheme, OMC.THEMESFROMCACHE);
 
@@ -133,7 +131,8 @@ public class OMCWidgetDrawEngine {
 		// OK, now actually render the widget on a bitmap.
 		// Calling the actual drawing engine (below).
 		// OMC.BUFFER (square, bitmap buffer) is updated and copy-returned.
-		final Bitmap bitmap = OMCWidgetDrawEngine.drawBitmapForWidget(context,appWidgetId);
+		
+		final Bitmap bitmap = OMCWidgetDrawEngine.drawBitmapForWidget(context,appWidgetId, !OMC.IDLEMODE);
 
 		//
 		//Step 1: 
@@ -407,7 +406,16 @@ public class OMCWidgetDrawEngine {
    		        	String sUriString = OMC.FREEEDITION?
    		        			"content://com.sunnykwong.freeomc/widgets?random="+Math.random()+"&awi="+appWidgetId
    		        			:"content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+appWidgetId;
-		        	rv.setImageViewUri(iViewID, Uri.parse(sUriString));
+   		        	// If we lag too much, the file might not finish writing.
+   		        	// Wait a bit for the file to finish writing, up to a max of .5 seconds.
+   		        	int iMaxWaitMillis = 500;
+   		        	int iWaitSoFar=0;
+   		        	if (!outTemp.canRead() && iWaitSoFar<iMaxWaitMillis){
+   		        		iWaitSoFar+=50;
+   		        		Thread.sleep(50);
+   		        	}
+   		        	rv.setImageViewUri(iViewID, Uri.parse(sUriString));
+
 		        } else {
 		        	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","BMP:hdrendering "+OMC.HDRENDERING);
 					rv.setImageViewBitmap(iViewID, finalbitmap);
@@ -423,8 +431,9 @@ public class OMCWidgetDrawEngine {
 		// v141 Removing multiple sets of RV instructions because Apex launcher chokes
 
 		// Do some fancy footwork here and adjust the average lag (so OMC's slowness is less apparent)
-
-		OMC.LEASTLAGMILLIS = (long)(OMC.LEASTLAGMILLIS * 0.8) + (long)((System.currentTimeMillis() - lStartTime) *0.2);
+		long lDuration = (System.currentTimeMillis() - lStartTime);
+		OMC.LEASTLAGMILLIS = (long)(OMC.LEASTLAGMILLIS * 0.8) + (long)(lDuration *0.2);
+		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Engine","Draw Time: " + lDuration + "ms");
 
 		if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Engine","Calc. lead time for next tick: " + OMC.LEASTLAGMILLIS + "ms");
 
@@ -502,13 +511,12 @@ public class OMCWidgetDrawEngine {
 
 	}
 	
-	static Bitmap drawBitmapForWidget(final Context context, final int aWI) {
+	static Bitmap drawBitmapForWidget(final Context context, final int aWI, final boolean bHighResDraw) {
 		final Bitmap resultBitmap;
 
-		final String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME);
-		//TODO
-		// WHEN TESTING NEW THEME, UNCOMMENT THIS LINE 
-		//String sTheme = TESTTHEME;
+		final String sTheme = TESTTHEME.length()==0?
+				OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME):
+				TESTTHEME;
 
 		JSONObject oTheme = OMC.getTheme(context, sTheme, OMC.THEMESFROMCACHE);
 		if (oTheme==null) {
@@ -521,6 +529,9 @@ public class OMCWidgetDrawEngine {
 		// v1.4.1: HD Rendering.
 		final int iWidgetWidth = oTheme.optInt("canvaswidth",480);
 		final int iWidgetHeight = oTheme.optInt("canvasheight",480);
+
+		//v148: Tweak widget widths.
+		OMC.setWidgetWidths(OMC.CONTEXT,bHighResDraw);
 		
 		//v147: HD scaling.
 		OMC.dFinalScaling=1;
@@ -580,7 +591,7 @@ public class OMCWidgetDrawEngine {
 		
 	}
 
-	static Bitmap drawLayerForWidget(final Context context, final int aWI, final JSONObject oTheme, final String sLayer) {
+	static Bitmap drawLayerForWidget(final Context context, final int aWI, final JSONObject oTheme, final String sLayer, final boolean bHighResDraw) {
 		final Bitmap resultBitmap;
 		if (OMC.SCREENON) {
 			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_8888);

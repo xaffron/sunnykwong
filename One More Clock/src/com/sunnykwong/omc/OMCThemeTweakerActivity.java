@@ -167,7 +167,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         spinnerLayers.setOnItemSelectedListener(this);
 
         vPreview = (ImageView)findViewById(OMC.RId("tweakerpreview"));
-        Bitmap bmp = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1);
+        Bitmap bmp = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1, true);
         bmp.setDensity(Bitmap.DENSITY_NONE);
         vPreview.setImageBitmap(bmp);
         vPreview.invalidate();
@@ -221,7 +221,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				    		// If it's already a tweak, just overwrite the control file
 				        	if (sTheme.endsWith("Tweak")) {
 				        		OMC.JSONToFile(oTheme, new File(OMC.WORKDIR+"/"+sTheme+"/00control.json"));
-				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(OMC.WORKDIR+"/"+sTheme+"/000preview.jpg"));
+				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1, true), new File(OMC.WORKDIR+"/"+sTheme+"/000preview.jpg"));
 				        		// Purge all caches to eliminate "non-sticky" settings bug
 				            	OMC.purgeBitmapCache();
 				            	OMC.purgeImportCache();
@@ -236,7 +236,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				        				.putString("widgetTheme", sTheme+"Tweak")
 				        				.commit();
 				        		OMC.JSONToFile(oTheme, new File(OMC.WORKDIR+"/"+sTheme+"Tweak/00control.json"));
-				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1), new File(OMC.WORKDIR+"/"+sTheme+"Tweak/000preview.jpg"));
+				        		OMC.bmpToJPEG(OMCWidgetDrawEngine.drawBitmapForWidget(OMCThemeTweakerActivity.this, -1, true), new File(OMC.WORKDIR+"/"+sTheme+"Tweak/000preview.jpg"));
 				        		// Purge all caches to eliminate "non-sticky" settings bug
 				            	OMC.purgeBitmapCache();
 				            	OMC.purgeImportCache();
@@ -420,7 +420,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
             		iRectWidth = tempActiveLayer.optInt("right")-tempActiveLayer.optInt("left");
             		iRectHeight = tempActiveLayer.optInt("bottom")-tempActiveLayer.optInt("top");
             		
-            		vDrag.setImageBitmap(OMCWidgetDrawEngine.drawLayerForWidget(this, aWI, tempTheme, tempActiveLayer.optString("name")));
+            		vDrag.setImageBitmap(OMCWidgetDrawEngine.drawLayerForWidget(this, aWI, tempTheme, tempActiveLayer.optString("name"),false));
         			
         		} catch (JSONException e ) {
         			e.printStackTrace();
@@ -485,7 +485,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     }
     
     public void refreshViews() {
-		vPreview.setImageBitmap(OMCWidgetDrawEngine.drawBitmapForWidget(this, -1));
+		vPreview.setImageBitmap(OMCWidgetDrawEngine.drawBitmapForWidget(this, -1, true));
 		vPreview.invalidate();
     }
     
