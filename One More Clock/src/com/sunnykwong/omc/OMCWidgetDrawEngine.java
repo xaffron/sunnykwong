@@ -396,16 +396,13 @@ public class OMCWidgetDrawEngine {
 		// Failed Binder Transaction errors, so need to compress/write to sd card, then 
 		// ask launcher to retrieve from sd card.  Waste of CPU time and battery, but needed.
 		if (OMC.ALTRENDERING) {
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","predraw:hdrendering "+OMC.ALTRENDERING);
 	        try {
 	        	File outTemp = new File(OMC.CACHEPATH + appWidgetId +"cache.png");
                 FileOutputStream fos = new FileOutputStream(outTemp);
 	        	finalbitmap.compress(CompressFormat.PNG, 100, fos);
 		        fos.close();
 
-		        if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","compression complete:hdrendering "+OMC.ALTRENDERING);
 		        if (outTemp.exists()&&outTemp.canRead()) {
-		        	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","URI:hdrendering "+OMC.ALTRENDERING);
    		        	String sUriString = OMC.FREEEDITION?
    		        			"content://com.sunnykwong.freeomc/widgets?random="+Math.random()+"&awi="+appWidgetId
    		        			:"content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+appWidgetId;
@@ -420,7 +417,6 @@ public class OMCWidgetDrawEngine {
    		        	rv.setImageViewUri(iViewID, Uri.parse(sUriString));
 
 		        } else {
-		        	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","BMP:hdrendering "+OMC.ALTRENDERING);
 					rv.setImageViewBitmap(iViewID, finalbitmap);
 		        }
 	        } catch (Exception e) {
@@ -429,7 +425,6 @@ public class OMCWidgetDrawEngine {
 	    // Regular Rendering for Jelly Bean and later devices - the bitmaps (usually much larger than 1MB) are
 	    // simply sent through IPC without issue.
 		} else {
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","BMP:hdrendering "+OMC.ALTRENDERING);
 			rv.setImageViewBitmap(iViewID, finalbitmap);
 		}
 

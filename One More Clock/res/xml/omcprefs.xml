@@ -260,7 +260,7 @@
             android:key="Advanced"
             android:title="@string/troubleshootingOptions" >
             <CheckBoxPreference
-                android:defaultValue="true"
+                android:defaultValue=""
                 android:enabled="true"
                 android:key="AltRendering"
                 android:selectable="true"

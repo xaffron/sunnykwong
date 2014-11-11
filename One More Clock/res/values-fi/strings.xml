@@ -2071,9 +2071,9 @@
     <string name="TTLweather">Sääennuste</string>
     <string name="TTLbatt">Akunkäyttö</string>
     <string name="TTLalarms">Katso hälytyksiä</string>
-    <string name="AltRenderingFalse">16bittinen bittikartta prosessien välissä</string>
+    <string name="AltRenderingFalse">Bittikartta prosessien välissä</string>
     <string name="AltRendering">Renderöintitapa</string>
-    <string name="AltRenderingTrue">32bittinen bittikartta välimuistiin SD-kortille</string>
+    <string name="AltRenderingTrue">Bittikartta välimuistiin SD-kortille</string>
     <string name="_yesRestore">Kyllä, palauta oletukset</string>
     <string name="_yesDelete">Kyllä, poista kaikki</string>
 </resources>

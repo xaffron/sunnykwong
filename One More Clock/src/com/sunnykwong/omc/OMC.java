@@ -323,15 +323,15 @@ public class OMC extends Application {
 		// Little-known observation - IPC binder raised for app widgets around the Jelly Bean...
     	// So, for modern devices, the old rendering method is actually much more efficient.  Go figure!
     	if (Integer.parseInt(Build.VERSION.SDK) >= 16) {
-			OMC.ALTRENDERING=false;
-	    	OMC.ALTRENDERING = OMC.PREFS.getBoolean("AltRendering",false);
+    		OMC.ALTRENDERING = OMC.PREFS.getBoolean("AltRendering",false);
 	    	if (!OMC.PREFS.contains("AltRendering")) {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","SETUPPREFS - JB+ Device: Use Normal Rendering.");
 	    		OMC.PREFS.edit().putBoolean("AltRendering",false).commit();
 	    	}
 		} else {
-			OMC.ALTRENDERING=true;
-	    	OMC.ALTRENDERING = OMC.PREFS.getBoolean("AltRendering",true);
+			OMC.ALTRENDERING = OMC.PREFS.getBoolean("AltRendering",true);
 	    	if (!OMC.PREFS.contains("AltRendering")) {
+				if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","SETUPPREFS - Legacy Device: Use Alt Rendering.");
 	    		OMC.PREFS.edit().putBoolean("AltRendering",true).commit();
 	    	}
 		}

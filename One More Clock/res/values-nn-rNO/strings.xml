@@ -1991,9 +1991,9 @@
     <string name="TTLweather">Værmelding</string>
     <string name="TTLbatt">Batteriforbruk</string>
     <string name="TTLalarms">Vis alarmer</string>
-    <string name="AltRenderingFalse">16bit bitmap sendes direkte mellom prosesser</string>
+    <string name="AltRenderingFalse">Bitmap sendes direkte mellom prosesser</string>
     <string name="AltRendering">Rendermetode</string>
-    <string name="AltRenderingTrue">32bit bitmap mellomlagres på sd-kort</string>
+    <string name="AltRenderingTrue">Bitmap mellomlagres på sd-kort</string>
     <string name="battChrgAC">Nettlading</string>
     <string name="battChrgUSB">USB-lading</string>
     <string name="battChrgWireless">Trådløs lading</string>

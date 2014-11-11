@@ -2074,9 +2074,9 @@
     <string name="TTLweather">Forecast</string>
     <string name="TTLbatt">Battery Usage</string>
     <string name="TTLalarms">View Alarms</string>
-    <string name="AltRenderingFalse">16bit bitmap sent directly between processes</string>
+    <string name="AltRenderingFalse">Bitmap sent directly between processes</string>
     <string name="AltRendering">Render Method</string>
-    <string name="AltRenderingTrue">32bit bitmap cached in SD storage</string>
+    <string name="AltRenderingTrue">Bitmap cached in SD storage</string>
     <string name="battChrgAC">AC Charging</string>
     <string name="battChrgUSB">USB Charging</string>
     <string name="battChrgWireless">Wireless Charging</string>
