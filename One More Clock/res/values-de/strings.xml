@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!-- German -->
-<resources>
+<!-- German --><resources>
     <string name="languageWord">Sprache</string>
     <string name="languageName">Deutsch</string>
     <string name="translator">SavanTorian (Andy)</string>
@@ -2023,15 +2022,15 @@
     <string name="TTLweather">Wettervorhersage</string>
     <string name="TTLbatt">Akkuverbrauch</string>
     <string name="TTLalarms">Alarme ansehen</string>
-    <string name="HDRenderingFalse">Alt - 16bit Bitmap direkt zwischen den Prozessen verschoben</string>
+    <string name="AltRenderingFalse">16bit Bitmap direkt zwischen den Prozessen verschoben</string>
     <string name="changeClockAdjustment">Vor- /Zurücksetzen der Uhr</string>
     <string name="minutesBehind">\u0020minuten nach der aktuellen Zeit</string>
     <string name="battReporting">Batterie-Report</string>
     <string name="backupWidget">Sichern des Widgets</string>
-    <string name="HDRendering">Renderingmethode</string>
+    <string name="AltRendering">Renderingmethode</string>
     <string name="battReportingAlternate">Ersatz - wie vom Treiber berichtet</string>
     <string name="minutesAhead">\u0020minuten vor der aktuellen Zeit</string>
-    <string name="HDRenderingTrue">Neu - 32bit Bitmap auf der internen SDCard gecached</string>
+    <string name="AltRenderingTrue">32bit Bitmap auf der internen SDCard gecached</string>
     <string name="battReportingNormal">Normal - wie von Android berichtet</string>
     <string name="viewReleaseNotes">Neuerungen ansehen</string>
     <string name="_yesRestore">Ja, Standards wiederherstellen</string>

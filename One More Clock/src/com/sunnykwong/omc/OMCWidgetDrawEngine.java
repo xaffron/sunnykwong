@@ -59,7 +59,7 @@ public class OMCWidgetDrawEngine {
 //             if (OMC.SCREENON && OMC.WIDGETBMPMAP.containsKey(aWM.getAppWidgetIds(cName)[i]) && OMC.LEASTLAGMILLIS > 500l) {
 //            	// If this clock takes more than 0.5 sec to render, then blit cached bitmap over first
 //            	RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
-//        		if (OMC.HDRENDERING) {
+//        		if (OMC.ALTRENDERING) {
 //       	        	File outTemp = new File(OMC.CACHEPATH + aWM.getAppWidgetIds(cName)[i] +"cache.png");
 //       		        if (outTemp.exists()&&outTemp.canRead()) {
 //       		        	String sUriString = OMC.FREEEDITION?
@@ -319,7 +319,7 @@ public class OMCWidgetDrawEngine {
 		// <LEGACY>
 		// Create the final bitmap to be sent over to the homescreen app.  We are using 16-bit because 
 		// sending a 480x480x32 bitmap over IPC will choke half the time... 
-		// <HD>
+		// <Alternate>
 		// We are actually writing the 32bit bitmap to flash and decompressing immediately.
 		// Flash wear should be minimal if the user doesn't keep the screen on 24x7.
 		//
@@ -328,14 +328,14 @@ public class OMCWidgetDrawEngine {
 		final Bitmap finalbitmap;
 		if (!OMC.WIDGETBMPMAP.containsKey(appWidgetId)) {
 			
-			finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,OMC.HDRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
+			finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,OMC.ALTRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
 			OMC.WIDGETBMPMAP.put(appWidgetId, finalbitmap);
 					} else {
 			if (OMC.WIDGETBMPMAP.get(appWidgetId).getWidth() != thisWidgetWidth ||
 					OMC.WIDGETBMPMAP.get(appWidgetId).getHeight() != thisWidgetHeight) {
 	    		if (!OMC.WIDGETBMPMAP.get(appWidgetId).isRecycled()) OMC.WIDGETBMPMAP.get(appWidgetId).recycle();
 	    		OMC.WIDGETBMPMAP.remove(appWidgetId);
-				finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,OMC.HDRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
+				finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,OMC.ALTRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
 				OMC.WIDGETBMPMAP.put(appWidgetId, finalbitmap);				
 			} else {
 				finalbitmap=OMC.WIDGETBMPMAP.get(appWidgetId);
@@ -392,17 +392,20 @@ public class OMCWidgetDrawEngine {
 		RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
 		final int iViewID = OMC.RId("omcIV");
 
-		if (OMC.HDRENDERING) {
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","predraw:hdrendering "+OMC.HDRENDERING);
+		// Alternative Rendering for pre-JellyBean devices - large widgets will cause
+		// Failed Binder Transaction errors, so need to compress/write to sd card, then 
+		// ask launcher to retrieve from sd card.  Waste of CPU time and battery, but needed.
+		if (OMC.ALTRENDERING) {
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","predraw:hdrendering "+OMC.ALTRENDERING);
 	        try {
 	        	File outTemp = new File(OMC.CACHEPATH + appWidgetId +"cache.png");
                 FileOutputStream fos = new FileOutputStream(outTemp);
 	        	finalbitmap.compress(CompressFormat.PNG, 100, fos);
 		        fos.close();
 
-		        if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","compression complete:hdrendering "+OMC.HDRENDERING);
+		        if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","compression complete:hdrendering "+OMC.ALTRENDERING);
 		        if (outTemp.exists()&&outTemp.canRead()) {
-		        	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","URI:hdrendering "+OMC.HDRENDERING);
+		        	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","URI:hdrendering "+OMC.ALTRENDERING);
    		        	String sUriString = OMC.FREEEDITION?
    		        			"content://com.sunnykwong.freeomc/widgets?random="+Math.random()+"&awi="+appWidgetId
    		        			:"content://com.sunnykwong.omc/widgets?random="+Math.random()+"&awi="+appWidgetId;
@@ -417,14 +420,16 @@ public class OMCWidgetDrawEngine {
    		        	rv.setImageViewUri(iViewID, Uri.parse(sUriString));
 
 		        } else {
-		        	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","BMP:hdrendering "+OMC.HDRENDERING);
+		        	if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","BMP:hdrendering "+OMC.ALTRENDERING);
 					rv.setImageViewBitmap(iViewID, finalbitmap);
 		        }
 	        } catch (Exception e) {
 	        	e.printStackTrace();
 	        }
+	    // Regular Rendering for Jelly Bean and later devices - the bitmaps (usually much larger than 1MB) are
+	    // simply sent through IPC without issue.
 		} else {
-			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","BMP:hdrendering "+OMC.HDRENDERING);
+			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","BMP:hdrendering "+OMC.ALTRENDERING);
 			rv.setImageViewBitmap(iViewID, finalbitmap);
 		}
 
@@ -602,9 +607,9 @@ public class OMCWidgetDrawEngine {
 		resultCanvas.setDensity(DisplayMetrics.DENSITY_HIGH);
 
 		final String sTheme = OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME);
-		//TODO
+		
 		// WHEN TESTING NEW THEME, UNCOMMENT THIS LINE 
-		//String sTheme = TESTTHEME;
+		// String sTheme = TESTTHEME;
 
 		if (oTheme==null) {
 			Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();

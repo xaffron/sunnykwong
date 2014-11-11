@@ -1972,9 +1972,9 @@
     <string name="TTLweather">天氣預測</string>
     <string name="TTLbatt">查看電池狀況</string>
     <string name="TTLalarms">檢視鬧鐘</string>
-    <string name="HDRenderingFalse">舊：直接傳送16位元圖像</string>
-    <string name="HDRendering">繪圖方法</string>
-    <string name="HDRenderingTrue">新：於SD卡緩存32位元圖像</string>
+    <string name="AltRenderingFalse">直接傳送16位元圖像</string>
+    <string name="AltRendering">繪圖方法</string>
+    <string name="AltRenderingTrue">於SD卡緩存32位元圖像</string>
     <string name="battChrgAC">充電(AC)</string>
     <string name="battChrgUSB">充電(USB)</string>
     <string name="battChrgWireless">無線充電</string>

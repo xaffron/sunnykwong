@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!-- Simplified Chinese -->
-<resources>
+<!-- Simplified Chinese --><resources>
     <string name="languageWord">语言</string>
     <string name="languageName">简体中文</string>
     <string name="translator">邝宇恒</string>
@@ -1973,9 +1972,9 @@
     <string name="TTLweather">天气预测</string>
     <string name="TTLbatt">查看电池状况</string>
     <string name="TTLalarms">检视闹钟</string>
-    <string name="HDRenderingFalse">旧：直接传送16位元图像</string>
-    <string name="HDRendering">绘图方法</string>
-    <string name="HDRenderingTrue">新：于SD卡缓存32位元图像</string>
+    <string name="AltRenderingFalse">直接传送16位元图像</string>
+    <string name="AltRendering">绘图方法</string>
+    <string name="AltRenderingTrue">于SD卡缓存32位元图像</string>
     <string name="battChrgAC">充电(AC)</string>
     <string name="battChrgUSB">充电(USB)</string>
     <string name="battChrgWireless">无线充电</string>

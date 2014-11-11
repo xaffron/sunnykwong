@@ -45,7 +45,7 @@
     <string name="corruptPlsDelete">[Ødelagt - Vennligst slett]</string>
     <string name="reextractBundledClocks">Pakk ut innebygde klokker på nytt</string>
     <string name="downloadAllClocks">Last ned alle klokker(7MB)</string>
-    <string name="preselected" />
+    <string name="preselected"/>
     <string name="postselected">\u0020valgt.</string>
     <!-- Theme Picker Legend -->
     <string name="legend">Kortfattet</string>
@@ -190,7 +190,6 @@
     <string name="networkError">Ingen nettverksforbindelse.\nVennligst prøv igjen.</string>
     <string name="unknownError">En ukjent feil oppsto.\nVennligst prøv igjen.</string>
     <string name="weatherProvider">Tilbyder av værmeldinger</string>
-
     <string-array name="wprovider_options">
         <item>Automatisk (standard)</item>
         <item>7Timer.com</item>
@@ -198,7 +197,6 @@
         <item>Yr.no</item>
         <item>Google Weather (gammel/ikke fungerende?)</item>
     </string-array>
-
     <string name="wpauto">Bruk beste tilbyder for din plassering</string>
     <string name="wp7timer">Bruker 7Timer.com</string>
     <string name="wpnoaa">Bruker NOAA</string>
@@ -206,19 +204,16 @@
     <string name="wpyr">Bruker yr.no</string>
     <string name="wpig">Bruker iGoogle Weather</string>
     <string name="weatherDisplayUnits">Enhet for temperatur</string>
-
     <string-array name="wdisplay_options">
         <item>Bruk Fahrenheit (standard)</item>
         <item>Bruk Celsius</item>
     </string-array>
-
     <string name="usingFahrenheit">Bruker Fahrenheit</string>
     <string name="usingCelsius">Bruker Celsius</string>
     <string name="useMETAR">Værdata fra METAR</string>
     <string name="usingMETAR">Værdata hentes og tolkes fra nærmeste flyplass</string>
     <string name="usingInterpolation">Værdata hentes fra tilbyder</string>
     <string name="clockUpdateInterval">Oppdateringsintervall for klokke</string>
-
     <string-array name="interval_options">
         <item>1 sek (Veldig høyt batteriforbruk)</item>
         <item>10 sek (Høyt batteriforbruk)</item>
@@ -227,18 +222,15 @@
         <item>30 sek (standard)</item>
         <item>60 sek (Lavt batteriforbruk)</item>
     </string-array>
-
     <string name="redrawEvery">Tegn opp widget hvert\u0020</string>
     <string name="seconds">\u0020sekund.</string>
     <string name="weatherUpdateInterval">Oppdateringsintervall for værmelding</string>
-
     <string-array name="winterval_options">
         <item>Hver time (standard)</item>
         <item>Hver 4. time</item>
         <item>Hver 8. time</item>
         <item>Aldri (Kun manuell oppdatering)</item>
     </string-array>
-
     <string name="manualWeatherUpdatesOnly">Kun manuell oppdatering av værmelding</string>
     <string name="refreshWeatherEveryHour">Oppdater værmelding hver time</string>
     <string name="refreshWeatherEvery4Hours">Oppdater værmelding hver 4. time</string>
@@ -274,7 +266,6 @@
     <!-- Troubleshooting Options -->
     <string name="clockPriority">Klokkens prioritet</string>
     <string name="forFineTuning">For finjustering av responsivitet</string>
-
     <string-array name="clockPriority_options">
         <item>Høyeste</item>
         <item>Høy</item>
@@ -289,9 +280,7 @@
         <item>Lat opptegning hvert minutt når startskjermen er inaktiv eller skjermen er av. Er du sikker?</item>
         <item>Ingen opptegning når startskjerm er inaktiv eller skjermen er av. Er du sikker?</item>
     </string-array>
-
     <string name="locationPriority">Plasseringsprioritet</string>
-
     <string-array name="locationPriority_options">
         <item>Streng - Nøyaktig</item>
         <item>Streng - Nøyaktig/Grov</item>
@@ -306,7 +295,6 @@
         <item>Bruk nettverk og GPS posisjon, mindre enn 10 timer gammel. Væroppdateringer kan utebli hvis du er innendørs i mer enn 10 timer. Er du sikker?</item>
         <item>Bruk siste kjente GPS- eller nettverksposisjon, uavhengig av når den sist ble oppdatert. Nøyaktigheten av værmelding er avhengig av hvor oppdatert din posisjon er. Er du sikker?</item>
     </string-array>
-
     <string name="battReporting">Batterivisning</string>
     <string name="battReportingNormal">Normal - Slik den vises av Android</string>
     <string name="battReportingAlternate">Alternativ - Slik den vises av driver</string>
@@ -352,8 +340,7 @@
     <string name="weatherFontText">Weatherfont er fullt og helt lisensiert fra Jonathan Macagba, tilgjengelig for $5 USD fra jonathan.macagba@gmail.com</string>
     <string name="sourceCodeTitle">Kildekode</string>
     <string name="sourceCode">Kildekoden er tilgjengelig på</string>
-    <string name="daysuffix" />
-
+    <string name="daysuffix"/>
     <string-array name="verbosedow">
         <item>Søndag</item>
         <item>Mandag</item>
@@ -1992,7 +1979,6 @@
         <item>Regn og snø</item>
         <item>Blæst</item>
     </string-array>
-
     <string name="_ok">OK</string>
     <string name="_apply">Bruk</string>
     <string name="_search">Søk</string>
@@ -2005,9 +1991,9 @@
     <string name="TTLweather">Værmelding</string>
     <string name="TTLbatt">Batteriforbruk</string>
     <string name="TTLalarms">Vis alarmer</string>
-    <string name="HDRenderingFalse">Gml - 16bit bitmap sendes direkte mellom prosesser</string>
-    <string name="HDRendering">Rendermetode</string>
-    <string name="HDRenderingTrue">Ny - 32bit bitmap mellomlagres på sd-kort</string>
+    <string name="AltRenderingFalse">16bit bitmap sendes direkte mellom prosesser</string>
+    <string name="AltRendering">Rendermetode</string>
+    <string name="AltRenderingTrue">32bit bitmap mellomlagres på sd-kort</string>
     <string name="battChrgAC">Nettlading</string>
     <string name="battChrgUSB">USB-lading</string>
     <string name="battChrgWireless">Trådløs lading</string>

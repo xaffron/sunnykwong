@@ -913,23 +913,23 @@ public class OMCPrefActivity extends PreferenceActivity {
         	findPreference("sTranslator").setSummary(OMC.RString("languageWord") + ": " + OMC.RString("languageName"));
         	
         	// "Render Method".
-        	Preference prefHDRendering = findPreference("HDRendering");
-        	prefHDRendering.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+        	Preference prefAltRendering = findPreference("AltRendering");
+        	prefAltRendering.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
 		    		if (newValue.equals(true)) {
-		        		preference.setSummary(OMC.RString("HDRenderingTrue"));
-		        		OMC.HDRENDERING=true;
+		        		preference.setSummary(OMC.RString("AltRenderingTrue"));
+		        		OMC.ALTRENDERING=true;
 		    		} else {
-		        		preference.setSummary(OMC.RString("HDRenderingFalse"));
-		        		OMC.HDRENDERING=false;
+		        		preference.setSummary(OMC.RString("AltRenderingFalse"));
+		        		OMC.ALTRENDERING=false;
 		    		}
 			    	return true;
 				}
 			});
-        	if (OMC.PREFS.getBoolean("HDRendering",true)==true)
-        		findPreference("HDRendering").setSummary(OMC.RString("HDRenderingTrue"));
-        	else findPreference("HDRendering").setSummary(OMC.RString("HDRenderingFalse"));
+        	if (OMC.PREFS.getBoolean("AltRendering",true)==true)
+        		findPreference("AltRendering").setSummary(OMC.RString("AltRenderingTrue"));
+        	else findPreference("AltRendering").setSummary(OMC.RString("AltRenderingFalse"));
 
         	
         	// "Clock Priority".

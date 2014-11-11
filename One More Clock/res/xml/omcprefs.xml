@@ -262,10 +262,10 @@
             <CheckBoxPreference
                 android:defaultValue="true"
                 android:enabled="true"
-                android:key="HDRendering"
+                android:key="AltRendering"
                 android:selectable="true"
                 android:summary=""
-                android:title="@string/HDRendering" />
+                android:title="@string/AltRendering" />
         	<ListPreference
                 android:enabled="true"
                 android:entries="@array/clockPriority_options"

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="languageWord">Язык</string>
     <string name="languageName">Русский (RU)</string>
@@ -2018,9 +2018,7 @@
     <string name="TTLweather">Прогноз</string>
     <string name="TTLbatt">Использование батареи</string>
     <string name="TTLalarms">Просмотр будильников</string>
-    <string name="HDRenderingFalse">Старый метод в общем - 16bit bitmap sent directly between processes</string>
-    <string name="HDRendering">Метод отрисовки</string>
-    <string name="HDRenderingTrue">новый - 32bit bitmap cached in SD storage</string>
+    <string name="AltRendering">Метод отрисовки</string>
     <string name="battChrgAC">Зарядка от сети</string>
     <string name="battChrgUSB">Зарядка от USB</string>
     <string name="battChrgWireless">Беспроводная зарядка</string>

@@ -2048,9 +2048,9 @@
     <string name="TTLweather">Voorspelling</string>
     <string name="TTLbatt">Batterij Verbruik</string>
     <string name="TTLalarms">Alarmen Bekijken</string>
-    <string name="HDRenderingFalse">Oude - 16bit bitmap direkt verstuurt tussen bewerkingen</string>
-    <string name="HDRendering">Render Methode</string>
-    <string name="HDRenderingTrue">Nieuw - 32bit bitmap cached in SD herstellen</string>
+    <string name="AltRenderingFalse">16bit bitmap direkt verstuurt tussen bewerkingen</string>
+    <string name="AltRendering">Render Methode</string>
+    <string name="AltRenderingTrue">32bit bitmap cached in SD herstellen</string>
     <string name="battChrgAC">AC Opladen</string>
     <string name="battChrgUSB">USB Opladen</string>
     <string name="battChrgWireless">Draadloos Opladen</string>

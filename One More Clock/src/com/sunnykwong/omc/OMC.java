@@ -82,9 +82,9 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Alpha 1";
+	static final String TESTVER = "Alpha 2";
 	static final boolean FREEEDITION = false;
-	static boolean HDRENDERING = true;
+	static boolean ALTRENDERING=true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
 	static String WORKDIR;
 	
@@ -320,7 +320,22 @@ public class OMC extends Application {
     	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_WORLD_READABLE);
     	OMC.CURRENTCLOCKPRIORITY = Integer.parseInt(OMC.PREFS.getString("clockPriority", "3"));
     	OMC.CURRENTLOCATIONPRIORITY = Integer.parseInt(OMC.PREFS.getString("locationPriority", "3"));
-    	OMC.HDRENDERING = OMC.PREFS.getBoolean("HDRendering",true);
+		// Little-known observation - IPC binder raised for app widgets around the Jelly Bean...
+    	// So, for modern devices, the old rendering method is actually much more efficient.  Go figure!
+    	if (Integer.parseInt(Build.VERSION.SDK) >= 16) {
+			OMC.ALTRENDERING=false;
+	    	OMC.ALTRENDERING = OMC.PREFS.getBoolean("AltRendering",false);
+	    	if (!OMC.PREFS.contains("AltRendering")) {
+	    		OMC.PREFS.edit().putBoolean("AltRendering",false).commit();
+	    	}
+		} else {
+			OMC.ALTRENDERING=true;
+	    	OMC.ALTRENDERING = OMC.PREFS.getBoolean("AltRendering",true);
+	    	if (!OMC.PREFS.contains("AltRendering")) {
+	    		OMC.PREFS.edit().putBoolean("AltRendering",true).commit();
+	    	}
+		}
+
     	// Set the Themes directory, create a .nomedia file immediately 
     	// (to make sure indexers respect .nomedia before any files are added)
     	// This is a low-priority action so ignore any .nomedia creation errors
@@ -339,6 +354,7 @@ public class OMC extends Application {
 		if (Integer.parseInt(Build.VERSION.SDK) < Build.VERSION_CODES.FROYO) {
 		    System.setProperty("http.keepAlive", "false");
 		}
+		
 		// Define XML Parser.
 		System.setProperty ("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver");
 
@@ -2545,14 +2561,16 @@ public class OMC extends Application {
 		final int iOldWidgetWidth=OMC.WIDGETWIDTH;
        	final int iScreenWidth=c.getResources().getDisplayMetrics().widthPixels;
     	final int iScreenHeight= c.getResources().getDisplayMetrics().heightPixels;
+    	final int iIPCLimitWidth = (int)(Math.sqrt(iScreenWidth*iScreenHeight*1.5d));
     	OMC.IDLEWIDGETWIDTH=Math.min(360,Math.min(iScreenWidth, iScreenHeight)/2);
     	
-    	// Full version gets full screen width resolution when launcher is visible
+    	// Full version gets the largest widget Android allows (1.5x the screen resolution)
     	// Free version gets 480 pixels when launcher is visible
+    	
     	if (OMC.FREEEDITION) {
         	OMC.FULLWIDGETWIDTH=480;
     	} else {
-        	OMC.FULLWIDGETWIDTH=iScreenWidth-(int)(25*c.getResources().getDisplayMetrics().density);
+        	OMC.FULLWIDGETWIDTH=Math.min(iIPCLimitWidth,iScreenWidth-(int)(25*c.getResources().getDisplayMetrics().density));
     	}
     	if (bHighResDraw) {
     		OMC.WIDGETWIDTH=OMC.FULLWIDGETWIDTH;
