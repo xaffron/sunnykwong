@@ -223,10 +223,11 @@ public class GoogleReverseGeocodeService {
 			result = OMC.streamToJSONObject(huc.getInputStream());
 			huc.disconnect();
 
-			String city = OMC.LASTKNOWNCITY, country = OMC.LASTKNOWNCOUNTRY;
+			String city = OMC.LASTKNOWNCITY, state = OMC.LASTKNOWNSTATE, country = OMC.LASTKNOWNCOUNTRY;
 			if (!result.optString("status").equals("OK")) {
 				// Not ok response - do nothing
 				city = "Unknown";
+				state = "Unknown";
 				country = "Unknown";
 			} else {
 				// Find locality
@@ -252,6 +253,12 @@ public class GoogleReverseGeocodeService {
 							}
 							if (jary2.optJSONObject(counterj)
 									.optJSONArray("types").optString(iType)
+									.equals("administrative_area_level_1")) {
+								state = jary2.optJSONObject(counterj)
+										.optString("long_name", "Unknown");
+							}
+							if (jary2.optJSONObject(counterj)
+									.optJSONArray("types").optString(iType)
 									.equals("country")) {
 								country = jary2.optJSONObject(counterj)
 										.optString("long_name", "Unknown");
@@ -262,8 +269,9 @@ public class GoogleReverseGeocodeService {
 			}
 			if (OMC.DEBUG)
 				Log.i(OMC.OMCSHORT + "Weather", "Reverse Geocode: " + city
-						+ ", " + country);
+						+ ", " + state + ", " + country);
 			OMC.LASTKNOWNCITY = city;
+			OMC.LASTKNOWNSTATE = state;
 			OMC.LASTKNOWNCOUNTRY = country;
 			return result.toString();
 		} catch (Exception e) {

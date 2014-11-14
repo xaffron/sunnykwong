@@ -82,7 +82,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Alpha 2";
+	static final String TESTVER = "Alpha 3";
 	static final boolean FREEEDITION = false;
 	static boolean ALTRENDERING=true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -175,7 +175,7 @@ public class OMC extends Application {
 	static String CHARGESTATUS = "Discharging";
 	static int CHARGESTATUSCODE = 3;
 	static String WEATHERTRANSLATETYPE = "AccuWeather";
-	static String LASTKNOWNCITY, LASTKNOWNCOUNTRY;
+	static String LASTKNOWNCITY, LASTKNOWNCOUNTRY, LASTKNOWNSTATE;
 	static JSONObject jsonFIXEDLOCN;
 	static JSONObject GEOLOCNCACHE;
 	
@@ -320,7 +320,7 @@ public class OMC extends Application {
     	OMC.PREFS = getSharedPreferences(SHAREDPREFNAME, Context.MODE_WORLD_READABLE);
     	OMC.CURRENTCLOCKPRIORITY = Integer.parseInt(OMC.PREFS.getString("clockPriority", "3"));
     	OMC.CURRENTLOCATIONPRIORITY = Integer.parseInt(OMC.PREFS.getString("locationPriority", "3"));
-		// Little-known observation - IPC binder raised for app widgets around the Jelly Bean...
+		// Little-known observation - IPC binder raised for app widgets around Jelly Bean...
     	// So, for modern devices, the old rendering method is actually much more efficient.  Go figure!
     	if (Integer.parseInt(Build.VERSION.SDK) >= 16) {
     		OMC.ALTRENDERING = OMC.PREFS.getBoolean("AltRendering",false);
@@ -408,7 +408,12 @@ public class OMC extends Application {
 		OMC.ALARMCLOCKINTENT = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER);
 		OMC.WEATHERREFRESHPENDING = PendingIntent.getBroadcast(OMC.CONTEXT, 0, OMC.WRINTENT, 0);
 				
-		OMC.CACHEPATH = this.getCacheDir().getAbsolutePath() + "/"; 
+    	File fCache = this.getCacheDir();
+//    	if (fCache==null) {
+    		OMC.CACHEPATH = "/data/data/com.sunnykwong.omc/cache";
+//    	} else {
+//    		OMC.CACHEPATH = fCache.getAbsolutePath();
+//    	}
 		
     	OMC.ALARMS = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
     	OMC.PKM = getPackageManager();
@@ -447,9 +452,15 @@ public class OMC extends Application {
 //       				 	v1.4.1:  Auto weather provider.
 //    							if location is in US, switch to NOAA + METAR.
         	        		if (OMC.LASTKNOWNCOUNTRY.equals("United States") && OMC.PREFS.getString("weatherProvider", "auto").equals("auto")) {
-        	    				OMC.PREFS.edit().putString("activeWeatherProvider", "noaa")
-        	    				.putBoolean("weatherMETAR", true)
-        	    				.commit();
+//        	        			but if California, no METAR (too many microclimates)
+        	        			if (!OMC.LASTKNOWNSTATE.equals("California") )
+            	    				OMC.PREFS.edit().putString("activeWeatherProvider", "noaa")
+            	    				.putBoolean("weatherMETAR", false)
+            	    				.commit();
+        	        			else
+	        	    				OMC.PREFS.edit().putString("activeWeatherProvider", "noaa")
+	        	    				.putBoolean("weatherMETAR", true)
+	        	    				.commit();
         	    			}
         	    			
         					final String sWProvider = OMC.PREFS.getString("activeWeatherProvider", "seventimer");
@@ -2304,10 +2315,11 @@ public class OMC extends Application {
 		} else if (sWeatherSetting.equals("specific")) {
 			// If weather is for fixed location, calculate sunrise/sunset for the location, then
 			// update weather manually
+			OMC.LASTKNOWNSTATE=OMC.jsonFIXEDLOCN.optString("state","Unknown");
 			OMC.LASTKNOWNCITY=OMC.jsonFIXEDLOCN.optString("city","Unknown");
 			OMC.LASTKNOWNCOUNTRY=OMC.jsonFIXEDLOCN.optString("country","Unknown");
 			OMC.WEATHERREFRESHSTATUS=OMC.WRS_FIXED;	
-			System.out.println("LASTKNOWNCOUNTRY: "+OMC.LASTKNOWNCOUNTRY);
+
 			if (OMC.PREFS.getString("weatherProvider", "auto").equals("auto")) {
 				if (OMC.LASTKNOWNCOUNTRY.equals("United States")) {
 					OMC.PREFS.edit().putString("activeWeatherProvider", "noaa").commit();

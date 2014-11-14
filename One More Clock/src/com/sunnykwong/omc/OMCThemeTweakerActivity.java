@@ -22,6 +22,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -71,7 +72,8 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 	public int iXDown, iYDown;
 	public int iRectWidth, iRectHeight;
 	public float fXDown=-1f, fYDown, fXMove, fYMove;
-
+	public float fEngineScaling, fTweakScreenScaling;
+	
 	public JSONObject oTheme, baseTheme, oActiveLayer;
 	public int iActivepos;
 	public String sTheme;
@@ -168,11 +170,16 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 
         vPreview = (ImageView)findViewById(OMC.RId("tweakerpreview"));
         Bitmap bmp = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1, true);
+        fEngineScaling = OMCWidgetDrawEngine.findScalingForWidget(this, -1, true);
+        fTweakScreenScaling = (float)getResources().getDisplayMetrics().widthPixels/bmp.getWidth();
         bmp.setDensity(Bitmap.DENSITY_NONE);
         vPreview.setImageBitmap(bmp);
-        vPreview.invalidate();
-//        System.out.println(vPreview.getWidth());
-//        System.out.println(vPreview.getHeight());
+        //vPreview.invalidate();
+        // Calculating scaling factor for drag&drop
+		if (OMC.DEBUG) {
+			Log.i(OMC.OMCSHORT + "Tweaker", "Engine Scaling from 480p to "+ bmp.getWidth() + "p : " + fEngineScaling);
+			Log.i(OMC.OMCSHORT + "Tweaker", "Tweak Scaling from " + bmp.getWidth() + "p to screen width of "+getResources().getDisplayMetrics().widthPixels+"p : " + fTweakScreenScaling);
+		}
         vPreview.setOnLongClickListener(this);
         vPreview.setOnClickListener(new View.OnClickListener() {
 			
@@ -188,25 +195,27 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         Rect BoundingBox ;
         try {
         	JSONObject box = oTheme.getJSONObject("customscaling").getJSONObject("4x2");
-        	BoundingBox = new Rect(box.getInt("left_crop"),box.getInt("top_crop"),
-        			OMC.WIDGETWIDTH-box.getInt("right_crop")-1,
-        			OMC.WIDGETHEIGHT-box.getInt("bottom_crop")-1);
+        	BoundingBox = new Rect((int)(box.getInt("left_crop")*fEngineScaling),
+        			(int)(box.getInt("top_crop")*fEngineScaling),
+        			(int)((bmp.getWidth()-box.getInt("right_crop")*fEngineScaling)),
+        			(int)((bmp.getWidth()-box.getInt("bottom_crop")*fEngineScaling)));
         } catch (JSONException e) {
         	e.printStackTrace();
         	BoundingBox = new Rect(0,0,480,320);
         }
-        Bitmap tempBmp = Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,OMC.ALTRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
+        Bitmap tempBmp = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        tempBmp.setDensity(Bitmap.DENSITY_NONE);
+
         Canvas tempCvas = new Canvas(tempBmp);
         Paint tempPaint = new Paint();
         tempPaint.setStyle(Style.STROKE);
-        tempPaint.setColor(Color.GREEN);
-        
+        tempPaint.setColor(Color.YELLOW);
         tempCvas.drawRect(BoundingBox, tempPaint);
+
         vBounds.setImageBitmap(tempBmp);
-        vBounds.invalidate();
         
         vDrag = (ImageView)findViewById(OMC.RId("tweakerdragpreview"));
-        
+        toplevel.invalidate();
     }
 
     @Override
@@ -420,7 +429,9 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
             		iRectWidth = tempActiveLayer.optInt("right")-tempActiveLayer.optInt("left");
             		iRectHeight = tempActiveLayer.optInt("bottom")-tempActiveLayer.optInt("top");
             		
-            		vDrag.setImageBitmap(OMCWidgetDrawEngine.drawLayerForWidget(this, aWI, tempTheme, tempActiveLayer.optString("name"),false));
+            		final Bitmap bmp = OMCWidgetDrawEngine.drawLayerForWidget(this, aWI, tempTheme, tempActiveLayer.optString("name"),true);
+            		bmp.setDensity(Bitmap.DENSITY_NONE);
+            		vDrag.setImageBitmap(bmp);
         			
         		} catch (JSONException e ) {
         			e.printStackTrace();
@@ -429,7 +440,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     		}
     		fXMove = event.getX();
     		fYMove = event.getY();
-    		float fScaleFactor = (float)vPreview.getMeasuredWidth()/OMC.WIDGETWIDTH;
+    		float fScaleFactor = (float)vPreview.getMeasuredWidth()/OMC.WIDGETWIDTH*fEngineScaling;
     		try {
     			if (oActiveLayer.getString("type").equals("panel")) {
     				oActiveLayer.put("left", iXDown+(fXMove-fXDown)/fScaleFactor);
@@ -485,7 +496,9 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     }
     
     public void refreshViews() {
-		vPreview.setImageBitmap(OMCWidgetDrawEngine.drawBitmapForWidget(this, -1, true));
+    	final Bitmap bmp = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1, true);
+        bmp.setDensity(Bitmap.DENSITY_NONE);
+        vPreview.setImageBitmap(bmp);
 		vPreview.invalidate();
     }
     

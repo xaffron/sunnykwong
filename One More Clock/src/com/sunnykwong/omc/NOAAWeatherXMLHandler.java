@@ -486,7 +486,9 @@ public class NOAAWeatherXMLHandler extends DefaultHandler {
 
 		if (jsonWeather.optInt("condition_code")==0 || !jsonWeather.has("temp_f")) {
 			if (CONDITIONS==null || CONDITIONS.size()==0 || CONDITIONS.get(0)==-999) {
-        		if (OMC.PREFS.getString("weatherProvider", "auto").equals("auto")) {
+        		if (OMC.PREFS.getString("weatherProvider", "auto").equals("auto")&& OMC.LASTKNOWNSTATE.equals("California")) {
+    				OMC.PREFS.edit().putBoolean("weatherMETAR", false).commit();
+        		} else {
     				OMC.PREFS.edit().putBoolean("weatherMETAR", true).commit();
     			}
 				SevenTimerJSONHandler.updateWeather(jsonWeather.optDouble("latitude_e6")/1000000d, jsonWeather.optDouble("longitude_e6")/1000000d, jsonWeather.optString("country2"), jsonWeather.optString("city"), true);

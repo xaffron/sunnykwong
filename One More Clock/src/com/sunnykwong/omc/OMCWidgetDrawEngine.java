@@ -277,11 +277,7 @@ public class OMCWidgetDrawEngine {
 		//
 		int width = (int)(bitmap.getWidth()- OMC.STRETCHINFO.optInt("left_crop")*OMC.fFinalScaling - OMC.STRETCHINFO.optInt("right_crop")*OMC.fFinalScaling); 
 		int height = (int)(bitmap.getHeight() - OMC.STRETCHINFO.optInt("top_crop")*OMC.fFinalScaling - OMC.STRETCHINFO.optInt("bottom_crop")*OMC.fFinalScaling); 
-		System.out.println("width: " + width);
-		System.out.println("height: " + height);
-		System.out.println("bmpwidth: " + bitmap.getWidth());
-		System.out.println("bmpheight: " + bitmap.getHeight());
-		System.out.println("scaling: " + OMC.fFinalScaling);
+
 		float hzStretch = (float)OMC.STRETCHINFO.optDouble("horizontal_stretch");
 		float vtStretch = (float)OMC.STRETCHINFO.optDouble("vertical_stretch");
 		double dScaledWidth = width * hzStretch;
@@ -511,6 +507,22 @@ public class OMCWidgetDrawEngine {
 
 	}
 	
+	static float findScalingForWidget(final Context context, final int aWI, final boolean bHighResDraw) {
+		float fResult=1f;
+
+		final String sTheme = TESTTHEME.length()==0?
+				OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME):
+				TESTTHEME;
+		JSONObject oTheme = OMC.getTheme(context, sTheme, OMC.THEMESFROMCACHE);
+		if (oTheme==null) return fResult;
+
+		final int iWidgetWidth = oTheme.optInt("canvaswidth",480);
+		if (iWidgetWidth==480) {
+			fResult = OMC.WIDGETWIDTH/480f;
+		}
+		return fResult;
+	}
+	
 	static Bitmap drawBitmapForWidget(final Context context, final int aWI, final boolean bHighResDraw) {
 		final Bitmap resultBitmap;
 
@@ -534,10 +546,8 @@ public class OMCWidgetDrawEngine {
 		OMC.setWidgetWidths(OMC.CONTEXT,bHighResDraw);
 		
 		//v147: HD scaling.
-		OMC.dFinalScaling=1;
 		OMC.fFinalScaling = 1f;
 		if (iWidgetWidth==480) {
-			OMC.dFinalScaling = OMC.WIDGETWIDTH/480d;
 			OMC.fFinalScaling = OMC.WIDGETWIDTH/480f;
 		}
 
@@ -547,6 +557,7 @@ public class OMCWidgetDrawEngine {
 			 resultBitmap= Bitmap.createBitmap((int)(iWidgetWidth*OMC.fFinalScaling),(int)(iWidgetHeight*OMC.fFinalScaling),Bitmap.Config.ARGB_4444);
 		}
 		final Canvas resultCanvas = new Canvas(resultBitmap);
+
 		resultCanvas.setDensity(DisplayMetrics.DENSITY_HIGH);
 
 
@@ -593,10 +604,22 @@ public class OMCWidgetDrawEngine {
 
 	static Bitmap drawLayerForWidget(final Context context, final int aWI, final JSONObject oTheme, final String sLayer, final boolean bHighResDraw) {
 		final Bitmap resultBitmap;
+
+		// v1.4.1: HD Rendering.
+		final int iWidgetWidth = oTheme.optInt("canvaswidth",480);
+		final int iWidgetHeight = oTheme.optInt("canvasheight",480);
+
+		//v148: Tweak widget widths.
+		OMC.setWidgetWidths(OMC.CONTEXT,bHighResDraw);
+		
+		//v147: HD scaling.
+		final float fFinalScaling = iWidgetWidth==480?
+				OMC.WIDGETWIDTH/480f:1f;
+					
 		if (OMC.SCREENON) {
-			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_8888);
+			 resultBitmap= Bitmap.createBitmap((int)(iWidgetWidth*fFinalScaling),(int)(iWidgetHeight*fFinalScaling),Bitmap.Config.ARGB_8888);
 		} else {
-			 resultBitmap= Bitmap.createBitmap(OMC.WIDGETWIDTH,OMC.WIDGETHEIGHT,Bitmap.Config.ARGB_4444);
+			 resultBitmap= Bitmap.createBitmap((int)(iWidgetWidth*fFinalScaling),(int)(iWidgetHeight*fFinalScaling),Bitmap.Config.ARGB_4444);
 		}
 		final Canvas resultCanvas = new Canvas(resultBitmap);
 		resultCanvas.setDensity(DisplayMetrics.DENSITY_HIGH);
