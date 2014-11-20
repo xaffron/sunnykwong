@@ -62,7 +62,7 @@ public class OMCProvider extends ContentProvider {
                 int aWI = Integer.parseInt(uri.getQueryParameter("awi"));
                 
                 if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Provider","Ready to render widget " +aWI);
-                File f = new File(OMC.CACHEPATH + aWI +"cache.png");
+                File f = new File(OMC.CACHEPATH + "/" + aWI +"cache.png");
                 if (f.exists()&&f.canRead()){
                         if (OMC.DEBUG) Log.i(OMC.OMCSHORT+"Provider","Reading png for widget"+aWI);
                         return new AssetFileDescriptor(ParcelFileDescriptor.open(f,

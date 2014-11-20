@@ -60,7 +60,7 @@ public class OMCWidgetDrawEngine {
 //            	// If this clock takes more than 0.5 sec to render, then blit cached bitmap over first
 //            	RemoteViews rv = new RemoteViews(context.getPackageName(),OMC.RLayoutId("omcwidget"));
 //        		if (OMC.ALTRENDERING) {
-//       	        	File outTemp = new File(OMC.CACHEPATH + aWM.getAppWidgetIds(cName)[i] +"cache.png");
+//       	        	File outTemp = new File(OMC.CACHEPATH + "/" + aWM.getAppWidgetIds(cName)[i] +"cache.png");
 //       		        if (outTemp.exists()&&outTemp.canRead()) {
 //       		        	String sUriString = OMC.FREEEDITION?
 //       		        			"content://com.sunnykwong.freeomc/widgets?random="+Math.random()+"&awi="+aWM.getAppWidgetIds(cName)[i]
@@ -393,7 +393,7 @@ public class OMCWidgetDrawEngine {
 		// ask launcher to retrieve from sd card.  Waste of CPU time and battery, but needed.
 		if (OMC.ALTRENDERING) {
 	        try {
-	        	File outTemp = new File(OMC.CACHEPATH + appWidgetId +"cache.png");
+	        	File outTemp = new File(OMC.CACHEPATH + "/" + appWidgetId +"cache.png");
                 FileOutputStream fos = new FileOutputStream(outTemp);
 	        	finalbitmap.compress(CompressFormat.PNG, 100, fos);
 		        fos.close();

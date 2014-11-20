@@ -409,11 +409,11 @@ public class OMC extends Application {
 		OMC.WEATHERREFRESHPENDING = PendingIntent.getBroadcast(OMC.CONTEXT, 0, OMC.WRINTENT, 0);
 				
     	File fCache = this.getCacheDir();
-//    	if (fCache==null) {
+    	if (fCache==null) {
     		OMC.CACHEPATH = "/data/data/com.sunnykwong.omc/cache";
-//    	} else {
-//    		OMC.CACHEPATH = fCache.getAbsolutePath();
-//    	}
+    	} else {
+    		OMC.CACHEPATH = fCache.getAbsolutePath();
+    	}
 		
     	OMC.ALARMS = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
     	OMC.PKM = getPackageManager();
@@ -955,7 +955,7 @@ public class OMC extends Application {
 			e.remove("URI"+OMC.COMPASSPOINTS[i]+aWI);
 		}
 		e.commit();
-		final File f = new File(OMC.CACHEPATH + aWI +"cache.png");
+		final File f = new File(OMC.CACHEPATH + "/" + aWI +"cache.png");
 		if (f.exists())f.delete();
 	}
 	
@@ -967,9 +967,9 @@ public class OMC extends Application {
 				return OMC.TYPEFACEMAP.get(src);
 			}
 			//Look in app cache;
-			if (new File(OMC.CACHEPATH + sTheme + src).exists()) {
+			if (new File(OMC.CACHEPATH + "/" + sTheme + src).exists()) {
 					try {
-						OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(OMC.CACHEPATH + sTheme + src));
+						OMC.TYPEFACEMAP.put(src, Typeface.createFromFile(OMC.CACHEPATH + "/" + sTheme + src));
 						return OMC.TYPEFACEMAP.get(src);
 					} catch (final RuntimeException e) {
 						// if Cache is invalid, do nothing; we'll let this flow through to the full FS case.
@@ -1087,8 +1087,8 @@ public class OMC extends Application {
 			}
 	
 			//Look in app cache;
-			if (new File(OMC.CACHEPATH + sTheme + src).exists()) {
-				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(OMC.CACHEPATH + sTheme + src));
+			if (new File(OMC.CACHEPATH + "/" + sTheme + src).exists()) {
+				OMC.BMPMAP.put(src, BitmapFactory.decodeFile(OMC.CACHEPATH + "/" + sTheme + src));
 				return OMC.BMPMAP.get(src);
 			}
 		}
@@ -1148,9 +1148,9 @@ public class OMC extends Application {
 			return OMC.THEMEMAP.get(nm);
 		}
 		// Look in cache dir
-		if (new File(OMC.CACHEPATH + nm + "00control.json").exists() && bFromCache) {
+		if (new File(OMC.CACHEPATH + "/" + nm + "00control.json").exists() && bFromCache) {
 			try {
-				final BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + nm + "00control.json"),8192);
+				final BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + "/" + nm + "00control.json"),8192);
 				final StringBuilder sb = new StringBuilder();
 			    final char[] buffer = new char[8192];
 			    int iCharsRead = 0;
@@ -1176,11 +1176,11 @@ public class OMC extends Application {
 			final File f = new File(OMC.WORKDIR+"/"+nm);
 			if (f.exists() && f.isDirectory()) {
 				for (final File ff:f.listFiles()) {
-					copyFile(ff.getAbsolutePath(),OMC.CACHEPATH + nm + ff.getName());
+					copyFile(ff.getAbsolutePath(),OMC.CACHEPATH + "/" + nm + ff.getName());
 				}
 			}
 			try {
-				final BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + nm + "00control.json"),8192);
+				final BufferedReader in = new BufferedReader(new FileReader(OMC.CACHEPATH + "/" + nm + "00control.json"),8192);
 				final StringBuilder sb = new StringBuilder();
 			    final char[] buffer = new char[8192];
 			    int iCharsRead = 0;
@@ -1335,7 +1335,7 @@ public class OMC extends Application {
 	
 	public static boolean copyAssetToCache(final String src, final String filename, final String sTheme) {
 		try {
-			final FileOutputStream oTGT = new FileOutputStream(OMC.CACHEPATH + sTheme + filename);
+			final FileOutputStream oTGT = new FileOutputStream(OMC.CACHEPATH + "/" + sTheme + filename);
 			final InputStream oSRC = OMC.AM.open(src);
 			
 		    final byte[] buffer = new byte[8192];
@@ -1396,7 +1396,7 @@ public class OMC extends Application {
 			(new File(OMC.WORKDIR+"/"+ OMC.DEFAULTTHEME)).mkdirs();
 			for (final String sFile : OMC.AM.list("defaulttheme")) {
 				copyAssetToCache(sDefaultThemeAssetDir+sFile,sFile, OMC.DEFAULTTHEME);
-				copyFile(OMC.CACHEPATH + OMC.DEFAULTTHEME + sFile, OMC.WORKDIR+"/" + OMC.DEFAULTTHEME + "/" + sFile);
+				copyFile(OMC.CACHEPATH + "/" + OMC.DEFAULTTHEME + sFile, OMC.WORKDIR+"/" + OMC.DEFAULTTHEME + "/" + sFile);
 			}
 		} catch (final Exception e) {
 			e.printStackTrace();
