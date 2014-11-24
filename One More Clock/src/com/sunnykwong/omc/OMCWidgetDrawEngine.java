@@ -1042,7 +1042,7 @@ public class OMCWidgetDrawEngine {
 				pt1.setTextScaleX((float)layer.optDouble("text_stretch"));
 			}
 		}
-		
+		OMC.LASTTEXTLAYERWIDTH.put(layer.optString("name"),Math.round(OMCWidgetDrawEngine.getSpannedStringWidth(new SpannedString(Html.fromHtml(text)),pt1)/OMC.fFinalScaling));
 		try {
 			pt1.setColor(Color.parseColor(layer.optString("fgcolor")));
 		} catch (java.lang.IllegalArgumentException e) {

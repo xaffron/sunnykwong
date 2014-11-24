@@ -82,7 +82,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Alpha 4";
+	static final String TESTVER = "Alpha 5";
 	static final boolean FREEEDITION = false;
 	static boolean ALTRENDERING=true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -90,7 +90,7 @@ public class OMC extends Application {
 	
 	static final boolean DEBUG = TESTVER.equals("")?false:true; 
 	
-	static final boolean THEMESFROMCACHE = true;
+	static final boolean THEMESFROMCACHE = false;
 	static final String FALLBACKTHEME = "{ \"id\": \"Fallback\", \"name\": \"FB\", \"author\": \"\", \"date\": \"\", \"credits\": \"\", \"layers_bottomtotop\": [ { \"name\": \"T\", \"type\": \"text\", \"enabled\": true, \"text\": \"%H:%M\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 100, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 120, \"text_skew\": 0, \"text_stretch\": 1, \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 }, { \"name\": \"E\", \"type\": \"text\", \"enabled\": true, \"text\": \"! Theme Loading / No SD Card !\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 118, \"fgcolor\": \"#ffffcccc\", \"bgcolor\": \"#ff000000\", \"text_size\": 28, \"text_skew\": 0, \"text_stretch\": 0.9, \"text_align\": \"center\", \"render_style\": \"glow_3\", \"cw_rotate\": 0 }, { \"name\": \"S\", \"type\": \"text\", \"enabled\": true, \"text\": \"[%ompc_battlevel%]%% - [%weather_city%] - [%weather_temp%] - [%weather_condition%]\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 142, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 20, \"text_skew\": 0, \"text_stretch\": \"[%maxfit_1_300%]\", \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 } ] }";
 	static String THISVERSION; 
 	static final boolean SINGLETON = false;
@@ -198,6 +198,7 @@ public class OMC extends Application {
     static Map<String, JSONObject> THEMEMAP;
     static HashMap<Bitmap, Canvas> BMPTOCVAS;
     static HashMap<Integer, Bitmap> WIDGETBMPMAP;
+    static HashMap<String, Integer> LASTTEXTLAYERWIDTH = null;
     
     static OMCConfigReceiver cRC;
 	static OMCAlarmReceiver aRC;
@@ -618,6 +619,7 @@ public class OMC extends Application {
 		OMC.BMPMAP = new HashMap<String, Bitmap>(5);
 		OMC.THEMEMAP=Collections.synchronizedMap(new HashMap<String, JSONObject>(2));
 		OMC.WIDGETBMPMAP = new HashMap<Integer, Bitmap>(3);
+		OMC.LASTTEXTLAYERWIDTH = new HashMap<String,Integer>(10);
 		
 		OMC.STRETCHINFO = null;
 		try { 
@@ -1468,7 +1470,7 @@ public class OMC extends Application {
 
 				final JSONArray tempArray = theme.optJSONObject("arrays").optJSONArray(sKey);
 				for (int j=0;j<tempArray.length();j++) {
-					tempResultArray.put(OMC.resolveTokens(tempArray.getString(j), aWI, result));
+					tempResultArray.put(OMC.resolveTokens("arrays",tempArray.getString(j), aWI, result));
 				}
 			}
 		}
@@ -1495,7 +1497,7 @@ public class OMC extends Application {
 				final String sKey = i.next();
 				if (sKey.equals("text_stretch")) continue;
 
-				renderedLayer.put(sKey, OMC.resolveTokens((layer.optString(sKey)), aWI, result));
+				renderedLayer.put(sKey, OMC.resolveTokens(layer.optString("name"),(layer.optString(sKey)), aWI, result));
 
 			}
 			
@@ -1504,7 +1506,7 @@ public class OMC extends Application {
 			if (sStretch==null) {
 				renderedLayer.put("text_stretch", "1");
 			} else {
-				renderedLayer.put("text_stretch", OMC.resolveTokens((layer.optString("text_stretch")), aWI, result));
+				renderedLayer.put("text_stretch", OMC.resolveTokens(layer.optString("name"),(layer.optString("text_stretch")), aWI, result));
 			}
 		}
 
@@ -1514,7 +1516,7 @@ public class OMC extends Application {
 		return result;
 	}
 	
-	static public String resolveOneToken(final String sRawString, final int aWI, final JSONObject tempResult) {
+	static public String resolveOneToken(final String sLayer, final String sRawString, final int aWI, final JSONObject tempResult) {
 		boolean isDynamic = false;
 		if (sRawString.contains("[%")) isDynamic = true;
 		// Strip brackets.
@@ -1773,7 +1775,32 @@ public class OMC extends Application {
 			} else {
 				//Unknown - do nothing
 			}
-			
+		} else if (sToken.equals("math")) {
+			final String sType = st[iTokenNum++];
+			double dVal1=0d, dVal2=0d;
+			try {
+				dVal1 = Double.parseDouble(st[iTokenNum++]);
+				dVal2 = Double.parseDouble(st[iTokenNum++]);
+			} catch (Exception e) {}
+			if (sType.equals("add")){
+				result = String.valueOf(dVal1+dVal2);
+			} else if (sType.equals("subtract")){
+				result = String.valueOf(dVal1-dVal2);
+			} else if (sType.equals("multiply")){
+				result = String.valueOf(dVal1*dVal2);
+			} else if (sType.equals("divide")){
+				result = String.valueOf(dVal1/dVal2);
+			} else {
+				//Unknown - do nothing
+			}
+		} else if (sToken.equals("lastgeometry")) {
+			final String sTgtLayer = st[iTokenNum++];
+			final String sType = st[iTokenNum++];
+			if (sType.equals("width")){
+				result = String.valueOf(OMC.LASTTEXTLAYERWIDTH.get(sTgtLayer));
+			} else {
+				//Unknown - do nothing
+			}
 		} else if (sToken.equals("ap24")) {
 			if (OMC.PREFS.getBoolean("widget24HrClock"+aWI, true)) {
 				result = (st[iTokenNum+2]);
@@ -1997,7 +2024,7 @@ public class OMC extends Application {
 		
 	}
 
-	static public String resolveTokens(final String sRawString, final int aWI, final JSONObject tempResult) {
+	static public String resolveTokens(final String sLayer, final String sRawString, final int aWI, final JSONObject tempResult) {
 //		if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Parsing "+sRawString);
 		final StringBuilder result = new StringBuilder();
 
@@ -2034,7 +2061,7 @@ public class OMC extends Application {
 					// No more start markers found, but we have an end marker.
 					// Dive into this substring.
 //					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Sending down(-1): " + sRawString.substring(iCursor, iMarker2+2));
-					result.append(OMC.resolveOneToken(sRawString.substring(iCursor, iMarker2+2), aWI, tempResult));
+					result.append(OMC.resolveOneToken(sLayer, sRawString.substring(iCursor, iMarker2+2), aWI, tempResult));
 					result.append(sRawString.substring(iMarker2+2));
 //					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Now at: " + result.toString());
 				} else if (iMarker1 < iMarker2) {
@@ -2047,7 +2074,7 @@ public class OMC extends Application {
 					//if %] is closer, we have an end marker.
 					//Dive into this substring.
 //					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Sending down(2<1): " + sRawString.substring(iCursor, iMarker2+2));
-					result.append(OMC.resolveOneToken(sRawString.substring(iCursor, iMarker2+2), aWI, tempResult));
+					result.append(OMC.resolveOneToken(sLayer, sRawString.substring(iCursor, iMarker2+2), aWI, tempResult));
 //					if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Array","Now at: " + result.toString());
 					//Move all markers to the next [% (we only deal with one layer here).
 					//Start looking for the next directive.
@@ -2057,11 +2084,11 @@ public class OMC extends Application {
 				} while (iMarker1 != -1);
 				
 				// Pass it up to resolve nested stuff.
-				return OMC.resolveTokens(result.toString(), aWI, tempResult);
+				return OMC.resolveTokens(sLayer, result.toString(), aWI, tempResult);
 			}
 		}
 		// If no tags found, then just run strftime; we're done! 
-		return OMC.resolveOneToken(sRawString, aWI, tempResult);
+		return OMC.resolveOneToken(sLayer, sRawString, aWI, tempResult);
 
 	}
 	
