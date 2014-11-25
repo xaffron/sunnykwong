@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.TimeZone;
 
 import org.json.JSONArray;
@@ -562,42 +563,64 @@ public class OMCWidgetDrawEngine {
 
 
 		try {
-			oTheme = OMC.renderThemeObject(oTheme, aWI);
+		//	oTheme = OMC.renderThemeObject(oTheme, aWI);
+
+			JSONObject oStaticTheme = new JSONObject();
+
+			// Since the rendered object is only used for drawing, we'll skip
+			// ID, Name, Author and Credits
+			
+			// First, render the dynamic elements in arrays
+			OMC.renderThemeArrays(oTheme,aWI, oStaticTheme);
+			
+			// Find the layers array in the original,
+			// create a layers array in the rendered theme.
+			final JSONArray layerlist = oTheme.optJSONArray("layers_bottomtotop");
+			final JSONArray completedLayerList = new JSONArray();
+			oStaticTheme.put("layers_bottomtotop", completedLayerList);
+
+			// Now, loop over the layers...
+			for (int i = 0; i < layerlist.length(); i++) {
+				JSONObject layer = layerlist.optJSONObject(i);
+
+				// Clear the text buffer first.
+				String sTextBuffer="";
+				
+				if (layer==null) {
+					Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
+					OMC.PREFS.edit()
+							.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
+							.commit();
+					return null;
+				}
+
+				// Render each layer
+				@SuppressWarnings("unchecked")
+				JSONObject completedLayer = OMC.renderThemeLayer(oStaticTheme, aWI, layer);
+				completedLayerList.put(completedLayer);
+				
+				// Now, process the rendered layer.
+				// Skip any disabled layers
+				if (completedLayer.optBoolean("enabled")==false) continue;
+				
+				String sType = completedLayer.optString("type");
+				
+				if (sType.equals("text")) {
+					sTextBuffer = completedLayer.optString("text");
+					OMCWidgetDrawEngine.drawTextLayer(context, completedLayer, sTheme, aWI, sTextBuffer, resultCanvas);
+				}
+				else if (sType.equals("panel"))OMCWidgetDrawEngine.drawPanelLayer(context, completedLayer, sTheme, aWI, resultCanvas);
+				else if (sType.equals("arc"))OMCWidgetDrawEngine.drawArcLayer(context, completedLayer, sTheme, aWI, resultCanvas);
+				else if (sType.equals("flare"))OMCWidgetDrawEngine.drawFlareLayer(context, completedLayer, sTheme, aWI, resultCanvas);
+				else if (sType.equals("quote"))OMCWidgetDrawEngine.drawQuoteLayer(context, completedLayer, sTheme, aWI, resultCanvas);
+				else if (sType.equals("image"))OMCWidgetDrawEngine.drawBitmapLayer(context, completedLayer, sTheme, aWI, resultCanvas);
+
+			}
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 
-		final JSONArray layerlist = oTheme.optJSONArray("layers_bottomtotop");
-
-		for (int i = 0; i < layerlist.length(); i++) {
-			JSONObject layer = layerlist.optJSONObject(i);
-			if (layer==null) {
-				Toast.makeText(context, "Error loading theme.\nRestoring default look...", Toast.LENGTH_SHORT).show();
-				OMC.PREFS.edit()
-						.putString("widgetTheme"+aWI,OMC.DEFAULTTHEME)
-						.commit();
-				return null;
-			}
-			// Clear the text buffer first.
-			String sTextBuffer="";
-			
-			//Skip any disabled layers
-			if (layer.optBoolean("enabled")==false) continue;
-			
-			String sType = layer.optString("type");
-			
-			if (sType.equals("text")) {
-				sTextBuffer = layer.optString("text");
-				OMCWidgetDrawEngine.drawTextLayer(context, layer, sTheme, aWI, sTextBuffer, resultCanvas);
-			}
-			else if (sType.equals("panel"))OMCWidgetDrawEngine.drawPanelLayer(context, layer, sTheme, aWI, resultCanvas);
-			else if (sType.equals("arc"))OMCWidgetDrawEngine.drawArcLayer(context, layer, sTheme, aWI, resultCanvas);
-			else if (sType.equals("flare"))OMCWidgetDrawEngine.drawFlareLayer(context, layer, sTheme, aWI, resultCanvas);
-			else if (sType.equals("quote"))OMCWidgetDrawEngine.drawQuoteLayer(context, layer, sTheme, aWI, resultCanvas);
-			else if (sType.equals("image"))OMCWidgetDrawEngine.drawBitmapLayer(context, layer, sTheme, aWI, resultCanvas);
-
-		}
-		
 		return resultBitmap;
 		
 	}

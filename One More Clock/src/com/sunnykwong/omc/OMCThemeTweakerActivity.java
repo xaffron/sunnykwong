@@ -416,8 +416,11 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         		fXDown = event.getX();
         		fYDown = event.getY();
         		try {
-        			final JSONObject tempTheme = OMC.renderThemeObject(oTheme, -1);
-            		final JSONObject tempActiveLayer = tempTheme.optJSONArray("layers_bottomtotop").optJSONObject(iActivepos);
+        			//final JSONObject tempTheme = OMC.renderThemeObject(oTheme, -1);
+            		//final JSONObject tempActiveLayer = tempTheme.optJSONArray("layers_bottomtotop").optJSONObject(iActivepos);
+        			final JSONObject tempTheme = new JSONObject();
+        			OMC.renderThemeArrays(oTheme, -1, tempTheme);
+            		final JSONObject tempActiveLayer = OMC.renderThemeLayer(tempTheme, -1, oTheme.optJSONArray("layers_bottomtotop").optJSONObject(iActivepos));
 
             		if (tempActiveLayer.optString("type").equals("panel")) {
                 		iXDown = tempActiveLayer.optInt("left");

@@ -1443,10 +1443,7 @@ public class OMC extends Application {
 		return true;
     }
 
-	static public JSONObject renderThemeObject(final JSONObject theme, final int aWI) throws JSONException {
-		JSONObject result;
-		
-		result = new JSONObject();
+	static public void renderThemeArrays(final JSONObject theme, final int aWI, final JSONObject result) throws JSONException {
 
 		// Since the rendered object is only used for drawing, we'll skip
 		// ID, Name, Author and Credits
@@ -1474,46 +1471,32 @@ public class OMC extends Application {
 				}
 			}
 		}
+	}
+	
 
-		// Then, render all the dynamic elements in each layer...
-		
-		final JSONArray layerJSONArray = theme.optJSONArray("layers_bottomtotop");
-		if (layerJSONArray==null) return null; //ERR: A theme cannot have no layers
-		final JSONArray tempLayerArray = new JSONArray();
-		result.put("layers_bottomtotop", tempLayerArray);
-		
-		for (int j = 0 ; j < layerJSONArray.length(); j++) {
-			final JSONObject layer = layerJSONArray.optJSONObject(j);
-			final JSONObject renderedLayer = new JSONObject();
-			tempLayerArray.put(renderedLayer);
-			
-			//v1.3.1: If Layer is null, it's a corrupt layer in a corrupt theme.  
-			// Try to make the best of it and move to the next layer.
-			if (layer==null) continue;
-			@SuppressWarnings("unchecked")
-			final
-			Iterator<String> i = layer.keys();
-			while (i.hasNext()) {
-				final String sKey = i.next();
-				if (sKey.equals("text_stretch")) continue;
+	static public JSONObject renderThemeLayer(final JSONObject theme, final int aWI, final JSONObject layer) throws JSONException {
+		JSONObject resultLayer = new JSONObject();
 
-				renderedLayer.put(sKey, OMC.resolveTokens(layer.optString("name"),(layer.optString(sKey)), aWI, result));
+		//v1.3.1: If Layer is null, it's a corrupt layer in a corrupt theme.  
+		// Try to make the best of it and move to the next layer.
+		@SuppressWarnings("unchecked")
+		final Iterator<String> i = layer.keys();
+		if (layer==null) throw new JSONException("");
+		while (i.hasNext()) {
+			final String sKey = i.next();
+			if (sKey.equals("text_stretch")) continue;
 
-			}
-			
+			resultLayer.put(sKey, OMC.resolveTokens(layer.optString("name"),(layer.optString(sKey)), aWI, theme));
+
 			// before tweaking the max/maxfit stretch factors.
 			final String sStretch = layer.optString("text_stretch");
 			if (sStretch==null) {
-				renderedLayer.put("text_stretch", "1");
+				resultLayer.put("text_stretch", "1");
 			} else {
-				renderedLayer.put("text_stretch", OMC.resolveTokens(layer.optString("name"),(layer.optString("text_stretch")), aWI, result));
+				resultLayer.put("text_stretch", OMC.resolveTokens(layer.optString("name"),(layer.optString("text_stretch")), aWI, theme));
 			}
 		}
-
-		
-
-		
-		return result;
+		return resultLayer;
 	}
 	
 	static public String resolveOneToken(final String sLayer, final String sRawString, final int aWI, final JSONObject tempResult) {
