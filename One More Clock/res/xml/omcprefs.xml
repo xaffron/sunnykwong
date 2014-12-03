@@ -122,6 +122,15 @@
             </CheckBoxPreference>
             <ListPreference
                 android:enabled="true"
+                android:entries="@array/widgetreso_options"
+                android:entryValues="@array/widgetreso_values"
+                android:key="widgetResolution"
+                android:selectable="true"
+                android:summary=""
+                android:title="@string/widgetResolution" >
+            </ListPreference>
+            <ListPreference
+                android:enabled="true"
                 android:entries="@array/interval_options"
                 android:entryValues="@array/interval_values"
                 android:key="sUpdateFreq"
@@ -139,21 +148,14 @@
                 android:title="@string/weatherUpdateInterval" >
             </ListPreference>
 
-            <CheckBoxPreference
+<!--             <CheckBoxPreference
                 android:enabled="true"
                 android:key="widgetPersistence"
                 android:selectable="true"
                 android:summary="@string/keepOMCfromSleeping"
                 android:title="@string/setForegroundMode" />
-<!--            <CheckBoxPreference
-                android:defaultValue="true"
-                android:enabled="false"
-                android:key="widgetEnglishOnly"
-                android:selectable="false"
-                android:summary="@string/uncheckForSome"
-                android:title="@string/forceEnglishDates" />
--->
-            <Preference
+ -->
+             <Preference
                 android:enabled="true"
                 android:key="appLocale"
                 android:title="@string/changeAppLocale" />

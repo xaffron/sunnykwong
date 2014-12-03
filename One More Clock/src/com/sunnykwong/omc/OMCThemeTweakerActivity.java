@@ -3,6 +3,7 @@ package com.sunnykwong.omc;
 import java.io.File;
 import java.util.HashMap;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,6 +14,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
@@ -36,6 +38,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -73,6 +76,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 	public int iRectWidth, iRectHeight;
 	public float fXDown=-1f, fYDown, fXMove, fYMove;
 	public float fEngineScaling, fTweakScreenScaling;
+	public Matrix mTweakScreenMatrix;
 	
 	public JSONObject oTheme, baseTheme, oActiveLayer;
 	public int iActivepos;
@@ -169,10 +173,14 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         spinnerLayers.setOnItemSelectedListener(this);
 
         vPreview = (ImageView)findViewById(OMC.RId("tweakerpreview"));
+        vPreview.setScaleType(ScaleType.MATRIX);
         Bitmap bmp = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1, true);
         fEngineScaling = OMCWidgetDrawEngine.findScalingForWidget(this, -1, true);
         fTweakScreenScaling = (float)getResources().getDisplayMetrics().widthPixels/bmp.getWidth();
+        mTweakScreenMatrix = new Matrix();
+        mTweakScreenMatrix.setScale(fTweakScreenScaling, fTweakScreenScaling);
         bmp.setDensity(Bitmap.DENSITY_NONE);
+        vPreview.setImageMatrix(mTweakScreenMatrix);
         vPreview.setImageBitmap(bmp);
         //vPreview.invalidate();
         // Calculating scaling factor for drag&drop
@@ -180,6 +188,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 			Log.i(OMC.OMCSHORT + "Tweaker", "Engine Scaling from 480p to "+ bmp.getWidth() + "p : " + fEngineScaling);
 			Log.i(OMC.OMCSHORT + "Tweaker", "Tweak Scaling from " + bmp.getWidth() + "p to screen width of "+getResources().getDisplayMetrics().widthPixels+"p : " + fTweakScreenScaling);
 		}
+		
         vPreview.setOnLongClickListener(this);
         vPreview.setOnClickListener(new View.OnClickListener() {
 			
@@ -191,7 +200,8 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         vPreview.invalidate();
 
         vBounds = (ImageView)findViewById(OMC.RId("tweakerbounds"));
-        
+        vBounds.setScaleType(ScaleType.MATRIX);
+        vBounds.setImageMatrix(mTweakScreenMatrix);
         Rect BoundingBox ;
         try {
         	JSONObject box = oTheme.getJSONObject("customscaling").getJSONObject("4x2");
@@ -203,7 +213,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         	e.printStackTrace();
         	BoundingBox = new Rect(0,0,480,320);
         }
-        Bitmap tempBmp = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        Bitmap tempBmp = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_4444);
         tempBmp.setDensity(Bitmap.DENSITY_NONE);
 
         Canvas tempCvas = new Canvas(tempBmp);
@@ -211,10 +221,12 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         tempPaint.setStyle(Style.STROKE);
         tempPaint.setColor(Color.YELLOW);
         tempCvas.drawRect(BoundingBox, tempPaint);
-
         vBounds.setImageBitmap(tempBmp);
         
         vDrag = (ImageView)findViewById(OMC.RId("tweakerdragpreview"));
+        vDrag.setScaleType(ScaleType.MATRIX);
+        vDrag.setImageMatrix(mTweakScreenMatrix);
+        
         toplevel.invalidate();
     }
 
@@ -420,8 +432,11 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
             		//final JSONObject tempActiveLayer = tempTheme.optJSONArray("layers_bottomtotop").optJSONObject(iActivepos);
         			final JSONObject tempTheme = new JSONObject();
         			OMC.renderThemeArrays(oTheme, -1, tempTheme);
+        			final JSONArray completedLayerList = new JSONArray();
+        			tempTheme.put("layers_bottomtotop", completedLayerList);
             		final JSONObject tempActiveLayer = OMC.renderThemeLayer(tempTheme, -1, oTheme.optJSONArray("layers_bottomtotop").optJSONObject(iActivepos));
-
+            		completedLayerList.put(tempActiveLayer);
+            		
             		if (tempActiveLayer.optString("type").equals("panel")) {
                 		iXDown = tempActiveLayer.optInt("left");
                 		iYDown = tempActiveLayer.optInt("top");
@@ -434,6 +449,11 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
             		
             		final Bitmap bmp = OMCWidgetDrawEngine.drawLayerForWidget(this, aWI, tempTheme, tempActiveLayer.optString("name"),true);
             		bmp.setDensity(Bitmap.DENSITY_NONE);
+            		Matrix mx = new Matrix();
+            		System.out.println("Tweakscaling: "+ fTweakScreenScaling);
+            		mx.setScale(fTweakScreenScaling, fTweakScreenScaling);
+            		vDrag.setScaleType(ScaleType.MATRIX);
+                    vDrag.setImageMatrix(mx);
             		vDrag.setImageBitmap(bmp);
         			
         		} catch (JSONException e ) {
@@ -443,7 +463,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     		}
     		fXMove = event.getX();
     		fYMove = event.getY();
-    		float fScaleFactor = (float)vPreview.getMeasuredWidth()/OMC.WIDGETWIDTH*fEngineScaling;
+    		float fScaleFactor = (float)vPreview.getMeasuredWidth()/OMC.WIDGETWIDTH*fEngineScaling*fTweakScreenScaling;
     		try {
     			if (oActiveLayer.getString("type").equals("panel")) {
     				oActiveLayer.put("left", iXDown+(fXMove-fXDown)/fScaleFactor);

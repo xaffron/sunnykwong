@@ -1986,4 +1986,11 @@
     <string name="useMETAR">采用 METAR 天气报告</string>
     <string name="usingInterpolation">从数学模型估算天气</string>
     <string name="supplementedbyMETAR">天气由此机场提供:</string>
+    <string name="widgetResolution">时钟解像</string>
+    <string-array name="widgetreso_options">
+        <item/>
+        <item/>
+        <item/>
+        <item>最高</item>
+    </string-array>
 </resources>

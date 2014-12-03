@@ -81,8 +81,8 @@ public class OMCPrefActivity extends PreferenceActivity {
     boolean isInitialConfig=false, mTempFlag=false;
     Preference prefUpdWeatherNow, prefWeather, prefWeatherDisplay, prefWeatherProvider;
     Preference prefloadThemeFile, prefclearCache, prefbSkinner, prefTimeZone;
-    ListPreference prefsUpdateFreq; 
-    Preference prefwidgetPersistence, prefemailMe, preftweakTheme;
+    ListPreference prefsUpdateFreq,prefWidgetResolution; 
+    Preference prefemailMe, preftweakTheme;
     int iTTLArea=0;
 
     AsyncTask<String,String,String> mWeatherRefresh;
@@ -185,7 +185,6 @@ public class OMCPrefActivity extends PreferenceActivity {
 
 			// Setting foreground options, and making sure we have at least one widget (4x2) enabled
 			Editor ed = OMC.PREFS.edit();
-			ed.putBoolean("widgetPersistence", OMC.FG);
 			ed.putBoolean("bFourByTwo", true);
         	
 			// Depending on free ed or not, enable/disable the widgets
@@ -808,12 +807,54 @@ public class OMCPrefActivity extends PreferenceActivity {
         		prefWeatherDisplay.setSummary(OMC.RString("usingCelsius"));
         	else prefWeatherDisplay.setSummary(OMC.RString("usingFahrenheit"));
 
+        	prefWidgetResolution = (ListPreference)findPreference("widgetResolution");
+
+        	// "Widget Resolution"
+        	if (OMC.FREEEDITION) {
+        		prefWidgetResolution.setEnabled(false);
+        	}
+           	int size = OMC.FREEEDITION? 1: OMC.RStringArray("widgetreso_values").length;
+        	String[] options= new String[size], values= new String[size];
+           	for (int i = 1; i<= size; i++) {
+        		options[size-i] = OMC.RStringArray("widgetreso_options")[OMC.RStringArray("widgetreso_options").length-i];
+        		values[size-i] = OMC.RStringArray("widgetreso_values")[OMC.RStringArray("widgetreso_values").length-i];
+        	}
+           	prefWidgetResolution.setEntries(options);
+           	prefWidgetResolution.setEntryValues(values);
+           	prefWidgetResolution.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+		    		OMC.WIDGETRESO=Integer.valueOf((String)newValue);
+		    		String sVal;
+		    		if (OMC.WIDGETRESO==-1) {
+		    			sVal="Max";
+		    		} else {
+		    			sVal= OMC.WIDGETRESO + "p";
+		    		}
+		    		preference.setSummary(sVal);
+		    		getApplicationContext().sendBroadcast(OMC.WIDGETREFRESHINTENT);
+					return true;
+				}
+			});
+           	
+    		String sVal;
+    		if (OMC.FREEEDITION) {
+    			sVal="480p";
+    		} else if (OMC.WIDGETRESO==-1) {
+    			sVal="Max";
+    		} else {
+    			sVal= OMC.WIDGETRESO + "p";
+    		}
+          	prefWidgetResolution.setSummary(sVal);
+
+        	
         	prefsUpdateFreq = (ListPreference)findPreference("sUpdateFreq");
 
         	// "Clock Update Interval"
         	// Allow one-sec updates only on paid edition
-        	int size = OMC.FREEEDITION? OMC.RStringArray("interval_values").length-1: OMC.RStringArray("interval_values").length;
-        	String[] options= new String[size], values= new String[size];
+        	size = OMC.FREEEDITION? OMC.RStringArray("interval_values").length-1: OMC.RStringArray("interval_values").length;
+        	options= new String[size];
+        	values= new String[size];
            	for (int i = 1; i<= size; i++) {
         		options[size-i] = OMC.RStringArray("interval_options")[OMC.RStringArray("interval_options").length-i];
         		values[size-i] = OMC.RStringArray("interval_values")[OMC.RStringArray("interval_values").length-i];
@@ -894,14 +935,6 @@ public class OMCPrefActivity extends PreferenceActivity {
         			findPreference("sWeatherFreq").setSummary(OMC.RString("refreshWeatherEveryHour"));
         	}
         	
-        	// "Set Foreground Mode".
-    		prefwidgetPersistence = findPreference("widgetPersistence");
-
-        	if (Build.VERSION.SDK_INT <  5) {
-    			OMC.PREFS.edit().putBoolean("widgetPersistence", false).commit();
-				((PreferenceCategory)findPreference("allClocks")).removePreference(prefwidgetPersistence);
-			}
-				
         	// "Enable Theme Tester".
         	prefbSkinner = findPreference("bSkinner");
 
@@ -1805,7 +1838,8 @@ public class OMCPrefActivity extends PreferenceActivity {
 		if (appWidgetID >= 0) {
 
 			if (OMC.DEBUG) Log.i(OMC.OMCSHORT + "Pref","Saving Prefs for Widget " + OMCPrefActivity.appWidgetID);
-			OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", true)? true : false;
+			OMC.FG = false;
+//			OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", true)? true : false;
 			OMC.UPDATEFREQ = Integer.parseInt(OMC.PREFS.getString("sUpdateFreq", "30")) * 1000;
 	    	OMC.setPrefs(OMCPrefActivity.appWidgetID);
 	    	if (OMC.WIDGETBMPMAP.containsKey(OMCPrefActivity.appWidgetID)) {

@@ -252,6 +252,13 @@
     <string name="usingMETAR">Conditions decoded from nearest airport</string>
     <string name="usingInterpolation">Conditions extracted/interpolated from provider
 	</string>
+    <string name="widgetResolution">Widget Resolution</string>
+    <string-array name="widgetreso_options">
+        <item>480p</item>
+        <item>720p</item>
+        <item>1080p</item>
+        <item>Max</item>
+    </string-array>
     <string name="clockUpdateInterval">Clock Update Interval</string>
     <string-array name="interval_options">
         <item>1 sec (Extreme Batt Use)</item>

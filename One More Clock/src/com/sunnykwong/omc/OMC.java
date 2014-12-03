@@ -82,7 +82,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Alpha 5";
+	static final String TESTVER = "Beta 1";
 	static final boolean FREEEDITION = false;
 	static boolean ALTRENDERING=true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -90,7 +90,7 @@ public class OMC extends Application {
 	
 	static final boolean DEBUG = TESTVER.equals("")?false:true; 
 	
-	static final boolean THEMESFROMCACHE = false;
+	static final boolean THEMESFROMCACHE = true;
 	static final String FALLBACKTHEME = "{ \"id\": \"Fallback\", \"name\": \"FB\", \"author\": \"\", \"date\": \"\", \"credits\": \"\", \"layers_bottomtotop\": [ { \"name\": \"T\", \"type\": \"text\", \"enabled\": true, \"text\": \"%H:%M\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 100, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 120, \"text_skew\": 0, \"text_stretch\": 1, \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 }, { \"name\": \"E\", \"type\": \"text\", \"enabled\": true, \"text\": \"! Theme Loading / No SD Card !\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 118, \"fgcolor\": \"#ffffcccc\", \"bgcolor\": \"#ff000000\", \"text_size\": 28, \"text_skew\": 0, \"text_stretch\": 0.9, \"text_align\": \"center\", \"render_style\": \"glow_3\", \"cw_rotate\": 0 }, { \"name\": \"S\", \"type\": \"text\", \"enabled\": true, \"text\": \"[%ompc_battlevel%]%% - [%weather_city%] - [%weather_temp%] - [%weather_condition%]\", \"filename\": \"fallback.ttf\", \"x\": 240, \"y\": 142, \"fgcolor\": \"#ffffffff\", \"bgcolor\": \"#ff000000\", \"text_size\": 20, \"text_skew\": 0, \"text_stretch\": \"[%maxfit_1_300%]\", \"text_align\": \"center\", \"render_style\": \"glow_5\", \"cw_rotate\": 0 } ] }";
 	static String THISVERSION; 
 	static final boolean SINGLETON = false;
@@ -209,7 +209,7 @@ public class OMC extends Application {
 
 	static Location LASTKNOWNLOCN = null;
 	
-	static int WIDGETWIDTH, WIDGETHEIGHT;
+	static int WIDGETWIDTH, WIDGETHEIGHT, WIDGETRESO;
 	static int IDLEWIDGETWIDTH, FULLWIDGETWIDTH;
 	static boolean IDLEMODE;
 	static float fFinalScaling;
@@ -380,7 +380,7 @@ public class OMC extends Application {
 		OMC.WIDGET1x3CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget1x3");
 		OMC.SKINNERCNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".OMCSkinnerActivity");
 
-		
+		OMC.WIDGETRESO = Integer.valueOf(OMC.PREFS.getString("widgetResolution", OMC.FREEEDITION?"480":"-1"));
 		OMC.LASTUPDATEMILLIS = 0l; 
 		OMC.LEASTLAGMILLIS = 0l;
 		
@@ -511,8 +511,8 @@ public class OMC extends Application {
     	OMC.WEATHERFONT = Typeface.createFromAsset(OMC.AM, "wef.ttf");
     	OMC.PLACEHOLDERBMP = BitmapFactory.decodeResource(OMC.RES, OMC.RDrawableId("transparent"));
     	
-    	
-		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
+    	OMC.FG = false;
+//		OMC.FG = OMC.PREFS.getBoolean("widgetPersistence", false)? true : false;
 		if (!OMC.PREFS.contains("weathersetting")){
 			OMC.PREFS.edit().putString("weathersetting", "bylatlong").commit();
 		}
@@ -2586,13 +2586,16 @@ public class OMC extends Application {
     	final int iIPCLimitWidth = (int)(Math.sqrt(iScreenWidth*iScreenHeight*1.5d));
     	OMC.IDLEWIDGETWIDTH=Math.min(360,Math.min(iScreenWidth, iScreenHeight)/2);
     	
-    	// Full version gets the largest widget Android allows (1.5x the screen resolution)
+    	// Full version gets the largest widget Android allows (1.5x the screen resolution),
+    	//    or up to user choice
     	// Free version gets 480 pixels when launcher is visible
     	
     	if (OMC.FREEEDITION) {
         	OMC.FULLWIDGETWIDTH=480;
+    	} else if (OMC.WIDGETRESO==-1) {
+    		OMC.FULLWIDGETWIDTH=Math.min(iIPCLimitWidth,iScreenWidth-(int)(25*c.getResources().getDisplayMetrics().density));
     	} else {
-        	OMC.FULLWIDGETWIDTH=Math.min(iIPCLimitWidth,iScreenWidth-(int)(25*c.getResources().getDisplayMetrics().density));
+    		OMC.FULLWIDGETWIDTH=OMC.WIDGETRESO;
     	}
     	if (bHighResDraw) {
     		OMC.WIDGETWIDTH=OMC.FULLWIDGETWIDTH;

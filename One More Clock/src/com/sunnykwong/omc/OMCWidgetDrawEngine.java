@@ -366,6 +366,11 @@ public class OMCWidgetDrawEngine {
 		// The actual draw to final bitmap.
 		
 		finalcanvas.setMatrix(tempMatrix);
+		if (OMC.DEBUG) {
+			Log.i(OMC.OMCSHORT + "Engine", "Engine Final Scaling: " + OMC.fFinalScaling);
+		}
+		
+
 		finalcanvas.drawBitmap(Bitmap.createBitmap(bitmap, 
 				((int)(OMC.STRETCHINFO.optInt("left_crop")*OMC.fFinalScaling)),
 				((int)(OMC.STRETCHINFO.optInt("top_crop")*OMC.fFinalScaling)),
