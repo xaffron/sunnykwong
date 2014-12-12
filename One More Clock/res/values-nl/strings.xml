@@ -2077,4 +2077,5 @@
     <string name="gotNetworkLock">Heb een WiFi/Netwerk signaal. Omgekeerd-GeoCoding…</string>
     <string name="areaToCustomize">Gebied voor Aanpassen:</string>
     <string name="submitThemeToDev">Verstuur Thema voor Dev</string>
+    <string name="widgetResolution">Widget Resolutie</string>
 </resources>

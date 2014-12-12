@@ -1973,4 +1973,11 @@
     <string name="TTLalarms">הראה התרעות</string>
     <string name="_yesRestore">כן, שחזר ברירות מחדל</string>
     <string name="_yesDelete">כן, מחק הכל</string>
+    <string name="widgetResolution">רזולוציית ווידג\'ט</string>
+    <string-array name="widgetreso_options">
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+    </string-array>
 </resources>

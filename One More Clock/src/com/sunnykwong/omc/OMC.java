@@ -82,7 +82,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "Beta 1";
+	static final String TESTVER = "Beta 2";
 	static final boolean FREEEDITION = false;
 	static boolean ALTRENDERING=true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -97,7 +97,7 @@ public class OMC extends Application {
 	static Bitmap PLACEHOLDERBMP;
 	
 	static final String SINGLETONNAME = "One More Clock";
-	static final String STARTERPACKURL = "asset:pk143.omc";
+	static final String STARTERPACKURL = "asset:pk149.omc";
 	static String OMCCHANGESURL;
 	static final String EXTENDEDPACK = "https://sites.google.com/a/xaffron.com/xaffron-software/OMCThemes_v143.omc";
 	static final String EXTENDEDPACKBACKUP = "https://s3.amazonaws.com/Xaffron/OMCThemes_v143.omc";
@@ -380,7 +380,7 @@ public class OMC extends Application {
 		OMC.WIDGET1x3CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget1x3");
 		OMC.SKINNERCNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".OMCSkinnerActivity");
 
-		OMC.WIDGETRESO = Integer.valueOf(OMC.PREFS.getString("widgetResolution", OMC.FREEEDITION?"480":"-1"));
+		OMC.WIDGETRESO = Integer.valueOf(OMC.PREFS.getString("widgetResolution", OMC.FREEEDITION?"480":"720"));
 		OMC.LASTUPDATEMILLIS = 0l; 
 		OMC.LEASTLAGMILLIS = 0l;
 		
