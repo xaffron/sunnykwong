@@ -121,17 +121,6 @@ public class OMCPrefActivity extends PreferenceActivity {
 
     	super.onCreate(savedInstanceState);
     	
-
-    	// Refresh list of installed Launcher Apps.
-		List<ResolveInfo> launcherlist = OMC.PKM.queryIntentActivities(OMC.FINDLAUNCHERINTENT, 0);
-		OMC.INSTALLEDLAUNCHERAPPS = new ArrayList<String>();
-		OMC.INSTALLEDLAUNCHERAPPS.add("com.teslacoilsw.widgetlocker");
-		OMC.INSTALLEDLAUNCHERAPPS.add("com.jiubang.goscreenlock");
-		
-		for (ResolveInfo info : launcherlist) {
-			OMC.INSTALLEDLAUNCHERAPPS.add(info.activityInfo.packageName);
-		}
-
     	// If action is null, we are coming from an existing widget - 
     	// we want both the home and back buttons to apply changes,
     	// So we set default result to OK.

@@ -17,11 +17,12 @@
 	<uses-feature android:name="android.hardware.location.gps" android:required="false" />
 		<application android:name="com.sunnykwong.omc.OMC" 
     android:icon="@drawable/clockicon" 
-    android:configChanges="locale"
+    android:allowBackup="true"
     android:label="@string/app_name_free"> 
         <provider android:name="com.sunnykwong.omc.OMCProvider" android:authorities="com.sunnykwong.freeomc" android:exported="true"/>
         <activity android:name="com.sunnykwong.omc.OMCPrefActivity"
                   android:screenOrientation="behind"
+    			  android:configChanges="locale|orientation|screenSize"
                   android:label="@string/app_name_free">
 			<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -97,7 +98,6 @@
                   android:screenOrientation="nosensor"
                   android:label="@string/app_name_free">
 		</activity>
-        <service android:enabled="true" android:name="com.sunnykwong.omc.OMCService"/>
         <receiver android:name="com.sunnykwong.omc.OMCAlarmReceiver" >
     		<intent-filter>
         		<action android:name="android.intent.action.BOOT_COMPLETED" />  
@@ -127,5 +127,5 @@
     		</intent-filter>  
 		</receiver> 
      </application>
-<supports-screens android:anyDensity="true" android:largeScreens="true" android:smallScreens="true" android:normalScreens="true"></supports-screens>
+<supports-screens android:anyDensity="true" android:largeScreens="true" android:smallScreens="true" android:normalScreens="true" android:xlargeScreens="true"></supports-screens>
 </manifest> 

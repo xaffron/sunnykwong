@@ -495,17 +495,7 @@ public class OMC extends Application {
     	OMC.NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     	OMC.ACTM = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
 
-		// Find the currently-installed launchers
-		OMC.FINDLAUNCHERINTENT.addCategory("android.intent.category.HOME");
-		
-		final List<ResolveInfo> launcherlist = OMC.PKM.queryIntentActivities(OMC.FINDLAUNCHERINTENT, 0);
-		OMC.INSTALLEDLAUNCHERAPPS = new ArrayList<String>();
-		OMC.INSTALLEDLAUNCHERAPPS.add("com.teslacoilsw.widgetlocker");
-		OMC.INSTALLEDLAUNCHERAPPS.add("com.jiubang.goscreenlock");
-		
-		for (final ResolveInfo info : launcherlist) {
-			OMC.INSTALLEDLAUNCHERAPPS.add(info.activityInfo.packageName);
-		}
+    	updateLauncherApps();
     	
     	OMC.GEOFONT = Typeface.createFromAsset(OMC.AM, "GeosansLight.ttf");
     	OMC.WEATHERFONT = Typeface.createFromAsset(OMC.AM, "wef.ttf");
@@ -2658,4 +2648,20 @@ public class OMC extends Application {
 		}
 		return result;
 	}
+	
+	public static void updateLauncherApps() {
+		// Find the currently-installed launchers
+		OMC.FINDLAUNCHERINTENT.addCategory("android.intent.category.HOME");
+		
+		final List<ResolveInfo> launcherlist = OMC.PKM.queryIntentActivities(OMC.FINDLAUNCHERINTENT, 0);
+		OMC.INSTALLEDLAUNCHERAPPS = new ArrayList<String>();
+		OMC.INSTALLEDLAUNCHERAPPS.add("com.teslacoilsw.widgetlocker");
+		OMC.INSTALLEDLAUNCHERAPPS.add("com.jiubang.goscreenlock");
+		
+		for (final ResolveInfo info : launcherlist) {
+			OMC.INSTALLEDLAUNCHERAPPS.add(info.activityInfo.packageName);
+		}
+
+	}
+	
 }

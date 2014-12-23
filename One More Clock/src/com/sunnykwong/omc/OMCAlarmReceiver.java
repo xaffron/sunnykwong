@@ -184,6 +184,9 @@ public class OMCAlarmReceiver extends BroadcastReceiver {
 						}
 					}
 				}
+
+				//Update Launcher apps list.
+				OMC.updateLauncherApps();
 				
 				//if (action.equals(OMC.FGINTENT)) OMC.SVCSTARTINTENT.setAction(OMC.FGSTRING);
 				//else OMC.SVCSTARTINTENT.setAction(OMC.BGSTRING);

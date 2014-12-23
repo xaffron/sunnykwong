@@ -7,7 +7,6 @@
     android:orientation="vertical" >
 
     <Gallery
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/gallery"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -28,12 +27,12 @@
             android:layout_height="wrap_content"
             android:text="@string/reextractBundledClocks" >
         </Button>
-
         <Button
             android:id="@+id/btnMore"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:text="@string/downloadAllClocks" >
+            android:text="@string/downloadAllClocks"
+            android:visibility="invisible">
         </Button>
     </LinearLayout>
 
