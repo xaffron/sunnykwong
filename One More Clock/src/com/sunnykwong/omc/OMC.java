@@ -367,6 +367,8 @@ public class OMC extends Application {
 			OMC.THISVERSION = "1.0.0";
 		}
 
+        OMC.PAIDURI = (OMC.SINGLETON? Uri.parse("market://details?id=" + OMC.PKGNAME +"donate"):Uri.parse("market://details?id=com.sunnykwong.omc"));
+
 		OMC.WIDGET5x2CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget5x2");
 		OMC.WIDGET5x4CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget5x4");
 		OMC.WIDGET5x1CNAME = new ComponentName(OMC.PKGNAME,OMC.OMCNAME+".ClockWidget5x1");
