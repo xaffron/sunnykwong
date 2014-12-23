@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="faqs">
-		<item>Version 1.4.7 launches after a year-and-a-half hiatus.  Thank you for waiting, really!</item>,
-        <item>With Version 1.4.7, themes and backups are now stored in /Android/data/com.sunnykwong.omc/files/ instead of /.OMCThemes/. WARNING: THEMES AND BACKUPS NO LONGER SURVIVE UNINSTALL, so please move your backups and customizations to another folder *before* you uninstall!</item>,
+		<item>Version 1.4.9 launches with improved rendering, reliability and performance!</item>,
+        <item>As of Version 1.4.7, themes and backups are now stored in /Android/data/com.sunnykwong.omc/files/ instead of /.OMCThemes/. WARNING: THEMES AND BACKUPS NO LONGER SURVIVE UNINSTALL, so please move your backups and customizations to another folder *before* you uninstall!</item>,
 		<item>If you have old customizations and backups, please save them to a safe place on your SD card.  When you need to use them, copy them to the /Android/data/com.sunnykwong.omc/files/ folder.  After you finish backing everything up, you can delete all the files in the .OMCThemes folder (with a dot).</item>,
 		<item>The paid version features a one-second refresh.  While the one-second refresh results in higher battery drain, it adds a nice dynamic quality to clocks with a second hand.</item>,
 		<item>Clocks have tags on the theme picker screen.  Tap on a tag to understand what it means!</item>,
