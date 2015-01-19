@@ -28,6 +28,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -322,17 +323,21 @@ public class OMCWidgetDrawEngine {
 		//
 		// Note that the bitmaps are put in a hashmap keyed by the appwidgetID.
 		//
-		final Bitmap finalbitmap;
+		Bitmap finalbitmap;
 		if (!OMC.WIDGETBMPMAP.containsKey(appWidgetId)) {
 			
 			finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,OMC.ALTRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
 			OMC.WIDGETBMPMAP.put(appWidgetId, finalbitmap);
-					} else {
+		} else {
 			if (OMC.WIDGETBMPMAP.get(appWidgetId).getWidth() != thisWidgetWidth ||
 					OMC.WIDGETBMPMAP.get(appWidgetId).getHeight() != thisWidgetHeight) {
 	    		if (!OMC.WIDGETBMPMAP.get(appWidgetId).isRecycled()) OMC.WIDGETBMPMAP.get(appWidgetId).recycle();
 	    		OMC.WIDGETBMPMAP.remove(appWidgetId);
-				finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,OMC.ALTRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
+				try {
+					finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,OMC.ALTRENDERING?Bitmap.Config.ARGB_8888:Bitmap.Config.ARGB_4444);
+				} catch (OutOfMemoryError e) {
+					finalbitmap=Bitmap.createBitmap(thisWidgetWidth,thisWidgetHeight,Bitmap.Config.ARGB_4444);
+				}
 				OMC.WIDGETBMPMAP.put(appWidgetId, finalbitmap);				
 			} else {
 				finalbitmap=OMC.WIDGETBMPMAP.get(appWidgetId);
@@ -369,13 +374,15 @@ public class OMCWidgetDrawEngine {
 		if (OMC.DEBUG) {
 			Log.i(OMC.OMCSHORT + "Engine", "Engine Final Scaling: " + OMC.fFinalScaling);
 		}
-		
-
-		finalcanvas.drawBitmap(Bitmap.createBitmap(bitmap, 
-				((int)(OMC.STRETCHINFO.optInt("left_crop")*OMC.fFinalScaling)),
-				((int)(OMC.STRETCHINFO.optInt("top_crop")*OMC.fFinalScaling)),
-				width, height),0,0, pt);
-
+		Rect srcRect =  new Rect(((int)(OMC.STRETCHINFO.optInt("left_crop")*OMC.fFinalScaling)),
+				((int)(OMC.STRETCHINFO.optInt("top_crop")*OMC.fFinalScaling)), 
+				width,
+				height);
+		Rect tgtRect = new Rect(0,
+				0, 
+				width - ((int)(OMC.STRETCHINFO.optInt("left_crop")*OMC.fFinalScaling)),
+				height - ((int)(OMC.STRETCHINFO.optInt("top_crop")*OMC.fFinalScaling)));
+		finalcanvas.drawBitmap(bitmap, srcRect, tgtRect, pt);
 
 		//Step 9:
 		// Cleaning up.  The bitmap used for scaling is recycled, and matrix+paint returned to pool.
@@ -530,7 +537,7 @@ public class OMCWidgetDrawEngine {
 	}
 	
 	static Bitmap drawBitmapForWidget(final Context context, final int aWI, final boolean bHighResDraw) {
-		final Bitmap resultBitmap;
+		Bitmap resultBitmap;
 
 		final String sTheme = TESTTHEME.length()==0?
 				OMC.PREFS.getString("widgetTheme"+aWI,OMC.DEFAULTTHEME):
@@ -558,7 +565,11 @@ public class OMCWidgetDrawEngine {
 		}
 
 		if (OMC.SCREENON) {
-			 resultBitmap= Bitmap.createBitmap((int)(iWidgetWidth*OMC.fFinalScaling),(int)(iWidgetHeight*OMC.fFinalScaling),Bitmap.Config.ARGB_8888);
+			 try {
+				 resultBitmap= Bitmap.createBitmap((int)(iWidgetWidth*OMC.fFinalScaling),(int)(iWidgetHeight*OMC.fFinalScaling),Bitmap.Config.ARGB_8888);
+			 } catch (OutOfMemoryError e) {
+				 resultBitmap= Bitmap.createBitmap((int)(iWidgetWidth*OMC.fFinalScaling),(int)(iWidgetHeight*OMC.fFinalScaling),Bitmap.Config.ARGB_4444);
+			 }
 		} else {
 			 resultBitmap= Bitmap.createBitmap((int)(iWidgetWidth*OMC.fFinalScaling),(int)(iWidgetHeight*OMC.fFinalScaling),Bitmap.Config.ARGB_4444);
 		}

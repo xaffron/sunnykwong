@@ -1,6 +1,7 @@
 package com.sunnykwong.omc;
 
 import android.support.v4.content.ContextCompat;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -82,7 +83,7 @@ import android.widget.Toast;
  */ 
 public class OMC extends Application { 
 
-	static final String TESTVER = "";
+	static final String TESTVER = "Alpha 1";
 	static final boolean FREEEDITION = false;
 	static boolean ALTRENDERING=true;
 	static final ArrayList<ICAOLatLon> ICAOLIST = new ArrayList<ICAOLatLon>();
@@ -344,8 +345,12 @@ public class OMC extends Application {
     	if (fTemp==null) {
     		OMC.WORKDIR = "/sdcard/Android/data/com.sunnykwong.omc/files";
     		boolean stat = new File(OMC.WORKDIR).mkdirs();
-    	} else {
+    	} else if (fTemp[0]==null) {
+    		OMC.WORKDIR = "/sdcard/Android/data/com.sunnykwong.omc/files";
+    		boolean stat = new File(OMC.WORKDIR).mkdirs();
+    	}{
     		OMC.WORKDIR = fTemp[0].getAbsolutePath();
+    		boolean stat = new File(OMC.WORKDIR).mkdirs();
     	}
     	try {
     		new File(OMC.WORKDIR+"/.nomedia").createNewFile();
@@ -2600,15 +2605,25 @@ public class OMC extends Application {
 			Log.i(OMC.OMCSHORT + "App","Widget width is " + OMC.WIDGETWIDTH + " pixels."); 
 
     	if (iOldWidgetWidth!=OMC.WIDGETWIDTH) {
-	    	Bitmap bmpTrash = OMC.ROTBUFFER;
-	        OMC.ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
-	        if (bmpTrash!=null) {
-	        	OMC.BMPTOCVAS.remove(bmpTrash);
-	        	OMC.BMPTOCVAS.put(OMC.ROTBUFFER, new Canvas(OMC.ROTBUFFER));
-	        	bmpTrash.recycle();
-	        } else {
-	        	OMC.BMPTOCVAS.put(OMC.ROTBUFFER, new Canvas(OMC.ROTBUFFER));
-	        }
+    		if (OMC.ROTBUFFER!=null) {
+	        	OMC.BMPTOCVAS.remove(OMC.ROTBUFFER);
+	        	OMC.ROTBUFFER.recycle();
+    		}
+
+	    	boolean bBufferSuccess = false;
+	    	while (!bBufferSuccess) {
+	    		try {
+	    			OMC.ROTBUFFER = Bitmap.createBitmap(OMC.WIDGETWIDTH, OMC.WIDGETHEIGHT, Bitmap.Config.ARGB_8888);
+	    			bBufferSuccess = true;
+				 } catch (OutOfMemoryError e) {
+					 OMC.WIDGETWIDTH*=0.9;
+				    	OMC.WIDGETHEIGHT=OMC.WIDGETWIDTH;
+				    	if (OMC.DEBUG)
+							Log.i(OMC.OMCSHORT + "App","Insufficient memory - widgetwidth shrunk to " + OMC.WIDGETWIDTH + " pixels."); 
+				 }
+	    	}
+
+        	OMC.BMPTOCVAS.put(OMC.ROTBUFFER, new Canvas(OMC.ROTBUFFER));
     	}
 	}
 	
