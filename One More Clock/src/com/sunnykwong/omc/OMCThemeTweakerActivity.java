@@ -77,6 +77,7 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 	public float fXDown=-1f, fYDown, fXMove, fYMove;
 	public float fEngineScaling, fTweakScreenScaling;
 	public Matrix mTweakScreenMatrix;
+	public Paint mPtYellow;
 	
 	public JSONObject oTheme, baseTheme, oActiveLayer;
 	public int iActivepos;
@@ -132,6 +133,10 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         aWI = getIntent().getIntExtra("aWI", -1);
         sTheme = getIntent().getStringExtra("theme");
         
+        mPtYellow = new Paint();
+        mPtYellow.setColor(Color.GREEN);
+        mPtYellow.setStyle(Style.STROKE);
+
      
         try {
         	
@@ -180,8 +185,25 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
         mTweakScreenMatrix = new Matrix();
         mTweakScreenMatrix.setScale(fTweakScreenScaling, fTweakScreenScaling);
         bmp.setDensity(Bitmap.DENSITY_NONE);
+        Canvas c = new Canvas(bmp);
+        Rect BoundingBox;
+        try {
+        	JSONObject box = oTheme.getJSONObject("customscaling").getJSONObject("4x2");
+        	BoundingBox = new Rect((int)(box.getInt("left_crop")*fEngineScaling),
+        			(int)(box.getInt("top_crop")*fEngineScaling),
+        			(int)((bmp.getWidth()-box.getInt("right_crop")*fEngineScaling)),
+        			(int)((bmp.getWidth()-box.getInt("bottom_crop")*fEngineScaling)));
+        } catch (JSONException e) {
+        	e.printStackTrace();
+        	BoundingBox = new Rect(0,0,480,320);
+        }
+        c.drawRect(BoundingBox, mPtYellow);
+        
         vPreview.setImageMatrix(mTweakScreenMatrix);
         vPreview.setImageBitmap(bmp);
+		vPreview.setLayoutParams(new AbsoluteLayout.LayoutParams((int)(bmp.getWidth()*fTweakScreenScaling),(int)(bmp.getHeight()*fTweakScreenScaling),
+				0, 0));
+
         //vPreview.invalidate();
         // Calculating scaling factor for drag&drop
 		if (OMC.DEBUG) {
@@ -197,37 +219,38 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
 				OMCThemeTweakerActivity.this.openOptionsMenu();
 			}
 		});
-        vPreview.invalidate();
+        vPreview.requestLayout();
 
         vBounds = (ImageView)findViewById(OMC.RId("tweakerbounds"));
         vBounds.setScaleType(ScaleType.MATRIX);
         vBounds.setImageMatrix(mTweakScreenMatrix);
-        Rect BoundingBox ;
-        try {
-        	JSONObject box = oTheme.getJSONObject("customscaling").getJSONObject("4x2");
-        	BoundingBox = new Rect((int)(box.getInt("left_crop")*fEngineScaling),
-        			(int)(box.getInt("top_crop")*fEngineScaling),
-        			(int)((bmp.getWidth()-box.getInt("right_crop")*fEngineScaling)),
-        			(int)((bmp.getWidth()-box.getInt("bottom_crop")*fEngineScaling)));
-        } catch (JSONException e) {
-        	e.printStackTrace();
-        	BoundingBox = new Rect(0,0,480,320);
-        }
-        Bitmap tempBmp = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_4444);
-        tempBmp.setDensity(Bitmap.DENSITY_NONE);
-
-        Canvas tempCvas = new Canvas(tempBmp);
-        Paint tempPaint = new Paint();
-        tempPaint.setStyle(Style.STROKE);
-        tempPaint.setColor(Color.YELLOW);
-        tempCvas.drawRect(BoundingBox, tempPaint);
-        vBounds.setImageBitmap(tempBmp);
+//        Rect BoundingBox ;
+//        try {
+//        	JSONObject box = oTheme.getJSONObject("customscaling").getJSONObject("4x2");
+//        	BoundingBox = new Rect((int)(box.getInt("left_crop")*fEngineScaling),
+//        			(int)(box.getInt("top_crop")*fEngineScaling),
+//        			(int)((bmp.getWidth()-box.getInt("right_crop")*fEngineScaling)),
+//        			(int)((bmp.getWidth()-box.getInt("bottom_crop")*fEngineScaling)));
+//        } catch (JSONException e) {
+//        	e.printStackTrace();
+//        	BoundingBox = new Rect(0,0,480,320);
+//        }
+//        Bitmap tempBmp = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_4444);
+//        tempBmp.setDensity(Bitmap.DENSITY_NONE);
+//
+//        Canvas tempCvas = new Canvas(tempBmp);
+//        Paint tempPaint = new Paint();
+//        tempPaint.setStyle(Style.STROKE);
+//        tempPaint.setColor(Color.YELLOW);
+//        tempCvas.drawRect(BoundingBox, tempPaint);
+//        vBounds.setImageBitmap(tempBmp);
+//        vBounds.requestLayout();
         
         vDrag = (ImageView)findViewById(OMC.RId("tweakerdragpreview"));
         vDrag.setScaleType(ScaleType.MATRIX);
         vDrag.setImageMatrix(mTweakScreenMatrix);
         
-        toplevel.invalidate();
+        toplevel.requestLayout();
     }
 
     @Override
@@ -450,7 +473,6 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
             		final Bitmap bmp = OMCWidgetDrawEngine.drawLayerForWidget(this, aWI, tempTheme, tempActiveLayer.optString("name"),true);
             		bmp.setDensity(Bitmap.DENSITY_NONE);
             		Matrix mx = new Matrix();
-            		System.out.println("Tweakscaling: "+ fTweakScreenScaling);
             		mx.setScale(fTweakScreenScaling, fTweakScreenScaling);
             		vDrag.setScaleType(ScaleType.MATRIX);
                     vDrag.setImageMatrix(mx);
@@ -521,8 +543,23 @@ public class OMCThemeTweakerActivity extends Activity implements OnItemSelectedL
     public void refreshViews() {
     	final Bitmap bmp = OMCWidgetDrawEngine.drawBitmapForWidget(this, -1, true);
         bmp.setDensity(Bitmap.DENSITY_NONE);
+        Canvas c = new Canvas(bmp);
+        Rect BoundingBox ;
+
+        try {
+        	JSONObject box = oTheme.getJSONObject("customscaling").getJSONObject("4x2");
+        	BoundingBox = new Rect((int)(box.getInt("left_crop")*fEngineScaling),
+        			(int)(box.getInt("top_crop")*fEngineScaling),
+        			(int)((bmp.getWidth()-box.getInt("right_crop")*fEngineScaling)),
+        			(int)((bmp.getWidth()-box.getInt("bottom_crop")*fEngineScaling)));
+        } catch (JSONException e) {
+        	e.printStackTrace();
+        	BoundingBox = new Rect(0,0,480,320);
+        }
+
+        c.drawRect(BoundingBox, mPtYellow);
         vPreview.setImageBitmap(bmp);
-		vPreview.invalidate();
+		vPreview.requestLayout();
     }
     
     @Override

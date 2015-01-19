@@ -42,6 +42,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_margin="0dp"
+        android:clipChildren="false"
         android:layout_weight="1" >
 
         <ImageView
